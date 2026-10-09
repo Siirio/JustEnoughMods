@@ -23,7 +23,7 @@ public final class CampaignBarrierBlock extends Block {
 
     @Override public RenderShape getRenderShape(BlockState state) { return RenderShape.INVISIBLE; }
     @Override public VoxelShape getShape(BlockState state,BlockGetter level,BlockPos pos,CollisionContext context) { return Shapes.empty(); }
-    @Override public VoxelShape getCollisionShape(BlockState state,BlockGetter level,BlockPos pos,CollisionContext context) { return Shapes.block(); }
+    @Override public VoxelShape getCollisionShape(BlockState state,BlockGetter level,BlockPos pos,CollisionContext context) { return Shapes.empty(); }
     @Override public boolean propagatesSkylightDown(BlockState state,BlockGetter level,BlockPos pos) { return true; }
     @Override public float getShadeBrightness(BlockState state,BlockGetter level,BlockPos pos) { return 1.0F; }
     @Override public PushReaction getPistonPushReaction(BlockState state) { return PushReaction.BLOCK; }

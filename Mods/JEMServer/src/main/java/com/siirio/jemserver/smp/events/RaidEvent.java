@@ -86,6 +86,7 @@ public final class RaidEvent {
     }
 
     public static void join(ServerPlayer player, CompoundTag event) {
+        if (event.contains("raidArenaId")) SmpRecords.require(!RaidArenaApi.participated(player.server, event.getString("raidArenaId"), player.getUUID()), "raid_already_participated");
         EventParty.join(player, event, false);
     }
 
@@ -107,6 +108,8 @@ public final class RaidEvent {
         SmpRecords.require(level != null, "unavailable");
         var pos = BlockPos.of(event.getLong("position"));
         SmpRecords.require(level.hasChunkAt(pos), "unavailable");
+        for (UUID participant : agreed) if (event.contains("raidArenaId"))
+            SmpRecords.require(!RaidArenaApi.participated(host.server, event.getString("raidArenaId"), participant), "raid_already_participated");
         boolean existing=event.hasUUID("targetBoss");
         LivingEntity boss;
         if(existing) {
@@ -115,33 +118,22 @@ public final class RaidEvent {
             boss=(LivingEntity)entity;
             SmpRecords.require(BuiltInRegistries.ENTITY_TYPE.getKey(boss.getType()).toString().equals(event.getString("bossType")),"unavailable");
         } else {
-            var type=EntityType.byString(event.getString("bossType")).orElse(null);
-            SmpRecords.require(type!=null,"unavailable");
-            var entity=type.create(level);
-            SmpRecords.require(entity instanceof Mob,"unavailable");
-            boss=(Mob)entity;
+            SmpRecords.require(event.contains("raidArenaId"), "unavailable");
+            boss = RaidArenaApi.acquireBoss(host.server, event.getString("raidArenaId"), event.getUUID("id"),
+                    new ResourceLocation(event.getString("bossType"))).orElseThrow(() -> new IllegalArgumentException("unavailable"));
+            existing = true;
         }
         SmpRecords.require(agreed.contains(host.getUUID()), "host_must_be_present");
         boolean started = false;
         try {
-            if(existing) {
-                SmpRecords.require(HostedEncounterApi.prepareRaid(boss),"unavailable");
-                pos=boss.blockPosition();
-            } else {
-                SmpRecords.require(event.contains("raidArenaId"), "unavailable");
-                pos = RaidArenaApi.prepareBoss(host.server, event.getString("raidArenaId"), event.getUUID("id"), boss)
-                        .orElseThrow(() -> new IllegalArgumentException("unavailable"));
-                event.putLong("position", pos.asLong());
-                boss.moveTo(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, 0, 0);
-                SmpRecords.require(level.noCollision(boss), "unavailable");
-            }
+            SmpRecords.require(HostedEncounterApi.prepareRaid(boss),"unavailable");
+            pos=boss.blockPosition();
+            event.putLong("position", pos.asLong());
             boss.getPersistentData().putBoolean("jem_solo", party.getBoolean("solo"));
             applyRaidScale(boss);
             boss.getPersistentData().putUUID(EVENT_ID, event.getUUID("id"));
-            if(!existing) SmpRecords.require(level.addFreshEntity(boss), "unavailable");
             BoundingBox bounds=StructureStaging.prepareCombat(level,event,boss);
             SmpRecords.require(HostedEncounterApi.start(boss, agreed, true, bounds), "unavailable");
-            StructureStaging.positionBossForCombat(level,event,boss);
             party.putUUID("bossEntity", boss.getUUID());
             event.putUUID("bossEntity", boss.getUUID());
             event.putBoolean("solo", party.getBoolean("solo"));
@@ -151,6 +143,7 @@ public final class RaidEvent {
             level.players().forEach(player->EventNetwork.eventMob(player,startedBoss));
             data.changed(party);
             data.changed(event);
+            if (event.contains("raidArenaId")) RaidArenaApi.recordParticipation(host.server, event.getString("raidArenaId"), agreed);
             started = true;
         } finally {
             if (!started) {
@@ -260,6 +253,7 @@ public final class RaidEvent {
 
     private static void applyRaidScale(LivingEntity boss) {
         CompoundTag data=boss.getPersistentData();
+        if(data.contains(ORIGINAL_SCALE_PRESENT)) return;
         float original=data.getFloat(EventMobScale.KEY);
         data.putBoolean(ORIGINAL_SCALE_PRESENT,data.contains(EventMobScale.KEY));
         data.putFloat(ORIGINAL_SCALE,original);
@@ -288,10 +282,10 @@ public final class RaidEvent {
 
     public static void cleanup(MinecraftServer server, CompoundTag event) {
         discardAllies(server,event);
-        UUID encounterId = event.getUUID("id");
         UUID bossId=event.hasUUID("bossEntity")?event.getUUID("bossEntity"):event.hasUUID("targetBoss")?event.getUUID("targetBoss"):null;
-        if(bossId!=null) {
-            encounterId=bossId;
+        if(bossId!=null&&event.contains("raidArenaId")) {
+            RaidArenaApi.completeRaid(server,event.getString("raidArenaId"),bossId,new ResourceLocation(event.getString("bossType")));
+        } else if(bossId!=null) {
             var level=EventRegions.level(server,event);
             var boss=level==null?null:level.getEntity(bossId);
             if(boss instanceof LivingEntity living&&living.isAlive()) {
@@ -303,9 +297,8 @@ public final class RaidEvent {
                     if(HostedEncounterApi.preservesRaidBoss(living)) HostedEncounterApi.restorePreparedRaid(living);
                 } else living.discard();
             }
-        }
-        if (event.contains("raidArenaId")&&!event.hasUUID("targetBoss")) {
-            RaidArenaApi.release(server, event.getString("raidArenaId"), encounterId);
+        } else if (event.contains("raidArenaId")) {
+            RaidArenaApi.release(server, event.getString("raidArenaId"), event.getUUID("id"));
         }
     }
 
@@ -315,6 +308,10 @@ public final class RaidEvent {
             return;
         }
         UUID bossId = event.getUUID("bossEntity");
+        if (event.contains("raidArenaId")) {
+            RaidArenaApi.completeRaid(server,event.getString("raidArenaId"),bossId,new ResourceLocation(event.getString("bossType")));
+            return;
+        }
         var level = EventRegions.level(server, event);
         var boss = level == null ? null : level.getEntity(bossId);
         if(event.hasUUID("targetBoss")) {

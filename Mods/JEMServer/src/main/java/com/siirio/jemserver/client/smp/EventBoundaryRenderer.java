@@ -28,18 +28,11 @@ public final class EventBoundaryRenderer {
     public static void accept(EventNetwork.Zones packet) {
         zones=List.copyOf(packet.bounds());
         BloodMoonSolidBoundary.clientZones(zones);
+        com.siirio.jemserver.smp.events.BossSolidBoundary.clientZones(zones);
     }
     public static boolean bloodMoon() {
         var mc=Minecraft.getInstance();
         return mc.player!=null && mc.level!=null && zones.stream().anyMatch(z->z.active() && z.type().equals("BLOOD_MOON") && z.dimension().equals(mc.level.dimension().location().toString()) && mc.player.getX()>=z.minX() && mc.player.getX()<z.maxX()+1 && mc.player.getY()>=z.minY() && mc.player.getY()<z.maxY()+1 && mc.player.getZ()>=z.minZ() && mc.player.getZ()<z.maxZ()+1);
-    }
-    public static boolean canPass(BlockPos position) {
-        var mc=Minecraft.getInstance();
-        var level=mc.level;
-        if(level==null||mc.player==null) return false;
-        return zones.stream().anyMatch(zone->zone.passable()&&zone.type().equals("BOSS_FIGHT")
-                &&zone.dimension().equals(level.dimension().location().toString())&&onShell(zone,position)
-                &&!insideStructure(zone,mc.player.position()));
     }
     @SubscribeEvent public static void logout(ClientPlayerNetworkEvent.LoggingOut event) {
         zones=List.of();
@@ -58,17 +51,6 @@ public final class EventBoundaryRenderer {
             Minecraft.getInstance().getSoundManager().play(ambience);
         } else if(!inside && insideBloodMoon) stopAmbience();
         insideBloodMoon=inside;
-    }
-    private static boolean onShell(EventNetwork.Boundary zone,BlockPos position) {
-        int minX=zone.minX(),minY=zone.minY(),minZ=zone.minZ();
-        int maxX=zone.maxX(),maxY=zone.maxY(),maxZ=zone.maxZ();
-        return position.getX()>=minX&&position.getX()<=maxX&&position.getY()>=minY&&position.getY()<=maxY
-                &&position.getZ()>=minZ&&position.getZ()<=maxZ&&(position.getX()==minX||position.getX()==maxX
-                ||position.getY()==minY||position.getY()==maxY||position.getZ()==minZ||position.getZ()==maxZ);
-    }
-    private static boolean insideStructure(EventNetwork.Boundary zone,net.minecraft.world.phys.Vec3 position) {
-        return position.x>=zone.minX()+1&&position.x<zone.maxX()&&position.y>=zone.minY()+1&&position.y<zone.maxY()
-                &&position.z>=zone.minZ()+1&&position.z<zone.maxZ();
     }
     private static void stopAmbience() {
         if(ambience!=null) Minecraft.getInstance().getSoundManager().stop(ambience);

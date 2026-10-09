@@ -9,7 +9,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.saveddata.SavedData;
 
@@ -31,7 +30,7 @@ public final class CampaignBarrierData extends SavedData {
             barriers.add(barrier);
             setDirty();
         }
-        placeLoaded(level,barrier);
+        removeLoaded(level,barrier);
     }
 
     public Barrier near(ServerPlayerView player) {
@@ -39,15 +38,13 @@ public final class CampaignBarrierData extends SavedData {
     }
 
     public void reconcile(MinecraftServer server) {
-        CampaignSavedData progress=CampaignSavedData.get(server);
         for(Barrier barrier:barriers) {
             ServerLevel level=level(server,barrier.dimension());
             if(level==null) continue;
-            if(progress.unlocked(barrier.boss())) removeLoaded(level,barrier);
+            removeLoaded(level,barrier);
         }
     }
 
-    private static void placeLoaded(ServerLevel level,Barrier barrier) { visitShell(level,barrier,CampaignBarrierData::place); }
     private static void removeLoaded(ServerLevel level,Barrier barrier) { visitShell(level,barrier,CampaignBarrierData::remove); }
 
     private static void visitShell(ServerLevel level,Barrier barrier,CellAction action) {
@@ -66,13 +63,6 @@ public final class CampaignBarrierData extends SavedData {
                 action.apply(level,new BlockPos(box.maxX(),y,z));
             }
         }
-    }
-
-    private static void place(ServerLevel level,BlockPos pos) {
-        if(!level.hasChunkAt(pos)) return;
-        BlockState state=level.getBlockState(pos);
-        if(state.is(CampaignBlocks.LOCKED_BOSS_BARRIER.get())||!state.getCollisionShape(level,pos).isEmpty()) return;
-        level.setBlock(pos,CampaignBlocks.LOCKED_BOSS_BARRIER.get().defaultBlockState(),3);
     }
 
     private static void remove(ServerLevel level,BlockPos pos) {

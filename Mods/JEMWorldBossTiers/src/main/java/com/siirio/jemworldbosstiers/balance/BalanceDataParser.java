@@ -36,7 +36,7 @@ public final class BalanceDataParser {
                     GsonHelper.getAsString(object, "healing_adapter", "none"),
                     GsonHelper.getAsString(object, "stagger_adapter", "none"),
                     GsonHelper.getAsString(object, "arena_strategy", "none"),
-                    GsonHelper.getAsString(object, "revival_strategy", "none"),
+                    GsonHelper.getAsString(object, "revival_strategy", "native"),
                     GsonHelper.getAsString(object, "anti_cheese_profile", "native"),
                     GsonHelper.getAsString(object, "destruction_rules", "native"),
                     GsonHelper.getAsInt(object, "arena_radius", 96),

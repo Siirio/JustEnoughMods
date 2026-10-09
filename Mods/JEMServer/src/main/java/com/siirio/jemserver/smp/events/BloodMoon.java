@@ -99,16 +99,6 @@ public final class BloodMoon {
             clearInvalidTarget(mob,active);
             var name=mob.getPersistentData().getString(CATEGORY);
             if(!name.isEmpty()) living.merge(BloodMoonWaves.Category.valueOf(name),1,Integer::sum);
-            var bounds=new BoundingBox(EventRegions.minX(row),level.getMinBuildHeight(),EventRegions.minZ(row),EventRegions.maxX(row),level.getMaxBuildHeight()-1,EventRegions.maxZ(row));
-            var barrier=BoundaryCollision.inside(bounds,mob.getBbWidth(),mob.getBbHeight());
-            var current=mob.position();
-            if(!barrier.contains(current)) {
-                var corrected=BoundaryCollision.keepInside(barrier,current);
-                mob.setPos(corrected.x,corrected.y,corrected.z);
-                mob.setDeltaMovement(BoundaryCollision.constrainedMotion(current,corrected,mob.getDeltaMovement()));
-                mob.getNavigation().stop();
-                mob.hurtMarked=true;
-            }
             if(mob.getTarget() instanceof net.minecraft.server.level.ServerPlayer player && active.contains(player))
                 targets.merge(player.getUUID(),1,Integer::sum);
             else {

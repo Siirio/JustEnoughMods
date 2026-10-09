@@ -6,7 +6,7 @@ Resource Rush — временный server-hosted event instance с отдел�
 
 Ресурсы и placements принадлежат instance, а cleanup удаляет только созданное этим instance. Event preparation ставится в очередь; scheduler активирует не более одного подготовленного события за цикл и переиспользует cached recipe analysis.
 
-Resource Rush не создаёт locked participant roster: игроки свободно входят, выходят и возвращаются. Кнопка Teleport переносит внутрь безопасной точки области; непрерывная двусторонняя полупрозрачная quad-граница без wireframe занимает полную высоту dimension, обозначает ownership ресурсов и удерживает event animals, но не удерживает игроков.
+Resource Rush не создаёт locked participant roster: игроки всегда свободно входят, выходят и возвращаются. Пока внутри нет игроков, mobs пересекают границу свободно; при появлении хотя бы одного игрока общий `EVENT_LOCK` добавляет mob-only collision geometry с обеих сторон без сохранения предыдущей позиции, teleport-back или velocity reversal. Кнопка Teleport переносит внутрь безопасной точки области; visual perimeter остаётся full-height и совпадает с collision coordinates.
 
 ## Rejected
 

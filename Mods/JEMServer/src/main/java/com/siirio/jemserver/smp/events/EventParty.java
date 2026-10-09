@@ -8,6 +8,8 @@ import java.util.*;
 public final class EventParty {
     public static void join(ServerPlayer player, CompoundTag event, boolean solo) {
         SmpRecords.require(!SmpData.closed(event), "unavailable");
+        if (event.getString("activity").equals("BOSS_RAID") && event.contains("raidArenaId"))
+            SmpRecords.require(!com.siirio.jemworldbosstiers.api.RaidArenaApi.participated(player.server, event.getString("raidArenaId"), player.getUUID()), "raid_already_participated");
         var data = SmpData.get(player.server);
         var party = event.hasUUID("party") ? data.find("parties", event.getUUID("party")) : null;
         if (party != null && !SmpData.closed(party) && Parties.accepted(party, player.getUUID())) {

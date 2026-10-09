@@ -2,13 +2,15 @@
 
 ## Primary state
 
-Boss Raid использует без переопределения обычный hosted boss encounter lifecycle, participant set, структуру, территорию, arrival/return flow и boundary contract. Raid добавляет только собственное усиление: boss model и hitbox масштабируются вместе на 35%, themed allies ограничены двадцатью на весь бой и распределяются между стартом, 50% и 25% combined boss health, а награды распределяются raid-механикой.
+Boss Raid использует без переопределения обычный `SOLID` boss boundary, canonical party, зарегистрированную структуру, arrival/return flow и native spawn anchor. Если живой legitimate boss присутствует, Raid использует именно эту entity без перемещения; если отсутствует, создаёт ровно одну entity только на ранее проверенном native anchor. Непроверенный anchor приводит к безопасному отказу, а не к spawn в center или возле host.
 
 Общие периодические эффекты hosted boss не дублируются raid-кодом: Magnetron, Scylla и Cloud Golem сохраняют «Любимчика Зевса» с семисекундным интервалом, полусекундным телеграфом зафиксированной позиции и возможностью увернуться до удара молнии.
 
 Команда старта принимает любого зарегистрированного и уже побеждённого босса, который находится в разблокированной собственной структурной арене в том же измерении. Отдельного allowlist типов нет: raid eligibility и реальные границы рейда выводятся из canonical BossProfile и зарегистрированной структуры.
 
 Individual reward содержит ровно два различных weighted resources и одну enchanted book. Skill books не выдаются. Победа, поражение, cleanup и retry проходят через один event instance; system-created party не расходует public posting cooldown.
+
+Фактическое участие записывается persistent по player UUID и canonical arena ID при старте боя. Повторный Raid этой арены запрещён через любую другую Party; outsider не может наносить Raid boss damage или получить награду. После victory, defeat, forfeit или termination текущий Raid boss удаляется, все участники выводятся наружу, и на verified native anchor идемпотентно восстанавливается ровно один свежий normal boss без Raid scale, aggro и ownership. Pending replacement сохраняется через restart и завершается при следующей загрузке структуры.
 
 Accepted participants используют общий safe-arrival flow. Любой teleport внутрь закрытой raid arena проходит общий server-side endpoint validation Boss Fight и до легального входа перенаправляется наружу; tick fallback выводит наружу обходные перемещения, не затрагивая уже вошедших active participants. Travel не блокируется: выход за bounds возвращает active participant внутрь и предлагает host завершить raid для всех, а member — покинуть только себя. Ambient mobs не входят в arena; разрешены raid bosses и authored allies. К итоговому direct/projectile/effect/hardcoded boss damage применяется один hosted correction 12% после participant scaling.
 

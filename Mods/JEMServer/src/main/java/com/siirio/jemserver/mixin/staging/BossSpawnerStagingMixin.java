@@ -12,6 +12,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class BossSpawnerStagingMixin {
     @Inject(method = "tick", at = @At("HEAD"), cancellable = true, remap = false)
     private void jem$waitForStart(net.minecraft.world.level.Level level, CallbackInfo callback) {
-        if (!StructureStaging.allowNative(level, ((net.minecraft.world.level.block.entity.BlockEntity) (Object) this).getBlockPos())) callback.cancel();
+        if (!StructureStaging.allowNativeSpawn(level, ((net.minecraft.world.level.block.entity.BlockEntity) (Object) this).getBlockPos())) callback.cancel();
     }
 }

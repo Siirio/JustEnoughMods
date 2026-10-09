@@ -18,16 +18,6 @@ import java.util.*;
 
 @Mod.EventBusSubscriber(modid="jem_server",value=net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER)
 public final class EventAreaHooks {
-    private static final String RUSH_BOUNDARY_EVENT="jem:resource_rush_boundary_event";
-    private static final String RUSH_BOUNDARY_INSIDE="jem:resource_rush_boundary_inside";
-    private static final String RUSH_BOUNDARY_X="jem:resource_rush_boundary_x";
-    private static final String RUSH_BOUNDARY_Y="jem:resource_rush_boundary_y";
-    private static final String RUSH_BOUNDARY_Z="jem:resource_rush_boundary_z";
-    private static final String PROJECTILE_BOUNDARY_EVENT="jem:event_boundary_id";
-    private static final String PROJECTILE_BOUNDARY_INSIDE="jem:event_boundary_inside";
-    private static final String PROJECTILE_BOUNDARY_COOLDOWN="jem:event_boundary_cooldown";
-    private static final double PROJECTILE_BOUNDARY_CLEARANCE=.08;
-    private static final double ANIMAL_BOUNDARY_REJECTION=.25;
     static final double PROJECTILE_RESTITUTION_REDUCTION=.2;
     private static final Map<UUID,Set<UUID>> INSIDE=new HashMap<>();
     private static final Map<UUID,Set<UUID>> PROMPTED=new HashMap<>();
@@ -89,30 +79,6 @@ public final class EventAreaHooks {
     }
 
     @SubscribeEvent
-    public static void animalBoundary(LivingEvent.LivingTickEvent event) {
-        if (!(event.getEntity() instanceof net.minecraft.world.entity.animal.Animal animal)
-                || !(animal.level() instanceof net.minecraft.server.level.ServerLevel level)) return;
-        var row=EventScheduler.active(level.getServer(),"RESOURCE_RUSH");
-        if(row==null || !row.getString("dimension").equals(level.dimension().location().toString())) return;
-        var data=animal.getPersistentData();
-        UUID eventId=row.getUUID("id");
-        boolean inside=EventRegions.contains(row,level,animal.blockPosition());
-        if(!data.hasUUID(RUSH_BOUNDARY_EVENT) || !data.getUUID(RUSH_BOUNDARY_EVENT).equals(eventId)) {
-            rememberAnimalPosition(data,eventId,inside,animal);
-            return;
-        }
-        if(inside!=data.getBoolean(RUSH_BOUNDARY_INSIDE)) {
-            animal.teleportTo(data.getDouble(RUSH_BOUNDARY_X),data.getDouble(RUSH_BOUNDARY_Y),data.getDouble(RUSH_BOUNDARY_Z));
-            var motion=animal.getDeltaMovement();
-            animal.setDeltaMovement(-motion.x*ANIMAL_BOUNDARY_REJECTION,motion.y,-motion.z*ANIMAL_BOUNDARY_REJECTION);
-            animal.getNavigation().stop();
-            animal.fallDistance=0;
-            return;
-        }
-        rememberAnimalPosition(data,eventId,inside,animal);
-    }
-
-    @SubscribeEvent
     public static void combatMobBoundary(LivingEvent.LivingTickEvent event) {
         if(!(event.getEntity() instanceof Mob mob) || !(mob.level() instanceof net.minecraft.server.level.ServerLevel level)) return;
         for(String type:List.of("BLOOD_MOON","BOSS_RAID")) {
@@ -124,62 +90,6 @@ public final class EventAreaHooks {
         }
     }
 
-    private static void rememberAnimalPosition(CompoundTag data,UUID eventId,boolean inside,net.minecraft.world.entity.animal.Animal animal) {
-        data.putUUID(RUSH_BOUNDARY_EVENT,eventId);
-        data.putBoolean(RUSH_BOUNDARY_INSIDE,inside);
-        data.putDouble(RUSH_BOUNDARY_X,animal.getX());
-        data.putDouble(RUSH_BOUNDARY_Y,animal.getY());
-        data.putDouble(RUSH_BOUNDARY_Z,animal.getZ());
-    }
-
-
-    @SubscribeEvent public static void projectiles(TickEvent.LevelTickEvent event) {
-        if(event.phase!=TickEvent.Phase.START || !(event.level instanceof net.minecraft.server.level.ServerLevel level)) return;
-        for(var row:EventScheduler.active(level.getServer())) {
-            String type=row.getString("activity");
-            if(!row.getString("state").equals("ACTIVE") || !row.getString("dimension").equals(level.dimension().location().toString()) || !type.equals("BLOOD_MOON")) continue;
-            var bounds=new net.minecraft.world.phys.AABB(EventRegions.minX(row)-1,level.getMinBuildHeight(),EventRegions.minZ(row)-1,EventRegions.maxX(row)+2,level.getMaxBuildHeight(),EventRegions.maxZ(row)+2);
-            for(var projectile:level.getEntitiesOfClass(net.minecraft.world.entity.projectile.Projectile.class,bounds)) {
-                boolean inside=inside(row,projectile.getX(),projectile.getZ());
-                var data=projectile.getPersistentData();
-                UUID eventId=row.getUUID("id");
-                if(!data.hasUUID(PROJECTILE_BOUNDARY_EVENT) || !data.getUUID(PROJECTILE_BOUNDARY_EVENT).equals(eventId)) {
-                    data.putUUID(PROJECTILE_BOUNDARY_EVENT,eventId);
-                    data.putBoolean(PROJECTILE_BOUNDARY_INSIDE,inside);
-                    continue;
-                }
-                boolean wasInside=data.getBoolean(PROJECTILE_BOUNDARY_INSIDE);
-                if(wasInside==inside) continue;
-                if(data.getLong(PROJECTILE_BOUNDARY_COOLDOWN)>level.getGameTime()) {
-                    data.putBoolean(PROJECTILE_BOUNDARY_INSIDE,inside);
-                    continue;
-                }
-                var motion=projectile.getDeltaMovement();
-                var start=new net.minecraft.world.phys.Vec3(projectile.xo,projectile.yo,projectile.zo);
-                var end=projectile.position();
-                var boundary=new net.minecraft.world.phys.AABB(EventRegions.minX(row),level.getMinBuildHeight(),EventRegions.minZ(row),
-                        EventRegions.maxX(row)+1.0,level.getMaxBuildHeight(),EventRegions.maxZ(row)+1.0);
-                var hit=BoundaryCollision.intersection(boundary,start,end).orElse(start);
-                var direction=end.subtract(start);
-                var stopped=direction.lengthSqr()==0?start:hit.subtract(direction.normalize().scale(PROJECTILE_BOUNDARY_CLEARANCE));
-                projectile.setPos(stopped.x,stopped.y,stopped.z);
-                projectile.xo=stopped.x;
-                projectile.yo=stopped.y;
-                projectile.zo=stopped.z;
-                if(projectile instanceof net.minecraft.world.entity.projectile.AbstractArrow) projectile.setDeltaMovement(net.minecraft.world.phys.Vec3.ZERO);
-                else {
-                    double restitution=EventRules.PROJECTILE_RESTITUTION.get()*PROJECTILE_RESTITUTION_REDUCTION;
-                    projectile.setDeltaMovement(BoundaryCollision.reflect(boundary,hit,motion).scale(restitution));
-                }
-                projectile.hasImpulse=true;
-                data.putLong(PROJECTILE_BOUNDARY_COOLDOWN,level.getGameTime()+2);
-                data.putBoolean(PROJECTILE_BOUNDARY_INSIDE,inside(row,stopped.x,stopped.z));
-            }
-        }
-    }
-    private static boolean inside(CompoundTag row,double x,double z) {
-        return x>=EventRegions.minX(row)&&x<EventRegions.maxX(row)+1.0&&z>=EventRegions.minZ(row)&&z<EventRegions.maxZ(row)+1.0;
-    }
     @SubscribeEvent(priority=EventPriority.HIGHEST) public static void target(LivingChangeTargetEvent event) {
         var mob=event.getEntity();var tag=mob.getPersistentData();
         if(!tag.hasUUID(EventSession.SESSION) || mob.level().isClientSide) return;

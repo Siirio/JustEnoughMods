@@ -12,6 +12,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class KrakenSpawnerStagingMixin {
     @Inject(method = "tick", at = @At("HEAD"), cancellable = true, remap = false)
     private void jem$waitForStart(net.minecraft.server.level.ServerLevel level, net.minecraft.core.BlockPos position, net.minecraft.world.level.block.state.BlockState state, CallbackInfo callback) {
-        if (!StructureStaging.allowNative(level, position)) callback.cancel();
+        if (!StructureStaging.allowNativeSpawn(level, position)) callback.cancel();
     }
 }

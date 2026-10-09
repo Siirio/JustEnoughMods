@@ -47,6 +47,7 @@ public final class RevivalService {
             data.putArena(active.release(boss.getUUID()));
             return;
         }
+        data.cancelRespawn(arena.id());
         if (!player.getAbilities().instabuild) {
             event.getItemStack().shrink(1);
             player.giveExperienceLevels(-profile.revivalXpLevels());

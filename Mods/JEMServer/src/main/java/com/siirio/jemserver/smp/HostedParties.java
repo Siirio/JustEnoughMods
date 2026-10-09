@@ -116,7 +116,6 @@ public final class HostedParties {
     }
 
     public static void tick(net.minecraft.server.MinecraftServer server) {
-        com.siirio.jemserver.smp.events.HostedBoundary.tick(server);
         if (server.getTickCount() % 20 != 0) return;
         var data = SmpData.get(server);
         long now = System.currentTimeMillis();

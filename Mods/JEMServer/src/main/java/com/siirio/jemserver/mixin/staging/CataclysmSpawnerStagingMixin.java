@@ -16,6 +16,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class CataclysmSpawnerStagingMixin {
     @Inject(method = "tick", at = @At("HEAD"), cancellable = true, remap = false)
     private static void jem$waitForStart(Level level, BlockPos position, BlockState state, @Coerce Object altar, CallbackInfo callback) {
-        if (!StructureStaging.allowNative(level, position)) callback.cancel();
+        if (!StructureStaging.allowNativeSpawn(level, position)) callback.cancel();
     }
 }

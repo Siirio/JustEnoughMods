@@ -1,6 +1,6 @@
 package com.siirio.jemserver.mixin.teleport;
 
-import com.siirio.jemserver.smp.events.ArenaTeleportSafety;
+import com.siirio.jemserver.smp.events.BossTeleportSafety;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.RelativeMovement;
@@ -19,9 +19,9 @@ public abstract class ServerPlayerTeleportMixin {
     private void jem$validateCommandArenaDestination(ServerLevel level,double x,double y,double z,Set<RelativeMovement> relativeMovements,float yaw,float pitch,CallbackInfoReturnable<Boolean> callback) {
         ServerPlayer player=(ServerPlayer)(Object)this;
         Vec3 requested=new Vec3(x,y,z);
-        ArenaTeleportSafety.Decision decision=ArenaTeleportSafety.validate(player,level,requested);
+        BossTeleportSafety.Decision decision=BossTeleportSafety.validate(player,level,requested);
         if(!decision.matched()||requested.equals(decision.destination())) return;
-        if(decision.destination()!=null) ArenaTeleportSafety.redirect(player,level,decision.destination(),yaw,pitch);
+        if(decision.destination()!=null) BossTeleportSafety.apply(player,level,decision.destination(),yaw,pitch);
         callback.setReturnValue(decision.destination()!=null);
     }
 
@@ -29,9 +29,9 @@ public abstract class ServerPlayerTeleportMixin {
     private void jem$validateArenaDestination(ServerLevel level,double x,double y,double z,float yaw,float pitch,CallbackInfo callback) {
         ServerPlayer player=(ServerPlayer)(Object)this;
         Vec3 requested=new Vec3(x,y,z);
-        ArenaTeleportSafety.Decision decision=ArenaTeleportSafety.validate(player,level,requested);
+        BossTeleportSafety.Decision decision=BossTeleportSafety.validate(player,level,requested);
         if(!decision.matched()||requested.equals(decision.destination())) return;
         callback.cancel();
-        if(decision.destination()!=null) ArenaTeleportSafety.redirect(player,level,decision.destination(),yaw,pitch);
+        if(decision.destination()!=null) BossTeleportSafety.apply(player,level,decision.destination(),yaw,pitch);
     }
 }
