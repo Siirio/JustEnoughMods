@@ -25,6 +25,7 @@ import com.siirio.jemworldbosstiers.revival.ArenaRecord;
 import com.siirio.jemworldbosstiers.revival.BossRespawnScheduler;
 import com.siirio.jemworldbosstiers.api.WorldTierApi;
 import com.siirio.jemworldbosstiers.api.BossRevivalApi;
+import com.siirio.jemworldbosstiers.api.RaidArenaApi;
 import com.siirio.jemworldbosstiers.protection.WeaponProtection;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.particles.ParticleTypes;
@@ -72,6 +73,7 @@ public final class JemWorldBossTiers {
 
     public JemWorldBossTiers() {
         BossRevivalApi.install(bossRespawns::reviveNearest);
+        RaidArenaApi.installAnchorMigrationHandler(bossRespawns::anchorVerified);
         net.minecraftforge.fml.ModLoadingContext.get().registerConfig(net.minecraftforge.fml.config.ModConfig.Type.SERVER,
                 com.siirio.jemworldbosstiers.encounter.HostedConfig.SPEC);
         TierEnchantments.register(FMLJavaModLoadingContext.get().getModEventBus());

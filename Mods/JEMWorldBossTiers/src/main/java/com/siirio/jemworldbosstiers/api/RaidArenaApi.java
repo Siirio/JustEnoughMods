@@ -6,6 +6,7 @@ import com.siirio.jemworldbosstiers.encounter.EncounterProvenance;
 import com.siirio.jemworldbosstiers.progression.WorldTierData;
 import com.siirio.jemworldbosstiers.revival.ArenaRecord;
 import com.siirio.jemworldbosstiers.revival.ArenaService;
+import com.siirio.jemworldbosstiers.revival.NativeAnchorMigration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -17,11 +18,13 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
+import net.minecraft.world.level.levelgen.structure.StructureStart;
 
 import java.util.Optional;
 import java.util.UUID;
 
 public final class RaidArenaApi {
+    private static AnchorMigrationHandler anchorMigrationHandler;
     public record Arena(String id, ResourceLocation entityType, ResourceLocation dimension,
                         BlockPos center, BoundingBox bounds) {
     }
@@ -96,6 +99,42 @@ public final class RaidArenaApi {
             data.verifyNativeAnchor(arenaId);
         }
         data.cancelRespawn(arenaId);
+    }
+
+    public static void installAnchorMigrationHandler(AnchorMigrationHandler handler) {
+        anchorMigrationHandler = handler;
+    }
+
+    public static void migrateNativeAnchor(MinecraftServer server, String arenaId, ResourceLocation entityType, StructureStart start) {
+        WorldTierData data = WorldTierData.get(server);
+        ArenaRecord arena = data.arena(arenaId).orElse(null);
+        var profile = BalanceRegistry.boss(entityType).orElse(null);
+        if (arena == null || profile == null || data.nativeAnchorVerified(arenaId) || !arena.profileKey().equals(profile.key())) return;
+        NativeAnchorMigration.fromStructure(server, arena, profile, start)
+                .ifPresent(anchor -> verifyMigratedAnchor(server, data, arena, entityType, anchor));
+    }
+
+    public static void migrateNativeAnchor(ServerLevel level, String arenaId, ResourceLocation entityType, BlockPos signalPosition) {
+        MinecraftServer server = level.getServer();
+        WorldTierData data = WorldTierData.get(server);
+        ArenaRecord arena = data.arena(arenaId).orElse(null);
+        var profile = BalanceRegistry.boss(entityType).orElse(null);
+        if (arena == null || profile == null || data.nativeAnchorVerified(arenaId) || !arena.profileKey().equals(profile.key())) return;
+        NativeAnchorMigration.fromPersistentSignal(level, signalPosition, arena, profile)
+                .ifPresent(anchor -> verifyMigratedAnchor(server, data, arena, entityType, anchor));
+    }
+
+    private static void verifyMigratedAnchor(MinecraftServer server, WorldTierData data, ArenaRecord arena,
+                                             ResourceLocation entityType, BlockPos anchor) {
+        if (data.nativeAnchorVerified(arena.id())) return;
+        ArenaRecord migrated = arena.withRespawnPosition(anchor);
+        data.putArena(migrated);
+        data.verifyNativeAnchor(arena.id());
+        if (data.raidReplacementPending(arena.id())) {
+            restoreNormalBoss(server, migrated, entityType);
+            return;
+        }
+        if (anchorMigrationHandler != null) anchorMigrationHandler.verified(server, arena.id());
     }
 
     public static boolean participated(MinecraftServer server, String arenaId, UUID playerId) {
@@ -222,5 +261,10 @@ public final class RaidArenaApi {
     }
 
     private RaidArenaApi() {
+    }
+
+    @FunctionalInterface
+    public interface AnchorMigrationHandler {
+        void verified(MinecraftServer server, String arenaId);
     }
 }

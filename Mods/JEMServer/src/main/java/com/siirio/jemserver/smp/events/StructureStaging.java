@@ -25,6 +25,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.StructureStart;
 import net.minecraft.world.phys.AABB;
@@ -108,6 +109,7 @@ public final class StructureStaging {
             UUID id = UUID.nameUUIDFromBytes(key.getBytes(StandardCharsets.UTF_8));
             var area = new Area(id, dimension, boss, bounds);
             RaidArenaApi.register(level.getServer(), id.toString(), boss, level.dimension().location(), bounds);
+            RaidArenaApi.migrateNativeAnchor(level.getServer(), id.toString(), boss, start);
             if (!AREAS.containsKey(id) && AREAS.size() >= AREA_LIMIT) AREAS.remove(AREAS.keySet().iterator().next());
             AREAS.put(id, area);
             if (area.contains(level, position)) return area;
@@ -688,13 +690,17 @@ public final class StructureStaging {
         }
     }
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void chunkLoaded(net.minecraftforge.event.level.ChunkEvent.Load event) {
         if (!(event.getLevel() instanceof ServerLevel level)) return;
         NATIVE_LOOKUPS.clear();
         ChunkPos chunk = event.getChunk().getPos();
         BlockPos center=chunk.getMiddleBlockPosition(level.getSeaLevel());
         discover(level,center);
+        if (event.getChunk() instanceof LevelChunk loaded) for (BlockPos position : loaded.getBlockEntities().keySet()) {
+            Area area = AREAS.values().stream().filter(candidate -> candidate.contains(level, position)).findFirst().orElse(null);
+            if (area != null) RaidArenaApi.migrateNativeAnchor(level, area.id().toString(), area.boss(), position);
+        }
         for (Area area : AREAS.values()) if (area.dimension().equals(level.dimension().location().toString()))
             forEachBarrierPosition(area, chunk, position -> {
                 ResourceLocation id = BuiltInRegistries.BLOCK.getKey(level.getBlockState(position).getBlock());
