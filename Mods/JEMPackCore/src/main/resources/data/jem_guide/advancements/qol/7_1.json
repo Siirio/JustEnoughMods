@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:chest"
+    },
+    "title": {
+      "translate": "jem_guide.advancement.qol.7_1.title"
+    },
+    "description": {
+      "translate": "jem_guide.advancement.qol.7_1.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "completion": {
+      "trigger": "jem_advancements:node/jem_guide/qol/7_1"
+    }
+  },
+  "requirements": [
+    [
+      "completion"
+    ]
+  ],
+  "parent": "jem_guide:qol/7"
+}

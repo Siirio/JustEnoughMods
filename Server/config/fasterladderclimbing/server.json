@@ -1,0 +1,16 @@
+{
+  "_comment": [
+    "Faster Ladder Climbing - server settings.",
+    "These decide what this server permits; each player still chooses how they climb within it.",
+    "A player's own setting and the limit here are compared, and the SLOWER of the two is used.",
+    "",
+    "enabled: false switches the mod off for everyone here, exactly as if it were not installed.",
+    "upSpeedLimit: fastest ascent allowed, in blocks per tick. Vanilla climbs at 0.2.",
+    "downSpeedLimit: fastest descent allowed, in blocks per tick. Negative. Vanilla slides at -0.15.",
+    "",
+    "Players without the mod are unaffected either way."
+  ],
+  "enabled": true,
+  "upSpeedLimit": 1.25,
+  "downSpeedLimit": -1.25
+}

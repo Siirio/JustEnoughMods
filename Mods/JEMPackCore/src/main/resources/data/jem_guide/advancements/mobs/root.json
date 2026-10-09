@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:lead"
+    },
+    "title": {
+      "translate": "jem_guide.advancement.mobs.root.title"
+    },
+    "description": {
+      "translate": "jem_guide.advancement.mobs.root.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png"
+  },
+  "criteria": {
+    "completion": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "requirements": [
+    [
+      "completion"
+    ]
+  ]
+}

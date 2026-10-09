@@ -1,0 +1,6 @@
+{
+  "parent": "tide:get_bait",
+  "criteria": {"catch_legendary": {"trigger": "minecraft:fishing_rod_hooked", "conditions": {"item": {"tag": "tide:legendary_fish"}}}},
+  "display": {"announce_to_chat": true, "description": {"translate": "advancements.tide.catch_legendary.description"}, "frame": "challenge", "hidden": false, "icon": {"item": "tide:shooting_starfish"}, "show_toast": true, "title": {"translate": "advancements.tide.catch_legendary.title"}},
+  "requirements": [["catch_legendary"]]
+}

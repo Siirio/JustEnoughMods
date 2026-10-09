@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "item": "alexsmobs:spawn_egg_void_worm"
+    },
+    "title": {
+      "translate": "jem_guide.advancement.bosses.1_1_1_10_1.title"
+    },
+    "description": {
+      "translate": "jem_guide.advancement.bosses.1_1_1_10_1.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "completion": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "alexsmobs:void_worm"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completion"
+    ]
+  ],
+  "parent": "jem_guide:bosses/root"
+}

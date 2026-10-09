@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:iron_axe"
+    },
+    "title": {
+      "translate": "jem_guide.advancement.qol.8.title"
+    },
+    "description": {
+      "translate": "jem_guide.advancement.qol.8.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "completion": {
+      "trigger": "jem_advancements:node/jem_guide/qol/8"
+    }
+  },
+  "requirements": [
+    [
+      "completion"
+    ]
+  ],
+  "parent": "jem_guide:qol/root"
+}

@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.siirio.jemadaptiveculling.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "jem_adaptive_culling.refmap.json",
+  "client": [
+    "client.BlockEntityRenderDispatcherMixin",
+    "client.ClientLevelMixin",
+    "client.EntityRenderDispatcherMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "parent": "jemcompat:campaign/branches/maledictus/yeti",
+  "display": {
+    "icon": {
+      "item": "cataclysm:cursed_bow"
+    },
+    "title": {
+      "translate": "advancement.jemcompat.defeat.maledictus.title"
+    },
+    "description": {
+      "translate": "advancement.jemcompat.defeat.maledictus.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "completed": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

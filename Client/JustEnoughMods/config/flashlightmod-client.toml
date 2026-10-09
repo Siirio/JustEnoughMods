@@ -1,0 +1,145 @@
+
+["Flashlight Client Rendering"]
+	#Resolution of the shadow depth map, in pixels (width = height).
+	#Valid values: 256, 512, 1024, 2048, 4096. Other values snap to the nearest one.
+	#Higher resolutions have a higher GPU memory cost.
+	#1024 = default.
+	#Range: 256 ~ 4096
+	shadowMapResolution = 1024
+	#Constant anti-acne bias for shadow sampling, in shadow-map pixels.
+	#Default: 1.5.
+	#Range: 0.0 ~ 4.0
+	shadowBiasNormal = 1.5
+	#Angle-scaled anti-acne bias for shadow sampling.
+	#Default: 0.0.
+	#Range: 0.0 ~ 3.0
+	shadowBiasSlope = 0.0
+	#The light's effective aperture size for soft shadows.
+	#Shadows falling further from their caster get progressively softer edges.
+	#0.3 = default.
+	#Range: 0.0 ~ 3.0
+	shadowSoftness = 0.3
+	#How many simultaneous flashlights cast real shadow maps.
+	#Higher values cost one extra world geometry pass per light per frame.
+	#2 = default.
+	#Range: 0 ~ 8
+	maxShadowedLights = 2
+	#Culls shadow terrain from each spotlight's own viewpoint instead of
+	#reusing the camera's occlusion-culled render lists.
+	#On = default.
+	lightPovShadowSetup = true
+	#Light surfaces by their true (unlit) colour instead of brightening the already shaded pixel.
+	#On = default.
+	albedoLighting = true
+	#Whether terrain geometry casts shadows.
+	#On = default.
+	terrainShadowsEnabled = true
+	#Whether block entities (chests, signs, beds, etc) cast shadows.
+	#On = default.
+	blockEntityShadowsEnabled = true
+	#Whether non-player entities (mobs, item frames, boats, etc) cast shadows.
+	#On = default.
+	entityShadowsEnabled = true
+	#Whether players cast shadows.
+	#On = default.
+	playerShadowsEnabled = true
+	#Whether particles cast shadows.
+	#Off = default.
+	particleShadowsEnabled = false
+	#Whether lit particles are lit by their true colour. 
+	#Same as albedoLighting does for terrain/entities.
+	#Off = default.
+	particleAlbedoEnabled = false
+	#Experimental, use at your own risk.
+	#How many shadow-casting flashlights also pick up colour from blocks
+	#like stained glass. Clamped to maxShadowedLights above.
+	#Each coloured slot adds an extra translucent render pass and two extra textures.
+	#0 = default.
+	#Range: 0 ~ 8
+	colorShadowedLights = 0
+	#Saturation boost applied to coloured-shadow tints (stained glass, water).
+	#1.7 = default.
+	#Range: 0.0 ~ 5.0
+	colorShadowSaturation = 1.7
+	#Makes translucent terrain fully block the beam like solid geometry, applies to every translucent block.
+	#Disables colorShadowedLights.
+	#Off = default.
+	translucentOpaqueShadows = false
+	#OFF: square point sprites.
+	#ON: circular sprites with a gaussian falloff.
+	#OFF = default.
+	circularDustParticles = false
+	#Snap lighting and shadows to the block pixel grid (16 pixels per block).
+	#Off = default.
+	pixelSnapLighting = false
+	#Enable the lens glow and dust glow effects.
+	#On = default.
+	bloomEnabled = true
+	#Brightness of the bloom.
+	#0.10 = default.
+	#Range: 0.0 ~ 1.0
+	bloomCompositeStrength = 0.1
+	#Show dust particles floating inside the flashlight beam.
+	#On = default.
+	dustEnabled = true
+	#World-space radius of each dust particle.
+	#0.02 = default.
+	#Range: 0.005 ~ 0.1
+	dustSize = 0.02
+	#Dust particle density relative to default.
+	#0 = default, positive = denser (e.g. 1 = double), negative = sparser (e.g. -1 = half).
+	#Range: -15 ~ 63
+	dustCountMultiplier = 0
+	#Raymarched volumetrics for shadow-casting flashlights.
+	#A real per-pixel raymarch which is noticeably more expensive than the other effects here.
+	#Off = default.
+	volumetricsEnabled = false
+	#Fog sample count per beam. Low values already look smooth enough (8 looks close to 32 in practice).
+	#Higher values cost more GPU time.
+	#8 = default.
+	#Range: 1 ~ 64
+	volumetricSteps = 8
+	#Overall brightness of the volumetric beam's scattered light.
+	#0.3 = default.
+	#Range: 0.0 ~ 3.0
+	volumetricIntensity = 0.3
+	#Procedural noise strength inside the volumetric beam.
+	#0.0 = smooth (cheapest, but looks worse).
+	#1.0 = default.
+	#Range: 0.0 ~ 2.0
+	volumetricNoise = 1.0
+	#Snaps the volumetric beam's fog samples to the block pixel grid too,
+	#independent of Pixel Snap Lighting.
+	#Off = default.
+	volumetricPixelSnap = false
+	#Red channel of the flashlight beam colour.
+	#1.0 = default.
+	#Range: 0.0 ~ 1.0
+	lightColorR = 1.0
+	#Green channel of the flashlight beam colour.
+	#0.95 = default.
+	#Range: 0.0 ~ 1.0
+	lightColorG = 0.95
+	#Blue channel of the flashlight beam colour.
+	#0.75 = default.
+	#Range: 0.0 ~ 1.0
+	lightColorB = 0.75
+	#Overall brightness multiplier for the beam. Also brightens the volumetrics.
+	#2 = default.
+	#Range: 0.1 ~ 50.0
+	brightnessMultiplier = 2.0
+	#Which light-cookie texture the flashlight projects.
+	#Names a file (without ".png") under assets/flashlightmod/textures/flashlight/.
+	#This also includes ones added by a resource pack.
+	#"default" = the mod's built-in pattern.
+	lightPattern = "default"
+	#Static Texture = the PNG pattern above (default).
+	#Video Texture = project a looping video as the beam pattern.
+	useVideoPattern = false
+	#Which video the flashlight projects when Texture Mode is Video Texture.
+	#Names a file (without ".mp4") under assets/flashlightmod/videos/.
+	#This also includes ones added by a resource pack.
+	#Videos must use H.264 format (Constrained Baseline).
+	#Keep them small (512x512 30fps is more than enough).
+	videoPattern = ""
+

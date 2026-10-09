@@ -1,0 +1,40 @@
+{
+  "display": {
+    "icon": {
+      "item": "paraglider:spirit_orb"
+    },
+    "title": {
+      "translate": "jem_guide.advancement.qol.13_3_1.title"
+    },
+    "description": {
+      "translate": "jem_guide.advancement.qol.13_3_1.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "completion": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "paraglider:spirit_orb"
+            ],
+            "count": {
+              "min": 4
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completion"
+    ]
+  ],
+  "parent": "jem_guide:qol/13"
+}

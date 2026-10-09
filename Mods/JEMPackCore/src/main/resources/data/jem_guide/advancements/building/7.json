@@ -1,0 +1,35 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:bell"
+    },
+    "title": {
+      "translate": "jem_guide.advancement.building.7.title"
+    },
+    "description": {
+      "translate": "jem_guide.advancement.building.7.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "completion": {
+      "trigger": "minecraft:placed_block",
+      "conditions": {
+        "location": {
+          "block": {
+            "tag": "chimes:wind_chimes"
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completion"
+    ]
+  ],
+  "parent": "jem_guide:building/root"
+}

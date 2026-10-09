@@ -1,0 +1,100 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:emerald",
+          "weight": 20,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 8,
+                "max": 16
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:charcoal",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 6,
+                "max": 32
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:totem_of_undying",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:spyglass",
+          "weight": 8
+        },
+        {
+          "type": "minecraft:item",
+          "name": "snowyspirit:music_disc_winter",
+          "weight": 25
+        },
+        {
+          "type": "minecraft:item",
+          "name": "snowyspirit:sled_oak",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "snowyspirit:sled_dark_oak",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "snowyspirit:sled_jungle",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "snowyspirit:sled_acacia",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "snowyspirit:sled_spruce",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "snowyspirit:candy_cane",
+          "weight": 12,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 8,
+                "max": 16
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "snowyspirit:snow_globe",
+          "weight": 7
+        }
+      ]
+    }
+  ]
+}

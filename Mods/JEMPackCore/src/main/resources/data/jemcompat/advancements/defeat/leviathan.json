@@ -1,0 +1,23 @@
+{
+  "parent": "jemcompat:campaign/branches/leviathan/sea_viper",
+  "display": {
+    "icon": {
+      "item": "cataclysm:tidal_claws"
+    },
+    "title": {
+      "translate": "advancement.jemcompat.defeat.leviathan.title"
+    },
+    "description": {
+      "translate": "advancement.jemcompat.defeat.leviathan.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "completed": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "clientSource": "Client/JustEnoughMods",
+  "stableClient": "C:/Users/user/AppData/Roaming/.minecraft/versions/JustEnoughMods",
+  "testClient": "C:/Users/user/AppData/Roaming/.minecraft/versions/JustEnoughMods Server Test",
+  "server": "Server",
+  "packSyncHost": "Server/automodpack/host-modpack/main",
+  "state": "tools/state",
+  "updates": "C:/MyProjects/Minecraft/JustEnoughMods-updates",
+  "pointUpdateAlwaysInclude": [
+    "kubejs/**/*"
+  ],
+  "stableExcluded": [
+    "TLauncherAdditional.json"
+  ],
+  "testExcluded": [
+    "JustEnoughMods.jar",
+    "JustEnoughMods.json",
+    "TLauncherAdditional.json",
+    "saves"
+  ],
+  "packSyncExcluded": [
+    "mods/jem-bootstrap.jar",
+    "config/jei/world"
+  ],
+  "packSyncIncluded": [
+    "mods",
+    "config",
+    "defaultconfigs",
+    "kubejs",
+    "resourcepacks",
+    "shaderpacks",
+    "bivrik"
+  ]
+}
+

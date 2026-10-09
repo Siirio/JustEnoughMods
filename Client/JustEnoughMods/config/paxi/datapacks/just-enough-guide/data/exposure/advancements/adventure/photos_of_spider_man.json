@@ -1,0 +1,45 @@
+{
+  "parent": "exposure:adventure/unforeseen_consequences",
+  "criteria": {
+    "photograph_spider_man": {
+      "conditions": {
+        "entities_in_frame": [
+          [
+            {
+              "condition": "minecraft:entity_properties",
+              "entity": "this",
+              "predicate": {
+                "type": "minecraft:skeleton",
+                "vehicle": {
+                  "type": "minecraft:spider"
+                }
+              }
+            }
+          ]
+        ]
+      },
+      "trigger": "exposure:frame_exposed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.exposure.photos_of_spider_man.description"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "minecraft:cobweb"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.exposure.photos_of_spider_man.title"
+    }
+  },
+  "requirements": [
+    [
+      "photograph_spider_man"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

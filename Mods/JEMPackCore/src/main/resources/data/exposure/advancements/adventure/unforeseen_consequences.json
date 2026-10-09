@@ -1,0 +1,30 @@
+{
+  "parent": "exposure:adventure/exposed_paparazzi",
+  "criteria": {
+    "photograph_enderman_eyes": {
+      "conditions": {},
+      "trigger": "exposure:photograph_enderman_eyes"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.exposure.unforeseen_consequences.description"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "minecraft:ender_eye"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.exposure.unforeseen_consequences.title"
+    }
+  },
+  "requirements": [
+    [
+      "photograph_enderman_eyes"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,347 @@
+{
+  "bosses": [
+    {
+      "key": "ancient_remnant",
+      "entity": "cataclysm:ancient_remnant",
+      "eye": "endrem:old_eye",
+      "dimension": "minecraft:overworld",
+      "cartographer_level": 1,
+      "prerequisites": [
+        "dune_sentinel",
+        "mummy",
+        "golden_hermit_king"
+      ]
+    },
+    {
+      "key": "possessed_paladin",
+      "entity": "legendary_monsters:posessed_paladin",
+      "eye": "endrem:corrupted_eye",
+      "dimension": "minecraft:overworld",
+      "cartographer_level": 1,
+      "prerequisites": [
+        "ancient_guardian",
+        "bone_stalker",
+        "overgrown_colossus"
+      ]
+    },
+    {
+      "key": "leviathan",
+      "entity": "cataclysm:the_leviathan",
+      "eye": "endrem:guardian_eye",
+      "dimension": "minecraft:overworld",
+      "cartographer_level": 1,
+      "prerequisites": [
+        "captain_cornelia",
+        "sea_viper"
+      ]
+    },
+    {
+      "key": "maledictus",
+      "entity": "cataclysm:maledictus",
+      "eye": "endrem:cold_eye",
+      "dimension": "minecraft:overworld",
+      "cartographer_level": 2,
+      "prerequisites": [
+        "skor",
+        "frostbitten_golem",
+        "yeti"
+      ]
+    },
+    {
+      "key": "sirok",
+      "entity": "block_factorys_bosses:sandworm",
+      "eye": "endrem:black_eye",
+      "dimension": "minecraft:overworld",
+      "cartographer_level": 1,
+      "prerequisites": []
+    },
+    {
+      "key": "luxtructosaurus",
+      "entity": "alexscaves:luxtructosaurus",
+      "eye": "endrem:exotic_eye",
+      "dimension": "minecraft:overworld",
+      "cartographer_level": 2,
+      "prerequisites": [
+        "skeletosaurus"
+      ]
+    },
+    {
+      "key": "cumulonimbus",
+      "entity": "legendary_monsters:cloud_golem",
+      "eye": "endrem:magical_eye",
+      "dimension": "minecraft:overworld",
+      "cartographer_level": 1,
+      "prerequisites": []
+    },
+    {
+      "key": "netherite_monstrosity",
+      "entity": "cataclysm:netherite_monstrosity",
+      "eye": "endrem:nether_eye",
+      "dimension": "minecraft:the_nether",
+      "cartographer_level": 2,
+      "prerequisites": []
+    },
+    {
+      "key": "harbinger",
+      "entity": "cataclysm:the_harbinger",
+      "eye": "endrem:lost_eye",
+      "dimension": "minecraft:overworld",
+      "cartographer_level": 2,
+      "prerequisites": []
+    },
+    {
+      "key": "scylla",
+      "entity": "cataclysm:scylla",
+      "eye": "endrem:cursed_eye",
+      "dimension": "minecraft:overworld",
+      "cartographer_level": 2,
+      "prerequisites": []
+    },
+    {
+      "key": "infernal_dragon",
+      "entity": "block_factorys_bosses:infernal_dragon",
+      "eye": "endrem:wither_eye",
+      "dimension": "minecraft:overworld",
+      "cartographer_level": 1,
+      "prerequisites": [
+        "withered_abomination",
+        "lava_eater",
+        "piglin_executioner",
+        "furnace"
+      ]
+    },
+    {
+      "key": "helvar",
+      "entity": "block_factorys_bosses:underworld_knight",
+      "eye": "endrem:undead_eye",
+      "dimension": "minecraft:the_nether",
+      "cartographer_level": 2,
+      "prerequisites": []
+    }
+  ],
+  "prerequisites": [
+    {
+      "key": "dune_sentinel",
+      "entity": "legendary_monsters:dune_sentinel",
+      "dimension": "minecraft:overworld",
+      "cartographer_level": 1,
+      "native_structure": "legendary_monsters:ruined_pyramid",
+      "proof_advancements": [
+        "legendary_monsters:defeat_dune_sentinel"
+      ],
+      "aquatic": false,
+      "canceled_death_proof": false,
+      "floor": "minecraft:polished_blackstone_bricks",
+      "marker": "minecraft:gilded_blackstone"
+    },
+    {
+      "key": "mummy",
+      "entity": "luminous_beasts:mummy",
+      "dimension": "minecraft:overworld",
+      "cartographer_level": 1,
+      "native_structure": null,
+      "proof_advancements": [
+        "luminous_beasts:kill_mummy"
+      ],
+      "aquatic": false,
+      "canceled_death_proof": false,
+      "floor": "minecraft:cut_sandstone",
+      "marker": "minecraft:chiseled_sandstone"
+    },
+    {
+      "key": "golden_hermit_king",
+      "entity": "luminous_beasts:golden_hermit_king",
+      "dimension": "minecraft:overworld",
+      "cartographer_level": 1,
+      "native_structure": null,
+      "proof_advancements": [
+        "luminous_beasts:kill_hermit_king"
+      ],
+      "aquatic": false,
+      "canceled_death_proof": false,
+      "floor": "minecraft:smooth_sandstone",
+      "marker": "minecraft:chiseled_sandstone"
+    },
+    {
+      "key": "ancient_guardian",
+      "entity": "legendary_monsters:ancient_guardian",
+      "dimension": "minecraft:overworld",
+      "cartographer_level": 1,
+      "native_structure": "legendary_monsters:ancient_tower_remains",
+      "proof_advancements": [
+        "legendary_monsters:defeat_the_ancient_guardian"
+      ],
+      "aquatic": false,
+      "canceled_death_proof": true,
+      "floor": "minecraft:polished_blackstone_bricks",
+      "marker": "minecraft:gilded_blackstone"
+    },
+    {
+      "key": "bone_stalker",
+      "entity": "luminous_beasts:bone_stalker",
+      "dimension": "minecraft:overworld",
+      "cartographer_level": 1,
+      "native_structure": null,
+      "proof_advancements": [
+        "luminous_beasts:kill_bone_stalker"
+      ],
+      "aquatic": false,
+      "canceled_death_proof": false,
+      "floor": "minecraft:mossy_cobblestone",
+      "marker": "minecraft:chiseled_stone_bricks"
+    },
+    {
+      "key": "overgrown_colossus",
+      "entity": "legendary_monsters:overgrown_colossus",
+      "dimension": "minecraft:overworld",
+      "cartographer_level": 1,
+      "native_structure": "legendary_monsters:mossy_temple",
+      "proof_advancements": [
+        "legendary_monsters:defeat_overgrown_colossus"
+      ],
+      "aquatic": false,
+      "canceled_death_proof": false,
+      "floor": "minecraft:polished_blackstone_bricks",
+      "marker": "minecraft:gilded_blackstone"
+    },
+    {
+      "key": "captain_cornelia",
+      "entity": "aquamirae:captain_cornelia",
+      "dimension": "minecraft:overworld",
+      "cartographer_level": 1,
+      "native_structure": null,
+      "proof_advancements": [],
+      "aquatic": true,
+      "canceled_death_proof": false,
+      "floor": "minecraft:packed_ice",
+      "marker": "minecraft:blue_ice"
+    },
+    {
+      "key": "sea_viper",
+      "entity": "luminous_beasts:sea_viper",
+      "dimension": "minecraft:overworld",
+      "cartographer_level": 1,
+      "native_structure": null,
+      "proof_advancements": [
+        "luminous_beasts:kill_sea_viper"
+      ],
+      "aquatic": true,
+      "canceled_death_proof": false,
+      "floor": "minecraft:prismarine",
+      "marker": "minecraft:sea_lantern"
+    },
+    {
+      "key": "skor",
+      "entity": "block_factorys_bosses:yeti",
+      "dimension": "minecraft:overworld",
+      "cartographer_level": 2,
+      "native_structure": "block_factorys_bosses:yeti_hideout",
+      "proof_advancements": [
+        "block_factorys_bosses:kill_yeti",
+        "jem_guide:bosses/2_1"
+      ],
+      "aquatic": false,
+      "canceled_death_proof": true,
+      "floor": "minecraft:polished_blackstone_bricks",
+      "marker": "minecraft:gilded_blackstone"
+    },
+    {
+      "key": "frostbitten_golem",
+      "entity": "legendary_monsters:frostbitten_golem",
+      "dimension": "minecraft:overworld",
+      "cartographer_level": 2,
+      "native_structure": "legendary_monsters:frostbitten_temple",
+      "proof_advancements": [
+        "legendary_monsters:defeat_frostbitten_golem"
+      ],
+      "aquatic": false,
+      "canceled_death_proof": false,
+      "floor": "minecraft:polished_blackstone_bricks",
+      "marker": "minecraft:gilded_blackstone"
+    },
+    {
+      "key": "yeti",
+      "entity": "luminous_beasts:yeti",
+      "dimension": "minecraft:overworld",
+      "cartographer_level": 2,
+      "native_structure": null,
+      "proof_advancements": [
+        "luminous_beasts:kill_yeti"
+      ],
+      "aquatic": false,
+      "canceled_death_proof": false,
+      "floor": "minecraft:snow_block",
+      "marker": "minecraft:chiseled_quartz_block"
+    },
+    {
+      "key": "withered_abomination",
+      "entity": "legendary_monsters:withered_abomination",
+      "dimension": "minecraft:the_nether",
+      "cartographer_level": 2,
+      "native_structure": "legendary_monsters:soul_fortress_remains",
+      "proof_advancements": [
+        "legendary_monsters:defeat_withered_abomination"
+      ],
+      "aquatic": false,
+      "canceled_death_proof": false,
+      "floor": "minecraft:polished_blackstone_bricks",
+      "marker": "minecraft:gilded_blackstone"
+    },
+    {
+      "key": "lava_eater",
+      "entity": "legendary_monsters:lava_eater",
+      "dimension": "minecraft:the_nether",
+      "cartographer_level": 2,
+      "native_structure": "legendary_monsters:lava_eater_spawn",
+      "proof_advancements": [
+        "legendary_monsters:defeat_lava_eater"
+      ],
+      "aquatic": false,
+      "canceled_death_proof": false,
+      "floor": "minecraft:polished_blackstone_bricks",
+      "marker": "minecraft:gilded_blackstone"
+    },
+    {
+      "key": "piglin_executioner",
+      "entity": "luminous_beasts:piglin_executioner",
+      "dimension": "minecraft:the_nether",
+      "cartographer_level": 2,
+      "native_structure": null,
+      "proof_advancements": [
+        "luminous_beasts:kill_piglin_executioner"
+      ],
+      "aquatic": false,
+      "canceled_death_proof": false,
+      "floor": "minecraft:polished_blackstone_bricks",
+      "marker": "minecraft:gilded_blackstone"
+    },
+    {
+      "key": "furnace",
+      "entity": "luminous_beasts:the_furnace",
+      "dimension": "minecraft:the_nether",
+      "cartographer_level": 2,
+      "native_structure": null,
+      "proof_advancements": [
+        "luminous_beasts:kill_the_furnace"
+      ],
+      "aquatic": false,
+      "canceled_death_proof": false,
+      "floor": "minecraft:polished_blackstone_bricks",
+      "marker": "minecraft:gilded_blackstone"
+    },
+    {
+      "key": "skeletosaurus",
+      "entity": "legendary_monsters:skeletosaurus",
+      "dimension": "minecraft:the_nether",
+      "cartographer_level": 2,
+      "native_structure": "legendary_monsters:skeletosaurus_nest",
+      "proof_advancements": [
+        "legendary_monsters:defeat_skeletosaurus"
+      ],
+      "aquatic": false,
+      "canceled_death_proof": false,
+      "floor": "minecraft:polished_blackstone_bricks",
+      "marker": "minecraft:gilded_blackstone"
+    }
+  ]
+}

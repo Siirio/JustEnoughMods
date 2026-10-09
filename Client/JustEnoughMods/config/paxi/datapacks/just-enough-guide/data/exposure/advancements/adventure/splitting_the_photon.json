@@ -1,0 +1,46 @@
+{
+  "parent": "exposure:adventure/exposure",
+  "criteria": {
+    "expose_frame_with_rgb_filter": {
+      "conditions": {
+        "camera": {
+          "film": {
+            "items": [
+              "exposure:black_and_white_film",
+              "exposure:high_sensitivity_black_and_white_film"
+            ]
+          },
+          "filter": {
+            "items": [
+              "minecraft:red_stained_glass_pane",
+              "minecraft:green_stained_glass_pane",
+              "minecraft:blue_stained_glass_pane"
+            ]
+          }
+        }
+      },
+      "trigger": "exposure:frame_exposed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.exposure.splitting_the_photon.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:red_stained_glass_pane"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.exposure.splitting_the_photon.title"
+    }
+  },
+  "requirements": [
+    [
+      "expose_frame_with_rgb_filter"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

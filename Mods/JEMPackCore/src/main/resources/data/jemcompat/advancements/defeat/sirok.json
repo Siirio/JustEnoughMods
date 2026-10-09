@@ -1,0 +1,23 @@
+{
+  "parent": "jemcompat:campaign/root",
+  "display": {
+    "icon": {
+      "item": "block_factorys_bosses:sandworm_gauntlet"
+    },
+    "title": {
+      "translate": "advancement.jemcompat.defeat.sirok.title"
+    },
+    "description": {
+      "translate": "advancement.jemcompat.defeat.sirok.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "completed": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

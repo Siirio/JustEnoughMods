@@ -1,0 +1,35 @@
+{
+  "display": {
+    "icon": {
+      "item": "tide:midas_fish"
+    },
+    "title": {
+      "translate": "jem_guide.advancement.fishing.5_6.title"
+    },
+    "description": {
+      "translate": "jem_guide.advancement.fishing.5_6.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "completion": {
+      "trigger": "minecraft:fishing_rod_hooked",
+      "conditions": {
+        "item": {
+          "items": [
+            "tide:midas_fish"
+          ]
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completion"
+    ]
+  ],
+  "parent": "jem_guide:fishing/root"
+}

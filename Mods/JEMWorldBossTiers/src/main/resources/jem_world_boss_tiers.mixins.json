@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.siirio.jemworldbosstiers.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "jem_world_boss_tiers.refmap.json",
+  "mixins": [
+    "DisplayInfoAccessor",
+    "ExperienceOrbInvoker",
+    "KilledTriggerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

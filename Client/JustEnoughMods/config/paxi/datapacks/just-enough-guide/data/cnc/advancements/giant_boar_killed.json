@@ -1,0 +1,36 @@
+{
+  "display": {
+    "icon": {
+      "item": "cnc:giant_boar_head"
+    },
+    "title": {
+      "translate": "advancements.giant_boar_killed.title"
+    },
+    "description": {
+      "translate": "advancements.giant_boar_killed.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "giant_boar_killed_0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "cnc:giant_boar_head"
+            ],
+            "count": {
+              "min": 1,
+              "max": 64
+            }
+          }
+        ]
+      }
+    }
+  },
+  "parent": "cnc:cnc"
+}

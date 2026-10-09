@@ -1,0 +1,30 @@
+{
+  "display": {
+    "icon": {
+      "item": "cnc:parcooked_game"
+    },
+    "title": {
+      "translate": "advancements.parcooked_game_advancement.title"
+    },
+    "description": {
+      "translate": "advancements.parcooked_game_advancement.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "parcooked_game_advancement_0": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "cnc:parcooked_game"
+          ]
+        }
+      }
+    }
+  },
+  "parent": "cnc:cnc"
+}

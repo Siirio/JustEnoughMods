@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:brush"
+    },
+    "title": {
+      "translate": "jem_guide.advancement.cool_stuff.4_4.title"
+    },
+    "description": {
+      "translate": "jem_guide.advancement.cool_stuff.4_4.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "completion": {
+      "trigger": "jem_advancements:node/jem_guide/cool_stuff/4_4"
+    }
+  },
+  "requirements": [
+    [
+      "completion"
+    ]
+  ],
+  "parent": "jem_guide:cool_stuff/root"
+}

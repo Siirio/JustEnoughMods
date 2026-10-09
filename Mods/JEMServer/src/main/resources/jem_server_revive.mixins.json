@@ -1,0 +1,8 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.siirio.jemserver.mixin.revive",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": ["PlayerReviveActivationMixin", "PlayerReviveCompletionMixin"],
+  "injectors": {"defaultRequire": 1}
+}

@@ -1,0 +1,19 @@
+{
+  "type": "jem_world_boss_tiers:progression_book",
+  "conditions": [
+    {
+      "condition": "minecraft:any_of",
+      "terms": [
+        {"condition": "forge:loot_table_id", "loot_table_id": "minecraft:chests/simple_dungeon"},
+        {"condition": "forge:loot_table_id", "loot_table_id": "minecraft:chests/abandoned_mineshaft"},
+        {"condition": "forge:loot_table_id", "loot_table_id": "minecraft:chests/desert_pyramid"},
+        {"condition": "forge:loot_table_id", "loot_table_id": "minecraft:chests/jungle_temple"},
+        {"condition": "forge:loot_table_id", "loot_table_id": "minecraft:chests/stronghold_library"},
+        {"condition": "forge:loot_table_id", "loot_table_id": "minecraft:chests/woodland_mansion"},
+        {"condition": "forge:loot_table_id", "loot_table_id": "minecraft:chests/pillager_outpost"},
+        {"condition": "forge:loot_table_id", "loot_table_id": "minecraft:chests/ancient_city"}
+      ]
+    },
+    {"condition": "minecraft:random_chance", "chance": 0.06}
+  ]
+}

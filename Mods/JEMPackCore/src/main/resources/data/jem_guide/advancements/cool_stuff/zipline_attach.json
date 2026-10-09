@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:chain"
+    },
+    "title": {
+      "translate": "jem_guide.advancement.cool_stuff.zipline_attach.title"
+    },
+    "description": {
+      "translate": "jem_guide.advancement.cool_stuff.zipline_attach.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "completion": {
+      "trigger": "jem_advancements:node/jem_guide/cool_stuff/zipline_attach"
+    }
+  },
+  "requirements": [
+    [
+      "completion"
+    ]
+  ],
+  "parent": "jem_guide:cool_stuff/root"
+}

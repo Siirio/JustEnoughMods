@@ -1,0 +1,23 @@
+{
+  "parent": "jemcompat:campaign/all_eyes",
+  "display": {
+    "icon": {
+      "item": "minecraft:end_portal_frame"
+    },
+    "title": {
+      "translate": "quest.jemcompat.portal.title"
+    },
+    "description": {
+      "translate": "quest.jemcompat.portal.desc"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "opened": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

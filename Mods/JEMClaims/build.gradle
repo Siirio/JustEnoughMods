@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
+}
+version = '2.0.0-dev'
+group = 'com.siirio.jemclaims'
+base { archivesName = 'jem-claims' }
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+minecraft { mappings channel: 'official', version: '1.20.1' }
+repositories { mavenCentral(); flatDir { dirs 'libs' } }
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
+    implementation fg.deobf('local:flan:1.20.1-1.11.16-forge')
+    compileOnly fg.deobf('local:toms_storage:1.20-1.7.1')
+    compileOnly fg.deobf('local:gravestone-forge:1.20.1-1.0.35')
+    compileOnly fg.deobf('local:carryon-forge:1.20.1-2.1.2.7')
+    compileOnly fg.deobf('local:siegeweapons:1.20.1-0.2.5')
+    compileOnly fg.deobf('local:create:1.20.1-6.0.8')
+    compileOnly fg.deobf('local:TreeChop:1.20.1-forge-0.19.0-fixed')
+    compileOnly fg.deobf('local:trotting_wagons:1.0.4')
+    compileOnly fg.deobf('local:smallships-forge:1.20.1-2.0.0-b1.4')
+    compileOnly files('../JEMWorldBossTiers/build/classes/java/main')
+    compileOnly files('../JEMTwelveEyes/build/classes/java/main')
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+mixin {
+    add sourceSets.main, 'jem_claims.refmap.json'
+    config 'jem_claims.mixins.json'
+}
+jar {
+    manifest { attributes 'MixinConfigs': 'jem_claims.mixins.json' }
+    finalizedBy 'reobfJar'
+}
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }

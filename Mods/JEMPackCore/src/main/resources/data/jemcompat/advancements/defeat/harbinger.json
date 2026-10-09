@@ -1,0 +1,23 @@
+{
+  "parent": "jemcompat:campaign/root",
+  "display": {
+    "icon": {
+      "item": "cataclysm:laser_gatling"
+    },
+    "title": {
+      "translate": "advancement.jemcompat.defeat.harbinger.title"
+    },
+    "description": {
+      "translate": "advancement.jemcompat.defeat.harbinger.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "completed": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

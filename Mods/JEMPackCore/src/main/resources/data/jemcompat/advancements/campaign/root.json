@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:ender_eye"
+    },
+    "title": {
+      "translate": "advancement.jemcompat.story.title"
+    },
+    "description": {
+      "translate": "advancement.jemcompat.story.description"
+    },
+    "background": "minecraft:textures/gui/advancements/backgrounds/end.png",
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "visible": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "requirements": [
+    [
+      "visible"
+    ]
+  ]
+}

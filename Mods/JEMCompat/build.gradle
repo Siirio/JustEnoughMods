@@ -1,0 +1,142 @@
+plugins {
+    id 'java'
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
+}
+
+version = mod_version
+group = mod_group_id
+
+base {
+    archivesName = mod_id
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+minecraft {
+    mappings channel: mapping_channel, version: mapping_version
+    copyIdeResources = true
+    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+}
+
+repositories {
+    mavenCentral()
+}
+
+def instancePath = providers.gradleProperty('jem_instance')
+        .orElse(providers.environmentVariable('JEM_INSTANCE'))
+        .orNull
+
+if (instancePath == null || instancePath.isBlank()) {
+    throw new GradleException('Set -Pjem_instance=<path> or JEM_INSTANCE before building JEMCompat')
+}
+
+def installedMod = { String pattern ->
+    def matches = fileTree(dir: file("${instancePath}/mods"), include: pattern).files
+    if (matches.size() != 1) {
+        throw new GradleException("Expected one installed mod matching ${pattern}, found ${matches.size()}")
+    }
+    matches.first()
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    implementation fg.deobf(files(installedMod('create-*.jar')))
+    compileOnly fileTree(dir: 'libs', include: 'Ponder-Forge-*.jar')
+    compileOnly fg.deobf(files(installedMod('Jade-*.jar')))
+    compileOnly fg.deobf(files(installedMod('jei-*.jar')))
+    compileOnly fg.deobf(files(installedMod('curios-forge-*.jar')))
+    compileOnly fg.deobf(files(installedMod('enhancedai-*.jar')))
+    compileOnly fg.deobf(files(installedMod('insanelib-*.jar')))
+    compileOnly fg.deobf(files(installedMod('block_factorys_bosses-*.jar')))
+    compileOnly fg.deobf(files(installedMod('geckolib-forge-*.jar')))
+    compileOnly fg.deobf(files(installedMod('aquamirae-*.jar')))
+    compileOnly fg.deobf(files(installedMod('L_Enders_Cataclysm-*.jar')))
+    compileOnly files(installedMod('unearthed_journey-*.jar'))
+    compileOnly fg.deobf(files(installedMod('legendarymonsters-*.jar')))
+    compileOnly fg.deobf(files(installedMod('Luminous*Beasts*.jar')))
+    compileOnly fg.deobf(files(installedMod('endrem_forge-*.jar')))
+    compileOnly fg.deobf(files(installedMod('trotting_wagons-*.jar')))
+    compileOnly fg.deobf(files(installedMod('immersive_aircraft-*.jar')))
+    compileOnly files(installedMod('BackToBed-*.jar'))
+    compileOnly files(installedMod('BetterAdvancements-*.jar'))
+    compileOnly files('../JEMAchievementGuide/build/classes/java/main')
+    compileOnly files('../JEMPackCore/build/classes/java/main')
+    compileOnly files('../JEMWorldBossTiers/build/classes/java/main')
+    testImplementation platform('org.junit:junit-bom:5.10.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+
+tasks.named('test', Test).configure {
+    useJUnitPlatform()
+}
+
+def mixinRefmapName = 'jemcompat.refmap.json'
+
+mixin {
+    add sourceSets.main, mixinRefmapName
+    config 'jemcompat.mixins.json'
+}
+
+tasks.named('compileJava', JavaCompile).configure {
+    outputs.file(layout.buildDirectory.file("tmp/compileJava/${mixinRefmapName}"))
+}
+
+sourceSets.main.resources.srcDir 'src/generated/resources'
+
+tasks.named('processResources', ProcessResources).configure {
+    def replaceProperties = [
+            minecraft_version: minecraft_version,
+            minecraft_version_range: minecraft_version_range,
+            forge_version: forge_version,
+            forge_version_range: forge_version_range,
+            loader_version_range: loader_version_range,
+            mod_id: mod_id,
+            mod_name: mod_name,
+            mod_license: mod_license,
+            mod_version: mod_version,
+            mod_authors: mod_authors,
+            mod_description: mod_description
+    ]
+    inputs.properties replaceProperties
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties
+    }
+}
+
+tasks.named('jar', Jar).configure {
+    manifest {
+        attributes([
+                'Specification-Title': mod_id,
+                'Specification-Vendor': mod_authors,
+                'Specification-Version': '2',
+                'Implementation-Title': project.name,
+                'Implementation-Version': project.jar.archiveVersion,
+                'Implementation-Vendor': mod_authors,
+                'FMLAT': 'accesstransformer.cfg',
+                'MixinConfigs': 'jemcompat.mixins.json'
+        ])
+    }
+    doLast {
+        new java.util.zip.ZipFile(archiveFile.get().asFile).withCloseable { archive ->
+            if (archive.getEntry(mixinRefmapName) == null) {
+                throw new GradleException("Missing required Mixin refmap ${mixinRefmapName} in ${archiveFile.get().asFile.name}")
+            }
+        }
+    }
+    finalizedBy 'reobfJar'
+}
+
+tasks.register('installToModpack', Copy) {
+    dependsOn 'build'
+    from tasks.named('jar').flatMap { it.archiveFile }
+    into file("${instancePath}/mods")
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}

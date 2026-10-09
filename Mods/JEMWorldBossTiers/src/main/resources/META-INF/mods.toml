@@ -1,0 +1,25 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="jem_world_boss_tiers"
+version="${file.jarVersion}"
+displayName="JEM World Boss Tiers"
+authors="Siirio"
+description='''Event-driven world-wide boss progression and numerical normalization for Forge 1.20.1.'''
+
+[[dependencies.jem_world_boss_tiers]]
+modId="forge"
+mandatory=true
+versionRange="[47.4.10,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.jem_world_boss_tiers]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1,1.21)"
+ordering="NONE"
+side="BOTH"
+

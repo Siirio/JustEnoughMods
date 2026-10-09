@@ -1,0 +1,44 @@
+{
+  "display": {
+    "icon": {
+      "item": "efn:duskfire_chestplate"
+    },
+    "title": {
+      "translate": "jem_guide.advancement.arsenal.efn_armor.title"
+    },
+    "description": {
+      "translate": "jem_guide.advancement.arsenal.efn_armor.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "completion": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "efn:ruinfighter_helmet",
+              "efn:ruinfighter_chestplate",
+              "efn:ruinfighter_leggings",
+              "efn:ruinfighter_boots",
+              "efn:duskfire_helmet",
+              "efn:duskfire_chestplate",
+              "efn:duskfire_leggings",
+              "efn:duskfire_boots"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completion"
+    ]
+  ],
+  "parent": "jem_guide:arsenal/root"
+}

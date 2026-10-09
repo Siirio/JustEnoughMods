@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.siirio.jemserver.mixin.fishing",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "jem_server.refmap.json",
+  "mixins": ["TideFishDataMixin", "TideFishingHookMixin"],
+  "injectors": {"defaultRequire": 1}
+}

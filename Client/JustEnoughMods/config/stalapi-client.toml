@@ -1,0 +1,15 @@
+#The cape currently equipped, per account (so running multiple accounts from the same game directory never shares one selection between them). One '<accountUuid>=<owner>/<repo>/<branch>/<modId>/<capeName>' line per account with a non-actual cape equipped; an account missing here (or set to the empty string after the '=') means its actual Mojang cape.
+selectedCape = ""
+#Hex color for the 'common' cape rarity (and the fallback for any unrecognized/missing rarity)
+commonColor = "#757575"
+#Hex color for the 'uncommon' cape rarity
+uncommonColor = "#1C7C35"
+#Hex color for the 'rare' cape rarity
+rareColor = "#185695"
+#Hex color for the 'epic' cape rarity
+epicColor = "#7B25A4"
+#Hex color for the 'legendary' cape rarity
+legendaryColor = "#A46823"
+#Hex color for the 'mythic' cape rarity
+mythicColor = "#A32529"
+

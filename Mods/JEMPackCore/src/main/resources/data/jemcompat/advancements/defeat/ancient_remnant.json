@@ -1,0 +1,23 @@
+{
+  "parent": "jemcompat:campaign/branches/ancient_remnant/golden_hermit_king",
+  "display": {
+    "icon": {
+      "item": "cataclysm:remnant_skull"
+    },
+    "title": {
+      "translate": "advancement.jemcompat.defeat.ancient_remnant.title"
+    },
+    "description": {
+      "translate": "advancement.jemcompat.defeat.ancient_remnant.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "completed": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

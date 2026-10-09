@@ -1,0 +1,26 @@
+{
+  "required": false,
+  "minVersion": "0.8",
+  "package": "com.justenoughmods.achievementguide.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "jem_pack_core.refmap.json",
+  "mixins": [
+    "LegacyGraveCreationMixin",
+    "BackpackedMixin",
+    "BackpackedServerPlayHandlerMixin",
+    "CastingNetItemMixin",
+    "ImmersiveMelodiesMixin",
+    "LivingEntityMixin",
+    "ServerAdvancementManagerMixin",
+    "SimpleBargainMixin",
+    "ZiplineLogicMixin",
+    "SecretEndingPortalMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "BetterAdvancementsScreenMixin"
+  ],
+  "plugin": "com.siirio.jempackcore.OptionalMixins"
+}

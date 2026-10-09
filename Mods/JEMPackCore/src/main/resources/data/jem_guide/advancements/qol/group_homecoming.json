@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:red_bed"
+    },
+    "title": {
+      "translate": "jem_guide.advancement.qol.group_homecoming.title"
+    },
+    "description": {
+      "translate": "jem_guide.advancement.qol.group_homecoming.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "completion": {
+      "trigger": "jem_advancements:node/jem_guide/qol/group_homecoming"
+    }
+  },
+  "requirements": [
+    [
+      "completion"
+    ]
+  ],
+  "parent": "jem_guide:qol/root"
+}

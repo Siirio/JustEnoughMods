@@ -1,0 +1,20 @@
+
+["Flashlight Config"]
+	#Maximum energy capacity of the battery (in FE).
+	#Changing this affects all batteries. existing batteries store at most the new maximum.
+	#Range: 1000 ~ 100000
+	maxEnergy = 10000
+	#Energy consumed per second when the flashlight is on (in FE/s).
+	#Range: 1 ~ 2000
+	energyPerSecond = 10
+	#Half-angle of the flashlight beam cone in degrees.
+	#Range: 1.0 ~ 90.0
+	coneHalfAngleDeg = 25.0
+	#Maximum distance the flashlight illuminates in blocks.
+	#Range: 5.0 ~ 128.0
+	beamRange = 24.0
+	#Whether the flashlight needs a battery inserted (with charge) to turn on.
+	requireBatteryToFunction = true
+	#Automatically turns the flashlight off when it is no longer held.
+	autoOffOnSlotChange = false
+

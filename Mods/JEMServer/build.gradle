@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
+}
+version = '2.0.0-dev'
+group = 'com.siirio.jemserver'
+base { archivesName = 'jem-server' }
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+minecraft { mappings channel: 'official', version: '1.20.1' }
+
+def instancePath = providers.environmentVariable('JEM_INSTANCE').get()
+repositories { mavenCentral(); flatDir { dirs "${instancePath}/mods" } }
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
+    compileOnly fg.deobf('com.li64:tide-forge-1.20.1:2.1.1-hotfix')
+    compileOnly files("${instancePath}/mods/PlayerRevive_FORGE_v2.0.31_mc1.20.1.jar")
+    compileOnly files('../JEMClaims/build/classes/java/main')
+    compileOnly files('../JEMWorldBossTiers/build/classes/java/main')
+    compileOnly files('../JEMTwelveEyes/build/classes/java/main')
+    compileOnly files('../JEMClaims/libs/spudaciousshops-1.10.2-forge-1.20.1.jar')
+    compileOnly files("${instancePath}/mods/xaerominimap-forge-1.20.1-26.4.2.jar")
+    compileOnly files("${instancePath}/mods/xaeroworldmap-forge-1.20.1-1.45.0.jar")
+    compileOnly files("${instancePath}/mods/jei-1.20.1-forge-15.49.0.194.jar")
+    compileOnly files("${instancePath}/mods/epic-fight-20.14.17-mc1.20.1-forge.jar")
+    compileOnly files("${instancePath}/mods/skarrier_mobs-1.0.6-forge-1.20.1.jar")
+    compileOnly fg.deobf(files("${instancePath}/mods/Pehkui-3.8.2+1.20.1-forge.jar"))
+    compileOnly files('../JEMTwelveEyes/build/xaero-lib/xaerolib-forge-1.20.1-1.7.1.jar')
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+mixin { add sourceSets.main, 'jem_server.refmap.json'; config 'jem_server.mixins.json'; config 'jem_server_shops.mixins.json'; config 'jem_server_fishing.mixins.json'; config 'jem_server_revive.mixins.json' }
+jar { manifest { attributes 'MixinConfigs': 'jem_server.mixins.json,jem_server_shops.mixins.json,jem_server_fishing.mixins.json,jem_server_revive.mixins.json' }; finalizedBy 'reobfJar' }
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+
+tasks.named('test', Test).configure { useJUnitPlatform() }

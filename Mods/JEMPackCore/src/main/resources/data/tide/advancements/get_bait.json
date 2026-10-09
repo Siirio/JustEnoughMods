@@ -1,0 +1,6 @@
+{
+  "parent": "jem_guide:fishing/root",
+  "criteria": {"bait_items": {"trigger": "minecraft:inventory_changed", "conditions": {"items": [{"tag": "tide:bait_items"}]}}},
+  "display": {"announce_to_chat": true, "description": {"translate": "advancements.tide.get_bait.description"}, "frame": "task", "hidden": false, "icon": {"item": "tide:bait"}, "show_toast": true, "title": {"translate": "advancements.tide.get_bait.title"}},
+  "requirements": [["bait_items"]]
+}

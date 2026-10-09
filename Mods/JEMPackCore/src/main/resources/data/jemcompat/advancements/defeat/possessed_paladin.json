@@ -1,0 +1,23 @@
+{
+  "parent": "jemcompat:campaign/branches/possessed_paladin/overgrown_colossus",
+  "display": {
+    "icon": {
+      "item": "legendary_monsters:soul_great_sword"
+    },
+    "title": {
+      "translate": "advancement.jemcompat.defeat.possessed_paladin.title"
+    },
+    "description": {
+      "translate": "advancement.jemcompat.defeat.possessed_paladin.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "completed": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

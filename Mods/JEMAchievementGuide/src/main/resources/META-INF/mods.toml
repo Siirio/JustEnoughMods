@@ -1,0 +1,22 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="jem_advancements"
+version="${file.jarVersion}"
+displayName="JEM Advancements"
+authors="Just Enough Mods"
+description='''
+Reusable server-authoritative advancement criteria and upstream advancement triggers.
+'''
+
+[[dependencies.jem_advancements]]
+modId="forge"
+mandatory=true
+versionRange="[47.4.10,)"
+ordering="NONE"
+side="BOTH"
+
+
+

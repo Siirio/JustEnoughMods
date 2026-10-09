@@ -1,0 +1,25 @@
+#EntityTypes allowed to pull wagons
+allowed_entities = ["minecraft:horse", "barnyardbuddies:clydesdale_horse", "barnyardbuddies:trader_clydesdale"]
+#ID of the item (or tag, if starting with #) used to repair wagons
+repair_material = "minecraft:iron_ingot"
+#The amount of durability regained per repair item.
+#Range: > 0
+repair_value = 10
+
+["Conestoga Wagon Options"]
+	conestoga_wagon_health = 60
+	conestoga_wagon_speed = 0.175
+	conestoga_wagon_acceleration = 2.0
+	conestoga_wagon_turn_rate = 2.0
+
+["Royal Wagon Options"]
+	royal_wagon_health = 80
+	royal_wagon_speed = 0.225
+	royal_wagon_acceleration = 3.0
+	royal_wagon_turn_rate = 2.0
+
+["Armored Wagon Options"]
+	armored_wagon_health = 120
+	armored_wagon_speed = 0.1625
+	armored_wagon_acceleration = 4.0
+	armored_wagon_turn_rate = 2.0

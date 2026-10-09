@@ -1,0 +1,31 @@
+{
+  "parent": "jem_guide:cool_stuff/root",
+  "criteria": {
+    "expose_frame": {
+      "conditions": {},
+      "trigger": "exposure:frame_exposed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.exposure.exposure.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "exposure:camera",
+      "nbt": "{camera_active:1b}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.exposure.exposure.title"
+    }
+  },
+  "requirements": [
+    [
+      "expose_frame"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,4739 @@
+{
+  "tide:freshwater/arapaima": {
+    "journal_profile": {
+      "alt_sprite_size": 48,
+      "rarity": "rare",
+      "group": "freshwater",
+      "description": "journal.description.tide.arapaima",
+      "location": "journal.info.location.jungle",
+      "alt_sprite": "tide:textures/item/arapaima_full.png"
+    },
+    "size": {
+      "typical_low_cm": 240.0,
+      "typical_high_cm": 340.0,
+      "record_high_cm": 460.0
+    },
+    "display_data": {
+      "y": -0.15,
+      "entity": "tide:arapaima",
+      "shape": "3x1",
+      "x": -0.08
+    },
+    "strength": 0.6,
+    "speed": 1.7,
+    "conditions": [
+      {
+        "biomes": [
+          "#tide:has_jungle_fish",
+          "#tide:has_swamp_fish"
+        ],
+        "type": "tide:found_in"
+      },
+      {
+        "type": "tide:freshwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "selection_weight": 9.0,
+    "fish": "tide:arapaima",
+    "bucket": "tide:arapaima_bucket"
+  },
+  "tide:underground/gilded_minnow": {
+    "journal_profile": {
+      "rarity": "rare",
+      "group": "underground",
+      "description": "journal.description.tide.gilded_minnow",
+      "location": "journal.info.location.underground"
+    },
+    "size": {
+      "typical_low_cm": 8.0,
+      "typical_high_cm": 15.0,
+      "record_high_cm": 28.0
+    },
+    "display_data": {
+      "y": 0.06,
+      "entity": "tide:gilded_minnow",
+      "x": -0.1
+    },
+    "strength": 0.7,
+    "speed": 1.1,
+    "behavior": "jitter",
+    "conditions": [
+      {
+        "y": 30,
+        "type": "tide:below"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 12.0,
+    "fish": "tide:gilded_minnow",
+    "bucket": "tide:gilded_minnow_bucket"
+  },
+  "tide:saltwater/spore_stalker": {
+    "journal_profile": {
+      "rarity": "rare",
+      "group": "saltwater",
+      "description": "journal.description.tide.spore_stalker",
+      "location": "journal.info.location.mushroom_island"
+    },
+    "size": {
+      "typical_low_cm": 35.0,
+      "typical_high_cm": 55.0,
+      "record_high_cm": 90.0
+    },
+    "display_data": {
+      "entity": "tide:spore_stalker",
+      "x": -0.05
+    },
+    "selection_quality": 0.5,
+    "strength": 0.5,
+    "speed": 1.3,
+    "conditions": [
+      {
+        "biomes": [
+          "#tide:has_mushroom_fish"
+        ],
+        "type": "tide:found_in"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "selection_weight": 10.0,
+    "fish": "tide:spore_stalker",
+    "bucket": "tide:spore_stalker_bucket"
+  },
+  "minecraft:saltwater/tropical_fish": {
+    "journal_profile": {
+      "group": "saltwater",
+      "description": "journal.description.minecraft.tropical_fish",
+      "location": "journal.info.location.saltwater"
+    },
+    "size": {
+      "typical_low_cm": 10.0,
+      "typical_high_cm": 35.0,
+      "record_high_cm": 100.0
+    },
+    "display_data": {
+      "y": -0.08,
+      "entity": "minecraft:tropical_fish",
+      "x": 0.05
+    },
+    "strength": 0.4,
+    "speed": 1.1,
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      },
+      {
+        "type": "tide:saltwater"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": 1.0,
+        "temperature_tolerance": 0.8,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 50.0,
+    "fish": "minecraft:tropical_fish",
+    "bucket": "minecraft:tropical_fish_bucket"
+  },
+  "tide:saltwater/angelfish": {
+    "journal_profile": {
+      "rarity": "uncommon",
+      "group": "saltwater",
+      "description": "journal.description.tide.angelfish",
+      "location": "journal.info.location.saltwater"
+    },
+    "size": {
+      "typical_low_cm": 10.0,
+      "typical_high_cm": 13.0,
+      "record_high_cm": 20.0
+    },
+    "display_data": {
+      "y": -0.1,
+      "entity": "tide:angelfish",
+      "x": -0.05
+    },
+    "strength": 0.45,
+    "speed": 1.25,
+    "conditions": [
+      {
+        "type": "tide:saltwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": 1.0,
+        "temperature_tolerance": 0.8,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 25.0,
+    "fish": "tide:angelfish",
+    "bucket": "tide:angelfish_bucket"
+  },
+  "tide:underground/dripstone_darter": {
+    "journal_profile": {
+      "rarity": "uncommon",
+      "group": "underground",
+      "description": "journal.description.tide.dripstone_darter",
+      "location": "journal.info.location.dripstone_caves"
+    },
+    "size": {
+      "typical_low_cm": 35.0,
+      "typical_high_cm": 55.0,
+      "record_high_cm": 95.0
+    },
+    "display_data": {
+      "y": -0.02,
+      "entity": "tide:dripstone_darter",
+      "x": -0.07
+    },
+    "strength": 0.7,
+    "speed": 1.3,
+    "behavior": "darts",
+    "conditions": [
+      {
+        "biomes": [
+          "#tide:has_dripstone_fish"
+        ],
+        "type": "tide:found_in"
+      },
+      {
+        "y": 40,
+        "type": "tide:below"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 18.0,
+    "fish": "tide:dripstone_darter",
+    "bucket": "tide:dripstone_darter_bucket"
+  },
+  "tide:void/ender_glider": {
+    "journal_profile": {
+      "rarity": "uncommon",
+      "group": "void",
+      "description": "journal.description.tide.ender_glider",
+      "location": "journal.info.location.void"
+    },
+    "size": {
+      "typical_low_cm": 48.0,
+      "typical_high_cm": 70.0,
+      "record_high_cm": 110.0
+    },
+    "display_data": {
+      "z": -0.05,
+      "entity": "tide:ender_glider"
+    },
+    "strength": 0.55,
+    "speed": 1.25,
+    "behavior": "plateau",
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:the_end"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "void",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 35.0,
+    "fish": "tide:ender_glider",
+    "bucket": "tide:ender_glider_bucket"
+  },
+  "tide:void/deep_blue": {
+    "journal_profile": {
+      "rarity": "uncommon",
+      "group": "void",
+      "description": "journal.description.tide.deep_blue",
+      "location": "journal.info.location.void"
+    },
+    "size": {
+      "typical_low_cm": 38.0,
+      "typical_high_cm": 65.0,
+      "record_high_cm": 100.0
+    },
+    "display_data": {
+      "y": -0.03,
+      "entity": "tide:deep_blue",
+      "x": -0.05
+    },
+    "strength": 0.76,
+    "speed": 1.55,
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "void",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 32.0,
+    "fish": "tide:deep_blue",
+    "bucket": "tide:deep_blue_bucket"
+  },
+  "tide:freshwater/walleye": {
+    "journal_profile": {
+      "rarity": "uncommon",
+      "group": "freshwater",
+      "description": "journal.description.tide.walleye",
+      "location": "journal.info.location.freshwater"
+    },
+    "size": {
+      "typical_low_cm": 35.0,
+      "typical_high_cm": 75.0,
+      "record_high_cm": 105.0
+    },
+    "display_data": {
+      "entity": "tide:walleye",
+      "x": -0.05
+    },
+    "strength": 0.45,
+    "speed": 1.1,
+    "conditions": [
+      {
+        "seasons": [
+          "spring",
+          "fall",
+          "winter"
+        ],
+        "type": "tide:seasons"
+      },
+      {
+        "ranges": [
+          {
+            "min": 0,
+            "max": 4000
+          },
+          {
+            "min": 9000,
+            "max": 24000
+          }
+        ],
+        "type": "tide:time_of_day"
+      },
+      {
+        "type": "tide:freshwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": -1.0,
+        "temperature_tolerance": 1.3,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 18.0,
+    "fish": "tide:walleye",
+    "bucket": "tide:walleye_bucket"
+  },
+  "tide:lava/blazing_swordfish": {
+    "journal_profile": {
+      "alt_sprite_size": 48,
+      "rarity": "very_rare",
+      "group": "lava",
+      "description": "journal.description.tide.blazing_swordfish",
+      "location": "journal.info.location.lava",
+      "alt_sprite": "tide:textures/item/blazing_swordfish_full.png"
+    },
+    "size": {
+      "typical_low_cm": 180.0,
+      "typical_high_cm": 290.0,
+      "record_high_cm": 455.0
+    },
+    "display_data": {
+      "y": -0.15,
+      "entity": "tide:blazing_swordfish",
+      "shape": "3x1",
+      "x": -0.06
+    },
+    "selection_quality": 0.5,
+    "strength": 0.85,
+    "speed": 1.48,
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:the_nether"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "lava",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 5.0,
+    "fish": "tide:blazing_swordfish",
+    "bucket": "tide:blazing_swordfish_bucket"
+  },
+  "tide:void/dragon_fish": {
+    "journal_profile": {
+      "alt_sprite_size": 48,
+      "rarity": "legendary",
+      "group": "void",
+      "description": "journal.description.tide.dragon_fish",
+      "location": "journal.info.location.void",
+      "alt_sprite": "tide:textures/item/dragon_fish_full.png"
+    },
+    "size": {
+      "typical_low_cm": 550.0,
+      "typical_high_cm": 750.0,
+      "record_high_cm": 1250.0
+    },
+    "display_data": {
+      "y": -0.35,
+      "entity": "tide:dragon_fish",
+      "shape": "3x1"
+    },
+    "selection_quality": 0.5,
+    "strength": 0.92,
+    "speed": 1.9,
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:the_end"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "void",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 1.0,
+    "fish": "tide:dragon_fish",
+    "bucket": "tide:dragon_fish_bucket"
+  },
+  "tide:lava/obsidian_pike": {
+    "journal_profile": {
+      "rarity": "uncommon",
+      "group": "lava",
+      "description": "journal.description.tide.obsidian_pike",
+      "location": "journal.info.location.lava"
+    },
+    "size": {
+      "typical_low_cm": 60.0,
+      "typical_high_cm": 80.0,
+      "record_high_cm": 140.0
+    },
+    "display_data": {
+      "y": -0.13,
+      "entity": "tide:obsidian_pike",
+      "x": -0.05
+    },
+    "strength": 0.65,
+    "speed": 1.25,
+    "conditions": [
+      {
+        "fluid": "lava",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 30.0,
+    "fish": "tide:obsidian_pike",
+    "bucket": "tide:obsidian_pike_bucket"
+  },
+  "tide:void/sleepy_carp": {
+    "journal_profile": {
+      "group": "void",
+      "description": "journal.description.tide.sleepy_carp",
+      "location": "journal.info.location.void"
+    },
+    "size": {
+      "typical_low_cm": 40.0,
+      "typical_high_cm": 80.0,
+      "record_high_cm": 120.0
+    },
+    "display_data": {
+      "entity": "tide:sleepy_carp",
+      "x": -0.05
+    },
+    "strength": 0.78,
+    "speed": 0.65,
+    "behavior": "plateau",
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "void",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 40.0,
+    "fish": "tide:sleepy_carp",
+    "bucket": "tide:sleepy_carp_bucket"
+  },
+  "tide:saltwater/aquathorn": {
+    "journal_profile": {
+      "rarity": "very_rare",
+      "group": "saltwater",
+      "description": "journal.description.tide.aquathorn",
+      "location": "journal.info.location.ocean_monument"
+    },
+    "size": {
+      "typical_low_cm": 32.0,
+      "typical_high_cm": 45.0,
+      "record_high_cm": 70.0
+    },
+    "display_data": {
+      "entity": "tide:aquathorn",
+      "x": -0.07
+    },
+    "strength": 0.82,
+    "speed": 1.5,
+    "behavior": "jitter",
+    "conditions": [
+      {
+        "structures": [
+          "minecraft:monument",
+          "betteroceanmonuments:ocean_monument"
+        ],
+        "type": "tide:found_in_structures"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 20.0,
+    "fish": "tide:aquathorn",
+    "bucket": "tide:aquathorn_bucket"
+  },
+  "tide:saltwater/anchovy": {
+    "journal_profile": {
+      "group": "saltwater",
+      "description": "journal.description.tide.anchovy",
+      "location": "journal.info.location.saltwater"
+    },
+    "size": {
+      "typical_low_cm": 6.0,
+      "typical_high_cm": 12.0,
+      "record_high_cm": 20.0
+    },
+    "display_data": {
+      "y": 0.06,
+      "entity": "tide:anchovy",
+      "x": -0.11
+    },
+    "speed": 1.5,
+    "behavior": "jitter",
+    "conditions": [
+      {
+        "type": "tide:saltwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": -0.15,
+        "temperature_tolerance": 0.5,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 35.0,
+    "fish": "tide:anchovy",
+    "bucket": "tide:anchovy_bucket"
+  },
+  "tide:underground/iron_tetra": {
+    "journal_profile": {
+      "rarity": "uncommon",
+      "group": "underground",
+      "description": "journal.description.tide.iron_tetra",
+      "location": "journal.info.location.underground"
+    },
+    "size": {
+      "typical_low_cm": 2.8,
+      "typical_high_cm": 4.5,
+      "record_high_cm": 8.0
+    },
+    "display_data": {
+      "y": 0.03,
+      "entity": "tide:iron_tetra",
+      "x": -0.05
+    },
+    "strength": 0.65,
+    "behavior": "jitter",
+    "conditions": [
+      {
+        "y": 50,
+        "type": "tide:below"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 20.0,
+    "fish": "tide:iron_tetra",
+    "bucket": "tide:iron_tetra_bucket"
+  },
+  "tide:void/dutchman_sock": {
+    "journal_profile": {
+      "rarity": "rare",
+      "group": "void",
+      "description": "journal.description.tide.dutchman_sock",
+      "location": "journal.info.location.void"
+    },
+    "size": {
+      "typical_low_cm": 4.0,
+      "typical_high_cm": 7.0,
+      "record_high_cm": 15.0
+    },
+    "display_data": {
+      "y": 0.02,
+      "entity": "tide:dutchman_sock",
+      "x": -0.08
+    },
+    "strength": 0.65,
+    "speed": 1.4,
+    "behavior": "jitter",
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:the_end"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "void",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 18.0,
+    "fish": "tide:dutchman_sock",
+    "bucket": "tide:dutchman_sock_bucket"
+  },
+  "tide:lava/ash_perch": {
+    "journal_profile": {
+      "group": "lava",
+      "description": "journal.description.tide.ash_perch",
+      "location": "journal.info.location.lava"
+    },
+    "size": {
+      "typical_low_cm": 15.0,
+      "typical_high_cm": 30.0,
+      "record_high_cm": 45.0
+    },
+    "display_data": {
+      "entity": "tide:ash_perch",
+      "x": -0.05
+    },
+    "strength": 0.55,
+    "speed": 1.2,
+    "conditions": [
+      {
+        "fluid": "lava",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 42.0,
+    "fish": "tide:ash_perch",
+    "bucket": "tide:ash_perch_bucket"
+  },
+  "tide:underground/glowfish": {
+    "journal_profile": {
+      "rarity": "uncommon",
+      "group": "underground",
+      "description": "journal.description.tide.glowfish",
+      "location": "journal.info.location.underground"
+    },
+    "size": {
+      "typical_low_cm": 55.0,
+      "typical_high_cm": 75.0,
+      "record_high_cm": 110.0
+    },
+    "display_data": {
+      "y": -0.05,
+      "entity": "tide:glowfish",
+      "x": -0.05
+    },
+    "strength": 0.5,
+    "speed": 1.1,
+    "conditions": [
+      {
+        "min_y": -50,
+        "max_y": 40,
+        "type": "tide:depth_range"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 30.0,
+    "fish": "tide:glowfish",
+    "bucket": "tide:glowfish_bucket"
+  },
+  "tide:void/bedrock_bug": {
+    "journal_profile": {
+      "group": "void",
+      "description": "journal.description.tide.bedrock_bug",
+      "location": "journal.info.location.void"
+    },
+    "size": {
+      "typical_low_cm": 3.0,
+      "typical_high_cm": 4.5,
+      "record_high_cm": 10.0
+    },
+    "display_data": {
+      "z": 0.02,
+      "entity": "tide:bedrock_bug"
+    },
+    "strength": 0.75,
+    "speed": 1.4,
+    "behavior": "jitter",
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "void",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 44.0,
+    "fish": "tide:bedrock_bug",
+    "bucket": "tide:bedrock_bug_bucket"
+  },
+  "tide:freshwater/white_crappie": {
+    "journal_profile": {
+      "group": "freshwater",
+      "description": "journal.description.tide.white_crappie",
+      "location": "journal.info.location.freshwater"
+    },
+    "size": {
+      "typical_low_cm": 20.0,
+      "typical_high_cm": 30.0,
+      "record_high_cm": 50.0
+    },
+    "display_data": {
+      "entity": "tide:white_crappie",
+      "x": -0.07
+    },
+    "strength": 0.35,
+    "speed": 0.85,
+    "behavior": "darts",
+    "conditions": [
+      {
+        "type": "tide:freshwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": 0.05,
+        "temperature_tolerance": 0.4,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 25.0,
+    "fish": "tide:white_crappie",
+    "bucket": "tide:white_crappie_bucket"
+  },
+  "tide:saltwater/pluto_snail": {
+    "journal_profile": {
+      "rarity": "very_rare",
+      "group": "saltwater",
+      "description": "journal.description.tide.pluto_snail",
+      "location": "journal.info.location.saltwater"
+    },
+    "size": {
+      "typical_low_cm": 10.0,
+      "typical_high_cm": 20.0,
+      "record_high_cm": 35.0
+    },
+    "display_data": {
+      "roll": -90.0,
+      "y": -0.2,
+      "z": 0.02,
+      "entity": "tide:pluto_snail",
+      "x": -0.02
+    },
+    "selection_quality": 0.5,
+    "strength": 0.87,
+    "speed": 0.8,
+    "conditions": [
+      {
+        "any_of": [
+          3,
+          5
+        ],
+        "type": "tide:moon_phase"
+      },
+      {
+        "type": "tide:saltwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "selection_weight": 5.0,
+    "fish": "tide:pluto_snail",
+    "bucket": "tide:pluto_snail_bucket"
+  },
+  "tide:freshwater/largemouth_bass": {
+    "journal_profile": {
+      "group": "freshwater",
+      "description": "journal.description.tide.largemouth_bass",
+      "location": "journal.info.location.freshwater"
+    },
+    "size": {
+      "typical_low_cm": 35.0,
+      "typical_high_cm": 65.0,
+      "record_high_cm": 100.0
+    },
+    "display_data": {
+      "y": -0.1,
+      "entity": "tide:largemouth_bass",
+      "x": -0.05
+    },
+    "strength": 0.4,
+    "speed": 0.85,
+    "conditions": [
+      {
+        "seasons": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "type": "tide:seasons"
+      },
+      {
+        "type": "tide:freshwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": 0.03,
+        "temperature_tolerance": 0.82,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 32.0,
+    "fish": "tide:largemouth_bass",
+    "bucket": "tide:largemouth_bass_bucket"
+  },
+  "tide:void/chorus_cod": {
+    "journal_profile": {
+      "rarity": "uncommon",
+      "group": "void",
+      "description": "journal.description.tide.chorus_cod",
+      "location": "journal.info.location.void"
+    },
+    "size": {
+      "typical_low_cm": 55.0,
+      "typical_high_cm": 75.0,
+      "record_high_cm": 110.0
+    },
+    "display_data": {
+      "y": -0.05,
+      "entity": "tide:chorus_cod",
+      "x": -0.05
+    },
+    "strength": 0.72,
+    "speed": 1.15,
+    "behavior": "linear_wrap",
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:the_end"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "void",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 38.0,
+    "fish": "tide:chorus_cod",
+    "bucket": "tide:chorus_cod_bucket"
+  },
+  "tide:saltwater/neptune_koi": {
+    "journal_profile": {
+      "rarity": "very_rare",
+      "group": "saltwater",
+      "description": "journal.description.tide.neptune_koi",
+      "location": "journal.info.location.saltwater"
+    },
+    "size": {
+      "typical_low_cm": 40.0,
+      "typical_high_cm": 50.0,
+      "record_high_cm": 80.0
+    },
+    "display_data": {
+      "entity": "tide:neptune_koi",
+      "x": -0.07
+    },
+    "selection_quality": 0.5,
+    "strength": 0.75,
+    "speed": 1.3,
+    "behavior": "darts",
+    "conditions": [
+      {
+        "any_of": [
+          4
+        ],
+        "type": "tide:moon_phase"
+      },
+      {
+        "type": "tide:saltwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "selection_weight": 5.1,
+    "fish": "tide:neptune_koi",
+    "bucket": "tide:neptune_koi_bucket"
+  },
+  "tide:void/nephrosilu": {
+    "journal_profile": {
+      "rarity": "rare",
+      "group": "void",
+      "description": "journal.description.tide.nephrosilu",
+      "location": "journal.info.location.void"
+    },
+    "size": {
+      "typical_low_cm": 55.0,
+      "typical_high_cm": 90.0,
+      "record_high_cm": 160.0
+    },
+    "display_data": {
+      "z": 0.08,
+      "entity": "tide:nephrosilu"
+    },
+    "strength": 0.8,
+    "speed": 1.65,
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "void",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 20.0,
+    "fish": "tide:nephrosilu",
+    "bucket": "tide:nephrosilu_bucket"
+  },
+  "tide:saltwater/great_white_shark": {
+    "journal_profile": {
+      "alt_sprite_size": 48,
+      "rarity": "very_rare",
+      "group": "saltwater",
+      "description": "journal.description.tide.great_white_shark",
+      "location": "journal.info.location.saltwater",
+      "alt_sprite": "tide:textures/item/great_white_shark_full.png"
+    },
+    "size": {
+      "typical_low_cm": 370.0,
+      "typical_high_cm": 490.0,
+      "record_high_cm": 610.0
+    },
+    "display_data": {
+      "y": -0.25,
+      "entity": "tide:great_white_shark",
+      "shape": "3x1",
+      "x": -0.06
+    },
+    "selection_quality": 0.5,
+    "strength": 0.85,
+    "speed": 1.7,
+    "behavior": "plateau",
+    "conditions": [
+      {
+        "ranges": [
+          {
+            "min": 22000,
+            "max": 24000
+          },
+          {
+            "min": 0,
+            "max": 3000
+          },
+          {
+            "min": 11000,
+            "max": 17000
+          }
+        ],
+        "type": "tide:time_of_day"
+      },
+      {
+        "type": "tide:saltwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": -0.18,
+        "temperature_tolerance": 0.2,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 3.0,
+    "fish": "tide:great_white_shark",
+    "bucket": "tide:great_white_shark_bucket"
+  },
+  "tide:void/judgment_fish": {
+    "journal_profile": {
+      "rarity": "uncommon",
+      "group": "void",
+      "description": "journal.description.tide.judgment_fish",
+      "location": "journal.info.location.void"
+    },
+    "size": {
+      "typical_low_cm": 40.0,
+      "typical_high_cm": 80.0,
+      "record_high_cm": 140.0
+    },
+    "display_data": {
+      "entity": "tide:judgment_fish",
+      "x": -0.05
+    },
+    "strength": 0.73,
+    "speed": 1.6,
+    "behavior": "darts",
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "void",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 33.0,
+    "fish": "tide:judgment_fish",
+    "bucket": "tide:judgment_fish_bucket"
+  },
+  "tide:void/alpha_fish": {
+    "journal_profile": {
+      "rarity": "legendary",
+      "group": "void",
+      "description": "journal.description.tide.alpha_fish",
+      "location": "journal.info.location.void"
+    },
+    "size": {
+      "typical_low_cm": 40.0,
+      "typical_high_cm": 60.0,
+      "record_high_cm": 100.0
+    },
+    "display_data": {
+      "y": -0.05,
+      "entity": "tide:alpha_fish",
+      "x": 0.03
+    },
+    "selection_quality": 0.5,
+    "strength": 0.9,
+    "speed": 2.1,
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "void",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 2.0,
+    "fish": "tide:alpha_fish",
+    "bucket": "tide:alpha_fish_bucket"
+  },
+  "tide:void/enderfin": {
+    "journal_profile": {
+      "group": "void",
+      "description": "journal.description.tide.enderfin",
+      "location": "journal.info.location.void"
+    },
+    "size": {
+      "typical_low_cm": 35.0,
+      "typical_high_cm": 55.0,
+      "record_high_cm": 90.0
+    },
+    "display_data": {
+      "entity": "tide:enderfin",
+      "x": -0.07
+    },
+    "strength": 0.6,
+    "speed": 1.25,
+    "behavior": "linear_wrap",
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:the_end"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "void",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 50.0,
+    "fish": "tide:enderfin",
+    "bucket": "tide:enderfin_bucket"
+  },
+  "tide:freshwater/bull_shark": {
+    "journal_profile": {
+      "alt_sprite_size": 48,
+      "rarity": "very_rare",
+      "group": "freshwater",
+      "description": "journal.description.tide.bull_shark",
+      "location": "journal.info.location.river",
+      "alt_sprite": "tide:textures/item/bull_shark_full.png"
+    },
+    "size": {
+      "typical_low_cm": 210.0,
+      "typical_high_cm": 265.0,
+      "record_high_cm": 335.0
+    },
+    "display_data": {
+      "y": -0.15,
+      "entity": "tide:bull_shark",
+      "shape": "3x1",
+      "x": -0.05
+    },
+    "selection_quality": 0.5,
+    "strength": 0.8,
+    "speed": 1.7,
+    "behavior": "plateau",
+    "conditions": [
+      {
+        "ranges": [
+          {
+            "min": 0,
+            "max": 2000
+          },
+          {
+            "min": 11000,
+            "max": 24000
+          }
+        ],
+        "type": "tide:time_of_day"
+      },
+      {
+        "biomes": [
+          "#minecraft:is_river"
+        ],
+        "type": "tide:found_in"
+      },
+      {
+        "type": "tide:freshwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": 0.35,
+        "temperature_tolerance": 0.2,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 3.0,
+    "fish": "tide:bull_shark",
+    "bucket": "tide:bull_shark_bucket"
+  },
+  "tide:underground/bedrock_tetra": {
+    "journal_profile": {
+      "rarity": "rare",
+      "group": "underground",
+      "description": "journal.description.tide.bedrock_tetra",
+      "location": "journal.info.location.underground"
+    },
+    "size": {
+      "typical_low_cm": 2.8,
+      "typical_high_cm": 4.5,
+      "record_high_cm": 8.0
+    },
+    "display_data": {
+      "y": 0.03,
+      "entity": "tide:bedrock_tetra",
+      "x": -0.05
+    },
+    "strength": 0.75,
+    "speed": 1.2,
+    "behavior": "jitter",
+    "conditions": [
+      {
+        "y": -20,
+        "type": "tide:below"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 12.0,
+    "fish": "tide:bedrock_tetra",
+    "bucket": "tide:bedrock_tetra_bucket"
+  },
+  "tide:underground/crystalline_carp": {
+    "journal_profile": {
+      "rarity": "rare",
+      "group": "underground",
+      "description": "journal.description.tide.crystalline_carp",
+      "location": "journal.info.location.underground"
+    },
+    "size": {
+      "typical_low_cm": 40.0,
+      "typical_high_cm": 80.0,
+      "record_high_cm": 120.0
+    },
+    "display_data": {
+      "y": -0.06,
+      "entity": "tide:crystalline_carp",
+      "x": -0.06
+    },
+    "strength": 0.7,
+    "speed": 0.9,
+    "behavior": "plateau",
+    "conditions": [
+      {
+        "y": 10,
+        "type": "tide:below"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 15.0,
+    "fish": "tide:crystalline_carp",
+    "bucket": "tide:crystalline_carp_bucket"
+  },
+  "tide:lava/ember_koi": {
+    "journal_profile": {
+      "group": "lava",
+      "description": "journal.description.tide.ember_koi",
+      "location": "journal.info.location.lava"
+    },
+    "size": {
+      "typical_low_cm": 40.0,
+      "typical_high_cm": 50.0,
+      "record_high_cm": 80.0
+    },
+    "display_data": {
+      "entity": "tide:ember_koi",
+      "x": -0.07
+    },
+    "strength": 0.6,
+    "speed": 0.75,
+    "behavior": "darts",
+    "conditions": [
+      {
+        "fluid": "lava",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 45.0,
+    "fish": "tide:ember_koi",
+    "bucket": "tide:ember_koi_bucket"
+  },
+  "tide:saltwater/sun_emblem": {
+    "journal_profile": {
+      "rarity": "very_rare",
+      "group": "saltwater",
+      "description": "journal.description.tide.sun_emblem",
+      "location": "journal.info.location.saltwater"
+    },
+    "size": {
+      "typical_low_cm": 50.0,
+      "typical_high_cm": 60.0,
+      "record_high_cm": 85.0
+    },
+    "display_data": {
+      "y": -0.2,
+      "z": -0.05,
+      "entity": "tide:sun_emblem",
+      "x": -0.1
+    },
+    "selection_quality": 0.5,
+    "strength": 0.83,
+    "speed": 1.3,
+    "conditions": [
+      {
+        "ranges": [
+          {
+            "min": 23000,
+            "max": 24000
+          },
+          {
+            "min": 0,
+            "max": 12000
+          }
+        ],
+        "type": "tide:time_of_day"
+      },
+      {
+        "any_of": [
+          0
+        ],
+        "type": "tide:moon_phase"
+      },
+      {
+        "type": "tide:saltwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "selection_weight": 4.8,
+    "fish": "tide:sun_emblem",
+    "bucket": "tide:sun_emblem_bucket"
+  },
+  "tide:lava/witherfin": {
+    "journal_profile": {
+      "rarity": "rare",
+      "group": "lava",
+      "description": "journal.description.tide.witherfin",
+      "location": "journal.info.location.lava"
+    },
+    "size": {
+      "typical_low_cm": 25.0,
+      "typical_high_cm": 40.0,
+      "record_high_cm": 90.0
+    },
+    "display_data": {
+      "y": -0.05,
+      "entity": "tide:witherfin"
+    },
+    "strength": 0.7,
+    "speed": 1.15,
+    "behavior": "plateau",
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:the_nether"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "lava",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 17.0,
+    "fish": "tide:witherfin",
+    "bucket": "tide:witherfin_bucket"
+  },
+  "tide:freshwater/sand_tiger_shark": {
+    "journal_profile": {
+      "alt_sprite_size": 32,
+      "rarity": "rare",
+      "group": "freshwater",
+      "description": "journal.description.tide.sand_tiger_shark",
+      "location": "journal.info.location.desert",
+      "alt_sprite": "tide:textures/item/sand_tiger_shark_full.png"
+    },
+    "size": {
+      "typical_low_cm": 215.0,
+      "typical_high_cm": 275.0,
+      "record_high_cm": 350.0
+    },
+    "display_data": {
+      "y": -0.15,
+      "entity": "tide:sand_tiger_shark",
+      "shape": "3x1",
+      "x": -0.05
+    },
+    "strength": 0.7,
+    "speed": 1.65,
+    "behavior": "plateau",
+    "conditions": [
+      {
+        "ranges": [
+          {
+            "min": 0,
+            "max": 3000
+          },
+          {
+            "min": 9000,
+            "max": 24000
+          }
+        ],
+        "type": "tide:time_of_day"
+      },
+      {
+        "biomes": [
+          "#tide:has_desert_fish"
+        ],
+        "type": "tide:found_in"
+      },
+      {
+        "type": "tide:freshwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "selection_weight": 7.0,
+    "fish": "tide:sand_tiger_shark",
+    "bucket": "tide:sand_tiger_shark_bucket"
+  },
+  "tide:underground/cave_eel": {
+    "journal_profile": {
+      "group": "underground",
+      "description": "journal.description.tide.cave_eel",
+      "location": "journal.info.location.underground"
+    },
+    "size": {
+      "typical_low_cm": 90.0,
+      "typical_high_cm": 115.0,
+      "record_high_cm": 150.0
+    },
+    "display_data": {
+      "entity": "tide:cave_eel",
+      "shape": "2x1",
+      "x": -0.05
+    },
+    "strength": 0.65,
+    "conditions": [
+      {
+        "min_y": -45,
+        "max_y": 40,
+        "type": "tide:depth_range"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 50.0,
+    "fish": "tide:cave_eel",
+    "bucket": "tide:cave_eel_bucket"
+  },
+  "tide:freshwater/guppy": {
+    "journal_profile": {
+      "rarity": "uncommon",
+      "group": "freshwater",
+      "description": "journal.description.tide.guppy",
+      "location": "journal.info.location.freshwater"
+    },
+    "size": {
+      "typical_low_cm": 4.0,
+      "typical_high_cm": 7.0,
+      "record_high_cm": 9.0
+    },
+    "display_data": {
+      "y": 0.06,
+      "entity": "tide:guppy",
+      "x": -0.1
+    },
+    "strength": 0.2,
+    "speed": 1.1,
+    "behavior": "jitter",
+    "conditions": [
+      {
+        "type": "tide:freshwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": 1.0,
+        "temperature_tolerance": 0.8,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 27.0,
+    "fish": "tide:guppy",
+    "bucket": "tide:guppy_bucket"
+  },
+  "tide:saltwater/coelacanth": {
+    "journal_profile": {
+      "alt_sprite_size": 48,
+      "rarity": "legendary",
+      "group": "saltwater",
+      "description": "journal.description.tide.coelacanth",
+      "location": "journal.info.location.deep_ocean",
+      "alt_sprite": "tide:textures/item/coelacanth_full.png"
+    },
+    "size": {
+      "typical_low_cm": 140.0,
+      "typical_high_cm": 190.0,
+      "record_high_cm": 270.0
+    },
+    "display_data": {
+      "y": -0.22,
+      "entity": "tide:coelacanth",
+      "shape": "2x1",
+      "x": -0.12
+    },
+    "selection_quality": 0.5,
+    "strength": 0.92,
+    "speed": 1.6,
+    "behavior": "plateau",
+    "conditions": [
+      {
+        "ranges": [
+          {
+            "min": 13000,
+            "max": 23000
+          }
+        ],
+        "type": "tide:time_of_day"
+      },
+      {
+        "types": [
+          "rain",
+          "storm"
+        ],
+        "type": "tide:weather"
+      },
+      {
+        "biomes": [
+          "#minecraft:is_deep_ocean"
+        ],
+        "type": "tide:found_in"
+      },
+      {
+        "type": "tide:saltwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": 0.3,
+        "temperature_tolerance": 0.2,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 1.0,
+    "fish": "tide:coelacanth",
+    "bucket": "tide:coelacanth_bucket"
+  },
+  "tide:freshwater/blossom_bass": {
+    "journal_profile": {
+      "rarity": "rare",
+      "group": "freshwater",
+      "description": "journal.description.tide.blossom_bass",
+      "location": "journal.info.location.cherry_grove"
+    },
+    "size": {
+      "typical_low_cm": 35.0,
+      "typical_high_cm": 65.0,
+      "record_high_cm": 100.0
+    },
+    "display_data": {
+      "y": -0.1,
+      "entity": "tide:blossom_bass",
+      "x": -0.05
+    },
+    "selection_quality": 0.5,
+    "strength": 0.5,
+    "speed": 1.3,
+    "conditions": [
+      {
+        "biomes": [
+          "#tide:has_cherry_grove_fish"
+        ],
+        "type": "tide:found_in"
+      },
+      {
+        "seasons": [
+          "spring",
+          "summer"
+        ],
+        "type": "tide:seasons"
+      },
+      {
+        "type": "tide:freshwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "selection_weight": 10.0,
+    "fish": "tide:blossom_bass",
+    "bucket": "tide:blossom_bass_bucket"
+  },
+  "tide:void/amber_rockfish": {
+    "journal_profile": {
+      "group": "void",
+      "description": "journal.description.tide.amber_rockfish",
+      "location": "journal.info.location.void"
+    },
+    "size": {
+      "typical_low_cm": 35.0,
+      "typical_high_cm": 60.0,
+      "record_high_cm": 95.0
+    },
+    "display_data": {
+      "y": -0.08,
+      "entity": "tide:amber_rockfish",
+      "x": -0.05
+    },
+    "strength": 0.6,
+    "speed": 1.2,
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:the_end"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "void",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 55.0,
+    "fish": "tide:amber_rockfish",
+    "bucket": "tide:amber_rockfish_bucket"
+  },
+  "tide:saltwater/mahi_mahi": {
+    "journal_profile": {
+      "alt_sprite_size": 48,
+      "rarity": "rare",
+      "group": "saltwater",
+      "description": "journal.description.tide.mahi_mahi",
+      "location": "journal.info.location.saltwater",
+      "alt_sprite": "tide:textures/item/mahi_mahi_full.png"
+    },
+    "size": {
+      "typical_low_cm": 85.0,
+      "typical_high_cm": 130.0,
+      "record_high_cm": 200.0
+    },
+    "display_data": {
+      "y": -0.15,
+      "entity": "tide:mahi_mahi",
+      "shape": "2x1",
+      "x": -0.05
+    },
+    "strength": 0.7,
+    "speed": 1.4,
+    "conditions": [
+      {
+        "type": "tide:saltwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": 0.4,
+        "temperature_tolerance": 0.4,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 9.0,
+    "fish": "tide:mahi_mahi",
+    "bucket": "tide:mahi_mahi_bucket"
+  },
+  "minecraft:saltwater/pufferfish": {
+    "journal_profile": {
+      "rarity": "uncommon",
+      "group": "saltwater",
+      "description": "journal.description.minecraft.pufferfish",
+      "location": "journal.info.location.saltwater"
+    },
+    "size": {
+      "typical_low_cm": 12.0,
+      "typical_high_cm": 22.0,
+      "record_high_cm": 75.0
+    },
+    "display_data": {
+      "z": -0.1,
+      "entity": "minecraft:pufferfish",
+      "x": 0.05
+    },
+    "strength": 0.6,
+    "speed": 1.25,
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      },
+      {
+        "type": "tide:saltwater"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": 1.0,
+        "temperature_tolerance": 0.8,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 25.0,
+    "fish": "minecraft:pufferfish",
+    "bucket": "minecraft:pufferfish_bucket"
+  },
+  "tide:underground/deep_grouper": {
+    "journal_profile": {
+      "group": "underground",
+      "description": "journal.description.tide.deep_grouper",
+      "location": "journal.info.location.underground"
+    },
+    "size": {
+      "typical_low_cm": 55.0,
+      "typical_high_cm": 75.0,
+      "record_high_cm": 115.0
+    },
+    "display_data": {
+      "y": -0.1,
+      "entity": "tide:deep_grouper",
+      "x": -0.05
+    },
+    "strength": 0.5,
+    "speed": 1.2,
+    "conditions": [
+      {
+        "y": 30,
+        "type": "tide:below"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 50.0,
+    "fish": "tide:deep_grouper",
+    "bucket": "tide:deep_grouper_bucket"
+  },
+  "tide:saltwater/marstilus": {
+    "journal_profile": {
+      "alt_sprite_size": 32,
+      "rarity": "very_rare",
+      "group": "saltwater",
+      "description": "journal.description.tide.marstilus",
+      "location": "journal.info.location.saltwater",
+      "alt_sprite": "tide:textures/item/marstilus_full.png"
+    },
+    "size": {
+      "typical_low_cm": 100.0,
+      "typical_high_cm": 124.0,
+      "record_high_cm": 185.0
+    },
+    "display_data": {
+      "y": -0.1,
+      "entity": "tide:marstilus",
+      "x": -0.05
+    },
+    "selection_quality": 0.5,
+    "strength": 0.82,
+    "speed": 1.4,
+    "conditions": [
+      {
+        "any_of": [
+          1,
+          7
+        ],
+        "type": "tide:moon_phase"
+      },
+      {
+        "type": "tide:saltwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "selection_weight": 4.3,
+    "fish": "tide:marstilus",
+    "bucket": "tide:marstilus_bucket"
+  },
+  "tide:saltwater/snook": {
+    "journal_profile": {
+      "group": "saltwater",
+      "description": "journal.description.tide.snook",
+      "location": "journal.info.location.coast"
+    },
+    "size": {
+      "typical_low_cm": 38.0,
+      "typical_high_cm": 68.0,
+      "record_high_cm": 125.0
+    },
+    "display_data": {
+      "entity": "tide:snook",
+      "x": -0.05
+    },
+    "strength": 0.45,
+    "speed": 1.1,
+    "conditions": [
+      {
+        "biomes": [
+          "#tide:has_coastal_fish"
+        ],
+        "type": "tide:found_in"
+      },
+      {
+        "type": "tide:saltwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": 0.12,
+        "temperature_tolerance": 0.45,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 42.0,
+    "fish": "tide:snook",
+    "bucket": "tide:snook_bucket"
+  },
+  "tide:saltwater/tuna": {
+    "journal_profile": {
+      "group": "saltwater",
+      "description": "journal.description.tide.tuna",
+      "location": "journal.info.location.saltwater"
+    },
+    "size": {
+      "typical_low_cm": 90.0,
+      "typical_high_cm": 150.0,
+      "record_high_cm": 300.0
+    },
+    "display_data": {
+      "y": -0.15,
+      "entity": "tide:tuna",
+      "shape": "2x1",
+      "x": -0.05
+    },
+    "strength": 0.55,
+    "speed": 1.2,
+    "conditions": [
+      {
+        "type": "tide:saltwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": -0.1,
+        "temperature_tolerance": 0.7,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 50.0,
+    "fish": "tide:tuna",
+    "bucket": "tide:tuna_bucket"
+  },
+  "tide:freshwater/bluegill": {
+    "journal_profile": {
+      "group": "freshwater",
+      "description": "journal.description.tide.bluegill",
+      "location": "journal.info.location.freshwater"
+    },
+    "size": {
+      "typical_low_cm": 15.0,
+      "typical_high_cm": 30.0,
+      "record_high_cm": 40.0
+    },
+    "display_data": {
+      "y": -0.05,
+      "entity": "tide:bluegill",
+      "x": -0.05
+    },
+    "strength": 0.35,
+    "speed": 0.7,
+    "conditions": [
+      {
+        "seasons": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "type": "tide:seasons"
+      },
+      {
+        "type": "tide:freshwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": 0.0,
+        "temperature_tolerance": 1.6,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 14.0,
+    "fish": "tide:bluegill",
+    "bucket": "tide:bluegill_bucket"
+  },
+  "tide:saltwater/sailfish": {
+    "journal_profile": {
+      "alt_sprite_size": 48,
+      "rarity": "rare",
+      "group": "saltwater",
+      "description": "journal.description.tide.sailfish",
+      "location": "journal.info.location.saltwater",
+      "alt_sprite": "tide:textures/item/sailfish_full.png"
+    },
+    "size": {
+      "typical_low_cm": 180.0,
+      "typical_high_cm": 270.0,
+      "record_high_cm": 380.0
+    },
+    "display_data": {
+      "y": -0.15,
+      "entity": "tide:sailfish",
+      "shape": "3x1",
+      "x": -0.06
+    },
+    "strength": 0.8,
+    "speed": 1.4,
+    "behavior": "darts",
+    "conditions": [
+      {
+        "type": "tide:saltwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": 0.7,
+        "temperature_tolerance": 0.5,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 8.0,
+    "fish": "tide:sailfish",
+    "bucket": "tide:sailfish_bucket"
+  },
+  "tide:void/pentapus": {
+    "journal_profile": {
+      "rarity": "rare",
+      "group": "void",
+      "description": "journal.description.tide.pentapus",
+      "location": "journal.info.location.void"
+    },
+    "size": {
+      "typical_low_cm": 30.0,
+      "typical_high_cm": 90.0,
+      "record_high_cm": 200.0
+    },
+    "display_data": {
+      "y": -0.15,
+      "entity": "tide:pentapus",
+      "x": -0.1
+    },
+    "strength": 0.8,
+    "speed": 1.65,
+    "behavior": "darts",
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "void",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 16.0,
+    "fish": "tide:pentapus",
+    "bucket": "tide:pentapus_bucket"
+  },
+  "tide:underground/anglerfish": {
+    "journal_profile": {
+      "rarity": "uncommon",
+      "group": "underground",
+      "description": "journal.description.tide.anglerfish",
+      "location": "journal.info.location.underground"
+    },
+    "size": {
+      "typical_low_cm": 20.0,
+      "typical_high_cm": 35.0,
+      "record_high_cm": 75.0
+    },
+    "display_data": {
+      "y": -0.05,
+      "entity": "tide:anglerfish",
+      "x": -0.1
+    },
+    "strength": 0.75,
+    "speed": 0.8,
+    "behavior": "darts",
+    "conditions": [
+      {
+        "min_y": -20,
+        "max_y": 40,
+        "type": "tide:depth_range"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 30.0,
+    "fish": "tide:anglerfish",
+    "bucket": "tide:anglerfish_bucket"
+  },
+  "tide:freshwater/catfish": {
+    "journal_profile": {
+      "rarity": "uncommon",
+      "group": "freshwater",
+      "description": "journal.description.tide.catfish",
+      "location": "journal.info.location.freshwater"
+    },
+    "size": {
+      "typical_low_cm": 40.0,
+      "typical_high_cm": 75.0,
+      "record_high_cm": 155.0
+    },
+    "display_data": {
+      "entity": "tide:catfish",
+      "x": -0.05
+    },
+    "strength": 0.4,
+    "conditions": [
+      {
+        "seasons": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "type": "tide:seasons"
+      },
+      {
+        "ranges": [
+          {
+            "min": 12000,
+            "max": 24000
+          }
+        ],
+        "type": "tide:time_of_day"
+      },
+      {
+        "type": "tide:freshwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": 0.4,
+        "temperature_tolerance": 0.5,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 18.0,
+    "fish": "tide:catfish",
+    "bucket": "tide:catfish_bucket"
+  },
+  "tide:freshwater/brook_trout": {
+    "journal_profile": {
+      "group": "freshwater",
+      "description": "journal.description.tide.brook_trout",
+      "location": "journal.info.location.freshwater"
+    },
+    "size": {
+      "typical_low_cm": 30.0,
+      "typical_high_cm": 50.0,
+      "record_high_cm": 80.0
+    },
+    "display_data": {
+      "y": -0.08,
+      "entity": "tide:brook_trout",
+      "x": -0.05
+    },
+    "strength": 0.35,
+    "speed": 0.8,
+    "conditions": [
+      {
+        "seasons": [
+          "spring",
+          "summer",
+          "winter"
+        ],
+        "type": "tide:seasons"
+      },
+      {
+        "type": "tide:freshwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": -0.1,
+        "temperature_tolerance": 0.7,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 28.0,
+    "fish": "tide:brook_trout",
+    "bucket": "tide:brook_trout_bucket"
+  },
+  "tide:freshwater/black_crappie": {
+    "journal_profile": {
+      "group": "freshwater",
+      "description": "journal.description.tide.black_crappie",
+      "location": "journal.info.location.freshwater"
+    },
+    "size": {
+      "typical_low_cm": 25.0,
+      "typical_high_cm": 35.0,
+      "record_high_cm": 50.0
+    },
+    "display_data": {
+      "entity": "tide:black_crappie",
+      "x": -0.07
+    },
+    "strength": 0.38,
+    "speed": 0.85,
+    "behavior": "darts",
+    "conditions": [
+      {
+        "type": "tide:freshwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": -0.12,
+        "temperature_tolerance": 0.4,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 25.0,
+    "fish": "tide:black_crappie",
+    "bucket": "tide:black_crappie_bucket"
+  },
+  "tide:freshwater/mirage_catfish": {
+    "journal_profile": {
+      "rarity": "rare",
+      "group": "freshwater",
+      "description": "journal.description.tide.mirage_catfish",
+      "location": "journal.info.location.desert"
+    },
+    "size": {
+      "typical_low_cm": 40.0,
+      "typical_high_cm": 75.0,
+      "record_high_cm": 155.0
+    },
+    "display_data": {
+      "entity": "tide:mirage_catfish",
+      "x": -0.05
+    },
+    "selection_quality": 0.5,
+    "strength": 0.45,
+    "speed": 1.4,
+    "conditions": [
+      {
+        "ranges": [
+          {
+            "min": 12000,
+            "max": 24000
+          }
+        ],
+        "type": "tide:time_of_day"
+      },
+      {
+        "biomes": [
+          "#tide:has_desert_fish"
+        ],
+        "type": "tide:found_in"
+      },
+      {
+        "type": "tide:freshwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "selection_weight": 8.0,
+    "fish": "tide:mirage_catfish",
+    "bucket": "tide:mirage_catfish_bucket"
+  },
+  "tide:freshwater/yellow_perch": {
+    "journal_profile": {
+      "group": "freshwater",
+      "description": "journal.description.tide.yellow_perch",
+      "location": "journal.info.location.freshwater"
+    },
+    "size": {
+      "typical_low_cm": 15.0,
+      "typical_high_cm": 30.0,
+      "record_high_cm": 45.0
+    },
+    "display_data": {
+      "entity": "tide:yellow_perch",
+      "x": -0.05
+    },
+    "strength": 0.35,
+    "speed": 0.95,
+    "conditions": [
+      {
+        "ranges": [
+          {
+            "min": 0,
+            "max": 15000
+          },
+          {
+            "min": 21000,
+            "max": 24000
+          }
+        ],
+        "type": "tide:time_of_day"
+      },
+      {
+        "type": "tide:freshwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": 0.28,
+        "temperature_tolerance": 0.8,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 36.0,
+    "fish": "tide:yellow_perch",
+    "bucket": "tide:yellow_perch_bucket"
+  },
+  "tide:underground/shadow_snapper": {
+    "journal_profile": {
+      "group": "underground",
+      "description": "journal.description.tide.shadow_snapper",
+      "location": "journal.info.location.underground"
+    },
+    "size": {
+      "typical_low_cm": 35.0,
+      "typical_high_cm": 65.0,
+      "record_high_cm": 120.0
+    },
+    "display_data": {
+      "y": -0.05,
+      "entity": "tide:shadow_snapper",
+      "x": -0.05
+    },
+    "strength": 0.55,
+    "speed": 1.1,
+    "conditions": [
+      {
+        "y": 10,
+        "type": "tide:below"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 45.0,
+    "fish": "tide:shadow_snapper",
+    "bucket": "tide:shadow_snapper_bucket"
+  },
+  "tide:lava/magma_mackerel": {
+    "journal_profile": {
+      "group": "lava",
+      "description": "journal.description.tide.magma_mackerel",
+      "location": "journal.info.location.lava"
+    },
+    "size": {
+      "typical_low_cm": 30.0,
+      "typical_high_cm": 45.0,
+      "record_high_cm": 65.0
+    },
+    "display_data": {
+      "entity": "tide:magma_mackerel",
+      "x": -0.05
+    },
+    "strength": 0.65,
+    "behavior": "darts",
+    "conditions": [
+      {
+        "fluid": "lava",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 50.0,
+    "fish": "tide:magma_mackerel",
+    "bucket": "tide:magma_mackerel_bucket"
+  },
+  "tide:saltwater/red_snapper": {
+    "journal_profile": {
+      "group": "saltwater",
+      "description": "journal.description.tide.red_snapper",
+      "location": "journal.info.location.saltwater"
+    },
+    "size": {
+      "typical_low_cm": 30.0,
+      "typical_high_cm": 60.0,
+      "record_high_cm": 115.0
+    },
+    "display_data": {
+      "entity": "tide:red_snapper",
+      "x": -0.05
+    },
+    "strength": 0.4,
+    "conditions": [
+      {
+        "type": "tide:saltwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": -0.3,
+        "temperature_tolerance": 0.8,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 50.0,
+    "fish": "tide:red_snapper",
+    "bucket": "tide:red_snapper_bucket"
+  },
+  "tide:saltwater/mackerel": {
+    "journal_profile": {
+      "group": "saltwater",
+      "description": "journal.description.tide.mackerel",
+      "location": "journal.info.location.saltwater"
+    },
+    "size": {
+      "typical_low_cm": 30.0,
+      "typical_high_cm": 45.0,
+      "record_high_cm": 65.0
+    },
+    "display_data": {
+      "entity": "tide:mackerel",
+      "x": -0.05
+    },
+    "strength": 0.5,
+    "behavior": "darts",
+    "conditions": [
+      {
+        "type": "tide:saltwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": 0.1,
+        "temperature_tolerance": 0.5,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 55.0,
+    "fish": "tide:mackerel",
+    "bucket": "tide:mackerel_bucket"
+  },
+  "tide:freshwater/carp": {
+    "journal_profile": {
+      "group": "freshwater",
+      "description": "journal.description.tide.carp",
+      "location": "journal.info.location.freshwater"
+    },
+    "size": {
+      "typical_low_cm": 40.0,
+      "typical_high_cm": 80.0,
+      "record_high_cm": 120.0
+    },
+    "display_data": {
+      "entity": "tide:carp",
+      "x": -0.05
+    },
+    "strength": 0.4,
+    "speed": 0.6,
+    "behavior": "plateau",
+    "conditions": [
+      {
+        "seasons": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "type": "tide:seasons"
+      },
+      {
+        "ranges": [
+          {
+            "min": 0,
+            "max": 12000
+          },
+          {
+            "min": 18000,
+            "max": 24000
+          }
+        ],
+        "type": "tide:time_of_day"
+      },
+      {
+        "type": "tide:freshwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": 0.15,
+        "temperature_tolerance": 0.7,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 24.0,
+    "fish": "tide:carp",
+    "bucket": "tide:carp_bucket"
+  },
+  "tide:void/endergazer": {
+    "journal_profile": {
+      "rarity": "uncommon",
+      "group": "void",
+      "description": "journal.description.tide.endergazer",
+      "location": "journal.info.location.void"
+    },
+    "size": {
+      "typical_low_cm": 25.0,
+      "typical_high_cm": 35.0,
+      "record_high_cm": 55.0
+    },
+    "display_data": {
+      "y": -0.03,
+      "entity": "tide:endergazer",
+      "x": -0.08
+    },
+    "strength": 0.68,
+    "speed": 1.1,
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:the_end"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "void",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 35.0,
+    "fish": "tide:endergazer",
+    "bucket": "tide:endergazer_bucket"
+  },
+  "tide:void/red_40": {
+    "journal_profile": {
+      "rarity": "rare",
+      "group": "void",
+      "description": "journal.description.tide.red_40",
+      "location": "journal.info.location.void"
+    },
+    "size": {
+      "typical_low_cm": 12.0,
+      "typical_high_cm": 25.0,
+      "record_high_cm": 45.0
+    },
+    "display_data": {
+      "entity": "tide:red_40",
+      "x": -0.1
+    },
+    "strength": 0.75,
+    "speed": 1.25,
+    "behavior": "jitter",
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:the_end"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "void",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 20.0,
+    "fish": "tide:red_40",
+    "bucket": "tide:red_40_bucket"
+  },
+  "tide:underground/lapis_lanternfish": {
+    "journal_profile": {
+      "rarity": "uncommon",
+      "group": "underground",
+      "description": "journal.description.tide.lapis_lanternfish",
+      "location": "journal.info.location.underground"
+    },
+    "size": {
+      "typical_low_cm": 5.0,
+      "typical_high_cm": 15.0,
+      "record_high_cm": 40.0
+    },
+    "display_data": {
+      "y": 0.02,
+      "entity": "tide:lapis_lanternfish",
+      "x": -0.05
+    },
+    "strength": 0.6,
+    "behavior": "jitter",
+    "conditions": [
+      {
+        "y": 20,
+        "type": "tide:below"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 18.0,
+    "fish": "tide:lapis_lanternfish",
+    "bucket": "tide:lapis_lanternfish_bucket"
+  },
+  "tide:underground/chasm_eel": {
+    "journal_profile": {
+      "alt_sprite_size": 32,
+      "rarity": "very_rare",
+      "group": "underground",
+      "description": "journal.description.tide.chasm_eel",
+      "location": "journal.info.location.underground",
+      "alt_sprite": "tide:textures/item/chasm_eel_full.png"
+    },
+    "size": {
+      "typical_low_cm": 120.0,
+      "typical_high_cm": 180.0,
+      "record_high_cm": 300.0
+    },
+    "display_data": {
+      "entity": "tide:chasm_eel",
+      "shape": "2x1",
+      "x": -0.05
+    },
+    "strength": 0.85,
+    "speed": 1.5,
+    "behavior": "linear",
+    "conditions": [
+      {
+        "y": -20,
+        "type": "tide:below"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 6.0,
+    "fish": "tide:chasm_eel",
+    "bucket": "tide:chasm_eel_bucket"
+  },
+  "tide:lava/volcano_tuna": {
+    "journal_profile": {
+      "rarity": "uncommon",
+      "group": "lava",
+      "description": "journal.description.tide.volcano_tuna",
+      "location": "journal.info.location.lava"
+    },
+    "size": {
+      "typical_low_cm": 50.0,
+      "typical_high_cm": 75.0,
+      "record_high_cm": 110.0
+    },
+    "display_data": {
+      "y": -0.05,
+      "entity": "tide:volcano_tuna",
+      "x": -0.05
+    },
+    "strength": 0.7,
+    "speed": 1.3,
+    "conditions": [
+      {
+        "fluid": "lava",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 28.0,
+    "fish": "tide:volcano_tuna",
+    "bucket": "tide:volcano_tuna_bucket"
+  },
+  "tide:freshwater/pike": {
+    "journal_profile": {
+      "group": "freshwater",
+      "description": "journal.description.tide.pike",
+      "location": "journal.info.location.freshwater"
+    },
+    "size": {
+      "typical_low_cm": 60.0,
+      "typical_high_cm": 80.0,
+      "record_high_cm": 140.0
+    },
+    "display_data": {
+      "y": -0.13,
+      "entity": "tide:pike",
+      "x": -0.05
+    },
+    "strength": 0.45,
+    "speed": 0.9,
+    "conditions": [
+      {
+        "seasons": [
+          "spring",
+          "fall",
+          "winter"
+        ],
+        "type": "tide:seasons"
+      },
+      {
+        "type": "tide:freshwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": -0.3,
+        "temperature_tolerance": 0.5,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 22.0,
+    "fish": "tide:pike",
+    "bucket": "tide:pike_bucket"
+  },
+  "tide:underground/luminescent_jellyfish": {
+    "journal_profile": {
+      "rarity": "rare",
+      "group": "underground",
+      "description": "journal.description.tide.luminescent_jellyfish",
+      "location": "journal.info.location.underground"
+    },
+    "size": {
+      "typical_low_cm": 40.0,
+      "typical_high_cm": 50.0,
+      "record_high_cm": 80.0
+    },
+    "display_data": {
+      "y": -0.2,
+      "z": -0.05,
+      "entity": "tide:luminescent_jellyfish",
+      "x": -0.1
+    },
+    "strength": 0.68,
+    "speed": 0.9,
+    "behavior": "darts",
+    "conditions": [
+      {
+        "y": 5,
+        "type": "tide:below"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 15.0,
+    "fish": "tide:luminescent_jellyfish",
+    "bucket": "tide:luminescent_jellyfish_bucket"
+  },
+  "tide:lava/crimson_fangjaw": {
+    "journal_profile": {
+      "rarity": "rare",
+      "group": "lava",
+      "description": "journal.description.tide.crimson_fangjaw",
+      "location": "journal.info.location.lava"
+    },
+    "size": {
+      "typical_low_cm": 35.0,
+      "typical_high_cm": 65.0,
+      "record_high_cm": 100.0
+    },
+    "display_data": {
+      "y": -0.05,
+      "entity": "tide:crimson_fangjaw",
+      "x": -0.05
+    },
+    "strength": 0.68,
+    "speed": 0.9,
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:the_nether"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "lava",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 24.0,
+    "fish": "tide:crimson_fangjaw",
+    "bucket": "tide:crimson_fangjaw_bucket"
+  },
+  "minecraft:freshwater/salmon": {
+    "journal_profile": {
+      "group": "freshwater",
+      "description": "journal.description.minecraft.salmon",
+      "location": "journal.info.location.freshwater"
+    },
+    "size": {
+      "typical_low_cm": 55.0,
+      "typical_high_cm": 95.0,
+      "record_high_cm": 145.0
+    },
+    "display_data": {
+      "y": -0.1,
+      "entity": "minecraft:salmon",
+      "x": 0.1
+    },
+    "strength": 0.4,
+    "speed": 0.9,
+    "conditions": [
+      {
+        "seasons": [
+          "summer",
+          "fall",
+          "winter"
+        ],
+        "type": "tide:seasons"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      },
+      {
+        "type": "tide:freshwater"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": -0.6,
+        "temperature_tolerance": 1.1,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 40.0,
+    "fish": "minecraft:salmon",
+    "bucket": "minecraft:salmon_bucket"
+  },
+  "minecraft:saltwater/cod": {
+    "journal_profile": {
+      "group": "saltwater",
+      "description": "journal.description.minecraft.cod",
+      "location": "journal.info.location.saltwater"
+    },
+    "size": {
+      "typical_low_cm": 65.0,
+      "typical_high_cm": 115.0,
+      "record_high_cm": 200.0
+    },
+    "display_data": {
+      "entity": "minecraft:cod",
+      "x": 0.1
+    },
+    "strength": 0.5,
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      },
+      {
+        "type": "tide:saltwater"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": -1.0,
+        "temperature_tolerance": 1.3,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 55.0,
+    "fish": "minecraft:cod",
+    "bucket": "minecraft:cod_bucket"
+  },
+  "tide:void/blue_neonfish": {
+    "journal_profile": {
+      "rarity": "uncommon",
+      "group": "void",
+      "description": "journal.description.tide.blue_neonfish",
+      "location": "journal.info.location.void"
+    },
+    "size": {
+      "typical_low_cm": 20.0,
+      "typical_high_cm": 35.0,
+      "record_high_cm": 75.0
+    },
+    "display_data": {
+      "y": -0.05,
+      "entity": "tide:blue_neonfish",
+      "x": -0.1
+    },
+    "strength": 0.75,
+    "speed": 1.5,
+    "behavior": "darts",
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "void",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 35.0,
+    "fish": "tide:blue_neonfish",
+    "bucket": "tide:blue_neonfish_bucket"
+  },
+  "tide:underground/abyss_angler": {
+    "journal_profile": {
+      "rarity": "uncommon",
+      "group": "underground",
+      "description": "journal.description.tide.abyss_angler",
+      "location": "journal.info.location.underground"
+    },
+    "size": {
+      "typical_low_cm": 20.0,
+      "typical_high_cm": 35.0,
+      "record_high_cm": 75.0
+    },
+    "display_data": {
+      "y": -0.05,
+      "entity": "tide:abyss_angler",
+      "x": -0.07
+    },
+    "strength": 0.78,
+    "speed": 0.8,
+    "behavior": "darts",
+    "conditions": [
+      {
+        "y": -20,
+        "type": "tide:below"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 30.0,
+    "fish": "tide:abyss_angler",
+    "bucket": "tide:abyss_angler_bucket"
+  },
+  "tide:void/darkness_eater": {
+    "journal_profile": {
+      "alt_sprite_size": 32,
+      "rarity": "very_rare",
+      "group": "void",
+      "description": "journal.description.tide.darkness_eater",
+      "location": "journal.info.location.void",
+      "alt_sprite": "tide:textures/item/darkness_eater_full.png"
+    },
+    "size": {
+      "typical_low_cm": 170.0,
+      "typical_high_cm": 230.0,
+      "record_high_cm": 400.0
+    },
+    "display_data": {
+      "y": -0.15,
+      "entity": "tide:darkness_eater",
+      "shape": "3x1",
+      "x": -0.05
+    },
+    "selection_quality": 0.5,
+    "strength": 0.86,
+    "speed": 1.7,
+    "behavior": "plateau",
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "void",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 5.0,
+    "fish": "tide:darkness_eater",
+    "bucket": "tide:darkness_eater_bucket"
+  },
+  "tide:saltwater/shooting_starfish": {
+    "journal_profile": {
+      "rarity": "legendary",
+      "group": "saltwater",
+      "description": "journal.description.tide.shooting_starfish",
+      "location": "journal.info.location.deep_ocean"
+    },
+    "size": {
+      "typical_low_cm": 70.0,
+      "typical_high_cm": 85.0,
+      "record_high_cm": 120.0
+    },
+    "display_data": {
+      "yaw": 90.0,
+      "z": 0.02,
+      "entity": "tide:shooting_starfish"
+    },
+    "selection_quality": 0.5,
+    "strength": 0.88,
+    "speed": 2.2,
+    "conditions": [
+      {
+        "any_of": [
+          0
+        ],
+        "type": "tide:moon_phase"
+      },
+      {
+        "ranges": [
+          {
+            "min": 13000,
+            "max": 23000
+          }
+        ],
+        "type": "tide:time_of_day"
+      },
+      {
+        "biomes": [
+          "#minecraft:is_deep_ocean"
+        ],
+        "type": "tide:found_in"
+      },
+      {
+        "type": "tide:saltwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "selection_weight": 1.5,
+    "fish": "tide:shooting_starfish",
+    "bucket": "tide:shooting_starfish_bucket"
+  },
+  "tide:saltwater/swordfish": {
+    "journal_profile": {
+      "alt_sprite_size": 48,
+      "rarity": "rare",
+      "group": "saltwater",
+      "description": "journal.description.tide.swordfish",
+      "location": "journal.info.location.saltwater",
+      "alt_sprite": "tide:textures/item/swordfish_full.png"
+    },
+    "size": {
+      "typical_low_cm": 180.0,
+      "typical_high_cm": 290.0,
+      "record_high_cm": 455.0
+    },
+    "display_data": {
+      "y": -0.15,
+      "entity": "tide:swordfish",
+      "shape": "3x1",
+      "x": -0.06
+    },
+    "strength": 0.8,
+    "speed": 1.4,
+    "behavior": "darts",
+    "conditions": [
+      {
+        "type": "tide:saltwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": 0.6,
+        "temperature_tolerance": 0.5,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 8.0,
+    "fish": "tide:swordfish",
+    "bucket": "tide:swordfish_bucket"
+  },
+  "tide:underground/crystal_shrimp": {
+    "journal_profile": {
+      "rarity": "uncommon",
+      "group": "underground",
+      "description": "journal.description.tide.crystal_shrimp",
+      "location": "journal.info.location.underground"
+    },
+    "size": {
+      "typical_low_cm": 4.0,
+      "typical_high_cm": 8.0,
+      "record_high_cm": 15.0
+    },
+    "display_data": {
+      "entity": "tide:crystal_shrimp",
+      "x": -0.05
+    },
+    "strength": 0.62,
+    "speed": 1.08,
+    "conditions": [
+      {
+        "y": 35,
+        "type": "tide:below"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 17.0,
+    "fish": "tide:crystal_shrimp",
+    "bucket": "tide:crystal_shrimp_bucket"
+  },
+  "tide:saltwater/saturn_cuttlefish": {
+    "journal_profile": {
+      "alt_sprite_size": 32,
+      "rarity": "very_rare",
+      "group": "saltwater",
+      "description": "journal.description.tide.saturn_cuttlefish",
+      "location": "journal.info.location.saltwater",
+      "alt_sprite": "tide:textures/item/saturn_cuttlefish_full.png"
+    },
+    "size": {
+      "typical_low_cm": 90.0,
+      "typical_high_cm": 120.0,
+      "record_high_cm": 180.0
+    },
+    "display_data": {
+      "z": 0.02,
+      "entity": "tide:saturn_cuttlefish",
+      "x": -0.05
+    },
+    "selection_quality": 0.5,
+    "strength": 0.82,
+    "speed": 1.2,
+    "behavior": "darts",
+    "conditions": [
+      {
+        "any_of": [
+          6
+        ],
+        "type": "tide:moon_phase"
+      },
+      {
+        "type": "tide:saltwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "selection_weight": 4.5,
+    "fish": "tide:saturn_cuttlefish",
+    "bucket": "tide:saturn_cuttlefish_bucket"
+  },
+  "tide:saltwater/uranias_pisces": {
+    "journal_profile": {
+      "alt_sprite_size": 32,
+      "rarity": "very_rare",
+      "group": "saltwater",
+      "description": "journal.description.tide.uranias_pisces",
+      "location": "journal.info.location.saltwater",
+      "alt_sprite": "tide:textures/item/uranias_pisces_full.png"
+    },
+    "size": {
+      "typical_low_cm": 180.0,
+      "typical_high_cm": 220.0,
+      "record_high_cm": 350.0
+    },
+    "display_data": {
+      "y": -0.15,
+      "entity": "tide:uranias_pisces",
+      "shape": "2x1",
+      "x": -0.06
+    },
+    "selection_quality": 0.5,
+    "strength": 0.8,
+    "speed": 1.7,
+    "conditions": [
+      {
+        "any_of": [
+          2
+        ],
+        "type": "tide:moon_phase"
+      },
+      {
+        "type": "tide:saltwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "selection_weight": 4.0,
+    "fish": "tide:uranias_pisces",
+    "bucket": "tide:uranias_pisces_bucket"
+  },
+  "tide:saltwater/ocean_perch": {
+    "journal_profile": {
+      "group": "saltwater",
+      "description": "journal.description.tide.ocean_perch",
+      "location": "journal.info.location.saltwater"
+    },
+    "size": {
+      "typical_low_cm": 40.0,
+      "typical_high_cm": 50.0,
+      "record_high_cm": 67.0
+    },
+    "display_data": {
+      "entity": "tide:ocean_perch",
+      "x": -0.05
+    },
+    "strength": 0.4,
+    "speed": 1.1,
+    "conditions": [
+      {
+        "type": "tide:saltwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": -0.4,
+        "temperature_tolerance": 0.75,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 50.0,
+    "fish": "tide:ocean_perch",
+    "bucket": "tide:ocean_perch_bucket"
+  },
+  "tide:freshwater/mooneye": {
+    "journal_profile": {
+      "rarity": "very_rare",
+      "group": "freshwater",
+      "description": "journal.description.tide.mooneye",
+      "location": "journal.info.location.freshwater"
+    },
+    "size": {
+      "typical_low_cm": 23.0,
+      "typical_high_cm": 35.0,
+      "record_high_cm": 50.0
+    },
+    "display_data": {
+      "entity": "tide:mooneye",
+      "x": -0.07
+    },
+    "selection_quality": 0.5,
+    "strength": 0.7,
+    "speed": 1.8,
+    "behavior": "darts",
+    "conditions": [
+      {
+        "ranges": [
+          {
+            "min": 0,
+            "max": 1000
+          },
+          {
+            "min": 12000,
+            "max": 24000
+          }
+        ],
+        "type": "tide:time_of_day"
+      },
+      {
+        "type": "tide:freshwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": -0.35,
+        "temperature_tolerance": 0.2,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 4.0,
+    "fish": "tide:mooneye",
+    "bucket": "tide:mooneye_bucket"
+  },
+  "tide:void/vengeance": {
+    "journal_profile": {
+      "rarity": "rare",
+      "group": "void",
+      "description": "journal.description.tide.vengeance",
+      "location": "journal.info.location.void"
+    },
+    "size": {
+      "typical_low_cm": 50.0,
+      "typical_high_cm": 80.0,
+      "record_high_cm": 130.0
+    },
+    "display_data": {
+      "y": -0.05,
+      "entity": "tide:vengeance",
+      "x": -0.05
+    },
+    "strength": 0.8,
+    "speed": 1.68,
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "void",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 18.0,
+    "fish": "tide:vengeance",
+    "bucket": "tide:vengeance_bucket"
+  },
+  "tide:underground/midas_fish": {
+    "journal_profile": {
+      "rarity": "legendary",
+      "group": "underground",
+      "description": "journal.description.tide.midas_fish",
+      "location": "journal.info.location.underground"
+    },
+    "size": {
+      "typical_low_cm": 50.0,
+      "typical_high_cm": 80.0,
+      "record_high_cm": 130.0
+    },
+    "display_data": {
+      "y": -0.07,
+      "entity": "tide:midas_fish",
+      "x": -0.05
+    },
+    "strength": 0.9,
+    "speed": 1.8,
+    "conditions": [
+      {
+        "min": 5,
+        "type": "tide:luck"
+      },
+      {
+        "y": 41,
+        "type": "tide:below"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 7.0,
+    "fish": "tide:midas_fish",
+    "bucket": "tide:midas_fish_bucket"
+  },
+  "tide:underground/devils_hole_pupfish": {
+    "journal_profile": {
+      "rarity": "legendary",
+      "group": "underground",
+      "description": "journal.description.tide.devils_hole_pupfish",
+      "location": "journal.info.location.underground"
+    },
+    "size": {
+      "typical_low_cm": 1.4,
+      "typical_high_cm": 2.6,
+      "record_high_cm": 4.3
+    },
+    "display_data": {
+      "y": 0.05,
+      "entity": "tide:devils_hole_pupfish",
+      "x": -0.12
+    },
+    "selection_quality": 0.5,
+    "strength": 0.8,
+    "speed": 2.1,
+    "behavior": "jitter",
+    "conditions": [
+      {
+        "min_y": 20,
+        "max_y": 30,
+        "type": "tide:depth_range"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 1.5,
+    "fish": "tide:devils_hole_pupfish",
+    "bucket": "tide:devils_hole_pupfish_bucket"
+  },
+  "tide:void/voidseeker": {
+    "journal_profile": {
+      "rarity": "legendary",
+      "group": "void",
+      "description": "journal.description.tide.voidseeker",
+      "location": "journal.info.location.void"
+    },
+    "size": {
+      "typical_low_cm": 40.0,
+      "typical_high_cm": 65.0,
+      "record_high_cm": 120.0
+    },
+    "display_data": {
+      "entity": "tide:voidseeker",
+      "x": -0.13
+    },
+    "strength": 0.9,
+    "speed": 1.85,
+    "behavior": "linear_wrap",
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:the_end"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "void",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 3.0,
+    "fish": "tide:voidseeker",
+    "bucket": "tide:voidseeker_bucket"
+  },
+  "tide:void/elytrout": {
+    "journal_profile": {
+      "rarity": "rare",
+      "group": "void",
+      "description": "journal.description.tide.elytrout",
+      "location": "journal.info.location.void"
+    },
+    "size": {
+      "typical_low_cm": 35.0,
+      "typical_high_cm": 60.0,
+      "record_high_cm": 100.0
+    },
+    "display_data": {
+      "entity": "tide:elytrout"
+    },
+    "strength": 0.65,
+    "speed": 1.45,
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:the_end"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "void",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 14.0,
+    "fish": "tide:elytrout",
+    "bucket": "tide:elytrout_bucket"
+  },
+  "tide:freshwater/sturgeon": {
+    "journal_profile": {
+      "alt_sprite_size": 32,
+      "rarity": "rare",
+      "group": "freshwater",
+      "description": "journal.description.tide.sturgeon",
+      "location": "journal.info.location.freshwater",
+      "alt_sprite": "tide:textures/item/sturgeon_full.png"
+    },
+    "size": {
+      "typical_low_cm": 140.0,
+      "typical_high_cm": 250.0,
+      "record_high_cm": 365.0
+    },
+    "display_data": {
+      "y": -0.15,
+      "entity": "tide:sturgeon",
+      "shape": "3x1",
+      "x": -0.05
+    },
+    "strength": 0.6,
+    "speed": 1.6,
+    "conditions": [
+      {
+        "seasons": [
+          "fall",
+          "winter"
+        ],
+        "type": "tide:seasons"
+      },
+      {
+        "type": "tide:freshwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": -0.65,
+        "temperature_tolerance": 0.45,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 7.0,
+    "fish": "tide:sturgeon",
+    "bucket": "tide:sturgeon_bucket"
+  },
+  "tide:void/mantyvern": {
+    "journal_profile": {
+      "alt_sprite_size": 32,
+      "rarity": "very_rare",
+      "group": "void",
+      "description": "journal.description.tide.mantyvern",
+      "location": "journal.info.location.void",
+      "alt_sprite": "tide:textures/item/mantyvern_full.png"
+    },
+    "size": {
+      "typical_low_cm": 280.0,
+      "typical_high_cm": 360.0,
+      "record_high_cm": 500.0
+    },
+    "display_data": {
+      "z": -0.05,
+      "entity": "tide:mantyvern",
+      "shape": "3x1",
+      "x": 0.1
+    },
+    "strength": 0.78,
+    "speed": 1.55,
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:the_end"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "void",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 6.0,
+    "fish": "tide:mantyvern",
+    "bucket": "tide:mantyvern_bucket"
+  },
+  "tide:void/snatcher_squid": {
+    "journal_profile": {
+      "alt_sprite_size": 32,
+      "rarity": "very_rare",
+      "group": "void",
+      "description": "journal.description.tide.snatcher_squid",
+      "location": "journal.info.location.void",
+      "alt_sprite": "tide:textures/item/snatcher_squid_full.png"
+    },
+    "size": {
+      "typical_low_cm": 110.0,
+      "typical_high_cm": 170.0,
+      "record_high_cm": 260.0
+    },
+    "display_data": {
+      "z": -0.05,
+      "entity": "tide:snatcher_squid",
+      "shape": "2x1",
+      "x": 0.1
+    },
+    "strength": 0.8,
+    "speed": 1.5,
+    "behavior": "darts",
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:the_end"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "void",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 6.0,
+    "fish": "tide:snatcher_squid",
+    "bucket": "tide:snatcher_squid_bucket"
+  },
+  "tide:freshwater/slimy_salmon": {
+    "journal_profile": {
+      "rarity": "rare",
+      "group": "freshwater",
+      "description": "journal.description.tide.slimy_salmon",
+      "location": "journal.info.location.swamp"
+    },
+    "size": {
+      "typical_low_cm": 55.0,
+      "typical_high_cm": 95.0,
+      "record_high_cm": 145.0
+    },
+    "display_data": {
+      "y": -0.1,
+      "entity": "tide:slimy_salmon"
+    },
+    "selection_quality": 0.5,
+    "strength": 0.5,
+    "speed": 1.4,
+    "conditions": [
+      {
+        "biomes": [
+          "#tide:has_swamp_fish"
+        ],
+        "type": "tide:found_in"
+      },
+      {
+        "type": "tide:freshwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "selection_weight": 7.0,
+    "fish": "tide:slimy_salmon",
+    "bucket": "tide:slimy_salmon_bucket"
+  },
+  "tide:freshwater/smallmouth_bass": {
+    "journal_profile": {
+      "group": "freshwater",
+      "description": "journal.description.tide.smallmouth_bass",
+      "location": "journal.info.location.freshwater"
+    },
+    "size": {
+      "typical_low_cm": 35.0,
+      "typical_high_cm": 52.0,
+      "record_high_cm": 70.0
+    },
+    "display_data": {
+      "y": -0.1,
+      "entity": "tide:smallmouth_bass",
+      "x": -0.05
+    },
+    "strength": 0.4,
+    "speed": 0.9,
+    "conditions": [
+      {
+        "seasons": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "type": "tide:seasons"
+      },
+      {
+        "type": "tide:freshwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": -0.25,
+        "temperature_tolerance": 0.78,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 24.0,
+    "fish": "tide:smallmouth_bass",
+    "bucket": "tide:smallmouth_bass_bucket"
+  },
+  "tide:saltwater/manta_ray": {
+    "journal_profile": {
+      "alt_sprite_size": 48,
+      "rarity": "rare",
+      "group": "saltwater",
+      "description": "journal.description.tide.manta_ray",
+      "location": "journal.info.location.saltwater",
+      "alt_sprite": "tide:textures/item/manta_ray_full.png"
+    },
+    "size": {
+      "typical_low_cm": 400.0,
+      "typical_high_cm": 650.0,
+      "record_high_cm": 900.0
+    },
+    "display_data": {
+      "yaw": 90.0,
+      "z": 0.02,
+      "entity": "tide:manta_ray",
+      "shape": "3x1"
+    },
+    "strength": 0.76,
+    "speed": 1.3,
+    "conditions": [
+      {
+        "type": "tide:saltwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": 0.43,
+        "temperature_tolerance": 0.4,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 8.0,
+    "fish": "tide:manta_ray",
+    "bucket": "tide:manta_ray_bucket"
+  },
+  "tide:lava/soulscale": {
+    "journal_profile": {
+      "rarity": "rare",
+      "group": "lava",
+      "description": "journal.description.tide.soulscale",
+      "location": "journal.info.location.lava"
+    },
+    "size": {
+      "typical_low_cm": 35.0,
+      "typical_high_cm": 60.0,
+      "record_high_cm": 95.0
+    },
+    "display_data": {
+      "y": -0.1,
+      "entity": "tide:soulscale",
+      "x": -0.05
+    },
+    "strength": 0.6,
+    "speed": 1.15,
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:the_nether"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "lava",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 22.0,
+    "fish": "tide:soulscale",
+    "bucket": "tide:soulscale_bucket"
+  },
+  "tide:underground/echo_snapper": {
+    "journal_profile": {
+      "rarity": "very_rare",
+      "group": "underground",
+      "description": "journal.description.tide.echo_snapper",
+      "location": "journal.info.location.deep_dark"
+    },
+    "size": {
+      "typical_low_cm": 65.0,
+      "typical_high_cm": 85.0,
+      "record_high_cm": 140.0
+    },
+    "display_data": {
+      "z": 0.02,
+      "entity": "tide:echo_snapper",
+      "x": 0.05
+    },
+    "strength": 0.8,
+    "speed": 0.8,
+    "behavior": "plateau",
+    "conditions": [
+      {
+        "a": {
+          "biomes": [
+            "#tide:has_deep_dark_fish"
+          ],
+          "type": "tide:found_in"
+        },
+        "b": {
+          "structures": [
+            "minecraft:ancient_city"
+          ],
+          "type": "tide:found_in_structures"
+        },
+        "type": "tide:either"
+      },
+      {
+        "y": 30,
+        "type": "tide:below"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 16.0,
+    "fish": "tide:echo_snapper",
+    "bucket": "tide:echo_snapper_bucket"
+  },
+  "tide:freshwater/rainbow_trout": {
+    "journal_profile": {
+      "group": "freshwater",
+      "description": "journal.description.tide.rainbow_trout",
+      "location": "journal.info.location.freshwater"
+    },
+    "size": {
+      "typical_low_cm": 50.0,
+      "typical_high_cm": 75.0,
+      "record_high_cm": 110.0
+    },
+    "display_data": {
+      "y": -0.08,
+      "entity": "tide:rainbow_trout",
+      "x": -0.05
+    },
+    "speed": 0.75,
+    "conditions": [
+      {
+        "seasons": [
+          "spring",
+          "summer",
+          "winter"
+        ],
+        "type": "tide:seasons"
+      },
+      {
+        "type": "tide:freshwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": -0.5,
+        "temperature_tolerance": 0.65,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 36.0,
+    "fish": "tide:rainbow_trout",
+    "bucket": "tide:rainbow_trout_bucket"
+  },
+  "tide:freshwater/frostbite_flounder": {
+    "journal_profile": {
+      "rarity": "rare",
+      "group": "freshwater",
+      "description": "journal.description.tide.frostbite_flounder",
+      "location": "journal.info.location.frozen"
+    },
+    "size": {
+      "typical_low_cm": 40.0,
+      "typical_high_cm": 55.0,
+      "record_high_cm": 75.0
+    },
+    "display_data": {
+      "z": 0.02,
+      "entity": "tide:frostbite_flounder",
+      "x": 0.05
+    },
+    "selection_quality": 0.5,
+    "strength": 0.55,
+    "speed": 0.9,
+    "conditions": [
+      {
+        "biomes": [
+          "#tide:has_frozen_fish"
+        ],
+        "type": "tide:found_in"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "selection_weight": 8.0,
+    "fish": "tide:frostbite_flounder",
+    "bucket": "tide:frostbite_flounder_bucket"
+  },
+  "tide:lava/warped_guppy": {
+    "journal_profile": {
+      "rarity": "rare",
+      "group": "lava",
+      "description": "journal.description.tide.warped_guppy",
+      "location": "journal.info.location.lava"
+    },
+    "size": {
+      "typical_low_cm": 4.0,
+      "typical_high_cm": 7.0,
+      "record_high_cm": 9.0
+    },
+    "display_data": {
+      "y": 0.06,
+      "entity": "tide:warped_guppy",
+      "x": -0.1
+    },
+    "strength": 0.5,
+    "speed": 1.15,
+    "behavior": "jitter",
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:the_nether"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "lava",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 24.0,
+    "fish": "tide:warped_guppy",
+    "bucket": "tide:warped_guppy_bucket"
+  },
+  "tide:underground/cave_crawler": {
+    "journal_profile": {
+      "group": "underground",
+      "description": "journal.description.tide.cave_crawler",
+      "location": "journal.info.location.underground"
+    },
+    "size": {
+      "typical_low_cm": 45.0,
+      "typical_high_cm": 60.0,
+      "record_high_cm": 100.0
+    },
+    "display_data": {
+      "z": 0.02,
+      "entity": "tide:cave_crawler"
+    },
+    "strength": 0.75,
+    "speed": 0.8,
+    "behavior": "linear",
+    "conditions": [
+      {
+        "min_y": -30,
+        "max_y": 40,
+        "type": "tide:depth_range"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 50.0,
+    "fish": "tide:cave_crawler",
+    "bucket": "tide:cave_crawler_bucket"
+  },
+  "tide:void/incandescent_larva": {
+    "journal_profile": {
+      "group": "void",
+      "description": "journal.description.tide.incandescent_larva",
+      "location": "journal.info.location.void"
+    },
+    "size": {
+      "typical_low_cm": 2.0,
+      "typical_high_cm": 4.0,
+      "record_high_cm": 10.0
+    },
+    "display_data": {
+      "z": 0.02,
+      "entity": "tide:incandescent_larva"
+    },
+    "strength": 0.65,
+    "speed": 1.55,
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "void",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 45.0,
+    "fish": "tide:incandescent_larva",
+    "bucket": "tide:incandescent_larva_bucket"
+  },
+  "tide:saltwater/flounder": {
+    "journal_profile": {
+      "group": "saltwater",
+      "description": "journal.description.tide.flounder",
+      "location": "journal.info.location.saltwater"
+    },
+    "size": {
+      "typical_low_cm": 40.0,
+      "typical_high_cm": 55.0,
+      "record_high_cm": 75.0
+    },
+    "display_data": {
+      "z": 0.02,
+      "entity": "tide:flounder",
+      "x": 0.05
+    },
+    "strength": 0.45,
+    "speed": 0.8,
+    "conditions": [
+      {
+        "seasons": [
+          "summer",
+          "fall",
+          "winter"
+        ],
+        "type": "tide:seasons"
+      },
+      {
+        "type": "tide:saltwater"
+      },
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "water",
+        "type": "tide:fluid"
+      },
+      {
+        "y": 40,
+        "type": "tide:above"
+      }
+    ],
+    "modifiers": [
+      {
+        "preferred_temperature": -0.25,
+        "temperature_tolerance": 0.5,
+        "type": "tide:temperature"
+      }
+    ],
+    "selection_weight": 35.0,
+    "fish": "tide:flounder",
+    "bucket": "tide:flounder_bucket"
+  },
+  "tide:void/shadow_shark": {
+    "journal_profile": {
+      "alt_sprite_size": 48,
+      "rarity": "very_rare",
+      "group": "void",
+      "description": "journal.description.tide.shadow_shark",
+      "location": "journal.info.location.void",
+      "alt_sprite": "tide:textures/item/shadow_shark_full.png"
+    },
+    "size": {
+      "typical_low_cm": 250.0,
+      "typical_high_cm": 305.0,
+      "record_high_cm": 375.0
+    },
+    "display_data": {
+      "y": -0.15,
+      "entity": "tide:shadow_shark",
+      "shape": "3x1",
+      "x": -0.05
+    },
+    "selection_quality": 0.5,
+    "strength": 0.86,
+    "speed": 1.75,
+    "behavior": "plateau",
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:overworld"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "void",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 4.0,
+    "fish": "tide:shadow_shark",
+    "bucket": "tide:shadow_shark_bucket"
+  },
+  "tide:void/violet_carp": {
+    "journal_profile": {
+      "rarity": "uncommon",
+      "group": "void",
+      "description": "journal.description.tide.violet_carp",
+      "location": "journal.info.location.void"
+    },
+    "size": {
+      "typical_low_cm": 60.0,
+      "typical_high_cm": 85.0,
+      "record_high_cm": 125.0
+    },
+    "display_data": {
+      "entity": "tide:violet_carp",
+      "x": -0.05
+    },
+    "strength": 0.7,
+    "speed": 1.15,
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:the_end"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "void",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 32.0,
+    "fish": "tide:violet_carp",
+    "bucket": "tide:violet_carp_bucket"
+  },
+  "tide:lava/inferno_guppy": {
+    "journal_profile": {
+      "rarity": "rare",
+      "group": "lava",
+      "description": "journal.description.tide.inferno_guppy",
+      "location": "journal.info.location.lava"
+    },
+    "size": {
+      "typical_low_cm": 4.0,
+      "typical_high_cm": 7.0,
+      "record_high_cm": 9.0
+    },
+    "display_data": {
+      "y": 0.06,
+      "entity": "tide:inferno_guppy",
+      "x": -0.1
+    },
+    "strength": 0.4,
+    "speed": 1.25,
+    "behavior": "jitter",
+    "conditions": [
+      {
+        "fluid": "lava",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 16.0,
+    "fish": "tide:inferno_guppy",
+    "bucket": "tide:inferno_guppy_bucket"
+  },
+  "tide:void/pale_clubfish": {
+    "journal_profile": {
+      "group": "void",
+      "description": "journal.description.tide.pale_clubfish",
+      "location": "journal.info.location.void"
+    },
+    "size": {
+      "typical_low_cm": 40.0,
+      "typical_high_cm": 65.0,
+      "record_high_cm": 135.0
+    },
+    "display_data": {
+      "y": -0.05,
+      "entity": "tide:pale_clubfish",
+      "x": -0.05
+    },
+    "strength": 0.6,
+    "speed": 1.1,
+    "conditions": [
+      {
+        "dimensions": [
+          "minecraft:the_end"
+        ],
+        "type": "tide:dimension"
+      },
+      {
+        "fluid": "void",
+        "type": "tide:fluid"
+      }
+    ],
+    "selection_weight": 55.0,
+    "fish": "tide:pale_clubfish",
+    "bucket": "tide:pale_clubfish_bucket"
+  }
+}

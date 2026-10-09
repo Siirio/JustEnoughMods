@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "item": "siegeweapons:ballista_item"
+    },
+    "title": {
+      "translate": "jem_guide.advancement.arsenal.ballista.title"
+    },
+    "description": {
+      "translate": "jem_guide.advancement.arsenal.ballista.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "completion": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "siegeweapons:ballista_item"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completion"
+    ]
+  ],
+  "parent": "jem_guide:arsenal/root"
+}

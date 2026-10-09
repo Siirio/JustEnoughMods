@@ -1,0 +1,23 @@
+{
+  "parent": "jemcompat:campaign/branches/luxtructosaurus/skeletosaurus",
+  "display": {
+    "icon": {
+      "item": "alexscaves:tectonic_shard"
+    },
+    "title": {
+      "translate": "advancement.jemcompat.defeat.luxtructosaurus.title"
+    },
+    "description": {
+      "translate": "advancement.jemcompat.defeat.luxtructosaurus.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "completed": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

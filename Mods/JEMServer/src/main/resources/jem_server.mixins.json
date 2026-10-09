@@ -1,0 +1,48 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.siirio.jemserver.mixin",
+  "plugin": "com.siirio.jemserver.mixin.JemServerMixinPlugin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "jem_server.refmap.json",
+  "client": [
+    "xaero.MapScreenMixin",
+    "xaero.WaypointEditorMixin",
+    "xaero.WaypointMenuMixin",
+    "xaero.WaypointTeleportMixin",
+    "client.BloodMoonSkyMixin",
+    "client.BloodMoonMoonMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+    "PlayerSaveAccess",
+    "SleepStatusVoteMixin",
+    "cooking.CookingStationMixin",
+    "cooking.CraftingBowlMixin",
+    "cooking.MincerMixin",
+    "cooking.ApplePressMixin",
+    "cooking.BrewstationMixin",
+    "cooking.BakingStationMixin",
+    "cooking.SiloMixin",
+    "cooking.CampfireCookingMixin",
+    "death.SafeCuriosMixin",
+    "death.SafeGraveMixin",
+    "death.SafeLegacyGraveMixin",
+    "staging.AbyssAltarStagingMixin",
+    "staging.FireAltarStagingMixin",
+    "staging.VoidAltarStagingMixin",
+    "staging.CataclysmSpawnerStagingMixin",
+    "staging.BossSpawnerStagingMixin",
+    "staging.KrakenSpawnerStagingMixin",
+    "cooking.FurnaceCookingMixin",
+    "death.BloodMoonPlayerDropsMixin",
+    "death.BloodMoonPlayerCloneMixin",
+    "events.BloodMoonTwinCreeperMixin",
+    "events.BloodMoonSolidBoundaryMixin",
+    "events.BloodMoonWardenTargetMixin",
+    "teleport.ServerPlayerTeleportMixin",
+    "compat.DeepDarkRegrowthSpecialAbilityMixin"
+  ]
+}

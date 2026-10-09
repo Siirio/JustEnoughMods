@@ -1,0 +1,42 @@
+{
+  "required": false,
+  "minVersion": "0.8",
+  "package": "com.siirio.jemcompat.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "jemcompat.refmap.json",
+  "mixins": [
+    "AbstractContraptionEntityMixin",
+    "BlockBreakingMovementBehaviourMixin",
+    "BlockBreakingKineticBlockEntityMixin",
+    "DrillBlockEntityMixin",
+    "DrillBlockMixin",
+    "DurabilityEnchantmentMixin",
+    "LeashFenceKnotEntityMixin",
+    "InfiniteEquipmentDurabilityMixin",
+    "ItemDurabilityBarMixin",
+    "backtobed.MagicalReturnerMixin",
+    "guide.SpawnWithJourneyGuideProcedureMixin",
+    "worldtier.EnhancedAiSpawningMixin",
+    "worldtier.KrakenStaggerMixin",
+    "worldtier.SandwormStaggerMixin",
+    "worldtier.CaptainCorneliaHealingMixin",
+    "events.LuminousEventVictoryMixin",
+    "transport.EngineVehicleFuelMixin",
+    "transport.EntityStuckSpeedAccessor",
+    "transport.DonkeyInventoryMixin",
+    "transport.FurnaceMinecartMixin",
+    "transport.ItemBasedSteeringAccessor",
+    "transport.PigBoostMixin",
+    "transport.RoyalWagonInventoryMixin",
+    "transport.TrottingWagonClydesdaleMixin"
+  ],
+  "client": [
+    "client.EntityRenderDispatcherFrozenTintMixin",
+    "client.IngredientListOverlayAccessor",
+    "client.StorageTerminalFocusMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "plugin": "com.siirio.jemcompat.OptionalMixins"
+}

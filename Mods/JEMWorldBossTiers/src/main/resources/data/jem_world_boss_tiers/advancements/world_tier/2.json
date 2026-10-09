@@ -1,0 +1,13 @@
+{
+  "parent": "jem_world_boss_tiers:world_tier/1",
+  "display": {
+    "icon": {"item": "minecraft:ender_eye"},
+    "title": {"translate": "advancement.jem_world_boss_tiers.tier_2.title"},
+    "description": {"translate": "advancement.jem_world_boss_tiers.tier_2.description"},
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {"reached": {"trigger": "minecraft:impossible"}}
+}

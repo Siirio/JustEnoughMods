@@ -1,0 +1,69 @@
+plugins {
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
+}
+
+group = 'com.justenoughmods'
+version = '2.0.0-dev'
+
+def jemRuntimeRoot = findProperty('jemRuntimeRoot') ?: System.getenv('JEM_INSTANCE')
+
+if (jemRuntimeRoot == null || jemRuntimeRoot.isBlank()) {
+    throw new GradleException('Set -PjemRuntimeRoot=<path> or JEM_INSTANCE before building JEM Pack Core')
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
+}
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+}
+
+dependencies {
+    compileOnly files('../JEMAchievementGuide/build/classes/java/main')
+    compileOnly files('../JEMTwelveEyes/build/classes/java/main')
+    testImplementation files('../JEMTwelveEyes/build/classes/java/main')
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
+    compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/BetterAdvancements-Forge-1.20.1-0.6.0.73.jar"))
+    compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/Patchouli-1.20.1-85-FORGE.jar"))
+    compileOnly files("${jemRuntimeRoot}/mods/backpacked-forge-1.20.1-3.0.9.jar")
+    compileOnly files("${jemRuntimeRoot}/mods/framework-forge-1.20.1-0.8.0.jar")
+    compileOnly files("${jemRuntimeRoot}/mods/TreeChop-1.20.1-forge-0.19.0-fixed.jar")
+    compileOnly files("${jemRuntimeRoot}/mods/Paraglider-forge-20.1.3.jar")
+    compileOnly files("${jemRuntimeRoot}/mods/spawn-4.0.7-1.20.1.jar")
+    compileOnly files("${jemRuntimeRoot}/mods/immersive_melodies-0.8.0%2B1.20.1-forge.jar")
+    compileOnly files("${jemRuntimeRoot}/mods/zipline-forge-1.20.1-1.3.0.jar")
+    compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/immersive_weathering-1.20.1-2.0.5-forge.jar"))
+    testImplementation platform('org.junit:junit-bom:5.10.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+
+tasks.named('test', Test).configure {
+    useJUnitPlatform()
+}
+
+mixin {
+    add sourceSets.main, 'jem_pack_core.refmap.json'
+    config 'jem_pack_core.mixins.json'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 17
+}
+
+jar {
+    archiveBaseName = 'jem-pack-core'
+    manifest {
+        attributes([
+            'Specification-Title': 'JEM Pack Core',
+            'Specification-Version': project.version,
+            'Implementation-Title': project.name,
+            'Implementation-Version': project.version,
+            'MixinConfigs': 'jem_pack_core.mixins.json'
+        ])
+    }
+    finalizedBy 'reobfJar'
+}

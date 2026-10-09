@@ -1,0 +1,15 @@
+#Master toggle for all FPS Booster optimizations
+enabled = true
+#Skip rendering entities outside the view frustum or fully occluded by terrain
+cullEntities = true
+#Skip rendering block entities (chests/signs/etc.) outside frustum
+cullBlockEntities = true
+#Skip ticking/rendering particles outside frustum or behind walls
+cullParticles = true
+#Skip bob/rotation math for item entities the player cannot see
+skipOffscreenItemAnim = true
+#Coalesce multiple block updates in the same frame into one mesh rebuild
+batchChunkUpdates = true
+#Reuse Vec3/AABB instances in per-frame hot paths to reduce GC pressure
+poolHotVectors = true
+

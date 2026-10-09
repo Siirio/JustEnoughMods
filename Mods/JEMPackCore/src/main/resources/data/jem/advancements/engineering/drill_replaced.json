@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "create:andesite_alloy"
+    },
+    "title": {
+      "translate": "jem.advancement.engineering.drill_replaced.title"
+    },
+    "description": {
+      "translate": "jem.advancement.engineering.drill_replaced.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "completion": {
+      "trigger": "jem_advancements:node/jem/engineering/drill_replaced"
+    }
+  },
+  "requirements": [
+    [
+      "completion"
+    ]
+  ],
+  "parent": "jem:engineering/drill_service"
+}

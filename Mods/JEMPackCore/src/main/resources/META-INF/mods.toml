@@ -1,0 +1,38 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="jem_pack_core"
+version="${file.jarVersion}"
+displayName="JEM Pack Core"
+authors="Siirio"
+description='''JustEnoughMods campaign content, advancement trees and pack integration. Distributed as part of JustEnoughMods.'''
+
+[[dependencies.jem_pack_core]]
+modId="forge"
+mandatory=true
+versionRange="[47.4.10,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.jem_pack_core]]
+modId="jem_advancements"
+mandatory=true
+versionRange="[5.1.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.jem_pack_core]]
+modId="jem_twelve_eyes"
+mandatory=true
+versionRange="[1.6.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.jem_pack_core]]
+modId="jem_world_boss_tiers"
+mandatory=true
+versionRange="[2.4.4,)"
+ordering="AFTER"
+side="BOTH"

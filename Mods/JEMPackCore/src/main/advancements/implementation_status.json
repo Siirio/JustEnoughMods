@@ -1,0 +1,236 @@
+{
+  "nodes": [
+    {
+      "advancement_id": "jem_guide:qol/root",
+      "provider": "minecraft:tick"
+    },
+    {
+      "advancement_id": "jem_guide:qol/1",
+      "provider": "LivingEntityMixin#detectSpyglassTarget"
+    },
+    {
+      "advancement_id": "jem_guide:qol/13",
+      "provider": "minecraft:inventory_changed"
+    },
+    {
+      "advancement_id": "jem_guide:qol/13_3_1",
+      "provider": "minecraft:inventory_changed"
+    },
+    {
+      "advancement_id": "jem_guide:qol/13_3_1_1_1",
+      "provider": "SimpleBargainMixin#afterBargain"
+    },
+    {
+      "advancement_id": "jem_guide:qol/13_3_1_1_2",
+      "provider": "SimpleBargainMixin#afterBargain"
+    },
+    {
+      "advancement_id": "jem_guide:qol/7",
+      "provider": "BackpackedMixin#onEquipBackpack"
+    },
+    {
+      "advancement_id": "jem_guide:qol/7_1",
+      "provider": "BackpackedServerPlayHandlerMixin#onChangeAugment"
+    },
+    {
+      "advancement_id": "jem_guide:qol/7_3",
+      "provider": "BackpackedMixin#onEquipBackpack"
+    },
+    {
+      "advancement_id": "jem_guide:qol/8",
+      "provider": "TreeChopIntegration#onTreeFelled"
+    },
+    {
+      "advancement_id": "jem_guide:qol/8_3",
+      "provider": "TreeChopIntegration#onTreeFelled"
+    },
+    {
+      "advancement_id": "jem_guide:qol/group_homecoming",
+      "provider": "GroupBedTeleport#activate"
+    },
+    {
+      "advancement_id": "jem_guide:qol/natures_compass",
+      "provider": "minecraft:inventory_changed"
+    },
+    {
+      "advancement_id": "jem_guide:qol/universal_leash",
+      "provider": "UniversalLeashEvents#onEntityInteract"
+    },
+    {
+      "advancement_id": "jem_guide:mobs/root",
+      "provider": "minecraft:tick"
+    },
+    {
+      "advancement_id": "jem_guide:mobs/8_4_1",
+      "provider": "ForgeGameplayEvents#onItemCrafted"
+    },
+    {
+      "advancement_id": "jem_guide:arsenal/root",
+      "provider": "minecraft:tick"
+    },
+    {
+      "advancement_id": "jem_guide:arsenal/ballista",
+      "provider": "minecraft:inventory_changed"
+    },
+    {
+      "advancement_id": "jem_guide:arsenal/catapult",
+      "provider": "minecraft:inventory_changed"
+    },
+    {
+      "advancement_id": "jem_guide:arsenal/efn_armor",
+      "provider": "minecraft:inventory_changed"
+    },
+    {
+      "advancement_id": "jem_guide:arsenal/efn_armor_collection",
+      "provider": "minecraft:inventory_changed"
+    },
+    {
+      "advancement_id": "jem_guide:arsenal/efn_weapon_collection",
+      "provider": "minecraft:inventory_changed"
+    },
+    {
+      "advancement_id": "jem_guide:arsenal/efn_weapons",
+      "provider": "minecraft:inventory_changed"
+    },
+    {
+      "advancement_id": "jem_guide:fishing/root",
+      "provider": "minecraft:tick"
+    },
+    {
+      "advancement_id": "jem_guide:fishing/4_3",
+      "provider": "minecraft:fishing_rod_hooked"
+    },
+    {
+      "advancement_id": "jem_guide:fishing/5_6",
+      "provider": "minecraft:fishing_rod_hooked"
+    },
+    {
+      "advancement_id": "jem_guide:fishing/6_2",
+      "provider": "CastingNetItemMixin#afterNetUsed"
+    },
+    {
+      "advancement_id": "jem_guide:bosses/root",
+      "provider": "minecraft:tick"
+    },
+    {
+      "advancement_id": "jem_guide:bosses/1",
+      "provider": "minecraft:inventory_changed, minecraft:player_killed_entity"
+    },
+    {
+      "advancement_id": "jem_guide:bosses/1_1_1_10_1",
+      "provider": "minecraft:player_killed_entity"
+    },
+    {
+      "advancement_id": "jem_guide:bosses/1_1_1_4",
+      "provider": "minecraft:player_killed_entity"
+    },
+    {
+      "advancement_id": "jem_guide:bosses/1_1_1_5",
+      "provider": "minecraft:player_killed_entity"
+    },
+    {
+      "advancement_id": "jem_guide:bosses/1_1_1_7",
+      "provider": "minecraft:player_killed_entity"
+    },
+    {
+      "advancement_id": "jem_guide:bosses/1_1_1_8_1",
+      "provider": "minecraft:player_killed_entity"
+    },
+    {
+      "advancement_id": "jem_guide:bosses/1_2_1",
+      "provider": "minecraft:player_killed_entity"
+    },
+    {
+      "advancement_id": "jem_guide:bosses/2_1",
+      "provider": "minecraft:player_killed_entity"
+    },
+    {
+      "advancement_id": "jem_guide:bosses/2_2",
+      "provider": "minecraft:player_killed_entity"
+    },
+    {
+      "advancement_id": "jem_guide:bosses/3_2",
+      "provider": "minecraft:player_killed_entity"
+    },
+    {
+      "advancement_id": "jem_guide:bosses/3_7",
+      "provider": "minecraft:player_killed_entity"
+    },
+    {
+      "advancement_id": "jem_guide:bosses/5_1",
+      "provider": "minecraft:player_killed_entity"
+    },
+    {
+      "advancement_id": "jem_guide:building/root",
+      "provider": "minecraft:tick"
+    },
+    {
+      "advancement_id": "jem_guide:building/1",
+      "provider": "minecraft:placed_block"
+    },
+    {
+      "advancement_id": "jem_guide:building/14",
+      "provider": "ForgeGameplayEvents#onItemCrafted"
+    },
+    {
+      "advancement_id": "jem_guide:building/4",
+      "provider": "ForgeGameplayEvents#onBlockPlaced"
+    },
+    {
+      "advancement_id": "jem_guide:building/7",
+      "provider": "minecraft:placed_block"
+    },
+    {
+      "advancement_id": "jem_guide:building/7_4",
+      "provider": "minecraft:placed_block"
+    },
+    {
+      "advancement_id": "jem_guide:building/8",
+      "provider": "minecraft:placed_block"
+    },
+    {
+      "advancement_id": "jem:engineering/root",
+      "provider": "minecraft:tick"
+    },
+    {
+      "advancement_id": "jem:engineering/drill_work",
+      "provider": "BlockBreakingMovementBehaviourMixin#onBlockBroken"
+    },
+    {
+      "advancement_id": "jem:engineering/drill_service",
+      "provider": "AbstractContraptionEntityMixin#serviceDrills"
+    },
+    {
+      "advancement_id": "jem:engineering/drill_replaced",
+      "provider": "BlockBreakingMovementBehaviourMixin#onBlockBroken"
+    },
+    {
+      "advancement_id": "jem_guide:cool_stuff/root",
+      "provider": "minecraft:tick"
+    },
+    {
+      "advancement_id": "jem_guide:cool_stuff/cool_death",
+      "provider": "ElementalImpactEvents#freeze"
+    },
+    {
+      "advancement_id": "jem_guide:cool_stuff/4_4",
+      "provider": "ForgeGameplayEvents#onItemCrafted"
+    },
+    {
+      "advancement_id": "jem_guide:cool_stuff/play_a_note",
+      "provider": "ImmersiveMelodiesMixin#afterNoteBroadcast"
+    },
+    {
+      "advancement_id": "jem_guide:cool_stuff/zipline_attach",
+      "provider": "ZiplineLogicMixin#afterAttach"
+    },
+    {
+      "advancement_id": "jem_guide:cool_stuff/zipline_release",
+      "provider": "ZiplineLogicMixin#beforeRelease"
+    },
+    {
+      "advancement_id": "jem_guide:cool_stuff/zipline_transfer",
+      "provider": "ZiplineLogicMixin#afterCableSwitch"
+    }
+  ]
+}

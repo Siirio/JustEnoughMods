@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "item": "naturescompass:naturescompass"
+    },
+    "title": {
+      "translate": "jem_guide.advancement.qol.natures_compass.title"
+    },
+    "description": {
+      "translate": "jem_guide.advancement.qol.natures_compass.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "completion": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "naturescompass:natures_compass"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completion"
+    ]
+  ],
+  "parent": "jem_guide:qol/root"
+}

@@ -1,0 +1,10 @@
+{
+  "parent": "jemcompat:campaign/branches/leviathan/captain_cornelia",
+  "display": {
+    "icon": { "item": "luminous_beasts:sea_viper_spawn_egg" },
+    "title": { "translate": "advancement.jemcompat.prerequisite.sea_viper.title" },
+    "description": { "translate": "advancement.jemcompat.prerequisite.sea_viper.description" },
+    "frame": "task", "show_toast": true, "announce_to_chat": false, "hidden": false
+  },
+  "criteria": { "defeated": { "trigger": "minecraft:player_killed_entity", "conditions": { "entity": { "type": "luminous_beasts:sea_viper" } } } }
+}

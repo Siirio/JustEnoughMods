@@ -1,0 +1,2829 @@
+{
+  "schema_version": 3,
+  "expected_counts": {
+    "qol": 15,
+    "mobs": 2,
+    "arsenal": 7,
+    "fishing": 4,
+    "bosses": 13,
+    "building": 7,
+    "engineering": 4,
+    "cool_stuff": 7
+  },
+  "nodes": [
+    {
+      "advancement_id": "jem_guide:qol/root",
+      "number": "0",
+      "tab": "qol",
+      "parent": null,
+      "title_ru": "Жить стало легче!",
+      "title_en": "Life Just Got Easier!",
+      "short_ru": "Маленькие удобства меняют большое приключение.",
+      "short_en": "Little conveniences can change a big adventure.",
+      "exact_ru": "Маленькие удобства делают каждое путешествие приятнее.",
+      "exact_en": "Little conveniences make every expedition smoother.",
+      "flags": [
+        "ROOT"
+      ],
+      "mechanics": "Tab root",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "VANILLA_JSON",
+      "authoritative_source": "Minecraft advancement criteria",
+      "hook": "Data-driven criterion derived from the exact mechanic and verified IDs",
+      "stateful": false,
+      "test": "Validate jem_guide:qol/root positive action and nearest negative proxy",
+      "source_file": "JEM_QoL_Achievement_Tree_v6_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:tick"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:tick",
+      "icon": "minecraft:compass"
+    },
+    {
+      "advancement_id": "jem_guide:qol/1",
+      "number": "1",
+      "tab": "qol",
+      "parent": "jem_guide:qol/root",
+      "title_ru": "ENHANCE!",
+      "title_en": "ENHANCE!",
+      "short_ru": "Рассмотри живое существо через подзорную трубу.",
+      "short_en": "Look at a living creature through a Spyglass.",
+      "exact_ru": "Возьми подзорную трубу и посмотри через неё на любое живое существо.",
+      "exact_en": "Take a Spyglass and look at any living creature through it.",
+      "flags": [
+        "FUN"
+      ],
+      "mechanics": "Spyglass Improvements + vanilla Spyglass",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "VANILLA_JSON",
+      "authoritative_source": "Minecraft advancement criteria",
+      "hook": "Data-driven criterion derived from the exact mechanic and verified IDs",
+      "stateful": false,
+      "test": "Validate jem_guide:qol/1 positive action and nearest negative proxy",
+      "source_file": "JEM_QoL_Achievement_Tree_v6_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "jem_advancements:node/jem_guide/qol/1"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "LivingEntityMixin#detectSpyglassTarget",
+      "icon": "minecraft:spyglass"
+    },
+    {
+      "advancement_id": "jem_guide:qol/13",
+      "number": "13",
+      "tab": "qol",
+      "parent": "jem_guide:qol/root",
+      "title_ru": "А падать обязательно?",
+      "title_en": "Do I Have to Fall?",
+      "short_ru": "Получи параплан.",
+      "short_en": "Obtain a Paraglider.",
+      "exact_ru": "Получи параплан.",
+      "exact_en": "Obtain a Paraglider.",
+      "flags": [],
+      "mechanics": "Paraglider",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "VANILLA_JSON",
+      "authoritative_source": "Minecraft advancement criteria",
+      "hook": "Data-driven criterion derived from the exact mechanic and verified IDs",
+      "stateful": false,
+      "test": "Validate jem_guide:qol/13 positive action and nearest negative proxy",
+      "source_file": "JEM_QoL_Achievement_Tree_v6_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "paraglider:paraglider"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:inventory_changed",
+      "icon": "paraglider:paraglider"
+    },
+    {
+      "advancement_id": "jem_guide:qol/13_3_1",
+      "number": "13.3.1",
+      "tab": "qol",
+      "parent": "jem_guide:qol/13",
+      "title_ru": "Четыре есть четыре",
+      "title_en": "Four of a Kind",
+      "short_ru": "Собери четыре духовные сферы для одного настоящего выбора.",
+      "short_en": "Collect enough Spirit Orbs for one real choice.",
+      "exact_ru": "Собери четыре сферу духа — этого достаточно для одного улучшения у статую богини.",
+      "exact_en": "Collect four Spirit Orbs—enough for one upgrade at a Goddess Statue.",
+      "flags": [],
+      "mechanics": "Paraglider",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "MOD_API_EVENT",
+      "authoritative_source": "Paraglider",
+      "hook": "Paraglider",
+      "stateful": false,
+      "test": "Validate jem_guide:qol/13_3_1 positive action and nearest negative proxy",
+      "source_file": "JEM_QoL_Achievement_Tree_v6_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "paraglider:spirit_orb"
+                ],
+                "count": {
+                  "min": 4
+                }
+              }
+            ]
+          }
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:inventory_changed",
+      "icon": "paraglider:spirit_orb"
+    },
+    {
+      "advancement_id": "jem_guide:qol/13_3_1_1_1",
+      "number": "13.3.1.1.1",
+      "tab": "qol",
+      "parent": "jem_guide:qol/13_3_1",
+      "title_ru": "Сердце подсказывает",
+      "title_en": "Follow Your Heart",
+      "short_ru": "Выбери постоянное увеличение здоровья.",
+      "short_en": "Choose a permanent health increase.",
+      "exact_ru": "У статую богини потрать четыре сферу духа на постоянное увеличение здоровья.",
+      "exact_en": "At a Goddess Statue, spend four Spirit Orbs on a permanent health increase.",
+      "flags": [
+        "GOAL"
+      ],
+      "mechanics": "Paraglider",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "MOD_API_EVENT",
+      "authoritative_source": "Paraglider",
+      "hook": "Paraglider",
+      "stateful": false,
+      "test": "Validate jem_guide:qol/13_3_1_1_1 positive action and nearest negative proxy",
+      "source_file": "JEM_QoL_Achievement_Tree_v6_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "jem_advancements:node/jem_guide/qol/13_3_1_1_1"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "SimpleBargainMixin#afterBargain",
+      "icon": "minecraft:golden_apple"
+    },
+    {
+      "advancement_id": "jem_guide:qol/13_3_1_1_2",
+      "number": "13.3.1.1.2",
+      "tab": "qol",
+      "parent": "jem_guide:qol/13_3_1",
+      "title_ru": "Второе дыхание",
+      "title_en": "Second Wind",
+      "short_ru": "Выбери постоянное увеличение выносливости.",
+      "short_en": "Choose a permanent stamina increase.",
+      "exact_ru": "У статую богини потрать четыре сферу духа на постоянное увеличение выносливости.",
+      "exact_en": "At a Goddess Statue, spend four Spirit Orbs on a permanent stamina increase.",
+      "flags": [
+        "GOAL"
+      ],
+      "mechanics": "Paraglider",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "MOD_API_EVENT",
+      "authoritative_source": "Paraglider",
+      "hook": "Paraglider",
+      "stateful": false,
+      "test": "Validate jem_guide:qol/13_3_1_1_2 positive action and nearest negative proxy",
+      "source_file": "JEM_QoL_Achievement_Tree_v6_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "jem_advancements:node/jem_guide/qol/13_3_1_1_2"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "SimpleBargainMixin#afterBargain",
+      "icon": "minecraft:rabbit_foot"
+    },
+    {
+      "advancement_id": "jem_guide:qol/7",
+      "number": "7",
+      "tab": "qol",
+      "parent": "jem_guide:qol/root",
+      "title_ru": "Что у тебя за спиной?",
+      "title_en": "What's On Your Back?",
+      "short_ru": "Надень свой первый настоящий рюкзак.",
+      "short_en": "Equip your first real backpack.",
+      "exact_ru": "Надень рюкзак через систему систему рюкзаков. Просто носить его в инвентаре недостаточно.",
+      "exact_en": "Equip a backpack through Backpacked. Simply carrying it in your inventory is not enough.",
+      "flags": [],
+      "mechanics": "Backpacked",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "VANILLA_JSON",
+      "authoritative_source": "Minecraft advancement criteria",
+      "hook": "Data-driven criterion derived from the exact mechanic and verified IDs",
+      "stateful": false,
+      "test": "Validate jem_guide:qol/7 positive action and nearest negative proxy",
+      "source_file": "JEM_QoL_Achievement_Tree_v6_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "jem_advancements:node/jem_guide/qol/7"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "BackpackedMixin#onEquipBackpack",
+      "icon": "minecraft:bundle"
+    },
+    {
+      "advancement_id": "jem_guide:qol/7_1",
+      "number": "7.1",
+      "tab": "qol",
+      "parent": "jem_guide:qol/7",
+      "title_ru": "Места много не бывает",
+      "title_en": "Never Enough Room",
+      "short_ru": "Потрать опыт рюкзака на первое полезное улучшение.",
+      "short_en": "Spend earned backpack experience on your first useful unlock.",
+      "exact_ru": "Заработай опыт рюкзака и потрать его на любое первое улучшение.",
+      "exact_en": "Earn backpack experience and spend it on any first upgrade.",
+      "flags": [],
+      "mechanics": "Backpacked",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "MOD_API_EVENT",
+      "authoritative_source": "Backpacked",
+      "hook": "Backpacked",
+      "stateful": false,
+      "test": "Validate jem_guide:qol/7_1 positive action and nearest negative proxy",
+      "source_file": "JEM_QoL_Achievement_Tree_v6_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "jem_advancements:node/jem_guide/qol/7_1"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "BackpackedServerPlayHandlerMixin#onChangeAugment",
+      "icon": "minecraft:chest"
+    },
+    {
+      "advancement_id": "jem_guide:qol/7_3",
+      "number": "7.3",
+      "tab": "qol",
+      "parent": "jem_guide:qol/7",
+      "title_ru": "Ещё один?!",
+      "title_en": "Another One?!",
+      "short_ru": "Надень сразу два рюкзака.",
+      "short_en": "Wear two backpacks at once.",
+      "exact_ru": "Открой дополнительное место для рюкзака и надень два рюкзака одновременно.",
+      "exact_en": "Unlock another backpack slot and wear two backpacks at the same time.",
+      "flags": [
+        "FUN"
+      ],
+      "mechanics": "Backpacked",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "VANILLA_JSON",
+      "authoritative_source": "Minecraft advancement criteria",
+      "hook": "Data-driven criterion derived from the exact mechanic and verified IDs",
+      "stateful": false,
+      "test": "Validate jem_guide:qol/7_3 positive action and nearest negative proxy",
+      "source_file": "JEM_QoL_Achievement_Tree_v6_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "jem_advancements:node/jem_guide/qol/7_3"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "BackpackedMixin#onEquipBackpack",
+      "icon": "minecraft:ender_chest"
+    },
+    {
+      "advancement_id": "jem_guide:qol/8",
+      "number": "8",
+      "tab": "qol",
+      "parent": "jem_guide:qol/root",
+      "title_ru": "TIMBEEEER!",
+      "title_en": "TIMBEEEER!",
+      "short_ru": "Свали целое дерево одним общим процессом рубки.",
+      "short_en": "Fell an entire tree through one shared chopping process.",
+      "exact_ru": "Руби дерево через рубку деревьев целиком, пока оно не свалится целиком.",
+      "exact_en": "Chop a tree with TreeChop until the whole tree falls.",
+      "flags": [
+        "FUN"
+      ],
+      "mechanics": "TreeChop",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "SMALL_STATE_MACHINE",
+      "authoritative_source": "TreeChop",
+      "hook": "TreeChop",
+      "stateful": true,
+      "test": "Validate jem_guide:qol/8 positive action and nearest negative proxy",
+      "source_file": "JEM_QoL_Achievement_Tree_v6_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "jem_advancements:node/jem_guide/qol/8"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "TreeChopIntegration#onTreeFelled",
+      "icon": "minecraft:iron_axe"
+    },
+    {
+      "advancement_id": "jem_guide:qol/8_3",
+      "number": "8.3",
+      "tab": "qol",
+      "parent": "jem_guide:qol/8",
+      "title_ru": "Гриб? Тоже дерево.",
+      "title_en": "Mushroom? Close Enough.",
+      "short_ru": "Свали гигантский гриб через TreeChop.",
+      "short_en": "Fell a giant mushroom or fungus through TreeChop.",
+      "exact_ru": "Найди гигантский гриб, который рубку деревьев целиком умеет рубить целиком, и свали его как дерево.",
+      "exact_en": "Find a giant mushroom that TreeChop can fell as a whole and bring it down like a tree.",
+      "flags": [
+        "FUN"
+      ],
+      "mechanics": "TreeChop",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "MOD_API_EVENT",
+      "authoritative_source": "TreeChop",
+      "hook": "TreeChop",
+      "stateful": false,
+      "test": "Validate jem_guide:qol/8_3 positive action and nearest negative proxy",
+      "source_file": "JEM_QoL_Achievement_Tree_v6_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "jem_advancements:node/jem_guide/qol/8_3"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "TreeChopIntegration#onTreeFelled",
+      "icon": "minecraft:red_mushroom_block"
+    },
+    {
+      "advancement_id": "jem_guide:qol/group_homecoming",
+      "number": "group_homecoming",
+      "tab": "qol",
+      "parent": "jem_guide:qol/root",
+      "title_ru": "Домой всей компанией",
+      "title_en": "Home Together",
+      "short_ru": "Вернись к своей кровати вместе с другом.",
+      "short_en": "Return to your bed together with a friend.",
+      "exact_ru": "Встаньте вдвоём в квадрате 3 на 3. Центральный игрок должен применить Магический возвращатель, чтобы оба переместились к его кровати.",
+      "exact_en": "Stand together inside the 3-by-3 formation. The center player must use the Magical Returner so both players arrive at the host's bed.",
+      "flags": [],
+      "mechanics": "BackToBed group return",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [
+        "backtobed:magical_returner",
+        "minecraft:red_bed"
+      ],
+      "strategy": "MOD_API_EVENT",
+      "authoritative_source": "BackToBed group return",
+      "hook": "GroupBedTeleport#activate",
+      "stateful": false,
+      "test": "Validate jem_guide:qol/group_homecoming positive action and nearest negative proxy",
+      "source_file": "JEM curated runtime",
+      "criteria": {
+        "completion": {
+          "trigger": "jem_advancements:node/jem_guide/qol/group_homecoming"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "GroupBedTeleport#activate",
+      "icon": "minecraft:red_bed"
+    },
+    {
+      "advancement_id": "jem_guide:qol/natures_compass",
+      "number": "natures_compass",
+      "tab": "qol",
+      "parent": "jem_guide:qol/root",
+      "title_ru": "Природа, укажи путь",
+      "title_en": "Nature, Point the Way",
+      "short_ru": "Получи компас природы.",
+      "short_en": "Obtain a Nature's Compass.",
+      "exact_ru": "Получи компас природы и положи его в инвентарь.",
+      "exact_en": "Get a Nature's Compass and keep it in your inventory.",
+      "flags": [],
+      "mechanics": "minecraft:inventory_changed",
+      "implementation": "minecraft:inventory_changed",
+      "technical_metadata": "",
+      "resource_ids": [
+        "naturescompass:natures_compass"
+      ],
+      "strategy": "VANILLA_EXACT",
+      "authoritative_source": "Minecraft inventory criterion",
+      "hook": "minecraft:inventory_changed",
+      "stateful": false,
+      "test": "Static caller and criterion inspection",
+      "source_file": "native-first-rebuild",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "naturescompass:natures_compass"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:inventory_changed",
+      "icon": "naturescompass:naturescompass"
+    },
+    {
+      "advancement_id": "jem_guide:qol/universal_leash",
+      "number": "universal_leash",
+      "tab": "qol",
+      "parent": "jem_guide:qol/root",
+      "title_ru": "Все идут гулять",
+      "title_en": "Everyone Gets a Walk",
+      "short_ru": "Возьми на поводок существо, которое обычно не даёт этого сделать.",
+      "short_en": "Leash an entity that normally refuses a lead.",
+      "exact_ru": "Примени обычный поводок к игроку или любой другой сущности, которую нельзя привязать ванильным способом.",
+      "exact_en": "Use a normal Lead on a player or another entity that vanilla Minecraft cannot leash.",
+      "flags": [],
+      "mechanics": "JEM universal leash",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [
+        "minecraft:lead"
+      ],
+      "strategy": "MOD_API_EVENT",
+      "authoritative_source": "JEM universal leash",
+      "hook": "UniversalLeashEvents#onEntityInteract",
+      "stateful": false,
+      "test": "Validate jem_guide:qol/universal_leash positive action and nearest negative proxy",
+      "source_file": "JEM curated runtime",
+      "criteria": {
+        "completion": {
+          "trigger": "jem_advancements:node/jem_guide/qol/universal_leash"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "UniversalLeashEvents#onEntityInteract",
+      "icon": "minecraft:lead"
+    },
+    {
+      "advancement_id": "jem_guide:mobs/root",
+      "number": "0",
+      "tab": "mobs",
+      "parent": null,
+      "title_ru": "Они тут не просто так",
+      "title_en": "They’re Here for a Reason",
+      "short_ru": "У каждого хорошего существа есть причина существовать.",
+      "short_en": "Every good creature has a reason to exist.",
+      "exact_ru": "Узнай, на что действительно способны окружающие тебя существа.",
+      "exact_en": "Learn what the creatures around you can actually do.",
+      "flags": [],
+      "mechanics": "Mobs tab root",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "MOD_API_EVENT",
+      "authoritative_source": "Forge block placement event",
+      "hook": "ForgeGameplayEvents#onBlockPlaced",
+      "stateful": false,
+      "test": "Validate jem_guide:mobs/root positive action and nearest negative proxy",
+      "source_file": "JEM_Mobs_Achievement_Tree_v3_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:tick"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:tick",
+      "icon": "minecraft:lead"
+    },
+    {
+      "advancement_id": "jem_guide:mobs/8_4_1",
+      "number": "8.4.1",
+      "tab": "mobs",
+      "parent": "jem_guide:mobs/root",
+      "title_ru": "Спи спокойно",
+      "title_en": "Sweet Dreams",
+      "short_ru": "Изготовь ловца снов, используя рог из другой части экосистемы сборки.",
+      "short_en": "Make a Dreamcatcher using an antler from another part of the pack’s ecosystem.",
+      "exact_ru": "Получи рог карибу, лося или белохвостого оленя и используй его в совместимом рецепте ловца снов.",
+      "exact_en": "Obtain a Caribou, Elk, or White-Tailed Deer Antler from Critters n’ Crawlers and use it in the compatible Primal Dreamcatcher recipe. The antler must come from CnC rather than Primal.",
+      "flags": [],
+      "mechanics": "Critters n’ Crawlers antler → Primal Dreamcatcher",
+      "implementation": "Use the pack’s shared antler compatibility ingredient/tag.",
+      "technical_metadata": "Confirmed / relevant IDs: - `primal:dreamcatcher` - `cnc:caribou_antler` - `cnc:elk_antler` - `cnc:white_tailed_deer_antler` Implementation / QA: Use the pack’s shared antler compatibility ingredient/tag.",
+      "resource_ids": [
+        "primal:dreamcatcher",
+        "cnc:caribou_antler",
+        "cnc:elk_antler",
+        "cnc:white_tailed_deer_antler"
+      ],
+      "strategy": "VANILLA_JSON",
+      "authoritative_source": "Minecraft advancement criteria",
+      "hook": "Use the pack’s shared antler compatibility ingredient/tag.",
+      "stateful": false,
+      "test": "Validate jem_guide:mobs/8_4_1 positive action and nearest negative proxy",
+      "source_file": "JEM_Mobs_Achievement_Tree_v3_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "jem_advancements:node/jem_guide/mobs/8_4_1"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "ForgeGameplayEvents#onItemCrafted",
+      "icon": "minecraft:white_bed"
+    },
+    {
+      "advancement_id": "jem_guide:arsenal/root",
+      "number": "0",
+      "tab": "arsenal",
+      "parent": null,
+      "title_ru": "Не одной остротой",
+      "title_en": "More Than Sharp",
+      "short_ru": "Хорошее снаряжение меняет не цифры — оно меняет твои решения.",
+      "short_en": "Good gear changes more than numbers — it changes your decisions.",
+      "exact_ru": "Освой необычное оружие, хитрые выстрелы и тяжёлую технику.",
+      "exact_en": "Master unusual weapons, clever shots, and heavy machinery.",
+      "flags": [],
+      "mechanics": "Arsenal tab root",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "VANILLA_JSON",
+      "authoritative_source": "Minecraft advancement criteria",
+      "hook": "Data-driven criterion derived from the exact mechanic and verified IDs",
+      "stateful": false,
+      "test": "Validate jem_guide:arsenal/root positive action and nearest negative proxy",
+      "source_file": "JEM_Arsenal_Achievement_Tree_v3_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:tick"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:tick",
+      "icon": "minecraft:crossbow"
+    },
+    {
+      "advancement_id": "jem_guide:arsenal/ballista",
+      "number": "ballista",
+      "tab": "arsenal",
+      "parent": "jem_guide:arsenal/root",
+      "title_ru": "Очень весомый аргумент",
+      "title_en": "A Very Large Argument",
+      "short_ru": "Раздобудь баллисту.",
+      "short_en": "Get your hands on a Ballista.",
+      "exact_ru": "Получи предмет баллисты.",
+      "exact_en": "Obtain a Ballista item.",
+      "flags": [],
+      "mechanics": "minecraft:inventory_changed",
+      "implementation": "minecraft:inventory_changed",
+      "technical_metadata": "",
+      "resource_ids": [
+        "siegeweapons:ballista_item"
+      ],
+      "strategy": "VANILLA_EXACT",
+      "authoritative_source": "Minecraft inventory criterion",
+      "hook": "minecraft:inventory_changed",
+      "stateful": false,
+      "test": "Static caller and criterion inspection",
+      "source_file": "native-first-rebuild",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "siegeweapons:ballista_item"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:inventory_changed",
+      "icon": "siegeweapons:ballista_item"
+    },
+    {
+      "advancement_id": "jem_guide:arsenal/catapult",
+      "number": "catapult",
+      "tab": "arsenal",
+      "parent": "jem_guide:arsenal/ballista",
+      "title_ru": "Другой весомый аргумент",
+      "title_en": "The Other Large Argument",
+      "short_ru": "Раздобудь катапульту.",
+      "short_en": "Get your hands on a Catapult.",
+      "exact_ru": "Получи предмет катапульты.",
+      "exact_en": "Obtain a Catapult item.",
+      "flags": [],
+      "mechanics": "minecraft:inventory_changed",
+      "implementation": "minecraft:inventory_changed",
+      "technical_metadata": "",
+      "resource_ids": [
+        "siegeweapons:catapult_item"
+      ],
+      "strategy": "VANILLA_EXACT",
+      "authoritative_source": "Minecraft inventory criterion",
+      "hook": "minecraft:inventory_changed",
+      "stateful": false,
+      "test": "Static caller and criterion inspection",
+      "source_file": "native-first-rebuild",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "siegeweapons:catapult_item"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:inventory_changed",
+      "icon": "siegeweapons:catapult_item"
+    },
+    {
+      "advancement_id": "jem_guide:arsenal/efn_armor",
+      "number": "efn_armor",
+      "tab": "arsenal",
+      "parent": "jem_guide:arsenal/root",
+      "title_ru": "Доспехи Nightfall",
+      "title_en": "Nightfall Armor",
+      "short_ru": "Получи любую часть доспехов Epic Fight Nightfall.",
+      "short_en": "Obtain any Epic Fight Nightfall armor piece.",
+      "exact_ru": "Получи любую часть комплекта «Воитель руин» или «Сумеречное пламя».",
+      "exact_en": "Obtain any Ruinfighter or Duskfire armor piece.",
+      "flags": [
+        "GOAL"
+      ],
+      "mechanics": "Epic Fight Nightfall armor",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [
+        "efn:ruinfighter_helmet",
+        "efn:ruinfighter_chestplate",
+        "efn:ruinfighter_leggings",
+        "efn:ruinfighter_boots",
+        "efn:duskfire_helmet",
+        "efn:duskfire_chestplate",
+        "efn:duskfire_leggings",
+        "efn:duskfire_boots"
+      ],
+      "strategy": "VANILLA_JSON",
+      "authoritative_source": "Epic Fight Nightfall armor",
+      "hook": "minecraft:inventory_changed",
+      "stateful": false,
+      "test": "Validate jem_guide:arsenal/efn_armor positive action and nearest negative proxy",
+      "source_file": "JEM curated runtime",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:ruinfighter_helmet",
+                  "efn:ruinfighter_chestplate",
+                  "efn:ruinfighter_leggings",
+                  "efn:ruinfighter_boots",
+                  "efn:duskfire_helmet",
+                  "efn:duskfire_chestplate",
+                  "efn:duskfire_leggings",
+                  "efn:duskfire_boots"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:inventory_changed",
+      "icon": "efn:duskfire_chestplate"
+    },
+    {
+      "advancement_id": "jem_guide:arsenal/efn_armor_collection",
+      "number": "efn_armor_collection",
+      "tab": "arsenal",
+      "parent": "jem_guide:arsenal/efn_armor",
+      "title_ru": "Два полных комплекта",
+      "title_en": "Two Complete Sets",
+      "short_ru": "Собери оба полных комплекта доспехов Nightfall.",
+      "short_en": "Collect both complete Nightfall armor sets.",
+      "exact_ru": "Собери шлем, нагрудник, поножи и ботинки комплектов «Воитель руин» и «Сумеречное пламя».",
+      "exact_en": "Collect the helmet, chestplate, leggings, and boots from both the Ruinfighter and Duskfire sets.",
+      "flags": [
+        "CHALLENGE"
+      ],
+      "mechanics": "Epic Fight Nightfall armor collection",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [
+        "efn:ruinfighter_helmet",
+        "efn:ruinfighter_chestplate",
+        "efn:ruinfighter_leggings",
+        "efn:ruinfighter_boots",
+        "efn:duskfire_helmet",
+        "efn:duskfire_chestplate",
+        "efn:duskfire_leggings",
+        "efn:duskfire_boots"
+      ],
+      "strategy": "VANILLA_JSON",
+      "authoritative_source": "Epic Fight Nightfall armor collection",
+      "hook": "minecraft:inventory_changed",
+      "stateful": false,
+      "test": "Validate jem_guide:arsenal/efn_armor_collection positive action and nearest negative proxy",
+      "source_file": "JEM curated runtime",
+      "criteria": {
+        "ruinfighter_helmet": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:ruinfighter_helmet"
+                ]
+              }
+            ]
+          }
+        },
+        "ruinfighter_chestplate": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:ruinfighter_chestplate"
+                ]
+              }
+            ]
+          }
+        },
+        "ruinfighter_leggings": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:ruinfighter_leggings"
+                ]
+              }
+            ]
+          }
+        },
+        "ruinfighter_boots": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:ruinfighter_boots"
+                ]
+              }
+            ]
+          }
+        },
+        "duskfire_helmet": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:duskfire_helmet"
+                ]
+              }
+            ]
+          }
+        },
+        "duskfire_chestplate": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:duskfire_chestplate"
+                ]
+              }
+            ]
+          }
+        },
+        "duskfire_leggings": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:duskfire_leggings"
+                ]
+              }
+            ]
+          }
+        },
+        "duskfire_boots": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:duskfire_boots"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "requirements": [
+        [
+          "ruinfighter_helmet"
+        ],
+        [
+          "ruinfighter_chestplate"
+        ],
+        [
+          "ruinfighter_leggings"
+        ],
+        [
+          "ruinfighter_boots"
+        ],
+        [
+          "duskfire_helmet"
+        ],
+        [
+          "duskfire_chestplate"
+        ],
+        [
+          "duskfire_leggings"
+        ],
+        [
+          "duskfire_boots"
+        ]
+      ],
+      "provider": "minecraft:inventory_changed",
+      "icon": "efn:ruinfighter_chestplate"
+    },
+    {
+      "advancement_id": "jem_guide:arsenal/efn_weapon_collection",
+      "number": "efn_weapon_collection",
+      "tab": "arsenal",
+      "parent": "jem_guide:arsenal/efn_weapons",
+      "title_ru": "Весь арсенал Nightfall",
+      "title_en": "The Entire Nightfall Arsenal",
+      "short_ru": "Собери всё доступное оружие Epic Fight Nightfall.",
+      "short_en": "Collect every player-facing Epic Fight Nightfall weapon.",
+      "exact_ru": "Собери по одному экземпляру каждого полноценного оружия Epic Fight Nightfall. Служебные предметы, скрытые формы и тестовое оружие не учитываются.",
+      "exact_en": "Collect one of every player-facing Epic Fight Nightfall weapon. Internal states, hidden variants, and test items do not count.",
+      "flags": [
+        "CHALLENGE"
+      ],
+      "mechanics": "Epic Fight Nightfall weapon collection",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [
+        "efn:ruinsgreatsword",
+        "efn:thornwheel",
+        "efn:nf_dual_sword",
+        "efn:meen_spear",
+        "efn:sword_of_pioneer",
+        "efn:nf_shortsword",
+        "efn:nf_shortsword_2",
+        "efn:exsiliumgladius",
+        "efn:fire_exsiliumgladius",
+        "efn:air_tachi",
+        "efn:co_tachi",
+        "efn:kusabimaru",
+        "efn:broadblade",
+        "efn:crimson_moon",
+        "efn:nf_claw",
+        "efn:yamato_dmc4_in_sheath",
+        "efn:yamato_dmc_in_sheath",
+        "efn:hf_murasama",
+        "efn:hf_blade",
+        "efn:crescent_moon",
+        "efn:excalibur"
+      ],
+      "strategy": "VANILLA_JSON",
+      "authoritative_source": "Epic Fight Nightfall weapon collection",
+      "hook": "minecraft:inventory_changed",
+      "stateful": false,
+      "test": "Validate jem_guide:arsenal/efn_weapon_collection positive action and nearest negative proxy",
+      "source_file": "JEM curated runtime",
+      "criteria": {
+        "ruinsgreatsword": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:ruinsgreatsword"
+                ]
+              }
+            ]
+          }
+        },
+        "thornwheel": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:thornwheel"
+                ]
+              }
+            ]
+          }
+        },
+        "nf_dual_sword": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:nf_dual_sword"
+                ]
+              }
+            ]
+          }
+        },
+        "meen_spear": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:meen_spear"
+                ]
+              }
+            ]
+          }
+        },
+        "sword_of_pioneer": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:sword_of_pioneer"
+                ]
+              }
+            ]
+          }
+        },
+        "nf_shortsword": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:nf_shortsword"
+                ]
+              }
+            ]
+          }
+        },
+        "nf_shortsword_2": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:nf_shortsword_2"
+                ]
+              }
+            ]
+          }
+        },
+        "exsiliumgladius": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:exsiliumgladius"
+                ]
+              }
+            ]
+          }
+        },
+        "fire_exsiliumgladius": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:fire_exsiliumgladius"
+                ]
+              }
+            ]
+          }
+        },
+        "air_tachi": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:air_tachi"
+                ]
+              }
+            ]
+          }
+        },
+        "co_tachi": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:co_tachi"
+                ]
+              }
+            ]
+          }
+        },
+        "kusabimaru": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:kusabimaru"
+                ]
+              }
+            ]
+          }
+        },
+        "broadblade": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:broadblade"
+                ]
+              }
+            ]
+          }
+        },
+        "crimson_moon": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:crimson_moon"
+                ]
+              }
+            ]
+          }
+        },
+        "nf_claw": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:nf_claw"
+                ]
+              }
+            ]
+          }
+        },
+        "yamato_dmc4": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:yamato_dmc4_in_sheath"
+                ]
+              }
+            ]
+          }
+        },
+        "yamato_dmc": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:yamato_dmc_in_sheath"
+                ]
+              }
+            ]
+          }
+        },
+        "hf_murasama": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:hf_murasama"
+                ]
+              }
+            ]
+          }
+        },
+        "hf_blade": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:hf_blade"
+                ]
+              }
+            ]
+          }
+        },
+        "crescent_moon": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:crescent_moon"
+                ]
+              }
+            ]
+          }
+        },
+        "excalibur": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:excalibur"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "requirements": [
+        [
+          "ruinsgreatsword"
+        ],
+        [
+          "thornwheel"
+        ],
+        [
+          "nf_dual_sword"
+        ],
+        [
+          "meen_spear"
+        ],
+        [
+          "sword_of_pioneer"
+        ],
+        [
+          "nf_shortsword"
+        ],
+        [
+          "nf_shortsword_2"
+        ],
+        [
+          "exsiliumgladius"
+        ],
+        [
+          "fire_exsiliumgladius"
+        ],
+        [
+          "air_tachi"
+        ],
+        [
+          "co_tachi"
+        ],
+        [
+          "kusabimaru"
+        ],
+        [
+          "broadblade"
+        ],
+        [
+          "crimson_moon"
+        ],
+        [
+          "nf_claw"
+        ],
+        [
+          "yamato_dmc4"
+        ],
+        [
+          "yamato_dmc"
+        ],
+        [
+          "hf_murasama"
+        ],
+        [
+          "hf_blade"
+        ],
+        [
+          "crescent_moon"
+        ],
+        [
+          "excalibur"
+        ]
+      ],
+      "provider": "minecraft:inventory_changed",
+      "icon": "efn:hf_murasama"
+    },
+    {
+      "advancement_id": "jem_guide:arsenal/efn_weapons",
+      "number": "efn_weapons",
+      "tab": "arsenal",
+      "parent": "jem_guide:arsenal/root",
+      "title_ru": "Оружие Nightfall",
+      "title_en": "Nightfall Weapons",
+      "short_ru": "Получи любое оружие из Epic Fight Nightfall.",
+      "short_en": "Obtain any Epic Fight Nightfall weapon.",
+      "exact_ru": "Получи любое полноценное оружие из Epic Fight Nightfall. Служебные варианты оружия не требуются.",
+      "exact_en": "Obtain any player-facing weapon from Epic Fight Nightfall. Internal weapon-state items are excluded.",
+      "flags": [
+        "GOAL"
+      ],
+      "mechanics": "Epic Fight Nightfall weapons",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [
+        "efn:ruinsgreatsword",
+        "efn:thornwheel",
+        "efn:nf_dual_sword",
+        "efn:meen_spear",
+        "efn:sword_of_pioneer",
+        "efn:nf_shortsword",
+        "efn:nf_shortsword_2",
+        "efn:exsiliumgladius",
+        "efn:fire_exsiliumgladius",
+        "efn:air_tachi",
+        "efn:co_tachi",
+        "efn:kusabimaru",
+        "efn:broadblade",
+        "efn:crimson_moon",
+        "efn:nf_claw",
+        "efn:yamato_dmc4_in_sheath",
+        "efn:yamato_dmc_in_sheath",
+        "efn:hf_murasama",
+        "efn:hf_blade",
+        "efn:crescent_moon",
+        "efn:excalibur"
+      ],
+      "strategy": "VANILLA_JSON",
+      "authoritative_source": "Epic Fight Nightfall weapons",
+      "hook": "minecraft:inventory_changed",
+      "stateful": false,
+      "test": "Validate jem_guide:arsenal/efn_weapons positive action and nearest negative proxy",
+      "source_file": "JEM curated runtime",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "efn:ruinsgreatsword",
+                  "efn:thornwheel",
+                  "efn:nf_dual_sword",
+                  "efn:meen_spear",
+                  "efn:sword_of_pioneer",
+                  "efn:nf_shortsword",
+                  "efn:nf_shortsword_2",
+                  "efn:exsiliumgladius",
+                  "efn:fire_exsiliumgladius",
+                  "efn:air_tachi",
+                  "efn:co_tachi",
+                  "efn:kusabimaru",
+                  "efn:broadblade",
+                  "efn:crimson_moon",
+                  "efn:nf_claw",
+                  "efn:yamato_dmc4_in_sheath",
+                  "efn:yamato_dmc_in_sheath",
+                  "efn:hf_murasama",
+                  "efn:hf_blade",
+                  "efn:crescent_moon",
+                  "efn:excalibur"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:inventory_changed",
+      "icon": "efn:ruinsgreatsword"
+    },
+    {
+      "advancement_id": "jem_guide:fishing/root",
+      "number": "0",
+      "tab": "fishing",
+      "parent": null,
+      "title_ru": "Клюёт!",
+      "title_en": "Something’s Biting!",
+      "short_ru": "Закинь леску — и выясни, насколько глубоко на самом деле уходит это хобби.",
+      "short_en": "Cast a line and find out how deep this hobby really goes.",
+      "exact_ru": "Забрось удочку в незнакомые воды и посмотри, кто ответит.",
+      "exact_en": "Cast into stranger waters and see what answers.",
+      "flags": [],
+      "mechanics": "Fishing tab root",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "VANILLA_JSON",
+      "authoritative_source": "Minecraft advancement criteria",
+      "hook": "Data-driven criterion derived from the exact mechanic and verified IDs",
+      "stateful": false,
+      "test": "Validate jem_guide:fishing/root positive action and nearest negative proxy",
+      "source_file": "JEM_Fishing_Achievement_Tree_v3_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:tick"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:tick",
+      "icon": "minecraft:fishing_rod"
+    },
+    {
+      "advancement_id": "jem_guide:fishing/4_3",
+      "number": "4.3",
+      "tab": "fishing",
+      "parent": "jem_guide:fishing/root",
+      "title_ru": "Удочка поймала удочку",
+      "title_en": "A Rod Caught a Rod",
+      "short_ru": "Вылови редкую удочку, а потом поймай рыбу уже ею.",
+      "short_en": "Fish up a rare fishing rod, then catch a fish with the rod you caught.",
+      "exact_ru": "В подходящих условиях вылови редкую удочку, которая сама является рыбацкой находкой. Затем экипируй именно её и сделай успешный улов.",
+      "exact_en": "In the appropriate conditions, fish up the rare Suncatcher rod as a fishing reward. Then equip that exact rod and successfully catch a fish with it.",
+      "flags": [],
+      "mechanics": "Tide — Suncatcher special rod",
+      "implementation": "The knowledge report confirms Suncatcher as a rare Plains-themed catch, but the exact Fish Data/loot condition should be extracted from the installed Tide data before shipping.",
+      "technical_metadata": "Implementation / QA: The knowledge report confirms Suncatcher as a rare Plains-themed catch, but the exact Fish Data/loot condition should be extracted from the installed Tide data before shipping.",
+      "resource_ids": [],
+      "strategy": "SMALL_STATE_MACHINE",
+      "authoritative_source": "Tide",
+      "hook": "The knowledge report confirms Suncatcher as a rare Plains-themed catch, but the exact Fish Data/loot condition should be extracted from the installed Tide data before shipping.",
+      "stateful": true,
+      "test": "Validate jem_guide:fishing/4_3 positive action and nearest negative proxy",
+      "source_file": "JEM_Fishing_Achievement_Tree_v3_technical_pruned.md",
+      "criteria": {
+        "caught_rod": {
+          "trigger": "minecraft:fishing_rod_hooked",
+          "conditions": {
+            "item": {
+              "items": [
+                "tide:sunflower_fishing_rod"
+              ]
+            }
+          }
+        },
+        "caught_fish_with_rod": {
+          "trigger": "minecraft:fishing_rod_hooked",
+          "conditions": {
+            "rod": {
+              "items": [
+                "tide:sunflower_fishing_rod"
+              ]
+            },
+            "item": {
+              "tag": "forge:raw_fishes"
+            }
+          }
+        }
+      },
+      "requirements": [
+        [
+          "caught_rod"
+        ],
+        [
+          "caught_fish_with_rod"
+        ]
+      ],
+      "provider": "minecraft:fishing_rod_hooked",
+      "icon": "tide:sunflower_fishing_rod"
+    },
+    {
+      "advancement_id": "jem_guide:fishing/5_6",
+      "number": "5.6",
+      "tab": "fishing",
+      "parent": "jem_guide:fishing/root",
+      "title_ru": "Всё золото",
+      "title_en": "All That Glitters",
+      "short_ru": "Поймай рыбу Мидаса при действительно достаточной удаче.",
+      "short_en": "Catch the Midas Fish while actually meeting its Luck requirement.",
+      "exact_ru": "Подними свою удачу до уровня, который требует установленная версия, и поймай рыбу Мидаса обычной рыбалкой. Предмет, полученный из сундука или команды, не считается.",
+      "exact_en": "Raise your Luck to the level required by the installed version and catch the Midas Fish through normal fishing. A chest or command item does not count.",
+      "flags": [],
+      "mechanics": "Tide — Midas Fish",
+      "implementation": "Version-compatible Tide documentation uses Luck 5, but verify the final Fish Data before exposing an exact number in the guide.",
+      "technical_metadata": "Implementation / QA: Version-compatible Tide documentation uses Luck 5, but verify the final Fish Data before exposing an exact number in the guide.",
+      "resource_ids": [],
+      "strategy": "SMALL_STATE_MACHINE",
+      "authoritative_source": "Tide",
+      "hook": "Version-compatible Tide documentation uses Luck 5, but verify the final Fish Data before exposing an exact number in the guide.",
+      "stateful": true,
+      "test": "Validate jem_guide:fishing/5_6 positive action and nearest negative proxy",
+      "source_file": "JEM_Fishing_Achievement_Tree_v3_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:fishing_rod_hooked",
+          "conditions": {
+            "item": {
+              "items": [
+                "tide:midas_fish"
+              ]
+            }
+          }
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:fishing_rod_hooked",
+      "icon": "tide:midas_fish"
+    },
+    {
+      "advancement_id": "jem_guide:fishing/6_2",
+      "number": "6.2",
+      "tab": "fishing",
+      "parent": "jem_guide:fishing/root",
+      "title_ru": "Сачок, не удочка",
+      "title_en": "Net Result",
+      "short_ru": "Поймай барракуду сачком и перенеси её живой.",
+      "short_en": "Capture a Barracuda with a net and move it alive.",
+      "exact_ru": "Используй предусмотренный морской сачок на живой барракуде. Достижение засчитывается, когда рыба действительно переносится системой сачка, а не погибает и выпадает предметом.",
+      "exact_en": "Use Spawn’s intended net on a living Barracuda. Complete the achievement when the creature is actually captured by the net system rather than killed for an item.",
+      "flags": [],
+      "mechanics": "Spawn — Net + Barracuda",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "MOD_API_EVENT",
+      "authoritative_source": "Spawn",
+      "hook": "Spawn — Net + Barracuda",
+      "stateful": false,
+      "test": "Validate jem_guide:fishing/6_2 positive action and nearest negative proxy",
+      "source_file": "JEM_Fishing_Achievement_Tree_v3_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "jem_advancements:node/jem_guide/fishing/6_2"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "CastingNetItemMixin#afterNetUsed",
+      "icon": "minecraft:cod_bucket"
+    },
+    {
+      "advancement_id": "jem_guide:bosses/root",
+      "number": "0",
+      "tab": "bosses",
+      "parent": null,
+      "title_ru": "Так кто тут главный?",
+      "title_en": "So Who's the Boss?",
+      "short_ru": "Некоторые полоски здоровья явно хотят познакомиться поближе.",
+      "short_en": "Some health bars clearly want to get acquainted.",
+      "exact_ru": "Найди главные угрозы каждого измерения и одолей их.",
+      "exact_en": "Find the great threats of each dimension and bring them down.",
+      "flags": [],
+      "mechanics": "Bosses tab root",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "VANILLA_JSON",
+      "authoritative_source": "Minecraft advancement criteria",
+      "hook": "Data-driven criterion derived from the exact mechanic and verified IDs",
+      "stateful": false,
+      "test": "Validate jem_guide:bosses/root positive action and nearest negative proxy",
+      "source_file": "JEM_Bosses_Achievement_Tree_v3_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:tick"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:tick",
+      "icon": "minecraft:nether_star"
+    },
+    {
+      "advancement_id": "jem_guide:bosses/1",
+      "number": "1",
+      "tab": "bosses",
+      "parent": "jem_guide:bosses/root",
+      "title_ru": "Звёздный час",
+      "title_en": "Star of the Show",
+      "short_ru": "Победи Визера и получи Звезду Незера — она откроет не один следующий бой.",
+      "short_en": "Defeat the Wither and obtain a Nether Star; more than one boss gate will want it.",
+      "exact_ru": "Призови и победи Визера обычным способом. Забери выпавшую Звезду Незера: дальше она станет настоящим ключом к нескольким независимым боссам.",
+      "exact_en": "Summon and defeat the Wither normally. Recover its Nether Star; later boss systems use it as a genuine progression key.",
+      "flags": [
+        "CROSS"
+      ],
+      "mechanics": "Vanilla Wither → shared boss gates",
+      "implementation": "Completion should require the Wither kill plus player acquisition of its Nether Star. This is intentionally the shared visual gate for Harbinger, Knight Quest Netherman, and the optional Companions replay path.",
+      "technical_metadata": "Confirmed IDs: minecraft:wither minecraft:nether_star Implementation / QA: Completion should require the Wither kill plus player acquisition of its Nether Star. This is intentionally the shared visual gate for Harbinger, Knight Quest Netherman, and the optional Companions replay path.",
+      "resource_ids": [
+        "minecraft:wither",
+        "minecraft:nether_star"
+      ],
+      "strategy": "VANILLA_JSON",
+      "authoritative_source": "Minecraft advancement criteria",
+      "hook": "Completion should require the Wither kill plus player acquisition of its Nether Star. This is intentionally the shared visual gate for Harbinger, Knight Quest Netherman, and the optional Companions replay path.",
+      "stateful": false,
+      "test": "Validate jem_guide:bosses/1 positive action and nearest negative proxy",
+      "source_file": "JEM_Bosses_Achievement_Tree_v3_technical_pruned.md",
+      "criteria": {
+        "wither": {
+          "trigger": "minecraft:player_killed_entity",
+          "conditions": {
+            "entity": {
+              "type": "minecraft:wither"
+            }
+          }
+        },
+        "star": {
+          "trigger": "minecraft:inventory_changed",
+          "conditions": {
+            "items": [
+              {
+                "items": [
+                  "minecraft:nether_star"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "requirements": [
+        [
+          "wither"
+        ],
+        [
+          "star"
+        ]
+      ],
+      "provider": "minecraft:inventory_changed, minecraft:player_killed_entity",
+      "icon": "minecraft:wither_skeleton_skull"
+    },
+    {
+      "advancement_id": "jem_guide:bosses/1_1_1_10_1",
+      "number": "1.1.1.10.1",
+      "tab": "bosses",
+      "parent": "jem_guide:bosses/root",
+      "title_ru": "Червоточина закрыта",
+      "title_en": "Wormhole Closed",
+      "short_ru": "Победи Червя пустоты.",
+      "short_en": "Defeat the Void Worm.",
+      "exact_ru": "Заверши бой с вызванным Червём пустоты. Если не хочешь самому усложнять бой, целься в голову: сильный урон по сегментам тела может расколоть червя на дополнительные части.",
+      "exact_en": "Defeat the summoned Void Worm.",
+      "flags": [],
+      "mechanics": "Alex's Mobs — Void Worm",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "VANILLA_JSON",
+      "authoritative_source": "Minecraft advancement criteria",
+      "hook": "Data-driven criterion derived from the exact mechanic and verified IDs",
+      "stateful": false,
+      "test": "Validate jem_guide:bosses/1_1_1_10_1 positive action and nearest negative proxy",
+      "source_file": "JEM_Bosses_Achievement_Tree_v3_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:player_killed_entity",
+          "conditions": {
+            "entity": {
+              "type": "alexsmobs:void_worm"
+            }
+          }
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:player_killed_entity",
+      "icon": "alexsmobs:spawn_egg_void_worm"
+    },
+    {
+      "advancement_id": "jem_guide:bosses/1_1_1_4",
+      "number": "1.1.1.4",
+      "tab": "bosses",
+      "parent": "jem_guide:bosses/root",
+      "title_ru": "Тут были динозавры?",
+      "title_en": "History Bites",
+      "short_ru": "Победи Древнего останка в Проклятой пирамиде.",
+      "short_en": "Defeat the Ancient Remnant in the Cursed Pyramid.",
+      "exact_ru": "Доберись до босса в настоящей Проклятой пирамиде и победи Древнего останка. Отдельные комнаты пирамиды и поиск самой структуры здесь не считаются.",
+      "exact_en": "Reach the boss inside a real Cursed Pyramid and defeat the Ancient Remnant. The Pyramid's individual rooms and general structure discovery are not separate Bosses achievements.",
+      "flags": [],
+      "mechanics": "L_Ender's Cataclysm — Ancient Remnant",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "VANILLA_JSON",
+      "authoritative_source": "Minecraft advancement criteria",
+      "hook": "Data-driven criterion derived from the exact mechanic and verified IDs",
+      "stateful": false,
+      "test": "Validate jem_guide:bosses/1_1_1_4 positive action and nearest negative proxy",
+      "source_file": "JEM_Bosses_Achievement_Tree_v3_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:player_killed_entity",
+          "conditions": {
+            "entity": {
+              "type": "cataclysm:ancient_remnant"
+            }
+          }
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:player_killed_entity",
+      "icon": "cataclysm:ancient_remnant_spawn_egg"
+    },
+    {
+      "advancement_id": "jem_guide:bosses/1_1_1_5",
+      "number": "1.1.1.5",
+      "tab": "bosses",
+      "parent": "jem_guide:bosses/root",
+      "title_ru": "Глубже уже некуда",
+      "title_en": "How Much Deeper?",
+      "short_ru": "Победи Левиафана в Затонувшем городе.",
+      "short_en": "Defeat the Leviathan in the Sunken City.",
+      "exact_ru": "Пройди Затонувший город до его главного босса и победи Левиафана. Рыболовных действий для этого достижения не требуется.",
+      "exact_en": "Progress through the Sunken City to its primary boss and defeat the Leviathan. No rods, catches, or fishing progression are involved; this is purely the dungeon's boss completion.",
+      "flags": [],
+      "mechanics": "L_Ender's Cataclysm — Leviathan",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "VANILLA_JSON",
+      "authoritative_source": "Minecraft advancement criteria",
+      "hook": "Data-driven criterion derived from the exact mechanic and verified IDs",
+      "stateful": false,
+      "test": "Validate jem_guide:bosses/1_1_1_5 positive action and nearest negative proxy",
+      "source_file": "JEM_Bosses_Achievement_Tree_v3_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:player_killed_entity",
+          "conditions": {
+            "entity": {
+              "type": "cataclysm:the_leviathan"
+            }
+          }
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:player_killed_entity",
+      "icon": "cataclysm:the_leviathan_spawn_egg"
+    },
+    {
+      "advancement_id": "jem_guide:bosses/1_1_1_7",
+      "number": "1.1.1.7",
+      "tab": "bosses",
+      "parent": "jem_guide:bosses/root",
+      "title_ru": "Проклятие снято",
+      "title_en": "Curse Lifted",
+      "short_ru": "Победи Маледиктуса в Морозной тюрьме.",
+      "short_en": "Defeat Maledictus in the Frosted Prison.",
+      "exact_ru": "Доберись до главного боя Морозной тюрьмы и победи Маледиктуса.",
+      "exact_en": "Reach the Frosted Prison's main encounter and defeat Maledictus.",
+      "flags": [],
+      "mechanics": "L_Ender's Cataclysm — Maledictus",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "SMALL_STATE_MACHINE",
+      "authoritative_source": "L_Ender's Cataclysm",
+      "hook": "L_Ender's Cataclysm — Maledictus",
+      "stateful": true,
+      "test": "Validate jem_guide:bosses/1_1_1_7 positive action and nearest negative proxy",
+      "source_file": "JEM_Bosses_Achievement_Tree_v3_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:player_killed_entity",
+          "conditions": {
+            "entity": {
+              "type": "cataclysm:maledictus"
+            }
+          }
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:player_killed_entity",
+      "icon": "cataclysm:maledictus_spawn_egg"
+    },
+    {
+      "advancement_id": "jem_guide:bosses/1_1_1_8_1",
+      "number": "1.1.1.8.1",
+      "tab": "bosses",
+      "parent": "jem_guide:bosses/root",
+      "title_ru": "Огнетушитель не поможет",
+      "title_en": "Too Hot to Handle",
+      "short_ru": "Победи Игниса.",
+      "short_en": "Defeat Ignis.",
+      "exact_ru": "Победи Игниса.",
+      "exact_en": "Defeat Ignis.",
+      "flags": [],
+      "mechanics": "L_Ender's Cataclysm — Ignis",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "MOD_API_EVENT",
+      "authoritative_source": "L_Ender's Cataclysm",
+      "hook": "L_Ender's Cataclysm — Ignis",
+      "stateful": false,
+      "test": "Validate jem_guide:bosses/1_1_1_8_1 positive action and nearest negative proxy",
+      "source_file": "JEM_Bosses_Achievement_Tree_v3_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:player_killed_entity",
+          "conditions": {
+            "entity": {
+              "type": "cataclysm:ignis"
+            }
+          }
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:player_killed_entity",
+      "icon": "cataclysm:ignis_spawn_egg"
+    },
+    {
+      "advancement_id": "jem_guide:bosses/1_2_1",
+      "number": "1.2.1",
+      "tab": "bosses",
+      "parent": "jem_guide:bosses/root",
+      "title_ru": "Архитектор уволен",
+      "title_en": "Architect Laid Off",
+      "short_ru": "Победи Незермена, Архитектора хаоса.",
+      "short_en": "Defeat Netherman, the Architect of Chaos.",
+      "exact_ru": "Победи Незермена окончательно. Полученная после победы Хаотическая эссенция понадобится уже во вкладке арсенала.",
+      "exact_en": "Defeat Netherman completely. Chaotic Essence then hands off to Arsenal for weapon ability progression.",
+      "flags": [],
+      "mechanics": "Knight Quest — Netherman",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "SMALL_STATE_MACHINE",
+      "authoritative_source": "Knight Quest",
+      "hook": "Knight Quest — Netherman",
+      "stateful": true,
+      "test": "Validate jem_guide:bosses/1_2_1 positive action and nearest negative proxy",
+      "source_file": "JEM_Bosses_Achievement_Tree_v3_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:player_killed_entity",
+          "conditions": {
+            "entity": {
+              "type": "knightquest:netherman"
+            }
+          }
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:player_killed_entity",
+      "icon": "minecraft:quartz"
+    },
+    {
+      "advancement_id": "jem_guide:bosses/2_1",
+      "number": "2.1",
+      "tab": "bosses",
+      "parent": "jem_guide:bosses/root",
+      "title_ru": "Йети же существует!",
+      "title_en": "Yeti Another One",
+      "short_ru": "Победи Скора, Йети.",
+      "short_en": "Defeat Skor, the Yeti.",
+      "exact_ru": "Победи Скора, Йети.",
+      "exact_en": "Defeat Skor, the Yeti.",
+      "flags": [],
+      "mechanics": "Bosses'Rise — Skor",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "MOD_API_EVENT",
+      "authoritative_source": "Bosses'Rise",
+      "hook": "Bosses'Rise — Skor",
+      "stateful": false,
+      "test": "Validate jem_guide:bosses/2_1 positive action and nearest negative proxy",
+      "source_file": "JEM_Bosses_Achievement_Tree_v3_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:player_killed_entity",
+          "conditions": {
+            "entity": {
+              "type": "block_factorys_bosses:yeti"
+            }
+          }
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:player_killed_entity",
+      "icon": "block_factorys_bosses:yeti_spawn_egg"
+    },
+    {
+      "advancement_id": "jem_guide:bosses/2_2",
+      "number": "2.2",
+      "tab": "bosses",
+      "parent": "jem_guide:bosses/root",
+      "title_ru": "Поджарено",
+      "title_en": "Well Done",
+      "short_ru": "Победи Эшлорда, инфернального дракона.",
+      "short_en": "Defeat Ashlord, the Infernal Dragon.",
+      "exact_ru": "Победи Эшлорда, инфернального дракона.",
+      "exact_en": "Defeat Ashlord, the Infernal Dragon.",
+      "flags": [],
+      "mechanics": "Bosses'Rise — Ashlord",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "MOD_API_EVENT",
+      "authoritative_source": "Bosses'Rise",
+      "hook": "Bosses'Rise — Ashlord",
+      "stateful": false,
+      "test": "Validate jem_guide:bosses/2_2 positive action and nearest negative proxy",
+      "source_file": "JEM_Bosses_Achievement_Tree_v3_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:player_killed_entity",
+          "conditions": {
+            "entity": {
+              "type": "block_factorys_bosses:infernal_dragon"
+            }
+          }
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:player_killed_entity",
+      "icon": "block_factorys_bosses:infernal_dragon_spawn_egg"
+    },
+    {
+      "advancement_id": "jem_guide:bosses/3_2",
+      "number": "3.2",
+      "tab": "bosses",
+      "parent": "jem_guide:bosses/root",
+      "title_ru": "Заверните мумию",
+      "title_en": "That's a Wrap",
+      "short_ru": "Победи мумию из Rotten Creatures.",
+      "short_en": "Defeat a Rotten Creatures Mummy.",
+      "exact_ru": "Лично убей мумию из Rotten Creatures.",
+      "exact_en": "Kill the Rotten Creatures Mummy yourself.",
+      "flags": [],
+      "mechanics": "Rotten Creatures — Mummy",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "MOD_API_EVENT",
+      "authoritative_source": "Minecraft player kill criterion",
+      "hook": "minecraft:player_killed_entity for rottencreatures:mummy",
+      "stateful": false,
+      "test": "Validate jem_guide:bosses/3_2 positive action and nearest negative proxy",
+      "source_file": "JEM_Bosses_Achievement_Tree_v3_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:player_killed_entity",
+          "conditions": {
+            "entity": {
+              "type": "rottencreatures:mummy"
+            }
+          }
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:player_killed_entity",
+      "icon": "rottencreatures:mummy_spawn_egg"
+    },
+    {
+      "advancement_id": "jem_guide:bosses/3_7",
+      "number": "3.7",
+      "tab": "bosses",
+      "parent": "jem_guide:bosses/root",
+      "title_ru": "Кто-то крадётся во тьме",
+      "title_en": "Something Stalks the Dark",
+      "short_ru": "Победи сталкера из любого установленного расширения Глубинной тьмы.",
+      "short_en": "Defeat a Stalker from either installed Deep Dark expansion.",
+      "exact_ru": "Лично убей сталкера из Deep Dark Regrowth.",
+      "exact_en": "Kill a Deep Dark Regrowth Stalker yourself.",
+      "flags": [],
+      "mechanics": "Deep Dark Regrowth — Stalker",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [
+        "deep_dark_regrowth:stalker"
+      ],
+      "strategy": "MOD_API_EVENT",
+      "authoritative_source": "Minecraft player kill criterion",
+      "hook": "minecraft:player_killed_entity for deep_dark_regrowth:stalker",
+      "stateful": false,
+      "test": "Validate jem_guide:bosses/3_7 positive action and nearest negative proxy",
+      "source_file": "JEM_Bosses_Achievement_Tree_v3_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:player_killed_entity",
+          "conditions": {
+            "entity": {
+              "type": "deep_dark_regrowth:stalker"
+            }
+          }
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:player_killed_entity",
+      "icon": "deep_dark_regrowth:stalker_spawn_egg"
+    },
+    {
+      "advancement_id": "jem_guide:bosses/5_1",
+      "number": "5.1",
+      "tab": "bosses",
+      "parent": "jem_guide:bosses/root",
+      "title_ru": "Массовое вымирание",
+      "title_en": "Extinction Event",
+      "short_ru": "Победи люкструктозавра.",
+      "short_en": "Defeat Luxtructosaurus.",
+      "exact_ru": "Заверши вызванный вулканический бой и победи люкструктозавра. Дальнейшее появление атлатитанов раскрывается во вкладке мобов, а использование Тектонических осколков и Копья вымирания — во вкладке арсенала.",
+      "exact_en": "Finish the summoned volcanic encounter and defeat Luxtructosaurus. The post-boss Atlatitan world unlock belongs to Mobs, while Tectonic Shard and Extinction Spear usage belongs to Arsenal.",
+      "flags": [],
+      "mechanics": "Alex's Caves — Luxtructosaurus",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "SMALL_STATE_MACHINE",
+      "authoritative_source": "Alex's Caves",
+      "hook": "Alex's Caves — Luxtructosaurus",
+      "stateful": true,
+      "test": "Validate jem_guide:bosses/5_1 positive action and nearest negative proxy",
+      "source_file": "JEM_Bosses_Achievement_Tree_v3_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:player_killed_entity",
+          "conditions": {
+            "entity": {
+              "type": "alexscaves:luxtructosaurus"
+            }
+          }
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:player_killed_entity",
+      "icon": "alexscaves:spawn_egg_luxtructosaurus"
+    },
+    {
+      "advancement_id": "jem_guide:building/root",
+      "number": "0",
+      "tab": "building",
+      "parent": null,
+      "title_ru": "Свой угол",
+      "title_en": "A Place of My Own",
+      "short_ru": "Преврати набор блоков в место, у которого есть характер.",
+      "short_en": "Turn a pile of blocks into a place with character.",
+      "exact_ru": "Преврати укрытие в место, куда хочется возвращаться.",
+      "exact_en": "Turn a shelter into a place worth returning to.",
+      "flags": [],
+      "mechanics": "Building tab root",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "VANILLA_JSON",
+      "authoritative_source": "Minecraft advancement criteria",
+      "hook": "Data-driven criterion derived from the exact mechanic and verified IDs",
+      "stateful": false,
+      "test": "Validate jem_guide:building/root positive action and nearest negative proxy",
+      "source_file": "JEM_Building_Achievement_Tree_v2_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:tick"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:tick",
+      "icon": "minecraft:scaffolding"
+    },
+    {
+      "advancement_id": "jem_guide:building/1",
+      "number": "1",
+      "tab": "building",
+      "parent": "jem_guide:building/root",
+      "title_ru": "Не всё должно быть кубом",
+      "title_en": "Not Everything Needs to Be a Cube",
+      "short_ru": "Поставь свою первую настоящую деревянную балку.",
+      "short_en": "Place your first real timber beam.",
+      "exact_ru": "Сделай и поставь деревянную балку. Для достижения важна именно строительная балка, а не обычное бревно.",
+      "exact_en": "Craft and place a Woodworks Beam. The achievement is about the dedicated building beam, not a normal log.",
+      "flags": [],
+      "mechanics": "guita's Woodworks — Beam",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "VANILLA_JSON",
+      "authoritative_source": "Minecraft advancement criteria",
+      "hook": "Data-driven criterion derived from the exact mechanic and verified IDs",
+      "stateful": false,
+      "test": "Validate jem_guide:building/1 positive action and nearest negative proxy",
+      "source_file": "JEM_Building_Achievement_Tree_v2_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:placed_block",
+          "conditions": {
+            "location": {
+              "block": {
+                "tag": "gwoodworks:beam"
+              }
+            }
+          }
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:placed_block",
+      "icon": "minecraft:oak_log"
+    },
+    {
+      "advancement_id": "jem_guide:building/14",
+      "number": "14",
+      "tab": "building",
+      "parent": "jem_guide:building/root",
+      "title_ru": "Праздник сам себя не украсит",
+      "title_en": "Holidays Don't Decorate Themselves",
+      "short_ru": "Сделай первую партию праздничных самоцветов.",
+      "short_en": "Make your first batch of holiday gems.",
+      "exact_ru": "Соедини пурпурный краситель с изумрудом по рецепту праздничного самоцвета и получи первую партию из девяти штук.",
+      "exact_en": "Combine Magenta Dye and an Emerald using the Holidays Gem recipe and obtain the first batch of nine Gems.",
+      "flags": [],
+      "mechanics": "MOA DECOR: HOLIDAYS — Holidays Gem",
+      "implementation": "Exact MOA namespace/item ID should come from the installed JAR; the 9-output recipe is source-confirmed.",
+      "technical_metadata": "Implementation / QA: Exact MOA namespace/item ID should come from the installed JAR; the 9-output recipe is source-confirmed.",
+      "resource_ids": [],
+      "strategy": "VANILLA_JSON",
+      "authoritative_source": "Minecraft advancement criteria",
+      "hook": "Exact MOA namespace/item ID should come from the installed JAR; the 9-output recipe is source-confirmed.",
+      "stateful": false,
+      "test": "Validate jem_guide:building/14 positive action and nearest negative proxy",
+      "source_file": "JEM_Building_Achievement_Tree_v2_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "jem_advancements:node/jem_guide/building/14"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "ForgeGameplayEvents#onItemCrafted",
+      "icon": "minecraft:emerald"
+    },
+    {
+      "advancement_id": "jem_guide:building/4",
+      "number": "4",
+      "tab": "building",
+      "parent": "jem_guide:building/root",
+      "title_ru": "Теперь можно жить",
+      "title_en": "Now We Can Live Here",
+      "short_ru": "Поставь первый предмет мебели, который делает комнату комнатой.",
+      "short_en": "Place the first piece of furniture that makes a room feel lived in.",
+      "exact_ru": "Поставь любой модовый предмет мебели: стол, стул, скамью, диван, шкаф, тумбу, полку или другой предмет интерьера.",
+      "exact_en": "Place any modded furniture block: a table, chair, bench, couch, cabinet, nightstand, shelf, or another furnishing.",
+      "flags": [],
+      "mechanics": "Any installed furniture mod",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "MOD_API_EVENT",
+      "authoritative_source": "Forge block placement event",
+      "hook": "ForgeGameplayEvents#onBlockPlaced",
+      "stateful": false,
+      "test": "Validate jem_guide:building/4 positive action and nearest negative proxy",
+      "source_file": "JEM_Building_Achievement_Tree_v2_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "jem_advancements:node/jem_guide/building/4"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "ForgeGameplayEvents#onBlockPlaced",
+      "icon": "minecraft:oak_stairs"
+    },
+    {
+      "advancement_id": "jem_guide:building/7",
+      "number": "7",
+      "tab": "building",
+      "parent": "jem_guide:building/root",
+      "title_ru": "Дом звучит",
+      "title_en": "The House Has a Voice",
+      "short_ru": "Повесь у дома работающий ветровой колокольчик.",
+      "short_en": "Hang a working wind chime at your home.",
+      "exact_ru": "Создай любой ветровой колокольчик и повесь его снаружи или у входа в постройку.",
+      "exact_en": "Craft any Chime and hang it outside or beside the entrance of a build.",
+      "flags": [],
+      "mechanics": "Chimes 2.1.1",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "VANILLA_JSON",
+      "authoritative_source": "Minecraft advancement criteria",
+      "hook": "Data-driven criterion derived from the exact mechanic and verified IDs",
+      "stateful": false,
+      "test": "Validate jem_guide:building/7 positive action and nearest negative proxy",
+      "source_file": "JEM_Building_Achievement_Tree_v2_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:placed_block",
+          "conditions": {
+            "location": {
+              "block": {
+                "tag": "chimes:wind_chimes"
+              }
+            }
+          }
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:placed_block",
+      "icon": "minecraft:bell"
+    },
+    {
+      "advancement_id": "jem_guide:building/7_4",
+      "number": "7.4",
+      "tab": "building",
+      "parent": "jem_guide:building/7",
+      "title_ru": "Светится и звенит",
+      "title_en": "Glow and Chime",
+      "short_ru": "Повесь колокольчик, который одновременно украшает и освещает место.",
+      "short_en": "Hang a chime that decorates the area and provides light.",
+      "exact_ru": "Создай и повесь аметистовый ветровой колокольчик. Он должен стоять в мире как часть постройки, а не просто лежать в инвентаре.",
+      "exact_en": "Craft and hang an Amethyst Crystal Wind Chime. It must be placed in the world as part of a build, not merely carried in inventory.",
+      "flags": [],
+      "mechanics": "Chimes 2.1.1 — Amethyst Crystal Wind Chime",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "VANILLA_JSON",
+      "authoritative_source": "Minecraft advancement criteria",
+      "hook": "Data-driven criterion derived from the exact mechanic and verified IDs",
+      "stateful": false,
+      "test": "Validate jem_guide:building/7_4 positive action and nearest negative proxy",
+      "source_file": "JEM_Building_Achievement_Tree_v2_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:placed_block",
+          "conditions": {
+            "location": [
+              {
+                "condition": "minecraft:location_check",
+                "predicate": {
+                  "block": {
+                    "blocks": [
+                      "chimes:amethyst_chimes"
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:placed_block",
+      "icon": "minecraft:amethyst_shard"
+    },
+    {
+      "advancement_id": "jem_guide:building/8",
+      "number": "8",
+      "tab": "building",
+      "parent": "jem_guide:building/root",
+      "title_ru": "Дым туда",
+      "title_en": "Smoke Goes Up",
+      "short_ru": "Сделай дымоход, из которого действительно идёт дым.",
+      "short_en": "Build a chimney that genuinely emits smoke.",
+      "exact_ru": "Поставь дымоход над подходящим источником дыма или огня так, чтобы дым пошёл через трубу наружу.",
+      "exact_en": "Place a Chimney above a suitable smoke or fire source so smoke genuinely exits through the chimney.",
+      "flags": [],
+      "mechanics": "Sooty Chimneys 1.3.4",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "VANILLA_JSON",
+      "authoritative_source": "Minecraft advancement criteria",
+      "hook": "Data-driven criterion derived from the exact mechanic and verified IDs",
+      "stateful": false,
+      "test": "Validate jem_guide:building/8 positive action and nearest negative proxy",
+      "source_file": "JEM_Building_Achievement_Tree_v2_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:placed_block",
+          "conditions": {
+            "location": [
+              {
+                "condition": "minecraft:location_check",
+                "predicate": {
+                  "block": {
+                    "tag": "sootychimneys:chimneys"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:placed_block",
+      "icon": "minecraft:campfire"
+    },
+    {
+      "advancement_id": "jem:engineering/root",
+      "number": "0",
+      "tab": "engineering",
+      "parent": null,
+      "title_ru": "engineering",
+      "title_en": "Engineering",
+      "short_ru": "Корень вкладки.",
+      "short_en": "Tab root.",
+      "exact_ru": "Начни с Create, а затем узнай, что тяжёлая работа делает с буром.",
+      "exact_en": "Begin with Create, then learn what hard work does to a drill.",
+      "flags": [
+        "ROOT"
+      ],
+      "mechanics": "Tab root",
+      "implementation": "minecraft:tick",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "VANILLA_EXACT",
+      "authoritative_source": "Minecraft",
+      "hook": "minecraft:tick",
+      "stateful": false,
+      "test": "Static criterion inspection",
+      "source_file": "native-first-rebuild",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:tick"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:tick",
+      "icon": "create:wrench"
+    },
+    {
+      "advancement_id": "jem:engineering/drill_work",
+      "number": "J04",
+      "tab": "engineering",
+      "parent": "jem:engineering/root",
+      "title_ru": "Камень сам не уйдёт",
+      "title_en": "The Rock Won't Move Itself",
+      "short_ru": "Пусть подвижная буровая сама пройдёт через породу.",
+      "short_en": "Let a moving drilling machine cut through rock on its own.",
+      "exact_ru": "Собери подвижную конструкцию с механическим буром и пробури ею обычный блок естественной породы. Бур должен ломать блок именно как часть движущейся конструкции.",
+      "exact_en": "Build a moving contraption with a Mechanical Drill and use it to bore through a normal natural rock block. The drill must break the block as part of the moving contraption.",
+      "flags": [
+        "CUSTOM"
+      ],
+      "mechanics": "Create Mechanical Drill contraption + JEM wear",
+      "implementation": "Begins JEM persistent per-drill wear tracking. Mechanical Harvester remains completely upstream/untouched.",
+      "technical_metadata": "Implementation / QA: Begins JEM persistent per-drill wear tracking. Mechanical Harvester remains completely upstream/untouched.",
+      "resource_ids": [],
+      "strategy": "JEM_GAMEPLAY_EVENT",
+      "authoritative_source": "JEM gameplay mechanic",
+      "hook": "Begins JEM persistent per-drill wear tracking. Mechanical Harvester remains completely upstream/untouched.",
+      "stateful": true,
+      "test": "Validate jem:engineering/drill_work positive action and nearest negative proxy",
+      "source_file": "JEM_Engineering_Railways_Achievement_Tree_v3_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "jem_advancements:node/jem/engineering/drill_work"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "BlockBreakingMovementBehaviourMixin#onBlockBroken",
+      "icon": "create:mechanical_drill"
+    },
+    {
+      "advancement_id": "jem:engineering/drill_service",
+      "number": "J07",
+      "tab": "engineering",
+      "parent": "jem:engineering/drill_work",
+      "title_ru": "Техобслуживание",
+      "title_en": "Service Interval",
+      "short_ru": "Останови машину и обслужи изношенный бур железом.",
+      "short_en": "Stop the machine and service a worn drill with iron.",
+      "exact_ru": "Полностью останови буровую установку и используй железный слиток для обслуживания изношенного механического бура. Один починенный бур должен потратить один железный слиток.",
+      "exact_en": "Fully stop the drilling machine and use an Iron Ingot to service a worn Mechanical Drill. One repaired drill must consume one Iron Ingot.",
+      "flags": [
+        "CUSTOM"
+      ],
+      "mechanics": "JEM Mechanical Drill repair + Iron Ingot",
+      "implementation": "No new repair item/model. Repair uses minecraft:iron_ingot. Repair count is persistent and limited.",
+      "technical_metadata": "Implementation / QA: No new repair item/model. Repair uses minecraft:iron_ingot. Repair count is persistent and limited.",
+      "resource_ids": [
+        "minecraft:iron_ingot."
+      ],
+      "strategy": "JEM_GAMEPLAY_EVENT",
+      "authoritative_source": "JEM gameplay mechanic",
+      "hook": "No new repair item/model. Repair uses minecraft:iron_ingot. Repair count is persistent and limited.",
+      "stateful": true,
+      "test": "Validate jem:engineering/drill_service positive action and nearest negative proxy",
+      "source_file": "JEM_Engineering_Railways_Achievement_Tree_v3_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "jem_advancements:node/jem/engineering/drill_service"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "AbstractContraptionEntityMixin#serviceDrills",
+      "icon": "minecraft:iron_ingot"
+    },
+    {
+      "advancement_id": "jem:engineering/drill_replaced",
+      "number": "J10",
+      "tab": "engineering",
+      "parent": "jem:engineering/drill_service",
+      "title_ru": "Новый бур, та же работа",
+      "title_en": "New Drill, Same Job",
+      "short_ru": "Замени полностью выработанный бур и продолжи той же машиной.",
+      "short_en": "Replace an exhausted drill and keep the same machine working.",
+      "exact_ru": "Доработай механический бур без оставшихся ремонтов до полного износа, замени его новым механическим буром и снова продолжи бурение этой же установкой.",
+      "exact_en": "Wear out a Mechanical Drill with no repairs remaining, replace it with a fresh Mechanical Drill, and resume drilling with the same machine.",
+      "flags": [
+        "CUSTOM"
+      ],
+      "mechanics": "JEM exhausted drill replacement",
+      "implementation": "Wear/repair history must survive pickup, placement, assembly and disassembly so replacement cannot be bypassed by re-placing.",
+      "technical_metadata": "Implementation / QA: Wear/repair history must survive pickup, placement, assembly and disassembly so replacement cannot be bypassed by re-placing.",
+      "resource_ids": [],
+      "strategy": "JEM_GAMEPLAY_EVENT",
+      "authoritative_source": "JEM gameplay mechanic",
+      "hook": "Wear/repair history must survive pickup, placement, assembly and disassembly so replacement cannot be bypassed by re-placing.",
+      "stateful": true,
+      "test": "Validate jem:engineering/drill_replaced positive action and nearest negative proxy",
+      "source_file": "JEM_Engineering_Railways_Achievement_Tree_v3_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "jem_advancements:node/jem/engineering/drill_replaced"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "BlockBreakingMovementBehaviourMixin#onBlockBroken",
+      "icon": "create:andesite_alloy"
+    },
+    {
+      "advancement_id": "jem_guide:cool_stuff/root",
+      "number": "0",
+      "tab": "cool_stuff",
+      "parent": null,
+      "title_ru": "Чем бы ещё заняться?",
+      "title_en": "What Else Is There to Do?",
+      "short_ru": "Не каждый хороший день обязан приближать тебя к финалу.",
+      "short_en": "Not every good day has to move you closer to an ending.",
+      "exact_ru": "Играй музыку, фотографируй, собирай диковинки и наслаждайся поездкой.",
+      "exact_en": "Make music, take photographs, collect oddities, and enjoy the ride.",
+      "flags": [],
+      "mechanics": "Cool Stuff tab root",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "VANILLA_JSON",
+      "authoritative_source": "Minecraft advancement criteria",
+      "hook": "Data-driven criterion derived from the exact mechanic and verified IDs",
+      "stateful": false,
+      "test": "Validate jem_guide:cool_stuff/root positive action and nearest negative proxy",
+      "source_file": "JEM_Cool_Stuff_Achievement_Tree_v2_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "minecraft:tick"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "minecraft:tick",
+      "icon": "minecraft:painting"
+    },
+    {
+      "advancement_id": "jem_guide:cool_stuff/cool_death",
+      "number": "cool_death",
+      "tab": "cool_stuff",
+      "parent": "jem_guide:cool_stuff/root",
+      "title_ru": "Снежок, СеРьЕзнО?",
+      "title_en": "Cool Death",
+      "short_ru": "Убей живую сущность заморозкой от снежка.",
+      "short_en": "Kill a living entity with freezing caused by a snowball.",
+      "exact_ru": "Доведи живую сущность до смерти уроном заморозки, который накопился от твоих снежков. Сам удар снежка урона не наносит.",
+      "exact_en": "Kill a living entity with freezing damage built up by your snowballs. The snowball impact itself deals no damage.",
+      "flags": [],
+      "mechanics": "JEM snowball freezing kill",
+      "implementation": "",
+      "technical_metadata": "",
+      "resource_ids": [
+        "minecraft:snowball"
+      ],
+      "strategy": "MOD_API_EVENT",
+      "authoritative_source": "JEM elemental freezing",
+      "hook": "ElementalImpactEvents#freeze",
+      "stateful": false,
+      "test": "Award only when the player's snowball-triggered freeze damage kills a living entity",
+      "source_file": "JEM curated runtime",
+      "criteria": {
+        "completion": {
+          "trigger": "jem_advancements:node/jem_guide/cool_stuff/cool_death"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "ElementalImpactEvents#freeze",
+      "icon": "minecraft:snowball"
+    },
+    {
+      "advancement_id": "jem_guide:cool_stuff/4_4",
+      "number": "4.4",
+      "tab": "cool_stuff",
+      "parent": "jem_guide:cool_stuff/root",
+      "title_ru": "Старше, чем выглядит",
+      "title_en": "Older Than It Looks",
+      "short_ru": "Сделай новую фотографию похожей на старую находку.",
+      "short_en": "Make a new Photograph look like an old discovery.",
+      "exact_ru": "Возьми готовую фотографию и преврати её в состаренную по актуальному рецепту, где используется кисть. Старые рецепты без кисти для этой версии не подходят.",
+      "exact_en": "Take a finished Photograph and turn it into an Aged Photograph using the current recipe that requires a Brush. Older recipes without the Brush do not apply to this version.",
+      "flags": [
+        "CROSS, FUN"
+      ],
+      "mechanics": "Exposure — Aged Photograph + Brush",
+      "implementation": "Exposure 1.9.21 inherits the 1.8 recipe change requiring Brush.",
+      "technical_metadata": "Confirmed / relevant technical metadata: minecraft:brush Implementation / QA: Exposure 1.9.21 inherits the 1.8 recipe change requiring Brush.",
+      "resource_ids": [
+        "minecraft:brush"
+      ],
+      "strategy": "SMALL_STATE_MACHINE",
+      "authoritative_source": "Exposure",
+      "hook": "Exposure 1.9.21 inherits the 1.8 recipe change requiring Brush.",
+      "stateful": true,
+      "test": "Validate jem_guide:cool_stuff/4_4 positive action and nearest negative proxy",
+      "source_file": "JEM_Cool_Stuff_Achievement_Tree_v2_technical_pruned.md",
+      "criteria": {
+        "completion": {
+          "trigger": "jem_advancements:node/jem_guide/cool_stuff/4_4"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "ForgeGameplayEvents#onItemCrafted",
+      "icon": "minecraft:brush"
+    },
+    {
+      "advancement_id": "jem_guide:cool_stuff/play_a_note",
+      "number": "play_a_note",
+      "tab": "cool_stuff",
+      "parent": "jem_guide:cool_stuff/root",
+      "title_ru": "Не просто фоновая музыка",
+      "title_en": "Not Just Background Music",
+      "short_ru": "Сыграй живую ноту на инструменте Immersive Melodies.",
+      "short_en": "Play a live note with an Immersive Melodies instrument.",
+      "exact_ru": "Сыграй живую ноту на инструменте Immersive Melodies.",
+      "exact_en": "Play a live note with an Immersive Melodies instrument.",
+      "flags": [],
+      "mechanics": "ImmersiveMelodiesMixin",
+      "implementation": "ImmersiveMelodiesMixin#afterNoteBroadcast",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "MIXIN_EXACT",
+      "authoritative_source": "ImmersiveMelodiesMixin",
+      "hook": "ImmersiveMelodiesMixin#afterNoteBroadcast",
+      "stateful": false,
+      "test": "Static caller and criterion inspection",
+      "source_file": "native-first-rebuild",
+      "criteria": {
+        "completion": {
+          "trigger": "jem_advancements:node/jem_guide/cool_stuff/play_a_note"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "ImmersiveMelodiesMixin#afterNoteBroadcast",
+      "icon": "minecraft:note_block"
+    },
+    {
+      "advancement_id": "jem_guide:cool_stuff/zipline_attach",
+      "number": "zipline_attach",
+      "tab": "cool_stuff",
+      "parent": "jem_guide:cool_stuff/root",
+      "title_ru": "Рельсы не нужны",
+      "title_en": "No Track Required",
+      "short_ru": "Успешно зацепись за трос с помощью Zipline.",
+      "short_en": "Successfully attach to a cable with Zipline.",
+      "exact_ru": "Успешно зацепись за трос с помощью Zipline.",
+      "exact_en": "Successfully attach to a cable with Zipline.",
+      "flags": [],
+      "mechanics": "ZiplineLogicMixin",
+      "implementation": "ZiplineLogicMixin#afterAttach",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "MIXIN_EXACT",
+      "authoritative_source": "ZiplineLogicMixin",
+      "hook": "ZiplineLogicMixin#afterAttach",
+      "stateful": false,
+      "test": "Static caller and criterion inspection",
+      "source_file": "native-first-rebuild",
+      "criteria": {
+        "completion": {
+          "trigger": "jem_advancements:node/jem_guide/cool_stuff/zipline_attach"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "ZiplineLogicMixin#afterAttach",
+      "icon": "minecraft:chain"
+    },
+    {
+      "advancement_id": "jem_guide:cool_stuff/zipline_release",
+      "number": "zipline_release",
+      "tab": "cool_stuff",
+      "parent": "jem_guide:cool_stuff/zipline_attach",
+      "title_ru": "Отпусти специально",
+      "title_en": "Let Go on Purpose",
+      "short_ru": "Отпусти хват, пока действительно едешь по тросу Zipline.",
+      "short_en": "Release your grip while actively attached to a Zipline cable.",
+      "exact_ru": "Отпусти хват, пока действительно едешь по тросу Zipline.",
+      "exact_en": "Release your grip while actively attached to a Zipline cable.",
+      "flags": [],
+      "mechanics": "ZiplineLogicMixin",
+      "implementation": "ZiplineLogicMixin#beforeRelease",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "MIXIN_EXACT",
+      "authoritative_source": "ZiplineLogicMixin",
+      "hook": "ZiplineLogicMixin#beforeRelease",
+      "stateful": false,
+      "test": "Static caller and criterion inspection",
+      "source_file": "native-first-rebuild",
+      "criteria": {
+        "completion": {
+          "trigger": "jem_advancements:node/jem_guide/cool_stuff/zipline_release"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "ZiplineLogicMixin#beforeRelease",
+      "icon": "minecraft:slime_ball"
+    },
+    {
+      "advancement_id": "jem_guide:cool_stuff/zipline_transfer",
+      "number": "zipline_transfer",
+      "tab": "cool_stuff",
+      "parent": "jem_guide:cool_stuff/zipline_attach",
+      "title_ru": "Впишись в поворот",
+      "title_en": "Take the Corner",
+      "short_ru": "Перейди напрямую с одного подходящего троса Zipline на другой.",
+      "short_en": "Transfer directly from one valid Zipline cable to another.",
+      "exact_ru": "Перейди напрямую с одного подходящего троса Zipline на другой.",
+      "exact_en": "Transfer directly from one valid Zipline cable to another.",
+      "flags": [],
+      "mechanics": "ZiplineLogicMixin",
+      "implementation": "ZiplineLogicMixin#afterCableSwitch",
+      "technical_metadata": "",
+      "resource_ids": [],
+      "strategy": "MIXIN_EXACT",
+      "authoritative_source": "ZiplineLogicMixin",
+      "hook": "ZiplineLogicMixin#afterCableSwitch",
+      "stateful": false,
+      "test": "Static caller and criterion inspection",
+      "source_file": "native-first-rebuild",
+      "criteria": {
+        "completion": {
+          "trigger": "jem_advancements:node/jem_guide/cool_stuff/zipline_transfer"
+        }
+      },
+      "requirements": [
+        [
+          "completion"
+        ]
+      ],
+      "provider": "ZiplineLogicMixin#afterCableSwitch",
+      "icon": "minecraft:compass"
+    }
+  ]
+}

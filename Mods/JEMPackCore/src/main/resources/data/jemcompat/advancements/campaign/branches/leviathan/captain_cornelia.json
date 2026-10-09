@@ -1,0 +1,10 @@
+{
+  "parent": "jemcompat:campaign/root",
+  "display": {
+    "icon": { "item": "aquamirae:captain_cornelia_spawn_egg" },
+    "title": { "translate": "advancement.jemcompat.prerequisite.captain_cornelia.title" },
+    "description": { "translate": "advancement.jemcompat.prerequisite.captain_cornelia.description" },
+    "frame": "task", "show_toast": true, "announce_to_chat": false, "hidden": false
+  },
+  "criteria": { "defeated": { "trigger": "minecraft:player_killed_entity", "conditions": { "entity": { "type": "aquamirae:captain_cornelia" } } } }
+}

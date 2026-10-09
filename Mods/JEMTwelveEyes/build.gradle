@@ -1,0 +1,129 @@
+plugins {
+    id 'java'
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
+}
+
+version = mod_version
+group = mod_group_id
+
+base {
+    archivesName = mod_id
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+minecraft {
+    mappings channel: mapping_channel, version: mapping_version
+    copyIdeResources = true
+}
+
+repositories {
+    mavenCentral()
+}
+
+def instancePath = providers.gradleProperty('jem_instance')
+        .orElse(providers.environmentVariable('JEM_INSTANCE'))
+        .orNull
+
+if (instancePath == null || instancePath.isBlank()) {
+    throw new GradleException('Set -Pjem_instance=<path> or JEM_INSTANCE before building JEM Twelve Eyes')
+}
+
+def installedMod = { String pattern ->
+    def matches = fileTree(dir: file("${instancePath}/mods"), include: pattern).files
+    if (matches.size() != 1) {
+        throw new GradleException("Expected one installed mod matching ${pattern}, found ${matches.size()}")
+    }
+    matches.first()
+}
+
+def xaeroWorldMap = installedMod('xaeroworldmap-forge-*.jar')
+def xaeroMinimap = installedMod('xaerominimap-forge-*.jar')
+def tradeCycling = installedMod('trade-cycling-forge-*.jar')
+def xaeroLibName = zipTree(xaeroWorldMap).matching {
+    include 'META-INF/jarjar/xaerolib-forge-*.jar'
+}.singleFile.name
+def extractedXaeroLib = layout.buildDirectory.file("xaero-lib/${xaeroLibName}")
+def extractXaeroLib = tasks.register('extractXaeroLib', Copy) {
+    from zipTree(xaeroWorldMap)
+    include 'META-INF/jarjar/xaerolib-forge-*.jar'
+    eachFile { details -> details.path = details.name }
+    includeEmptyDirs = false
+    into layout.buildDirectory.dir('xaero-lib')
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    compileOnly files(xaeroWorldMap)
+    compileOnly files(xaeroMinimap)
+    compileOnly files(tradeCycling)
+    compileOnly files(extractedXaeroLib)
+    compileOnly files('../JEMWorldBossTiers/build/classes/java/main')
+    testImplementation platform('org.junit:junit-bom:5.10.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+
+tasks.named('test', Test).configure {
+    useJUnitPlatform()
+}
+
+tasks.named('compileJava').configure {
+    dependsOn extractXaeroLib
+}
+
+mixin {
+    add sourceSets.main, 'jem_twelve_eyes.refmap.json'
+    config 'jem_twelve_eyes.mixins.json'
+}
+
+sourceSets.main.resources.srcDir 'src/generated/resources'
+
+tasks.named('processResources', ProcessResources).configure {
+    def replaceProperties = [
+            minecraft_version: minecraft_version,
+            minecraft_version_range: minecraft_version_range,
+            forge_version: forge_version,
+            forge_version_range: forge_version_range,
+            loader_version_range: loader_version_range,
+            mod_id: mod_id,
+            mod_name: mod_name,
+            mod_license: mod_license,
+            mod_version: mod_version,
+            mod_authors: mod_authors,
+            mod_description: mod_description
+    ]
+    inputs.properties replaceProperties
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties
+    }
+}
+
+tasks.named('jar', Jar).configure {
+    manifest {
+        attributes([
+                'Specification-Title': mod_id,
+                'Specification-Vendor': mod_authors,
+                'Specification-Version': '2',
+                'Implementation-Title': project.name,
+                'Implementation-Version': project.jar.archiveVersion,
+                'Implementation-Vendor': mod_authors,
+                'MixinConfigs': 'jem_twelve_eyes.mixins.json'
+        ])
+    }
+    finalizedBy 'reobfJar'
+}
+
+tasks.register('installToModpack', Copy) {
+    dependsOn 'build'
+    from tasks.named('jar').flatMap { it.archiveFile }
+    into file("${instancePath}/mods")
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}

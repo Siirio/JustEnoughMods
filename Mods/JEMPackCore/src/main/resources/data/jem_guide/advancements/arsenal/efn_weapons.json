@@ -1,0 +1,57 @@
+{
+  "display": {
+    "icon": {
+      "item": "efn:ruinsgreatsword"
+    },
+    "title": {
+      "translate": "jem_guide.advancement.arsenal.efn_weapons.title"
+    },
+    "description": {
+      "translate": "jem_guide.advancement.arsenal.efn_weapons.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "completion": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "efn:ruinsgreatsword",
+              "efn:thornwheel",
+              "efn:nf_dual_sword",
+              "efn:meen_spear",
+              "efn:sword_of_pioneer",
+              "efn:nf_shortsword",
+              "efn:nf_shortsword_2",
+              "efn:exsiliumgladius",
+              "efn:fire_exsiliumgladius",
+              "efn:air_tachi",
+              "efn:co_tachi",
+              "efn:kusabimaru",
+              "efn:broadblade",
+              "efn:crimson_moon",
+              "efn:nf_claw",
+              "efn:yamato_dmc4_in_sheath",
+              "efn:yamato_dmc_in_sheath",
+              "efn:hf_murasama",
+              "efn:hf_blade",
+              "efn:crescent_moon",
+              "efn:excalibur"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completion"
+    ]
+  ],
+  "parent": "jem_guide:arsenal/root"
+}

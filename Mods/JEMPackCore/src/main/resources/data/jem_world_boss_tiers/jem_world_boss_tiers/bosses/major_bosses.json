@@ -1,0 +1,882 @@
+{
+  "tier_thresholds": [
+    0,
+    3,
+    10,
+    18,
+    32
+  ],
+  "default_arena_revival_offering": "minecraft:nether_star",
+  "default_arena_revival_xp_levels": 30,
+  "bosses": [
+    {
+      "key": "block_factorys_bosses:infernal_dragon",
+      "display_name": "Ashlord, The Infernal Dragon",
+      "entity_ids": [
+        "block_factorys_bosses:infernal_dragon"
+      ],
+      "victory_advancement_ids": [
+        "block_factorys_bosses:kill_dragon",
+        "jem_guide:bosses/2_2"
+      ],
+      "scales_with_world_tier": true,
+      "counts_toward_world_tier": true,
+      "native_threat": 9,
+      "hp_scaling_safety": "UNKNOWN",
+      "attributes": {
+        "minecraft:generic.max_health": [
+          195,
+          238,
+          288,
+          320,
+          350
+        ],
+        "minecraft:generic.attack_damage": [
+          11.5,
+          13.5,
+          15.5,
+          17,
+          18.5
+        ]
+      },
+      "special_damage_multiplier": [
+        0.82,
+        0.96,
+        1.06,
+        1.13,
+        1.2
+      ],
+      "damage_adapter": "bosses_rise_dragon",
+      "arena_strategy": "structure:block_factorys_bosses:dragon_tower",
+      "revival_strategy": "arena_offering",
+      "anti_cheese_profile": "flying_boss",
+      "destruction_rules": "arena_safe"
+    },
+    {
+      "key": "block_factorys_bosses:kraken",
+      "display_name": "Nerakyss, The Kraken",
+      "entity_ids": [
+        "block_factorys_bosses:kraken"
+      ],
+      "victory_advancement_ids": [
+        "block_factorys_bosses:kill_kraken"
+      ],
+      "scales_with_world_tier": true,
+      "counts_toward_world_tier": true,
+      "native_threat": 8,
+      "hp_scaling_safety": "REQUIRES_PATCH",
+      "attributes": {
+        "minecraft:generic.max_health": [
+          450,
+          500,
+          575,
+          675,
+          775
+        ],
+        "minecraft:generic.attack_damage": [
+          9,
+          10,
+          11,
+          12,
+          13
+        ]
+      },
+      "special_damage_multiplier": [
+        0.9,
+        1,
+        1.08,
+        1.16,
+        1.24
+      ],
+      "stagger_adapter": "recent_damage_ratio_0_20",
+      "arena_strategy": "structure:block_factorys_bosses:kraken_ship",
+      "revival_strategy": "arena_offering",
+      "anti_cheese_profile": "multipart_aquatic",
+      "destruction_rules": "arena_safe"
+    },
+    {
+      "key": "block_factorys_bosses:sandworm",
+      "display_name": "Sirok, The Sandworm",
+      "entity_ids": [
+        "block_factorys_bosses:sandworm"
+      ],
+      "victory_advancement_ids": [
+        "block_factorys_bosses:kill_sandworm"
+      ],
+      "scales_with_world_tier": true,
+      "counts_toward_world_tier": true,
+      "native_threat": 7,
+      "hp_scaling_safety": "REQUIRES_PATCH",
+      "attributes": {
+        "minecraft:generic.max_health": [
+          145,
+          190,
+          250,
+          340,
+          420
+        ],
+        "minecraft:generic.attack_damage": [
+          9,
+          11.5,
+          14,
+          16.5,
+          19
+        ]
+      },
+      "special_damage_multiplier": [
+        0.92,
+        1.05,
+        1.16,
+        1.3,
+        1.42
+      ],
+      "stagger_adapter": "recent_damage_ratio_0_1667",
+      "arena_strategy": "structure:block_factorys_bosses:sandworm_nest",
+      "revival_strategy": "arena_offering",
+      "anti_cheese_profile": "burrowing_boss",
+      "destruction_rules": "arena_safe"
+    },
+    {
+      "key": "block_factorys_bosses:underworld_knight",
+      "display_name": "Helvar, the Underworld Knight",
+      "entity_ids": [
+        "block_factorys_bosses:underworld_knight"
+      ],
+      "victory_advancement_ids": [
+        "block_factorys_bosses:kill_underworld_knight"
+      ],
+      "scales_with_world_tier": true,
+      "counts_toward_world_tier": true,
+      "native_threat": 8,
+      "hp_scaling_safety": "SAFE",
+      "attributes": {
+        "minecraft:generic.max_health": [
+          225,
+          250,
+          290,
+          340,
+          390
+        ],
+        "minecraft:generic.attack_damage": [
+          13.5,
+          15,
+          16.5,
+          18,
+          20
+        ]
+      },
+      "special_damage_multiplier": [
+        0.9,
+        1,
+        1.08,
+        1.17,
+        1.25
+      ],
+      "arena_strategy": "structure:block_factorys_bosses:underworld_arena",
+      "revival_strategy": "arena_offering",
+      "anti_cheese_profile": "melee_gap_closer",
+      "destruction_rules": "arena_safe"
+    },
+    {
+      "key": "block_factorys_bosses:yeti",
+      "display_name": "Skor, The Yeti",
+      "entity_ids": [
+        "block_factorys_bosses:yeti"
+      ],
+      "victory_advancement_ids": [
+        "block_factorys_bosses:kill_yeti",
+        "jem_guide:bosses/2_1"
+      ],
+      "scales_with_world_tier": true,
+      "counts_toward_world_tier": true,
+      "native_threat": 8,
+      "hp_scaling_safety": "SAFE",
+      "attributes": {
+        "minecraft:generic.max_health": [
+          225,
+          250,
+          290,
+          340,
+          390
+        ],
+        "minecraft:generic.attack_damage": [
+          16,
+          18,
+          20,
+          22,
+          24
+        ]
+      },
+      "special_damage_multiplier": [
+        0.9,
+        1,
+        1.08,
+        1.17,
+        1.25
+      ],
+      "arena_strategy": "structure:block_factorys_bosses:yeti_hideout",
+      "revival_strategy": "arena_offering",
+      "anti_cheese_profile": "melee_destructive",
+      "destruction_rules": "arena_safe"
+    },
+    {
+      "key": "legendary_monsters:cloud_golem",
+      "display_name": "Cumulonimbus",
+      "entity_ids": [
+        "legendary_monsters:cloud_golem"
+      ],
+      "victory_advancement_ids": [
+        "legendary_monsters:defeat_cloud_golem"
+      ],
+      "scales_with_world_tier": true,
+      "counts_toward_world_tier": true,
+      "native_threat": 8,
+      "hp_scaling_safety": "UNKNOWN",
+      "attributes": {
+        "minecraft:generic.max_health": [
+          315,
+          350,
+          400,
+          470,
+          540
+        ]
+      },
+      "special_damage_multiplier": [
+        0.9,
+        1,
+        1.08,
+        1.18,
+        1.28
+      ],
+      "damage_adapter": "legendary_caps",
+      "arena_strategy": "structure:legendary_monsters:cloudy_temple",
+      "revival_strategy": "arena_offering",
+      "anti_cheese_profile": "legendary_native",
+      "destruction_rules": "arena_safe"
+    },
+    {
+      "key": "legendary_monsters:posessed_paladin",
+      "display_name": "Possessed Paladin",
+      "entity_ids": [
+        "legendary_monsters:posessed_paladin"
+      ],
+      "victory_advancement_ids": [
+        "legendary_monsters:defeat_posessed_paladin"
+      ],
+      "scales_with_world_tier": true,
+      "counts_toward_world_tier": true,
+      "native_threat": 9,
+      "hp_scaling_safety": "UNKNOWN",
+      "attributes": {
+        "minecraft:generic.max_health": [
+          350,
+          425,
+          500,
+          560,
+          600
+        ],
+        "minecraft:generic.attack_damage": [
+          12,
+          14,
+          16,
+          17,
+          18
+        ]
+      },
+      "special_damage_multiplier": [
+        0.82,
+        0.96,
+        1.05,
+        1.12,
+        1.18
+      ],
+      "damage_adapter": "legendary_caps",
+      "arena_strategy": "structure:legendary_monsters:collapsed_kingdom",
+      "revival_strategy": "arena_offering",
+      "anti_cheese_profile": "legendary_native",
+      "destruction_rules": "arena_safe"
+    },
+    {
+      "key": "legendary_monsters:the_obliterator",
+      "display_name": "The Obliterator",
+      "entity_ids": [
+        "legendary_monsters:the_obliterator"
+      ],
+      "victory_advancement_ids": [
+        "legendary_monsters:defeat_the_obliterator"
+      ],
+      "scales_with_world_tier": true,
+      "counts_toward_world_tier": true,
+      "native_threat": 10,
+      "hp_scaling_safety": "UNKNOWN",
+      "attributes": {
+        "minecraft:generic.max_health": [
+          250,
+          410,
+          495,
+          540,
+          570
+        ],
+        "minecraft:generic.attack_damage": [
+          4.5,
+          5.8,
+          6.3,
+          6.6,
+          7
+        ]
+      },
+      "special_damage_multiplier": [
+        0.72,
+        0.94,
+        1.05,
+        1.12,
+        1.18
+      ],
+      "damage_adapter": "legendary_caps",
+      "arena_strategy": "structure:legendary_monsters:space_station",
+      "revival_strategy": "arena_offering",
+      "anti_cheese_profile": "legendary_native",
+      "destruction_rules": "arena_safe"
+    },
+    {
+      "key": "cataclysm:ender_guardian",
+      "display_name": "Ender Guardian",
+      "entity_ids": [
+        "cataclysm:ender_guardian"
+      ],
+      "victory_advancement_ids": [
+        "cataclysm:kill_ender_guardian"
+      ],
+      "scales_with_world_tier": true,
+      "counts_toward_world_tier": true,
+      "native_threat": 8,
+      "hp_scaling_safety": "SAFE",
+      "attributes": {
+        "minecraft:generic.max_health": [
+          300,
+          320,
+          365,
+          400,
+          440
+        ],
+        "minecraft:generic.attack_damage": [
+          14,
+          15.5,
+          17,
+          18,
+          19
+        ]
+      },
+      "special_damage_multiplier": [
+        0.9,
+        0.98,
+        1.05,
+        1.1,
+        1.16
+      ],
+      "damage_adapter": "cataclysm_percent_safe",
+      "healing_adapter": "cataclysm_nature_heal",
+      "arena_strategy": "cataclysm_respawner",
+      "revival_strategy": "cataclysm:void_eye",
+      "anti_cheese_profile": "cataclysm_native",
+      "destruction_rules": "arena_safe"
+    },
+    {
+      "key": "cataclysm:netherite_monstrosity",
+      "display_name": "Netherite Monstrosity",
+      "entity_ids": [
+        "cataclysm:netherite_monstrosity"
+      ],
+      "victory_advancement_ids": [
+        "cataclysm:kill_monstrosity"
+      ],
+      "scales_with_world_tier": true,
+      "counts_toward_world_tier": true,
+      "native_threat": 8,
+      "hp_scaling_safety": "SAFE",
+      "attributes": {
+        "minecraft:generic.max_health": [
+          500,
+          570,
+          660,
+          720,
+          780
+        ],
+        "minecraft:generic.attack_damage": [
+          21,
+          24,
+          27,
+          29,
+          31
+        ]
+      },
+      "special_damage_multiplier": [
+        0.88,
+        0.98,
+        1.05,
+        1.1,
+        1.15
+      ],
+      "damage_adapter": "cataclysm_percent_safe",
+      "healing_adapter": "monstrosity_lava_fixed",
+      "arena_strategy": "cataclysm_respawner",
+      "revival_strategy": "cataclysm:monstrous_eye",
+      "anti_cheese_profile": "cataclysm_native",
+      "destruction_rules": "arena_safe"
+    },
+    {
+      "key": "cataclysm:ignis",
+      "display_name": "Ignis",
+      "entity_ids": [
+        "cataclysm:ignis"
+      ],
+      "victory_advancement_ids": [
+        "cataclysm:kill_ignis"
+      ],
+      "scales_with_world_tier": true,
+      "counts_toward_world_tier": true,
+      "native_threat": 10,
+      "hp_scaling_safety": "SAFE",
+      "attributes": {
+        "minecraft:generic.max_health": [
+          310,
+          410,
+          495,
+          535,
+          565
+        ],
+        "minecraft:generic.attack_damage": [
+          11,
+          13.5,
+          14.7,
+          15.4,
+          16.2
+        ]
+      },
+      "special_damage_multiplier": [
+        0.72,
+        0.94,
+        1.04,
+        1.1,
+        1.15
+      ],
+      "damage_adapter": "cataclysm_percent_safe",
+      "healing_adapter": "cataclysm_nature_heal",
+      "arena_strategy": "structure:cataclysm:burning_arena",
+      "revival_strategy": "arena_offering",
+      "anti_cheese_profile": "cataclysm_native",
+      "destruction_rules": "arena_safe"
+    },
+    {
+      "key": "cataclysm:the_harbinger",
+      "display_name": "The Harbinger",
+      "entity_ids": [
+        "cataclysm:the_harbinger"
+      ],
+      "victory_advancement_ids": [
+        "cataclysm:kill_harbinger"
+      ],
+      "scales_with_world_tier": true,
+      "counts_toward_world_tier": true,
+      "native_threat": 8,
+      "hp_scaling_safety": "SAFE",
+      "attributes": {
+        "minecraft:generic.max_health": [
+          350,
+          375,
+          430,
+          470,
+          510
+        ],
+        "minecraft:generic.attack_damage": [
+          8,
+          9,
+          10,
+          10.5,
+          11
+        ]
+      },
+      "special_damage_multiplier": [
+        0.9,
+        1,
+        1.07,
+        1.13,
+        1.2
+      ],
+      "damage_adapter": "cataclysm_percent_safe",
+      "healing_adapter": "harbinger_fixed",
+      "arena_strategy": "cataclysm_respawner",
+      "revival_strategy": "cataclysm:mech_eye",
+      "anti_cheese_profile": "cataclysm_native",
+      "destruction_rules": "arena_safe"
+    },
+    {
+      "key": "cataclysm:the_leviathan",
+      "display_name": "The Leviathan",
+      "entity_ids": [
+        "cataclysm:the_leviathan"
+      ],
+      "victory_advancement_ids": [
+        "cataclysm:kill_leviathan"
+      ],
+      "scales_with_world_tier": true,
+      "counts_toward_world_tier": true,
+      "native_threat": 10,
+      "hp_scaling_safety": "SAFE",
+      "attributes": {
+        "minecraft:generic.max_health": [
+          270,
+          365,
+          440,
+          475,
+          500
+        ],
+        "minecraft:generic.attack_damage": [
+          12,
+          14.5,
+          15.8,
+          16.5,
+          17.2
+        ]
+      },
+      "special_damage_multiplier": [
+        0.72,
+        0.94,
+        1.04,
+        1.1,
+        1.15
+      ],
+      "damage_adapter": "cataclysm_percent_safe",
+      "healing_adapter": "cataclysm_nature_heal",
+      "arena_strategy": "structure:cataclysm:sunken_city",
+      "revival_strategy": "arena_offering",
+      "anti_cheese_profile": "cataclysm_native",
+      "destruction_rules": "arena_safe"
+    },
+    {
+      "key": "cataclysm:ancient_remnant",
+      "display_name": "Ancient Remnant",
+      "entity_ids": [
+        "cataclysm:ancient_remnant"
+      ],
+      "victory_advancement_ids": [
+        "cataclysm:kill_remnant"
+      ],
+      "scales_with_world_tier": true,
+      "counts_toward_world_tier": true,
+      "native_threat": 9,
+      "hp_scaling_safety": "SAFE",
+      "attributes": {
+        "minecraft:generic.max_health": [
+          350,
+          425,
+          500,
+          540,
+          575
+        ],
+        "minecraft:generic.attack_damage": [
+          21,
+          24,
+          26,
+          27.5,
+          29
+        ]
+      },
+      "special_damage_multiplier": [
+        0.82,
+        0.96,
+        1.05,
+        1.11,
+        1.17
+      ],
+      "damage_adapter": "cataclysm_percent_safe",
+      "healing_adapter": "cataclysm_nature_heal",
+      "arena_strategy": "cataclysm_respawner",
+      "revival_strategy": "cataclysm:desert_eye",
+      "anti_cheese_profile": "cataclysm_native",
+      "destruction_rules": "arena_safe"
+    },
+    {
+      "key": "cataclysm:maledictus",
+      "display_name": "Maledictus",
+      "entity_ids": [
+        "cataclysm:maledictus"
+      ],
+      "victory_advancement_ids": [
+        "cataclysm:kill_maledictus"
+      ],
+      "scales_with_world_tier": true,
+      "counts_toward_world_tier": true,
+      "native_threat": 10,
+      "hp_scaling_safety": "SAFE",
+      "attributes": {
+        "minecraft:generic.max_health": [
+          285,
+          385,
+          465,
+          500,
+          525
+        ],
+        "minecraft:generic.attack_damage": [
+          10,
+          12.5,
+          13.7,
+          14.3,
+          15
+        ]
+      },
+      "special_damage_multiplier": [
+        0.72,
+        0.94,
+        1.04,
+        1.1,
+        1.15
+      ],
+      "damage_adapter": "cataclysm_percent_safe",
+      "healing_adapter": "cataclysm_nature_heal",
+      "arena_strategy": "structure:cataclysm:frosted_prison",
+      "revival_strategy": "arena_offering",
+      "anti_cheese_profile": "cataclysm_native",
+      "destruction_rules": "arena_safe"
+    },
+    {
+      "key": "cataclysm:scylla",
+      "display_name": "Scylla",
+      "entity_ids": [
+        "cataclysm:scylla"
+      ],
+      "victory_advancement_ids": [
+        "cataclysm:kill_scylla"
+      ],
+      "scales_with_world_tier": true,
+      "counts_toward_world_tier": true,
+      "native_threat": 10,
+      "hp_scaling_safety": "SAFE",
+      "attributes": {
+        "minecraft:generic.max_health": [
+          265,
+          360,
+          430,
+          465,
+          490
+        ],
+        "minecraft:generic.attack_damage": [
+          14,
+          17.5,
+          19,
+          20,
+          21
+        ]
+      },
+      "special_damage_multiplier": [
+        0.72,
+        0.94,
+        1.04,
+        1.1,
+        1.15
+      ],
+      "damage_adapter": "cataclysm_percent_safe",
+      "healing_adapter": "cataclysm_nature_heal",
+      "arena_strategy": "cataclysm_respawner",
+      "revival_strategy": "cataclysm:storm_eye",
+      "anti_cheese_profile": "cataclysm_native",
+      "destruction_rules": "arena_safe"
+    },
+    {
+      "key": "aquamirae:captain_cornelia",
+      "display_name": "Captain Cornelia",
+      "entity_ids": [
+        "aquamirae:captain_cornelia"
+      ],
+      "victory_advancement_ids": [],
+      "scales_with_world_tier": true,
+      "counts_toward_world_tier": true,
+      "native_threat": 9,
+      "hp_scaling_safety": "REQUIRES_PATCH",
+      "attributes": {
+        "minecraft:generic.max_health": [
+          225,
+          285,
+          335,
+          365,
+          390
+        ]
+      },
+      "special_damage_multiplier": [
+        0.82,
+        0.96,
+        1.05,
+        1.12,
+        1.18
+      ],
+      "damage_adapter": "cornelia_loadout",
+      "healing_adapter": "cornelia_relative_emergency",
+      "arena_strategy": "aquamirae_ice_maze",
+      "revival_strategy": "aquamirae:shell_horn",
+      "anti_cheese_profile": "cornelia_native",
+      "destruction_rules": "no_shipbreaker_griefing"
+    },
+    {
+      "key": "luminous_nether:soul_furnace",
+      "display_name": "Soul Furnace",
+      "entity_ids": [
+        "luminous_nether:soul_furnace"
+      ],
+      "victory_advancement_ids": [
+        "luminous_nether:kill_soul_furnace"
+      ],
+      "scales_with_world_tier": true,
+      "counts_toward_world_tier": true,
+      "native_threat": 7,
+      "hp_scaling_safety": "UNKNOWN",
+      "attributes": {
+        "minecraft:generic.max_health": [
+          342,
+          360,
+          415,
+          500,
+          580
+        ],
+        "minecraft:generic.attack_damage": [
+          9.5,
+          10,
+          11.5,
+          13,
+          14.5
+        ]
+      },
+      "special_damage_multiplier": [
+        0.95,
+        1,
+        1.08,
+        1.18,
+        1.28
+      ],
+      "arena_strategy": "native",
+      "revival_strategy": "none",
+      "anti_cheese_profile": "conservative",
+      "destruction_rules": "native_safe"
+    },
+    {
+      "key": "luminous_nether:warped_mushlin_king",
+      "display_name": "Warped Mushlin King",
+      "entity_ids": [
+        "luminous_nether:warped_mushlin_king"
+      ],
+      "victory_advancement_ids": [],
+      "scales_with_world_tier": true,
+      "counts_toward_world_tier": true,
+      "native_threat": 7,
+      "hp_scaling_safety": "UNKNOWN",
+      "attributes": {
+        "minecraft:generic.max_health": [
+          266,
+          280,
+          325,
+          390,
+          455
+        ],
+        "minecraft:generic.attack_damage": [
+          17,
+          18,
+          20,
+          22,
+          24
+        ]
+      },
+      "special_damage_multiplier": [
+        0.95,
+        1,
+        1.08,
+        1.18,
+        1.28
+      ],
+      "arena_strategy": "native",
+      "revival_strategy": "none",
+      "anti_cheese_profile": "conservative",
+      "destruction_rules": "native_safe"
+    },
+    {
+      "key": "luminous_beasts:wind_phoenix",
+      "display_name": "Wind Phoenix",
+      "entity_ids": [
+        "luminous_beasts:wind_phoenix"
+      ],
+      "victory_advancement_ids": [
+        "luminous_beasts:kill_phoenix"
+      ],
+      "scales_with_world_tier": true,
+      "counts_toward_world_tier": true,
+      "native_threat": 7,
+      "hp_scaling_safety": "UNKNOWN",
+      "attributes": {
+        "minecraft:generic.max_health": [
+          238,
+          250,
+          290,
+          350,
+          410
+        ],
+        "minecraft:generic.attack_damage": [
+          14,
+          15,
+          17,
+          19,
+          21
+        ]
+      },
+      "special_damage_multiplier": [
+        0.95,
+        1,
+        1.08,
+        1.18,
+        1.28
+      ],
+      "arena_strategy": "native_egg",
+      "revival_strategy": "native_egg",
+      "anti_cheese_profile": "flying_boss",
+      "destruction_rules": "native_safe"
+    },
+    {
+      "key": "luminous_beasts:the_scarecrow",
+      "display_name": "The Scarecrow",
+      "entity_ids": [
+        "luminous_beasts:the_scarecrow"
+      ],
+      "victory_advancement_ids": [
+        "luminous_beasts:kill_scarecrow"
+      ],
+      "scales_with_world_tier": true,
+      "counts_toward_world_tier": true,
+      "native_threat": 6,
+      "hp_scaling_safety": "UNKNOWN",
+      "attributes": {
+        "minecraft:generic.max_health": [
+          323,
+          340,
+          395,
+          475,
+          550
+        ],
+        "minecraft:generic.attack_damage": [
+          9.5,
+          10,
+          11.5,
+          13,
+          14.5
+        ]
+      },
+      "special_damage_multiplier": [
+        0.95,
+        1,
+        1.1,
+        1.22,
+        1.34
+      ],
+      "arena_strategy": "beast_pit",
+      "revival_strategy": "none",
+      "anti_cheese_profile": "conservative",
+      "destruction_rules": "native_safe"
+    }
+  ]
+}

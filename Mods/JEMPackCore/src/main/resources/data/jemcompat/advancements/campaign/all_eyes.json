@@ -1,0 +1,23 @@
+{
+  "parent": "jemcompat:defeat/helvar",
+  "display": {
+    "icon": {
+      "item": "minecraft:ender_eye"
+    },
+    "title": {
+      "translate": "quest.jemcompat.collect.title"
+    },
+    "description": {
+      "translate": "quest.jemcompat.collect.desc"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "completed": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

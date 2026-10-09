@@ -1,0 +1,10 @@
+{
+  "parent": "jemcompat:campaign/root",
+  "display": {
+    "icon": { "item": "legendary_monsters:withered_abomination_spawn_egg" },
+    "title": { "translate": "advancement.jemcompat.prerequisite.withered_abomination.title" },
+    "description": { "translate": "advancement.jemcompat.prerequisite.withered_abomination.description" },
+    "frame": "task", "show_toast": true, "announce_to_chat": false, "hidden": false
+  },
+  "criteria": { "defeated": { "trigger": "minecraft:player_killed_entity", "conditions": { "entity": { "type": "legendary_monsters:withered_abomination" } } } }
+}

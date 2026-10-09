@@ -1,0 +1,23 @@
+{
+  "parent": "jemcompat:campaign/branches/infernal_dragon/furnace",
+  "display": {
+    "icon": {
+      "item": "block_factorys_bosses:dragon_bone"
+    },
+    "title": {
+      "translate": "advancement.jemcompat.defeat.infernal_dragon.title"
+    },
+    "description": {
+      "translate": "advancement.jemcompat.defeat.infernal_dragon.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "completed": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

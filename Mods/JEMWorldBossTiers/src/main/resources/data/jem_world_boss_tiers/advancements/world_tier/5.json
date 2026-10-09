@@ -1,0 +1,13 @@
+{
+  "parent": "jem_world_boss_tiers:world_tier/4",
+  "display": {
+    "icon": {"item": "minecraft:beacon"},
+    "title": {"translate": "advancement.jem_world_boss_tiers.tier_5.title"},
+    "description": {"translate": "advancement.jem_world_boss_tiers.tier_5.description"},
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {"reached": {"trigger": "minecraft:impossible"}}
+}

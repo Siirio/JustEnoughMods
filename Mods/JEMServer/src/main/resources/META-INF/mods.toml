@@ -1,0 +1,41 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+[[mods]]
+modId="jem_server"
+version="2.0.0-dev"
+displayName="JEM Server"
+displayTest="MATCH_VERSION"
+description='''SMP activities, contracts, parties, events and shared navigation. Requires matching JEM SMP v2 client and server.'''
+[[dependencies.jem_server]]
+modId="forge"
+mandatory=true
+versionRange="[47.4.10,)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.jem_server]]
+modId="jem_claims"
+mandatory=false
+versionRange="[2.0.0-dev,)"
+ordering="AFTER"
+side="SERVER"
+[[dependencies.jem_server]]
+modId="jem_world_boss_tiers"
+mandatory=true
+versionRange="[2.5.0-dev,)"
+ordering="AFTER"
+side="SERVER"
+
+[[dependencies.jem_server]]
+modId="tide"
+mandatory=true
+versionRange="[2.1.1,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.jem_server]]
+modId="pehkui"
+mandatory=true
+versionRange="[3.8.2,)"
+ordering="AFTER"
+side="BOTH"

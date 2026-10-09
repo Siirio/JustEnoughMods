@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "item": "paraglider:paraglider"
+    },
+    "title": {
+      "translate": "jem_guide.advancement.qol.13.title"
+    },
+    "description": {
+      "translate": "jem_guide.advancement.qol.13.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "completion": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "paraglider:paraglider"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completion"
+    ]
+  ],
+  "parent": "jem_guide:qol/root"
+}

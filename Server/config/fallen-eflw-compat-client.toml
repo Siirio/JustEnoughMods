@@ -1,0 +1,14 @@
+
+[compat]
+	#While Epic Fight hard lock-on is active, keep vanilla movement impulses instead of letting Leawind rotate them. Disabled by default; enable this if strafing feels wrong.
+	optimize_input_when_ef_lock = false
+	#Legacy 1.x value retained for downgrade safety; unused by the Leawind 3 adapter.
+	auto_lock = false
+	#Legacy 1.x value retained for downgrade safety; unused by the Leawind 3 adapter.
+	#Range: > 1
+	auto_lock_dist = 5
+	#Legacy 1.x value retained for downgrade safety; unused by the Leawind 3 adapter.
+	auto_rotate_front = true
+	#Legacy 1.x values retained for downgrade safety; unused by the Leawind 3 adapter.
+	entities_not_auto_lock = ["minecraft:villager"]
+

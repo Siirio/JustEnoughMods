@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:note_block"
+    },
+    "title": {
+      "translate": "jem_guide.advancement.cool_stuff.play_a_note.title"
+    },
+    "description": {
+      "translate": "jem_guide.advancement.cool_stuff.play_a_note.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "completion": {
+      "trigger": "jem_advancements:node/jem_guide/cool_stuff/play_a_note"
+    }
+  },
+  "requirements": [
+    [
+      "completion"
+    ]
+  ],
+  "parent": "jem_guide:cool_stuff/root"
+}

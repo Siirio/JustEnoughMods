@@ -1,0 +1,23 @@
+{
+  "parent": "jemcompat:campaign/root",
+  "display": {
+    "icon": {
+      "item": "legendary_monsters:eye_of_air"
+    },
+    "title": {
+      "translate": "advancement.jemcompat.defeat.cumulonimbus.title"
+    },
+    "description": {
+      "translate": "advancement.jemcompat.defeat.cumulonimbus.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "completed": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

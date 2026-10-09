@@ -1,0 +1,51 @@
+{
+  "display": {
+    "icon": {
+      "item": "tide:sunflower_fishing_rod"
+    },
+    "title": {
+      "translate": "jem_guide.advancement.fishing.4_3.title"
+    },
+    "description": {
+      "translate": "jem_guide.advancement.fishing.4_3.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "caught_rod": {
+      "trigger": "minecraft:fishing_rod_hooked",
+      "conditions": {
+        "item": {
+          "items": [
+            "tide:sunflower_fishing_rod"
+          ]
+        }
+      }
+    },
+    "caught_fish_with_rod": {
+      "trigger": "minecraft:fishing_rod_hooked",
+      "conditions": {
+        "rod": {
+          "items": [
+            "tide:sunflower_fishing_rod"
+          ]
+        },
+        "item": {
+          "tag": "forge:raw_fishes"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "caught_rod"
+    ],
+    [
+      "caught_fish_with_rod"
+    ]
+  ],
+  "parent": "jem_guide:fishing/root"
+}

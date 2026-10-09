@@ -1,0 +1,142 @@
+{
+  "display": {
+    "icon": {
+      "item": "efn:ruinfighter_chestplate"
+    },
+    "title": {
+      "translate": "jem_guide.advancement.arsenal.efn_armor_collection.title"
+    },
+    "description": {
+      "translate": "jem_guide.advancement.arsenal.efn_armor_collection.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "ruinfighter_helmet": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "efn:ruinfighter_helmet"
+            ]
+          }
+        ]
+      }
+    },
+    "ruinfighter_chestplate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "efn:ruinfighter_chestplate"
+            ]
+          }
+        ]
+      }
+    },
+    "ruinfighter_leggings": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "efn:ruinfighter_leggings"
+            ]
+          }
+        ]
+      }
+    },
+    "ruinfighter_boots": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "efn:ruinfighter_boots"
+            ]
+          }
+        ]
+      }
+    },
+    "duskfire_helmet": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "efn:duskfire_helmet"
+            ]
+          }
+        ]
+      }
+    },
+    "duskfire_chestplate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "efn:duskfire_chestplate"
+            ]
+          }
+        ]
+      }
+    },
+    "duskfire_leggings": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "efn:duskfire_leggings"
+            ]
+          }
+        ]
+      }
+    },
+    "duskfire_boots": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "efn:duskfire_boots"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ruinfighter_helmet"
+    ],
+    [
+      "ruinfighter_chestplate"
+    ],
+    [
+      "ruinfighter_leggings"
+    ],
+    [
+      "ruinfighter_boots"
+    ],
+    [
+      "duskfire_helmet"
+    ],
+    [
+      "duskfire_chestplate"
+    ],
+    [
+      "duskfire_leggings"
+    ],
+    [
+      "duskfire_boots"
+    ]
+  ],
+  "parent": "jem_guide:arsenal/efn_armor"
+}

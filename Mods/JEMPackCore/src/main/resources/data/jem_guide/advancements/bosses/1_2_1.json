@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:quartz"
+    },
+    "title": {
+      "translate": "jem_guide.advancement.bosses.1_2_1.title"
+    },
+    "description": {
+      "translate": "jem_guide.advancement.bosses.1_2_1.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "completion": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "knightquest:netherman"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completion"
+    ]
+  ],
+  "parent": "jem_guide:bosses/root"
+}

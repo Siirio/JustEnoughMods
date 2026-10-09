@@ -1,0 +1,16 @@
+{
+  "required": false,
+  "minVersion": "0.8",
+  "package": "com.siirio.jemcompat.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "jem_twelve_eyes.refmap.json",
+  "mixins": [
+    "compat.tradecycling.TradeCyclingModMixin",
+    "gate.CampaignEyeItemEntityMixin",
+    "gate.EyeOfEnderMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "plugin": "com.siirio.jemtwelveeyes.OptionalMixins"
+}

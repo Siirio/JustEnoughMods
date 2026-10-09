@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "create:mechanical_drill"
+    },
+    "title": {
+      "translate": "jem.advancement.engineering.drill_work.title"
+    },
+    "description": {
+      "translate": "jem.advancement.engineering.drill_work.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "completion": {
+      "trigger": "jem_advancements:node/jem/engineering/drill_work"
+    }
+  },
+  "requirements": [
+    [
+      "completion"
+    ]
+  ],
+  "parent": "jem:engineering/root"
+}

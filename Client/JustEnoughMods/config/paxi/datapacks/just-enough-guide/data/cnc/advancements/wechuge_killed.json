@@ -1,0 +1,36 @@
+{
+  "display": {
+    "icon": {
+      "item": "cnc:wechuge_head"
+    },
+    "title": {
+      "translate": "advancements.wechuge_killed.title"
+    },
+    "description": {
+      "translate": "advancements.wechuge_killed.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "wechuge_killed_0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "cnc:wechuge_head"
+            ],
+            "count": {
+              "min": 1,
+              "max": 64
+            }
+          }
+        ]
+      }
+    }
+  },
+  "parent": "cnc:cnc"
+}
