@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 public final class JemServerMixinPlugin implements IMixinConfigPlugin {
     private static final String CLIENT_MIXINS = "com.siirio.jemserver.mixin.client.";
     private static final String XAERO_MIXINS = "com.siirio.jemserver.mixin.xaero.";
+    private static final String SHARED_BOUNDARY_MIXIN = "com.siirio.jemserver.mixin.BossSolidBoundaryMixin";
 
     @Override
     public void onLoad(String mixinPackage) {}
@@ -24,7 +25,8 @@ public final class JemServerMixinPlugin implements IMixinConfigPlugin {
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         return FMLEnvironment.dist == Dist.DEDICATED_SERVER
                 || mixinClassName.startsWith(CLIENT_MIXINS)
-                || mixinClassName.startsWith(XAERO_MIXINS);
+                || mixinClassName.startsWith(XAERO_MIXINS)
+                || mixinClassName.equals(SHARED_BOUNDARY_MIXIN);
     }
 
     @Override

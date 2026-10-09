@@ -48,8 +48,12 @@ public final class BossRespawnScheduler {
         }
         MinecraftServer server = level.getServer();
         ensureServer(server);
+        WorldTierData data = WorldTierData.get(server);
+        if (arena.structureArena() && !data.nativeAnchorVerified(arena.id())) {
+            return;
+        }
         long dueTime = server.overworld().getGameTime() + RESPAWN_DELAY;
-        WorldTierData.get(server).scheduleRespawn(arena.id(), entityId, dueTime);
+        data.scheduleRespawn(arena.id(), entityId, dueTime);
         schedule(new ScheduledRespawn(
                 arena.id(),
                 profile.key(),
@@ -81,9 +85,6 @@ public final class BossRespawnScheduler {
         if(livingBoss!=null) {
             cancel(arena.id());
             if(!arena.structureArena()||arena.activeEncounterId()!=null&&!arena.activeEncounterId().equals(livingBoss.getUUID())) return BossRevivalApi.Result.ACTIVE;
-            BlockPos position=arena.respawnPosition();
-            livingBoss.moveTo(position.getX()+.5D,position.getY(),position.getZ()+.5D,livingBoss.getYRot(),livingBoss.getXRot());
-            livingBoss.setDeltaMovement(net.minecraft.world.phys.Vec3.ZERO);
             if(livingBoss instanceof net.minecraft.world.entity.Mob mob) {
                 mob.setNoAi(false);
                 mob.getNavigation().stop();
@@ -91,6 +92,7 @@ public final class BossRespawnScheduler {
             com.siirio.jemworldbosstiers.api.HostedEncounterApi.release(livingBoss);
             return BossRevivalApi.Result.CREATED;
         }
+        if (arena.structureArena() && !data.nativeAnchorVerified(arena.id())) return BossRevivalApi.Result.UNAVAILABLE;
         ScheduledRespawn pending = cancel(arena.id());
         ScheduledRespawn task = new ScheduledRespawn(arena.id(), arena.profileKey(), pending == null ? null : pending.entityId(),
                 player.serverLevel().dimension().location(), arena.structureArena()?arena.respawnPosition():pending == null ? arena.respawnPosition() : pending.position(), server.overworld().getGameTime());
@@ -203,7 +205,8 @@ public final class BossRespawnScheduler {
             BossProfile profile = BalanceRegistry.bossByKey(task.profileKey()).orElse(null);
             ServerLevel level = server.getLevel(ResourceKey.create(Registries.DIMENSION, task.dimension()));
             if (arena == null || profile == null || level == null
-                    || !RespawnOwnership.usesJemScheduler(profile.revivalStrategy())) {
+                    || !RespawnOwnership.usesJemScheduler(profile.revivalStrategy())
+                    || arena.structureArena() && !data.nativeAnchorVerified(arena.id())) {
                 WorldTierData.get(server).cancelRespawn(task.arenaId());
                 return false;
             }

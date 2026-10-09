@@ -1,4 +1,4 @@
-package com.siirio.jemserver.mixin.client;
+package com.siirio.jemserver.mixin;
 
 import com.siirio.jemserver.smp.events.BossSolidBoundary;
 import net.minecraft.world.entity.Entity;

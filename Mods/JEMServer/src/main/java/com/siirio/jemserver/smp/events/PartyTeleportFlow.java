@@ -99,6 +99,21 @@ public final class PartyTeleportFlow {
         return true;
     }
 
+    public static boolean forceReturn(ServerPlayer player, CompoundTag party) {
+        CompoundTag member = SmpRecords.members(party).getCompound(player.getStringUUID());
+        return member.contains(RETURN_DIMENSION) && teleportBack(player, member);
+    }
+
+    public static void clearMember(CompoundTag party, UUID playerId) {
+        CompoundTag member = SmpRecords.members(party).getCompound(playerId.toString());
+        clearReturn(member);
+        clearArenaAccess(member);
+    }
+
+    public static void clearSession(CompoundTag party) {
+        party.remove(SESSION);
+    }
+
     public static void clear(CompoundTag party) {
         party.remove(SESSION);
         for (String id : SmpRecords.members(party).getAllKeys()) {

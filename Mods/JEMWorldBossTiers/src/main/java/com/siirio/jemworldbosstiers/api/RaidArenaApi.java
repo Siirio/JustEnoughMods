@@ -91,8 +91,10 @@ public final class RaidArenaApi {
         var profile = WorldTierApi.profile(boss).orElse(null);
         if (arena == null || profile == null || !arena.profileKey().equals(profile.key())
                 || !arena.bounds().isInside(boss.blockPosition())) return;
-        data.putArena(arena.withRespawnPosition(boss.blockPosition()));
-        data.verifyNativeAnchor(arenaId);
+        if (!data.nativeAnchorVerified(arenaId)) {
+            data.putArena(arena.withRespawnPosition(boss.blockPosition()));
+            data.verifyNativeAnchor(arenaId);
+        }
         data.cancelRespawn(arenaId);
     }
 

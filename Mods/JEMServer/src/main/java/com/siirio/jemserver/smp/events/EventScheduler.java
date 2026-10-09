@@ -253,7 +253,9 @@ public final class EventScheduler {
     private static void finishPartyTeleport(MinecraftServer server,CompoundTag event) {
         if(!event.hasUUID("party")) return;
         CompoundTag party=SmpData.get(server).find("parties",event.getUUID("party"));
-        if(party!=null) PartyTeleportFlow.finish(server,party);
+        if(party==null) return;
+        if(event.getString("activity").equals("BOSS_RAID")) StructureStaging.finish(server,party);
+        else PartyTeleportFlow.finish(server,party);
     }
 
     private static boolean hasActive(SmpData data, String activity, CompoundTag excluded) {

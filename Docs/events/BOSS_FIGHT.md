@@ -2,13 +2,15 @@
 
 ## Primary state
 
-Boss Fight — host-controlled encounter для одного зарегистрированного босса. Все структурные боссы, Campaign и Raid используют один `SOLID` boundary owner: четыре невидимые full-height collision planes участвуют в обычном Minecraft movement resolution и совпадают с видимыми стенами. До Start граница закрыта; после Start её проходят только host и accepted non-eliminated participants. Outsiders, mobs и projectiles остаются заблокированы без tick teleport, velocity reversal, physical shell blocks или повторного `setPos`.
+Boss Fight — host-controlled encounter для одного зарегистрированного босса. Все структурные боссы, Campaign и Raid используют один `SOLID` boundary owner: четыре невидимые full-height collision planes участвуют в обычном Minecraft movement resolution одновременно на dedicated server и клиенте и совпадают с видимыми стенами. До Start граница закрыта; после Start её проходят только host и accepted non-eliminated participants. Outsiders, mobs и projectiles остаются заблокированы без tick teleport, velocity reversal, physical shell blocks или повторного `setPos`.
 
 Boss HP и damage увеличиваются на 20% за каждого дополнительного присутствующего участника. После этого к итоговому damage hosted boss применяется только один correction: 12% reduction для direct, projectile, effect и hardcoded damage. Gear score не участвует.
 
 Помеченные тематические bosses, включая Magnetron, Scylla и Cloud Golem, используют общий эффект «Любимчик Зевса»: раз в семь секунд позиция одного живого участника фиксируется компактным электрическим телеграфом на полсекунды, затем туда ударяет boss-owned молния. Игрок может увернуться, покинув отмеченную область до impact.
 
 Start требует уже существующего живого boss identity и никогда не создаёт или не перемещает босса. Игроки перемещаются к проверенной позиции снаружи его реальной структуры. Endpoint policy до телепорта проверяет полный player bounding box, dimension, build height, world collision и virtual wall; небезопасная точка один раз заменяется проверенной внешней позицией без roof fallback. После завершения участники возвращаются наружу через общий safe-exit flow. Native awakening, entity UUID, здоровье, AI и исходная структура сохраняются.
+
+Verified native anchor записывается только при первом допустимом наблюдении native boss и после этого остаётся неизменным. Смерть, текущая позиция переместившегося босса, revive command и encounter cleanup не могут заменить его координатой смерти или передвинуть живую entity обратно к anchor.
 
 ## Arena
 

@@ -52,6 +52,7 @@ public final class StructureStaging {
     private static final int BOUNDARY_LIMIT = 16;
     private static final int LANDMARK_RADIUS = 10;
     private static final int EXIT_SEARCH_MARGIN = 6;
+    private static final String RAID_EXIT_PENDING = "raidArenaExitPending";
     private static final Map<ResourceLocation, ResourceLocation> STRUCTURES = new HashMap<>();
     private static final Set<ResourceLocation> ACTIVATION_BLOCKS = new HashSet<>();
     private static final Set<ResourceLocation> ACTIVATION_ITEMS = new HashSet<>();
@@ -258,7 +259,8 @@ public final class StructureStaging {
     }
 
     public static void finish(net.minecraft.server.MinecraftServer server, CompoundTag row) {
-        PartyTeleportFlow.finish(server,row);
+        if (row.getBoolean("raid")) finishRaidParticipants(server, row);
+        else PartyTeleportFlow.finish(server,row);
         if (!row.hasUUID("structureId")) {
             return;
         }
@@ -267,6 +269,68 @@ public final class StructureStaging {
         ServerLevel level = level(server, area);
         if (level == null) return;
         PARTY_CACHE.remove(area.id());
+    }
+
+    private static void finishRaidParticipants(net.minecraft.server.MinecraftServer server, CompoundTag party) {
+        for (UUID id : SmpRecords.memberIds(party)) {
+            if (!Parties.accepted(party, id)) continue;
+            CompoundTag member = SmpRecords.members(party).getCompound(id.toString());
+            member.putBoolean(RAID_EXIT_PENDING, true);
+            ServerPlayer player = server.getPlayerList().getPlayer(id);
+            if (player != null) finishRaidExit(player, party, member);
+        }
+        clearRaidExitSession(party);
+        SmpData.get(server).changed(party);
+    }
+
+    private static boolean finishRaidExit(ServerPlayer player, CompoundTag party, CompoundTag member) {
+        ResourceLocation dimension = ResourceLocation.tryParse(party.getString("dimension"));
+        ServerLevel level = dimension == null ? null : player.server.getLevel(net.minecraft.resources.ResourceKey.create(Registries.DIMENSION, dimension));
+        int[] saved = party.getIntArray("structureBounds");
+        if (level == null || saved.length != 6) {
+            if (!PartyTeleportFlow.forceReturn(player, party)) return false;
+            member.remove(RAID_EXIT_PENDING);
+            PartyTeleportFlow.clearMember(party, player.getUUID());
+            return true;
+        }
+        BoundingBox shell = new BoundingBox(saved[0] - 1, saved[1] - 1, saved[2] - 1, saved[3] + 1, saved[4] + 1, saved[5] + 1);
+        BlockPos position = player.blockPosition();
+        boolean insideColumn = player.serverLevel() == level && position.getX() >= shell.minX() && position.getX() <= shell.maxX()
+                && position.getZ() >= shell.minZ() && position.getZ() <= shell.maxZ();
+        if (!insideColumn) {
+            member.remove(RAID_EXIT_PENDING);
+            PartyTeleportFlow.clearMember(party, player.getUUID());
+            return true;
+        }
+        BlockPos destination = safeOutside(player, level, shell, player.blockPosition());
+        if (destination != null) {
+            teleport(player, level, destination);
+            player.setDeltaMovement(Vec3.ZERO);
+        } else if (!PartyTeleportFlow.forceReturn(player, party)) return false;
+        member.remove(RAID_EXIT_PENDING);
+        PartyTeleportFlow.clearMember(party, player.getUUID());
+        return true;
+    }
+
+    private static void finishPendingRaidExit(ServerPlayer player) {
+        SmpData data = SmpData.get(player.server);
+        for (CompoundTag party : data.all("parties")) {
+            CompoundTag member = SmpRecords.members(party).getCompound(player.getStringUUID());
+            if (!member.getBoolean(RAID_EXIT_PENDING)) continue;
+            if (finishRaidExit(player, party, member)) {
+                clearRaidExitSession(party);
+                data.changed(party);
+            }
+        }
+    }
+
+    private static void clearRaidExitSession(CompoundTag party) {
+        if (!hasPendingRaidExit(party)) PartyTeleportFlow.clearSession(party);
+    }
+
+    public static boolean hasPendingRaidExit(CompoundTag party) {
+        return SmpRecords.memberIds(party).stream().anyMatch(id ->
+                SmpRecords.members(party).getCompound(id.toString()).getBoolean(RAID_EXIT_PENDING));
     }
 
     public static void attachArena(CompoundTag record,UUID id,ResourceLocation boss,String dimension,BlockPos center,BoundingBox bounds) {
@@ -425,6 +489,7 @@ public final class StructureStaging {
         if (event.phase != TickEvent.Phase.END || !(event.player instanceof ServerPlayer player)
                 || !player.isAlive() || player.isSpectator()) return;
         if (player.tickCount % CHECK_INTERVAL != 0) return;
+        finishPendingRaidExit(player);
         Area area = discover(player.serverLevel(), player.blockPosition());
         Area close = nearby(player.serverLevel(), player.position());
         if (close == null) NEAR.remove(player.getUUID());
@@ -636,6 +701,11 @@ public final class StructureStaging {
                 if (id.equals(new ResourceLocation("jem_server", "structure_barrier"))
                         || id.equals(new ResourceLocation("jem_twelve_eyes", "locked_boss_barrier"))) level.removeBlock(position, false);
             });
+    }
+
+    @SubscribeEvent
+    public static void login(PlayerEvent.PlayerLoggedInEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player) finishPendingRaidExit(player);
     }
 
     @SubscribeEvent

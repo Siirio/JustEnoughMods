@@ -241,10 +241,9 @@ public final class JemWorldBossTiers {
         ArenaRecord arena = encounter != null && encounter.arenaId() != null
                 ? data.arena(encounter.arenaId()).orElseGet(() -> ArenaService.findOrRegister(event.getEntity(), profile))
                 : ArenaService.findOrRegister(event.getEntity(), profile);
-        ArenaRecord released = arena.withRespawnPosition(event.getEntity().blockPosition())
+        ArenaRecord released = (arena.structureArena() ? arena : arena.withRespawnPosition(event.getEntity().blockPosition()))
                 .unlock().release(event.getEntity().getUUID());
         data.putArena(released);
-        if (arena.structureArena()) data.verifyNativeAnchor(arena.id());
         bossRespawns.scheduleAfterDeath(
                 level,
                 profile,

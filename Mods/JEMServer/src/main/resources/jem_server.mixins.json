@@ -11,13 +11,13 @@
     "xaero.WaypointMenuMixin",
     "xaero.WaypointTeleportMixin",
     "client.BloodMoonSkyMixin",
-    "client.BloodMoonMoonMixin",
-    "client.BossSolidBoundaryMixin"
+    "client.BloodMoonMoonMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
   "mixins": [
+    "BossSolidBoundaryMixin",
     "PlayerSaveAccess",
     "SleepStatusVoteMixin",
     "cooking.CookingStationMixin",

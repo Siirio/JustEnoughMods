@@ -94,7 +94,8 @@ public final class SmpData extends SavedData {
         var iterator = rows.values().iterator();
         while (iterator.hasNext() && excess > 0) {
             var row = iterator.next();
-            if (closed(row) && !com.siirio.jemserver.smp.events.BloodMoonDeaths.hasRecovery(row)) {
+            if (closed(row) && !com.siirio.jemserver.smp.events.BloodMoonDeaths.hasRecovery(row)
+                    && !com.siirio.jemserver.smp.events.StructureStaging.hasPendingRaidExit(row)) {
                 iterator.remove();
                 excess--;
                 revision++;
