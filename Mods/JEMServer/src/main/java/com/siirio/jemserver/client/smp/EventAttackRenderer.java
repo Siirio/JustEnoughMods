@@ -2,9 +2,7 @@ package com.siirio.jemserver.client.smp;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.siirio.jemserver.smp.events.AttackGeometry;
-import com.siirio.jemserver.smp.events.EventNetwork;
-import java.lang.reflect.Method;
+import com.siirio.jemserver.smp.events.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,15 +22,14 @@ import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.event.level.LevelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
 @Mod.EventBusSubscriber(modid = "jem_server", value = Dist.CLIENT)
 public final class EventAttackRenderer {
-    private static final Map<UUID, Telegraph> TELEGRAPHS = new HashMap<>();
-    private static final Map<UUID, AttackVfx> ATTACKS = new HashMap<>();
+    private static final Map<UUID, TelegraphVisual> TELEGRAPHS = new HashMap<>();
+    private static final Map<UUID, AttackVisual> ATTACKS = new HashMap<>();
     private static final float GROUND_OFFSET = .025F;
     private static final float OUTLINE_OFFSET = .004F;
     private static final float TILE_INSET = .065F;
@@ -47,37 +44,28 @@ public final class EventAttackRenderer {
     private static final int FINAL_WARNING_START_PERCENT = 72;
     private static final int MAX_WARNING_FILL_ALPHA = 76;
 
-    private record Cell(int x, int z, float y) {
-    }
-
-    private record Telegraph(EventNetwork.Telegraph packet, long expires, List<Cell> cells) {
-    }
-
-    private record AttackVfx(EventNetwork.AttackVfx packet, long started, long expires, List<Cell> cells) {
-    }
-
-    public static void accept(EventNetwork.Telegraph packet) {
+    public static void accept(EventTelegraph packet) {
         Minecraft client = Minecraft.getInstance();
         if (client.level == null) {
             return;
         }
-        TELEGRAPHS.put(packet.eventId(), new Telegraph(packet,
+        TELEGRAPHS.put(packet.eventId(), new TelegraphVisual(packet,
                 client.level.getGameTime() + packet.duration(), sample(packet.geometry())));
     }
 
-    public static void accept(EventNetwork.AttackVfx packet) {
+    public static void accept(EventAttackVfx packet) {
         Minecraft client = Minecraft.getInstance();
         if (client.level == null) {
             return;
         }
         long started = client.level.getGameTime();
         TELEGRAPHS.remove(packet.eventId());
-        ATTACKS.put(packet.eventId(), new AttackVfx(packet, started, started + packet.duration(), sample(packet.geometry())));
+        ATTACKS.put(packet.eventId(), new AttackVisual(packet, started, started + packet.duration(), sample(packet.geometry())));
     }
 
     @SubscribeEvent
     public static void render(RenderLevelStageEvent event) {
-        if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_TRANSLUCENT_BLOCKS || ShaderState.shadowPass()) {
+        if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_TRANSLUCENT_BLOCKS || EventShaderState.shadowPass()) {
             return;
         }
         Minecraft client = Minecraft.getInstance();
@@ -97,8 +85,8 @@ public final class EventAttackRenderer {
         PoseStack.Pose pose = poses.last();
         MultiBufferSource.BufferSource buffers = client.renderBuffers().bufferSource();
         VertexConsumer consumer = buffers.getBuffer(TelegraphRenderType.ground());
-        for (Telegraph telegraph : TELEGRAPHS.values()) {
-            EventNetwork.Telegraph packet = telegraph.packet();
+        for (TelegraphVisual telegraph : TELEGRAPHS.values()) {
+            EventTelegraph packet = telegraph.packet();
             if (!packet.dimension().equals(client.level.dimension().location())) {
                 continue;
             }
@@ -109,8 +97,8 @@ public final class EventAttackRenderer {
             int outlineAlpha = Math.min(255, 145 + (int) (progress * 95));
             renderTelegraph(consumer, pose, telegraph.cells(), geometry, packet.color(), fillAlpha, outlineAlpha);
         }
-        for (AttackVfx attack : ATTACKS.values()) {
-            EventNetwork.AttackVfx packet = attack.packet();
+        for (AttackVisual attack : ATTACKS.values()) {
+            EventAttackVfx packet = attack.packet();
             if (!packet.dimension().equals(client.level.dimension().location())) {
                 continue;
             }
@@ -121,12 +109,12 @@ public final class EventAttackRenderer {
         poses.popPose();
     }
 
-    private static void renderTelegraph(VertexConsumer consumer, PoseStack.Pose pose, List<Cell> cells, AttackGeometry geometry,
+    private static void renderTelegraph(VertexConsumer consumer, PoseStack.Pose pose, List<EventSurfaceCell> cells, AttackGeometry geometry,
                                         int color, int fillAlpha, int outlineAlpha) {
         int shadowColor = mix(color, 0x000000, .32);
         int accentColor = mix(color, 0xFFFFFF, .62);
         double progress = geometry.progress();
-        for (Cell cell : cells) {
+        for (EventSurfaceCell cell : cells) {
             double phase = geometry.activationProgress(cell.x() + .5, cell.z() + .5);
             double sweepDistance = Math.abs(phase - progress);
             int alpha = Math.min(MAX_WARNING_FILL_ALPHA, fillAlpha + (geometry.front(cell.x() + .5, cell.z() + .5) ? 12 : 0));
@@ -147,10 +135,10 @@ public final class EventAttackRenderer {
         }
     }
 
-    private static void renderAttack(VertexConsumer consumer, PoseStack.Pose pose, List<Cell> cells, AttackGeometry geometry,
+    private static void renderAttack(VertexConsumer consumer, PoseStack.Pose pose, List<EventSurfaceCell> cells, AttackGeometry geometry,
                                      int color, double progress) {
         int coreColor = mix(color, 0xFFFFFF, .78);
-        for (Cell cell : cells) {
+        for (EventSurfaceCell cell : cells) {
             double phase = geometry.activationProgress(cell.x() + .5, cell.z() + .5);
             double trail = progress - phase;
             if (trail < -ATTACK_CORE_WIDTH || trail > ATTACK_TRAIL_WIDTH) {
@@ -166,7 +154,7 @@ public final class EventAttackRenderer {
         }
     }
 
-    private static void contour(VertexConsumer consumer, PoseStack.Pose pose, Cell cell, AttackGeometry geometry, int color, int alpha,
+    private static void contour(VertexConsumer consumer, PoseStack.Pose pose, EventSurfaceCell cell, AttackGeometry geometry, int color, int alpha,
                                 float width, float offset) {
         float y = cell.y() + offset;
         if (!geometry.contains(cell.x() - .5, cell.z() + .5)) {
@@ -183,7 +171,7 @@ public final class EventAttackRenderer {
         }
     }
 
-    private static void arrow(VertexConsumer consumer, PoseStack.Pose pose, Cell cell, double directionX, double directionZ,
+    private static void arrow(VertexConsumer consumer, PoseStack.Pose pose, EventSurfaceCell cell, double directionX, double directionZ,
                               int color, int alpha) {
         if (Math.hypot(directionX, directionZ) < .01) {
             return;
@@ -247,18 +235,18 @@ public final class EventAttackRenderer {
                 .endVertex();
     }
 
-    private static List<Cell> sample(AttackGeometry geometry) {
+    private static List<EventSurfaceCell> sample(AttackGeometry geometry) {
         Minecraft client = Minecraft.getInstance();
         if (client.level == null) {
             return List.of();
         }
-        List<Cell> cells = new ArrayList<>();
+        List<EventSurfaceCell> cells = new ArrayList<>();
         for (int x = geometry.minX(); x <= geometry.maxX(); x++) {
             for (int z = geometry.minZ(); z <= geometry.maxZ(); z++) {
                 if (!geometry.contains(x + .5, z + .5)) {
                     continue;
                 }
-                cells.add(new Cell(x, z, surfaceY(client.level, x, z)));
+                cells.add(new EventSurfaceCell(x, z, surfaceY(client.level, x, z)));
             }
         }
         return List.copyOf(cells);
@@ -271,7 +259,7 @@ public final class EventAttackRenderer {
         return height + (overlay.isEmpty() ? 0 : (float) overlay.max(Direction.Axis.Y)) + GROUND_OFFSET;
     }
 
-    private static boolean outsideEdge(Cell cell, AttackGeometry geometry) {
+    private static boolean outsideEdge(EventSurfaceCell cell, AttackGeometry geometry) {
         return !geometry.contains(cell.x() - .5, cell.z() + .5)
                 || !geometry.contains(cell.x() + 1.5, cell.z() + .5)
                 || !geometry.contains(cell.x() + .5, cell.z() - .5)
@@ -302,49 +290,6 @@ public final class EventAttackRenderer {
     private static void clear() {
         TELEGRAPHS.clear();
         ATTACKS.clear();
-    }
-
-    static final class ShaderState {
-        private static final Object API = api();
-        private static final Method SHADOW = method(API, "isRenderingShadowPass");
-
-        static boolean shadowPass() {
-            return invokeBoolean(API, SHADOW);
-        }
-
-        private static Object api() {
-            if (!ModList.get().isLoaded("oculus")) {
-                return null;
-            }
-            try {
-                Class<?> type = Class.forName("net.irisshaders.iris.api.v0.IrisApi");
-                return type.getMethod("getInstance").invoke(null);
-            } catch (ReflectiveOperationException ignored) {
-                return null;
-            }
-        }
-
-        private static Method method(Object owner, String name) {
-            if (owner == null) {
-                return null;
-            }
-            try {
-                return owner.getClass().getMethod(name);
-            } catch (ReflectiveOperationException ignored) {
-                return null;
-            }
-        }
-
-        private static boolean invokeBoolean(Object owner, Method method) {
-            if (owner == null || method == null) {
-                return false;
-            }
-            try {
-                return Boolean.TRUE.equals(method.invoke(owner));
-            } catch (ReflectiveOperationException ignored) {
-                return false;
-            }
-        }
     }
 
     private EventAttackRenderer() {

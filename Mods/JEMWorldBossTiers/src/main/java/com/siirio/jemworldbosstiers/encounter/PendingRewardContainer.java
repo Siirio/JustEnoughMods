@@ -119,11 +119,29 @@ public final class PendingRewardContainer {
         }
     }
 
-    public static ListTag bundles(ServerPlayer player) {
+    public static ListTag bundles(ServerPlayer player, int offset, int limit) {
+        if (offset < 0 || limit < 1) throw new IllegalArgumentException("Invalid reward page");
+        return bundles(player, "", offset, limit);
+    }
+
+    public static ListTag bundles(ServerPlayer player, String source) {
+        return bundles(player, source, 0, Integer.MAX_VALUE);
+    }
+
+    private static ListTag bundles(ServerPlayer player, String source, int offset, int limit) {
         ListTag bundles = new ListTag();
+        int visible = 0;
         for (Tag value : containers(HostedRewards.get(player.server), player.getUUID())) {
             CompoundTag container = (CompoundTag) value;
             if (container.getBoolean("ImportPending")) continue;
+            String sourceId = container.getString("SourceId");
+            if (!source.isEmpty() && !sourceId.equals(source) && !sourceId.startsWith(source + ":")) continue;
+            boolean pending = false;
+            for (Tag item : allItems(container)) {
+                if (((CompoundTag) item).getByte("Count") > 0) { pending = true; break; }
+            }
+            if (!pending || visible++ < offset) continue;
+            if (bundles.size() >= limit) break;
             ListTag items = new ListTag();
             for (Tag item : allItems(container)) {
                 if (((CompoundTag) item).getByte("Count") > 0) items.add(item.copy());

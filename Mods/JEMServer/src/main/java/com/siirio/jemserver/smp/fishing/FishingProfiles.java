@@ -24,7 +24,7 @@ public final class FishingProfiles {
     public record Profile(double quality, boolean nether, boolean end, boolean intrinsicLava,
                           boolean intrinsicVoid) {}
     private static final Gson JSON = new GsonBuilder().setPrettyPrinting().create();
-    private static final java.lang.reflect.Type TYPE = new TypeToken<LinkedHashMap<String, Profile>>() {}.getType();
+    private static final java.lang.reflect.Type TYPE = TypeToken.getParameterized(LinkedHashMap.class, String.class, Profile.class).getType();
     private static final Profile BASIC = new Profile(0, false, false, false, false);
     private static Map<String, Profile> profiles = new LinkedHashMap<>();
     private static boolean clientActive;

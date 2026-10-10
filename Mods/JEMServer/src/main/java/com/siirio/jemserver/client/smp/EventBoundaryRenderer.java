@@ -1,6 +1,6 @@
 package com.siirio.jemserver.client.smp;
 
-import com.siirio.jemserver.smp.events.EventNetwork;
+import com.siirio.jemserver.smp.events.*;
 import com.siirio.jemserver.smp.events.BloodMoonSolidBoundary;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -24,8 +24,8 @@ public final class EventBoundaryRenderer {
     private static final double PULSE_SPEED=12;
     private static net.minecraft.client.resources.sounds.SoundInstance ambience;
     private static boolean insideBloodMoon;
-    private static List<EventNetwork.Boundary> zones=List.of();
-    public static void accept(EventNetwork.Zones packet) {
+    private static List<EventBoundary> zones=List.of();
+    public static void accept(EventZones packet) {
         zones=List.copyOf(packet.bounds());
         BloodMoonSolidBoundary.clientZones(zones);
         com.siirio.jemserver.smp.events.BossSolidBoundary.clientZones(zones);
@@ -35,8 +35,13 @@ public final class EventBoundaryRenderer {
         return mc.player!=null && mc.level!=null && zones.stream().anyMatch(z->z.active() && z.type().equals("BLOOD_MOON") && z.dimension().equals(mc.level.dimension().location().toString()) && mc.player.getX()>=z.minX() && mc.player.getX()<z.maxX()+1 && mc.player.getY()>=z.minY() && mc.player.getY()<z.maxY()+1 && mc.player.getZ()>=z.minZ() && mc.player.getZ()<z.maxZ()+1);
     }
     @SubscribeEvent public static void logout(ClientPlayerNetworkEvent.LoggingOut event) {
-        zones=List.of();
-        BloodMoonSolidBoundary.clientZones(zones);
+        clear();
+    }
+    @SubscribeEvent public static void unload(net.minecraftforge.event.level.LevelEvent.Unload event) {
+        if (event.getLevel().isClientSide()) clear();
+    }
+    private static void clear() {
+        accept(new EventZones(List.of()));
         stopAmbience();
         insideBloodMoon=false;
     }
@@ -61,7 +66,7 @@ public final class EventBoundaryRenderer {
     }
     @SubscribeEvent public static void render(RenderLevelStageEvent event) {
         var mc=Minecraft.getInstance();
-        if(event.getStage()!=RenderLevelStageEvent.Stage.AFTER_TRANSLUCENT_BLOCKS || EventAttackRenderer.ShaderState.shadowPass()
+        if(event.getStage()!=RenderLevelStageEvent.Stage.AFTER_TRANSLUCENT_BLOCKS || EventShaderState.shadowPass()
                 || mc.level==null || mc.player==null || zones.isEmpty()) return;
         var camera=event.getCamera().getPosition();
         PoseStack poses=event.getPoseStack();
@@ -78,7 +83,7 @@ public final class EventBoundaryRenderer {
         buffers.endBatch(TelegraphRenderType.boundary());
         poses.popPose();
     }
-    private static void renderFilledBoundary(VertexConsumer consumer,PoseStack.Pose pose,EventNetwork.Boundary zone,int alpha) {
+    private static void renderFilledBoundary(VertexConsumer consumer,PoseStack.Pose pose,EventBoundary zone,int alpha) {
         float x1=zone.minX(),x2=zone.maxX()+1;
         float z1=zone.minZ(),z2=zone.maxZ()+1;
         float y1=zone.minY(),y2=zone.maxY()+1;

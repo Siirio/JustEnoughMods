@@ -39,7 +39,7 @@ public final class LandmarkNetwork {
                 .encoder((packet, out) -> out.writeUUID(packet.id())).decoder(in -> new Remove(in.readUUID()))
                 .consumerMainThread((packet, context) -> {
                     var player = context.get().getSender();
-                    if (player != null && SmpEnvironment.active(player)) Landmarks.delete(player, packet.id());
+                    if (player != null && SmpEnvironment.active(player) && com.siirio.jemserver.smp.SmpRequests.allow(player)) Landmarks.delete(player, packet.id());
                     context.get().setPacketHandled(true);
                 }).add();
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> LandmarkClient::register);

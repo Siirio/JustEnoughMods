@@ -1,5 +1,8 @@
 package com.siirio.jemclaims;
 
+import com.siirio.jemmenus.VanillaMenus;
+import com.siirio.jemmenus.Buttons;
+
 import java.util.Comparator;
 import java.util.EnumMap;
 import java.util.List;
@@ -17,7 +20,7 @@ public final class ClaimsMenus {
     public static void overview(ServerPlayer player, int requestedPage) {
         var groups = ClaimGroups.connected(FlanBridge.list(player.server).stream().filter(claim -> player.getUUID().equals(claim.owner())).toList());
         int page = Math.max(0, Math.min(requestedPage, Math.max(0, (groups.size() - 1) / PAGE_SIZE)));
-        VanillaMenus.chest(player, "claims_overview", "Мои территории", menu -> {
+        VanillaMenus.chest(player, JemClaims.MOD_ID, "claims_overview", "Мои территории", menu -> {
             int remaining = Math.max(0, ClaimsConfig.MAX_TERRITORIES.get() - groups.size());
             menu.button(4, VanillaMenus.icon(Items.COMPASS, remaining == 0 ? "Достигнут лимит территорий" : "Можно создать ещё: " + remaining + " территории", "Блоки: " + FlanBridge.used(player) + " / " + FlanBridge.budget(player)), null);
             menu.button(5, VanillaMenus.icon(Items.COMPARATOR, "Все территории", "Общие разрешения"), () -> allTerritories(player));
@@ -45,7 +48,7 @@ public final class ClaimsMenus {
             return;
         }
         var claim = FlanBridge.summary(player.server, id);
-        VanillaMenus.chest(player, "confirm", "Расприватить территорию?", menu -> {
+        VanillaMenus.chest(player, JemClaims.MOD_ID, "confirm", "Расприватить территорию?", menu -> {
             menu.button(4, location(VanillaMenus.icon(Items.GRASS_BLOCK, claim.name(), "Будет освобождено блоков: " + FlanBridge.reclaimed(player, id), "X/Z: " + claim.minX() + ", " + claim.minZ() + " → " + claim.maxX() + ", " + claim.maxZ()), java.util.List.of(claim), player.blockPosition().getY()), null);
             menu.button(22, VanillaMenus.icon(Items.BARRIER, "Расприватить", "Блоки и постройки останутся на месте"), () -> {
                 if (FlanBridge.delete(player, id)) player.sendSystemMessage(Component.literal("Территория освобождена. Лимит привата возвращён."));
@@ -55,14 +58,14 @@ public final class ClaimsMenus {
         });
     }
 
-    private static void navigation(VanillaMenus.Buttons menu, ServerPlayer player, UUID id, String active) {
+    private static void navigation(Buttons menu, ServerPlayer player, UUID id, String active) {
         navigationButton(menu, 45, Items.GRASS_BLOCK, "Территория", active.equals("claim"), () -> main(player, id));
         navigationButton(menu, 46, Items.SHIELD, "Разрешения", active.equals("permissions"), () -> permissions(player, id, null, false));
         navigationButton(menu, 47, Items.PLAYER_HEAD, "Участники", active.equals("members"), () -> members(player, id, 0));
         navigationButton(menu, 48, Items.COMPARATOR, "Настройки", active.equals("settings"), () -> territory(player, id));
     }
 
-    private static void navigationButton(VanillaMenus.Buttons menu, int slot, net.minecraft.world.item.Item item, String title, boolean active, Runnable action) {
+    private static void navigationButton(Buttons menu, int slot, net.minecraft.world.item.Item item, String title, boolean active, Runnable action) {
         var icon = VanillaMenus.icon(item, title);
         icon.getOrCreateTag().putString("jem_ui_role", "navigation");
         menu.button(slot, icon, active ? null : action);
@@ -79,7 +82,7 @@ public final class ClaimsMenus {
         if (!authorized(player, id)) return;
         FlanBridge.unify(player, id);
         var claim = FlanBridge.summary(player.server, id);
-        VanillaMenus.chest(player, "claim", claim.name(), menu -> {
+        VanillaMenus.chest(player, JemClaims.MOD_ID, "claim", claim.name(), menu -> {
             var summary = VanillaMenus.icon(Items.GRASS_BLOCK, claim.name(), "Владелец: " + claim.ownerName(),
                     "Площадь: " + claim.area(), "Блоки: " + FlanBridge.used(player) + " / " + FlanBridge.budget(player),
                     "X/Z: " + claim.minX() + ", " + claim.minZ() + " → " + claim.maxX() + ", " + claim.maxZ());
@@ -115,7 +118,7 @@ public final class ClaimsMenus {
     private static void territory(ServerPlayer player, UUID id) {
         if (!authorized(player, id)) return;
         var metadata = ClaimsData.get(player.server).territory(id);
-        VanillaMenus.chest(player, "claim_settings", "Настройки территории", menu -> {
+        VanillaMenus.chest(player, JemClaims.MOD_ID, "claim_settings", "Настройки территории", menu -> {
             menu.button(20, VanillaMenus.icon(Items.NAME_TAG, "Переименовать"), () -> {
                 if (!authorized(player, id)) return;
                 VanillaMenus.input(player, "Название территории", FlanBridge.get(player.server, id).name(), name -> {
@@ -163,7 +166,7 @@ public final class ClaimsMenus {
         var metadata = data.territory(id);
         if (member != null && !metadata.members.containsKey(member)) { members(player, id, 0); return; }
         String title = member != null ? metadata.members.get(member).name() : defaults ? "Новые участники" : "Для всех";
-        VanillaMenus.chest(player, member != null ? "member" : defaults ? "member_defaults" : "permissions", title, menu -> {
+        VanillaMenus.chest(player, JemClaims.MOD_ID, member != null ? "member" : defaults ? "member_defaults" : "permissions", title, menu -> {
             List<ClaimSetting> settings = visibleSettings(member != null || defaults);
             boolean allEnabled = settings.stream().allMatch(setting -> settingEnabled(player, id, member, defaults, setting));
             menu.button(4, toggleIcon(Items.LEVER, allEnabled ? "Выключить всё" : "Включить всё", allEnabled), () -> {
@@ -249,7 +252,7 @@ public final class ClaimsMenus {
         var data = ClaimsData.get(player.server);
         var metadata = data.territory(id);
         var entries = metadata.members.entrySet().stream().sorted(Comparator.comparing(entry -> entry.getValue().name())).toList();
-        VanillaMenus.chest(player, "members", "Участники", menu -> {
+        VanillaMenus.chest(player, JemClaims.MOD_ID, "members", "Участники", menu -> {
             int first = page * MEMBER_PAGE_SIZE;
             for (int index = first; index < Math.min(first + MEMBER_PAGE_SIZE, entries.size()); index++) {
                 var entry = entries.get(index);
@@ -294,7 +297,7 @@ public final class ClaimsMenus {
         var entries = profiles.values().stream().filter(profile -> !profile.getId().equals(owner) && !metadata.members.containsKey(profile.getId()))
                 .sorted(Comparator.comparing(com.mojang.authlib.GameProfile::getName, String.CASE_INSENSITIVE_ORDER)).toList();
         int page = Math.max(0, Math.min(requestedPage, Math.max(0, (entries.size() - 1) / PAGE_SIZE)));
-        VanillaMenus.chest(player, "member_candidates", "Добавить участника", menu -> {
+        VanillaMenus.chest(player, JemClaims.MOD_ID, "member_candidates", "Добавить участника", menu -> {
             int first = page * PAGE_SIZE;
             for (int index = first; index < Math.min(first + PAGE_SIZE, entries.size()); index++) {
                 var profile = entries.get(index);
@@ -318,7 +321,7 @@ public final class ClaimsMenus {
 
     public static void profile(ServerPlayer owner, UUID target) {
         var territories = ClaimGroups.connected(FlanBridge.list(owner.server).stream().filter(claim -> owner.getUUID().equals(claim.owner())).toList());
-        VanillaMenus.chest(owner, "profile_claims", "Права на моих территориях", menu -> {
+        VanillaMenus.chest(owner, JemClaims.MOD_ID, "profile_claims", "Права на моих территориях", menu -> {
             for (int index = 0; index < Math.min(PAGE_SIZE, territories.size()); index++) {
                 var claim = territories.get(index).get(0);
                 var metadata = ClaimsData.get(owner.server).territory(claim.id());
@@ -336,7 +339,7 @@ public final class ClaimsMenus {
         if (!authorized(player, id)) return;
         var profiles = knownPlayers(player);
         int page = Math.max(0, Math.min(requestedPage, Math.max(0, (profiles.size() - 1) / PAGE_SIZE)));
-        VanillaMenus.chest(player, "claim_players", "Игроки", menu -> {
+        VanillaMenus.chest(player, JemClaims.MOD_ID, "claim_players", "Игроки", menu -> {
             int first = page * PAGE_SIZE;
             for (int index = first; index < Math.min(first + PAGE_SIZE, profiles.size()); index++) {
                 var profile = profiles.get(index);
@@ -358,7 +361,7 @@ public final class ClaimsMenus {
         String name = player.server.getProfileCache().get(target).map(com.mojang.authlib.GameProfile::getName).orElse(target.toString());
         var stored = metadata.overrides.get(target);
         var override = stored == null ? new ClaimsData.Member(name, new EnumMap<>(ClaimPermission.class)) : stored;
-        VanillaMenus.chest(player, "claim_player", name, menu -> {
+        VanillaMenus.chest(player, JemClaims.MOD_ID, "claim_player", name, menu -> {
             var settings = visibleSettings(true);
             boolean allEnabled = settings.stream().allMatch(setting -> overrideEnabled(player, id, target, override, setting));
             menu.button(4, toggleIcon(Items.LEVER, allEnabled ? "Выключить всё" : "Включить всё", allEnabled), () -> {
@@ -441,7 +444,7 @@ public final class ClaimsMenus {
 
     private static void allTerritories(ServerPlayer player) {
         var defaults = ClaimsData.get(player.server).ownerDefaults(player.getUUID());
-        VanillaMenus.chest(player, "all_claims", "Все территории", menu -> {
+        VanillaMenus.chest(player, JemClaims.MOD_ID, "all_claims", "Все территории", menu -> {
             var settings = List.of(ClaimSetting.values());
             boolean allEnabled = settings.stream().allMatch(setting -> setting.permissions.stream()
                     .allMatch(permission -> defaults.getOrDefault(permission, false)));

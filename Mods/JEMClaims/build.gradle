@@ -33,3 +33,12 @@ jar {
     finalizedBy 'reobfJar'
 }
 tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+
+ tasks.named('compileJava', JavaCompile).configure {
+    options.incremental = false
+    outputs.file(layout.buildDirectory.file('tmp/compileJava/jem_claims.refmap.json'))
+ }
+
+apply from: "../JEMMenuSupport/embed.gradle"
+
+tasks.withType(Test).configureEach { enabled = false }

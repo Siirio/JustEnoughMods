@@ -37,7 +37,7 @@ public final class HostedParties {
         SmpRecords.require(arenaReason.isEmpty(), arenaReason);
         com.siirio.jemserver.smp.events.PartyTeleportFlow.begin(host,row,ids);
         if(row.getBoolean("bloodMoon")) {
-            com.siirio.jemserver.smp.events.EventParty.start(host,row,ids);
+            EventParties.start(host,row,ids);
             return;
         }
         com.siirio.jemserver.smp.events.HostedBoundary.captureEntrances(host.server,row,ids);

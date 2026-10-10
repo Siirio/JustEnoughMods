@@ -45,6 +45,7 @@ public final class JemServer {
         sleep = dedicated ? new SleepVote() : null;
         pendingDeaths = dedicated ? new HashMap<>() : null;
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, ServerConfig.SPEC);
+        EventDefaultPack.register();
         LandmarkNetwork.register();
         MapNetwork.register();
         ClaimBoundaryNetwork.register();

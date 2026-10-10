@@ -2,7 +2,6 @@ package com.siirio.jemserver.smp.events;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.siirio.jemserver.smp.*;
 import com.siirio.jemserver.Landmarks;
 import com.siirio.jemworldbosstiers.api.HostedEncounterApi;
@@ -197,7 +196,7 @@ public final class StructureStaging {
             SmpRecords.require(event != null && raidAvailable(player, id), "raid_unavailable");
             SmpRecords.require(RaidEvent.claimArena(player.server, event, id.toString(), area.boss(), area.dimension(), area.center(), area.bounds()), "arena_busy");
             PARTY_CACHE.remove(id);
-            EventParty.join(player, event, solo);
+            EventParties.join(player, event, solo);
             PARTY_CACHE.put(id, SmpData.get(player.server).all("parties").stream()
                     .filter(value -> value.hasUUID("structureId") && value.getUUID("structureId").equals(id) && !SmpData.closed(value)).findFirst());
             return;
@@ -206,24 +205,15 @@ public final class StructureStaging {
         SmpRecords.require(livingBoss(player.serverLevel(), area) != null, "boss_not_respawned");
         CompoundTag row = party(player.serverLevel(), id);
         if (row == null) {
-            JsonObject args = new JsonObject();
-            args.addProperty("activity", "BOSS");
-            args.addProperty("title", Component.translatable(BuiltInRegistries.ENTITY_TYPE.get(area.boss()).getDescriptionId()).getString());
-            args.addProperty("solo", Boolean.toString(solo));
-            Parties.createHosted(player, args);
-            row = SmpData.get(player.server).all("parties").stream().filter(value -> value.getUUID("owner").equals(player.getUUID()))
-                    .max(Comparator.comparingLong(value -> value.getLong("created"))).orElseThrow();
+            row = Parties.createHosted(player, SmpPartyRequest.hosted(
+                    Component.translatable(BuiltInRegistries.ENTITY_TYPE.get(area.boss()).getDescriptionId()).getString(), solo));
             attachArena(row,id,area.boss(),area.dimension(),area.center(),area.bounds());
             row.putBoolean("nativePending", true);
             PARTY_CACHE.put(id, Optional.of(row));
             SmpData.get(player.server).changed(row);
         }
         if (solo) {
-            SmpRecords.owner(player, row);
-            SmpRecords.require(SmpRecords.members(row).size() == 1, "solo");
-            row.putBoolean("solo", true);
-            row.remove("invitations");
-            SmpRecords.members(row).getCompound(player.getStringUUID()).putBoolean("ready", true);
+            Parties.makeSolo(player, row);
             HostedParties.start(player, row);
         } else SmpNetwork.open(player, "parties", row.getUUID("id"));
     }
@@ -499,7 +489,7 @@ public final class StructureStaging {
             CompoundTag closeParty = party(player.serverLevel(), close.id());
             if (closeParty == null || !HostedBoundary.authorized(player, closeParty)) {
                 if (physicallyLocked(player.serverLevel(), close) || locked(player, close))
-                    com.siirio.jemcompat.gate.CampaignGateEvents.explainLocked(player, close.boss());
+                    com.siirio.jemtwelveeyes.api.CampaignApi.explainLocked(player, close.boss());
                 else player.sendSystemMessage(Component.literal("▣ ").withStyle(ChatFormatting.GOLD)
                         .append(Component.translatable(BuiltInRegistries.ENTITY_TYPE.get(close.boss()).getDescriptionId())).append(" ")
                         .append(Component.literal("[Открыть бой]").withStyle(style -> style.withColor(ChatFormatting.GREEN).withBold(true)
@@ -523,11 +513,11 @@ public final class StructureStaging {
     }
 
     private static boolean locked(ServerPlayer player, Area area) {
-        return ModList.get().isLoaded("jem_twelve_eyes") && !com.siirio.jemcompat.gate.CampaignGateEvents.unlocked(player, area.boss());
+        return ModList.get().isLoaded("jem_twelve_eyes") && !com.siirio.jemtwelveeyes.api.CampaignApi.unlocked(player, area.boss());
     }
 
-    public static List<EventNetwork.Boundary> boundaries(ServerPlayer player) {
-        List<EventNetwork.Boundary> result = new ArrayList<>();
+    public static List<EventBoundary> boundaries(ServerPlayer player) {
+        List<EventBoundary> result = new ArrayList<>();
         for (Area area : AREAS.values()) {
             if (!area.dimension().equals(player.level().dimension().location().toString())) continue;
             var bounds = area.shell();
@@ -596,9 +586,9 @@ public final class StructureStaging {
                 .toList();
     }
 
-    public static List<EventNetwork.Boundary> solidBoundaries(net.minecraft.world.entity.Entity entity) {
+    public static List<EventBoundary> solidBoundaries(net.minecraft.world.entity.Entity entity) {
         if (!(entity.level() instanceof ServerLevel level)) return List.of();
-        List<EventNetwork.Boundary> result = new ArrayList<>();
+        List<EventBoundary> result = new ArrayList<>();
         for (Area area : AREAS.values()) {
             if (!area.dimension().equals(level.dimension().location().toString())) continue;
             BoundingBox bounds = area.shell();
@@ -618,7 +608,7 @@ public final class StructureStaging {
         for (Area area : AREAS.values()) {
             if (!area.dimension().equals(level.dimension().location().toString())) continue;
             BoundingBox shell = area.shell();
-            EventNetwork.Boundary boundary = BossSolidBoundary.boundary(area.id(), area.dimension(), shell.minX(), shell.minZ(), shell.maxX(), shell.maxZ(),
+            EventBoundary boundary = BossSolidBoundary.boundary(area.id(), area.dimension(), shell.minX(), shell.minZ(), shell.maxX(), shell.maxZ(),
                     level.getMinBuildHeight(), level.getMaxBuildHeight() - 1, EventRules.RAID_COLOR.get(), false);
             boolean inside = destination.minX > shell.minX() && destination.maxX < shell.maxX() + 1D
                     && destination.minZ > shell.minZ() && destination.maxZ < shell.maxZ() + 1D;
@@ -649,7 +639,7 @@ public final class StructureStaging {
     }
 
     private static boolean physicallyLocked(ServerLevel level, Area area) {
-        return ModList.get().isLoaded("jem_twelve_eyes")&&com.siirio.jemcompat.gate.CampaignGateEvents.locked(level.getServer(),area.boss());
+        return ModList.get().isLoaded("jem_twelve_eyes")&&com.siirio.jemtwelveeyes.api.CampaignApi.locked(level.getServer(),area.boss());
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)

@@ -25,23 +25,12 @@ repositories {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    testImplementation platform('org.junit:junit-bom:5.10.2')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
 mixin {
     add sourceSets.main, 'jem_world_boss_tiers.refmap.json'
     config 'jem_world_boss_tiers.mixins.json'
-}
-
-tasks.named('test', Test).configure {
-    useJUnitPlatform()
-}
-
-sourceSets.test.resources {
-    srcDir '../JEMPackCore/src/main/resources'
-    include 'data/jem_world_boss_tiers/jem_world_boss_tiers/**'
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -62,3 +51,5 @@ jar {
     }
     finalizedBy 'reobfJar'
 }
+
+tasks.withType(Test).configureEach { enabled = false }

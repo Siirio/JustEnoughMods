@@ -1,6 +1,6 @@
 package com.siirio.jemserver.client.smp;
 
-import com.siirio.jemserver.smp.events.EventNetwork;
+import com.siirio.jemserver.smp.events.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
@@ -12,19 +12,19 @@ public final class EventEntryScreen extends Screen {
     private static final int PANEL_WIDTH = 448;
     private static final int PANEL_HEIGHT = 232;
     private static final int ART_WIDTH = 132;
-    private final EventNetwork.Prompt prompt;
+    private final EventPrompt prompt;
     private final EntityPreview bossPreview = new EntityPreview();
     private String mode;
     private boolean groupStep;
 
-    private EventEntryScreen(EventNetwork.Prompt prompt) {
+    private EventEntryScreen(EventPrompt prompt) {
         super(Component.literal(prompt.title()));
         this.prompt = prompt;
         groupStep = !bossPrompt() || !prompt.raidAvailable();
         mode = bossPrompt() ? "BOSS_FIGHT" : prompt.type();
     }
 
-    public static void open(EventNetwork.Prompt prompt) {
+    public static void open(EventPrompt prompt) {
         Minecraft.getInstance().setScreen(new EventEntryScreen(prompt));
     }
 

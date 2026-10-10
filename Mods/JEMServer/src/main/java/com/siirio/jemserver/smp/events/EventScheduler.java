@@ -26,8 +26,7 @@ public final class EventScheduler {
     private static final String PREPARING = "preparing";
     private static final String PREPARATION_QUEUED = "preparationQueued";
     private static long checkedWeek = Long.MIN_VALUE;
-    private static final Map<MinecraftServer,ActiveEvents> ACTIVE_CACHE=new WeakHashMap<>();
-    private record ActiveEvents(int tick,List<CompoundTag> rows) {}
+    private static final Map<MinecraftServer,ActiveEventSnapshot> ACTIVE_CACHE=new WeakHashMap<>();
 
     public static void reset() {
         checkedWeek = Long.MIN_VALUE;
@@ -157,6 +156,7 @@ public final class EventScheduler {
             return;
         }
         row.putString("state", "ACTIVE");
+        ACTIVE_CACHE.remove(server);
         row.putLong("started", now);
         if (!type.equals("COOKING_SHOW")) row.putLong("ends", now + Math.min(type.equals("RESOURCE_RUSH") ? 2 : 3, SmpConfig.EVENT_HOURS.get()) * 3600000L);
         row.putBoolean("catchup", now - row.getLong("planned") > 60000);
@@ -187,10 +187,10 @@ public final class EventScheduler {
     public static List<CompoundTag> active(MinecraftServer server) {
         if (!SmpEnvironment.active(server)) return List.of();
         int tick=server.getTickCount();
-        ActiveEvents cached=ACTIVE_CACHE.get(server);
+        ActiveEventSnapshot cached=ACTIVE_CACHE.get(server);
         if(cached!=null&&cached.tick()==tick) return cached.rows();
         List<CompoundTag> rows=SmpData.get(server).all("events").stream().filter(e->e.getString("state").equals("ACTIVE")).toList();
-        ACTIVE_CACHE.put(server,new ActiveEvents(tick,rows));
+        ACTIVE_CACHE.put(server,new ActiveEventSnapshot(tick,rows));
         return rows;
     }
 
@@ -198,6 +198,7 @@ public final class EventScheduler {
         announce(server,row,false,state);
         if(row.getBoolean("combatStarted")) new EncounterContext(row).complete(server,state.equals("COMPLETED"));
         row.putString("state", state);
+        ACTIVE_CACHE.remove(server);
         if(row.getString("activity").equals("BLOOD_MOON")) EventAreaHooks.releaseBloodMoon(server,row.getUUID("id"),false);
         if(row.getString("activity").equals("BLOOD_MOON") && !state.equals("COMPLETED")) {
             cleanupFailedBloodMoon(server,row);

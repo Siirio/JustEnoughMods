@@ -42,13 +42,15 @@ Changelog описывает только запрошенные player-visible 
 | --- | --- |
 | `JEMAdaptiveCulling` | Client rendering performance и только culling |
 | `JEMAchievementGuide` | Переиспользуемые advancement criteria и guide interaction contracts |
-| `JEMWorldBossTiers` | Global World Tier, boss profiles и числовая нормализация |
-| `JEMTwelveEyes` | Campaign graph, prerequisites и Eyes |
-| `JEMCompat` | Изолированные adapters к native behavior сторонних модов |
+| `JEMWorldBossTiers` | Global World Tier, boss profiles, progression scaling, hosted encounters, arena/revival и pending rewards |
+| `JEMTwelveEyes` | Campaign graph, prerequisites, Eyes и locator/site state; внешний контракт — `CampaignApi` и immutable `CampaignTerritory` |
+| `JEMCompat` | Изолированные compatibility adapters; drill lifecycle принадлежит самостоятельному addon |
+| `JEMDrillLifecycle` | Moving/stationary Create drill wear, replacement, servicing и optional Jade presentation; только Create является обязательным модом |
+| `JEMMenuSupport` | Небольшая native menu library без mod ID, registry, gameplay state или network; Claims и Server встраивают один и тот же JAR через Forge Jar-in-Jar |
 | `JEMPackCore` | Pack-specific data, resources и integration policy без чужой gameplay state |
 | `JEMVillagerTalking` | Изолированные реакции, реплики, сеть и HUD-текст жителей; мод остаётся development-only до отдельного решения о публикации |
 | `JEMClaims` | Territories, permissions и protection integration |
-| `JEMServer` | SMP, parties, shops, events и server UX commands |
+| `JEMServer` | SMP, parties, shops и server UX; внутренний Events domain делегирует party operations в `EventParties`, принимает `EventParticipants` и регистрируется через `EventRuntime` |
 | `AutoModpack` | Bootstrap, manifest generations, verified delta transfer, managed-file deletion и client rollback для JEM Pack Sync |
 
 Новый код идёт владельцу домена. Общий контракт появляется только у двух реальных потребителей. Потребитель получает immutable snapshot, query или event и не восстанавливает состояние из tooltip, display name, текста advancement или чужого NBT.
@@ -183,3 +185,55 @@ Build или runtime action выполняется только по прямо�
 - Ponder — только для самостоятельной composable system, которой необходимо animated in-world teaching.
 
 Runtime dependency принимается только если она удаляет JEM-код, закрепляет единый контракт или даёт недостижимое текущим stack качество при совместимости с Forge 1.20.1, Epic Fight, Embeddium/Oculus и dedicated server.
+
+
+## Границы после архитектурного разделения
+
+Events остаётся внутри JEMServer: его event records находятся в общем `jem_smp_v2`, а ordinary hosted arenas и party workflow используют существующих владельцев. Отдельный JAR потребовал бы переноса общего persistence и новых обязательных связей. `EventNetwork` сериализует feature packets и передаёт entry intent в SMP adapter; `EventAttempts` подготавливает detached state до изменения сохранённого event. Общие boss arena, revival и reward primitives остаются в World Boss Tiers.
+
+Drill addon публикует фактический `DrillLifecycleEvent` для work/replacement/service. Pack Core слушает этот event только при наличии addon и владеет pack advancement IDs. Moving-only batch/final-service условия сохранены. Compat больше не регистрирует drill Mixins и не содержит копию drill lifecycle. JEI выбирает свой overlay при discovery плагина, а optional Curios policy находится за изолированным adapter.
+
+Claims и Server используют `com.siirio.jemmenus` из одной версии MenuSupport. `GAMELIBRARY` помещает библиотеку в игровой module layer, где доступен Minecraft; `LIBRARY` для этих menu classes недопустим. Native Jar-in-Jar выбирает одну копию по одинаковым coordinates/version. Owner-scoped menu reuse сохраняет прежнее разделение Claims/Server. Вручную устанавливать library JAR не требуется. `-slim.jar` является промежуточным файлом и не распространяется.
+
+### Persistence и установка
+
+Сохраняются `jem_smp_v2`, `jemcompat_main_campaign`, `jem_claim_zones`, `jem_world_boss_tiers`, `jem_hosted_boss_rewards`, прежние NBT keys и registry IDs. Drill NBT `JemDrillWear`, `JemDrillRepairs`, `JemDrillReplacementPos` и legacy `jemcompat` resource namespace не меняются. Перенос Java не создаёт новый world schema и не повторяет исторические victories/rewards.
+
+SMP channel `jem_server:smp_v2` теперь использует protocol `3`: typed action kinds/inputs заменяют action JSON, Update включает session/base/current revision, Query поддерживает bounded resync. Требуется одновременная установка matching Server JAR на клиент и сервер. Старый Compat необходимо заменить новым вместе с добавлением `jem_drill_lifecycle-1.0.0.jar`; две версии Compat/addon одновременно недопустимы. Claims остаётся dedicated-server artifact, Adaptive Culling — client-only, Villager Talking — development-only.
+
+Build order: World Boss Tiers и Advancements → Twelve Eyes и Drill Lifecycle → Pack Core; MenuSupport → Claims → Server. Output каждого модуля находится в `build/libs`; подготовленный набор и installation manifest — `build/architecture-revamp/staged`. Live runtime, clean Client, stable profile и release baseline не обновляются архитектурной задачей.
+
+### Resource ownership
+
+World Boss Tiers загружает standalone `defaults/bosses` первым, затем canonical `bosses` через native highest-resource selection; одинаковый logical ResourceLocation из Pack Core/user datapack заменяет default независимо от JAR order. Профили и thresholds сохранены.
+
+35 overlapping Blood Moon defaults перемещены в native builtin `jem_server:event_defaults`, который регистрируется только без Pack Core. При наличии Pack Core canonical tags принадлежат ему; external datapacks сохраняют native precedence. Standalone default pack не добавляет mobs к pack-specific `replace:true` pools.
+
+| Совпадающий путь | Разрешённая семантика |
+| --- | --- |
+| `assets/jemcompat/lang/en_us.json` | Native language stack объединяет раздельные ключи Compat, Drill Lifecycle и Pack Core |
+| `assets/jemcompat/lang/ru_ru.json` | То же объединение с сохранением localization keys |
+| `data/forge/loot_modifiers/global_loot_modifiers.json` | Native additive modifier registrations Server и World Boss Tiers |
+| `data/jem_world_boss_tiers/tags/items/progression_excluded.json` | Standalone empty base и additive pack values, без replacement |
+
+### Packet catalog
+
+Все C2S identity decisions получают player из authenticated sender. Enum/UTF/count bounds проверяются в decoder, permissions и mutations — у use-case owner на server thread. `consumerMainThread` не получает второй `enqueueWork`; старый TierSync handler использует собственный main-thread dispatch. UTF limits ниже являются character limits; native UTF decoder отдельно проверяет encoded byte length до выделения строки.
+
+| Owner/channel/version | ID и direction | Данные, пределы и use case | Recipients и cleanup |
+| --- | --- | --- | --- |
+| SMP `jem_server:smp_v2` / 3 | 0 C2S Query; 1 C2S Action; 2 S2C Update; 3 C2S Revive | Query filter64/search160/page0..10000; typed no-input/party/player/message inputs, total C2S4096 bytes; Update NBT1MiB с allocation accounting и session revisions; revive target UUID проверяет encounter owner | Selected viewer; subscriptions/replay state очищаются при logout/stop; close снимает view |
+| Events `jem_server:events` / 9 | 0 S2C Prompt; 1 C2S Choice; 2 S2C Zones; 3 S2C Mob; 4 S2C Beam; 5 S2C Telegraph; 6 S2C AttackVfx | Prompt occupants≤256, zones≤32, typed entry kind; server-owned IDs/dimension/geometry/timing; finite attack span≤512; presentation не определяет damage | Event viewers/participants; client logout/world unload, server respawn/dimension invalidation и event lifecycle cleanup |
+| Combat `jem_server:combat_v2` / 4 | 0 S2C Update; 1 C2S Claim; 2 C2S Vote | NBT accounting1MiB; result/event UUID; persisted reward owner и active participant vote validation | Combat participants; result/snapshot maps logout/stop, HUD logout/world unload |
+| Navigation `jem_server:navigation` / 2 | 0 S2C Points | ≤64 points, subsystem16/label80, ID/dimension/position/expiry; authorization у party/shop owner | Requesting player; expiry, logout/stop, optional Xaero teardown |
+| Landmarks `jem_server:landmarks` / 3 | 0 S2C Snapshot; 1 C2S Remove | ≤4096 records; name80/key160/category32/creator64; removal ownership у Landmarks | Connected players; client lifecycle cleanup, persisted landmarks остаются |
+| Map `jem_server:map` / 3 | 0 S2C Snapshot; 1 C2S Request; 2 C2S Publish; 3 C2S DeathTeleport; 4 C2S Unclaim; 5 S2C Events; 6 C2S EventTeleport | claims≤16384/events≤64; publish name80 + dimension/position проверяет Landmarks; death/claim/event UUID проверяют владельцы; request cadence20 ticks, mutations используют общий action throttle | Requesting map viewer; event snapshot cache stop, client disconnect |
+| Claims view `jem_server:claim_boundaries` / 1 | 0 S2C Snapshot | ≤256 bounds, tool/name256, dimension/selection; Flan остаётся permission owner | Player holding territory tool; server logout/stop и client lifecycle |
+| Fishing `jem_server:fishing_odds` / 1 | 0 S2C ProfileSync | bounded JSON131072 chars, ≤1024 validated rod profiles; сервер владеет odds | Login recipient; existing FishingTooltips logout очищает client profile state |
+| World Tier `jem_world_boss_tiers:main` / 5 | 0 S2C TierSync | tier/count/next threshold + ≤1024 weapon IDs | Connected players; current tier/registry owner lifecycle |
+| Campaign `jem_twelve_eyes:main` / 3 | 0 S2C OpenMap; 1 S2C GateWarning; 2 S2C Ending | position/dimension/marker key≤256; two component JSON strings≤32767; empty ending intent | Target player; warning cache logout/world unload, persistent locator markers и approved credits sequence сохраняются |
+| Villagers `jem_villager_talking:villager_speech` / 5 | 0 S2C Speech | line64/role32/name64, ordinal1..4 и bounded scene delay | Local scene viewers; feature HUD lifecycle; development-only distribution |
+
+SMP сохраняет 64 replay receipts на игрока и отвергает тот же request UUID с другим typed payload. Action/revive/query work ограничивается cadence; query bursts coalesce до последнего intent. Повторные cooldown/replay replies не пересобирают view. Prizes projection постраничная; reward totals и выдача остаются у `PendingRewardContainer`, source filtering также выполняется там. Unexpected action exceptions логируются с player/request/kind/record context; ожидаемые failures имеют `SmpActionFailure.code()`.
+
+Автоматические тесты и fixtures удалены по прямому запросу пользователя; Gradle test tasks отключены, JUnit отсутствует. Runtime test scenarios запрещены. Build/launch/analysis выполняются только при отдельном прямом запросе согласно AGENTS.md.

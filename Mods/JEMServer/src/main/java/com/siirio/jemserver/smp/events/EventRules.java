@@ -4,10 +4,11 @@ import net.minecraftforge.common.ForgeConfigSpec;
 
 public final class EventRules {
     public static final ForgeConfigSpec SPEC;
-    public static final ForgeConfigSpec.IntValue SPAWN_BATCH, SPAWN_ATTEMPTS, BLOOD_SPAWN_MIN_DISTANCE, BLOOD_SPAWN_MAX_DISTANCE, SAFE_DEATHS, FAILURE_DEATHS, DOWNED_SECONDS, ENTRY_PROMPT_DISTANCE, STAGING_RADIUS, RAID_SEARCH_RADIUS, BOUNDARY_DISTANCE, MINIMUM_LAND_PERCENT, BLOOD_COLOR, RUSH_COLOR, RAID_COLOR;
+    public static final ForgeConfigSpec.IntValue TRAVEL_TIMEOUT_TICKS, SPAWN_BATCH, SPAWN_ATTEMPTS, BLOOD_SPAWN_MIN_DISTANCE, BLOOD_SPAWN_MAX_DISTANCE, SAFE_DEATHS, FAILURE_DEATHS, DOWNED_SECONDS, ENTRY_PROMPT_DISTANCE, STAGING_RADIUS, RAID_SEARCH_RADIUS, BOUNDARY_DISTANCE, MINIMUM_LAND_PERCENT, BLOOD_COLOR, RUSH_COLOR, RAID_COLOR;
     public static final ForgeConfigSpec.DoubleValue RESPAWN_HEALTH, CHAMPION_SCALE, FINAL_SCALE, PROJECTILE_RESTITUTION;
     static {
         var b=new ForgeConfigSpec.Builder();
+        TRAVEL_TIMEOUT_TICKS=b.defineInRange("travelTimeoutTicks",300,20,1200);
         SPAWN_BATCH=b.defineInRange("spawnBatchPerSecond",4,1,16);
         SPAWN_ATTEMPTS=b.defineInRange("spawnAttemptsPerMob",8,1,32);
         BLOOD_SPAWN_MIN_DISTANCE=b.defineInRange("bloodMoonSpawnMinDistance",12,8,24);

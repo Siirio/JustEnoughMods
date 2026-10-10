@@ -58,13 +58,13 @@ public final class BossHostingPrompt {
     }
 
     public static void prompt(ServerPlayer player, UUID id) {
-        if (!(player.serverLevel().getEntity(id) instanceof LivingEntity boss)) throw new IllegalArgumentException("unavailable");
+        if (!(player.serverLevel().getEntity(id) instanceof LivingEntity boss)) throw new com.siirio.jemserver.smp.SmpActionFailure("unavailable");
         if(com.siirio.jemserver.smp.events.StructureStaging.prompt(player,boss)) {
             CANDIDATES.remove(id);
             com.siirio.jemserver.smp.events.BossStaging.remove(id);
             return;
         }
-        if(!canOffer(player,boss)) throw new IllegalArgumentException("unavailable");
+        if(!canOffer(player,boss)) throw new com.siirio.jemserver.smp.SmpActionFailure("unavailable");
         var key = net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(boss.getType());
         EventNetwork.prompt(player, id, "BOSS", boss.getDisplayName().getString(), key.toString());
     }

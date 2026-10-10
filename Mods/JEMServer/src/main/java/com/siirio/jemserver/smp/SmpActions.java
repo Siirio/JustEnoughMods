@@ -1,6 +1,5 @@
 package com.siirio.jemserver.smp;
 
-import com.google.gson.*;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -10,36 +9,36 @@ import net.minecraft.server.level.ServerPlayer;
 import java.util.*;
 
 public final class SmpActions {
-    public static void handle(ServerPlayer player, SmpNetwork.Action request) {
-        JsonObject args = JsonParser.parseString(request.json()).getAsJsonObject();
-        String action = request.action();
-        String table = request.table();
-        if (action.equals("claim_rewards")) {
+    public static void handle(ServerPlayer player, SmpAction request) {
+        var input = request.input();
+        var action = request.kind();
+        String table = request.table().key();
+        if ((action == SmpActionKind.CLAIM_REWARDS)) {
             SmpNetwork.open(player, "prizes", null);
             return;
         }
-        if (table.equals("prizes") && (action.equals("claim") || action.equals("claim_all"))) {
-            SmpRecords.require(action.equals("claim_all") || request.id() != null, "invalid_request");
+        if (table.equals("prizes") && ((action == SmpActionKind.CLAIM) || (action == SmpActionKind.CLAIM_ALL))) {
+            SmpRecords.require((action == SmpActionKind.CLAIM_ALL) || request.id() != null, "invalid_request");
             LegacyRewards.migrate(player);
             SmpRecords.require(com.siirio.jemworldbosstiers.encounter.PendingRewardContainer.claim(player,
-                    action.equals("claim_all") ? null : request.id()), "inventory_full");
+                    (action == SmpActionKind.CLAIM_ALL) ? null : request.id()), "inventory_full");
             return;
         }
-        if (action.equals("claims")) {
+        if ((action == SmpActionKind.CLAIMS)) {
             com.siirio.jemserver.claims.Claims.openOverview(player);
             return;
         }
-        if (action.equals("create")) {
+        if ((action == SmpActionKind.CREATE)) {
             if (table.equals("parties")) {
-                var party = Parties.create(player, args);
+                var party = Parties.create(player, (SmpPartyRequest) input);
                 SmpNetwork.open(player, "parties", party.getUUID("id"));
             }
-            else throw new IllegalArgumentException("unknown_action");
+            else throw new SmpActionFailure("unknown_action");
             Navigation.accepted(player);
             return;
         }
         if (table.equals("shops")) {
-            com.siirio.jemserver.smp.shops.ShopIndex.action(player, request.id(), action);
+            com.siirio.jemserver.smp.shops.ShopIndex.action(player, request.id(), action.key());
             return;
         }
         SmpRecords.require(
@@ -47,7 +46,7 @@ public final class SmpActions {
                 "unknown_action");
         CompoundTag row = SmpData.get(player.server).find(table, request.id());
         SmpRecords.require(row != null, "unavailable");
-        if (table.equals("parties") && action.equals("start") && row.getString("state").equals("ACTIVE")) {
+        if (table.equals("parties") && (action == SmpActionKind.START) && row.getString("state").equals("ACTIVE")) {
             SmpRecords.owner(player, row);
             return;
         }
@@ -57,7 +56,7 @@ public final class SmpActions {
                         || row.getUUID("owner").equals(player.getUUID())
                         || table.equals("parties") && Parties.accepted(row, player.getUUID());
         switch (action) {
-            case "navigate" -> {
+            case NAVIGATE -> {
                 var location = row.hasUUID("eventId") ? SmpData.get(player.server).find("events", row.getUUID("eventId")) : row;
                 SmpRecords.require(authorized && !SmpData.closed(row) && location != null && location.contains("dimension") && location.contains("position"), "private");
                 Navigation.send(
@@ -69,12 +68,12 @@ public final class SmpActions {
                         BlockPos.of(location.getLong("position")),
                         location.contains("ends") ? location.getLong("ends") : Long.MAX_VALUE);
             }
-            case "teleport_event" -> {
+            case TELEPORT_EVENT -> {
                 SmpRecords.require(table.equals("events")&&!SmpData.closed(row)&&row.contains("dimension")&&row.contains("position"),"unavailable");
                 boolean inside=row.getString("activity").equals("RESOURCE_RUSH");
                 com.siirio.jemserver.smp.events.EventTravel.request(player,row.getUUID("id"),inside);
             }
-            case "tpa" -> {
+            case TPA -> {
                 SmpRecords.require(authorized, "private");
                 var target = player.server.getPlayerList().getPlayer(row.getUUID("owner"));
                 SmpRecords.require(target != null, "player_offline");
@@ -84,8 +83,8 @@ public final class SmpActions {
                                 player.createCommandSourceStack(),
                                 "tpa " + target.getGameProfile().getName());
             }
-            case "message" -> {
-                String text = SmpRecords.text(args, "message", 256);
+            case MESSAGE -> {
+                String text = SmpRecords.text(((SmpMessageRequest) input).message(), SmpProtocol.MAX_MESSAGE);
                 SmpRecords.require(!text.isBlank(), "invalid_text");
                 var target = player.server.getPlayerList().getPlayer(row.getUUID("owner"));
                 SmpRecords.require(target != null, "player_offline");
@@ -95,16 +94,16 @@ public final class SmpActions {
                                 player.createCommandSourceStack(),
                                 "msg " + target.getGameProfile().getName() + " " + text);
             }
-            case "join_raid", "create_party", "solo" -> {
-                if (table.equals("parties")) Parties.action(player, row, action, args);
+            case JOIN_RAID, CREATE_PARTY, SOLO -> {
+                if (table.equals("parties")) Parties.action(player, row, action, input);
                 else {
                     SmpRecords.require(table.equals("events") && Set.of("BOSS_RAID", "BLOOD_MOON").contains(row.getString("activity")), "unknown_action");
-                    com.siirio.jemserver.smp.events.EventParty.join(player, row, action.equals("solo"));
+                    EventParties.join(player, row, (action == SmpActionKind.SOLO));
                 }
             }
-            case "invite" -> {
+            case INVITE -> {
                 if (table.equals("parties")) {
-                    Parties.action(player, row, action, args);
+                    Parties.action(player, row, action, input);
                     break;
                 }
                 SmpRecords.require(table.equals("profiles"), "unknown_action");
@@ -116,22 +115,22 @@ public final class SmpActions {
                                                         && p.getString("state").equals("PUBLISHED"))
                                 .max(java.util.Comparator.comparingLong(p -> p.getLong("created")))
                                 .orElseThrow(
-                                        () -> new IllegalArgumentException("publish_party_first"));
+                                        () -> new SmpActionFailure("publish_party_first"));
                 Parties.invite(player, party, row.getUUID("id"));
             }
-            case "view_shops" ->
+            case VIEW_SHOPS ->
                     SmpNetwork.open(
                             player,
-                            new SmpNetwork.Query(
+                            new SmpQuery(
                                     "shops",
                                     "search|near",
                                     row.getString("name") + "\u001f",
                                     0,
                                     null));
-            case "territory_rights" -> com.siirio.jemserver.claims.Claims.openProfile(player, row.getUUID("id"));
+            case TERRITORY_RIGHTS -> com.siirio.jemserver.claims.Claims.openProfile(player, row.getUUID("id"));
             default -> {
-                if (table.equals("parties")) Parties.action(player, row, action, args);
-                else throw new IllegalArgumentException("unknown_action");
+                if (table.equals("parties")) Parties.action(player, row, action, input);
+                else throw new SmpActionFailure("unknown_action");
             }
         }
         if (table.equals("parties"))

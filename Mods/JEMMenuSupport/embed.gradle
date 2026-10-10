@@ -1,0 +1,14 @@
+jarJar.enable()
+repositories { flatDir { dirs '../JEMMenuSupport/build/libs' } }
+dependencies {
+    compileOnly files('../JEMMenuSupport/build/classes/java/main')
+    jarJar('com.siirio.jem:jem-menu-support:1.0.0') {
+        jarJar.ranged(it, '[1.0.0,2.0.0)')
+        transitive = false
+    }
+}
+tasks.named('jar', Jar).configure { archiveClassifier = 'slim' }
+tasks.named('jarJar').configure {
+    archiveClassifier = ''
+    finalizedBy 'reobfJarJar'
+}

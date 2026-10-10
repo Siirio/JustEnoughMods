@@ -17,22 +17,34 @@ import com.siirio.jemworldbosstiers.progression.WorldTierData;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public final class BalanceDataLoader extends SimpleJsonResourceReloadListener {
     private static final Gson GSON = new Gson();
+    private static final String DATA_DIRECTORY = "jem_world_boss_tiers";
     private final Kind kind;
+    private final String directory;
 
     private BalanceDataLoader(String directory, Kind kind) {
-        super(GSON, directory);
+        super(GSON, DATA_DIRECTORY + "/" + directory);
         this.kind = kind;
+        this.directory = directory;
     }
 
     public static BalanceDataLoader bosses() {
-        return new BalanceDataLoader("jem_world_boss_tiers/bosses", Kind.BOSSES);
+        return new BalanceDataLoader("bosses", Kind.BOSSES);
     }
 
     public static BalanceDataLoader rewards() {
-        return new BalanceDataLoader("jem_world_boss_tiers/rewards", Kind.REWARDS);
+        return new BalanceDataLoader("rewards", Kind.REWARDS);
+    }
+
+    @Override
+    protected Map<ResourceLocation, JsonElement> prepare(ResourceManager manager, ProfilerFiller profiler) {
+        Map<ResourceLocation, JsonElement> defaults = new TreeMap<>();
+        scanDirectory(manager, DATA_DIRECTORY + "/defaults/" + directory, GSON, defaults);
+        defaults.putAll(super.prepare(manager, profiler));
+        return defaults;
     }
 
     @Override

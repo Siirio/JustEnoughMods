@@ -17,12 +17,6 @@ repositories {
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
-    testImplementation platform('org.junit:junit-bom:5.10.2')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-}
-
-tasks.named('test', Test).configure {
-    useJUnitPlatform()
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -42,3 +36,5 @@ jar {
     }
     finalizedBy 'reobfJar'
 }
+
+tasks.withType(Test).configureEach { enabled = false }

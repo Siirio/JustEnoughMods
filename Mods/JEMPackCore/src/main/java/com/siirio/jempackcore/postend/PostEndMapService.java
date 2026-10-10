@@ -1,10 +1,10 @@
 package com.siirio.jempackcore.postend;
 
-import com.siirio.jemcompat.gate.CampaignSavedData;
+import com.siirio.jemtwelveeyes.api.CampaignApi;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.tags.TagKey;
 import net.minecraft.Util;
 import net.minecraft.world.level.Level;
@@ -21,10 +21,10 @@ public final class PostEndMapService {
         var level = server.getLevel(Level.END);
         if (level == null) return CompletableFuture.completedFuture(Optional.empty());
         String key = "post_end/" + target.key();
-        BlockPos cached = CampaignSavedData.get(server).locatedStructure(key);
+        BlockPos cached = CampaignApi.locatedStructure(server, key);
         if (cached != null) return CompletableFuture.completedFuture(Optional.of(cached));
         TagKey<Structure> tag = TagKey.create(Registries.STRUCTURE, new ResourceLocation("jem_twelve_eyes", "post_end/" + target.key()));
         return CompletableFuture.supplyAsync(() -> Optional.ofNullable(level.findNearestMapStructure(tag, level.getSharedSpawnPos(), SEARCH_RADIUS, false)), Util.backgroundExecutor())
-                .thenApplyAsync(result -> { result.ifPresent(pos -> CampaignSavedData.get(server).locatedStructure(key, pos)); return result; }, server);
+                .thenApplyAsync(result -> { result.ifPresent(pos -> CampaignApi.locatedStructure(server, key, pos)); return result; }, server);
     }
 }

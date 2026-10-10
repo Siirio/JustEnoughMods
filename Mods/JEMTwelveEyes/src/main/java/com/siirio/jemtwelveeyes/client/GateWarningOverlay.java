@@ -9,6 +9,8 @@ import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RenderGuiEvent;
+import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
+import net.minecraftforge.event.level.LevelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -35,7 +37,7 @@ public final class GateWarningOverlay {
     private static long expiresAt;
     private static int cachedWidth = -1;
     private static int cachedHeight = -1;
-    private static Layout cachedLayout;
+    private static GateWarningLayout cachedLayout;
 
     private GateWarningOverlay() {
     }
@@ -45,6 +47,26 @@ public final class GateWarningOverlay {
         details = newDetails;
         shownAt = System.nanoTime();
         expiresAt = shownAt + secondsToNanos((double) durationTicks / TICKS_PER_SECOND);
+        cachedLayout = null;
+    }
+
+    @SubscribeEvent
+    public static void loggedOut(ClientPlayerNetworkEvent.LoggingOut event) {
+        clear();
+    }
+
+    @SubscribeEvent
+    public static void unloaded(LevelEvent.Unload event) {
+        if (event.getLevel().isClientSide()) clear();
+    }
+
+    private static void clear() {
+        title = Component.empty();
+        details = Component.empty();
+        shownAt = 0L;
+        expiresAt = 0L;
+        cachedWidth = -1;
+        cachedHeight = -1;
         cachedLayout = null;
     }
 
@@ -61,7 +83,7 @@ public final class GateWarningOverlay {
         int screenHeight = graphics.guiHeight();
         int availableWidth = Math.max(font.width("...") + PANEL_PADDING * 2, screenWidth - HORIZONTAL_MARGIN * 2);
         int availableHeight = Math.max(font.lineHeight, screenHeight - VERTICAL_MARGIN * 2);
-        Layout layout = layout(font, availableWidth, availableHeight);
+        GateWarningLayout layout = layout(font, availableWidth, availableHeight);
         int alpha = Math.round(255.0F * fade(now));
         int panelColor = alpha(PANEL_COLOR, Math.round(PANEL_ALPHA * alpha / 255.0F));
         int left = (screenWidth - layout.panelWidth()) / 2;
@@ -83,12 +105,12 @@ public final class GateWarningOverlay {
         graphics.pose().popPose();
     }
 
-    private static Layout layout(Font font, int availableWidth, int availableHeight) {
+    private static GateWarningLayout layout(Font font, int availableWidth, int availableHeight) {
         if (cachedLayout != null && cachedWidth == availableWidth && cachedHeight == availableHeight) {
             return cachedLayout;
         }
         float scale = 1.0F;
-        Layout layout;
+        GateWarningLayout layout;
         do {
             int contentWidth = Math.max(1, Math.round((availableWidth - PANEL_PADDING * 2) / scale));
             List<FormattedCharSequence> titleLines = new ArrayList<>(font.split(title, contentWidth));
@@ -96,7 +118,7 @@ public final class GateWarningOverlay {
             int contentHeight = lineHeight(font, titleLines.size() + detailLines.size()) + SECTION_GAP;
             int panelHeight = Math.round(contentHeight * scale) + PANEL_PADDING * 2;
             int panelWidth = Math.min(availableWidth, widest(font, titleLines, detailLines, scale) + PANEL_PADDING * 2);
-            layout = new Layout(titleLines, detailLines, scale, panelWidth, panelHeight);
+            layout = new GateWarningLayout(titleLines, detailLines, scale, panelWidth, panelHeight);
             scale -= 0.05F;
         } while (layout.panelHeight() > availableHeight && scale >= MIN_SCALE);
         cachedWidth = availableWidth;
@@ -139,7 +161,4 @@ public final class GateWarningOverlay {
         return nanos / 1_000_000_000.0D;
     }
 
-    private record Layout(List<FormattedCharSequence> titleLines, List<FormattedCharSequence> detailLines,
-                          float scale, int panelWidth, int panelHeight) {
-    }
 }

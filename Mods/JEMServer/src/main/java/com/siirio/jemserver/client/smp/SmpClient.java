@@ -1,5 +1,6 @@
 package com.siirio.jemserver.client.smp;
 
+import com.siirio.jemserver.smp.SmpUpdate;
 import com.siirio.jemserver.smp.SmpNetwork;
 
 import net.minecraft.client.Minecraft;
@@ -8,7 +9,7 @@ import net.minecraft.client.Minecraft;
         modid = "jem_server",
         value = net.minecraftforge.api.distmarker.Dist.CLIENT)
 public final class SmpClient {
-    public static void accept(SmpNetwork.Update update) {
+    public static void accept(SmpUpdate update) {
         var minecraft = Minecraft.getInstance();
         if (update.open()) {
             if (minecraft.screen instanceof SmpScreen screen) screen.accept(update);

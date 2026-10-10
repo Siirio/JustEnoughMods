@@ -22,7 +22,7 @@ public final class EventAreaHooks {
     static final double PROJECTILE_RESTITUTION_REDUCTION=.2;
     private static final Map<UUID,Set<UUID>> INSIDE=new HashMap<>();
     private static final Map<UUID,Set<UUID>> PROMPTED=new HashMap<>();
-    private static final Map<UUID,List<EventNetwork.Boundary>> SENT=new HashMap<>();
+    private static final Map<UUID,List<EventBoundary>> SENT=new HashMap<>();
     @SubscribeEvent public static void tick(TickEvent.PlayerTickEvent e) {
         if(e.phase!=TickEvent.Phase.END || !(e.player instanceof ServerPlayer player)) return;
         ReviveSupport.enforce(player);
@@ -31,7 +31,7 @@ public final class EventAreaHooks {
         var before=INSIDE.getOrDefault(player.getUUID(),Set.of());
         var prompted=new HashSet<UUID>();
         var promptedBefore=PROMPTED.getOrDefault(player.getUUID(),Set.of());
-        var zones=new ArrayList<EventNetwork.Boundary>(StructureStaging.boundaries(player));
+        var zones=new ArrayList<EventBoundary>(StructureStaging.boundaries(player));
         for(var row:EventScheduler.active(player.server)) {
             if(!row.contains("radius")) continue;
             String type=row.getString("activity");UUID id=row.getUUID("id");
@@ -64,7 +64,7 @@ public final class EventAreaHooks {
                     boolean locked=type.equals("BLOOD_MOON")&&row.getBoolean("combatStarted")
                             &&new EventSession(row).accepted(player.getUUID())&&safelyWithin;
                     boolean passable=type.equals("BLOOD_MOON")&&!locked;
-                    zones.add(new EventNetwork.Boundary(id,row.getString("dimension"),type,EventRegions.minX(row),player.serverLevel().getMinBuildHeight(),EventRegions.minZ(row),EventRegions.maxX(row),player.serverLevel().getMaxBuildHeight()-1,EventRegions.maxZ(row),type.equals("BLOOD_MOON")?EventRules.BLOOD_COLOR.get():type.equals("RESOURCE_RUSH")?EventRules.RUSH_COLOR.get():EventRules.RAID_COLOR.get(),active,passable));
+                    zones.add(new EventBoundary(id,row.getString("dimension"),type,EventRegions.minX(row),player.serverLevel().getMinBuildHeight(),EventRegions.minZ(row),EventRegions.maxX(row),player.serverLevel().getMaxBuildHeight()-1,EventRegions.maxZ(row),type.equals("BLOOD_MOON")?EventRules.BLOOD_COLOR.get():type.equals("RESOURCE_RUSH")?EventRules.RUSH_COLOR.get():EventRules.RAID_COLOR.get(),active,passable));
                 }
             }
         }
@@ -192,17 +192,24 @@ public final class EventAreaHooks {
                 com.siirio.jemworldbosstiers.api.ExperienceRewardApi.give(player,experience));
         event.setDroppedExperience(0);
     }
-    @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent e) { UUID id=e.getEntity().getUUID();INSIDE.remove(id);PROMPTED.remove(id);SENT.remove(id); }
+    @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent event) { invalidate(event.getEntity().getUUID()); }
+    @SubscribeEvent public static void respawn(PlayerEvent.PlayerRespawnEvent event) { invalidate(event.getEntity().getUUID()); }
+    @SubscribeEvent public static void dimensionChanged(PlayerEvent.PlayerChangedDimensionEvent event) { invalidate(event.getEntity().getUUID()); }
+    private static void invalidate(UUID id) {
+        INSIDE.remove(id);
+        PROMPTED.remove(id);
+        SENT.remove(id);
+    }
     @SubscribeEvent public static void stopped(ServerStoppedEvent e) { INSIDE.clear();PROMPTED.clear();SENT.clear(); }
 
     public static void releaseBloodMoon(MinecraftServer server,UUID eventId,boolean visible) {
         for(ServerPlayer player:server.getPlayerList().getPlayers()) {
-            List<EventNetwork.Boundary> current=SENT.get(player.getUUID());
+            List<EventBoundary> current=SENT.get(player.getUUID());
             if(current==null) continue;
-            var updated=new ArrayList<EventNetwork.Boundary>();
-            for(EventNetwork.Boundary boundary:current) {
+            var updated=new ArrayList<EventBoundary>();
+            for(EventBoundary boundary:current) {
                 if(!boundary.id().equals(eventId)) updated.add(boundary);
-                else if(visible) updated.add(new EventNetwork.Boundary(boundary.id(),boundary.dimension(),boundary.type(),boundary.minX(),boundary.minY(),boundary.minZ(),boundary.maxX(),boundary.maxY(),boundary.maxZ(),boundary.color(),boundary.active(),true));
+                else if(visible) updated.add(new EventBoundary(boundary.id(),boundary.dimension(),boundary.type(),boundary.minX(),boundary.minY(),boundary.minZ(),boundary.maxX(),boundary.maxY(),boundary.maxZ(),boundary.color(),boundary.active(),true));
             }
             if(updated.equals(current)) continue;
             EventNetwork.zones(player,updated);

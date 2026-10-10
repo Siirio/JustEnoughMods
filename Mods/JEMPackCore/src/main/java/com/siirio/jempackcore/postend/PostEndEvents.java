@@ -1,6 +1,7 @@
 package com.siirio.jempackcore.postend;
 
-import com.siirio.jemcompat.gate.CampaignSavedData;
+import com.siirio.jemtwelveeyes.api.CampaignApi;
+import net.minecraft.server.MinecraftServer;
 import com.siirio.jemtwelveeyes.AdvancementAwards;
 import com.siirio.jemtwelveeyes.network.CampaignNetwork;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -45,7 +46,7 @@ public final class PostEndEvents {
                 ? List.of(player)
                 : level.players();
         if (players.isEmpty()) return;
-        CampaignSavedData data = CampaignSavedData.get(level.getServer());
+        MinecraftServer server = level.getServer();
         if (event.getEntity().getType() == EntityType.ENDER_DRAGON) {
             players.forEach(player -> AdvancementAwards.award(player, new ResourceLocation("jemcompat", "post_end/dragon")));
             return;
@@ -54,18 +55,18 @@ public final class PostEndEvents {
         for (PostEndTarget target : PostEndTarget.values()) {
             if (!target.entity().equals(entity)) continue;
             if (target == PostEndTarget.OBLITERATOR) {
-                if (ready(data) && data.recordPostEndDefeat(entity)) players.forEach(player -> AdvancementAwards.award(player, FINAL_ADVANCEMENT));
-            } else if (data.recordPostEndDefeat(entity)) {
+                if (ready(server) && CampaignApi.recordPostEndDefeat(server, entity)) players.forEach(player -> AdvancementAwards.award(player, FINAL_ADVANCEMENT));
+            } else if (CampaignApi.recordPostEndDefeat(server, entity)) {
                 players.forEach(player -> AdvancementAwards.award(player, new ResourceLocation("jemcompat", "post_end/" + target.key())));
-                if (ready(data)) level.getServer().getPlayerList().broadcastSystemMessage(Component.translatable("message.jemcompat.post_end.open"), false);
+                if (ready(server)) level.getServer().getPlayerList().broadcastSystemMessage(Component.translatable("message.jemcompat.post_end.open"), false);
             }
         }
     }
 
     public static boolean startSecretEnding(ServerPlayer player) {
         if (!dragonDefeated(player)) return false;
-        CampaignSavedData data = CampaignSavedData.get(player.server);
-        if (!data.startSecretEnding(player.getUUID())) return false;
+        MinecraftServer server = player.server;
+        if (!CampaignApi.startSecretEnding(server, player.getUUID())) return false;
         PENDING_REWARDS.add(player.getUUID());
         CampaignNetwork.startSecretEnding(player);
         return true;
@@ -100,15 +101,15 @@ public final class PostEndEvents {
     public static void playerTick(TickEvent.PlayerTickEvent event) {
         if (event.phase != TickEvent.Phase.END || !(event.player instanceof ServerPlayer player)
                 || player.level().dimension() != net.minecraft.world.level.Level.END || player.tickCount % 5 != 0) return;
-        CampaignSavedData data = CampaignSavedData.get(player.server);
+        MinecraftServer server = player.server;
         TagKey<Structure> station = TagKey.create(Registries.STRUCTURE, new ResourceLocation("jem_twelve_eyes", "post_end/the_obliterator"));
         var start = player.serverLevel().structureManager().getStructureWithPieceAt(player.blockPosition(), station);
         if (!start.isValid()) {
             SAFE_POSITIONS.put(player.getUUID(), player.position());
             return;
         }
-        if (data.revealPostEnd()) player.server.getPlayerList().getPlayers().forEach(value -> AdvancementAwards.award(value, new ResourceLocation("jemcompat", "post_end/discovered")));
-        if (ready(data)) return;
+        if (CampaignApi.revealPostEnd(server)) player.server.getPlayerList().getPlayers().forEach(value -> AdvancementAwards.award(value, new ResourceLocation("jemcompat", "post_end/discovered")));
+        if (ready(server)) return;
         Vec3 safe = SAFE_POSITIONS.get(player.getUUID());
         if (safe == null) safe = new Vec3(start.getBoundingBox().minX() - 3.0D, player.getY(), start.getBoundingBox().minZ() - 3.0D);
         player.setDeltaMovement(Vec3.ZERO);
@@ -121,22 +122,22 @@ public final class PostEndEvents {
     public static void trader(PlayerInteractEvent.EntityInteract event) {
         if (!(event.getEntity() instanceof ServerPlayer player) || !(event.getTarget() instanceof WanderingTrader trader)
                 || player.level().dimension() != net.minecraft.world.level.Level.END) return;
-        CampaignSavedData data = CampaignSavedData.get(player.server);
-        if (!data.postEndRevealed()) return;
-        addTrade(trader, data, PostEndTarget.ENDER_GUARDIAN, PostEndItems.ENDER_GUARDIAN_LOCATOR.get());
-        addTrade(trader, data, PostEndTarget.ENDERSENT, PostEndItems.ENDERSENT_LOCATOR.get());
-        addTrade(trader, data, PostEndTarget.SHULKER_MIMIC, PostEndItems.SHULKER_MIMIC_LOCATOR.get());
+        MinecraftServer server = player.server;
+        if (!CampaignApi.postEndRevealed(server)) return;
+        addTrade(trader, server, PostEndTarget.ENDER_GUARDIAN, PostEndItems.ENDER_GUARDIAN_LOCATOR.get());
+        addTrade(trader, server, PostEndTarget.ENDERSENT, PostEndItems.ENDERSENT_LOCATOR.get());
+        addTrade(trader, server, PostEndTarget.SHULKER_MIMIC, PostEndItems.SHULKER_MIMIC_LOCATOR.get());
     }
 
-    private static void addTrade(WanderingTrader trader, CampaignSavedData data, PostEndTarget target, net.minecraft.world.item.Item item) {
-        if (data.postEndDefeated(target.entity()) || trader.getOffers().stream().anyMatch(offer -> offer.getResult().is(item))) return;
+    private static void addTrade(WanderingTrader trader, MinecraftServer server, PostEndTarget target, net.minecraft.world.item.Item item) {
+        if (CampaignApi.postEndDefeated(server, target.entity()) || trader.getOffers().stream().anyMatch(offer -> offer.getResult().is(item))) return;
         trader.getOffers().add(new MerchantOffer(new ItemStack(Items.EMERALD, 12), new ItemStack(item), 12, 5, 0.05F));
     }
 
-    private static boolean ready(CampaignSavedData data) {
-        return data.postEndDefeated(PostEndTarget.ENDER_GUARDIAN.entity())
-                && data.postEndDefeated(PostEndTarget.ENDERSENT.entity())
-                && data.postEndDefeated(PostEndTarget.SHULKER_MIMIC.entity());
+    private static boolean ready(MinecraftServer server) {
+        return CampaignApi.postEndDefeated(server, PostEndTarget.ENDER_GUARDIAN.entity())
+                && CampaignApi.postEndDefeated(server, PostEndTarget.ENDERSENT.entity())
+                && CampaignApi.postEndDefeated(server, PostEndTarget.SHULKER_MIMIC.entity());
     }
 
     private static void give(ServerPlayer player, ItemStack stack) {

@@ -1,5 +1,7 @@
 package com.siirio.jemclaims;
 
+import com.siirio.jemmenus.VanillaMenus;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -25,8 +27,9 @@ import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 
-@Mod("jem_claims")
+@Mod(JemClaims.MOD_ID)
 public final class JemClaims {
+    public static final String MOD_ID = "jem_claims";
     private static final Map<UUID, Selection> selections = new HashMap<>();
 
     public JemClaims() {
@@ -103,7 +106,7 @@ public final class JemClaims {
         selections.put(player.getUUID(), pending);
         long width = Math.abs((long) selection.first().getX() - second.getX()) + 1;
         long length = Math.abs((long) selection.first().getZ() - second.getZ()) + 1;
-        VanillaMenus.chest(player, "confirm", "Создать территорию?", menu -> {
+        VanillaMenus.chest(player, JemClaims.MOD_ID, "confirm", "Создать территорию?", menu -> {
             menu.button(4, ClaimsMenus.location(VanillaMenus.icon(Items.OAK_FENCE, width + " × " + length,
                     "Площадь: " + width * length, "Новых блоков: " + ClaimUnion.additional(player.serverLevel(), player.getUUID(), pending.first(), pending.second(), null), "Доступно: " + (FlanBridge.budget(player) - FlanBridge.used(player))), pending.dimension().location(), pending.first(), pending.second()), null);
             menu.button(22, VanillaMenus.icon(Items.LIME_DYE, "Подтвердить"), () -> {

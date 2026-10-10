@@ -85,10 +85,6 @@ public final class RaidEvent {
         return true;
     }
 
-    public static void join(ServerPlayer player, CompoundTag event) {
-        if (event.contains("raidArenaId")) SmpRecords.require(!RaidArenaApi.participated(player.server, event.getString("raidArenaId"), player.getUUID()), "raid_already_participated");
-        EventParty.join(player, event, false);
-    }
 
     public static void start(ServerPlayer host, CompoundTag party, Collection<UUID> agreed) {
         SmpRecords.require(party.hasUUID("eventId") && !party.hasUUID("bossEntity"), "unavailable");

@@ -1,6 +1,5 @@
 package com.siirio.jemserver.smp;
 
-import com.google.gson.JsonObject;
 import com.siirio.jemworldbosstiers.api.WorldTierApi;
 
 import net.minecraft.nbt.CompoundTag;
@@ -14,27 +13,28 @@ public final class Parties {
     public static final Set<String> ACTIVITIES =
             Set.of("BOSS", "CUSTOM");
 
-    public static CompoundTag create(ServerPlayer player, JsonObject args) {
+    public static CompoundTag create(ServerPlayer player, SmpPartyRequest args) {
         return create(player,args,true);
     }
 
-    public static CompoundTag createHosted(ServerPlayer player,JsonObject args) {
+    public static CompoundTag createHosted(ServerPlayer player,SmpPartyRequest args) {
         return create(player,args,false);
     }
 
-    private static CompoundTag create(ServerPlayer player,JsonObject args,boolean posting) {
+    private static CompoundTag create(ServerPlayer player,SmpPartyRequest args,boolean posting) {
         if(posting) {
             SmpRecords.require(SmpData.get(player.server).all("parties").stream()
                     .noneMatch(row -> !SmpData.closed(row) && accepted(row, player.getUUID())), "already_in_party");
             SmpRecords.posting(player, "parties");
         }
-        String activity = SmpRecords.text(args, "activity", 24).toUpperCase(Locale.ROOT),
-                title = SmpRecords.text(args, "title", 80);
+        String activity = SmpRecords.text(args.activity(), SmpProtocol.MAX_LANGUAGE).toUpperCase(Locale.ROOT),
+                title = SmpRecords.text(args.title(), SmpProtocol.MAX_TITLE);
         SmpRecords.require(ACTIVITIES.contains(activity) && !title.isBlank(), "invalid_party");
-        int limit = SmpRecords.number(args, "slots", 0, 0, Integer.MAX_VALUE);
-        String description = SmpRecords.text(args, "description", SmpConfig.MAX_TEXT.get());
-        String language = SmpRecords.text(args, "language", 24);
-        long scheduled = SmpRecords.time(args, "scheduled");
+        int limit = args.slots();
+        SmpRecords.require(limit >= 0, "invalid_number");
+        String description = SmpRecords.text(args.description(), SmpConfig.MAX_TEXT.get());
+        String language = SmpRecords.text(args.language(), SmpProtocol.MAX_LANGUAGE);
+        long scheduled = args.scheduled();
         var data = SmpData.get(player.server);
         var row = data.create("parties", player.getUUID());
         row.putString("title", title);
@@ -44,13 +44,8 @@ public final class Parties {
         row.putLong("scheduled", scheduled);
         row.putInt("limit", limit);
         row.putString("name", player.getGameProfile().getName());
-        row.putBoolean(
-                "approval",
-                args.has("approval")
-                        && args.get("approval").getAsString().equalsIgnoreCase("true"));
-        row.putBoolean(
-                "solo",
-                args.has("solo") && args.get("solo").getAsString().equalsIgnoreCase("true"));
+        row.putBoolean("approval", args.approval());
+        row.putBoolean("solo", args.solo());
         row.putString("state", "DRAFT");
         SmpRecords.locate(row, player);
         join(player, row, !posting);
@@ -87,42 +82,51 @@ public final class Parties {
         Profiles.count(player.server, player.getUUID(), "partiesJoined");
     }
 
+    public static void makeSolo(ServerPlayer player, CompoundTag party) {
+        SmpRecords.owner(player, party);
+        SmpRecords.require(SmpRecords.members(party).size() == 1, "solo");
+        party.putBoolean("solo", true);
+        party.remove("invitations");
+        SmpRecords.members(party).getCompound(player.getStringUUID()).putBoolean("ready", true);
+        SmpData.get(player.server).changed(party);
+    }
+
     public static boolean accepted(CompoundTag row, UUID player) {
         return SmpRecords.member(row, player)
                 && row.getCompound("members").getCompound(player.toString()).getBoolean("accepted");
     }
 
     public static void action(
-            ServerPlayer player, CompoundTag row, String action, JsonObject args) {
+            ServerPlayer player, CompoundTag row, SmpActionKind action, SmpActionInput input) {
         SmpRecords.require(!SmpData.closed(row), "closed");
         var members = SmpRecords.members(row);
         switch (action) {
-            case "solo", "multiplayer" -> {
+            case SOLO, MULTIPLAYER -> {
                 SmpRecords.owner(player, row);
                 SmpRecords.require(
                         row.getString("state").equals("DRAFT") && members.size() == 1,
                         "unavailable");
-                row.putBoolean("solo", action.equals("solo"));
+                row.putBoolean("solo", action == SmpActionKind.SOLO);
             }
-            case "invite" -> invite(player, row, UUID.fromString(SmpRecords.text(args, "player", 36)));
-            case "join" -> join(player, row);
-            case "arrive" -> {
+            case INVITE -> invite(player, row, ((SmpPlayerRequest) input).player());
+            case JOIN -> join(player, row);
+            case ARRIVE -> {
                 SmpRecords.require(accepted(row, player.getUUID()), "not_member");
                 HostedParties.arrive(player, row);
             }
-            case "leave" -> {
+            case LEAVE -> {
                 SmpRecords.require(
                         !row.getUUID("owner").equals(player.getUUID())
                                 && !row.getString("state").equals("ACTIVE"),
                         "transfer_host_first");
                 members.remove(player.getUUID().toString());
             }
-            case "ready" -> {
+            case READY -> {
                 SmpRecords.require(!row.getString("state").equals("ACTIVE") && accepted(row, player.getUUID()), "combat_locked");
                 var member = members.getCompound(player.getUUID().toString());
                 member.putBoolean("ready", !member.getBoolean("ready"));
             }
-            case "publish" -> {
+            case PUBLISH -> {
                 SmpRecords.owner(player, row);
                 SmpRecords.require(
                         !row.getBoolean("solo") && row.getString("state").equals("DRAFT"),
@@ -169,19 +173,19 @@ public final class Parties {
                                                                                         target)))),
                                 false);
             }
-            case "approve", "remove", "transfer" -> {
+            case APPROVE, REMOVE, TRANSFER -> {
                 SmpRecords.owner(player, row);
                 SmpRecords.require(!row.getString("state").equals("ACTIVE"), "combat_locked");
-                UUID target = UUID.fromString(SmpRecords.text(args, "player", 36));
+                UUID target = ((SmpPlayerRequest) input).player();
                 SmpRecords.require(members.contains(target.toString()), "unknown_player");
-                if (action.equals("approve")) {
+                if (action == SmpActionKind.APPROVE) {
                     var invited = player.server.getPlayerList().getPlayer(target);
                     SmpRecords.require(invited != null, "player_offline");
                     members.getCompound(target.toString()).putBoolean("accepted", true);
                     members.getCompound(target.toString()).putBoolean("ready", false);
                     SmpNetwork.open(invited, "parties", row.getUUID("id"));
                 }
-                else if (action.equals("remove")) {
+                else if (action == SmpActionKind.REMOVE) {
                     SmpRecords.require(!target.equals(player.getUUID()), "transfer_host_first");
                     members.remove(target.toString());
                 } else {
@@ -190,18 +194,18 @@ public final class Parties {
                     row.putString("name", members.getCompound(target.toString()).getString("name"));
                 }
             }
-            case "cancel", "dissolve" -> {
+            case CANCEL, DISSOLVE -> {
                 SmpRecords.owner(player, row);
                 SmpRecords.require(!row.getString("state").equals("ACTIVE"), "combat_locked");
                 HostedParties.release(player.server, row);
                 row.putString("state", "CANCELLED");
             }
-            case "start" -> {
+            case START -> {
                 SmpRecords.owner(player, row);
                 SmpRecords.require(row.getString("activity").equals("BOSS"), "unavailable");
                 HostedParties.start(player, row);
             }
-            default -> throw new IllegalArgumentException("unknown_action");
+            default -> throw new SmpActionFailure("unknown_action");
         }
         SmpData.get(player.server).changed(row);
     }

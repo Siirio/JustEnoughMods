@@ -32,7 +32,13 @@ public final class SmpRecords {
     }
 
     public static void require(boolean condition, String message) {
-        if (!condition) throw new IllegalArgumentException(message);
+        if (!condition) throw new SmpActionFailure(message);
+    }
+
+    public static String text(String value, int max) {
+        value = value.strip();
+        require(value.length() <= max && value.chars().noneMatch(c -> c < 32 || c == 167), "invalid_text");
+        return value;
     }
 
     public static String text(com.google.gson.JsonObject args, String key, int max) {
@@ -52,7 +58,7 @@ public final class SmpRecords {
             require(result >= min && result <= max, "invalid_number");
             return result;
         } catch (NumberFormatException failure) {
-            throw new IllegalArgumentException("invalid_number");
+            throw new SmpActionFailure("invalid_number");
         }
     }
 
@@ -61,7 +67,7 @@ public final class SmpRecords {
         try {
             return value.isBlank() ? 0 : java.time.Instant.parse(value).toEpochMilli();
         } catch (java.time.DateTimeException | ArithmeticException failure) {
-            throw new IllegalArgumentException("invalid_deadline");
+            throw new SmpActionFailure("invalid_deadline");
         }
     }
 

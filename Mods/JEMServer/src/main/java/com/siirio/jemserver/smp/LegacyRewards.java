@@ -167,7 +167,7 @@ public final class LegacyRewards {
         } catch (java.io.IOException failure) {
             com.mojang.logging.LogUtils.getLogger()
                     .error("Could not verify escrow player save for {}", player.getUUID(), failure);
-            throw new IllegalStateException("storage_unavailable");
+            throw new com.siirio.jemserver.smp.SmpActionFailure("storage_unavailable");
         }
     }
 

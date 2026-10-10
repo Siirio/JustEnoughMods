@@ -1,5 +1,7 @@
 package com.siirio.jemserver;
 
+import com.siirio.jemmenus.VanillaMenus;
+
 import com.siirio.jemserver.claims.Claims;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
@@ -32,7 +34,7 @@ public final class Landmarks {
         ServerData data = ServerData.get(player.server);
         var landmarks = data.landmarks().stream().sorted(Comparator.comparing(ServerData.Landmark::name).thenComparing(ServerData.Landmark::id)).toList();
         int page = Math.max(0, Math.min(requestedPage, Math.max(0, (landmarks.size() - 1) / PAGE_SIZE)));
-        VanillaMenus.chest(player, "landmarks", "Места сервера", menu -> {
+        VanillaMenus.chest(player, JemServer.MOD_ID, "landmarks", "Места сервера", menu -> {
             for (int index = page * PAGE_SIZE; index < Math.min(landmarks.size(), (page + 1) * PAGE_SIZE); index++) {
                 var landmark = landmarks.get(index);
                 var icon = locationIcon(landmark);
@@ -53,7 +55,7 @@ public final class Landmarks {
                 player.sendSystemMessage(Component.literal("Введите название длиной от 1 до " + ServerConfig.NAME_LENGTH.get() + " символов без управляющих кодов."));
                 return;
             }
-            VanillaMenus.chest(player, "landmark_category", "Категория места", menu -> {
+            VanillaMenus.chest(player, JemServer.MOD_ID, "landmark_category", "Категория места", menu -> {
                 for (int index = 0; index < CATEGORIES.size(); index++) {
                     Category category = CATEGORIES.get(index);
                     menu.button(20 + index, VanillaMenus.icon(category.icon(), category.title()), () -> submit(player, name, category.id()));
@@ -111,7 +113,7 @@ public final class Landmarks {
             open(player, 0, management);
             return;
         }
-        VanillaMenus.chest(player, "confirm", landmark.name(), menu -> {
+        VanillaMenus.chest(player, JemServer.MOD_ID, "confirm", landmark.name(), menu -> {
             menu.button(4, locationIcon(landmark), null);
             if (player.hasPermissions(2) || landmark.creator().equals(player.getUUID()))
                 menu.button(22, VanillaMenus.icon(Items.RED_DYE, "Удалить общую метку", "Исчезнет с карты у всех игроков"), () -> remove(player, id));

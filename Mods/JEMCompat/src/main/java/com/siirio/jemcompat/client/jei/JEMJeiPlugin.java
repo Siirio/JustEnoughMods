@@ -9,6 +9,7 @@ import mezz.jei.api.runtime.IJeiRuntime;
 import mezz.jei.common.config.IClientToggleState;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.common.MinecraftForge;
 import com.siirio.jemcompat.mixin.client.IngredientListOverlayAccessor;
 
 import java.io.InputStream;
@@ -21,6 +22,10 @@ public final class JEMJeiPlugin implements IModPlugin {
     private static final ResourceLocation PLUGIN_ID = new ResourceLocation("jemcompat", "jei");
     private static final String ENGLISH_ALIASES = "/assets/jemcompat/jei_english_aliases.json";
     private static IJeiRuntime runtime;
+
+    public JEMJeiPlugin() {
+        MinecraftForge.EVENT_BUS.register(CuratedJeiOverlay.class);
+    }
 
     @Override
     public ResourceLocation getPluginUid() {
@@ -38,6 +43,7 @@ public final class JEMJeiPlugin implements IModPlugin {
     public void onRuntimeUnavailable() {
         runtime = null;
         CuratedJeiCatalog.clear();
+        CuratedJeiOverlay.clear();
     }
 
     public static boolean hasSearchFocus() {
@@ -84,7 +90,7 @@ public final class JEMJeiPlugin implements IModPlugin {
             throw new IllegalStateException("Missing English JEI aliases");
         }
         try (InputStreamReader reader = new InputStreamReader(stream, StandardCharsets.UTF_8)) {
-            return new Gson().fromJson(reader, new TypeToken<Map<String, String>>() { }.getType());
+            return new Gson().fromJson(reader, TypeToken.getParameterized(Map.class, String.class, String.class).getType());
         } catch (Exception exception) {
             throw new IllegalStateException("Cannot load English JEI aliases", exception);
         }

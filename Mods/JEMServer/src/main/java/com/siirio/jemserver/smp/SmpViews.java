@@ -6,7 +6,7 @@ import net.minecraft.server.level.ServerPlayer;
 import java.util.*;
 
 public final class SmpViews {
-    public static CompoundTag build(ServerPlayer player, SmpNetwork.Query query) {
+    public static CompoundTag build(ServerPlayer player, SmpQuery query) {
         var data = SmpData.get(player.server);
         var result = new CompoundTag();
         result.putString("tab", query.tab());
@@ -17,11 +17,12 @@ public final class SmpViews {
         int pendingRewards = com.siirio.jemworldbosstiers.encounter.PendingRewardContainer.count(player);
         result.putInt("pendingRewards", pendingRewards);
         if (query.tab().equals("prizes")) {
-            var rewards = com.siirio.jemworldbosstiers.encounter.PendingRewardContainer.bundles(player);
+            int pageSize = SmpConfig.PAGE_SIZE.get();
+            var rewards = com.siirio.jemworldbosstiers.encounter.PendingRewardContainer.bundles(player, query.page() * pageSize, pageSize);
             result.put("rows", rewards);
-            result.putInt("total", rewards.size());
+            result.putInt("total", pendingRewards);
             result.putInt("totalItems", com.siirio.jemworldbosstiers.encounter.PendingRewardContainer.totalItems(player));
-            result.putInt("pageSize", rewards.size());
+            result.putInt("pageSize", pageSize);
             return result;
         }
         if (query.tab().equals("shops")) {
@@ -215,7 +216,7 @@ public final class SmpViews {
         return true;
     }
 
-    private static boolean visible(ServerPlayer player, SmpNetwork.Query query, CompoundTag row) {
+    private static boolean visible(ServerPlayer player, SmpQuery query, CompoundTag row) {
         boolean owner = row.hasUUID("owner") && row.getUUID("owner").equals(player.getUUID());
         boolean member = SmpRecords.member(row, player.getUUID());
         if (query.tab().equals("parties")

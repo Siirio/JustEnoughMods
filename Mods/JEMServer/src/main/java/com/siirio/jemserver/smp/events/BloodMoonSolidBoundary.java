@@ -18,9 +18,9 @@ import java.util.List;
 
 public final class BloodMoonSolidBoundary {
     private static final double WALL_THICKNESS=.25D;
-    private static volatile List<EventNetwork.Boundary> clientZones=List.of();
+    private static volatile List<EventBoundary> clientZones=List.of();
 
-    public static void clientZones(List<EventNetwork.Boundary> zones) {
+    public static void clientZones(List<EventBoundary> zones) {
         clientZones=zones.stream().filter(zone->zone.type().equals("BLOOD_MOON")&&zone.active()).toList();
     }
 
@@ -43,7 +43,7 @@ public final class BloodMoonSolidBoundary {
             } else if(type.equals("RESOURCE_RUSH")) {
                 if(!(entity instanceof Mob)||level.players().stream().noneMatch(player->EventRegions.contains(row,level,player.blockPosition()))) continue;
             } else continue;
-            EventNetwork.Boundary boundary=boundary(row,level);
+            EventBoundary boundary=boundary(row,level);
             constrained=type.equals("RESOURCE_RUSH")?collideResourceRush(entity.getBoundingBox(),constrained,boundary)
                     :new Wall(boundary).collide(entity.getBoundingBox(),constrained);
             if(constrained.lengthSqr()==0) break;
@@ -66,16 +66,16 @@ public final class BloodMoonSolidBoundary {
         return player!=null&&(player==entity||player.getRootVehicle()==entity);
     }
 
-    private static Vec3 collide(Entity entity,Vec3 movement,List<EventNetwork.Boundary> boundaries) {
+    private static Vec3 collide(Entity entity,Vec3 movement,List<EventBoundary> boundaries) {
         Vec3 constrained=movement;
-        for(EventNetwork.Boundary boundary:boundaries) {
+        for(EventBoundary boundary:boundaries) {
             constrained=new Wall(boundary).collide(entity.getBoundingBox(),constrained);
             if(constrained.lengthSqr()==0) break;
         }
         return constrained;
     }
 
-    private static Vec3 collideResourceRush(AABB box,Vec3 movement,EventNetwork.Boundary boundary) {
+    private static Vec3 collideResourceRush(AABB box,Vec3 movement,EventBoundary boundary) {
         List<VoxelShape> shapes=new Wall(boundary).shapes();
         double x=Shapes.collide(Direction.Axis.X,box,shapes,movement.x);
         if(x!=0) box=box.move(x,0,0);
@@ -122,17 +122,17 @@ public final class BloodMoonSolidBoundary {
         BlockPos position=BlockPos.containing(destination);
         if(!level.hasChunkAt(position)||!level.getWorldBorder().isWithinBounds(position)) return false;
         AABB box=player.getBoundingBox().move(destination.x-player.getX(),destination.y-player.getY(),destination.z-player.getZ());
-        EventNetwork.Boundary boundary=boundary(row,level);
+        EventBoundary boundary=boundary(row,level);
         return EventRegions.contains(row,level,box)&&!BossSolidBoundary.intersectsWall(box,boundary)&&level.noCollision(player,box);
     }
 
-    private static EventNetwork.Boundary boundary(net.minecraft.nbt.CompoundTag row,ServerLevel level) {
-        return new EventNetwork.Boundary(row.getUUID("id"),row.getString("dimension"),"BLOOD_MOON",
+    private static EventBoundary boundary(net.minecraft.nbt.CompoundTag row,ServerLevel level) {
+        return new EventBoundary(row.getUUID("id"),row.getString("dimension"),"BLOOD_MOON",
                 EventRegions.minX(row),level.getMinBuildHeight(),EventRegions.minZ(row),EventRegions.maxX(row),
                 level.getMaxBuildHeight()-1,EventRegions.maxZ(row),EventRules.BLOOD_COLOR.get(),true,false);
     }
 
-    private record Wall(EventNetwork.Boundary boundary) {
+    private record Wall(EventBoundary boundary) {
         private List<VoxelShape> shapes() {
             double minX=boundary.minX();
             double minZ=boundary.minZ();

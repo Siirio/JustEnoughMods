@@ -1,5 +1,8 @@
 package com.siirio.jemserver.client.smp;
 
+import com.siirio.jemserver.smp.SmpQuery;
+import com.siirio.jemserver.smp.SmpAction;
+import com.siirio.jemserver.smp.SmpUpdate;
 import static com.siirio.jemserver.client.ui.JemPalette.*;
 
 import com.google.gson.JsonObject;
@@ -20,7 +23,7 @@ import java.util.*;
 public final class SmpScreen extends Screen {
     private static final int ROW_HEIGHT = 42, GAP = 4, FIELD_HEIGHT = 36;
     private CompoundTag model = new CompoundTag();
-    private final List<Hit> hits = new ArrayList<>();
+    private final List<SmpHit> hits = new ArrayList<>();
     private final LinkedHashMap<String, EditBox> fields = new LinkedHashMap<>();
     private String tab = "events", filter = "", form = "", error = "";
     private EditBox search;
@@ -67,26 +70,35 @@ public final class SmpScreen extends Screen {
             bodyY,
             bodyWidth,
             bodyBottom;
-    private long searchAt, lastSent;
-    private SmpNetwork.Action pending;
+    private long searchAt, lastSent, viewRevision, lastResync;
+    private UUID viewSession;
+    private SmpAction pending;
     private boolean waiting;
     private boolean clippingBody;
     private ItemStack hoveredItem = ItemStack.EMPTY;
     private Component hoveredLabel;
 
-    private record Hit(int x, int y, int width, int height, Runnable action) {
-        boolean contains(double px, double py) {
-            return px >= x && px < x + width && py >= y && py < y + height;
-        }
-    }
-
-    public SmpScreen(SmpNetwork.Update update) {
+    public SmpScreen(SmpUpdate update) {
         super(Component.translatable("jem.smp.title"));
         accept(update);
     }
 
-    public void accept(SmpNetwork.Update update) {
+    public void accept(SmpUpdate update) {
         if (update.view() != null && !update.view().isEmpty()) {
+            boolean delta = update.view().getBoolean("__delta");
+            if (delta && (!Objects.equals(viewSession, update.session()) || viewRevision != update.baseRevision())) {
+                long now = System.currentTimeMillis();
+                if (now - lastResync >= com.siirio.jemserver.smp.SmpProtocol.RESYNC_MILLIS) {
+                    lastResync = now;
+                    SmpNetwork.query(new SmpQuery(tab, model.getString("filter"), model.getString("querySearch"), page, selected, true));
+                }
+                return;
+            }
+            if (update.session() != null) {
+                if (Objects.equals(viewSession, update.session()) && update.revision() <= viewRevision) return;
+                viewSession = update.session();
+                viewRevision = update.revision();
+            }
             var incoming =
                     update.view().getBoolean("__delta")
                             ? com.siirio.jemserver.smp.ViewDelta.apply(model, update.view())
@@ -147,7 +159,7 @@ public final class SmpScreen extends Screen {
         if (update.request() != null
                 && pending != null
                 && update.request().equals(pending.request())) {
-            String action = pending.action();
+            String action = pending.kind().key();
             waiting = false;
             pending = null;
             error = update.error();
@@ -177,7 +189,7 @@ public final class SmpScreen extends Screen {
     @Override
     protected void init() {
         com.siirio.jemserver.client.ui.SmpRenderState.restoreAfterScreen();
-        if (pending != null && pending.action().equals("claims")) { pending = null; waiting = false; }
+        if (pending != null && pending.kind().key().equals("claims")) { pending = null; waiting = false; }
         String initial = model.getString("querySearch");
         String[] pair = initial.split("\u001f", -1);
         String value = search == null ? (tab.equals("shops") ? (pair.length > 1 ? pair[1] : "") : initial) : search.getValue();
@@ -262,7 +274,7 @@ public final class SmpScreen extends Screen {
 
     private void query() {
         SmpNetwork.query(
-                new SmpNetwork.Query(
+                new SmpQuery(
                         tab,
                         tab.equals("shops")
                                 ? "search|near"
@@ -284,7 +296,7 @@ public final class SmpScreen extends Screen {
         var view = new CompoundTag();
         view.putString("tab", route);
         if (detail != null) { var row = new CompoundTag(); row.putUUID("id", detail); view.put("detail", row); }
-        client.setScreen(new SmpScreen(new SmpNetwork.Update(view, true, null, "")));
+        client.setScreen(new SmpScreen(new SmpUpdate(view, true, null, "")));
     }
 
     private void visit(String next, UUID detail) {
@@ -386,7 +398,7 @@ public final class SmpScreen extends Screen {
                 g.disableScissor();
                 clippingBody = false;
             }
-            if (selected == null && !tab.equals("prizes")) {
+            if (selected == null) {
                 int size = Math.max(1, model.contains("pageSize") ? model.getInt("pageSize") : 20);
                 if (model.getInt("total") > size) {
                     button(g, bodyX, bodyBottom + 9, 32, 22, "previous", () -> { if (page > 0) { page--; scroll = 0; query(); } }, mx, my);
@@ -422,7 +434,7 @@ public final class SmpScreen extends Screen {
             boolean hovered = mx >= x && mx < x + width && my >= rowY && my < rowY + 20;
             frame(g, x, rowY, width, 20, hovered ? HOVER : INSET);
             text(g, Component.literal(name), x + 7, rowY + 6, CREAM, width - 14);
-            hits.add(new Hit(x, rowY, width, 20, () -> {
+            hits.add(new SmpHit(x, rowY, width, 20, () -> {
                 seller.setValue(name);
                 setFocused(search);
             }));
@@ -517,11 +529,7 @@ public final class SmpScreen extends Screen {
     }
 
     private void claimReward(UUID id) {
-        if (waiting) return;
-        pending = new SmpNetwork.Action(UUID.randomUUID(), "prizes", id, 0, id == null ? "claim_all" : "claim", "{}");
-        waiting = true;
-        lastSent = System.currentTimeMillis();
-        SmpNetwork.action(pending);
+        sendFor(id, 0, id == null ? "claim_all" : "claim", new JsonObject());
     }
 
     private String rewardIcon(CompoundTag bundle) {
@@ -1462,22 +1470,17 @@ public final class SmpScreen extends Screen {
                 || selected != null
                         && !Set.of("create", "claims", "claim_rewards").contains(action)
                         && !currentDetail()) return;
-        pending =
-                new SmpNetwork.Action(
-                        UUID.randomUUID(),
-                        tab,
-                        selected,
-                        model.getCompound("detail").getInt("revision"),
-                        action,
-                        args.toString());
-        waiting = true;
-        lastSent = System.currentTimeMillis();
-        SmpNetwork.action(pending);
+        sendFor(selected, model.getCompound("detail").getInt("revision"), action, args);
     }
 
     private void sendFor(UUID target, int revision, String action, JsonObject args) {
         if (waiting) return;
-        pending = new SmpNetwork.Action(UUID.randomUUID(), tab, target, revision, action, args.toString());
+        try {
+            pending = SmpClientRequests.action(UUID.randomUUID(), tab, target, revision, action, args);
+        } catch (com.siirio.jemserver.smp.SmpActionFailure failure) {
+            error = failure.code();
+            return;
+        }
         waiting = true;
         lastSent = System.currentTimeMillis();
         SmpNetwork.action(pending);
@@ -1566,7 +1569,7 @@ public final class SmpScreen extends Screen {
             w = right - x;
             h = bottom - y;
         }
-        if (h > 0 && w > 0) hits.add(new Hit(x, y, w, h, action));
+        if (h > 0 && w > 0) hits.add(new SmpHit(x, y, w, h, action));
     }
 
     private void hitWithin(int x, int y, int w, int h, int clipX, int clipY, int clipWidth, int clipHeight, Runnable action) {
@@ -1574,7 +1577,7 @@ public final class SmpScreen extends Screen {
         int bottom = Math.min(y + h, clipY + clipHeight);
         x = Math.max(x, clipX);
         y = Math.max(y, clipY);
-        if (right > x && bottom > y) hits.add(new Hit(x, y, right - x, bottom - y, action));
+        if (right > x && bottom > y) hits.add(new SmpHit(x, y, right - x, bottom - y, action));
     }
 
     private void text(GuiGraphics g, Component text, int x, int y, int color, int max) {
@@ -1647,7 +1650,7 @@ public final class SmpScreen extends Screen {
         if (!hoveredItem.isEmpty() && Set.of("events", "parties", "prizes").contains(tab) && JeiItemLink.open(hoveredItem)) return true;
         String sidebarTab = sidebar.at(x, y);
         if (sidebarTab != null && !waiting) { selectTab(sidebarTab); return true; }
-        if (form.isEmpty() && selected == null && !tab.equals("prizes")) {
+        if (form.isEmpty() && selected == null) {
             if (tab.equals("shops") && seller.mouseClicked(x, y, button)) {
                 setFocused(seller);
                 return true;
@@ -1678,7 +1681,7 @@ public final class SmpScreen extends Screen {
 
     @Override
     public void removed() {
-        SmpNetwork.query(new SmpNetwork.Query("", "", "", 0, null));
+        SmpNetwork.query(new SmpQuery("", "", "", 0, null));
         com.siirio.jemserver.client.ui.SmpRenderState.restoreAfterScreen();
         super.removed();
     }

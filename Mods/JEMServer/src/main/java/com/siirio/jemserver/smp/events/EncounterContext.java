@@ -85,10 +85,8 @@ public final class EncounterContext {
         return Collections.unmodifiableSet(result);
     }
 
-    public void initialize(ServerPlayer host, Collection<UUID> accepted, boolean solo) {
-        var participants = new LinkedHashSet<UUID>();
-        participants.add(host.getUUID());
-        if (!solo) participants.addAll(accepted);
+    public void initialize(ServerPlayer host, EventParticipants snapshot) {
+        var participants = snapshot.accepted();
         var stored = new ListTag();
         participants.forEach(id -> stored.add(StringTag.valueOf(id.toString())));
         data.putUUID(HOST, host.getUUID());

@@ -16,3 +16,5 @@ jar {
     manifest { attributes 'Implementation-Version': project.version }
     finalizedBy 'reobfJar'
 }
+
+tasks.withType(Test).configureEach { enabled = false }

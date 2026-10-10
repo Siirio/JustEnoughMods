@@ -1,6 +1,7 @@
 package com.siirio.jemcompat.site;
 
 import com.siirio.jemcompat.gate.CampaignPrerequisite;
+import com.siirio.jemtwelveeyes.api.CampaignTerritory;
 import com.siirio.jemcompat.gate.CampaignSavedData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -44,6 +45,18 @@ public final class CampaignSiteService {
     private static final Map<SearchKey, CompletableFuture<Optional<BlockPos>>> ACTIVE_SEARCHES = new ConcurrentHashMap<>();
 
     private CampaignSiteService() {
+    }
+
+    public static List<CampaignTerritory> territories(MinecraftServer server) {
+        CampaignSavedData data = CampaignSavedData.get(server);
+        List<CampaignTerritory> territories = new ArrayList<>();
+        for (CampaignPrerequisite prerequisite : CampaignPrerequisite.values()) {
+            if (!prerequisite.generatedSite()) continue;
+            BlockPos site = data.campaignSite(prerequisite);
+            if (site != null) territories.add(new CampaignTerritory(prerequisite.dimension(), prerequisite.entity(),
+                    site.getX() - SITE_RADIUS, site.getZ() - SITE_RADIUS, site.getX() + SITE_RADIUS, site.getZ() + SITE_RADIUS));
+        }
+        return List.copyOf(territories);
     }
 
     @SubscribeEvent

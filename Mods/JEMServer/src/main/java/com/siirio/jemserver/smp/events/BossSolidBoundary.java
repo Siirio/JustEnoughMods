@@ -12,9 +12,9 @@ import java.util.List;
 
 public final class BossSolidBoundary {
     private static final double WALL_THICKNESS = .25D;
-    private static volatile List<EventNetwork.Boundary> clientZones = List.of();
+    private static volatile List<EventBoundary> clientZones = List.of();
 
-    public static void clientZones(List<EventNetwork.Boundary> zones) {
+    public static void clientZones(List<EventBoundary> zones) {
         clientZones = zones.stream().filter(zone -> zone.type().equals("BOSS_FIGHT")).toList();
     }
 
@@ -36,16 +36,16 @@ public final class BossSolidBoundary {
         return constrained;
     }
 
-    public static boolean intersectsWall(AABB box, EventNetwork.Boundary boundary) {
+    public static boolean intersectsWall(AABB box, EventBoundary boundary) {
         return new Wall(boundary).shapes().stream().anyMatch(shape -> shape.bounds().intersects(box));
     }
 
-    static EventNetwork.Boundary boundary(java.util.UUID id, String dimension, int minX, int minZ, int maxX, int maxZ,
+    static EventBoundary boundary(java.util.UUID id, String dimension, int minX, int minZ, int maxX, int maxZ,
                                           int minY, int maxY, int color, boolean passable) {
-        return new EventNetwork.Boundary(id, dimension, "BOSS_FIGHT", minX, minY, minZ, maxX, maxY, maxZ, color, true, passable);
+        return new EventBoundary(id, dimension, "BOSS_FIGHT", minX, minY, minZ, maxX, maxY, maxZ, color, true, passable);
     }
 
-    private record Wall(EventNetwork.Boundary boundary) {
+    private record Wall(EventBoundary boundary) {
         private List<VoxelShape> shapes() {
             double minX = boundary.minX();
             double minZ = boundary.minZ();

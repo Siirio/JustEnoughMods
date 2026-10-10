@@ -14,33 +14,17 @@ import net.minecraftforge.event.entity.player.*;
 import net.minecraftforge.event.server.ServerStartedEvent;
 import net.minecraftforge.event.server.ServerStoppedEvent;
 import net.minecraftforge.eventbus.api.*;
-import net.minecraftforge.registries.*;
 
 public final class SmpRuntime {
-    private static final DeferredRegister<
-                    com.mojang.serialization.Codec<
-                            ? extends net.minecraftforge.common.loot.IGlobalLootModifier>>
-            LOOT =
-                    DeferredRegister.create(
-                            ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, "jem_server");
-
-    static {
-        LOOT.register("resource_rush", () -> RushLoot.CODEC);
-    }
-
     public static void register() {
-        var modBus=net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext.get().getModEventBus();
-        SmpEventBlocks.register(modBus);
         net.minecraftforge.fml.ModLoadingContext.get()
                 .registerConfig(
                         net.minecraftforge.fml.config.ModConfig.Type.SERVER,
                         SmpConfig.SPEC,
                         "jem-smp-v2-server.toml");
-        LOOT.register(modBus);
-        net.minecraftforge.fml.ModLoadingContext.get().registerConfig(net.minecraftforge.fml.config.ModConfig.Type.SERVER, EventRules.SPEC, "jem-events-server.toml");
         net.minecraftforge.fml.ModLoadingContext.get().registerConfig(net.minecraftforge.fml.config.ModConfig.Type.SERVER, com.siirio.jemserver.smp.fishing.FishingConfig.SPEC, "jem-fishing-server.toml");
         com.siirio.jemserver.smp.fishing.FishingOddsNetwork.register();
-        EventNetwork.register();
+        EventRuntime.register(EventEntryActions::choose);
         SmpNetwork.register();
         Navigation.register();
         CombatNetwork.register();
@@ -66,7 +50,7 @@ public final class SmpRuntime {
     @SubscribeEvent
     public void starting(net.minecraftforge.event.server.ServerStartingEvent event) {
         if (!SmpEnvironment.active(event.getServer())) return;
-        EventHooks.register();
+        EventRuntime.starting();
         com.siirio.jemserver.claims.Claims.configureReservation(EventRegions::claimAllowed);
         if (net.minecraftforge.fml.ModList.get().isLoaded("create"))
             com.siirio.jemserver.claims.Claims.configurePlacement(EventHooks::machinePlacement);
@@ -206,15 +190,7 @@ public final class SmpRuntime {
         }
         try {
             SmpRecords.require(BossHostingPrompt.canOffer(player, boss), "unavailable");
-            var args = new com.google.gson.JsonObject();
-            args.addProperty("activity", "BOSS");
-            args.addProperty("title", boss.getDisplayName().getString());
-            Parties.createHosted(player, args);
-            var row =
-                    data.all("parties").stream()
-                            .filter(p -> p.getUUID("owner").equals(player.getUUID()))
-                            .max(java.util.Comparator.comparingLong(p -> p.getLong("created")))
-                            .orElseThrow();
+            var row = Parties.createHosted(player, SmpPartyRequest.hosted(boss.getDisplayName().getString(), false));
             SmpRecords.require(HostedEncounterApi.hold(boss), "unavailable");
             row.putUUID("bossEntity", boss.getUUID());
             row.putString("bossType", net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(boss.getType()).toString());
@@ -244,18 +220,15 @@ public final class SmpRuntime {
             Profiles.login(p);
             Parties.resetReady(p);
             Navigation.accepted(p);
-            var reconnect = EncounterContext.reconnectFor(p);
-            if (reconnect != null) new EncounterContext(reconnect).reconnected(p);
+            EventRuntime.login(p);
         }
     }
 
     @SubscribeEvent
     public void logout(PlayerEvent.PlayerLoggedOutEvent event) {
         if (event.getEntity() instanceof ServerPlayer p && SmpEnvironment.active(p)) {
-            var active = EncounterContext.activeFor(p);
-            if (active != null) new EncounterContext(active).disconnected(p);
+            EventRuntime.logout(p);
             com.siirio.jemserver.smp.events.HostedBoundary.clear(p.getUUID());
-            com.siirio.jemserver.smp.events.BloodMoonVoting.disconnect(p);
             Parties.resetReady(p);
             SmpNetwork.logout(p);
             Navigation.logout(p);
@@ -285,23 +258,21 @@ public final class SmpRuntime {
         Navigation.tick(server);
         CombatNetwork.tick(server);
         HostedParties.tick(server);
-        EventScheduler.tick(server);
+        EventRuntime.tick(server);
     }
 
     @SubscribeEvent
     public void started(ServerStartedEvent event) {
-        if (SmpEnvironment.active(event.getServer())) EventHooks.registerSpawnGuard();
+        if (SmpEnvironment.active(event.getServer())) EventRuntime.started();
     }
 
     @SubscribeEvent
     public void stopped(ServerStoppedEvent event) {
-        EventHooks.unregister();
+        EventRuntime.stopped();
         if (!SmpEnvironment.active(event.getServer())) return;
-        EventHooks.unregisterSpawnGuard();
         com.siirio.jemserver.smp.events.HostedBoundary.clear();
         SmpNetwork.clear();
         Navigation.clear();
         CombatNetwork.clear();
-        EventScheduler.reset();
     }
 }

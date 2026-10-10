@@ -1,5 +1,7 @@
 package com.siirio.jemserver;
 
+import com.siirio.jemmenus.VanillaMenus;
+
 import com.siirio.jemworldbosstiers.balance.BalanceRegistry;
 import java.util.Comparator;
 import java.util.List;
@@ -21,7 +23,7 @@ public final class BossLeaderboard {
                         .thenComparing(Comparator.comparingInt(ServerData.Hunter::unique).reversed())
                         .thenComparing(ServerData.Hunter::name, String.CASE_INSENSITIVE_ORDER).thenComparing(ServerData.Hunter::id)).toList();
         int page = Math.max(0, Math.min(requestedPage, Math.max(0, (hunters.size() - 1) / PAGE_SIZE)));
-        VanillaMenus.chest(player, "bosses", "Охотники на боссов", menu -> {
+        VanillaMenus.chest(player, JemServer.MOD_ID, "bosses", "Охотники на боссов", menu -> {
             for (int index = page * PAGE_SIZE; index < Math.min(hunters.size(), (page + 1) * PAGE_SIZE); index++) {
                 var hunter = hunters.get(index);
                 var head = VanillaMenus.icon(Items.PLAYER_HEAD, (index + 1) + ". " + hunter.name(), "Всего побед: " + hunter.total(), "Разных боссов: " + hunter.unique());
@@ -44,7 +46,7 @@ public final class BossLeaderboard {
         var entries = hunter.kills().entrySet().stream().filter(entry -> entry.getValue() > 0)
                 .sorted(Map.Entry.<ResourceLocation, Long>comparingByValue().reversed().thenComparing(entry -> entry.getKey().toString())).toList();
         int page = Math.max(0, Math.min(requestedPage, Math.max(0, (entries.size() - 1) / PAGE_SIZE)));
-        VanillaMenus.chest(player, "boss_details", hunter.name(), menu -> {
+        VanillaMenus.chest(player, JemServer.MOD_ID, "boss_details", hunter.name(), menu -> {
             for (int index = page * PAGE_SIZE; index < Math.min(entries.size(), (page + 1) * PAGE_SIZE); index++) {
                 var entry = entries.get(index);
                 String name = BalanceRegistry.bossByKey(entry.getKey()).map(profile -> profile.displayName()).orElse(entry.getKey().getPath());

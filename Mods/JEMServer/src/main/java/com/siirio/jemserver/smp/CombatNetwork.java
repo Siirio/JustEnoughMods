@@ -34,7 +34,7 @@ public final class CombatNetwork {
     public static void register() {
         CHANNEL.messageBuilder(Update.class,0,NetworkDirection.PLAY_TO_CLIENT)
                 .encoder((packet,buffer)->{buffer.writeNbt(packet.data());buffer.writeBoolean(packet.result());})
-                .decoder(buffer->new Update(buffer.readNbt(),buffer.readBoolean()))
+                .decoder(buffer->new Update(buffer.readNbt(new NbtAccounter(SmpProtocol.MAX_VIEW_BYTES)),buffer.readBoolean()))
                 .consumerMainThread((packet,context)->{
                     DistExecutor.unsafeRunWhenOn(Dist.CLIENT,()->()->com.siirio.jemserver.client.smp.CombatHud.accept(packet));
                     context.get().setPacketHandled(true);
@@ -43,7 +43,7 @@ public final class CombatNetwork {
                 .encoder((packet,buffer)->buffer.writeUUID(packet.result())).decoder(buffer->new Claim(buffer.readUUID()))
                 .consumerMainThread((packet,context)->{
                     var player=context.get().getSender();
-                    if(player!=null&&SmpEnvironment.active(player)) claim(player,packet.result());
+                    if(player!=null&&SmpEnvironment.active(player)&&SmpRequests.allow(player)) claim(player,packet.result());
                     context.get().setPacketHandled(true);
                 }).add();
         CHANNEL.messageBuilder(Vote.class,2,NetworkDirection.PLAY_TO_SERVER)
@@ -51,7 +51,7 @@ public final class CombatNetwork {
                 .decoder(buffer->new Vote(buffer.readUUID(),buffer.readBoolean()))
                 .consumerMainThread((packet,context)->{
                     var player=context.get().getSender();
-                    if(player!=null&&SmpEnvironment.active(player)) BloodMoonVoting.vote(player,packet.event(),packet.continueBattle());
+                    if(player!=null&&SmpEnvironment.active(player)&&SmpRequests.allow(player)) BloodMoonVoting.vote(player,packet.event(),packet.continueBattle());
                     context.get().setPacketHandled(true);
                 }).add();
     }
@@ -246,13 +246,7 @@ public final class CombatNetwork {
         sendResult(player,result);
     }
     private static ListTag bundles(ServerPlayer player,String source) {
-        var result=new ListTag();
-        for(var tag:PendingRewardContainer.bundles(player)) {
-            var bundle=(CompoundTag)tag;
-            String id=bundle.getString("sourceId");
-            if(id.equals(source) || id.startsWith(source+":")) result.add(bundle);
-        }
-        return result;
+        return PendingRewardContainer.bundles(player, source);
     }
     private static void sendResult(ServerPlayer player,CompoundTag result) {
         var snapshot=result.copy();

@@ -56,11 +56,11 @@ public final class MapNetwork {
         CHANNEL.messageBuilder(Publish.class, 2, NetworkDirection.PLAY_TO_SERVER)
                 .encoder((packet, out) -> { out.writeUtf(packet.name(), 80); out.writeResourceLocation(packet.dimension()); out.writeBlockPos(packet.position()); })
                 .decoder(in -> new Publish(in.readUtf(80), in.readResourceLocation(), in.readBlockPos()))
-                .consumerMainThread((packet, context) -> { var player = context.get().getSender(); if (player != null && SmpEnvironment.active(player)) Landmarks.publish(player, packet.name(), packet.dimension(), packet.position()); context.get().setPacketHandled(true); }).add();
+                .consumerMainThread((packet, context) -> { var player = context.get().getSender(); if (player != null && SmpEnvironment.active(player) && com.siirio.jemserver.smp.SmpRequests.allow(player)) Landmarks.publish(player, packet.name(), packet.dimension(), packet.position()); context.get().setPacketHandled(true); }).add();
         CHANNEL.messageBuilder(Teleport.class, 3, NetworkDirection.PLAY_TO_SERVER).encoder((packet, out) -> out.writeUUID(packet.id())).decoder(in -> new Teleport(in.readUUID()))
-                .consumerMainThread((packet, context) -> { var player = context.get().getSender(); if (player != null && SmpEnvironment.active(player)) DeathHistory.teleport(player, packet.id()); context.get().setPacketHandled(true); }).add();
+                .consumerMainThread((packet, context) -> { var player = context.get().getSender(); if (player != null && SmpEnvironment.active(player) && com.siirio.jemserver.smp.SmpRequests.allow(player)) DeathHistory.teleport(player, packet.id()); context.get().setPacketHandled(true); }).add();
         CHANNEL.messageBuilder(Unclaim.class, 4, NetworkDirection.PLAY_TO_SERVER).encoder((packet, out) -> out.writeUUID(packet.id())).decoder(in -> new Unclaim(in.readUUID()))
-                .consumerMainThread((packet, context) -> { var player = context.get().getSender(); if (player != null && SmpEnvironment.active(player)) Claims.confirmDelete(player, packet.id()); context.get().setPacketHandled(true); }).add();
+                .consumerMainThread((packet, context) -> { var player = context.get().getSender(); if (player != null && SmpEnvironment.active(player) && com.siirio.jemserver.smp.SmpRequests.allow(player)) Claims.confirmDelete(player, packet.id()); context.get().setPacketHandled(true); }).add();
         CHANNEL.messageBuilder(Events.class, 5, NetworkDirection.PLAY_TO_CLIENT)
                 .encoder((packet, out) -> encodeEvents(packet.areas(), out)).decoder(in -> new Events(decodeEvents(in)))
                 .consumerMainThread((packet, context) -> { DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> MapClient.acceptEvents(packet.areas())); context.get().setPacketHandled(true); }).add();
@@ -68,7 +68,7 @@ public final class MapNetwork {
                 .encoder((packet, out) -> out.writeUUID(packet.id())).decoder(in -> new EventTeleport(in.readUUID()))
                 .consumerMainThread((packet, context) -> {
                     var player = context.get().getSender();
-                    if (player != null && SmpEnvironment.active(player)) com.siirio.jemserver.smp.events.EventTravel.request(player, packet.id(), false);
+                    if (player != null && SmpEnvironment.active(player) && com.siirio.jemserver.smp.SmpRequests.allow(player)) com.siirio.jemserver.smp.events.EventTravel.request(player, packet.id(), false);
                     context.get().setPacketHandled(true);
                 }).add();
     }

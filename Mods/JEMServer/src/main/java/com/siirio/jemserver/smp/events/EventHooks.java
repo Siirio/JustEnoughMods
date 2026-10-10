@@ -15,12 +15,7 @@ import net.minecraftforge.eventbus.api.*;
 
 public final class EventHooks {
     private static final EventHooks INSTANCE = new EventHooks();
-    private static final Object BLOOD_MOON_SPAWN_GUARD=new Object() {
-        @SubscribeEvent(priority=EventPriority.LOWEST,receiveCanceled=true)
-        public void entity(EntityJoinLevelEvent event) {
-            if(event.getLevel() instanceof ServerLevel level && activeBloodMoonSpawn(level,event.getEntity())) event.setCanceled(false);
-        }
-    };
+    private static final BloodMoonSpawnGuard BLOOD_MOON_SPAWN_GUARD = new BloodMoonSpawnGuard();
     private static boolean spawnGuardRegistered;
     private static boolean registered;
 
@@ -135,7 +130,7 @@ public final class EventHooks {
         });
     }
 
-    private static boolean activeBloodMoonSpawn(ServerLevel level,net.minecraft.world.entity.Entity entity) {
+    static boolean activeBloodMoonSpawn(ServerLevel level,net.minecraft.world.entity.Entity entity) {
         var tag=entity.getPersistentData();
         if(!tag.hasUUID(BloodMoon.EVENT_ID)) return false;
         var row=SmpData.get(level.getServer()).find("events",tag.getUUID(BloodMoon.EVENT_ID));

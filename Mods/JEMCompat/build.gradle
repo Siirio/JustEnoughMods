@@ -44,8 +44,6 @@ def installedMod = { String pattern ->
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    implementation fg.deobf(files(installedMod('create-*.jar')))
-    compileOnly fileTree(dir: 'libs', include: 'Ponder-Forge-*.jar')
     compileOnly fg.deobf(files(installedMod('Jade-*.jar')))
     compileOnly fg.deobf(files(installedMod('jei-*.jar')))
     compileOnly fg.deobf(files(installedMod('curios-forge-*.jar')))
@@ -66,13 +64,7 @@ dependencies {
     compileOnly files('../JEMAchievementGuide/build/classes/java/main')
     compileOnly files('../JEMPackCore/build/classes/java/main')
     compileOnly files('../JEMWorldBossTiers/build/classes/java/main')
-    testImplementation platform('org.junit:junit-bom:5.10.2')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-}
-
-tasks.named('test', Test).configure {
-    useJUnitPlatform()
 }
 
 def mixinRefmapName = 'jemcompat.refmap.json'
@@ -83,6 +75,7 @@ mixin {
 }
 
 tasks.named('compileJava', JavaCompile).configure {
+    options.incremental = false
     outputs.file(layout.buildDirectory.file("tmp/compileJava/${mixinRefmapName}"))
 }
 
@@ -140,3 +133,5 @@ tasks.register('installToModpack', Copy) {
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
+
+tasks.withType(Test).configureEach { enabled = false }

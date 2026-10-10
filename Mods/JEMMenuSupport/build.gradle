@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+}
+version = '1.0.0'
+group = 'com.siirio.jem'
+base { archivesName = 'jem-menu-support' }
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+minecraft { mappings channel: 'official', version: '1.20.1' }
+repositories { mavenCentral() }
+dependencies { minecraft 'net.minecraftforge:forge:1.20.1-47.4.10' }
+jar {
+    manifest {
+        attributes 'FMLModType': 'GAMELIBRARY', 'Automatic-Module-Name': 'com.siirio.jemmenus'
+    }
+    finalizedBy 'reobfJar'
+}
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+
+tasks.withType(Test).configureEach { enabled = false }

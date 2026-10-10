@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.siirio.jemdrill.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "jem_drill_lifecycle.refmap.json",
+  "mixins": [
+    "AbstractContraptionEntityMixin",
+    "BlockBreakingMovementBehaviourMixin",
+    "BlockBreakingKineticBlockEntityMixin",
+    "DrillBlockEntityMixin",
+    "DrillBlockMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

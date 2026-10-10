@@ -1,5 +1,7 @@
 package com.siirio.jemserver;
 
+import com.siirio.jemmenus.VanillaMenus;
+
 import com.siirio.jemserver.claims.Claims;
 import java.util.Comparator;
 import java.util.UUID;
@@ -27,7 +29,7 @@ public final class DeathHistory {
 
     public static void open(ServerPlayer player) {
         var history = ServerData.get(player.server).deaths(player.getUUID());
-        VanillaMenus.chest(player, "deaths", "Последние смерти", menu -> {
+        VanillaMenus.chest(player, JemServer.MOD_ID, "deaths", "Последние смерти", menu -> {
             if (history.isEmpty()) menu.button(22, VanillaMenus.icon(Items.CLOCK, "История пуста"), null);
             for (int index = 0; index < history.size(); index++) {
                 var death = history.get(index);

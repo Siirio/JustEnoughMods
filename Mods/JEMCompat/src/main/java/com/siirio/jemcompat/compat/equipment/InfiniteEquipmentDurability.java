@@ -46,6 +46,8 @@ public final class InfiniteEquipmentDurability {
     }
 
     private static boolean isEquipment(ItemStack stack) {
-        return stack.getItem() instanceof ArmorItem||stack.getItem() instanceof ElytraItem||ProgressionEnchantment.isWeaponEligible(stack);
+        return stack.getItem() instanceof ArmorItem
+                || stack.getItem() instanceof ElytraItem
+                || ProgressionEnchantment.isWeaponEligible(stack);
     }
 }

@@ -1,5 +1,6 @@
 package com.siirio.jemserver.smp.shops;
 
+import com.siirio.jemserver.smp.SmpQuery;
 import com.siirio.jemserver.smp.Navigation;
 import com.siirio.jemserver.smp.Profiles;
 import com.siirio.jemserver.smp.SmpConfig;
@@ -199,7 +200,7 @@ public final class ShopIndex {
         if (level != null && level.hasChunkAt(position.block())) refresh(server, position);
     }
 
-    public static CompoundTag view(ServerPlayer player, SmpNetwork.Query query) {
+    public static CompoundTag view(ServerPlayer player, SmpQuery query) {
         var loaded =
                 SmpData.get(player.server).all("shops").stream()
                         .map(ShopIndex::position)
@@ -418,15 +419,15 @@ public final class ShopIndex {
 
     public static void action(ServerPlayer player, UUID id, String action) {
         var row = id == null ? null : SmpData.get(player.server).find("shops", id);
-        if (id == null) throw new IllegalArgumentException("unavailable");
+        if (id == null) throw new com.siirio.jemserver.smp.SmpActionFailure("unavailable");
         if (action.equals("favorite")) {
             var profile = Profiles.get(player.server, player.getUUID());
             var favorites = profile.getCompound("shopFavorites");
             if (favorites.getBoolean(id.toString())) favorites.remove(id.toString());
             else {
-                if (row == null) throw new IllegalArgumentException("unavailable");
+                if (row == null) throw new com.siirio.jemserver.smp.SmpActionFailure("unavailable");
                 if (favorites.size() >= SmpConfig.SHOP_FAVORITES_LIMIT.get())
-                    throw new IllegalArgumentException("favorite_limit");
+                    throw new com.siirio.jemserver.smp.SmpActionFailure("favorite_limit");
                 favorites.putBoolean(id.toString(), true);
             }
             profile.put("shopFavorites", favorites);
@@ -436,13 +437,13 @@ public final class ShopIndex {
         if (row != null && action.equals("buy")) {
             validateLoaded(player.server, row);
             row = SmpData.get(player.server).find("shops", id);
-            if (row == null) throw new IllegalArgumentException("unavailable");
-            if (!net.minecraftforge.fml.ModList.get().isLoaded("spudaciousshops")) throw new IllegalArgumentException("unavailable");
+            if (row == null) throw new com.siirio.jemserver.smp.SmpActionFailure("unavailable");
+            if (!net.minecraftforge.fml.ModList.get().isLoaded("spudaciousshops")) throw new com.siirio.jemserver.smp.SmpActionFailure("unavailable");
             RemoteShop.open(player, row);
             return;
         }
         if (row == null || !action.equals("navigate"))
-            throw new IllegalArgumentException("unavailable");
+            throw new com.siirio.jemserver.smp.SmpActionFailure("unavailable");
         Navigation.send(
                 player,
                 "shops",

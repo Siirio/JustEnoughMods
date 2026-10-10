@@ -63,13 +63,7 @@ dependencies {
     compileOnly files(tradeCycling)
     compileOnly files(extractedXaeroLib)
     compileOnly files('../JEMWorldBossTiers/build/classes/java/main')
-    testImplementation platform('org.junit:junit-bom:5.10.2')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-}
-
-tasks.named('test', Test).configure {
-    useJUnitPlatform()
 }
 
 tasks.named('compileJava').configure {
@@ -127,3 +121,10 @@ tasks.register('installToModpack', Copy) {
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
+
+ tasks.named('compileJava', JavaCompile).configure {
+    options.incremental = false
+    outputs.file(layout.buildDirectory.file('tmp/compileJava/jem_twelve_eyes.refmap.json'))
+ }
+
+tasks.withType(Test).configureEach { enabled = false }

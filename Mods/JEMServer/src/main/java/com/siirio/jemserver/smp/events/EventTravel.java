@@ -17,9 +17,9 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = "jem_server", value = net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER)
 public final class EventTravel {
-    private static final int CHUNK_TICKET_RADIUS = 2;
-    private static final TicketType<Integer> EVENT_TRAVEL_TICKET = TicketType.create("jem_event_travel", Integer::compareTo);
-    private static final Map<UUID, PendingTravel> PENDING = new HashMap<>();
+    static final int CHUNK_TICKET_RADIUS = 2;
+    static final TicketType<Integer> EVENT_TRAVEL_TICKET = TicketType.create("jem_event_travel", Integer::compareTo);
+    private static final Map<UUID, PendingEventTravel> PENDING = new HashMap<>();
 
     private EventTravel() {
     }
@@ -32,7 +32,7 @@ public final class EventTravel {
         if (level == null) return;
         BlockPos anchor = inside ? BlockPos.of(event.getLong("position")) : outsideAnchor(event, player.blockPosition());
         ChunkPos chunk = new ChunkPos(anchor);
-        PendingTravel previous = PENDING.put(player.getUUID(), new PendingTravel(eventId, inside, level, chunk, anchor, player.getId()));
+        PendingEventTravel previous = PENDING.put(player.getUUID(), new PendingEventTravel(eventId, inside, level, chunk, anchor, player.getId(), level.getGameTime() + EventRules.TRAVEL_TIMEOUT_TICKS.get()));
         if (previous != null) previous.release();
         level.getChunkSource().addRegionTicket(EVENT_TRAVEL_TICKET, chunk, CHUNK_TICKET_RADIUS, player.getId());
     }
@@ -40,12 +40,13 @@ public final class EventTravel {
     @SubscribeEvent
     public static void tick(TickEvent.ServerTickEvent event) {
         if (event.phase != TickEvent.Phase.END || PENDING.isEmpty()) return;
-        Iterator<Map.Entry<UUID, PendingTravel>> iterator = PENDING.entrySet().iterator();
+        Iterator<Map.Entry<UUID, PendingEventTravel>> iterator = PENDING.entrySet().iterator();
         while (iterator.hasNext()) {
             var entry = iterator.next();
             ServerPlayer player = event.getServer().getPlayerList().getPlayer(entry.getKey());
-            PendingTravel travel = entry.getValue();
-            if (player == null) {
+            PendingEventTravel travel = entry.getValue();
+            if (player == null || travel.level().getGameTime() >= travel.expiresAtTick()) {
+                if (player != null) player.sendSystemMessage(net.minecraft.network.chat.Component.translatable("jem.smp.error.no_safe_arrival"));
                 travel.release();
                 iterator.remove();
                 continue;
@@ -61,17 +62,17 @@ public final class EventTravel {
                     : EventRegions.safeOutside(travel.level(), row, travel.anchor());
             if (target.isEmpty()) continue;
             BlockPos pos = target.get();
+            travel.release();
+            iterator.remove();
             player.teleportTo(travel.level(), pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D, player.getYRot(), player.getXRot());
             player.setDeltaMovement(0.0D, 0.0D, 0.0D);
             player.fallDistance = 0.0F;
-            travel.release();
-            iterator.remove();
         }
     }
 
     @SubscribeEvent
     public static void stopped(ServerStoppingEvent event) {
-        PENDING.values().forEach(PendingTravel::release);
+        PENDING.values().forEach(PendingEventTravel::release);
         PENDING.clear();
     }
 
@@ -89,9 +90,13 @@ public final class EventTravel {
         return new BlockPos(x,center.getY(),EventRegions.maxZ(event)+2);
     }
 
-    private record PendingTravel(UUID eventId, boolean inside, ServerLevel level, ChunkPos chunk, BlockPos anchor, int playerId) {
-        private void release() {
-            level.getChunkSource().removeRegionTicket(EVENT_TRAVEL_TICKET, chunk, CHUNK_TICKET_RADIUS, playerId);
-        }
+    public static void cancel(UUID playerId) {
+        PendingEventTravel pending = PENDING.remove(playerId);
+        if (pending != null) pending.release();
+    }
+
+    @SubscribeEvent
+    public static void changedDimension(net.minecraftforge.event.entity.player.PlayerEvent.PlayerChangedDimensionEvent event) {
+        cancel(event.getEntity().getUUID());
     }
 }

@@ -1,6 +1,7 @@
 package com.siirio.jempackcore;
 
 import com.google.gson.JsonParser;
+import com.siirio.jempackcore.integration.DrillAdvancements;
 import com.siirio.jempackcore.postend.PostEndEvents;
 import com.siirio.jempackcore.postend.PostEndItems;
 import com.siirio.jempackcore.postend.PostEndSounds;
@@ -38,6 +39,9 @@ public final class JEMPackCore {
         MinecraftForge.EVENT_BUS.register(ForgeGameplayEvents.class);
         if (ModList.get().isLoaded("immersive_weathering")) {
             MinecraftForge.EVENT_BUS.register(ModCompatibilityEvents.class);
+        }
+        if (ModList.get().isLoaded("jem_drill_lifecycle")) {
+            MinecraftForge.EVENT_BUS.register(DrillAdvancements.class);
         }
         if (ModList.get().isLoaded("treechop")) {
             TreeChopIntegration.register();

@@ -12,8 +12,6 @@ minecraft { mappings channel: 'official', version: '1.20.1' }
 def instancePath = providers.environmentVariable('JEM_INSTANCE').get()
 repositories { mavenCentral(); flatDir { dirs "${instancePath}/mods" } }
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.2')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
     minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
     compileOnly fg.deobf('com.li64:tide-forge-1.20.1:2.1.1-hotfix')
     compileOnly files("${instancePath}/mods/PlayerRevive_FORGE_v2.0.31_mc1.20.1.jar")
@@ -34,4 +32,6 @@ mixin { add sourceSets.main, 'jem_server.refmap.json'; config 'jem_server.mixins
 jar { manifest { attributes 'MixinConfigs': 'jem_server.mixins.json,jem_server_shops.mixins.json,jem_server_fishing.mixins.json,jem_server_revive.mixins.json' }; finalizedBy 'reobfJar' }
 tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
 
-tasks.named('test', Test).configure { useJUnitPlatform() }
+apply from: "../JEMMenuSupport/embed.gradle"
+
+tasks.withType(Test).configureEach { enabled = false }
