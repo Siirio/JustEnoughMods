@@ -6,6 +6,7 @@ import net.minecraft.nbt.*;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.ChatFormatting;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.*;
 import net.minecraftforge.event.TickEvent;
@@ -35,6 +36,8 @@ public final class EventAreaHooks {
             if(!row.contains("radius")) continue;
             String type=row.getString("activity");UUID id=row.getUUID("id");
             boolean within=EventRegions.contains(row,player.serverLevel(),player.blockPosition());
+            boolean safelyWithin=EventRegions.contains(row,player.serverLevel(),player.getBoundingBox())
+                    &&player.serverLevel().noCollision(player,player.getBoundingBox());
             boolean near=EventRegions.near(row,player.serverLevel(),player.blockPosition());
             if(within) inside.add(id);
             if(near) prompted.add(id);
@@ -47,7 +50,7 @@ public final class EventAreaHooks {
                                 .withClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/smp event-open " + id)))));
             if(type.equals("BLOOD_MOON") && member && player.isAlive() && !player.isSpectator()) {
                 var entry=SmpRecords.members(row).getCompound(player.getStringUUID());
-                if(within) {
+                if(safelyWithin) {
                     if(entry.getBoolean("awaitingReturn")) { entry.remove("awaitingReturn");SmpData.get(player.server).changed(row); }
                     entry.putDouble("safeX",player.getX());entry.putDouble("safeY",player.getY());entry.putDouble("safeZ",player.getZ());
                 }
@@ -55,12 +58,12 @@ public final class EventAreaHooks {
             if((!type.equals("BOSS_RAID")||row.hasUUID("targetBoss")) && zones.size()<32 && row.getString("dimension").equals(player.level().dimension().location().toString())) {
                 double distance=Math.max(Math.max(EventRegions.minX(row)-player.getX(),player.getX()-EventRegions.maxX(row)),Math.max(EventRegions.minZ(row)-player.getZ(),player.getZ()-EventRegions.maxZ(row)));
                 if(distance<=EventRules.BOUNDARY_DISTANCE.get()) {
-                    CompoundTag party=row.hasUUID("party")?SmpData.get(player.server).find("parties",row.getUUID("party")):null;
-                    boolean participating=party!=null&&party.getString("state").equals("ACTIVE")&&Parties.accepted(party,player.getUUID());
                     var encounter=new EncounterContext(row);
                     boolean completed=encounter.state()==EncounterContext.State.COMPLETED;
                     boolean active=type.equals("BLOOD_MOON")&&!completed;
-                    boolean passable=type.equals("BLOOD_MOON")&&(row.getBoolean("combatStarted")||participating);
+                    boolean locked=type.equals("BLOOD_MOON")&&row.getBoolean("combatStarted")
+                            &&new EventSession(row).accepted(player.getUUID())&&safelyWithin;
+                    boolean passable=type.equals("BLOOD_MOON")&&!locked;
                     zones.add(new EventNetwork.Boundary(id,row.getString("dimension"),type,EventRegions.minX(row),player.serverLevel().getMinBuildHeight(),EventRegions.minZ(row),EventRegions.maxX(row),player.serverLevel().getMaxBuildHeight()-1,EventRegions.maxZ(row),type.equals("BLOOD_MOON")?EventRules.BLOOD_COLOR.get():type.equals("RESOURCE_RUSH")?EventRules.RUSH_COLOR.get():EventRules.RAID_COLOR.get(),active,passable));
                 }
             }
@@ -191,5 +194,20 @@ public final class EventAreaHooks {
     }
     @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent e) { UUID id=e.getEntity().getUUID();INSIDE.remove(id);PROMPTED.remove(id);SENT.remove(id); }
     @SubscribeEvent public static void stopped(ServerStoppedEvent e) { INSIDE.clear();PROMPTED.clear();SENT.clear(); }
+
+    public static void releaseBloodMoon(MinecraftServer server,UUID eventId,boolean visible) {
+        for(ServerPlayer player:server.getPlayerList().getPlayers()) {
+            List<EventNetwork.Boundary> current=SENT.get(player.getUUID());
+            if(current==null) continue;
+            var updated=new ArrayList<EventNetwork.Boundary>();
+            for(EventNetwork.Boundary boundary:current) {
+                if(!boundary.id().equals(eventId)) updated.add(boundary);
+                else if(visible) updated.add(new EventNetwork.Boundary(boundary.id(),boundary.dimension(),boundary.type(),boundary.minX(),boundary.minY(),boundary.minZ(),boundary.maxX(),boundary.maxY(),boundary.maxZ(),boundary.color(),boundary.active(),true));
+            }
+            if(updated.equals(current)) continue;
+            EventNetwork.zones(player,updated);
+            SENT.put(player.getUUID(),List.copyOf(updated));
+        }
+    }
     private EventAreaHooks() {}
 }

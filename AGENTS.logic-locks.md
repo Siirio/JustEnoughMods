@@ -37,3 +37,11 @@
 - Unlock condition: Explicit user request to change this behavior or evidence that the core execution pipeline changed.
 - Created: 2026-10-04
 
+## LOCKED: Blood Moon participant boundary and terrain restoration ownership
+- Scope: Blood Moon startup in `EventParty`, `EncounterContext` and `BloodMoon`; participant collision and teleport validation in `EventAreaHooks`, `BloodMoonSolidBoundary` and `ServerPlayerTeleportMixin`; Wave 3/5 temporary terrain ownership in `BloodMoonSetPieces`.
+- Approved signal: The user explicitly required the Blood Moon boundary to activate only after every accepted participant enters and required every temporary Wave 3/5 attack block to restore safely across every ending and restart.
+- Protected behavior: Before combat the visible wall is passable and no wave spawns; one authoritative transition starts combat only when the complete participant snapshot is physically inside; SOLID collision then applies only to active non-eliminated participants and their ridden entity, while outsiders remain passable and combat-isolated. Attack snapshots retain exact original and expected temporary block states, restore attack blocks before arena terrain, preserve unloaded pending entries across restart, and never overwrite a current block no longer owned by the event.
+- Allowed changes: Optimize the same bounded participant checks, collision geometry or persisted restoration queue without adding a second lifecycle, movement-correction loop, global block scan or forced chunk loading.
+- Unlock condition: Explicit user request to change Blood Moon entry, containment, outsider isolation or temporary-terrain restoration behavior.
+- Created: 2026-10-10
+

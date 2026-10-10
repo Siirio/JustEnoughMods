@@ -1,6 +1,7 @@
 package com.siirio.jemserver.mixin.teleport;
 
 import com.siirio.jemserver.smp.events.BossTeleportSafety;
+import com.siirio.jemserver.smp.events.BloodMoonSolidBoundary;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.RelativeMovement;
@@ -20,6 +21,7 @@ public abstract class ServerPlayerTeleportMixin {
         ServerPlayer player=(ServerPlayer)(Object)this;
         Vec3 requested=new Vec3(x,y,z);
         BossTeleportSafety.Decision decision=BossTeleportSafety.validate(player,level,requested);
+        if(!decision.matched()) decision=BloodMoonSolidBoundary.validateTeleport(player,level,requested);
         if(!decision.matched()||requested.equals(decision.destination())) return;
         if(decision.destination()!=null) BossTeleportSafety.apply(player,level,decision.destination(),yaw,pitch);
         callback.setReturnValue(decision.destination()!=null);
@@ -30,6 +32,7 @@ public abstract class ServerPlayerTeleportMixin {
         ServerPlayer player=(ServerPlayer)(Object)this;
         Vec3 requested=new Vec3(x,y,z);
         BossTeleportSafety.Decision decision=BossTeleportSafety.validate(player,level,requested);
+        if(!decision.matched()) decision=BloodMoonSolidBoundary.validateTeleport(player,level,requested);
         if(!decision.matched()||requested.equals(decision.destination())) return;
         callback.cancel();
         if(decision.destination()!=null) BossTeleportSafety.apply(player,level,decision.destination(),yaw,pitch);

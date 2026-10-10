@@ -90,6 +90,9 @@ public final class BloodMoonSetPieces {
     private static final String ATTACK_BLOCKS="setPieceAttackBlocks";
     private static final String ATTACK_TERRAIN="setPieceAttackTerrain";
     private static final String ATTACK_BLOCKS_UNTIL="setPieceAttackBlocksUntil";
+    private static final String RESTORING="setPieceRestoring";
+    private static final String ORIGINAL="Original";
+    private static final String TEMPORARY="Temporary";
     private static final String COVER="bloodMoonCover";
     private static final String ARENA_WAVE="setPieceArenaWave";
     private static final String FLOOR_QUEUE="setPieceFloorQueue";
@@ -209,7 +212,11 @@ public final class BloodMoonSetPieces {
     }
 
     public static void finishWave(ServerLevel level,CompoundTag row,int wave) {
-        if((wave==3||wave==BloodMoonWaves.WAVES)&&row.getInt(ARENA_WAVE)==wave) restoreTerrain(level,row);
+        if((wave==3||wave==BloodMoonWaves.WAVES)&&row.getInt(ARENA_WAVE)==wave) {
+            row.putBoolean(RESTORING,true);
+            resumeRestoration(level,row);
+            SmpData.get(level.getServer()).changed(row);
+        }
     }
 
     public static boolean survivingTwin(Creeper creeper) {
@@ -246,9 +253,13 @@ public final class BloodMoonSetPieces {
         if(event.phase!=TickEvent.Phase.END) return;
         MinecraftServer server=event.getServer();
         for(var row:SmpData.get(server).all("events")) {
-            if(!row.getString("state").equals("ACTIVE")||!row.getString("activity").equals("BLOOD_MOON")) continue;
             ServerLevel level=EventRegions.level(server,row);
             if(level==null) continue;
+            if(row.getBoolean(RESTORING)&&(server.getTickCount()%20)==0) {
+                resumeRestoration(level,row);
+                SmpData.get(server).changed(row);
+            }
+            if(!row.getString("state").equals("ACTIVE")||!row.getString("activity").equals("BLOOD_MOON")) continue;
             Scenario selected=current(row);
             if(selected==null) continue;
             tickMechanics(level,row,selected);
@@ -265,11 +276,14 @@ public final class BloodMoonSetPieces {
         ServerLevel level=EventRegions.level(server,row);
         if(level!=null) {
             livingBosses(level,row).forEach(com.siirio.jemworldbosstiers.api.BossEffectApi::clear);
-            restoreAttackBlocks(level,row);
-            restoreTerrain(level,row);
+            row.putBoolean(RESTORING,true);
+            resumeRestoration(level,row);
         }
-        row.remove(WAVE_THREE);
-        row.remove(WAVE_FIVE);
+        if(!pendingRestoration(row)) {
+            row.remove(WAVE_THREE);
+            row.remove(WAVE_FIVE);
+            row.remove(RESTORING);
+        }
         row.remove(SET_PIECE_MOBS);
         row.remove(SET_PIECE_BOSSES);
         row.remove(ATTACK);
@@ -283,12 +297,9 @@ public final class BloodMoonSetPieces {
         row.remove("setPieceAttackPhase");
         row.remove("setPiecePhaseUntil");
         row.remove(COVER);
-        row.remove(ARENA_WAVE);
         row.remove(FLOOR_QUEUE);
         row.remove(FLOOR_INDEX);
         resetCombo(row);
-        row.remove(ATTACK_TERRAIN);
-        row.remove(ATTACK_BLOCKS_UNTIL);
         row.remove("setPieceOriginX");
         row.remove("setPieceOriginZ");
         row.remove("setPieceSecondX");
@@ -424,9 +435,12 @@ public final class BloodMoonSetPieces {
         List<ServerPlayer> participants=new EventSession(row).active(level.getServer());
         bosses.forEach(boss->com.siirio.jemworldbosstiers.api.BossEffectApi.tick(boss,participants));
         if(scenario==Scenario.BONE_CATHEDRAL) activateCongregation(level,row);
-        if(bosses.isEmpty()) return;
         long now=level.getGameTime();
-        if(row.contains(ATTACK_BLOCKS_UNTIL)&&row.getLong(ATTACK_BLOCKS_UNTIL)<=now) restoreAttackBlocks(level,row);
+        if(row.contains(ATTACK_BLOCKS_UNTIL)&&row.getLong(ATTACK_BLOCKS_UNTIL)<=now) {
+            restoreAttackBlocks(level,row);
+            SmpData.get(level.getServer()).changed(row);
+        }
+        if(bosses.isEmpty()) return;
         if(bosses.stream().anyMatch(BloodMoonSetPieces::introducing)) return;
         if(!row.getString(ATTACK).isEmpty()) {
             Attack attack=Attack.valueOf(row.getString(ATTACK));
@@ -511,7 +525,7 @@ public final class BloodMoonSetPieces {
         livingSetPieces(level,row).stream().filter(mob->!mob.getPersistentData().getBoolean(DORMANT)).forEach(mob->mob.setInvulnerable(false));
         if(attack==Attack.TWIN_CATACLYSM) twinImpact(level,bosses);
         if(attack==Attack.ANCIENT_ROAR&&source instanceof Warden warden) warden.setPose(Pose.STANDING);
-        if(row.contains(ATTACK_BLOCKS)) row.putLong(ATTACK_BLOCKS_UNTIL,level.getGameTime()+40);
+        if(!row.getCompound(ATTACK_TERRAIN).isEmpty()) row.putLong(ATTACK_BLOCKS_UNTIL,level.getGameTime()+40);
         double ratio=healthRatio(level,row);
         AttackSpec spec=attacks(scenario).stream().filter(value->value.attack()==attack).findFirst().orElse(new AttackSpec(attack,600,390,1));
         CompoundTag cooldowns=row.getCompound(COOLDOWNS);
@@ -964,11 +978,10 @@ public final class BloodMoonSetPieces {
             BlockPos floor=BlockPos.of(((LongTag)queue.get(index)).getAsLong());
             BlockPos cover=floor.above();
             if(thinCover(level.getBlockState(cover))) {
-                saveOriginal(level,row,cover);
-                level.setBlock(cover,Blocks.AIR.defaultBlockState(),3);
+                setTemporary(level,row,cover,Blocks.AIR.defaultBlockState());
             }
             double progress=Math.hypot(floor.getX()-centerX,floor.getZ()-centerZ)/radius;
-            setTemporary(level,row,floor,progress<=FLOOR_CENTER_RADIUS?palette.center():progress<=FLOOR_MIDDLE_RADIUS?palette.middle():palette.outer());
+            setTemporary(level,row,floor,(progress<=FLOOR_CENTER_RADIUS?palette.center():progress<=FLOOR_MIDDLE_RADIUS?palette.middle():palette.outer()).defaultBlockState());
             last=floor;
         }
         row.putInt(FLOOR_INDEX,index);
@@ -981,7 +994,11 @@ public final class BloodMoonSetPieces {
 
     private static void buildArena(ServerLevel level,CompoundTag row,Scenario scenario,int wave) {
         if(row.getInt(ARENA_WAVE)==wave&&!row.getCompound(TERRAIN).isEmpty()) return;
-        restoreTerrain(level,row);
+        if(pendingRestoration(row)) {
+            row.putBoolean(RESTORING,true);
+            resumeRestoration(level,row);
+            if(pendingRestoration(row)) return;
+        }
         int centerX=(EventRegions.minX(row)+EventRegions.maxX(row))/2;
         int centerZ=(EventRegions.minZ(row)+EventRegions.maxZ(row))/2;
         List<BlockPos> floors=new ArrayList<>();
@@ -1009,11 +1026,10 @@ public final class BloodMoonSetPieces {
         return state.getBlock() instanceof SnowLayerBlock||state.canBeReplaced()&&state.getFluidState().isEmpty()&&!state.isAir();
     }
 
-    private static void setTemporary(ServerLevel level,CompoundTag row,BlockPos pos,Block block) {
+    private static void setTemporary(ServerLevel level,CompoundTag row,BlockPos pos,BlockState temporary) {
         BlockState current=level.getBlockState(pos);
         if(current.hasBlockEntity()||!current.getFluidState().isEmpty()||current.is(Blocks.BEDROCK)||current.is(Blocks.BARRIER)) return;
-        saveOriginal(level,row,pos);
-        level.setBlock(pos,block.defaultBlockState(),3);
+        if(saveChange(level,row,TERRAIN,pos,current,temporary)) level.setBlock(pos,temporary,3);
     }
 
     private static FloorPalette floorPalette(Scenario scenario) {
@@ -1047,50 +1063,104 @@ public final class BloodMoonSetPieces {
         return BuiltInRegistries.BLOCK.getOptional(new ResourceLocation(id)).orElseThrow(()->new IllegalStateException("Missing Blood Moon floor block: "+id));
     }
 
-    private static void saveOriginal(ServerLevel level,CompoundTag row,BlockPos pos) {
-        CompoundTag terrain=row.getCompound(TERRAIN);
+    private static boolean saveChange(ServerLevel level,CompoundTag row,String field,BlockPos pos,BlockState original,BlockState temporary) {
+        CompoundTag snapshot=row.getCompound(field);
         String key=Long.toString(pos.asLong());
-        if(!terrain.contains(key)) terrain.put(key,NbtUtils.writeBlockState(level.getBlockState(pos)));
-        row.put(TERRAIN,terrain);
+        CompoundTag saved=snapshot.getCompound(key);
+        if(!saved.isEmpty()) {
+            if(saved.contains(ORIGINAL,Tag.TAG_COMPOUND)) {
+                if(saved.contains(TEMPORARY,Tag.TAG_COMPOUND)
+                        &&!original.equals(NbtUtils.readBlockState(level.holderLookup(Registries.BLOCK),saved.getCompound(TEMPORARY)))) return false;
+            } else if(!legacyTemporary(row,field,original)) return false;
+        }
+        CompoundTag entry=new CompoundTag();
+        entry.put(ORIGINAL,saved.contains(ORIGINAL,Tag.TAG_COMPOUND)?saved.getCompound(ORIGINAL).copy()
+                :saved.isEmpty()?NbtUtils.writeBlockState(original):saved.copy());
+        entry.put(TEMPORARY,NbtUtils.writeBlockState(temporary));
+        snapshot.put(key,entry);
+        row.put(field,snapshot);
+        return true;
+    }
+
+    private static void resumeRestoration(ServerLevel level,CompoundTag row) {
+        restoreAttackBlocks(level,row);
+        if(row.getCompound(ATTACK_TERRAIN).isEmpty()) restoreTerrain(level,row);
+        if(!pendingRestoration(row)) {
+            row.remove(RESTORING);
+            if(!row.getBoolean("combatStarted")||!row.getString("state").equals("ACTIVE")) {
+                row.remove(WAVE_THREE);
+                row.remove(WAVE_FIVE);
+            }
+        }
+    }
+
+    private static boolean pendingRestoration(CompoundTag row) {
+        return !row.getCompound(ATTACK_TERRAIN).isEmpty()||!row.getCompound(TERRAIN).isEmpty();
+    }
+
+    private static void restoreSnapshot(ServerLevel level,CompoundTag row,String field) {
+        CompoundTag snapshot=row.getCompound(field);
+        for(String key:new ArrayList<>(snapshot.getAllKeys())) {
+            BlockPos pos=BlockPos.of(Long.parseLong(key));
+            if(!level.hasChunkAt(pos)) continue;
+            CompoundTag saved=snapshot.getCompound(key);
+            BlockState original=saved.contains(ORIGINAL,Tag.TAG_COMPOUND)
+                    ?NbtUtils.readBlockState(level.holderLookup(Registries.BLOCK),saved.getCompound(ORIGINAL))
+                    :NbtUtils.readBlockState(level.holderLookup(Registries.BLOCK),saved);
+            BlockState current=level.getBlockState(pos);
+            boolean owned=saved.contains(TEMPORARY,Tag.TAG_COMPOUND)
+                    ?current.equals(NbtUtils.readBlockState(level.holderLookup(Registries.BLOCK),saved.getCompound(TEMPORARY)))
+                    :legacyTemporary(row,field,current);
+            if(owned&&!current.equals(original)) level.setBlock(pos,original,3);
+            snapshot.remove(key);
+        }
+        row.put(field,snapshot);
+    }
+
+    private static boolean legacyTemporary(CompoundTag row,String field,BlockState current) {
+        if(field.equals(ATTACK_TERRAIN)) return current.is(block("deep_dark_regrowth:overloaded_sculk"));
+        if(current.isAir()) return true;
+        int wave=row.getInt(ARENA_WAVE);
+        Scenario scenario=scenario(row.getString(wave==3?WAVE_THREE:WAVE_FIVE));
+        if(scenario==null) return false;
+        FloorPalette palette=floorPalette(scenario);
+        return current.is(palette.outer())||current.is(palette.middle())||current.is(palette.center());
     }
 
     private static void restoreTerrain(ServerLevel level,CompoundTag row) {
-        CompoundTag terrain=row.getCompound(TERRAIN);
-        for(String key:terrain.getAllKeys()) {
-            BlockPos pos=BlockPos.of(Long.parseLong(key));
-            if(level.hasChunkAt(pos)) level.setBlock(pos,NbtUtils.readBlockState(level.holderLookup(Registries.BLOCK),terrain.getCompound(key)),3);
+        restoreSnapshot(level,row,TERRAIN);
+        if(row.getCompound(TERRAIN).isEmpty()) {
+            row.remove(TERRAIN);
+            row.remove(ARENA_WAVE);
+            row.remove(FLOOR_QUEUE);
+            row.remove(FLOOR_INDEX);
         }
-        row.remove(TERRAIN);
-        row.remove(ARENA_WAVE);
-        row.remove(FLOOR_QUEUE);
-        row.remove(FLOOR_INDEX);
     }
 
     private static void restoreAttackBlocks(ServerLevel level,CompoundTag row) {
-        CompoundTag terrain=row.getCompound(ATTACK_TERRAIN);
-        for(Tag tag:row.getList(ATTACK_BLOCKS,Tag.TAG_LONG)) {
-            BlockPos pos=BlockPos.of(((LongTag)tag).getAsLong());
-            String key=Long.toString(pos.asLong());
-            if(level.hasChunkAt(pos)&&terrain.contains(key)) level.setBlock(pos,NbtUtils.readBlockState(level.holderLookup(Registries.BLOCK),terrain.getCompound(key)),3);
+        restoreSnapshot(level,row,ATTACK_TERRAIN);
+        if(row.getCompound(ATTACK_TERRAIN).isEmpty()) {
+            row.remove(ATTACK_TERRAIN);
+            row.remove(ATTACK_BLOCKS);
+            row.remove(ATTACK_BLOCKS_UNTIL);
         }
-        row.remove(ATTACK_TERRAIN);
-        row.remove(ATTACK_BLOCKS);
-        row.remove(ATTACK_BLOCKS_UNTIL);
     }
 
     private static void setAttackTemporary(ServerLevel level,CompoundTag row,BlockPos pos,Block block) {
         BlockState current=level.getBlockState(pos);
         if(current.hasBlockEntity()||!current.getFluidState().isEmpty()||current.is(Blocks.BEDROCK)||current.is(Blocks.BARRIER)) return;
+        BlockState temporary=block.defaultBlockState();
         CompoundTag terrain=row.getCompound(ATTACK_TERRAIN);
         String key=Long.toString(pos.asLong());
-        if(!terrain.contains(key)) {
-            terrain.put(key,NbtUtils.writeBlockState(current));
-            ListTag blocks=row.getList(ATTACK_BLOCKS,Tag.TAG_LONG);
-            blocks.add(LongTag.valueOf(pos.asLong()));
-            row.put(ATTACK_BLOCKS,blocks);
+        boolean added=!terrain.contains(key);
+        if(saveChange(level,row,ATTACK_TERRAIN,pos,current,temporary)) {
+            if(added) {
+                ListTag blocks=row.getList(ATTACK_BLOCKS,Tag.TAG_LONG);
+                blocks.add(LongTag.valueOf(pos.asLong()));
+                row.put(ATTACK_BLOCKS,blocks);
+            }
+            level.setBlock(pos,temporary,3);
         }
-        row.put(ATTACK_TERRAIN,terrain);
-        level.setBlock(pos,block.defaultBlockState(),3);
     }
 
     private static long telegraphTicks(Attack attack) {

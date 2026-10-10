@@ -162,20 +162,20 @@ public final class EncounterContext {
         if (level == null) return false;
         long now = level.getGameTime();
         if (state() == State.TELEPORTING) {
-            boolean arrived = true;
-            for (UUID id : participantIds()) {
-                ServerPlayer player = server.getPlayerList().getPlayer(id);
-                if (player == null) continue;
-                if(data.getBoolean(WALK_IN)) {
-                    if(!EventRegions.contains(data,level,player.blockPosition())) arrived=false;
-                    continue;
+            if (data.getBoolean(WALK_IN)) {
+                if (allParticipantsInside(server)) transition(State.ARRIVED, now);
+            } else {
+                boolean arrived = true;
+                for (UUID id : participantIds()) {
+                    ServerPlayer player = server.getPlayerList().getPlayer(id);
+                    if (player == null) continue;
+                    var member = SmpRecords.members(data).getCompound(id.toString());
+                    BlockPos expected = member.contains(ARRIVAL) ? BlockPos.of(member.getLong(ARRIVAL)) : null;
+                    if (expected == null || player.serverLevel() != level || !EventRegions.contains(data, level, player.blockPosition())
+                            || player.distanceToSqr(Vec3.atBottomCenterOf(expected)) > 16) arrived = false;
                 }
-                var member = SmpRecords.members(data).getCompound(id.toString());
-                BlockPos expected = member.contains(ARRIVAL) ? BlockPos.of(member.getLong(ARRIVAL)) : null;
-                if (expected == null || player.serverLevel() != level || !EventRegions.contains(data, level, player.blockPosition())
-                        || player.distanceToSqr(Vec3.atBottomCenterOf(expected)) > 16) arrived = false;
+                if (arrived) transition(State.ARRIVED, now);
             }
-            if (arrived) transition(State.ARRIVED, now);
         }
         if (state() == State.ARRIVED) {
             transition(State.INTRO, now);
@@ -183,6 +183,18 @@ public final class EncounterContext {
         }
         if (state() == State.INTRO && now >= data.getLong("encounterIntroEnds")) transition(State.ACTIVE, now);
         return state() == State.ACTIVE;
+    }
+
+    public boolean allParticipantsInside(MinecraftServer server) {
+        ServerLevel level = EventRegions.level(server, data);
+        Set<UUID> participants = participantIds();
+        if (level == null || participants.isEmpty()) return false;
+        for (UUID id : participants) {
+            ServerPlayer player = server.getPlayerList().getPlayer(id);
+            if (player == null || !player.isAlive() || player.isSpectator() || player.serverLevel() != level
+                    || !EventRegions.contains(data, level, player.getBoundingBox())) return false;
+        }
+        return true;
     }
 
     public boolean arrivalInProgress() {

@@ -8,7 +8,9 @@ Disconnect не завершает активную попытку. Для ка�
 
 После каждой завершённой волны каждый участник, включая solo, выбирает продолжение или cash out. При поражении мобы и ресурсы конкретной попытки инвалидируются. Предсобытийная позиция, dimension и rotation записываются один раз; после победы доступны Stay и Return. Respawn использует проверенную центральную точку арены.
 
-Private solo attempt разрешён при membership в unrelated public Party. До combat `EVENT_LOCK` не ограничивает движение. После начала боя все игроки свободно пересекают видимую full-height границу; ordinary mobs внутри выводятся наружу один раз, ordinary mobs снаружи и event-owned mobs внутри упираются в mob-only collision geometry без teleport loop. Только живые non-eliminated participants являются допустимыми целями и источниками влияния на event mobs; observers, Warden vibration/anger и indirect damage остаются изолированы существующим combat ownership contract.
+Private solo attempt разрешён при membership в unrelated public Party. Запуск Party фиксирует authoritative participant snapshot, но оставляет видимую full-height границу проходимой и не создаёт wave mobs. Blood Moon переходит в combat один раз только после того, как каждый участник snapshot одновременно online, жив, не spectator и полностью находится своим collision box внутри правильной арены; отсутствующий или отключившийся участник не засчитывается. В этот же server-authoritative transition активируются первая волна и SOLID-коллизия только для active non-eliminated participants.
+
+Во время combat participant-only SOLID сохраняется между волнами и во время голосования, работает для движения игрока и его ridden entity на dedicated server и в client prediction, а unsafe teleport endpoint перенаправляется на последнюю проверенную внутреннюю позицию. Если участник из-за рассинхронизации уже оказался снаружи, стена остаётся для него проходимой до полного безопасного входа и не запирает его с внешней стороны. Observers и eliminated players всегда свободно пересекают границу. Ordinary mobs внутри выводятся наружу, event-owned mobs остаются внутри; только живые non-eliminated participants являются допустимыми целями и источниками влияния на event mobs, включая summons, indirect damage и Warden vibration/anger. Completion, defeat, cancellation, cash out, elimination и reset немедленно снимают participant collision.
 
 ## Waves
 
@@ -30,7 +32,7 @@ Armor Penetration, Broken Rhythm и Nightfall Seal хранятся как вр�
 
 ## Arena and visuals
 
-Граница действует по всей высоте мира и только в dimension события. Арена принимается только при не менее чем 90% сухих прочных surface columns. Природная вода не удаляется. Wave 3 и Wave 5 сохраняют полный snapshot видимого пола и тонкого покрытия, убирают снег, постепенно заменяют пол тематическими блоками и восстанавливают каждый исходный `BlockState` перед следующей волной либо при cleanup.
+Граница действует по всей высоте мира и только в dimension события. Арена принимается только при не менее чем 90% сухих прочных surface columns. Природная вода не удаляется. Wave 3 и Wave 5 сохраняют для каждого изменённого блока исходный и ожидаемый временный `BlockState`, убирают снег и постепенно заменяют пол тематическими блоками. Attack blocks восстанавливаются до arena state по timeout и обязательно перед восстановлением terrain в конце волны; затем пол и тонкие покрытия возвращаются к точному исходному состоянию. Cleanup не зависит от живого boss, сохраняет unloaded entries между рестартами и повторяет только pending positions после загрузки их chunks. Если текущий state больше не равен принадлежащему событию temporary state, чужое изменение сохраняется и snapshot не перезаписывает его.
 
 Boss model и hitbox масштабируются одним владельцем до двадцати блоков, кроме Twin Creepers с фиксированной высотой пятнадцать блоков. Крупные боссы получают scale-aware скорость и knockback resistance: размер не превращает их в быстрый рывковый объект, а обычный удар игрока не отбрасывает их через арену. Spawn beam равен примерно 80% ширины entity. Атаки используют общую server-authoritative geometry и фазы windup/telegraph/locked pattern/impact/recovery. Telegraph всегда включён, а Arena 3 и Arena 5 используют один cyan visual contract: вся опасная область остаётся видимой через разреженную заливку и двойной контур, светлая полоса показывает приближение activation, а после warning полностью уступает место отдельному движущемуся impact front со следом.
 
@@ -46,5 +48,5 @@ Twin Creepers визуально и collision-scale достигают пятн�
 - Generic batches в Wave 3/5 отвергнуты: они размывают authored encounter.
 - Obsidian walls, columns и временные декорации отвергнуты: они портят terrain и читаемость.
 - Повторное tier/event scaling и post-armor damage floor отвергнуты: они создавали неизбежные one-shot атаки.
-- Незаметный запрет teleport commands/items отвергнут: travel выполняется, после чего boundary owner возвращает active participant и предлагает явный выход.
+- Teleport-back correction loop отвергнут: active participant endpoint проверяется до перемещения и при unsafe destination остаётся на проверенной внутренней позиции без повторных corrective teleports.
 

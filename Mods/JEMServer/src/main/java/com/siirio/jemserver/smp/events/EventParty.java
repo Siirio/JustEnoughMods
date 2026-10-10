@@ -76,9 +76,6 @@ public final class EventParty {
         encounter.awaitEntry(level);
         event.putBoolean("solo", party.getBoolean("solo"));
         event.putUUID("attemptId",UUID.randomUUID());
-        event.putBoolean("combatStarted", true);
-        event.putLong("nextWave", System.currentTimeMillis());
-        if(level!=null) EventRegions.ejectOutsiders(level,event);
         party.putString("state", "ACTIVE");
         SmpData.get(host.server).changed(party);
         SmpData.get(host.server).changed(event);

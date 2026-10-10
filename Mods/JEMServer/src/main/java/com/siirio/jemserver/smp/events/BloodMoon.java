@@ -51,6 +51,8 @@ public final class BloodMoon {
         for(var row:SmpData.get(level.getServer()).all("events")) {
             if(!row.getString("state").equals("ACTIVE") || !row.getString("activity").equals("BLOOD_MOON")
                     || !row.getBoolean("combatStarted") || !EventRegions.contains(row,level,mob.blockPosition())) continue;
+            Entity owner=EventSession.owner(mob);
+            if(owner instanceof net.minecraft.server.level.ServerPlayer player&&!new EventSession(row).accepted(player.getUUID())) return true;
             long active=row.getList("mobs",Tag.TAG_STRING).stream().map(Tag::getAsString).map(UUID::fromString).map(level::getEntity)
                     .filter(candidate->candidate instanceof Mob living&&living.isAlive()&&living.getPersistentData().getBoolean(SUMMONED)).count();
             if(active>=MAX_ACTIVE_SUMMONS) return false;
@@ -74,6 +76,13 @@ public final class BloodMoon {
         if(level==null) return;
         var encounter=new EncounterContext(row);
         if(!encounter.tickStartup(server)) { SmpData.get(server).changed(row); return; }
+        if(!row.getBoolean("combatStarted")) {
+            if(!encounter.allParticipantsInside(server)) return;
+            row.putBoolean("combatStarted",true);
+            row.putLong("nextWave",System.currentTimeMillis());
+            EventRegions.ejectOutsiders(level,row);
+            SmpData.get(server).changed(row);
+        }
         if(BloodMoonVoting.active(row)) { BloodMoonVoting.tick(server,row); return; }
         var active=new EventSession(row).active(server);
         var mobs=row.getList("mobs",Tag.TAG_STRING);

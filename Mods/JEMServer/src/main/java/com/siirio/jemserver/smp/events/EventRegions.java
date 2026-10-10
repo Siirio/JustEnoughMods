@@ -12,6 +12,7 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.phys.AABB;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,6 +24,11 @@ public final class EventRegions {
         if (!event.getString("dimension").equals(level.dimension().location().toString()))
             return false;
         return pos.getX() >= minX(event) && pos.getX() <= maxX(event) && pos.getZ() >= minZ(event) && pos.getZ() <= maxZ(event);
+    }
+    public static boolean contains(CompoundTag event, ServerLevel level, AABB box) {
+        if (!event.getString("dimension").equals(level.dimension().location().toString())) return false;
+        return box.minX >= minX(event) && box.maxX <= maxX(event) + 1D
+                && box.minZ >= minZ(event) && box.maxZ <= maxZ(event) + 1D;
     }
     public static int minX(CompoundTag row) { return row.contains("minX") ? row.getInt("minX") : BlockPos.of(row.getLong("position")).getX()-row.getInt("radius"); }
     public static int maxX(CompoundTag row) { return row.contains("maxX") ? row.getInt("maxX") : BlockPos.of(row.getLong("position")).getX()+row.getInt("radius"); }

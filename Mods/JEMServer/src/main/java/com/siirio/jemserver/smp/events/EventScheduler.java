@@ -17,10 +17,10 @@ public final class EventScheduler {
     private static final Set<String> ATTEMPT_FIELDS = Set.of(
             "party", "bossEntity", "combatStarted", "attemptId", "wave", "waveTotal",
             "waveSpawned", "waveKilled", "rewardedWave", "continuedWave", "remaining", "nextWave", "batchSpawned", "batchTarget", "singleBatchWaveThree", "spawnFailures",
-            "voting", "pendingWaveRewards", "wave3SetPiece", "wave5SetPiece", "wave3SetPieceSpawned", "wave5SetPieceSpawned", "setPieceMobs", "setPieceBosses", "setPieceDebuffProfileCursor",
-            "setPieceAttack", "setPieceImpact", "setPieceAttackStart", "setPieceRecoveryUntil", "setPieceAttackPhase", "setPiecePhaseUntil", "setPieceCooldowns", "setPieceInitialHealth", "setPieceTerrain",
+            "voting", "pendingWaveRewards", "wave3SetPieceSpawned", "wave5SetPieceSpawned", "setPieceMobs", "setPieceBosses", "setPieceDebuffProfileCursor",
+            "setPieceAttack", "setPieceImpact", "setPieceAttackStart", "setPieceRecoveryUntil", "setPieceAttackPhase", "setPiecePhaseUntil", "setPieceCooldowns", "setPieceInitialHealth",
             "setPieceComboQueue", "setPieceComboIndex", "setPieceComboNext", "setPieceComboActive", "setPieceDebuffNextCast",
-            "setPieceAttackBlocks", "setPieceAttackTerrain", "setPieceAttackBlocksUntil", "setPieceLastAttack", "setPiecePreviousAttack", "setPieceFinalUsed", "setPieceArenaWave", "setPieceFloorQueue", "setPieceFloorIndex", "bloodMoonCover", "nextBloodSpawn",
+            "setPieceLastAttack", "setPiecePreviousAttack", "setPieceFinalUsed", "setPieceFloorQueue", "setPieceFloorIndex", "bloodMoonCover", "nextBloodSpawn",
             "setPieceOriginX", "setPieceOriginZ", "setPieceSecondX", "setPieceSecondZ", "setPieceTargetX", "setPieceTargetZ",
             "waveStartedTick", "waveDamageStart", "observedPartyDps", "eliteTypes", "specialEquipped", "fullEquipped", "raidReinforcementStage", "raidAlliesSpawned", "raidAllies", "raidBossInitialHealth");
     private static final String PREPARING = "preparing";
@@ -198,6 +198,7 @@ public final class EventScheduler {
         announce(server,row,false,state);
         if(row.getBoolean("combatStarted")) new EncounterContext(row).complete(server,state.equals("COMPLETED"));
         row.putString("state", state);
+        if(row.getString("activity").equals("BLOOD_MOON")) EventAreaHooks.releaseBloodMoon(server,row.getUUID("id"),false);
         if(row.getString("activity").equals("BLOOD_MOON") && !state.equals("COMPLETED")) {
             cleanupFailedBloodMoon(server,row);
         }
@@ -237,6 +238,7 @@ public final class EventScheduler {
         }
         encounter.resetAttempt();
         ATTEMPT_FIELDS.forEach(row::remove);
+        if(row.getString("activity").equals("BLOOD_MOON")) EventAreaHooks.releaseBloodMoon(server,row.getUUID("id"),true);
         data.changed(row);
     }
 
