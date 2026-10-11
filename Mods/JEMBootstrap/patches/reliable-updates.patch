@@ -233,3 +233,31 @@
  	private static boolean waitForGameExit(long parentPid) throws InterruptedException {
  		ProcessHandle parent = ProcessHandle.of(parentPid).orElse(null);
  		if (parent == null) return true;
+
+--- a/core/src/main/java/pl/skidam/automodpack_core/utils/FileTrees.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/utils/FileTrees.java
+@@ -2,7 +2,6 @@
+ 
+ import java.io.IOException;
+ import java.nio.channels.FileChannel;
+-import java.nio.file.AtomicMoveNotSupportedException;
+ import java.nio.file.DirectoryNotEmptyException;
+ import java.nio.file.Files;
+ import java.nio.file.LinkOption;
+@@ -23,7 +22,16 @@
+ 			throw new IOException("Directory move requires concrete parent directories");
+ 		try {
+ 			Files.move(sourceDirectory, targetDirectory, StandardCopyOption.ATOMIC_MOVE);
+-		} catch (AtomicMoveNotSupportedException | UnsupportedOperationException atomicMoveFailure) {
++		} catch (IOException | UnsupportedOperationException atomicMoveFailure) {
++			if (!Files.exists(sourceDirectory, LinkOption.NOFOLLOW_LINKS)
++					&& Files.isDirectory(targetDirectory, LinkOption.NOFOLLOW_LINKS)) {
++				forceDirectory(sourceParent);
++				if (!sourceParent.equals(targetParent)) forceDirectory(targetParent);
++				return;
++			}
++			if (!Files.exists(sourceDirectory, LinkOption.NOFOLLOW_LINKS)
++					|| Files.exists(targetDirectory, LinkOption.NOFOLLOW_LINKS)) throw atomicMoveFailure;
+ 			try {
+ 				Files.move(sourceDirectory, targetDirectory);
+ 			} catch (IOException e) {
