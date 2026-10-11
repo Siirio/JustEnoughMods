@@ -43,9 +43,9 @@
 ## Player systems
 
 - `claims` — открыть territories UI.
-- `landmarks` — список landmarks.
-- `landmarks create` — создать landmark.
-- `landmarks admin` — admin landmarks.
+- `landmarks` — свои сохранённые места и глобально открытые боссы.
+- `landmarks create` — сохранить личное место; другим игрокам оно не передаётся.
+- `landmarks admin` — тот же личный список и общие открытия боссов для operator; чужие личные записи не раскрываются.
 - `sleep agree` / `sleep disagree` — голос сна.
 - `tpa accept` / `tpaccept` — принять запрос телепортации.
 - `deaths` / `death` — история смертей JEM.

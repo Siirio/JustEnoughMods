@@ -50,7 +50,10 @@ public final class JemServer {
         MapNetwork.register();
         ClaimBoundaryNetwork.register();
         com.siirio.jemserver.smp.SmpRuntime.register();
-        if (dedicated && ModList.get().isLoaded("jem_world_boss_tiers")) MinecraftForge.EVENT_BUS.register(this);
+        if (dedicated && ModList.get().isLoaded("jem_world_boss_tiers")) {
+            MinecraftForge.EVENT_BUS.register(this);
+            MinecraftForge.EVENT_BUS.addListener(Landmarks::discovered);
+        }
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
@@ -121,6 +124,11 @@ public final class JemServer {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public void finishingSleep(SleepFinishedTimeEvent event) { sleep.finishing(event); }
+
+    @SubscribeEvent
+    public void started(net.minecraftforge.event.server.ServerStartedEvent event) {
+        Landmarks.restoreDiscoveries(event.getServer());
+    }
 
     @SubscribeEvent
     public void login(PlayerEvent.PlayerLoggedInEvent event) {

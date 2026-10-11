@@ -10,6 +10,11 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 minecraft { mappings channel: 'official', version: '1.20.1' }
 
 def instancePath = providers.environmentVariable('JEM_INSTANCE').get()
+def xaeroWorldMap = file("${instancePath}/mods/xaeroworldmap-forge-1.20.1-1.46.0.jar")
+def xaeroLibName = zipTree(xaeroWorldMap).matching {
+    include 'META-INF/jarjar/xaerolib-forge-*.jar'
+}.singleFile.name
+def extractedXaeroLib = file("../JEMTwelveEyes/build/xaero-lib/${xaeroLibName}")
 repositories { mavenCentral(); flatDir { dirs "${instancePath}/mods" } }
 dependencies {
     minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
@@ -20,12 +25,13 @@ dependencies {
     compileOnly files('../JEMTwelveEyes/build/classes/java/main')
     compileOnly files('../JEMClaims/libs/spudaciousshops-1.10.2-forge-1.20.1.jar')
     compileOnly files("${instancePath}/mods/xaerominimap-forge-1.20.1-26.4.2.jar")
-    compileOnly files("${instancePath}/mods/xaeroworldmap-forge-1.20.1-1.45.0.jar")
+    compileOnly files(xaeroWorldMap)
+    compileOnly files("${instancePath}/mods/unified-xaero-worldmap-2.0.1+1.20.1-forge.jar")
     compileOnly files("${instancePath}/mods/jei-1.20.1-forge-15.49.0.194.jar")
     compileOnly files("${instancePath}/mods/epic-fight-20.14.17-mc1.20.1-forge.jar")
     compileOnly files("${instancePath}/mods/skarrier_mobs-1.0.6-forge-1.20.1.jar")
     compileOnly fg.deobf(files("${instancePath}/mods/Pehkui-3.8.2+1.20.1-forge.jar"))
-    compileOnly files('../JEMTwelveEyes/build/xaero-lib/xaerolib-forge-1.20.1-1.7.1.jar')
+    compileOnly files(extractedXaeroLib)
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 mixin { add sourceSets.main, 'jem_server.refmap.json'; config 'jem_server.mixins.json'; config 'jem_server_shops.mixins.json'; config 'jem_server_fishing.mixins.json'; config 'jem_server_revive.mixins.json' }

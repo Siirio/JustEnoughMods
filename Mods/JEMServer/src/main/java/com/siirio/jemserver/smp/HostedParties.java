@@ -177,28 +177,26 @@ public final class HostedParties {
         if (level != null && level.getEntity(row.getUUID("bossEntity")) instanceof LivingEntity boss) HostedEncounterApi.release(boss);
     }
 
-    public static void forfeit(ServerPlayer player,UUID partyId) {
+    public static void forfeit(ServerPlayer player,UUID partyId,UUID actionToken) {
         CompoundTag row=SmpData.get(player.server).find("parties",partyId);
         SmpRecords.require(row!=null&&!SmpData.closed(row)&&row.getString("state").equals("ACTIVE")
                 &&row.getString("activity").equals("BOSS"),"unavailable");
         SmpRecords.owner(player,row);
-        SmpRecords.require(com.siirio.jemserver.smp.events.HostedBoundary.canForfeit(player,row),"unavailable");
+        SmpRecords.require(com.siirio.jemserver.smp.events.HostedBoundary.matchesAction(player.server,row,actionToken),"unavailable");
         if(row.hasUUID("eventId")) {
             var event=SmpData.get(player.server).find("events",row.getUUID("eventId"));
-            SmpRecords.require(event!=null&&event.getString("state").equals("ACTIVE"),"unavailable");
-            com.siirio.jemserver.smp.events.EventScheduler.failAttempt(player.server,event);
+            SmpRecords.require(event!=null&&com.siirio.jemserver.smp.events.EventScheduler.cancelAttempt(player.server,event,actionToken),"unavailable");
             return;
         }
         var dimension=net.minecraft.resources.ResourceLocation.tryParse(row.getString("dimension"));
         var level=dimension==null?null:player.server.getLevel(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION,dimension));
-        row.putBoolean("boundaryForfeit",true);
-        SmpData.get(player.server).changed(row);
         LivingEntity boss=level!=null&&row.hasUUID("bossEntity")&&level.getEntity(row.getUUID("bossEntity")) instanceof LivingEntity living?living:null;
         if(boss!=null&&HostedEncounterApi.cancel(boss)) return;
         if(boss!=null) HostedEncounterApi.release(boss);
         notifyDefeat(player.server,row,row.getBoolean("raid"));
         row.putString("state","FAILED");
         SmpData.get(player.server).changed(row);
+        com.siirio.jemserver.smp.events.HostedBoundary.clearParty(row);
         com.siirio.jemserver.smp.events.StructureStaging.finish(player.server,row);
     }
 

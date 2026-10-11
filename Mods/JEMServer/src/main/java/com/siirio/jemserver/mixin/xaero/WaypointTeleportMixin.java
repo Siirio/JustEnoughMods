@@ -17,12 +17,16 @@ import xaero.hud.minimap.world.MinimapWorld;
 @Mixin(targets = "xaero.hud.minimap.waypoint.WaypointTeleport", remap = false)
 public abstract class WaypointTeleportMixin {
     @Inject(method = "teleportToWaypoint(Lxaero/common/minimap/waypoints/Waypoint;Lxaero/hud/minimap/world/MinimapWorld;Lnet/minecraft/client/gui/screens/Screen;Z)V", at = @At("HEAD"), cancellable = true)
-    private void jem$death(Waypoint waypoint, MinimapWorld world, Screen screen, boolean confirm, CallbackInfo callback) {
-        if (waypoint == null || world == null || world.getDimId() == null) return;
-        var id = MapClient.death(world.getDimId().location(), waypoint.getX(), waypoint.getY(), waypoint.getZ());
-        if (id == null) return;
-        MapNetwork.teleport(id);
-        Minecraft.getInstance().setScreen(null);
+    private void jem$official(Waypoint waypoint, MinimapWorld world, Screen screen, boolean confirm, CallbackInfo callback) {
+        if (waypoint == null || !MapClient.connected()) return;
         callback.cancel();
+        var landmark = com.siirio.jemserver.client.XaeroLandmarks.shared(waypoint);
+        if (landmark != null && com.siirio.jemserver.Landmarks.isBoss(landmark)) {
+            MapNetwork.teleportBoss(landmark.id());
+            Minecraft.getInstance().setScreen(null);
+            return;
+        }
+        if (Minecraft.getInstance().player != null)
+            Minecraft.getInstance().player.displayClientMessage(net.minecraft.network.chat.Component.translatable("jem.smp.error.official_waypoint_only"), true);
     }
 }

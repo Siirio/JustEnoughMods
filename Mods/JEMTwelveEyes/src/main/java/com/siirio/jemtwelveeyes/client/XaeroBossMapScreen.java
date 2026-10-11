@@ -25,7 +25,7 @@ public final class XaeroBossMapScreen {
     private XaeroBossMapScreen() {
     }
 
-    public static void open(int x, int y, int z, ResourceLocation dimension, String markerNameKey) {
+    public static void open(int x, int y, int z, ResourceLocation dimension, String markerNameKey, boolean shared) {
         Minecraft minecraft = Minecraft.getInstance();
         WorldMapSession session = WorldMapSession.getCurrentSession();
         if (minecraft.player == null || session == null || !session.isUsable()) {
@@ -42,7 +42,7 @@ public final class XaeroBossMapScreen {
         if (mapWorld.getDimension(dimensionKey) == null) {
             mapWorld.createDimensionUnsynced(dimensionKey);
         }
-        createMarker(x, y, z, dimensionKey, markerNameKey);
+        if (!shared) createMarker(x, y, z, dimensionKey, markerNameKey);
         mapWorld.setFutureDimensionId(dimensionKey);
         GuiMap screen = new GuiMap(minecraft.screen, minecraft.screen, processor, minecraft.player);
         if (!center(screen, x, z)) {

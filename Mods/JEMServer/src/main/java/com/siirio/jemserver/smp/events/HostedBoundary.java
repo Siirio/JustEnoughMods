@@ -66,6 +66,10 @@ public final class HostedBoundary {
         return authorized(player, party) && !SmpRecords.members(party).getCompound(player.getStringUUID()).getBoolean(ENTERED);
     }
 
+    static boolean locked(ServerPlayer player, CompoundTag party) {
+        return authorized(player, party) && SmpRecords.members(party).getCompound(player.getStringUUID()).getBoolean(ENTERED);
+    }
+
     public static void observe(ServerPlayer player, CompoundTag party, BoundingBox bounds) {
         var box = player.getRootVehicle().getBoundingBox().minmax(player.getBoundingBox());
         if (!authorized(player, party) || box.minX < bounds.minX() || box.maxX > bounds.maxX() + 1D
@@ -87,6 +91,24 @@ public final class HostedBoundary {
                 || player.serverLevel().getGameTime() <= FORFEIT_UNTIL.getOrDefault(player.getUUID(), 0L);
     }
 
+    public static UUID actionToken(MinecraftServer server, CompoundTag party) {
+        if (party.hasUUID("eventId")) {
+            CompoundTag event = SmpData.get(server).find("events", party.getUUID("eventId"));
+            if (event == null || !event.getString("state").equals("ACTIVE")) return null;
+            return event.hasUUID("attemptId") ? event.getUUID("attemptId") : event.getUUID("id");
+        }
+        return party.hasUUID("bossEntity") ? party.getUUID("bossEntity") : party.getUUID("id");
+    }
+
+    public static boolean matchesAction(MinecraftServer server, CompoundTag party, UUID token) {
+        UUID current = actionToken(server, party);
+        return token != null && current != null && current.equals(token);
+    }
+
+    public static void clearParty(CompoundTag party) {
+        SmpRecords.memberIds(party).forEach(HostedBoundary::clear);
+    }
+
     public static void clear(UUID player) {
         NEXT_PROMPT.remove(player);
         FORFEIT_UNTIL.remove(player);
@@ -101,7 +123,10 @@ public final class HostedBoundary {
         long now = player.serverLevel().getGameTime();
         if (now < NEXT_PROMPT.getOrDefault(player.getUUID(), 0L)) return;
         boolean leader = party.getUUID("owner").equals(player.getUUID());
-        String command = (leader ? "/smp forfeit " : "/smp encounter-leave ") + party.getUUID("id");
+        UUID token = actionToken(player.server, party);
+        if (leader && token == null) return;
+        String command = leader ? "/smp forfeit " + party.getUUID("id") + " " + token
+                : "/smp encounter-leave " + party.getUUID("id");
         player.sendSystemMessage(Component.translatable(leader ? "jem.event.boundary_forfeit_question" : "jem.event.boundary_leave_question")
                 .withStyle(ChatFormatting.GOLD).append(" ")
                 .append(Component.translatable(leader ? "jem.event.boundary_forfeit_confirm" : "jem.event.boundary_leave_confirm")

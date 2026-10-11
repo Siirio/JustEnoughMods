@@ -7,9 +7,9 @@
   "refmap": "jem_server.refmap.json",
   "client": [
     "xaero.MapScreenMixin",
-    "xaero.WaypointEditorMixin",
     "xaero.WaypointMenuMixin",
     "xaero.WaypointTeleportMixin",
+    "xaero.shared.SharedMapSyncMixin",
     "client.BloodMoonSkyMixin",
     "client.BloodMoonMoonMixin"
   ],
@@ -17,6 +17,8 @@
     "defaultRequire": 1
   },
   "mixins": [
+    "xaero.shared.FullCaveMapLayerMixin",
+    "xaero.shared.FullCaveLayerPolicyMixin",
     "SolidBoundaryMixin",
     "PlayerSaveAccess",
     "SleepStatusVoteMixin",

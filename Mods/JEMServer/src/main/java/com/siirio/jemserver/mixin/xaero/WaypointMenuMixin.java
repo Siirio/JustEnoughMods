@@ -30,24 +30,24 @@ public abstract class WaypointMenuMixin {
         var landmark = com.siirio.jemserver.client.XaeroLandmarks.shared(waypoint.getOriginal());
         if (landmark != null) {
             var player = Minecraft.getInstance().player;
-            if (player != null && (landmark.creator().equals(player.getUUID()) || player.hasPermissions(2))) {
-                options.add(new RightClickOption("gui.jem_server.remove_shared", options.size(), target) {
+            if (player != null && !com.siirio.jemserver.Landmarks.isBoss(landmark) && landmark.creator().equals(player.getUUID())) {
+                options.add(new RightClickOption("gui.jem_server.remove_personal", options.size(), target) {
                     @Override public void onAction(Screen screen) {
                         Minecraft.getInstance().setScreen(new net.minecraft.client.gui.screens.ConfirmScreen(confirmed -> {
                             if (confirmed) com.siirio.jemserver.LandmarkNetwork.remove(landmark.id());
                             Minecraft.getInstance().setScreen(screen);
-                        }, Component.translatable("gui.jem_server.remove_shared"),
-                                Component.translatable("gui.jem_server.remove_shared_confirm", landmark.name())));
+                        }, Component.translatable("gui.jem_server.remove_personal"),
+                                Component.translatable("gui.jem_server.remove_personal_confirm", landmark.name())));
                     }
                 });
             }
         }
-        var id = MapClient.death(dimension, waypoint.getX(), waypoint.getY(), waypoint.getZ());
-        if (id == null) return;
+        if (!MapClient.connected()) return;
         Component teleport = Component.translatable("gui.xaero_right_click_waypoint_teleport");
         options.removeIf(option -> option.getDisplayName().getString().equals(teleport.getString()));
-        options.add(new RightClickOption("gui.xaero_right_click_waypoint_teleport", options.size(), target) {
-            @Override public void onAction(Screen screen) { Minecraft.getInstance().setScreen(null); MapNetwork.teleport(id); }
-        });
+        if (landmark != null && com.siirio.jemserver.Landmarks.isBoss(landmark))
+            options.add(new RightClickOption("gui.xaero_right_click_waypoint_teleport", options.size(), target) {
+                @Override public void onAction(Screen screen) { Minecraft.getInstance().setScreen(null); MapNetwork.teleportBoss(landmark.id()); }
+            });
     }
 }

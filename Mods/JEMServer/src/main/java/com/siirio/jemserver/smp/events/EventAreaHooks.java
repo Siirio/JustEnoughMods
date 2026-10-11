@@ -9,8 +9,10 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.*;
+import net.minecraftforge.event.entity.EntityTeleportEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.server.ServerStoppedEvent;
 import net.minecraftforge.eventbus.api.*;
@@ -88,7 +90,22 @@ public final class EventAreaHooks {
             if(row==null || !row.getBoolean("combatStarted") || !EventRegions.contains(row,level,mob.blockPosition())) continue;
             boolean belongs=type.equals("BLOOD_MOON")?BloodMoon.belongs(row,mob):RaidEvent.belongs(row,mob);
             if(!belongs) EventRegions.eject(mob,row);
+            else if(mob.getNavigation().getTargetPos()!=null && !SolidBoundary.permitsTeleport(mob,level,Vec3.atBottomCenterOf(mob.getNavigation().getTargetPos())))
+                mob.getNavigation().stop();
             return;
+        }
+    }
+
+    @SubscribeEvent(priority=EventPriority.HIGHEST)
+    public static void teleport(EntityTeleportEvent event) {
+        if(!(event.getEntity().level() instanceof net.minecraft.server.level.ServerLevel level)) return;
+        BossTeleportSafety.Decision decision=BossTeleportSafety.validate(event.getEntity(),level,event.getTarget());
+        if(!decision.matched()||event.getTarget().equals(decision.destination())) return;
+        if(decision.destination()==null) event.setCanceled(true);
+        else {
+            event.setTargetX(decision.destination().x);
+            event.setTargetY(decision.destination().y);
+            event.setTargetZ(decision.destination().z);
         }
     }
 

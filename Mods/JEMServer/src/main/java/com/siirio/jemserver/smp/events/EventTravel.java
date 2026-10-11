@@ -10,6 +10,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.TicketType;
 import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.event.server.ServerStoppingEvent;
@@ -17,6 +18,7 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = "jem_server", value = net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER)
 public final class EventTravel {
+    enum Destination { EVENT_OUTSIDE, RESOURCE_INSIDE, BOSS_STRUCTURE }
     static final int CHUNK_TICKET_RADIUS = 2;
     static final TicketType<Integer> EVENT_TRAVEL_TICKET = TicketType.create("jem_event_travel", Integer::compareTo);
     private static final Map<UUID, PendingEventTravel> PENDING = new HashMap<>();
@@ -26,13 +28,27 @@ public final class EventTravel {
 
     public static void request(ServerPlayer player, UUID eventId, boolean inside) {
         var event = SmpData.get(player.server).find("events", eventId);
-        if (event == null || SmpData.closed(event)) return;
+        if (event == null || SmpData.closed(event) || !new EventSession(event).accepted(player.getUUID())) return;
         inside=inside&&event.getString("activity").equals("RESOURCE_RUSH");
         ServerLevel level = EventRegions.level(player.server, event);
         if (level == null) return;
         BlockPos anchor = inside ? BlockPos.of(event.getLong("position")) : outsideAnchor(event, player.blockPosition());
+        queue(player, eventId, inside ? Destination.RESOURCE_INSIDE : Destination.EVENT_OUTSIDE, level, anchor);
+    }
+
+    public static void requestBoss(ServerPlayer player, UUID destinationId) {
+        var target = bossTarget(player, destinationId);
+        if (target == null) {
+            player.sendSystemMessage(net.minecraft.network.chat.Component.translatable("jem.smp.error.official_destination_unavailable"));
+            return;
+        }
+        BlockPos anchor = StructureStaging.outsideAnchor(shell(target.arena().bounds()), player.blockPosition());
+        queue(player, destinationId, Destination.BOSS_STRUCTURE, target.level(), anchor);
+    }
+
+    private static void queue(ServerPlayer player, UUID destinationId, Destination type, ServerLevel level, BlockPos anchor) {
         ChunkPos chunk = new ChunkPos(anchor);
-        PendingEventTravel previous = PENDING.put(player.getUUID(), new PendingEventTravel(eventId, inside, level, chunk, anchor, player.getId(), level.getGameTime() + EventRules.TRAVEL_TIMEOUT_TICKS.get()));
+        PendingEventTravel previous = PENDING.put(player.getUUID(), new PendingEventTravel(destinationId, type, level, chunk, anchor, player.getId(), level.getGameTime() + EventRules.TRAVEL_TIMEOUT_TICKS.get()));
         if (previous != null) previous.release();
         level.getChunkSource().addRegionTicket(EVENT_TRAVEL_TICKET, chunk, CHUNK_TICKET_RADIUS, player.getId());
     }
@@ -51,23 +67,65 @@ public final class EventTravel {
                 iterator.remove();
                 continue;
             }
-            var row = SmpData.get(event.getServer()).find("events", travel.eventId());
-            if (row == null || SmpData.closed(row)) {
+            if (travel.type() == Destination.BOSS_STRUCTURE && bossTarget(player, travel.destinationId()) == null) {
+                player.sendSystemMessage(net.minecraft.network.chat.Component.translatable("jem.smp.error.official_destination_unavailable"));
                 travel.release();
                 iterator.remove();
                 continue;
             }
-            var target = travel.inside()
-                    ? EventRegions.safeInside(travel.level(), row, travel.anchor())
-                    : EventRegions.safeOutside(travel.level(), row, travel.anchor());
-            if (target.isEmpty()) continue;
-            BlockPos pos = target.get();
+            if (travel.type() != Destination.BOSS_STRUCTURE) {
+                var row = SmpData.get(event.getServer()).find("events", travel.destinationId());
+                if (row == null || SmpData.closed(row)) {
+                    travel.release();
+                    iterator.remove();
+                    continue;
+                }
+            }
+            BlockPos pos = resolve(event.getServer(), player, travel);
+            if (pos == null) continue;
             travel.release();
             iterator.remove();
-            player.teleportTo(travel.level(), pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D, player.getYRot(), player.getXRot());
-            player.setDeltaMovement(0.0D, 0.0D, 0.0D);
-            player.fallDistance = 0.0F;
+            Vec3 destination = Vec3.atBottomCenterOf(pos);
+            BossTeleportSafety.Decision decision = BossTeleportSafety.validate(player, travel.level(), destination);
+            if (decision.matched() && !destination.equals(decision.destination())) {
+                player.sendSystemMessage(net.minecraft.network.chat.Component.translatable("jem.smp.error.teleport_contained"));
+                continue;
+            }
+            BossTeleportSafety.apply(player, travel.level(), destination, player.getYRot(), player.getXRot());
         }
+    }
+
+    private static BlockPos resolve(net.minecraft.server.MinecraftServer server, ServerPlayer player, PendingEventTravel travel) {
+        if (travel.type() == Destination.BOSS_STRUCTURE) {
+            BossTarget target = bossTarget(player, travel.destinationId());
+            if (target == null || target.level() != travel.level()) return null;
+            return StructureStaging.safeOutside(player, target.level(), shell(target.arena().bounds()), travel.anchor());
+        }
+        var row = SmpData.get(server).find("events", travel.destinationId());
+        if (row == null || SmpData.closed(row)) return null;
+        if (travel.type() == Destination.RESOURCE_INSIDE)
+            return EventRegions.safeInside(travel.level(), row, travel.anchor()).orElse(null);
+        int centerY = BlockPos.of(row.getLong("position")).getY();
+        int minY = row.contains("minY") ? row.getInt("minY") : centerY;
+        int maxY = row.contains("maxY") ? row.getInt("maxY") : centerY;
+        var bounds = new net.minecraft.world.level.levelgen.structure.BoundingBox(EventRegions.minX(row), minY, EventRegions.minZ(row),
+                EventRegions.maxX(row), maxY, EventRegions.maxZ(row));
+        return StructureStaging.safeOutside(player, travel.level(), bounds, travel.anchor());
+    }
+
+    private static BossTarget bossTarget(ServerPlayer player, UUID destinationId) {
+        var landmark = com.siirio.jemserver.ServerData.get(player.server).landmark(destinationId);
+        var arena = com.siirio.jemworldbosstiers.api.RaidArenaApi.arena(player.server, destinationId).orElse(null);
+        if (landmark == null || !com.siirio.jemserver.Landmarks.isBoss(landmark) || arena == null
+                || !landmark.dimension().equals(arena.dimension()) || !arena.bounds().isInside(landmark.position())
+                || !com.siirio.jemtwelveeyes.api.CampaignApi.unlocked(player, arena.entityType())) return null;
+        ServerLevel level = player.server.getLevel(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION, arena.dimension()));
+        return level == null ? null : new BossTarget(level, arena);
+    }
+
+    private static net.minecraft.world.level.levelgen.structure.BoundingBox shell(net.minecraft.world.level.levelgen.structure.BoundingBox bounds) {
+        return new net.minecraft.world.level.levelgen.structure.BoundingBox(bounds.minX() - 1, bounds.minY() - 1, bounds.minZ() - 1,
+                bounds.maxX() + 1, bounds.maxY() + 1, bounds.maxZ() + 1);
     }
 
     @SubscribeEvent
@@ -99,4 +157,6 @@ public final class EventTravel {
     public static void changedDimension(net.minecraftforge.event.entity.player.PlayerEvent.PlayerChangedDimensionEvent event) {
         cancel(event.getEntity().getUUID());
     }
+
+    private record BossTarget(ServerLevel level, com.siirio.jemworldbosstiers.api.RaidArenaApi.Arena arena) {}
 }

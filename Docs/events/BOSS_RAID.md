@@ -14,9 +14,15 @@ Individual reward содержит ровно два различных weighted
 
 Accepted participants используют общий safe-arrival flow. Любой teleport внутрь закрытой raid arena проходит общий server-side endpoint validation Boss Fight и до легального входа перенаправляется наружу. Во время боя участник пересекает общую `SOLID` границу согласно canonical Party authorization; после завершения доступ снимается только вместе с одноразовым безопасным выходом, поэтому игрок не остаётся заперт внутри. Ambient mobs не входят в arena; разрешены raid bosses и authored allies. К итоговому direct/projectile/effect/hardcoded boss damage применяется один hosted correction 12% после participant scaling.
 
+После полного входа source arena остаётся authoritative даже для destination далеко от wall: command/mod/item teleport, portal, dimension transfer, ridden mount и direct entity reposition не могут вывести active participant или event-owned entity наружу. Общий policy также не разрешает outsider teleport внутрь. Native movement collision, teleport endpoints и mob navigation используют одну boundary geometry без corrective tick loop.
+
+Отмена host использует token текущей raid attempt и тот же terminal lifecycle, что defeat: stale chat action side-effect-free, а успешный запрос атомарно закрывает encounter, снимает boundary/participant locks, выполняет safe exit и оставляет canonical replacement flow единственным владельцем восстановления normal boss.
+
 Disconnect использует общий event-instance participant lifecycle: момент выхода сохраняется сервером, reconnect раньше пяти минут отменяет ожидание поражения, а solo возвращается на проверенную arena respawn-точку. Пять минут непрерывного отсутствия помечают только этого участника `eliminated`; при следующем входе он получает поражение и возвращается к сохранённой исходной позиции, но raid instance, boss и остальные участники продолжают бой.
 
 При активации боя общий hosted lifecycle включает AI босса и назначает ближайшего живого участника начальной целью, поэтому временный lobby hold не может оставить модового босса без target. После завершения безопасный выход ищется возле вертикального диапазона структуры и никогда не выводится из dimension heightmap, чтобы Nether roof не мог стать точкой выхода.
+
+Пока encounter активен, существующий bounded encounter tick восстанавливает ближайшую допустимую живую цель только после потери прежней; он не переопределяет native goals, attack patterns или `NoAI` каждый tick. Reload активного hosted boss один раз восстанавливает combat AI state.
 
 ## Rejected
 

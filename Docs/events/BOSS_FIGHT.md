@@ -6,11 +6,17 @@ Boss Fight — host-controlled encounter для одного зарегистр�
 
 Boss HP и damage увеличиваются на 20% за каждого дополнительного присутствующего участника. После этого к итоговому damage hosted boss применяется только один correction: 12% reduction для direct, projectile, effect и hardcoded damage. Gear score не участвует.
 
+После `arenaEntered` active accepted non-eliminated participant и его ridden root vehicle не могут покинуть arena ни движением, ни `/tp`, TPA, pearl/fruit, waypoint teleport, portal/dimension transfer или modded reposition API. Проверяется source/destination dimension и полный collision box. Accepted participant до первого полного входа сохраняет штатный arrival access; completion, defeat, elimination, respawn recovery и operator emergency recovery используют существующие lifecycle states, а не общий публичный bypass. Outsider не может телепортироваться внутрь закрытой structure arena. Event-owned boss и его authored entities не могут телепортироваться или перейти dimension наружу.
+
+Host завершает активный бой одной server-authoritative операцией по Party ID и текущему boss/attempt token. Показанная chat-кнопка не зависит от короткого proximity timeout; старый token не может отменить новую попытку той же Party. Успешная отмена проходит через canonical HostedEncounter close, после чего единым terminal flow снимаются AI/target ownership, collision, participant state и return session. Повторная или устаревшая команда ничего не меняет.
+
 Помеченные тематические bosses, включая Magnetron, Scylla и Cloud Golem, используют общий эффект «Любимчик Зевса»: раз в семь секунд позиция одного живого участника фиксируется компактным электрическим телеграфом на полсекунды, затем туда ударяет boss-owned молния. Игрок может увернуться, покинув отмеченную область до impact.
 
 Start требует уже существующего живого boss identity и никогда не создаёт или не перемещает босса. Игроки перемещаются к проверенной позиции снаружи его реальной структуры. Endpoint policy до телепорта проверяет полный player bounding box, dimension, build height, world collision и virtual wall; небезопасная точка один раз заменяется проверенной внешней позицией без roof fallback. После завершения участники возвращаются наружу через общий safe-exit flow. Native awakening, entity UUID, здоровье, AI и исходная структура сохраняются.
 
 Verified native anchor записывается только при первом допустимом наблюдении native boss и после этого остаётся неизменным. Смерть, текущая позиция переместившегося босса, revive command и encounter cleanup не могут заменить его координатой смерти или передвинуть живую entity обратно к anchor.
+
+Телепорт с Xaero доступен только для server-owned discovered boss marker со стабильным arena ID. Сервер заново разрешает ID через canonical registered arena и Campaign eligibility, игнорирует клиентские coordinates и ищет безопасную поверхность минимум за два block centers от outer collision shell. Personal/home/base/death и поддельные markers не получают JEM teleport action. Если безопасная загруженная точка с полным player box не найдена, переход отклоняется.
 
 ## Arena
 
@@ -21,7 +27,7 @@ Campaign не создаёт отдельную shell: canonical prerequisite st
 ## Rejected
 
 - Start только изнутри арены отвергнут: закрытая shell делала вход невозможным.
-- Глобальная отмена teleport commands/items отвергнута: boundary lifecycle владеет возвратом и явным выходом из боя.
+- Generic mod-facing bypass отвергнут: boundary lifecycle сам снимает containment на завершении, defeat/elimination и recovery, а operator permission остаётся emergency route.
 - Gear-based scaling отвергнут пользователем.
 - Любой solid collision block можно поставить прямо вместо невидимой ячейки structure shell; не-блоки и blocks без collision стену не заменяют.
 - Несколько progression layers на main boss отвергнуты: native encounter плюс максимум один JEM layer.

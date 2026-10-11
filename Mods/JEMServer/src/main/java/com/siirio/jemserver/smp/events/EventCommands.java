@@ -97,14 +97,10 @@ public final class EventCommands {
                         .then(Commands.literal("continue").executes(context->vote(context.getSource(),UuidArgument.getUuid(context,"event"),true)))
                         .then(Commands.literal("cashout").executes(context->vote(context.getSource(),UuidArgument.getUuid(context,"event"),false))))));
         event.getDispatcher().register(Commands.literal("smp").then(Commands.literal("forfeit")
-                .then(Commands.argument("party",UuidArgument.uuid()).executes(context->{
-                    try {
-                        com.siirio.jemserver.smp.HostedParties.forfeit(context.getSource().getPlayerOrException(),UuidArgument.getUuid(context,"party"));
-                    } catch(IllegalArgumentException failure) {
-                        context.getSource().sendFailure(Component.translatable("jem.smp.error."+failure.getMessage()));
-                    }
-                    return 1;
-                }))));
+                .then(Commands.argument("party",UuidArgument.uuid())
+                        .executes(context->forfeit(context.getSource(),UuidArgument.getUuid(context,"party"),null))
+                        .then(Commands.argument("action",UuidArgument.uuid()).executes(context->forfeit(context.getSource(),
+                                UuidArgument.getUuid(context,"party"),UuidArgument.getUuid(context,"action")))))));
         event.getDispatcher().register(Commands.literal("smp").then(Commands.literal("encounter-leave")
                 .then(Commands.argument("party",UuidArgument.uuid()).executes(context->{
                     try {
@@ -115,6 +111,17 @@ public final class EventCommands {
                     return 1;
                 }))));
         for (String type : java.util.List.of("FISHING", "RESOURCE_RUSH", "BLOOD_MOON", "BOSS_RAID", "COOKING_SHOW")) registerStart(event,type);
+    }
+
+    private static int forfeit(net.minecraft.commands.CommandSourceStack source,UUID party,UUID action) {
+        try {
+            com.siirio.jemserver.smp.HostedParties.forfeit(source.getPlayerOrException(),party,action);
+        } catch(IllegalArgumentException failure) {
+            source.sendFailure(Component.translatable("jem.smp.error."+failure.getMessage()));
+        } catch(com.mojang.brigadier.exceptions.CommandSyntaxException failure) {
+            return 0;
+        }
+        return 1;
     }
 
     private static void registerStart(RegisterCommandsEvent event,String type) {

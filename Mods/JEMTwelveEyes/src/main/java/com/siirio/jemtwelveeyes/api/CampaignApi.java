@@ -2,7 +2,9 @@ package com.siirio.jemtwelveeyes.api;
 
 import com.siirio.jemcompat.gate.CampaignGateEvents;
 import com.siirio.jemcompat.gate.CampaignSavedData;
+import com.siirio.jemcompat.discovery.CampaignTarget;
 import com.siirio.jemcompat.site.CampaignSiteService;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import net.minecraft.core.BlockPos;
@@ -28,6 +30,16 @@ public final class CampaignApi {
 
     public static List<CampaignTerritory> generatedSites(MinecraftServer server) {
         return CampaignSiteService.territories(server);
+    }
+
+    public static List<BossLocation> locatedBosses(MinecraftServer server) {
+        CampaignSavedData data = CampaignSavedData.get(server);
+        List<BossLocation> locations = new ArrayList<>();
+        for (CampaignTarget target : CampaignTarget.values()) {
+            BlockPos position = target.generatedSite() ? data.campaignSite(target.prerequisite()) : data.locatedStructure(target.selectionKey());
+            if (position != null) locations.add(new BossLocation(target.selectionKey(), target.entity(), target.dimension(), position));
+        }
+        return List.copyOf(locations);
     }
 
     public static boolean startSecretEnding(MinecraftServer server, UUID player) {

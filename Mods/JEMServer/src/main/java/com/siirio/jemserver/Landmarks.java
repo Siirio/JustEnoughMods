@@ -32,16 +32,16 @@ public final class Landmarks {
     public static void open(ServerPlayer player, int requestedPage, boolean management) {
         if (!ServerConfig.LANDMARKS_ENABLED.get() || management && !player.hasPermissions(2)) return;
         ServerData data = ServerData.get(player.server);
-        var landmarks = data.landmarks().stream().sorted(Comparator.comparing(ServerData.Landmark::name).thenComparing(ServerData.Landmark::id)).toList();
+        var landmarks = data.landmarks(player.getUUID()).stream().sorted(Comparator.comparing(ServerData.Landmark::name).thenComparing(ServerData.Landmark::id)).toList();
         int page = Math.max(0, Math.min(requestedPage, Math.max(0, (landmarks.size() - 1) / PAGE_SIZE)));
-        VanillaMenus.chest(player, JemServer.MOD_ID, "landmarks", "Места сервера", menu -> {
+        VanillaMenus.chest(player, JemServer.MOD_ID, "landmarks", "Мои места и открытые боссы", menu -> {
             for (int index = page * PAGE_SIZE; index < Math.min(landmarks.size(), (page + 1) * PAGE_SIZE); index++) {
                 var landmark = landmarks.get(index);
                 var icon = locationIcon(landmark);
                 menu.button(index % PAGE_SIZE, icon, () -> manage(player, landmark.id(), management));
             }
             if (page > 0) menu.button(45, VanillaMenus.icon(Items.ARROW, "Назад"), () -> open(player, page - 1, management));
-            menu.button(48, VanillaMenus.icon(Items.WRITABLE_BOOK, "Поделиться этим местом"), () -> create(player));
+            menu.button(48, VanillaMenus.icon(Items.WRITABLE_BOOK, "Сохранить это место"), () -> create(player));
             if ((page + 1) * PAGE_SIZE < landmarks.size()) menu.button(53, VanillaMenus.icon(Items.ARROW, "Далее"), () -> open(player, page + 1, management));
         });
     }
@@ -83,40 +83,80 @@ public final class Landmarks {
         if (!dimension.equals(player.level().dimension().location()) || !player.serverLevel().getWorldBorder().isWithinBounds(position)
                 || position.getY() < player.level().getMinBuildHeight() || position.getY() >= player.level().getMaxBuildHeight()
                 || !Claims.available(player, new ChunkPos(position))) {
-            player.sendSystemMessage(Component.literal("Общую метку можно поставить в текущем измерении на загруженной для вас территории."));
+            player.sendSystemMessage(Component.literal("Свою метку можно сохранить в текущем измерении на загруженной для вас территории."));
             return false;
         }
         var data = ServerData.get(player.server);
-        if (data.landmarks().stream().anyMatch(value -> value.creator().equals(player.getUUID()) && value.dimension().equals(dimension)
+        if (data.landmarks(player.getUUID()).stream().anyMatch(value -> value.creator().equals(player.getUUID()) && value.dimension().equals(dimension)
                 && value.position().equals(position) && value.name().equals(clean))) return true;
         var landmark = new ServerData.Landmark(UUID.randomUUID(), clean, "", category, dimension, position.immutable(), player.getUUID(), player.getGameProfile().getName(), System.currentTimeMillis());
         if (!data.publish(landmark)) {
-            player.sendSystemMessage(Component.literal("Достигнут лимит общих меток. Удалите одну из своих старых меток."));
+            player.sendSystemMessage(Component.literal("Достигнут лимит сохранённых мест. Удалите одну из своих старых меток."));
             return false;
         }
-        LandmarkNetwork.syncAll(player.server);
-        player.sendSystemMessage(Component.literal("Метка опубликована для всех игроков."));
+        LandmarkNetwork.changed(player.server, landmark);
+        player.sendSystemMessage(Component.literal("Место сохранено только для вас."));
         return true;
     }
 
+    public static boolean isBoss(ServerData.Landmark landmark) {
+        return SERVER_CREATOR.equals(landmark.creator());
+    }
+
+    public static void discovered(com.siirio.jemtwelveeyes.BossLocationDiscoveredEvent event) {
+        if (!com.siirio.jemserver.smp.SmpEnvironment.active(event.server())) return;
+        var location = event.location();
+        var arena = com.siirio.jemworldbosstiers.api.RaidArenaApi.arena(event.server(), location.entity(), location.dimension(), location.position()).orElse(null);
+        if (arena == null) {
+            String key = location.entity() + ":" + location.dimension() + ":" + location.position().asLong();
+            UUID id = UUID.nameUUIDFromBytes(key.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+            publishBoss(event.server(), id, location.entity(), location.dimension(), location.position());
+        } else {
+            UUID id;
+            try { id = UUID.fromString(arena.id()); }
+            catch (IllegalArgumentException namedIdentity) { id = UUID.nameUUIDFromBytes(arena.id().getBytes(java.nio.charset.StandardCharsets.UTF_8)); }
+            publishBoss(event.server(), id, location.entity(), location.dimension(), arena.center(), arena.bounds());
+        }
+        if (ServerConfig.LANDMARKS_ENABLED.get()) event.markShared();
+    }
+
+    public static void restoreDiscoveries(MinecraftServer server) {
+        if (!com.siirio.jemserver.smp.SmpEnvironment.active(server)) return;
+        for (var location : com.siirio.jemtwelveeyes.api.CampaignApi.locatedBosses(server))
+            discovered(new com.siirio.jemtwelveeyes.BossLocationDiscoveredEvent(server, location));
+    }
+
     public static void publishBoss(MinecraftServer server, UUID id, ResourceLocation boss, ResourceLocation dimension, BlockPos position) {
+        publishBoss(server, id, boss, dimension, position, null);
+    }
+
+    public static void publishBoss(MinecraftServer server, UUID id, ResourceLocation boss, ResourceLocation dimension, BlockPos position,
+                                   net.minecraft.world.level.levelgen.structure.BoundingBox bounds) {
+        var data = ServerData.get(server);
+        var existing = data.landmark(id);
+        if (existing != null) {
+            if (bounds != null && isBoss(existing)) LandmarkNetwork.consolidated(server, data.consolidateBoss(existing, bounds));
+            return;
+        }
         String nameKey = EntityType.byString(boss.toString()).map(EntityType::getDescriptionId).orElse("");
         String fallback = nameKey.isEmpty() ? boss.getPath() : Component.translatable(nameKey).getString();
-        var landmark = new ServerData.Landmark(id, fallback, nameKey, "danger", dimension, position.immutable(), SERVER_CREATOR, "JEM", System.currentTimeMillis());
-        if (ServerData.get(server).publishSystem(landmark)) LandmarkNetwork.syncAll(server);
+        var landmark = new ServerData.Landmark(id, fallback, nameKey, bounds == null ? ServerData.LOCATED_BOSS_CATEGORY : "danger",
+                dimension, position.immutable(), SERVER_CREATOR, "JEM", System.currentTimeMillis());
+        if (bounds != null) LandmarkNetwork.consolidated(server, data.consolidateBoss(landmark, bounds));
+        if (data.publishSystem(landmark)) LandmarkNetwork.changed(server, landmark);
     }
 
     private static void manage(ServerPlayer player, UUID id, boolean management) {
         if (!ServerConfig.LANDMARKS_ENABLED.get()) return;
-        var landmark = ServerData.get(player.server).landmarks().stream().filter(value -> value.id().equals(id)).findFirst().orElse(null);
-        if (landmark == null) {
+        var landmark = ServerData.get(player.server).landmark(id);
+        if (landmark == null || !isBoss(landmark) && !landmark.creator().equals(player.getUUID())) {
             open(player, 0, management);
             return;
         }
         VanillaMenus.chest(player, JemServer.MOD_ID, "confirm", landmark.name(), menu -> {
             menu.button(4, locationIcon(landmark), null);
-            if (player.hasPermissions(2) || landmark.creator().equals(player.getUUID()))
-                menu.button(22, VanillaMenus.icon(Items.RED_DYE, "Удалить общую метку", "Исчезнет с карты у всех игроков"), () -> remove(player, id));
+            if (!isBoss(landmark) && landmark.creator().equals(player.getUUID()))
+                menu.button(22, VanillaMenus.icon(Items.BARRIER, "Удалить мою метку", "Исчезнет только с вашей карты"), () -> remove(player, id));
             menu.button(49, VanillaMenus.icon(Items.ARROW, "Отмена"), () -> open(player, 0, management));
         });
     }
@@ -130,11 +170,11 @@ public final class Landmarks {
     public static int delete(ServerPlayer player, UUID id) {
         if (!ServerConfig.LANDMARKS_ENABLED.get()) return 0;
         var data = ServerData.get(player.server);
-        var landmark = data.landmarks().stream().filter(value -> value.id().equals(id)).findFirst().orElse(null);
-        if (landmark == null || !player.hasPermissions(2) && !landmark.creator().equals(player.getUUID())) return 0;
+        var landmark = data.landmark(id);
+        if (landmark == null || isBoss(landmark) || !landmark.creator().equals(player.getUUID())) return 0;
         boolean changed = data.removeLandmark(id);
-        if (changed) LandmarkNetwork.syncAll(player.server);
-        player.sendSystemMessage(Component.literal(changed ? "Общая метка удалена." : "Метка уже удалена."));
+        if (changed) LandmarkNetwork.removed(player, id);
+        player.sendSystemMessage(Component.literal(changed ? "Ваша метка удалена." : "Метка уже удалена."));
         return changed ? 1 : 0;
     }
 
@@ -146,5 +186,8 @@ public final class Landmarks {
         return icon;
     }
 
-    private static String categoryTitle(String id) { return CATEGORIES.stream().filter(category -> category.id().equals(id)).map(Category::title).findFirst().orElse(id); }
+    private static String categoryTitle(String id) {
+        return id.equals(ServerData.LOCATED_BOSS_CATEGORY) ? "Найденный босс"
+                : CATEGORIES.stream().filter(category -> category.id().equals(id)).map(Category::title).findFirst().orElse(id);
+    }
 }

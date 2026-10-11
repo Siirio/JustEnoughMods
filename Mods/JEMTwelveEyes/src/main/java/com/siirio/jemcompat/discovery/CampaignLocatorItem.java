@@ -2,6 +2,8 @@ package com.siirio.jemcompat.discovery;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import com.siirio.jemtwelveeyes.network.CampaignNetwork;
+import com.siirio.jemtwelveeyes.BossLocationDiscoveredEvent;
+import com.siirio.jemtwelveeyes.api.BossLocation;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
@@ -13,6 +15,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.common.MinecraftForge;
 
 import java.util.List;
 import java.util.Optional;
@@ -53,6 +56,10 @@ public final class CampaignLocatorItem extends Item {
     private void finishSearch(MinecraftServer server, UUID playerId,
                               Optional<CampaignMapService.Target> result, Throwable error) {
         ACTIVE_SEARCHES.remove(playerId);
+        CampaignMapService.Target located = error == null ? result.orElse(null) : null;
+        BossLocationDiscoveredEvent discovery = located == null ? null : new BossLocationDiscoveredEvent(server,
+                new BossLocation(target.selectionKey(), target.entity(), located.dimension().location(), located.position()));
+        if (discovery != null) MinecraftForge.EVENT_BUS.post(discovery);
         ServerPlayer player = server.getPlayerList().getPlayer(playerId);
         if (player == null) {
             return;
@@ -61,12 +68,11 @@ public final class CampaignLocatorItem extends Item {
             player.displayClientMessage(Component.translatable("message.jemcompat.map_search_failed").withStyle(ChatFormatting.RED), true);
             return;
         }
-        CampaignMapService.Target target = result.orElse(null);
-        if (target == null) {
+        if (located == null) {
             player.displayClientMessage(Component.translatable("message.jemcompat.map_not_found").withStyle(ChatFormatting.RED), true);
             return;
         }
-        CampaignNetwork.openBossMap(player, target.position(), target.dimension().location(), this.target.mapNameKey());
+        CampaignNetwork.openBossMap(player, located.position(), located.dimension().location(), target.mapNameKey(), discovery.shared());
     }
 
     @Override

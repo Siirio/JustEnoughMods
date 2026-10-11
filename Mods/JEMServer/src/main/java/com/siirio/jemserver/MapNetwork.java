@@ -18,9 +18,9 @@ import com.siirio.jemserver.smp.SmpEnvironment;
 
 @net.minecraftforge.fml.common.Mod.EventBusSubscriber(modid = "jem_server", value = Dist.DEDICATED_SERVER)
 public final class MapNetwork {
-    private static final String VERSION = "3";
+    private static final String VERSION = "4";
     private static final int MAX_EVENTS = 64;
-    private static List<EventArea> lastEvents = List.of();
+    private static final java.util.Map<UUID, List<EventArea>> LAST_EVENTS = new java.util.HashMap<>();
     private static final int MAX_CLAIMS = 16384;
     private static final String LAST_REQUEST = "jem_server_map_request";
     private static final int REQUEST_INTERVAL = 20;
@@ -34,9 +34,9 @@ public final class MapNetwork {
     private record Events(List<EventArea> areas) {}
     private record Request() {}
     private record Publish(String name, ResourceLocation dimension, BlockPos position) {}
-    private record Teleport(UUID id) {}
     private record Unclaim(UUID id) {}
     private record EventTeleport(UUID id) {}
+    private record BossTeleport(UUID id) {}
 
     private MapNetwork() {}
     private static boolean compatible(String version) { return VERSION.equals(version) || NetworkRegistry.ABSENT.equals(version) || NetworkRegistry.ACCEPTVANILLA.equals(version); }
@@ -57,8 +57,6 @@ public final class MapNetwork {
                 .encoder((packet, out) -> { out.writeUtf(packet.name(), 80); out.writeResourceLocation(packet.dimension()); out.writeBlockPos(packet.position()); })
                 .decoder(in -> new Publish(in.readUtf(80), in.readResourceLocation(), in.readBlockPos()))
                 .consumerMainThread((packet, context) -> { var player = context.get().getSender(); if (player != null && SmpEnvironment.active(player) && com.siirio.jemserver.smp.SmpRequests.allow(player)) Landmarks.publish(player, packet.name(), packet.dimension(), packet.position()); context.get().setPacketHandled(true); }).add();
-        CHANNEL.messageBuilder(Teleport.class, 3, NetworkDirection.PLAY_TO_SERVER).encoder((packet, out) -> out.writeUUID(packet.id())).decoder(in -> new Teleport(in.readUUID()))
-                .consumerMainThread((packet, context) -> { var player = context.get().getSender(); if (player != null && SmpEnvironment.active(player) && com.siirio.jemserver.smp.SmpRequests.allow(player)) DeathHistory.teleport(player, packet.id()); context.get().setPacketHandled(true); }).add();
         CHANNEL.messageBuilder(Unclaim.class, 4, NetworkDirection.PLAY_TO_SERVER).encoder((packet, out) -> out.writeUUID(packet.id())).decoder(in -> new Unclaim(in.readUUID()))
                 .consumerMainThread((packet, context) -> { var player = context.get().getSender(); if (player != null && SmpEnvironment.active(player) && com.siirio.jemserver.smp.SmpRequests.allow(player)) Claims.confirmDelete(player, packet.id()); context.get().setPacketHandled(true); }).add();
         CHANNEL.messageBuilder(Events.class, 5, NetworkDirection.PLAY_TO_CLIENT)
@@ -71,28 +69,41 @@ public final class MapNetwork {
                     if (player != null && SmpEnvironment.active(player) && com.siirio.jemserver.smp.SmpRequests.allow(player)) com.siirio.jemserver.smp.events.EventTravel.request(player, packet.id(), false);
                     context.get().setPacketHandled(true);
                 }).add();
+        CHANNEL.messageBuilder(BossTeleport.class, 7, NetworkDirection.PLAY_TO_SERVER)
+                .encoder((packet, out) -> out.writeUUID(packet.id())).decoder(in -> new BossTeleport(in.readUUID()))
+                .consumerMainThread((packet, context) -> {
+                    var player = context.get().getSender();
+                    if (player != null && SmpEnvironment.active(player) && com.siirio.jemserver.smp.SmpRequests.allow(player))
+                        com.siirio.jemserver.smp.events.EventTravel.requestBoss(player, packet.id());
+                    context.get().setPacketHandled(true);
+                }).add();
     }
 
     @net.minecraftforge.eventbus.api.SubscribeEvent
     public static void tick(net.minecraftforge.event.TickEvent.ServerTickEvent event) {
         if (event.phase != net.minecraftforge.event.TickEvent.Phase.END || event.getServer().getTickCount() % REQUEST_INTERVAL != 0) return;
-        var areas = eventAreas(event.getServer());
-        if (areas.equals(lastEvents)) return;
-        lastEvents = areas;
-        for (var player : event.getServer().getPlayerList().getPlayers())
-            if (CHANNEL.isRemotePresent(player.connection.connection))
-                CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new Events(areas));
+        LandmarkNetwork.tick(event.getServer());
+        var players = event.getServer().getPlayerList();
+        LAST_EVENTS.keySet().removeIf(id -> players.getPlayer(id) == null);
+        for (var player : players.getPlayers()) {
+            if (!CHANNEL.isRemotePresent(player.connection.connection)) continue;
+            var areas = eventAreas(player);
+            if (areas.equals(LAST_EVENTS.get(player.getUUID()))) continue;
+            LAST_EVENTS.put(player.getUUID(), areas);
+            CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new Events(areas));
+        }
     }
 
     @net.minecraftforge.eventbus.api.SubscribeEvent
-    public static void stopped(net.minecraftforge.event.server.ServerStoppedEvent event) { lastEvents = List.of(); }
+    public static void stopped(net.minecraftforge.event.server.ServerStoppedEvent event) { LAST_EVENTS.clear(); LandmarkNetwork.clear(); }
 
-    public static List<EventArea> eventAreas(net.minecraft.server.MinecraftServer server) {
+    private static List<EventArea> eventAreas(ServerPlayer player) {
         long now = System.currentTimeMillis();
-        return com.siirio.jemserver.smp.SmpData.get(server).all("events").stream()
+        return com.siirio.jemserver.smp.SmpData.get(player.server).all("events").stream()
                 .filter(row -> "ACTIVE".equals(row.getString("state")) && row.getLong("ends") > now
                         && row.hasUUID("id") && row.contains("position") && row.getInt("radius") > 0
                         && ResourceLocation.tryParse(row.getString("dimension")) != null)
+                .filter(row -> new com.siirio.jemserver.smp.events.EventSession(row).accepted(player.getUUID()))
                 .limit(MAX_EVENTS).map(row -> new EventArea(row.getUUID("id"), row.getString("activity"),
                         new ResourceLocation(row.getString("dimension")), BlockPos.of(row.getLong("position")), row.getInt("radius"))).toList();
     }
@@ -110,17 +121,16 @@ public final class MapNetwork {
     }
 
     public static void request() { CHANNEL.sendToServer(new Request()); }
-    public static void publish(String name, ResourceLocation dimension, BlockPos position) { CHANNEL.sendToServer(new Publish(name, dimension, position)); }
-    public static void teleport(UUID id) { CHANNEL.sendToServer(new Teleport(id)); }
     public static void unclaim(UUID id) { CHANNEL.sendToServer(new Unclaim(id)); }
     public static void teleportEvent(UUID id) { CHANNEL.sendToServer(new EventTeleport(id)); }
+    public static void teleportBoss(UUID id) { CHANNEL.sendToServer(new BossTeleport(id)); }
 
     public static void sync(ServerPlayer player) {
         if (!SmpEnvironment.active(player) || !CHANNEL.isRemotePresent(player.connection.connection)) return;
-        var claims = Claims.mapTerritories(player).stream().limit(MAX_CLAIMS)
+        var claims = Claims.mapTerritories(player).stream().filter(claim -> claim.owner().equals(player.getUUID())).limit(MAX_CLAIMS)
                 .map(claim -> new Claim(claim.id(), claim.owner(), claim.name(), claim.dimension(), claim.minX(), claim.minZ(), claim.maxX(), claim.maxZ(), claim.color())).toList();
         var deaths = ServerData.get(player.server).deaths(player.getUUID()).stream().map(death -> new Death(death.id(), death.dimension(), BlockPos.containing(death.x(), death.y(), death.z()))).toList();
-        CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new Snapshot(claims, deaths, eventAreas(player.server)));
+        CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new Snapshot(claims, deaths, eventAreas(player)));
     }
 
     private static void encode(Snapshot packet, FriendlyByteBuf out) {

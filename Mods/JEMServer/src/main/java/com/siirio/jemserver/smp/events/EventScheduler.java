@@ -165,7 +165,6 @@ public final class EventScheduler {
             finish(server, row, "CANCELLED");
             return;
         }
-        com.siirio.jemserver.LandmarkNetwork.syncAll(server);
         announce(server,row,true,"");
     }
 
@@ -210,7 +209,6 @@ public final class EventScheduler {
         BloodMoon.cleanup(server, row);
         RaidEvent.cleanup(server, row);
         SmpData.get(server).changed(row);
-        com.siirio.jemserver.LandmarkNetwork.syncAll(server);
     }
 
     public static void failAttempt(MinecraftServer server, CompoundTag row) {
@@ -243,12 +241,21 @@ public final class EventScheduler {
         data.changed(row);
     }
 
+    public static boolean cancelAttempt(MinecraftServer server, CompoundTag row, UUID actionToken) {
+        if (!row.getString("state").equals("ACTIVE") || !COMBAT_EVENTS.contains(row.getString("activity"))) return false;
+        UUID current = row.hasUUID("attemptId") ? row.getUUID("attemptId") : row.getUUID("id");
+        if (!current.equals(actionToken)) return false;
+        failAttempt(server, row);
+        return true;
+    }
+
     private static void setPartyState(MinecraftServer server, CompoundTag event, String state) {
         if (!event.hasUUID("party")) return;
         var data=SmpData.get(server);
         var party=data.find("parties",event.getUUID("party"));
         if(party!=null && !SmpData.closed(party)) {
             party.putString("state",state);
+            HostedBoundary.clearParty(party);
             data.changed(party);
         }
     }

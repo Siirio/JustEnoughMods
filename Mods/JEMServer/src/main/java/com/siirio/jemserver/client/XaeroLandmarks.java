@@ -1,33 +1,37 @@
 package com.siirio.jemserver.client;
 
+import com.siirio.jemserver.Landmarks;
 import com.siirio.jemserver.ServerData;
 import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.event.TickEvent;
 import xaero.common.minimap.waypoints.Waypoint;
 import xaero.hud.minimap.BuiltInHudModules;
 import xaero.hud.minimap.waypoint.WaypointColor;
-import xaero.hud.minimap.world.MinimapWorld;
+import xaero.hud.minimap.world.container.MinimapWorldContainer;
+import xaero.hud.minimap.world.container.MinimapWorldRootContainer;
 
 public final class XaeroLandmarks {
-    private static final net.minecraft.resources.ResourceLocation ORIGIN = new net.minecraft.resources.ResourceLocation("jem_server", "landmarks");
-    private record Applied(int revision, net.minecraft.resources.ResourceLocation dimension) {}
-    private static final Map<xaero.hud.minimap.waypoint.set.WaypointSet, Applied> APPLIED = new IdentityHashMap<>();
-    private record Shared(java.util.UUID id, xaero.hud.minimap.waypoint.set.WaypointSet set) {}
+    private static final ResourceLocation LEGACY_ORIGIN = new ResourceLocation("jem_server", "landmarks");
+    private static final ResourceLocation BOSS_ORIGIN = new ResourceLocation("jem_server", "boss_discoveries");
+    private static final ResourceLocation PERSONAL_ORIGIN = new ResourceLocation("jem_server", "personal_landmarks");
+    private static final String SYMBOL = "◆";
+    private record Applied(int revision, ResourceLocation dimension) {}
+    private static final Map<MinimapWorldContainer, Applied> APPLIED = new IdentityHashMap<>();
+    private record Shared(java.util.UUID id, MinimapWorldContainer container) {}
     private static final Map<Waypoint, Shared> SHARED_IDS = new IdentityHashMap<>();
-    private static final Map<Waypoint, MinimapWorld> PENDING = new IdentityHashMap<>();
-    private static final int MAX_PENDING_PUBLICATIONS = 32;
-
-    public static void publishing(MinimapWorld world, Waypoint waypoint) {
-        if (PENDING.size() >= MAX_PENDING_PUBLICATIONS) PENDING.clear();
-        PENDING.put(waypoint, world);
-    }
     private static List<ServerData.Landmark> snapshot;
     private static int revision;
+    private static MinimapWorldRootContainer preparedRoot;
+    private static int preparedRevision;
+    private static boolean mapPrepared;
 
     private XaeroLandmarks() {}
 
@@ -39,71 +43,99 @@ public final class XaeroLandmarks {
     static void accept(List<ServerData.Landmark> landmarks) {
         snapshot = List.copyOf(landmarks);
         revision++;
-        APPLIED.replaceAll((set, applied) -> {
-            apply(set, applied.dimension());
-            return new Applied(revision, applied.dimension());
-        });
-        var player = Minecraft.getInstance().player;
-        var session = BuiltInHudModules.MINIMAP.getCurrentSession();
-        if (player == null || session == null) return;
-        PENDING.entrySet().removeIf(entry -> {
-            var waypoint = entry.getKey();
-            var world = entry.getValue();
-            boolean published = landmarks.stream().anyMatch(landmark -> landmark.creator().equals(player.getUUID()) && landmark.name().equals(waypoint.getName())
-                    && world.getDimId() != null && landmark.dimension().equals(world.getDimId().location()) && landmark.position().equals(new net.minecraft.core.BlockPos(waypoint.getX(), waypoint.getY(), waypoint.getZ())));
-            if (!published) return false;
-            for (var set : world.getIterableWaypointSets()) set.remove(waypoint);
-            try { session.getWorldManagerIO().saveWorld(world); }
-            catch (java.io.IOException failure) { com.mojang.logging.LogUtils.getLogger().warn("Could not save published waypoint cleanup", failure); }
-            return true;
-        });
+        mapPrepared = false;
+        synchronize();
     }
 
     static void logout(ClientPlayerNetworkEvent.LoggingOut event) {
         snapshot = null;
         APPLIED.keySet().forEach(XaeroLandmarks::clearShared);
         APPLIED.clear();
-        PENDING.clear();
+        SHARED_IDS.clear();
         revision = 0;
+        preparedRoot = null;
+        preparedRevision = 0;
+        mapPrepared = false;
     }
 
     static void tick(TickEvent.ClientTickEvent event) {
         if (event.phase != TickEvent.Phase.END || snapshot == null || Minecraft.getInstance().level == null) return;
+        synchronize();
+    }
+
+    private static void synchronize() {
+        if (Minecraft.getInstance().player == null) return;
         var session = BuiltInHudModules.MINIMAP.getCurrentSession();
         if (session == null) return;
         var manager = session.getWorldManager();
-        var current = manager.getAutoWorld();
-        if (current == null) return;
-        var set = current.getCurrentWaypointSet();
-        if (set == null || APPLIED.containsKey(set) && APPLIED.get(set).revision() == revision || current.getDimId() == null) return;
-        apply(set, current.getDimId().location());
-        if (APPLIED.size() >= MAX_PENDING_PUBLICATIONS && !APPLIED.containsKey(set)) {
-            var oldest = APPLIED.keySet().iterator().next();
-            clearShared(oldest);
-            APPLIED.remove(oldest);
+        var root = manager.getAutoRootContainer();
+        if (root == null || !root.isConfigLoaded()) return;
+        if (root == preparedRoot && revision == preparedRevision) {
+            if (!mapPrepared && net.minecraftforge.fml.ModList.get().isLoaded("xaeroworldmap")) mapPrepared = refreshMapWaypoints();
+            return;
         }
-        APPLIED.put(set, new Applied(revision, current.getDimId().location()));
+        if (root != preparedRoot) {
+            APPLIED.keySet().forEach(XaeroLandmarks::clearShared);
+            APPLIED.clear();
+            mapPrepared = false;
+        }
+        for (var container : root.getSubContainers()) {
+            if (container.getThirdPartyWaypointManager() != null) apply(container, container.getEquivalentDimId());
+        }
+        snapshot.stream().map(ServerData.Landmark::dimension).distinct().forEach(dimension -> {
+            var key = ResourceKey.create(Registries.DIMENSION, dimension);
+            var path = root.getPath().resolve(session.getDimensionHelper().getDimensionDirectoryName(key));
+            apply(manager.addWorldContainer(path), dimension);
+        });
+        preparedRoot = root;
+        preparedRevision = revision;
+        if (net.minecraftforge.fml.ModList.get().isLoaded("xaeroworldmap")) mapPrepared = refreshMapWaypoints();
     }
 
-    private static void apply(xaero.hud.minimap.waypoint.set.WaypointSet set, net.minecraft.resources.ResourceLocation dimension) {
-        clearShared(set);
+    private static boolean refreshMapWaypoints() {
+        var session = xaero.map.WorldMapSession.getCurrentSession();
+        if (session == null || !session.isUsable()) return false;
+        if (session.getMapProcessor().getMapWorld() == null || xaero.map.mods.SupportMods.xaeroMinimap == null) return false;
+        xaero.map.mods.SupportMods.xaeroMinimap.requestWaypointsRefresh();
+        return true;
+    }
+
+    private static void apply(MinimapWorldContainer container, ResourceLocation dimension) {
+        var applied = APPLIED.get(container);
+        if (applied != null && applied.revision() == revision && applied.dimension().equals(dimension)) return;
+        clearShared(container);
+        var player = Minecraft.getInstance().player;
+        var manager = container.getThirdPartyWaypointManager();
         for (var landmark : snapshot) {
             if (!landmark.dimension().equals(dimension)) continue;
+            boolean boss = Landmarks.isBoss(landmark);
+            if (!boss && (player == null || !landmark.creator().equals(player.getUUID()))) continue;
             var pos = landmark.position();
             String name = landmark.nameKey().isEmpty() ? landmark.name() : Component.translatable(landmark.nameKey()).getString();
-            Waypoint waypoint = new Waypoint(pos.getX(), pos.getY(), pos.getZ(), name, "◆", color(landmark.category()));
-            waypoint.setThirdPartyOrigin(ORIGIN);
+            Waypoint waypoint = new Waypoint(pos.getX(), pos.getY(), pos.getZ(), name, SYMBOL, boss ? WaypointColor.RED : color(landmark.category()));
             waypoint.setTemporary(true);
-            SHARED_IDS.put(waypoint, new Shared(landmark.id(), set));
-            set.add(waypoint);
+            manager.get(boss ? BOSS_ORIGIN : PERSONAL_ORIGIN).add(landmark.id().toString(), waypoint);
+            SHARED_IDS.put(waypoint, new Shared(landmark.id(), container));
         }
+        APPLIED.put(container, new Applied(revision, dimension));
     }
 
-    private static void clearShared(xaero.hud.minimap.waypoint.set.WaypointSet set) {
-        java.util.List<Waypoint> shared = new java.util.ArrayList<>();
-        for (Waypoint waypoint : set.getWaypoints()) if (ORIGIN.equals(waypoint.getThirdPartyOrigin())) shared.add(waypoint);
-        SHARED_IDS.entrySet().removeIf(entry -> entry.getValue().set() == set);
-        set.removeAll(shared);
+    private static void clearShared(MinimapWorldContainer container) {
+        for (var world : container.getAllWorldsIterable()) {
+            for (var set : world.getIterableWaypointSets()) {
+                java.util.List<Waypoint> shared = new java.util.ArrayList<>();
+                for (Waypoint waypoint : set.getWaypoints()) {
+                    var origin = waypoint.getThirdPartyOrigin();
+                    if (LEGACY_ORIGIN.equals(origin) || BOSS_ORIGIN.equals(origin) || PERSONAL_ORIGIN.equals(origin)) shared.add(waypoint);
+                }
+                set.removeAll(shared);
+            }
+        }
+        var manager = container.getThirdPartyWaypointManager();
+        manager.clearOrigin(LEGACY_ORIGIN);
+        manager.clearOrigin(BOSS_ORIGIN);
+        manager.clearOrigin(PERSONAL_ORIGIN);
+        SHARED_IDS.entrySet().removeIf(entry -> entry.getValue().container() == container);
     }
 
     private static WaypointColor color(String category) {

@@ -42,7 +42,7 @@ public final class BloodMoonSolidBoundary {
     public static BossTeleportSafety.Decision validateTeleport(ServerPlayer player,ServerLevel level,Vec3 requested) {
         for(var row:SmpData.get(player.server).all("events")) {
             if(!row.getString("state").equals("ACTIVE")||!row.getString("activity").equals("BLOOD_MOON")
-                    ||!row.getBoolean("combatStarted")||!new EventSession(row).accepted(player.getUUID())) continue;
+                    ||!locked(player,row)) continue;
             if(validDestination(player,level,row,requested)) return BossTeleportSafety.Decision.allow(requested);
             return BossTeleportSafety.Decision.redirect(safeDestination(player,row));
         }
@@ -68,7 +68,7 @@ public final class BloodMoonSolidBoundary {
         if(level!=EventRegions.level(player.server,row)) return false;
         BlockPos position=BlockPos.containing(destination);
         if(!level.hasChunkAt(position)||!level.getWorldBorder().isWithinBounds(position)) return false;
-        AABB box=player.getBoundingBox().move(destination.x-player.getX(),destination.y-player.getY(),destination.z-player.getZ());
+        AABB box=SolidBoundary.destinationBox(player,destination);
         EventBoundary boundary=boundary(row,level);
         return EventRegions.contains(row,level,box)&&!SolidBoundary.intersectsWall(box,boundary)&&level.noCollision(player,box);
     }

@@ -15,6 +15,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.level.saveddata.SavedData;
 
 public final class ServerData extends SavedData {
+    public static final String LOCATED_BOSS_CATEGORY = "boss_locator";
     public record Death(UUID id, ResourceLocation dimension, double x, double y, double z, float yaw, float pitch, long timestamp, String cause) {}
     public record Landmark(UUID id, String name, String nameKey, String category, ResourceLocation dimension, BlockPos position, UUID creator, String creatorName, long createdAt) {}
     public record Hunter(UUID id, String name, Map<ResourceLocation, Long> kills) {
@@ -26,13 +27,18 @@ public final class ServerData extends SavedData {
     private final Map<UUID, Map<ResourceLocation, Long>> kills = new HashMap<>();
     private final Map<UUID, String> names = new HashMap<>();
     private final Map<UUID, Landmark> accepted = new LinkedHashMap<>();
+    private final Map<UUID, Integer> consolidatedAt = new HashMap<>();
+    private int discoveryRevision;
 
     public static ServerData get(MinecraftServer server) {
         return server.overworld().getDataStorage().computeIfAbsent(ServerData::load, ServerData::new, "jem_server");
     }
 
     public List<Death> deaths(UUID player) { return List.copyOf(deaths.getOrDefault(player, List.of())); }
-    public List<Landmark> landmarks() { return List.copyOf(accepted.values()); }
+    public List<Landmark> landmarks(UUID player) {
+        return accepted.values().stream().filter(value -> Landmarks.isBoss(value) || value.creator().equals(player)).toList();
+    }
+    public Landmark landmark(UUID id) { return accepted.get(id); }
     public List<Hunter> hunters() {
         return kills.entrySet().stream().map(entry -> new Hunter(entry.getKey(), names.getOrDefault(entry.getKey(), entry.getKey().toString()), Map.copyOf(entry.getValue()))).toList();
     }
@@ -61,7 +67,7 @@ public final class ServerData extends SavedData {
     }
 
     public boolean publish(Landmark landmark) {
-        if (accepted.containsKey(landmark.id()) || accepted.size() >= ServerConfig.MAX_LANDMARKS.get()
+        if (accepted.containsKey(landmark.id()) || accepted.values().stream().filter(value -> !Landmarks.isBoss(value)).count() >= ServerConfig.MAX_LANDMARKS.get()
                 || accepted.values().stream().filter(value -> value.creator().equals(landmark.creator())).count() >= ServerConfig.MAX_PUBLIC_PER_PLAYER.get()) return false;
         accepted.put(landmark.id(), landmark);
         setDirty();
@@ -69,8 +75,11 @@ public final class ServerData extends SavedData {
     }
 
     public boolean publishSystem(Landmark landmark) {
-        if (accepted.containsKey(landmark.id())) return false;
+        if (accepted.containsKey(landmark.id()) || accepted.values().stream().anyMatch(value -> Landmarks.isBoss(value)
+                && value.nameKey().equals(landmark.nameKey()) && value.dimension().equals(landmark.dimension())
+                && value.position().equals(landmark.position()))) return false;
         accepted.put(landmark.id(), landmark);
+        discoveryRevision++;
         setDirty();
         return true;
     }
@@ -79,6 +88,21 @@ public final class ServerData extends SavedData {
         if (accepted.remove(id) == null) return false;
         setDirty();
         return true;
+    }
+
+    public List<UUID> consolidateBoss(Landmark landmark, net.minecraft.world.level.levelgen.structure.BoundingBox bounds) {
+        if (java.util.Objects.equals(consolidatedAt.get(landmark.id()), discoveryRevision)) return List.of();
+        List<UUID> duplicates = accepted.values().stream().filter(value -> Landmarks.isBoss(value)
+                && value.category().equals(LOCATED_BOSS_CATEGORY)
+                && !value.id().equals(landmark.id()) && value.nameKey().equals(landmark.nameKey())
+                && value.dimension().equals(landmark.dimension())
+                && value.position().getX() >= bounds.minX() && value.position().getX() <= bounds.maxX()
+                && value.position().getZ() >= bounds.minZ() && value.position().getZ() <= bounds.maxZ())
+                .map(Landmark::id).toList();
+        duplicates.forEach(accepted::remove);
+        if (!duplicates.isEmpty()) { discoveryRevision++; setDirty(); }
+        consolidatedAt.put(landmark.id(), discoveryRevision);
+        return duplicates;
     }
 
     private static ServerData load(CompoundTag root) {

@@ -251,6 +251,7 @@ public final class StructureStaging {
     }
 
     public static void finish(net.minecraft.server.MinecraftServer server, CompoundTag row) {
+        HostedBoundary.clearParty(row);
         if (row.getBoolean("raid")) finishRaidParticipants(server, row);
         else PartyTeleportFlow.finish(server,row);
         if (!row.hasUUID("structureId")) {
@@ -359,8 +360,19 @@ public final class StructureStaging {
     static boolean safeOutside(ServerPlayer player, ServerLevel level, BlockPos position) {
         if (!level.hasChunkAt(position) || !level.getWorldBorder().isWithinBounds(position)
                 || !level.getBlockState(position.below()).isFaceSturdy(level, position.below(), net.minecraft.core.Direction.UP)
-                || !level.getFluidState(position).isEmpty() || !level.getFluidState(position.above()).isEmpty()) return false;
+                || !level.getFluidState(position).isEmpty() || !level.getFluidState(position.above()).isEmpty()
+                || dangerous(level.getBlockState(position.below())) || dangerous(level.getBlockState(position))
+                || dangerous(level.getBlockState(position.above()))) return false;
         return level.noCollision(player, player.getDimensions(player.getPose()).makeBoundingBox(position.getX() + .5, position.getY(), position.getZ() + .5));
+    }
+
+    private static boolean dangerous(net.minecraft.world.level.block.state.BlockState state) {
+        return state.is(net.minecraft.tags.BlockTags.FIRE) || state.is(net.minecraft.world.level.block.Blocks.LAVA)
+                || state.is(net.minecraft.world.level.block.Blocks.MAGMA_BLOCK) || state.is(net.minecraft.world.level.block.Blocks.CACTUS)
+                || state.is(net.minecraft.world.level.block.Blocks.SWEET_BERRY_BUSH) || state.is(net.minecraft.world.level.block.Blocks.POWDER_SNOW)
+                || state.is(net.minecraft.world.level.block.Blocks.WITHER_ROSE) || state.is(net.minecraft.world.level.block.Blocks.CAMPFIRE)
+                || state.is(net.minecraft.world.level.block.Blocks.SOUL_CAMPFIRE) || state.is(net.minecraft.world.level.block.Blocks.END_PORTAL)
+                || state.is(net.minecraft.world.level.block.Blocks.NETHER_PORTAL);
     }
 
     private static boolean safe(Mob mob,ServerLevel level,BlockPos position) {
@@ -386,11 +398,25 @@ public final class StructureStaging {
         return safeExit(level,bounds,origin,position->safeOutside(player,level,position));
     }
 
+    static BlockPos outsideAnchor(BoundingBox bounds, BlockPos origin) {
+        int x = net.minecraft.util.Mth.clamp(origin.getX(), bounds.minX(), bounds.maxX());
+        int z = net.minecraft.util.Mth.clamp(origin.getZ(), bounds.minZ(), bounds.maxZ());
+        int left = Math.abs(origin.getX() - bounds.minX());
+        int right = Math.abs(bounds.maxX() - origin.getX());
+        int top = Math.abs(origin.getZ() - bounds.minZ());
+        int bottom = Math.abs(bounds.maxZ() - origin.getZ());
+        int edge = Math.min(Math.min(left, right), Math.min(top, bottom));
+        if (edge == left) return new BlockPos(bounds.minX() - 2, origin.getY(), z);
+        if (edge == right) return new BlockPos(bounds.maxX() + 2, origin.getY(), z);
+        if (edge == top) return new BlockPos(x, origin.getY(), bounds.minZ() - 2);
+        return new BlockPos(x, origin.getY(), bounds.maxZ() + 2);
+    }
+
     private static BlockPos safeExit(ServerLevel level,BoundingBox bounds,BlockPos origin,java.util.function.Predicate<BlockPos> safe) {
         int minY=Math.max(level.getMinBuildHeight()+1,bounds.minY()-EXIT_SEARCH_MARGIN);
         int maxY=Math.min(level.getMaxBuildHeight()-2,bounds.maxY()+EXIT_SEARCH_MARGIN);
         int anchorY=Math.max(minY,Math.min(maxY,origin.getY()));
-        for(int offset=1;offset<=EXIT_SEARCH_MARGIN;offset++) {
+        for(int offset=2;offset<=EXIT_SEARCH_MARGIN;offset++) {
             int minX=bounds.minX()-offset,maxX=bounds.maxX()+offset,minZ=bounds.minZ()-offset,maxZ=bounds.maxZ()+offset;
             BlockPos best=null;
             double distance=Double.MAX_VALUE;
@@ -498,7 +524,7 @@ public final class StructureStaging {
         }
         AREAS.values().stream()
                 .filter(candidate -> candidate.dimension().equals(player.level().dimension().location().toString()) && candidate.distance(player.position()) <= LANDMARK_RADIUS)
-                .forEach(candidate -> Landmarks.publishBoss(player.server, candidate.id(), candidate.boss(), player.level().dimension().location(), candidate.center()));
+                .forEach(candidate -> Landmarks.publishBoss(player.server, candidate.id(), candidate.boss(), player.level().dimension().location(), candidate.center(), candidate.bounds()));
         if (area == null) { INSIDE.remove(player.getUUID()); return; }
         CompoundTag activeParty = party(player.serverLevel(), area.id());
         if (activeParty != null) HostedBoundary.observe(player, activeParty, area.bounds());
@@ -587,13 +613,17 @@ public final class StructureStaging {
     }
 
     public static List<EventBoundary> solidBoundaries(net.minecraft.world.entity.Entity entity) {
+        return solidBoundaries(entity, null);
+    }
+
+    static List<EventBoundary> solidBoundaries(net.minecraft.world.entity.Entity entity, AABB query) {
         if (!(entity.level() instanceof ServerLevel level)) return List.of();
         List<EventBoundary> result = new ArrayList<>();
         for (Area area : AREAS.values()) {
             if (!area.dimension().equals(level.dimension().location().toString())) continue;
             BoundingBox bounds = area.shell();
-            AABB reach = entity.getBoundingBox().inflate(2D);
-            if (reach.maxX < bounds.minX() || reach.minX > bounds.maxX() + 1D || reach.maxZ < bounds.minZ() || reach.minZ > bounds.maxZ() + 1D) continue;
+            if (query != null && (query.maxX < bounds.minX() || query.minX > bounds.maxX() + 1D
+                    || query.maxZ < bounds.minZ() || query.minZ > bounds.maxZ() + 1D)) continue;
             List<ServerPlayer> players = SolidBoundary.players(entity);
             CompoundTag row = party(level, area.id());
             boolean passable = row != null && !players.isEmpty() && players.stream().allMatch(player -> HostedBoundary.passable(player, row));
@@ -605,19 +635,31 @@ public final class StructureStaging {
 
     static BossTeleportSafety.Decision safeTeleport(ServerPlayer player, ServerLevel level, Vec3 requested) {
         discover(level, BlockPos.containing(requested));
-        AABB destination = player.getDimensions(player.getPose()).makeBoundingBox(requested);
+        AABB source = SolidBoundary.movementBox(player);
+        AABB destination = SolidBoundary.destinationBox(player, requested);
         for (Area area : AREAS.values()) {
-            if (!area.dimension().equals(level.dimension().location().toString())) continue;
+            ServerLevel areaLevel = level(player.server, area);
+            if (areaLevel == null) continue;
             BoundingBox shell = area.shell();
             EventBoundary boundary = SolidBoundary.boundary(area.id(), area.dimension(), shell.minX(), shell.minZ(), shell.maxX(), shell.maxZ(),
-                    level.getMinBuildHeight(), level.getMaxBuildHeight() - 1, EventRules.RAID_COLOR.get(), false);
-            boolean inside = destination.minX > shell.minX() && destination.maxX < shell.maxX() + 1D
-                    && destination.minZ > shell.minZ() && destination.maxZ < shell.maxZ() + 1D;
-            boolean authorized = Optional.ofNullable(party(level, area.id())).map(value -> HostedBoundary.authorized(player, value)).orElse(false);
-            boolean wall = SolidBoundary.intersectsWall(destination, boundary);
-            if (!inside && !wall) continue;
-            if (!wall && authorized && level.noCollision(player, destination)) continue;
-            BlockPos safe = safeExit(player, level, area, BlockPos.containing(requested));
+                    areaLevel.getMinBuildHeight(), areaLevel.getMaxBuildHeight() - 1, EventRules.RAID_COLOR.get(), false);
+            boolean sourceInside = player.serverLevel() == areaLevel && SolidBoundary.contains(source, boundary);
+            boolean destinationInside = level == areaLevel && SolidBoundary.contains(destination, boundary);
+            boolean destinationWall = level == areaLevel && SolidBoundary.intersectsWall(destination, boundary);
+            CompoundTag row = party(areaLevel, area.id());
+            if (row != null && HostedBoundary.locked(player, row)) {
+                if (destinationInside && !destinationWall && level.noCollision(player, destination)) continue;
+                if (sourceInside && !SolidBoundary.intersectsWall(source, boundary) && areaLevel.noCollision(player, source))
+                    return BossTeleportSafety.Decision.redirect(player.position());
+                BlockPos respawn = RaidArenaApi.respawnPosition(player.server, area.id().toString(), area.boss()).orElse(null);
+                Vec3 recovery = respawn == null ? null : Vec3.atBottomCenterOf(respawn);
+                AABB recoveryBox = recovery == null ? null : SolidBoundary.destinationBox(player, recovery);
+                return BossTeleportSafety.Decision.redirect(recoveryBox != null && SolidBoundary.contains(recoveryBox, boundary)
+                        && !SolidBoundary.intersectsWall(recoveryBox, boundary) && areaLevel.noCollision(player, recoveryBox) ? recovery : null);
+            }
+            if (!destinationInside && !destinationWall) continue;
+            if (!destinationWall && row != null && HostedBoundary.authorized(player, row) && level.noCollision(player, destination)) continue;
+            BlockPos safe = safeExit(player, areaLevel, area, BlockPos.containing(requested));
             return BossTeleportSafety.Decision.redirect(safe == null ? null : Vec3.atBottomCenterOf(safe));
         }
         return BossTeleportSafety.Decision.unmatched();

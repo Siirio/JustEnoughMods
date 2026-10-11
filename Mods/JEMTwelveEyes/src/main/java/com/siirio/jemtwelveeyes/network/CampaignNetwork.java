@@ -11,7 +11,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class CampaignNetwork {
-    private static final String PROTOCOL_VERSION = "3";
+    private static final String PROTOCOL_VERSION = "4";
     private static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder
             .named(new ResourceLocation(JEMTwelveEyes.MOD_ID, "main"))
             .networkProtocolVersion(() -> PROTOCOL_VERSION)
@@ -40,9 +40,9 @@ public final class CampaignNetwork {
                 .add();
     }
 
-    public static void openBossMap(ServerPlayer player, BlockPos position, ResourceLocation dimension, String markerNameKey) {
+    public static void openBossMap(ServerPlayer player, BlockPos position, ResourceLocation dimension, String markerNameKey, boolean shared) {
         CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new OpenBossMapPacket(
-                position.getX(), position.getY(), position.getZ(), dimension, markerNameKey
+                position.getX(), position.getY(), position.getZ(), dimension, markerNameKey, shared
         ));
     }
 

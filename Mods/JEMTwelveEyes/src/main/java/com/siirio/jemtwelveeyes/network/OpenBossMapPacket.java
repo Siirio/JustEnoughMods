@@ -8,7 +8,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.network.NetworkEvent;
 
-record OpenBossMapPacket(int x, int y, int z, ResourceLocation dimension, String markerNameKey) {
+record OpenBossMapPacket(int x, int y, int z, ResourceLocation dimension, String markerNameKey, boolean shared) {
     private static final int MAX_MARKER_NAME_LENGTH = 256;
 
     static void encode(OpenBossMapPacket packet, FriendlyByteBuf buffer) {
@@ -17,6 +17,7 @@ record OpenBossMapPacket(int x, int y, int z, ResourceLocation dimension, String
         buffer.writeInt(packet.z);
         buffer.writeResourceLocation(packet.dimension);
         buffer.writeUtf(packet.markerNameKey, MAX_MARKER_NAME_LENGTH);
+        buffer.writeBoolean(packet.shared);
     }
 
     static OpenBossMapPacket decode(FriendlyByteBuf buffer) {
@@ -25,13 +26,14 @@ record OpenBossMapPacket(int x, int y, int z, ResourceLocation dimension, String
                 buffer.readInt(),
                 buffer.readInt(),
                 buffer.readResourceLocation(),
-                buffer.readUtf(MAX_MARKER_NAME_LENGTH)
+                buffer.readUtf(MAX_MARKER_NAME_LENGTH),
+                buffer.readBoolean()
         );
     }
 
     static void handle(OpenBossMapPacket packet, Supplier<NetworkEvent.Context> context) {
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> CampaignMapClient.open(
-                packet.x, packet.y, packet.z, packet.dimension, packet.markerNameKey
+                packet.x, packet.y, packet.z, packet.dimension, packet.markerNameKey, packet.shared
         ));
         context.get().setPacketHandled(true);
     }

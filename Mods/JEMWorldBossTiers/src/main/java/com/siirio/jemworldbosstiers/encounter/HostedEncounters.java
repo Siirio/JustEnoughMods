@@ -449,6 +449,7 @@ public final class HostedEncounters {
             if (data(boss).contains("VictoryAt")) {
                 continue;
             }
+            maintainTarget(boss);
             boolean remains = false;
             for (String id : players(boss).getAllKeys()) {
                 CompoundTag entry = players(boss).getCompound(id);
@@ -490,6 +491,23 @@ public final class HostedEncounters {
                 BossPeriodicEffects.tick(boss,effectTargets);
             }
         }
+    }
+
+    private static void maintainTarget(LivingEntity boss) {
+        if (!(boss instanceof Mob mob) || mob.isNoAi()) return;
+        LivingEntity current = mob.getTarget();
+        if (current instanceof ServerPlayer player && validTarget(boss, player)) return;
+        if (current != null) mob.setTarget(null);
+        players(boss).getAllKeys().stream().map(UUID::fromString)
+                .map(boss.getServer().getPlayerList()::getPlayer)
+                .filter(player -> validTarget(boss, player))
+                .min(Comparator.comparingDouble(boss::distanceToSqr))
+                .ifPresent(mob::setTarget);
+    }
+
+    private static boolean validTarget(LivingEntity boss, ServerPlayer player) {
+        return player.isAlive() && !player.isSpectator() && ALIVE.equals(participant(boss, player.getUUID()).getString("State"))
+                && inside(boss, player);
     }
 
     private static void loseLife(LivingDeathEvent event, LivingEntity boss, ServerPlayer player, CompoundTag entry) {
@@ -608,6 +626,7 @@ public final class HostedEncounters {
         if (!event.getLevel().isClientSide() && event.getEntity() instanceof LivingEntity boss && isHosted(boss)) {
             applyScale(boss, Attributes.ATTACK_DAMAGE, 1);
             ACTIVE.put(boss.getUUID(), boss);
+            if (boss instanceof Mob mob) mob.setNoAi(false);
             for (String id : players(boss).getAllKeys()) {
                 CompoundTag entry = players(boss).getCompound(id);
                 if (boss.getServer().getPlayerList().getPlayer(UUID.fromString(id)) == null && !entry.contains("DisconnectUntil")) {

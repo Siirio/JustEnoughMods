@@ -1,6 +1,5 @@
 package com.siirio.jemserver.smp.events;
 
-import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.phys.AABB;
@@ -43,21 +42,18 @@ public final class SolidBoundary {
         return player != null && (player == entity || player.getRootVehicle() == entity);
     }
 
-    public static Vec3 collide(Entity entity, Vec3 movement) {
-        if (movement.lengthSqr() == 0) return movement;
-        Vec3 constrained = movement;
-        for (EventBoundary boundary : boundaries(entity)) {
-            Wall wall = new Wall(boundary);
-            constrained = boundary.type().equals("RESOURCE_RUSH")
-                    ? wall.collideResourceRush(entity.getBoundingBox(), constrained)
-                    : wall.collide(entity.getBoundingBox(), constrained);
-            if (constrained.lengthSqr() == 0) break;
-        }
-        return constrained;
-    }
-
     public static List<VoxelShape> collisionShapes(Entity entity, AABB query) {
-        return boundaries(entity).stream().flatMap(boundary -> new Wall(boundary).shapes().stream())
+        List<EventBoundary> boundaries;
+        if (entity.level().isClientSide) boundaries = boundaries(entity);
+        else {
+            boundaries = new ArrayList<>(StructureStaging.solidBoundaries(entity, query));
+            boundaries.addAll(BloodMoonSolidBoundary.boundaries(entity));
+        }
+        return boundaries.stream().filter(boundary -> query.maxX >= boundary.minX() - WALL_THICKNESS
+                        && query.minX <= boundary.maxX() + 1D + WALL_THICKNESS
+                        && query.maxZ >= boundary.minZ() - WALL_THICKNESS
+                        && query.minZ <= boundary.maxZ() + 1D + WALL_THICKNESS)
+                .flatMap(boundary -> new Wall(boundary).shapes().stream())
                 .filter(shape -> shape.bounds().intersects(query)).toList();
     }
 
@@ -65,15 +61,36 @@ public final class SolidBoundary {
         return new Wall(boundary).shapes().stream().anyMatch(shape -> shape.bounds().intersects(box));
     }
 
-    public static boolean permitsTeleport(Entity entity, Vec3 destination) {
-        AABB origin = entity.getBoundingBox();
+    public static boolean permitsTeleport(Entity entity, net.minecraft.server.level.ServerLevel level, Vec3 destination) {
+        List<EventBoundary> boundaries = boundaries(entity).stream().filter(boundary -> !boundary.type().equals("RESOURCE_RUSH")).toList();
+        if (boundaries.isEmpty()) return true;
+        AABB origin = movementBox(entity);
+        if (entity.level() != level) return boundaries.stream().noneMatch(boundary -> contains(origin, boundary));
         AABB target = origin.move(destination.subtract(entity.position()));
-        return boundaries(entity).stream().filter(boundary -> !boundary.type().equals("RESOURCE_RUSH"))
-                .allMatch(boundary -> !intersectsWall(target, boundary)
+        return boundaries.stream().allMatch(boundary -> !intersectsWall(target, boundary)
                 && contains(origin, boundary) == contains(target, boundary));
     }
 
-    private static boolean contains(AABB box, EventBoundary boundary) {
+    public static boolean permitsMovement(Entity entity, AABB origin, AABB target) {
+        return boundaries(entity).stream().allMatch(boundary -> !intersectsWall(target, boundary)
+                && (boundary.type().equals("RESOURCE_RUSH") || contains(origin, boundary) == contains(target, boundary)));
+    }
+
+    static boolean contained(Entity entity) {
+        AABB box = movementBox(entity);
+        return boundaries(entity).stream().filter(boundary -> !boundary.type().equals("RESOURCE_RUSH"))
+                .anyMatch(boundary -> contains(box, boundary));
+    }
+
+    static AABB movementBox(Entity entity) {
+        return entity.getRootVehicle().getBoundingBox().minmax(entity.getBoundingBox());
+    }
+
+    static AABB destinationBox(Entity entity, Vec3 destination) {
+        return movementBox(entity).move(destination.subtract(entity.position()));
+    }
+
+    static boolean contains(AABB box, EventBoundary boundary) {
         return box.minX >= boundary.minX() && box.maxX <= boundary.maxX() + 1D
                 && box.minZ >= boundary.minZ() && box.maxZ <= boundary.maxZ() + 1D;
     }
@@ -99,26 +116,6 @@ public final class SolidBoundary {
             return result;
         }
 
-        private Vec3 collideResourceRush(AABB box, Vec3 movement) {
-            List<VoxelShape> shapes = shapes();
-            double x = Shapes.collide(Direction.Axis.X, box, shapes, movement.x);
-            if (x != 0) box = box.move(x, 0, 0);
-            double z = Shapes.collide(Direction.Axis.Z, box, shapes, movement.z);
-            return new Vec3(x, movement.y, z);
-        }
-
-        private Vec3 collide(AABB box, Vec3 movement) {
-            List<VoxelShape> shapes = shapes();
-            AABB swept = box.expandTowards(movement).inflate(WALL_THICKNESS);
-            if (shapes.stream().noneMatch(shape -> shape.bounds().intersects(swept))) return movement;
-            double y = Shapes.collide(Direction.Axis.Y, box, shapes, movement.y);
-            if (y != 0) box = box.move(0, y, 0);
-            boolean zFirst = Math.abs(movement.x) < Math.abs(movement.z);
-            double first = Shapes.collide(zFirst ? Direction.Axis.Z : Direction.Axis.X, box, shapes, zFirst ? movement.z : movement.x);
-            if (first != 0) box = zFirst ? box.move(0, 0, first) : box.move(first, 0, 0);
-            double second = Shapes.collide(zFirst ? Direction.Axis.X : Direction.Axis.Z, box, shapes, zFirst ? movement.x : movement.z);
-            return zFirst ? new Vec3(second, y, first) : new Vec3(first, y, second);
-        }
     }
 
     private SolidBoundary() {}

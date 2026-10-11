@@ -14,6 +14,7 @@ public final class ServerConfig {
     public static final ForgeConfigSpec.IntValue MAX_PUBLIC_PER_PLAYER;
     public static final ForgeConfigSpec.IntValue MAX_LANDMARKS;
     public static final ForgeConfigSpec.IntValue NAME_LENGTH;
+    public static final ForgeConfigSpec.IntValue LANDMARK_SYNC_BATCH_SIZE;
 
     static {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
@@ -28,6 +29,7 @@ public final class ServerConfig {
         MAX_PUBLIC_PER_PLAYER = builder.defineInRange("maxPublicPerPlayer", 32, 1, 4096);
         MAX_LANDMARKS = builder.defineInRange("maxLandmarks", 512, 1, 4096);
         NAME_LENGTH = builder.defineInRange("maxNameLength", 48, 1, 80);
+        LANDMARK_SYNC_BATCH_SIZE = builder.defineInRange("syncBatchSize", 128, 1, 4096);
         builder.pop().push("leaderboard");
         LEADERBOARD_ENABLED = builder.define("enabled", true);
         KILL_CREDIT_TICKS = builder.defineInRange("environmentalKillCreditTicks", 100, 1, 1200);

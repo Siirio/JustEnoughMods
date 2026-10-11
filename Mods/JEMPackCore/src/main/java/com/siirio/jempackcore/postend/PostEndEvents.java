@@ -1,6 +1,8 @@
 package com.siirio.jempackcore.postend;
 
 import com.siirio.jemtwelveeyes.api.CampaignApi;
+import com.siirio.jemtwelveeyes.api.BossLocation;
+import com.siirio.jemtwelveeyes.BossLocationDiscoveredEvent;
 import net.minecraft.server.MinecraftServer;
 import com.siirio.jemtwelveeyes.AdvancementAwards;
 import com.siirio.jemtwelveeyes.network.CampaignNetwork;
@@ -19,6 +21,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -82,6 +85,18 @@ public final class PostEndEvents {
         if (event.isEndConquered() && event.getEntity() instanceof ServerPlayer player
                 && PENDING_REWARDS.remove(player.getUUID())) {
             give(player, new ItemStack(PostEndItems.MYSTERY_LOCATOR.get()));
+        }
+    }
+
+    @SubscribeEvent
+    public static void started(net.minecraftforge.event.server.ServerStartedEvent event) {
+        var server = event.getServer();
+        if (!server.isDedicatedServer()) return;
+        for (PostEndTarget target : PostEndTarget.values()) {
+            String key = "post_end/" + target.key();
+            var position = CampaignApi.locatedStructure(server, key);
+            if (position != null) MinecraftForge.EVENT_BUS.post(new BossLocationDiscoveredEvent(server,
+                    new BossLocation(key, target.entity(), net.minecraft.world.level.Level.END.location(), position)));
         }
     }
 

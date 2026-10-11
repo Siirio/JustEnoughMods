@@ -22,6 +22,7 @@ import net.minecraft.world.level.levelgen.structure.StructureStart;
 
 import java.util.Optional;
 import java.util.UUID;
+import java.nio.charset.StandardCharsets;
 
 public final class RaidArenaApi {
     private static AnchorMigrationHandler anchorMigrationHandler;
@@ -76,6 +77,47 @@ public final class RaidArenaApi {
                         .thenComparing(ArenaRecord::id))
                 .map(arena->new Arena(arena.id(),BuiltInRegistries.ENTITY_TYPE.getKey(boss.getType()),
                         ResourceLocation.tryParse(arena.dimension()),arena.respawnPosition(),arena.bounds()));
+    }
+
+    public static Optional<Arena> arena(MinecraftServer server, ResourceLocation entityType,
+                                        ResourceLocation dimension, BlockPos knownPosition) {
+        var profile = BalanceRegistry.boss(entityType).orElse(null);
+        if (profile == null) return Optional.empty();
+        return WorldTierData.get(server).arenas().stream()
+                .filter(arena -> arena.structureArena() && arena.profileKey().equals(profile.key())
+                        && arena.dimension().equals(dimension.toString()))
+                .filter(arena -> knownPosition.getX() >= arena.minX() && knownPosition.getX() <= arena.maxX()
+                        && knownPosition.getZ() >= arena.minZ() && knownPosition.getZ() <= arena.maxZ())
+                .min(java.util.Comparator.comparing(ArenaRecord::id))
+                .map(arena -> new Arena(arena.id(), entityType, dimension, arena.respawnPosition(), arena.bounds()));
+    }
+
+    public static Optional<Arena> arena(MinecraftServer server, String arenaId) {
+        ArenaRecord arena = WorldTierData.get(server).arena(arenaId).orElse(null);
+        return arena(arena);
+    }
+
+    public static Optional<Arena> arena(MinecraftServer server, UUID destinationId) {
+        ArenaRecord arena = WorldTierData.get(server).arenas().stream()
+                .filter(candidate -> destinationId.equals(arenaId(candidate.id())))
+                .findFirst().orElse(null);
+        return arena(arena);
+    }
+
+    private static Optional<Arena> arena(ArenaRecord arena) {
+        if (arena == null || !arena.structureArena()) return Optional.empty();
+        var profile = BalanceRegistry.bossByKey(arena.profileKey()).orElse(null);
+        ResourceLocation dimension = ResourceLocation.tryParse(arena.dimension());
+        if (profile == null || profile.entityIds().isEmpty() || dimension == null) return Optional.empty();
+        return Optional.of(new Arena(arena.id(), profile.entityIds().get(0), dimension, arena.respawnPosition(), arena.bounds()));
+    }
+
+    private static UUID arenaId(String arenaId) {
+        try {
+            return UUID.fromString(arenaId);
+        } catch (IllegalArgumentException namedIdentity) {
+            return UUID.nameUUIDFromBytes(arenaId.getBytes(StandardCharsets.UTF_8));
+        }
     }
 
     public static Optional<BlockPos> respawnPosition(MinecraftServer server,String arenaId,ResourceLocation entityType) {
