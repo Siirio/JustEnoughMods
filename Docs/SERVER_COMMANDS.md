@@ -61,3 +61,16 @@
 
 Для recovery структурного босса используется сохранённая точка его исходного structure-generation spawn. Живой экземпляр в вертикальной колонне арены возвращается туда без замены, отсутствующий создаётся из canonical BossProfile. Нельзя выполнять массовый `kill` по entity type, потому что это затрагивает native encounters и чужие попытки.
 
+## Chunk pre-generation
+
+Chunky `1.3.146` доступен server console и OP. Pre-generation создаёт настоящие чанки заранее, поэтому уменьшает server worldgen stalls и даёт VSS/Voxy готовые данные, но не устраняет клиентскую сборку LOD или shader rebuilds.
+
+- `chunky world <world>` — выбрать dimension.
+- `chunky center <x> <z>` — установить центр.
+- `chunky radius <radius>` — установить радиус в блоках.
+- `chunky start` — начать generation выбранной области.
+- `chunky progress` — показать прогресс.
+- `chunky pause` — безопасно приостановить и сохранить задачу.
+- `chunky continue` — продолжить сохранённую задачу.
+- `chunky cancel` — удалить текущую задачу после подтверждения.
+

@@ -14,6 +14,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class SafeLegacyGraveMixin {
     @Inject(method = "onLivingDeath", at = @At("HEAD"), cancellable = true, remap = false)
     private static void jem$safeDeath(LivingDeathEvent event, CallbackInfo ci) {
-        if (event.getEntity() instanceof Player player && (BloodMoonDeaths.keeps(player) || BloodMoonDeaths.protectsNextDeath(player))) ci.cancel();
+        if (event.getEntity() instanceof Player player && BloodMoonDeaths.keeps(player)) ci.cancel();
     }
 }

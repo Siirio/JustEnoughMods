@@ -2,6 +2,7 @@ package com.siirio.jemserver.smp.events;
 
 import com.siirio.jemserver.smp.SmpData;
 import com.siirio.jemserver.smp.SmpRecords;
+import com.siirio.jemworldbosstiers.encounter.HostedEncounters;
 import com.siirio.jemworldbosstiers.encounter.PendingRewardContainer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -21,26 +22,30 @@ import java.util.ArrayList;
 @Mod.EventBusSubscriber(modid = "jem_server", value = net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER)
 public final class BloodMoonDeaths {
     private static final String RECORDED = "jem:blood_moon_death_recorded";
-    private static final String ORDINARY = "jem:blood_moon_ordinary_death";
+    private static final String HOSTED_INVENTORY = "jem:hosted_inventory";
 
-    @SubscribeEvent(priority = EventPriority.LOWEST)
+    @SubscribeEvent(priority = EventPriority.LOW)
     public static void death(LivingDeathEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer player) || player.getPersistentData().getBoolean(RECORDED)) return;
         var row = EventSession.forPlayer(player);
-        if (row == null) return;
+        if (row == null) {
+            if (!HostedEncounters.keepsInventory(player)) return;
+            var inventory = new ListTag();
+            player.getInventory().save(inventory);
+            player.getPersistentData().put(HOSTED_INVENTORY, inventory);
+            player.getInventory().clearContent();
+            return;
+        }
         player.getPersistentData().putBoolean(RECORDED, true);
         var member = SmpRecords.members(row).getCompound(player.getStringUUID());
         int deaths = member.getInt("actualDeaths") + 1;
         member.putInt("actualDeaths", deaths);
         int maximumLives=EventRules.FAILURE_DEATHS.get();
-        player.getPersistentData().putBoolean(ORDINARY, deaths > maximumLives);
         member.putBoolean("awaitingReturn", deaths >= maximumLives);
-        if (deaths <= maximumLives) {
-            var inventory = new ListTag();
-            player.getInventory().save(inventory);
-            member.put("safeInventory", inventory);
-            member.putBoolean("safeRespawn", true);
-        }
+        var inventory = new ListTag();
+        player.getInventory().save(inventory);
+        member.put("safeInventory", inventory);
+        member.putBoolean("safeRespawn", true);
         if(deaths>=maximumLives) member.putBoolean("eliminated",true);
         SmpData.get(player.server).changed(row);
         if(deaths>=maximumLives && SmpRecords.memberIds(row).stream().noneMatch(id->new EventSession(row).accepted(id))) BloodMoon.fail(player.server,row);
@@ -58,19 +63,10 @@ public final class BloodMoonDeaths {
         return false;
     }
 
-    public static boolean ordinaryDeath(Player player) {
-        return player instanceof ServerPlayer && player.getPersistentData().getBoolean(ORDINARY);
-    }
-
-    public static boolean protectsNextDeath(Player player) {
-        if (!(player instanceof ServerPlayer serverPlayer)) return false;
-        var row = EventSession.forPlayer(serverPlayer);
-        return row != null && SmpRecords.members(row).getCompound(player.getStringUUID()).getInt("actualDeaths") < EventRules.FAILURE_DEATHS.get();
-    }
-
     public static boolean keeps(Player player) {
         if (!(player instanceof ServerPlayer serverPlayer)) return false;
-        return recovery(serverPlayer) != null;
+        return serverPlayer.getPersistentData().contains(HOSTED_INVENTORY, Tag.TAG_LIST)
+                || HostedEncounters.keepsInventory(serverPlayer) || recovery(serverPlayer) != null;
     }
 
     private static CompoundTag recovery(ServerPlayer player) {
@@ -85,6 +81,10 @@ public final class BloodMoonDeaths {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void keepOtherDrops(LivingDropsEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
+        if (player.getPersistentData().contains(HOSTED_INVENTORY, Tag.TAG_LIST)) {
+            event.getDrops().clear();
+            return;
+        }
         var row = recovery(player);
         if (row == null || event.getDrops().isEmpty()) return;
         var member = SmpRecords.members(row).getCompound(player.getStringUUID());
@@ -102,7 +102,13 @@ public final class BloodMoonDeaths {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void clone(PlayerEvent.Clone event) {
-        if (event.isWasDeath() && event.getEntity() instanceof ServerPlayer player) restore(player);
+        if (!event.isWasDeath() || !(event.getEntity() instanceof ServerPlayer player)) return;
+        if (event.getOriginal().getPersistentData().contains(HOSTED_INVENTORY, Tag.TAG_LIST)) {
+            player.getInventory().load(event.getOriginal().getPersistentData().getList(HOSTED_INVENTORY, Tag.TAG_COMPOUND));
+            event.getOriginal().getPersistentData().remove(HOSTED_INVENTORY);
+            player.getPersistentData().remove(HOSTED_INVENTORY);
+        }
+        restore(player);
     }
 
     private static void restore(ServerPlayer player) {
@@ -135,7 +141,6 @@ public final class BloodMoonDeaths {
 
     private static void finishRespawn(ServerPlayer player) {
         player.getPersistentData().remove(RECORDED);
-        player.getPersistentData().remove(ORDINARY);
         var row = recovery(player);
         if (row == null) row = EventSession.forPlayer(player);
         if (row == null) return;

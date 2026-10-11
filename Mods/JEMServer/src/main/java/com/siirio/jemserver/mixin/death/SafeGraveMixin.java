@@ -14,6 +14,5 @@ public abstract class SafeGraveMixin {
     @Inject(method = "keepInventory", at = @At("HEAD"), cancellable = true, remap = false)
     private static void jem$safeDeath(Player player, CallbackInfoReturnable<Boolean> cir) {
         if (BloodMoonDeaths.keeps(player)) cir.setReturnValue(true);
-        else if (BloodMoonDeaths.ordinaryDeath(player)) cir.setReturnValue(false);
     }
 }

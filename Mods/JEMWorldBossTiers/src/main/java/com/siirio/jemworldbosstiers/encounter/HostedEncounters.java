@@ -91,6 +91,12 @@ public final class HostedEncounters {
         var boss=encounter(player.getUUID());
         return boss!=null && !boss.getPersistentData().getBoolean("jem_solo") && players(boss).size()>1 && ALIVE.equals(participant(boss,player.getUUID()).getString("State")) ? boss.getUUID() : null;
     }
+
+    public static boolean keepsInventory(ServerPlayer player) {
+        var boss=encounter(player.getUUID());
+        return boss!=null && ALIVE.equals(participant(boss,player.getUUID()).getString("State")) && inside(boss,player);
+    }
+
     public static void revived(ServerPlayer helper) {
         var boss=encounter(helper.getUUID());
         if(boss!=null) {
