@@ -387,7 +387,7 @@ public final class HostedEncounters {
             entry.putDouble("Z", player.getZ());
             player.getPersistentData().putUUID(DOWNED_MARKER, boss.getUUID());
             player.setHealth(1);
-        } else loseLife(event, boss, player, entry);
+        } else eliminate(player, entry);
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
@@ -464,9 +464,11 @@ public final class HostedEncounters {
                 }
                 if (downed && now(boss) >= entry.getLong("BleedoutUntil")) {
                     entry.remove("BleedoutUntil");
-                    entry.putString("State", ALIVE);
-                    if(player!=null) loseLife(null,boss,player,entry);
-                    else entry.putString("State",ELIMINATED);
+                    entry.putBoolean("BleedoutDeath", true);
+                    if (player != null) {
+                        eliminate(player, entry);
+                        player.hurt(player.damageSources().genericKill(), Float.MAX_VALUE);
+                    } else entry.putString("State",ELIMINATED);
                 } else if (entry.contains("DisconnectUntil") && now(boss) >= entry.getLong("DisconnectUntil")) {
                     entry.putString("State", ELIMINATED);
                 }
@@ -510,25 +512,9 @@ public final class HostedEncounters {
                 && inside(boss, player);
     }
 
-    private static void loseLife(LivingDeathEvent event, LivingEntity boss, ServerPlayer player, CompoundTag entry) {
-        if(event!=null) event.setCanceled(true);
+    private static void eliminate(ServerPlayer player, CompoundTag entry) {
         player.getPersistentData().remove(DOWNED_MARKER);
-        int livesLost=entry.getInt("LivesLost")+1;
-        entry.putInt("LivesLost",livesLost);
-        if(livesLost<3) {
-            entry.putString("State",ALIVE);
-            entry.putLong("ImmuneUntil",now(boss)+HostedConfig.IMMUNITY.get());
-            player.setHealth(Math.max(1F,player.getMaxHealth()*.5F));
-            player.teleportTo((ServerLevel)boss.level(),boss.getX(),boss.getY(),boss.getZ(),player.getYRot(),player.getXRot());
-            player.fallDistance=0;
-            return;
-        }
         entry.putString("State",ELIMINATED);
-        var key=ResourceKey.create(Registries.DIMENSION,new ResourceLocation(entry.getString("OriginDimension")));
-        var level=player.server.getLevel(key);
-        if(level!=null) player.teleportTo(level,entry.getDouble("OriginX"),entry.getDouble("OriginY"),entry.getDouble("OriginZ"),entry.getFloat("OriginYaw"),entry.getFloat("OriginPitch"));
-        player.setHealth(Math.max(1F,player.getMaxHealth()*.5F));
-        player.fallDistance=0;
     }
 
     private static void close(LivingEntity boss, boolean success) {
