@@ -1,7 +1,10 @@
 import argparse
 import hashlib
 import json
+import os
+import re
 import shutil
+import subprocess
 import sys
 import zipfile
 from datetime import datetime
@@ -232,6 +235,19 @@ def synchronize(config, target_name):
     target = config[target_name]
     ensure_directory(source, "Client source")
     ensure_directory(target, target_name)
+    native_state_path = target / "automodpack" / "client" / "active-state.json"
+    if target_name == "testClient" and native_state_path.is_file():
+        native_state = json.loads(native_state_path.read_text(encoding="utf-8"))
+        if native_state.get("status") == "ACTIVE":
+            print(json.dumps({
+                "target": str(target),
+                "mode": "AutoModpack",
+                "activeContentToken": native_state.get("contentToken"),
+                "copied": [],
+                "deleted": [],
+                "message": "Selected AutoModpack owns installation. Stage and publish the clean Client on the local server, then update through Minecraft; direct gameDir synchronization is disabled.",
+            }, ensure_ascii=False, indent=2))
+            return
     exclusions = config["testExcluded"] if target_name == "testClient" else config["stableExcluded"]
     current_files = inventory(source, exclusions)
     state_path = sync_state_path(config, target_name)
@@ -240,6 +256,7 @@ def synchronize(config, target_name):
         if state_path.is_file()
         else inventory_from_baseline(config, exclusions)
     )
+    previous_files = exclude_inventory(previous_files, exclusions)
     copied = []
     deleted = []
     for relative, metadata in current_files.items():
@@ -259,6 +276,86 @@ def synchronize(config, target_name):
     state_path.parent.mkdir(parents=True, exist_ok=True)
     state_path.write_text(json.dumps(current_files, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps({"target": str(target), "copied": copied, "deleted": deleted}, ensure_ascii=False, indent=2))
+
+
+def recover_pack_sync(config, transaction_path):
+    target = config["testClient"].resolve()
+    storage = target / "automodpack" / "client"
+    ensure_directory(storage, "Native client storage")
+    if transaction_path is None:
+        raise SystemExit("Specify the quarantined native transaction with --transaction")
+    transaction_path = transaction_path.resolve()
+    if transaction_path.parent != storage or not transaction_path.name.startswith("update-transaction.json.corrupt-"):
+        raise SystemExit("Recovery accepts only a quarantined transaction in the development profile")
+    powershell = shutil.which("pwsh") or shutil.which("powershell")
+    jshell = shutil.which("jshell")
+    if powershell is None or jshell is None:
+        raise SystemExit("PowerShell and the JDK JShell are required for native recovery")
+    processes = subprocess.run([
+        powershell, "-NoProfile", "-Command",
+        "Get-CimInstance Win32_Process -Filter \"Name='java.exe' OR Name='javaw.exe'\" | "
+        "Where-Object { $_.CommandLine -and "
+        "$_.CommandLine.IndexOf($env:JEM_RECOVERY_PROFILE, [StringComparison]::OrdinalIgnoreCase) -ge 0 } | "
+        "Select-Object -ExpandProperty ProcessId",
+    ], env={**os.environ, "JEM_RECOVERY_PROFILE": str(target)}, capture_output=True, text=True, check=True)
+    if processes.stdout.strip():
+        raise SystemExit("Close Minecraft and TLauncher before recovery; profile processes: " + processes.stdout.strip())
+    pending = storage / "update-transaction.json"
+    transaction_source = pending if pending.exists() else transaction_path
+    transaction = json.loads(transaction_source.read_text(encoding="utf-8"))
+    plan = transaction["plan"]
+    selected = json.loads((storage / "selected.json").read_text(encoding="utf-8"))
+    active = json.loads((storage / "active-state.json").read_text(encoding="utf-8"))
+    if transaction["purpose"] != "MODPACK_UPDATE" or active["status"] != "ACTIVE" or selected["modpackId"] != plan["modpackId"] or active["modpackId"] != plan["modpackId"]:
+        raise SystemExit("Transaction does not belong to the selected active installation")
+    bootstrap = target / "mods" / "jem-bootstrap.jar"
+    bootstrap_sources = [
+        config["clientSource"] / "mods" / "jem-bootstrap.jar",
+        ROOT / "Mods" / "JEMBootstrap" / "build" / "libs" / "jem-bootstrap.jar",
+    ]
+    if not any(path.is_file() and digest(bootstrap) == digest(path) for path in bootstrap_sources):
+        raise SystemExit("Installed bootstrap differs from the clean distribution and the current native source build")
+    profile = json.loads((target / (target.name + ".json")).read_text(encoding="utf-8"))
+    dependencies = []
+    for library in profile["libraries"]:
+        group, artifact, version = library["name"].split(":")[:3]
+        if artifact in {"gson", "log4j-api", "log4j-core"}:
+            dependency = target.parent.parent / "libraries" / group.replace(".", "/") / artifact / version / f"{artifact}-{version}.jar"
+            if not dependency.is_file():
+                raise SystemExit(f"Native dependency is missing: {dependency}")
+            dependencies.append(dependency)
+    if {path.parent.parent.name for path in dependencies} != {"gson", "log4j-api", "log4j-core"}:
+        raise SystemExit("Profile must declare the native Gson and Log4j dependencies")
+    journal = storage / "history" / plan["modpackId"] / "journal.jsonl"
+    policies = {json.loads(line)["policySha1"] for line in journal.read_text(encoding="utf-8").splitlines()}
+    imports = []
+    for sha1 in sorted(policies):
+        if not re.fullmatch(r"[0-9a-f]{40}", sha1):
+            raise SystemExit("Invalid recorded policy identity")
+        source = config["server"] / "automodpack" / "server" / "data" / "objects" / sha1[:2] / sha1[2:]
+        if not source.is_file() or hashlib.sha1(source.read_bytes()).hexdigest() != sha1:
+            raise SystemExit(f"Exact mirrored policy is unavailable on the local server: {sha1}")
+        imports.append(f'ClientObjectStore.storeObject(nativeStorage, {json.dumps(sha1)}, Files.readAllBytes(Path.of({json.dumps(source.resolve().as_posix())})));')
+    script = "\n".join([
+        "import pl.skidam.automodpack_core.update.*;",
+        "import pl.skidam.automodpack_core.client.*;",
+        "import pl.skidam.automodpack_core.Constants;",
+        "import java.nio.file.*;",
+        'Constants.LOADER = "forge";',
+        'var nativeStorage = ClientStorage.open(Path.of(System.getProperty("user.dir")));',
+        f'var nativePending = UpdateTransaction.read(Path.of({json.dumps(transaction_source.as_posix())}));',
+        'ClientStorageMutation.run(nativeStorage, () -> { ' + " ".join(imports) + ' return null; });',
+        'try { var result = UpdateAttempt.resume(nativeStorage, nativePending, new pl.skidam.automodpack_loader_core_forge.mods.ModpackLoader(), Constants.LOADER); System.out.println("Native recovery: " + result.status()); if (result.success()) ClientStorageMutation.run(nativeStorage, () -> { var state = nativeStorage.readActiveState(); if (!new ClientGenerationStore(nativeStorage).headMatchesActive(state.modpackId, state.contentToken)) throw new java.io.IOException("Installed generation differs from mirrored head"); nativeStorage.setDetached(state.modpackId, false); return null; }); } catch (Throwable failure) { failure.printStackTrace(); }',
+        "/exit",
+    ])
+    subprocess.run([
+        jshell, "--class-path", os.pathsep.join(str(path) for path in [bootstrap, *dependencies]),
+        "--feedback", "concise", "-",
+    ], cwd=target, input=script, text=True, check=True)
+    installed = json.loads((storage / "active-state.json").read_text(encoding="utf-8"))
+    if installed["contentToken"] != plan["contentToken"] or installed.get("detached") or pending.exists():
+        raise SystemExit("Native recovery did not finish the requested generation")
+    print(json.dumps({"target": str(target), "contentToken": installed["contentToken"], "mode": "Native AutoModpack recovery"}, ensure_ascii=False, indent=2))
 
 
 def stage_pack_sync(config):
@@ -450,8 +547,9 @@ def package_full(config):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("action", choices=("baseline", "promote-baseline", "status", "sync-stable", "sync-test", "stage-pack-sync", "package-update", "repackage-release", "package-full"))
+    parser.add_argument("action", choices=("baseline", "promote-baseline", "status", "sync-stable", "sync-test", "stage-pack-sync", "recover-pack-sync", "package-update", "repackage-release", "package-full"))
     parser.add_argument("--base-update", type=Path)
+    parser.add_argument("--transaction", type=Path)
     args = parser.parse_args()
     config = load_config()
     actions = {
@@ -461,6 +559,7 @@ def main():
         "sync-stable": lambda value: synchronize(value, "stableClient"),
         "sync-test": lambda value: synchronize(value, "testClient"),
         "stage-pack-sync": stage_pack_sync,
+        "recover-pack-sync": lambda value: recover_pack_sync(value, args.transaction),
         "package-update": package_update,
         "repackage-release": lambda value: repackage_release(value, args.base_update),
         "package-full": package_full,

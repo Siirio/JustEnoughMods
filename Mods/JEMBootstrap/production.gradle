@@ -1,0 +1,18 @@
+allprojects {
+    tasks.withType(org.gradle.api.tasks.bundling.Jar).configureEach {
+        manifest.attributes(
+            'JEM-Bootstrap-Revision': providers.gradleProperty('jemBootstrapRevision').get(),
+            'JEM-Upstream-Commit': providers.gradleProperty('jemUpstreamCommit').get()
+        )
+    }
+    tasks.configureEach {
+        if (it instanceof org.gradle.api.tasks.testing.Test || it.name.startsWith('spotless') || it.group == 'verification') {
+            it.enabled = false
+        }
+    }
+    afterEvaluate {
+        configurations.matching { it.name.toLowerCase().contains('test') }.configureEach {
+            dependencies.clear()
+        }
+    }
+}

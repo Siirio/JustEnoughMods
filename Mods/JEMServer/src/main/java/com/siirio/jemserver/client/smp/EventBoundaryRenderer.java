@@ -1,7 +1,6 @@
 package com.siirio.jemserver.client.smp;
 
 import com.siirio.jemserver.smp.events.*;
-import com.siirio.jemserver.smp.events.BloodMoonSolidBoundary;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.Minecraft;
@@ -27,8 +26,7 @@ public final class EventBoundaryRenderer {
     private static List<EventBoundary> zones=List.of();
     public static void accept(EventZones packet) {
         zones=List.copyOf(packet.bounds());
-        BloodMoonSolidBoundary.clientZones(zones);
-        com.siirio.jemserver.smp.events.BossSolidBoundary.clientZones(zones);
+        com.siirio.jemserver.smp.events.SolidBoundary.clientZones(zones);
     }
     public static boolean bloodMoon() {
         var mc=Minecraft.getInstance();

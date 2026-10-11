@@ -17,7 +17,7 @@
     "defaultRequire": 1
   },
   "mixins": [
-    "BossSolidBoundaryMixin",
+    "SolidBoundaryMixin",
     "PlayerSaveAccess",
     "SleepStatusVoteMixin",
     "cooking.CookingStationMixin",
@@ -41,9 +41,10 @@
     "death.BloodMoonPlayerDropsMixin",
     "death.BloodMoonPlayerCloneMixin",
     "events.BloodMoonTwinCreeperMixin",
-    "events.BloodMoonSolidBoundaryMixin",
+    "events.SolidBoundaryMovementValidationMixin",
     "events.BloodMoonWardenTargetMixin",
     "teleport.ServerPlayerTeleportMixin",
+    "teleport.MobBoundaryTeleportMixin",
     "compat.DeepDarkRegrowthSpecialAbilityMixin"
   ]
 }

@@ -61,8 +61,7 @@ public final class EventAreaHooks {
                     var encounter=new EncounterContext(row);
                     boolean completed=encounter.state()==EncounterContext.State.COMPLETED;
                     boolean active=type.equals("BLOOD_MOON")&&!completed;
-                    boolean locked=type.equals("BLOOD_MOON")&&row.getBoolean("combatStarted")
-                            &&new EventSession(row).accepted(player.getUUID())&&safelyWithin;
+                    boolean locked=type.equals("BLOOD_MOON")&&BloodMoonSolidBoundary.locked(player,row);
                     boolean passable=type.equals("BLOOD_MOON")&&!locked;
                     zones.add(new EventBoundary(id,row.getString("dimension"),type,EventRegions.minX(row),player.serverLevel().getMinBuildHeight(),EventRegions.minZ(row),EventRegions.maxX(row),player.serverLevel().getMaxBuildHeight()-1,EventRegions.maxZ(row),type.equals("BLOOD_MOON")?EventRules.BLOOD_COLOR.get():type.equals("RESOURCE_RUSH")?EventRules.RUSH_COLOR.get():EventRules.RAID_COLOR.get(),active,passable));
                 }

@@ -1,0 +1,235 @@
+--- a/core/src/main/java/pl/skidam/automodpack_core/client/BootRecovery.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/client/BootRecovery.java
+@@ -39,6 +39,7 @@
+ 	public record BootDecision(ClientConfigJsons.ClientConfigFieldsV3 clientConfig, boolean trustedBootstrapApply, boolean rolledBackStuckUpdate) {}
+ 
+ 	public BootDecision recover() throws IOException {
++		DetachedUpdateHelper.awaitRunningHelper();
+ 		loadClientConfig();
+ 		recoverPendingRepair();
+ 		recoverPendingTransaction();
+--- a/core/src/main/java/pl/skidam/automodpack_core/client/DetachedUpdateHelper.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/client/DetachedUpdateHelper.java
+@@ -36,10 +36,6 @@
+ 
+ public final class DetachedUpdateHelper {
+ 	private static final String HELPER_MAIN = UpdateHelperMain.class.getName();
+-	// Receipt: the helper holds the lease for its parent-exit wait plus UpdateRecovery.retryBudgetMillis() of sleeps
+-	// and per-attempt IO, so a helper that is converging frees the lease well inside it. Past this wait the helper is
+-	// stuck on a game process that will not exit, and hanging this boot behind it serves nobody - the deferred
+-	// recovery path proceeds without it and the helper keeps working alone.
+ 	private static final Duration HELPER_LEASE_WAIT = Duration.ofMinutes(3);
+ 	// A released lease is noticed within half a second, the helper's own initial backoff step.
+ 	private static final long LEASE_POLL_MILLIS = 500;
+@@ -75,7 +71,7 @@
+ 		// The helper has no loader service. Pin this process's already-resolved root as a JVM property before the main class; configuredRoot prefers it over env and role defaults.
+ 		String environment = LOADER_MANAGER == null || LOADER_MANAGER.getEnvironmentType() == null ? "" : LOADER_MANAGER.getEnvironmentType().name();
+ 		DataRootResolver.Location dataLocation = DataRootResolver.resolve(GameDirectory.current(), LOADER_MANAGER == null ? null : LOADER_MANAGER.getEnvironmentType());
+-		new ProcessBuilder(javaExecutable.toString(), "-D" + DATA_ROOT_PROPERTY + "=" + dataLocation.root(), "-cp", classpath, HELPER_MAIN, Long.toString(ProcessHandle.current().pid()), environment)
++		new ProcessBuilder(javaExecutable.toString(), "-D" + DATA_ROOT_PROPERTY + "=" + dataLocation.root(), "-cp", classpath, HELPER_MAIN, Long.toString(ProcessHandle.current().pid()), environment, LOADER, MODPACK_LOADER.getClass().getName())
+ 				.directory(GameDirectory.current().toFile())
+ 				.redirectErrorStream(true).redirectOutput(ProcessBuilder.Redirect.appendTo(helperLog.toFile())).start();
+ 		LOGGER.info("Launched detached update helper for the latest pending transaction from {} (environment {}); its output goes to {}", helperJar, environment.isBlank() ? "unknown" : environment, helperLog);
+@@ -83,8 +79,6 @@
+ 
+ 	/**
+ 	 * True after waiting out a helper that already held the lease, so the caller should retry recovery once.
+-	 * False when none was running, or when it still held the lease after {@link #HELPER_LEASE_WAIT} and this
+-	 * boot proceeds without it - the running helper keeps its lease and finishes, or gives up, on its own.
+ 	 */
+ 	public static boolean awaitRunningHelper() throws IOException {
+ 		Path leaseFile = GameDirectory.current().resolve(HELPER_LEASE_FILE).toAbsolutePath().normalize();
+@@ -94,7 +88,7 @@
+ 			try {
+ 				probe = channel.tryLock();
+ 			} catch (OverlappingFileLockException e) {
+-				return false;
++				throw new IOException("Another update in this process still holds the helper lease", e);
+ 			}
+ 			if (probe != null) {
+ 				probe.release();
+@@ -115,9 +109,9 @@
+ 					throw new IOException("Interrupted while waiting for the detached update helper lease", e);
+ 				}
+ 			}
+-			LOGGER.error("The detached update helper still holds the lease after {} minutes; continuing without it, its own log is at {}", HELPER_LEASE_WAIT.toMinutes(),
++			LOGGER.error("The detached update helper still holds the lease after {} minutes; stopping this launch before loading the modpack, its own log is at {}", HELPER_LEASE_WAIT.toMinutes(),
+ 					GameDirectory.current().resolve(HELPER_LOG_FILE).toAbsolutePath().normalize());
+-			return false;
++			throw new IOException("The previous update is still finishing; the client must wait before loading its modpack");
+ 		}
+ 	}
+ 
+--- a/core/src/main/java/pl/skidam/automodpack_core/update/ClientGenerationStore.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/update/ClientGenerationStore.java
+@@ -164,6 +164,9 @@
+ 	/** One mirror generation's document: the entry's policy from the CAS, and the exact active-state ledger when that generation is active, else the mirror replay. */
+ 	public PackDocument document(String modpackId, JournalEntry entry) throws IOException {
+ 		String normalizedModpackId = ModpackId.requireValid(modpackId);
++		GenerationJsons.HeadDocumentFields head = new HeadMirror(storage).read(normalizedModpackId);
++		if (head != null && head.journalHead == entry.seq() && entry.contentToken().equals(head.contentToken) && entry.policySha1().equals(head.policySha1))
++			return document(normalizedModpackId, entry, OwnershipLedger.fromFields(head.ownershipLedger));
+ 		ClientStorageJsons.ClientGenerationStateFields state = storage.readActiveState();
+ 		if (state != null && state.modpackId.equals(normalizedModpackId) && state.contentToken.equals(entry.contentToken()))
+ 			return document(normalizedModpackId, entry, OwnershipLedger.fromFields(state.ownershipLedger));
+--- a/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransactionExecutor.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransactionExecutor.java
+@@ -234,7 +234,7 @@
+ 		AtomicReference<Operation> current = new AtomicReference<>();
+ 		Path blockedPath = null;
+ 		boolean publicationStarted = projectionPublicationStarted(transaction);
+-		boolean liveAlreadyApplied = transaction != null && (publicationStarted || managedStateMatches(transaction));
++		boolean liveAlreadyApplied = managedStateMatches(transaction);
+ 		boolean preserveNewerSelection = publicationStarted && validator.mutableInputDrift(transaction).selection();
+ 		try {
+ 			transaction.resultStatus = null;
+@@ -364,6 +364,7 @@
+ 			context.beforeManifestAction().run(transaction, resolved.flatTarget());
+ 		if (transaction.purpose == UpdateTransaction.Purpose.MODPACK_UPDATE) {
+ 			context.storage().writeActiveState(transaction.plan().modpackId(), transaction.packTarget().contentToken(), resolved.document().ownershipLedger().toFields());
++			if (!preserveNewerSelection) context.storage().setDetached(transaction.plan().modpackId(), false);
+ 		} else if (transaction.purpose == UpdateTransaction.Purpose.MODPACK_REMOVAL) {
+ 			FileTrees.delete(context.storage().generatedCopiesGenerationDirectory(transaction.plan().modpackId(), transaction.plan().packTarget().contentToken()));
+ 			context.storage().clearActiveState();
+@@ -434,11 +435,7 @@
+ 	/** Acquires every planned preservation's bytes before mutation, so the state entry's change hashes name real objects. */
+ 	private void capturePreservations(UpdateTransaction transaction) throws IOException {
+ 		for (Preservation preservation : transaction.plan().preservations()) {
+-			Path source = resolve(preservation.root(), preservation.relativePath(), transaction);
+-			if (!FileIntegrity.matches(source, preservation.expectedSize(), preservation.expectedHash(), fileCache))
+-				throw new IOException("Preserved source changed: " + source);
+-			Path object = context.storage().objectFile(preservation.expectedHash().toLowerCase(Locale.ROOT));
+-			VerifiedFileTransfer.copyAtomicImmutable(source, object, preservation.expectedSize(), preservation.expectedHash(), fileCache);
++			captureSource(transaction, preservation.root(), preservation.relativePath(), preservation.expectedSize(), preservation.expectedHash());
+ 		}
+ 	}
+ 
+@@ -446,11 +443,7 @@
+ 	private void captureConflicts(UpdateTransaction transaction) throws IOException {
+ 		for (Conflict conflict : transaction.plan().conflicts()) {
+ 			if (conflict.action() != ConflictAction.PRESERVE_LOCAL) continue;
+-			Path source = context.storage().gamePath(conflict.sourcePath());
+-			if (!FileIntegrity.matches(source, conflict.sourceSize(), conflict.sourceHash(), fileCache))
+-				throw new IOException("Conflict source changed: " + source);
+-			Path object = context.storage().objectFile(conflict.sourceHash().toLowerCase(Locale.ROOT));
+-			VerifiedFileTransfer.copyAtomicImmutable(source, object, conflict.sourceSize(), conflict.sourceHash(), fileCache);
++			captureSource(transaction, Root.GAME_DIR, conflict.sourcePath(), conflict.sourceSize(), conflict.sourceHash());
+ 		}
+ 	}
+ 
+@@ -571,13 +564,34 @@
+ 		for (BaselineCapture capture : transaction.plan().baselineCaptures()) {
+ 			Path source = resolve(capture.root(), capture.relativePath(), transaction);
+ 			if (capture.absent()) {
+-				if (Files.exists(source, LinkOption.NOFOLLOW_LINKS)) throw new IOException("Captured path was expected to be absent: " + source);
++				if (Files.exists(source, LinkOption.NOFOLLOW_LINKS) && !operationApplied(transaction, capture.root(), capture.relativePath()))
++					throw new UpdateReplanRequiredException(source, "Captured path appeared after planning: " + source);
+ 				continue;
+ 			}
+-			if (!FileIntegrity.matches(source, capture.expectedSize(), capture.expectedHash(), fileCache)) throw new IOException("Captured source changed: " + source);
+-			Path object = context.storage().objectFile(capture.expectedHash());
+-			VerifiedFileTransfer.copyAtomicImmutable(source, object, capture.expectedSize(), capture.expectedHash(), fileCache);
+-		}
++			captureSource(transaction, capture.root(), capture.relativePath(), capture.expectedSize(), capture.expectedHash());
++		}
++	}
++
++	private void captureSource(UpdateTransaction transaction, Root root, String relativePath, long size, String hash) throws IOException {
++		Path source = resolve(root, relativePath, transaction);
++		Path object = context.storage().objectFile(hash.toLowerCase(Locale.ROOT));
++		if (FileIntegrity.matches(source, size, hash, fileCache)) {
++			VerifiedFileTransfer.copyAtomicImmutable(source, object, size, hash, fileCache);
++			return;
++		}
++		if (FileIntegrity.matches(object, size, hash, fileCache) && operationApplied(transaction, root, relativePath)) return;
++		throw new UpdateReplanRequiredException(source, "Captured source changed outside the pending update: " + source);
++	}
++
++	private boolean operationApplied(UpdateTransaction transaction, Root root, String relativePath) throws IOException {
++		for (Operation operation : transaction.plan().operations()) {
++			if (operation.root() != root || !operation.relativePath().equals(relativePath)) continue;
++			Path target = resolve(operation, transaction);
++			return operation.operation() == OperationType.DELETE
++					? !Files.exists(target, LinkOption.NOFOLLOW_LINKS)
++					: FileIntegrity.matchesNamed(target, operation.expectedSize(), operation.expectedObjectHash(), fileCache);
++		}
++		return false;
+ 	}
+ 
+ 	private void claimSelection(UpdateTransaction transaction) throws IOException {
+--- a/core/src/main/java/pl/skidam/automodpack_core/client/UpdateHelperMain.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/client/UpdateHelperMain.java
+@@ -1,5 +1,6 @@
+ package pl.skidam.automodpack_core.client;
+ 
++import static pl.skidam.automodpack_core.Constants.*;
+ import static pl.skidam.automodpack_core.storage.StoragePaths.HELPER_LEASE_FILE;
+ 
+ import java.io.IOException;
+@@ -20,10 +21,13 @@
+ 
+ import pl.skidam.automodpack_core.loader.FileInspection;
+ import pl.skidam.automodpack_core.loader.LoaderManagerService;
++import pl.skidam.automodpack_core.loader.ModpackLoaderService;
+ import pl.skidam.automodpack_core.storage.DataRootResolver;
+ import pl.skidam.automodpack_core.storage.GameDirectory;
+ import pl.skidam.automodpack_core.update.SelfUpdateSwap;
+ import pl.skidam.automodpack_core.update.UpdateTransactionExecutor;
++import pl.skidam.automodpack_core.update.UpdateReplanRequiredException;
++import pl.skidam.automodpack_core.update.UpdateTransaction;
+ import pl.skidam.automodpack_core.utils.JarUtils;
+ 
+ public final class UpdateHelperMain {
+@@ -60,7 +64,7 @@
+ 	}
+ 
+ 	private static int runOnce(String[] arguments) throws IOException, InterruptedException {
+-		if (arguments.length < 1 || arguments.length > 2) throw new IOException("Expected parent PID and optional environment");
++		if (arguments.length < 1 || arguments.length > 4 || arguments.length == 3) throw new IOException("Expected parent PID, optional environment, and optional loader type and service");
+ 		long parentPid = Long.parseLong(arguments[0]);
+ 		if (parentPid <= 0 || parentPid == ProcessHandle.current().pid()) throw new IOException("Invalid parent PID");
+ 		LoaderManagerService.EnvironmentType environment = environment(arguments);
+@@ -86,11 +90,26 @@
+ 				try {
+ 					if (!waitForGameExit(parentPid)) return 1;
+ 
++					if (arguments.length == 4) {
++						LOADER = arguments[2];
++						try {
++							MODPACK_LOADER = Class.forName(arguments[3])
++									.asSubclass(ModpackLoaderService.class).getDeclaredConstructor().newInstance();
++						} catch (ReflectiveOperationException e) {
++							throw new IOException("Cannot initialize the launching client's native modpack loader", e);
++						}
++					}
+ 					UpdateTransactionExecutor executor = UpdateTransactionSupport.executor();
+ 					long backoff = UpdateRecovery.INITIAL_BACKOFF_MILLIS;
+ 					for (int attempt = 1;; attempt++) {
+ 						boolean selfUpdateRecovered = recoverSelfUpdate(gameDirectory, dataLocation);
+-						UpdateTransactionExecutor.Execution execution = executor.recoverLatest();
++						UpdateTransactionExecutor.Execution execution;
++						try {
++							execution = executor.recoverLatest();
++						} catch (UpdateReplanRequiredException e) {
++							execution = replanPending();
++						}
++						if (execution.replanRequired() && arguments.length == 4) execution = replanPending();
+ 						if (execution.success() && selfUpdateRecovered) {
+ 							log("Pending update transaction recovered on attempt " + attempt);
+ 							return 0;
+@@ -122,6 +141,15 @@
+ 	 * holds. False when the parent outlived {@link #PARENT_EXIT_TIMEOUT_MILLIS} or the wait failed; the
+ 	 * transaction then stays pending and the next game launch retries it.
+ 	 */
++	private static UpdateTransactionExecutor.Execution replanPending() throws IOException {
++		if (MODPACK_LOADER == null)
++			throw new UpdateReplanRequiredException(null, "The next client launch must resume this pending update with its native loader");
++		var storage = UpdateTransactionSupport.storage();
++		var pending = UpdateTransaction.read(storage.transactionFile());
++		if (pending == null) return UpdateTransactionSupport.executor().recoverLatest();
++		return UpdateAttempt.resume(storage, pending, MODPACK_LOADER, LOADER);
++	}
++
+ 	private static boolean waitForGameExit(long parentPid) throws InterruptedException {
+ 		ProcessHandle parent = ProcessHandle.of(parentPid).orElse(null);
+ 		if (parent == null) return true;

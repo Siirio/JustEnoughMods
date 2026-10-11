@@ -2,7 +2,7 @@
 
 ## Primary state
 
-Boss Fight — host-controlled encounter для одного зарегистрированного босса. Все структурные боссы, Campaign и Raid используют один `SOLID` boundary owner: четыре невидимые full-height collision planes участвуют в обычном Minecraft movement resolution одновременно на dedicated server и клиенте и совпадают с видимыми стенами. До Start граница закрыта; после Start её проходят только host и accepted non-eliminated participants. Outsiders, mobs и projectiles остаются заблокированы без tick teleport, velocity reversal, physical shell blocks или повторного `setPos`.
+Boss Fight — host-controlled encounter для одного зарегистрированного босса. Все структурные боссы, Campaign и Raid используют один `SOLID` boundary owner: четыре невидимые full-height collision planes участвуют в обычном Minecraft movement resolution одновременно на dedicated server и клиенте и совпадают с видимыми стенами. До Start граница закрыта; после Start host и accepted non-eliminated participants могут войти, а после полного входа их collision box и ridden vehicle существующий arenaEntered снова закрывает ту же SOLID стену. Физика до входа и во время боя принадлежит общему с Blood Moon SolidBoundary и не зависит от касания края. Outsiders, mobs и projectiles остаются заблокированы без tick teleport, velocity reversal, physical shell blocks или повторного `setPos`.
 
 Boss HP и damage увеличиваются на 20% за каждого дополнительного присутствующего участника. После этого к итоговому damage hosted boss применяется только один correction: 12% reduction для direct, projectile, effect и hardcoded damage. Gear score не участвует.
 
@@ -26,3 +26,5 @@ Campaign не создаёт отдельную shell: canonical prerequisite st
 - Любой solid collision block можно поставить прямо вместо невидимой ячейки structure shell; не-блоки и blocks без collision стену не заменяют.
 - Несколько progression layers на main boss отвергнуты: native encounter плюс максимум один JEM layer.
 
+
+Защита лобби от урона определяется HostedBoundary.authorized: ACTIVE, accepted и non-eliminated. nativePending управляет только ожиданием native activation/spawn и снимается после bind босса; он не означает неуязвимость участника активного боя. Native Mob teleport endpoints используют ту же закрытую geometry и не позволяют боссу покинуть арену.

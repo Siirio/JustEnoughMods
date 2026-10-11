@@ -525,8 +525,8 @@ public final class StructureStaging {
                     Math.max(bounds.minZ() - player.getZ(), player.getZ() - bounds.maxZ()));
             if (distance > EventRules.BOUNDARY_DISTANCE.get()) continue;
             CompoundTag row = party(player.serverLevel(), area.id());
-            boolean passable = row != null && HostedBoundary.authorized(player, row);
-            result.add(BossSolidBoundary.boundary(area.id(), area.dimension(), bounds.minX(), bounds.minZ(), bounds.maxX(), bounds.maxZ(),
+            boolean passable = row != null && HostedBoundary.passable(player, row);
+            result.add(SolidBoundary.boundary(area.id(), area.dimension(), bounds.minX(), bounds.minZ(), bounds.maxX(), bounds.maxZ(),
                     player.serverLevel().getMinBuildHeight(), player.serverLevel().getMaxBuildHeight() - 1, EventRules.RAID_COLOR.get(), passable));
             if (result.size() >= BOUNDARY_LIMIT) break;
         }
@@ -594,9 +594,10 @@ public final class StructureStaging {
             BoundingBox bounds = area.shell();
             AABB reach = entity.getBoundingBox().inflate(2D);
             if (reach.maxX < bounds.minX() || reach.minX > bounds.maxX() + 1D || reach.maxZ < bounds.minZ() || reach.minZ > bounds.maxZ() + 1D) continue;
-            boolean passable = entity instanceof ServerPlayer player && Optional.ofNullable(party(level, area.id()))
-                    .map(value -> HostedBoundary.authorized(player, value)).orElse(false);
-            if (!passable) result.add(BossSolidBoundary.boundary(area.id(), area.dimension(), bounds.minX(), bounds.minZ(), bounds.maxX(), bounds.maxZ(),
+            List<ServerPlayer> players = SolidBoundary.players(entity);
+            CompoundTag row = party(level, area.id());
+            boolean passable = row != null && !players.isEmpty() && players.stream().allMatch(player -> HostedBoundary.passable(player, row));
+            if (!passable) result.add(SolidBoundary.boundary(area.id(), area.dimension(), bounds.minX(), bounds.minZ(), bounds.maxX(), bounds.maxZ(),
                     level.getMinBuildHeight(), level.getMaxBuildHeight() - 1, EventRules.RAID_COLOR.get(), false));
         }
         return result;
@@ -608,12 +609,12 @@ public final class StructureStaging {
         for (Area area : AREAS.values()) {
             if (!area.dimension().equals(level.dimension().location().toString())) continue;
             BoundingBox shell = area.shell();
-            EventBoundary boundary = BossSolidBoundary.boundary(area.id(), area.dimension(), shell.minX(), shell.minZ(), shell.maxX(), shell.maxZ(),
+            EventBoundary boundary = SolidBoundary.boundary(area.id(), area.dimension(), shell.minX(), shell.minZ(), shell.maxX(), shell.maxZ(),
                     level.getMinBuildHeight(), level.getMaxBuildHeight() - 1, EventRules.RAID_COLOR.get(), false);
             boolean inside = destination.minX > shell.minX() && destination.maxX < shell.maxX() + 1D
                     && destination.minZ > shell.minZ() && destination.maxZ < shell.maxZ() + 1D;
             boolean authorized = Optional.ofNullable(party(level, area.id())).map(value -> HostedBoundary.authorized(player, value)).orElse(false);
-            boolean wall = BossSolidBoundary.intersectsWall(destination, boundary);
+            boolean wall = SolidBoundary.intersectsWall(destination, boundary);
             if (!inside && !wall) continue;
             if (!wall && authorized && level.noCollision(player, destination)) continue;
             BlockPos safe = safeExit(player, level, area, BlockPos.containing(requested));
@@ -669,15 +670,22 @@ public final class StructureStaging {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void stagingDamage(LivingAttackEvent event) {
-        if (event.getEntity() instanceof ServerPlayer player && !allowNative(player.level(), player.blockPosition())) event.setCanceled(true);
+        if (event.getEntity() instanceof ServerPlayer player && stagingProtected(player)) event.setCanceled(true);
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void stagingDeath(LivingDeathEvent event) {
-        if (event.getEntity() instanceof ServerPlayer player && !allowNative(player.level(), player.blockPosition())) {
+        if (event.getEntity() instanceof ServerPlayer player && stagingProtected(player)) {
             event.setCanceled(true);
             player.setHealth(Math.max(1, player.getHealth()));
         }
+    }
+
+    private static boolean stagingProtected(ServerPlayer player) {
+        Area area = discover(player.serverLevel(), player.blockPosition());
+        if (area == null) return false;
+        CompoundTag row = party(player.serverLevel(), area.id());
+        return row == null || !HostedBoundary.authorized(player, row);
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)

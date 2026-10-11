@@ -62,8 +62,14 @@ public final class HostedBoundary {
         SmpData.get(server).changed(party);
     }
 
+    public static boolean passable(ServerPlayer player, CompoundTag party) {
+        return authorized(player, party) && !SmpRecords.members(party).getCompound(player.getStringUUID()).getBoolean(ENTERED);
+    }
+
     public static void observe(ServerPlayer player, CompoundTag party, BoundingBox bounds) {
-        if (!authorized(player, party) || !bounds.isInside(player.blockPosition())) return;
+        var box = player.getRootVehicle().getBoundingBox().minmax(player.getBoundingBox());
+        if (!authorized(player, party) || box.minX < bounds.minX() || box.maxX > bounds.maxX() + 1D
+                || box.minZ < bounds.minZ() || box.maxZ > bounds.maxZ() + 1D) return;
         CompoundTag member = SmpRecords.members(party).getCompound(player.getStringUUID());
         if (!member.getBoolean(ENTERED)) {
             member.putBoolean(ENTERED, true);

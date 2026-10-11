@@ -6,6 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.*;
+import net.minecraft.network.protocol.game.ClientboundGameEventPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
@@ -37,6 +38,7 @@ public final class BloodMoon {
     private static final String SPAWN_FAILURES="spawnFailures";
     private static final int FALLBACK_AFTER_FAILURES=8;
     private static final int SKIP_AFTER_FAILURES=24;
+    private static final String WEATHER="bloodMoonWeather";
 
     public static boolean startManual(MinecraftServer server, CompoundTag row) {
         return true;
@@ -74,6 +76,7 @@ public final class BloodMoon {
     public static void tick(MinecraftServer server, CompoundTag row) {
         var level=EventRegions.level(server,row);
         if(level==null) return;
+        protectWeather(level,row);
         var encounter=new EncounterContext(row);
         if(!encounter.tickStartup(server)) { SmpData.get(server).changed(row); return; }
         if(!row.getBoolean("combatStarted")) {
@@ -215,6 +218,43 @@ public final class BloodMoon {
             row.put("mobs",mobs);
             SmpData.get(server).changed(row);
         }
+    }
+
+    private static void protectWeather(ServerLevel level,CompoundTag row) {
+        var server=level.getServer();
+        var weather=server.getWorldData().overworldData();
+        if(!row.contains(WEATHER,Tag.TAG_COMPOUND)) {
+            var snapshot=new CompoundTag();
+            snapshot.putInt("clear",weather.getClearWeatherTime());
+            snapshot.putInt("rain",weather.getRainTime());
+            snapshot.putInt("thunder",weather.getThunderTime());
+            snapshot.putBoolean("raining",weather.isRaining());
+            snapshot.putBoolean("thundering",weather.isThundering());
+            row.put(WEATHER,snapshot);
+            SmpData.get(server).changed(row);
+        }
+        boolean changed=weather.isRaining()||weather.isThundering()||level.getRainLevel(1)>0||level.getThunderLevel(1)>0;
+        level.setWeatherParameters(Integer.MAX_VALUE,0,false,false);
+        level.setRainLevel(0);
+        level.setThunderLevel(0);
+        if(changed) {
+            var players=server.getPlayerList();
+            players.broadcastAll(new ClientboundGameEventPacket(ClientboundGameEventPacket.STOP_RAINING,0),level.dimension());
+            players.broadcastAll(new ClientboundGameEventPacket(ClientboundGameEventPacket.RAIN_LEVEL_CHANGE,0),level.dimension());
+            players.broadcastAll(new ClientboundGameEventPacket(ClientboundGameEventPacket.THUNDER_LEVEL_CHANGE,0),level.dimension());
+        }
+    }
+
+    private static void restoreWeather(MinecraftServer server,CompoundTag row) {
+        if(row.getString("state").equals("ACTIVE")||!row.contains(WEATHER,Tag.TAG_COMPOUND)) return;
+        var snapshot=row.getCompound(WEATHER);
+        var weather=server.getWorldData().overworldData();
+        weather.setClearWeatherTime(snapshot.getInt("clear"));
+        weather.setRainTime(snapshot.getInt("rain"));
+        weather.setThunderTime(snapshot.getInt("thunder"));
+        weather.setRaining(snapshot.getBoolean("raining"));
+        weather.setThundering(snapshot.getBoolean("thundering"));
+        row.remove(WEATHER);
     }
 
     private static boolean reconcileWaveThree(CompoundTag row,ListTag mobs,int wave) {
@@ -448,6 +488,7 @@ public final class BloodMoon {
     }
 
     public static void cleanup(MinecraftServer server,CompoundTag row) {
+        restoreWeather(server,row);
         BloodMoonSetPieces.cleanup(server,row);
         var level=EventRegions.level(server,row);
         if(level!=null) {
