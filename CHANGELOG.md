@@ -1,5 +1,7 @@
 # Changelog
 
+- 2026-10-11 16:48:08 (+05:00) — По прямому запросу пользователя выполнен локальный test deploy без gameplay/automated tests: production `jem-server-2.0.0-dev.jar` и `jem-world-boss-tiers-2.5.0-dev.jar` собраны с reobfuscation, установлены в clean Client и dedicated Server, сервер штатно дошёл до `Done`, а native JEM Pack Sync опубликовал content token `398c2fe` с точным diff `+0 ~3 -0` (`manifest.json` и два JEM JAR). Сервер оставлен запущенным для ручной проверки через `test jem`; stable `JustEnoughMods`, release baseline и MineRENT не изменялись.
+
 ## 2026-10-11 — Event cancellation, boss targeting and authoritative travel
 
 - Пользователь сообщил, что до начала Boss Fight у Bosses Rise и, возможно, Cataclysm на большой дистанции самопроизвольно включаются boss-bar/music и агрессия, а во время боя смертельный удар иногда выглядит как отсутствие урона и переносит игрока к боссу. Пользователь отдельно подтвердил требование удалить весь переход «потеря жизни → половина здоровья → иммунитет → перенос к боссу»: умер означает умер. Выбранная реализация: общий hosted lobby становится единственным owner dormant AI, target, incoming combat и native presentation; фактическая смерть сразу переводит participant в `ELIMINATED`, не подменяя Minecraft death/respawn.
