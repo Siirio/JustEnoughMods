@@ -506,7 +506,7 @@ public final class HostedEncounters {
     }
 
     private static boolean validTarget(LivingEntity boss, ServerPlayer player) {
-        return player.isAlive() && !player.isSpectator() && ALIVE.equals(participant(boss, player.getUUID()).getString("State"))
+        return player != null && player.isAlive() && !player.isSpectator() && ALIVE.equals(participant(boss, player.getUUID()).getString("State"))
                 && inside(boss, player);
     }
 
