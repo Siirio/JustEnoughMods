@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-12 — MineRENT Warden overflow cleanup
+
+- `Bug / Server Sided / вход Bako загружал чанк с 5820 сохранёнными Варденами и доводил один server tick до 60 секунд, после чего ServerHangWatchdog перезапускал MineRENT / resolved`
+  - Five whys: Bako входил и сразу получал тяжёлые лаги и разрыв соединения → его позиция загружала entity chunk `[-421, -152]` → chunk содержал 5820 `minecraft:warden` в одной точке `(-6725.5, -38, -2424.5)` → обработка этой массы сущностей проходила через обычные Warden/EnhancedAI/EpicFight/Pehkui ticks → watchdog завершал зависший server tick и панель автоматически запускала сервер снова. Память не была исчерпана; crash reports стабильно показывали те же 5820 сущностей.
+  - User request and technical direction: пользователь потребовал удалить Варденов и связанный зависший ивент, если он ещё существует.
+  - Codex technical choice and resolution: MineRENT штатно остановлен, исходный `world/entities/r.-14.-5.mca` сохранён рядом как `r.-14.-5 copy.mca`, затем из NBT точечно удалены только 5820 дубликатов в проблемном чанке. Четыре `golemoverhaul:slime_golem`, один предмет и отдельный естественный Warden в другом чанке сохранены. В `world/data/jem_smp_v2.dat` активного события не было: исторические записи и будущий запланированный Blood Moon не удалялись. Загруженный регион совпал с подготовленным SHA-256 `b186561f071dc03f0a8baa8a192410cf6602fbf50c5f9bf4e56a4688f19778db`; после запуска сервер сообщил `Done (1.266s)`, принудительно загрузил очищенный чанк без watchdog, а runtime-проверка вернула `No entity was found` для Варденов в радиусе проблемной точки. Исходники, client generation, bootstrap и release baseline не изменялись; Gradle, automated/gameplay tests и клиент не запускались.
+
 ## 2026-10-12 — Fiw AntiCheat removal
 
 - `Bug / Both Sided / Fiw AntiCheat ошибочно входил в server runtime и общий AutoModpack, поэтому Forge требовал его и на клиенте / in testing`
