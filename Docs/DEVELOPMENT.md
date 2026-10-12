@@ -107,6 +107,7 @@ Changelog описывает только запрошенные player-visible 
 - Vanilla Ender Dragon, Wither, Guardian и Elder Guardian не получают JEM boss-frenzy speed modifier.
 - Записанный campaign audit переиспользуется, пока roster или native encounter действительно не изменились.
 - Registered structure сохраняет native boss anchor только при первом наблюдении legitimate living boss или native structure signal; после verification координата immutable, поэтому death position, revive command, non-structure encounter, host position и generic center не могут заменить anchor.
+- Native structural boss admission атомарно отклоняет второго living boss того же entity type в canonical arena через cancelable `EntityJoinLevelEvent`; duplicate никогда не добавляется в world/chunk/network tracking и не удаляется через `discard()` внутри join callback.
 - Ordinary JEM-owned boss death сохраняет due time в `WorldTierData` на `Overworld gameTime + 72_000`; queue восстанавливается из SavedData после restart, а living boss, manual revival или Raid availability атомарно снимает pending countdown.
 - Raid participation принадлежит canonical arena history, а не Party: player UUID записывается при фактическом старте и больше не допускается к Raid той же арены. Raid cleanup хранит pending replacement до появления одного fresh normal boss на verified native anchor.
 

@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-13 — Structural boss duplicate crash hotfix
+
+- `Bug / Server Sided / два duplicate Infernal Dragon удалялись JEM через discard внутри EntityJoinLevelEvent, после чего world tracking запрашивал packets для removed entities, а DistanceManager упал с ConcurrentModificationException и MineRENT перезапустился / in testing`
+  - Five whys: игроков выкинуло, потому что main server thread упал в `DistanceManager.runAllUpdates` → chunk-future set изменился во время iteration → перед crash сервер запросил tracking packets для двух `removed=DISCARDED` Infernal Dragon → `StructureStaging.spawned` синхронно вызывал `discard()` для duplicate в join callback → duplicate guard восстанавливал invariant после частичного entity admission вместо атомарного отказа.
+  - User request and technical direction: пользователь после Five Whys попросил срочно исправить сервер и перезапустить его без client/bootstrap update.
+  - Codex technical choice: duplicate admission теперь отменяет cancelable `EntityJoinLevelEvent` до world/chunk/network tracking, сохраняя native spawn owner и одного legitimate boss; на dedicated server дополнительно отключён ModernFix `mixin.perf.release_protochunks`, который вмешивался в тот же `ChunkHolder.updateFutures` lifecycle. Registry, protocol, packets, resources и client prediction не изменены, поэтому update остаётся server-only.
+  - MineRENT deployment: `2026-10-13 00:40:45 +05:00`; загружены `mods/jem-server-2.0.0-dev.jar` (`SHA-256 F1D14A9FCEDEDF2337B49DE394AD279B4631B6A7A87BB5D46211E52093C3FA3A`) и `config/modernfix-mixins.properties` (`SHA-256 8D85560374387A24976103D3799D48679884B84F513314895F1923100E5108E0`). Сервер штатно достиг `Done (1.365s)!`, MineRENT подтвердил `running`; client, bootstrap, friend package и release baseline не изменялись.
+
 ## 2026-10-12 — MineRENT Warden overflow cleanup
 
 - `Bug / Server Sided / вход Bako загружал чанк с 5820 сохранёнными Варденами и доводил один server tick до 60 секунд, после чего ServerHangWatchdog перезапускал MineRENT / resolved`

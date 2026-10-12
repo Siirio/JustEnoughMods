@@ -489,7 +489,7 @@ public final class StructureStaging {
         AABB column = new AABB(area.bounds().minX(), level.getMinBuildHeight(), area.bounds().minZ(), area.bounds().maxX() + 1, level.getMaxBuildHeight(), area.bounds().maxZ() + 1);
         boolean duplicate = !level.getEntitiesOfClass(LivingEntity.class, column, entity -> entity != boss && entity.isAlive()
                 && BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).equals(area.boss())).isEmpty();
-        if (duplicate) { boss.discard(); return; }
+        if (duplicate) { event.setCanceled(true); return; }
         var encounter = WorldTierApi.encounter(boss).orElse(null);
         if (encounter == null || encounter.provenance() != com.siirio.jemworldbosstiers.encounter.EncounterProvenance.RAID_EVENT)
             RaidArenaApi.observeNativeBoss(level.getServer(), area.id().toString(), boss);
