@@ -1,0 +1,3039 @@
+{
+  "schema_version": 1,
+  "registry_type": "trade_policies",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "brewery",
+    "name": "[Let's Do] Brewery",
+    "version": "2.0.6"
+  },
+  "records": [
+    {
+      "item_id": "brewery:bar_counter",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/bar_counter.json",
+        "data/brewery/recipes/bar_counter.json"
+      ],
+      "display_name_en_us": "Bar Counter",
+      "display_name_ru_ru": "Барная стойка",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/bar_counter.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/bar_counter.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:bar_counter"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:barrel_main",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/barrel_main.json",
+        "data/brewery/recipes/barrel_main.json"
+      ],
+      "display_name_en_us": "Big Barrel",
+      "display_name_ru_ru": "Большая бочка",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/barrel_main.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/barrel_main.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:barrel_main"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:beer_barley",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/beer_barley.json",
+        "data/brewery/recipes/brewing/barley_beer.json"
+      ],
+      "display_name_en_us": "Barley Beer",
+      "display_name_ru_ru": "Ячменное пиво",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/beer_barley.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/brewing/barley_beer.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:brewing/barley_beer"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:beer_elemental_spawn_egg",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/lang/en_us.json",
+        "assets/brewery/lang/ru_ru.json",
+        "assets/brewery/models/item/beer_elemental_spawn_egg.json"
+      ],
+      "display_name_en_us": "Booze Spawn Keg",
+      "display_name_ru_ru": "Бочонок призыва пивного элементаля",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/en_us.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/ru_ru.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/beer_elemental_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:beer_haley",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/beer_haley.json",
+        "data/brewery/recipes/brewing/haley_beer.json"
+      ],
+      "display_name_en_us": "Haley Beer",
+      "display_name_ru_ru": "Пиво «Хейли»",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/beer_haley.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/brewing/haley_beer.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:brewing/haley_beer"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:beer_hops",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/beer_hops.json",
+        "data/brewery/recipes/brewing/hops_beer.json"
+      ],
+      "display_name_en_us": "Hops Beer",
+      "display_name_ru_ru": "Пиво с хмелем",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/beer_hops.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/brewing/hops_beer.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:brewing/hops_beer"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:beer_mug",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/beer_mug.json",
+        "data/brewery/recipes/beer_mug.json"
+      ],
+      "display_name_en_us": "Beer Mug",
+      "display_name_ru_ru": "Пивная кружка",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/beer_mug.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/beer_mug.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:beer_mug"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:beer_nettle",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/beer_nettle.json",
+        "data/brewery/recipes/brewing/nettle_beer.json"
+      ],
+      "display_name_en_us": "Nettle Beer",
+      "display_name_ru_ru": "Крапивное пиво",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/beer_nettle.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/brewing/nettle_beer.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:brewing/nettle_beer"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:beer_oat",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/beer_oat.json",
+        "data/brewery/recipes/brewing/oat_beer.json"
+      ],
+      "display_name_en_us": "Oat Beer",
+      "display_name_ru_ru": "Овсяное пиво",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/beer_oat.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/brewing/oat_beer.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:brewing/oat_beer"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:beer_wheat",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/beer_wheat.json",
+        "data/brewery/recipes/brewing/wheat_beer.json"
+      ],
+      "display_name_en_us": "Wheat Beer",
+      "display_name_ru_ru": "Пшеничное пиво",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/beer_wheat.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/brewing/wheat_beer.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:brewing/wheat_beer"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:bench",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/bench.json",
+        "data/brewery/recipes/bench.json"
+      ],
+      "display_name_en_us": "Bench",
+      "display_name_ru_ru": "Лавка",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/bench.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/bench.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:bench"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:breathalyzer",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/lang/en_us.json",
+        "assets/brewery/lang/ru_ru.json",
+        "assets/brewery/models/item/breathalyzer.json",
+        "data/brewery/recipes/breathalyzer.json"
+      ],
+      "display_name_en_us": "Breathalyzer",
+      "display_name_ru_ru": "Алкометр",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/en_us.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/ru_ru.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/breathalyzer.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/breathalyzer.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:breathalyzer"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:breathalyzer/blowing_breathalyzer_green",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/breathalyzer/blowing_breathalyzer_green.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/breathalyzer/blowing_breathalyzer_green.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:breathalyzer/blowing_breathalyzer_grey",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/breathalyzer/blowing_breathalyzer_grey.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/breathalyzer/blowing_breathalyzer_grey.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:breathalyzer/blowing_breathalyzer_orange",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/breathalyzer/blowing_breathalyzer_orange.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/breathalyzer/blowing_breathalyzer_orange.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:breathalyzer/blowing_breathalyzer_red",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/breathalyzer/blowing_breathalyzer_red.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/breathalyzer/blowing_breathalyzer_red.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:breathalyzer/breathalyzer_green",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/breathalyzer/breathalyzer_green.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/breathalyzer/breathalyzer_green.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:breathalyzer/breathalyzer_orange",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/breathalyzer/breathalyzer_orange.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/breathalyzer/breathalyzer_orange.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:breathalyzer/breathalyzer_red",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/breathalyzer/breathalyzer_red.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/breathalyzer/breathalyzer_red.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:brewery_banner",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/brewery_banner.json",
+        "data/brewery/recipes/banner_from_smithing_table.json"
+      ],
+      "display_name_en_us": "Brewery Banner",
+      "display_name_ru_ru": "Пивной штандарт",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/brewery_banner.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/banner_from_smithing_table.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:banner_from_smithing_table"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:brewfest_blouse",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/lang/en_us.json",
+        "assets/brewery/lang/ru_ru.json",
+        "assets/brewery/models/item/brewfest_blouse.json",
+        "data/brewery/recipes/brewfest_blouse.json"
+      ],
+      "display_name_en_us": "Brewfest Blouse",
+      "display_name_ru_ru": "Блузка для фестиваля",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/en_us.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/ru_ru.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/brewfest_blouse.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/brewfest_blouse.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:brewfest_blouse"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:brewfest_boots",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/lang/en_us.json",
+        "assets/brewery/lang/ru_ru.json",
+        "assets/brewery/models/item/brewfest_boots.json",
+        "data/brewery/recipes/brewfest_boots.json"
+      ],
+      "display_name_en_us": "Brewfest Boots",
+      "display_name_ru_ru": "Ботинки для фестиваля",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/en_us.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/ru_ru.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/brewfest_boots.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/brewfest_boots.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:brewfest_boots"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:brewfest_dress",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/lang/en_us.json",
+        "assets/brewery/lang/ru_ru.json",
+        "assets/brewery/models/item/brewfest_dress.json",
+        "data/brewery/recipes/brewfest_dress.json"
+      ],
+      "display_name_en_us": "Brewfest Dress",
+      "display_name_ru_ru": "Платье для фестиваля",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/en_us.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/ru_ru.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/brewfest_dress.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/brewfest_dress.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:brewfest_dress"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:brewfest_hat",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/lang/en_us.json",
+        "assets/brewery/lang/ru_ru.json",
+        "assets/brewery/models/item/brewfest_hat.json",
+        "data/brewery/recipes/brewfest_hat.json"
+      ],
+      "display_name_en_us": "Brewfest Hat",
+      "display_name_ru_ru": "Шляпа для фестиваля",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/en_us.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/ru_ru.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/brewfest_hat.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/brewfest_hat.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:brewfest_hat"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:brewfest_hat_red",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/lang/en_us.json",
+        "assets/brewery/lang/ru_ru.json",
+        "assets/brewery/models/item/brewfest_hat_red.json",
+        "data/brewery/recipes/brewfest_hat_red.json"
+      ],
+      "display_name_en_us": "Brewfest Hat",
+      "display_name_ru_ru": "Шляпа для фестиваля",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/en_us.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/ru_ru.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/brewfest_hat_red.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/brewfest_hat_red.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:brewfest_hat_red"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:brewfest_regalia",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/lang/en_us.json",
+        "assets/brewery/lang/ru_ru.json",
+        "assets/brewery/models/item/brewfest_regalia.json",
+        "data/brewery/recipes/brewfest_regalia.json"
+      ],
+      "display_name_en_us": "Brewfest Regalia",
+      "display_name_ru_ru": "Рубашка для фестиваля",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/en_us.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/ru_ru.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/brewfest_regalia.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/brewfest_regalia.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:brewfest_regalia"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:brewfest_shoes",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/lang/en_us.json",
+        "assets/brewery/lang/ru_ru.json",
+        "assets/brewery/models/item/brewfest_shoes.json",
+        "data/brewery/recipes/brewfest_shoes.json"
+      ],
+      "display_name_en_us": "Brewfest Shoes",
+      "display_name_ru_ru": "Туфли для фестиваля",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/en_us.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/ru_ru.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/brewfest_shoes.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/brewfest_shoes.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:brewfest_shoes"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:brewfest_trousers",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/lang/en_us.json",
+        "assets/brewery/lang/ru_ru.json",
+        "assets/brewery/models/item/brewfest_trousers.json",
+        "data/brewery/recipes/brewfest_trousers.json"
+      ],
+      "display_name_en_us": "Brewfest Trousers",
+      "display_name_ru_ru": "Штаны для фестиваля",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/en_us.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/ru_ru.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/brewfest_trousers.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/brewfest_trousers.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:brewfest_trousers"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:cabinet",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/cabinet.json",
+        "data/brewery/recipes/cabinet.json"
+      ],
+      "display_name_en_us": "Cabinet",
+      "display_name_ru_ru": "Шкаф",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/cabinet.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/cabinet.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:cabinet"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:copper_brewingstation",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/copper_brewingstation.json",
+        "data/brewery/recipes/copper_brewingstation_smithing.json"
+      ],
+      "display_name_en_us": "Copper Brewingstation",
+      "display_name_ru_ru": "Медная пивоварня",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/copper_brewingstation.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/copper_brewingstation_smithing.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:copper_brewingstation_smithing"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:dark_brew",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/lang/en_us.json",
+        "assets/brewery/lang/ru_ru.json",
+        "assets/brewery/models/item/dark_brew.json",
+        "data/brewery/recipes/brewing/dark_brew.json"
+      ],
+      "display_name_en_us": "Dark Brew",
+      "display_name_ru_ru": "Тёмное варево",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/en_us.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/ru_ru.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/dark_brew.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/brewing/dark_brew.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:brewing/dark_brew"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:drawer",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/drawer.json",
+        "data/brewery/recipes/drawer.json"
+      ],
+      "display_name_en_us": "Drawer",
+      "display_name_ru_ru": "Ящик",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/drawer.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/drawer.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:drawer"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:dried_barley",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/dried_barley.json",
+        "data/farm_and_charm/recipes/drying/dried_barley.json"
+      ],
+      "display_name_en_us": "Dried Barley",
+      "display_name_ru_ru": "Мешок сухого ячменя",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/dried_barley.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/farm_and_charm/recipes/drying/dried_barley.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "BUY_AND_SELL",
+      "reason": "Verified Brewery ingredient; drinks remain NONE",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:drying/dried_barley"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": 4,
+      "sell_copper": 2,
+      "daily_player_units": 32,
+      "daily_global_units": 256,
+      "demand_group": "crops",
+      "price_basis": "Verified Brewery ingredient; drinks remain NONE",
+      "arbitrage_risk": "reviewed",
+      "review_status": "reviewed"
+    },
+    {
+      "item_id": "brewery:dried_corn",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/dried_corn.json",
+        "data/farm_and_charm/recipes/drying/dried_corn.json"
+      ],
+      "display_name_en_us": "Dried Corn",
+      "display_name_ru_ru": "Мешок сухой кукурузы",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/dried_corn.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/farm_and_charm/recipes/drying/dried_corn.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:drying/dried_corn"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:dried_oat",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/dried_oat.json",
+        "data/farm_and_charm/recipes/drying/dried_oat.json"
+      ],
+      "display_name_en_us": "Dried Oat",
+      "display_name_ru_ru": "Мешок сухого овса",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/dried_oat.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/farm_and_charm/recipes/drying/dried_oat.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "BUY_AND_SELL",
+      "reason": "Verified Brewery ingredient; drinks remain NONE",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:drying/dried_oat"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": 4,
+      "sell_copper": 2,
+      "daily_player_units": 32,
+      "daily_global_units": 256,
+      "demand_group": "crops",
+      "price_basis": "Verified Brewery ingredient; drinks remain NONE",
+      "arbitrage_risk": "reviewed",
+      "review_status": "reviewed"
+    },
+    {
+      "item_id": "brewery:dried_wheat",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/dried_wheat.json",
+        "data/farm_and_charm/recipes/drying/dried_wheat.json"
+      ],
+      "display_name_en_us": "Dried Wheat",
+      "display_name_ru_ru": "Мешок сухой пшеницы",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/dried_wheat.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/farm_and_charm/recipes/drying/dried_wheat.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "BUY_AND_SELL",
+      "reason": "Verified Brewery ingredient; drinks remain NONE",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:drying/dried_wheat"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": 4,
+      "sell_copper": 2,
+      "daily_player_units": 32,
+      "daily_global_units": 256,
+      "demand_group": "crops",
+      "price_basis": "Verified Brewery ingredient; drinks remain NONE",
+      "arbitrage_risk": "reviewed",
+      "review_status": "reviewed"
+    },
+    {
+      "item_id": "brewery:dumplings",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/dumplings.json",
+        "data/farm_and_charm/recipes/pot_cooking/dumplings.json"
+      ],
+      "display_name_en_us": "Dumplings",
+      "display_name_ru_ru": "Клёцки с картофелем",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/dumplings.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/farm_and_charm/recipes/pot_cooking/dumplings.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:pot_cooking/dumplings"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:fried_chicken",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/fried_chicken.json",
+        "data/farm_and_charm/recipes/roaster/fried_chicken.json"
+      ],
+      "display_name_en_us": "Fried Chicken",
+      "display_name_ru_ru": "Курица во фритюре",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/fried_chicken.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/farm_and_charm/recipes/roaster/fried_chicken.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:roaster/fried_chicken"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:gingerbread",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/gingerbread.json",
+        "data/farm_and_charm/recipes/stove/gingerbread.json"
+      ],
+      "display_name_en_us": "Gingerbread",
+      "display_name_ru_ru": "Пряник",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/gingerbread.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/gingerbread.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:stove/gingerbread"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:half_chicken",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/half_chicken.json",
+        "data/farm_and_charm/recipes/mincer/half_chicken.json"
+      ],
+      "display_name_en_us": "Half Chicken",
+      "display_name_ru_ru": "Полцыплёнка",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/half_chicken.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/farm_and_charm/recipes/mincer/half_chicken.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:mincer/half_chicken"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:hops",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/lang/en_us.json",
+        "assets/brewery/lang/ru_ru.json",
+        "assets/brewery/models/item/hops.json"
+      ],
+      "display_name_en_us": "Hops",
+      "display_name_ru_ru": "Хмель",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/en_us.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/ru_ru.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/hops.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:hops_crop",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/lang/en_us.json",
+        "assets/brewery/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Hops Seeds",
+      "display_name_ru_ru": "Семена хмеля",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/en_us.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:hops_seeds",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/lang/en_us.json",
+        "assets/brewery/lang/ru_ru.json",
+        "assets/brewery/models/item/hops_seeds.json",
+        "data/farm_and_charm/recipes/mincer/hops_seeds.json"
+      ],
+      "display_name_en_us": "Hops Seeds",
+      "display_name_ru_ru": "Семена хмеля",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/en_us.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/ru_ru.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/hops_seeds.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/farm_and_charm/recipes/mincer/hops_seeds.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:mincer/hops_seeds"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:mashed_potatoes",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/mashed_potatoes.json",
+        "data/farm_and_charm/recipes/mincer/mashed_potatoes.json"
+      ],
+      "display_name_en_us": "Mashed Potatoes",
+      "display_name_ru_ru": "Картофельное пюре",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/mashed_potatoes.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/farm_and_charm/recipes/mincer/mashed_potatoes.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:mincer/mashed_potatoes"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:netherite_brewingstation",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/netherite_brewingstation.json",
+        "data/brewery/recipes/netherite_brewingstation_smithing.json"
+      ],
+      "display_name_en_us": "Netherite Brewingstation",
+      "display_name_ru_ru": "Незеритовая пивоварня",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/netherite_brewingstation.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/netherite_brewingstation_smithing.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:netherite_brewingstation_smithing"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:oven",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/oven.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/oven.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:patterned_carpet",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/patterned_carpet.json",
+        "data/brewery/recipes/patterned_carpet.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/patterned_carpet.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/patterned_carpet.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:patterned_carpet"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:patterned_carpet_block",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/patterned_carpet_block.json"
+      ],
+      "display_name_en_us": "Patterned Carpet",
+      "display_name_ru_ru": "Узорчатый ковёр",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/patterned_carpet_block.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:patterned_wool",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/patterned_wool.json",
+        "data/brewery/recipes/patterned_wool.json"
+      ],
+      "display_name_en_us": "Patterned Wool",
+      "display_name_ru_ru": "Узорчатая шерсть",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/patterned_wool.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/patterned_wool.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:patterned_wool"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:pork_knuckle",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/pork_knuckle.json",
+        "data/farm_and_charm/recipes/stove/pork_knuckle.json"
+      ],
+      "display_name_en_us": "Pork Knuckle",
+      "display_name_ru_ru": "Свиная рулька",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/pork_knuckle.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/pork_knuckle.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:stove/pork_knuckle"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:potato_salad",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/potato_salad.json",
+        "data/farm_and_charm/recipes/crafting_bowl/potato_salad.json"
+      ],
+      "display_name_en_us": "Potato Salad",
+      "display_name_ru_ru": "Картофельный салат",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/potato_salad.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/farm_and_charm/recipes/crafting_bowl/potato_salad.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:crafting_bowl/potato_salad"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:pretzel",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/lang/en_us.json",
+        "assets/brewery/lang/ru_ru.json",
+        "assets/brewery/models/item/pretzel.json",
+        "data/farm_and_charm/recipes/stove/pretzel.json"
+      ],
+      "display_name_en_us": "Pretzel",
+      "display_name_ru_ru": "Брецель",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/en_us.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/ru_ru.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/pretzel.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/pretzel.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:stove/pretzel"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:rope",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/lang/en_us.json",
+        "assets/brewery/lang/ru_ru.json",
+        "assets/brewery/models/item/rope.json",
+        "data/brewery/recipes/rope.json"
+      ],
+      "display_name_en_us": "Rope",
+      "display_name_ru_ru": "Верёвка",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/en_us.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/ru_ru.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/rope.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/rope.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:rope"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:sausage",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/lang/en_us.json",
+        "assets/brewery/lang/ru_ru.json",
+        "assets/brewery/models/item/sausage.json",
+        "data/farm_and_charm/recipes/pot_cooking/sausage.json"
+      ],
+      "display_name_en_us": "Sausage",
+      "display_name_ru_ru": "Колбаска",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/en_us.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/lang/ru_ru.json",
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/sausage.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/farm_and_charm/recipes/pot_cooking/sausage.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:pot_cooking/sausage"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:sideboard",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/sideboard.json",
+        "data/brewery/recipes/sideboard.json"
+      ],
+      "display_name_en_us": "Sideboard",
+      "display_name_ru_ru": "Буфет",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/sideboard.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/sideboard.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:sideboard"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:small_barrel",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/small_barrel.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/small_barrel.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:steam_whistle",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/steam_whistle.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/steam_whistle.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:table",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/table.json",
+        "data/brewery/recipes/table.json"
+      ],
+      "display_name_en_us": "Table",
+      "display_name_ru_ru": "Стол",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/table.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/table.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:table"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:timer",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/timer.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/timer.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:wall_cabinet",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/wall_cabinet.json",
+        "data/brewery/recipes/wall_cabinet.json"
+      ],
+      "display_name_en_us": "Wall Cabinet",
+      "display_name_ru_ru": "Настенный шкаф",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/wall_cabinet.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/wall_cabinet.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:wall_cabinet"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:water_basin",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/water_basin.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/water_basin.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:whiskey_ak",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/whiskey_ak.json",
+        "data/brewery/recipes/brewing/whiskey_ak.json"
+      ],
+      "display_name_en_us": "§cAK Reserve",
+      "display_name_ru_ru": "§cБутылочка виски «AK»",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/whiskey_ak.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/brewing/whiskey_ak.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:brewing/whiskey_ak"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:whiskey_carrasconlabel",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/whiskey_carrasconlabel.json",
+        "data/brewery/recipes/brewing/whiskey_hadarilabel.json"
+      ],
+      "display_name_en_us": "Carrasconlabel Heritage",
+      "display_name_ru_ru": "Бутылочка виски «Carrasconlabel»",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/whiskey_carrasconlabel.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/brewing/whiskey_hadarilabel.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:brewing/whiskey_hadarilabel"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:whiskey_cristelwalker",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/whiskey_cristelwalker.json",
+        "data/brewery/recipes/brewing/whiskey_cristelwalker.json"
+      ],
+      "display_name_en_us": "CristelWalker Original",
+      "display_name_ru_ru": "Бутылочка виски «CristelWalker»",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/whiskey_cristelwalker.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/brewing/whiskey_cristelwalker.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:brewing/whiskey_cristelwalker"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:whiskey_highland_hearth",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/whiskey_highland_hearth.json",
+        "data/brewery/recipes/brewing/whiskey_highland_hearth.json"
+      ],
+      "display_name_en_us": "Highland Hearth Signature",
+      "display_name_ru_ru": "Бутылочка виски «Горный очаг»",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/whiskey_highland_hearth.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/brewing/whiskey_highland_hearth.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:brewing/whiskey_highland_hearth"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:whiskey_jamesons_malt",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/whiskey_jamesons_malt.json",
+        "data/brewery/recipes/brewing/whiskey_jamesons_malt.json"
+      ],
+      "display_name_en_us": "Jameson Malt Whiskey",
+      "display_name_ru_ru": "Бутылочка солодового виски «Jameson»",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/whiskey_jamesons_malt.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/brewing/whiskey_jamesons_malt.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:brewing/whiskey_jamesons_malt"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:whiskey_jojannik",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/whiskey_jojannik.json",
+        "data/brewery/recipes/brewing/whiskey_jojannik.json"
+      ],
+      "display_name_en_us": "JoJannik Select",
+      "display_name_ru_ru": "Бутылочка виски «JoJannik»",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/whiskey_jojannik.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/brewing/whiskey_jojannik.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:brewing/whiskey_jojannik"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:whiskey_lilitusinglemalt",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/whiskey_lilitusinglemalt.json",
+        "data/brewery/recipes/brewing/whiskey_lilitusinglemalt.json"
+      ],
+      "display_name_en_us": "Lilitu Single Malt",
+      "display_name_ru_ru": "Бутылочка односолодового виски «Lilitu»",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/whiskey_lilitusinglemalt.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/brewing/whiskey_lilitusinglemalt.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:brewing/whiskey_lilitusinglemalt"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:whiskey_maggoallan",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/whiskey_maggoallan.json",
+        "data/brewery/recipes/brewing/whiskey_maggoallan.json"
+      ],
+      "display_name_en_us": "MaggoAllan, Aged",
+      "display_name_ru_ru": "Бутылочка виски «MaggoAllan»",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/whiskey_maggoallan.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/brewing/whiskey_maggoallan.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:brewing/whiskey_maggoallan"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:whiskey_smokey_reverie",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/whiskey_smokey_reverie.json",
+        "data/brewery/recipes/brewing/whiskey_smokey_reverie.json"
+      ],
+      "display_name_en_us": "Smokey Reverie, Barrel-Aged",
+      "display_name_ru_ru": "Бутылочка виски «Туманные грёзы»",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/whiskey_smokey_reverie.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/brewing/whiskey_smokey_reverie.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:brewing/whiskey_smokey_reverie"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:wild_hops",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/wild_hops.json"
+      ],
+      "display_name_en_us": "Wild Hops",
+      "display_name_ru_ru": "Дикий хмель",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/wild_hops.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "brewery:wooden_brewingstation",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "brewery",
+      "mod_name": "[Let's Do] Brewery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-brewery-forge-2.0.6.jar",
+      "source_sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/brewery/models/item/wooden_brewingstation.json",
+        "data/brewery/recipes/wooden_brewingstation.json"
+      ],
+      "display_name_en_us": "Wooden Brewingstation",
+      "display_name_ru_ru": "Деревянная пивоварня",
+      "source_provenance": [
+        "letsdo-brewery-forge-2.0.6.jar:assets/brewery/models/item/wooden_brewingstation.json",
+        "letsdo-brewery-forge-2.0.6.jar:data/brewery/recipes/wooden_brewingstation.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "brewery:wooden_brewingstation"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "registry_type": "biomes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "oceanicrealms",
+    "name": "Oceanic Realms",
+    "version": "1.0.7"
+  },
+  "records": [
+    {
+      "registry_id": "oceanicrealms:sandstone_ocean",
+      "registry_type": "biome",
+      "schema_version": 1,
+      "mod_id": "oceanicrealms",
+      "mod_name": "Oceanic Realms",
+      "mod_version": "1.0.7",
+      "source_jar": "oceanicrealms-1.0.7-last-laster-ver.jar",
+      "source_sha256": "8f346b75b8b1c6d28b069924fe0aed374c3820997dae765698c3a140eccf2321",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/oceanicrealms/lang/en_us.json",
+        "data/oceanicrealms/worldgen/biome/sandstone_ocean.json"
+      ],
+      "display_name_en_us": "Sandstone Ocean",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:worldgen/biome/is_ocean",
+        "oceanicrealms:worldgen/biome/warm_oceans"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "oceanicrealms-1.0.7-last-laster-ver.jar:assets/oceanicrealms/lang/en_us.json",
+        "oceanicrealms-1.0.7-last-laster-ver.jar:data/oceanicrealms/worldgen/biome/sandstone_ocean.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}

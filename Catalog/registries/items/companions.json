@@ -1,0 +1,4509 @@
+{
+  "schema_version": 1,
+  "registry_type": "items",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "companions",
+    "name": "Companions!",
+    "version": "1.3.3"
+  },
+  "records": [
+    {
+      "registry_id": "companions:antlion_fur",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/antlion_fur.json"
+      ],
+      "display_name_en_us": "Antlion Fur",
+      "display_name_ru_ru": "Шерсть муравьиного льва",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/antlion_fur.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:antlion_fur"
+    },
+    {
+      "registry_id": "companions:big_bread",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/big_bread.json",
+        "data/companions/recipes/big_bread.json"
+      ],
+      "display_name_en_us": "Big Bread",
+      "display_name_ru_ru": "Большой хлеб",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/big_bread.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/big_bread.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:big_bread"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:big_bread"
+    },
+    {
+      "registry_id": "companions:blade_arm",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/blade_arm.json",
+        "data/companions/recipes/arm_blade.json"
+      ],
+      "display_name_en_us": "Blade Arm",
+      "display_name_ru_ru": "Рука-лезвие",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/blade_arm.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/arm_blade.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:arm_blade"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:blade_arm"
+    },
+    {
+      "registry_id": "companions:book_black_hole",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/book_black_hole.json"
+      ],
+      "display_name_en_us": "Black Hole Magic Book",
+      "display_name_ru_ru": "Волшебная книга: Чёрная дыра",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/book_black_hole.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:book_black_hole"
+    },
+    {
+      "registry_id": "companions:book_brace",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/book_brace.json"
+      ],
+      "display_name_en_us": "Brace Magic Book",
+      "display_name_ru_ru": "Волшебная книга: Искрящийся снаряд",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/book_brace.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:book_brace"
+    },
+    {
+      "registry_id": "companions:book_fire_mark",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/book_fire_mark.json"
+      ],
+      "display_name_en_us": "Fire Mark Magic Book",
+      "display_name_ru_ru": "Волшебная книга: Пламенная метка",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/book_fire_mark.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:book_fire_mark"
+    },
+    {
+      "registry_id": "companions:book_heal_ring",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/book_heal_ring.json"
+      ],
+      "display_name_en_us": "Heal Ring Magic Book",
+      "display_name_ru_ru": "Волшебная книга: Кольцо исцеления",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/book_heal_ring.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:book_heal_ring"
+    },
+    {
+      "registry_id": "companions:book_ice_shard",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/book_ice_shard.json"
+      ],
+      "display_name_en_us": "Ice Shard Magic Book",
+      "display_name_ru_ru": "Волшебная книга: Осколок льда",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/book_ice_shard.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:book_ice_shard"
+    },
+    {
+      "registry_id": "companions:book_ice_tornado",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/book_ice_tornado.json"
+      ],
+      "display_name_en_us": "Ice Tornado Magic Book",
+      "display_name_ru_ru": "Волшебная книга: Ледяной торнадо",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/book_ice_tornado.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:book_ice_tornado"
+    },
+    {
+      "registry_id": "companions:book_magic_ray",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/book_magic_ray.json"
+      ],
+      "display_name_en_us": "Magic Ray Magic Book",
+      "display_name_ru_ru": "Волшебная книга: Волшебный луч",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/book_magic_ray.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:book_magic_ray"
+    },
+    {
+      "registry_id": "companions:book_naginata",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/book_naginata.json",
+        "data/companions/recipes/book_naginata.json"
+      ],
+      "display_name_en_us": "Naginata Magic Book",
+      "display_name_ru_ru": "Волшебная книга: Нагината",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/book_naginata.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/book_naginata.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:book_naginata"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:book_naginata"
+    },
+    {
+      "registry_id": "companions:book_stone_spikes",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/book_stone_spikes.json"
+      ],
+      "display_name_en_us": "Stone Spikes Magic Book",
+      "display_name_ru_ru": "Волшебная книга: Каменные шипы",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/book_stone_spikes.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:book_stone_spikes"
+    },
+    {
+      "registry_id": "companions:broken_dinamo_spawn_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/broken_dinamo_spawn_egg.json"
+      ],
+      "display_name_en_us": "Broken Dinamo Spawn Egg",
+      "display_name_ru_ru": "Яйцо призыва сломанного генератора",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/broken_dinamo_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:broken_dinamo_spawn_egg"
+    },
+    {
+      "registry_id": "companions:cannon_arm",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/cannon_arm.json",
+        "data/companions/recipes/arm_cannon.json"
+      ],
+      "display_name_en_us": "Cannon Arm",
+      "display_name_ru_ru": "Рука-пушка",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/cannon_arm.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/arm_cannon.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:arm_cannon"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:cannon_arm"
+    },
+    {
+      "registry_id": "companions:copper_coin",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/models/item/copper_coin.json"
+      ],
+      "display_name_en_us": "Copper Coin",
+      "display_name_ru_ru": "Медная монета",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/copper_coin.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "companions:copper_coin",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:copper_coin"
+    },
+    {
+      "registry_id": "companions:cornelius_spawn_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/cornelius_spawn_egg.json"
+      ],
+      "display_name_en_us": "Cornelius Spawn Egg",
+      "display_name_ru_ru": "Яйцо призыва Корнелиуса",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/cornelius_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:cornelius_spawn_egg"
+    },
+    {
+      "registry_id": "companions:croissant_dragon_chocolate_armor",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/croissant_dragon_chocolate_armor.json",
+        "data/companions/recipes/croissant_dragon_chocolate_armor.json"
+      ],
+      "display_name_en_us": "Croissant Dragon Chocolate Armor",
+      "display_name_ru_ru": "Шоколадная броня круассан-дракона",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/croissant_dragon_chocolate_armor.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/croissant_dragon_chocolate_armor.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:croissant_dragon_chocolate_armor"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:croissant_dragon_chocolate_armor"
+    },
+    {
+      "registry_id": "companions:croissant_dragon_spawn_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/croissant_dragon_spawn_egg.json"
+      ],
+      "display_name_en_us": "Croissant Dragon Spawn Egg",
+      "display_name_ru_ru": "Яйцо призыва круассан-дракона",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/croissant_dragon_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:croissant_dragon_spawn_egg"
+    },
+    {
+      "registry_id": "companions:croissant_dragon_strawberry_armor",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/croissant_dragon_strawberry_armor.json",
+        "data/companions/recipes/croissant_dragon_stawberry_armor.json"
+      ],
+      "display_name_en_us": "Croissant Dragon Strawberry Armor",
+      "display_name_ru_ru": "Клубничная броня круассан-дракона",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/croissant_dragon_strawberry_armor.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/croissant_dragon_stawberry_armor.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:croissant_dragon_stawberry_armor"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:croissant_dragon_strawberry_armor"
+    },
+    {
+      "registry_id": "companions:croissant_dragon_vanilla_armor",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/croissant_dragon_vanilla_armor.json",
+        "data/companions/recipes/croissant_dragon_vanilla_armor.json"
+      ],
+      "display_name_en_us": "Croissant Dragon Vanilla Armor",
+      "display_name_ru_ru": "Ванильная броня круассан-дракона",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/croissant_dragon_vanilla_armor.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/croissant_dragon_vanilla_armor.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:croissant_dragon_vanilla_armor"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:croissant_dragon_vanilla_armor"
+    },
+    {
+      "registry_id": "companions:croissant_egg_block",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/models/item/croissant_egg_block.json"
+      ],
+      "display_name_en_us": "Croissant Egg",
+      "display_name_ru_ru": "Яйцо-круассан",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/croissant_egg_block.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "companions:croissant_egg_block",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:croissant_egg_block"
+    },
+    {
+      "registry_id": "companions:crystallized_blood",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/crystallized_blood.json"
+      ],
+      "display_name_en_us": "Crystallized Blood",
+      "display_name_ru_ru": "Кристалл крови",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/crystallized_blood.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:crystallized_blood"
+    },
+    {
+      "registry_id": "companions:crystallized_blood_axe",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/crystallized_blood_axe.json",
+        "data/companions/recipes/crystallized_blood_axe.json"
+      ],
+      "display_name_en_us": "Crystallized Blood Axe",
+      "display_name_ru_ru": "Топор из кристаллов крови",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/crystallized_blood_axe.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/crystallized_blood_axe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:crystallized_blood_axe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:crystallized_blood_axe"
+    },
+    {
+      "registry_id": "companions:crystallized_blood_axe_icon",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/models/item/crystallized_blood_axe_icon.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/crystallized_blood_axe_icon.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:crystallized_blood_axe_icon"
+    },
+    {
+      "registry_id": "companions:crystallized_blood_boots",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/crystallized_blood_boots.json",
+        "data/companions/recipes/crystallized_blood_boots.json"
+      ],
+      "display_name_en_us": "Crystallized Blood Boots",
+      "display_name_ru_ru": "Ботинки из кристаллов крови",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/crystallized_blood_boots.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/crystallized_blood_boots.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:crystallized_blood_boots"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:crystallized_blood_boots"
+    },
+    {
+      "registry_id": "companions:crystallized_blood_chestplate",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/crystallized_blood_chestplate.json",
+        "data/companions/recipes/crystallized_blood_chestplate.json"
+      ],
+      "display_name_en_us": "Crystallized Blood Chestplate",
+      "display_name_ru_ru": "Нагрудник из кристаллов крови",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/crystallized_blood_chestplate.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/crystallized_blood_chestplate.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:crystallized_blood_chestplate"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:crystallized_blood_chestplate"
+    },
+    {
+      "registry_id": "companions:crystallized_blood_helmet",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/crystallized_blood_helmet.json",
+        "data/companions/recipes/crystallized_blood_helmet.json"
+      ],
+      "display_name_en_us": "Crystallized Blood Helmet",
+      "display_name_ru_ru": "Шлем из кристаллов крови",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/crystallized_blood_helmet.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/crystallized_blood_helmet.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:crystallized_blood_helmet"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:crystallized_blood_helmet"
+    },
+    {
+      "registry_id": "companions:crystallized_blood_leggings",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/crystallized_blood_leggings.json",
+        "data/companions/recipes/crystallized_blood_leggings.json"
+      ],
+      "display_name_en_us": "Crystallized Blood Leggings",
+      "display_name_ru_ru": "Поножи из кристаллов крови",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/crystallized_blood_leggings.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/crystallized_blood_leggings.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:crystallized_blood_leggings"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:crystallized_blood_leggings"
+    },
+    {
+      "registry_id": "companions:crystallized_blood_scythe",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/crystallized_blood_scythe.json",
+        "data/companions/recipes/crystallized_blood_scythe.json"
+      ],
+      "display_name_en_us": "Crystallized Blood Scythe",
+      "display_name_ru_ru": "Коса из кристаллов крови",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/crystallized_blood_scythe.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/crystallized_blood_scythe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:crystallized_blood_scythe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:crystallized_blood_scythe"
+    },
+    {
+      "registry_id": "companions:crystallized_blood_scythe_icon",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/models/item/crystallized_blood_scythe_icon.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/crystallized_blood_scythe_icon.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:crystallized_blood_scythe_icon"
+    },
+    {
+      "registry_id": "companions:crystallized_blood_sword",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/crystallized_blood_sword.json",
+        "data/companions/recipes/crystallized_blood_sword.json"
+      ],
+      "display_name_en_us": "Crystallized Blood Sword",
+      "display_name_ru_ru": "Меч из кристаллов крови",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/crystallized_blood_sword.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/crystallized_blood_sword.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:crystallized_blood_sword"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:crystallized_blood_sword"
+    },
+    {
+      "registry_id": "companions:crystallized_blood_sword_icon",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/models/item/crystallized_blood_sword_icon.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/crystallized_blood_sword_icon.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:crystallized_blood_sword_icon"
+    },
+    {
+      "registry_id": "companions:demon_flesh",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/demon_flesh.json"
+      ],
+      "display_name_en_us": "Demon Flesh",
+      "display_name_ru_ru": "Демоническая плоть",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/demon_flesh.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:demon_flesh"
+    },
+    {
+      "registry_id": "companions:empty_puppet_block",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/models/item/empty_puppet_block.json",
+        "data/companions/recipes/empty_puppet.json"
+      ],
+      "display_name_en_us": "Empty Puppet",
+      "display_name_ru_ru": "Невзрачная марионетка",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/empty_puppet_block.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/empty_puppet.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "companions:empty_puppet_block",
+      "acquisition_routes": [
+        "companions:empty_puppet"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:empty_puppet_block"
+    },
+    {
+      "registry_id": "companions:end_coin",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/models/item/end_coin.json"
+      ],
+      "display_name_en_us": "End Coin",
+      "display_name_ru_ru": "Эндер-монета",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/end_coin.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "companions:end_coin",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:end_coin"
+    },
+    {
+      "registry_id": "companions:eternal_fire",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/models/item/eternal_fire.json"
+      ],
+      "display_name_en_us": "Eternal Fire",
+      "display_name_ru_ru": "Вечный огонь",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/eternal_fire.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "companions:eternal_fire",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:eternal_fire"
+    },
+    {
+      "registry_id": "companions:eternal_lighter",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/eternal_lighter.json",
+        "data/companions/recipes/eternal_lighter.json"
+      ],
+      "display_name_en_us": "Eternal Lighter",
+      "display_name_ru_ru": "Вечное огниво",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/eternal_lighter.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/eternal_lighter.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:eternal_lighter"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:eternal_lighter"
+    },
+    {
+      "registry_id": "companions:frog_bonanza_block",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/models/item/frog_bonanza_block.json",
+        "data/companions/recipes/frog_bonanza.json"
+      ],
+      "display_name_en_us": "Frog Bonanza",
+      "display_name_ru_ru": "Доходная лягушка",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/needs_stone_tool"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/frog_bonanza_block.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/frog_bonanza.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "companions:frog_bonanza_block",
+      "acquisition_routes": [
+        "companions:frog_bonanza"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:frog_bonanza_block"
+    },
+    {
+      "registry_id": "companions:golden_allay_spawn_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/golden_allay_spawn_egg.json"
+      ],
+      "display_name_en_us": "Golden Allay Spawn Egg",
+      "display_name_ru_ru": "Яйцо призыва золотого тихони",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/golden_allay_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:golden_allay_spawn_egg"
+    },
+    {
+      "registry_id": "companions:holy_porcelain_pottery",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/models/item/holy_porcelain_pottery.json",
+        "data/companions/recipes/holy_porcelain_pottery.json"
+      ],
+      "display_name_en_us": "Holy Porcelain Pottery",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/holy_porcelain_pottery.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/holy_porcelain_pottery.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "companions:holy_porcelain_pottery",
+      "acquisition_routes": [
+        "companions:holy_porcelain_pottery"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:holy_porcelain_pottery"
+    },
+    {
+      "registry_id": "companions:holy_robe_coat",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/holy_robe_coat.json",
+        "data/companions/recipes/holy_robe_coat.json"
+      ],
+      "display_name_en_us": "Holy Robe Coat",
+      "display_name_ru_ru": "Святая мантия-пальто",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/holy_robe_coat.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/holy_robe_coat.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:holy_robe_coat"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:holy_robe_coat"
+    },
+    {
+      "registry_id": "companions:holy_robe_leggings",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/holy_robe_leggings.json",
+        "data/companions/recipes/holy_robe_leggings.json"
+      ],
+      "display_name_en_us": "Holy Robe Leggings",
+      "display_name_ru_ru": "Святая мантия-поножи",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/holy_robe_leggings.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/holy_robe_leggings.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:holy_robe_leggings"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:holy_robe_leggings"
+    },
+    {
+      "registry_id": "companions:holy_robe_mask",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/holy_robe_mask.json",
+        "data/companions/recipes/holy_robe_mask.json"
+      ],
+      "display_name_en_us": "Holy Mask",
+      "display_name_ru_ru": "Святая маска",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/holy_robe_mask.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/holy_robe_mask.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:holy_robe_mask"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:holy_robe_mask"
+    },
+    {
+      "registry_id": "companions:hostile_imp_spawn_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/hostile_imp_spawn_egg.json"
+      ],
+      "display_name_en_us": "Hostile Imp Spawn Egg",
+      "display_name_ru_ru": "Яйцо призыва враждебного беса",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/hostile_imp_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:hostile_imp_spawn_egg"
+    },
+    {
+      "registry_id": "companions:hostile_puppet_glove_spawn_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/hostile_puppet_glove_spawn_egg.json"
+      ],
+      "display_name_en_us": "Hostile Puppet Glove Spawn Egg",
+      "display_name_ru_ru": "Яйцо призыва враждебной перчатки кукловода",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/hostile_puppet_glove_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:hostile_puppet_glove_spawn_egg"
+    },
+    {
+      "registry_id": "companions:hourglass",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/hourglass.json",
+        "data/companions/recipes/hourglass.json"
+      ],
+      "display_name_en_us": "Hourglass",
+      "display_name_ru_ru": "Песочные часы",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/hourglass.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/hourglass.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:hourglass"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:hourglass"
+    },
+    {
+      "registry_id": "companions:illager_golem_spawn_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/illager_golem_spawn_egg.json"
+      ],
+      "display_name_en_us": "Illager Golem Spawn Egg",
+      "display_name_ru_ru": "Яйцо призыва голема разбойников",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/illager_golem_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:illager_golem_spawn_egg"
+    },
+    {
+      "registry_id": "companions:living_candle_spawn_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/living_candle_spawn_egg.json"
+      ],
+      "display_name_en_us": "Living Candle Spawn Egg",
+      "display_name_ru_ru": "Яйцо призыва живой свечи",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/living_candle_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:living_candle_spawn_egg"
+    },
+    {
+      "registry_id": "companions:mage_coat",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/mage_coat.json",
+        "data/companions/recipes/mage_coat.json"
+      ],
+      "display_name_en_us": "Mage Coat",
+      "display_name_ru_ru": "Плащ волшебника",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/mage_coat.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/mage_coat.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:mage_coat"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:mage_coat"
+    },
+    {
+      "registry_id": "companions:mage_hat",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/mage_hat.json",
+        "data/companions/recipes/mage_hat.json"
+      ],
+      "display_name_en_us": "Mage Hat",
+      "display_name_ru_ru": "Шляпа волшебника",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/mage_hat.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/mage_hat.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:mage_hat"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:mage_hat"
+    },
+    {
+      "registry_id": "companions:mage_leggings",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/mage_leggings.json",
+        "data/companions/recipes/mage_leggings.json"
+      ],
+      "display_name_en_us": "Mage Leggings",
+      "display_name_ru_ru": "Поножи волшебника",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/mage_leggings.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/mage_leggings.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:mage_leggings"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:mage_leggings"
+    },
+    {
+      "registry_id": "companions:mage_staff",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/mage_staff.json",
+        "data/companions/recipes/mage_staff.json"
+      ],
+      "display_name_en_us": "Mage Staff",
+      "display_name_ru_ru": "Посох волшебника",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/mage_staff.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/mage_staff.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:mage_staff"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:mage_staff"
+    },
+    {
+      "registry_id": "companions:mage_staff_icon",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/models/item/mage_staff_icon.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/mage_staff_icon.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:mage_staff_icon"
+    },
+    {
+      "registry_id": "companions:mutant_arm",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/mutant_arm.json",
+        "data/companions/recipes/arm_mutant.json"
+      ],
+      "display_name_en_us": "Mutant Arm",
+      "display_name_ru_ru": "Мутировавшая рука",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/mutant_arm.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/arm_mutant.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:arm_mutant"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:mutant_arm"
+    },
+    {
+      "registry_id": "companions:mutant_flesh",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/mutant_flesh.json"
+      ],
+      "display_name_en_us": "Mutant Flesh",
+      "display_name_ru_ru": "Мутировавшая плоть",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/mutant_flesh.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:mutant_flesh"
+    },
+    {
+      "registry_id": "companions:needle",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/needle.json",
+        "data/companions/recipes/needle.json"
+      ],
+      "display_name_en_us": "Needle",
+      "display_name_ru_ru": "Игла",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/needle.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/needle.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:needle"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:needle"
+    },
+    {
+      "registry_id": "companions:nether_coin",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/models/item/nether_coin.json"
+      ],
+      "display_name_en_us": "Nether Coin",
+      "display_name_ru_ru": "Незеритовая монета",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/nether_coin.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "companions:nether_coin",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:nether_coin"
+    },
+    {
+      "registry_id": "companions:netherite_chains",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/netherite_chains.json",
+        "data/companions/recipes/smithing_netherite_chain.json"
+      ],
+      "display_name_en_us": "Netherite Chains",
+      "display_name_ru_ru": "Незеритовые цепи",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/netherite_chains.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/smithing_netherite_chain.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:smithing_netherite_chain"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:netherite_chains"
+    },
+    {
+      "registry_id": "companions:netherite_dagger",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/netherite_dagger.json",
+        "data/companions/recipes/netherite_dagger.json"
+      ],
+      "display_name_en_us": "Netherite Dagger",
+      "display_name_ru_ru": "Незеритовый кинжал",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/netherite_dagger.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/netherite_dagger.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:netherite_dagger"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:netherite_dagger"
+    },
+    {
+      "registry_id": "companions:old_cloth",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/old_cloth.json"
+      ],
+      "display_name_en_us": "Old Cloth",
+      "display_name_ru_ru": "Старая ткань",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/old_cloth.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:old_cloth"
+    },
+    {
+      "registry_id": "companions:plasma_lamp_block",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/models/item/plasma_lamp_block.json",
+        "data/companions/recipes/tesla_plasma_lamp.json"
+      ],
+      "display_name_en_us": "Plasma Lamp",
+      "display_name_ru_ru": "Плазменная лампа",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/needs_iron_tool"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/plasma_lamp_block.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/tesla_plasma_lamp.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "companions:plasma_lamp_block",
+      "acquisition_routes": [
+        "companions:tesla_plasma_lamp"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:plasma_lamp_block"
+    },
+    {
+      "registry_id": "companions:porcelain_pottery",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/models/item/porcelain_pottery.json",
+        "data/companions/recipes/porcelain_pottery.json"
+      ],
+      "display_name_en_us": "Porcelain Pottery",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/porcelain_pottery.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/porcelain_pottery.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "companions:porcelain_pottery",
+      "acquisition_routes": [
+        "companions:porcelain_pottery"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:porcelain_pottery"
+    },
+    {
+      "registry_id": "companions:recall_platform_block",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/models/item/recall_platform_block.json",
+        "data/companions/recipes/tesla_recall_platform.json"
+      ],
+      "display_name_en_us": "Recall Platform",
+      "display_name_ru_ru": "Возвратная платформа",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/needs_iron_tool"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/recall_platform_block.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/tesla_recall_platform.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "companions:recall_platform_block",
+      "acquisition_routes": [
+        "companions:tesla_recall_platform"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:recall_platform_block"
+    },
+    {
+      "registry_id": "companions:relic_gold",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/relic_gold.json"
+      ],
+      "display_name_en_us": "Relic Gold",
+      "display_name_ru_ru": "Древнее золото",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/relic_gold.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:relic_gold"
+    },
+    {
+      "registry_id": "companions:respawn_totem_block",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/models/item/respawn_totem_block.json",
+        "data/companions/recipes/respawn_totem.json"
+      ],
+      "display_name_en_us": "Respawn Totem",
+      "display_name_ru_ru": "Тотем возрождения",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/needs_iron_tool"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/respawn_totem_block.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/respawn_totem.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "companions:respawn_totem_block",
+      "acquisition_routes": [
+        "companions:respawn_totem"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:respawn_totem_block"
+    },
+    {
+      "registry_id": "companions:sacred_pontiff_spawn_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/sacred_pontiff_spawn_egg.json"
+      ],
+      "display_name_en_us": "Sacred Pontiff Spawn Egg",
+      "display_name_ru_ru": "Яйцо призыва первосвященника",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/sacred_pontiff_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:sacred_pontiff_spawn_egg"
+    },
+    {
+      "registry_id": "companions:saint_klimt_music_disc",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/saint_klimt_music_disc.json"
+      ],
+      "display_name_en_us": "Saint Klimt Music Disc",
+      "display_name_ru_ru": "Пластинка «Saint Klimt»",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:items/music_discs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/saint_klimt_music_disc.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:saint_klimt_music_disc"
+    },
+    {
+      "registry_id": "companions:saint_klimt_music_disc.desc",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Solas Composer - Angel of Gertrude",
+      "display_name_ru_ru": "Solas Composer - Angel of Gertrude",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:saint_klimt_music_disc.desc"
+    },
+    {
+      "registry_id": "companions:shade_bat_altar",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/models/item/shade_bat_altar.json",
+        "data/companions/recipes/shade_bat_altar.json"
+      ],
+      "display_name_en_us": "Shade Bat Altar",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/shade_bat_altar.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/shade_bat_altar.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "companions:shade_bat_altar",
+      "acquisition_routes": [
+        "companions:shade_bat_altar"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:shade_bat_altar"
+    },
+    {
+      "registry_id": "companions:shade_maw_altar",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/models/item/shade_maw_altar.json",
+        "data/companions/recipes/shade_maw_altar.json"
+      ],
+      "display_name_en_us": "Shade Maw Altar",
+      "display_name_ru_ru": "Теневой алтарь пасти",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/shade_maw_altar.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/shade_maw_altar.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "companions:shade_maw_altar",
+      "acquisition_routes": [
+        "companions:shade_maw_altar"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:shade_maw_altar"
+    },
+    {
+      "registry_id": "companions:shade_sword_altar",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/models/item/shade_sword_altar.json",
+        "data/companions/recipes/shade_sword_altar.json"
+      ],
+      "display_name_en_us": "Shade Sword Altar",
+      "display_name_ru_ru": "Теневой алтарь меча",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/shade_sword_altar.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/shade_sword_altar.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "companions:shade_sword_altar",
+      "acquisition_routes": [
+        "companions:shade_sword_altar"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:shade_sword_altar"
+    },
+    {
+      "registry_id": "companions:shadow_bell",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/shadow_bell.json",
+        "data/companions/recipes/shadow_bell.json"
+      ],
+      "display_name_en_us": "Shadow Bell",
+      "display_name_ru_ru": "Теневой колокол",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/shadow_bell.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/shadow_bell.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:shadow_bell"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:shadow_bell"
+    },
+    {
+      "registry_id": "companions:soul_furnace_block",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/models/item/soul_furnace_block.json",
+        "data/companions/recipes/soul_furnace.json"
+      ],
+      "display_name_en_us": "Soul Furnace",
+      "display_name_ru_ru": "Печь душ",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/needs_stone_tool"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/soul_furnace_block.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/soul_furnace.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "companions:soul_furnace_block",
+      "acquisition_routes": [
+        "companions:soul_furnace"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:soul_furnace_block"
+    },
+    {
+      "registry_id": "companions:soul_gem",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/soul_gem.json"
+      ],
+      "display_name_en_us": "Soul Gem",
+      "display_name_ru_ru": "Самоцвет душ",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/soul_gem.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:soul_gem"
+    },
+    {
+      "registry_id": "companions:teddy_spawn_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/teddy_spawn_egg.json"
+      ],
+      "display_name_en_us": "Teddy Spawn Egg",
+      "display_name_ru_ru": "Яйцо призыва плюшевого мишки",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/teddy_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:teddy_spawn_egg"
+    },
+    {
+      "registry_id": "companions:tesla_coil_block",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/models/item/tesla_coil_block.json",
+        "data/companions/recipes/tesla_coil.json"
+      ],
+      "display_name_en_us": "Tesla Coil",
+      "display_name_ru_ru": "Катушка Теслы",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/needs_iron_tool"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/tesla_coil_block.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/tesla_coil.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "companions:tesla_coil_block",
+      "acquisition_routes": [
+        "companions:tesla_coil"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:tesla_coil_block"
+    },
+    {
+      "registry_id": "companions:voltaic_pillar_block",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/models/item/voltaic_pillar_block.json",
+        "data/companions/recipes/tesla_voltaic_pillar.json"
+      ],
+      "display_name_en_us": "Voltaic Pillar",
+      "display_name_ru_ru": "Вольтов столб",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/needs_iron_tool"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/voltaic_pillar_block.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/tesla_voltaic_pillar.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "companions:voltaic_pillar_block",
+      "acquisition_routes": [
+        "companions:tesla_voltaic_pillar"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:voltaic_pillar_block"
+    },
+    {
+      "registry_id": "companions:voltaic_relay_block",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/models/item/voltaic_relay_block.json",
+        "data/companions/recipes/tesla_voltaic_relay.json"
+      ],
+      "display_name_en_us": "Voltaic Relay",
+      "display_name_ru_ru": "Электромагнитное реле",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/needs_iron_tool"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/voltaic_relay_block.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/tesla_voltaic_relay.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "companions:voltaic_relay_block",
+      "acquisition_routes": [
+        "companions:tesla_voltaic_relay"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:voltaic_relay_block"
+    },
+    {
+      "registry_id": "companions:whip_arm",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/whip_arm.json",
+        "data/companions/recipes/arm_whip.json"
+      ],
+      "display_name_en_us": "Whip Arm",
+      "display_name_ru_ru": "Рука-плеть",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/whip_arm.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/arm_whip.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:arm_whip"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:whip_arm"
+    },
+    {
+      "registry_id": "companions:wild_antlion_spawn_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/wild_antlion_spawn_egg.json"
+      ],
+      "display_name_en_us": "Wild Antlion Spawn Egg",
+      "display_name_ru_ru": "Яйцо призыва дикого муравьиного льва",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/wild_antlion_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:wild_antlion_spawn_egg"
+    },
+    {
+      "registry_id": "companions:wrench",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "companions",
+      "mod_name": "Companions!",
+      "mod_version": "1.3.3",
+      "source_jar": "companions-forge-1.20.1-1.3.3.jar",
+      "source_sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/companions/lang/en_us.json",
+        "assets/companions/lang/ru_ru.json",
+        "assets/companions/models/item/wrench.json",
+        "data/companions/recipes/wrench.json"
+      ],
+      "display_name_en_us": "Wrench",
+      "display_name_ru_ru": "Гаечный ключ",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/en_us.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/lang/ru_ru.json",
+        "companions-forge-1.20.1-1.3.3.jar:assets/companions/models/item/wrench.json",
+        "companions-forge-1.20.1-1.3.3.jar:data/companions/recipes/wrench.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "companions:wrench"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:companions:wrench"
+    }
+  ]
+}

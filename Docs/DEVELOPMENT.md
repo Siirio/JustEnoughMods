@@ -271,6 +271,14 @@ SMP сохраняет 64 replay receipts на игрока и отвергае�
 
 Автоматические тесты и fixtures удалены по прямому запросу пользователя; Gradle test tasks отключены, JUnit отсутствует. Runtime test scenarios запрещены. Build/launch/analysis выполняются только при отдельном прямом запросе согласно AGENTS.md.
 
+## Atlas and two-stage gameplay ownership
+
+`Catalog/` is the reproducible static registry atlas for the canonical managed pack. Its manifest owns artifact identity and hashes; partitioned registry records and derived views are evidence, not a runtime registry substitute. Unknown dynamic IDs, stack/NBT-dependent behavior and unverified native APIs remain explicitly unresolved and fail closed where progression or economy is involved.
+
+Settlement background production owns durable obligations, not virtual stock. Only inspected Workers Farmer evidence may create the current wheat obligation; input is consumed from and output is materialized into explicitly linked loaded storage under bounded scans. Economy cannot sell a pending or quarantined obligation. Town territory is a persisted dimension-aware soft guidance boundary: it neither grants claim permissions nor replaces Flan.
+
+TinyInv remains the native owner of expanded inventory/hotbar indexing, scrolling and rendering. JEM Professions only grants its synchronized hotbar attribute to an eligible level-20 Architect and provides validated direct-slot packets. BackToBed is no longer a distribution dependency; JEM Server owns `/home` validation against server identity, recent damage, active event boundaries, vanilla respawn state and shared safe-arrival rules.
+
 ## Xaero ownership and matching artifacts
 
 Terrain owner — native Unified Xaero Worldmap 2.0.1 + WorldMap 1.46.0, with existing Minimap 26.4.2 and embedded XaeroLib 1.7.3. Optional `xaero.shared` adapters extend only native all-dimension reconciliation and full-cave acceptance; no map store/renderer is duplicated. Native addon's CC0-1.0 declaration is present in META-INF/mods.toml and author description. Exact official Forge artifacts are staged in `Client/ManagedPack` and local Server; active AutoModpack profile and bootstrap-only installer are untouched.

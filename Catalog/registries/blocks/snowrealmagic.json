@@ -1,0 +1,315 @@
+{
+  "schema_version": 1,
+  "registry_type": "blocks",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "snowrealmagic",
+    "name": "Snow! Real Magic!",
+    "version": "${file.jarVersion}"
+  },
+  "records": [
+    {
+      "registry_id": "snowrealmagic:fence",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "snowrealmagic",
+      "mod_name": "Snow! Real Magic!",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "SnowRealMagic-1.20.1-Forge-10.7.0.jar",
+      "source_sha256": "969b0e396dc1d5f2fd3783b3638fc49230fe143ea5329584b27e558a77a20dac",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowrealmagic/blockstates/fence.json",
+        "assets/snowrealmagic/lang/en_us.json",
+        "assets/snowrealmagic/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Snow-Covered Fence",
+      "display_name_ru_ru": "Заснеженный забор",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/wooden_fences",
+        "snowrealmagic:blocks/snowy_setting"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "SnowRealMagic-1.20.1-Forge-10.7.0.jar:assets/snowrealmagic/blockstates/fence.json",
+        "SnowRealMagic-1.20.1-Forge-10.7.0.jar:assets/snowrealmagic/lang/en_us.json",
+        "SnowRealMagic-1.20.1-Forge-10.7.0.jar:assets/snowrealmagic/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "snowrealmagic:fence2",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "snowrealmagic",
+      "mod_name": "Snow! Real Magic!",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "SnowRealMagic-1.20.1-Forge-10.7.0.jar",
+      "source_sha256": "969b0e396dc1d5f2fd3783b3638fc49230fe143ea5329584b27e558a77a20dac",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowrealmagic/blockstates/fence2.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/fences",
+        "minecraft:blocks/mineable/pickaxe",
+        "snowrealmagic:blocks/snowy_setting"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "SnowRealMagic-1.20.1-Forge-10.7.0.jar:assets/snowrealmagic/blockstates/fence2.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "snowrealmagic:fence_gate",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "snowrealmagic",
+      "mod_name": "Snow! Real Magic!",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "SnowRealMagic-1.20.1-Forge-10.7.0.jar",
+      "source_sha256": "969b0e396dc1d5f2fd3783b3638fc49230fe143ea5329584b27e558a77a20dac",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowrealmagic/blockstates/fence_gate.json",
+        "assets/snowrealmagic/lang/en_us.json",
+        "assets/snowrealmagic/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Snow-Covered Fence Gate",
+      "display_name_ru_ru": "Заснеженная калитка",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/fence_gates",
+        "snowrealmagic:blocks/snowy_setting"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "SnowRealMagic-1.20.1-Forge-10.7.0.jar:assets/snowrealmagic/blockstates/fence_gate.json",
+        "SnowRealMagic-1.20.1-Forge-10.7.0.jar:assets/snowrealmagic/lang/en_us.json",
+        "SnowRealMagic-1.20.1-Forge-10.7.0.jar:assets/snowrealmagic/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "snowrealmagic:slab",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "snowrealmagic",
+      "mod_name": "Snow! Real Magic!",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "SnowRealMagic-1.20.1-Forge-10.7.0.jar",
+      "source_sha256": "969b0e396dc1d5f2fd3783b3638fc49230fe143ea5329584b27e558a77a20dac",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowrealmagic/blockstates/slab.json",
+        "assets/snowrealmagic/lang/en_us.json",
+        "assets/snowrealmagic/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Snow-Covered Slab",
+      "display_name_ru_ru": "Заснеженная плита",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/slabs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "SnowRealMagic-1.20.1-Forge-10.7.0.jar:assets/snowrealmagic/blockstates/slab.json",
+        "SnowRealMagic-1.20.1-Forge-10.7.0.jar:assets/snowrealmagic/lang/en_us.json",
+        "SnowRealMagic-1.20.1-Forge-10.7.0.jar:assets/snowrealmagic/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "snowrealmagic:snow",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "snowrealmagic",
+      "mod_name": "Snow! Real Magic!",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "SnowRealMagic-1.20.1-Forge-10.7.0.jar",
+      "source_sha256": "969b0e396dc1d5f2fd3783b3638fc49230fe143ea5329584b27e558a77a20dac",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowrealmagic/blockstates/snow.json"
+      ],
+      "display_name_en_us": "Falling Block",
+      "display_name_ru_ru": "Падающий блок",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/foxes_spawnable_on",
+        "minecraft:blocks/goats_spawnable_on",
+        "minecraft:blocks/inside_step_sound_blocks",
+        "minecraft:blocks/mineable/shovel",
+        "minecraft:blocks/mooshrooms_spawnable_on",
+        "minecraft:blocks/rabbits_spawnable_on",
+        "minecraft:blocks/snow",
+        "minecraft:blocks/wolves_spawnable_on"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "SnowRealMagic-1.20.1-Forge-10.7.0.jar:assets/snowrealmagic/blockstates/snow.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "snowrealmagic:stairs",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "snowrealmagic",
+      "mod_name": "Snow! Real Magic!",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "SnowRealMagic-1.20.1-Forge-10.7.0.jar",
+      "source_sha256": "969b0e396dc1d5f2fd3783b3638fc49230fe143ea5329584b27e558a77a20dac",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowrealmagic/blockstates/stairs.json",
+        "assets/snowrealmagic/lang/en_us.json",
+        "assets/snowrealmagic/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Snow-Covered Stairs",
+      "display_name_ru_ru": "Заснеженные ступени",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/stairs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "SnowRealMagic-1.20.1-Forge-10.7.0.jar:assets/snowrealmagic/blockstates/stairs.json",
+        "SnowRealMagic-1.20.1-Forge-10.7.0.jar:assets/snowrealmagic/lang/en_us.json",
+        "SnowRealMagic-1.20.1-Forge-10.7.0.jar:assets/snowrealmagic/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "snowrealmagic:wall",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "snowrealmagic",
+      "mod_name": "Snow! Real Magic!",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "SnowRealMagic-1.20.1-Forge-10.7.0.jar",
+      "source_sha256": "969b0e396dc1d5f2fd3783b3638fc49230fe143ea5329584b27e558a77a20dac",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowrealmagic/blockstates/wall.json",
+        "assets/snowrealmagic/lang/en_us.json",
+        "assets/snowrealmagic/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Snow-Covered Wall",
+      "display_name_ru_ru": "Заснеженная ограда",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/walls",
+        "snowrealmagic:blocks/snowy_setting"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "SnowRealMagic-1.20.1-Forge-10.7.0.jar:assets/snowrealmagic/blockstates/wall.json",
+        "SnowRealMagic-1.20.1-Forge-10.7.0.jar:assets/snowrealmagic/lang/en_us.json",
+        "SnowRealMagic-1.20.1-Forge-10.7.0.jar:assets/snowrealmagic/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "registry_type": "weapons",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "bbb",
+    "name": "Building But Better",
+    "version": "2.0pre4"
+  },
+  "records": [
+    {
+      "item_id": "bbb:hammer",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bbb",
+      "mod_name": "Building But Better",
+      "mod_version": "2.0pre4",
+      "source_jar": "bbb-forge-2.0pre4.jar",
+      "source_sha256": "9127d9013708f72784f538166db42451e3fae5d0f7f348d2675751eb26837d33",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bbb/lang/en_us.json",
+        "assets/bbb/lang/ru_ru.json",
+        "assets/bbb/models/item/hammer.json",
+        "data/bbb/recipes/hammer.json"
+      ],
+      "display_name_en_us": "Hammer",
+      "display_name_ru_ru": "Молот",
+      "source_provenance": [
+        "bbb-forge-2.0pre4.jar:assets/bbb/lang/en_us.json",
+        "bbb-forge-2.0pre4.jar:assets/bbb/lang/ru_ru.json",
+        "bbb-forge-2.0pre4.jar:assets/bbb/models/item/hammer.json",
+        "bbb-forge-2.0pre4.jar:data/bbb/recipes/hammer.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "hammer"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "registry_type": "creative_tabs",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "cataclysm",
+    "name": "cataclysm",
+    "version": "3.31"
+  },
+  "records": [
+    {
+      "registry_id": "cataclysm:block",
+      "registry_type": "creative_mode_tab",
+      "schema_version": 1,
+      "mod_id": "cataclysm",
+      "mod_name": "cataclysm",
+      "mod_version": "3.31",
+      "source_jar": "L_Enders_Cataclysm-3.31.jar",
+      "source_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/cataclysm/lang/en_us.json",
+        "assets/cataclysm/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Cataclysm Blocks",
+      "display_name_ru_ru": "Cataclysm Блоки",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "cataclysm:item",
+      "registry_type": "creative_mode_tab",
+      "schema_version": 1,
+      "mod_id": "cataclysm",
+      "mod_name": "cataclysm",
+      "mod_version": "3.31",
+      "source_jar": "L_Enders_Cataclysm-3.31.jar",
+      "source_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/cataclysm/lang/en_us.json",
+        "assets/cataclysm/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Cataclysm Items",
+      "display_name_ru_ru": "Cataclysm Предметы",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}

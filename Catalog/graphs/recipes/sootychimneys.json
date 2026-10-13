@@ -1,0 +1,518 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "sootychimneys",
+    "name": "Sooty Chimneys",
+    "version": "1.3.4"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "sootychimneys:brick_chimney",
+      "mod_id": "sootychimneys",
+      "mod_name": "Sooty Chimneys",
+      "mod_version": "1.3.4",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:brick",
+        "minecraft:bricks",
+        "minecraft:coals",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "sootychimneys:brick_chimney"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "sootychimneys-forge-1.20.1-1.3.4.jar:data/sootychimneys/recipes/brick_chimney.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "sootychimneys:cobblestone_chimney",
+      "mod_id": "sootychimneys",
+      "mod_name": "Sooty Chimneys",
+      "mod_version": "1.3.4",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:coals",
+        "minecraft:cobblestone",
+        "minecraft:cobblestone_slab",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "sootychimneys:cobblestone_chimney"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "sootychimneys-forge-1.20.1-1.3.4.jar:data/sootychimneys/recipes/cobblestone_chimney.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "sootychimneys:copper_chimney",
+      "mod_id": "sootychimneys",
+      "mod_name": "Sooty Chimneys",
+      "mod_version": "1.3.4",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:ingots/copper",
+        "forge:storage_blocks/copper",
+        "minecraft:coals",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "sootychimneys:copper_chimney"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "sootychimneys-forge-1.20.1-1.3.4.jar:data/sootychimneys/recipes/copper_chimney.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "sootychimneys:decorations/brick_chimney",
+      "mod_id": "sootychimneys",
+      "mod_name": "Sooty Chimneys",
+      "mod_version": "1.3.4",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:brick",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "sootychimneys:brick_chimney"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "sootychimneys-forge-1.20.1-1.3.4.jar:data/sootychimneys/advancements/recipes/decorations/brick_chimney.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "sootychimneys:decorations/cobblestone_chimney",
+      "mod_id": "sootychimneys",
+      "mod_name": "Sooty Chimneys",
+      "mod_version": "1.3.4",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:cobblestone",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "sootychimneys:cobblestone_chimney"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "sootychimneys-forge-1.20.1-1.3.4.jar:data/sootychimneys/advancements/recipes/decorations/cobblestone_chimney.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "sootychimneys:decorations/copper_chimney",
+      "mod_id": "sootychimneys",
+      "mod_name": "Sooty Chimneys",
+      "mod_version": "1.3.4",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:copper_ingot",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "sootychimneys:copper_chimney"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "sootychimneys-forge-1.20.1-1.3.4.jar:data/sootychimneys/advancements/recipes/decorations/copper_chimney.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "sootychimneys:decorations/iron_chimney",
+      "mod_id": "sootychimneys",
+      "mod_name": "Sooty Chimneys",
+      "mod_version": "1.3.4",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:iron_ingot",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "sootychimneys:iron_chimney"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "sootychimneys-forge-1.20.1-1.3.4.jar:data/sootychimneys/advancements/recipes/decorations/iron_chimney.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "sootychimneys:decorations/mud_brick_chimney",
+      "mod_id": "sootychimneys",
+      "mod_name": "Sooty Chimneys",
+      "mod_version": "1.3.4",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:mud",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "sootychimneys:mud_brick_chimney"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "sootychimneys-forge-1.20.1-1.3.4.jar:data/sootychimneys/advancements/recipes/decorations/mud_brick_chimney.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "sootychimneys:decorations/stone_brick_chimney",
+      "mod_id": "sootychimneys",
+      "mod_name": "Sooty Chimneys",
+      "mod_version": "1.3.4",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "minecraft:stone",
+        "sootychimneys:stone_brick_chimney"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "sootychimneys-forge-1.20.1-1.3.4.jar:data/sootychimneys/advancements/recipes/decorations/stone_brick_chimney.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "sootychimneys:decorations/terracotta_chimney",
+      "mod_id": "sootychimneys",
+      "mod_name": "Sooty Chimneys",
+      "mod_version": "1.3.4",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "minecraft:terracotta",
+        "sootychimneys:terracotta_chimney"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "sootychimneys-forge-1.20.1-1.3.4.jar:data/sootychimneys/advancements/recipes/decorations/terracotta_chimney.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "sootychimneys:iron_chimney",
+      "mod_id": "sootychimneys",
+      "mod_name": "Sooty Chimneys",
+      "mod_version": "1.3.4",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:ingots/iron",
+        "forge:nuggets/iron",
+        "minecraft:coals",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "sootychimneys:iron_chimney"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "sootychimneys-forge-1.20.1-1.3.4.jar:data/sootychimneys/recipes/iron_chimney.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "sootychimneys:mud_brick_chimney",
+      "mod_id": "sootychimneys",
+      "mod_name": "Sooty Chimneys",
+      "mod_version": "1.3.4",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:coals",
+        "minecraft:crafting_shaped",
+        "minecraft:mud_bricks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "sootychimneys:mud_brick_chimney"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "sootychimneys-forge-1.20.1-1.3.4.jar:data/sootychimneys/recipes/mud_brick_chimney.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "sootychimneys:soot_scraping/dirty_brick_chimney",
+      "mod_id": "sootychimneys",
+      "mod_name": "Sooty Chimneys",
+      "mod_version": "1.3.4",
+      "recipe_type": "sootychimneys:soot_scraping",
+      "machine_id": "sootychimneys:soot_scraping",
+      "ingredient_groups": [
+        "minecraft:axes",
+        "minecraft:black_dye",
+        "sootychimneys:dirty_brick_chimney",
+        "sootychimneys:soot_scraping"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "sootychimneys-forge-1.20.1-1.3.4.jar:data/sootychimneys/recipes/soot_scraping/dirty_brick_chimney.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "sootychimneys:soot_scraping/dirty_cobblestone_chimney",
+      "mod_id": "sootychimneys",
+      "mod_name": "Sooty Chimneys",
+      "mod_version": "1.3.4",
+      "recipe_type": "sootychimneys:soot_scraping",
+      "machine_id": "sootychimneys:soot_scraping",
+      "ingredient_groups": [
+        "minecraft:axes",
+        "minecraft:black_dye",
+        "sootychimneys:dirty_cobblestone_chimney",
+        "sootychimneys:soot_scraping"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "sootychimneys-forge-1.20.1-1.3.4.jar:data/sootychimneys/recipes/soot_scraping/dirty_cobblestone_chimney.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "sootychimneys:soot_scraping/dirty_copper_chimney",
+      "mod_id": "sootychimneys",
+      "mod_name": "Sooty Chimneys",
+      "mod_version": "1.3.4",
+      "recipe_type": "sootychimneys:soot_scraping",
+      "machine_id": "sootychimneys:soot_scraping",
+      "ingredient_groups": [
+        "minecraft:axes",
+        "minecraft:black_dye",
+        "sootychimneys:dirty_copper_chimney",
+        "sootychimneys:soot_scraping"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "sootychimneys-forge-1.20.1-1.3.4.jar:data/sootychimneys/recipes/soot_scraping/dirty_copper_chimney.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "sootychimneys:soot_scraping/dirty_iron_chimney",
+      "mod_id": "sootychimneys",
+      "mod_name": "Sooty Chimneys",
+      "mod_version": "1.3.4",
+      "recipe_type": "sootychimneys:soot_scraping",
+      "machine_id": "sootychimneys:soot_scraping",
+      "ingredient_groups": [
+        "minecraft:axes",
+        "minecraft:black_dye",
+        "sootychimneys:dirty_iron_chimney",
+        "sootychimneys:soot_scraping"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "sootychimneys-forge-1.20.1-1.3.4.jar:data/sootychimneys/recipes/soot_scraping/dirty_iron_chimney.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "sootychimneys:soot_scraping/dirty_mud_brick_chimney",
+      "mod_id": "sootychimneys",
+      "mod_name": "Sooty Chimneys",
+      "mod_version": "1.3.4",
+      "recipe_type": "sootychimneys:soot_scraping",
+      "machine_id": "sootychimneys:soot_scraping",
+      "ingredient_groups": [
+        "minecraft:axes",
+        "minecraft:black_dye",
+        "sootychimneys:dirty_mud_brick_chimney",
+        "sootychimneys:soot_scraping"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "sootychimneys-forge-1.20.1-1.3.4.jar:data/sootychimneys/recipes/soot_scraping/dirty_mud_brick_chimney.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "sootychimneys:soot_scraping/dirty_stone_brick_chimney",
+      "mod_id": "sootychimneys",
+      "mod_name": "Sooty Chimneys",
+      "mod_version": "1.3.4",
+      "recipe_type": "sootychimneys:soot_scraping",
+      "machine_id": "sootychimneys:soot_scraping",
+      "ingredient_groups": [
+        "minecraft:axes",
+        "minecraft:black_dye",
+        "sootychimneys:dirty_stone_brick_chimney",
+        "sootychimneys:soot_scraping"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "sootychimneys-forge-1.20.1-1.3.4.jar:data/sootychimneys/recipes/soot_scraping/dirty_stone_brick_chimney.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "sootychimneys:soot_scraping/dirty_terracotta_chimney",
+      "mod_id": "sootychimneys",
+      "mod_name": "Sooty Chimneys",
+      "mod_version": "1.3.4",
+      "recipe_type": "sootychimneys:soot_scraping",
+      "machine_id": "sootychimneys:soot_scraping",
+      "ingredient_groups": [
+        "minecraft:axes",
+        "minecraft:black_dye",
+        "sootychimneys:dirty_terracotta_chimney",
+        "sootychimneys:soot_scraping"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "sootychimneys-forge-1.20.1-1.3.4.jar:data/sootychimneys/recipes/soot_scraping/dirty_terracotta_chimney.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "sootychimneys:stone_brick_chimney",
+      "mod_id": "sootychimneys",
+      "mod_name": "Sooty Chimneys",
+      "mod_version": "1.3.4",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:coals",
+        "minecraft:crafting_shaped",
+        "minecraft:stone_bricks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "sootychimneys:stone_brick_chimney"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "sootychimneys-forge-1.20.1-1.3.4.jar:data/sootychimneys/recipes/stone_brick_chimney.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "sootychimneys:terracotta_chimney",
+      "mod_id": "sootychimneys",
+      "mod_name": "Sooty Chimneys",
+      "mod_version": "1.3.4",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:coals",
+        "minecraft:crafting_shaped",
+        "minecraft:terracotta"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "sootychimneys:terracotta_chimney"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "sootychimneys-forge-1.20.1-1.3.4.jar:data/sootychimneys/recipes/terracotta_chimney.json"
+      ]
+    }
+  ]
+}

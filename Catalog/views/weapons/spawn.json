@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "registry_type": "weapons",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "spawn",
+    "name": "Spawn",
+    "version": "4.0.7-1.20.1"
+  },
+  "records": [
+    {
+      "item_id": "spawn:octopus_bowl",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "spawn",
+      "mod_name": "Spawn",
+      "mod_version": "4.0.7-1.20.1",
+      "source_jar": "spawn-4.0.7-1.20.1.jar",
+      "source_sha256": "4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/spawn/models/item/octopus_bowl.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "spawn-4.0.7-1.20.1.jar:assets/spawn/models/item/octopus_bowl.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "bow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    }
+  ]
+}

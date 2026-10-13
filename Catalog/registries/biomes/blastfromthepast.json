@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "registry_type": "biomes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "blastfromthepast",
+    "name": "Blast From The Past",
+    "version": "1.0.3"
+  },
+  "records": [
+    {
+      "registry_id": "blastfromthepast:frostbite_forest",
+      "registry_type": "biome",
+      "schema_version": 1,
+      "mod_id": "blastfromthepast",
+      "mod_name": "Blast From The Past",
+      "mod_version": "1.0.3",
+      "source_jar": "blastfromthepast-1.0.3+1.20.1.jar",
+      "source_sha256": "b980f81f1beb74aa3f997783fbfbafa37060f755ddef9f17314453ad00316f7c",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/blastfromthepast/lang/en_us.json",
+        "data/blastfromthepast/worldgen/biome/frostbite_forest.json"
+      ],
+      "display_name_en_us": "Frostbite Forest",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/lang/en_us.json",
+        "blastfromthepast-1.0.3+1.20.1.jar:data/blastfromthepast/worldgen/biome/frostbite_forest.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "blastfromthepast:frostbite_river",
+      "registry_type": "biome",
+      "schema_version": 1,
+      "mod_id": "blastfromthepast",
+      "mod_name": "Blast From The Past",
+      "mod_version": "1.0.3",
+      "source_jar": "blastfromthepast-1.0.3+1.20.1.jar",
+      "source_sha256": "b980f81f1beb74aa3f997783fbfbafa37060f755ddef9f17314453ad00316f7c",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/blastfromthepast/lang/en_us.json",
+        "data/blastfromthepast/worldgen/biome/frostbite_river.json"
+      ],
+      "display_name_en_us": "Frostbite River",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:worldgen/biome/is_river"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/lang/en_us.json",
+        "blastfromthepast-1.0.3+1.20.1.jar:data/blastfromthepast/worldgen/biome/frostbite_river.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}

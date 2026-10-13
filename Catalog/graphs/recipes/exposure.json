@@ -1,0 +1,860 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "exposure",
+    "name": "Exposure",
+    "version": "1.9.21"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:aged_photograph",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": "exposure:photograph_aging",
+      "machine_id": "exposure:photograph_aging",
+      "ingredient_groups": [
+        "exposure:photo_agers",
+        "exposure:photograph",
+        "exposure:photograph_aging",
+        "minecraft:brush"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "exposure:aged_photograph"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/aged_photograph.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:album",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "minecraft:phantom_membrane",
+        "minecraft:writable_book"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "exposure:album"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/album.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:black_and_white_film",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:ingots/iron",
+        "forge:nuggets/iron",
+        "minecraft:bone_meal",
+        "minecraft:crafting_shaped",
+        "minecraft:dried_kelp",
+        "minecraft:gunpowder"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "exposure:black_and_white_film"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/black_and_white_film.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:black_and_white_film_developing",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": "exposure:film_developing",
+      "machine_id": "exposure:film_developing",
+      "ingredient_groups": [
+        "exposure:black_and_white_film_rolls",
+        "exposure:film_developing",
+        "forge:partial_nbt",
+        "minecraft:potion"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "exposure:developed_black_and_white_film"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/black_and_white_film_developing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:broken_interplanar_projector_fixing",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": "exposure:component_transferring",
+      "machine_id": "exposure:component_transferring",
+      "ingredient_groups": [
+        "exposure:broken_interplanar_projector",
+        "exposure:component_transferring",
+        "minecraft:ender_eye"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "exposure:interplanar_projector"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/broken_interplanar_projector_fixing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:camera",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:buttons",
+        "minecraft:crafting_shaped",
+        "minecraft:glass_pane",
+        "minecraft:iron_ingot",
+        "minecraft:lever"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "exposure:camera"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/camera.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:camera_stand",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:iron_ingot",
+        "minecraft:smooth_stone_slab",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "exposure:camera_stand"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/camera_stand.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:color_film",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:dried_kelp",
+        "minecraft:gold_ingot",
+        "minecraft:gold_nugget",
+        "minecraft:gunpowder",
+        "minecraft:lapis_lazuli"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "exposure:color_film"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/color_film.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:color_film_developing",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": "exposure:film_developing",
+      "machine_id": "exposure:film_developing",
+      "ingredient_groups": [
+        "exposure:color_film_rolls",
+        "exposure:film_developing",
+        "forge:partial_nbt",
+        "minecraft:potion"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "exposure:developed_color_film"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/color_film_developing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:decorations/glass_photograph_frame",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "exposure:glass_photograph_frame",
+        "exposure:photograph_frame",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/advancements/recipes/decorations/glass_photograph_frame.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:decorations/lightroom",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "exposure:lightroom",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "minecraft:redstone_torch"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/advancements/recipes/decorations/lightroom.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:decorations/photograph_frame",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "exposure:photograph_frame",
+        "minecraft:inventory_changed",
+        "minecraft:item_frame",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/advancements/recipes/decorations/photograph_frame.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:glass_photograph_frame",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "exposure:photograph_frame",
+        "minecraft:crafting_shaped",
+        "minecraft:glass_pane"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "exposure:glass_photograph_frame"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/glass_photograph_frame.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:high_sensitivity_black_and_white_film",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:ingots/iron",
+        "forge:nuggets/iron",
+        "minecraft:bone_meal",
+        "minecraft:crafting_shaped",
+        "minecraft:dried_kelp",
+        "minecraft:prismarine_crystals"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "exposure:high_sensitivity_black_and_white_film"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/high_sensitivity_black_and_white_film.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:high_sensitivity_color_film",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:ingots/gold",
+        "forge:nuggets/gold",
+        "minecraft:bone_meal",
+        "minecraft:crafting_shaped",
+        "minecraft:dried_kelp",
+        "minecraft:prismarine_crystals"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "exposure:high_sensitivity_color_film"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/high_sensitivity_color_film.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:interplanar_projector",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:ender_eye",
+        "minecraft:redstone",
+        "minecraft:tinted_glass"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "exposure:interplanar_projector"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/interplanar_projector.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:lightroom",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:iron_trapdoor",
+        "minecraft:planks",
+        "minecraft:redstone_torch"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "exposure:lightroom"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/lightroom.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:misc/aged_photograph",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "exposure:aged_photograph",
+        "exposure:photograph",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/advancements/recipes/misc/aged_photograph.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:misc/black_and_white_film_developing",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "exposure:black_and_white_film",
+        "exposure:black_and_white_film_developing",
+        "exposure:developing_black_and_white_film",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/advancements/recipes/misc/black_and_white_film_developing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:misc/broken_interplanar_projector_fixing",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "exposure:broken_interplanar_projector",
+        "exposure:broken_interplanar_projector_fixing",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/advancements/recipes/misc/broken_interplanar_projector_fixing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:misc/color_film_developing",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "exposure:color_film",
+        "exposure:color_film_developing",
+        "exposure:developing_color_film",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/advancements/recipes/misc/color_film_developing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:misc/photograph_copying",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "exposure:photograph",
+        "exposure:photograph_copying",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/advancements/recipes/misc/photograph_copying.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:misc/photograph_copying_black_and_white",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "exposure:photograph",
+        "exposure:photograph_copying_black_and_white",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/advancements/recipes/misc/photograph_copying_black_and_white.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:photograph_copying",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": "exposure:photograph_copying",
+      "machine_id": "exposure:photograph_copying",
+      "ingredient_groups": [
+        "exposure:black_printing_dyes",
+        "exposure:cyan_printing_dyes",
+        "exposure:magenta_printing_dyes",
+        "exposure:photo_papers",
+        "exposure:photograph_copying",
+        "exposure:yellow_printing_dyes"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "exposure:photograph"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/photograph_copying.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:photograph_copying_black_and_white",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": "exposure:photograph_copying",
+      "machine_id": "exposure:photograph_copying",
+      "ingredient_groups": [
+        "exposure:black_printing_dyes",
+        "exposure:photo_papers",
+        "exposure:photograph_copying",
+        "forge:partial_nbt"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "exposure:photograph"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/photograph_copying_black_and_white.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:photograph_frame",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:item_frame",
+        "minecraft:planks",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "exposure:photograph_frame"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/photograph_frame.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:tools/album",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "exposure:album",
+        "minecraft:inventory_changed",
+        "minecraft:phantom_membrane",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/advancements/recipes/tools/album.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:tools/black_and_white_film",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "exposure:black_and_white_film",
+        "minecraft:dried_kelp",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/advancements/recipes/tools/black_and_white_film.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:tools/camera",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "exposure:camera",
+        "minecraft:inventory_changed",
+        "minecraft:lever",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/advancements/recipes/tools/camera.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:tools/camera_stand",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "exposure:camera_stand",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "minecraft:smooth_stone_slab"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/advancements/recipes/tools/camera_stand.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:tools/color_film",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "exposure:color_film",
+        "minecraft:dried_kelp",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/advancements/recipes/tools/color_film.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:tools/high_sensitivity_black_and_white_film",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "exposure:high_sensitivity_black_and_white_film",
+        "minecraft:dried_kelp",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/advancements/recipes/tools/high_sensitivity_black_and_white_film.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:tools/high_sensitivity_color_film",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "exposure:high_sensitivity_color_film",
+        "minecraft:dried_kelp",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/advancements/recipes/tools/high_sensitivity_color_film.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "exposure:tools/interplanar_projector",
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "exposure:interplanar_projector",
+        "minecraft:ender_eye",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/advancements/recipes/tools/interplanar_projector.json"
+      ]
+    }
+  ]
+}

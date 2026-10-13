@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "registry_type": "blocks",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "knightlib",
+    "name": "Knight Lib",
+    "version": "2.0.0"
+  },
+  "records": [
+    {
+      "registry_id": "knightlib:great_chalice",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "knightlib",
+      "mod_name": "Knight Lib",
+      "mod_version": "2.0.0",
+      "source_jar": "knightlib-forge-1.20.1-2.0.0.jar",
+      "source_sha256": "ca30fa182da961b0ad3996b86fff029c801b7f3008b412aecb89c6809b2e9114",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/knightlib/blockstates/great_chalice.json",
+        "assets/knightlib/lang/en_us.json",
+        "assets/knightlib/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Great Chalice",
+      "display_name_ru_ru": "Великий кубок",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/needs_stone_tool"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "knightlib-forge-1.20.1-2.0.0.jar:assets/knightlib/blockstates/great_chalice.json",
+        "knightlib-forge-1.20.1-2.0.0.jar:assets/knightlib/lang/en_us.json",
+        "knightlib-forge-1.20.1-2.0.0.jar:assets/knightlib/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}

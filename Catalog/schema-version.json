@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "status": "stable",
+  "compatible_readers": [1],
+  "migration_policy": "Increment for semantic changes; add an explicit migration note and retain old meaning for existing fields.",
+  "enums": {
+    "trade_outcome": ["BUY_AND_SELL", "NONE"],
+    "confidence": ["verified", "inferred", "unresolved"],
+    "acquisition_class": ["normal_survival", "special_survival_progression", "loot_only", "admin_or_creative_only", "technical_or_internal", "unused_or_disabled", "unresolved"]
+  }
+}

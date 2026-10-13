@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "registry_type": "blocks",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "gravestone",
+    "name": "Gravestone Mod",
+    "version": "1.20.1-1.0.35"
+  },
+  "records": [
+    {
+      "registry_id": "gravestone:gravestone",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "gravestone",
+      "mod_name": "Gravestone Mod",
+      "mod_version": "1.20.1-1.0.35",
+      "source_jar": "gravestone-forge-1.20.1-1.0.35.jar",
+      "source_sha256": "af6de8692229f07d203e118241f31c1dc4d03f8e3b44cacd155d76b449896387",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/gravestone/blockstates/gravestone.json",
+        "assets/gravestone/lang/en_us.json",
+        "assets/gravestone/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Grave",
+      "display_name_ru_ru": "Могила",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/dragon_immune"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "gravestone-forge-1.20.1-1.0.35.jar:assets/gravestone/blockstates/gravestone.json",
+        "gravestone-forge-1.20.1-1.0.35.jar:assets/gravestone/lang/en_us.json",
+        "gravestone-forge-1.20.1-1.0.35.jar:assets/gravestone/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}

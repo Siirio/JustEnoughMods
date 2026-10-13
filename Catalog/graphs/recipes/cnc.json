@@ -1,0 +1,625 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "cnc",
+    "name": "Critters n' Crawlers",
+    "version": "2.2.5"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "cnc:bone_meal",
+      "mod_id": "cnc",
+      "mod_name": "Critters n' Crawlers",
+      "mod_version": "2.2.5",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "cnc:antlers",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:bone_meal"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/bone_meal.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "cnc:buckskin_armor_boots_recipe",
+      "mod_id": "cnc",
+      "mod_name": "Critters n' Crawlers",
+      "mod_version": "2.2.5",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "cnc:buckskin",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "cnc:buckskin_boots"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/buckskin_armor_boots_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "cnc:buckskin_armor_chestplate_recipe",
+      "mod_id": "cnc",
+      "mod_name": "Critters n' Crawlers",
+      "mod_version": "2.2.5",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "cnc:buckskin",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "cnc:buckskin_chestplate"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/buckskin_armor_chestplate_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "cnc:buckskin_armor_helmet_recipe",
+      "mod_id": "cnc",
+      "mod_name": "Critters n' Crawlers",
+      "mod_version": "2.2.5",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "cnc:antlers",
+        "cnc:buckskin",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "cnc:buckskin_helmet"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/buckskin_armor_helmet_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "cnc:buckskin_armor_leggings_recipe",
+      "mod_id": "cnc",
+      "mod_name": "Critters n' Crawlers",
+      "mod_version": "2.2.5",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "cnc:buckskin",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "cnc:buckskin_leggings"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/buckskin_armor_leggings_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "cnc:cooked_game",
+      "mod_id": "cnc",
+      "mod_name": "Critters n' Crawlers",
+      "mod_version": "2.2.5",
+      "recipe_type": "minecraft:smelting",
+      "machine_id": "minecraft:smelting",
+      "ingredient_groups": [
+        "cnc:parcooked_game",
+        "minecraft:smelting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "cnc:cooked_game"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/cooked_game.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "cnc:cooked_game_campfire",
+      "mod_id": "cnc",
+      "mod_name": "Critters n' Crawlers",
+      "mod_version": "2.2.5",
+      "recipe_type": "minecraft:campfire_cooking",
+      "machine_id": "minecraft:campfire_cooking",
+      "ingredient_groups": [
+        "cnc:parcooked_game",
+        "minecraft:campfire_cooking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "cnc:cooked_game"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/cooked_game_campfire.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "cnc:cooked_game_smoker",
+      "mod_id": "cnc",
+      "mod_name": "Critters n' Crawlers",
+      "mod_version": "2.2.5",
+      "recipe_type": "minecraft:smoking",
+      "machine_id": "minecraft:smoking",
+      "ingredient_groups": [
+        "cnc:parcooked_game",
+        "minecraft:smoking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "cnc:cooked_game"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/cooked_game_smoker.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "cnc:cooked_turkey",
+      "mod_id": "cnc",
+      "mod_name": "Critters n' Crawlers",
+      "mod_version": "2.2.5",
+      "recipe_type": "minecraft:smelting",
+      "machine_id": "minecraft:smelting",
+      "ingredient_groups": [
+        "cnc:raw_turkey",
+        "minecraft:smelting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "cnc:cooked_turkey"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/cooked_turkey.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "cnc:cooked_turkey_smoker",
+      "mod_id": "cnc",
+      "mod_name": "Critters n' Crawlers",
+      "mod_version": "2.2.5",
+      "recipe_type": "minecraft:smoking",
+      "machine_id": "minecraft:smoking",
+      "ingredient_groups": [
+        "cnc:raw_turkey",
+        "minecraft:smoking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "cnc:cooked_turkey"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/cooked_turkey_smoker.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "cnc:effigy",
+      "mod_id": "cnc",
+      "mod_name": "Critters n' Crawlers",
+      "mod_version": "2.2.5",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:lead",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "cnc:effigy"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/effigy.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "cnc:field_guide",
+      "mod_id": "cnc",
+      "mod_name": "Critters n' Crawlers",
+      "mod_version": "2.2.5",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "cnc:mob_heads",
+        "minecraft:crafting_shapeless",
+        "minecraft:writable_book"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "cnc:field_guide"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/field_guide.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "cnc:hunters_stew",
+      "mod_id": "cnc",
+      "mod_name": "Critters n' Crawlers",
+      "mod_version": "2.2.5",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "cnc:cooked_venison",
+        "minecraft:baked_potato",
+        "minecraft:bowl",
+        "minecraft:brown_mushroom",
+        "minecraft:carrot",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "cnc:hunters_stew"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/hunters_stew.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "cnc:leather_smoker",
+      "mod_id": "cnc",
+      "mod_name": "Critters n' Crawlers",
+      "mod_version": "2.2.5",
+      "recipe_type": "minecraft:smoking",
+      "machine_id": "minecraft:smoking",
+      "ingredient_groups": [
+        "cnc:buckskin",
+        "minecraft:smoking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:leather"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/leather_smoker.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "cnc:parcooked_game",
+      "mod_id": "cnc",
+      "mod_name": "Critters n' Crawlers",
+      "mod_version": "2.2.5",
+      "recipe_type": "minecraft:smelting",
+      "machine_id": "minecraft:smelting",
+      "ingredient_groups": [
+        "cnc:raw_game",
+        "minecraft:smelting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "cnc:parcooked_game"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/parcooked_game.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "cnc:parcooked_game_campfire",
+      "mod_id": "cnc",
+      "mod_name": "Critters n' Crawlers",
+      "mod_version": "2.2.5",
+      "recipe_type": "minecraft:campfire_cooking",
+      "machine_id": "minecraft:campfire_cooking",
+      "ingredient_groups": [
+        "cnc:raw_game",
+        "minecraft:campfire_cooking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "cnc:parcooked_game"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/parcooked_game_campfire.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "cnc:parcooked_game_smoker",
+      "mod_id": "cnc",
+      "mod_name": "Critters n' Crawlers",
+      "mod_version": "2.2.5",
+      "recipe_type": "minecraft:smoking",
+      "machine_id": "minecraft:smoking",
+      "ingredient_groups": [
+        "cnc:raw_game",
+        "minecraft:smoking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "cnc:parcooked_game"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/parcooked_game_smoker.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "cnc:pemmican",
+      "mod_id": "cnc",
+      "mod_name": "Critters n' Crawlers",
+      "mod_version": "2.2.5",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "cnc:cooked_venison",
+        "minecraft:crafting_shaped",
+        "minecraft:sugar",
+        "minecraft:sweet_berries"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "cnc:pemmican"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/pemmican.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "cnc:tusk_club",
+      "mod_id": "cnc",
+      "mod_name": "Critters n' Crawlers",
+      "mod_version": "2.2.5",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "cnc:giant_tusk",
+        "minecraft:crafting_shaped",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "cnc:tusk_club"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/tusk_club.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "cnc:venison",
+      "mod_id": "cnc",
+      "mod_name": "Critters n' Crawlers",
+      "mod_version": "2.2.5",
+      "recipe_type": "minecraft:smelting",
+      "machine_id": "minecraft:smelting",
+      "ingredient_groups": [
+        "cnc:raw_venison",
+        "minecraft:smelting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "cnc:cooked_venison"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/venison.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "cnc:venison_campfire",
+      "mod_id": "cnc",
+      "mod_name": "Critters n' Crawlers",
+      "mod_version": "2.2.5",
+      "recipe_type": "minecraft:campfire_cooking",
+      "machine_id": "minecraft:campfire_cooking",
+      "ingredient_groups": [
+        "cnc:raw_venison",
+        "minecraft:campfire_cooking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "cnc:cooked_venison"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/venison_campfire.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "cnc:venison_smoker",
+      "mod_id": "cnc",
+      "mod_name": "Critters n' Crawlers",
+      "mod_version": "2.2.5",
+      "recipe_type": "minecraft:smoking",
+      "machine_id": "minecraft:smoking",
+      "ingredient_groups": [
+        "cnc:raw_venison",
+        "minecraft:smoking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "cnc:cooked_venison"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/venison_smoker.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "cnc:waterfowl",
+      "mod_id": "cnc",
+      "mod_name": "Critters n' Crawlers",
+      "mod_version": "2.2.5",
+      "recipe_type": "minecraft:smelting",
+      "machine_id": "minecraft:smelting",
+      "ingredient_groups": [
+        "cnc:raw_waterfowl",
+        "minecraft:smelting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "cnc:cooked_waterfowl"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/waterfowl.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "cnc:waterfowl_campfire",
+      "mod_id": "cnc",
+      "mod_name": "Critters n' Crawlers",
+      "mod_version": "2.2.5",
+      "recipe_type": "minecraft:campfire_cooking",
+      "machine_id": "minecraft:campfire_cooking",
+      "ingredient_groups": [
+        "cnc:raw_waterfowl",
+        "minecraft:campfire_cooking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "cnc:cooked_waterfowl"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/waterfowl_campfire.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "cnc:waterfowl_smoker",
+      "mod_id": "cnc",
+      "mod_name": "Critters n' Crawlers",
+      "mod_version": "2.2.5",
+      "recipe_type": "minecraft:smoking",
+      "machine_id": "minecraft:smoking",
+      "ingredient_groups": [
+        "cnc:raw_waterfowl",
+        "minecraft:smoking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "cnc:cooked_waterfowl"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/waterfowl_smoker.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "cnc:wishbone",
+      "mod_id": "cnc",
+      "mod_name": "Critters n' Crawlers",
+      "mod_version": "2.2.5",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "cnc:wishbone",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:bone"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/wishbone.json"
+      ]
+    }
+  ]
+}

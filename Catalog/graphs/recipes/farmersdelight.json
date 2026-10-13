@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "farmersdelight",
+    "name": "farmersdelight",
+    "version": "unresolved"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "farmersdelight:chopping_board/ham_slice",
+      "mod_id": "farmersdelight",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:chopping_board",
+      "machine_id": "kaleidoscope_cookery:chopping_board",
+      "ingredient_groups": [
+        "farmersdelight:ham",
+        "forge:mod_loaded",
+        "kaleidoscope_cookery:chopping_board",
+        "kaleidoscope_nether:ham"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:ham_slice"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/farmersdelight/recipes/chopping_board/ham_slice.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "farmersdelight:cutting/fish_slice_cutting",
+      "mod_id": "farmersdelight",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "farmersdelight:cutting",
+      "machine_id": "farmersdelight:cutting",
+      "ingredient_groups": [
+        "c:tools/knives",
+        "fabric:all_mods_loaded",
+        "farmersdelight:cutting",
+        "forge:mod_loaded",
+        "minecraft:bone_meal",
+        "neoforge:mod_loaded",
+        "tide:cookable_fish",
+        "tide:fish_slice"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/farmersdelight/recipes/cutting/fish_slice_cutting.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "farmersdelight:honey_glazed_ham_block_from_kaleidoscope",
+      "mod_id": "farmersdelight",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:cooked_ham",
+        "forge:cooked_rice",
+        "forge:mod_loaded",
+        "minecraft:bowl",
+        "minecraft:crafting_shapeless",
+        "minecraft:honey_bottle",
+        "minecraft:sweet_berries"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "farmersdelight:honey_glazed_ham_block"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/farmersdelight/recipes/honey_glazed_ham_block_from_kaleidoscope.json"
+      ]
+    }
+  ]
+}

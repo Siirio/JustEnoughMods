@@ -1,0 +1,535 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "atmospheric",
+    "name": "atmospheric",
+    "version": "unresolved"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "atmospheric:aspen_button",
+      "mod_id": "atmospheric",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "atmospheric:aspen_planks",
+        "forge:mod_loaded",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "atmospheric:aspen_button"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/atmospheric/recipes/aspen_button.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "atmospheric:aspen_button_from_aspen_logs_sawing",
+      "mod_id": "atmospheric",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "forge:conditional",
+      "machine_id": "forge:conditional",
+      "ingredient_groups": [
+        "atmospheric:aspen_button",
+        "atmospheric:aspen_logs",
+        "forge:conditional",
+        "forge:mod_loaded",
+        "woodworks:config",
+        "woodworks:sawmill"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/atmospheric/recipes/aspen_button_from_aspen_logs_sawing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "atmospheric:aspen_button_from_aspen_planks_sawing",
+      "mod_id": "atmospheric",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "forge:conditional",
+      "machine_id": "forge:conditional",
+      "ingredient_groups": [
+        "atmospheric:aspen_button",
+        "atmospheric:aspen_planks",
+        "forge:conditional",
+        "forge:mod_loaded",
+        "woodworks:config",
+        "woodworks:sawmill"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/atmospheric/recipes/aspen_button_from_aspen_planks_sawing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "atmospheric:grimwood_button",
+      "mod_id": "atmospheric",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "atmospheric:grimwood_planks",
+        "forge:mod_loaded",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "atmospheric:grimwood_button"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/atmospheric/recipes/grimwood_button.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "atmospheric:grimwood_button_from_grimwood_logs_sawing",
+      "mod_id": "atmospheric",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "forge:conditional",
+      "machine_id": "forge:conditional",
+      "ingredient_groups": [
+        "atmospheric:grimwood_button",
+        "atmospheric:grimwood_logs",
+        "forge:conditional",
+        "forge:mod_loaded",
+        "woodworks:config",
+        "woodworks:sawmill"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/atmospheric/recipes/grimwood_button_from_grimwood_logs_sawing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "atmospheric:grimwood_button_from_grimwood_planks_sawing",
+      "mod_id": "atmospheric",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "forge:conditional",
+      "machine_id": "forge:conditional",
+      "ingredient_groups": [
+        "atmospheric:grimwood_button",
+        "atmospheric:grimwood_planks",
+        "forge:conditional",
+        "forge:mod_loaded",
+        "woodworks:config",
+        "woodworks:sawmill"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/atmospheric/recipes/grimwood_button_from_grimwood_planks_sawing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "atmospheric:kousa_button",
+      "mod_id": "atmospheric",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "atmospheric:kousa_planks",
+        "forge:mod_loaded",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "atmospheric:kousa_button"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/atmospheric/recipes/kousa_button.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "atmospheric:kousa_button_from_kousa_logs_sawing",
+      "mod_id": "atmospheric",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "forge:conditional",
+      "machine_id": "forge:conditional",
+      "ingredient_groups": [
+        "atmospheric:kousa_button",
+        "atmospheric:kousa_logs",
+        "forge:conditional",
+        "forge:mod_loaded",
+        "woodworks:config",
+        "woodworks:sawmill"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/atmospheric/recipes/kousa_button_from_kousa_logs_sawing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "atmospheric:kousa_button_from_kousa_planks_sawing",
+      "mod_id": "atmospheric",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "forge:conditional",
+      "machine_id": "forge:conditional",
+      "ingredient_groups": [
+        "atmospheric:kousa_button",
+        "atmospheric:kousa_planks",
+        "forge:conditional",
+        "forge:mod_loaded",
+        "woodworks:config",
+        "woodworks:sawmill"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/atmospheric/recipes/kousa_button_from_kousa_planks_sawing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "atmospheric:laurel_button",
+      "mod_id": "atmospheric",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "atmospheric:laurel_planks",
+        "forge:mod_loaded",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "atmospheric:laurel_button"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/atmospheric/recipes/laurel_button.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "atmospheric:laurel_button_from_laurel_logs_sawing",
+      "mod_id": "atmospheric",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "forge:conditional",
+      "machine_id": "forge:conditional",
+      "ingredient_groups": [
+        "atmospheric:laurel_button",
+        "atmospheric:laurel_logs",
+        "forge:conditional",
+        "forge:mod_loaded",
+        "woodworks:config",
+        "woodworks:sawmill"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/atmospheric/recipes/laurel_button_from_laurel_logs_sawing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "atmospheric:laurel_button_from_laurel_planks_sawing",
+      "mod_id": "atmospheric",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "forge:conditional",
+      "machine_id": "forge:conditional",
+      "ingredient_groups": [
+        "atmospheric:laurel_button",
+        "atmospheric:laurel_planks",
+        "forge:conditional",
+        "forge:mod_loaded",
+        "woodworks:config",
+        "woodworks:sawmill"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/atmospheric/recipes/laurel_button_from_laurel_planks_sawing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "atmospheric:morado_button",
+      "mod_id": "atmospheric",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "atmospheric:morado_planks",
+        "forge:mod_loaded",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "atmospheric:morado_button"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/atmospheric/recipes/morado_button.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "atmospheric:morado_button_from_morado_logs_sawing",
+      "mod_id": "atmospheric",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "forge:conditional",
+      "machine_id": "forge:conditional",
+      "ingredient_groups": [
+        "atmospheric:morado_button",
+        "atmospheric:morado_logs",
+        "forge:conditional",
+        "forge:mod_loaded",
+        "woodworks:config",
+        "woodworks:sawmill"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/atmospheric/recipes/morado_button_from_morado_logs_sawing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "atmospheric:morado_button_from_morado_planks_sawing",
+      "mod_id": "atmospheric",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "forge:conditional",
+      "machine_id": "forge:conditional",
+      "ingredient_groups": [
+        "atmospheric:morado_button",
+        "atmospheric:morado_planks",
+        "forge:conditional",
+        "forge:mod_loaded",
+        "woodworks:config",
+        "woodworks:sawmill"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/atmospheric/recipes/morado_button_from_morado_planks_sawing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "atmospheric:rosewood_button",
+      "mod_id": "atmospheric",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "atmospheric:rosewood_planks",
+        "forge:mod_loaded",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "atmospheric:rosewood_button"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/atmospheric/recipes/rosewood_button.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "atmospheric:rosewood_button_from_rosewood_logs_sawing",
+      "mod_id": "atmospheric",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "forge:conditional",
+      "machine_id": "forge:conditional",
+      "ingredient_groups": [
+        "atmospheric:rosewood_button",
+        "atmospheric:rosewood_logs",
+        "forge:conditional",
+        "forge:mod_loaded",
+        "woodworks:config",
+        "woodworks:sawmill"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/atmospheric/recipes/rosewood_button_from_rosewood_logs_sawing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "atmospheric:rosewood_button_from_rosewood_planks_sawing",
+      "mod_id": "atmospheric",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "forge:conditional",
+      "machine_id": "forge:conditional",
+      "ingredient_groups": [
+        "atmospheric:rosewood_button",
+        "atmospheric:rosewood_planks",
+        "forge:conditional",
+        "forge:mod_loaded",
+        "woodworks:config",
+        "woodworks:sawmill"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/atmospheric/recipes/rosewood_button_from_rosewood_planks_sawing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "atmospheric:yucca_button",
+      "mod_id": "atmospheric",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "atmospheric:yucca_planks",
+        "forge:mod_loaded",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "atmospheric:yucca_button"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/atmospheric/recipes/yucca_button.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "atmospheric:yucca_button_from_yucca_logs_sawing",
+      "mod_id": "atmospheric",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "forge:conditional",
+      "machine_id": "forge:conditional",
+      "ingredient_groups": [
+        "atmospheric:yucca_button",
+        "atmospheric:yucca_logs",
+        "forge:conditional",
+        "forge:mod_loaded",
+        "woodworks:config",
+        "woodworks:sawmill"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/atmospheric/recipes/yucca_button_from_yucca_logs_sawing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "atmospheric:yucca_button_from_yucca_planks_sawing",
+      "mod_id": "atmospheric",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "forge:conditional",
+      "machine_id": "forge:conditional",
+      "ingredient_groups": [
+        "atmospheric:yucca_button",
+        "atmospheric:yucca_planks",
+        "forge:conditional",
+        "forge:mod_loaded",
+        "woodworks:config",
+        "woodworks:sawmill"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/atmospheric/recipes/yucca_button_from_yucca_planks_sawing.json"
+      ]
+    }
+  ]
+}

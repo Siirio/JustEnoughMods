@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "registry_type": "weapons",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "immersive_aircraft",
+    "name": "Immersive Aircraft",
+    "version": "1.5.0+1.20.1"
+  },
+  "records": [
+    {
+      "item_id": "immersive_aircraft:heavy_crossbow",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "source_jar": "immersive_aircraft-1.5.0+1.20.1-forge.jar",
+      "source_sha256": "7e00754f893d910f301134e0cada37dde0be36c8df15ebf98a5b6512fa664077",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/immersive_aircraft/lang/en_us.json",
+        "assets/immersive_aircraft/lang/ru_ru.json",
+        "assets/immersive_aircraft/models/item/heavy_crossbow.json",
+        "data/immersive_aircraft/recipes/heavy_crossbow.json"
+      ],
+      "display_name_en_us": "Heavy Crossbow",
+      "display_name_ru_ru": "Тяжёлый арбалет",
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:assets/immersive_aircraft/lang/en_us.json",
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:assets/immersive_aircraft/lang/ru_ru.json",
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:assets/immersive_aircraft/models/item/heavy_crossbow.json",
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:data/immersive_aircraft/recipes/heavy_crossbow.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "crossbow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "immersive_aircraft:heavy_crossbow.description",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "source_jar": "immersive_aircraft-1.5.0+1.20.1-forge.jar",
+      "source_sha256": "7e00754f893d910f301134e0cada37dde0be36c8df15ebf98a5b6512fa664077",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/immersive_aircraft/lang/en_us.json",
+        "assets/immersive_aircraft/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "A heavy crossbow with a powerful punch, requires arrows.",
+      "display_name_ru_ru": "Тяжёлый арбалет с мощным ударом, требует стрелы.",
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:assets/immersive_aircraft/lang/en_us.json",
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:assets/immersive_aircraft/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "crossbow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    }
+  ]
+}

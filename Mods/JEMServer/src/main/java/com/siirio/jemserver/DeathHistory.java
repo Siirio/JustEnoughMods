@@ -66,7 +66,7 @@ public final class DeathHistory {
             message(player, "jem.deaths.error.claimed_location");
             return;
         }
-        Vec3 target = safe(player, level, exact) ? exact : nearest(player, level, origin);
+        Vec3 target = safe(player, level, exact) ? exact : nearestSafe(player, level, origin, ServerConfig.SAFE_RADIUS.get());
         if (target == null) {
             message(player, "jem.deaths.error.no_safe_point");
             return;
@@ -81,14 +81,13 @@ public final class DeathHistory {
         player.fallDistance = 0;
     }
 
-    private static Vec3 nearest(ServerPlayer player, ServerLevel level, BlockPos origin) {
-        int radius = ServerConfig.SAFE_RADIUS.get();
+    public static Vec3 nearestSafe(ServerPlayer player, ServerLevel level, BlockPos origin, int radius) {
         return BlockPos.betweenClosedStream(origin.offset(-radius, -radius, -radius), origin.offset(radius, radius, radius))
                 .map(BlockPos::immutable).sorted(Comparator.comparingDouble(origin::distSqr))
                 .map(position -> Vec3.atBottomCenterOf(position)).filter(position -> safe(player, level, position)).findFirst().orElse(null);
     }
 
-    private static boolean safe(ServerPlayer player, ServerLevel level, Vec3 position) {
+    public static boolean safe(ServerPlayer player, ServerLevel level, Vec3 position) {
         BlockPos feet = BlockPos.containing(position);
         if (!Double.isFinite(position.x) || !Double.isFinite(position.y) || !Double.isFinite(position.z)
                 || feet.getY() < level.getMinBuildHeight() || feet.getY() + player.getBbHeight() >= level.getMaxBuildHeight()

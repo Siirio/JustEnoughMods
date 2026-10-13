@@ -49,13 +49,15 @@
 - `jem town linkstorage` — link the physically targeted item-handler container to the owned town.
 - `jem town workforce <entity>` — register a genuine owned Recruits/Workers NPC in the single Workforce ledger.
 - `jem town feedstorage on|off` — while looking at an already linked physical container, explicitly allow or stop one-item resident feeding from it.
+- `jem town territory radius <32..256>` — change the owned town's soft, non-claim guidance boundary; overlapping town bounds are rejected.
 - `jem town mounts` — show the authenticated player's private lifetime/living mount counts and audited eligible-type progress; no town is required.
+- `home` — return to the last valid vanilla bed or charged respawn anchor after server identity, combat, cooldown, active-event and safe-arrival validation.
+- `market` — inspect the current Market Buyer demand bulletin remotely; browsing is read-only and real goods still require a Shipping Box or supported nearby merchant.
 - `jem project create <name>` — create a visual building project in the current dimension.
 - `jem project add <project-uuid> <x1> <z1> <x2> <z2>` — append a source rectangle.
 - `jem project remove <project-uuid> <zero-based-rectangle-index>` — remove a source rectangle and recompute its visual union.
 - `jem holiday` — show persisted Halloween/New Year lifecycle and remaining active time.
 - `jem holiday mute <true|false>` — suppress or restore actual personal holiday notices.
-- `jem holiday join <calm|power>` — opt into the current holiday's peaceful objective or one bounded local combat encounter.
 - `jem holiday gift <player>` / `accept <gift-uuid>` / `cancel <gift-uuid>` — durable consent-based New Year item escrow.
 - `jem holiday preview|force|stop ...` — OP calendar-event inspection and control.
 - `claims` — открыть territories UI.

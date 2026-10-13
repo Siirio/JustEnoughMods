@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "registry_type": "mobs",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "snowrealmagic",
+    "name": "Snow! Real Magic!",
+    "version": "${file.jarVersion}"
+  },
+  "records": [
+    {
+      "entity_id": "snowrealmagic:snow",
+      "registry_type": "entity_view",
+      "schema_version": 1,
+      "mod_id": "snowrealmagic",
+      "mod_name": "Snow! Real Magic!",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "SnowRealMagic-1.20.1-Forge-10.7.0.jar",
+      "source_sha256": "969b0e396dc1d5f2fd3783b3638fc49230fe143ea5329584b27e558a77a20dac",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowrealmagic/lang/en_us.json",
+        "assets/snowrealmagic/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Falling Block",
+      "display_name_ru_ru": "Падающий блок",
+      "source_provenance": [
+        "SnowRealMagic-1.20.1-Forge-10.7.0.jar:assets/snowrealmagic/lang/en_us.json",
+        "SnowRealMagic-1.20.1-Forge-10.7.0.jar:assets/snowrealmagic/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "roles": [],
+      "living": null,
+      "attitude": null,
+      "default_health": null,
+      "default_attributes": null,
+      "natural_spawn": null,
+      "biomes": [],
+      "dimensions": [],
+      "structure_spawns": [],
+      "summoned_by_boss_ids": [],
+      "related_boss_ids": [],
+      "relationship_evidence": [],
+      "boss_campaign_role": null,
+      "taming_method": null,
+      "owner_mechanism": null,
+      "rideable": null,
+      "ride_control": null,
+      "breeding": null,
+      "despawn_behavior": null,
+      "drops": [],
+      "mount_eligibility": "unresolved"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "luminoustag",
+    "name": "Luminous:Tag",
+    "version": "1.1"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "luminoustag:tag_recipe",
+      "mod_id": "luminoustag",
+      "mod_name": "Luminous:Tag",
+      "mod_version": "1.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:iron_ingot",
+        "minecraft:paper",
+        "minecraft:red_dye"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "luminoustag:decorative_tag"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "LuminousTag V1.1 - Forge 1.20.1.jar:data/luminoustag/recipes/tag_recipe.json"
+      ]
+    }
+  ]
+}

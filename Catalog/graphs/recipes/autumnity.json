@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "autumnity",
+    "name": "autumnity",
+    "version": "unresolved"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "autumnity:maple_button",
+      "mod_id": "autumnity",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "autumnity:maple_planks",
+        "forge:mod_loaded",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "autumnity:maple_button"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/autumnity/recipes/maple_button.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "autumnity:maple_button_from_maple_logs_sawing",
+      "mod_id": "autumnity",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "forge:conditional",
+      "machine_id": "forge:conditional",
+      "ingredient_groups": [
+        "autumnity:maple_button",
+        "autumnity:maple_logs",
+        "forge:conditional",
+        "forge:mod_loaded",
+        "woodworks:config",
+        "woodworks:sawmill"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/autumnity/recipes/maple_button_from_maple_logs_sawing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "autumnity:maple_button_from_maple_planks_sawing",
+      "mod_id": "autumnity",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "forge:conditional",
+      "machine_id": "forge:conditional",
+      "ingredient_groups": [
+        "autumnity:maple_button",
+        "autumnity:maple_planks",
+        "forge:conditional",
+        "forge:mod_loaded",
+        "woodworks:config",
+        "woodworks:sawmill"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/autumnity/recipes/maple_button_from_maple_planks_sawing.json"
+      ]
+    }
+  ]
+}

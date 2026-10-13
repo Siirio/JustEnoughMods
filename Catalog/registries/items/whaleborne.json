@@ -1,0 +1,569 @@
+{
+  "schema_version": 1,
+  "registry_type": "items",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "whaleborne",
+    "name": "Whaleborne",
+    "version": "1.20.1-1.2.4b"
+  },
+  "records": [
+    {
+      "registry_id": "whaleborne:anchor",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "whaleborne",
+      "mod_name": "Whaleborne",
+      "mod_version": "1.20.1-1.2.4b",
+      "source_jar": "whaleborne-1.20.1-1.2.4b.jar",
+      "source_sha256": "adc04902ba12f238397c58dafe80592ac50dbc2fe73b342854ee4e8909a45658",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/whaleborne/lang/en_us.json",
+        "assets/whaleborne/lang/ru_ru.json",
+        "assets/whaleborne/models/item/anchor.json"
+      ],
+      "display_name_en_us": "Anchor",
+      "display_name_ru_ru": "Якорь",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/lang/en_us.json",
+        "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/lang/ru_ru.json",
+        "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/models/item/anchor.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:whaleborne:anchor"
+    },
+    {
+      "registry_id": "whaleborne:barnacle",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "whaleborne",
+      "mod_name": "Whaleborne",
+      "mod_version": "1.20.1-1.2.4b",
+      "source_jar": "whaleborne-1.20.1-1.2.4b.jar",
+      "source_sha256": "adc04902ba12f238397c58dafe80592ac50dbc2fe73b342854ee4e8909a45658",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/whaleborne/lang/en_us.json",
+        "assets/whaleborne/lang/ru_ru.json",
+        "assets/whaleborne/models/item/barnacle.json",
+        "data/whaleborne/recipes/barnacle_recipe.json"
+      ],
+      "display_name_en_us": "Barnacle Block",
+      "display_name_ru_ru": "Балянус",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/lang/en_us.json",
+        "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/lang/ru_ru.json",
+        "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/models/item/barnacle.json",
+        "whaleborne-1.20.1-1.2.4b.jar:data/whaleborne/recipes/barnacle_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "whaleborne:barnacle",
+      "acquisition_routes": [
+        "whaleborne:barnacle_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:whaleborne:barnacle"
+    },
+    {
+      "registry_id": "whaleborne:cannon",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "whaleborne",
+      "mod_name": "Whaleborne",
+      "mod_version": "1.20.1-1.2.4b",
+      "source_jar": "whaleborne-1.20.1-1.2.4b.jar",
+      "source_sha256": "adc04902ba12f238397c58dafe80592ac50dbc2fe73b342854ee4e8909a45658",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/whaleborne/lang/en_us.json",
+        "assets/whaleborne/lang/ru_ru.json",
+        "assets/whaleborne/models/item/cannon.json"
+      ],
+      "display_name_en_us": "Cannon",
+      "display_name_ru_ru": "Пушка",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/lang/en_us.json",
+        "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/lang/ru_ru.json",
+        "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/models/item/cannon.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:whaleborne:cannon"
+    },
+    {
+      "registry_id": "whaleborne:helm",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "whaleborne",
+      "mod_name": "Whaleborne",
+      "mod_version": "1.20.1-1.2.4b",
+      "source_jar": "whaleborne-1.20.1-1.2.4b.jar",
+      "source_sha256": "adc04902ba12f238397c58dafe80592ac50dbc2fe73b342854ee4e8909a45658",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/whaleborne/lang/en_us.json",
+        "assets/whaleborne/lang/ru_ru.json",
+        "assets/whaleborne/models/item/helm.json",
+        "data/whaleborne/recipes/helm_recipe.json"
+      ],
+      "display_name_en_us": "Helm",
+      "display_name_ru_ru": "Штурвал",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/lang/en_us.json",
+        "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/lang/ru_ru.json",
+        "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/models/item/helm.json",
+        "whaleborne-1.20.1-1.2.4b.jar:data/whaleborne/recipes/helm_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "whaleborne:helm_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:whaleborne:helm"
+    },
+    {
+      "registry_id": "whaleborne:hullback_spawn_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "whaleborne",
+      "mod_name": "Whaleborne",
+      "mod_version": "1.20.1-1.2.4b",
+      "source_jar": "whaleborne-1.20.1-1.2.4b.jar",
+      "source_sha256": "adc04902ba12f238397c58dafe80592ac50dbc2fe73b342854ee4e8909a45658",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/whaleborne/lang/en_us.json",
+        "assets/whaleborne/lang/ru_ru.json",
+        "assets/whaleborne/models/item/hullback_spawn_egg.json"
+      ],
+      "display_name_en_us": "Hullback Spawn Egg",
+      "display_name_ru_ru": "Яйцо призыва судноспина",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/lang/en_us.json",
+        "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/lang/ru_ru.json",
+        "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/models/item/hullback_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:whaleborne:hullback_spawn_egg"
+    },
+    {
+      "registry_id": "whaleborne:mast",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "whaleborne",
+      "mod_name": "Whaleborne",
+      "mod_version": "1.20.1-1.2.4b",
+      "source_jar": "whaleborne-1.20.1-1.2.4b.jar",
+      "source_sha256": "adc04902ba12f238397c58dafe80592ac50dbc2fe73b342854ee4e8909a45658",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/whaleborne/lang/en_us.json",
+        "assets/whaleborne/lang/ru_ru.json",
+        "assets/whaleborne/models/item/mast.json"
+      ],
+      "display_name_en_us": "Mast",
+      "display_name_ru_ru": "Мачта",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/lang/en_us.json",
+        "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/lang/ru_ru.json",
+        "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/models/item/mast.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:whaleborne:mast"
+    },
+    {
+      "registry_id": "whaleborne:music_disc_the_plank",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "whaleborne",
+      "mod_name": "Whaleborne",
+      "mod_version": "1.20.1-1.2.4b",
+      "source_jar": "whaleborne-1.20.1-1.2.4b.jar",
+      "source_sha256": "adc04902ba12f238397c58dafe80592ac50dbc2fe73b342854ee4e8909a45658",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/whaleborne/lang/en_us.json",
+        "assets/whaleborne/models/item/music_disc_the_plank.json"
+      ],
+      "display_name_en_us": "Music Disc",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:items/music_discs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/lang/en_us.json",
+        "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/models/item/music_disc_the_plank.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "whaleborne:music_disc_the_plank",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:whaleborne:music_disc_the_plank"
+    },
+    {
+      "registry_id": "whaleborne:music_disc_the_plank.desc",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "whaleborne",
+      "mod_name": "Whaleborne",
+      "mod_version": "1.20.1-1.2.4b",
+      "source_jar": "whaleborne-1.20.1-1.2.4b.jar",
+      "source_sha256": "adc04902ba12f238397c58dafe80592ac50dbc2fe73b342854ee4e8909a45658",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/whaleborne/lang/en_us.json"
+      ],
+      "display_name_en_us": "Ninni - the plank",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:whaleborne:music_disc_the_plank.desc"
+    },
+    {
+      "registry_id": "whaleborne:rough_barnacle",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "whaleborne",
+      "mod_name": "Whaleborne",
+      "mod_version": "1.20.1-1.2.4b",
+      "source_jar": "whaleborne-1.20.1-1.2.4b.jar",
+      "source_sha256": "adc04902ba12f238397c58dafe80592ac50dbc2fe73b342854ee4e8909a45658",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/whaleborne/lang/en_us.json",
+        "assets/whaleborne/lang/ru_ru.json",
+        "assets/whaleborne/models/item/rough_barnacle.json",
+        "data/spawn/recipes/rough_barnacle.json"
+      ],
+      "display_name_en_us": "Rough Barnacle Block",
+      "display_name_ru_ru": "грубый Балянус",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "spawn-4.0.7-1.20.1.jar:data/spawn/recipes/rough_barnacle.json",
+        "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/lang/en_us.json",
+        "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/lang/ru_ru.json",
+        "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/models/item/rough_barnacle.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "whaleborne:rough_barnacle",
+      "acquisition_routes": [
+        "spawn:rough_barnacle"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:whaleborne:rough_barnacle"
+    },
+    {
+      "registry_id": "whaleborne:sail",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "whaleborne",
+      "mod_name": "Whaleborne",
+      "mod_version": "1.20.1-1.2.4b",
+      "source_jar": "whaleborne-1.20.1-1.2.4b.jar",
+      "source_sha256": "adc04902ba12f238397c58dafe80592ac50dbc2fe73b342854ee4e8909a45658",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/whaleborne/lang/en_us.json",
+        "assets/whaleborne/lang/ru_ru.json",
+        "assets/whaleborne/models/item/sail.json"
+      ],
+      "display_name_en_us": "Sail",
+      "display_name_ru_ru": "Парус",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/lang/en_us.json",
+        "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/lang/ru_ru.json",
+        "whaleborne-1.20.1-1.2.4b.jar:assets/whaleborne/models/item/sail.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:whaleborne:sail"
+    }
+  ]
+}

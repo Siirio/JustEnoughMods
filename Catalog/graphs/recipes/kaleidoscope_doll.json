@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "kaleidoscope_doll",
+    "name": "Kaleidoscope Doll",
+    "version": "1.4.1-forge+mc1.20.1"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_doll:computer",
+      "mod_id": "kaleidoscope_doll",
+      "mod_name": "Kaleidoscope Doll",
+      "mod_version": "1.4.1-forge+mc1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:iron_ingot",
+        "minecraft:redstone",
+        "minecraft:smooth_stone"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_doll:computer"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscopedoll-1.4.1-forge+mc1.20.1.jar:data/kaleidoscope_doll/recipes/computer.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_doll:doll_entity_crafting",
+      "mod_id": "kaleidoscope_doll",
+      "mod_name": "Kaleidoscope Doll",
+      "mod_version": "1.4.1-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_doll:doll_entity_crafting",
+      "machine_id": "kaleidoscope_doll:doll_entity_crafting",
+      "ingredient_groups": [
+        "kaleidoscope_doll:doll_entity_crafting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscopedoll-1.4.1-forge+mc1.20.1.jar:data/kaleidoscope_doll/recipes/doll_entity_crafting.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_doll:doll_machine",
+      "mod_id": "kaleidoscope_doll",
+      "mod_name": "Kaleidoscope Doll",
+      "mod_version": "1.4.1-forge+mc1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:ingots/copper",
+        "minecraft:crafting_shaped",
+        "minecraft:jukebox",
+        "minecraft:oxidized_copper"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_doll:doll_machine"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscopedoll-1.4.1-forge+mc1.20.1.jar:data/kaleidoscope_doll/recipes/doll_machine.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_doll:redstone/computer",
+      "mod_id": "kaleidoscope_doll",
+      "mod_name": "Kaleidoscope Doll",
+      "mod_version": "1.4.1-forge+mc1.20.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "kaleidoscope_doll:computer",
+        "minecraft:inventory_changed",
+        "minecraft:iron_ingot",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscopedoll-1.4.1-forge+mc1.20.1.jar:data/kaleidoscope_doll/advancements/recipes/redstone/computer.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_doll:tools/tweaks_tool",
+      "mod_id": "kaleidoscope_doll",
+      "mod_name": "Kaleidoscope Doll",
+      "mod_version": "1.4.1-forge+mc1.20.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "kaleidoscope_doll:tweaks_tool",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "minecraft:wool"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscopedoll-1.4.1-forge+mc1.20.1.jar:data/kaleidoscope_doll/advancements/recipes/tools/tweaks_tool.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_doll:tweaks_tool",
+      "mod_id": "kaleidoscope_doll",
+      "mod_name": "Kaleidoscope Doll",
+      "mod_version": "1.4.1-forge+mc1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:stick",
+        "minecraft:wool"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_doll:tweaks_tool"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscopedoll-1.4.1-forge+mc1.20.1.jar:data/kaleidoscope_doll/recipes/tweaks_tool.json"
+      ]
+    }
+  ]
+}

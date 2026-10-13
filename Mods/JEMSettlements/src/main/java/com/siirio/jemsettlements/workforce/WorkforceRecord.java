@@ -18,6 +18,8 @@ public final class WorkforceRecord {
     private long lastSeenGameTime;
     private long lastPaidPeriod = -1L;
     private long lastPenaltyPeriod = -1L;
+    private UUID lastWorkAreaId;
+    private long lastWorkEvidenceGameTime = Long.MIN_VALUE;
 
     public WorkforceRecord(UUID entityId, UUID townId, UUID ownerId, WorkforceType type, String nativeModId,
                            ResourceLocation nativeEntityType, boolean coinWageEnabled, long enlistedGameTime) {
@@ -42,17 +44,27 @@ public final class WorkforceRecord {
     public long lastSeenGameTime() { return lastSeenGameTime; }
     public long lastPaidPeriod() { return lastPaidPeriod; }
     public long lastPenaltyPeriod() { return lastPenaltyPeriod; }
+    public UUID lastWorkAreaId() { return lastWorkAreaId; }
+    public long lastWorkEvidenceGameTime() { return lastWorkEvidenceGameTime; }
     public void seen(long gameTime) { living = true; lastSeenGameTime = Math.max(lastSeenGameTime, gameTime); }
     public void verifyNativeEntityType(ResourceLocation value, long gameTime) { if (value != null && value.getNamespace().equals(nativeModId)) nativeEntityType = value; seen(gameTime); }
     public void markDead() { living = false; }
     public void paid(long period) { lastPaidPeriod = Math.max(lastPaidPeriod, period); }
     public void penalized(long period) { lastPenaltyPeriod = Math.max(lastPenaltyPeriod, period); }
+    public void observeWorkArea(UUID workAreaId, long gameTime) {
+        if (workAreaId == null) return;
+        lastWorkAreaId = workAreaId;
+        lastWorkEvidenceGameTime = Math.max(lastWorkEvidenceGameTime, gameTime);
+        seen(gameTime);
+    }
 
     public CompoundTag save() {
         CompoundTag tag = new CompoundTag(); tag.putUUID("Entity", entityId); tag.putUUID("Town", townId); tag.putUUID("Owner", ownerId);
         tag.putString("Type", type.name()); tag.putString("NativeMod", nativeModId); tag.putString("NativeEntityType", nativeEntityType.toString());
         tag.putBoolean("CoinWage", coinWageEnabled); tag.putBoolean("Living", living); tag.putLong("EnlistedGameTime", enlistedGameTime);
-        tag.putLong("LastSeenGameTime", lastSeenGameTime); tag.putLong("LastPaidPeriod", lastPaidPeriod); tag.putLong("LastPenaltyPeriod", lastPenaltyPeriod); return tag;
+        tag.putLong("LastSeenGameTime", lastSeenGameTime); tag.putLong("LastPaidPeriod", lastPaidPeriod); tag.putLong("LastPenaltyPeriod", lastPenaltyPeriod);
+        if (lastWorkAreaId != null) tag.putUUID("LastWorkArea", lastWorkAreaId);
+        tag.putLong("LastWorkEvidenceGameTime", lastWorkEvidenceGameTime); return tag;
     }
     public static WorkforceRecord load(CompoundTag tag) {
         String nativeMod = tag.getString("NativeMod"); ResourceLocation nativeType = ResourceLocation.tryParse(tag.getString("NativeEntityType"));
@@ -63,6 +75,8 @@ public final class WorkforceRecord {
                 WorkforceType.valueOf(tag.getString("Type")), nativeMod, nativeType, coinWage, tag.contains("EnlistedGameTime") ? tag.getLong("EnlistedGameTime") : 0L);
         record.living = !tag.contains("Living") || tag.getBoolean("Living"); record.lastSeenGameTime = tag.getLong("LastSeenGameTime");
         record.lastPaidPeriod = tag.contains("LastPaidPeriod") ? tag.getLong("LastPaidPeriod") : -1L;
-        record.lastPenaltyPeriod = tag.contains("LastPenaltyPeriod") ? tag.getLong("LastPenaltyPeriod") : -1L; return record;
+        record.lastPenaltyPeriod = tag.contains("LastPenaltyPeriod") ? tag.getLong("LastPenaltyPeriod") : -1L;
+        record.lastWorkAreaId = tag.hasUUID("LastWorkArea") ? tag.getUUID("LastWorkArea") : null;
+        record.lastWorkEvidenceGameTime = tag.contains("LastWorkEvidenceGameTime") ? tag.getLong("LastWorkEvidenceGameTime") : Long.MIN_VALUE; return record;
     }
 }

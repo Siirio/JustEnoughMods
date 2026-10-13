@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "registry_type": "placeables",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "exposure",
+    "name": "Exposure",
+    "version": "1.9.21"
+  },
+  "records": [
+    {
+      "item_id": "exposure:lightroom",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/lightroom.json",
+        "data/exposure/recipes/lightroom.json"
+      ],
+      "display_name_en_us": "Lightroom",
+      "display_name_ru_ru": "Фотолаборатория",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/lightroom.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/lightroom.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "exposure:lightroom",
+      "placed_registry_ids": [
+        "exposure:lightroom"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "exposure:lightroom"
+      ]
+    }
+  ]
+}

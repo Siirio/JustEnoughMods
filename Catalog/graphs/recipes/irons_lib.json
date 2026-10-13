@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "irons_lib",
+    "name": "Iron's Lib",
+    "version": "1.20.1-1.0.2"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "irons_lib:transmog_table",
+      "mod_id": "irons_lib",
+      "mod_name": "Iron's Lib",
+      "mod_version": "1.20.1-1.0.2",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:gold_ingot",
+        "minecraft:smithing_table"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "irons_lib:transmog_table"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "irons_lib-1.20.1-1.0.2.jar:data/irons_lib/recipes/transmog_table.json"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,369 @@
+{
+  "schema_version": 1,
+  "registry_type": "weapons",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "minecraft",
+    "name": "Minecraft",
+    "version": "1.20.1"
+  },
+  "records": [
+    {
+      "item_id": "minecraft:bow",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/bow.json"
+      ],
+      "display_name_en_us": "Bow",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/bow.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "bow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:bowl",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/bowl.json",
+        "data/natures_spirit/recipes/bowl_from_coconut_shell.json"
+      ],
+      "display_name_en_us": "Bowl",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "natures_spirit-2.2.5-1.20.1.jar:data/natures_spirit/recipes/bowl_from_coconut_shell.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/bowl.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "bow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:copper_sword",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "assets/minecraft/lang/ru_ru.json",
+        "assets/minecraft/models/item/copper_sword.json",
+        "data/minecraft/recipes/copper_sword.json"
+      ],
+      "display_name_en_us": "Copper Sword",
+      "display_name_ru_ru": "Copper Sword",
+      "source_provenance": [
+        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/lang/en_us.json",
+        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/lang/ru_ru.json",
+        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/models/item/copper_sword.json",
+        "copperagebackport-forge-1.20.1-0.1.4.jar:data/minecraft/recipes/copper_sword.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "sword"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:crossbow",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "assets/minecraft/models/item/crossbow.json",
+        "data/minecraft/recipes/crossbow.json"
+      ],
+      "display_name_en_us": "Crossbow",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/minecraft/models/item/crossbow.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/crossbow.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "crossbow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:crossbow.projectile",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json"
+      ],
+      "display_name_en_us": "Projectile:",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "crossbow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:diamond_sword",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/diamond_sword.json"
+      ],
+      "display_name_en_us": "Diamond Sword",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/diamond_sword.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "sword"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:golden_sword",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/golden_sword.json"
+      ],
+      "display_name_en_us": "Golden Sword",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/golden_sword.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "sword"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:iron_sword",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/iron_sword.json"
+      ],
+      "display_name_en_us": "Iron Sword",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/iron_sword.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "sword"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:netherite_sword",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/legendary_monsters/recipes/enderitium_netherite_sword.json",
+        "data/minecraft/recipes/netherite_sword_smithing.json"
+      ],
+      "display_name_en_us": "Netherite Sword",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "legendarymonsters-2.2.2%20MC%201.20.1.jar:data/legendary_monsters/recipes/enderitium_netherite_sword.json",
+        "legendarymonsters-2.2.2_20MC_201.20.1.jar:data/legendary_monsters/recipes/enderitium_netherite_sword.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/netherite_sword_smithing.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "sword"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:stone_sword",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/stone_sword.json",
+        "data/unearthed_journey/recipes/palagonite_stone_sword.json",
+        "data/unearthed_journey/recipes/slate_stone_sword.json",
+        "data/unearthed_journey/recipes/stone_sword.json"
+      ],
+      "display_name_en_us": "Stone Sword",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/stone_sword.json",
+        "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/palagonite_stone_sword.json",
+        "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/slate_stone_sword.json",
+        "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/stone_sword.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "sword"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:wooden_sword",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/wooden_sword.json"
+      ],
+      "display_name_en_us": "Wooden Sword",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/wooden_sword.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "sword"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    }
+  ]
+}

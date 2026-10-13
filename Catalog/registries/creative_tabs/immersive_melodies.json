@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "registry_type": "creative_tabs",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "immersive_melodies",
+    "name": "Immersive Melodies",
+    "version": "0.8.0+1.20.1"
+  },
+  "records": [
+    {
+      "registry_id": "immersive_melodies:immersive_melodies_tab",
+      "registry_type": "creative_mode_tab",
+      "schema_version": 1,
+      "mod_id": "immersive_melodies",
+      "mod_name": "Immersive Melodies",
+      "mod_version": "0.8.0+1.20.1",
+      "source_jar": "immersive_melodies-0.8.0_2B1.20.1-forge.jar",
+      "source_sha256": "bf330d4204723f824e6adddce95e02bed13270095dd6f0e28dbea39da5bfdf9e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/immersive_melodies/lang/en_us.json",
+        "assets/immersive_melodies/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Immersive Melodies",
+      "display_name_ru_ru": "Захватывающие Мелодии",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "immersive_melodies-0.8.0%2B1.20.1-forge.jar:assets/immersive_melodies/lang/en_us.json",
+        "immersive_melodies-0.8.0%2B1.20.1-forge.jar:assets/immersive_melodies/lang/ru_ru.json",
+        "immersive_melodies-0.8.0_2B1.20.1-forge.jar:assets/immersive_melodies/lang/en_us.json",
+        "immersive_melodies-0.8.0_2B1.20.1-forge.jar:assets/immersive_melodies/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}

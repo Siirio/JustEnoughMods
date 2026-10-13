@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "registry_type": "trade_policies",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "baguettelib",
+    "name": "BaguetteLib",
+    "version": "2.0.5"
+  },
+  "records": [
+    {
+      "item_id": "baguettelib:example_item",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "baguettelib",
+      "mod_name": "BaguetteLib",
+      "mod_version": "2.0.5",
+      "source_jar": "baguettelib-1.20.1-Forge-2.0.5.jar",
+      "source_sha256": "97646cb92d00b6a8027ffab845e2b71bf42fbf7be19feabe8ab8aa8ddd5a9652",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/baguettelib/lang/en_us.json"
+      ],
+      "display_name_en_us": "Example Item",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "baguettelib-1.20.1-Forge-2.0.5.jar:assets/baguettelib/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    }
+  ]
+}

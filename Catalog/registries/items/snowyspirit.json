@@ -1,0 +1,4139 @@
+{
+  "schema_version": 1,
+  "registry_type": "items",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "snowyspirit",
+    "name": "Snowy Spirit",
+    "version": "1.20-3.0.10"
+  },
+  "records": [
+    {
+      "registry_id": "snowyspirit:candy_cane",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json",
+        "assets/snowyspirit/models/item/candy_cane.json",
+        "data/snowyspirit/recipes/candy_cane.json",
+        "data/snowyspirit/recipes/candy_cane_block_uncrafting.json"
+      ],
+      "display_name_en_us": "Candy Cane",
+      "display_name_ru_ru": "Карамельная трость",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/candy_cane.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/candy_cane.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/candy_cane_block_uncrafting.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "snowyspirit:candy_cane",
+        "snowyspirit:candy_cane_block_uncrafting"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:candy_cane"
+    },
+    {
+      "registry_id": "snowyspirit:candy_cane_block",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/candy_cane_block.json",
+        "data/snowyspirit/recipes/candy_cane_block.json"
+      ],
+      "display_name_en_us": "Candy Cane Block",
+      "display_name_ru_ru": "Блок карамельной трости",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/candy_cane_block.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/candy_cane_block.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:candy_cane_block",
+      "acquisition_routes": [
+        "snowyspirit:candy_cane_block"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:candy_cane_block"
+    },
+    {
+      "registry_id": "snowyspirit:ecologics.sled_azalea",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/ru_ru.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": "Азалиевые сани",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:ecologics.sled_azalea"
+    },
+    {
+      "registry_id": "snowyspirit:ecologics.sled_coconut",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/ru_ru.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": "Кокосовые сани",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:ecologics.sled_coconut"
+    },
+    {
+      "registry_id": "snowyspirit:ecologics.sled_flowering_azalea",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/ru_ru.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": "Сани из цветующей азалии",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:ecologics.sled_flowering_azalea"
+    },
+    {
+      "registry_id": "snowyspirit:ecologics.sled_walnut",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/ru_ru.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": "Ореховые сани",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:ecologics.sled_walnut"
+    },
+    {
+      "registry_id": "snowyspirit:eggnog",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json",
+        "assets/snowyspirit/models/item/eggnog.json",
+        "data/snowyspirit/recipes/eggnog.json"
+      ],
+      "display_name_en_us": "Eggnog",
+      "display_name_ru_ru": "Эгног",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/eggnog.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/eggnog.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "snowyspirit:eggnog"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:eggnog"
+    },
+    {
+      "registry_id": "snowyspirit:ginger",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json",
+        "assets/snowyspirit/models/item/ginger.json",
+        "data/snowyspirit/recipes/ginger_crate_uncrafting.json"
+      ],
+      "display_name_en_us": "Ginger",
+      "display_name_ru_ru": "Имбирь",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "forge:blocks/crops",
+        "forge:blocks/crops/ginger",
+        "forge:blocks/vegetables",
+        "forge:blocks/vegetables/ginger",
+        "forge:items/crops",
+        "forge:items/crops/ginger",
+        "forge:items/vegetables",
+        "forge:items/vegetables/ginger",
+        "minecraft:blocks/crops",
+        "minecraft:blocks/mineable/hoe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/ginger.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/ginger_crate_uncrafting.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:ginger",
+      "acquisition_routes": [
+        "snowyspirit:ginger_crate_uncrafting"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:ginger"
+    },
+    {
+      "registry_id": "snowyspirit:ginger_crate",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/ginger_crate.json",
+        "data/snowyspirit/recipes/ginger_crate.json"
+      ],
+      "display_name_en_us": "Ginger Crate",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/ginger_crate.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/ginger_crate.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:ginger_crate",
+      "acquisition_routes": [
+        "snowyspirit:ginger_crate"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:ginger_crate"
+    },
+    {
+      "registry_id": "snowyspirit:ginger_flower",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json",
+        "assets/snowyspirit/models/item/ginger_flower.json"
+      ],
+      "display_name_en_us": "Ginger Flower",
+      "display_name_ru_ru": "Цветок имбиря",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "forge:items/seeds",
+        "forge:items/seeds/ginger",
+        "minecraft:items/villager_plantable_seeds"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/ginger_flower.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:ginger_flower"
+    },
+    {
+      "registry_id": "snowyspirit:gingerbread",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/gingerbread.json",
+        "data/snowyspirit/recipes/gingerbread.json",
+        "data/snowyspirit/recipes/gingerbread_compressed.json"
+      ],
+      "display_name_en_us": "Gingerbread",
+      "display_name_ru_ru": "Пряник",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe",
+        "snowyspirit:blocks/gingerbreads",
+        "snowyspirit:items/gingerbreads"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gingerbread.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gingerbread.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gingerbread_compressed.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:gingerbread",
+      "acquisition_routes": [
+        "snowyspirit:gingerbread",
+        "snowyspirit:gingerbread_compressed"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gingerbread"
+    },
+    {
+      "registry_id": "snowyspirit:gingerbread_cookie",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json",
+        "assets/snowyspirit/models/item/gingerbread_cookie.json",
+        "data/snowyspirit/recipes/gingerbread_cookie.json"
+      ],
+      "display_name_en_us": "Gingerbread Cookie",
+      "display_name_ru_ru": "Пряничное печенье",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gingerbread_cookie.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gingerbread_cookie.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "snowyspirit:gingerbread_cookie"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gingerbread_cookie"
+    },
+    {
+      "registry_id": "snowyspirit:gingerbread_cookie_1",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/gingerbread_cookie_1.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gingerbread_cookie_1.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gingerbread_cookie_1"
+    },
+    {
+      "registry_id": "snowyspirit:gingerbread_cookie_2",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/gingerbread_cookie_2.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gingerbread_cookie_2.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gingerbread_cookie_2"
+    },
+    {
+      "registry_id": "snowyspirit:gingerbread_cookie_3",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/gingerbread_cookie_3.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gingerbread_cookie_3.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gingerbread_cookie_3"
+    },
+    {
+      "registry_id": "snowyspirit:gingerbread_door",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/gingerbread_door.json",
+        "data/snowyspirit/recipes/gingerbread_door.json"
+      ],
+      "display_name_en_us": "Gingerbread Door",
+      "display_name_ru_ru": "Пряничная дверь",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/doors",
+        "minecraft:blocks/mineable/axe",
+        "minecraft:items/doors"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gingerbread_door.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gingerbread_door.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:gingerbread_door",
+      "acquisition_routes": [
+        "snowyspirit:gingerbread_door"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gingerbread_door"
+    },
+    {
+      "registry_id": "snowyspirit:gingerbread_frosted",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/gingerbread_frosted.json",
+        "data/snowyspirit/recipes/gingerbread_frosted.json"
+      ],
+      "display_name_en_us": "Frosted Gingerbread",
+      "display_name_ru_ru": "Мёрзлый пряник",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe",
+        "snowyspirit:blocks/gingerbreads",
+        "snowyspirit:items/gingerbreads"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gingerbread_frosted.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gingerbread_frosted.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:gingerbread_frosted",
+      "acquisition_routes": [
+        "snowyspirit:gingerbread_frosted"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gingerbread_frosted"
+    },
+    {
+      "registry_id": "snowyspirit:gingerbread_golem_spawn_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/models/item/gingerbread_golem_spawn_egg.json"
+      ],
+      "display_name_en_us": "Gingerbread Golem Spawn Egg",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gingerbread_golem_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gingerbread_golem_spawn_egg"
+    },
+    {
+      "registry_id": "snowyspirit:gingerbread_slab",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/gingerbread_slab.json",
+        "data/snowyspirit/recipes/gingerbread_slab.json"
+      ],
+      "display_name_en_us": "Gingerbread Slab",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe",
+        "minecraft:blocks/slabs",
+        "minecraft:items/slabs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gingerbread_slab.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gingerbread_slab.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:gingerbread_slab",
+      "acquisition_routes": [
+        "snowyspirit:gingerbread_slab"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gingerbread_slab"
+    },
+    {
+      "registry_id": "snowyspirit:gingerbread_stairs",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/gingerbread_stairs.json",
+        "data/snowyspirit/recipes/gingerbread_stairs.json"
+      ],
+      "display_name_en_us": "Gingerbread Stairs",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe",
+        "minecraft:blocks/stairs",
+        "minecraft:items/stairs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gingerbread_stairs.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gingerbread_stairs.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:gingerbread_stairs",
+      "acquisition_routes": [
+        "snowyspirit:gingerbread_stairs"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gingerbread_stairs"
+    },
+    {
+      "registry_id": "snowyspirit:gingerbread_trapdoor",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/gingerbread_trapdoor.json",
+        "data/snowyspirit/recipes/gingerbread_trapdoor.json"
+      ],
+      "display_name_en_us": "Gingerbread Trapdoor",
+      "display_name_ru_ru": "Пряничный люк",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe",
+        "minecraft:blocks/trapdoors",
+        "minecraft:items/trapdoors"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gingerbread_trapdoor.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gingerbread_trapdoor.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:gingerbread_trapdoor",
+      "acquisition_routes": [
+        "snowyspirit:gingerbread_trapdoor"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gingerbread_trapdoor"
+    },
+    {
+      "registry_id": "snowyspirit:glow_lights_black",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json",
+        "assets/snowyspirit/models/item/glow_lights_black.json",
+        "data/snowyspirit/recipes/glow_lights_black.json"
+      ],
+      "display_name_en_us": "Black Glow Lights",
+      "display_name_ru_ru": "Чёрная гирлянда",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/glow_lights",
+        "snowyspirit:items/glow_lights"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/glow_lights_black.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_black.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:glow_lights_black",
+      "acquisition_routes": [
+        "snowyspirit:glow_lights_black"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:glow_lights_black"
+    },
+    {
+      "registry_id": "snowyspirit:glow_lights_blue",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json",
+        "assets/snowyspirit/models/item/glow_lights_blue.json",
+        "data/snowyspirit/recipes/glow_lights_blue.json"
+      ],
+      "display_name_en_us": "Blue Glow Lights",
+      "display_name_ru_ru": "Синяя гирлянда",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/glow_lights",
+        "snowyspirit:items/glow_lights"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/glow_lights_blue.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_blue.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:glow_lights_blue",
+      "acquisition_routes": [
+        "snowyspirit:glow_lights_blue"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:glow_lights_blue"
+    },
+    {
+      "registry_id": "snowyspirit:glow_lights_brown",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json",
+        "assets/snowyspirit/models/item/glow_lights_brown.json",
+        "data/snowyspirit/recipes/glow_lights_brown.json"
+      ],
+      "display_name_en_us": "Brown Glow Lights",
+      "display_name_ru_ru": "Коричневая гирлянда",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/glow_lights",
+        "snowyspirit:items/glow_lights"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/glow_lights_brown.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_brown.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:glow_lights_brown",
+      "acquisition_routes": [
+        "snowyspirit:glow_lights_brown"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:glow_lights_brown"
+    },
+    {
+      "registry_id": "snowyspirit:glow_lights_cyan",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json",
+        "assets/snowyspirit/models/item/glow_lights_cyan.json",
+        "data/snowyspirit/recipes/glow_lights_cyan.json"
+      ],
+      "display_name_en_us": "Cyan Glow Lights",
+      "display_name_ru_ru": "Бирюзовая гирлянда",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/glow_lights",
+        "snowyspirit:items/glow_lights"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/glow_lights_cyan.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_cyan.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:glow_lights_cyan",
+      "acquisition_routes": [
+        "snowyspirit:glow_lights_cyan"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:glow_lights_cyan"
+    },
+    {
+      "registry_id": "snowyspirit:glow_lights_gray",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json",
+        "assets/snowyspirit/models/item/glow_lights_gray.json",
+        "data/snowyspirit/recipes/glow_lights_gray.json"
+      ],
+      "display_name_en_us": "Gray Glow Lights",
+      "display_name_ru_ru": "Серая гирлянда",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/glow_lights",
+        "snowyspirit:items/glow_lights"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/glow_lights_gray.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_gray.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:glow_lights_gray",
+      "acquisition_routes": [
+        "snowyspirit:glow_lights_gray"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:glow_lights_gray"
+    },
+    {
+      "registry_id": "snowyspirit:glow_lights_green",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json",
+        "assets/snowyspirit/models/item/glow_lights_green.json",
+        "data/snowyspirit/recipes/glow_lights_green.json"
+      ],
+      "display_name_en_us": "Green Glow Lights",
+      "display_name_ru_ru": "Зелёная гирлянда",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/glow_lights",
+        "snowyspirit:items/glow_lights"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/glow_lights_green.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_green.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:glow_lights_green",
+      "acquisition_routes": [
+        "snowyspirit:glow_lights_green"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:glow_lights_green"
+    },
+    {
+      "registry_id": "snowyspirit:glow_lights_light_blue",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json",
+        "assets/snowyspirit/models/item/glow_lights_light_blue.json",
+        "data/snowyspirit/recipes/glow_lights_light_blue.json"
+      ],
+      "display_name_en_us": "Light Blue Glow Lights",
+      "display_name_ru_ru": "Голубая гирлянда",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/glow_lights",
+        "snowyspirit:items/glow_lights"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/glow_lights_light_blue.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_light_blue.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:glow_lights_light_blue",
+      "acquisition_routes": [
+        "snowyspirit:glow_lights_light_blue"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:glow_lights_light_blue"
+    },
+    {
+      "registry_id": "snowyspirit:glow_lights_light_gray",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json",
+        "assets/snowyspirit/models/item/glow_lights_light_gray.json",
+        "data/snowyspirit/recipes/glow_lights_light_gray.json"
+      ],
+      "display_name_en_us": "Light Gray Glow Lights",
+      "display_name_ru_ru": "Светло-серая гирлянда",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/glow_lights",
+        "snowyspirit:items/glow_lights"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/glow_lights_light_gray.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_light_gray.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:glow_lights_light_gray",
+      "acquisition_routes": [
+        "snowyspirit:glow_lights_light_gray"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:glow_lights_light_gray"
+    },
+    {
+      "registry_id": "snowyspirit:glow_lights_lime",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json",
+        "assets/snowyspirit/models/item/glow_lights_lime.json",
+        "data/snowyspirit/recipes/glow_lights_lime.json"
+      ],
+      "display_name_en_us": "Lime Glow Lights",
+      "display_name_ru_ru": "Лаймовая гирлянда",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/glow_lights",
+        "snowyspirit:items/glow_lights"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/glow_lights_lime.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_lime.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:glow_lights_lime",
+      "acquisition_routes": [
+        "snowyspirit:glow_lights_lime"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:glow_lights_lime"
+    },
+    {
+      "registry_id": "snowyspirit:glow_lights_magenta",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json",
+        "assets/snowyspirit/models/item/glow_lights_magenta.json",
+        "data/snowyspirit/recipes/glow_lights_magenta.json"
+      ],
+      "display_name_en_us": "Magenta Glow Lights",
+      "display_name_ru_ru": "Пурпурная гирлянда",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/glow_lights",
+        "snowyspirit:items/glow_lights"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/glow_lights_magenta.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_magenta.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:glow_lights_magenta",
+      "acquisition_routes": [
+        "snowyspirit:glow_lights_magenta"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:glow_lights_magenta"
+    },
+    {
+      "registry_id": "snowyspirit:glow_lights_orange",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json",
+        "assets/snowyspirit/models/item/glow_lights_orange.json",
+        "data/snowyspirit/recipes/glow_lights_orange.json"
+      ],
+      "display_name_en_us": "Orange Glow Lights",
+      "display_name_ru_ru": "Оранжевая гирлянда",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/glow_lights",
+        "snowyspirit:items/glow_lights"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/glow_lights_orange.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_orange.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:glow_lights_orange",
+      "acquisition_routes": [
+        "snowyspirit:glow_lights_orange"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:glow_lights_orange"
+    },
+    {
+      "registry_id": "snowyspirit:glow_lights_pink",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json",
+        "assets/snowyspirit/models/item/glow_lights_pink.json",
+        "data/snowyspirit/recipes/glow_lights_pink.json"
+      ],
+      "display_name_en_us": "Pink Glow Lights",
+      "display_name_ru_ru": "Розовая гирлянда",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/glow_lights",
+        "snowyspirit:items/glow_lights"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/glow_lights_pink.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_pink.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:glow_lights_pink",
+      "acquisition_routes": [
+        "snowyspirit:glow_lights_pink"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:glow_lights_pink"
+    },
+    {
+      "registry_id": "snowyspirit:glow_lights_prismatic",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json",
+        "assets/snowyspirit/models/item/glow_lights_prismatic.json",
+        "data/snowyspirit/recipes/glow_lights_prismatic.json"
+      ],
+      "display_name_en_us": "Prismatic Glow Lights",
+      "display_name_ru_ru": "Разноцветная гирлянда",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/glow_lights",
+        "snowyspirit:items/glow_lights"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/glow_lights_prismatic.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_prismatic.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:glow_lights_prismatic",
+      "acquisition_routes": [
+        "snowyspirit:glow_lights_prismatic"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:glow_lights_prismatic"
+    },
+    {
+      "registry_id": "snowyspirit:glow_lights_purple",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json",
+        "assets/snowyspirit/models/item/glow_lights_purple.json",
+        "data/snowyspirit/recipes/glow_lights_purple.json"
+      ],
+      "display_name_en_us": "Purple Glow Lights",
+      "display_name_ru_ru": "Фиолетовая гирлянда",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/glow_lights",
+        "snowyspirit:items/glow_lights"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/glow_lights_purple.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_purple.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:glow_lights_purple",
+      "acquisition_routes": [
+        "snowyspirit:glow_lights_purple"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:glow_lights_purple"
+    },
+    {
+      "registry_id": "snowyspirit:glow_lights_red",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json",
+        "assets/snowyspirit/models/item/glow_lights_red.json",
+        "data/snowyspirit/recipes/glow_lights_red.json"
+      ],
+      "display_name_en_us": "Red Glow Lights",
+      "display_name_ru_ru": "Красная гирлянда",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/glow_lights",
+        "snowyspirit:items/glow_lights"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/glow_lights_red.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_red.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:glow_lights_red",
+      "acquisition_routes": [
+        "snowyspirit:glow_lights_red"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:glow_lights_red"
+    },
+    {
+      "registry_id": "snowyspirit:glow_lights_white",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json",
+        "assets/snowyspirit/models/item/glow_lights_white.json",
+        "data/snowyspirit/recipes/glow_lights_white.json"
+      ],
+      "display_name_en_us": "White Glow Lights",
+      "display_name_ru_ru": "Белая гирлянда",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/glow_lights",
+        "snowyspirit:items/glow_lights"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/glow_lights_white.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_white.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:glow_lights_white",
+      "acquisition_routes": [
+        "snowyspirit:glow_lights_white"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:glow_lights_white"
+    },
+    {
+      "registry_id": "snowyspirit:glow_lights_yellow",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json",
+        "assets/snowyspirit/models/item/glow_lights_yellow.json",
+        "data/snowyspirit/recipes/glow_lights_yellow.json"
+      ],
+      "display_name_en_us": "Yellow Glow Lights",
+      "display_name_ru_ru": "Жёлтая гирлянда",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/glow_lights",
+        "snowyspirit:items/glow_lights"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/glow_lights_yellow.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_yellow.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:glow_lights_yellow",
+      "acquisition_routes": [
+        "snowyspirit:glow_lights_yellow"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:glow_lights_yellow"
+    },
+    {
+      "registry_id": "snowyspirit:gumdrop",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/gumdrop.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gumdrop.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gumdrop"
+    },
+    {
+      "registry_id": "snowyspirit:gumdrop_black",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/gumdrop_black.json",
+        "data/snowyspirit/recipes/gumdrop_black.json"
+      ],
+      "display_name_en_us": "Black Gumdrop",
+      "display_name_ru_ru": "Чёрный мармелад",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/gumdrops",
+        "snowyspirit:items/gumdrops"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gumdrop_black.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_black.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:gumdrop_black",
+      "acquisition_routes": [
+        "snowyspirit:gumdrop_black"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gumdrop_black"
+    },
+    {
+      "registry_id": "snowyspirit:gumdrop_blue",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/gumdrop_blue.json",
+        "data/snowyspirit/recipes/gumdrop_blue.json"
+      ],
+      "display_name_en_us": "Blue Gumdrop",
+      "display_name_ru_ru": "Синий мармелад",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/gumdrops",
+        "snowyspirit:items/gumdrops"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gumdrop_blue.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_blue.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:gumdrop_blue",
+      "acquisition_routes": [
+        "snowyspirit:gumdrop_blue"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gumdrop_blue"
+    },
+    {
+      "registry_id": "snowyspirit:gumdrop_brown",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/gumdrop_brown.json",
+        "data/snowyspirit/recipes/gumdrop_brown.json"
+      ],
+      "display_name_en_us": "Brown Gumdrop",
+      "display_name_ru_ru": "Коричневый мармелад",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/gumdrops",
+        "snowyspirit:items/gumdrops"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gumdrop_brown.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_brown.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:gumdrop_brown",
+      "acquisition_routes": [
+        "snowyspirit:gumdrop_brown"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gumdrop_brown"
+    },
+    {
+      "registry_id": "snowyspirit:gumdrop_cyan",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/gumdrop_cyan.json",
+        "data/snowyspirit/recipes/gumdrop_cyan.json"
+      ],
+      "display_name_en_us": "Cyan Gumdrop",
+      "display_name_ru_ru": "Бирюзовый мармелад",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/gumdrops",
+        "snowyspirit:items/gumdrops"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gumdrop_cyan.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_cyan.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:gumdrop_cyan",
+      "acquisition_routes": [
+        "snowyspirit:gumdrop_cyan"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gumdrop_cyan"
+    },
+    {
+      "registry_id": "snowyspirit:gumdrop_dark_gray",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/gumdrop_dark_gray.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gumdrop_dark_gray.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gumdrop_dark_gray"
+    },
+    {
+      "registry_id": "snowyspirit:gumdrop_gray",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/gumdrop_gray.json",
+        "data/snowyspirit/recipes/gumdrop_gray.json"
+      ],
+      "display_name_en_us": "Gray Gumdrop",
+      "display_name_ru_ru": "Серый мармелад",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/gumdrops",
+        "snowyspirit:items/gumdrops"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gumdrop_gray.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_gray.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:gumdrop_gray",
+      "acquisition_routes": [
+        "snowyspirit:gumdrop_gray"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gumdrop_gray"
+    },
+    {
+      "registry_id": "snowyspirit:gumdrop_green",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/gumdrop_green.json",
+        "data/snowyspirit/recipes/gumdrop_green.json"
+      ],
+      "display_name_en_us": "Green Gumdrop",
+      "display_name_ru_ru": "Зелёный мармелад",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/gumdrops",
+        "snowyspirit:items/gumdrops"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gumdrop_green.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_green.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:gumdrop_green",
+      "acquisition_routes": [
+        "snowyspirit:gumdrop_green"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gumdrop_green"
+    },
+    {
+      "registry_id": "snowyspirit:gumdrop_light_blue",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/gumdrop_light_blue.json",
+        "data/snowyspirit/recipes/gumdrop_light_blue.json"
+      ],
+      "display_name_en_us": "Light Blue Gumdrop",
+      "display_name_ru_ru": "Голубой мармелад",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/gumdrops",
+        "snowyspirit:items/gumdrops"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gumdrop_light_blue.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_light_blue.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:gumdrop_light_blue",
+      "acquisition_routes": [
+        "snowyspirit:gumdrop_light_blue"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gumdrop_light_blue"
+    },
+    {
+      "registry_id": "snowyspirit:gumdrop_light_gray",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/gumdrop_light_gray.json",
+        "data/snowyspirit/recipes/gumdrop_light_gray.json"
+      ],
+      "display_name_en_us": "Light Gray Gumdrop",
+      "display_name_ru_ru": "Светло-серый мармелад",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/gumdrops",
+        "snowyspirit:items/gumdrops"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gumdrop_light_gray.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_light_gray.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:gumdrop_light_gray",
+      "acquisition_routes": [
+        "snowyspirit:gumdrop_light_gray"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gumdrop_light_gray"
+    },
+    {
+      "registry_id": "snowyspirit:gumdrop_lime",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/gumdrop_lime.json",
+        "data/snowyspirit/recipes/gumdrop_lime.json"
+      ],
+      "display_name_en_us": "Lime Gumdrop",
+      "display_name_ru_ru": "Лаймовый мармелад",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/gumdrops",
+        "snowyspirit:items/gumdrops"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gumdrop_lime.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_lime.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:gumdrop_lime",
+      "acquisition_routes": [
+        "snowyspirit:gumdrop_lime"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gumdrop_lime"
+    },
+    {
+      "registry_id": "snowyspirit:gumdrop_magenta",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/gumdrop_magenta.json",
+        "data/snowyspirit/recipes/gumdrop_magenta.json"
+      ],
+      "display_name_en_us": "Magenta Gumdrop",
+      "display_name_ru_ru": "Пурпурный мармелад",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/gumdrops",
+        "snowyspirit:items/gumdrops"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gumdrop_magenta.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_magenta.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:gumdrop_magenta",
+      "acquisition_routes": [
+        "snowyspirit:gumdrop_magenta"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gumdrop_magenta"
+    },
+    {
+      "registry_id": "snowyspirit:gumdrop_orange",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/gumdrop_orange.json",
+        "data/snowyspirit/recipes/gumdrop_orange.json"
+      ],
+      "display_name_en_us": "Orange Gumdrop",
+      "display_name_ru_ru": "Оранжевый мармелад",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/gumdrops",
+        "snowyspirit:items/gumdrops"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gumdrop_orange.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_orange.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:gumdrop_orange",
+      "acquisition_routes": [
+        "snowyspirit:gumdrop_orange"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gumdrop_orange"
+    },
+    {
+      "registry_id": "snowyspirit:gumdrop_pink",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/gumdrop_pink.json",
+        "data/snowyspirit/recipes/gumdrop_pink.json"
+      ],
+      "display_name_en_us": "Pink Gumdrop",
+      "display_name_ru_ru": "Розовый мармелад",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/gumdrops",
+        "snowyspirit:items/gumdrops"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gumdrop_pink.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_pink.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:gumdrop_pink",
+      "acquisition_routes": [
+        "snowyspirit:gumdrop_pink"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gumdrop_pink"
+    },
+    {
+      "registry_id": "snowyspirit:gumdrop_purple",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/gumdrop_purple.json",
+        "data/snowyspirit/recipes/gumdrop_purple.json"
+      ],
+      "display_name_en_us": "Purple Gumdrop",
+      "display_name_ru_ru": "Фиолетовый мармелад",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/gumdrops",
+        "snowyspirit:items/gumdrops"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gumdrop_purple.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_purple.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:gumdrop_purple",
+      "acquisition_routes": [
+        "snowyspirit:gumdrop_purple"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gumdrop_purple"
+    },
+    {
+      "registry_id": "snowyspirit:gumdrop_red",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/gumdrop_red.json",
+        "data/snowyspirit/recipes/gumdrop_red.json"
+      ],
+      "display_name_en_us": "Red Gumdrop",
+      "display_name_ru_ru": "Красный мармелад",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/gumdrops",
+        "snowyspirit:items/gumdrops"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gumdrop_red.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_red.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:gumdrop_red",
+      "acquisition_routes": [
+        "snowyspirit:gumdrop_red"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gumdrop_red"
+    },
+    {
+      "registry_id": "snowyspirit:gumdrop_white",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/gumdrop_white.json",
+        "data/snowyspirit/recipes/gumdrop_white.json"
+      ],
+      "display_name_en_us": "White Gumdrop",
+      "display_name_ru_ru": "Белый мармелад",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/gumdrops",
+        "snowyspirit:items/gumdrops"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gumdrop_white.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_white.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:gumdrop_white",
+      "acquisition_routes": [
+        "snowyspirit:gumdrop_white"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gumdrop_white"
+    },
+    {
+      "registry_id": "snowyspirit:gumdrop_yellow",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/gumdrop_yellow.json",
+        "data/snowyspirit/recipes/gumdrop_yellow.json"
+      ],
+      "display_name_en_us": "Yellow Gumdrop",
+      "display_name_ru_ru": "Жёлтый мармелад",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:blocks/gumdrops",
+        "snowyspirit:items/gumdrops"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/gumdrop_yellow.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_yellow.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:gumdrop_yellow",
+      "acquisition_routes": [
+        "snowyspirit:gumdrop_yellow"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:gumdrop_yellow"
+    },
+    {
+      "registry_id": "snowyspirit:music_disc_winter",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/models/item/music_disc_winter.json"
+      ],
+      "display_name_en_us": "Music Disc",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:items/music_discs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/music_disc_winter.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:music_disc_winter"
+    },
+    {
+      "registry_id": "snowyspirit:music_disc_winter.desc",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json"
+      ],
+      "display_name_en_us": "STiiX - A Carol",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:music_disc_winter.desc"
+    },
+    {
+      "registry_id": "snowyspirit:quark.sled_azalea",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/ru_ru.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": "Азалиевые сани",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:quark.sled_azalea"
+    },
+    {
+      "registry_id": "snowyspirit:quark.sled_blossom",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/ru_ru.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": "Цветующие сани",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:quark.sled_blossom"
+    },
+    {
+      "registry_id": "snowyspirit:sled",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "%s Sled",
+      "display_name_ru_ru": "%s сани",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:entity_types/powder_snow_walkable_mobs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:sled"
+    },
+    {
+      "registry_id": "snowyspirit:sled_acacia",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json",
+        "assets/snowyspirit/models/item/sled_acacia.json"
+      ],
+      "display_name_en_us": "Acacia Sled",
+      "display_name_ru_ru": "Акациевые сани",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:items/sleds"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/sled_acacia.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:sled_acacia"
+    },
+    {
+      "registry_id": "snowyspirit:sled_birch",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json",
+        "assets/snowyspirit/models/item/sled_birch.json"
+      ],
+      "display_name_en_us": "Birch Sled",
+      "display_name_ru_ru": "Берёзовые сани",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:items/sleds"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/sled_birch.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:sled_birch"
+    },
+    {
+      "registry_id": "snowyspirit:sled_dark_oak",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json",
+        "assets/snowyspirit/models/item/sled_dark_oak.json"
+      ],
+      "display_name_en_us": "Dark Oak Sled",
+      "display_name_ru_ru": "Сани из тёмного дуба",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:items/sleds"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/sled_dark_oak.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:sled_dark_oak"
+    },
+    {
+      "registry_id": "snowyspirit:sled_jungle",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json",
+        "assets/snowyspirit/models/item/sled_jungle.json"
+      ],
+      "display_name_en_us": "Jungle Sled",
+      "display_name_ru_ru": "Сани из тропического дерева",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:items/sleds"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/sled_jungle.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:sled_jungle"
+    },
+    {
+      "registry_id": "snowyspirit:sled_mangrove",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/ru_ru.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": "Мангровые сани",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:sled_mangrove"
+    },
+    {
+      "registry_id": "snowyspirit:sled_oak",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json",
+        "assets/snowyspirit/models/item/sled_oak.json",
+        "data/snowyspirit/recipes/sled_oak.json"
+      ],
+      "display_name_en_us": "Oak Sled",
+      "display_name_ru_ru": "Дубовые сани",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:items/sleds"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/sled_oak.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/sled_oak.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "snowyspirit:sled_oak"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:sled_oak"
+    },
+    {
+      "registry_id": "snowyspirit:sled_spruce",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/en_us.json",
+        "assets/snowyspirit/lang/ru_ru.json",
+        "assets/snowyspirit/models/item/sled_spruce.json"
+      ],
+      "display_name_en_us": "Spruce Sled",
+      "display_name_ru_ru": "Еловые сани",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "snowyspirit:items/sleds"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/en_us.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json",
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/sled_spruce.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:sled_spruce"
+    },
+    {
+      "registry_id": "snowyspirit:snow_globe",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/snow_globe.json",
+        "data/snowyspirit/recipes/snow_globe.json"
+      ],
+      "display_name_en_us": "Snow Globe",
+      "display_name_ru_ru": "Снежный шар",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/snow_globe.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/snow_globe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:snow_globe",
+      "acquisition_routes": [
+        "snowyspirit:snow_globe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:snow_globe"
+    },
+    {
+      "registry_id": "snowyspirit:wild_ginger",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/wild_ginger.json"
+      ],
+      "display_name_en_us": "Wild Ginger",
+      "display_name_ru_ru": "Дикий имбирь",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/wild_ginger.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:wild_ginger",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:wild_ginger"
+    },
+    {
+      "registry_id": "snowyspirit:winter_disc",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/ru_ru.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": "Пластинка",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:winter_disc"
+    },
+    {
+      "registry_id": "snowyspirit:winter_disc.desc",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/lang/ru_ru.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": "STiiX - A Carol",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:winter_disc.desc"
+    },
+    {
+      "registry_id": "snowyspirit:wreath",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/snowyspirit/models/item/wreath.json",
+        "data/snowyspirit/recipes/wreath.json"
+      ],
+      "display_name_en_us": "Wreath",
+      "display_name_ru_ru": "Венок",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:assets/snowyspirit/models/item/wreath.json",
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/wreath.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "snowyspirit:wreath",
+      "acquisition_routes": [
+        "snowyspirit:wreath"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:snowyspirit:wreath"
+    }
+  ]
+}

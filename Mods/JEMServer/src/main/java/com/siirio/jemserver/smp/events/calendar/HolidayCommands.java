@@ -6,7 +6,6 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import com.siirio.jemserver.smp.SmpConfig;
 import java.time.Instant;
 import java.time.ZoneId;
-import java.util.Locale;
 import java.util.UUID;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -25,8 +24,6 @@ public final class HolidayCommands {
                 .executes(context -> status(context.getSource()))
                 .then(Commands.literal("mute").then(Commands.argument("muted", BoolArgumentType.bool())
                         .executes(context -> mute(context.getSource(), BoolArgumentType.getBool(context, "muted")))))
-                .then(Commands.literal("join").then(Commands.argument("path", StringArgumentType.word())
-                        .executes(context -> join(context.getSource(), StringArgumentType.getString(context, "path")))))
                 .then(Commands.literal("gift").then(Commands.argument("player", EntityArgument.player())
                         .executes(context -> gift(context.getSource(), EntityArgument.getPlayer(context, "player")))))
                 .then(Commands.literal("accept").then(Commands.argument("gift", UuidArgument.uuid())
@@ -78,12 +75,6 @@ public final class HolidayCommands {
         return 1;
     }
 
-    private static int join(CommandSourceStack source, String path) throws com.mojang.brigadier.exceptions.CommandSyntaxException {
-        boolean accepted = HolidayActivities.join(source.getPlayerOrException(), path.toLowerCase(Locale.ROOT));
-        source.sendSuccess(() -> Component.translatable(accepted ? "jem.holiday.joined" : "jem.holiday.activity_unavailable"), false);
-        return accepted ? 1 : 0;
-    }
-
     private static int gift(CommandSourceStack source, net.minecraft.server.level.ServerPlayer target) throws com.mojang.brigadier.exceptions.CommandSyntaxException {
         UUID id = HolidayActivities.offerGift(source.getPlayerOrException(), target);
         source.sendSuccess(() -> id == null ? Component.translatable("jem.holiday.gift_unavailable")
@@ -122,7 +113,7 @@ public final class HolidayCommands {
     }
 
     private static CalendarEvent parse(String raw) {
-        try { return CalendarEvent.valueOf(raw.toUpperCase(Locale.ROOT)); }
+        try { return CalendarEvent.valueOf(raw.toUpperCase(java.util.Locale.ROOT)); }
         catch (IllegalArgumentException invalid) { return null; }
     }
 

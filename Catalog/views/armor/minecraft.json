@@ -1,0 +1,870 @@
+{
+  "schema_version": 1,
+  "registry_type": "armor",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "minecraft",
+    "name": "Minecraft",
+    "version": "1.20.1"
+  },
+  "records": [
+    {
+      "item_id": "minecraft:chainmail_boots",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json"
+      ],
+      "display_name_en_us": "Chainmail Boots",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "boots",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:chainmail_chestplate",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json"
+      ],
+      "display_name_en_us": "Chainmail Chestplate",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "chestplate",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:chainmail_helmet",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json"
+      ],
+      "display_name_en_us": "Chainmail Helmet",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "helmet",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:chainmail_leggings",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json"
+      ],
+      "display_name_en_us": "Chainmail Leggings",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "leggings",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:copper_boots",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "assets/minecraft/lang/ru_ru.json",
+        "assets/minecraft/models/item/copper_boots.json",
+        "data/minecraft/recipes/copper_boots.json"
+      ],
+      "display_name_en_us": "Copper Boots",
+      "display_name_ru_ru": "Copper Boots",
+      "source_provenance": [
+        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/lang/en_us.json",
+        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/lang/ru_ru.json",
+        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/models/item/copper_boots.json",
+        "copperagebackport-forge-1.20.1-0.1.4.jar:data/minecraft/recipes/copper_boots.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "boots",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:copper_chestplate",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "assets/minecraft/lang/ru_ru.json",
+        "assets/minecraft/models/item/copper_chestplate.json",
+        "data/minecraft/recipes/copper_chestplate.json"
+      ],
+      "display_name_en_us": "Copper Chestplate",
+      "display_name_ru_ru": "Copper Chestplate",
+      "source_provenance": [
+        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/lang/en_us.json",
+        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/lang/ru_ru.json",
+        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/models/item/copper_chestplate.json",
+        "copperagebackport-forge-1.20.1-0.1.4.jar:data/minecraft/recipes/copper_chestplate.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "chestplate",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:copper_helmet",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "assets/minecraft/lang/ru_ru.json",
+        "assets/minecraft/models/item/copper_helmet.json",
+        "data/minecraft/recipes/copper_helmet.json"
+      ],
+      "display_name_en_us": "Copper Helmet",
+      "display_name_ru_ru": "Copper Helmet",
+      "source_provenance": [
+        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/lang/en_us.json",
+        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/lang/ru_ru.json",
+        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/models/item/copper_helmet.json",
+        "copperagebackport-forge-1.20.1-0.1.4.jar:data/minecraft/recipes/copper_helmet.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "helmet",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:copper_leggings",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "assets/minecraft/lang/ru_ru.json",
+        "assets/minecraft/models/item/copper_leggings.json",
+        "data/minecraft/recipes/copper_leggings.json"
+      ],
+      "display_name_en_us": "Copper Leggings",
+      "display_name_ru_ru": "Copper Leggings",
+      "source_provenance": [
+        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/lang/en_us.json",
+        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/lang/ru_ru.json",
+        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/models/item/copper_leggings.json",
+        "copperagebackport-forge-1.20.1-0.1.4.jar:data/minecraft/recipes/copper_leggings.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "leggings",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:diamond_boots",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/diamond_boots.json"
+      ],
+      "display_name_en_us": "Diamond Boots",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/diamond_boots.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "boots",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:diamond_chestplate",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/diamond_chestplate.json"
+      ],
+      "display_name_en_us": "Diamond Chestplate",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/diamond_chestplate.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "chestplate",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:diamond_helmet",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/diamond_helmet.json"
+      ],
+      "display_name_en_us": "Diamond Helmet",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/diamond_helmet.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "helmet",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:diamond_leggings",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/diamond_leggings.json"
+      ],
+      "display_name_en_us": "Diamond Leggings",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/diamond_leggings.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "leggings",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:golden_boots",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/golden_boots.json"
+      ],
+      "display_name_en_us": "Golden Boots",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/golden_boots.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "boots",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:golden_chestplate",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/golden_chestplate.json"
+      ],
+      "display_name_en_us": "Golden Chestplate",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/golden_chestplate.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "chestplate",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:golden_helmet",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/golden_helmet.json"
+      ],
+      "display_name_en_us": "Golden Helmet",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/golden_helmet.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "helmet",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:golden_leggings",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/golden_leggings.json"
+      ],
+      "display_name_en_us": "Golden Leggings",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/golden_leggings.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "leggings",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:iron_boots",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/iron_boots.json"
+      ],
+      "display_name_en_us": "Iron Boots",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/iron_boots.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "boots",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:iron_chestplate",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/iron_chestplate.json"
+      ],
+      "display_name_en_us": "Iron Chestplate",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/iron_chestplate.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "chestplate",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:iron_helmet",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/iron_helmet.json"
+      ],
+      "display_name_en_us": "Iron Helmet",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/iron_helmet.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "helmet",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:iron_leggings",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/iron_leggings.json"
+      ],
+      "display_name_en_us": "Iron Leggings",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/iron_leggings.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "leggings",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:leather_boots",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/leather_boots.json",
+        "data/unearthed_journey/recipes/hide_leather_boots.json"
+      ],
+      "display_name_en_us": "Leather Boots",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/leather_boots.json",
+        "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/hide_leather_boots.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "boots",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:leather_chestplate",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/leather_chestplate.json",
+        "data/unearthed_journey/recipes/hide_leather_chestplate.json"
+      ],
+      "display_name_en_us": "Leather Tunic",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/leather_chestplate.json",
+        "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/hide_leather_chestplate.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "chestplate",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:leather_helmet",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/leather_helmet.json",
+        "data/unearthed_journey/recipes/hide_leather_helmet.json"
+      ],
+      "display_name_en_us": "Leather Cap",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/leather_helmet.json",
+        "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/hide_leather_helmet.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "helmet",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:leather_leggings",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/leather_leggings.json",
+        "data/unearthed_journey/recipes/hide_leather_leggings.json"
+      ],
+      "display_name_en_us": "Leather Pants",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/leather_leggings.json",
+        "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/hide_leather_leggings.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "leggings",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:netherite_boots",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/netherite_boots_smithing.json"
+      ],
+      "display_name_en_us": "Netherite Boots",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/netherite_boots_smithing.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "boots",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:netherite_chestplate",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/netherite_chestplate_smithing.json"
+      ],
+      "display_name_en_us": "Netherite Chestplate",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/netherite_chestplate_smithing.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "chestplate",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:netherite_helmet",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/netherite_helmet_smithing.json"
+      ],
+      "display_name_en_us": "Netherite Helmet",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/netherite_helmet_smithing.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "helmet",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:netherite_leggings",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/netherite_leggings_smithing.json"
+      ],
+      "display_name_en_us": "Netherite Leggings",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/netherite_leggings_smithing.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "leggings",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:turtle_helmet",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/turtle_helmet.json"
+      ],
+      "display_name_en_us": "Turtle Shell",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/turtle_helmet.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "helmet",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    }
+  ]
+}

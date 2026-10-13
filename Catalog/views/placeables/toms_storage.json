@@ -1,0 +1,576 @@
+{
+  "schema_version": 1,
+  "registry_type": "placeables",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "toms_storage",
+    "name": "Tom's Simple Storage Mod",
+    "version": "${file.jarVersion}"
+  },
+  "records": [
+    {
+      "item_id": "toms_storage:ts.crafting_terminal",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/models/item/ts.crafting_terminal.json",
+        "data/toms_storage/recipes/crafting_terminal.json"
+      ],
+      "display_name_en_us": "Crafting Terminal",
+      "display_name_ru_ru": "Терминал крафта",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.crafting_terminal.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/crafting_terminal.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "toms_storage:ts.crafting_terminal",
+      "placed_registry_ids": [
+        "toms_storage:ts.crafting_terminal"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "toms_storage:crafting_terminal"
+      ]
+    },
+    {
+      "item_id": "toms_storage:ts.inventory_cable",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/models/item/ts.inventory_cable.json",
+        "data/toms_storage/recipes/inventory_cable.json"
+      ],
+      "display_name_en_us": "Inventory Cable",
+      "display_name_ru_ru": "Инвентарный кабель",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.inventory_cable.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/inventory_cable.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "toms_storage:ts.inventory_cable",
+      "placed_registry_ids": [
+        "toms_storage:ts.inventory_cable"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "toms_storage:inventory_cable"
+      ]
+    },
+    {
+      "item_id": "toms_storage:ts.inventory_cable_connector",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/models/item/ts.inventory_cable_connector.json",
+        "data/toms_storage/recipes/inventory_cable_connector.json"
+      ],
+      "display_name_en_us": "Inventory Cable Connector",
+      "display_name_ru_ru": "Коннектор инвентарного кабеля",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.inventory_cable_connector.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/inventory_cable_connector.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "toms_storage:ts.inventory_cable_connector",
+      "placed_registry_ids": [
+        "toms_storage:ts.inventory_cable_connector"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "toms_storage:inventory_cable_connector"
+      ]
+    },
+    {
+      "item_id": "toms_storage:ts.inventory_cable_connector_filtered",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/models/item/ts.inventory_cable_connector_filtered.json",
+        "data/toms_storage/recipes/inventory_cable_connector_filtered.json"
+      ],
+      "display_name_en_us": "Inventory Cable Connector (Filtered)",
+      "display_name_ru_ru": "Коннектор инвентарного кабеля(фильтруемый)",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.inventory_cable_connector_filtered.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/inventory_cable_connector_filtered.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "toms_storage:ts.inventory_cable_connector_filtered",
+      "placed_registry_ids": [
+        "toms_storage:ts.inventory_cable_connector_filtered"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "toms_storage:inventory_cable_connector_filtered"
+      ]
+    },
+    {
+      "item_id": "toms_storage:ts.inventory_cable_connector_framed",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/models/item/ts.inventory_cable_connector_framed.json",
+        "data/toms_storage/recipes/inventory_cable_connector_framed.json"
+      ],
+      "display_name_en_us": "Inventory Cable Connector (Framed)",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.inventory_cable_connector_framed.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/inventory_cable_connector_framed.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "toms_storage:ts.inventory_cable_connector_framed",
+      "placed_registry_ids": [
+        "toms_storage:ts.inventory_cable_connector_framed"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "toms_storage:inventory_cable_connector_framed"
+      ]
+    },
+    {
+      "item_id": "toms_storage:ts.inventory_cable_framed",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/models/item/ts.inventory_cable_framed.json",
+        "data/toms_storage/recipes/inventory_cable_framed.json"
+      ],
+      "display_name_en_us": "Framed Inventory Cable",
+      "display_name_ru_ru": "Инвентарный кабель с рамой",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.inventory_cable_framed.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/inventory_cable_framed.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "toms_storage:ts.inventory_cable_framed",
+      "placed_registry_ids": [
+        "toms_storage:ts.inventory_cable_framed"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "toms_storage:inventory_cable_framed"
+      ]
+    },
+    {
+      "item_id": "toms_storage:ts.inventory_connector",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/models/item/ts.inventory_connector.json",
+        "data/toms_storage/recipes/inventory_connector.json"
+      ],
+      "display_name_en_us": "Inventory Connector",
+      "display_name_ru_ru": "Инвентарный коннектор",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.inventory_connector.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/inventory_connector.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "toms_storage:ts.inventory_connector",
+      "placed_registry_ids": [
+        "toms_storage:ts.inventory_connector"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "toms_storage:inventory_connector"
+      ]
+    },
+    {
+      "item_id": "toms_storage:ts.inventory_hopper_basic",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/models/item/ts.inventory_hopper_basic.json",
+        "data/toms_storage/recipes/inventory_hopper_basic.json"
+      ],
+      "display_name_en_us": "Basic Inventory Hopper",
+      "display_name_ru_ru": "Базовая инвентарная воронка",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.inventory_hopper_basic.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/inventory_hopper_basic.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "toms_storage:ts.inventory_hopper_basic",
+      "placed_registry_ids": [
+        "toms_storage:ts.inventory_hopper_basic"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "toms_storage:inventory_hopper_basic"
+      ]
+    },
+    {
+      "item_id": "toms_storage:ts.inventory_proxy",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/models/item/ts.inventory_proxy.json",
+        "data/toms_storage/recipes/inventory_proxy.json"
+      ],
+      "display_name_en_us": "Inventory Proxy",
+      "display_name_ru_ru": "Инвентарный прокси",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.inventory_proxy.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/inventory_proxy.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "toms_storage:ts.inventory_proxy",
+      "placed_registry_ids": [
+        "toms_storage:ts.inventory_proxy"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "toms_storage:inventory_proxy"
+      ]
+    },
+    {
+      "item_id": "toms_storage:ts.level_emitter",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/models/item/ts.level_emitter.json",
+        "data/toms_storage/recipes/level_emitter.json"
+      ],
+      "display_name_en_us": "Level Emitter",
+      "display_name_ru_ru": "Источник редстоун сигнала",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.level_emitter.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/level_emitter.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "toms_storage:ts.level_emitter",
+      "placed_registry_ids": [
+        "toms_storage:ts.level_emitter"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "toms_storage:level_emitter"
+      ]
+    },
+    {
+      "item_id": "toms_storage:ts.open_crate",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/models/item/ts.open_crate.json",
+        "data/toms_storage/recipes/open_crate.json"
+      ],
+      "display_name_en_us": "Open Crate",
+      "display_name_ru_ru": "Открытый ящик",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.open_crate.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/open_crate.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "toms_storage:ts.open_crate",
+      "placed_registry_ids": [
+        "toms_storage:ts.open_crate"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "toms_storage:open_crate"
+      ]
+    },
+    {
+      "item_id": "toms_storage:ts.painted_trim",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/models/item/ts.painted_trim.json"
+      ],
+      "display_name_en_us": "Inventory Trim",
+      "display_name_ru_ru": "Соединитель инвентарей",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.painted_trim.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "toms_storage:ts.painted_trim",
+      "placed_registry_ids": [
+        "toms_storage:ts.painted_trim"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": []
+    },
+    {
+      "item_id": "toms_storage:ts.storage_terminal",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/models/item/ts.storage_terminal.json",
+        "data/toms_storage/recipes/storage_terminal.json"
+      ],
+      "display_name_en_us": "Storage Terminal",
+      "display_name_ru_ru": "Терминал хранилища",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.storage_terminal.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/storage_terminal.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "toms_storage:ts.storage_terminal",
+      "placed_registry_ids": [
+        "toms_storage:ts.storage_terminal"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "toms_storage:storage_terminal"
+      ]
+    },
+    {
+      "item_id": "toms_storage:ts.trim",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/models/item/ts.trim.json",
+        "data/toms_storage/recipes/trim.json",
+        "data/toms_storage/recipes/trim_clean.json"
+      ],
+      "display_name_en_us": "Inventory Trim",
+      "display_name_ru_ru": "Соединитель инвентарей",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.trim.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/trim.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/trim_clean.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "toms_storage:ts.trim",
+      "placed_registry_ids": [
+        "toms_storage:ts.trim"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "toms_storage:trim",
+        "toms_storage:trim_clean"
+      ]
+    }
+  ]
+}

@@ -11,7 +11,6 @@ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 public final class OptionalMixins implements IMixinConfigPlugin {
     private static final Map<String, List<String>> DEPENDENCIES = Map.ofEntries(
             Map.entry("com.siirio.jemcompat.mixin.events.LuminousEventVictoryMixin", List.of("luminous_beasts")),
-            Map.entry("com.siirio.jemcompat.mixin.backtobed.MagicalReturnerMixin", List.of("backtobed")),
             Map.entry("com.siirio.jemcompat.mixin.guide.SpawnWithJourneyGuideProcedureMixin", List.of("spawn")),
             Map.entry("com.siirio.jemcompat.mixin.worldtier.EnhancedAiSpawningMixin", List.of("enhancedai", "jem_world_boss_tiers")),
             Map.entry("com.siirio.jemcompat.mixin.worldtier.KrakenStaggerMixin", List.of("block_factorys_bosses")),

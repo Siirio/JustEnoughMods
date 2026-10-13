@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "registry_type": "structures",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "snowyspirit",
+    "name": "Snowy Spirit",
+    "version": "1.20-3.0.10"
+  },
+  "records": [
+    {
+      "registry_id": "snowyspirit:gingerbread_house",
+      "registry_type": "structure",
+      "schema_version": 1,
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "source_jar": "snowyspirit-1.20-3.0.10.jar",
+      "source_sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "data/snowyspirit/worldgen/structure/gingerbread_house.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "supplementaries:worldgen/structure/adventure_map_destinations"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/worldgen/structure/gingerbread_house.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}

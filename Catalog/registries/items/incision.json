@@ -1,0 +1,4669 @@
+{
+  "schema_version": 1,
+  "registry_type": "items",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "incision",
+    "name": "incision",
+    "version": "1.0.9"
+  },
+  "records": [
+    {
+      "registry_id": "incision:blinking_hamstring",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/blinking_hamstring.json"
+      ],
+      "display_name_en_us": "Blinking Hamstring",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/replaceable",
+        "minecraft:blocks/replaceable"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/blinking_hamstring.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:blinking_hamstring",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:blinking_hamstring"
+    },
+    {
+      "registry_id": "incision:block_of_intestines",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/block_of_intestines.json",
+        "data/incision/recipes/intestineblockcraft.json"
+      ],
+      "display_name_en_us": "Block of Intestines",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:blocks/mineable/hoe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/block_of_intestines.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/intestineblockcraft.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:block_of_intestines",
+      "acquisition_routes": [
+        "incision:intestineblockcraft"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:block_of_intestines"
+    },
+    {
+      "registry_id": "incision:blood_stalk",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/blood_stalk.json"
+      ],
+      "display_name_en_us": "Blood Sprout",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/replaceable",
+        "minecraft:blocks/replaceable"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/blood_stalk.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:blood_stalk",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:blood_stalk"
+    },
+    {
+      "registry_id": "incision:boiling_tongue",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/lang/en_us.json",
+        "assets/incision/models/item/boiling_tongue.json"
+      ],
+      "display_name_en_us": "Boiling Tongue",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/lang/en_us.json",
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/boiling_tongue.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:boiling_tongue"
+    },
+    {
+      "registry_id": "incision:burial_knife",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/lang/en_us.json",
+        "assets/incision/models/item/burial_knife.json",
+        "data/incision/recipes/knifecraft.json"
+      ],
+      "display_name_en_us": "Burial Knife",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:item/swords",
+        "minecraft:items/swords"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/lang/en_us.json",
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/burial_knife.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/knifecraft.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "incision:knifecraft"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:burial_knife"
+    },
+    {
+      "registry_id": "incision:carrion",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/carrion.json"
+      ],
+      "display_name_en_us": "Carrion",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/hoglin_repellents",
+        "minecraft:block/infiniburn_nether",
+        "minecraft:block/mineable/hoe",
+        "minecraft:block/piglin_repellents",
+        "minecraft:blocks/hoglin_repellents",
+        "minecraft:blocks/infiniburn_nether",
+        "minecraft:blocks/mineable/hoe",
+        "minecraft:blocks/piglin_repellents"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/carrion.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:carrion",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:carrion"
+    },
+    {
+      "registry_id": "incision:carrion_eye",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/carrion_eye.json"
+      ],
+      "display_name_en_us": "Carrion Eye",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:blocks/mineable/hoe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/carrion_eye.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:carrion_eye",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:carrion_eye"
+    },
+    {
+      "registry_id": "incision:carrion_slab",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/carrion_slab.json",
+        "data/incision/recipes/carrionslab_0.json"
+      ],
+      "display_name_en_us": "Carrion Slab",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:block/slabs",
+        "minecraft:blocks/mineable/hoe",
+        "minecraft:blocks/slabs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/carrion_slab.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/carrionslab_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:carrion_slab",
+      "acquisition_routes": [
+        "incision:carrionslab_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:carrion_slab"
+    },
+    {
+      "registry_id": "incision:carrion_stair",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/carrion_stair.json",
+        "data/incision/recipes/carrionstair_0.json"
+      ],
+      "display_name_en_us": "Carrion Stair",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:block/stairs",
+        "minecraft:blocks/mineable/hoe",
+        "minecraft:blocks/stairs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/carrion_stair.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/carrionstair_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:carrion_stair",
+      "acquisition_routes": [
+        "incision:carrionstair_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:carrion_stair"
+    },
+    {
+      "registry_id": "incision:carrion_wall",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/carrion_wall.json",
+        "data/incision/recipes/carrionwall_0.json"
+      ],
+      "display_name_en_us": "Carrion Wall",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:block/walls",
+        "minecraft:blocks/mineable/hoe",
+        "minecraft:blocks/walls"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/carrion_wall.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/carrionwall_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:carrion_wall",
+      "acquisition_routes": [
+        "incision:carrionwall_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:carrion_wall"
+    },
+    {
+      "registry_id": "incision:chiseled_weatherrack",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/chiseled_weatherrack.json",
+        "data/incision/recipes/chiseledweatherrackcraft.json",
+        "data/incision/recipes/w_16.json",
+        "data/incision/recipes/w_20.json",
+        "data/incision/recipes/w_8.json"
+      ],
+      "display_name_en_us": "Chiseled Weatherrack",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/chiseled_weatherrack.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/chiseledweatherrackcraft.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/w_16.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/w_20.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/w_8.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:chiseled_weatherrack",
+      "acquisition_routes": [
+        "incision:chiseledweatherrackcraft",
+        "incision:w_16",
+        "incision:w_20",
+        "incision:w_8"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:chiseled_weatherrack"
+    },
+    {
+      "registry_id": "incision:clottage",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/clottage.json",
+        "data/incision/recipes/clottagecraft.json"
+      ],
+      "display_name_en_us": "Clottage",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:blocks/mineable/hoe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/clottage.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/clottagecraft.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:clottage",
+      "acquisition_routes": [
+        "incision:clottagecraft"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:clottage"
+    },
+    {
+      "registry_id": "incision:clottage_brick_slab",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/clottage_brick_slab.json",
+        "data/incision/recipes/cbrickslab_0.json"
+      ],
+      "display_name_en_us": "Clottage Brick Slab",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:block/slabs",
+        "minecraft:blocks/mineable/hoe",
+        "minecraft:blocks/slabs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/clottage_brick_slab.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/cbrickslab_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:clottage_brick_slab",
+      "acquisition_routes": [
+        "incision:cbrickslab_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:clottage_brick_slab"
+    },
+    {
+      "registry_id": "incision:clottage_brick_stair",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/clottage_brick_stair.json",
+        "data/incision/recipes/cbrickstair_0.json"
+      ],
+      "display_name_en_us": "Clottage Brick Stair",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:block/stairs",
+        "minecraft:blocks/mineable/hoe",
+        "minecraft:blocks/stairs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/clottage_brick_stair.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/cbrickstair_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:clottage_brick_stair",
+      "acquisition_routes": [
+        "incision:cbrickstair_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:clottage_brick_stair"
+    },
+    {
+      "registry_id": "incision:clottage_brick_wall",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/clottage_brick_wall.json",
+        "data/incision/recipes/cbrickwall_0.json"
+      ],
+      "display_name_en_us": "Clottage Brick Wall",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:block/walls",
+        "minecraft:blocks/mineable/hoe",
+        "minecraft:blocks/walls"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/clottage_brick_wall.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/cbrickwall_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:clottage_brick_wall",
+      "acquisition_routes": [
+        "incision:cbrickwall_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:clottage_brick_wall"
+    },
+    {
+      "registry_id": "incision:clottage_bricks",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/clottage_bricks.json"
+      ],
+      "display_name_en_us": "Clottage Bricks",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:blocks/mineable/hoe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/clottage_bricks.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:clottage_bricks",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:clottage_bricks"
+    },
+    {
+      "registry_id": "incision:clottage_slab",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/clottage_slab.json",
+        "data/incision/recipes/clotslab_0.json"
+      ],
+      "display_name_en_us": "Clottage Slab",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:block/slabs",
+        "minecraft:blocks/mineable/hoe",
+        "minecraft:blocks/slabs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/clottage_slab.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/clotslab_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:clottage_slab",
+      "acquisition_routes": [
+        "incision:clotslab_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:clottage_slab"
+    },
+    {
+      "registry_id": "incision:clottage_stair",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/clottage_stair.json",
+        "data/incision/recipes/clotstair_0.json"
+      ],
+      "display_name_en_us": "Clottage Stair",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:block/stairs",
+        "minecraft:blocks/mineable/hoe",
+        "minecraft:blocks/stairs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/clottage_stair.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/clotstair_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:clottage_stair",
+      "acquisition_routes": [
+        "incision:clotstair_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:clottage_stair"
+    },
+    {
+      "registry_id": "incision:clottage_wall",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/clottage_wall.json",
+        "data/incision/recipes/clotwall_0.json"
+      ],
+      "display_name_en_us": "Clottage Wall",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:block/walls",
+        "minecraft:blocks/mineable/hoe",
+        "minecraft:blocks/walls"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/clottage_wall.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/clotwall_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:clottage_wall",
+      "acquisition_routes": [
+        "incision:clotwall_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:clottage_wall"
+    },
+    {
+      "registry_id": "incision:conductor_nerve",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/conductor_nerve.json"
+      ],
+      "display_name_en_us": "Conductor Nerve",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/replaceable",
+        "minecraft:blocks/replaceable"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/conductor_nerve.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:conductor_nerve",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:conductor_nerve"
+    },
+    {
+      "registry_id": "incision:congealed_acid",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/lang/en_us.json",
+        "assets/incision/models/item/congealed_acid.json"
+      ],
+      "display_name_en_us": "Eyeball Yolk",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/lang/en_us.json",
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/congealed_acid.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:congealed_acid"
+    },
+    {
+      "registry_id": "incision:eyebulb",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/eyebulb.json"
+      ],
+      "display_name_en_us": "Eyebulb",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:blocks/mineable/hoe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/eyebulb.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:eyebulb",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:eyebulb"
+    },
+    {
+      "registry_id": "incision:goreshed",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/goreshed.json",
+        "data/incision/recipes/goreshedcraft.json"
+      ],
+      "display_name_en_us": "Goreshed",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/hoglin_repellents",
+        "minecraft:block/infiniburn_nether",
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:block/piglin_repellents",
+        "minecraft:blocks/hoglin_repellents",
+        "minecraft:blocks/infiniburn_nether",
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/piglin_repellents"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/goreshed.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/goreshedcraft.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:goreshed",
+      "acquisition_routes": [
+        "incision:goreshedcraft"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:goreshed"
+    },
+    {
+      "registry_id": "incision:goreshed_bricks",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/goreshed_bricks.json",
+        "data/incision/recipes/goreybrickcraft.json"
+      ],
+      "display_name_en_us": "Gory Weatherrack Bricks",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/goreshed_bricks.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/goreybrickcraft.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:goreshed_bricks",
+      "acquisition_routes": [
+        "incision:goreybrickcraft"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:goreshed_bricks"
+    },
+    {
+      "registry_id": "incision:goreshed_slab",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/goreshed_slab.json",
+        "data/incision/recipes/gh_1.json",
+        "data/incision/recipes/goreshedslab_0.json"
+      ],
+      "display_name_en_us": "Goreshed Slab",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:block/slabs",
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/slabs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/goreshed_slab.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/gh_1.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/goreshedslab_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:goreshed_slab",
+      "acquisition_routes": [
+        "incision:gh_1",
+        "incision:goreshedslab_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:goreshed_slab"
+    },
+    {
+      "registry_id": "incision:goreshed_stair",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/goreshed_stair.json",
+        "data/incision/recipes/gh_2.json",
+        "data/incision/recipes/goreshedstair_0.json"
+      ],
+      "display_name_en_us": "Goreshed Stair",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:block/stairs",
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/stairs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/goreshed_stair.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/gh_2.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/goreshedstair_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:goreshed_stair",
+      "acquisition_routes": [
+        "incision:gh_2",
+        "incision:goreshedstair_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:goreshed_stair"
+    },
+    {
+      "registry_id": "incision:goreshed_wall",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/goreshed_wall.json",
+        "data/incision/recipes/gh_3.json",
+        "data/incision/recipes/goreshedwall_0.json"
+      ],
+      "display_name_en_us": "Goreshed Wall",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:block/walls",
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/walls"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/goreshed_wall.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/gh_3.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/goreshedwall_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:goreshed_wall",
+      "acquisition_routes": [
+        "incision:gh_3",
+        "incision:goreshedwall_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:goreshed_wall"
+    },
+    {
+      "registry_id": "incision:gorey_brick_slab",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/gorey_brick_slab.json",
+        "data/incision/recipes/w_24.json",
+        "data/incision/recipes/wgbrickslab_0.json"
+      ],
+      "display_name_en_us": "Gory Brick Slab",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:block/slabs",
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/slabs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/gorey_brick_slab.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/w_24.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/wgbrickslab_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:gorey_brick_slab",
+      "acquisition_routes": [
+        "incision:w_24",
+        "incision:wgbrickslab_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:gorey_brick_slab"
+    },
+    {
+      "registry_id": "incision:gorey_brick_stair",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/gorey_brick_stair.json",
+        "data/incision/recipes/w_25.json",
+        "data/incision/recipes/wgbrickstair_0.json"
+      ],
+      "display_name_en_us": "Gory Brick Stair",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:block/stairs",
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/stairs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/gorey_brick_stair.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/w_25.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/wgbrickstair_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:gorey_brick_stair",
+      "acquisition_routes": [
+        "incision:w_25",
+        "incision:wgbrickstair_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:gorey_brick_stair"
+    },
+    {
+      "registry_id": "incision:gorey_brick_wall",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/gorey_brick_wall.json",
+        "data/incision/recipes/w_26.json",
+        "data/incision/recipes/wgbrickwall_0.json"
+      ],
+      "display_name_en_us": "Gory Brick Wall",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:block/walls",
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/walls"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/gorey_brick_wall.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/w_26.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/wgbrickwall_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:gorey_brick_wall",
+      "acquisition_routes": [
+        "incision:w_26",
+        "incision:wgbrickwall_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:gorey_brick_wall"
+    },
+    {
+      "registry_id": "incision:gummy_trapdoor",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/gummy_trapdoor.json",
+        "data/incision/recipes/gummytrapdoor.json"
+      ],
+      "display_name_en_us": "Gummy Trapdoor",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:blocks/mineable/hoe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/gummy_trapdoor.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/gummytrapdoor.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:gummy_trapdoor",
+      "acquisition_routes": [
+        "incision:gummytrapdoor"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:gummy_trapdoor"
+    },
+    {
+      "registry_id": "incision:hamstring",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/hamstring.json"
+      ],
+      "display_name_en_us": "Hamstring",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/replaceable",
+        "minecraft:blocks/replaceable"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/hamstring.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:hamstring",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:hamstring"
+    },
+    {
+      "registry_id": "incision:incision_carrion",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/incision_carrion.json",
+        "data/incision/recipes/incisioncraft.json"
+      ],
+      "display_name_en_us": "Incision Carrion",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:blocks/mineable/hoe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/incision_carrion.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/incisioncraft.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:incision_carrion",
+      "acquisition_routes": [
+        "incision:incisioncraft"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:incision_carrion"
+    },
+    {
+      "registry_id": "incision:incision_carrion_slab",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/incision_carrion_slab.json",
+        "data/incision/recipes/incisionslab_0.json"
+      ],
+      "display_name_en_us": "Incision Carrion Slab",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:block/slabs",
+        "minecraft:blocks/mineable/hoe",
+        "minecraft:blocks/slabs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/incision_carrion_slab.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/incisionslab_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:incision_carrion_slab",
+      "acquisition_routes": [
+        "incision:incisionslab_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:incision_carrion_slab"
+    },
+    {
+      "registry_id": "incision:incision_carrion_stair",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/incision_carrion_stair.json",
+        "data/incision/recipes/incisionstair_0.json"
+      ],
+      "display_name_en_us": "Incision Carrion Stair",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:block/stairs",
+        "minecraft:blocks/mineable/hoe",
+        "minecraft:blocks/stairs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/incision_carrion_stair.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/incisionstair_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:incision_carrion_stair",
+      "acquisition_routes": [
+        "incision:incisionstair_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:incision_carrion_stair"
+    },
+    {
+      "registry_id": "incision:incision_carrion_wall",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/incision_carrion_wall.json",
+        "data/incision/recipes/incisionwall_0.json"
+      ],
+      "display_name_en_us": "Incision Carrion Slab",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:block/walls",
+        "minecraft:blocks/mineable/hoe",
+        "minecraft:blocks/walls"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/incision_carrion_wall.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/incisionwall_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:incision_carrion_wall",
+      "acquisition_routes": [
+        "incision:incisionwall_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:incision_carrion_wall"
+    },
+    {
+      "registry_id": "incision:incisor_growth",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/incisor_growth.json"
+      ],
+      "display_name_en_us": "Incisor Growth",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/incisor_growth.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:incisor_growth",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:incisor_growth"
+    },
+    {
+      "registry_id": "incision:intestine",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/lang/en_us.json",
+        "assets/incision/models/item/intestine.json"
+      ],
+      "display_name_en_us": "Intestines",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:item/meat",
+        "minecraft:items/meat"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/lang/en_us.json",
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/intestine.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:intestine"
+    },
+    {
+      "registry_id": "incision:lens_glass",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/lens_glass.json",
+        "data/incision/recipes/eyeglasscraft.json"
+      ],
+      "display_name_en_us": "Lens Glass",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:blocks/mineable/hoe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/lens_glass.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/eyeglasscraft.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:lens_glass",
+      "acquisition_routes": [
+        "incision:eyeglasscraft"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:lens_glass"
+    },
+    {
+      "registry_id": "incision:lens_glass_pane",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/lens_glass_pane.json",
+        "data/incision/recipes/eyeglasspane.json"
+      ],
+      "display_name_en_us": "Lens Glass Pane",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:blocks/mineable/hoe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/lens_glass_pane.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/eyeglasspane.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:lens_glass_pane",
+      "acquisition_routes": [
+        "incision:eyeglasspane"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:lens_glass_pane"
+    },
+    {
+      "registry_id": "incision:molar_carrion",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/molar_carrion.json"
+      ],
+      "display_name_en_us": "Carrion Maw",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:blocks/mineable/hoe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/molar_carrion.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:molar_carrion",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:molar_carrion"
+    },
+    {
+      "registry_id": "incision:mooch",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/mooch.json"
+      ],
+      "display_name_en_us": "Mooch",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/mooch.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:mooch",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:mooch"
+    },
+    {
+      "registry_id": "incision:natural_eyebulb",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/natural_eyebulb.json"
+      ],
+      "display_name_en_us": "Eyebulb",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:blocks/mineable/hoe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/natural_eyebulb.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:natural_eyebulb",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:natural_eyebulb"
+    },
+    {
+      "registry_id": "incision:nerve",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/nerve.json"
+      ],
+      "display_name_en_us": "Nerve (Temporary Blockmodel)",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/fences",
+        "minecraft:block/mineable/hoe",
+        "minecraft:blocks/fences",
+        "minecraft:blocks/mineable/hoe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/nerve.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:nerve",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:nerve"
+    },
+    {
+      "registry_id": "incision:polished_weatherrack",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/polished_weatherrack.json",
+        "data/incision/recipes/polishedweatherrackcraft.json",
+        "data/incision/recipes/w_4.json"
+      ],
+      "display_name_en_us": "Polished Weatherrack",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/polished_weatherrack.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/polishedweatherrackcraft.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/w_4.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:polished_weatherrack",
+      "acquisition_routes": [
+        "incision:polishedweatherrackcraft",
+        "incision:w_4"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:polished_weatherrack"
+    },
+    {
+      "registry_id": "incision:polishedweatherrackslab",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/polishedweatherrackslab.json",
+        "data/incision/recipes/w_13.json",
+        "data/incision/recipes/w_5.json",
+        "data/incision/recipes/wpolishslab_0.json"
+      ],
+      "display_name_en_us": "Polished Weatherrack Slab",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:block/slabs",
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/slabs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/polishedweatherrackslab.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/w_13.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/w_5.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/wpolishslab_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:polishedweatherrackslab",
+      "acquisition_routes": [
+        "incision:w_13",
+        "incision:w_5",
+        "incision:wpolishslab_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:polishedweatherrackslab"
+    },
+    {
+      "registry_id": "incision:polishedweatherrackstair",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/polishedweatherrackstair.json",
+        "data/incision/recipes/w_14.json",
+        "data/incision/recipes/w_6.json",
+        "data/incision/recipes/wpolishstair_0.json"
+      ],
+      "display_name_en_us": "Polished Weatherrack Stair",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:block/stairs",
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/stairs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/polishedweatherrackstair.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/w_14.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/w_6.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/wpolishstair_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:polishedweatherrackstair",
+      "acquisition_routes": [
+        "incision:w_14",
+        "incision:w_6",
+        "incision:wpolishstair_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:polishedweatherrackstair"
+    },
+    {
+      "registry_id": "incision:polishedweatherrackwall",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/polishedweatherrackwall.json",
+        "data/incision/recipes/w_15.json",
+        "data/incision/recipes/w_7.json",
+        "data/incision/recipes/wpolishwall_0.json"
+      ],
+      "display_name_en_us": "Polished Weatherrack Wall",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:block/walls",
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/walls"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/polishedweatherrackwall.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/w_15.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/w_7.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/wpolishwall_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:polishedweatherrackwall",
+      "acquisition_routes": [
+        "incision:w_15",
+        "incision:w_7",
+        "incision:wpolishwall_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:polishedweatherrackwall"
+    },
+    {
+      "registry_id": "incision:puke",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/lang/en_us.json",
+        "assets/incision/models/item/puke.json"
+      ],
+      "display_name_en_us": "Puke",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/lang/en_us.json",
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/puke.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:puke"
+    },
+    {
+      "registry_id": "incision:purger_spawn_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/lang/en_us.json",
+        "assets/incision/models/item/purger_spawn_egg.json"
+      ],
+      "display_name_en_us": "Purger Spawn Egg",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/lang/en_us.json",
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/purger_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:purger_spawn_egg"
+    },
+    {
+      "registry_id": "incision:seer_spawn_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/lang/en_us.json",
+        "assets/incision/models/item/seer_spawn_egg.json"
+      ],
+      "display_name_en_us": "Seer Spawn Egg",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/lang/en_us.json",
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/seer_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:seer_spawn_egg"
+    },
+    {
+      "registry_id": "incision:staring_door",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/staring_door.json",
+        "data/incision/recipes/watchingdoor.json"
+      ],
+      "display_name_en_us": "Staring Door",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:blocks/mineable/hoe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/staring_door.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/watchingdoor.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:staring_door",
+      "acquisition_routes": [
+        "incision:watchingdoor"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:staring_door"
+    },
+    {
+      "registry_id": "incision:stitched_carrion",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/stitched_carrion.json",
+        "data/incision/recipes/stitchedcraft.json"
+      ],
+      "display_name_en_us": "Stitched Carrion",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:blocks/mineable/hoe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/stitched_carrion.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/stitchedcraft.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:stitched_carrion",
+      "acquisition_routes": [
+        "incision:stitchedcraft"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:stitched_carrion"
+    },
+    {
+      "registry_id": "incision:stitched_carrion_slab",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/stitched_carrion_slab.json",
+        "data/incision/recipes/stitchedslab_0.json"
+      ],
+      "display_name_en_us": "Stitched Carrion Slab",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:block/slabs",
+        "minecraft:blocks/mineable/hoe",
+        "minecraft:blocks/slabs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/stitched_carrion_slab.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/stitchedslab_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:stitched_carrion_slab",
+      "acquisition_routes": [
+        "incision:stitchedslab_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:stitched_carrion_slab"
+    },
+    {
+      "registry_id": "incision:stitched_carrion_stair",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/stitched_carrion_stair.json",
+        "data/incision/recipes/stitchedstair_0.json"
+      ],
+      "display_name_en_us": "Stitched Carrion Stair",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:block/stairs",
+        "minecraft:blocks/mineable/hoe",
+        "minecraft:blocks/stairs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/stitched_carrion_stair.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/stitchedstair_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:stitched_carrion_stair",
+      "acquisition_routes": [
+        "incision:stitchedstair_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:stitched_carrion_stair"
+    },
+    {
+      "registry_id": "incision:stitched_carrion_wall",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/stitched_carrion_wall.json",
+        "data/incision/recipes/stitchedwall_0.json"
+      ],
+      "display_name_en_us": "Stitched Carrion Wall",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:block/walls",
+        "minecraft:blocks/mineable/hoe",
+        "minecraft:blocks/walls"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/stitched_carrion_wall.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/stitchedwall_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:stitched_carrion_wall",
+      "acquisition_routes": [
+        "incision:stitchedwall_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:stitched_carrion_wall"
+    },
+    {
+      "registry_id": "incision:stomach",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/lang/en_us.json",
+        "assets/incision/models/item/stomach.json"
+      ],
+      "display_name_en_us": "Stomach",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/lang/en_us.json",
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/stomach.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:stomach"
+    },
+    {
+      "registry_id": "incision:tarnished_bars",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/tarnished_bars.json",
+        "data/incision/recipes/tarnishedbarscraft.json"
+      ],
+      "display_name_en_us": "Tarnished Bars",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/tarnished_bars.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/tarnishedbarscraft.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:tarnished_bars",
+      "acquisition_routes": [
+        "incision:tarnishedbarscraft"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:tarnished_bars"
+    },
+    {
+      "registry_id": "incision:tarnished_block",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/tarnished_block.json",
+        "data/incision/recipes/tarnishedblockcraft.json"
+      ],
+      "display_name_en_us": "Tarnished Block",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/tarnished_block.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/tarnishedblockcraft.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:tarnished_block",
+      "acquisition_routes": [
+        "incision:tarnishedblockcraft"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:tarnished_block"
+    },
+    {
+      "registry_id": "incision:tarnished_shingle_slab",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/tarnished_shingle_slab.json",
+        "data/incision/recipes/tarnishedshingleslabcraft.json"
+      ],
+      "display_name_en_us": "Tarnished Shingle Slab",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:block/slabs",
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/slabs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/tarnished_shingle_slab.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/tarnishedshingleslabcraft.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:tarnished_shingle_slab",
+      "acquisition_routes": [
+        "incision:tarnishedshingleslabcraft"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:tarnished_shingle_slab"
+    },
+    {
+      "registry_id": "incision:tarnished_shingle_stair",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/tarnished_shingle_stair.json",
+        "data/incision/recipes/tarnishedshinglestaircraft.json"
+      ],
+      "display_name_en_us": "Tarnished Shingle Stair",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:block/stairs",
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/stairs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/tarnished_shingle_stair.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/tarnishedshinglestaircraft.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:tarnished_shingle_stair",
+      "acquisition_routes": [
+        "incision:tarnishedshinglestaircraft"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:tarnished_shingle_stair"
+    },
+    {
+      "registry_id": "incision:tarnished_shingles",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/tarnished_shingles.json",
+        "data/incision/recipes/tarnishedshinglecraft.json"
+      ],
+      "display_name_en_us": "Tarnished Shingles",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/tarnished_shingles.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/tarnishedshinglecraft.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:tarnished_shingles",
+      "acquisition_routes": [
+        "incision:tarnishedshinglecraft"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:tarnished_shingles"
+    },
+    {
+      "registry_id": "incision:tarnished_slab",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/tarnished_slab.json",
+        "data/incision/recipes/tarnishedslabcraft.json"
+      ],
+      "display_name_en_us": "Tarnished Slab",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:block/slabs",
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/slabs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/tarnished_slab.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/tarnishedslabcraft.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:tarnished_slab",
+      "acquisition_routes": [
+        "incision:tarnishedslabcraft"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:tarnished_slab"
+    },
+    {
+      "registry_id": "incision:tarnished_stair",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/tarnished_stair.json",
+        "data/incision/recipes/tarnishedstaircraft.json"
+      ],
+      "display_name_en_us": "Tarnished Stair",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:block/stairs",
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/stairs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/tarnished_stair.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/tarnishedstaircraft.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:tarnished_stair",
+      "acquisition_routes": [
+        "incision:tarnishedstaircraft"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:tarnished_stair"
+    },
+    {
+      "registry_id": "incision:thin_vericose_stalk",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/thin_vericose_stalk.json"
+      ],
+      "display_name_en_us": "Thin Vericose Stalk (Temporary Blockmodel)",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:block/walls",
+        "minecraft:blocks/mineable/hoe",
+        "minecraft:blocks/walls"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/thin_vericose_stalk.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:thin_vericose_stalk",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:thin_vericose_stalk"
+    },
+    {
+      "registry_id": "incision:vericose_stalk",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/vericose_stalk.json"
+      ],
+      "display_name_en_us": "Vericose Stalk",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/hoe",
+        "minecraft:blocks/mineable/hoe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/vericose_stalk.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:vericose_stalk",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:vericose_stalk"
+    },
+    {
+      "registry_id": "incision:vile_fang",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/lang/en_us.json",
+        "assets/incision/models/item/vile_fang.json"
+      ],
+      "display_name_en_us": "Vile Fang",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/lang/en_us.json",
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/vile_fang.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:vile_fang"
+    },
+    {
+      "registry_id": "incision:weatherrack",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/weatherrack.json"
+      ],
+      "display_name_en_us": "Weatherrack",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/infiniburn_nether",
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:blocks/infiniburn_nether",
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/weatherrack.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:weatherrack",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:weatherrack"
+    },
+    {
+      "registry_id": "incision:weatherrack_brick_stair",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/weatherrack_brick_stair.json",
+        "data/incision/recipes/w_10.json",
+        "data/incision/recipes/w_18.json",
+        "data/incision/recipes/w_22.json",
+        "data/incision/recipes/wbrickstair_0.json"
+      ],
+      "display_name_en_us": "Weatherrack Brick Stair",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:block/stairs",
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/stairs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/weatherrack_brick_stair.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/w_10.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/w_18.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/w_22.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/wbrickstair_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:weatherrack_brick_stair",
+      "acquisition_routes": [
+        "incision:w_10",
+        "incision:w_18",
+        "incision:w_22",
+        "incision:wbrickstair_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:weatherrack_brick_stair"
+    },
+    {
+      "registry_id": "incision:weatherrack_brick_wall",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/weatherrack_brick_wall.json",
+        "data/incision/recipes/w_11.json",
+        "data/incision/recipes/w_19.json",
+        "data/incision/recipes/w_23.json",
+        "data/incision/recipes/wbrickwall_0.json"
+      ],
+      "display_name_en_us": "Weatherrack Brick Wall",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:block/walls",
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/walls"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/weatherrack_brick_wall.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/w_11.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/w_19.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/w_23.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/wbrickwall_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:weatherrack_brick_wall",
+      "acquisition_routes": [
+        "incision:w_11",
+        "incision:w_19",
+        "incision:w_23",
+        "incision:wbrickwall_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:weatherrack_brick_wall"
+    },
+    {
+      "registry_id": "incision:weatherrack_bricks",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/weatherrack_bricks.json",
+        "data/incision/recipes/w_12.json",
+        "data/incision/recipes/w_27.json",
+        "data/incision/recipes/weatherrackbrickcraft.json"
+      ],
+      "display_name_en_us": "Weatherrack Bricks",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/weatherrack_bricks.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/w_12.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/w_27.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/weatherrackbrickcraft.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:weatherrack_bricks",
+      "acquisition_routes": [
+        "incision:w_12",
+        "incision:w_27",
+        "incision:weatherrackbrickcraft"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:weatherrack_bricks"
+    },
+    {
+      "registry_id": "incision:weatherrack_slab",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/weatherrack_slab.json",
+        "data/incision/recipes/w_1.json",
+        "data/incision/recipes/weatherrackslab_0.json"
+      ],
+      "display_name_en_us": "Weatherrack Slab",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:block/slabs",
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/slabs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/weatherrack_slab.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/w_1.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/weatherrackslab_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:weatherrack_slab",
+      "acquisition_routes": [
+        "incision:w_1",
+        "incision:weatherrackslab_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:weatherrack_slab"
+    },
+    {
+      "registry_id": "incision:weatherrackbrickslab",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/weatherrackbrickslab.json",
+        "data/incision/recipes/w_17.json",
+        "data/incision/recipes/w_21.json",
+        "data/incision/recipes/w_9.json",
+        "data/incision/recipes/wbrickslab_0.json"
+      ],
+      "display_name_en_us": "Weatherrack Brick Slab",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:block/slabs",
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/slabs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/weatherrackbrickslab.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/w_17.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/w_21.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/w_9.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/wbrickslab_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:weatherrackbrickslab",
+      "acquisition_routes": [
+        "incision:w_17",
+        "incision:w_21",
+        "incision:w_9",
+        "incision:wbrickslab_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:weatherrackbrickslab"
+    },
+    {
+      "registry_id": "incision:weatherrackstair",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/weatherrackstair.json",
+        "data/incision/recipes/w_2.json",
+        "data/incision/recipes/weatherrackstair_0.json"
+      ],
+      "display_name_en_us": "Weatherrack Stair",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:block/stairs",
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/stairs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/weatherrackstair.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/w_2.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/weatherrackstair_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:weatherrackstair",
+      "acquisition_routes": [
+        "incision:w_2",
+        "incision:weatherrackstair_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:weatherrackstair"
+    },
+    {
+      "registry_id": "incision:weatherrackwall",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/models/item/weatherrackwall.json",
+        "data/incision/recipes/w_3.json",
+        "data/incision/recipes/weatherrackwall_0.json"
+      ],
+      "display_name_en_us": "Weatherrack Wall",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:block/walls",
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/walls"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/weatherrackwall.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/w_3.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/weatherrackwall_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "incision:weatherrackwall",
+      "acquisition_routes": [
+        "incision:w_3",
+        "incision:weatherrackwall_0"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:weatherrackwall"
+    },
+    {
+      "registry_id": "incision:whoopie_cushion",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/lang/en_us.json",
+        "assets/incision/models/item/whoopie_cushion.json",
+        "data/incision/recipes/whoopiecraft.json"
+      ],
+      "display_name_en_us": "Whoopie Cushion",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/lang/en_us.json",
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/models/item/whoopie_cushion.json",
+        "incision-1.0.10-forge-1.20.1.jar:data/incision/recipes/whoopiecraft.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "incision:whoopiecraft"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:incision:whoopie_cushion"
+    },
+    {
+      "registry_id": "twisted:boilingtongue",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/lang/en_us.json"
+      ],
+      "display_name_en_us": "Boiling Tongue",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:twisted:boilingtongue"
+    },
+    {
+      "registry_id": "twisted:eyeballyolk",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/lang/en_us.json"
+      ],
+      "display_name_en_us": "Eyeball Yolk",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:twisted:eyeballyolk"
+    },
+    {
+      "registry_id": "twisted:intestine",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/lang/en_us.json"
+      ],
+      "display_name_en_us": "Intestines",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:twisted:intestine"
+    },
+    {
+      "registry_id": "twisted:stomach",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/lang/en_us.json"
+      ],
+      "display_name_en_us": "Stomach",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:twisted:stomach"
+    },
+    {
+      "registry_id": "twisted:vilefang",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "incision",
+      "mod_name": "incision",
+      "mod_version": "1.0.9",
+      "source_jar": "incision-1.0.10-forge-1.20.1.jar",
+      "source_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/incision/lang/en_us.json"
+      ],
+      "display_name_en_us": "Vile Fang",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "incision-1.0.10-forge-1.20.1.jar:assets/incision/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:twisted:vilefang"
+    }
+  ]
+}

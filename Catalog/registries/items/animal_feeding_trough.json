@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "registry_type": "items",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "animal_feeding_trough",
+    "name": "Animal Feeding Trough",
+    "version": "1.1.0+1.20.1-forge"
+  },
+  "records": [
+    {
+      "registry_id": "animal_feeding_trough:feeding_trough",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "animal_feeding_trough",
+      "mod_name": "Animal Feeding Trough",
+      "mod_version": "1.1.0+1.20.1-forge",
+      "source_jar": "animal_feeding_trough-1.1.0+1.20.1-forge.jar",
+      "source_sha256": "367fbc5cf0931b39793b89c7cfbbf4d78e41d227dfbdd6f0be6ed17e2ad7b538",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/animal_feeding_trough/lang/en_us.json",
+        "assets/animal_feeding_trough/lang/ru_ru.json",
+        "assets/animal_feeding_trough/models/item/feeding_trough.json",
+        "data/animal_feeding_trough/recipes/feeding_trough.json"
+      ],
+      "display_name_en_us": "Feeding Trough",
+      "display_name_ru_ru": "Кормушка",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "animal_feeding_trough-1.1.0+1.20.1-forge.jar:assets/animal_feeding_trough/lang/en_us.json",
+        "animal_feeding_trough-1.1.0+1.20.1-forge.jar:assets/animal_feeding_trough/lang/ru_ru.json",
+        "animal_feeding_trough-1.1.0+1.20.1-forge.jar:assets/animal_feeding_trough/models/item/feeding_trough.json",
+        "animal_feeding_trough-1.1.0+1.20.1-forge.jar:data/animal_feeding_trough/recipes/feeding_trough.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "animal_feeding_trough:feeding_trough",
+      "acquisition_routes": [
+        "animal_feeding_trough:feeding_trough"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:animal_feeding_trough:feeding_trough"
+    }
+  ]
+}

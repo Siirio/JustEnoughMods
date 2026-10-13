@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "whaleborne",
+    "name": "Whaleborne",
+    "version": "1.20.1-1.2.4b"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "whaleborne:barnacle_recipe",
+      "mod_id": "whaleborne",
+      "mod_name": "Whaleborne",
+      "mod_version": "1.20.1-1.2.4b",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "whaleborne:rough_barnacle"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "whaleborne:barnacle"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "whaleborne-1.20.1-1.2.4b.jar:data/whaleborne/recipes/barnacle_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "whaleborne:helm_recipe",
+      "mod_id": "whaleborne",
+      "mod_name": "Whaleborne",
+      "mod_version": "1.20.1-1.2.4b",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:lead",
+        "minecraft:logs",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "whaleborne:helm"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "whaleborne-1.20.1-1.2.4b.jar:data/whaleborne/recipes/helm_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "whaleborne:misc/discover_helm",
+      "mod_id": "whaleborne",
+      "mod_name": "Whaleborne",
+      "mod_version": "1.20.1-1.2.4b",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:lead",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "whaleborne:helm_recipe"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "whaleborne-1.20.1-1.2.4b.jar:data/whaleborne/advancements/recipes/misc/discover_helm.json"
+      ]
+    }
+  ]
+}

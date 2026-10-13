@@ -16,8 +16,8 @@ import net.minecraft.world.level.saveddata.SavedData;
 
 public final class MarketSavedData extends SavedData {
     private static final String NAME = "jem_economy_market";
-    public static final long GLOBAL_DAILY_PAYOUT = 1_500L;
-    public static final long ACCOUNT_DAILY_PAYOUT = 80L;
+    public static final long GLOBAL_DAILY_PAYOUT = 4_000L;
+    public static final long ACCOUNT_DAILY_PAYOUT = 240L;
     private static final List<String> GROUPS = List.of("crops", "fishing", "cooking", "animal_products", "mining", "forestry", "handcrafts");
 
     private long activeCycle = Long.MIN_VALUE;

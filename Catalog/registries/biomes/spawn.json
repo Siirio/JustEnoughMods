@@ -1,0 +1,476 @@
+{
+  "schema_version": 1,
+  "registry_type": "biomes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "spawn",
+    "name": "Spawn",
+    "version": "4.0.7-1.20.1"
+  },
+  "records": [
+    {
+      "registry_id": "spawn:ant_gardens",
+      "registry_type": "biome",
+      "schema_version": 1,
+      "mod_id": "spawn",
+      "mod_name": "Spawn",
+      "mod_version": "4.0.7-1.20.1",
+      "source_jar": "spawn-4.0.7-1.20.1.jar",
+      "source_sha256": "4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/spawn/lang/en_us.json",
+        "assets/spawn/lang/ru_ru.json",
+        "data/spawn/worldgen/biome/ant_gardens.json"
+      ],
+      "display_name_en_us": "Ant Gardens",
+      "display_name_ru_ru": "Муравьиные сады",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:worldgen/biome/is_overworld",
+        "minecraft:worldgen/biome/stronghold_biased_to",
+        "spawn:worldgen/biome/has_structure/ant_mount"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "spawn-4.0.7-1.20.1.jar:assets/spawn/lang/en_us.json",
+        "spawn-4.0.7-1.20.1.jar:assets/spawn/lang/ru_ru.json",
+        "spawn-4.0.7-1.20.1.jar:data/spawn/worldgen/biome/ant_gardens.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "spawn:cold_island",
+      "registry_type": "biome",
+      "schema_version": 1,
+      "mod_id": "spawn",
+      "mod_name": "Spawn",
+      "mod_version": "4.0.7-1.20.1",
+      "source_jar": "spawn-4.0.7-1.20.1.jar",
+      "source_sha256": "4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/spawn/lang/en_us.json",
+        "data/spawn/worldgen/biome/cold_island.json"
+      ],
+      "display_name_en_us": "Cold Island",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "spawn:worldgen/biome/is_island",
+        "spawn:worldgen/biome/variant_spawns/base_cold_spawns",
+        "spawn:worldgen/biome/variant_spawns/coastal_crab_cold_spawns",
+        "spawn:worldgen/structure/is_island"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "spawn-4.0.7-1.20.1.jar:assets/spawn/lang/en_us.json",
+        "spawn-4.0.7-1.20.1.jar:data/spawn/worldgen/biome/cold_island.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "spawn:deep_warm_ocean",
+      "registry_type": "biome",
+      "schema_version": 1,
+      "mod_id": "spawn",
+      "mod_name": "Spawn",
+      "mod_version": "4.0.7-1.20.1",
+      "source_jar": "spawn-4.0.7-1.20.1.jar",
+      "source_sha256": "4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/spawn/lang/en_us.json",
+        "assets/spawn/lang/ru_ru.json",
+        "data/spawn/worldgen/biome/deep_warm_ocean.json"
+      ],
+      "display_name_en_us": "Deep Warm Ocean",
+      "display_name_ru_ru": "Глубокий тёплый океан",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:worldgen/biome/has_structure/has_ocean_ruin_warm",
+        "minecraft:worldgen/biome/is_deep_ocean",
+        "minecraft:worldgen/biome/is_ocean",
+        "minecraft:worldgen/biome/is_overworld",
+        "spawn:worldgen/biome/dodo_island_generates",
+        "spawn:worldgen/biome/is_warm_ocean",
+        "spawn:worldgen/biome/mob_spawns/barracuda_spawns",
+        "spawn:worldgen/biome/mob_spawns/giant_clam_spawns",
+        "spawn:worldgen/biome/mob_spawns/sea_star_generates",
+        "spawn:worldgen/biome/mob_spawns/sea_urchin_generates",
+        "spawn:worldgen/biome/variant_spawns/base_warm_spawns",
+        "spawn:worldgen/biome/variant_spawns/colorful_seahorses_spawn",
+        "spawn:worldgen/biome/variant_spawns/sunfish_warm_spawns"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "spawn-4.0.7-1.20.1.jar:assets/spawn/lang/en_us.json",
+        "spawn-4.0.7-1.20.1.jar:assets/spawn/lang/ru_ru.json",
+        "spawn-4.0.7-1.20.1.jar:data/spawn/worldgen/biome/deep_warm_ocean.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "spawn:dodo_island",
+      "registry_type": "biome",
+      "schema_version": 1,
+      "mod_id": "spawn",
+      "mod_name": "Spawn",
+      "mod_version": "4.0.7-1.20.1",
+      "source_jar": "spawn-4.0.7-1.20.1.jar",
+      "source_sha256": "4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/spawn/lang/en_us.json",
+        "data/spawn/worldgen/biome/dodo_island.json"
+      ],
+      "display_name_en_us": "Dodo Island",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "spawn:worldgen/biome/is_island",
+        "spawn:worldgen/structure/dodo_island",
+        "spawn:worldgen/structure/is_island"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "spawn-4.0.7-1.20.1.jar:assets/spawn/lang/en_us.json",
+        "spawn-4.0.7-1.20.1.jar:data/spawn/worldgen/biome/dodo_island.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "spawn:rocky_shore",
+      "registry_type": "biome",
+      "schema_version": 1,
+      "mod_id": "spawn",
+      "mod_name": "Spawn",
+      "mod_version": "4.0.7-1.20.1",
+      "source_jar": "spawn-4.0.7-1.20.1.jar",
+      "source_sha256": "4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/spawn/lang/en_us.json",
+        "assets/spawn/lang/ru_ru.json",
+        "data/spawn/worldgen/biome/rocky_shore.json"
+      ],
+      "display_name_en_us": "Rocky Shore",
+      "display_name_ru_ru": "Скалистый берег",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:worldgen/biome/is_beach",
+        "minecraft:worldgen/biome/is_overworld",
+        "spawn:worldgen/biome/mob_spawns/clam_spawns",
+        "spawn:worldgen/biome/reduced_windswept_grass_sounds",
+        "spawn:worldgen/biome/variant_spawns/base_warm_spawns"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "spawn-4.0.7-1.20.1.jar:assets/spawn/lang/en_us.json",
+        "spawn-4.0.7-1.20.1.jar:assets/spawn/lang/ru_ru.json",
+        "spawn-4.0.7-1.20.1.jar:data/spawn/worldgen/biome/rocky_shore.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "spawn:sandy_island",
+      "registry_type": "biome",
+      "schema_version": 1,
+      "mod_id": "spawn",
+      "mod_name": "Spawn",
+      "mod_version": "4.0.7-1.20.1",
+      "source_jar": "spawn-4.0.7-1.20.1.jar",
+      "source_sha256": "4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/spawn/lang/en_us.json",
+        "data/spawn/worldgen/biome/sandy_island.json"
+      ],
+      "display_name_en_us": "Sandy Island",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "spawn:worldgen/biome/is_island",
+        "spawn:worldgen/biome/mob_spawns/clam_spawns",
+        "spawn:worldgen/biome/reduced_windswept_grass_sounds",
+        "spawn:worldgen/biome/variant_spawns/base_warm_spawns",
+        "spawn:worldgen/biome/variant_spawns/coastal_crab_lukewarm_spawns",
+        "spawn:worldgen/biome/variant_spawns/sunfish_lukewarm_spawns",
+        "spawn:worldgen/structure/is_island"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "spawn-4.0.7-1.20.1.jar:assets/spawn/lang/en_us.json",
+        "spawn-4.0.7-1.20.1.jar:data/spawn/worldgen/biome/sandy_island.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "spawn:seagrass_meadow",
+      "registry_type": "biome",
+      "schema_version": 1,
+      "mod_id": "spawn",
+      "mod_name": "Spawn",
+      "mod_version": "4.0.7-1.20.1",
+      "source_jar": "spawn-4.0.7-1.20.1.jar",
+      "source_sha256": "4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/spawn/lang/en_us.json",
+        "assets/spawn/lang/ru_ru.json",
+        "data/spawn/worldgen/biome/seagrass_meadow.json"
+      ],
+      "display_name_en_us": "Seagrass Meadow",
+      "display_name_ru_ru": "Луга морской травы",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:worldgen/biome/has_structure/has_ocean_ruin_warm",
+        "minecraft:worldgen/biome/is_ocean",
+        "minecraft:worldgen/biome/is_overworld",
+        "spawn:worldgen/biome/mob_spawns/herring_spawns",
+        "spawn:worldgen/biome/mob_spawns/sea_cow_spawns",
+        "spawn:worldgen/biome/mob_spawns/seahorse_spawns",
+        "spawn:worldgen/biome/override_underwater_music",
+        "spawn:worldgen/biome/variant_spawns/base_warm_spawns",
+        "spawn:worldgen/biome/variant_spawns/sunfish_warm_spawns"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "spawn-4.0.7-1.20.1.jar:assets/spawn/lang/en_us.json",
+        "spawn-4.0.7-1.20.1.jar:assets/spawn/lang/ru_ru.json",
+        "spawn-4.0.7-1.20.1.jar:data/spawn/worldgen/biome/seagrass_meadow.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "spawn:tide_pool",
+      "registry_type": "biome",
+      "schema_version": 1,
+      "mod_id": "spawn",
+      "mod_name": "Spawn",
+      "mod_version": "4.0.7-1.20.1",
+      "source_jar": "spawn-4.0.7-1.20.1.jar",
+      "source_sha256": "4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/spawn/lang/en_us.json",
+        "data/spawn/worldgen/biome/tide_pool.json"
+      ],
+      "display_name_en_us": "Tide Pool",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "spawn:worldgen/biome/is_island",
+        "spawn:worldgen/biome/lighter_inland_water",
+        "spawn:worldgen/biome/renews_red_algae_critters",
+        "spawn:worldgen/biome/variant_spawns/base_cold_spawns",
+        "spawn:worldgen/biome/variant_spawns/coastal_crab_cold_spawns",
+        "spawn:worldgen/biome/variant_spawns/colorful_seahorses_spawn",
+        "spawn:worldgen/biome/variant_spawns/sea_life_deco_base_spawns",
+        "spawn:worldgen/biome/variant_spawns/sea_life_deco_cold_spawns",
+        "spawn:worldgen/biome/variant_spawns/sea_life_deco_warm_spawns"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "spawn-4.0.7-1.20.1.jar:assets/spawn/lang/en_us.json",
+        "spawn-4.0.7-1.20.1.jar:data/spawn/worldgen/biome/tide_pool.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "spawn:tropical_island",
+      "registry_type": "biome",
+      "schema_version": 1,
+      "mod_id": "spawn",
+      "mod_name": "Spawn",
+      "mod_version": "4.0.7-1.20.1",
+      "source_jar": "spawn-4.0.7-1.20.1.jar",
+      "source_sha256": "4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/spawn/lang/en_us.json",
+        "data/spawn/worldgen/biome/tropical_island.json"
+      ],
+      "display_name_en_us": "Tropical Island",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "spawn:worldgen/biome/is_island",
+        "spawn:worldgen/biome/mob_spawns/clam_spawns",
+        "spawn:worldgen/biome/variant_spawns/base_warm_spawns",
+        "spawn:worldgen/biome/variant_spawns/colorful_seahorses_spawn",
+        "spawn:worldgen/structure/is_island"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "spawn-4.0.7-1.20.1.jar:assets/spawn/lang/en_us.json",
+        "spawn-4.0.7-1.20.1.jar:data/spawn/worldgen/biome/tropical_island.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "spawn:volcanic_island",
+      "registry_type": "biome",
+      "schema_version": 1,
+      "mod_id": "spawn",
+      "mod_name": "Spawn",
+      "mod_version": "4.0.7-1.20.1",
+      "source_jar": "spawn-4.0.7-1.20.1.jar",
+      "source_sha256": "4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/spawn/lang/en_us.json",
+        "data/spawn/worldgen/biome/volcanic_island.json"
+      ],
+      "display_name_en_us": "Volcanic Island",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "spawn:worldgen/biome/is_island",
+        "spawn:worldgen/biome/mob_spawns/clam_spawns",
+        "spawn:worldgen/biome/variant_spawns/colorful_seahorses_spawn"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "spawn-4.0.7-1.20.1.jar:assets/spawn/lang/en_us.json",
+        "spawn-4.0.7-1.20.1.jar:data/spawn/worldgen/biome/volcanic_island.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}

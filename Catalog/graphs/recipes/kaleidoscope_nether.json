@@ -1,0 +1,2854 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "kaleidoscope_nether",
+    "name": "Kaleidoscope Nether",
+    "version": "1.1.8-forge+mc1.20.1"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:ancient_debris",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "kaleidoscope_nether:gilded_fragment",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:netherite_scrap"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/ancient_debris.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:blowgun",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:bamboo",
+        "minecraft:crafting_shaped",
+        "minecraft:red_wool"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:blowgun"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/blowgun.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:bone_meal_from_wither_rib",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "kaleidoscope_nether:wither_rib",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:bone_meal"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/bone_meal_from_wither_rib.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:campfire/cooked_piglin_meat",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "minecraft:campfire_cooking",
+      "machine_id": "minecraft:campfire_cooking",
+      "ingredient_groups": [
+        "kaleidoscope_nether:raw_piglin_meat",
+        "minecraft:campfire_cooking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:cooked_piglin_meat"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/campfire/cooked_piglin_meat.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:campfire/cooked_strider_meat",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "minecraft:campfire_cooking",
+      "machine_id": "minecraft:campfire_cooking",
+      "ingredient_groups": [
+        "kaleidoscope_nether:raw_strider_meat",
+        "minecraft:campfire_cooking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:cooked_strider_meat"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/campfire/cooked_strider_meat.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:campfire/roasted_ghast_tentacle",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "minecraft:campfire_cooking",
+      "machine_id": "minecraft:campfire_cooking",
+      "ingredient_groups": [
+        "kaleidoscope_nether:ghast_tentacle",
+        "minecraft:campfire_cooking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:roasted_ghast_tentacle"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/campfire/roasted_ghast_tentacle.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:campfire/roasted_ham",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "minecraft:campfire_cooking",
+      "machine_id": "minecraft:campfire_cooking",
+      "ingredient_groups": [
+        "kaleidoscope_nether:ham",
+        "minecraft:campfire_cooking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:roasted_ham"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/campfire/roasted_ham.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:chopping_board/ham_slice",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:chopping_board",
+      "machine_id": "kaleidoscope_cookery:chopping_board",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:chopping_board",
+        "kaleidoscope_nether:ham"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:ham_slice"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/chopping_board/ham_slice.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:ghast_hide_to_leather",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "kaleidoscope_nether:ghast_hide",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:leather"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/ghast_hide_to_leather.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:hoglin_hide_to_leather",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "kaleidoscope_nether:hoglin_hide",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:leather"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/hoglin_hide_to_leather.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:millstone/blaze_heart",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:millstone",
+      "machine_id": "kaleidoscope_cookery:millstone",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:millstone",
+        "kaleidoscope_nether:blaze_heart"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:blaze_powder"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/millstone/blaze_heart.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:millstone/blaze_rod",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:millstone",
+      "machine_id": "kaleidoscope_cookery:millstone",
+      "ingredient_groups": [
+        "forge:rods/blaze",
+        "kaleidoscope_cookery:millstone"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:blaze_powder"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/millstone/blaze_rod.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:millstone/ghast_hide",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:millstone",
+      "machine_id": "kaleidoscope_cookery:millstone",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:millstone",
+        "kaleidoscope_nether:ghast_hide"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:leather"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/millstone/ghast_hide.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:millstone/hoglin_hide",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:millstone",
+      "machine_id": "kaleidoscope_cookery:millstone",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:millstone",
+        "kaleidoscope_nether:hoglin_hide"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:leather"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/millstone/hoglin_hide.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:millstone/magma_block",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:millstone",
+      "machine_id": "kaleidoscope_cookery:millstone",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:millstone",
+        "minecraft:magma_block"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:magma_cream"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/millstone/magma_block.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:millstone/nether_star",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:millstone",
+      "machine_id": "kaleidoscope_cookery:millstone",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:millstone",
+        "minecraft:nether_star"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:star_dust"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/millstone/nether_star.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:millstone/sugar_cane",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:millstone",
+      "machine_id": "kaleidoscope_cookery:millstone",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:millstone",
+        "minecraft:sugar_cane"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:sugar"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/millstone/sugar_cane.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:millstone/wither_rib",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:millstone",
+      "machine_id": "kaleidoscope_cookery:millstone",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:millstone",
+        "kaleidoscope_nether:wither_rib"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:bone_meal"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/millstone/wither_rib.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:millstone/wither_skeleton_skull",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:millstone",
+      "machine_id": "kaleidoscope_cookery:millstone",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:millstone",
+        "minecraft:wither_skeleton_skull"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:wither_rib"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/millstone/wither_skeleton_skull.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:nether_stove",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:blackstone",
+        "minecraft:campfire",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:nether_stove"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/nether_stove.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/blazing_kabob_1",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:pot",
+        "minecraft:blaze_powder",
+        "minecraft:magma_cream",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:blazing_kabob"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/blazing_kabob_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/blazing_kabob_2",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:pot",
+        "minecraft:blaze_powder",
+        "minecraft:magma_cream",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:blazing_kabob"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/blazing_kabob_2.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/blazing_kabob_3",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:pot",
+        "minecraft:blaze_powder",
+        "minecraft:magma_cream",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:blazing_kabob"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/blazing_kabob_3.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/braised_lion_head",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:vegetables/chilipepper",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_cookery:raw_meatball",
+        "minecraft:bowl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:braised_lion_head"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/braised_lion_head.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/braised_pork_rice",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:eggs",
+        "forge:raw_pork",
+        "forge:vegetables/pepper",
+        "kaleidoscope_cookery:cooked_rice",
+        "kaleidoscope_cookery:pot",
+        "minecraft:bowl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:braised_pork_rice"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/braised_pork_rice.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/braised_strider",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:raw_strider",
+        "forge:vegetables/chilipepper",
+        "forge:warped_fruits",
+        "kaleidoscope_cookery:pot",
+        "minecraft:bowl",
+        "minecraft:warped_fungus"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:braised_strider"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/braised_strider.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/caramel_nether_caterpillar",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_nether:nether_caterpillar",
+        "minecraft:bowl",
+        "minecraft:sugar"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:caramel_nether_caterpillar"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/caramel_nether_caterpillar.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/caramel_nether_caterpillar_rice",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:cooked_rice",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_nether:nether_caterpillar",
+        "minecraft:sugar"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:caramel_nether_caterpillar_rice"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/caramel_nether_caterpillar_rice.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/cooked_piglin_meat",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_nether:raw_piglin_meat"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:cooked_piglin_meat"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/cooked_piglin_meat.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/cooked_strider_meat",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_nether:raw_strider_meat"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:cooked_strider_meat"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/cooked_strider_meat.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/couples_lung_slice",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:vegetables/chilipepper",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_cookery:raw_cow_offal",
+        "minecraft:beetroot",
+        "minecraft:bowl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:couples_lung_slice"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/couples_lung_slice.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/crimson_kabob_1",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:crimson_fruits",
+        "kaleidoscope_cookery:pot",
+        "minecraft:crimson_fungus",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:crimson_kabob"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/crimson_kabob_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/crimson_kabob_2",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:crimson_fruits",
+        "kaleidoscope_cookery:pot",
+        "minecraft:crimson_fungus",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:crimson_kabob"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/crimson_kabob_2.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/crimson_kabob_3",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:crimson_fruits",
+        "kaleidoscope_cookery:pot",
+        "minecraft:crimson_fungus",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:crimson_kabob"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/crimson_kabob_3.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/crimson_magma_stew",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:raw_beef",
+        "kaleidoscope_cookery:pot",
+        "minecraft:bowl",
+        "minecraft:crimson_fungus",
+        "minecraft:magma_cream"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:crimson_magma_stew"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/crimson_magma_stew.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/crimson_salad",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:crimson_fruits",
+        "kaleidoscope_cookery:pot",
+        "minecraft:bowl",
+        "minecraft:crimson_fungus",
+        "minecraft:crimson_roots",
+        "minecraft:weeping_vines"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:crimson_salad"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/crimson_salad.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/fruit_platter",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:crimson_fruits",
+        "forge:poisonous_fruits",
+        "forge:warped_fruits",
+        "kaleidoscope_cookery:pot",
+        "minecraft:bowl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:fruit_platter"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/fruit_platter.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/garlic_oysters",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:hot_spices",
+        "forge:raw_fishes",
+        "forge:vegetables/pepper",
+        "kaleidoscope_cookery:pot",
+        "minecraft:bowl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:garlic_oysters"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/garlic_oysters.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/ghast_kabob_1",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_nether:ghast_tentacle",
+        "minecraft:ghast_tear",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:ghast_kabob"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/ghast_kabob_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/ghast_kabob_2",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_nether:ghast_tentacle",
+        "minecraft:ghast_tear",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:ghast_kabob"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/ghast_kabob_2.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/ghast_kabob_3",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_nether:ghast_tentacle",
+        "minecraft:ghast_tear",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:ghast_kabob"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/ghast_kabob_3.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/ghast_pasta",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:pasta",
+        "forge:raw_ghast",
+        "kaleidoscope_cookery:pot",
+        "minecraft:bowl",
+        "minecraft:ghast_tear"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:ghast_pasta"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/ghast_pasta.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/ghast_pudding",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:raw_ghast",
+        "kaleidoscope_cookery:pot",
+        "minecraft:bowl",
+        "minecraft:ghast_tear",
+        "minecraft:sugar"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:ghast_pudding"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/ghast_pudding.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/gilded_barbaric_roast",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:hot_spices",
+        "forge:raw_beef",
+        "forge:raw_chicken",
+        "forge:raw_mutton",
+        "forge:raw_pork",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_cookery:raw_cut_small_meats",
+        "kaleidoscope_cookery:raw_donkey_meat",
+        "kaleidoscope_nether:gilded_fragment",
+        "kaleidoscope_nether:raw_strider_meat",
+        "minecraft:bowl",
+        "minecraft:rabbit"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:gilded_barbaric_roast"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/gilded_barbaric_roast.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/golden_kabob",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:raw_beef",
+        "kaleidoscope_cookery:pot",
+        "minecraft:gold_block",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:golden_kabob"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/golden_kabob.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/golden_roast",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:hot_spices",
+        "forge:raw_beef",
+        "kaleidoscope_cookery:pot",
+        "minecraft:bowl",
+        "minecraft:gold_block"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:golden_roast"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/golden_roast.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/ham_yogurt",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:flour",
+        "forge:raw_ham",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_nether:ham_slice",
+        "minecraft:bowl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:ham_yogurt"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/ham_yogurt.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/hoglin_tusk_braised_meat",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:raw_pork",
+        "forge:vegetables/lettuce",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_nether:hoglin_tusk",
+        "minecraft:bowl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:hoglin_tusk_braised_meat"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/hoglin_tusk_braised_meat.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/lava_jelly",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:pot",
+        "minecraft:bowl",
+        "minecraft:magma_block",
+        "minecraft:sugar"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:lava_jelly"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/lava_jelly.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/lava_roasted_chicken",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:hot_spices",
+        "kaleidoscope_cookery:pot",
+        "minecraft:chicken",
+        "minecraft:magma_block"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:lava_roasted_chicken"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/lava_roasted_chicken.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/magma_cream_pudding",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:pot",
+        "minecraft:bowl",
+        "minecraft:magma_cream",
+        "minecraft:sugar"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:magma_cream_pudding"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/magma_cream_pudding.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/magma_cream_stir_fry",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:raw_beef",
+        "kaleidoscope_cookery:pot",
+        "minecraft:bowl",
+        "minecraft:magma_cream"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:magma_cream_stir_fry"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/magma_cream_stir_fry.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/magma_cream_stir_fry_rice",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:cooked_rice",
+        "forge:raw_beef",
+        "kaleidoscope_cookery:pot",
+        "minecraft:magma_cream"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:magma_cream_stir_fry_rice"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/magma_cream_stir_fry_rice.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/nether_caterpillar_sashimi",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:raw_fishes/tropical_fish",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_nether:nether_caterpillar",
+        "minecraft:bowl",
+        "minecraft:nether_wart"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:nether_caterpillar_sashimi"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/nether_caterpillar_sashimi.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/nether_fries_platter",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:hot_spices",
+        "forge:rods/blaze",
+        "forge:soul_speed_blocks",
+        "forge:vegetables/soul_pepper",
+        "kaleidoscope_cookery:pot",
+        "minecraft:bowl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:nether_fries_platter"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/nether_fries_platter.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/oil_from_ghast_hide_1",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_nether:ghast_hide"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_cookery:oil"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/oil_from_ghast_hide_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/oil_from_ghast_hide_2",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_nether:ghast_hide"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_cookery:oil"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/oil_from_ghast_hide_2.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/oil_from_ghast_hide_3",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_nether:ghast_hide"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_cookery:oil"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/oil_from_ghast_hide_3.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/oil_from_hoglin_hide_1",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_nether:hoglin_hide"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_cookery:oil"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/oil_from_hoglin_hide_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/oil_from_hoglin_hide_2",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_nether:hoglin_hide"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_cookery:oil"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/oil_from_hoglin_hide_2.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/oil_from_hoglin_hide_3",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_nether:hoglin_hide"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_cookery:oil"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/oil_from_hoglin_hide_3.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/poisonous_ghast_roast_1",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:raw_ghast",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_nether:poisonous_fruit",
+        "minecraft:bowl",
+        "minecraft:ghast_tear"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:poisonous_ghast_roast"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/poisonous_ghast_roast_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/poisonous_ghast_roast_2",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:raw_ghast",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_nether:poisonous_fruit",
+        "minecraft:bowl",
+        "minecraft:ghast_tear"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:poisonous_ghast_roast"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/poisonous_ghast_roast_2.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/poisonous_ghast_roast_3",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:raw_ghast",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_nether:poisonous_fruit",
+        "minecraft:bowl",
+        "minecraft:ghast_tear"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:poisonous_ghast_roast"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/poisonous_ghast_roast_3.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/roujiamo_1",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:dough",
+        "forge:raw_meats",
+        "kaleidoscope_cookery:pot"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:roujiamo"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/roujiamo_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/roujiamo_2",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:dough",
+        "forge:raw_meats",
+        "kaleidoscope_cookery:pot"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:roujiamo"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/roujiamo_2.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/roujiamo_3",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:dough",
+        "forge:raw_meats",
+        "kaleidoscope_cookery:pot"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:roujiamo"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/roujiamo_3.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/soul_glazed_roast",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:raw_beef",
+        "forge:vegetables/lettuce",
+        "forge:vegetables/soul_pepper",
+        "forge:vegetables/tomato",
+        "kaleidoscope_cookery:pot",
+        "minecraft:bowl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:soul_glazed_roast"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/soul_glazed_roast.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/soul_lamb_chop",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:raw_mutton",
+        "forge:vegetables/soul_pepper",
+        "kaleidoscope_cookery:pot",
+        "minecraft:bowl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:soul_lamb_chop"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/soul_lamb_chop.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/soul_pepper_stir_fry_1",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:raw_beef",
+        "forge:vegetables/soul_pepper",
+        "forge:vegetables/tomato",
+        "kaleidoscope_cookery:pot",
+        "minecraft:bowl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:soul_pepper_stir_fry"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/soul_pepper_stir_fry_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/soul_pepper_stir_fry_2",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:raw_beef",
+        "forge:vegetables/soul_pepper",
+        "forge:vegetables/tomato",
+        "kaleidoscope_cookery:pot",
+        "minecraft:bowl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:soul_pepper_stir_fry"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/soul_pepper_stir_fry_2.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/soul_return_rice",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:soul_speed_blocks",
+        "forge:vegetables/soul_pepper",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_nether:star_dust",
+        "minecraft:bowl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:soul_return_rice"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/soul_return_rice.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/soul_stir_fry_meat",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:raw_pork",
+        "forge:vegetables/soul_pepper",
+        "kaleidoscope_cookery:pot",
+        "minecraft:bowl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:soul_stir_fry_meat"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/soul_stir_fry_meat.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/soul_stir_fry_meat_rice",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:cooked_rice",
+        "forge:raw_pork",
+        "forge:vegetables/soul_pepper",
+        "kaleidoscope_cookery:pot"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:soul_stir_fry_meat_rice"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/soul_stir_fry_meat_rice.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/soul_strider_kabob_1",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:vegetables/soul_pepper",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_nether:raw_strider_meat",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:soul_strider_kabob"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/soul_strider_kabob_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/soul_strider_kabob_2",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:vegetables/soul_pepper",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_nether:raw_strider_meat",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:soul_strider_kabob"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/soul_strider_kabob_2.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/soul_strider_kabob_3",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:vegetables/soul_pepper",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_nether:raw_strider_meat",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:soul_strider_kabob"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/soul_strider_kabob_3.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/spicy_pot",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:hot_spices",
+        "forge:raw_meats",
+        "forge:vegetables/carrot",
+        "forge:vegetables/lettuce",
+        "forge:vegetables/pepper",
+        "forge:vegetables/potato",
+        "kaleidoscope_cookery:pot",
+        "minecraft:beetroot",
+        "minecraft:bowl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:spicy_pot"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/spicy_pot.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/spicy_pot_rice",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:cooked_rice",
+        "forge:hot_spices",
+        "forge:raw_meats",
+        "forge:vegetables/carrot",
+        "forge:vegetables/lettuce",
+        "forge:vegetables/pepper",
+        "forge:vegetables/potato",
+        "kaleidoscope_cookery:pot",
+        "minecraft:beetroot"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:spicy_pot_rice"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/spicy_pot_rice.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/star_ghast_pasta",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:pasta",
+        "forge:raw_ghast",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_nether:star_dust",
+        "minecraft:bowl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:star_ghast_pasta"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/star_ghast_pasta.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/star_stew_meat",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:raw_beef",
+        "forge:vegetables/pepper",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_nether:star_dust",
+        "minecraft:bowl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:star_stew_meat"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/star_stew_meat.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/strider_nether_wart_stew",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:raw_strider",
+        "kaleidoscope_cookery:pot",
+        "minecraft:bowl",
+        "minecraft:nether_wart",
+        "minecraft:string"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:strider_nether_wart_stew"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/strider_nether_wart_stew.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/strider_shell_stir_fry",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:raw_strider",
+        "forge:vegetables/pepper",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_nether:strider_rock_shell",
+        "minecraft:bowl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:strider_shell_stir_fry"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/strider_shell_stir_fry.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/warped_hoglin_tenderloin_stew",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:warped_fruits",
+        "kaleidoscope_cookery:pot",
+        "minecraft:bowl",
+        "minecraft:rotten_flesh",
+        "minecraft:warped_fungus"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:warped_hoglin_tenderloin_stew"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/warped_hoglin_tenderloin_stew.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/warped_kabob_1",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:warped_fruits",
+        "kaleidoscope_cookery:pot",
+        "minecraft:stick",
+        "minecraft:warped_fungus"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:warped_kabob"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/warped_kabob_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/warped_kabob_2",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:warped_fruits",
+        "kaleidoscope_cookery:pot",
+        "minecraft:stick",
+        "minecraft:warped_fungus"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:warped_kabob"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/warped_kabob_2.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/warped_kabob_3",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:warped_fruits",
+        "kaleidoscope_cookery:pot",
+        "minecraft:stick",
+        "minecraft:warped_fungus"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:warped_kabob"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/warped_kabob_3.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:pot/warped_salad",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:warped_fruits",
+        "kaleidoscope_cookery:pot",
+        "minecraft:bowl",
+        "minecraft:twisting_vines",
+        "minecraft:warped_fungus",
+        "minecraft:warped_roots"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:warped_salad"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/pot/warped_salad.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:primitive_machete",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "kaleidoscope_nether:hoglin_tusk",
+        "minecraft:crafting_shaped",
+        "minecraft:netherite_ingot"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:primitive_machete"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/primitive_machete.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:smelting/cooked_piglin_meat",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "minecraft:smelting",
+      "machine_id": "minecraft:smelting",
+      "ingredient_groups": [
+        "kaleidoscope_nether:raw_piglin_meat",
+        "minecraft:smelting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:cooked_piglin_meat"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/smelting/cooked_piglin_meat.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:smelting/cooked_strider_meat",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "minecraft:smelting",
+      "machine_id": "minecraft:smelting",
+      "ingredient_groups": [
+        "kaleidoscope_nether:raw_strider_meat",
+        "minecraft:smelting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:cooked_strider_meat"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/smelting/cooked_strider_meat.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:smelting/roasted_ghast_tentacle",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "minecraft:smelting",
+      "machine_id": "minecraft:smelting",
+      "ingredient_groups": [
+        "kaleidoscope_nether:ghast_tentacle",
+        "minecraft:smelting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:roasted_ghast_tentacle"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/smelting/roasted_ghast_tentacle.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:smelting/roasted_ham",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "minecraft:smelting",
+      "machine_id": "minecraft:smelting",
+      "ingredient_groups": [
+        "kaleidoscope_nether:ham",
+        "minecraft:smelting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:roasted_ham"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/smelting/roasted_ham.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:smoking/cooked_piglin_meat",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "minecraft:smoking",
+      "machine_id": "minecraft:smoking",
+      "ingredient_groups": [
+        "kaleidoscope_nether:raw_piglin_meat",
+        "minecraft:smoking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:cooked_piglin_meat"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/smoking/cooked_piglin_meat.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:smoking/cooked_strider_meat",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "minecraft:smoking",
+      "machine_id": "minecraft:smoking",
+      "ingredient_groups": [
+        "kaleidoscope_nether:raw_strider_meat",
+        "minecraft:smoking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:cooked_strider_meat"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/smoking/cooked_strider_meat.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:smoking/roasted_ghast_tentacle",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "minecraft:smoking",
+      "machine_id": "minecraft:smoking",
+      "ingredient_groups": [
+        "kaleidoscope_nether:ghast_tentacle",
+        "minecraft:smoking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:roasted_ghast_tentacle"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/smoking/roasted_ghast_tentacle.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:smoking/roasted_ham",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "minecraft:smoking",
+      "machine_id": "minecraft:smoking",
+      "ingredient_groups": [
+        "kaleidoscope_nether:ham",
+        "minecraft:smoking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:roasted_ham"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/smoking/roasted_ham.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:stockpot/blaze_soup",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:stockpot",
+      "machine_id": "kaleidoscope_cookery:stockpot",
+      "ingredient_groups": [
+        "forge:vegetables/potato",
+        "forge:vegetables/tomato",
+        "kaleidoscope_cookery:stockpot",
+        "kaleidoscope_cookery:stockpot/default_cooking",
+        "kaleidoscope_cookery:stockpot/default_finished",
+        "minecraft:blaze_powder",
+        "minecraft:bowl",
+        "minecraft:lava"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:blaze_soup"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/stockpot/blaze_soup.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:stockpot/chongqing_noodles",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:stockpot",
+      "machine_id": "kaleidoscope_cookery:stockpot",
+      "ingredient_groups": [
+        "forge:pasta",
+        "forge:raw_pork",
+        "forge:vegetables/chilipepper",
+        "forge:vegetables/lettuce",
+        "kaleidoscope_cookery:stockpot",
+        "kaleidoscope_cookery:stockpot/default_cooking",
+        "kaleidoscope_cookery:stockpot/default_finished",
+        "minecraft:bowl",
+        "minecraft:water"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:chongqing_noodles"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/stockpot/chongqing_noodles.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:stockpot/corn_carrot_pork_rib_soup",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:stockpot",
+      "machine_id": "kaleidoscope_cookery:stockpot",
+      "ingredient_groups": [
+        "forge:crops/corn",
+        "forge:not",
+        "forge:raw_pork",
+        "forge:tag_empty",
+        "forge:vegetables/carrot",
+        "kaleidoscope_cookery:stockpot",
+        "kaleidoscope_cookery:stockpot/default_cooking",
+        "kaleidoscope_cookery:stockpot/default_finished",
+        "minecraft:bone",
+        "minecraft:flower_pot",
+        "minecraft:water"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:corn_carrot_pork_rib_soup"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/stockpot/corn_carrot_pork_rib_soup.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:stockpot/forgetfulness_soup",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:stockpot",
+      "machine_id": "kaleidoscope_cookery:stockpot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:stockpot",
+        "kaleidoscope_cookery:stockpot/default_cooking",
+        "kaleidoscope_cookery:stockpot/default_finished",
+        "minecraft:bowl",
+        "minecraft:ghast_tear",
+        "minecraft:water"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:forgetfulness_soup"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/stockpot/forgetfulness_soup.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:stockpot/luosifen",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:stockpot",
+      "machine_id": "kaleidoscope_cookery:stockpot",
+      "ingredient_groups": [
+        "forge:pasta",
+        "forge:vegetables/lettuce",
+        "forge:vegetables/pepper",
+        "kaleidoscope_cookery:stockpot",
+        "kaleidoscope_cookery:stockpot/default_cooking",
+        "kaleidoscope_cookery:stockpot/default_finished",
+        "minecraft:bamboo",
+        "minecraft:bowl",
+        "minecraft:nautilus_shell",
+        "minecraft:water"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:luosifen"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/stockpot/luosifen.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:stockpot/magma_cream_soup",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:stockpot",
+      "machine_id": "kaleidoscope_cookery:stockpot",
+      "ingredient_groups": [
+        "forge:vegetables/carrot",
+        "forge:vegetables/potato",
+        "kaleidoscope_cookery:stockpot",
+        "kaleidoscope_cookery:stockpot/default_cooking",
+        "kaleidoscope_cookery:stockpot/default_finished",
+        "minecraft:bowl",
+        "minecraft:magma_cream",
+        "minecraft:water"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:magma_cream_soup"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/stockpot/magma_cream_soup.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:stockpot/pepper_pork_belly_chicken_soup",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:stockpot",
+      "machine_id": "kaleidoscope_cookery:stockpot",
+      "ingredient_groups": [
+        "forge:vegetables/pepper",
+        "kaleidoscope_cookery:raw_pork_belly",
+        "kaleidoscope_cookery:stockpot",
+        "kaleidoscope_cookery:stockpot/default_cooking",
+        "kaleidoscope_cookery:stockpot/default_finished",
+        "minecraft:chicken",
+        "minecraft:flower_pot",
+        "minecraft:glow_lichen",
+        "minecraft:hanging_roots",
+        "minecraft:vine",
+        "minecraft:water"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:pepper_pork_belly_chicken_soup"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/stockpot/pepper_pork_belly_chicken_soup.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:stockpot/poisonous_soup",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:stockpot",
+      "machine_id": "kaleidoscope_cookery:stockpot",
+      "ingredient_groups": [
+        "forge:vegetables/pepper",
+        "kaleidoscope_cookery:stockpot",
+        "kaleidoscope_cookery:stockpot/default_cooking",
+        "kaleidoscope_cookery:stockpot/default_finished",
+        "kaleidoscope_nether:poisonous_fruit",
+        "minecraft:bowl",
+        "minecraft:water"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:poisonous_soup"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/stockpot/poisonous_soup.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:stockpot/sauerkraut_fish",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:stockpot",
+      "machine_id": "kaleidoscope_cookery:stockpot",
+      "ingredient_groups": [
+        "forge:crops/chilipepper",
+        "forge:raw_fishes/cod",
+        "forge:vegetables",
+        "kaleidoscope_cookery:stockpot",
+        "kaleidoscope_cookery:stockpot/default_cooking",
+        "kaleidoscope_cookery:stockpot/default_finished",
+        "minecraft:bowl",
+        "minecraft:kelp",
+        "minecraft:water"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:sauerkraut_fish"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/stockpot/sauerkraut_fish.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:stockpot/soul_soup",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:stockpot",
+      "machine_id": "kaleidoscope_cookery:stockpot",
+      "ingredient_groups": [
+        "forge:vegetables/carrot",
+        "forge:vegetables/lettuce",
+        "forge:vegetables/soul_pepper",
+        "kaleidoscope_cookery:stockpot",
+        "kaleidoscope_cookery:stockpot/default_cooking",
+        "kaleidoscope_cookery:stockpot/default_finished",
+        "minecraft:bowl",
+        "minecraft:water"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:soul_soup"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/stockpot/soul_soup.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:stockpot/spicy_hoglin_ramen",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:stockpot",
+      "machine_id": "kaleidoscope_cookery:stockpot",
+      "ingredient_groups": [
+        "forge:hot_spices",
+        "forge:pasta",
+        "forge:raw_ham",
+        "forge:vegetables/pepper",
+        "kaleidoscope_cookery:stockpot",
+        "kaleidoscope_cookery:stockpot/default_cooking",
+        "kaleidoscope_cookery:stockpot/default_finished",
+        "kaleidoscope_nether:ham_slice",
+        "minecraft:bowl",
+        "minecraft:water"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:spicy_hoglin_ramen"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/stockpot/spicy_hoglin_ramen.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:stockpot/star_stew",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:stockpot",
+      "machine_id": "kaleidoscope_cookery:stockpot",
+      "ingredient_groups": [
+        "forge:hot_spices",
+        "forge:vegetables/lettuce",
+        "forge:vegetables/tomato",
+        "kaleidoscope_cookery:stockpot",
+        "kaleidoscope_cookery:stockpot/default_cooking",
+        "kaleidoscope_cookery:stockpot/default_finished",
+        "kaleidoscope_nether:star_dust",
+        "minecraft:bowl",
+        "minecraft:water"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:star_stew"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/stockpot/star_stew.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:stockpot/wither_bone_soup",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:stockpot",
+      "machine_id": "kaleidoscope_cookery:stockpot",
+      "ingredient_groups": [
+        "forge:wither",
+        "kaleidoscope_cookery:stockpot",
+        "kaleidoscope_cookery:stockpot/default_cooking",
+        "kaleidoscope_cookery:stockpot/default_finished",
+        "minecraft:bowl",
+        "minecraft:coal",
+        "minecraft:lava"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:wither_bone_soup"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/stockpot/wither_bone_soup.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:warped_cake",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:crimson_fruits",
+        "forge:flour",
+        "forge:milk",
+        "forge:warped_fruits",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:warped_cake"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/warped_cake.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_nether:wither_skeleton_skull",
+      "mod_id": "kaleidoscope_nether",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "kaleidoscope_nether:wither_rib",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:wither_skeleton_skull"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/kaleidoscope_nether/recipes/wither_skeleton_skull.json"
+      ]
+    }
+  ]
+}

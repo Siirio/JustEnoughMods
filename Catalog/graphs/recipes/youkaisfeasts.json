@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "youkaisfeasts",
+    "name": "youkaisfeasts",
+    "version": "unresolved"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "youkaisfeasts:pot/mapo_tofu",
+      "mod_id": "youkaisfeasts",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:flour",
+        "forge:mod_loaded",
+        "forge:vegetables/pepper",
+        "kaleidoscope_cookery:pot",
+        "minecraft:bowl",
+        "youkaisfeasts:tofu"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:mapo_tofu"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/youkaisfeasts/recipes/pot/mapo_tofu.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "youkaisfeasts:pot/mapo_tofu_rice",
+      "mod_id": "youkaisfeasts",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:cooked_rice",
+        "forge:flour",
+        "forge:mod_loaded",
+        "forge:vegetables/pepper",
+        "kaleidoscope_cookery:pot",
+        "youkaisfeasts:tofu"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:mapo_tofu_rice"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/youkaisfeasts/recipes/pot/mapo_tofu_rice.json"
+      ]
+    }
+  ]
+}

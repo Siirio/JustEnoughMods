@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "ftbquests",
+    "name": "FTB Quests",
+    "version": "2001.4.22"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "ftbquests:book",
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:stone",
+        "minecraft:book",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "ftbquests:book"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:data/ftbquests/recipes/book.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "ftbquests:loot_crate_opener",
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:planks",
+        "minecraft:stone_pickaxe"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "ftbquests:loot_crate_opener"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:data/ftbquests/recipes/loot_crate_opener.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "ftbquests:screen_1",
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "ftbquests:screen",
+        "minecraft:crafting_shaped",
+        "minecraft:stone"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "ftbquests:screen_1"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:data/ftbquests/recipes/screen_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "ftbquests:screen_3",
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "ftbquests:screen",
+        "ftbquests:screen_1",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "ftbquests:screen_3"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:data/ftbquests/recipes/screen_3.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "ftbquests:screen_5",
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "ftbquests:screen",
+        "ftbquests:screen_1",
+        "ftbquests:screen_3",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "ftbquests:screen_5"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:data/ftbquests/recipes/screen_5.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "ftbquests:screen_7",
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "ftbquests:screen",
+        "ftbquests:screen_1",
+        "ftbquests:screen_3",
+        "ftbquests:screen_5",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "ftbquests:screen_7"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:data/ftbquests/recipes/screen_7.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "ftbquests:task_screen_configurator",
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "ftbquests:screen",
+        "ftbquests:screen_1",
+        "minecraft:crafting_shaped",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "ftbquests:task_screen_configurator"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:data/ftbquests/recipes/task_screen_configurator.json"
+      ]
+    }
+  ]
+}

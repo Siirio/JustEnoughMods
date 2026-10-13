@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "registry_type": "placeables",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "golemoverhaul",
+    "name": "Golem Overhaul",
+    "version": "1.1.1"
+  },
+  "records": [
+    {
+      "item_id": "golemoverhaul:candle_golem_block",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "golemoverhaul",
+      "mod_name": "Golem Overhaul",
+      "mod_version": "1.1.1",
+      "source_jar": "golemoverhaul-forge-1.20.1-1.1.1.jar",
+      "source_sha256": "115df3a7517b3cf8329ab35a00664d48e76282648c98843c8225ba2b5755cf90",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/golemoverhaul/models/item/candle_golem_block.json",
+        "data/golemoverhaul/recipes/candle_golem_block.json"
+      ],
+      "display_name_en_us": "Candle Golem Block",
+      "display_name_ru_ru": "Блок свечного голема",
+      "source_provenance": [
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/models/item/candle_golem_block.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:data/golemoverhaul/recipes/candle_golem_block.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "golemoverhaul:candle_golem_block",
+      "placed_registry_ids": [
+        "golemoverhaul:candle_golem_block"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "golemoverhaul:candle_golem_block"
+      ]
+    },
+    {
+      "item_id": "golemoverhaul:clay_golem_statue",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "golemoverhaul",
+      "mod_name": "Golem Overhaul",
+      "mod_version": "1.1.1",
+      "source_jar": "golemoverhaul-forge-1.20.1-1.1.1.jar",
+      "source_sha256": "115df3a7517b3cf8329ab35a00664d48e76282648c98843c8225ba2b5755cf90",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/golemoverhaul/models/item/clay_golem_statue.json",
+        "data/golemoverhaul/recipes/clay_golem_statue.json"
+      ],
+      "display_name_en_us": "Clay Golem Statue",
+      "display_name_ru_ru": "Статуя глиняного голема",
+      "source_provenance": [
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/models/item/clay_golem_statue.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:data/golemoverhaul/recipes/clay_golem_statue.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "golemoverhaul:clay_golem_statue",
+      "placed_registry_ids": [
+        "golemoverhaul:clay_golem_statue"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "golemoverhaul:clay_golem_statue"
+      ]
+    }
+  ]
+}

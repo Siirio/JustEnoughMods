@@ -24,7 +24,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class SettlementNetwork {
-    private static final String VERSION = "2";
+    private static final String VERSION = "3";
     private static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(JemSettlements.MOD_ID, "town"))
             .networkProtocolVersion(() -> VERSION).clientAcceptedVersions(VERSION::equals).serverAcceptedVersions(VERSION::equals).simpleChannel();
     private SettlementNetwork() {}
@@ -39,6 +39,11 @@ public final class SettlementNetwork {
                                 ? "jem.settlements.created" : "jem.settlements.found_failed", packet.name()), true);
                         sendOwned(player, true);
                     }
+                    context.get().setPacketHandled(true);
+                }).add();
+        CHANNEL.messageBuilder(FoodPolicyPacket.class, 3, NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(FoodPolicyPacket::encode).decoder(FoodPolicyPacket::decode).consumerMainThread((packet, context) -> {
+                    DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> com.siirio.jemsettlements.client.SettlementClientState.acceptFoodPolicy(packet));
                     context.get().setPacketHandled(true);
                 }).add();
         CHANNEL.messageBuilder(TownViewPacket.class, 1, NetworkDirection.PLAY_TO_CLIENT)
@@ -60,6 +65,7 @@ public final class SettlementNetwork {
 
     public static void found(String name, net.minecraft.core.BlockPos bell) { CHANNEL.sendToServer(new TownFoundPacket(name, bell)); }
     public static void treasury(boolean deposit, long amount) { CHANNEL.sendToServer(new TreasuryActionPacket(deposit, amount, java.util.UUID.randomUUID())); }
+    public static void sendFoodPolicy(ServerPlayer player) { send(player, FoodPolicyPacket.snapshot()); }
 
     public static void sendFounding(ServerPlayer player, net.minecraft.core.BlockPos bell) {
         CompoundTag view = new CompoundTag(); view.putBoolean("Founding", true); view.putLong("Bell", bell.asLong());
@@ -75,6 +81,7 @@ public final class SettlementNetwork {
     private static CompoundTag buildView(ServerPlayer player, TownRecord town) {
         CompoundTag view = new CompoundTag(); view.putUUID("Id", town.id()); view.putString("Name", town.name());
         view.putInt("Happiness", town.happiness()); view.putInt("Tax", town.taxPercent()); view.putLong("Center", town.center().asLong());
+        view.putInt("TerritoryRadius", town.territoryRadius()); view.putInt("TerritoryMinX", town.center().getX() - town.territoryRadius()); view.putInt("TerritoryMaxX", town.center().getX() + town.territoryRadius()); view.putInt("TerritoryMinZ", town.center().getZ() - town.territoryRadius()); view.putInt("TerritoryMaxZ", town.center().getZ() + town.territoryRadius());
         view.putString("Tier", town.tier().name()); view.putString("PrimarySpecialization", town.primarySpecialization().name()); view.putString("SecondarySpecialization", town.secondarySpecialization().name());
         view.putInt("Housing", town.housingScore()); view.putInt("Food", town.foodScore()); view.putInt("Safety", town.safetyScore()); view.putInt("Jobs", town.jobsScore()); view.putInt("Community", town.communityScore()); view.putInt("Decoration", town.decorationScore());
         view.putLong("Treasury", SettlementApi.treasuryBalance(player, town));
@@ -119,8 +126,11 @@ public final class SettlementNetwork {
             }
         }
         view.putInt("LoadedStorage", loaded); view.putLong("FoodUnits", food);
-        view.putLong("PendingNotSpendable", 0L); view.putLong("FailedQuarantined", 0L); view.putBoolean("SimulationActive", town.simulation().active());
+        view.putLong("PendingNotSpendable", town.simulation().production().stream().filter(value -> !value.delivered()).count());
+        view.putLong("FailedQuarantined", town.simulation().production().stream().filter(value -> value.status() == com.siirio.jemsettlements.simulation.ProductionObligation.Status.QUARANTINED).count());
+        view.putBoolean("SimulationActive", town.simulation().active());
         ListTag journal = new ListTag(); for (var entry : town.simulation().journal()) { CompoundTag row = entry.save(); journal.add(row); } view.put("SimulationJournal", journal);
+        ListTag production = new ListTag(); town.simulation().production().stream().skip(Math.max(0, town.simulation().production().size() - 16)).forEach(value -> production.add(value.save())); view.put("Production", production);
         ListTag items = new ListTag(); stock.entrySet().stream().sorted(Map.Entry.<String, Long>comparingByValue().reversed()).limit(32).forEach(entry -> {
             CompoundTag row = new CompoundTag(); row.putString("Item", entry.getKey()); row.putLong("Count", entry.getValue()); items.add(row);
         }); view.put("Stock", items);
@@ -128,6 +138,9 @@ public final class SettlementNetwork {
     }
 
     private static void send(ServerPlayer player, TownViewPacket packet) {
+        if (DedicatedSmp.active(player) && CHANNEL.isRemotePresent(player.connection.connection)) CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), packet);
+    }
+    private static void send(ServerPlayer player, FoodPolicyPacket packet) {
         if (DedicatedSmp.active(player) && CHANNEL.isRemotePresent(player.connection.connection)) CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), packet);
     }
 }

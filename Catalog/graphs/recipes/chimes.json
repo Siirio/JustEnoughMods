@@ -1,0 +1,277 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "chimes",
+    "name": "Chimes",
+    "version": "2.1.1"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "chimes:amethyst_chimes",
+      "mod_id": "chimes",
+      "mod_name": "Chimes",
+      "mod_version": "2.1.1",
+      "recipe_type": "crafting_shaped",
+      "machine_id": "crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:amethyst_shard",
+        "minecraft:iron_ingot",
+        "minecraft:string"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "chimes:amethyst_chimes"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Chimes-v2.1.1-1.20.1-Forge.jar:data/chimes/recipes/amethyst_chimes.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "chimes:bamboo_chimes",
+      "mod_id": "chimes",
+      "mod_name": "Chimes",
+      "mod_version": "2.1.1",
+      "recipe_type": "crafting_shaped",
+      "machine_id": "crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:bamboo",
+        "minecraft:string",
+        "minecraft:wooden_slabs"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "chimes:bamboo_chimes"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Chimes-v2.1.1-1.20.1-Forge.jar:data/chimes/recipes/bamboo_chimes.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "chimes:copper_chimes",
+      "mod_id": "chimes",
+      "mod_name": "Chimes",
+      "mod_version": "2.1.1",
+      "recipe_type": "crafting_shaped",
+      "machine_id": "crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:copper_ingot",
+        "minecraft:string",
+        "minecraft:wooden_slabs"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "chimes:copper_chimes"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Chimes-v2.1.1-1.20.1-Forge.jar:data/chimes/recipes/copper_chimes.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "chimes:decorations/amethyst_chimes",
+      "mod_id": "chimes",
+      "mod_name": "Chimes",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "chimes:amethyst_chimes",
+        "minecraft:amethyst_shard",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Chimes-v2.1.1-1.20.1-Forge.jar:data/chimes/advancements/recipes/decorations/amethyst_chimes.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "chimes:decorations/bamboo_chimes",
+      "mod_id": "chimes",
+      "mod_name": "Chimes",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "chimes:bamboo_chimes",
+        "minecraft:bamboo",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Chimes-v2.1.1-1.20.1-Forge.jar:data/chimes/advancements/recipes/decorations/bamboo_chimes.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "chimes:decorations/copper_chimes",
+      "mod_id": "chimes",
+      "mod_name": "Chimes",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "chimes:copper_chimes",
+        "minecraft:copper_ingot",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Chimes-v2.1.1-1.20.1-Forge.jar:data/chimes/advancements/recipes/decorations/copper_chimes.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "chimes:decorations/glass_bells",
+      "mod_id": "chimes",
+      "mod_name": "Chimes",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "chimes:glass_bells",
+        "minecraft:glass_bottle",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Chimes-v2.1.1-1.20.1-Forge.jar:data/chimes/advancements/recipes/decorations/glass_bells.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "chimes:decorations/iron_chimes",
+      "mod_id": "chimes",
+      "mod_name": "Chimes",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "chimes:iron_chimes",
+        "minecraft:inventory_changed",
+        "minecraft:iron_ingot",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Chimes-v2.1.1-1.20.1-Forge.jar:data/chimes/advancements/recipes/decorations/iron_chimes.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "chimes:glass_bells",
+      "mod_id": "chimes",
+      "mod_name": "Chimes",
+      "mod_version": "2.1.1",
+      "recipe_type": "crafting_shaped",
+      "machine_id": "crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:glass_bottle",
+        "minecraft:paper",
+        "minecraft:string"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "chimes:glass_bells"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Chimes-v2.1.1-1.20.1-Forge.jar:data/chimes/recipes/glass_bells.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "chimes:glass_bells_custom",
+      "mod_id": "chimes",
+      "mod_name": "Chimes",
+      "mod_version": "2.1.1",
+      "recipe_type": "chimes:crafting_wind_bell_custom",
+      "machine_id": "chimes:crafting_wind_bell_custom",
+      "ingredient_groups": [
+        "chimes:crafting_wind_bell_custom"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Chimes-v2.1.1-1.20.1-Forge.jar:data/chimes/recipes/glass_bells_custom.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "chimes:iron_chimes",
+      "mod_id": "chimes",
+      "mod_name": "Chimes",
+      "mod_version": "2.1.1",
+      "recipe_type": "crafting_shaped",
+      "machine_id": "crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:chain",
+        "minecraft:iron_ingot",
+        "minecraft:wooden_slabs"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "chimes:iron_chimes"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Chimes-v2.1.1-1.20.1-Forge.jar:data/chimes/recipes/iron_chimes.json"
+      ]
+    }
+  ]
+}

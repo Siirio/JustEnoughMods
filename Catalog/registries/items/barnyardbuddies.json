@@ -1,0 +1,3283 @@
+{
+  "schema_version": 1,
+  "registry_type": "items",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "barnyardbuddies",
+    "name": "Barnyard Buddies",
+    "version": "0.6..4"
+  },
+  "records": [
+    {
+      "registry_id": "barnyardbuddies:barn_door",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/barn_door.json",
+        "data/barnyardbuddies/recipes/barn_door_recipe.json"
+      ],
+      "display_name_en_us": "Barn Door",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/axe",
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/barn_door.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/barn_door_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:barn_door",
+      "acquisition_routes": [
+        "barnyardbuddies:barn_door_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:barn_door"
+    },
+    {
+      "registry_id": "barnyardbuddies:barn_trapdoor",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/barn_trapdoor.json",
+        "data/barnyardbuddies/recipes/barn_trapdoor_recipe.json"
+      ],
+      "display_name_en_us": "Barn Trapdoor",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/axe",
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/barn_trapdoor.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/barn_trapdoor_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:barn_trapdoor",
+      "acquisition_routes": [
+        "barnyardbuddies:barn_trapdoor_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:barn_trapdoor"
+    },
+    {
+      "registry_id": "barnyardbuddies:barnwall",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/barnwall.json",
+        "data/barnyardbuddies/recipes/barnwall_recipe.json"
+      ],
+      "display_name_en_us": "Barnwall",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/axe",
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/barnwall.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/barnwall_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:barnwall",
+      "acquisition_routes": [
+        "barnyardbuddies:barnwall_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:barnwall"
+    },
+    {
+      "registry_id": "barnyardbuddies:barnwall_slab",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/barnwall_slab.json",
+        "data/barnyardbuddies/recipes/barnwall_slab_recipe.json"
+      ],
+      "display_name_en_us": "Barnwall Slab",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/axe",
+        "minecraft:block/slabs",
+        "minecraft:blocks/mineable/axe",
+        "minecraft:blocks/slabs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/barnwall_slab.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/barnwall_slab_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:barnwall_slab",
+      "acquisition_routes": [
+        "barnyardbuddies:barnwall_slab_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:barnwall_slab"
+    },
+    {
+      "registry_id": "barnyardbuddies:barnwall_stairs",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/barnwall_stairs.json",
+        "data/barnyardbuddies/recipes/barnwall_stairs_recipe.json"
+      ],
+      "display_name_en_us": "Barnwall Stairs",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/axe",
+        "minecraft:block/stairs",
+        "minecraft:blocks/mineable/axe",
+        "minecraft:blocks/stairs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/barnwall_stairs.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/barnwall_stairs_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:barnwall_stairs",
+      "acquisition_routes": [
+        "barnyardbuddies:barnwall_stairs_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:barnwall_stairs"
+    },
+    {
+      "registry_id": "barnyardbuddies:barnwall_wall",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/barnwall_wall.json"
+      ],
+      "display_name_en_us": "Barnwall Wall",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/axe",
+        "minecraft:block/walls",
+        "minecraft:blocks/mineable/axe",
+        "minecraft:blocks/walls"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/barnwall_wall.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:barnwall_wall",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:barnwall_wall"
+    },
+    {
+      "registry_id": "barnyardbuddies:barnyard_buddies_icon",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/lang/en_us.json",
+        "assets/barnyardbuddies/models/item/barnyard_buddies_icon.json"
+      ],
+      "display_name_en_us": "Barnyard Buddies Icon",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/barnyard_buddies_icon.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:barnyard_buddies_icon"
+    },
+    {
+      "registry_id": "barnyardbuddies:chainlink_door_item",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/chainlink_door_item.json",
+        "data/barnyardbuddies/recipes/chainlink_door_recipe.json"
+      ],
+      "display_name_en_us": "Chainlink Door",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/chainlink_door_item.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/chainlink_door_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:chainlink_door_item",
+      "acquisition_routes": [
+        "barnyardbuddies:chainlink_door_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:chainlink_door_item"
+    },
+    {
+      "registry_id": "barnyardbuddies:chainlink_mesh",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/chainlink_mesh.json",
+        "data/barnyardbuddies/recipes/chainlink_mesh_recipe.json"
+      ],
+      "display_name_en_us": "Chainlink Mesh",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/chainlink_mesh.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/chainlink_mesh_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:chainlink_mesh",
+      "acquisition_routes": [
+        "barnyardbuddies:chainlink_mesh_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:chainlink_mesh"
+    },
+    {
+      "registry_id": "barnyardbuddies:chainlink_trapdoor",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/chainlink_trapdoor.json",
+        "data/barnyardbuddies/recipes/chainlink_trapdoor_recipe.json"
+      ],
+      "display_name_en_us": "Chainlink Trapdoor",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/chainlink_trapdoor.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/chainlink_trapdoor_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:chainlink_trapdoor",
+      "acquisition_routes": [
+        "barnyardbuddies:chainlink_trapdoor_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:chainlink_trapdoor"
+    },
+    {
+      "registry_id": "barnyardbuddies:clydesdale_horse_spawn_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/lang/en_us.json",
+        "assets/barnyardbuddies/models/item/clydesdale_horse_spawn_egg.json"
+      ],
+      "display_name_en_us": "Clydesdale Horse Spawn Egg",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/clydesdale_horse_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:clydesdale_horse_spawn_egg"
+    },
+    {
+      "registry_id": "barnyardbuddies:cochin_bantam_chicken_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/lang/en_us.json",
+        "assets/barnyardbuddies/models/item/cochin_bantam_chicken_egg.json"
+      ],
+      "display_name_en_us": "Cochin Bantam Egg",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "forge:item/eggs",
+        "forge:items/eggs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/cochin_bantam_chicken_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:cochin_bantam_chicken_egg"
+    },
+    {
+      "registry_id": "barnyardbuddies:cochin_bantam_chicken_egg.description_0",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/lang/en_us.json"
+      ],
+      "display_name_en_us": "Infertile",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:cochin_bantam_chicken_egg.description_0"
+    },
+    {
+      "registry_id": "barnyardbuddies:cochin_bantam_spawn_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/lang/en_us.json",
+        "assets/barnyardbuddies/models/item/cochin_bantam_spawn_egg.json"
+      ],
+      "display_name_en_us": "Cochin Bantam Chicken Spawn Egg",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/cochin_bantam_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:cochin_bantam_spawn_egg"
+    },
+    {
+      "registry_id": "barnyardbuddies:coyote_spawn_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/lang/en_us.json",
+        "assets/barnyardbuddies/models/item/coyote_spawn_egg.json"
+      ],
+      "display_name_en_us": "Coyote Spawn Egg",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/coyote_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:coyote_spawn_egg"
+    },
+    {
+      "registry_id": "barnyardbuddies:enrichment_brush",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/lang/en_us.json",
+        "assets/barnyardbuddies/models/item/enrichment_brush.json",
+        "data/barnyardbuddies/recipes/enrichment_brush_recipe.json"
+      ],
+      "display_name_en_us": "Enrichment Brush",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:item/axes",
+        "minecraft:item/pickaxes",
+        "minecraft:item/swords",
+        "minecraft:items/axes",
+        "minecraft:items/pickaxes",
+        "minecraft:items/swords"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/enrichment_brush.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/enrichment_brush_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "barnyardbuddies:enrichment_brush_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:enrichment_brush"
+    },
+    {
+      "registry_id": "barnyardbuddies:enrichment_brush.description_0",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/lang/en_us.json"
+      ],
+      "display_name_en_us": "brush certain farm animals to make them happy",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:enrichment_brush.description_0"
+    },
+    {
+      "registry_id": "barnyardbuddies:fancy_quilt_fabric",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/fancy_quilt_fabric.json",
+        "data/barnyardbuddies/recipes/blue_quilt_recipe.json"
+      ],
+      "display_name_en_us": "Wandering Quilt Fabric",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/fancy_quilt_fabric.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/blue_quilt_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:fancy_quilt_fabric",
+      "acquisition_routes": [
+        "barnyardbuddies:blue_quilt_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:fancy_quilt_fabric"
+    },
+    {
+      "registry_id": "barnyardbuddies:fancy_quilt_rug",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/fancy_quilt_rug.json",
+        "data/barnyardbuddies/recipes/blue_quilt_rug_recipe.json"
+      ],
+      "display_name_en_us": "Wandering Quilt Carpet",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "barnyardbuddies:item/quilts",
+        "barnyardbuddies:items/quilts"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/fancy_quilt_rug.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/blue_quilt_rug_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:fancy_quilt_rug",
+      "acquisition_routes": [
+        "barnyardbuddies:blue_quilt_rug_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:fancy_quilt_rug"
+    },
+    {
+      "registry_id": "barnyardbuddies:flemish_giant_rabbit_spawn_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/lang/en_us.json",
+        "assets/barnyardbuddies/models/item/flemish_giant_rabbit_spawn_egg.json"
+      ],
+      "display_name_en_us": "Flemish Giant Rabbit Spawn Egg",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/flemish_giant_rabbit_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:flemish_giant_rabbit_spawn_egg"
+    },
+    {
+      "registry_id": "barnyardbuddies:great_pyrenees_dog_spawn_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/lang/en_us.json",
+        "assets/barnyardbuddies/models/item/great_pyrenees_dog_spawn_egg.json"
+      ],
+      "display_name_en_us": "Great Pyrenees Dog Spawn Egg",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/great_pyrenees_dog_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:great_pyrenees_dog_spawn_egg"
+    },
+    {
+      "registry_id": "barnyardbuddies:hamphshire_pig_spawn_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/lang/en_us.json",
+        "assets/barnyardbuddies/models/item/hamphshire_pig_spawn_egg.json"
+      ],
+      "display_name_en_us": "Hamphshire Pig Spawn Egg",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/hamphshire_pig_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:hamphshire_pig_spawn_egg"
+    },
+    {
+      "registry_id": "barnyardbuddies:horseshoe",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/horseshoe.json",
+        "data/barnyardbuddies/recipes/horseshoe_recipe.json"
+      ],
+      "display_name_en_us": "Horseshoe",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/horseshoe.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/horseshoe_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:horseshoe",
+      "acquisition_routes": [
+        "barnyardbuddies:horseshoe_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:horseshoe"
+    },
+    {
+      "registry_id": "barnyardbuddies:house_mouse_spawn_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/lang/en_us.json",
+        "assets/barnyardbuddies/models/item/house_mouse_spawn_egg.json"
+      ],
+      "display_name_en_us": "House Mouse Spawn Egg",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/house_mouse_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:house_mouse_spawn_egg"
+    },
+    {
+      "registry_id": "barnyardbuddies:iron_corral_bars",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/iron_corral_bars.json",
+        "data/barnyardbuddies/recipes/iron_corral_bars_recipe.json",
+        "data/barnyardbuddies/recipes/iron_corral_bars_recipe_2.json"
+      ],
+      "display_name_en_us": "Iron Coral Bars",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:block/needs_stone_tool",
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/needs_stone_tool"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/iron_corral_bars.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/iron_corral_bars_recipe.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/iron_corral_bars_recipe_2.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:iron_corral_bars",
+      "acquisition_routes": [
+        "barnyardbuddies:iron_corral_bars_recipe",
+        "barnyardbuddies:iron_corral_bars_recipe_2"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:iron_corral_bars"
+    },
+    {
+      "registry_id": "barnyardbuddies:iron_pen_bars",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/iron_pen_bars.json"
+      ],
+      "display_name_en_us": "Iron Pen Bars",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:block/needs_stone_tool",
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/needs_stone_tool"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/iron_pen_bars.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:iron_pen_bars",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:iron_pen_bars"
+    },
+    {
+      "registry_id": "barnyardbuddies:iron_pen_trapdoor",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/iron_pen_trapdoor.json",
+        "data/barnyardbuddies/recipes/iron_pen_bars_recipe.json",
+        "data/barnyardbuddies/recipes/iron_pen_trapdoor_recipe.json"
+      ],
+      "display_name_en_us": "Iron Pen Trapdoor",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/pickaxe",
+        "minecraft:block/needs_stone_tool",
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/needs_stone_tool"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/iron_pen_trapdoor.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/iron_pen_bars_recipe.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/iron_pen_trapdoor_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:iron_pen_trapdoor",
+      "acquisition_routes": [
+        "barnyardbuddies:iron_pen_bars_recipe",
+        "barnyardbuddies:iron_pen_trapdoor_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:iron_pen_trapdoor"
+    },
+    {
+      "registry_id": "barnyardbuddies:jacobs_sheep_spawn_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/lang/en_us.json",
+        "assets/barnyardbuddies/models/item/jacobs_sheep_spawn_egg.json"
+      ],
+      "display_name_en_us": "Jacob's Sheep Spawn Egg",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/jacobs_sheep_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:jacobs_sheep_spawn_egg"
+    },
+    {
+      "registry_id": "barnyardbuddies:light_gray_quilt_awning",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/light_gray_quilt_awning.json",
+        "data/barnyardbuddies/recipes/light_gray_awning_recipe.json"
+      ],
+      "display_name_en_us": "Light Gray Quilt Awning",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/axe",
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/light_gray_quilt_awning.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/light_gray_awning_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:light_gray_quilt_awning",
+      "acquisition_routes": [
+        "barnyardbuddies:light_gray_awning_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:light_gray_quilt_awning"
+    },
+    {
+      "registry_id": "barnyardbuddies:light_gray_quilt_carpet",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/light_gray_quilt_carpet.json",
+        "data/barnyardbuddies/recipes/light_gray_quilt_rug_recipe.json"
+      ],
+      "display_name_en_us": "Light Gray Quilt Carpet",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "barnyardbuddies:item/quilts",
+        "barnyardbuddies:items/quilts"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/light_gray_quilt_carpet.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/light_gray_quilt_rug_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:light_gray_quilt_carpet",
+      "acquisition_routes": [
+        "barnyardbuddies:light_gray_quilt_rug_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:light_gray_quilt_carpet"
+    },
+    {
+      "registry_id": "barnyardbuddies:light_gray_quilt_fabric",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/light_gray_quilt_fabric.json",
+        "data/barnyardbuddies/recipes/light_gray_quilt_recipe.json"
+      ],
+      "display_name_en_us": "Light Gray Quilt Fabric",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/light_gray_quilt_fabric.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/light_gray_quilt_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:light_gray_quilt_fabric",
+      "acquisition_routes": [
+        "barnyardbuddies:light_gray_quilt_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:light_gray_quilt_fabric"
+    },
+    {
+      "registry_id": "barnyardbuddies:manx_cat_spawn_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/lang/en_us.json",
+        "assets/barnyardbuddies/models/item/manx_cat_spawn_egg.json"
+      ],
+      "display_name_en_us": "Manx Cat Spawn Egg",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/manx_cat_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:manx_cat_spawn_egg"
+    },
+    {
+      "registry_id": "barnyardbuddies:pet_kibble",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/lang/en_us.json",
+        "assets/barnyardbuddies/models/item/pet_kibble.json",
+        "data/barnyardbuddies/recipes/pet_kibble_recipe.json",
+        "data/barnyardbuddies/recipes/pet_kibble_recipe_2.json"
+      ],
+      "display_name_en_us": "Pet Kibble",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "barnyardbuddies:item/workpet_foods",
+        "barnyardbuddies:items/workpet_foods",
+        "minecraft:item/meat",
+        "minecraft:items/meat"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/pet_kibble.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/pet_kibble_recipe.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/pet_kibble_recipe_2.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "barnyardbuddies:pet_kibble_recipe",
+        "barnyardbuddies:pet_kibble_recipe_2"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:pet_kibble"
+    },
+    {
+      "registry_id": "barnyardbuddies:pet_kibble.description_0",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/lang/en_us.json"
+      ],
+      "display_name_en_us": "Used to heal Manx Cats & Great Pyrenees",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:pet_kibble.description_0"
+    },
+    {
+      "registry_id": "barnyardbuddies:pyrenees_protective_vest",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/lang/en_us.json",
+        "assets/barnyardbuddies/models/item/pyrenees_protective_vest.json",
+        "data/barnyardbuddies/recipes/pyrenees_vest_recipe.json"
+      ],
+      "display_name_en_us": "Pyrenees Armor",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/pyrenees_protective_vest.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/pyrenees_vest_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "barnyardbuddies:pyrenees_vest_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:pyrenees_protective_vest"
+    },
+    {
+      "registry_id": "barnyardbuddies:pyrenees_protective_vest.description_0",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/lang/en_us.json"
+      ],
+      "display_name_en_us": "Shift Right Click to equipt on Pyrenees",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:pyrenees_protective_vest.description_0"
+    },
+    {
+      "registry_id": "barnyardbuddies:red_quilt_awning",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/red_quilt_awning.json",
+        "data/barnyardbuddies/recipes/red_quilt_awning_recipe.json"
+      ],
+      "display_name_en_us": "Red Quilt Awning",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/axe",
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/red_quilt_awning.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/red_quilt_awning_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:red_quilt_awning",
+      "acquisition_routes": [
+        "barnyardbuddies:red_quilt_awning_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:red_quilt_awning"
+    },
+    {
+      "registry_id": "barnyardbuddies:red_quilt_carpet",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/red_quilt_carpet.json",
+        "data/barnyardbuddies/recipes/red_quilt_rug_recipe.json"
+      ],
+      "display_name_en_us": "Red Quilt Carpet",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "barnyardbuddies:item/quilts",
+        "barnyardbuddies:items/quilts"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/red_quilt_carpet.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/red_quilt_rug_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:red_quilt_carpet",
+      "acquisition_routes": [
+        "barnyardbuddies:red_quilt_rug_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:red_quilt_carpet"
+    },
+    {
+      "registry_id": "barnyardbuddies:red_quilt_fabric",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/red_quilt_fabric.json",
+        "data/barnyardbuddies/recipes/red_quilt_recipe.json"
+      ],
+      "display_name_en_us": "Red Quilt Fabric",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/red_quilt_fabric.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/red_quilt_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:red_quilt_fabric",
+      "acquisition_routes": [
+        "barnyardbuddies:red_quilt_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:red_quilt_fabric"
+    },
+    {
+      "registry_id": "barnyardbuddies:rustic_barn_wall_slab",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/rustic_barn_wall_slab.json",
+        "data/barnyardbuddies/recipes/rustic_barnwall_slab_recipe.json"
+      ],
+      "display_name_en_us": "Rustic Barnwall Slab",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/axe",
+        "minecraft:block/slabs",
+        "minecraft:blocks/mineable/axe",
+        "minecraft:blocks/slabs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/rustic_barn_wall_slab.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/rustic_barnwall_slab_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:rustic_barn_wall_slab",
+      "acquisition_routes": [
+        "barnyardbuddies:rustic_barnwall_slab_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:rustic_barn_wall_slab"
+    },
+    {
+      "registry_id": "barnyardbuddies:rustic_barn_wall_stairs",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/rustic_barn_wall_stairs.json",
+        "data/barnyardbuddies/recipes/rustic_barnwall_stairs_recipe.json"
+      ],
+      "display_name_en_us": "Rustic Barnwall Stairs",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/axe",
+        "minecraft:block/stairs",
+        "minecraft:blocks/mineable/axe",
+        "minecraft:blocks/stairs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/rustic_barn_wall_stairs.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/rustic_barnwall_stairs_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:rustic_barn_wall_stairs",
+      "acquisition_routes": [
+        "barnyardbuddies:rustic_barnwall_stairs_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:rustic_barn_wall_stairs"
+    },
+    {
+      "registry_id": "barnyardbuddies:rustic_barn_wall_wall",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/rustic_barn_wall_wall.json",
+        "data/barnyardbuddies/recipes/rustic_barnwall_wall_recipe.json"
+      ],
+      "display_name_en_us": "Rustic Barnwall Wall",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/axe",
+        "minecraft:block/walls",
+        "minecraft:blocks/mineable/axe",
+        "minecraft:blocks/walls"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/rustic_barn_wall_wall.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/rustic_barnwall_wall_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:rustic_barn_wall_wall",
+      "acquisition_routes": [
+        "barnyardbuddies:rustic_barnwall_wall_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:rustic_barn_wall_wall"
+    },
+    {
+      "registry_id": "barnyardbuddies:rustic_barnwall",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/rustic_barnwall.json",
+        "data/barnyardbuddies/recipes/barnwall_wall_recipe.json",
+        "data/barnyardbuddies/recipes/rustic_barnwall_recipe.json"
+      ],
+      "display_name_en_us": "Rustic Barnwall",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/axe",
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/rustic_barnwall.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/barnwall_wall_recipe.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/rustic_barnwall_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:rustic_barnwall",
+      "acquisition_routes": [
+        "barnyardbuddies:barnwall_wall_recipe",
+        "barnyardbuddies:rustic_barnwall_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:rustic_barnwall"
+    },
+    {
+      "registry_id": "barnyardbuddies:silkie_armor_helmet",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/lang/en_us.json",
+        "assets/barnyardbuddies/models/item/silkie_armor_helmet.json",
+        "data/barnyardbuddies/recipes/silkie_cap_recipe.json"
+      ],
+      "display_name_en_us": "Silkie Feather Cap",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:item/head_armor",
+        "minecraft:items/head_armor"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/silkie_armor_helmet.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/silkie_cap_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "barnyardbuddies:silkie_cap_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:silkie_armor_helmet"
+    },
+    {
+      "registry_id": "barnyardbuddies:silkie_armor_helmet.description_0",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/lang/en_us.json"
+      ],
+      "display_name_en_us": "Fluffy!",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:silkie_armor_helmet.description_0"
+    },
+    {
+      "registry_id": "barnyardbuddies:silkie_chicken_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/lang/en_us.json",
+        "assets/barnyardbuddies/models/item/silkie_chicken_egg.json"
+      ],
+      "display_name_en_us": "Silkie Egg",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "forge:item/eggs",
+        "forge:items/eggs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/silkie_chicken_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:silkie_chicken_egg"
+    },
+    {
+      "registry_id": "barnyardbuddies:silkie_chicken_egg.description_0",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/lang/en_us.json"
+      ],
+      "display_name_en_us": "Infertile",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:silkie_chicken_egg.description_0"
+    },
+    {
+      "registry_id": "barnyardbuddies:silkie_chicken_spawn_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/lang/en_us.json",
+        "assets/barnyardbuddies/models/item/silkie_chicken_spawn_egg.json"
+      ],
+      "display_name_en_us": "Silkie Chicken Spawn Egg",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/silkie_chicken_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:silkie_chicken_spawn_egg"
+    },
+    {
+      "registry_id": "barnyardbuddies:silkie_feather",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/lang/en_us.json",
+        "assets/barnyardbuddies/models/item/silkie_feather.json"
+      ],
+      "display_name_en_us": "Silkie Feather",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "forge:item/feathers",
+        "forge:items/feathers"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/silkie_feather.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:silkie_feather"
+    },
+    {
+      "registry_id": "barnyardbuddies:spotted_carpet",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/spotted_carpet.json",
+        "data/barnyardbuddies/recipes/spotted_carpet_recipe.json"
+      ],
+      "display_name_en_us": "Spotted Carpet",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "barnyardbuddies:item/quilts",
+        "barnyardbuddies:items/quilts"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/spotted_carpet.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/spotted_carpet_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:spotted_carpet",
+      "acquisition_routes": [
+        "barnyardbuddies:spotted_carpet_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:spotted_carpet"
+    },
+    {
+      "registry_id": "barnyardbuddies:spotted_quilt",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/spotted_quilt.json",
+        "data/barnyardbuddies/recipes/spotted_quilt_recipe.json"
+      ],
+      "display_name_en_us": "Spotted Quilt Fabric",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/spotted_quilt.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/spotted_quilt_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:spotted_quilt",
+      "acquisition_routes": [
+        "barnyardbuddies:spotted_quilt_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:spotted_quilt"
+    },
+    {
+      "registry_id": "barnyardbuddies:spotted_quilt_awning",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/spotted_quilt_awning.json",
+        "data/barnyardbuddies/recipes/spotted_quilt_awning_recipe_1.json",
+        "data/barnyardbuddies/recipes/spotted_quilt_awning_recipe_2.json"
+      ],
+      "display_name_en_us": "Spotted Quilt Awning",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/axe",
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/spotted_quilt_awning.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/spotted_quilt_awning_recipe_1.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/spotted_quilt_awning_recipe_2.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:spotted_quilt_awning",
+      "acquisition_routes": [
+        "barnyardbuddies:spotted_quilt_awning_recipe_1",
+        "barnyardbuddies:spotted_quilt_awning_recipe_2"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:spotted_quilt_awning"
+    },
+    {
+      "registry_id": "barnyardbuddies:spotted_quilt_rug",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/spotted_quilt_rug.json",
+        "data/barnyardbuddies/recipes/spotted_quilt_rug_recipe.json"
+      ],
+      "display_name_en_us": "Spotted Quilt Carpet",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "barnyardbuddies:item/quilts",
+        "barnyardbuddies:items/quilts"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/spotted_quilt_rug.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/spotted_quilt_rug_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:spotted_quilt_rug",
+      "acquisition_routes": [
+        "barnyardbuddies:spotted_quilt_rug_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:spotted_quilt_rug"
+    },
+    {
+      "registry_id": "barnyardbuddies:spotted_wool",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/spotted_wool.json"
+      ],
+      "display_name_en_us": "Spotted Wool",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/spotted_wool.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:spotted_wool",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:spotted_wool"
+    },
+    {
+      "registry_id": "barnyardbuddies:trader_clydesdale_spawn_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/lang/en_us.json",
+        "assets/barnyardbuddies/models/item/trader_clydesdale_spawn_egg.json"
+      ],
+      "display_name_en_us": "Trader Clydesdale Horse Spawn Egg",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/trader_clydesdale_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:trader_clydesdale_spawn_egg"
+    },
+    {
+      "registry_id": "barnyardbuddies:wandering_quilt_awning",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/wandering_quilt_awning.json",
+        "data/barnyardbuddies/recipes/wandering_quilt_awning_recipe.json"
+      ],
+      "display_name_en_us": "Wandering Quilt Awning",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/axe",
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/wandering_quilt_awning.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/wandering_quilt_awning_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:wandering_quilt_awning",
+      "acquisition_routes": [
+        "barnyardbuddies:wandering_quilt_awning_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:wandering_quilt_awning"
+    },
+    {
+      "registry_id": "barnyardbuddies:yellow_quilt_awning",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/yellow_quilt_awning.json",
+        "data/barnyardbuddies/recipes/yellow_quilt_awning_recipe.json"
+      ],
+      "display_name_en_us": "Yellow Quilt Awning",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:block/mineable/axe",
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/yellow_quilt_awning.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/yellow_quilt_awning_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:yellow_quilt_awning",
+      "acquisition_routes": [
+        "barnyardbuddies:yellow_quilt_awning_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:yellow_quilt_awning"
+    },
+    {
+      "registry_id": "barnyardbuddies:yellow_quilt_carpet",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/yellow_quilt_carpet.json",
+        "data/barnyardbuddies/recipes/yellow_quilt_carpet_recipe.json"
+      ],
+      "display_name_en_us": "Yellow Quilt Carpet",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "barnyardbuddies:item/quilts",
+        "barnyardbuddies:items/quilts"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/yellow_quilt_carpet.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/yellow_quilt_carpet_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:yellow_quilt_carpet",
+      "acquisition_routes": [
+        "barnyardbuddies:yellow_quilt_carpet_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:yellow_quilt_carpet"
+    },
+    {
+      "registry_id": "barnyardbuddies:yellow_quilt_fabric",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/models/item/yellow_quilt_fabric.json",
+        "data/barnyardbuddies/recipes/yellow_quilt_recipe.json"
+      ],
+      "display_name_en_us": "Yellow Quilt Fabric",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/yellow_quilt_fabric.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/yellow_quilt_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "barnyardbuddies:yellow_quilt_fabric",
+      "acquisition_routes": [
+        "barnyardbuddies:yellow_quilt_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:barnyardbuddies:yellow_quilt_fabric"
+    }
+  ]
+}

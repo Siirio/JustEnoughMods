@@ -1,0 +1,532 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "toms_storage",
+    "name": "Tom's Simple Storage Mod",
+    "version": "${file.jarVersion}"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "toms_storage:adv_wireless_terminal",
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "minecraft:netherite_ingot",
+        "minecraft:netherite_upgrade_smithing_template",
+        "minecraft:smithing_transform",
+        "toms_storage:ts.wireless_terminal"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "toms_storage:ts.adv_wireless_terminal"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/adv_wireless_terminal.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "toms_storage:crafting_terminal",
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:gems/diamond",
+        "minecraft:crafting_shaped",
+        "minecraft:crafting_table",
+        "toms_storage:ts.storage_terminal"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "toms_storage:ts.crafting_terminal"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/crafting_terminal.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "toms_storage:inventory_cable",
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:chests/wooden",
+        "forge:rods/wooden",
+        "minecraft:crafting_shaped",
+        "minecraft:planks",
+        "minecraft:trapdoors"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "toms_storage:ts.inventory_cable"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/inventory_cable.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "toms_storage:inventory_cable_connector",
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:chests/wooden",
+        "forge:ender_pearls",
+        "forge:gems/diamond",
+        "minecraft:crafting_shaped",
+        "minecraft:planks",
+        "minecraft:quartz",
+        "toms_storage:ts.inventory_cable"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "toms_storage:ts.inventory_cable_connector"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/inventory_cable_connector.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "toms_storage:inventory_cable_connector_filtered",
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:paper",
+        "minecraft:quartz",
+        "toms_storage:ts.inventory_cable_connector"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "toms_storage:ts.inventory_cable_connector_filtered"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/inventory_cable_connector_filtered.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "toms_storage:inventory_cable_connector_framed",
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:rods/wooden",
+        "minecraft:crafting_shaped",
+        "toms_storage:ts.inventory_cable_connector"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "toms_storage:ts.inventory_cable_connector_framed"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/inventory_cable_connector_framed.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "toms_storage:inventory_cable_framed",
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:rods/wooden",
+        "minecraft:crafting_shaped",
+        "toms_storage:ts.inventory_cable"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "toms_storage:ts.inventory_cable_framed"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/inventory_cable_framed.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "toms_storage:inventory_connector",
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:chests/wooden",
+        "forge:ender_pearls",
+        "forge:gems/diamond",
+        "minecraft:comparator",
+        "minecraft:crafting_shaped",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "toms_storage:ts.inventory_connector"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/inventory_connector.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "toms_storage:inventory_hopper_basic",
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:hopper",
+        "minecraft:planks",
+        "toms_storage:ts.inventory_cable"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "toms_storage:ts.inventory_hopper_basic"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/inventory_hopper_basic.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "toms_storage:inventory_proxy",
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:chests/wooden",
+        "minecraft:crafting_shaped",
+        "minecraft:planks",
+        "minecraft:trapdoors"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "toms_storage:ts.inventory_proxy"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/inventory_proxy.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "toms_storage:item_filter",
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:rods/wooden",
+        "minecraft:crafting_shaped",
+        "minecraft:redstone",
+        "minecraft:wool"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "toms_storage:ts.item_filter"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/item_filter.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "toms_storage:level_emitter",
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:comparator",
+        "minecraft:crafting_shaped",
+        "minecraft:planks",
+        "minecraft:redstone_torch",
+        "toms_storage:ts.inventory_cable"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "toms_storage:ts.level_emitter"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/level_emitter.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "toms_storage:open_crate",
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:chests/wooden",
+        "forge:rods/wooden",
+        "minecraft:crafting_shaped",
+        "minecraft:planks",
+        "minecraft:trapdoors"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "toms_storage:ts.open_crate"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/open_crate.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "toms_storage:paint_kit",
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:dyes/black",
+        "forge:dyes/blue",
+        "forge:dyes/green",
+        "forge:dyes/red",
+        "forge:rods/wooden",
+        "minecraft:bucket",
+        "minecraft:crafting_shaped",
+        "minecraft:water_bucket",
+        "minecraft:wool"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "toms_storage:ts.paint_kit"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/paint_kit.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "toms_storage:poly_item_filter",
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:comparator",
+        "minecraft:crafting_shapeless",
+        "minecraft:diamond",
+        "toms_storage:ts.item_filter"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "toms_storage:ts.polymorphic_item_filter"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/poly_item_filter.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "toms_storage:storage_terminal",
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:chests/wooden",
+        "forge:glass",
+        "minecraft:comparator",
+        "minecraft:crafting_shaped",
+        "minecraft:glowstone",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "toms_storage:ts.storage_terminal"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/storage_terminal.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "toms_storage:tag_item_filter",
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:comparator",
+        "minecraft:crafting_shapeless",
+        "minecraft:name_tag",
+        "toms_storage:ts.item_filter"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "toms_storage:ts.tag_item_filter"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/tag_item_filter.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "toms_storage:trim",
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:chests/wooden",
+        "forge:rods/wooden",
+        "minecraft:crafting_shaped",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "toms_storage:ts.trim"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/trim.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "toms_storage:trim_clean",
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "minecraft:water_bucket",
+        "toms_storage:ts.painted_trim"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "toms_storage:ts.trim"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/trim_clean.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "toms_storage:wireless_terminal",
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:ender_pearls",
+        "forge:glass",
+        "minecraft:comparator",
+        "minecraft:crafting_shaped",
+        "minecraft:glowstone",
+        "minecraft:planks",
+        "minecraft:spyglass"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "toms_storage:ts.wireless_terminal"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/wireless_terminal.json"
+      ]
+    }
+  ]
+}

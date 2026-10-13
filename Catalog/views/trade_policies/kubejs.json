@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "registry_type": "trade_policies",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "kubejs",
+    "name": "KubeJS",
+    "version": "2001.6.5-build.26"
+  },
+  "records": [
+    {
+      "item_id": "kubejs:generated_bucket",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "kubejs",
+      "mod_name": "KubeJS",
+      "mod_version": "2001.6.5-build.26",
+      "source_jar": "kubejs-forge-2001.6.5-build.26.jar",
+      "source_sha256": "1769312192fbf9d72f45054ba61130523bfb471b5f480a4bff8c210ec09400bb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/kubejs/models/item/generated_bucket.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "kubejs-forge-2001.6.5-build.26.jar:assets/kubejs/models/item/generated_bucket.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    }
+  ]
+}

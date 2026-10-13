@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "rottencreatures",
+    "name": "Rotten Creatures",
+    "version": "1.1.0"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "rottencreatures:brewing/corrupted_wart",
+      "mod_id": "rottencreatures",
+      "mod_name": "Rotten Creatures",
+      "mod_version": "1.1.0",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:nether_wart",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "rottencreatures:corrupted_wart",
+        "rottencreatures:frozen_rotten_flesh"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "rottencreatures-forge-1.20.1-1.1.0.jar:data/rottencreatures/advancements/recipes/brewing/corrupted_wart.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "rottencreatures:corrupted_wart",
+      "mod_id": "rottencreatures",
+      "mod_name": "Rotten Creatures",
+      "mod_version": "1.1.0",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:nether_wart",
+        "rottencreatures:frozen_rotten_flesh"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "rottencreatures:corrupted_wart"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "rottencreatures-forge-1.20.1-1.1.0.jar:data/rottencreatures/recipes/corrupted_wart.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "rottencreatures:food/rotten_flesh_from_campfire_cooking",
+      "mod_id": "rottencreatures",
+      "mod_name": "Rotten Creatures",
+      "mod_version": "1.1.0",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "minecraft:rotten_flesh_from_campfire_cooking",
+        "rottencreatures:frozen_rotten_flesh"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "rottencreatures-forge-1.20.1-1.1.0.jar:data/rottencreatures/advancements/recipes/food/rotten_flesh_from_campfire_cooking.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "rottencreatures:food/rotten_flesh_from_smoking",
+      "mod_id": "rottencreatures",
+      "mod_name": "Rotten Creatures",
+      "mod_version": "1.1.0",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "minecraft:rotten_flesh_from_smoking",
+        "rottencreatures:frozen_rotten_flesh"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "rottencreatures-forge-1.20.1-1.1.0.jar:data/rottencreatures/advancements/recipes/food/rotten_flesh_from_smoking.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "rottencreatures:redstone/tnt_barrel",
+      "mod_id": "rottencreatures",
+      "mod_name": "Rotten Creatures",
+      "mod_version": "1.1.0",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:barrel",
+        "minecraft:gunpowder",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "rottencreatures:tnt_barrel"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "rottencreatures-forge-1.20.1-1.1.0.jar:data/rottencreatures/advancements/recipes/redstone/tnt_barrel.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "rottencreatures:rotten_flesh_from_campfire_cooking",
+      "mod_id": "rottencreatures",
+      "mod_name": "Rotten Creatures",
+      "mod_version": "1.1.0",
+      "recipe_type": "minecraft:campfire_cooking",
+      "machine_id": "minecraft:campfire_cooking",
+      "ingredient_groups": [
+        "minecraft:campfire_cooking",
+        "rottencreatures:frozen_rotten_flesh"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:rotten_flesh"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "rottencreatures-forge-1.20.1-1.1.0.jar:data/rottencreatures/recipes/rotten_flesh_from_campfire_cooking.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "rottencreatures:rotten_flesh_from_smoking",
+      "mod_id": "rottencreatures",
+      "mod_name": "Rotten Creatures",
+      "mod_version": "1.1.0",
+      "recipe_type": "minecraft:smoking",
+      "machine_id": "minecraft:smoking",
+      "ingredient_groups": [
+        "minecraft:smoking",
+        "rottencreatures:frozen_rotten_flesh"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:rotten_flesh"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "rottencreatures-forge-1.20.1-1.1.0.jar:data/rottencreatures/recipes/rotten_flesh_from_smoking.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "rottencreatures:tnt_barrel",
+      "mod_id": "rottencreatures",
+      "mod_name": "Rotten Creatures",
+      "mod_version": "1.1.0",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:barrel",
+        "minecraft:crafting_shaped",
+        "minecraft:gunpowder"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "rottencreatures:tnt_barrel"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "rottencreatures-forge-1.20.1-1.1.0.jar:data/rottencreatures/recipes/tnt_barrel.json"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "registry_type": "placeables",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "endrem",
+    "name": "End Remastered",
+    "version": "${file.jarVersion}"
+  },
+  "records": [
+    {
+      "item_id": "endrem:ancient_portal_frame",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "endrem",
+      "mod_name": "End Remastered",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "endrem_forge-5.3.3-R-1.20.1.jar",
+      "source_sha256": "19295ca4a798f2e813f359fa376f586bc57fadacd78b7e32440257f9f8bf2557",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/endrem/models/item/ancient_portal_frame.json"
+      ],
+      "display_name_en_us": "Ancient Portal Frame",
+      "display_name_ru_ru": "Рамка древнего портала",
+      "source_provenance": [
+        "endrem_forge-5.3.3-R-1.20.1.jar:assets/endrem/models/item/ancient_portal_frame.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "endrem:ancient_portal_frame",
+      "placed_registry_ids": [
+        "endrem:ancient_portal_frame"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": []
+    }
+  ]
+}

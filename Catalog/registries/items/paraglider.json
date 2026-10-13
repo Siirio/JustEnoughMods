@@ -1,0 +1,784 @@
+{
+  "schema_version": 1,
+  "registry_type": "items",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "paraglider",
+    "name": "Paraglider",
+    "version": "20.1.3"
+  },
+  "records": [
+    {
+      "registry_id": "paraglider:anti_vessel",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "source_jar": "Paraglider-forge-20.1.3.jar",
+      "source_sha256": "3528e4d424682a415ae97b9597e5ed0567e5a194b4aeb30ae364e962da43b36a",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/paraglider/lang/en_us.json",
+        "assets/paraglider/models/item/anti_vessel.json"
+      ],
+      "display_name_en_us": "Anti-Vessel",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:assets/paraglider/lang/en_us.json",
+        "Paraglider-forge-20.1.3.jar:assets/paraglider/models/item/anti_vessel.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:paraglider:anti_vessel"
+    },
+    {
+      "registry_id": "paraglider:deku_leaf",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "source_jar": "Paraglider-forge-20.1.3.jar",
+      "source_sha256": "3528e4d424682a415ae97b9597e5ed0567e5a194b4aeb30ae364e962da43b36a",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/paraglider/lang/en_us.json",
+        "assets/paraglider/models/item/deku_leaf.json",
+        "data/paraglider/recipes/cosmetic/deku_leaf.json"
+      ],
+      "display_name_en_us": "Deku Leaf",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "jemcompat:items/transport",
+        "paraglider:items/paragliders"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:assets/paraglider/lang/en_us.json",
+        "Paraglider-forge-20.1.3.jar:assets/paraglider/models/item/deku_leaf.json",
+        "Paraglider-forge-20.1.3.jar:data/paraglider/recipes/cosmetic/deku_leaf.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "paraglider:cosmetic/deku_leaf"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:paraglider:deku_leaf"
+    },
+    {
+      "registry_id": "paraglider:deku_leaf_on",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "source_jar": "Paraglider-forge-20.1.3.jar",
+      "source_sha256": "3528e4d424682a415ae97b9597e5ed0567e5a194b4aeb30ae364e962da43b36a",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/paraglider/models/item/deku_leaf_on.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:assets/paraglider/models/item/deku_leaf_on.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:paraglider:deku_leaf_on"
+    },
+    {
+      "registry_id": "paraglider:essence",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "source_jar": "Paraglider-forge-20.1.3.jar",
+      "source_sha256": "3528e4d424682a415ae97b9597e5ed0567e5a194b4aeb30ae364e962da43b36a",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/paraglider/lang/en_us.json",
+        "assets/paraglider/models/item/essence.json"
+      ],
+      "display_name_en_us": "Essence",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:assets/paraglider/lang/en_us.json",
+        "Paraglider-forge-20.1.3.jar:assets/paraglider/models/item/essence.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:paraglider:essence"
+    },
+    {
+      "registry_id": "paraglider:goddess_statue",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "source_jar": "Paraglider-forge-20.1.3.jar",
+      "source_sha256": "3528e4d424682a415ae97b9597e5ed0567e5a194b4aeb30ae364e962da43b36a",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/paraglider/models/item/goddess_statue.json",
+        "data/paraglider/recipes/cosmetic/goddess_statue.json"
+      ],
+      "display_name_en_us": "Goddess Statue",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "paraglider:blocks/statues/goddess",
+        "paraglider:items/statues/goddess"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:assets/paraglider/models/item/goddess_statue.json",
+        "Paraglider-forge-20.1.3.jar:data/paraglider/recipes/cosmetic/goddess_statue.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "paraglider:goddess_statue",
+      "acquisition_routes": [
+        "paraglider:cosmetic/goddess_statue"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:paraglider:goddess_statue"
+    },
+    {
+      "registry_id": "paraglider:goron_goddess_statue",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "source_jar": "Paraglider-forge-20.1.3.jar",
+      "source_sha256": "3528e4d424682a415ae97b9597e5ed0567e5a194b4aeb30ae364e962da43b36a",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/paraglider/models/item/goron_goddess_statue.json",
+        "data/paraglider/recipes/cosmetic/goron_goddess_statue.json"
+      ],
+      "display_name_en_us": "Goddess Statue",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "paraglider:blocks/statues/goddess",
+        "paraglider:items/statues/goddess"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:assets/paraglider/models/item/goron_goddess_statue.json",
+        "Paraglider-forge-20.1.3.jar:data/paraglider/recipes/cosmetic/goron_goddess_statue.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "paraglider:goron_goddess_statue",
+      "acquisition_routes": [
+        "paraglider:cosmetic/goron_goddess_statue"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:paraglider:goron_goddess_statue"
+    },
+    {
+      "registry_id": "paraglider:heart_container",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "source_jar": "Paraglider-forge-20.1.3.jar",
+      "source_sha256": "3528e4d424682a415ae97b9597e5ed0567e5a194b4aeb30ae364e962da43b36a",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/paraglider/lang/en_us.json",
+        "assets/paraglider/models/item/heart_container.json"
+      ],
+      "display_name_en_us": "Heart Container",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:assets/paraglider/lang/en_us.json",
+        "Paraglider-forge-20.1.3.jar:assets/paraglider/models/item/heart_container.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:paraglider:heart_container"
+    },
+    {
+      "registry_id": "paraglider:horned_statue",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "source_jar": "Paraglider-forge-20.1.3.jar",
+      "source_sha256": "3528e4d424682a415ae97b9597e5ed0567e5a194b4aeb30ae364e962da43b36a",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/paraglider/models/item/horned_statue.json"
+      ],
+      "display_name_en_us": "Horned Statue",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "paraglider:blocks/statues",
+        "paraglider:items/statues"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:assets/paraglider/models/item/horned_statue.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "paraglider:horned_statue",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:paraglider:horned_statue"
+    },
+    {
+      "registry_id": "paraglider:kakariko_goddess_statue",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "source_jar": "Paraglider-forge-20.1.3.jar",
+      "source_sha256": "3528e4d424682a415ae97b9597e5ed0567e5a194b4aeb30ae364e962da43b36a",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/paraglider/models/item/kakariko_goddess_statue.json",
+        "data/paraglider/recipes/cosmetic/kakariko_goddess_statue.json"
+      ],
+      "display_name_en_us": "Goddess Statue",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "paraglider:blocks/statues/goddess",
+        "paraglider:items/statues/goddess"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:assets/paraglider/models/item/kakariko_goddess_statue.json",
+        "Paraglider-forge-20.1.3.jar:data/paraglider/recipes/cosmetic/kakariko_goddess_statue.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "paraglider:kakariko_goddess_statue",
+      "acquisition_routes": [
+        "paraglider:cosmetic/kakariko_goddess_statue"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:paraglider:kakariko_goddess_statue"
+    },
+    {
+      "registry_id": "paraglider:paraglider",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "source_jar": "Paraglider-forge-20.1.3.jar",
+      "source_sha256": "3528e4d424682a415ae97b9597e5ed0567e5a194b4aeb30ae364e962da43b36a",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/paraglider/lang/en_us.json",
+        "assets/paraglider/models/item/paraglider.json",
+        "data/paraglider/recipes/cosmetic/paraglider.json",
+        "data/paraglider/recipes/paraglider.json"
+      ],
+      "display_name_en_us": "Paraglider",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "jemcompat:items/transport",
+        "paraglider:items/paragliders"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:assets/paraglider/lang/en_us.json",
+        "Paraglider-forge-20.1.3.jar:assets/paraglider/models/item/paraglider.json",
+        "Paraglider-forge-20.1.3.jar:data/paraglider/recipes/cosmetic/paraglider.json",
+        "Paraglider-forge-20.1.3.jar:data/paraglider/recipes/paraglider.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "paraglider:cosmetic/paraglider",
+        "paraglider:paraglider"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:paraglider:paraglider"
+    },
+    {
+      "registry_id": "paraglider:paraglider_on",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "source_jar": "Paraglider-forge-20.1.3.jar",
+      "source_sha256": "3528e4d424682a415ae97b9597e5ed0567e5a194b4aeb30ae364e962da43b36a",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/paraglider/models/item/paraglider_on.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:assets/paraglider/models/item/paraglider_on.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:paraglider:paraglider_on"
+    },
+    {
+      "registry_id": "paraglider:rito_goddess_statue",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "source_jar": "Paraglider-forge-20.1.3.jar",
+      "source_sha256": "3528e4d424682a415ae97b9597e5ed0567e5a194b4aeb30ae364e962da43b36a",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/paraglider/models/item/rito_goddess_statue.json",
+        "data/paraglider/recipes/cosmetic/rito_goddess_statue.json"
+      ],
+      "display_name_en_us": "Goddess Statue",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "paraglider:blocks/statues/goddess",
+        "paraglider:items/statues/goddess"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:assets/paraglider/models/item/rito_goddess_statue.json",
+        "Paraglider-forge-20.1.3.jar:data/paraglider/recipes/cosmetic/rito_goddess_statue.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "paraglider:rito_goddess_statue",
+      "acquisition_routes": [
+        "paraglider:cosmetic/rito_goddess_statue"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:paraglider:rito_goddess_statue"
+    },
+    {
+      "registry_id": "paraglider:spirit_orb",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "source_jar": "Paraglider-forge-20.1.3.jar",
+      "source_sha256": "3528e4d424682a415ae97b9597e5ed0567e5a194b4aeb30ae364e962da43b36a",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/paraglider/lang/en_us.json",
+        "assets/paraglider/models/item/spirit_orb.json"
+      ],
+      "display_name_en_us": "Spirit Orb",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:assets/paraglider/lang/en_us.json",
+        "Paraglider-forge-20.1.3.jar:assets/paraglider/models/item/spirit_orb.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:paraglider:spirit_orb"
+    },
+    {
+      "registry_id": "paraglider:stamina_vessel",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "source_jar": "Paraglider-forge-20.1.3.jar",
+      "source_sha256": "3528e4d424682a415ae97b9597e5ed0567e5a194b4aeb30ae364e962da43b36a",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/paraglider/lang/en_us.json",
+        "assets/paraglider/models/item/stamina_vessel.json"
+      ],
+      "display_name_en_us": "Stamina Vessel",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:assets/paraglider/lang/en_us.json",
+        "Paraglider-forge-20.1.3.jar:assets/paraglider/models/item/stamina_vessel.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:paraglider:stamina_vessel"
+    }
+  ]
+}

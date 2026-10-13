@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "registry_type": "weapons",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "recruits",
+    "name": "Villager Recruits Mod",
+    "version": "1.15.2"
+  },
+  "records": [
+    {
+      "item_id": "recruits:bowman_block",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "recruits",
+      "mod_name": "Villager Recruits Mod",
+      "mod_version": "1.15.2",
+      "source_jar": "recruits-1.20.1-1.15.2.jar",
+      "source_sha256": "4b53c1b752e886ba10985aad2df30d668971810230eb77867e07428a21d1af7f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/recruits/models/item/bowman_block.json"
+      ],
+      "display_name_en_us": "Bowman's Table",
+      "display_name_ru_ru": "Стол рекрута-лучника",
+      "source_provenance": [
+        "recruits-1.20.1-1.15.2.jar:assets/recruits/models/item/bowman_block.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "bow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "recruits:bowman_spawn_egg",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "recruits",
+      "mod_name": "Villager Recruits Mod",
+      "mod_version": "1.15.2",
+      "source_jar": "recruits-1.20.1-1.15.2.jar",
+      "source_sha256": "4b53c1b752e886ba10985aad2df30d668971810230eb77867e07428a21d1af7f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/recruits/lang/en_us.json",
+        "assets/recruits/lang/ru_ru.json",
+        "assets/recruits/models/item/bowman_spawn_egg.json"
+      ],
+      "display_name_en_us": "Bowman Spawn Egg",
+      "display_name_ru_ru": "Яйцо призыва рекрута-лучника",
+      "source_provenance": [
+        "recruits-1.20.1-1.15.2.jar:assets/recruits/lang/en_us.json",
+        "recruits-1.20.1-1.15.2.jar:assets/recruits/lang/ru_ru.json",
+        "recruits-1.20.1-1.15.2.jar:assets/recruits/models/item/bowman_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "bow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "recruits:crossbowman_block",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "recruits",
+      "mod_name": "Villager Recruits Mod",
+      "mod_version": "1.15.2",
+      "source_jar": "recruits-1.20.1-1.15.2.jar",
+      "source_sha256": "4b53c1b752e886ba10985aad2df30d668971810230eb77867e07428a21d1af7f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/recruits/models/item/crossbowman_block.json"
+      ],
+      "display_name_en_us": "Crossbowman's Table",
+      "display_name_ru_ru": "Стол рекрута-арбалетчика",
+      "source_provenance": [
+        "recruits-1.20.1-1.15.2.jar:assets/recruits/models/item/crossbowman_block.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "crossbow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "recruits:crossbowman_spawn_egg",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "recruits",
+      "mod_name": "Villager Recruits Mod",
+      "mod_version": "1.15.2",
+      "source_jar": "recruits-1.20.1-1.15.2.jar",
+      "source_sha256": "4b53c1b752e886ba10985aad2df30d668971810230eb77867e07428a21d1af7f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/recruits/lang/en_us.json",
+        "assets/recruits/lang/ru_ru.json",
+        "assets/recruits/models/item/crossbowman_spawn_egg.json"
+      ],
+      "display_name_en_us": "Crossbowman Spawn Egg",
+      "display_name_ru_ru": "Яйцо призыва рекрута-арбалетчика",
+      "source_provenance": [
+        "recruits-1.20.1-1.15.2.jar:assets/recruits/lang/en_us.json",
+        "recruits-1.20.1-1.15.2.jar:assets/recruits/lang/ru_ru.json",
+        "recruits-1.20.1-1.15.2.jar:assets/recruits/models/item/crossbowman_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "crossbow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    }
+  ]
+}

@@ -7,6 +7,8 @@ import com.google.gson.JsonObject;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
@@ -18,7 +20,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 public final class FoodValueRegistry extends SimpleJsonResourceReloadListener {
     public record Value(int mood, String group, String classification) { }
     private static final Gson GSON = new GsonBuilder().create();
-    private static volatile Map<ResourceLocation, Value> values = Map.of();
+    private static volatile Map<ResourceLocation, Value> values = loadBuiltIn();
     public FoodValueRegistry() { super(GSON, "happiness/food_values"); }
     @Override protected void apply(Map<ResourceLocation, JsonElement> resources, ResourceManager manager, ProfilerFiller profiler) {
         Map<ResourceLocation, Value> loaded = new LinkedHashMap<>();
@@ -26,9 +28,30 @@ public final class FoodValueRegistry extends SimpleJsonResourceReloadListener {
         values = Map.copyOf(loaded);
     }
     public static Optional<Value> classify(ItemStack stack) {
-        if (stack.isEmpty() || stack.hasTag()) return Optional.empty();
-        FoodProperties food = stack.getItem().getFoodProperties(stack, null); if (food == null) return Optional.empty();
+        return classify(stack, null);
+    }
+    public static Optional<Value> classify(ItemStack stack, net.minecraft.world.entity.LivingEntity consumer) {
+        if (stack.isEmpty()) return Optional.empty();
+        FoodProperties food;
+        try { food = stack.getItem().getFoodProperties(stack, consumer); }
+        catch (RuntimeException dynamicFoodFailure) { return Optional.empty(); }
+        if (food == null) return Optional.empty();
         ResourceLocation id = ForgeRegistries.ITEMS.getKey(stack.getItem()); if (id == null) return Optional.empty();
-        return Optional.ofNullable(values.get(id)).or(() -> Optional.of(new Value(1, "basic", "safe_unknown_edible")));
+        Value reviewed = values.get(id); if (reviewed != null) return Optional.of(reviewed);
+        boolean harmful = food.getEffects().stream().anyMatch(effect -> effect.getFirst().getEffect().getCategory() == net.minecraft.world.effect.MobEffectCategory.HARMFUL && effect.getSecond() > 0.0F);
+        if (harmful) return Optional.of(new Value(food.getNutrition() <= 2 ? -8 : -6, "unsafe", "derived_harmful_food_effect"));
+        int mood = food.getNutrition() >= 8 ? 5 : food.getNutrition() >= 6 ? 3 : food.getNutrition() >= 3 ? 2 : 1;
+        return Optional.of(new Value(mood, mood >= 5 ? "complex_meal" : mood >= 3 ? "meal" : "basic", "derived_food_properties"));
+    }
+    public static Map<ResourceLocation, Value> snapshot() { return values; }
+    public static void applySynced(Map<ResourceLocation, Value> synced) { values = Map.copyOf(synced); }
+    private static Map<ResourceLocation, Value> loadBuiltIn() {
+        try (var stream = FoodValueRegistry.class.getResourceAsStream("/data/jem_settlements/happiness/food_values.json")) {
+            if (stream == null) return Map.of();
+            JsonElement root = com.google.gson.JsonParser.parseReader(new InputStreamReader(stream, StandardCharsets.UTF_8));
+            Map<ResourceLocation, Value> loaded = new LinkedHashMap<>();
+            if (root.isJsonArray()) root.getAsJsonArray().forEach(element -> { if (!element.isJsonObject()) return; JsonObject row = element.getAsJsonObject(); ResourceLocation id = ResourceLocation.tryParse(row.get("item").getAsString()); if (id != null) loaded.put(id, new Value(Math.max(-8, Math.min(5, row.get("mood").getAsInt())), row.has("group") ? row.get("group").getAsString() : "basic", row.has("classification") ? row.get("classification").getAsString() : "reviewed")); });
+            return Map.copyOf(loaded);
+        } catch (Exception ignored) { return Map.of(); }
     }
 }

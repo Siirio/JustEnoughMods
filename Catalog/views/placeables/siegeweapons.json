@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "registry_type": "placeables",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "siegeweapons",
+    "name": "Siege Weapons Mod",
+    "version": "0.2.5"
+  },
+  "records": [
+    {
+      "item_id": "siegeweapons:siege_table_block",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "siegeweapons",
+      "mod_name": "Siege Weapons Mod",
+      "mod_version": "0.2.5",
+      "source_jar": "siegeweapons-1.20.1-0.2.5.jar",
+      "source_sha256": "777359069e04159c0fedf19b1df56ff1b943d07bdcc09698b098a0ae2962b2ed",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/siegeweapons/models/item/siege_table_block.json",
+        "data/siegeweapons/recipes/siege_table_block.json"
+      ],
+      "display_name_en_us": "Siege Table",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "siegeweapons-1.20.1-0.2.5.jar:assets/siegeweapons/models/item/siege_table_block.json",
+        "siegeweapons-1.20.1-0.2.5.jar:data/siegeweapons/recipes/siege_table_block.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "siegeweapons:siege_table_block",
+      "placed_registry_ids": [
+        "siegeweapons:siege_table_block"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "siegeweapons:siege_table_block"
+      ]
+    }
+  ]
+}

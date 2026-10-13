@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-13 — Two-stage Registry Atlas and gameplay implementation
+
+- User request and technical direction: execute the complete supplied two-stage bundle with the MD3 corrections taking precedence over focused and playability notes; build a reusable registry/economy evidence atlas first, then implement the approved settlement production, food, profession, Architect hotbar, `/home`, holiday, mount, Market Buyer and soft-territory behavior. Preserve physical inputs and outputs, native mod ownership, fail-closed unknowns and matching client/server contracts; do not deploy or mutate live worlds/profiles.
+- Codex technical choice: added a reproducible partitioned `Catalog` over 534 artifact paths and 22,984 recipes; implemented durable non-spendable production obligations, native food derivation plus reviewed policy sync, an explicit ten-profession graph, verified TinyInv-backed 13-slot Architect hotbar, server-owned safe `/home`, gift-only holidays, evidence-only mount roster, a persistent read-only Market Buyer bulletin and dimension-aware non-claim town guidance. Removed BackToBed and its JEM compatibility code from the canonical distribution.
+- Safe unsupported boundary: Architect reach, area placement and 126-slot reserve remain visibly unavailable because the installed APIs do not provide an approved safe contract. Dynamic runtime registrations, stack/NBT-specific semantics, private villager visual rules and unreviewed market items remain unresolved rather than guessed; unknown economy policy stays `NONE`.
+- Verification boundary: atlas regeneration and its dedicated data validator completed; JSON and actual diff are checked below in this task. No Gradle task, launch, automated/gameplay test, linter, formatter, static analysis, MineRENT deployment, active-profile mutation, AutoModpack publication or release-baseline promotion was performed. Runtime/gameplay acceptance is `in testing` and requires matching JEM client/server artifacts plus TinyInv 1.1.0.1.
+
 ## 2026-10-13 — Autonomous settlements Phase 2
 
 - User request and technical direction: implement the complete supplied Phase 2 settlement specification and push it, with happiness limited to registered residents, one funded all-or-nothing Recruit payroll, real single-item food/amenity evidence, bounded six-day unloaded catch-up, actionable Town Hall guidance and player-private mount collection. Economy eligibility remains only `BUY_AND_SELL` or `NONE`. The user prohibited automated tests and live host/pack publication.

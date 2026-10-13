@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "knightlib",
+    "name": "Knight Lib",
+    "version": "2.0.0"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "knightlib:empty_grail",
+      "mod_id": "knightlib",
+      "mod_name": "Knight Lib",
+      "mod_version": "2.0.0",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:copper_ingot",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "knightlib:empty_grail"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "knightlib-forge-1.20.1-2.0.0.jar:data/knightlib/recipes/empty_grail.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "knightlib:great_chalice",
+      "mod_id": "knightlib",
+      "mod_name": "Knight Lib",
+      "mod_version": "2.0.0",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:copper_ingot",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "knightlib:great_chalice"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "knightlib-forge-1.20.1-2.0.0.jar:data/knightlib/recipes/great_chalice.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "knightlib:great_essence_to_small_essence",
+      "mod_id": "knightlib",
+      "mod_name": "Knight Lib",
+      "mod_version": "2.0.0",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "knightlib:great_essence",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "knightlib:small_essence"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "knightlib-forge-1.20.1-2.0.0.jar:data/knightlib/recipes/great_essence_to_small_essence.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "knightlib:heart_of_the_sea_to_great_essence",
+      "mod_id": "knightlib",
+      "mod_name": "Knight Lib",
+      "mod_version": "2.0.0",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "minecraft:heart_of_the_sea"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "knightlib:great_essence"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "knightlib-forge-1.20.1-2.0.0.jar:data/knightlib/recipes/heart_of_the_sea_to_great_essence.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "knightlib:homunculus",
+      "mod_id": "knightlib",
+      "mod_name": "Knight Lib",
+      "mod_version": "2.0.0",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "knightlib:filled_grail",
+        "minecraft:bone",
+        "minecraft:crafting_shapeless",
+        "minecraft:leather",
+        "minecraft:rotten_flesh",
+        "minecraft:soul_sand"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "knightlib:homunculus"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "knightlib-forge-1.20.1-2.0.0.jar:data/knightlib/recipes/homunculus.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "knightlib:nether_star_to_great_essence",
+      "mod_id": "knightlib",
+      "mod_name": "Knight Lib",
+      "mod_version": "2.0.0",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "minecraft:nether_star"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "knightlib:great_essence"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "knightlib-forge-1.20.1-2.0.0.jar:data/knightlib/recipes/nether_star_to_great_essence.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "knightlib:small_essence_to_great_essence",
+      "mod_id": "knightlib",
+      "mod_name": "Knight Lib",
+      "mod_version": "2.0.0",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "knightlib:small_essence",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "knightlib:great_essence"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "knightlib-forge-1.20.1-2.0.0.jar:data/knightlib/recipes/small_essence_to_great_essence.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "knightlib:totem_of_undying_to_great_essence",
+      "mod_id": "knightlib",
+      "mod_name": "Knight Lib",
+      "mod_version": "2.0.0",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "minecraft:totem_of_undying"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "knightlib:great_essence"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "knightlib-forge-1.20.1-2.0.0.jar:data/knightlib/recipes/totem_of_undying_to_great_essence.json"
+      ]
+    }
+  ]
+}

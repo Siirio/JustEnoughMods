@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "registry_type": "trade_policies",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "animal_feeding_trough",
+    "name": "Animal Feeding Trough",
+    "version": "1.1.0+1.20.1-forge"
+  },
+  "records": [
+    {
+      "item_id": "animal_feeding_trough:feeding_trough",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "animal_feeding_trough",
+      "mod_name": "Animal Feeding Trough",
+      "mod_version": "1.1.0+1.20.1-forge",
+      "source_jar": "animal_feeding_trough-1.1.0+1.20.1-forge.jar",
+      "source_sha256": "367fbc5cf0931b39793b89c7cfbbf4d78e41d227dfbdd6f0be6ed17e2ad7b538",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/animal_feeding_trough/lang/en_us.json",
+        "assets/animal_feeding_trough/lang/ru_ru.json",
+        "assets/animal_feeding_trough/models/item/feeding_trough.json",
+        "data/animal_feeding_trough/recipes/feeding_trough.json"
+      ],
+      "display_name_en_us": "Feeding Trough",
+      "display_name_ru_ru": "Кормушка",
+      "source_provenance": [
+        "animal_feeding_trough-1.1.0+1.20.1-forge.jar:assets/animal_feeding_trough/lang/en_us.json",
+        "animal_feeding_trough-1.1.0+1.20.1-forge.jar:assets/animal_feeding_trough/lang/ru_ru.json",
+        "animal_feeding_trough-1.1.0+1.20.1-forge.jar:assets/animal_feeding_trough/models/item/feeding_trough.json",
+        "animal_feeding_trough-1.1.0+1.20.1-forge.jar:data/animal_feeding_trough/recipes/feeding_trough.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "animal_feeding_trough:feeding_trough"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    }
+  ]
+}

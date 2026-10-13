@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "registry_type": "items",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "luminoustag",
+    "name": "Luminous:Tag",
+    "version": "1.1"
+  },
+  "records": [
+    {
+      "registry_id": "luminoustag:decorative_tag",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "luminoustag",
+      "mod_name": "Luminous:Tag",
+      "mod_version": "1.1",
+      "source_jar": "LuminousTag V1.1 - Forge 1.20.1.jar",
+      "source_sha256": "c4cd94935623ecbab8f9a0f6d58c4ab7aa0611088b1f7d2da5173dba38e2812c",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/luminoustag/lang/en_us.json",
+        "assets/luminoustag/models/item/decorative_tag.json",
+        "data/luminoustag/recipes/tag_recipe.json"
+      ],
+      "display_name_en_us": "Decorative Tag",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "forge:items/decorativetag",
+        "neoforge:items/decorativetag"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "LuminousTag V1.1 - Forge 1.20.1.jar:assets/luminoustag/lang/en_us.json",
+        "LuminousTag V1.1 - Forge 1.20.1.jar:assets/luminoustag/models/item/decorative_tag.json",
+        "LuminousTag V1.1 - Forge 1.20.1.jar:data/luminoustag/recipes/tag_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "luminoustag:tag_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:luminoustag:decorative_tag"
+    }
+  ]
+}

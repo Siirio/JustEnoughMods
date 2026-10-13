@@ -1,0 +1,609 @@
+{
+  "schema_version": 1,
+  "registry_type": "blocks",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "toms_storage",
+    "name": "Tom's Simple Storage Mod",
+    "version": "${file.jarVersion}"
+  },
+  "records": [
+    {
+      "registry_id": "toms_storage:ts.crafting_terminal",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/blockstates/ts.crafting_terminal.json",
+        "assets/toms_storage/lang/en_us.json",
+        "assets/toms_storage/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Crafting Terminal",
+      "display_name_ru_ru": "Терминал крафта",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe",
+        "toms_storage:blocks/remote_activate"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/blockstates/ts.crafting_terminal.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/en_us.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "toms_storage:ts.inventory_cable",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/blockstates/ts.inventory_cable.json",
+        "assets/toms_storage/lang/en_us.json",
+        "assets/toms_storage/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Inventory Cable",
+      "display_name_ru_ru": "Инвентарный кабель",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/blockstates/ts.inventory_cable.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/en_us.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "toms_storage:ts.inventory_cable_connector",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/blockstates/ts.inventory_cable_connector.json",
+        "assets/toms_storage/lang/en_us.json",
+        "assets/toms_storage/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Inventory Cable Connector",
+      "display_name_ru_ru": "Коннектор инвентарного кабеля",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/blockstates/ts.inventory_cable_connector.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/en_us.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "toms_storage:ts.inventory_cable_connector_filtered",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/blockstates/ts.inventory_cable_connector_filtered.json",
+        "assets/toms_storage/lang/en_us.json",
+        "assets/toms_storage/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Inventory Cable Connector (Filtered)",
+      "display_name_ru_ru": "Коннектор инвентарного кабеля(фильтруемый)",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/blockstates/ts.inventory_cable_connector_filtered.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/en_us.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "toms_storage:ts.inventory_cable_connector_framed",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/blockstates/ts.inventory_cable_connector_framed.json",
+        "assets/toms_storage/lang/en_us.json"
+      ],
+      "display_name_en_us": "Inventory Cable Connector (Framed)",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/blockstates/ts.inventory_cable_connector_framed.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "toms_storage:ts.inventory_cable_framed",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/blockstates/ts.inventory_cable_framed.json",
+        "assets/toms_storage/lang/en_us.json",
+        "assets/toms_storage/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Framed Inventory Cable",
+      "display_name_ru_ru": "Инвентарный кабель с рамой",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/blockstates/ts.inventory_cable_framed.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/en_us.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "toms_storage:ts.inventory_connector",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/blockstates/ts.inventory_connector.json",
+        "assets/toms_storage/lang/en_us.json",
+        "assets/toms_storage/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Inventory Connector",
+      "display_name_ru_ru": "Инвентарный коннектор",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/blockstates/ts.inventory_connector.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/en_us.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "toms_storage:ts.inventory_hopper_basic",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/blockstates/ts.inventory_hopper_basic.json",
+        "assets/toms_storage/lang/en_us.json",
+        "assets/toms_storage/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Basic Inventory Hopper",
+      "display_name_ru_ru": "Базовая инвентарная воронка",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/blockstates/ts.inventory_hopper_basic.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/en_us.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "toms_storage:ts.inventory_proxy",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/blockstates/ts.inventory_proxy.json",
+        "assets/toms_storage/lang/en_us.json",
+        "assets/toms_storage/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Inventory Proxy",
+      "display_name_ru_ru": "Инвентарный прокси",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/blockstates/ts.inventory_proxy.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/en_us.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "toms_storage:ts.level_emitter",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/blockstates/ts.level_emitter.json",
+        "assets/toms_storage/lang/en_us.json",
+        "assets/toms_storage/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Level Emitter",
+      "display_name_ru_ru": "Источник редстоун сигнала",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/blockstates/ts.level_emitter.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/en_us.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "toms_storage:ts.open_crate",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/blockstates/ts.open_crate.json",
+        "assets/toms_storage/lang/en_us.json",
+        "assets/toms_storage/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Open Crate",
+      "display_name_ru_ru": "Открытый ящик",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/blockstates/ts.open_crate.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/en_us.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "toms_storage:ts.painted_trim",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/blockstates/ts.painted_trim.json",
+        "assets/toms_storage/lang/en_us.json",
+        "assets/toms_storage/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Inventory Trim",
+      "display_name_ru_ru": "Соединитель инвентарей",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe",
+        "toms_storage:blocks/trims",
+        "toms_storage:items/trims"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/blockstates/ts.painted_trim.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/en_us.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "toms_storage:ts.storage_terminal",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/blockstates/ts.storage_terminal.json",
+        "assets/toms_storage/lang/en_us.json",
+        "assets/toms_storage/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Storage Terminal",
+      "display_name_ru_ru": "Терминал хранилища",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe",
+        "toms_storage:blocks/remote_activate"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/blockstates/ts.storage_terminal.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/en_us.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "toms_storage:ts.trim",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/blockstates/ts.trim.json",
+        "assets/toms_storage/lang/en_us.json",
+        "assets/toms_storage/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Inventory Trim",
+      "display_name_ru_ru": "Соединитель инвентарей",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe",
+        "toms_storage:blocks/trims",
+        "toms_storage:items/trims"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/blockstates/ts.trim.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/en_us.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}

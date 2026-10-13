@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "registry_type": "weapons",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "dustydecorations",
+    "name": "Dusty Decorations",
+    "version": "1.13"
+  },
+  "records": [
+    {
+      "item_id": "dustydecorations:decorative_bowl",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "dustydecorations",
+      "mod_name": "Dusty Decorations",
+      "mod_version": "1.13",
+      "source_jar": "DustyDecorations_1.20.1Forge_V1.13.jar",
+      "source_sha256": "621256a87b4e8e370e20c16359eb91587e7e52efb8ed06b417b24f3eff2cd075",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/dustydecorations/models/item/decorative_bowl.json",
+        "data/dustydecorations/recipes/decorativebowlrecipe.json"
+      ],
+      "display_name_en_us": "Decorative Bowl",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "DustyDecorations_1.20.1Forge_V1.13.jar:assets/dustydecorations/models/item/decorative_bowl.json",
+        "DustyDecorations_1.20.1Forge_V1.13.jar:data/dustydecorations/recipes/decorativebowlrecipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "bow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    }
+  ]
+}

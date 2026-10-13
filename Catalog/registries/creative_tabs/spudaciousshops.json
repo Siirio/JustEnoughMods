@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "registry_type": "creative_tabs",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "spudaciousshops",
+    "name": "Spud's Shops",
+    "version": "1.10.2-forge-1.20.1"
+  },
+  "records": [
+    {
+      "registry_id": "spudaciousshops:shop_item_group",
+      "registry_type": "creative_mode_tab",
+      "schema_version": 1,
+      "mod_id": "spudaciousshops",
+      "mod_name": "Spud's Shops",
+      "mod_version": "1.10.2-forge-1.20.1",
+      "source_jar": "spudaciousshops-1.10.2-forge-1.20.1.jar",
+      "source_sha256": "0e908264095b8f7673c72d0a56ddcb19d2e839184c1cdb5741a4076e5cc99bf8",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/spudaciousshops/lang/en_us.json",
+        "assets/spudaciousshops/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Spud's shops",
+      "display_name_ru_ru": "Магазины Spud",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "jem-server-2.0.0-dev.jar:assets/spudaciousshops/lang/ru_ru.json",
+        "spudaciousshops-1.10.2-forge-1.20.1.jar:assets/spudaciousshops/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}

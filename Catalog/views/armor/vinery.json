@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "registry_type": "armor",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "vinery",
+    "name": "[Let's Do] Vinery",
+    "version": "1.4.41"
+  },
+  "records": [
+    {
+      "item_id": "vinery:winemaker_boots",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "vinery",
+      "mod_name": "[Let's Do] Vinery",
+      "mod_version": "1.4.41",
+      "source_jar": "letsdo-vinery-forge-1.4.41.jar",
+      "source_sha256": "5d7e11f6e2218562ce75d60788fdcfc9ccf59e4532757c18bf37759d5fc739ee",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/vinery/lang/en_us.json",
+        "assets/vinery/lang/ru_ru.json",
+        "assets/vinery/models/item/winemaker_boots.json",
+        "data/vinery/recipes/winemaker_boots.json"
+      ],
+      "display_name_en_us": "Winemaker Boots",
+      "display_name_ru_ru": "Ботинки винодела",
+      "source_provenance": [
+        "letsdo-vinery-forge-1.4.41.jar:assets/vinery/lang/en_us.json",
+        "letsdo-vinery-forge-1.4.41.jar:assets/vinery/lang/ru_ru.json",
+        "letsdo-vinery-forge-1.4.41.jar:assets/vinery/models/item/winemaker_boots.json",
+        "letsdo-vinery-forge-1.4.41.jar:data/vinery/recipes/winemaker_boots.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "boots",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "vinery:winemaker_leggings",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "vinery",
+      "mod_name": "[Let's Do] Vinery",
+      "mod_version": "1.4.41",
+      "source_jar": "letsdo-vinery-forge-1.4.41.jar",
+      "source_sha256": "5d7e11f6e2218562ce75d60788fdcfc9ccf59e4532757c18bf37759d5fc739ee",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/vinery/lang/en_us.json",
+        "assets/vinery/lang/ru_ru.json",
+        "assets/vinery/models/item/winemaker_leggings.json",
+        "data/vinery/recipes/winemaker_leggings.json"
+      ],
+      "display_name_en_us": "Winemaker Leggings",
+      "display_name_ru_ru": "Штаны винодела",
+      "source_provenance": [
+        "letsdo-vinery-forge-1.4.41.jar:assets/vinery/lang/en_us.json",
+        "letsdo-vinery-forge-1.4.41.jar:assets/vinery/lang/ru_ru.json",
+        "letsdo-vinery-forge-1.4.41.jar:assets/vinery/models/item/winemaker_leggings.json",
+        "letsdo-vinery-forge-1.4.41.jar:data/vinery/recipes/winemaker_leggings.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "leggings",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    }
+  ]
+}

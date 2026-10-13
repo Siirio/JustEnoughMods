@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "siegeweapons",
+    "name": "Siege Weapons Mod",
+    "version": "0.2.5"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "siegeweapons:siege_table_block",
+      "mod_id": "siegeweapons",
+      "mod_name": "Siege Weapons Mod",
+      "mod_version": "0.2.5",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:chests/wooden",
+        "minecraft:crafting_shaped",
+        "minecraft:crafting_table",
+        "minecraft:iron_block"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "siegeweapons:siege_table_block"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "siegeweapons-1.20.1-0.2.5.jar:data/siegeweapons/recipes/siege_table_block.json"
+      ]
+    }
+  ]
+}

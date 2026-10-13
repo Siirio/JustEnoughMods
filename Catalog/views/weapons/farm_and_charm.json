@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "registry_type": "weapons",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "farm_and_charm",
+    "name": "[Let's Do] Farm & Charm",
+    "version": "1.0.14"
+  },
+  "records": [
+    {
+      "item_id": "farm_and_charm:crafting_bowl",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "farm_and_charm",
+      "mod_name": "[Let's Do] Farm & Charm",
+      "mod_version": "1.0.14",
+      "source_jar": "letsdo-farm_and_charm-forge-1.0.14.jar",
+      "source_sha256": "2311790589a58678640cb788de13bebd40efe3ed92f03e82a8fa871850a382eb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/farm_and_charm/models/item/crafting_bowl.json",
+        "data/farm_and_charm/recipes/crafting_bowl.json"
+      ],
+      "display_name_en_us": "Crafting Bowl",
+      "display_name_ru_ru": "Миска для смешивания",
+      "source_provenance": [
+        "letsdo-farm_and_charm-forge-1.0.14.jar:assets/farm_and_charm/models/item/crafting_bowl.json",
+        "letsdo-farm_and_charm-forge-1.0.14.jar:data/farm_and_charm/recipes/crafting_bowl.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "bow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "farm_and_charm:pet_bowl",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "farm_and_charm",
+      "mod_name": "[Let's Do] Farm & Charm",
+      "mod_version": "1.0.14",
+      "source_jar": "letsdo-farm_and_charm-forge-1.0.14.jar",
+      "source_sha256": "2311790589a58678640cb788de13bebd40efe3ed92f03e82a8fa871850a382eb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/farm_and_charm/models/item/pet_bowl.json",
+        "data/farm_and_charm/recipes/pet_bowl.json"
+      ],
+      "display_name_en_us": "Pet Bowl",
+      "display_name_ru_ru": "Миска для домашних животных",
+      "source_provenance": [
+        "letsdo-farm_and_charm-forge-1.0.14.jar:assets/farm_and_charm/models/item/pet_bowl.json",
+        "letsdo-farm_and_charm-forge-1.0.14.jar:data/farm_and_charm/recipes/pet_bowl.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "bow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    }
+  ]
+}

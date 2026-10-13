@@ -10,6 +10,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Collection;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -34,6 +35,7 @@ public final class ItemPolicyRegistry {
     }
 
     public static boolean acceptsShipping(ItemStack stack) { return policy(stack).map(ItemPolicy::sellable).orElse(false); }
+    public static Collection<ItemPolicy> reviewed() { return java.util.List.copyOf(policies.values()); }
 
     public static boolean canonical(ItemStack stack) {
         if (stack.isEmpty() || stack.isDamaged() || stack.isEnchanted()) return false;

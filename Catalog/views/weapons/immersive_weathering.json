@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "registry_type": "weapons",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "immersive_weathering",
+    "name": "Immersive Weathering",
+    "version": "1.20.1-2.0.5"
+  },
+  "records": [
+    {
+      "item_id": "immersive_weathering:flower_crown_rainbow",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "immersive_weathering",
+      "mod_name": "Immersive Weathering",
+      "mod_version": "1.20.1-2.0.5",
+      "source_jar": "immersive_weathering-1.20.1-2.0.5-forge.jar",
+      "source_sha256": "b88353d6efe18635bac2d4169e704320987e9678fd683217195dcdcf2c1ca1ba",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/immersive_weathering/models/item/flower_crown_rainbow.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "immersive_weathering-1.20.1-2.0.5-forge.jar:assets/immersive_weathering/models/item/flower_crown_rainbow.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "bow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    }
+  ]
+}

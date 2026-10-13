@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "registry_type": "placeables",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "jem_economy",
+    "name": "JEM Economy",
+    "version": "1.0.0"
+  },
+  "records": [
+    {
+      "item_id": "jem_economy:shipping_box",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "jem_economy",
+      "mod_name": "JEM Economy",
+      "mod_version": "1.0.0",
+      "source_jar": "jem-economy-1.0.0.jar",
+      "source_sha256": "d8e928f116c4b90979ecd871cd69c86a5e53e2bcbfe5cc78130c654a8116cea1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/registry/EconomyItems.java",
+        "assets/jem_economy/models/item/shipping_box.json",
+        "data/jem_economy/recipes/shipping_box.json"
+      ],
+      "display_name_en_us": "Shipping Box",
+      "display_name_ru_ru": "Ящик отправки",
+      "source_provenance": [
+        "EconomyItems.java:Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/registry/EconomyItems.java",
+        "jem-economy-1.2.0.jar:assets/jem_economy/models/item/shipping_box.json",
+        "jem-economy-1.2.0.jar:data/jem_economy/recipes/shipping_box.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "jem_economy:shipping_box",
+      "placed_registry_ids": [
+        "jem_economy:shipping_box"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "jem_economy:shipping_box"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,874 @@
+{
+  "schema_version": 1,
+  "registry_type": "trade_policies",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "toms_storage",
+    "name": "Tom's Simple Storage Mod",
+    "version": "${file.jarVersion}"
+  },
+  "records": [
+    {
+      "item_id": "toms_storage:ts.adv_wireless_terminal",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/lang/en_us.json",
+        "assets/toms_storage/lang/ru_ru.json",
+        "assets/toms_storage/models/item/ts.adv_wireless_terminal.json",
+        "data/toms_storage/recipes/adv_wireless_terminal.json"
+      ],
+      "display_name_en_us": "Advanced Wireless Terminal",
+      "display_name_ru_ru": "Улучшенный беспроводной терминал",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/en_us.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/ru_ru.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.adv_wireless_terminal.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/adv_wireless_terminal.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "toms_storage:adv_wireless_terminal"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "toms_storage:ts.crafting_terminal",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/models/item/ts.crafting_terminal.json",
+        "data/toms_storage/recipes/crafting_terminal.json"
+      ],
+      "display_name_en_us": "Crafting Terminal",
+      "display_name_ru_ru": "Терминал крафта",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.crafting_terminal.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/crafting_terminal.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "toms_storage:crafting_terminal"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "toms_storage:ts.inventory_cable",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/models/item/ts.inventory_cable.json",
+        "data/toms_storage/recipes/inventory_cable.json"
+      ],
+      "display_name_en_us": "Inventory Cable",
+      "display_name_ru_ru": "Инвентарный кабель",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.inventory_cable.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/inventory_cable.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "toms_storage:inventory_cable"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "toms_storage:ts.inventory_cable_connector",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/models/item/ts.inventory_cable_connector.json",
+        "data/toms_storage/recipes/inventory_cable_connector.json"
+      ],
+      "display_name_en_us": "Inventory Cable Connector",
+      "display_name_ru_ru": "Коннектор инвентарного кабеля",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.inventory_cable_connector.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/inventory_cable_connector.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "toms_storage:inventory_cable_connector"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "toms_storage:ts.inventory_cable_connector_filtered",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/models/item/ts.inventory_cable_connector_filtered.json",
+        "data/toms_storage/recipes/inventory_cable_connector_filtered.json"
+      ],
+      "display_name_en_us": "Inventory Cable Connector (Filtered)",
+      "display_name_ru_ru": "Коннектор инвентарного кабеля(фильтруемый)",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.inventory_cable_connector_filtered.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/inventory_cable_connector_filtered.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "toms_storage:inventory_cable_connector_filtered"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "toms_storage:ts.inventory_cable_connector_framed",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/models/item/ts.inventory_cable_connector_framed.json",
+        "data/toms_storage/recipes/inventory_cable_connector_framed.json"
+      ],
+      "display_name_en_us": "Inventory Cable Connector (Framed)",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.inventory_cable_connector_framed.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/inventory_cable_connector_framed.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "toms_storage:inventory_cable_connector_framed"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "toms_storage:ts.inventory_cable_framed",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/models/item/ts.inventory_cable_framed.json",
+        "data/toms_storage/recipes/inventory_cable_framed.json"
+      ],
+      "display_name_en_us": "Framed Inventory Cable",
+      "display_name_ru_ru": "Инвентарный кабель с рамой",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.inventory_cable_framed.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/inventory_cable_framed.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "toms_storage:inventory_cable_framed"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "toms_storage:ts.inventory_connector",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/models/item/ts.inventory_connector.json",
+        "data/toms_storage/recipes/inventory_connector.json"
+      ],
+      "display_name_en_us": "Inventory Connector",
+      "display_name_ru_ru": "Инвентарный коннектор",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.inventory_connector.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/inventory_connector.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "toms_storage:inventory_connector"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "toms_storage:ts.inventory_hopper_basic",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/models/item/ts.inventory_hopper_basic.json",
+        "data/toms_storage/recipes/inventory_hopper_basic.json"
+      ],
+      "display_name_en_us": "Basic Inventory Hopper",
+      "display_name_ru_ru": "Базовая инвентарная воронка",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.inventory_hopper_basic.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/inventory_hopper_basic.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "toms_storage:inventory_hopper_basic"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "toms_storage:ts.inventory_proxy",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/models/item/ts.inventory_proxy.json",
+        "data/toms_storage/recipes/inventory_proxy.json"
+      ],
+      "display_name_en_us": "Inventory Proxy",
+      "display_name_ru_ru": "Инвентарный прокси",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.inventory_proxy.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/inventory_proxy.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "toms_storage:inventory_proxy"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "toms_storage:ts.item_filter",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/lang/en_us.json",
+        "assets/toms_storage/models/item/ts.item_filter.json",
+        "data/toms_storage/recipes/item_filter.json"
+      ],
+      "display_name_en_us": "Item Filter",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/en_us.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.item_filter.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/item_filter.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "toms_storage:item_filter"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "toms_storage:ts.level_emitter",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/models/item/ts.level_emitter.json",
+        "data/toms_storage/recipes/level_emitter.json"
+      ],
+      "display_name_en_us": "Level Emitter",
+      "display_name_ru_ru": "Источник редстоун сигнала",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.level_emitter.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/level_emitter.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "toms_storage:level_emitter"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "toms_storage:ts.open_crate",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/models/item/ts.open_crate.json",
+        "data/toms_storage/recipes/open_crate.json"
+      ],
+      "display_name_en_us": "Open Crate",
+      "display_name_ru_ru": "Открытый ящик",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.open_crate.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/open_crate.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "toms_storage:open_crate"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "toms_storage:ts.paint_kit",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/lang/en_us.json",
+        "assets/toms_storage/lang/ru_ru.json",
+        "assets/toms_storage/models/item/ts.paint_kit.json",
+        "data/toms_storage/recipes/paint_kit.json"
+      ],
+      "display_name_en_us": "Paint Kit",
+      "display_name_ru_ru": "Набор красок",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/en_us.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/ru_ru.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.paint_kit.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/paint_kit.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "toms_storage:paint_kit"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "toms_storage:ts.painted_trim",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/models/item/ts.painted_trim.json"
+      ],
+      "display_name_en_us": "Inventory Trim",
+      "display_name_ru_ru": "Соединитель инвентарей",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.painted_trim.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "toms_storage:ts.polymorphic_item_filter",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/lang/en_us.json",
+        "assets/toms_storage/models/item/ts.polymorphic_item_filter.json",
+        "data/toms_storage/recipes/poly_item_filter.json"
+      ],
+      "display_name_en_us": "Polymorphic Item Filter",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/en_us.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.polymorphic_item_filter.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/poly_item_filter.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "toms_storage:poly_item_filter"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "toms_storage:ts.storage_terminal",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/models/item/ts.storage_terminal.json",
+        "data/toms_storage/recipes/storage_terminal.json"
+      ],
+      "display_name_en_us": "Storage Terminal",
+      "display_name_ru_ru": "Терминал хранилища",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.storage_terminal.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/storage_terminal.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "toms_storage:storage_terminal"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "toms_storage:ts.tag_item_filter",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/lang/en_us.json",
+        "assets/toms_storage/models/item/ts.tag_item_filter.json",
+        "data/toms_storage/recipes/tag_item_filter.json"
+      ],
+      "display_name_en_us": "Tag Item Filter",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/en_us.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.tag_item_filter.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/tag_item_filter.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "toms_storage:tag_item_filter"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "toms_storage:ts.trim",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/models/item/ts.trim.json",
+        "data/toms_storage/recipes/trim.json",
+        "data/toms_storage/recipes/trim_clean.json"
+      ],
+      "display_name_en_us": "Inventory Trim",
+      "display_name_ru_ru": "Соединитель инвентарей",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.trim.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/trim.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/trim_clean.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "toms_storage:trim",
+        "toms_storage:trim_clean"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "toms_storage:ts.wireless_terminal",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "toms_storage",
+      "mod_name": "Tom's Simple Storage Mod",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "toms_storage-1.20-1.7.1.jar",
+      "source_sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/toms_storage/lang/en_us.json",
+        "assets/toms_storage/lang/ru_ru.json",
+        "assets/toms_storage/models/item/ts.wireless_terminal.json",
+        "data/toms_storage/recipes/wireless_terminal.json"
+      ],
+      "display_name_en_us": "Wireless Terminal",
+      "display_name_ru_ru": "Беспроводной терминал",
+      "source_provenance": [
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/en_us.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/lang/ru_ru.json",
+        "toms_storage-1.20-1.7.1.jar:assets/toms_storage/models/item/ts.wireless_terminal.json",
+        "toms_storage-1.20-1.7.1.jar:data/toms_storage/recipes/wireless_terminal.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "toms_storage:wireless_terminal"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    }
+  ]
+}

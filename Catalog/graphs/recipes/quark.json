@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "quark",
+    "name": "quark",
+    "version": "unresolved"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "quark:world/crafting/woodsets/ancient/button",
+      "mod_id": "quark",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:mod_loaded",
+        "minecraft:crafting_shapeless",
+        "quark:ancient_planks",
+        "quark:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "quark:ancient_button"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/quark/recipes/world/crafting/woodsets/ancient/button.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "quark:world/crafting/woodsets/azalea/button",
+      "mod_id": "quark",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:mod_loaded",
+        "minecraft:crafting_shapeless",
+        "quark:azalea_planks",
+        "quark:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "quark:azalea_button"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/quark/recipes/world/crafting/woodsets/azalea/button.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "quark:world/crafting/woodsets/blossom/button",
+      "mod_id": "quark",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:mod_loaded",
+        "minecraft:crafting_shapeless",
+        "quark:blossom_planks",
+        "quark:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "quark:blossom_button"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/quark/recipes/world/crafting/woodsets/blossom/button.json"
+      ]
+    }
+  ]
+}

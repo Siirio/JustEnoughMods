@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "registry_type": "items",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "jacksgravestones",
+    "name": "Jack's Gravestones",
+    "version": "1.0.5"
+  },
+  "records": [
+    {
+      "registry_id": "jacksgravestones:gravestone",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "jacksgravestones",
+      "mod_name": "Jack's Gravestones",
+      "mod_version": "1.0.5",
+      "source_jar": "jacks-gravestones-forge-1.20.1-1.0.6.jar",
+      "source_sha256": "7cab6b0ce2e5a7d70e1e705740e78a63c32569595a31a45a16786e93223692ff",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/jacksgravestones/lang/en_us.json",
+        "assets/jacksgravestones/models/item/gravestone.json"
+      ],
+      "display_name_en_us": "Gravestone",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "jacks-gravestones-forge-1.20.1-1.0.6.jar:assets/jacksgravestones/lang/en_us.json",
+        "jacks-gravestones-forge-1.20.1-1.0.6.jar:assets/jacksgravestones/models/item/gravestone.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "jacksgravestones:gravestone",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:jacksgravestones:gravestone"
+    }
+  ]
+}

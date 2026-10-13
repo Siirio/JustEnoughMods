@@ -1,0 +1,1196 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "kaleidoscope_end",
+    "name": "Kaleidoscope End",
+    "version": "1.0.14-forge+mc1.20.1"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:campfire/cooked_ender_dragon_meat",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "minecraft:campfire_cooking",
+      "machine_id": "minecraft:campfire_cooking",
+      "ingredient_groups": [
+        "kaleidoscope_end:raw_ender_dragon_meat",
+        "minecraft:campfire_cooking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:cooked_ender_dragon_meat"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/campfire/cooked_ender_dragon_meat.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:campfire/roasted_endermite_meat",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "minecraft:campfire_cooking",
+      "machine_id": "minecraft:campfire_cooking",
+      "ingredient_groups": [
+        "kaleidoscope_end:raw_endermite_meat",
+        "minecraft:campfire_cooking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:roasted_endermite_meat"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/campfire/roasted_endermite_meat.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:chopping_board/chorus_seed",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:chopping_board",
+      "machine_id": "kaleidoscope_cookery:chopping_board",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:chopping_board",
+        "kaleidoscope_end:chorus_fruit",
+        "minecraft:chorus_fruit"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:chorus_seed"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/chopping_board/chorus_seed.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:chorus_flower_cake",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:flour",
+        "forge:milk",
+        "kaleidoscope_end:chorus_petal",
+        "minecraft:chorus_fruit",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:chorus_flower_cake"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/chorus_flower_cake.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:chorus_seed_cookie",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "kaleidoscope_end:chorus_seed",
+        "minecraft:crafting_shapeless",
+        "minecraft:wheat"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:chorus_seed_cookie"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/chorus_seed_cookie.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:dragon_egg_ice_cream",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:milk",
+        "kaleidoscope_end:dragon_egg_shell",
+        "kaleidoscope_end:dream_berry",
+        "minecraft:chorus_fruit",
+        "minecraft:crafting_shaped",
+        "minecraft:ice"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:dragon_egg_ice_cream"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/dragon_egg_ice_cream.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:dragon_egg_shell",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "kaleidoscope_end:dragon_dust",
+        "minecraft:crafting_shaped",
+        "minecraft:crying_obsidian",
+        "minecraft:obsidian"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:dragon_egg_shell"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/dragon_egg_shell.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:dragon_tooth_knife_smithing",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:netherite_kitchen_knife",
+        "kaleidoscope_end:dragon_dust",
+        "kaleidoscope_end:ender_dragon_smithing_template",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:dragon_tooth_knife"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/dragon_tooth_knife_smithing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:end_stove",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:campfire",
+        "minecraft:crafting_shaped",
+        "minecraft:end_stone_bricks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:end_stove"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/end_stove.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:ender_dragon_smithing_template",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "kaleidoscope_end:dragon_dust",
+        "minecraft:crafting_shaped",
+        "minecraft:crying_obsidian",
+        "minecraft:netherite_upgrade_smithing_template",
+        "minecraft:obsidian"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:ender_dragon_smithing_template"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/ender_dragon_smithing_template.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:ender_mint_candy",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "kaleidoscope_end:ender_mint",
+        "minecraft:crafting_shapeless",
+        "minecraft:sugar"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:ender_mint_candy"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/ender_mint_candy.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:mint_chorus_mousse",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:flour",
+        "forge:fruits/chorus",
+        "forge:milk",
+        "kaleidoscope_end:chorus_seed",
+        "kaleidoscope_end:ender_mint",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:mint_chorus_mousse"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/mint_chorus_mousse.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:pot/chorus_pasta",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:fruits/chorus",
+        "forge:pasta",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_end:chorus_seed",
+        "minecraft:bowl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:chorus_pasta"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/pot/chorus_pasta.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:pot/cooked_ender_dragon_meat",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_end:raw_ender_dragon_meat"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:cooked_ender_dragon_meat"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/pot/cooked_ender_dragon_meat.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:pot/dark_dragon_steak",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:raw_dragon_meat",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_end:ender_mint",
+        "kaleidoscope_end:optic_nerve",
+        "minecraft:bowl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:dark_dragon_steak"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/pot/dark_dragon_steak.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:pot/dragon_breath_mixed_stew",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_end:dream_berry",
+        "kaleidoscope_end:ender_mint",
+        "kaleidoscope_end:optic_nerve",
+        "minecraft:dragon_breath",
+        "minecraft:shulker_shell"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:dragon_breath_mixed_stew"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/pot/dragon_breath_mixed_stew.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:pot/dragon_head_with_sauce",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:fruits/chorus",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_end:chorus_seed",
+        "kaleidoscope_end:ender_mint",
+        "minecraft:bowl",
+        "minecraft:dragon_head"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:dragon_head_with_sauce"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/pot/dragon_head_with_sauce.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:pot/dragon_souffle",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:flour",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_end:dragon_dust",
+        "kaleidoscope_end:dream_berry",
+        "minecraft:bowl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:dragon_souffle"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/pot/dragon_souffle.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:pot/end_caterpillar_sashimi",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_cookery:sashimi",
+        "kaleidoscope_end:end_caterpillar",
+        "kaleidoscope_end:ender_mint",
+        "minecraft:bowl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:end_caterpillar_sashimi"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/pot/end_caterpillar_sashimi.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:pot/end_salad",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:crops/chorus",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_end:chorus_petal",
+        "kaleidoscope_end:dream_berry",
+        "kaleidoscope_end:ender_mint",
+        "minecraft:bowl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:end_salad"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/pot/end_salad.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:pot/fried_dragon_egg",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_end:dragon_egg_liquid"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:fried_dragon_egg"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/pot/fried_dragon_egg.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:pot/mint_sauce_shulker_meat",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:fruits/chorus",
+        "forge:shulker_meat",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_end:chorus_seed",
+        "kaleidoscope_end:ender_mint",
+        "minecraft:bowl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:mint_sauce_shulker_meat"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/pot/mint_sauce_shulker_meat.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:pot/mint_sauce_shulker_meat_rice_bowl",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:cooked_rice",
+        "forge:fruits/chorus",
+        "forge:shulker_meat",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_end:chorus_seed",
+        "kaleidoscope_end:ender_mint"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:mint_sauce_shulker_meat_rice_bowl"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/pot/mint_sauce_shulker_meat_rice_bowl.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:pot/optic_nerve_sweet_and_sour_pork",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_end:optic_nerve",
+        "minecraft:bowl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:optic_nerve_sweet_and_sour_pork"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/pot/optic_nerve_sweet_and_sour_pork.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:pot/roasted_endermite_meat",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_end:raw_endermite_meat"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:roasted_endermite_meat"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/pot/roasted_endermite_meat.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:pot/stir_fried_endermite_meat",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:raw_ender_mite_meat",
+        "forge:vegetables/chilipepper",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_end:optic_nerve",
+        "minecraft:bowl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:stir_fried_endermite_meat"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/pot/stir_fried_endermite_meat.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:pot/stir_fried_endermite_meat_rice_bowl",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:cooked_rice",
+        "forge:raw_ender_mite_meat",
+        "forge:vegetables/chilipepper",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_end:optic_nerve"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:stir_fried_endermite_meat_rice_bowl"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/pot/stir_fried_endermite_meat_rice_bowl.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:pot/stuffed_shulker",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:shulker_meat",
+        "kaleidoscope_cookery:pot",
+        "minecraft:carrot",
+        "minecraft:potato",
+        "minecraft:shulker_shell"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:stuffed_shulker"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/pot/stuffed_shulker.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:pot/stuffed_void_conch",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:raw_ender_mite_meat",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_end:ender_mint",
+        "kaleidoscope_end:void_conch"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:stuffed_void_conch"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/pot/stuffed_void_conch.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:pot/void_mutton_steak",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "forge:raw_mutton",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_end:void_conch",
+        "minecraft:bowl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:void_mutton_steak"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/pot/void_mutton_steak.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:shulker_ice_cream",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:berries",
+        "forge:milk",
+        "minecraft:crafting_shaped",
+        "minecraft:ice",
+        "minecraft:shulker_shell"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:shulker_ice_cream"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/shulker_ice_cream.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:smelting/cooked_ender_dragon_meat",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "minecraft:smelting",
+      "machine_id": "minecraft:smelting",
+      "ingredient_groups": [
+        "kaleidoscope_end:raw_ender_dragon_meat",
+        "minecraft:smelting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:cooked_ender_dragon_meat"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/smelting/cooked_ender_dragon_meat.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:smelting/roasted_endermite_meat",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "minecraft:smelting",
+      "machine_id": "minecraft:smelting",
+      "ingredient_groups": [
+        "kaleidoscope_end:raw_endermite_meat",
+        "minecraft:smelting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:roasted_endermite_meat"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/smelting/roasted_endermite_meat.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:smoking/cooked_ender_dragon_meat",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "minecraft:smoking",
+      "machine_id": "minecraft:smoking",
+      "ingredient_groups": [
+        "kaleidoscope_end:raw_ender_dragon_meat",
+        "minecraft:smoking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:cooked_ender_dragon_meat"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/smoking/cooked_ender_dragon_meat.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:smoking/roasted_endermite_meat",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "minecraft:smoking",
+      "machine_id": "minecraft:smoking",
+      "ingredient_groups": [
+        "kaleidoscope_end:raw_endermite_meat",
+        "minecraft:smoking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:roasted_endermite_meat"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/smoking/roasted_endermite_meat.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:stockpot/chorus_flower_soup",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:stockpot",
+      "machine_id": "kaleidoscope_cookery:stockpot",
+      "ingredient_groups": [
+        "forge:crops/chorus",
+        "forge:fruits/chorus",
+        "kaleidoscope_cookery:stockpot",
+        "kaleidoscope_cookery:stockpot/default_cooking",
+        "kaleidoscope_cookery:stockpot/default_finished",
+        "kaleidoscope_end:chorus_petal",
+        "kaleidoscope_end:chorus_seed",
+        "minecraft:bowl",
+        "minecraft:water"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:chorus_flower_soup"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/stockpot/chorus_flower_soup.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:stockpot/dark_dragon_egg_stew",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:stockpot",
+      "machine_id": "kaleidoscope_cookery:stockpot",
+      "ingredient_groups": [
+        "forge:eggs",
+        "forge:raw_dragon_meat",
+        "kaleidoscope_cookery:stockpot",
+        "kaleidoscope_cookery:stockpot/default_cooking",
+        "kaleidoscope_cookery:stockpot/default_finished",
+        "kaleidoscope_end:dragon_egg_shell",
+        "kaleidoscope_end:ender_mint",
+        "minecraft:water"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:dark_dragon_egg_stew"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/stockpot/dark_dragon_egg_stew.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:stockpot/dragon_breath_chorus_soup",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:stockpot",
+      "machine_id": "kaleidoscope_cookery:stockpot",
+      "ingredient_groups": [
+        "forge:crops/chorus",
+        "forge:fruits/chorus",
+        "kaleidoscope_cookery:stockpot",
+        "kaleidoscope_cookery:stockpot/default_cooking",
+        "kaleidoscope_cookery:stockpot/default_finished",
+        "kaleidoscope_end:chorus_petal",
+        "kaleidoscope_end:chorus_seed",
+        "kaleidoscope_end:dragon_breath",
+        "minecraft:bowl"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:dragon_breath_chorus_soup"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/stockpot/dragon_breath_chorus_soup.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:stockpot/dragon_egg_custard",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:stockpot",
+      "machine_id": "kaleidoscope_cookery:stockpot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:stockpot",
+        "kaleidoscope_cookery:stockpot/default_cooking",
+        "kaleidoscope_cookery:stockpot/default_finished",
+        "kaleidoscope_end:dragon_egg_liquid",
+        "kaleidoscope_end:dragon_egg_shell",
+        "kaleidoscope_end:ender_mint",
+        "kaleidoscope_end:optic_nerve",
+        "minecraft:water"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:dragon_egg_custard"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/stockpot/dragon_egg_custard.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:stockpot/mint_noodle_soup",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:stockpot",
+      "machine_id": "kaleidoscope_cookery:stockpot",
+      "ingredient_groups": [
+        "forge:cooked_eggs",
+        "forge:pasta",
+        "forge:vegetables/lettuce",
+        "kaleidoscope_cookery:stockpot",
+        "kaleidoscope_cookery:stockpot/default_cooking",
+        "kaleidoscope_cookery:stockpot/default_finished",
+        "kaleidoscope_end:ender_mint",
+        "minecraft:bowl",
+        "minecraft:water"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:mint_noodle_soup"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/stockpot/mint_noodle_soup.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:stockpot/shulker_shell_stew",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:stockpot",
+      "machine_id": "kaleidoscope_cookery:stockpot",
+      "ingredient_groups": [
+        "forge:shulker_meat",
+        "kaleidoscope_cookery:stockpot",
+        "kaleidoscope_cookery:stockpot/default_cooking",
+        "kaleidoscope_cookery:stockpot/default_finished",
+        "kaleidoscope_end:optic_nerve",
+        "minecraft:bowl",
+        "minecraft:shulker_shell",
+        "minecraft:water"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:shulker_shell_stew"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/stockpot/shulker_shell_stew.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:stockpot/void_conch_noodle_soup",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:stockpot",
+      "machine_id": "kaleidoscope_cookery:stockpot",
+      "ingredient_groups": [
+        "forge:crops",
+        "forge:eggs",
+        "forge:pasta",
+        "kaleidoscope_cookery:stockpot",
+        "kaleidoscope_cookery:stockpot/default_cooking",
+        "kaleidoscope_cookery:stockpot/default_finished",
+        "kaleidoscope_end:void_conch",
+        "minecraft:bowl",
+        "minecraft:water"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:void_conch_noodle_soup"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/stockpot/void_conch_noodle_soup.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:teapot/chorus_flower_tea",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:teapot",
+      "machine_id": "kaleidoscope_cookery:teapot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:teapot",
+        "kaleidoscope_end:chorus_petal",
+        "minecraft:water"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:chorus_flower_tea"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/teapot/chorus_flower_tea.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:teapot/ender_dragon_tea",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:teapot",
+      "machine_id": "kaleidoscope_cookery:teapot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:teapot",
+        "kaleidoscope_end:dragon_dust",
+        "minecraft:water"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:ender_dragon_tea"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/teapot/ender_dragon_tea.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:teapot/ender_mint_tea",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:teapot",
+      "machine_id": "kaleidoscope_cookery:teapot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:teapot",
+        "kaleidoscope_end:ender_mint",
+        "minecraft:water"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:ender_mint_tea"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/teapot/ender_mint_tea.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "kaleidoscope_end:teapot/void_tea",
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:teapot",
+      "machine_id": "kaleidoscope_cookery:teapot",
+      "ingredient_groups": [
+        "kaleidoscope_cookery:teapot",
+        "kaleidoscope_end:void_conch",
+        "minecraft:water"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_end:void_tea"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:data/kaleidoscope_end/recipes/teapot/void_tea.json"
+      ]
+    }
+  ]
+}

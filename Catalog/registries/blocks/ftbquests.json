@@ -1,0 +1,1683 @@
+{
+  "schema_version": 1,
+  "registry_type": "blocks",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "ftbquests",
+    "name": "FTB Quests",
+    "version": "2001.4.22"
+  },
+  "records": [
+    {
+      "registry_id": "ftbquests:aux_task_screen",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/blockstates/aux_task_screen.json",
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Task Screen",
+      "display_name_ru_ru": "Экран задач",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/needs_iron_tool"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/blockstates/aux_task_screen.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:banner",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/blockstates/banner.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/blockstates/banner.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:barrier",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/blockstates/barrier.json",
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Quest Barrier",
+      "display_name_ru_ru": "Квестовый барьер",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/blockstates/barrier.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:barrier.object",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Object ID",
+      "display_name_ru_ru": "ID Объекта",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:chest",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Quest Chest",
+      "display_name_ru_ru": "Квестовый сундук",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:chest.input",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Input Slot",
+      "display_name_ru_ru": "Слот для ввода",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:chest.input_desc",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Place items here to complete quests",
+      "display_name_ru_ru": "Положите вещи сюда, чтобы выполнить задание",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:chest.output",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Output Slot",
+      "display_name_ru_ru": "Слот для выхода",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:chest.output_desc",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Rewards will appear here",
+      "display_name_ru_ru": "Награды и лишние предметы будут лежать тут",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:chest.transfer_all",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Auto-Transfer All Items",
+      "display_name_ru_ru": "Автоматически транспортировать все предметы",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:detector",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/blockstates/detector.json",
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Quest Detector",
+      "display_name_ru_ru": "Детектор квестов",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/blockstates/detector.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:detector.notifications",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Notifications",
+      "display_name_ru_ru": "Уведомления",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:detector.player",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Player Detector",
+      "display_name_ru_ru": "Детектор игроков",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:detector.player.height",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Height",
+      "display_name_ru_ru": "Высота",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:detector.player.offset_y",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Offset Y",
+      "display_name_ru_ru": "Смещение Y",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:detector.player.radius",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Radius",
+      "display_name_ru_ru": "Радиус",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:detector.redstone",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Redstone Detector",
+      "display_name_ru_ru": "Детектор редстоуна",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:detector.redstone.required_redstone",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Required Redstone Level",
+      "display_name_ru_ru": "Требует уровня редстоуна",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:detector.task",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Task",
+      "display_name_ru_ru": "Задача",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:loot_crate_opener",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/blockstates/loot_crate_opener.json",
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Loot Crate Opener",
+      "display_name_ru_ru": "Открывашка для ящика для хранения лута",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe",
+        "minecraft:blocks/needs_stone_tool"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/blockstates/loot_crate_opener.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:loot_crate_opener.rightclick",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Stored items: %d",
+      "display_name_ru_ru": "Хранимые предметы: %d",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:loot_crate_storage",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Loot Crate Storage",
+      "display_name_ru_ru": "Ящик для хранения лута",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:progress_detector",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Quest Progress Detector",
+      "display_name_ru_ru": "Датчик прогресса квеста",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:progress_detector.level",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Output Level",
+      "display_name_ru_ru": "Выдаваемый уровень",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:progress_detector.object",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Object ID",
+      "display_name_ru_ru": "ID объекта",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:progress_screen",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Progress Screen",
+      "display_name_ru_ru": "Экран прогресса",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:screen",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": "Экран",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:screen.fullscreen",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Fullscreen",
+      "display_name_ru_ru": "На весь экран",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:screen.hide_icons",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Hide Icons",
+      "display_name_ru_ru": "Скрыть иконки",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:screen.indestructible",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Indestructible",
+      "display_name_ru_ru": "Неразрушимый",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:screen.input_mode_icon",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Input Mode Icon",
+      "display_name_ru_ru": "Иконка режима ввода",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:screen.input_only",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Input Only",
+      "display_name_ru_ru": "Только вход",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:screen.missing_data",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Broken Block / Missing Data!",
+      "display_name_ru_ru": "Блок сломан / отсутствуют данные!",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:screen.no_permission",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "You don't have permission to configure this!",
+      "display_name_ru_ru": "У вас нет прав на настройку!",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:screen.size",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Size",
+      "display_name_ru_ru": "Размер",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:screen.skin",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Skin",
+      "display_name_ru_ru": "Вид",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:screen.task_index",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Task Index",
+      "display_name_ru_ru": "Индекс выполнения задания",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:screen.text_shadow",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Draw Text Shadows",
+      "display_name_ru_ru": "Нарисовать тени текста",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:screen_1",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/blockstates/screen_1.json",
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Task Screen (1x1)",
+      "display_name_ru_ru": "Экран задач (1x1)",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/needs_iron_tool"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/blockstates/screen_1.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:screen_3",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/blockstates/screen_3.json",
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Task Screen (3x3)",
+      "display_name_ru_ru": "Экран задач (3x3)",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/needs_iron_tool"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/blockstates/screen_3.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:screen_5",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/blockstates/screen_5.json",
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Task Screen (5x5)",
+      "display_name_ru_ru": "Экран задач (5x5)",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/needs_iron_tool"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/blockstates/screen_5.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:screen_7",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/blockstates/screen_7.json",
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Task Screen (7x7)",
+      "display_name_ru_ru": "Экран задач (7x7)",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/needs_iron_tool"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/blockstates/screen_7.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "ftbquests:stage_barrier",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "ftbquests",
+      "mod_name": "FTB Quests",
+      "mod_version": "2001.4.22",
+      "source_jar": "ftb-quests-forge-2001.4.22.jar",
+      "source_sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftbquests/blockstates/stage_barrier.json",
+        "assets/ftbquests/lang/en_us.json",
+        "assets/ftbquests/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Stage Barrier",
+      "display_name_ru_ru": "Барьер сцены",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/blockstates/stage_barrier.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/en_us.json",
+        "ftb-quests-forge-2001.4.22.jar:assets/ftbquests/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}

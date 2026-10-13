@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "registry_type": "armor",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "barnyardbuddies",
+    "name": "Barnyard Buddies",
+    "version": "0.6..4"
+  },
+  "records": [
+    {
+      "item_id": "barnyardbuddies:silkie_armor_helmet",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "barnyardbuddies",
+      "mod_name": "Barnyard Buddies",
+      "mod_version": "0.6..4",
+      "source_jar": "BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+      "source_sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/barnyardbuddies/lang/en_us.json",
+        "assets/barnyardbuddies/models/item/silkie_armor_helmet.json",
+        "data/barnyardbuddies/recipes/silkie_cap_recipe.json"
+      ],
+      "display_name_en_us": "Silkie Feather Cap",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/lang/en_us.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:assets/barnyardbuddies/models/item/silkie_armor_helmet.json",
+        "BarnyardBuddies_1.20.1Forge_V0.6.4.jar:data/barnyardbuddies/recipes/silkie_cap_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "armor_slot": "helmet",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    }
+  ]
+}

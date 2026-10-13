@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "litematicatool",
+    "name": "LitematicaTool",
+    "version": "2.0.0"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "litematicatool:litematica_tool",
+      "mod_id": "litematicatool",
+      "mod_name": "LitematicaTool",
+      "mod_version": "2.0.0",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "litematicatool:the_stick"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "litematicatool-forge-2.0.0.jar:data/litematicatool/recipes/litematica_tool.json"
+      ]
+    }
+  ]
+}

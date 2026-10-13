@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "artifacts",
+    "name": "artifacts",
+    "version": "unresolved"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "artifacts:pot/eternal_steak",
+      "mod_id": "artifacts",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "artifacts:everlasting_beef",
+        "forge:mod_loaded",
+        "kaleidoscope_cookery:pot"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "artifacts:eternal_steak"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/artifacts/recipes/pot/eternal_steak.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "artifacts:pot/everlasting_flame_steak_1",
+      "mod_id": "artifacts",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "artifacts:everlasting_beef",
+        "forge:mod_loaded",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_nether:blaze_heart",
+        "kaleidoscope_nether:gilded_fragment",
+        "kaleidoscope_nether:star_dust"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:everlasting_flame_steak"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/artifacts/recipes/pot/everlasting_flame_steak_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "artifacts:pot/everlasting_flame_steak_2",
+      "mod_id": "artifacts",
+      "mod_name": "Kaleidoscope Nether",
+      "mod_version": "1.1.8-forge+mc1.20.1",
+      "recipe_type": "kaleidoscope_cookery:pot",
+      "machine_id": "kaleidoscope_cookery:pot",
+      "ingredient_groups": [
+        "artifacts:eternal_steak",
+        "forge:mod_loaded",
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_nether:blaze_heart",
+        "kaleidoscope_nether:gilded_fragment",
+        "kaleidoscope_nether:star_dust"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "kaleidoscope_nether:everlasting_flame_steak"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "kaleidoscope_nether-1.1.8-forge_2Bmc1.20.1.jar:data/artifacts/recipes/pot/everlasting_flame_steak_2.json"
+      ]
+    }
+  ]
+}

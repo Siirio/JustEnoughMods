@@ -1,0 +1,1306 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "beachparty",
+    "name": "[Let's Do] Beachparty",
+    "version": "2.0.3"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:banner_from_smithing_table",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "minecraft:netherite_ingot",
+        "minecraft:netherite_upgrade_smithing_template",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:beachparty_banner"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/banner_from_smithing_table.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:beach_chair",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "beachparty:palm_planks",
+        "minecraft:crafting_shaped",
+        "minecraft:stick",
+        "minecraft:wool"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:beach_chair"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/beach_chair.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:beach_goal",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:stick",
+        "minecraft:wool"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:beach_goal"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/beach_goal.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:beach_parasol",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "beachparty:palm_planks",
+        "minecraft:crafting_shaped",
+        "minecraft:wool"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:beach_parasol"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/beach_parasol.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:beach_sun_lounger",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "beachparty:palm_planks",
+        "minecraft:crafting_shaped",
+        "minecraft:wool"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:beach_sun_lounger"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/beach_sun_lounger.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:beach_towel",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:wool"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:beach_towel"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/beach_towel.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:cooked_mussel_meat",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:smelting",
+      "machine_id": "minecraft:smelting",
+      "ingredient_groups": [
+        "beachparty:raw_mussel_meat",
+        "minecraft:smelting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:cooked_mussel_meat"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/cooked_mussel_meat.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:cooked_mussel_meat_from_campfire_cooking",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:campfire_cooking",
+      "machine_id": "minecraft:campfire_cooking",
+      "ingredient_groups": [
+        "beachparty:raw_mussel_meat",
+        "minecraft:campfire_cooking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:cooked_mussel_meat"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/cooked_mussel_meat_from_campfire_cooking.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:cooked_mussel_meat_from_smoking",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:smoking",
+      "machine_id": "minecraft:smoking",
+      "ingredient_groups": [
+        "beachparty:raw_mussel_meat",
+        "minecraft:smoking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:cooked_mussel_meat"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/cooked_mussel_meat_from_smoking.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:empty_sand_bucket",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:dried_kelp",
+        "minecraft:wooden_shovel"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:sand_bucket_empty"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/empty_sand_bucket.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:hooded_beach_chair",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "beachparty:palm_planks",
+        "minecraft:crafting_shaped",
+        "minecraft:stick",
+        "minecraft:wool"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:hooded_beach_chair"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/hooded_beach_chair.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:mini_fridge",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:iron_ingot",
+        "minecraft:redstone"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:mini_fridge"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/mini_fridge.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:mini_fridge_freezing/blue_ice",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "beachparty:mini_fridge_freezing",
+      "machine_id": "beachparty:mini_fridge_freezing",
+      "ingredient_groups": [
+        "beachparty:mini_fridge_freezing",
+        "minecraft:packed_ice"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:blue_ice"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/mini_fridge_freezing/blue_ice.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:mini_fridge_freezing/ice",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "beachparty:mini_fridge_freezing",
+      "machine_id": "beachparty:mini_fridge_freezing",
+      "ingredient_groups": [
+        "beachparty:mini_fridge_freezing",
+        "minecraft:potion",
+        "minecraft:water"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:ice"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/mini_fridge_freezing/ice.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:mini_fridge_freezing/packed_ice",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "beachparty:mini_fridge_freezing",
+      "machine_id": "beachparty:mini_fridge_freezing",
+      "ingredient_groups": [
+        "beachparty:mini_fridge_freezing",
+        "minecraft:ice"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:packed_ice"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/mini_fridge_freezing/packed_ice.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:mini_fridge_freezing/powder_snow_bucket",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "beachparty:mini_fridge_freezing",
+      "machine_id": "beachparty:mini_fridge_freezing",
+      "ingredient_groups": [
+        "beachparty:mini_fridge_freezing",
+        "minecraft:water_bucket"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:powder_snow_bucket"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/mini_fridge_freezing/powder_snow_bucket.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_bar",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "beachparty:palm_planks",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:palm_bar"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_bar.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_bar_mixing/cocoa_cocktail",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "beachparty:palm_bar_mixing",
+      "machine_id": "beachparty:palm_bar_mixing",
+      "ingredient_groups": [
+        "beachparty:palm_bar_mixing",
+        "minecraft:cocoa_beans",
+        "minecraft:ice",
+        "minecraft:sugar"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:cocoa_cocktail"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_bar_mixing/cocoa_cocktail.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_bar_mixing/coconut_cocktail",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "beachparty:palm_bar_mixing",
+      "machine_id": "beachparty:palm_bar_mixing",
+      "ingredient_groups": [
+        "beachparty:coconut_open",
+        "beachparty:palm_bar_mixing",
+        "minecraft:honey_bottle",
+        "minecraft:ice"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:coconut_cocktail"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_bar_mixing/coconut_cocktail.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_bar_mixing/honey_cocktail",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "beachparty:palm_bar_mixing",
+      "machine_id": "beachparty:palm_bar_mixing",
+      "ingredient_groups": [
+        "beachparty:palm_bar_mixing",
+        "minecraft:honeycomb",
+        "minecraft:ice",
+        "minecraft:milk_bucket"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:honey_cocktail"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_bar_mixing/honey_cocktail.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_bar_mixing/melon_cocktail",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "beachparty:palm_bar_mixing",
+      "machine_id": "beachparty:palm_bar_mixing",
+      "ingredient_groups": [
+        "beachparty:palm_bar_mixing",
+        "minecraft:ice",
+        "minecraft:melon_slice",
+        "minecraft:sugar"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:melon_cocktail"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_bar_mixing/melon_cocktail.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_bar_mixing/pumpkin_cocktail",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "beachparty:palm_bar_mixing",
+      "machine_id": "beachparty:palm_bar_mixing",
+      "ingredient_groups": [
+        "beachparty:palm_bar_mixing",
+        "minecraft:ice",
+        "minecraft:milk_bucket",
+        "minecraft:pumpkin",
+        "minecraft:sugar"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:pumpkin_cocktail"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_bar_mixing/pumpkin_cocktail.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_bar_mixing/sweetberries_cocktail",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "beachparty:palm_bar_mixing",
+      "machine_id": "beachparty:palm_bar_mixing",
+      "ingredient_groups": [
+        "beachparty:palm_bar_mixing",
+        "minecraft:ice",
+        "minecraft:sugar",
+        "minecraft:sweet_berries"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:sweetberries_cocktail"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_bar_mixing/sweetberries_cocktail.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_bar_stool",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "beachparty:palm_planks",
+        "minecraft:crafting_shaped",
+        "minecraft:stick",
+        "minecraft:wool"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:palm_bar_stool"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_bar_stool.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_boat",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "beachparty:palm_planks",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:palm_boat"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_boat.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_button",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "beachparty:palm_planks",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:palm_button"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_button.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_cabinet",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "beachparty:palm_planks",
+        "beachparty:palm_slab",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:palm_cabinet"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_cabinet.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_chair",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "beachparty:palm_planks",
+        "minecraft:crafting_shaped",
+        "minecraft:stick",
+        "minecraft:wool"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:palm_chair"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_chair.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_chest_boat",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "beachparty:palm_boat",
+        "minecraft:chest",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:palm_chest_boat"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_chest_boat.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_door",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "beachparty:palm_planks",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:palm_door"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_door.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_fence",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "beachparty:palm_planks",
+        "minecraft:crafting_shaped",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:palm_fence"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_fence.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_fence_gate",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "beachparty:palm_planks",
+        "minecraft:crafting_shaped",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:palm_fence_gate"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_fence_gate.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_floorboard",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "beachparty:palm_planks",
+        "beachparty:palm_slab",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:palm_floorboard"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_floorboard.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_glass",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "beachparty:palm_planks",
+        "minecraft:crafting_shaped",
+        "minecraft:glass"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:palm_glass"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_glass.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_glass_pane",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "beachparty:palm_planks",
+        "minecraft:crafting_shaped",
+        "minecraft:glass_pane"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:palm_glass_pane"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_glass_pane.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_glass_pane_from_palm_glass",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "beachparty:palm_glass",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:palm_glass_pane"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_glass_pane_from_palm_glass.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_hanging_sign",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "beachparty:stripped_palm_log",
+        "minecraft:chain",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:palm_hanging_sign"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_hanging_sign.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_planks",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "beachparty:palm_logs",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:palm_planks"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_planks.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_pressure_plate",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "beachparty:palm_planks",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:palm_pressure_plate"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_pressure_plate.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_sign",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "beachparty:palm_planks",
+        "minecraft:crafting_shaped",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:palm_sign"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_sign.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_slab",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "beachparty:palm_planks",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:palm_slab"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_slab.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_stairs",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "beachparty:palm_planks",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:palm_stairs"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_stairs.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_table",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "beachparty:palm_planks",
+        "beachparty:palm_slab",
+        "minecraft:crafting_shaped",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:palm_table"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_table.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_tall_torch",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "beachparty:palm_tall_torch",
+        "minecraft:coal",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/advancements/recipes/palm_tall_torch.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_torch",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "beachparty:palm_torch",
+        "minecraft:coal",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/advancements/recipes/palm_torch.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_torch_item",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:bamboo",
+        "minecraft:charcoal",
+        "minecraft:coal",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:palm_torch_item"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_torch_item.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_trapdoor",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "beachparty:palm_planks",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:palm_trapdoor"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_trapdoor.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:palm_wood",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "beachparty:palm_log",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:palm_wood"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/palm_wood.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:radio",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "beachparty:overgrown_disc",
+        "minecraft:crafting_shaped",
+        "minecraft:note_block"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:radio"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/radio.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:sand_bucket_block",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "beachparty:sand_bucket_block",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "minecraft:wooden_shovel"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/advancements/recipes/sand_bucket_block.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:stripped_palm_wood",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "beachparty:stripped_palm_log",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:stripped_palm_wood"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/stripped_palm_wood.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:tall_tiki_torch",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:bamboo",
+        "minecraft:charcoal",
+        "minecraft:coal",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:tall_palm_torch"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/tall_tiki_torch.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:thatch_slab",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "beachparty:thatch",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:thatch_slab"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/thatch_slab.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "beachparty:thatch_stairs",
+      "mod_id": "beachparty",
+      "mod_name": "[Let's Do] Beachparty",
+      "mod_version": "2.0.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "beachparty:thatch",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "beachparty:thatch_stairs"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-beachparty-forge-2.0.3.jar:data/beachparty/recipes/thatch_stairs.json"
+      ]
+    }
+  ]
+}

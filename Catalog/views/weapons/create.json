@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "registry_type": "weapons",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "create",
+    "name": "Create",
+    "version": "6.0.8"
+  },
+  "records": [
+    {
+      "item_id": "create:cardboard_sword",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "create",
+      "mod_name": "Create",
+      "mod_version": "6.0.8",
+      "source_jar": "create-1.20.1-6.0.8.jar",
+      "source_sha256": "6fbb910c367dbce8e4fc7e5bf64b6edd4de980906ed00af8e47e4af843c0d9b0",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/create/lang/en_us.json",
+        "assets/create/lang/ru_ru.json",
+        "assets/create/models/item/cardboard_sword.json",
+        "data/create/recipes/crafting/appliances/cardboard_sword.json"
+      ],
+      "display_name_en_us": "Cardboard Sword",
+      "display_name_ru_ru": "Картонный меч",
+      "source_provenance": [
+        "create-1.20.1-6.0.8.jar:assets/create/lang/en_us.json",
+        "create-1.20.1-6.0.8.jar:assets/create/lang/ru_ru.json",
+        "create-1.20.1-6.0.8.jar:assets/create/models/item/cardboard_sword.json",
+        "create-1.20.1-6.0.8.jar:data/create/recipes/crafting/appliances/cardboard_sword.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "sword"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "create:cardboard_sword.tooltip.summary",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "create",
+      "mod_name": "Create",
+      "mod_version": "6.0.8",
+      "source_jar": "create-1.20.1-6.0.8.jar",
+      "source_sha256": "6fbb910c367dbce8e4fc7e5bf64b6edd4de980906ed00af8e47e4af843c0d9b0",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/create/lang/en_us.json",
+        "assets/create/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Bonk. A _mostly_ _harmless_, yet powerful weapon of choice.",
+      "display_name_ru_ru": "Бонк! Почти _безвредное_, но мощное оружие.",
+      "source_provenance": [
+        "create-1.20.1-6.0.8.jar:assets/create/lang/en_us.json",
+        "create-1.20.1-6.0.8.jar:assets/create/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "sword"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "create:cardboard_sword/item",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "create",
+      "mod_name": "Create",
+      "mod_version": "6.0.8",
+      "source_jar": "create-1.20.1-6.0.8.jar",
+      "source_sha256": "6fbb910c367dbce8e4fc7e5bf64b6edd4de980906ed00af8e47e4af843c0d9b0",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/create/models/item/cardboard_sword/item.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "create-1.20.1-6.0.8.jar:assets/create/models/item/cardboard_sword/item.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "sword"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "create:cardboard_sword/item_in_hand",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "create",
+      "mod_name": "Create",
+      "mod_version": "6.0.8",
+      "source_jar": "create-1.20.1-6.0.8.jar",
+      "source_sha256": "6fbb910c367dbce8e4fc7e5bf64b6edd4de980906ed00af8e47e4af843c0d9b0",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/create/models/item/cardboard_sword/item_in_hand.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "create-1.20.1-6.0.8.jar:assets/create/models/item/cardboard_sword/item_in_hand.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "sword"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    }
+  ]
+}

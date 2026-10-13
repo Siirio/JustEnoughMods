@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "registry_type": "placeables",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "endermanoverhaul",
+    "name": "Enderman Overhaul",
+    "version": "1.0.4"
+  },
+  "records": [
+    {
+      "item_id": "endermanoverhaul:tiny_skull",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "endermanoverhaul",
+      "mod_name": "Enderman Overhaul",
+      "mod_version": "1.0.4",
+      "source_jar": "endermanoverhaul-forge-1.20.1-1.0.4.jar",
+      "source_sha256": "18f9f0bf3a9b4f77ad6913c28ccb927cde24f5d19524152cfe79ebb3dcccacc5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/endermanoverhaul/models/item/tiny_skull.json"
+      ],
+      "display_name_en_us": "Tiny Skull",
+      "display_name_ru_ru": "Маленький череп",
+      "source_provenance": [
+        "endermanoverhaul-forge-1.20.1-1.0.4.jar:assets/endermanoverhaul/models/item/tiny_skull.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "endermanoverhaul:tiny_skull",
+      "placed_registry_ids": [
+        "endermanoverhaul:tiny_skull"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": []
+    }
+  ]
+}

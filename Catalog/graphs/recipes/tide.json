@@ -1,0 +1,4797 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "tide",
+    "name": "Tide",
+    "version": "2.1.1"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:abyss_bait_from_clubfish",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "tide:pale_clubfish"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:abyss_bait"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/abyss_bait_from_clubfish.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:amethyst_from_shrimp",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "tide:crystal_shrimp"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:amethyst_shard"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/amethyst_from_shrimp.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:angling_table",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "c:ingots/copper",
+        "c:strings",
+        "minecraft:crafting_shaped",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:angling_table"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/angling_table.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bait",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:seeds",
+        "minecraft:bone_meal",
+        "minecraft:crafting_shapeless",
+        "minecraft:rotten_flesh",
+        "tide:bait_plants"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:bait"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bait.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/amethyst_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:amethyst_shard",
+        "minecraft:crafting_shapeless",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:amethyst_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/amethyst_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/apple_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:apple",
+        "minecraft:crafting_shapeless",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:apple_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/apple_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/black",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:dyes/black",
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:black_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/black.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/blue",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:dyes/blue",
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:blue_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/blue.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/brown",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:dyes/brown",
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:brown_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/brown.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/chorus_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:chorus_fruit",
+        "minecraft:crafting_shapeless",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:chorus_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/chorus_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/cyan",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:dyes/cyan",
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:cyan_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/cyan.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/diamond_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:diamond",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:diamond_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/diamond_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/duck_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:chicken",
+        "minecraft:crafting_shapeless",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:duck_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/duck_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/echo_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:echo_shard",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:echo_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/echo_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/enchanted_golden_apple_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:enchanted_golden_apple",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:enchanted_golden_apple_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/enchanted_golden_apple_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/feather_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:feather",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:feather_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/feather_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/golden_apple_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:golden_apple",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:golden_apple_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/golden_apple_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/golden_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:gold_ingot",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:golden_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/golden_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/grassy_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:grass_block",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:grassy_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/grassy_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/gray",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:dyes/gray",
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:gray_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/gray.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/green",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:dyes/green",
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:green_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/green.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/heart_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:heart_of_the_sea",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:heart_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/heart_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/iron_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:iron_ingot",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:iron_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/iron_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/lichen_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:glow_lichen",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:lichen_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/lichen_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/light_blue",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:dyes/light_blue",
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:light_blue_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/light_blue.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/light_gray",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:dyes/light_gray",
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:light_gray_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/light_gray.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/lime",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:dyes/lime",
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:lime_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/lime.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/magenta",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:dyes/magenta",
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:magenta_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/magenta.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/nautilus_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:nautilus_shell",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:nautilus_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/nautilus_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/netherite_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:netherite_ingot",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:netherite_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/netherite_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/orange",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:dyes/orange",
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:orange_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/orange.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/pearl_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:ender_pearl",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:pearl_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/pearl_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/pink",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:dyes/pink",
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:pink_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/pink.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/purple",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:dyes/purple",
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:purple_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/purple.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/red",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:dyes/red",
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:red_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/red.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/white",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:dyes/white",
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:white_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/white.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bobbers/yellow",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "c:dyes/yellow",
+        "c:slime_balls",
+        "minecraft:crafting_shapeless",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:yellow_bobber"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bobbers/yellow.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:bone_meal_from_fish_bone",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "tide:fish_bone"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:bone_meal"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/bone_meal_from_fish_bone.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:building_blocks/obsidian_from_fragments",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:obsidian_from_fragments",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:obsidian_fragment"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/building_blocks/obsidian_from_fragments.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:climate_gauge",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "c:dusts/redstone",
+        "c:glass_blocks/colorless",
+        "c:nuggets/iron",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:climate_gauge"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/climate_gauge.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:combat/starlight_bow",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:shooting_starfish",
+        "tide:starlight_bow"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/combat/starlight_bow.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:cooked_fish_campfire_cooking",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:campfire_cooking",
+      "machine_id": "minecraft:campfire_cooking",
+      "ingredient_groups": [
+        "minecraft:campfire_cooking",
+        "tide:cookable/cooked_fish"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:cooked_fish"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/cooked_fish_campfire_cooking.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:cooked_fish_slice_campfire_cooking",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:campfire_cooking",
+      "machine_id": "minecraft:campfire_cooking",
+      "ingredient_groups": [
+        "minecraft:campfire_cooking",
+        "tide:fish_slice"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:cooked_fish_slice"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/cooked_fish_slice_campfire_cooking.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:cooked_fish_slice_smelting",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:smelting",
+      "machine_id": "minecraft:smelting",
+      "ingredient_groups": [
+        "minecraft:smelting",
+        "tide:fish_slice"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:cooked_fish_slice"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/cooked_fish_slice_smelting.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:cooked_fish_slice_smoking",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:smoking",
+      "machine_id": "minecraft:smoking",
+      "ingredient_groups": [
+        "minecraft:smoking",
+        "tide:fish_slice"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:cooked_fish_slice"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/cooked_fish_slice_smoking.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:cooked_fish_smelting",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:smelting",
+      "machine_id": "minecraft:smelting",
+      "ingredient_groups": [
+        "minecraft:smelting",
+        "tide:cookable/cooked_fish"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:cooked_fish"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/cooked_fish_smelting.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:cooked_fish_smoking",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:smoking",
+      "machine_id": "minecraft:smoking",
+      "ingredient_groups": [
+        "minecraft:smoking",
+        "tide:cookable/cooked_fish"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:cooked_fish"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/cooked_fish_smoking.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:copper_line",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "c:ingots/copper",
+        "minecraft:crafting_shaped",
+        "tide:fishing_line"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:copper_line"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/copper_line.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:crystal_rod_smithing",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "c:gems/amethyst",
+        "c:strings",
+        "minecraft:fishing_rod",
+        "minecraft:smithing_transform",
+        "tide:golden_fishing_rod",
+        "tide:iron_fishing_rod",
+        "tide:stone_fishing_rod"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:crystal_fishing_rod"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/crystal_rod_smithing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:decorations/angling_table",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:ingots/copper",
+        "c:strings",
+        "minecraft:inventory_changed",
+        "minecraft:planks",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:angling_table"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/decorations/angling_table.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:decorations/fish_display",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:logs",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:fish_display"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/decorations/fish_display.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:depth_meter",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "c:dusts/redstone",
+        "c:ingots/iron",
+        "minecraft:crafting_shaped",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:depth_meter"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/depth_meter.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:diamond_line",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "c:gems/diamond",
+        "minecraft:crafting_shaped",
+        "tide:fishing_line"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:diamond_line"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/diamond_line.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:diamond_rod_smithing",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "c:gems/diamond",
+        "c:strings",
+        "minecraft:fishing_rod",
+        "minecraft:smithing_transform",
+        "tide:crystal_fishing_rod",
+        "tide:golden_fishing_rod",
+        "tide:iron_fishing_rod",
+        "tide:stone_fishing_rod"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:diamond_fishing_rod"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/diamond_rod_smithing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:dragonfin_boots_smithing",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "minecraft:dragon_breath",
+        "minecraft:netherite_boots",
+        "minecraft:smithing_transform",
+        "tide:dragon_fish"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:dragonfin_boots"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/dragonfin_boots_smithing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:enchanted_pocket_watch",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "tide:coelacanth",
+        "tide:pocket_watch"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:enchanted_pocket_watch"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/enchanted_pocket_watch.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:eye_from_endergazer",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "tide:endergazer"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:ender_eye"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/eye_from_endergazer.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:fiery_hook",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "c:ingots/iron",
+        "minecraft:blaze_rod",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:fiery_hook"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/fiery_hook.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:fish_display",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:logs",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:fish_display"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/fish_display.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:fish_finder",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "tide:climate_gauge",
+        "tide:depth_meter",
+        "tide:lunar_calendar",
+        "tide:pocket_watch",
+        "tide:weather_radio"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:fish_finder"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/fish_finder.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:fish_satchel",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "c:leathers",
+        "minecraft:crafting_shaped",
+        "tide:fish"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:fish_satchel"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/fish_satchel.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:fishing_hook",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "c:cobblestones",
+        "minecraft:crafting_shaped",
+        "minecraft:iron_nugget"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:fishing_hook"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/fishing_hook.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:fishing_journal",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:book",
+        "minecraft:crafting_shapeless",
+        "tide:fish"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:fishing_journal"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/fishing_journal.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:fishing_line",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "c:strings",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:fishing_line"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/fishing_line.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:fishy_note_from_fish",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "tide:fishy_note_recipe",
+      "machine_id": "tide:fishy_note_recipe",
+      "ingredient_groups": [
+        "tide:fishy_note_recipe"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/fishy_note_from_fish.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:food/cooked_fish_campfire_cooking",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:cookable/cooked_fish",
+        "tide:cooked_fish_campfire_cooking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/food/cooked_fish_campfire_cooking.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:food/cooked_fish_slice_campfire_cooking",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:cooked_fish_slice_campfire_cooking",
+        "tide:fish_slice"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/food/cooked_fish_slice_campfire_cooking.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:food/cooked_fish_slice_smelting",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:cooked_fish_slice_smelting",
+        "tide:fish_slice"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/food/cooked_fish_slice_smelting.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:food/cooked_fish_slice_smoking",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:cooked_fish_slice_smoking",
+        "tide:fish_slice"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/food/cooked_fish_slice_smoking.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:food/cooked_fish_smelting",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:cookable/cooked_fish",
+        "tide:cooked_fish_smelting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/food/cooked_fish_smelting.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:food/cooked_fish_smoking",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:cookable/cooked_fish",
+        "tide:cooked_fish_smoking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/food/cooked_fish_smoking.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:food/grilled_tuna_campfire_cooking",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:cookable/grilled_tuna",
+        "tide:grilled_tuna_campfire_cooking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/food/grilled_tuna_campfire_cooking.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:food/grilled_tuna_smelting",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:cookable/grilled_tuna",
+        "tide:grilled_tuna_smelting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/food/grilled_tuna_smelting.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:food/grilled_tuna_smoking",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:cookable/grilled_tuna",
+        "tide:grilled_tuna_smoking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/food/grilled_tuna_smoking.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:food/large_cooked_fish_campfire_cooking",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:cookable/large_cooked_fish",
+        "tide:large_cooked_fish_campfire_cooking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/food/large_cooked_fish_campfire_cooking.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:food/large_cooked_fish_smelting",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:cookable/large_cooked_fish",
+        "tide:large_cooked_fish_smelting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/food/large_cooked_fish_smelting.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:food/large_cooked_fish_smoking",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:cookable/large_cooked_fish",
+        "tide:large_cooked_fish_smoking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/food/large_cooked_fish_smoking.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:food/small_cooked_fish_campfire_cooking",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:cookable/small_cooked_fish",
+        "tide:small_cooked_fish_campfire_cooking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/food/small_cooked_fish_campfire_cooking.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:food/small_cooked_fish_smelting",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:cookable/small_cooked_fish",
+        "tide:small_cooked_fish_smelting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/food/small_cooked_fish_smelting.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:food/small_cooked_fish_smoking",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:cookable/small_cooked_fish",
+        "tide:small_cooked_fish_smoking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/food/small_cooked_fish_smoking.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:glow_ink_from_fish",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "tide:glowfish"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:glow_ink_sac"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/glow_ink_from_fish.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:gold_from_minnow",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "tide:gilded_minnow"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:raw_gold"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/gold_from_minnow.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:gold_rod_smithing",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "c:ingots/gold",
+        "c:strings",
+        "minecraft:fishing_rod",
+        "minecraft:smithing_transform",
+        "tide:iron_fishing_rod",
+        "tide:stone_fishing_rod"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:golden_fishing_rod"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/gold_rod_smithing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:golden_line",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "c:ingots/gold",
+        "minecraft:crafting_shaped",
+        "tide:fishing_line"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:golden_line"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/golden_line.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:grilled_tuna_campfire_cooking",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:campfire_cooking",
+      "machine_id": "minecraft:campfire_cooking",
+      "ingredient_groups": [
+        "minecraft:campfire_cooking",
+        "tide:cookable/grilled_tuna"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:grilled_tuna"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/grilled_tuna_campfire_cooking.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:grilled_tuna_smelting",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:smelting",
+      "machine_id": "minecraft:smelting",
+      "ingredient_groups": [
+        "minecraft:smelting",
+        "tide:cookable/grilled_tuna"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:grilled_tuna"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/grilled_tuna_smelting.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:grilled_tuna_smoking",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:smoking",
+      "machine_id": "minecraft:smoking",
+      "ingredient_groups": [
+        "minecraft:smoking",
+        "tide:cookable/grilled_tuna"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:grilled_tuna"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/grilled_tuna_smoking.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:incandescent_bait_from_larva",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "tide:incandescent_larva"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:incandescent_bait"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/incandescent_bait_from_larva.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:iron_from_tetra",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "tide:iron_tetra"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:raw_iron"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/iron_from_tetra.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:iron_line",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "c:ingots/iron",
+        "minecraft:crafting_shaped",
+        "tide:fishing_line"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:iron_line"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/iron_line.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:iron_rod_smithing",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "c:ingots/iron",
+        "c:strings",
+        "minecraft:fishing_rod",
+        "minecraft:smithing_transform",
+        "tide:stone_fishing_rod"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:iron_fishing_rod"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/iron_rod_smithing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:jelly_torch_from_jellyfish",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "tide:luminescent_jellyfish"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:jelly_torch"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/jelly_torch_from_jellyfish.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:jelly_torch_from_sun_emblem",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "tide:sun_emblem"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:jelly_torch"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/jelly_torch_from_sun_emblem.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:lapis_from_lanternfish",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "tide:lapis_lanternfish"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:lapis_lazuli"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/lapis_from_lanternfish.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:large_cooked_fish_campfire_cooking",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:campfire_cooking",
+      "machine_id": "minecraft:campfire_cooking",
+      "ingredient_groups": [
+        "minecraft:campfire_cooking",
+        "tide:cookable/large_cooked_fish"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:large_cooked_fish"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/large_cooked_fish_campfire_cooking.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:large_cooked_fish_smelting",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:smelting",
+      "machine_id": "minecraft:smelting",
+      "ingredient_groups": [
+        "minecraft:smelting",
+        "tide:cookable/large_cooked_fish"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:large_cooked_fish"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/large_cooked_fish_smelting.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:large_cooked_fish_smoking",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:smoking",
+      "machine_id": "minecraft:smoking",
+      "ingredient_groups": [
+        "minecraft:smoking",
+        "tide:cookable/large_cooked_fish"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:large_cooked_fish"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/large_cooked_fish_smoking.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:lavaproof_hook",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "c:ingots/gold",
+        "c:obsidians",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:lavaproof_hook"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/lavaproof_hook.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:lucky_bait",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:rabbit_foot",
+        "tide:bait"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:lucky_bait"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/lucky_bait.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:lunar_calendar",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "minecraft:ink_sac",
+        "minecraft:paper",
+        "minecraft:spyglass"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:lunar_calendar"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/lunar_calendar.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:magnetic_bait",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "c:dusts/redstone",
+        "c:gems/lapis",
+        "c:gems/prismarine",
+        "minecraft:crafting_shaped",
+        "minecraft:iron_nugget",
+        "tide:bait"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:magnetic_bait"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/magnetic_bait.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:membrane_from_elytrout",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "tide:elytrout"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:phantom_membrane"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/membrane_from_elytrout.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:midas_rod_smithing",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "c:strings",
+        "minecraft:smithing_transform",
+        "tide:golden_fishing_rod",
+        "tide:midas_fish"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:midas_fishing_rod"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/midas_rod_smithing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/abyss_bait_from_clubfish",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:abyss_bait_from_clubfish",
+        "tide:pale_clubfish"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/abyss_bait_from_clubfish.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/amethyst_from_shrimp",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:amethyst_from_shrimp",
+        "tide:crystal_shrimp"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/amethyst_from_shrimp.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bait",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:seeds",
+        "minecraft:bone_meal",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "minecraft:rotten_flesh",
+        "tide:bait",
+        "tide:bait_plants"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bait.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/amethyst_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:amethyst_shard",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/amethyst_bobber"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/amethyst_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/apple_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:apple",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/apple_bobber"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/apple_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/black",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:dyes/black",
+        "c:slime_balls",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/black"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/black.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/blue",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:dyes/blue",
+        "c:slime_balls",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/blue"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/blue.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/brown",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:dyes/brown",
+        "c:slime_balls",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/brown"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/brown.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/chorus_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:chorus_fruit",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/chorus_bobber"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/chorus_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/cyan",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:dyes/cyan",
+        "c:slime_balls",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/cyan"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/cyan.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/diamond_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:diamond",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/diamond_bobber"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/diamond_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/duck_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:chicken",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/duck_bobber"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/duck_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/echo_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:echo_shard",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/echo_bobber"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/echo_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/enchanted_golden_apple_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:enchanted_golden_apple",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/enchanted_golden_apple_bobber"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/enchanted_golden_apple_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/feather_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:feather",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/feather_bobber"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/feather_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/golden_apple_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:golden_apple",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/golden_apple_bobber"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/golden_apple_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/golden_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:gold_ingot",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/golden_bobber"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/golden_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/grassy_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:grass_block",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/grassy_bobber"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/grassy_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/gray",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:dyes/gray",
+        "c:slime_balls",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/gray"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/gray.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/green",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:dyes/green",
+        "c:slime_balls",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/green"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/green.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/heart_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:heart_of_the_sea",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/heart_bobber"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/heart_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/iron_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:inventory_changed",
+        "minecraft:iron_ingot",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/iron_bobber"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/iron_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/lichen_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:glow_lichen",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/lichen_bobber"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/lichen_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/light_blue",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:dyes/light_blue",
+        "c:slime_balls",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/light_blue"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/light_blue.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/light_gray",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:dyes/light_gray",
+        "c:slime_balls",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/light_gray"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/light_gray.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/lime",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:dyes/lime",
+        "c:slime_balls",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/lime"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/lime.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/magenta",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:dyes/magenta",
+        "c:slime_balls",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/magenta"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/magenta.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/nautilus_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:inventory_changed",
+        "minecraft:nautilus_shell",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/nautilus_bobber"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/nautilus_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/netherite_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:inventory_changed",
+        "minecraft:netherite_ingot",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/netherite_bobber"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/netherite_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/orange",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:dyes/orange",
+        "c:slime_balls",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/orange"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/orange.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/pearl_bobber",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:slime_balls",
+        "minecraft:ender_pearl",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/pearl_bobber"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/pearl_bobber.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/pink",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:dyes/pink",
+        "c:slime_balls",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/pink"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/pink.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/purple",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:dyes/purple",
+        "c:slime_balls",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/purple"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/purple.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/red",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:dyes/red",
+        "c:slime_balls",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/red"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/red.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/white",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:dyes/white",
+        "c:slime_balls",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/white"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/white.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bobbers/yellow",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:dyes/yellow",
+        "c:slime_balls",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bobbers/yellow"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bobbers/yellow.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/bone_meal_from_fish_bone",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:bone_meal_from_fish_bone",
+        "tide:fish_bone"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/bone_meal_from_fish_bone.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/eye_from_endergazer",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:endergazer",
+        "tide:eye_from_endergazer"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/eye_from_endergazer.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/fishing_journal",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:book",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:fish",
+        "tide:fishing_journal"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/fishing_journal.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/glow_ink_from_fish",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:glow_ink_from_fish",
+        "tide:glowfish"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/glow_ink_from_fish.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/gold_from_minnow",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:gilded_minnow",
+        "tide:gold_from_minnow"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/gold_from_minnow.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/incandescent_bait_from_larva",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:incandescent_bait_from_larva",
+        "tide:incandescent_larva"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/incandescent_bait_from_larva.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/iron_from_tetra",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:iron_from_tetra",
+        "tide:iron_tetra"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/iron_from_tetra.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/jelly_torch_from_jellyfish",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:jelly_torch_from_jellyfish",
+        "tide:luminescent_jellyfish"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/jelly_torch_from_jellyfish.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/jelly_torch_from_sun_emblem",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:jelly_torch_from_sun_emblem",
+        "tide:sun_emblem"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/jelly_torch_from_sun_emblem.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/lapis_from_lanternfish",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:lapis_from_lanternfish",
+        "tide:lapis_lanternfish"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/lapis_from_lanternfish.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/lucky_bait",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:rabbit_foot",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:lucky_bait"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/lucky_bait.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/magnetic_bait",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:dusts/redstone",
+        "c:gems/lapis",
+        "c:gems/prismarine",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:magnetic_bait"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/magnetic_bait.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/membrane_from_elytrout",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:elytrout",
+        "tide:membrane_from_elytrout"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/membrane_from_elytrout.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/pearl_from_enderfin",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:enderfin",
+        "tide:pearl_from_enderfin"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/pearl_from_enderfin.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:misc/wooden_crate",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "minecraft:wooden_slabs",
+        "tide:wooden_crate"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/misc/wooden_crate.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:netherite_rod_smithing",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "c:ingots/netherite",
+        "minecraft:netherite_upgrade_smithing_template",
+        "minecraft:smithing_transform",
+        "tide:diamond_fishing_rod"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:netherite_fishing_rod"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/netherite_rod_smithing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:obsidian_from_fragments",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "tide:obsidian_fragment"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:obsidian"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/obsidian_from_fragments.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:pearl_from_enderfin",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "tide:enderfin"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:ender_pearl"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/pearl_from_enderfin.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:permafrost_hook",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "c:ingots/iron",
+        "minecraft:blue_ice",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:permafrost_hook"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/permafrost_hook.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:pocket_watch",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:chain",
+        "minecraft:clock",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:pocket_watch"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/pocket_watch.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:small_cooked_fish_campfire_cooking",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:campfire_cooking",
+      "machine_id": "minecraft:campfire_cooking",
+      "ingredient_groups": [
+        "minecraft:campfire_cooking",
+        "tide:cookable/small_cooked_fish"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:small_cooked_fish"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/small_cooked_fish_campfire_cooking.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:small_cooked_fish_smelting",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:smelting",
+      "machine_id": "minecraft:smelting",
+      "ingredient_groups": [
+        "minecraft:smelting",
+        "tide:cookable/small_cooked_fish"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:small_cooked_fish"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/small_cooked_fish_smelting.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:small_cooked_fish_smoking",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:smoking",
+      "machine_id": "minecraft:smoking",
+      "ingredient_groups": [
+        "minecraft:smoking",
+        "tide:cookable/small_cooked_fish"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:small_cooked_fish"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/small_cooked_fish_smoking.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:starlight_bow",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:bow",
+        "minecraft:crafting_shapeless",
+        "tide:shooting_starfish"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:starlight_bow"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/starlight_bow.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:stone_fishing_rod",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "c:cobblestones",
+        "c:strings",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:stone_fishing_rod"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/stone_fishing_rod.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:tools/climate_gauge",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:dusts/redstone",
+        "c:nuggets/iron",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:climate_gauge"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/tools/climate_gauge.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:tools/copper_line",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:ingots/copper",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:copper_line",
+        "tide:fishing_line"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/tools/copper_line.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:tools/crystal_rod_smithing",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:gems/amethyst",
+        "c:strings",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:crystal_rod_smithing",
+        "tide:iron_fishing_rod"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/tools/crystal_rod_smithing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:tools/depth_meter",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:dusts/redstone",
+        "c:ingots/iron",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:depth_meter"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/tools/depth_meter.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:tools/diamond_line",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:gems/diamond",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:diamond_line",
+        "tide:fishing_line"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/tools/diamond_line.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:tools/diamond_rod_smithing",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:gems/diamond",
+        "c:strings",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:diamond_rod_smithing",
+        "tide:iron_fishing_rod"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/tools/diamond_rod_smithing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:tools/dragonfin_boots_smithing",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:dragon_breath",
+        "minecraft:inventory_changed",
+        "minecraft:netherite_boots",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:dragon_fish",
+        "tide:dragonfin_boots_smithing"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/tools/dragonfin_boots_smithing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:tools/enchanted_pocket_watch",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:coelacanth",
+        "tide:enchanted_pocket_watch"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/tools/enchanted_pocket_watch.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:tools/fiery_hook",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:blaze_rod",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:fiery_hook"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/tools/fiery_hook.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:tools/fish_finder",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:climate_gauge",
+        "tide:depth_meter",
+        "tide:fish_finder",
+        "tide:lunar_calendar",
+        "tide:pocket_watch",
+        "tide:weather_radio"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/tools/fish_finder.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:tools/fish_satchel",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:leathers",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:fish",
+        "tide:fish_satchel"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/tools/fish_satchel.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:tools/fishing_hook",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:cobblestones",
+        "minecraft:inventory_changed",
+        "minecraft:iron_nugget",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:fishing_hook"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/tools/fishing_hook.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:tools/fishing_line",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:strings",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:fishing_line"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/tools/fishing_line.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:tools/gold_rod_smithing",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:ingots/gold",
+        "c:strings",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:gold_rod_smithing",
+        "tide:stone_fishing_rod"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/tools/gold_rod_smithing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:tools/golden_line",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:ingots/gold",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:fishing_line",
+        "tide:golden_line"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/tools/golden_line.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:tools/iron_line",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:ingots/iron",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:fishing_line",
+        "tide:iron_line"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/tools/iron_line.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:tools/iron_rod_smithing",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:ingots/iron",
+        "c:strings",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:iron_rod_smithing",
+        "tide:stone_fishing_rod"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/tools/iron_rod_smithing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:tools/lavaproof_hook",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:ingots/gold",
+        "c:obsidians",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:lavaproof_hook"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/tools/lavaproof_hook.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:tools/lunar_calendar",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:ink_sac",
+        "minecraft:inventory_changed",
+        "minecraft:paper",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "minecraft:spyglass",
+        "tide:lunar_calendar"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/tools/lunar_calendar.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:tools/midas_rod_smithing",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:midas_fish",
+        "tide:midas_rod_smithing"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/tools/midas_rod_smithing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:tools/netherite_rod_smithing",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:ingots/netherite",
+        "minecraft:inventory_changed",
+        "minecraft:netherite_upgrade_smithing_template",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:diamond_fishing_rod",
+        "tide:netherite_rod_smithing"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/tools/netherite_rod_smithing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:tools/permafrost_hook",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:blue_ice",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:permafrost_hook"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/tools/permafrost_hook.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:tools/pocket_watch",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:chain",
+        "minecraft:clock",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:pocket_watch"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/tools/pocket_watch.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:tools/stone_fishing_rod",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:cobblestones",
+        "c:strings",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:stone_fishing_rod"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/tools/stone_fishing_rod.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:tools/twilight_hook",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:clock",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:twilight_hook"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/tools/twilight_hook.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:tools/void_hook",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:dragon_breath",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:void_hook"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/tools/void_hook.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:tools/weather_radio",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "c:dusts/redstone",
+        "c:ingots/copper",
+        "minecraft:inventory_changed",
+        "minecraft:lightning_rod",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "tide:weather_radio"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/advancements/recipes/tools/weather_radio.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:twilight_hook",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "c:ingots/iron",
+        "minecraft:clock",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:twilight_hook"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/twilight_hook.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:void_hook",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:crying_obsidian",
+        "minecraft:dragon_breath"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:void_hook"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/void_hook.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:weather_radio",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "c:dusts/redstone",
+        "c:ingots/copper",
+        "minecraft:crafting_shaped",
+        "minecraft:lightning_rod"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:weather_radio"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/weather_radio.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "tide:wooden_crate",
+      "mod_id": "tide",
+      "mod_name": "Tide",
+      "mod_version": "2.1.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:wooden_slabs"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "tide:wooden_crate"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "tide-forge-1.20.1-2.1.1-hotfix.jar:data/tide/recipes/wooden_crate.json"
+      ]
+    }
+  ]
+}

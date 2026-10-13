@@ -1,0 +1,1535 @@
+{
+  "schema_version": 1,
+  "registry_type": "blocks",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "herbalbrews",
+    "name": "[Let's Do] HerbalBrews",
+    "version": "1.0.12"
+  },
+  "records": [
+    {
+      "registry_id": "herbalbrews:black_tea_block",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/black_tea_block.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Black Tea",
+      "display_name_ru_ru": "Чёрный чай",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/black_tea_block.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:black_tea_leaf_block",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/black_tea_leaf_block.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Black Tea Leaf Block",
+      "display_name_ru_ru": "Блок листьев чёрного чая",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/hoe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/black_tea_leaf_block.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:cauldron",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/cauldron.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Brewing Cauldron",
+      "display_name_ru_ru": "Котёл",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/cauldron.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:coffee_block",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/coffee_block.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Coffee",
+      "display_name_ru_ru": "Кофе",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/coffee_block.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:coffee_plant",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/coffee_plant.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Coffee Beans",
+      "display_name_ru_ru": "Кофейные зёрна",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/crops"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/coffee_plant.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:copper_tea_kettle",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/copper_tea_kettle.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Copper Tea Kettle",
+      "display_name_ru_ru": "Медный чайник",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/copper_tea_kettle.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:dried_green_tea_leaf_block",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/dried_green_tea_leaf_block.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Dried Green Tea Leaf Block",
+      "display_name_ru_ru": "Блок сушёных листьев зелёного чая",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/hoe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/dried_green_tea_leaf_block.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:dried_out_green_tea_leaf_block",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/dried_out_green_tea_leaf_block.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Dried Green Tea Leaf Block",
+      "display_name_ru_ru": "Блок сушёных листьев зелёного чая",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/hoe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/dried_out_green_tea_leaf_block.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:green_tea_block",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/green_tea_block.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Green Tea",
+      "display_name_ru_ru": "Зелёный чай",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/green_tea_block.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:green_tea_leaf_block",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/green_tea_leaf_block.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Green Tea Leaf Block",
+      "display_name_ru_ru": "Блок листьев зелёного чая",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/hoe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/green_tea_leaf_block.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:herbalbrews_banner",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/herbalbrews_banner.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Completionist Banner: §aHerbal Brews",
+      "display_name_ru_ru": "Знамя чайного мастера: §aHerbal Brews",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/herbalbrews_banner.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:herbalbrews_wall_banner",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/herbalbrews_wall_banner.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/herbalbrews_wall_banner.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:hibiscus",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/hibiscus.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Hibiscus",
+      "display_name_ru_ru": "Гибискус",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/small_flowers",
+        "minecraft:items/small_flowers"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/hibiscus.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:hibiscus_tea_block",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/hibiscus_tea_block.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Hibiscus Tea",
+      "display_name_ru_ru": "Чай из гибискуса",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/hibiscus_tea_block.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:jug",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/jug.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Jug",
+      "display_name_ru_ru": "Кувшин",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/jug.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:lavender",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/lavender.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Lavender",
+      "display_name_ru_ru": "Лаванда",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/small_flowers",
+        "minecraft:items/small_flowers"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/lavender.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:lavender_tea_block",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/lavender_tea_block.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Lavender Tea",
+      "display_name_ru_ru": "Лавандовый чай",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/lavender_tea_block.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:milk_coffee_block",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/milk_coffee_block.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Milk Coffee",
+      "display_name_ru_ru": "Кофе с молоком",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/milk_coffee_block.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:mixed_tea_leaf_block",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/mixed_tea_leaf_block.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Mixed Tea Leaf Block",
+      "display_name_ru_ru": "Блок смешанных чайных листьев",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/hoe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/mixed_tea_leaf_block.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:oolong_tea_block",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/oolong_tea_block.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Oolong Tea",
+      "display_name_ru_ru": "Улун",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/oolong_tea_block.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:oolong_tea_leaf_block",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/oolong_tea_leaf_block.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Oolong Tea Leaf Block",
+      "display_name_ru_ru": "Блок листьев чая улун",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/hoe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/oolong_tea_leaf_block.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:potted_hibiscus",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/potted_hibiscus.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Potted Hibiscus",
+      "display_name_ru_ru": "Гибискус в горшке",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/potted_hibiscus.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:potted_lavender",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/potted_lavender.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Potted Lavender",
+      "display_name_ru_ru": "Лаванда в горшке",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/potted_lavender.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:potted_wild_coffee",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/potted_wild_coffee.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Potted Wild Coffee",
+      "display_name_ru_ru": "Дикий кофе в горшке",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/potted_wild_coffee.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:potted_wild_rooibos",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/potted_wild_rooibos.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Potted Wild Rooibos",
+      "display_name_ru_ru": "Ройбос в горшке",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/potted_wild_rooibos.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:potted_wild_yerba_mate",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/potted_wild_yerba_mate.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Potted Wild Yerba Mate",
+      "display_name_ru_ru": "Падуб в горшке",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/potted_wild_yerba_mate.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:rooibos_plant",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/rooibos_plant.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Rooibos Leaf",
+      "display_name_ru_ru": "Лист ройбоса",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/crops"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/rooibos_plant.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:rooibos_tea_block",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/rooibos_tea_block.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Rooibos Tea",
+      "display_name_ru_ru": "Ройбос",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/rooibos_tea_block.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:stove",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/stove.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Stove",
+      "display_name_ru_ru": "Чайная плита",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "c:blocks/allows_cooking",
+        "farmersdelight:blocks/heat_sources",
+        "forge:blocks/allows_cooking",
+        "herbalbrews:blocks/allows_cooking",
+        "minecraft:blocks/mineable/hoe",
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/stove.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:tea_kettle",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/tea_kettle.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Tea Kettle",
+      "display_name_ru_ru": "Чайник",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/hoe",
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/tea_kettle.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:tea_leaf_crate",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/tea_leaf_crate.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Bag of Tea Leaves",
+      "display_name_ru_ru": "Мешок чайных листьев",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/hoe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/tea_leaf_crate.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:tea_plant",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/tea_plant.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Tea Blossom",
+      "display_name_ru_ru": "Чайный цветок",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/crops"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/tea_plant.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:wild_coffee_plant",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/wild_coffee_plant.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Wild Coffee",
+      "display_name_ru_ru": "Дикий кофе",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/wild_coffee_plant.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:wild_rooibos_plant",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/wild_rooibos_plant.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Wild Rooibos",
+      "display_name_ru_ru": "Дикий ройбос",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/wild_rooibos_plant.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:wild_yerba_mate_plant",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/wild_yerba_mate_plant.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Wild Yerba Mate",
+      "display_name_ru_ru": "Дикий падуб",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/wild_yerba_mate_plant.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:yerba_mate_plant",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/yerba_mate_plant.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Yerba Mate Leaf",
+      "display_name_ru_ru": "Лист падуба",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/crops"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/yerba_mate_plant.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "herbalbrews:yerba_mate_tea_block",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/blockstates/yerba_mate_tea_block.json",
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Yerba Mate Tea",
+      "display_name_ru_ru": "Мате",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/blockstates/yerba_mate_tea_block.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}

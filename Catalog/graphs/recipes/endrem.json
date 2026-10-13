@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "endrem",
+    "name": "End Remastered",
+    "version": "${file.jarVersion}"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "endrem:exotic_eye",
+      "mod_id": "endrem",
+      "mod_name": "End Remastered",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:bubble_coral",
+        "minecraft:conduit",
+        "minecraft:crafting_shaped",
+        "minecraft:ender_eye",
+        "minecraft:fire_coral",
+        "minecraft:glow_ink_sac",
+        "minecraft:horn_coral",
+        "minecraft:tube_coral"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "endrem:exotic_eye"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "endrem_forge-5.3.3-R-1.20.1.jar:data/endrem/recipes/exotic_eye.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "endrem:undead_eye",
+      "mod_id": "endrem",
+      "mod_name": "End Remastered",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "endrem:undead_soul",
+        "minecraft:bone",
+        "minecraft:crafting_shaped",
+        "minecraft:ghast_tear",
+        "minecraft:phantom_membrane",
+        "minecraft:rotten_flesh"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "endrem:undead_eye"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "endrem_forge-5.3.3-R-1.20.1.jar:data/endrem/recipes/undead_eye.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "endrem:witch_eye",
+      "mod_id": "endrem",
+      "mod_name": "End Remastered",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "endrem:witch_pupil",
+        "minecraft:crafting_shapeless",
+        "minecraft:ender_eye"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "endrem:witch_eye"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "endrem_forge-5.3.3-R-1.20.1.jar:data/endrem/recipes/witch_eye.json"
+      ]
+    }
+  ]
+}

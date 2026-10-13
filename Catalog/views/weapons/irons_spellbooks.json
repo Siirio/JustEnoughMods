@@ -1,0 +1,697 @@
+{
+  "schema_version": 1,
+  "registry_type": "weapons",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "irons_spellbooks",
+    "name": "Iron's Spells 'n Spellbooks",
+    "version": "1.20.1-3.15.6"
+  },
+  "records": [
+    {
+      "item_id": "irons_spellbooks:autoloader_crossbow",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "irons_spellbooks",
+      "mod_name": "Iron's Spells 'n Spellbooks",
+      "mod_version": "1.20.1-3.15.6",
+      "source_jar": "irons_spellbooks-1.20.1-3.15.6.jar",
+      "source_sha256": "61996bb3cdb9601d83376f81295967f19a6f036563bb5a0e0f672967344a6fa7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/irons_spellbooks/lang/en_us.json",
+        "assets/irons_spellbooks/lang/ru_ru.json",
+        "assets/irons_spellbooks/models/item/autoloader_crossbow.json"
+      ],
+      "display_name_en_us": "Autoloader Crossbow",
+      "display_name_ru_ru": "Самозарядный арбалет",
+      "source_provenance": [
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/en_us.json",
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/ru_ru.json",
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/autoloader_crossbow.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "crossbow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "irons_spellbooks:autoloader_crossbow.desc",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "irons_spellbooks",
+      "mod_name": "Iron's Spells 'n Spellbooks",
+      "mod_version": "1.20.1-3.15.6",
+      "source_jar": "irons_spellbooks-1.20.1-3.15.6.jar",
+      "source_sha256": "61996bb3cdb9601d83376f81295967f19a6f036563bb5a0e0f672967344a6fa7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/irons_spellbooks/lang/en_us.json",
+        "assets/irons_spellbooks/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "> Automatically loads next available projectile while in inventory. Crouch-Click to cancel",
+      "display_name_ru_ru": "> Автоматически заряжает следующий доступный снаряд, пока он находится в инвентаре. Shift-ПКМ для отмены",
+      "source_provenance": [
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/en_us.json",
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "crossbow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "irons_spellbooks:autoloader_crossbow_arrow",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "irons_spellbooks",
+      "mod_name": "Iron's Spells 'n Spellbooks",
+      "mod_version": "1.20.1-3.15.6",
+      "source_jar": "irons_spellbooks-1.20.1-3.15.6.jar",
+      "source_sha256": "61996bb3cdb9601d83376f81295967f19a6f036563bb5a0e0f672967344a6fa7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/irons_spellbooks/models/item/autoloader_crossbow_arrow.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/autoloader_crossbow_arrow.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "crossbow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "irons_spellbooks:autoloader_crossbow_firework",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "irons_spellbooks",
+      "mod_name": "Iron's Spells 'n Spellbooks",
+      "mod_version": "1.20.1-3.15.6",
+      "source_jar": "irons_spellbooks-1.20.1-3.15.6.jar",
+      "source_sha256": "61996bb3cdb9601d83376f81295967f19a6f036563bb5a0e0f672967344a6fa7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/irons_spellbooks/models/item/autoloader_crossbow_firework.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/autoloader_crossbow_firework.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "crossbow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "irons_spellbooks:autoloader_crossbow_pulling_0",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "irons_spellbooks",
+      "mod_name": "Iron's Spells 'n Spellbooks",
+      "mod_version": "1.20.1-3.15.6",
+      "source_jar": "irons_spellbooks-1.20.1-3.15.6.jar",
+      "source_sha256": "61996bb3cdb9601d83376f81295967f19a6f036563bb5a0e0f672967344a6fa7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/irons_spellbooks/models/item/autoloader_crossbow_pulling_0.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/autoloader_crossbow_pulling_0.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "crossbow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "irons_spellbooks:autoloader_crossbow_pulling_1",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "irons_spellbooks",
+      "mod_name": "Iron's Spells 'n Spellbooks",
+      "mod_version": "1.20.1-3.15.6",
+      "source_jar": "irons_spellbooks-1.20.1-3.15.6.jar",
+      "source_sha256": "61996bb3cdb9601d83376f81295967f19a6f036563bb5a0e0f672967344a6fa7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/irons_spellbooks/models/item/autoloader_crossbow_pulling_1.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/autoloader_crossbow_pulling_1.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "crossbow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "irons_spellbooks:autoloader_crossbow_pulling_2",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "irons_spellbooks",
+      "mod_name": "Iron's Spells 'n Spellbooks",
+      "mod_version": "1.20.1-3.15.6",
+      "source_jar": "irons_spellbooks-1.20.1-3.15.6.jar",
+      "source_sha256": "61996bb3cdb9601d83376f81295967f19a6f036563bb5a0e0f672967344a6fa7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/irons_spellbooks/models/item/autoloader_crossbow_pulling_2.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/autoloader_crossbow_pulling_2.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "crossbow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "irons_spellbooks:autoloader_crossbow_pulling_3",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "irons_spellbooks",
+      "mod_name": "Iron's Spells 'n Spellbooks",
+      "mod_version": "1.20.1-3.15.6",
+      "source_jar": "irons_spellbooks-1.20.1-3.15.6.jar",
+      "source_sha256": "61996bb3cdb9601d83376f81295967f19a6f036563bb5a0e0f672967344a6fa7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/irons_spellbooks/models/item/autoloader_crossbow_pulling_3.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/autoloader_crossbow_pulling_3.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "crossbow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "irons_spellbooks:autoloader_crossbow_pulling_4",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "irons_spellbooks",
+      "mod_name": "Iron's Spells 'n Spellbooks",
+      "mod_version": "1.20.1-3.15.6",
+      "source_jar": "irons_spellbooks-1.20.1-3.15.6.jar",
+      "source_sha256": "61996bb3cdb9601d83376f81295967f19a6f036563bb5a0e0f672967344a6fa7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/irons_spellbooks/models/item/autoloader_crossbow_pulling_4.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/autoloader_crossbow_pulling_4.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "crossbow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "irons_spellbooks:autoloader_crossbow_pulling_5",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "irons_spellbooks",
+      "mod_name": "Iron's Spells 'n Spellbooks",
+      "mod_version": "1.20.1-3.15.6",
+      "source_jar": "irons_spellbooks-1.20.1-3.15.6.jar",
+      "source_sha256": "61996bb3cdb9601d83376f81295967f19a6f036563bb5a0e0f672967344a6fa7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/irons_spellbooks/models/item/autoloader_crossbow_pulling_5.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/autoloader_crossbow_pulling_5.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "crossbow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "irons_spellbooks:autoloader_crossbow_pulling_6",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "irons_spellbooks",
+      "mod_name": "Iron's Spells 'n Spellbooks",
+      "mod_version": "1.20.1-3.15.6",
+      "source_jar": "irons_spellbooks-1.20.1-3.15.6.jar",
+      "source_sha256": "61996bb3cdb9601d83376f81295967f19a6f036563bb5a0e0f672967344a6fa7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/irons_spellbooks/models/item/autoloader_crossbow_pulling_6.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/autoloader_crossbow_pulling_6.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "crossbow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "irons_spellbooks:blood_staff",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "irons_spellbooks",
+      "mod_name": "Iron's Spells 'n Spellbooks",
+      "mod_version": "1.20.1-3.15.6",
+      "source_jar": "irons_spellbooks-1.20.1-3.15.6.jar",
+      "source_sha256": "61996bb3cdb9601d83376f81295967f19a6f036563bb5a0e0f672967344a6fa7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/irons_spellbooks/lang/en_us.json",
+        "assets/irons_spellbooks/lang/ru_ru.json",
+        "assets/irons_spellbooks/models/item/blood_staff.json"
+      ],
+      "display_name_en_us": "The Blood Staff",
+      "display_name_ru_ru": "Кровавый посох",
+      "source_provenance": [
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/en_us.json",
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/ru_ru.json",
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/blood_staff.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "staff"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "irons_spellbooks:dev_staff",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "irons_spellbooks",
+      "mod_name": "Iron's Spells 'n Spellbooks",
+      "mod_version": "1.20.1-3.15.6",
+      "source_jar": "irons_spellbooks-1.20.1-3.15.6.jar",
+      "source_sha256": "61996bb3cdb9601d83376f81295967f19a6f036563bb5a0e0f672967344a6fa7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/irons_spellbooks/lang/en_us.json",
+        "assets/irons_spellbooks/lang/ru_ru.json",
+        "assets/irons_spellbooks/models/item/dev_staff.json"
+      ],
+      "display_name_en_us": "Staff of Testing",
+      "display_name_ru_ru": "Посох тестирования",
+      "source_provenance": [
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/en_us.json",
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/ru_ru.json",
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/dev_staff.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "staff"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "irons_spellbooks:dreadsword",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "irons_spellbooks",
+      "mod_name": "Iron's Spells 'n Spellbooks",
+      "mod_version": "1.20.1-3.15.6",
+      "source_jar": "irons_spellbooks-1.20.1-3.15.6.jar",
+      "source_sha256": "61996bb3cdb9601d83376f81295967f19a6f036563bb5a0e0f672967344a6fa7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/irons_spellbooks/models/item/dreadsword.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/dreadsword.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "sword"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "irons_spellbooks:fiery_dagger",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "irons_spellbooks",
+      "mod_name": "Iron's Spells 'n Spellbooks",
+      "mod_version": "1.20.1-3.15.6",
+      "source_jar": "irons_spellbooks-1.20.1-3.15.6.jar",
+      "source_sha256": "61996bb3cdb9601d83376f81295967f19a6f036563bb5a0e0f672967344a6fa7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/irons_spellbooks/models/item/fiery_dagger.json"
+      ],
+      "display_name_en_us": "Fiery Dagger",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/fiery_dagger.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "dagger"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "irons_spellbooks:graybeard_staff",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "irons_spellbooks",
+      "mod_name": "Iron's Spells 'n Spellbooks",
+      "mod_version": "1.20.1-3.15.6",
+      "source_jar": "irons_spellbooks-1.20.1-3.15.6.jar",
+      "source_sha256": "61996bb3cdb9601d83376f81295967f19a6f036563bb5a0e0f672967344a6fa7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/irons_spellbooks/lang/en_us.json",
+        "assets/irons_spellbooks/lang/ru_ru.json",
+        "assets/irons_spellbooks/models/item/graybeard_staff.json",
+        "data/irons_spellbooks/recipes/graybeard_staff.json"
+      ],
+      "display_name_en_us": "Graybeard Staff",
+      "display_name_ru_ru": "Посох старца",
+      "source_provenance": [
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/en_us.json",
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/ru_ru.json",
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/graybeard_staff.json",
+        "irons_spellbooks-1.20.1-3.15.6.jar:data/irons_spellbooks/recipes/graybeard_staff.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "staff"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "irons_spellbooks:ice_staff",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "irons_spellbooks",
+      "mod_name": "Iron's Spells 'n Spellbooks",
+      "mod_version": "1.20.1-3.15.6",
+      "source_jar": "irons_spellbooks-1.20.1-3.15.6.jar",
+      "source_sha256": "61996bb3cdb9601d83376f81295967f19a6f036563bb5a0e0f672967344a6fa7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/irons_spellbooks/lang/en_us.json",
+        "assets/irons_spellbooks/lang/ru_ru.json",
+        "assets/irons_spellbooks/models/item/ice_staff.json",
+        "data/irons_spellbooks/recipes/ice_staff.json"
+      ],
+      "display_name_en_us": "Ice Staff",
+      "display_name_ru_ru": "Ледяной посох",
+      "source_provenance": [
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/en_us.json",
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/ru_ru.json",
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/ice_staff.json",
+        "irons_spellbooks-1.20.1-3.15.6.jar:data/irons_spellbooks/recipes/ice_staff.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "staff"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "irons_spellbooks:improved_blood_staff",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "irons_spellbooks",
+      "mod_name": "Iron's Spells 'n Spellbooks",
+      "mod_version": "1.20.1-3.15.6",
+      "source_jar": "irons_spellbooks-1.20.1-3.15.6.jar",
+      "source_sha256": "61996bb3cdb9601d83376f81295967f19a6f036563bb5a0e0f672967344a6fa7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/irons_spellbooks/lang/en_us.json",
+        "assets/irons_spellbooks/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Improved Blood Staff",
+      "display_name_ru_ru": "Улучшенный кровавый посох",
+      "source_provenance": [
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/en_us.json",
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "staff"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "irons_spellbooks:pyrium_staff",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "irons_spellbooks",
+      "mod_name": "Iron's Spells 'n Spellbooks",
+      "mod_version": "1.20.1-3.15.6",
+      "source_jar": "irons_spellbooks-1.20.1-3.15.6.jar",
+      "source_sha256": "61996bb3cdb9601d83376f81295967f19a6f036563bb5a0e0f672967344a6fa7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/irons_spellbooks/lang/en_us.json",
+        "assets/irons_spellbooks/models/item/pyrium_staff.json",
+        "data/irons_spellbooks/recipes/pyrium_staff.json"
+      ],
+      "display_name_en_us": "Pyrium Staff",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/en_us.json",
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/pyrium_staff.json",
+        "irons_spellbooks-1.20.1-3.15.6.jar:data/irons_spellbooks/recipes/pyrium_staff.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "staff"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "irons_spellbooks:pyrium_staff_haft",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "irons_spellbooks",
+      "mod_name": "Iron's Spells 'n Spellbooks",
+      "mod_version": "1.20.1-3.15.6",
+      "source_jar": "irons_spellbooks-1.20.1-3.15.6.jar",
+      "source_sha256": "61996bb3cdb9601d83376f81295967f19a6f036563bb5a0e0f672967344a6fa7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/irons_spellbooks/models/item/pyrium_staff_haft.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/pyrium_staff_haft.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "staff"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "irons_spellbooks:staff_of_the_nines",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "irons_spellbooks",
+      "mod_name": "Iron's Spells 'n Spellbooks",
+      "mod_version": "1.20.1-3.15.6",
+      "source_jar": "irons_spellbooks-1.20.1-3.15.6.jar",
+      "source_sha256": "61996bb3cdb9601d83376f81295967f19a6f036563bb5a0e0f672967344a6fa7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/irons_spellbooks/lang/en_us.json",
+        "assets/irons_spellbooks/lang/ru_ru.json",
+        "assets/irons_spellbooks/models/item/staff_of_the_nines.json"
+      ],
+      "display_name_en_us": "Staff of the Nines",
+      "display_name_ru_ru": "Посох девяти",
+      "source_provenance": [
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/en_us.json",
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/lang/ru_ru.json",
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/staff_of_the_nines.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "staff"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "irons_spellbooks:template_large_sword",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "irons_spellbooks",
+      "mod_name": "Iron's Spells 'n Spellbooks",
+      "mod_version": "1.20.1-3.15.6",
+      "source_jar": "irons_spellbooks-1.20.1-3.15.6.jar",
+      "source_sha256": "61996bb3cdb9601d83376f81295967f19a6f036563bb5a0e0f672967344a6fa7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/irons_spellbooks/models/item/template_large_sword.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/template_large_sword.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "sword"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "irons_spellbooks:template_verylarge_sword",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "irons_spellbooks",
+      "mod_name": "Iron's Spells 'n Spellbooks",
+      "mod_version": "1.20.1-3.15.6",
+      "source_jar": "irons_spellbooks-1.20.1-3.15.6.jar",
+      "source_sha256": "61996bb3cdb9601d83376f81295967f19a6f036563bb5a0e0f672967344a6fa7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/irons_spellbooks/models/item/template_verylarge_sword.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "irons_spellbooks-1.20.1-3.15.6.jar:assets/irons_spellbooks/models/item/template_verylarge_sword.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "sword"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    }
+  ]
+}

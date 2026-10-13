@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "registry_type": "placeables",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "sereneseasons",
+    "name": "Serene Seasons",
+    "version": "9.1.0.3"
+  },
+  "records": [
+    {
+      "item_id": "sereneseasons:season_sensor",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "sereneseasons",
+      "mod_name": "Serene Seasons",
+      "mod_version": "9.1.0.3",
+      "source_jar": "SereneSeasons-forge-1.20.1-9.1.0.3.jar",
+      "source_sha256": "650c35858d335d45adea5445ffaed25ccd433f5cbfe4936ac2694b250177b674",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/sereneseasons/models/item/season_sensor.json",
+        "data/sereneseasons/recipes/season_sensor.json"
+      ],
+      "display_name_en_us": "Season Sensor",
+      "display_name_ru_ru": "Датчик сезона",
+      "source_provenance": [
+        "SereneSeasons-forge-1.20.1-9.1.0.3.jar:assets/sereneseasons/models/item/season_sensor.json",
+        "SereneSeasons-forge-1.20.1-9.1.0.3.jar:data/sereneseasons/recipes/season_sensor.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "sereneseasons:season_sensor",
+      "placed_registry_ids": [
+        "sereneseasons:season_sensor"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "sereneseasons:season_sensor"
+      ]
+    }
+  ]
+}

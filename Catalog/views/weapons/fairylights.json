@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "registry_type": "weapons",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "fairylights",
+    "name": "Fairy Lights",
+    "version": "7.0.0"
+  },
+  "records": [
+    {
+      "item_id": "fairylights:spearhead_pennant",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "fairylights",
+      "mod_name": "Fairy Lights",
+      "mod_version": "7.0.0",
+      "source_jar": "fairylights-7.0.0-1.20.1.jar",
+      "source_sha256": "5c68ee27feb4ef10675c883ab67bfa0f1c3e3c0c2193f1c35f43a225d930d9b6",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/fairylights/lang/en_us.json",
+        "assets/fairylights/models/item/spearhead_pennant.json"
+      ],
+      "display_name_en_us": "Spearhead Pennant",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "fairylights-7.0.0-1.20.1.jar:assets/fairylights/lang/en_us.json",
+        "fairylights-7.0.0-1.20.1.jar:assets/fairylights/models/item/spearhead_pennant.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "spear"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    }
+  ]
+}

@@ -3,6 +3,11 @@ package com.siirio.jemsettlements.client;
 import com.mojang.blaze3d.platform.InputConstants;
 import com.siirio.jemsettlements.JemSettlements;
 import com.siirio.jemsettlements.network.TownViewPacket;
+import com.siirio.jemsettlements.network.FoodPolicyPacket;
+import com.siirio.jemsettlements.happiness.FoodValueRegistry;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
@@ -14,6 +19,7 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = JemSettlements.MOD_ID, value = Dist.CLIENT)
 public final class SettlementClientState {
     private static TownViewPacket status;
+    private static boolean foodPolicySynced;
     private static final KeyMapping OPEN = new KeyMapping("key.jem_settlements.open", InputConstants.Type.KEYSYM,
             InputConstants.UNKNOWN.getValue(), "key.categories.jem_settlements");
     private SettlementClientState() {}
@@ -21,6 +27,7 @@ public final class SettlementClientState {
         status = packet; Minecraft client = Minecraft.getInstance();
         if (packet.open()) client.setScreen(packet.view().getBoolean("Founding") ? new TownFoundingScreen(packet.view()) : new TownDashboardScreen(packet.view()));
     }
+    public static void acceptFoodPolicy(FoodPolicyPacket packet) { FoodValueRegistry.applySynced(packet.values()); foodPolicySynced = true; }
     @Mod.EventBusSubscriber(modid = JemSettlements.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static final class ModBus {
         private ModBus() {}
@@ -30,5 +37,16 @@ public final class SettlementClientState {
         if (event.phase != TickEvent.Phase.END) return;
         while (OPEN.consumeClick()) if (status != null && !status.view().getBoolean("NoTown"))
             Minecraft.getInstance().setScreen(new TownDashboardScreen(status.view()));
+    }
+    @SubscribeEvent public static void tooltip(ItemTooltipEvent event) {
+        if (!foodPolicySynced) return;
+        var value = FoodValueRegistry.classify(event.getItemStack(), Minecraft.getInstance().player); if (value.isEmpty()) return;
+        var food = event.getItemStack().getItem().getFoodProperties(event.getItemStack(), Minecraft.getInstance().player); if (food == null) return;
+        int satiety = value.get().mood() < 0 ? 0 : Math.max(0, food.getNutrition()) * 4;
+        event.getToolTip().add(Component.translatable("jem.settlements.food.header").withStyle(ChatFormatting.GOLD));
+        event.getToolTip().add(Component.translatable("jem.settlements.food.happiness", String.format("%+d", value.get().mood())).withStyle(value.get().mood() < 0 ? ChatFormatting.RED : ChatFormatting.GREEN));
+        event.getToolTip().add(Component.translatable("jem.settlements.food.satiety", "+" + satiety).withStyle(value.get().mood() < 0 ? ChatFormatting.RED : ChatFormatting.GREEN));
+        event.getToolTip().add(Component.translatable("jem.settlements.food.type", Component.translatable("jem.settlements.food.class." + value.get().classification())).withStyle(ChatFormatting.GRAY));
+        if (net.minecraft.client.gui.screens.Screen.hasShiftDown()) event.getToolTip().add(Component.translatable("jem.settlements.food.detail").withStyle(ChatFormatting.DARK_GRAY));
     }
 }

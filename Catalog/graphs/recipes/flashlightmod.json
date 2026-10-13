@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "flashlightmod",
+    "name": "Flashier Flashlights",
+    "version": "1.2.0"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "flashlightmod:battery",
+      "mod_id": "flashlightmod",
+      "mod_name": "Flashier Flashlights",
+      "mod_version": "1.2.0",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:copper_ingot",
+        "minecraft:crafting_shaped",
+        "minecraft:iron_nugget",
+        "minecraft:redstone"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "flashlightmod:battery"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Flashier_20Flashlights_201.2.0.jar:data/flashlightmod/recipes/battery.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "flashlightmod:flashlight",
+      "mod_id": "flashlightmod",
+      "mod_name": "Flashier Flashlights",
+      "mod_version": "1.2.0",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:glass",
+        "minecraft:crafting_shaped",
+        "minecraft:iron_ingot",
+        "minecraft:redstone",
+        "minecraft:redstone_lamp"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "flashlightmod:flashlight"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Flashier_20Flashlights_201.2.0.jar:data/flashlightmod/recipes/flashlight.json"
+      ]
+    }
+  ]
+}

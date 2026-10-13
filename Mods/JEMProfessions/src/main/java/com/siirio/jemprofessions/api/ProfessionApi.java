@@ -51,10 +51,14 @@ public final class ProfessionApi {
         var principal = IdentityPolicy.resolve(player);
         if (principal.isEmpty()) return false;
         var node = ProfessionCatalog.nodes(profession).stream().filter(value -> value.id().equals(nodeId)).findFirst().orElse(null);
-        if (node == null || !node.toggleable() || level(player, profession) < node.level()) return false;
+        int level = level(player, profession);
+        if (node == null || !node.toggleable() || !node.available() || level < node.level()
+                || !ProfessionCatalog.parentSatisfied(profession, node, level)) return false;
         if (!node.dependency().isBlank() && !ModList.get().isLoaded(node.dependency())) return false;
         ProfessionSavedData data = ProfessionSavedData.get(player.getServer());
-        data.record(principal.get().accountId()).toggle(profession.name() + ":" + nodeId);
+        var record = data.record(principal.get().accountId());
+        if (!activeParents(profession, node, record)) return false;
+        record.toggle(profession.name() + ":" + nodeId);
         data.changed();
         return true;
     }
@@ -63,5 +67,14 @@ public final class ProfessionApi {
         var principal = IdentityPolicy.resolve(player);
         return principal.map(value -> ProfessionSavedData.get(player.getServer()).findOrEmpty(value.accountId())
                 .enabled(profession.name() + ":" + nodeId)).orElse(false);
+    }
+
+    private static boolean activeParents(ProfessionId profession, com.siirio.jemprofessions.tree.ProfessionNode node,
+                                         com.siirio.jemprofessions.progress.ProfessionRecord record) {
+        if (node.parentId().isBlank()) return true;
+        var parent = ProfessionCatalog.node(profession, node.parentId());
+        if (parent == null || parent.available() && parent.toggleable()
+                && !record.enabled(profession.name() + ":" + parent.id())) return false;
+        return activeParents(profession, parent, record);
     }
 }

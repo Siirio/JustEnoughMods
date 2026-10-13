@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "registry_type": "placeables",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "knightlib",
+    "name": "Knight Lib",
+    "version": "2.0.0"
+  },
+  "records": [
+    {
+      "item_id": "knightlib:great_chalice",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "knightlib",
+      "mod_name": "Knight Lib",
+      "mod_version": "2.0.0",
+      "source_jar": "knightlib-forge-1.20.1-2.0.0.jar",
+      "source_sha256": "ca30fa182da961b0ad3996b86fff029c801b7f3008b412aecb89c6809b2e9114",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/knightlib/models/item/great_chalice.json",
+        "data/knightlib/recipes/great_chalice.json"
+      ],
+      "display_name_en_us": "Great Chalice",
+      "display_name_ru_ru": "Великий кубок",
+      "source_provenance": [
+        "knightlib-forge-1.20.1-2.0.0.jar:assets/knightlib/models/item/great_chalice.json",
+        "knightlib-forge-1.20.1-2.0.0.jar:data/knightlib/recipes/great_chalice.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "knightlib:great_chalice",
+      "placed_registry_ids": [
+        "knightlib:great_chalice"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "knightlib:great_chalice"
+      ]
+    }
+  ]
+}

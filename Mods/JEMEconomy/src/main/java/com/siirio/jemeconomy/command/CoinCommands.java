@@ -36,6 +36,8 @@ public final class CoinCommands {
                                         .executes(context -> send(context.getSource().getPlayerOrException(),
                                                 EntityArgument.getPlayer(context, "player"),
                                                 LongArgumentType.getLong(context, "amount")))))));
+        event.getDispatcher().register(Commands.literal("market").executes(context ->
+                com.siirio.jemeconomy.market.MarketRuntime.bulletin(context.getSource().getPlayerOrException())));
     }
 
     private static int open(ServerPlayer player) {

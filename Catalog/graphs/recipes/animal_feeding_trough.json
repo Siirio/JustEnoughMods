@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "animal_feeding_trough",
+    "name": "Animal Feeding Trough",
+    "version": "1.1.0+1.20.1-forge"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "animal_feeding_trough:decorations/feeding_trough",
+      "mod_id": "animal_feeding_trough",
+      "mod_name": "Animal Feeding Trough",
+      "mod_version": "1.1.0+1.20.1-forge",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "animal_feeding_trough:feeding_trough",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "minecraft:wooden_slabs"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "animal_feeding_trough-1.1.0+1.20.1-forge.jar:data/animal_feeding_trough/advancements/recipes/decorations/feeding_trough.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "animal_feeding_trough:feeding_trough",
+      "mod_id": "animal_feeding_trough",
+      "mod_name": "Animal Feeding Trough",
+      "mod_version": "1.1.0+1.20.1-forge",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:wooden_slabs"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "animal_feeding_trough:feeding_trough"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "animal_feeding_trough-1.1.0+1.20.1-forge.jar:data/animal_feeding_trough/recipes/feeding_trough.json"
+      ]
+    }
+  ]
+}

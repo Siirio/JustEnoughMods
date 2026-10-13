@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "registry_type": "tools",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "kaleidoscope_cookery",
+    "name": "Kaleidoscope Cookery",
+    "version": "1.4.1-forge+mc1.20.1"
+  },
+  "records": [
+    {
+      "item_id": "kaleidoscope_cookery:kitchen_shovel",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "kaleidoscope_cookery",
+      "mod_name": "Kaleidoscope Cookery",
+      "mod_version": "1.4.1-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.4.1-forge_2Bmc1.20.1.jar",
+      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/kaleidoscope_cookery/lang/en_us.json",
+        "assets/kaleidoscope_cookery/lang/ru_ru.json",
+        "assets/kaleidoscope_cookery/models/item/kitchen_shovel.json",
+        "data/kaleidoscope_cookery/recipes/kitchen_shovel.json"
+      ],
+      "display_name_en_us": "Kitchen Shovel",
+      "display_name_ru_ru": "Кухонная лопатка",
+      "source_provenance": [
+        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/lang/en_us.json",
+        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/lang/ru_ru.json",
+        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/kitchen_shovel.json",
+        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/kitchen_shovel.json",
+        "kaleidoscopecookery-1.4.1-forge_2Bmc1.20.1.jar:assets/kaleidoscope_cookery/lang/en_us.json",
+        "kaleidoscopecookery-1.4.1-forge_2Bmc1.20.1.jar:assets/kaleidoscope_cookery/lang/ru_ru.json",
+        "kaleidoscopecookery-1.4.1-forge_2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/kitchen_shovel.json",
+        "kaleidoscopecookery-1.4.1-forge_2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/kitchen_shovel.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "shovel",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "kaleidoscope_cookery:kitchen_shovel_has_oil",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "kaleidoscope_cookery",
+      "mod_name": "Kaleidoscope Cookery",
+      "mod_version": "1.4.1-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.4.1-forge_2Bmc1.20.1.jar",
+      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/kaleidoscope_cookery/models/item/kitchen_shovel_has_oil.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/kitchen_shovel_has_oil.json",
+        "kaleidoscopecookery-1.4.1-forge_2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/kitchen_shovel_has_oil.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "shovel",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "kaleidoscope_cookery:kitchen_shovel_no_oil",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "kaleidoscope_cookery",
+      "mod_name": "Kaleidoscope Cookery",
+      "mod_version": "1.4.1-forge+mc1.20.1",
+      "source_jar": "kaleidoscopecookery-1.4.1-forge_2Bmc1.20.1.jar",
+      "source_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/kaleidoscope_cookery/models/item/kitchen_shovel_no_oil.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/kitchen_shovel_no_oil.json",
+        "kaleidoscopecookery-1.4.1-forge_2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/kitchen_shovel_no_oil.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "shovel",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    }
+  ]
+}

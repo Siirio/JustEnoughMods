@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "jem_economy",
+    "name": "JEM Economy",
+    "version": "1.0.0"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "jem_economy:shipping_box",
+      "mod_id": "jem_economy",
+      "mod_name": "JEM Economy",
+      "mod_version": "1.0.0",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:chest",
+        "minecraft:crafting_shaped",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "jem_economy:shipping_box"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "jem-economy-1.2.0.jar:data/jem_economy/recipes/shipping_box.json"
+      ]
+    }
+  ]
+}

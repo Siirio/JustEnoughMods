@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "registry_type": "trade_policies",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "ftblibrary",
+    "name": "FTB Library",
+    "version": "2001.2.13"
+  },
+  "records": [
+    {
+      "item_id": "ftblibrary:fluid_container",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "ftblibrary",
+      "mod_name": "FTB Library",
+      "mod_version": "2001.2.13",
+      "source_jar": "ftb-library-forge-2001.2.13.jar",
+      "source_sha256": "41810281b65336265cae2c88412022d02f2f0a3f28c66a06173d86f98acf14a7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftblibrary/lang/en_us.json",
+        "assets/ftblibrary/models/item/fluid_container.json"
+      ],
+      "display_name_en_us": "Fluid Container",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "ftb-library-forge-2001.2.13.jar:assets/ftblibrary/lang/en_us.json",
+        "ftb-library-forge-2001.2.13.jar:assets/ftblibrary/models/item/fluid_container.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "ftblibrary:fluid_container.use",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "ftblibrary",
+      "mod_name": "FTB Library",
+      "mod_version": "2001.2.13",
+      "source_jar": "ftb-library-forge-2001.2.13.jar",
+      "source_sha256": "41810281b65336265cae2c88412022d02f2f0a3f28c66a06173d86f98acf14a7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftblibrary/lang/en_us.json"
+      ],
+      "display_name_en_us": "Right-click on a tank to empty the container",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "ftb-library-forge-2001.2.13.jar:assets/ftblibrary/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    }
+  ]
+}

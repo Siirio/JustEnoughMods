@@ -1,6 +1,7 @@
 package com.siirio.jemsettlements.command;
 
 import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import net.minecraft.commands.arguments.EntityArgument;
 import com.siirio.jemidentity.api.DedicatedSmp;
 import com.siirio.jemidentity.api.IdentityPolicy;
@@ -31,6 +32,9 @@ public final class SettlementCommands {
                         .then(Commands.literal("feedstorage")
                                 .then(Commands.literal("on").executes(context -> feedStorage(context.getSource().getPlayerOrException(), true)))
                                 .then(Commands.literal("off").executes(context -> feedStorage(context.getSource().getPlayerOrException(), false))))
+                        .then(Commands.literal("territory").then(Commands.literal("radius")
+                                .then(Commands.argument("blocks", IntegerArgumentType.integer(32, 256))
+                                        .executes(context -> territory(context.getSource().getPlayerOrException(), IntegerArgumentType.getInteger(context, "blocks"))))))
                         .then(Commands.literal("workforce")
                                 .then(Commands.argument("entity", EntityArgument.entity())
                                         .executes(context -> workforce(context.getSource().getPlayerOrException(), EntityArgument.getEntity(context, "entity")))))
@@ -88,7 +92,13 @@ public final class SettlementCommands {
         var principal = IdentityPolicy.resolve(player); if (principal.isEmpty()) { player.sendSystemMessage(Component.translatable("jem.settlements.identity_required")); return 0; }
         var record = com.siirio.jemsettlements.collection.PlayerMountCollectionSavedData.get(player.getServer()).record(principal.get().accountId());
         player.sendSystemMessage(Component.translatable("jem.settlements.mount.summary", record.individualCount(), record.livingCount(), record.typeCount(), com.siirio.jemsettlements.collection.MountRoster.eligible().size()));
-        if (record.rewards().contains("master_of_mounts")) player.sendSystemMessage(Component.translatable("jem.settlements.mount.master"));
         return 1;
+    }
+
+    private static int territory(ServerPlayer player, int radius) {
+        SettlementApi.Result result = SettlementApi.setTerritoryRadius(player, radius);
+        player.sendSystemMessage(Component.translatable(result == SettlementApi.Result.ACCEPTED ? "jem.settlements.territory.changed" : "jem.settlements.territory.rejected", radius));
+        if (result == SettlementApi.Result.ACCEPTED) SettlementNetwork.sendOwned(player, false);
+        return result == SettlementApi.Result.ACCEPTED ? 1 : 0;
     }
 }

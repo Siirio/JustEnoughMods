@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "sereneseasons",
+    "name": "Serene Seasons",
+    "version": "9.1.0.3"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "sereneseasons:calendar",
+      "mod_id": "sereneseasons",
+      "mod_name": "Serene Seasons",
+      "mod_version": "9.1.0.3",
+      "recipe_type": "crafting_shaped",
+      "machine_id": "crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:clock",
+        "minecraft:paper"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "sereneseasons:calendar"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "SereneSeasons-forge-1.20.1-9.1.0.3.jar:data/sereneseasons/recipes/calendar.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "sereneseasons:redstone/season_sensor",
+      "mod_id": "sereneseasons",
+      "mod_name": "Serene Seasons",
+      "mod_version": "9.1.0.3",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "sereneseasons:calendar",
+        "sereneseasons:season_sensor"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "SereneSeasons-forge-1.20.1-9.1.0.3.jar:data/sereneseasons/advancements/recipes/redstone/season_sensor.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "sereneseasons:season_sensor",
+      "mod_id": "sereneseasons",
+      "mod_name": "Serene Seasons",
+      "mod_version": "9.1.0.3",
+      "recipe_type": "crafting_shaped",
+      "machine_id": "crafting_shaped",
+      "ingredient_groups": [
+        "forge:gems/quartz",
+        "forge:glass/colorless",
+        "minecraft:cobblestone_slab",
+        "sereneseasons:calendar"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "sereneseasons:season_sensor"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "SereneSeasons-forge-1.20.1-9.1.0.3.jar:data/sereneseasons/recipes/season_sensor.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "sereneseasons:tools/calendar",
+      "mod_id": "sereneseasons",
+      "mod_name": "Serene Seasons",
+      "mod_version": "9.1.0.3",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:clock",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "sereneseasons:calendar"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "SereneSeasons-forge-1.20.1-9.1.0.3.jar:data/sereneseasons/advancements/recipes/tools/calendar.json"
+      ]
+    }
+  ]
+}

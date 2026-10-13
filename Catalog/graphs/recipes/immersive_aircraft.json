@@ -1,0 +1,692 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "immersive_aircraft",
+    "name": "Immersive Aircraft",
+    "version": "1.5.0+1.20.1"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_aircraft:airship",
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "immersive_aircraft:engine",
+        "immersive_aircraft:hull",
+        "immersive_aircraft:sail",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_aircraft:airship"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:data/immersive_aircraft/recipes/airship.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_aircraft:bamboo_hopper",
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "immersive_aircraft:biplane",
+        "immersive_aircraft:engine",
+        "immersive_aircraft:hull",
+        "minecraft:bamboo_block",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_aircraft:bamboo_hopper"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:data/immersive_aircraft/recipes/bamboo_hopper.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_aircraft:biplane",
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "immersive_aircraft:engine",
+        "immersive_aircraft:hull",
+        "immersive_aircraft:propeller",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_aircraft:biplane"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:data/immersive_aircraft/recipes/biplane.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_aircraft:boiler",
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:copper_ingot",
+        "minecraft:crafting_shaped",
+        "minecraft:furnace"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_aircraft:boiler"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:data/immersive_aircraft/recipes/boiler.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_aircraft:bomb_bay",
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:iron_ingot",
+        "minecraft:tnt"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_aircraft:bomb_bay"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:data/immersive_aircraft/recipes/bomb_bay.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_aircraft:cargo_airship",
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "immersive_aircraft:airship",
+        "immersive_aircraft:hull",
+        "minecraft:chest",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_aircraft:cargo_airship"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:data/immersive_aircraft/recipes/cargo_airship.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_aircraft:eco_engine",
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "immersive_aircraft:engine",
+        "minecraft:brick",
+        "minecraft:crafting_shaped",
+        "minecraft:gold_ingot",
+        "minecraft:slime_ball"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_aircraft:eco_engine"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:data/immersive_aircraft/recipes/eco_engine.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_aircraft:engine",
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "immersive_aircraft:boiler",
+        "minecraft:blast_furnace",
+        "minecraft:cobblestone",
+        "minecraft:crafting_shaped",
+        "minecraft:piston"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_aircraft:engine"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:data/immersive_aircraft/recipes/engine.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_aircraft:enhanced_propeller",
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "immersive_aircraft:propeller",
+        "minecraft:copper_ingot",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_aircraft:enhanced_propeller"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:data/immersive_aircraft/recipes/enhanced_propeller.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_aircraft:gyrodyne",
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "immersive_aircraft:hull",
+        "immersive_aircraft:propeller",
+        "immersive_aircraft:sail",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_aircraft:gyrodyne"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:data/immersive_aircraft/recipes/gyrodyne.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_aircraft:gyroscope",
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:comparator",
+        "minecraft:compass",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_aircraft:gyroscope"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:data/immersive_aircraft/recipes/gyroscope.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_aircraft:gyroscope_dials",
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "immersive_aircraft:gyroscope",
+        "minecraft:clock",
+        "minecraft:crafting_shaped",
+        "minecraft:lever",
+        "minecraft:note_block"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_aircraft:gyroscope_dials"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:data/immersive_aircraft/recipes/gyroscope_dials.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_aircraft:gyroscope_hud",
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "immersive_aircraft:gyroscope",
+        "minecraft:crafting_shaped",
+        "minecraft:glass_pane",
+        "minecraft:gold_ingot",
+        "minecraft:gold_nugget",
+        "minecraft:lever",
+        "minecraft:note_block",
+        "minecraft:redstone_lamp"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_aircraft:gyroscope_hud"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:data/immersive_aircraft/recipes/gyroscope_hud.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_aircraft:heavy_crossbow",
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:crossbow",
+        "minecraft:logs",
+        "minecraft:tripwire_hook"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_aircraft:heavy_crossbow"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:data/immersive_aircraft/recipes/heavy_crossbow.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_aircraft:hull",
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:iron_ingot",
+        "minecraft:logs"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_aircraft:hull"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:data/immersive_aircraft/recipes/hull.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_aircraft:hull_reinforcement",
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "immersive_aircraft:hull",
+        "minecraft:crafting_shaped",
+        "minecraft:iron_ingot"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_aircraft:hull_reinforcement"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:data/immersive_aircraft/recipes/hull_reinforcement.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_aircraft:improved_landing_gear",
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:coal",
+        "minecraft:crafting_shaped",
+        "minecraft:iron_ingot"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_aircraft:improved_landing_gear"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:data/immersive_aircraft/recipes/improved_landing_gear.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_aircraft:industrial_gears",
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:copper_ingot",
+        "minecraft:crafting_shaped",
+        "minecraft:iron_ingot",
+        "minecraft:lever"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_aircraft:industrial_gears"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:data/immersive_aircraft/recipes/industrial_gears.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_aircraft:nether_engine",
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "immersive_aircraft:engine",
+        "minecraft:blaze_rod",
+        "minecraft:crafting_shaped",
+        "minecraft:magma_cream",
+        "minecraft:nether_brick",
+        "minecraft:netherite_ingot"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_aircraft:nether_engine"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:data/immersive_aircraft/recipes/nether_engine.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_aircraft:propeller",
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:iron_ingot"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_aircraft:propeller"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:data/immersive_aircraft/recipes/propeller.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_aircraft:quadrocopter",
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "immersive_aircraft:engine",
+        "immersive_aircraft:propeller",
+        "minecraft:bamboo",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_aircraft:quadrocopter"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:data/immersive_aircraft/recipes/quadrocopter.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_aircraft:rotary_cannon",
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "immersive_aircraft:industrial_gears",
+        "minecraft:copper_ingot",
+        "minecraft:crafting_shaped",
+        "minecraft:dispenser"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_aircraft:rotary_cannon"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:data/immersive_aircraft/recipes/rotary_cannon.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_aircraft:sail",
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:string",
+        "minecraft:white_carpet"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_aircraft:sail"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:data/immersive_aircraft/recipes/sail.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_aircraft:steel_boiler",
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "immersive_aircraft:boiler",
+        "minecraft:blast_furnace",
+        "minecraft:crafting_shaped",
+        "minecraft:iron_ingot"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_aircraft:steel_boiler"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:data/immersive_aircraft/recipes/steel_boiler.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_aircraft:sturdy_pipes",
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:copper_ingot",
+        "minecraft:crafting_shaped",
+        "minecraft:iron_ingot"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_aircraft:sturdy_pipes"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:data/immersive_aircraft/recipes/sturdy_pipes.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_aircraft:telescope",
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:copper_ingot",
+        "minecraft:crafting_shaped",
+        "minecraft:spyglass"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_aircraft:telescope"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:data/immersive_aircraft/recipes/telescope.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "immersive_aircraft:warship",
+      "mod_id": "immersive_aircraft",
+      "mod_name": "Immersive Aircraft",
+      "mod_version": "1.5.0+1.20.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "immersive_aircraft:cargo_airship",
+        "immersive_aircraft:engine",
+        "immersive_aircraft:hull",
+        "immersive_aircraft:industrial_gears",
+        "immersive_aircraft:sail",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "immersive_aircraft:warship"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "immersive_aircraft-1.5.0+1.20.1-forge.jar:data/immersive_aircraft/recipes/warship.json"
+      ]
+    }
+  ]
+}

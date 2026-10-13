@@ -1,0 +1,1303 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "snowyspirit",
+    "name": "Snowy Spirit",
+    "version": "1.20-3.0.10"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:candy_cane",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "minecraft:honeycomb",
+        "minecraft:sugar",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:candy_cane"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/candy_cane.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:candy_cane_block",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "snowyspirit:candy_cane",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:candy_cane_block"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/candy_cane_block.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:candy_cane_block_uncrafting",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "snowyspirit:candy_cane_block",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:candy_cane"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/candy_cane_block_uncrafting.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:eggnog",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "minecraft:egg",
+        "minecraft:glass_bottle",
+        "minecraft:milk_bucket",
+        "snowyspirit:flag",
+        "snowyspirit:ginger"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:eggnog"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/eggnog.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:ginger_crate",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:mod_loaded",
+        "minecraft:crafting_shaped",
+        "snowyspirit:flag",
+        "snowyspirit:ginger"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:ginger_crate"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/ginger_crate.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:ginger_crate_uncrafting",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:mod_loaded",
+        "minecraft:crafting_shapeless",
+        "snowyspirit:flag",
+        "snowyspirit:ginger_crate"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:ginger"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/ginger_crate_uncrafting.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:gingerbread",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "minecraft:wheat",
+        "snowyspirit:flag",
+        "snowyspirit:ginger"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:gingerbread"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gingerbread.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:gingerbread_compressed",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "minecraft:hay_block",
+        "snowyspirit:flag",
+        "snowyspirit:ginger"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:gingerbread"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gingerbread_compressed.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:gingerbread_cookie",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "snowyspirit:flag",
+        "snowyspirit:gingerbreads",
+        "snowyspirit:gumdrops"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:gingerbread_cookie"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gingerbread_cookie.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:gingerbread_door",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "snowyspirit:flag",
+        "snowyspirit:gingerbreads"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:gingerbread_door"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gingerbread_door.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:gingerbread_frosted",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "minecraft:sugar",
+        "snowyspirit:flag",
+        "snowyspirit:gingerbread"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:gingerbread_frosted"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gingerbread_frosted.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:gingerbread_slab",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "snowyspirit:flag",
+        "snowyspirit:gingerbread"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:gingerbread_slab"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gingerbread_slab.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:gingerbread_stairs",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "snowyspirit:flag",
+        "snowyspirit:gingerbread"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:gingerbread_stairs"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gingerbread_stairs.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:gingerbread_trapdoor",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "snowyspirit:flag",
+        "snowyspirit:gingerbreads"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:gingerbread_trapdoor"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gingerbread_trapdoor.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:glow_lights_black",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/black",
+        "forge:string",
+        "minecraft:crafting_shapeless",
+        "minecraft:glowstone_dust",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:glow_lights_black"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_black.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:glow_lights_blue",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/blue",
+        "forge:string",
+        "minecraft:crafting_shapeless",
+        "minecraft:glowstone_dust",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:glow_lights_blue"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_blue.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:glow_lights_brown",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/brown",
+        "forge:string",
+        "minecraft:crafting_shapeless",
+        "minecraft:glowstone_dust",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:glow_lights_brown"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_brown.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:glow_lights_cyan",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/cyan",
+        "forge:string",
+        "minecraft:crafting_shapeless",
+        "minecraft:glowstone_dust",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:glow_lights_cyan"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_cyan.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:glow_lights_gray",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/gray",
+        "forge:string",
+        "minecraft:crafting_shapeless",
+        "minecraft:glowstone_dust",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:glow_lights_gray"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_gray.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:glow_lights_green",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/green",
+        "forge:string",
+        "minecraft:crafting_shapeless",
+        "minecraft:glowstone_dust",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:glow_lights_green"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_green.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:glow_lights_light_blue",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/light_blue",
+        "forge:string",
+        "minecraft:crafting_shapeless",
+        "minecraft:glowstone_dust",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:glow_lights_light_blue"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_light_blue.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:glow_lights_light_gray",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/light_gray",
+        "forge:string",
+        "minecraft:crafting_shapeless",
+        "minecraft:glowstone_dust",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:glow_lights_light_gray"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_light_gray.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:glow_lights_lime",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/lime",
+        "forge:string",
+        "minecraft:crafting_shapeless",
+        "minecraft:glowstone_dust",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:glow_lights_lime"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_lime.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:glow_lights_magenta",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/magenta",
+        "forge:string",
+        "minecraft:crafting_shapeless",
+        "minecraft:glowstone_dust",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:glow_lights_magenta"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_magenta.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:glow_lights_orange",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/orange",
+        "forge:string",
+        "minecraft:crafting_shapeless",
+        "minecraft:glowstone_dust",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:glow_lights_orange"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_orange.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:glow_lights_pink",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/pink",
+        "forge:string",
+        "minecraft:crafting_shapeless",
+        "minecraft:glowstone_dust",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:glow_lights_pink"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_pink.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:glow_lights_prismatic",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:string",
+        "minecraft:crafting_shapeless",
+        "minecraft:diamond",
+        "minecraft:glowstone_dust",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:glow_lights_prismatic"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_prismatic.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:glow_lights_purple",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/purple",
+        "forge:string",
+        "minecraft:crafting_shapeless",
+        "minecraft:glowstone_dust",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:glow_lights_purple"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_purple.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:glow_lights_red",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/red",
+        "forge:string",
+        "minecraft:crafting_shapeless",
+        "minecraft:glowstone_dust",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:glow_lights_red"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_red.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:glow_lights_white",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/white",
+        "forge:string",
+        "minecraft:crafting_shapeless",
+        "minecraft:glowstone_dust",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:glow_lights_white"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_white.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:glow_lights_yellow",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/yellow",
+        "forge:string",
+        "minecraft:crafting_shapeless",
+        "minecraft:glowstone_dust",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:glow_lights_yellow"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/glow_lights_yellow.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:gumdrop_black",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/black",
+        "minecraft:crafting_shapeless",
+        "minecraft:sugar",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:gumdrop_black"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_black.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:gumdrop_blue",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/blue",
+        "minecraft:crafting_shapeless",
+        "minecraft:sugar",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:gumdrop_blue"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_blue.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:gumdrop_brown",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/brown",
+        "minecraft:crafting_shapeless",
+        "minecraft:sugar",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:gumdrop_brown"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_brown.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:gumdrop_cyan",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/cyan",
+        "minecraft:crafting_shapeless",
+        "minecraft:sugar",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:gumdrop_cyan"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_cyan.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:gumdrop_gray",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/gray",
+        "minecraft:crafting_shapeless",
+        "minecraft:sugar",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:gumdrop_gray"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_gray.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:gumdrop_green",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/green",
+        "minecraft:crafting_shapeless",
+        "minecraft:sugar",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:gumdrop_green"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_green.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:gumdrop_light_blue",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/light_blue",
+        "minecraft:crafting_shapeless",
+        "minecraft:sugar",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:gumdrop_light_blue"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_light_blue.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:gumdrop_light_gray",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/light_gray",
+        "minecraft:crafting_shapeless",
+        "minecraft:sugar",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:gumdrop_light_gray"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_light_gray.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:gumdrop_lime",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/lime",
+        "minecraft:crafting_shapeless",
+        "minecraft:sugar",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:gumdrop_lime"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_lime.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:gumdrop_magenta",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/magenta",
+        "minecraft:crafting_shapeless",
+        "minecraft:sugar",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:gumdrop_magenta"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_magenta.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:gumdrop_orange",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/orange",
+        "minecraft:crafting_shapeless",
+        "minecraft:sugar",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:gumdrop_orange"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_orange.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:gumdrop_pink",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/pink",
+        "minecraft:crafting_shapeless",
+        "minecraft:sugar",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:gumdrop_pink"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_pink.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:gumdrop_purple",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/purple",
+        "minecraft:crafting_shapeless",
+        "minecraft:sugar",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:gumdrop_purple"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_purple.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:gumdrop_red",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/red",
+        "minecraft:crafting_shapeless",
+        "minecraft:sugar",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:gumdrop_red"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_red.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:gumdrop_white",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/white",
+        "minecraft:crafting_shapeless",
+        "minecraft:sugar",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:gumdrop_white"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_white.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:gumdrop_yellow",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "forge:dyes/yellow",
+        "minecraft:crafting_shapeless",
+        "minecraft:sugar",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:gumdrop_yellow"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/gumdrop_yellow.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:red_dye_from_ginger_flower",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "snowyspirit:flag",
+        "snowyspirit:ginger_flower"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:red_dye"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/red_dye_from_ginger_flower.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:sled_oak",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:oak_planks",
+        "minecraft:stick",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:sled_oak"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/sled_oak.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:snow_globe",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:glass",
+        "minecraft:smooth_stone_slab",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:snow_globe"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/snow_globe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "snowyspirit:wreath",
+      "mod_id": "snowyspirit",
+      "mod_name": "Snowy Spirit",
+      "mod_version": "1.20-3.0.10",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:leaves",
+        "snowyspirit:flag"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "snowyspirit:wreath"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "snowyspirit-1.20-3.0.10.jar:data/snowyspirit/recipes/wreath.json"
+      ]
+    }
+  ]
+}

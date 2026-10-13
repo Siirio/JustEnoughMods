@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "registry_type": "weapons",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "oceanicrealms",
+    "name": "Oceanic Realms",
+    "version": "1.0.7"
+  },
+  "records": [
+    {
+      "item_id": "oceanicrealms:great_hammerhead_shark_spawn_egg",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "oceanicrealms",
+      "mod_name": "Oceanic Realms",
+      "mod_version": "1.0.7",
+      "source_jar": "oceanicrealms-1.0.7-last-laster-ver.jar",
+      "source_sha256": "8f346b75b8b1c6d28b069924fe0aed374c3820997dae765698c3a140eccf2321",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/oceanicrealms/lang/en_us.json",
+        "assets/oceanicrealms/models/item/great_hammerhead_shark_spawn_egg.json"
+      ],
+      "display_name_en_us": "Great Hammerhead Shark Spawn Egg",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "oceanicrealms-1.0.7-last-laster-ver.jar:assets/oceanicrealms/lang/en_us.json",
+        "oceanicrealms-1.0.7-last-laster-ver.jar:assets/oceanicrealms/models/item/great_hammerhead_shark_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "hammer"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "oceanicrealms:hammerhead_shark_spawn_egg",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "oceanicrealms",
+      "mod_name": "Oceanic Realms",
+      "mod_version": "1.0.7",
+      "source_jar": "oceanicrealms-1.0.7-last-laster-ver.jar",
+      "source_sha256": "8f346b75b8b1c6d28b069924fe0aed374c3820997dae765698c3a140eccf2321",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/oceanicrealms/lang/en_us.json",
+        "assets/oceanicrealms/models/item/hammerhead_shark_spawn_egg.json"
+      ],
+      "display_name_en_us": "Hammerhead Shark Spawn Egg",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "oceanicrealms-1.0.7-last-laster-ver.jar:assets/oceanicrealms/lang/en_us.json",
+        "oceanicrealms-1.0.7-last-laster-ver.jar:assets/oceanicrealms/models/item/hammerhead_shark_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "hammer"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    }
+  ]
+}

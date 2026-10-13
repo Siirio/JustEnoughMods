@@ -432,44 +432,6 @@
       "icon": "minecraft:red_mushroom_block"
     },
     {
-      "advancement_id": "jem_guide:qol/group_homecoming",
-      "number": "group_homecoming",
-      "tab": "qol",
-      "parent": "jem_guide:qol/root",
-      "title_ru": "Домой всей компанией",
-      "title_en": "Home Together",
-      "short_ru": "Вернись к своей кровати вместе с другом.",
-      "short_en": "Return to your bed together with a friend.",
-      "exact_ru": "Встаньте вдвоём в квадрате 3 на 3. Центральный игрок должен применить Магический возвращатель, чтобы оба переместились к его кровати.",
-      "exact_en": "Stand together inside the 3-by-3 formation. The center player must use the Magical Returner so both players arrive at the host's bed.",
-      "flags": [],
-      "mechanics": "BackToBed group return",
-      "implementation": "",
-      "technical_metadata": "",
-      "resource_ids": [
-        "backtobed:magical_returner",
-        "minecraft:red_bed"
-      ],
-      "strategy": "MOD_API_EVENT",
-      "authoritative_source": "BackToBed group return",
-      "hook": "GroupBedTeleport#activate",
-      "stateful": false,
-      "test": "Validate jem_guide:qol/group_homecoming positive action and nearest negative proxy",
-      "source_file": "JEM curated runtime",
-      "criteria": {
-        "completion": {
-          "trigger": "jem_advancements:node/jem_guide/qol/group_homecoming"
-        }
-      },
-      "requirements": [
-        [
-          "completion"
-        ]
-      ],
-      "provider": "GroupBedTeleport#activate",
-      "icon": "minecraft:red_bed"
-    },
-    {
       "advancement_id": "jem_guide:qol/natures_compass",
       "number": "natures_compass",
       "tab": "qol",

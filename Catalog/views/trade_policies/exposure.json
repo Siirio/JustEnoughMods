@@ -1,0 +1,3545 @@
+{
+  "schema_version": 1,
+  "registry_type": "trade_policies",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "exposure",
+    "name": "Exposure",
+    "version": "1.9.21"
+  },
+  "records": [
+    {
+      "item_id": "exposure:aged_photograph",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/aged_photograph.json",
+        "data/exposure/recipes/aged_photograph.json"
+      ],
+      "display_name_en_us": "Aged Photograph",
+      "display_name_ru_ru": "Состаренная фотография",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/aged_photograph.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/aged_photograph.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "exposure:aged_photograph"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:album",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/album.json",
+        "data/exposure/recipes/album.json"
+      ],
+      "display_name_en_us": "Photo Album",
+      "display_name_ru_ru": "Фотоальбом",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/album.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/album.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "exposure:album"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:album.tooltip.photos_count",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "§7Photos: %s",
+      "display_name_ru_ru": "§7Фотографий: %s",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:album_one",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/album_one.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/album_one.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:album_three",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/album_three.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/album_three.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:album_two",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/album_two.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/album_two.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:black_and_white_film",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/black_and_white_film.json",
+        "data/exposure/recipes/black_and_white_film.json"
+      ],
+      "display_name_en_us": "Black and White Film",
+      "display_name_ru_ru": "Чёрно-белая плёнка",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/black_and_white_film.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/black_and_white_film.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "exposure:black_and_white_film"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:broken_interplanar_projector",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/broken_interplanar_projector.json"
+      ],
+      "display_name_en_us": "Broken Interplanar Projector",
+      "display_name_ru_ru": "Сломанный межплоскостной проектор",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/broken_interplanar_projector.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:broken_interplanar_projector.tooltip.broken",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Broken",
+      "display_name_ru_ru": "Сломан",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:broken_interplanar_projector.viewfinder.error_code",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Error code:",
+      "display_name_ru_ru": "Код ошибки:",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:broken_interplanar_projector.viewfinder.message",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Interplanar Projector ran into a problem and was broken.",
+      "display_name_ru_ru": "Межплоскостной проектор столкнулся с проблемой и был сломан.",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:camera",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/camera.json",
+        "data/exposure/recipes/camera.json"
+      ],
+      "display_name_en_us": "Camera",
+      "display_name_ru_ru": "Фотоаппарат",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/camera.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "exposure:camera"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:camera.camera_attachments.fail.projecting",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Cannot disassemble the camera while projecting.",
+      "display_name_ru_ru": "Невозможно разобрать фотоаппарат во время проецирования.",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:camera.camera_attachments.fail.shutter_open",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Cannot reconfigure the camera while shutter is open.",
+      "display_name_ru_ru": "Невозможно разобрать фотоаппарат, пока опущен затвор.",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:camera.interplanar_projector.timed_out",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Interplanar Projector disintegrated from prolonged ",
+      "display_name_ru_ru": "Межплоскостной проектор распался из-за длительного",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:camera.sneak_to_open_tooltip",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Use while sneaking to configure",
+      "display_name_ru_ru": "Используйте крадясь, чтобы настроить",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:camera.tooltip.details_attachments_screen",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "§8[§7Sneak + Use§8] or §8[§7Right Click§8] to configure",
+      "display_name_ru_ru": "§8[§7Используйте крадясь§8] или нажмите §8[§7ПКМ§8], чтобы настроить",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:camera.tooltip.details_attachments_screen_on_stand",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "§8[§7Sneak + Use§8] to configure",
+      "display_name_ru_ru": "§8[§7Используйте крадясь§8], чтобы настроить",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:camera.tooltip.details_hotswap",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "§8[§7Right Click§8] with item to install/swap attachment",
+      "display_name_ru_ru": "§8[§7ПКМ§8] предметом, чтобы установить/заменить компонент",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:camera.tooltip.details_hotswap_on_stand",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "§8[§7Sneak + Use§8] with item to install/swap attachment",
+      "display_name_ru_ru": "§8[§7Используйте крадясь§8] с предметом, чтобы установить/сменить компонент",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:camera.tooltip.details_remove_tooltip",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "§8[§7Right Click§8] with §7Shears§8 to remove this message",
+      "display_name_ru_ru": "§8[§7ПКМ§8] с §7Ножницами§8, чтобы убрать эти сообщения",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:camera.tooltip.film_roll_frames",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "§7Film: §f%s/%s",
+      "display_name_ru_ru": "§7Плёнка: §f%s/%s",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:camera_active",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/camera_active.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_active.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:camera_gold",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/camera_gold.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_gold.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:camera_gold_active",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/camera_gold_active.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_gold_active.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:camera_gold_gui",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/camera_gold_gui.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_gold_gui.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:camera_gold_selfie",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/camera_gold_selfie.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_gold_selfie.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:camera_gui",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/camera_gui.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_gui.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:camera_parts/flash",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/camera_parts/flash.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_parts/flash.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:camera_parts/flash_gold",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/camera_parts/flash_gold.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_parts/flash_gold.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:camera_parts/lens",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/camera_parts/lens.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_parts/lens.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:camera_parts/lens_gold",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/camera_parts/lens_gold.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_parts/lens_gold.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:camera_parts/selfie_stick",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/camera_parts/selfie_stick.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_parts/selfie_stick.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:camera_parts/viewfinder",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/camera_parts/viewfinder.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_parts/viewfinder.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:camera_parts/viewfinder_gold",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/camera_parts/viewfinder_gold.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_parts/viewfinder_gold.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:camera_selfie",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/camera_selfie.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_selfie.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:camera_stand",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/camera_stand.json",
+        "data/exposure/recipes/camera_stand.json"
+      ],
+      "display_name_en_us": "Camera Stand",
+      "display_name_ru_ru": "Штатив",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_stand.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/camera_stand.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "exposure:camera_stand"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:chromatic_sheet",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/chromatic_sheet.json"
+      ],
+      "display_name_en_us": "Chromatic Sheet",
+      "display_name_ru_ru": "Хроматический лист",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/chromatic_sheet.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:chromatic_sheet.info",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Use as paper to print remaining layers",
+      "display_name_ru_ru": "Используйте в качестве бумаги для печати оставшихся слоёв",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:chromatic_sheet.not_enough_layers",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "3 layers are required to combine a Chromatic Sheet",
+      "display_name_ru_ru": "Для создания цветного листа требуется 3 слоя",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:chromatic_sheet.use_tooltip",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Hold in inventory to combine three layers into a Photograph",
+      "display_name_ru_ru": "Используется для соединения трёх цветовых каналов в фотографию",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:chromatic_sheet_one",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/chromatic_sheet_one.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/chromatic_sheet_one.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:chromatic_sheet_three",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/chromatic_sheet_three.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/chromatic_sheet_three.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:chromatic_sheet_two",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/chromatic_sheet_two.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/chromatic_sheet_two.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:color_film",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/color_film.json",
+        "data/exposure/recipes/color_film.json"
+      ],
+      "display_name_en_us": "Color Film",
+      "display_name_ru_ru": "Цветная плёнка",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/color_film.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/color_film.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "exposure:color_film"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:developed_black_and_white_film",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/developed_black_and_white_film.json",
+        "data/exposure/recipes/black_and_white_film_developing.json"
+      ],
+      "display_name_en_us": "Developed Black and White Film",
+      "display_name_ru_ru": "Проявленная чёрно-белая плёнка",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/developed_black_and_white_film.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/black_and_white_film_developing.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "exposure:black_and_white_film_developing"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:developed_color_film",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/developed_color_film.json",
+        "data/exposure/recipes/color_film_developing.json"
+      ],
+      "display_name_en_us": "Developed Color Film",
+      "display_name_ru_ru": "Проявленная цветная плёнка",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/developed_color_film.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/color_film_developing.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "exposure:color_film_developing"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:developed_film.tooltip.frame_count",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Frames: %s",
+      "display_name_ru_ru": "Кадры: %s",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:film_roll.tooltip.color_balance",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Color Balance: %s",
+      "display_name_ru_ru": "Цветовой баланс: %s",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:film_roll.tooltip.contrast",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Contrast: %s",
+      "display_name_ru_ru": "Контраст: %s",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:film_roll.tooltip.details.develop",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Developed by crafting with:",
+      "display_name_ru_ru": "Проявляется при совмещении с:",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:film_roll.tooltip.developing_step",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Developing: %s",
+      "display_name_ru_ru": "Проявка: %s",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:film_roll.tooltip.frame_count",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "%s/%s",
+      "display_name_ru_ru": "%s/%s",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:film_roll.tooltip.frame_size",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Size: %smm",
+      "display_name_ru_ru": "Размер: %sмм",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:film_roll.tooltip.hsb",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "HSB: %s",
+      "display_name_ru_ru": "HSB: %s",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:film_roll.tooltip.levels",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Levels: %s",
+      "display_name_ru_ru": "Уровни: %s",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:film_roll.tooltip.noise",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Noise: %s",
+      "display_name_ru_ru": "Шум: %s",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:film_roll.tooltip.palette",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Palette: %s",
+      "display_name_ru_ru": "Палитра: %s",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:film_roll.tooltip.renaming",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "§8[§7Use§8] to rename",
+      "display_name_ru_ru": "§8[§7Используйте§8], чтобы переименовать",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:film_roll.tooltip.sensitivity",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Sensitivity: %s",
+      "display_name_ru_ru": "Чувствительность: %s",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:glass_photograph_frame",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/glass_photograph_frame.json",
+        "data/exposure/recipes/glass_photograph_frame.json"
+      ],
+      "display_name_en_us": "Glass Photograph Frame",
+      "display_name_ru_ru": "Стеклянная фоторамка",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/glass_photograph_frame.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/glass_photograph_frame.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "exposure:glass_photograph_frame"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:high_sensitivity_black_and_white_film",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/high_sensitivity_black_and_white_film.json",
+        "data/exposure/recipes/high_sensitivity_black_and_white_film.json"
+      ],
+      "display_name_en_us": "High-Sensitivity Black and White Film",
+      "display_name_ru_ru": "Высокочувствительная чёрно-белая плёнка",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/high_sensitivity_black_and_white_film.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/high_sensitivity_black_and_white_film.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "exposure:high_sensitivity_black_and_white_film"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:high_sensitivity_color_film",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/high_sensitivity_color_film.json",
+        "data/exposure/recipes/high_sensitivity_color_film.json"
+      ],
+      "display_name_en_us": "High-Sensitivity Color Film",
+      "display_name_ru_ru": "Высокочувствительная цветная плёнка",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/high_sensitivity_color_film.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/high_sensitivity_color_film.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "exposure:high_sensitivity_color_film"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:interplanar_projector",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/interplanar_projector.json",
+        "data/exposure/recipes/broken_interplanar_projector_fixing.json",
+        "data/exposure/recipes/interplanar_projector.json"
+      ],
+      "display_name_en_us": "Interplanar Projector",
+      "display_name_ru_ru": "Межплоскостной проектор",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/interplanar_projector.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/broken_interplanar_projector_fixing.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/interplanar_projector.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "exposure:broken_interplanar_projector_fixing",
+        "exposure:interplanar_projector"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:interplanar_projector.mode.clean",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json"
+      ],
+      "display_name_en_us": "§6Clean",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:interplanar_projector.mode.clear",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": "§6Чистое",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:interplanar_projector.mode.dithered",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "§6Dithered",
+      "display_name_ru_ru": "§6Зернистое",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:interplanar_projector.tooltip.change_mode_info",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "§8[§7Right Click§8] to change mode",
+      "display_name_ru_ru": "§8[§7ПКМ§8] для смены режима",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:interplanar_projector.tooltip.consumed_info",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "§4Consumed on use",
+      "display_name_ru_ru": "§4Расходуется при использовании",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:interplanar_projector.tooltip.disabled",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "§7This realm has protective barrier which makes projecting from another plane impossible.",
+      "display_name_ru_ru": "§7В этом Realm'е есть защитный барьер, который делает невозможным проецирование с другого плана.",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:interplanar_projector.tooltip.info",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "§7When renamed to URL or file path and used as a filter, allows projecting an image from another plane",
+      "display_name_ru_ru": "§7Переименуйте в расположение файла, чтобы воссоздать изображение из иной плоскости",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:interplanar_projector_active",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/interplanar_projector_active.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/interplanar_projector_active.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:lightroom",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/lightroom.json",
+        "data/exposure/recipes/lightroom.json"
+      ],
+      "display_name_en_us": "Lightroom",
+      "display_name_ru_ru": "Фотолаборатория",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/lightroom.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/lightroom.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "exposure:lightroom"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:photograph",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/photograph.json",
+        "data/exposure/recipes/photograph_copying.json",
+        "data/exposure/recipes/photograph_copying_black_and_white.json"
+      ],
+      "display_name_en_us": "Photograph",
+      "display_name_ru_ru": "Фотография",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/photograph.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/photograph_copying.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/photograph_copying_black_and_white.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "exposure:photograph_copying",
+        "exposure:photograph_copying_black_and_white"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:photograph.generation.0",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Original",
+      "display_name_ru_ru": "Оригинал",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:photograph.generation.1",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Copy of original",
+      "display_name_ru_ru": "Копия оригинала",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:photograph.generation.2",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Copy of a copy",
+      "display_name_ru_ru": "Копия копии",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:photograph.generation.3",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Tattered",
+      "display_name_ru_ru": "Потёрта",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:photograph.message.no_data",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "The paper is clean. No trace of an image is found on it, even if it had one at some point.",
+      "display_name_ru_ru": "Бумага чиста. На ней нет и следа изображения, даже если оно когда-то и было.",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:photograph.photographer_tooltip",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Taken by: %s",
+      "display_name_ru_ru": "Автор: %s",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:photograph.tooltip.details.copy",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Copied by crafting with:",
+      "display_name_ru_ru": "Можно снять копию, соединив с:",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:photograph_frame",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/photograph_frame.json",
+        "data/exposure/recipes/photograph_frame.json"
+      ],
+      "display_name_en_us": "Photograph Frame",
+      "display_name_ru_ru": "Фоторамка",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/photograph_frame.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/photograph_frame.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "exposure:photograph_frame"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:selfie_stick",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/selfie_stick.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/selfie_stick.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:signed_album",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/signed_album.json"
+      ],
+      "display_name_en_us": "Signed Photo Album",
+      "display_name_ru_ru": "Подписанный фотоальбом",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/signed_album.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:stacked_photographs",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/stacked_photographs.json"
+      ],
+      "display_name_en_us": "Stacked Photographs",
+      "display_name_ru_ru": "Стопка фотографий",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/stacked_photographs.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:stacked_photographs_three",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/stacked_photographs_three.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/stacked_photographs_three.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "exposure:stacked_photographs_two",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/stacked_photographs_two.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/stacked_photographs_two.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    }
+  ]
+}

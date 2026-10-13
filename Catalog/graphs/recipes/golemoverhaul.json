@@ -1,0 +1,281 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "golemoverhaul",
+    "name": "Golem Overhaul",
+    "version": "1.1.1"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "golemoverhaul:building_blocks/candle_golem_block",
+      "mod_id": "golemoverhaul",
+      "mod_name": "Golem Overhaul",
+      "mod_version": "1.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "golemoverhaul:candle_golem_block",
+        "minecraft:honeycomb",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:data/golemoverhaul/advancements/recipes/building_blocks/candle_golem_block.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "golemoverhaul:building_blocks/clay_golem_statue",
+      "mod_id": "golemoverhaul",
+      "mod_name": "Golem Overhaul",
+      "mod_version": "1.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "golemoverhaul:clay_golem_statue",
+        "minecraft:clay_ball",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:data/golemoverhaul/advancements/recipes/building_blocks/clay_golem_statue.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "golemoverhaul:candle_golem_block",
+      "mod_id": "golemoverhaul",
+      "mod_name": "Golem Overhaul",
+      "mod_version": "1.1.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:honeycomb",
+        "minecraft:string"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "golemoverhaul:candle_golem_block"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:data/golemoverhaul/recipes/candle_golem_block.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "golemoverhaul:clay_golem_statue",
+      "mod_id": "golemoverhaul",
+      "mod_name": "Golem Overhaul",
+      "mod_version": "1.1.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:clay",
+        "minecraft:clay_ball",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "golemoverhaul:clay_golem_statue"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:data/golemoverhaul/recipes/clay_golem_statue.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "golemoverhaul:coal_golem",
+      "mod_id": "golemoverhaul",
+      "mod_name": "Golem Overhaul",
+      "mod_version": "1.1.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:coals",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "golemoverhaul:coal_golem"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:data/golemoverhaul/recipes/coal_golem.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "golemoverhaul:golem_construction/candle_golem",
+      "mod_id": "golemoverhaul",
+      "mod_name": "Golem Overhaul",
+      "mod_version": "1.1.1",
+      "recipe_type": "golemoverhaul:golem_construction",
+      "machine_id": "golemoverhaul:golem_construction",
+      "ingredient_groups": [
+        "golemoverhaul:candle_golem",
+        "golemoverhaul:candle_golem_block",
+        "golemoverhaul:candle_golem_spawn_egg",
+        "golemoverhaul:golem_construction"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:data/golemoverhaul/recipes/golem_construction/candle_golem.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "golemoverhaul:golem_construction/hay_golem",
+      "mod_id": "golemoverhaul",
+      "mod_name": "Golem Overhaul",
+      "mod_version": "1.1.1",
+      "recipe_type": "golemoverhaul:golem_construction",
+      "machine_id": "golemoverhaul:golem_construction",
+      "ingredient_groups": [
+        "golemoverhaul:golem_construction",
+        "golemoverhaul:hay_golem",
+        "golemoverhaul:hay_golem_spawn_egg",
+        "minecraft:air",
+        "minecraft:carved_pumpkin",
+        "minecraft:hay_block"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:data/golemoverhaul/recipes/golem_construction/hay_golem.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "golemoverhaul:golem_construction/kelp_golem",
+      "mod_id": "golemoverhaul",
+      "mod_name": "Golem Overhaul",
+      "mod_version": "1.1.1",
+      "recipe_type": "golemoverhaul:golem_construction",
+      "machine_id": "golemoverhaul:golem_construction",
+      "ingredient_groups": [
+        "golemoverhaul:golem_construction",
+        "golemoverhaul:kelp_golem",
+        "golemoverhaul:kelp_golem_spawn_egg",
+        "minecraft:air",
+        "minecraft:dried_kelp_block",
+        "minecraft:sea_lantern"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:data/golemoverhaul/recipes/golem_construction/kelp_golem.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "golemoverhaul:golem_construction/netherite_golem",
+      "mod_id": "golemoverhaul",
+      "mod_name": "Golem Overhaul",
+      "mod_version": "1.1.1",
+      "recipe_type": "golemoverhaul:golem_construction",
+      "machine_id": "golemoverhaul:golem_construction",
+      "ingredient_groups": [
+        "golemoverhaul:golem_construction",
+        "golemoverhaul:netherite_golem",
+        "golemoverhaul:netherite_golem_spawn_egg",
+        "minecraft:air",
+        "minecraft:ancient_debris",
+        "minecraft:carved_pumpkin"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:data/golemoverhaul/recipes/golem_construction/netherite_golem.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "golemoverhaul:golem_construction/terracotta_golem",
+      "mod_id": "golemoverhaul",
+      "mod_name": "Golem Overhaul",
+      "mod_version": "1.1.1",
+      "recipe_type": "golemoverhaul:golem_construction",
+      "machine_id": "golemoverhaul:golem_construction",
+      "ingredient_groups": [
+        "golemoverhaul:clay_golem_statue",
+        "golemoverhaul:golem_construction",
+        "golemoverhaul:terracotta_golem",
+        "golemoverhaul:terracotta_golem_spawn_egg"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:data/golemoverhaul/recipes/golem_construction/terracotta_golem.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "golemoverhaul:misc/coal_golem",
+      "mod_id": "golemoverhaul",
+      "mod_name": "Golem Overhaul",
+      "mod_version": "1.1.1",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "golemoverhaul:coal_golem",
+        "minecraft:coals",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:data/golemoverhaul/advancements/recipes/misc/coal_golem.json"
+      ]
+    }
+  ]
+}

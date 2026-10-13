@@ -1,0 +1,2178 @@
+{
+  "schema_version": 1,
+  "registry_type": "items",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "bellsandwhistles",
+    "name": "Create: Bells & Whistles",
+    "version": "0.4.3-1.20.x"
+  },
+  "records": [
+    {
+      "registry_id": "bellsandwhistles:andesite_bogie_steps",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/andesite_bogie_steps.json",
+        "data/bellsandwhistles/recipes/bogie_steps/andesite_bogie_steps.json",
+        "data/bellsandwhistles/recipes/bogie_steps/andesite_bogie_steps_stonecutting.json"
+      ],
+      "display_name_en_us": "Andesite Steps",
+      "display_name_ru_ru": "Андезитовые ступени",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/climbable"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/andesite_bogie_steps.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/bogie_steps/andesite_bogie_steps.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/bogie_steps/andesite_bogie_steps_stonecutting.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:andesite_bogie_steps",
+      "acquisition_routes": [
+        "bellsandwhistles:bogie_steps/andesite_bogie_steps",
+        "bellsandwhistles:bogie_steps/andesite_bogie_steps_stonecutting"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:andesite_bogie_steps"
+    },
+    {
+      "registry_id": "bellsandwhistles:andesite_door_step",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/andesite_door_step.json",
+        "data/bellsandwhistles/recipes/door_steps/andesite_grab_rails.json",
+        "data/bellsandwhistles/recipes/door_steps/andesite_grab_rails_stonecutting.json"
+      ],
+      "display_name_en_us": "Andesite Door Step",
+      "display_name_ru_ru": "Андезитовый порог двери",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/andesite_door_step.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/door_steps/andesite_grab_rails.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/door_steps/andesite_grab_rails_stonecutting.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:andesite_door_step",
+      "acquisition_routes": [
+        "bellsandwhistles:door_steps/andesite_grab_rails",
+        "bellsandwhistles:door_steps/andesite_grab_rails_stonecutting"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:andesite_door_step"
+    },
+    {
+      "registry_id": "bellsandwhistles:andesite_grab_rails",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/andesite_grab_rails.json",
+        "data/bellsandwhistles/recipes/grab_rails/andesite_grab_rails.json",
+        "data/bellsandwhistles/recipes/grab_rails/andesite_grab_rails_stonecutting.json"
+      ],
+      "display_name_en_us": "Andesite Grab Bars",
+      "display_name_ru_ru": "Андезитовые поручни",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/climbable"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/andesite_grab_rails.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/grab_rails/andesite_grab_rails.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/grab_rails/andesite_grab_rails_stonecutting.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:andesite_grab_rails",
+      "acquisition_routes": [
+        "bellsandwhistles:grab_rails/andesite_grab_rails",
+        "bellsandwhistles:grab_rails/andesite_grab_rails_stonecutting"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:andesite_grab_rails"
+    },
+    {
+      "registry_id": "bellsandwhistles:andesite_pilot",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/andesite_pilot.json",
+        "data/bellsandwhistles/recipes/pilots/andesite_pilot.json"
+      ],
+      "display_name_en_us": "Andesite Pilot",
+      "display_name_ru_ru": "Андезитовый путеочиститель",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/andesite_pilot.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/pilots/andesite_pilot.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:andesite_pilot",
+      "acquisition_routes": [
+        "bellsandwhistles:pilots/andesite_pilot"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:andesite_pilot"
+    },
+    {
+      "registry_id": "bellsandwhistles:brass_bogie_steps",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/brass_bogie_steps.json",
+        "data/bellsandwhistles/recipes/bogie_steps/brass_bogie_steps.json",
+        "data/bellsandwhistles/recipes/bogie_steps/brass_bogie_steps_stonecutting.json"
+      ],
+      "display_name_en_us": "Brass Steps",
+      "display_name_ru_ru": "Латунный ступени",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/climbable"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/brass_bogie_steps.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/bogie_steps/brass_bogie_steps.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/bogie_steps/brass_bogie_steps_stonecutting.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:brass_bogie_steps",
+      "acquisition_routes": [
+        "bellsandwhistles:bogie_steps/brass_bogie_steps",
+        "bellsandwhistles:bogie_steps/brass_bogie_steps_stonecutting"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:brass_bogie_steps"
+    },
+    {
+      "registry_id": "bellsandwhistles:brass_door_step",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/brass_door_step.json",
+        "data/bellsandwhistles/recipes/door_steps/brass_grab_rails.json",
+        "data/bellsandwhistles/recipes/door_steps/brass_grab_rails_stonecutting.json"
+      ],
+      "display_name_en_us": "Brass Door Step",
+      "display_name_ru_ru": "Латунные порог двери",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/brass_door_step.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/door_steps/brass_grab_rails.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/door_steps/brass_grab_rails_stonecutting.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:brass_door_step",
+      "acquisition_routes": [
+        "bellsandwhistles:door_steps/brass_grab_rails",
+        "bellsandwhistles:door_steps/brass_grab_rails_stonecutting"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:brass_door_step"
+    },
+    {
+      "registry_id": "bellsandwhistles:brass_grab_rails",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/brass_grab_rails.json",
+        "data/bellsandwhistles/recipes/grab_rails/brass_grab_rails.json",
+        "data/bellsandwhistles/recipes/grab_rails/brass_grab_rails_stonecutting.json"
+      ],
+      "display_name_en_us": "Brass Grab Bars",
+      "display_name_ru_ru": "Латунные поручни",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/climbable"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/brass_grab_rails.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/grab_rails/brass_grab_rails.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/grab_rails/brass_grab_rails_stonecutting.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:brass_grab_rails",
+      "acquisition_routes": [
+        "bellsandwhistles:grab_rails/brass_grab_rails",
+        "bellsandwhistles:grab_rails/brass_grab_rails_stonecutting"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:brass_grab_rails"
+    },
+    {
+      "registry_id": "bellsandwhistles:brass_pilot",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/brass_pilot.json",
+        "data/bellsandwhistles/recipes/pilots/brass_pilot.json"
+      ],
+      "display_name_en_us": "Brass Pilot",
+      "display_name_ru_ru": "Латунный путеочиститель",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/brass_pilot.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/pilots/brass_pilot.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:brass_pilot",
+      "acquisition_routes": [
+        "bellsandwhistles:pilots/brass_pilot"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:brass_pilot"
+    },
+    {
+      "registry_id": "bellsandwhistles:copper_bogie_steps",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/copper_bogie_steps.json",
+        "data/bellsandwhistles/recipes/bogie_steps/copper_bogie_steps.json",
+        "data/bellsandwhistles/recipes/bogie_steps/copper_bogie_steps_stonecutting.json"
+      ],
+      "display_name_en_us": "Copper Steps",
+      "display_name_ru_ru": "Медные ступени",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/climbable"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/copper_bogie_steps.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/bogie_steps/copper_bogie_steps.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/bogie_steps/copper_bogie_steps_stonecutting.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:copper_bogie_steps",
+      "acquisition_routes": [
+        "bellsandwhistles:bogie_steps/copper_bogie_steps",
+        "bellsandwhistles:bogie_steps/copper_bogie_steps_stonecutting"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:copper_bogie_steps"
+    },
+    {
+      "registry_id": "bellsandwhistles:copper_door_step",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/copper_door_step.json",
+        "data/bellsandwhistles/recipes/door_steps/copper_grab_rails.json",
+        "data/bellsandwhistles/recipes/door_steps/copper_grab_rails_stonecutting.json"
+      ],
+      "display_name_en_us": "Copper Door Step",
+      "display_name_ru_ru": "Медный порог двери",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/copper_door_step.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/door_steps/copper_grab_rails.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/door_steps/copper_grab_rails_stonecutting.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:copper_door_step",
+      "acquisition_routes": [
+        "bellsandwhistles:door_steps/copper_grab_rails",
+        "bellsandwhistles:door_steps/copper_grab_rails_stonecutting"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:copper_door_step"
+    },
+    {
+      "registry_id": "bellsandwhistles:copper_grab_rails",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/copper_grab_rails.json",
+        "data/bellsandwhistles/recipes/grab_rails/copper_grab_rails.json",
+        "data/bellsandwhistles/recipes/grab_rails/copper_grab_rails_stonecutting.json"
+      ],
+      "display_name_en_us": "Copper Grab Bars",
+      "display_name_ru_ru": "Медные поручни",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/climbable"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/copper_grab_rails.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/grab_rails/copper_grab_rails.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/grab_rails/copper_grab_rails_stonecutting.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:copper_grab_rails",
+      "acquisition_routes": [
+        "bellsandwhistles:grab_rails/copper_grab_rails",
+        "bellsandwhistles:grab_rails/copper_grab_rails_stonecutting"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:copper_grab_rails"
+    },
+    {
+      "registry_id": "bellsandwhistles:copper_pilot",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/copper_pilot.json",
+        "data/bellsandwhistles/recipes/pilots/copper_pilot.json"
+      ],
+      "display_name_en_us": "Copper Pilot",
+      "display_name_ru_ru": "Медный путеочиститель",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/copper_pilot.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/pilots/copper_pilot.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:copper_pilot",
+      "acquisition_routes": [
+        "bellsandwhistles:pilots/copper_pilot"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:copper_pilot"
+    },
+    {
+      "registry_id": "bellsandwhistles:corrugated_metro_casing",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/corrugated_metro_casing.json",
+        "data/bellsandwhistles/recipes/metro/corrugated_metro_sheet.json"
+      ],
+      "display_name_en_us": "Corrugated Metro Casing",
+      "display_name_ru_ru": "Гофрированный метрокорпус",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/corrugated_metro_casing.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/metro/corrugated_metro_sheet.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:corrugated_metro_casing",
+      "acquisition_routes": [
+        "bellsandwhistles:metro/corrugated_metro_sheet"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:corrugated_metro_casing"
+    },
+    {
+      "registry_id": "bellsandwhistles:corrugated_metro_panel",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/corrugated_metro_panel.json",
+        "data/bellsandwhistles/recipes/metro/corrugated_metro_panel.json",
+        "data/bellsandwhistles/recipes/metro/corrugated_metro_panel_from_panel.json"
+      ],
+      "display_name_en_us": "Corrugated Metro Panel",
+      "display_name_ru_ru": "Гофрированный метрокорпус",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/corrugated_metro_panel.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/metro/corrugated_metro_panel.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/metro/corrugated_metro_panel_from_panel.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:corrugated_metro_panel",
+      "acquisition_routes": [
+        "bellsandwhistles:metro/corrugated_metro_panel",
+        "bellsandwhistles:metro/corrugated_metro_panel_from_panel"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:corrugated_metro_panel"
+    },
+    {
+      "registry_id": "bellsandwhistles:folding_metro_door",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/folding_metro_door.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/folding_metro_door.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:folding_metro_door",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:folding_metro_door"
+    },
+    {
+      "registry_id": "bellsandwhistles:headlight",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/headlight.json",
+        "data/bellsandwhistles/recipes/headlight.json",
+        "data/bellsandwhistles/recipes/headlight_2.json"
+      ],
+      "display_name_en_us": "Headlight",
+      "display_name_ru_ru": "Прожектор",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/headlight.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/headlight.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/headlight_2.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:headlight",
+      "acquisition_routes": [
+        "bellsandwhistles:headlight",
+        "bellsandwhistles:headlight_2"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:headlight"
+    },
+    {
+      "registry_id": "bellsandwhistles:metal_pilot",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/metal_pilot.json",
+        "data/bellsandwhistles/recipes/pilots/metal_pilot.json"
+      ],
+      "display_name_en_us": "Metal Pilot",
+      "display_name_ru_ru": "Железный путеочиститель",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/metal_pilot.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/pilots/metal_pilot.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:metal_pilot",
+      "acquisition_routes": [
+        "bellsandwhistles:pilots/metal_pilot"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:metal_pilot"
+    },
+    {
+      "registry_id": "bellsandwhistles:metro_casing",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/metro_casing.json",
+        "data/bellsandwhistles/recipes/metro/metro_sheet.json"
+      ],
+      "display_name_en_us": "Metro Casing",
+      "display_name_ru_ru": "Метрокорпус",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/metro_casing.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/metro/metro_sheet.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:metro_casing",
+      "acquisition_routes": [
+        "bellsandwhistles:metro/metro_sheet"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:metro_casing"
+    },
+    {
+      "registry_id": "bellsandwhistles:metro_panel",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/metro_panel.json",
+        "data/bellsandwhistles/recipes/metro/metro_panel.json",
+        "data/bellsandwhistles/recipes/metro/metro_panel_from_corrugated.json"
+      ],
+      "display_name_en_us": "Metro Panel",
+      "display_name_ru_ru": "Метропанель",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/metro_panel.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/metro/metro_panel.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/metro/metro_panel_from_corrugated.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:metro_panel",
+      "acquisition_routes": [
+        "bellsandwhistles:metro/metro_panel",
+        "bellsandwhistles:metro/metro_panel_from_corrugated"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:metro_panel"
+    },
+    {
+      "registry_id": "bellsandwhistles:metro_trapdoor",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/metro_trapdoor.json",
+        "data/bellsandwhistles/recipes/metro/metro_trapdoor.json"
+      ],
+      "display_name_en_us": "Metro Trapdoor",
+      "display_name_ru_ru": "Метролюк",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/metro_trapdoor.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/metro/metro_trapdoor.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:metro_trapdoor",
+      "acquisition_routes": [
+        "bellsandwhistles:metro/metro_trapdoor"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:metro_trapdoor"
+    },
+    {
+      "registry_id": "bellsandwhistles:metro_window",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/metro_window.json",
+        "data/bellsandwhistles/recipes/metro/metro_window.json"
+      ],
+      "display_name_en_us": "Metro Window",
+      "display_name_ru_ru": "Метроокно",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/metro_window.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/metro/metro_window.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:metro_window",
+      "acquisition_routes": [
+        "bellsandwhistles:metro/metro_window"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:metro_window"
+    },
+    {
+      "registry_id": "bellsandwhistles:ornate_iron_trapdoor",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/ornate_iron_trapdoor.json",
+        "data/bellsandwhistles/recipes/ornate_iron_window.json"
+      ],
+      "display_name_en_us": "Ornate Iron Trapdoor",
+      "display_name_ru_ru": "Украшенный железом люк",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/ornate_iron_trapdoor.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/ornate_iron_window.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:ornate_iron_trapdoor",
+      "acquisition_routes": [
+        "bellsandwhistles:ornate_iron_window"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:ornate_iron_trapdoor"
+    },
+    {
+      "registry_id": "bellsandwhistles:polished_andesite_pilot",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/polished_andesite_pilot.json",
+        "data/bellsandwhistles/recipes/pilots/polished_andesite_pilot.json",
+        "data/bellsandwhistles/recipes/pilots/polished_andesite_pilot_from_cut.json"
+      ],
+      "display_name_en_us": "Polished Andesite Pilot",
+      "display_name_ru_ru": "Путеочиститель из полированного андезита",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/polished_andesite_pilot.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/pilots/polished_andesite_pilot.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/pilots/polished_andesite_pilot_from_cut.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:polished_andesite_pilot",
+      "acquisition_routes": [
+        "bellsandwhistles:pilots/polished_andesite_pilot",
+        "bellsandwhistles:pilots/polished_andesite_pilot_from_cut"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:polished_andesite_pilot"
+    },
+    {
+      "registry_id": "bellsandwhistles:polished_asurine_pilot",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/polished_asurine_pilot.json",
+        "data/bellsandwhistles/recipes/pilots/polished_asurine_pilot.json"
+      ],
+      "display_name_en_us": "Polished Asurine Pilot",
+      "display_name_ru_ru": "Путеочиститель из полированного азурина",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/polished_asurine_pilot.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/pilots/polished_asurine_pilot.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:polished_asurine_pilot",
+      "acquisition_routes": [
+        "bellsandwhistles:pilots/polished_asurine_pilot"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:polished_asurine_pilot"
+    },
+    {
+      "registry_id": "bellsandwhistles:polished_calcite_pilot",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/polished_calcite_pilot.json",
+        "data/bellsandwhistles/recipes/pilots/polished_calcite_pilot.json"
+      ],
+      "display_name_en_us": "Polished Calcite Pilot",
+      "display_name_ru_ru": "Путеочиститель из полированного кальцита",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/polished_calcite_pilot.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/pilots/polished_calcite_pilot.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:polished_calcite_pilot",
+      "acquisition_routes": [
+        "bellsandwhistles:pilots/polished_calcite_pilot"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:polished_calcite_pilot"
+    },
+    {
+      "registry_id": "bellsandwhistles:polished_crimsite_pilot",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/polished_crimsite_pilot.json",
+        "data/bellsandwhistles/recipes/pilots/polished_crimsite_pilot.json.json"
+      ],
+      "display_name_en_us": "Polished Crimsite Pilot",
+      "display_name_ru_ru": "Путеочиститель из полированного кримзита",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/polished_crimsite_pilot.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/pilots/polished_crimsite_pilot.json.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:polished_crimsite_pilot",
+      "acquisition_routes": [
+        "bellsandwhistles:pilots/polished_crimsite_pilot.json"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:polished_crimsite_pilot"
+    },
+    {
+      "registry_id": "bellsandwhistles:polished_deepslate_pilot",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/polished_deepslate_pilot.json",
+        "data/bellsandwhistles/recipes/pilots/polished_deepslate_pilot.json",
+        "data/bellsandwhistles/recipes/pilots/polished_deepslate_pilot_from_cut.json"
+      ],
+      "display_name_en_us": "Polished Deepslate Pilot",
+      "display_name_ru_ru": "Путеочиститель из полированного глубинного сланца",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/polished_deepslate_pilot.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/pilots/polished_deepslate_pilot.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/pilots/polished_deepslate_pilot_from_cut.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:polished_deepslate_pilot",
+      "acquisition_routes": [
+        "bellsandwhistles:pilots/polished_deepslate_pilot",
+        "bellsandwhistles:pilots/polished_deepslate_pilot_from_cut"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:polished_deepslate_pilot"
+    },
+    {
+      "registry_id": "bellsandwhistles:polished_diorite_pilot",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/polished_diorite_pilot.json",
+        "data/bellsandwhistles/recipes/pilots/polished_diorite_pilot.json",
+        "data/bellsandwhistles/recipes/pilots/polished_diorite_pilot_from_cut.json"
+      ],
+      "display_name_en_us": "Polished Diorite Pilot",
+      "display_name_ru_ru": "Путеочиститель из полированного диорита",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/polished_diorite_pilot.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/pilots/polished_diorite_pilot.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/pilots/polished_diorite_pilot_from_cut.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:polished_diorite_pilot",
+      "acquisition_routes": [
+        "bellsandwhistles:pilots/polished_diorite_pilot",
+        "bellsandwhistles:pilots/polished_diorite_pilot_from_cut"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:polished_diorite_pilot"
+    },
+    {
+      "registry_id": "bellsandwhistles:polished_dripstone_pilot",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/polished_dripstone_pilot.json",
+        "data/bellsandwhistles/recipes/pilots/polished_dripstone_pilot.json"
+      ],
+      "display_name_en_us": "Polished Dripstone Pilot",
+      "display_name_ru_ru": "Путеочиститель из полированного натёчного камня",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/polished_dripstone_pilot.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/pilots/polished_dripstone_pilot.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:polished_dripstone_pilot",
+      "acquisition_routes": [
+        "bellsandwhistles:pilots/polished_dripstone_pilot"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:polished_dripstone_pilot"
+    },
+    {
+      "registry_id": "bellsandwhistles:polished_granite_pilot",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/polished_granite_pilot.json",
+        "data/bellsandwhistles/recipes/pilots/polished_granite_pilot.json",
+        "data/bellsandwhistles/recipes/pilots/polished_granite_pilot_from_cut.json"
+      ],
+      "display_name_en_us": "Polished Granite Pilot",
+      "display_name_ru_ru": "Путеочиститель из полированного гранита",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/polished_granite_pilot.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/pilots/polished_granite_pilot.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/pilots/polished_granite_pilot_from_cut.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:polished_granite_pilot",
+      "acquisition_routes": [
+        "bellsandwhistles:pilots/polished_granite_pilot",
+        "bellsandwhistles:pilots/polished_granite_pilot_from_cut"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:polished_granite_pilot"
+    },
+    {
+      "registry_id": "bellsandwhistles:polished_limestone_pilot",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/polished_limestone_pilot.json",
+        "data/bellsandwhistles/recipes/pilots/polished_limestone_pilot.json"
+      ],
+      "display_name_en_us": "Polished Limestone Pilot",
+      "display_name_ru_ru": "Путеочиститель из полированного известняка",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/polished_limestone_pilot.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/pilots/polished_limestone_pilot.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:polished_limestone_pilot",
+      "acquisition_routes": [
+        "bellsandwhistles:pilots/polished_limestone_pilot"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:polished_limestone_pilot"
+    },
+    {
+      "registry_id": "bellsandwhistles:polished_ochrum_pilot",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/polished_ochrum_pilot.json",
+        "data/bellsandwhistles/recipes/pilots/polished_ochrum_pilot.json"
+      ],
+      "display_name_en_us": "Polished Ochrum Pilot",
+      "display_name_ru_ru": "Путеочиститель из полированного охрума",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/polished_ochrum_pilot.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/pilots/polished_ochrum_pilot.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:polished_ochrum_pilot",
+      "acquisition_routes": [
+        "bellsandwhistles:pilots/polished_ochrum_pilot"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:polished_ochrum_pilot"
+    },
+    {
+      "registry_id": "bellsandwhistles:polished_scorchia_pilot",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/polished_scorchia_pilot.json",
+        "data/bellsandwhistles/recipes/pilots/polished_scorchia_pilot.json"
+      ],
+      "display_name_en_us": "Polished Scorchia Pilot",
+      "display_name_ru_ru": "Путеочиститель из полированного тёмного пепла",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/polished_scorchia_pilot.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/pilots/polished_scorchia_pilot.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:polished_scorchia_pilot",
+      "acquisition_routes": [
+        "bellsandwhistles:pilots/polished_scorchia_pilot"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:polished_scorchia_pilot"
+    },
+    {
+      "registry_id": "bellsandwhistles:polished_scoria_pilot",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/polished_scoria_pilot.json",
+        "data/bellsandwhistles/recipes/pilots/polished_scoria_pilot.json"
+      ],
+      "display_name_en_us": "Polished Scoria Pilot",
+      "display_name_ru_ru": "Путеочиститель из полированного пепла",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/polished_scoria_pilot.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/pilots/polished_scoria_pilot.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:polished_scoria_pilot",
+      "acquisition_routes": [
+        "bellsandwhistles:pilots/polished_scoria_pilot"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:polished_scoria_pilot"
+    },
+    {
+      "registry_id": "bellsandwhistles:polished_tuff_pilot",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/polished_tuff_pilot.json",
+        "data/bellsandwhistles/recipes/pilots/polished_tuff_pilot.json"
+      ],
+      "display_name_en_us": "Polished Tuff Pilot",
+      "display_name_ru_ru": "Путеочиститель из полированного туфа",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/polished_tuff_pilot.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/pilots/polished_tuff_pilot.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:polished_tuff_pilot",
+      "acquisition_routes": [
+        "bellsandwhistles:pilots/polished_tuff_pilot"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:polished_tuff_pilot"
+    },
+    {
+      "registry_id": "bellsandwhistles:polished_veridium_pilot",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/polished_veridium_pilot.json",
+        "data/bellsandwhistles/recipes/pilots/polished_veridium_pilot.json"
+      ],
+      "display_name_en_us": "Polished Veridium Pilot",
+      "display_name_ru_ru": "Путеочиститель из полированного веридия",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/polished_veridium_pilot.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/pilots/polished_veridium_pilot.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:polished_veridium_pilot",
+      "acquisition_routes": [
+        "bellsandwhistles:pilots/polished_veridium_pilot"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:polished_veridium_pilot"
+    },
+    {
+      "registry_id": "bellsandwhistles:sliding_metro_door",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/sliding_metro_door.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/sliding_metro_door.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:sliding_metro_door",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:sliding_metro_door"
+    },
+    {
+      "registry_id": "bellsandwhistles:station_platform",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bellsandwhistles",
+      "mod_name": "Create: Bells & Whistles",
+      "mod_version": "0.4.3-1.20.x",
+      "source_jar": "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar",
+      "source_sha256": "90f102b26c410f9dfebf6ea5dfc0ec42b1ac5bde9d4634f5e038a5d17121eb2f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bellsandwhistles/models/item/station_platform.json",
+        "data/bellsandwhistles/recipes/station_platform.json",
+        "data/bellsandwhistles/recipes/station_platform_stonecutter.json"
+      ],
+      "display_name_en_us": "Station Platform",
+      "display_name_ru_ru": "Платформа станции",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:assets/bellsandwhistles/models/item/station_platform.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/station_platform.json",
+        "bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar:data/bellsandwhistles/recipes/station_platform_stonecutter.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bellsandwhistles:station_platform",
+      "acquisition_routes": [
+        "bellsandwhistles:station_platform",
+        "bellsandwhistles:station_platform_stonecutter"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bellsandwhistles:station_platform"
+    }
+  ]
+}

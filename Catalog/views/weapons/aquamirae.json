@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "registry_type": "weapons",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "aquamirae",
+    "name": "Aquamirae",
+    "version": "7.1.13"
+  },
+  "records": [
+    {
+      "item_id": "aquamirae:dagger_of_greed",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "aquamirae",
+      "mod_name": "Aquamirae",
+      "mod_version": "7.1.13",
+      "source_jar": "aquamirae-forge-1.20.1-7.1.13.jar",
+      "source_sha256": "720330ca529ed7cbe0af2fb38b82205764be2e0aba28e2ab8a2619ccb7830fba",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/aquamirae/lang/en_us.json",
+        "assets/aquamirae/lang/ru_ru.json",
+        "assets/aquamirae/models/item/dagger_of_greed.json"
+      ],
+      "display_name_en_us": "Dagger of Greed",
+      "display_name_ru_ru": "Кинжал алчности",
+      "source_provenance": [
+        "aquamirae-forge-1.20.1-7.1.13.jar:assets/aquamirae/lang/en_us.json",
+        "aquamirae-forge-1.20.1-7.1.13.jar:assets/aquamirae/lang/ru_ru.json",
+        "aquamirae-forge-1.20.1-7.1.13.jar:assets/aquamirae/models/item/dagger_of_greed.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "dagger"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "registry_type": "trade_policies",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "luminoustag",
+    "name": "Luminous:Tag",
+    "version": "1.1"
+  },
+  "records": [
+    {
+      "item_id": "luminoustag:decorative_tag",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "luminoustag",
+      "mod_name": "Luminous:Tag",
+      "mod_version": "1.1",
+      "source_jar": "LuminousTag V1.1 - Forge 1.20.1.jar",
+      "source_sha256": "c4cd94935623ecbab8f9a0f6d58c4ab7aa0611088b1f7d2da5173dba38e2812c",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/luminoustag/lang/en_us.json",
+        "assets/luminoustag/models/item/decorative_tag.json",
+        "data/luminoustag/recipes/tag_recipe.json"
+      ],
+      "display_name_en_us": "Decorative Tag",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "LuminousTag V1.1 - Forge 1.20.1.jar:assets/luminoustag/lang/en_us.json",
+        "LuminousTag V1.1 - Forge 1.20.1.jar:assets/luminoustag/models/item/decorative_tag.json",
+        "LuminousTag V1.1 - Forge 1.20.1.jar:data/luminoustag/recipes/tag_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "luminoustag:tag_recipe"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    }
+  ]
+}

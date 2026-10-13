@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "registry_type": "tools",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "alexsmobs",
+    "name": "Alex's Mobs",
+    "version": "1.22.9"
+  },
+  "records": [
+    {
+      "item_id": "alexsmobs:ghostly_pickaxe",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "alexsmobs",
+      "mod_name": "Alex's Mobs",
+      "mod_version": "1.22.9",
+      "source_jar": "alexsmobs-1.22.9.jar",
+      "source_sha256": "16bc5bcc19db9029c24f951346ec71098e6f5b0afef96e61894a2e9407aad37c",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/alexsmobs/lang/en_us.json",
+        "assets/alexsmobs/lang/ru_ru.json",
+        "assets/alexsmobs/models/item/ghostly_pickaxe.json"
+      ],
+      "display_name_en_us": "Ghostly Pickaxe",
+      "display_name_ru_ru": "Призрачная кирка",
+      "source_provenance": [
+        "alexsmobs-1.22.9.jar:assets/alexsmobs/lang/en_us.json",
+        "alexsmobs-1.22.9.jar:assets/alexsmobs/lang/ru_ru.json",
+        "alexsmobs-1.22.9.jar:assets/alexsmobs/models/item/ghostly_pickaxe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "pickaxe",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    }
+  ]
+}

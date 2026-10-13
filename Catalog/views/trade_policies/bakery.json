@@ -1,0 +1,3601 @@
+{
+  "schema_version": 1,
+  "registry_type": "trade_policies",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "bakery",
+    "name": "[Let's Do] Bakery",
+    "version": "2.0.6"
+  },
+  "records": [
+    {
+      "item_id": "bakery:apple_cupcake",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/apple_cupcake.json",
+        "data/bakery/recipes/baking_station/apple_cupcake.json"
+      ],
+      "display_name_en_us": "Apple Cupcake",
+      "display_name_ru_ru": "Яблочный кекс",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/apple_cupcake.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/apple_cupcake.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "BUY_AND_SELL",
+      "reason": "Verified Bakery multi-step food",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:baking_station/apple_cupcake"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": 16,
+      "sell_copper": 8,
+      "daily_player_units": 12,
+      "daily_global_units": 96,
+      "demand_group": "cooking",
+      "price_basis": "Verified Bakery multi-step food",
+      "arbitrage_risk": "reviewed",
+      "review_status": "reviewed"
+    },
+    {
+      "item_id": "bakery:apple_jam",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/apple_jam.json",
+        "data/farm_and_charm/recipes/pot_cooking/apple_jam.json"
+      ],
+      "display_name_en_us": "Apple Jam",
+      "display_name_ru_ru": "Яблочное варенье",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/apple_jam.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/pot_cooking/apple_jam.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:pot_cooking/apple_jam"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:apple_pie",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/apple_pie.json",
+        "data/farm_and_charm/recipes/stove/apple_pie.json"
+      ],
+      "display_name_en_us": "Apple Pie",
+      "display_name_ru_ru": "Яблочный пирог",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/apple_pie.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/apple_pie.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:stove/apple_pie"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:apple_pie_slice",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/apple_pie_slice.json"
+      ],
+      "display_name_en_us": "Slice of Apple Pie",
+      "display_name_ru_ru": "Кусочек яблочного пирога",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/apple_pie_slice.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:baguette",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/baguette.json",
+        "data/farm_and_charm/recipes/stove/baguette.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/baguette.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/baguette.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "BUY_AND_SELL",
+      "reason": "Verified Bakery prepared food",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:stove/baguette"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": 12,
+      "sell_copper": 6,
+      "daily_player_units": 16,
+      "daily_global_units": 128,
+      "demand_group": "cooking",
+      "price_basis": "Verified Bakery prepared food",
+      "arbitrage_risk": "reviewed",
+      "review_status": "reviewed"
+    },
+    {
+      "item_id": "bakery:baker_station",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/baker_station.json",
+        "data/bakery/recipes/baking_station.json"
+      ],
+      "display_name_en_us": "Caking Station",
+      "display_name_ru_ru": "Кондитерская станция",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/baker_station.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:baking_station"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:bakery_banner",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/bakery_banner.json",
+        "data/bakery/recipes/banner_from_smithing_table.json"
+      ],
+      "display_name_en_us": "Completionist Banner: §cBakery",
+      "display_name_ru_ru": "Знамя выдающегося кондитера: §cBakery",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/bakery_banner.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/banner_from_smithing_table.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:banner_from_smithing_table"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:blank_cake",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/blank_cake.json"
+      ],
+      "display_name_en_us": "Blank Cake",
+      "display_name_ru_ru": "Корж",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/blank_cake.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:braided_bread",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/braided_bread.json",
+        "data/farm_and_charm/recipes/stove/braided_bread.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/braided_bread.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/braided_bread.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:stove/braided_bread"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:bread",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/bread.json",
+        "data/farm_and_charm/recipes/stove/bread.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/bread.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/bread.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:stove/bread"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:bread_crate",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/bread_crate.json",
+        "data/bakery/recipes/bread_crate.json"
+      ],
+      "display_name_en_us": "Basket of Bread",
+      "display_name_ru_ru": "Корзина с хлебом",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/bread_crate.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/bread_crate.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:bread_crate"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:bread_knife",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/bread_knife.json",
+        "data/bakery/recipes/bread_knife.json"
+      ],
+      "display_name_en_us": "Bread Knife",
+      "display_name_ru_ru": "Хлебный нож",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/bread_knife.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/bread_knife.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:bread_knife"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:bread_with_jam",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/bread_with_jam.json",
+        "data/bakery/recipes/bread_with_jam.json"
+      ],
+      "display_name_en_us": "Bread with Jam",
+      "display_name_ru_ru": "Хлеб с вареньем",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/bread_with_jam.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/bread_with_jam.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:bread_with_jam"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:breadbox",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/breadbox.json",
+        "data/bakery/recipes/breadbox.json"
+      ],
+      "display_name_en_us": "Bread Box",
+      "display_name_ru_ru": "Хлебница",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/breadbox.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/breadbox.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:breadbox"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:brick_counter",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/brick_counter.json",
+        "data/bakery/recipes/brick_counter.json"
+      ],
+      "display_name_en_us": "Brick Counter",
+      "display_name_ru_ru": "Кирпичная стойка",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/brick_counter.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/brick_counter.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:brick_counter"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:bun",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/bun.json",
+        "data/farm_and_charm/recipes/stove/bun.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/bun.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/bun.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "BUY_AND_SELL",
+      "reason": "Verified Bakery prepared food",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:stove/bun"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": 8,
+      "sell_copper": 4,
+      "daily_player_units": 16,
+      "daily_global_units": 128,
+      "demand_group": "cooking",
+      "price_basis": "Verified Bakery prepared food",
+      "arbitrage_risk": "reviewed",
+      "review_status": "reviewed"
+    },
+    {
+      "item_id": "bakery:bundt_cake",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/bundt_cake.json",
+        "data/farm_and_charm/recipes/stove/bundt_cake.json"
+      ],
+      "display_name_en_us": "Bundt Cake",
+      "display_name_ru_ru": "Торт Бандт",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/bundt_cake.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/bundt_cake.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:stove/bundt_cake"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:bundt_cake_slice",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/bundt_cake_slice.json"
+      ],
+      "display_name_en_us": "Slice of Bundt Cake",
+      "display_name_ru_ru": "Кусочек торта Бандт",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/bundt_cake_slice.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:cabinet",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/cabinet.json",
+        "data/bakery/recipes/cabinet.json"
+      ],
+      "display_name_en_us": "Cabinet",
+      "display_name_ru_ru": "Шкаф",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/cabinet.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/cabinet.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:cabinet"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:cake_display",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/cake_display.json",
+        "data/bakery/recipes/cake_display.json"
+      ],
+      "display_name_en_us": "Cake Display",
+      "display_name_ru_ru": "Витрина для тортов",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/cake_display.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/cake_display.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:cake_display"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:cake_dough",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/cake_dough.json",
+        "data/farm_and_charm/recipes/crafting_bowl/cake_dough.json"
+      ],
+      "display_name_en_us": "Cake Dough",
+      "display_name_ru_ru": "Тесто для торта",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/cake_dough.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/crafting_bowl/cake_dough.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:crafting_bowl/cake_dough"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:cake_stand",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/cake_stand.json",
+        "data/bakery/recipes/cake_stand.json"
+      ],
+      "display_name_en_us": "Cake Stand",
+      "display_name_ru_ru": "Подставка для торта",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/cake_stand.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/cake_stand.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:cake_stand"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:cake_tower",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/cake_tower.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/cake_tower.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:chocolate_box",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/chocolate_box.json",
+        "data/bakery/recipes/chocolate_box.json"
+      ],
+      "display_name_en_us": "Chocolate Box",
+      "display_name_ru_ru": "Коробка шоколада",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/chocolate_box.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/chocolate_box.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:chocolate_box"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:chocolate_bread",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/chocolate_bread.json"
+      ],
+      "display_name_en_us": "Chocolate Bread",
+      "display_name_ru_ru": "Шоколадный хлеб",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/chocolate_bread.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:chocolate_cake",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/chocolate_cake.json",
+        "data/bakery/recipes/baking_station/chocolate_cake.json"
+      ],
+      "display_name_en_us": "Chocolate Cake",
+      "display_name_ru_ru": "Шоколадный торт",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/chocolate_cake.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/chocolate_cake.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:baking_station/chocolate_cake"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:chocolate_cake_slice",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/chocolate_cake_slice.json"
+      ],
+      "display_name_en_us": "Slice of Chocolate Cake",
+      "display_name_ru_ru": "Кусочек шоколадного торта",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/chocolate_cake_slice.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:chocolate_gateau",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/chocolate_gateau.json",
+        "data/bakery/recipes/baking_station/chocolate_gateau.json"
+      ],
+      "display_name_en_us": "Chocolate Gateau",
+      "display_name_ru_ru": "Шоколадное Гато",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/chocolate_gateau.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/chocolate_gateau.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:baking_station/chocolate_gateau"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:chocolate_gateau_slice",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/chocolate_gateau_slice.json"
+      ],
+      "display_name_en_us": "Slice of Chocolate Gateau",
+      "display_name_ru_ru": "Кусочек шоколадного Гато",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/chocolate_gateau_slice.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:chocolate_glazed_cookie",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/chocolate_glazed_cookie.json",
+        "data/bakery/recipes/baking_station/chocolate_cookie.json"
+      ],
+      "display_name_en_us": "Chocolate Glazed Cookie",
+      "display_name_ru_ru": "Печенье с шоколадной глазурью",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/chocolate_glazed_cookie.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/chocolate_cookie.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:baking_station/chocolate_cookie"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:chocolate_jam",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/chocolate_jam.json",
+        "data/farm_and_charm/recipes/pot_cooking/chocolate_jam.json"
+      ],
+      "display_name_en_us": "Chocolate Spread",
+      "display_name_ru_ru": "Шоколадная паста",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/chocolate_jam.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/pot_cooking/chocolate_jam.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:pot_cooking/chocolate_jam"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:chocolate_tart",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/chocolate_tart.json",
+        "data/farm_and_charm/recipes/stove/chocolate_tart.json"
+      ],
+      "display_name_en_us": "Chocolate Tart",
+      "display_name_ru_ru": "Шоколадный тарт",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/chocolate_tart.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/chocolate_tart.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:stove/chocolate_tart"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:chocolate_tart_slice",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/chocolate_tart_slice.json"
+      ],
+      "display_name_en_us": "Slice of Chocolate Tart",
+      "display_name_ru_ru": "Кусочек шоколадного тарта",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/chocolate_tart_slice.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:chocolate_truffle",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/chocolate_truffle.json",
+        "data/farm_and_charm/recipes/pot_cooking/chocolate.json"
+      ],
+      "display_name_en_us": "Chocolate Truffle",
+      "display_name_ru_ru": "Шоколадный трюфель",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/chocolate_truffle.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/pot_cooking/chocolate.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:pot_cooking/chocolate"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:cornet",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/cornet.json",
+        "data/farm_and_charm/recipes/stove/cornet.json"
+      ],
+      "display_name_en_us": "Stuffed Cornet",
+      "display_name_ru_ru": "Рогалик",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/cornet.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/cornet.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:stove/cornet"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:croissant",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/croissant.json",
+        "data/farm_and_charm/recipes/stove/croissant.json"
+      ],
+      "display_name_en_us": "Croissant",
+      "display_name_ru_ru": "Круассан",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/croissant.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/croissant.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:stove/croissant"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:crusty_bread",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/crusty_bread.json",
+        "data/farm_and_charm/recipes/stove/crusty_bread.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/crusty_bread.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/crusty_bread.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:stove/crusty_bread"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:cupcake_display",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/cupcake_display.json",
+        "data/bakery/recipes/cupcake_display.json"
+      ],
+      "display_name_en_us": "Cupcake Display",
+      "display_name_ru_ru": "Витрина для кексов",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/cupcake_display.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/cupcake_display.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:cupcake_display"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:donut",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/donut.json"
+      ],
+      "display_name_en_us": "Donut",
+      "display_name_ru_ru": "Пончик",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/donut.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:dough",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/dough.json"
+      ],
+      "display_name_en_us": "Dough",
+      "display_name_ru_ru": "Тесто",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/dough.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:drawer",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/drawer.json",
+        "data/bakery/recipes/drawer.json"
+      ],
+      "display_name_en_us": "Drawer",
+      "display_name_ru_ru": "Тумбочка",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/drawer.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/drawer.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:drawer"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:faucet",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/faucet.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/faucet.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:glowberry_jam",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/glowberry_jam.json",
+        "data/farm_and_charm/recipes/pot_cooking/glowberry_jam.json"
+      ],
+      "display_name_en_us": "Glowberry Jam",
+      "display_name_ru_ru": "Варенье из светящихся ягод",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/glowberry_jam.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/pot_cooking/glowberry_jam.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:pot_cooking/glowberry_jam"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:glowberry_pie_slice",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/glowberry_pie_slice.json"
+      ],
+      "display_name_en_us": "Slice of Glowberry Tart",
+      "display_name_ru_ru": "Кусочек тарта из светящихся ягод",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/glowberry_pie_slice.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:glowberry_tart",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/glowberry_tart.json",
+        "data/farm_and_charm/recipes/stove/glowberry_tart.json"
+      ],
+      "display_name_en_us": "Glowberry Tart",
+      "display_name_ru_ru": "Тарт из светящихся ягод",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/glowberry_tart.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/glowberry_tart.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:stove/glowberry_tart"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:grilled_bacon_sandwich",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/grilled_bacon_sandwich.json",
+        "data/farm_and_charm/recipes/stove/grilled_bacon_sandwich.json"
+      ],
+      "display_name_en_us": "Grilled Bacon Sandwich",
+      "display_name_ru_ru": "Бутерброд с беконом",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/grilled_bacon_sandwich.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/grilled_bacon_sandwich.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:stove/grilled_bacon_sandwich"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:grilled_salmon_sandwich",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/grilled_salmon_sandwich.json",
+        "data/farm_and_charm/recipes/stove/grilled_salmon_sandwich.json"
+      ],
+      "display_name_en_us": "Grilled Salmon Sandwich",
+      "display_name_ru_ru": "Бутерброд с лососем",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/grilled_salmon_sandwich.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/grilled_salmon_sandwich.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:stove/grilled_salmon_sandwich"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:iron_bench",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/iron_bench.json",
+        "data/bakery/recipes/iron_bench.json"
+      ],
+      "display_name_en_us": "Iron Bench",
+      "display_name_ru_ru": "Железная лавка",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/iron_bench.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/iron_bench.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:iron_bench"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:iron_chair",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/iron_chair.json",
+        "data/bakery/recipes/iron_chair.json"
+      ],
+      "display_name_en_us": "Iron Chair",
+      "display_name_ru_ru": "Железный стул",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/iron_chair.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/iron_chair.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:iron_chair"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:iron_table",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/iron_table.json",
+        "data/bakery/recipes/iron_table.json"
+      ],
+      "display_name_en_us": "Iron Table",
+      "display_name_ru_ru": "Железный стол",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/iron_table.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/iron_table.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:iron_table"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:jam_roll",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/jam_roll.json",
+        "data/farm_and_charm/recipes/stove/jam_roll.json"
+      ],
+      "display_name_en_us": "Jam Roll",
+      "display_name_ru_ru": "Рулет с вареньем",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/jam_roll.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/jam_roll.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:stove/jam_roll"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:jam_sandwich",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/jam_sandwich.json"
+      ],
+      "display_name_en_us": "Jam Sandwich",
+      "display_name_ru_ru": "Бутерброд с вареньем",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/jam_sandwich.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:jar",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/jar.json",
+        "data/bakery/recipes/jar.json"
+      ],
+      "display_name_en_us": "Jar",
+      "display_name_ru_ru": "Банка",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/jar.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/jar.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:jar"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:kitchen_sink",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/kitchen_sink.json",
+        "data/bakery/recipes/kitchen_sink.json"
+      ],
+      "display_name_en_us": "Brick Sink",
+      "display_name_ru_ru": "Кирпичная раковина",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/kitchen_sink.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/kitchen_sink.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:kitchen_sink"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:linzer_tart",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/linzer_tart.json",
+        "data/farm_and_charm/recipes/stove/linzer_tart.json"
+      ],
+      "display_name_en_us": "Linzer Tart",
+      "display_name_ru_ru": "Линцский торт",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/linzer_tart.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/linzer_tart.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:stove/linzer_tart"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:linzer_tart_slice",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/linzer_tart_slice.json"
+      ],
+      "display_name_en_us": "Slice of Linzer Tart",
+      "display_name_ru_ru": "Кусочек линцского тарта",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/linzer_tart_slice.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:milk_bread",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/milk_bread.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/milk_bread.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:misslilitu_biscuit",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/misslilitu_biscuit.json",
+        "data/farm_and_charm/recipes/stove/misslilitu_biscuit.json"
+      ],
+      "display_name_en_us": "MissLilitu Biscuit",
+      "display_name_ru_ru": "Печенье MissLilitu",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/misslilitu_biscuit.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/misslilitu_biscuit.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:stove/misslilitu_biscuit"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:pancake",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/pancake.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/pancake.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:pudding",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/pudding.json",
+        "data/farm_and_charm/recipes/pot_cooking/pudding.json"
+      ],
+      "display_name_en_us": "Pudding",
+      "display_name_ru_ru": "Пудинг",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/pudding.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/pot_cooking/pudding.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:pot_cooking/pudding"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:pudding_slice",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/pudding_slice.json"
+      ],
+      "display_name_en_us": "Slice of Pudding",
+      "display_name_ru_ru": "Кусочек пудинга",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/pudding_slice.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:rolling_pin",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/rolling_pin.json",
+        "data/bakery/recipes/rolling_pin.json"
+      ],
+      "display_name_en_us": "Rolling Pin",
+      "display_name_ru_ru": "Скалка",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/rolling_pin.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/rolling_pin.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:rolling_pin"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:sandwich",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/sandwich.json",
+        "data/bakery/recipes/sandwich.json"
+      ],
+      "display_name_en_us": "Sandwich",
+      "display_name_ru_ru": "Бутерброд",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/sandwich.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/sandwich.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:sandwich"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:shelf",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/shelf.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/shelf.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:small_cooking_pot",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/small_cooking_pot.json",
+        "data/bakery/recipes/small_cooking_pot.json"
+      ],
+      "display_name_en_us": "Small Cooking Pot",
+      "display_name_ru_ru": "Маленькая кастрюля",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/small_cooking_pot.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/small_cooking_pot.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:small_cooking_pot"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:strawberry_cake",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/strawberry_cake.json",
+        "data/bakery/recipes/baking_station/strawberry_cake.json"
+      ],
+      "display_name_en_us": "Strawberry Cake",
+      "display_name_ru_ru": "Клубничный торт",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/strawberry_cake.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/strawberry_cake.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:baking_station/strawberry_cake"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:strawberry_cake_slice",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/strawberry_cake_slice.json"
+      ],
+      "display_name_en_us": "Slice of Strawberry Cake",
+      "display_name_ru_ru": "Кусочек клубничного торта",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/strawberry_cake_slice.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:strawberry_cupcake",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/strawberry_cupcake.json",
+        "data/bakery/recipes/baking_station/strawberry_cupcake.json"
+      ],
+      "display_name_en_us": "Strawberry Cupcake",
+      "display_name_ru_ru": "Клубничный кекс",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/strawberry_cupcake.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/strawberry_cupcake.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:baking_station/strawberry_cupcake"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:strawberry_glazed_cookie",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/strawberry_glazed_cookie.json",
+        "data/bakery/recipes/baking_station/strawberry_cookie.json"
+      ],
+      "display_name_en_us": "Strawberry Glazed Cookie",
+      "display_name_ru_ru": "Печенье с клубничной глазурью",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/strawberry_glazed_cookie.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/strawberry_cookie.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:baking_station/strawberry_cookie"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:strawberry_jam",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/strawberry_jam.json",
+        "data/farm_and_charm/recipes/pot_cooking/strawberry_jam.json"
+      ],
+      "display_name_en_us": "Strawberry Jam",
+      "display_name_ru_ru": "Клубничное варенье",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/strawberry_jam.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/pot_cooking/strawberry_jam.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:pot_cooking/strawberry_jam"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:street_sign",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/street_sign.json",
+        "data/bakery/recipes/street_sign.json"
+      ],
+      "display_name_en_us": "Street Sign",
+      "display_name_ru_ru": "Уличная табличка",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/street_sign.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/street_sign.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:street_sign"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:sweet_dough",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/sweet_dough.json",
+        "data/farm_and_charm/recipes/crafting_bowl/sweet_dough.json"
+      ],
+      "display_name_en_us": "Sweet Dough",
+      "display_name_ru_ru": "Сладкое тесто",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/sweet_dough.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/crafting_bowl/sweet_dough.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:crafting_bowl/sweet_dough"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:sweetberry_cake",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/sweetberry_cake.json",
+        "data/bakery/recipes/baking_station/sweetberry_cake.json"
+      ],
+      "display_name_en_us": "Sweetberry Cake",
+      "display_name_ru_ru": "Торт со сладкими ягодами",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/sweetberry_cake.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/sweetberry_cake.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:baking_station/sweetberry_cake"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:sweetberry_cake_slice",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/sweetberry_cake_slice.json"
+      ],
+      "display_name_en_us": "Slice of Sweetberry Cake",
+      "display_name_ru_ru": "Кусочек торта из сладких ягод",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/sweetberry_cake_slice.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:sweetberry_cupcake",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/sweetberry_cupcake.json",
+        "data/bakery/recipes/baking_station/sweetberry_cupcake.json"
+      ],
+      "display_name_en_us": "Sweetberry Cupcake",
+      "display_name_ru_ru": "Кекс из сладких ягод",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/sweetberry_cupcake.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/sweetberry_cupcake.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:baking_station/sweetberry_cupcake"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:sweetberry_glazed_cookie",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/sweetberry_glazed_cookie.json",
+        "data/bakery/recipes/baking_station/sweetberry_cookie.json"
+      ],
+      "display_name_en_us": "Sweetberry Glazed Cookie",
+      "display_name_ru_ru": "Печенье с глазурью из сладких ягод",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/sweetberry_glazed_cookie.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/sweetberry_cookie.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:baking_station/sweetberry_cookie"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:sweetberry_jam",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/sweetberry_jam.json",
+        "data/farm_and_charm/recipes/pot_cooking/sweetberry_jam.json"
+      ],
+      "display_name_en_us": "Sweetberry Jam",
+      "display_name_ru_ru": "Варенье из сладких ягод",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/sweetberry_jam.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/pot_cooking/sweetberry_jam.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:pot_cooking/sweetberry_jam"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:toast",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/toast.json",
+        "data/farm_and_charm/recipes/stove/toast.json"
+      ],
+      "display_name_en_us": "Toast",
+      "display_name_ru_ru": "Хлеб для тостов",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/toast.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/toast.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:stove/toast"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:tray",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/tray.json",
+        "data/bakery/recipes/tray.json"
+      ],
+      "display_name_en_us": "Tray",
+      "display_name_ru_ru": "Поднос",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/tray.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/tray.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:tray"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:vegetable_sandwich",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/vegetable_sandwich.json",
+        "data/bakery/recipes/vegetable_sandwich.json"
+      ],
+      "display_name_en_us": "Vegetable Sandwich",
+      "display_name_ru_ru": "Овощной бутерброд",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/vegetable_sandwich.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/vegetable_sandwich.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:vegetable_sandwich"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:waffle",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/waffle.json",
+        "data/farm_and_charm/recipes/stove/waffle.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/waffle.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/waffle.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "farm_and_charm:stove/waffle"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:wall_cabinet",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/wall_cabinet.json",
+        "data/bakery/recipes/wall_cabinet.json"
+      ],
+      "display_name_en_us": "Wall Cabinet",
+      "display_name_ru_ru": "Настенный шкаф",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/wall_cabinet.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/wall_cabinet.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:wall_cabinet"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:wall_display",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/wall_display.json",
+        "data/bakery/recipes/wall_display.json"
+      ],
+      "display_name_en_us": "Wall Display",
+      "display_name_ru_ru": "Настенная витрина",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/wall_display.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/wall_display.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "bakery:wall_display"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "bakery:wandering_baker_spawn_egg",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/wandering_baker_spawn_egg.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/wandering_baker_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    }
+  ]
+}

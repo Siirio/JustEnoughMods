@@ -1,0 +1,673 @@
+{
+  "schema_version": 1,
+  "registry_type": "entities",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "netherexp",
+    "name": "Jaden's Nether Expansion",
+    "version": "2.3.5"
+  },
+  "records": [
+    {
+      "registry_id": "netherexp:antidote",
+      "registry_type": "entity_type",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/netherexp/lang/en_us.json",
+        "assets/netherexp/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Antidote",
+      "display_name_ru_ru": "Антидот",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/en_us.json",
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "netherexp:apparition",
+      "registry_type": "entity_type",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/netherexp/lang/en_us.json",
+        "assets/netherexp/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Apparition",
+      "display_name_ru_ru": "Видение",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:entity_types/freeze_immune_entity_types",
+        "netherexp:entity_types/cant_activate_swirls",
+        "netherexp:entity_types/does_not_bleed",
+        "netherexp:entity_types/projectiles_pass_through"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/en_us.json",
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "netherexp:banshee",
+      "registry_type": "entity_type",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/netherexp/lang/en_us.json",
+        "assets/netherexp/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Banshee",
+      "display_name_ru_ru": "Банши",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "elysium_api:entity_types/piglins_afraid_of",
+        "minecraft:entity_types/fall_damage_immune",
+        "minecraft:entity_types/freeze_immune_entity_types",
+        "netherexp:entity_types/cant_activate_swirls",
+        "netherexp:entity_types/ignores_soul_sand_slowness"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/en_us.json",
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "netherexp:blood_drop",
+      "registry_type": "entity_type",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/netherexp/lang/ru_ru.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": "Капля крови",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "netherexp:carcass",
+      "registry_type": "entity_type",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/netherexp/lang/en_us.json",
+        "assets/netherexp/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Carcass",
+      "display_name_ru_ru": "Остов",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "netherexp:entity_types/cant_activate_swirls",
+        "netherexp:entity_types/ignores_treacherous_candle"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/en_us.json",
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "netherexp:ecto_slab",
+      "registry_type": "entity_type",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/netherexp/lang/en_us.json",
+        "assets/netherexp/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Ecto Slab",
+      "display_name_ru_ru": "Эктоплита",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:entity_types/fall_damage_immune",
+        "minecraft:entity_types/freeze_immune_entity_types",
+        "minecraft:entity_types/frog_food",
+        "netherexp:entity_types/cant_activate_swirls",
+        "netherexp:entity_types/does_not_bleed",
+        "netherexp:entity_types/ignores_soul_sand_slowness",
+        "netherexp:entity_types/targets_regardless_of_betrayed"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/en_us.json",
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "netherexp:false_carcass",
+      "registry_type": "entity_type",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/netherexp/lang/en_us.json"
+      ],
+      "display_name_en_us": "False Carcass",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "netherexp:grenade_effect_cloud",
+      "registry_type": "entity_type",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/netherexp/lang/en_us.json",
+        "assets/netherexp/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Grenade Effect Cloud",
+      "display_name_ru_ru": "Взрывное облако эффекта",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/en_us.json",
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "netherexp:phasmo_arrow",
+      "registry_type": "entity_type",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/netherexp/lang/en_us.json",
+        "assets/netherexp/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Phasmo Arrow",
+      "display_name_ru_ru": "Фазмострела",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:entity_types/arrows",
+        "minecraft:items/arrows",
+        "netherexp:entity_types/ignores_block_collision",
+        "netherexp:entity_types/phantasm_hull_protects_blacklist"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/en_us.json",
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "netherexp:shotgun_pellet",
+      "registry_type": "entity_type",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/netherexp/lang/en_us.json"
+      ],
+      "display_name_en_us": "Shotgun Pellet",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "elysium_api:damage_type/cant_damage_armor",
+        "minecraft:damage_type/bypasses_cooldown",
+        "minecraft:damage_type/bypasses_enchantments",
+        "minecraft:damage_type/is_projectile",
+        "minecraft:damage_type/no_knockback",
+        "minecraft:damage_type/no_knockback_shield"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "netherexp:soul_bullet",
+      "registry_type": "entity_type",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/netherexp/lang/ru_ru.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": "Пуля душ",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "netherexp:stampede",
+      "registry_type": "entity_type",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/netherexp/lang/en_us.json",
+        "assets/netherexp/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Stampede",
+      "display_name_ru_ru": "Паникёрша",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "elysium_api:entity_types/piglins_afraid_of",
+        "minecraft:entity_types/fall_damage_immune",
+        "minecraft:entity_types/freeze_immune_entity_types",
+        "netherexp:entity_types/cant_activate_swirls",
+        "netherexp:entity_types/ignores_soul_sand_slowness",
+        "netherexp:entity_types/ignores_treacherous_candle",
+        "netherexp:entity_types/stampede_cannot_run_over"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/en_us.json",
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "netherexp:vessel",
+      "registry_type": "entity_type",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/netherexp/lang/en_us.json",
+        "assets/netherexp/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Vessel",
+      "display_name_ru_ru": "Фиал",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "elysium_api:entity_types/piglins_afraid_of",
+        "minecraft:entity_types/freeze_immune_entity_types",
+        "minecraft:entity_types/skeletons",
+        "netherexp:entity_types/cant_activate_swirls",
+        "netherexp:entity_types/ignores_soul_sand_slowness"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/en_us.json",
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "netherexp:warphopper",
+      "registry_type": "entity_type",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/netherexp/lang/en_us.json",
+        "assets/netherexp/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Warphopper",
+      "display_name_ru_ru": "Искажённый прыгун",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/en_us.json",
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "netherexp:will_o_wisp",
+      "registry_type": "entity_type",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/netherexp/lang/en_us.json",
+        "assets/netherexp/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Will O' Wisp",
+      "display_name_ru_ru": "Воля виспа",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:damage_type/is_projectile"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/en_us.json",
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "netherexp:wisp",
+      "registry_type": "entity_type",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/netherexp/lang/en_us.json",
+        "assets/netherexp/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Wisp",
+      "display_name_ru_ru": "Висп",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:entity_types/freeze_immune_entity_types",
+        "netherexp:entity_types/cant_activate_swirls",
+        "netherexp:entity_types/does_not_bleed",
+        "netherexp:entity_types/ignores_treacherous_candle",
+        "netherexp:entity_types/projectiles_pass_through"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/en_us.json",
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}

@@ -1,0 +1,263 @@
+{
+  "schema_version": 1,
+  "registry_type": "trade_policies",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "backtobed",
+    "name": "BackToBed",
+    "version": "1.1.0"
+  },
+  "records": [
+    {
+      "item_id": "backtobed:magical_returner",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "backtobed",
+      "mod_name": "BackToBed",
+      "mod_version": "1.1.0",
+      "source_jar": "BackToBed-Forge-1.20-1.1.0.jar",
+      "source_sha256": "c0c1b9710a41eb8cf4e76c77b9c91d4a34b3ead6d48cf990e9938a913d5dde05",
+      "side_availability": [
+        "server"
+      ],
+      "observed_in": [
+        "assets/backtobed/lang/en_us.json",
+        "assets/backtobed/lang/ru_ru.json",
+        "assets/backtobed/models/item/magical_returner.json",
+        "data/backtobed/recipes/magical_returner.json"
+      ],
+      "display_name_en_us": "§bMagical Returner",
+      "display_name_ru_ru": "§bМагический Возвратник",
+      "source_provenance": [
+        "BackToBed-Forge-1.20-1.1.0.jar:assets/backtobed/lang/en_us.json",
+        "BackToBed-Forge-1.20-1.1.0.jar:assets/backtobed/lang/ru_ru.json",
+        "BackToBed-Forge-1.20-1.1.0.jar:assets/backtobed/models/item/magical_returner.json",
+        "BackToBed-Forge-1.20-1.1.0.jar:data/backtobed/recipes/magical_returner.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "backtobed:magical_returner"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "backtobed:magical_returner.condition.no_access_to_bed",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "backtobed",
+      "mod_name": "BackToBed",
+      "mod_version": "1.1.0",
+      "source_jar": "BackToBed-Forge-1.20-1.1.0.jar",
+      "source_sha256": "c0c1b9710a41eb8cf4e76c77b9c91d4a34b3ead6d48cf990e9938a913d5dde05",
+      "side_availability": [
+        "server"
+      ],
+      "observed_in": [
+        "assets/backtobed/lang/en_us.json",
+        "assets/backtobed/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Unable to access the bed, possibly destroyed!",
+      "display_name_ru_ru": "Невозможно получить доступ к кровати, возможно, она разрушена!",
+      "source_provenance": [
+        "BackToBed-Forge-1.20-1.1.0.jar:assets/backtobed/lang/en_us.json",
+        "BackToBed-Forge-1.20-1.1.0.jar:assets/backtobed/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "backtobed:magical_returner.condition.no_respawn_point",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "backtobed",
+      "mod_name": "BackToBed",
+      "mod_version": "1.1.0",
+      "source_jar": "BackToBed-Forge-1.20-1.1.0.jar",
+      "source_sha256": "c0c1b9710a41eb8cf4e76c77b9c91d4a34b3ead6d48cf990e9938a913d5dde05",
+      "side_availability": [
+        "server"
+      ],
+      "observed_in": [
+        "assets/backtobed/lang/en_us.json",
+        "assets/backtobed/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "The respawn point is not set.",
+      "display_name_ru_ru": "Точка возрождения не установлена.",
+      "source_provenance": [
+        "BackToBed-Forge-1.20-1.1.0.jar:assets/backtobed/lang/en_us.json",
+        "BackToBed-Forge-1.20-1.1.0.jar:assets/backtobed/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "backtobed:magical_returner.condition.teleport_for_overworld",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "backtobed",
+      "mod_name": "BackToBed",
+      "mod_version": "1.1.0",
+      "source_jar": "BackToBed-Forge-1.20-1.1.0.jar",
+      "source_sha256": "c0c1b9710a41eb8cf4e76c77b9c91d4a34b3ead6d48cf990e9938a913d5dde05",
+      "side_availability": [
+        "server"
+      ],
+      "observed_in": [
+        "assets/backtobed/lang/en_us.json",
+        "assets/backtobed/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Teleportation is only available in the overworld.",
+      "display_name_ru_ru": "Телепортация доступна только в надмирье.",
+      "source_provenance": [
+        "BackToBed-Forge-1.20-1.1.0.jar:assets/backtobed/lang/en_us.json",
+        "BackToBed-Forge-1.20-1.1.0.jar:assets/backtobed/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "backtobed:magical_returner.tooltip.behavior",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "backtobed",
+      "mod_name": "BackToBed",
+      "mod_version": "1.1.0",
+      "source_jar": "BackToBed-Forge-1.20-1.1.0.jar",
+      "source_sha256": "c0c1b9710a41eb8cf4e76c77b9c91d4a34b3ead6d48cf990e9938a913d5dde05",
+      "side_availability": [
+        "server"
+      ],
+      "observed_in": [
+        "assets/backtobed/lang/en_us.json",
+        "assets/backtobed/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Teleports you straight to your chosen respawn point, your beloved bed!",
+      "display_name_ru_ru": "Телепортирует вас прямо к выбранной точке возрождения, вашей любимой кровати!",
+      "source_provenance": [
+        "BackToBed-Forge-1.20-1.1.0.jar:assets/backtobed/lang/en_us.json",
+        "BackToBed-Forge-1.20-1.1.0.jar:assets/backtobed/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "backtobed:magical_returner.tooltip.further",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "backtobed",
+      "mod_name": "BackToBed",
+      "mod_version": "1.1.0",
+      "source_jar": "BackToBed-Forge-1.20-1.1.0.jar",
+      "source_sha256": "c0c1b9710a41eb8cf4e76c77b9c91d4a34b3ead6d48cf990e9938a913d5dde05",
+      "side_availability": [
+        "server"
+      ],
+      "observed_in": [
+        "assets/backtobed/lang/en_us.json",
+        "assets/backtobed/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Allows teleportation along with your mount when you're riding it.",
+      "display_name_ru_ru": "Позволяет телепортироваться вместе с вашим ездовым животным, когда вы едете на нем.",
+      "source_provenance": [
+        "BackToBed-Forge-1.20-1.1.0.jar:assets/backtobed/lang/en_us.json",
+        "BackToBed-Forge-1.20-1.1.0.jar:assets/backtobed/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    }
+  ]
+}

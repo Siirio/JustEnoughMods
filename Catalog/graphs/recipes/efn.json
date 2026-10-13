@@ -1,0 +1,1126 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "efn",
+    "name": "EpicFight Nightfall",
+    "version": "3.4.1"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:air_tachi",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "epicfight:netherite_tachi",
+        "minecraft:bone",
+        "minecraft:rotten_flesh",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:air_tachi"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/air_tachi.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:air_tachi_to_co",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "efn:air_tachi",
+        "minecraft:iron_ingot",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:co_tachi"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/air_tachi_to_co.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:blade_to_murasama",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "efn:hf_blade",
+        "efn:hf_ingot",
+        "minecraft:diamond",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:hf_murasama"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/blade_to_murasama.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:broadblade",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "epicfight:netherite_longsword",
+        "minecraft:crafting_shaped",
+        "minecraft:netherite_ingot",
+        "minecraft:rail",
+        "minecraft:redstone_block",
+        "minecraft:totem_of_undying"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:broadblade"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/broadblade.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:co_tachi",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "epicfight:netherite_tachi",
+        "minecraft:bone",
+        "minecraft:rotten_flesh",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:co_tachi"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/co_tachi.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:co_tachi_to_air",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "efn:co_tachi",
+        "minecraft:rotten_flesh",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:air_tachi"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/co_tachi_to_air.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:crescent_moon",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "epicfight:netherite_spear",
+        "minecraft:beacon",
+        "minecraft:crafting_shaped",
+        "minecraft:diamond",
+        "minecraft:echo_shard",
+        "minecraft:netherite_ingot"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:crescent_moon"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/crescent_moon.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:crimson_moon",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "epicfight:netherite_greatsword",
+        "minecraft:nether_star",
+        "minecraft:poppy",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:crimson_moon"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/crimson_moon.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:duskfire_boots",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "efn:duskfire_ingot",
+        "minecraft:blaze_rod",
+        "minecraft:netherite_boots",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:duskfire_boots"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/duskfire_boots.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:duskfire_chestplate",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "efn:duskfire_ingot",
+        "minecraft:blaze_rod",
+        "minecraft:netherite_chestplate",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:duskfire_chestplate"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/duskfire_chestplate.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:duskfire_helmet",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "efn:duskfire_ingot",
+        "minecraft:blaze_rod",
+        "minecraft:netherite_helmet",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:duskfire_helmet"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/duskfire_helmet.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:duskfire_ingot",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "minecraft:lava_bucket",
+        "minecraft:magma_block",
+        "minecraft:netherite_ingot",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:duskfire_ingot"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/duskfire_ingot.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:duskfire_leggings",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "efn:duskfire_ingot",
+        "minecraft:blaze_rod",
+        "minecraft:netherite_leggings",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:duskfire_leggings"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/duskfire_leggings.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:efn_dodge",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "efn:efn_dodge",
+        "minecraft:book",
+        "minecraft:crafting_shapeless",
+        "minecraft:stone_sword"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "epicfight:skillbook"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/efn_dodge.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:efn_parry",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "efn:efn_parry",
+        "minecraft:book",
+        "minecraft:crafting_shaped",
+        "minecraft:iron_ingot"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "epicfight:skillbook"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/efn_parry.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:efn_step",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "efn:efn_step",
+        "epicfight:iron_dagger",
+        "minecraft:book",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "epicfight:skillbook"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/efn_step.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:execution",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "efn:deepdark_heart",
+        "efn:execution",
+        "minecraft:book",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "epicfight:skillbook"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/execution.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:exsiliumgladius",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "epicfight:netherite_longsword",
+        "minecraft:ghast_tear",
+        "minecraft:netherite_ingot",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:exsiliumgladius"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/exsiliumgladius.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:fire_exsiliumgladius",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "epicfight:netherite_longsword",
+        "minecraft:blaze_powder",
+        "minecraft:ghast_tear",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:fire_exsiliumgladius"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/fire_exsiliumgladius.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:hf_ingot",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:diamond",
+        "minecraft:dragon_breath",
+        "minecraft:netherite_ingot",
+        "minecraft:redstone_block"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:hf_ingot"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/hf_ingot.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:hf_ingot_b",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "efn:hf_ingot",
+        "minecraft:diamond",
+        "minecraft:nether_star",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:hf_ingot_b"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/hf_ingot_b.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:hf_murasama",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "efn:hf_murasama_blade",
+        "efn:hf_murasama_sheath",
+        "minecraft:nether_star",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:hf_murasama"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/hf_murasama.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:hf_murasama_blade",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "efn:hf_ingot",
+        "minecraft:crafting_shaped",
+        "minecraft:diamond",
+        "minecraft:netherite_ingot"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:hf_murasama_blade"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/hf_murasama_blade.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:hf_murasama_sheath",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "efn:hf_ingot",
+        "minecraft:crafting_shaped",
+        "minecraft:gunpowder",
+        "minecraft:iron_block",
+        "minecraft:netherite_ingot",
+        "minecraft:quartz"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:hf_murasama_sheath"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/hf_murasama_sheath.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:kusabimaru",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "epicfight:netherite_tachi",
+        "minecraft:bamboo",
+        "minecraft:crafting_shaped",
+        "minecraft:ghast_tear",
+        "minecraft:netherite_scrap"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:kusabimaru"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/kusabimaru.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:meen_spear",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "efn:duskfire_ingot",
+        "epicfight:netherite_spear",
+        "minecraft:nether_star",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:meen_spear"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/meen_spear.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:mortal_blade",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "efn:mortal_blade",
+        "epicfight:netherite_tachi",
+        "minecraft:crafting_shaped",
+        "minecraft:dragon_breath",
+        "minecraft:totem_of_undying"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "epicfight:skillbook"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/mortal_blade.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:murasama_to_blade",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "efn:hf_ingot_b",
+        "efn:hf_murasama",
+        "minecraft:diamond",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:hf_blade"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/murasama_to_blade.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:nf_claw",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "epicfight:glove",
+        "minecraft:bone",
+        "minecraft:netherite_ingot",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:nf_claw"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/nf_claw.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:nf_dual_sword",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "efn:deepdark_heart",
+        "minecraft:netherite_sword",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:nf_dual_sword"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/nf_dual_sword.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:nf_shortsword",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "epicfight:diamond_dagger",
+        "minecraft:crafting_shaped",
+        "minecraft:iron_ingot",
+        "minecraft:quartz"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:nf_shortsword"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/nf_shortsword.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:nf_shortsword_2",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "efn:nf_shortsword",
+        "minecraft:blue_ice",
+        "minecraft:smithing_transform",
+        "minecraft:soul_lantern"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:nf_shortsword_2"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/nf_shortsword_2.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:ruinfighter_boots",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "minecraft:diamond_boots",
+        "minecraft:netherite_ingot",
+        "minecraft:quartz",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:ruinfighter_boots"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/ruinfighter_boots.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:ruinfighter_chestplate",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "minecraft:diamond_chestplate",
+        "minecraft:netherite_ingot",
+        "minecraft:quartz",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:ruinfighter_chestplate"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/ruinfighter_chestplate.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:ruinfighter_helmet",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "minecraft:diamond_helmet",
+        "minecraft:netherite_ingot",
+        "minecraft:quartz",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:ruinfighter_helmet"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/ruinfighter_helmet.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:ruinfighter_leggings",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "minecraft:diamond_leggings",
+        "minecraft:netherite_ingot",
+        "minecraft:quartz",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:ruinfighter_leggings"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/ruinfighter_leggings.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:ruinsgreatsword",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "epicfight:netherite_greatsword",
+        "minecraft:nether_star",
+        "minecraft:netherite_ingot",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:ruinsgreatsword"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/ruinsgreatsword.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:stomp",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "efn:stomp",
+        "minecraft:book",
+        "minecraft:crafting_shaped",
+        "minecraft:emerald"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "epicfight:skillbook"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/stomp.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:sword_of_pioneer",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "epicfight:diamond_tachi",
+        "minecraft:crafting_shaped",
+        "minecraft:iron_ingot"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:sword_of_pioneer"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/sword_of_pioneer.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:thornwheel",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "epicfight:netherite_spear",
+        "minecraft:crafting_shaped",
+        "minecraft:flint",
+        "minecraft:netherite_ingot",
+        "minecraft:stonecutter"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:thornwheel"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/thornwheel.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:yamato_dmc4_in_sheath",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "epicfight:uchigatana",
+        "minecraft:dragon_egg",
+        "minecraft:nether_star",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:yamato_dmc4_in_sheath"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/yamato_dmc4_in_sheath.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:yamato_dmc_in_sheath",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "epicfight:uchigatana",
+        "minecraft:dragon_egg",
+        "minecraft:nether_star",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "efn:yamato_dmc_in_sheath"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/yamato_dmc_in_sheath.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:yamato_heavy_rain_book",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:amethyst_shard",
+        "minecraft:book",
+        "minecraft:crafting_shaped",
+        "minecraft:ender_pearl",
+        "minecraft:phantom_membrane"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:enchanted_book"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/yamato_heavy_rain_book.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "efn:zansetsu",
+      "mod_id": "efn",
+      "mod_name": "EpicFight Nightfall",
+      "mod_version": "3.4.1",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "efn:hf_ingot",
+        "efn:zansetsu",
+        "minecraft:book",
+        "minecraft:crafting_shaped",
+        "minecraft:dragon_breath",
+        "minecraft:nether_star"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "epicfight:skillbook"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/zansetsu.json"
+      ]
+    }
+  ]
+}

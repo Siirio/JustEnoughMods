@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "registry_type": "items",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "ftblibrary",
+    "name": "FTB Library",
+    "version": "2001.2.13"
+  },
+  "records": [
+    {
+      "registry_id": "ftblibrary:fluid_container",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "ftblibrary",
+      "mod_name": "FTB Library",
+      "mod_version": "2001.2.13",
+      "source_jar": "ftb-library-forge-2001.2.13.jar",
+      "source_sha256": "41810281b65336265cae2c88412022d02f2f0a3f28c66a06173d86f98acf14a7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftblibrary/lang/en_us.json",
+        "assets/ftblibrary/models/item/fluid_container.json"
+      ],
+      "display_name_en_us": "Fluid Container",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-library-forge-2001.2.13.jar:assets/ftblibrary/lang/en_us.json",
+        "ftb-library-forge-2001.2.13.jar:assets/ftblibrary/models/item/fluid_container.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:ftblibrary:fluid_container"
+    },
+    {
+      "registry_id": "ftblibrary:fluid_container.use",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "ftblibrary",
+      "mod_name": "FTB Library",
+      "mod_version": "2001.2.13",
+      "source_jar": "ftb-library-forge-2001.2.13.jar",
+      "source_sha256": "41810281b65336265cae2c88412022d02f2f0a3f28c66a06173d86f98acf14a7",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/ftblibrary/lang/en_us.json"
+      ],
+      "display_name_en_us": "Right-click on a tank to empty the container",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "ftb-library-forge-2001.2.13.jar:assets/ftblibrary/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:ftblibrary:fluid_container.use"
+    }
+  ]
+}

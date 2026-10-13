@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "registry_type": "creative_tabs",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "immersive_weathering",
+    "name": "Immersive Weathering",
+    "version": "1.20.1-2.0.5"
+  },
+  "records": [
+    {
+      "registry_id": "immersive_weathering:immersive_weathering",
+      "registry_type": "creative_mode_tab",
+      "schema_version": 1,
+      "mod_id": "immersive_weathering",
+      "mod_name": "Immersive Weathering",
+      "mod_version": "1.20.1-2.0.5",
+      "source_jar": "immersive_weathering-1.20.1-2.0.5-forge.jar",
+      "source_sha256": "b88353d6efe18635bac2d4169e704320987e9678fd683217195dcdcf2c1ca1ba",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/immersive_weathering/lang/en_us.json",
+        "assets/immersive_weathering/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Immersive Weathering",
+      "display_name_ru_ru": "Впечатляющее Выветривание",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "immersive_weathering-1.20.1-2.0.5-forge.jar:assets/immersive_weathering/lang/en_us.json",
+        "immersive_weathering-1.20.1-2.0.5-forge.jar:assets/immersive_weathering/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}

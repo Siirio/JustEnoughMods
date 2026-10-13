@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "registry_type": "blocks",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "citadel",
+    "name": "Citadel",
+    "version": "2.6.3"
+  },
+  "records": [
+    {
+      "registry_id": "citadel:lectern",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "citadel",
+      "mod_name": "Citadel",
+      "mod_version": "2.6.3",
+      "source_jar": "citadel-2.6.3-1.20.1.jar",
+      "source_sha256": "56c7ab87348a5292583aac787b6cf11b5193e77f02af1d17ea75a96f8640b3ce",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/citadel/blockstates/lectern.json",
+        "assets/citadel/lang/en_us.json"
+      ],
+      "display_name_en_us": "Lectern",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "citadel-2.6.3-1.20.1.jar:assets/citadel/blockstates/lectern.json",
+        "citadel-2.6.3-1.20.1.jar:assets/citadel/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}

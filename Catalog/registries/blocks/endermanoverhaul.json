@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "registry_type": "blocks",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "endermanoverhaul",
+    "name": "Enderman Overhaul",
+    "version": "1.0.4"
+  },
+  "records": [
+    {
+      "registry_id": "endermanoverhaul:tiny_skull",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "endermanoverhaul",
+      "mod_name": "Enderman Overhaul",
+      "mod_version": "1.0.4",
+      "source_jar": "endermanoverhaul-forge-1.20.1-1.0.4.jar",
+      "source_sha256": "18f9f0bf3a9b4f77ad6913c28ccb927cde24f5d19524152cfe79ebb3dcccacc5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/endermanoverhaul/blockstates/tiny_skull.json",
+        "assets/endermanoverhaul/lang/en_us.json",
+        "assets/endermanoverhaul/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Tiny Skull",
+      "display_name_ru_ru": "Маленький череп",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "endermanoverhaul-forge-1.20.1-1.0.4.jar:assets/endermanoverhaul/blockstates/tiny_skull.json",
+        "endermanoverhaul-forge-1.20.1-1.0.4.jar:assets/endermanoverhaul/lang/en_us.json",
+        "endermanoverhaul-forge-1.20.1-1.0.4.jar:assets/endermanoverhaul/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}

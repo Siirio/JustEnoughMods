@@ -1,0 +1,4683 @@
+{
+  "schema_version": 1,
+  "registry_type": "items",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "bakery",
+    "name": "[Let's Do] Bakery",
+    "version": "2.0.6"
+  },
+  "records": [
+    {
+      "registry_id": "bakery:apple_cupcake",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/apple_cupcake.json",
+        "data/bakery/recipes/baking_station/apple_cupcake.json"
+      ],
+      "display_name_en_us": "Apple Cupcake",
+      "display_name_ru_ru": "Яблочный кекс",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/apple_cupcake.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/apple_cupcake.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "bakery:baking_station/apple_cupcake"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:apple_cupcake"
+    },
+    {
+      "registry_id": "bakery:apple_jam",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/apple_jam.json",
+        "data/farm_and_charm/recipes/pot_cooking/apple_jam.json"
+      ],
+      "display_name_en_us": "Apple Jam",
+      "display_name_ru_ru": "Яблочное варенье",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "bakery:items/jam",
+        "c:items/jams",
+        "forge:items/jams"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/apple_jam.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/pot_cooking/apple_jam.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:apple_jam",
+      "acquisition_routes": [
+        "farm_and_charm:pot_cooking/apple_jam"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:apple_jam"
+    },
+    {
+      "registry_id": "bakery:apple_pie",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/apple_pie.json",
+        "data/farm_and_charm/recipes/stove/apple_pie.json"
+      ],
+      "display_name_en_us": "Apple Pie",
+      "display_name_ru_ru": "Яблочный пирог",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/apple_pie.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/apple_pie.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:apple_pie",
+      "acquisition_routes": [
+        "farm_and_charm:stove/apple_pie"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:apple_pie"
+    },
+    {
+      "registry_id": "bakery:apple_pie_slice",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/apple_pie_slice.json"
+      ],
+      "display_name_en_us": "Slice of Apple Pie",
+      "display_name_ru_ru": "Кусочек яблочного пирога",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/apple_pie_slice.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:apple_pie_slice"
+    },
+    {
+      "registry_id": "bakery:baguette",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/baguette.json",
+        "data/farm_and_charm/recipes/stove/baguette.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "c:items/bread"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/baguette.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/baguette.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "farm_and_charm:stove/baguette"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:baguette"
+    },
+    {
+      "registry_id": "bakery:baker_station",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/baker_station.json",
+        "data/bakery/recipes/baking_station.json"
+      ],
+      "display_name_en_us": "Caking Station",
+      "display_name_ru_ru": "Кондитерская станция",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/baker_station.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:baker_station",
+      "acquisition_routes": [
+        "bakery:baking_station"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:baker_station"
+    },
+    {
+      "registry_id": "bakery:bakery_banner",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/bakery_banner.json",
+        "data/bakery/recipes/banner_from_smithing_table.json"
+      ],
+      "display_name_en_us": "Completionist Banner: §cBakery",
+      "display_name_ru_ru": "Знамя выдающегося кондитера: §cBakery",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/bakery_banner.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/banner_from_smithing_table.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:bakery_banner",
+      "acquisition_routes": [
+        "bakery:banner_from_smithing_table"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:bakery_banner"
+    },
+    {
+      "registry_id": "bakery:blank_cake",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/blank_cake.json"
+      ],
+      "display_name_en_us": "Blank Cake",
+      "display_name_ru_ru": "Корж",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/blank_cake.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:blank_cake",
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:blank_cake"
+    },
+    {
+      "registry_id": "bakery:braided_bread",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/braided_bread.json",
+        "data/farm_and_charm/recipes/stove/braided_bread.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "c:items/bread"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/braided_bread.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/braided_bread.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "farm_and_charm:stove/braided_bread"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:braided_bread"
+    },
+    {
+      "registry_id": "bakery:bread",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/bread.json",
+        "data/farm_and_charm/recipes/stove/bread.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "c:items/bread"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/bread.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/bread.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "farm_and_charm:stove/bread"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:bread"
+    },
+    {
+      "registry_id": "bakery:bread_crate",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/bread_crate.json",
+        "data/bakery/recipes/bread_crate.json"
+      ],
+      "display_name_en_us": "Basket of Bread",
+      "display_name_ru_ru": "Корзина с хлебом",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/bread_crate.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/bread_crate.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:bread_crate",
+      "acquisition_routes": [
+        "bakery:bread_crate"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:bread_crate"
+    },
+    {
+      "registry_id": "bakery:bread_knife",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/bread_knife.json",
+        "data/bakery/recipes/bread_knife.json"
+      ],
+      "display_name_en_us": "Bread Knife",
+      "display_name_ru_ru": "Хлебный нож",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "bakery:items/knives",
+        "farmersdelight:items/tools/knives",
+        "jemcompat:items/not_weapons"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/bread_knife.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/bread_knife.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "bakery:bread_knife"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:bread_knife"
+    },
+    {
+      "registry_id": "bakery:bread_with_jam",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/bread_with_jam.json",
+        "data/bakery/recipes/bread_with_jam.json"
+      ],
+      "display_name_en_us": "Bread with Jam",
+      "display_name_ru_ru": "Хлеб с вареньем",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/bread_with_jam.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/bread_with_jam.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "bakery:bread_with_jam"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:bread_with_jam"
+    },
+    {
+      "registry_id": "bakery:breadbox",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/breadbox.json",
+        "data/bakery/recipes/breadbox.json"
+      ],
+      "display_name_en_us": "Bread Box",
+      "display_name_ru_ru": "Хлебница",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/breadbox.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/breadbox.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:breadbox",
+      "acquisition_routes": [
+        "bakery:breadbox"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:breadbox"
+    },
+    {
+      "registry_id": "bakery:brick_counter",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/brick_counter.json",
+        "data/bakery/recipes/brick_counter.json"
+      ],
+      "display_name_en_us": "Brick Counter",
+      "display_name_ru_ru": "Кирпичная стойка",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/brick_counter.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/brick_counter.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:brick_counter",
+      "acquisition_routes": [
+        "bakery:brick_counter"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:brick_counter"
+    },
+    {
+      "registry_id": "bakery:bun",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/bun.json",
+        "data/farm_and_charm/recipes/stove/bun.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "c:items/bread"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/bun.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/bun.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "farm_and_charm:stove/bun"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:bun"
+    },
+    {
+      "registry_id": "bakery:bundt_cake",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/bundt_cake.json",
+        "data/farm_and_charm/recipes/stove/bundt_cake.json"
+      ],
+      "display_name_en_us": "Bundt Cake",
+      "display_name_ru_ru": "Торт Бандт",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/bundt_cake.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/bundt_cake.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:bundt_cake",
+      "acquisition_routes": [
+        "farm_and_charm:stove/bundt_cake"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:bundt_cake"
+    },
+    {
+      "registry_id": "bakery:bundt_cake_slice",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/bundt_cake_slice.json"
+      ],
+      "display_name_en_us": "Slice of Bundt Cake",
+      "display_name_ru_ru": "Кусочек торта Бандт",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/bundt_cake_slice.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:bundt_cake_slice"
+    },
+    {
+      "registry_id": "bakery:cabinet",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/cabinet.json",
+        "data/bakery/recipes/cabinet.json"
+      ],
+      "display_name_en_us": "Cabinet",
+      "display_name_ru_ru": "Шкаф",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/cabinet.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/cabinet.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:cabinet",
+      "acquisition_routes": [
+        "bakery:cabinet"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:cabinet"
+    },
+    {
+      "registry_id": "bakery:cake_display",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/cake_display.json",
+        "data/bakery/recipes/cake_display.json"
+      ],
+      "display_name_en_us": "Cake Display",
+      "display_name_ru_ru": "Витрина для тортов",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/cake_display.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/cake_display.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:cake_display",
+      "acquisition_routes": [
+        "bakery:cake_display"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:cake_display"
+    },
+    {
+      "registry_id": "bakery:cake_dough",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/cake_dough.json",
+        "data/farm_and_charm/recipes/crafting_bowl/cake_dough.json"
+      ],
+      "display_name_en_us": "Cake Dough",
+      "display_name_ru_ru": "Тесто для торта",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/cake_dough.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/crafting_bowl/cake_dough.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "farm_and_charm:crafting_bowl/cake_dough"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:cake_dough"
+    },
+    {
+      "registry_id": "bakery:cake_stand",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/cake_stand.json",
+        "data/bakery/recipes/cake_stand.json"
+      ],
+      "display_name_en_us": "Cake Stand",
+      "display_name_ru_ru": "Подставка для торта",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/cake_stand.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/cake_stand.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:cake_stand",
+      "acquisition_routes": [
+        "bakery:cake_stand"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:cake_stand"
+    },
+    {
+      "registry_id": "bakery:cake_tower",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/cake_tower.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/cake_tower.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:cake_tower"
+    },
+    {
+      "registry_id": "bakery:chocolate_box",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/chocolate_box.json",
+        "data/bakery/recipes/chocolate_box.json"
+      ],
+      "display_name_en_us": "Chocolate Box",
+      "display_name_ru_ru": "Коробка шоколада",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/chocolate_box.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/chocolate_box.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:chocolate_box",
+      "acquisition_routes": [
+        "bakery:chocolate_box"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:chocolate_box"
+    },
+    {
+      "registry_id": "bakery:chocolate_bread",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/chocolate_bread.json"
+      ],
+      "display_name_en_us": "Chocolate Bread",
+      "display_name_ru_ru": "Шоколадный хлеб",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/chocolate_bread.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:chocolate_bread"
+    },
+    {
+      "registry_id": "bakery:chocolate_cake",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/chocolate_cake.json",
+        "data/bakery/recipes/baking_station/chocolate_cake.json"
+      ],
+      "display_name_en_us": "Chocolate Cake",
+      "display_name_ru_ru": "Шоколадный торт",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/chocolate_cake.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/chocolate_cake.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:chocolate_cake",
+      "acquisition_routes": [
+        "bakery:baking_station/chocolate_cake"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:chocolate_cake"
+    },
+    {
+      "registry_id": "bakery:chocolate_cake_slice",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/chocolate_cake_slice.json"
+      ],
+      "display_name_en_us": "Slice of Chocolate Cake",
+      "display_name_ru_ru": "Кусочек шоколадного торта",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/chocolate_cake_slice.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:chocolate_cake_slice"
+    },
+    {
+      "registry_id": "bakery:chocolate_gateau",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/chocolate_gateau.json",
+        "data/bakery/recipes/baking_station/chocolate_gateau.json"
+      ],
+      "display_name_en_us": "Chocolate Gateau",
+      "display_name_ru_ru": "Шоколадное Гато",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/chocolate_gateau.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/chocolate_gateau.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:chocolate_gateau",
+      "acquisition_routes": [
+        "bakery:baking_station/chocolate_gateau"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:chocolate_gateau"
+    },
+    {
+      "registry_id": "bakery:chocolate_gateau_slice",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/chocolate_gateau_slice.json"
+      ],
+      "display_name_en_us": "Slice of Chocolate Gateau",
+      "display_name_ru_ru": "Кусочек шоколадного Гато",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/chocolate_gateau_slice.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:chocolate_gateau_slice"
+    },
+    {
+      "registry_id": "bakery:chocolate_glazed_cookie",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/chocolate_glazed_cookie.json",
+        "data/bakery/recipes/baking_station/chocolate_cookie.json"
+      ],
+      "display_name_en_us": "Chocolate Glazed Cookie",
+      "display_name_ru_ru": "Печенье с шоколадной глазурью",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/chocolate_glazed_cookie.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/chocolate_cookie.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "bakery:baking_station/chocolate_cookie"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:chocolate_glazed_cookie"
+    },
+    {
+      "registry_id": "bakery:chocolate_jam",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/chocolate_jam.json",
+        "data/farm_and_charm/recipes/pot_cooking/chocolate_jam.json"
+      ],
+      "display_name_en_us": "Chocolate Spread",
+      "display_name_ru_ru": "Шоколадная паста",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "bakery:items/jam",
+        "c:items/jams",
+        "forge:items/jams"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/chocolate_jam.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/pot_cooking/chocolate_jam.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:chocolate_jam",
+      "acquisition_routes": [
+        "farm_and_charm:pot_cooking/chocolate_jam"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:chocolate_jam"
+    },
+    {
+      "registry_id": "bakery:chocolate_tart",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/chocolate_tart.json",
+        "data/farm_and_charm/recipes/stove/chocolate_tart.json"
+      ],
+      "display_name_en_us": "Chocolate Tart",
+      "display_name_ru_ru": "Шоколадный тарт",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/chocolate_tart.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/chocolate_tart.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:chocolate_tart",
+      "acquisition_routes": [
+        "farm_and_charm:stove/chocolate_tart"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:chocolate_tart"
+    },
+    {
+      "registry_id": "bakery:chocolate_tart_slice",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/chocolate_tart_slice.json"
+      ],
+      "display_name_en_us": "Slice of Chocolate Tart",
+      "display_name_ru_ru": "Кусочек шоколадного тарта",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/chocolate_tart_slice.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:chocolate_tart_slice"
+    },
+    {
+      "registry_id": "bakery:chocolate_truffle",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/chocolate_truffle.json",
+        "data/farm_and_charm/recipes/pot_cooking/chocolate.json"
+      ],
+      "display_name_en_us": "Chocolate Truffle",
+      "display_name_ru_ru": "Шоколадный трюфель",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "c:items/chocolate",
+        "forge:items/chocolate"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/chocolate_truffle.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/pot_cooking/chocolate.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "farm_and_charm:pot_cooking/chocolate"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:chocolate_truffle"
+    },
+    {
+      "registry_id": "bakery:cornet",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/cornet.json",
+        "data/farm_and_charm/recipes/stove/cornet.json"
+      ],
+      "display_name_en_us": "Stuffed Cornet",
+      "display_name_ru_ru": "Рогалик",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/cornet.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/cornet.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "farm_and_charm:stove/cornet"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:cornet"
+    },
+    {
+      "registry_id": "bakery:croissant",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/croissant.json",
+        "data/farm_and_charm/recipes/stove/croissant.json"
+      ],
+      "display_name_en_us": "Croissant",
+      "display_name_ru_ru": "Круассан",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/croissant.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/croissant.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "farm_and_charm:stove/croissant"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:croissant"
+    },
+    {
+      "registry_id": "bakery:crusty_bread",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/crusty_bread.json",
+        "data/farm_and_charm/recipes/stove/crusty_bread.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "c:items/bread"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/crusty_bread.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/crusty_bread.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "farm_and_charm:stove/crusty_bread"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:crusty_bread"
+    },
+    {
+      "registry_id": "bakery:cupcake_display",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/cupcake_display.json",
+        "data/bakery/recipes/cupcake_display.json"
+      ],
+      "display_name_en_us": "Cupcake Display",
+      "display_name_ru_ru": "Витрина для кексов",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/cupcake_display.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/cupcake_display.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:cupcake_display",
+      "acquisition_routes": [
+        "bakery:cupcake_display"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:cupcake_display"
+    },
+    {
+      "registry_id": "bakery:donut",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/donut.json"
+      ],
+      "display_name_en_us": "Donut",
+      "display_name_ru_ru": "Пончик",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/donut.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:donut"
+    },
+    {
+      "registry_id": "bakery:dough",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/dough.json"
+      ],
+      "display_name_en_us": "Dough",
+      "display_name_ru_ru": "Тесто",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/dough.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:dough"
+    },
+    {
+      "registry_id": "bakery:drawer",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/drawer.json",
+        "data/bakery/recipes/drawer.json"
+      ],
+      "display_name_en_us": "Drawer",
+      "display_name_ru_ru": "Тумбочка",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/drawer.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/drawer.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:drawer",
+      "acquisition_routes": [
+        "bakery:drawer"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:drawer"
+    },
+    {
+      "registry_id": "bakery:faucet",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/faucet.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/faucet.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:faucet"
+    },
+    {
+      "registry_id": "bakery:glowberry_jam",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/glowberry_jam.json",
+        "data/farm_and_charm/recipes/pot_cooking/glowberry_jam.json"
+      ],
+      "display_name_en_us": "Glowberry Jam",
+      "display_name_ru_ru": "Варенье из светящихся ягод",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "bakery:items/jam",
+        "c:items/jams",
+        "forge:items/jams"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/glowberry_jam.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/pot_cooking/glowberry_jam.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:glowberry_jam",
+      "acquisition_routes": [
+        "farm_and_charm:pot_cooking/glowberry_jam"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:glowberry_jam"
+    },
+    {
+      "registry_id": "bakery:glowberry_pie_slice",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/glowberry_pie_slice.json"
+      ],
+      "display_name_en_us": "Slice of Glowberry Tart",
+      "display_name_ru_ru": "Кусочек тарта из светящихся ягод",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/glowberry_pie_slice.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:glowberry_pie_slice"
+    },
+    {
+      "registry_id": "bakery:glowberry_tart",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/glowberry_tart.json",
+        "data/farm_and_charm/recipes/stove/glowberry_tart.json"
+      ],
+      "display_name_en_us": "Glowberry Tart",
+      "display_name_ru_ru": "Тарт из светящихся ягод",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/glowberry_tart.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/glowberry_tart.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:glowberry_tart",
+      "acquisition_routes": [
+        "farm_and_charm:stove/glowberry_tart"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:glowberry_tart"
+    },
+    {
+      "registry_id": "bakery:grilled_bacon_sandwich",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/grilled_bacon_sandwich.json",
+        "data/farm_and_charm/recipes/stove/grilled_bacon_sandwich.json"
+      ],
+      "display_name_en_us": "Grilled Bacon Sandwich",
+      "display_name_ru_ru": "Бутерброд с беконом",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/grilled_bacon_sandwich.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/grilled_bacon_sandwich.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "farm_and_charm:stove/grilled_bacon_sandwich"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:grilled_bacon_sandwich"
+    },
+    {
+      "registry_id": "bakery:grilled_salmon_sandwich",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/grilled_salmon_sandwich.json",
+        "data/farm_and_charm/recipes/stove/grilled_salmon_sandwich.json"
+      ],
+      "display_name_en_us": "Grilled Salmon Sandwich",
+      "display_name_ru_ru": "Бутерброд с лососем",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/grilled_salmon_sandwich.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/grilled_salmon_sandwich.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "farm_and_charm:stove/grilled_salmon_sandwich"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:grilled_salmon_sandwich"
+    },
+    {
+      "registry_id": "bakery:iron_bench",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/iron_bench.json",
+        "data/bakery/recipes/iron_bench.json"
+      ],
+      "display_name_en_us": "Iron Bench",
+      "display_name_ru_ru": "Железная лавка",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/iron_bench.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/iron_bench.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:iron_bench",
+      "acquisition_routes": [
+        "bakery:iron_bench"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:iron_bench"
+    },
+    {
+      "registry_id": "bakery:iron_chair",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/iron_chair.json",
+        "data/bakery/recipes/iron_chair.json"
+      ],
+      "display_name_en_us": "Iron Chair",
+      "display_name_ru_ru": "Железный стул",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/iron_chair.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/iron_chair.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:iron_chair",
+      "acquisition_routes": [
+        "bakery:iron_chair"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:iron_chair"
+    },
+    {
+      "registry_id": "bakery:iron_table",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/iron_table.json",
+        "data/bakery/recipes/iron_table.json"
+      ],
+      "display_name_en_us": "Iron Table",
+      "display_name_ru_ru": "Железный стол",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/iron_table.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/iron_table.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:iron_table",
+      "acquisition_routes": [
+        "bakery:iron_table"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:iron_table"
+    },
+    {
+      "registry_id": "bakery:jam_roll",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/jam_roll.json",
+        "data/farm_and_charm/recipes/stove/jam_roll.json"
+      ],
+      "display_name_en_us": "Jam Roll",
+      "display_name_ru_ru": "Рулет с вареньем",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/jam_roll.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/jam_roll.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "farm_and_charm:stove/jam_roll"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:jam_roll"
+    },
+    {
+      "registry_id": "bakery:jam_sandwich",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/jam_sandwich.json"
+      ],
+      "display_name_en_us": "Jam Sandwich",
+      "display_name_ru_ru": "Бутерброд с вареньем",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/jam_sandwich.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:jam_sandwich"
+    },
+    {
+      "registry_id": "bakery:jar",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/jar.json",
+        "data/bakery/recipes/jar.json"
+      ],
+      "display_name_en_us": "Jar",
+      "display_name_ru_ru": "Банка",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "bakery:items/container",
+        "c:items/container",
+        "forge:items/container"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/jar.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/jar.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:jar",
+      "acquisition_routes": [
+        "bakery:jar"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:jar"
+    },
+    {
+      "registry_id": "bakery:kitchen_sink",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/kitchen_sink.json",
+        "data/bakery/recipes/kitchen_sink.json"
+      ],
+      "display_name_en_us": "Brick Sink",
+      "display_name_ru_ru": "Кирпичная раковина",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/kitchen_sink.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/kitchen_sink.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:kitchen_sink",
+      "acquisition_routes": [
+        "bakery:kitchen_sink"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:kitchen_sink"
+    },
+    {
+      "registry_id": "bakery:linzer_tart",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/linzer_tart.json",
+        "data/farm_and_charm/recipes/stove/linzer_tart.json"
+      ],
+      "display_name_en_us": "Linzer Tart",
+      "display_name_ru_ru": "Линцский торт",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/linzer_tart.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/linzer_tart.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:linzer_tart",
+      "acquisition_routes": [
+        "farm_and_charm:stove/linzer_tart"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:linzer_tart"
+    },
+    {
+      "registry_id": "bakery:linzer_tart_slice",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/linzer_tart_slice.json"
+      ],
+      "display_name_en_us": "Slice of Linzer Tart",
+      "display_name_ru_ru": "Кусочек линцского тарта",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/linzer_tart_slice.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:linzer_tart_slice"
+    },
+    {
+      "registry_id": "bakery:milk_bread",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/milk_bread.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/milk_bread.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:milk_bread"
+    },
+    {
+      "registry_id": "bakery:misslilitu_biscuit",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/misslilitu_biscuit.json",
+        "data/farm_and_charm/recipes/stove/misslilitu_biscuit.json"
+      ],
+      "display_name_en_us": "MissLilitu Biscuit",
+      "display_name_ru_ru": "Печенье MissLilitu",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/misslilitu_biscuit.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/misslilitu_biscuit.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "farm_and_charm:stove/misslilitu_biscuit"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:misslilitu_biscuit"
+    },
+    {
+      "registry_id": "bakery:pancake",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/pancake.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/pancake.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:pancake"
+    },
+    {
+      "registry_id": "bakery:pudding",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/pudding.json",
+        "data/farm_and_charm/recipes/pot_cooking/pudding.json"
+      ],
+      "display_name_en_us": "Pudding",
+      "display_name_ru_ru": "Пудинг",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/pudding.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/pot_cooking/pudding.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:pudding",
+      "acquisition_routes": [
+        "farm_and_charm:pot_cooking/pudding"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:pudding"
+    },
+    {
+      "registry_id": "bakery:pudding_slice",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/pudding_slice.json"
+      ],
+      "display_name_en_us": "Slice of Pudding",
+      "display_name_ru_ru": "Кусочек пудинга",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/pudding_slice.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:pudding_slice"
+    },
+    {
+      "registry_id": "bakery:rolling_pin",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/rolling_pin.json",
+        "data/bakery/recipes/rolling_pin.json"
+      ],
+      "display_name_en_us": "Rolling Pin",
+      "display_name_ru_ru": "Скалка",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "jemcompat:items/not_weapons"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/rolling_pin.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/rolling_pin.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "bakery:rolling_pin"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:rolling_pin"
+    },
+    {
+      "registry_id": "bakery:sandwich",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/sandwich.json",
+        "data/bakery/recipes/sandwich.json"
+      ],
+      "display_name_en_us": "Sandwich",
+      "display_name_ru_ru": "Бутерброд",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/sandwich.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/sandwich.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "bakery:sandwich"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:sandwich"
+    },
+    {
+      "registry_id": "bakery:shelf",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/shelf.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/shelf.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:shelf"
+    },
+    {
+      "registry_id": "bakery:small_cooking_pot",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/small_cooking_pot.json",
+        "data/bakery/recipes/small_cooking_pot.json"
+      ],
+      "display_name_en_us": "Small Cooking Pot",
+      "display_name_ru_ru": "Маленькая кастрюля",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "farm_and_charm:items/hangable",
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/small_cooking_pot.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/small_cooking_pot.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:small_cooking_pot",
+      "acquisition_routes": [
+        "bakery:small_cooking_pot"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:small_cooking_pot"
+    },
+    {
+      "registry_id": "bakery:strawberry_cake",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/strawberry_cake.json",
+        "data/bakery/recipes/baking_station/strawberry_cake.json"
+      ],
+      "display_name_en_us": "Strawberry Cake",
+      "display_name_ru_ru": "Клубничный торт",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/strawberry_cake.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/strawberry_cake.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:strawberry_cake",
+      "acquisition_routes": [
+        "bakery:baking_station/strawberry_cake"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:strawberry_cake"
+    },
+    {
+      "registry_id": "bakery:strawberry_cake_slice",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/strawberry_cake_slice.json"
+      ],
+      "display_name_en_us": "Slice of Strawberry Cake",
+      "display_name_ru_ru": "Кусочек клубничного торта",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/strawberry_cake_slice.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:strawberry_cake_slice"
+    },
+    {
+      "registry_id": "bakery:strawberry_cupcake",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/strawberry_cupcake.json",
+        "data/bakery/recipes/baking_station/strawberry_cupcake.json"
+      ],
+      "display_name_en_us": "Strawberry Cupcake",
+      "display_name_ru_ru": "Клубничный кекс",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/strawberry_cupcake.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/strawberry_cupcake.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "bakery:baking_station/strawberry_cupcake"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:strawberry_cupcake"
+    },
+    {
+      "registry_id": "bakery:strawberry_glazed_cookie",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/strawberry_glazed_cookie.json",
+        "data/bakery/recipes/baking_station/strawberry_cookie.json"
+      ],
+      "display_name_en_us": "Strawberry Glazed Cookie",
+      "display_name_ru_ru": "Печенье с клубничной глазурью",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/strawberry_glazed_cookie.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/strawberry_cookie.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "bakery:baking_station/strawberry_cookie"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:strawberry_glazed_cookie"
+    },
+    {
+      "registry_id": "bakery:strawberry_jam",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/strawberry_jam.json",
+        "data/farm_and_charm/recipes/pot_cooking/strawberry_jam.json"
+      ],
+      "display_name_en_us": "Strawberry Jam",
+      "display_name_ru_ru": "Клубничное варенье",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "bakery:items/jam",
+        "c:items/jams",
+        "forge:items/jams"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/strawberry_jam.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/pot_cooking/strawberry_jam.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:strawberry_jam",
+      "acquisition_routes": [
+        "farm_and_charm:pot_cooking/strawberry_jam"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:strawberry_jam"
+    },
+    {
+      "registry_id": "bakery:street_sign",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/street_sign.json",
+        "data/bakery/recipes/street_sign.json"
+      ],
+      "display_name_en_us": "Street Sign",
+      "display_name_ru_ru": "Уличная табличка",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/street_sign.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/street_sign.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:street_sign",
+      "acquisition_routes": [
+        "bakery:street_sign"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:street_sign"
+    },
+    {
+      "registry_id": "bakery:sweet_dough",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/sweet_dough.json",
+        "data/farm_and_charm/recipes/crafting_bowl/sweet_dough.json"
+      ],
+      "display_name_en_us": "Sweet Dough",
+      "display_name_ru_ru": "Сладкое тесто",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/sweet_dough.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/crafting_bowl/sweet_dough.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "farm_and_charm:crafting_bowl/sweet_dough"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:sweet_dough"
+    },
+    {
+      "registry_id": "bakery:sweetberry_cake",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/sweetberry_cake.json",
+        "data/bakery/recipes/baking_station/sweetberry_cake.json"
+      ],
+      "display_name_en_us": "Sweetberry Cake",
+      "display_name_ru_ru": "Торт со сладкими ягодами",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/sweetberry_cake.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/sweetberry_cake.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:sweetberry_cake",
+      "acquisition_routes": [
+        "bakery:baking_station/sweetberry_cake"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:sweetberry_cake"
+    },
+    {
+      "registry_id": "bakery:sweetberry_cake_slice",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/sweetberry_cake_slice.json"
+      ],
+      "display_name_en_us": "Slice of Sweetberry Cake",
+      "display_name_ru_ru": "Кусочек торта из сладких ягод",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/sweetberry_cake_slice.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:sweetberry_cake_slice"
+    },
+    {
+      "registry_id": "bakery:sweetberry_cupcake",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/sweetberry_cupcake.json",
+        "data/bakery/recipes/baking_station/sweetberry_cupcake.json"
+      ],
+      "display_name_en_us": "Sweetberry Cupcake",
+      "display_name_ru_ru": "Кекс из сладких ягод",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/sweetberry_cupcake.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/sweetberry_cupcake.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "bakery:baking_station/sweetberry_cupcake"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:sweetberry_cupcake"
+    },
+    {
+      "registry_id": "bakery:sweetberry_glazed_cookie",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/sweetberry_glazed_cookie.json",
+        "data/bakery/recipes/baking_station/sweetberry_cookie.json"
+      ],
+      "display_name_en_us": "Sweetberry Glazed Cookie",
+      "display_name_ru_ru": "Печенье с глазурью из сладких ягод",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/sweetberry_glazed_cookie.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/sweetberry_cookie.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "bakery:baking_station/sweetberry_cookie"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:sweetberry_glazed_cookie"
+    },
+    {
+      "registry_id": "bakery:sweetberry_jam",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/sweetberry_jam.json",
+        "data/farm_and_charm/recipes/pot_cooking/sweetberry_jam.json"
+      ],
+      "display_name_en_us": "Sweetberry Jam",
+      "display_name_ru_ru": "Варенье из сладких ягод",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "bakery:items/jam",
+        "c:items/jams",
+        "forge:items/jams"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/sweetberry_jam.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/pot_cooking/sweetberry_jam.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:sweetberry_jam",
+      "acquisition_routes": [
+        "farm_and_charm:pot_cooking/sweetberry_jam"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:sweetberry_jam"
+    },
+    {
+      "registry_id": "bakery:toast",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/toast.json",
+        "data/farm_and_charm/recipes/stove/toast.json"
+      ],
+      "display_name_en_us": "Toast",
+      "display_name_ru_ru": "Хлеб для тостов",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "c:items/bread"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/toast.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/toast.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "farm_and_charm:stove/toast"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:toast"
+    },
+    {
+      "registry_id": "bakery:tray",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/tray.json",
+        "data/bakery/recipes/tray.json"
+      ],
+      "display_name_en_us": "Tray",
+      "display_name_ru_ru": "Поднос",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "bakery:items/container",
+        "farmersdelight:items/serving_containers",
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/tray.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/tray.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:tray",
+      "acquisition_routes": [
+        "bakery:tray"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:tray"
+    },
+    {
+      "registry_id": "bakery:vegetable_sandwich",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/lang/en_us.json",
+        "assets/bakery/lang/ru_ru.json",
+        "assets/bakery/models/item/vegetable_sandwich.json",
+        "data/bakery/recipes/vegetable_sandwich.json"
+      ],
+      "display_name_en_us": "Vegetable Sandwich",
+      "display_name_ru_ru": "Овощной бутерброд",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/en_us.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/lang/ru_ru.json",
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/vegetable_sandwich.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/vegetable_sandwich.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "bakery:vegetable_sandwich"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:vegetable_sandwich"
+    },
+    {
+      "registry_id": "bakery:waffle",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/waffle.json",
+        "data/farm_and_charm/recipes/stove/waffle.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/waffle.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/farm_and_charm/recipes/stove/waffle.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "farm_and_charm:stove/waffle"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:waffle"
+    },
+    {
+      "registry_id": "bakery:wall_cabinet",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/wall_cabinet.json",
+        "data/bakery/recipes/wall_cabinet.json"
+      ],
+      "display_name_en_us": "Wall Cabinet",
+      "display_name_ru_ru": "Настенный шкаф",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/wall_cabinet.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/wall_cabinet.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:wall_cabinet",
+      "acquisition_routes": [
+        "bakery:wall_cabinet"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:wall_cabinet"
+    },
+    {
+      "registry_id": "bakery:wall_display",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/wall_display.json",
+        "data/bakery/recipes/wall_display.json"
+      ],
+      "display_name_en_us": "Wall Display",
+      "display_name_ru_ru": "Настенная витрина",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/wall_display.json",
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/wall_display.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "bakery:wall_display",
+      "acquisition_routes": [
+        "bakery:wall_display"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:wall_display"
+    },
+    {
+      "registry_id": "bakery:wandering_baker_spawn_egg",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "source_jar": "letsdo-bakery-forge-2.0.6.jar",
+      "source_sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/bakery/models/item/wandering_baker_spawn_egg.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:assets/bakery/models/item/wandering_baker_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:bakery:wandering_baker_spawn_egg"
+    }
+  ]
+}

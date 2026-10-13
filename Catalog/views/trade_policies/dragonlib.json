@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "registry_type": "trade_policies",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "dragonlib",
+    "name": "DragonLib",
+    "version": "1.20.1-beta-3.0.28"
+  },
+  "records": [
+    {
+      "item_id": "dragonlib:dragon",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "dragonlib",
+      "mod_name": "DragonLib",
+      "mod_version": "1.20.1-beta-3.0.28",
+      "source_jar": "dragonlib-forge-1.20.1-beta-3.0.28.jar",
+      "source_sha256": "1894e875a248e8b5527c3e6806af75cbb797ab8888ed0b0c7a5b186fe661c7bb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/dragonlib/models/item/dragon.json"
+      ],
+      "display_name_en_us": "Dragon",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "dragonlib-forge-1.20.1-beta-3.0.28.jar:assets/dragonlib/models/item/dragon.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    }
+  ]
+}

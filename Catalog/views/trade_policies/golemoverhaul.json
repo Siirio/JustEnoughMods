@@ -1,0 +1,565 @@
+{
+  "schema_version": 1,
+  "registry_type": "trade_policies",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "golemoverhaul",
+    "name": "Golem Overhaul",
+    "version": "1.1.1"
+  },
+  "records": [
+    {
+      "item_id": "golemoverhaul:barrel_golem_spawn_egg",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "golemoverhaul",
+      "mod_name": "Golem Overhaul",
+      "mod_version": "1.1.1",
+      "source_jar": "golemoverhaul-forge-1.20.1-1.1.1.jar",
+      "source_sha256": "115df3a7517b3cf8329ab35a00664d48e76282648c98843c8225ba2b5755cf90",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/golemoverhaul/lang/en_us.json",
+        "assets/golemoverhaul/lang/ru_ru.json",
+        "assets/golemoverhaul/models/item/barrel_golem_spawn_egg.json"
+      ],
+      "display_name_en_us": "Barrel Golem Spawn Egg",
+      "display_name_ru_ru": "Яйцо призыва бочечного голема",
+      "source_provenance": [
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/lang/en_us.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/lang/ru_ru.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/models/item/barrel_golem_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "golemoverhaul:candle_golem_block",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "golemoverhaul",
+      "mod_name": "Golem Overhaul",
+      "mod_version": "1.1.1",
+      "source_jar": "golemoverhaul-forge-1.20.1-1.1.1.jar",
+      "source_sha256": "115df3a7517b3cf8329ab35a00664d48e76282648c98843c8225ba2b5755cf90",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/golemoverhaul/models/item/candle_golem_block.json",
+        "data/golemoverhaul/recipes/candle_golem_block.json"
+      ],
+      "display_name_en_us": "Candle Golem Block",
+      "display_name_ru_ru": "Блок свечного голема",
+      "source_provenance": [
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/models/item/candle_golem_block.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:data/golemoverhaul/recipes/candle_golem_block.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "golemoverhaul:candle_golem_block"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "golemoverhaul:candle_golem_spawn_egg",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "golemoverhaul",
+      "mod_name": "Golem Overhaul",
+      "mod_version": "1.1.1",
+      "source_jar": "golemoverhaul-forge-1.20.1-1.1.1.jar",
+      "source_sha256": "115df3a7517b3cf8329ab35a00664d48e76282648c98843c8225ba2b5755cf90",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/golemoverhaul/lang/en_us.json",
+        "assets/golemoverhaul/lang/ru_ru.json",
+        "assets/golemoverhaul/models/item/candle_golem_spawn_egg.json"
+      ],
+      "display_name_en_us": "Candle Golem Spawn Egg",
+      "display_name_ru_ru": "Яйцо призыва свечного голема",
+      "source_provenance": [
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/lang/en_us.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/lang/ru_ru.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/models/item/candle_golem_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "golemoverhaul:clay_golem_statue",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "golemoverhaul",
+      "mod_name": "Golem Overhaul",
+      "mod_version": "1.1.1",
+      "source_jar": "golemoverhaul-forge-1.20.1-1.1.1.jar",
+      "source_sha256": "115df3a7517b3cf8329ab35a00664d48e76282648c98843c8225ba2b5755cf90",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/golemoverhaul/models/item/clay_golem_statue.json",
+        "data/golemoverhaul/recipes/clay_golem_statue.json"
+      ],
+      "display_name_en_us": "Clay Golem Statue",
+      "display_name_ru_ru": "Статуя глиняного голема",
+      "source_provenance": [
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/models/item/clay_golem_statue.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:data/golemoverhaul/recipes/clay_golem_statue.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "golemoverhaul:clay_golem_statue"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "golemoverhaul:coal_golem",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "golemoverhaul",
+      "mod_name": "Golem Overhaul",
+      "mod_version": "1.1.1",
+      "source_jar": "golemoverhaul-forge-1.20.1-1.1.1.jar",
+      "source_sha256": "115df3a7517b3cf8329ab35a00664d48e76282648c98843c8225ba2b5755cf90",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/golemoverhaul/lang/en_us.json",
+        "assets/golemoverhaul/models/item/coal_golem.json",
+        "data/golemoverhaul/recipes/coal_golem.json"
+      ],
+      "display_name_en_us": "Coal Golem",
+      "display_name_ru_ru": "Угольный голем",
+      "source_provenance": [
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/lang/en_us.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/models/item/coal_golem.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:data/golemoverhaul/recipes/coal_golem.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "golemoverhaul:coal_golem"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "golemoverhaul:coal_golem_spawn_egg",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "golemoverhaul",
+      "mod_name": "Golem Overhaul",
+      "mod_version": "1.1.1",
+      "source_jar": "golemoverhaul-forge-1.20.1-1.1.1.jar",
+      "source_sha256": "115df3a7517b3cf8329ab35a00664d48e76282648c98843c8225ba2b5755cf90",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/golemoverhaul/lang/en_us.json",
+        "assets/golemoverhaul/lang/ru_ru.json",
+        "assets/golemoverhaul/models/item/coal_golem_spawn_egg.json"
+      ],
+      "display_name_en_us": "Coal Golem Spawn Egg",
+      "display_name_ru_ru": "Яйцо призыва угольного голема",
+      "source_provenance": [
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/lang/en_us.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/lang/ru_ru.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/models/item/coal_golem_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "golemoverhaul:hay_golem_spawn_egg",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "golemoverhaul",
+      "mod_name": "Golem Overhaul",
+      "mod_version": "1.1.1",
+      "source_jar": "golemoverhaul-forge-1.20.1-1.1.1.jar",
+      "source_sha256": "115df3a7517b3cf8329ab35a00664d48e76282648c98843c8225ba2b5755cf90",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/golemoverhaul/lang/en_us.json",
+        "assets/golemoverhaul/lang/ru_ru.json",
+        "assets/golemoverhaul/models/item/hay_golem_spawn_egg.json"
+      ],
+      "display_name_en_us": "Hay Golem Spawn Egg",
+      "display_name_ru_ru": "Яйцо призыва сенного голема",
+      "source_provenance": [
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/lang/en_us.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/lang/ru_ru.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/models/item/hay_golem_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "golemoverhaul:honey_blob",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "golemoverhaul",
+      "mod_name": "Golem Overhaul",
+      "mod_version": "1.1.1",
+      "source_jar": "golemoverhaul-forge-1.20.1-1.1.1.jar",
+      "source_sha256": "115df3a7517b3cf8329ab35a00664d48e76282648c98843c8225ba2b5755cf90",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/golemoverhaul/lang/en_us.json",
+        "assets/golemoverhaul/lang/ru_ru.json",
+        "assets/golemoverhaul/models/item/honey_blob.json"
+      ],
+      "display_name_en_us": "Honey Blob",
+      "display_name_ru_ru": "Капля мёда",
+      "source_provenance": [
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/lang/en_us.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/lang/ru_ru.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/models/item/honey_blob.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "golemoverhaul:honey_golem_spawn_egg",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "golemoverhaul",
+      "mod_name": "Golem Overhaul",
+      "mod_version": "1.1.1",
+      "source_jar": "golemoverhaul-forge-1.20.1-1.1.1.jar",
+      "source_sha256": "115df3a7517b3cf8329ab35a00664d48e76282648c98843c8225ba2b5755cf90",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/golemoverhaul/lang/en_us.json",
+        "assets/golemoverhaul/lang/ru_ru.json",
+        "assets/golemoverhaul/models/item/honey_golem_spawn_egg.json"
+      ],
+      "display_name_en_us": "Honey Golem Spawn Egg",
+      "display_name_ru_ru": "Яйцо призыва медового голема",
+      "source_provenance": [
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/lang/en_us.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/lang/ru_ru.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/models/item/honey_golem_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "golemoverhaul:kelp_golem_spawn_egg",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "golemoverhaul",
+      "mod_name": "Golem Overhaul",
+      "mod_version": "1.1.1",
+      "source_jar": "golemoverhaul-forge-1.20.1-1.1.1.jar",
+      "source_sha256": "115df3a7517b3cf8329ab35a00664d48e76282648c98843c8225ba2b5755cf90",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/golemoverhaul/lang/en_us.json",
+        "assets/golemoverhaul/lang/ru_ru.json",
+        "assets/golemoverhaul/models/item/kelp_golem_spawn_egg.json"
+      ],
+      "display_name_en_us": "Kelp Golem Spawn Egg",
+      "display_name_ru_ru": "Яйцо призыва ламинариевого голема",
+      "source_provenance": [
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/lang/en_us.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/lang/ru_ru.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/models/item/kelp_golem_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "golemoverhaul:netherite_golem_spawn_egg",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "golemoverhaul",
+      "mod_name": "Golem Overhaul",
+      "mod_version": "1.1.1",
+      "source_jar": "golemoverhaul-forge-1.20.1-1.1.1.jar",
+      "source_sha256": "115df3a7517b3cf8329ab35a00664d48e76282648c98843c8225ba2b5755cf90",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/golemoverhaul/lang/en_us.json",
+        "assets/golemoverhaul/lang/ru_ru.json",
+        "assets/golemoverhaul/models/item/netherite_golem_spawn_egg.json"
+      ],
+      "display_name_en_us": "Netherite Golem Spawn Egg",
+      "display_name_ru_ru": "Яйцо призыва незеритового голема",
+      "source_provenance": [
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/lang/en_us.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/lang/ru_ru.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/models/item/netherite_golem_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "golemoverhaul:slime_golem_spawn_egg",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "golemoverhaul",
+      "mod_name": "Golem Overhaul",
+      "mod_version": "1.1.1",
+      "source_jar": "golemoverhaul-forge-1.20.1-1.1.1.jar",
+      "source_sha256": "115df3a7517b3cf8329ab35a00664d48e76282648c98843c8225ba2b5755cf90",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/golemoverhaul/lang/en_us.json",
+        "assets/golemoverhaul/lang/ru_ru.json",
+        "assets/golemoverhaul/models/item/slime_golem_spawn_egg.json"
+      ],
+      "display_name_en_us": "Slime Golem Spawn Egg",
+      "display_name_ru_ru": "Яйцо призыва слизневого голема",
+      "source_provenance": [
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/lang/en_us.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/lang/ru_ru.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/models/item/slime_golem_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "golemoverhaul:terracotta_golem_spawn_egg",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "golemoverhaul",
+      "mod_name": "Golem Overhaul",
+      "mod_version": "1.1.1",
+      "source_jar": "golemoverhaul-forge-1.20.1-1.1.1.jar",
+      "source_sha256": "115df3a7517b3cf8329ab35a00664d48e76282648c98843c8225ba2b5755cf90",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/golemoverhaul/lang/en_us.json",
+        "assets/golemoverhaul/lang/ru_ru.json",
+        "assets/golemoverhaul/models/item/terracotta_golem_spawn_egg.json"
+      ],
+      "display_name_en_us": "Terracotta Golem Spawn Egg",
+      "display_name_ru_ru": "Яйцо призыва терракотового голема",
+      "source_provenance": [
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/lang/en_us.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/lang/ru_ru.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/models/item/terracotta_golem_spawn_egg.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    }
+  ]
+}

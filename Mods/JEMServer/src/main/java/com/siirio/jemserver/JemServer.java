@@ -47,6 +47,7 @@ public final class JemServer {
         if (dedicated) {
             ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, ServerConfig.SPEC);
             EventDefaultPack.register();
+            MinecraftForge.EVENT_BUS.register(com.siirio.jemserver.smp.events.HomeTravel.class);
         }
         LandmarkNetwork.register();
         MapNetwork.register();
@@ -71,6 +72,8 @@ public final class JemServer {
         dispatcher.register(Commands.literal("sleep")
                 .then(Commands.literal("agree").executes(context -> sleep.vote(context.getSource().getPlayerOrException(), true)))
                 .then(Commands.literal("disagree").executes(context -> sleep.vote(context.getSource().getPlayerOrException(), false))));
+        dispatcher.register(Commands.literal("home").executes(context ->
+                com.siirio.jemserver.smp.events.HomeTravel.execute(context.getSource().getPlayerOrException())));
         var landmarks = Commands.literal("landmarks").executes(context -> {
             Landmarks.open(context.getSource().getPlayerOrException(), 0, false);
             return 1;

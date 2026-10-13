@@ -1,0 +1,4615 @@
+{
+  "schema_version": 1,
+  "registry_type": "items",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "exposure",
+    "name": "Exposure",
+    "version": "1.9.21"
+  },
+  "records": [
+    {
+      "registry_id": "exposure:aged_photograph",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/aged_photograph.json",
+        "data/exposure/recipes/aged_photograph.json"
+      ],
+      "display_name_en_us": "Aged Photograph",
+      "display_name_ru_ru": "Состаренная фотография",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/aged_photograph.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/aged_photograph.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "exposure:aged_photograph"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:aged_photograph"
+    },
+    {
+      "registry_id": "exposure:album",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/album.json",
+        "data/exposure/recipes/album.json"
+      ],
+      "display_name_en_us": "Photo Album",
+      "display_name_ru_ru": "Фотоальбом",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:items/bookshelf_books",
+        "minecraft:items/lectern_books"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/album.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/album.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "exposure:album"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:album"
+    },
+    {
+      "registry_id": "exposure:album.tooltip.photos_count",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "§7Photos: %s",
+      "display_name_ru_ru": "§7Фотографий: %s",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:album.tooltip.photos_count"
+    },
+    {
+      "registry_id": "exposure:album_one",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/album_one.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/album_one.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:album_one"
+    },
+    {
+      "registry_id": "exposure:album_three",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/album_three.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/album_three.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:album_three"
+    },
+    {
+      "registry_id": "exposure:album_two",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/album_two.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/album_two.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:album_two"
+    },
+    {
+      "registry_id": "exposure:black_and_white_film",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/black_and_white_film.json",
+        "data/exposure/recipes/black_and_white_film.json"
+      ],
+      "display_name_en_us": "Black and White Film",
+      "display_name_ru_ru": "Чёрно-белая плёнка",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "exposure:items/black_and_white_film_rolls",
+        "exposure:items/film_rolls"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/black_and_white_film.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/black_and_white_film.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "exposure:black_and_white_film"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:black_and_white_film"
+    },
+    {
+      "registry_id": "exposure:broken_interplanar_projector",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/broken_interplanar_projector.json"
+      ],
+      "display_name_en_us": "Broken Interplanar Projector",
+      "display_name_ru_ru": "Сломанный межплоскостной проектор",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/broken_interplanar_projector.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:broken_interplanar_projector"
+    },
+    {
+      "registry_id": "exposure:broken_interplanar_projector.tooltip.broken",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Broken",
+      "display_name_ru_ru": "Сломан",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:broken_interplanar_projector.tooltip.broken"
+    },
+    {
+      "registry_id": "exposure:broken_interplanar_projector.viewfinder.error_code",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Error code:",
+      "display_name_ru_ru": "Код ошибки:",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:broken_interplanar_projector.viewfinder.error_code"
+    },
+    {
+      "registry_id": "exposure:broken_interplanar_projector.viewfinder.message",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Interplanar Projector ran into a problem and was broken.",
+      "display_name_ru_ru": "Межплоскостной проектор столкнулся с проблемой и был сломан.",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:broken_interplanar_projector.viewfinder.message"
+    },
+    {
+      "registry_id": "exposure:camera",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/camera.json",
+        "data/exposure/recipes/camera.json"
+      ],
+      "display_name_en_us": "Camera",
+      "display_name_ru_ru": "Фотоаппарат",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/camera.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "exposure:camera"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:camera"
+    },
+    {
+      "registry_id": "exposure:camera.camera_attachments.fail.projecting",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Cannot disassemble the camera while projecting.",
+      "display_name_ru_ru": "Невозможно разобрать фотоаппарат во время проецирования.",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:camera.camera_attachments.fail.projecting"
+    },
+    {
+      "registry_id": "exposure:camera.camera_attachments.fail.shutter_open",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Cannot reconfigure the camera while shutter is open.",
+      "display_name_ru_ru": "Невозможно разобрать фотоаппарат, пока опущен затвор.",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:camera.camera_attachments.fail.shutter_open"
+    },
+    {
+      "registry_id": "exposure:camera.interplanar_projector.timed_out",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Interplanar Projector disintegrated from prolonged ",
+      "display_name_ru_ru": "Межплоскостной проектор распался из-за длительного",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:camera.interplanar_projector.timed_out"
+    },
+    {
+      "registry_id": "exposure:camera.sneak_to_open_tooltip",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Use while sneaking to configure",
+      "display_name_ru_ru": "Используйте крадясь, чтобы настроить",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:camera.sneak_to_open_tooltip"
+    },
+    {
+      "registry_id": "exposure:camera.tooltip.details_attachments_screen",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "§8[§7Sneak + Use§8] or §8[§7Right Click§8] to configure",
+      "display_name_ru_ru": "§8[§7Используйте крадясь§8] или нажмите §8[§7ПКМ§8], чтобы настроить",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:camera.tooltip.details_attachments_screen"
+    },
+    {
+      "registry_id": "exposure:camera.tooltip.details_attachments_screen_on_stand",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "§8[§7Sneak + Use§8] to configure",
+      "display_name_ru_ru": "§8[§7Используйте крадясь§8], чтобы настроить",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:camera.tooltip.details_attachments_screen_on_stand"
+    },
+    {
+      "registry_id": "exposure:camera.tooltip.details_hotswap",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "§8[§7Right Click§8] with item to install/swap attachment",
+      "display_name_ru_ru": "§8[§7ПКМ§8] предметом, чтобы установить/заменить компонент",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:camera.tooltip.details_hotswap"
+    },
+    {
+      "registry_id": "exposure:camera.tooltip.details_hotswap_on_stand",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "§8[§7Sneak + Use§8] with item to install/swap attachment",
+      "display_name_ru_ru": "§8[§7Используйте крадясь§8] с предметом, чтобы установить/сменить компонент",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:camera.tooltip.details_hotswap_on_stand"
+    },
+    {
+      "registry_id": "exposure:camera.tooltip.details_remove_tooltip",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "§8[§7Right Click§8] with §7Shears§8 to remove this message",
+      "display_name_ru_ru": "§8[§7ПКМ§8] с §7Ножницами§8, чтобы убрать эти сообщения",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:camera.tooltip.details_remove_tooltip"
+    },
+    {
+      "registry_id": "exposure:camera.tooltip.film_roll_frames",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "§7Film: §f%s/%s",
+      "display_name_ru_ru": "§7Плёнка: §f%s/%s",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:camera.tooltip.film_roll_frames"
+    },
+    {
+      "registry_id": "exposure:camera_active",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/camera_active.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_active.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:camera_active"
+    },
+    {
+      "registry_id": "exposure:camera_gold",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/camera_gold.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_gold.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:camera_gold"
+    },
+    {
+      "registry_id": "exposure:camera_gold_active",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/camera_gold_active.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_gold_active.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:camera_gold_active"
+    },
+    {
+      "registry_id": "exposure:camera_gold_gui",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/camera_gold_gui.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_gold_gui.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:camera_gold_gui"
+    },
+    {
+      "registry_id": "exposure:camera_gold_selfie",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/camera_gold_selfie.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_gold_selfie.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:camera_gold_selfie"
+    },
+    {
+      "registry_id": "exposure:camera_gui",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/camera_gui.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_gui.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:camera_gui"
+    },
+    {
+      "registry_id": "exposure:camera_parts/flash",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/camera_parts/flash.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_parts/flash.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:camera_parts/flash"
+    },
+    {
+      "registry_id": "exposure:camera_parts/flash_gold",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/camera_parts/flash_gold.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_parts/flash_gold.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:camera_parts/flash_gold"
+    },
+    {
+      "registry_id": "exposure:camera_parts/lens",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/camera_parts/lens.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_parts/lens.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:camera_parts/lens"
+    },
+    {
+      "registry_id": "exposure:camera_parts/lens_gold",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/camera_parts/lens_gold.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_parts/lens_gold.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:camera_parts/lens_gold"
+    },
+    {
+      "registry_id": "exposure:camera_parts/selfie_stick",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/camera_parts/selfie_stick.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_parts/selfie_stick.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:camera_parts/selfie_stick"
+    },
+    {
+      "registry_id": "exposure:camera_parts/viewfinder",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/camera_parts/viewfinder.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_parts/viewfinder.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:camera_parts/viewfinder"
+    },
+    {
+      "registry_id": "exposure:camera_parts/viewfinder_gold",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/camera_parts/viewfinder_gold.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_parts/viewfinder_gold.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:camera_parts/viewfinder_gold"
+    },
+    {
+      "registry_id": "exposure:camera_selfie",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/camera_selfie.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_selfie.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:camera_selfie"
+    },
+    {
+      "registry_id": "exposure:camera_stand",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/camera_stand.json",
+        "data/exposure/recipes/camera_stand.json"
+      ],
+      "display_name_en_us": "Camera Stand",
+      "display_name_ru_ru": "Штатив",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/camera_stand.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/camera_stand.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "exposure:camera_stand"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:camera_stand"
+    },
+    {
+      "registry_id": "exposure:chromatic_sheet",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/chromatic_sheet.json"
+      ],
+      "display_name_en_us": "Chromatic Sheet",
+      "display_name_ru_ru": "Хроматический лист",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/chromatic_sheet.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:chromatic_sheet"
+    },
+    {
+      "registry_id": "exposure:chromatic_sheet.info",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Use as paper to print remaining layers",
+      "display_name_ru_ru": "Используйте в качестве бумаги для печати оставшихся слоёв",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:chromatic_sheet.info"
+    },
+    {
+      "registry_id": "exposure:chromatic_sheet.not_enough_layers",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "3 layers are required to combine a Chromatic Sheet",
+      "display_name_ru_ru": "Для создания цветного листа требуется 3 слоя",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:chromatic_sheet.not_enough_layers"
+    },
+    {
+      "registry_id": "exposure:chromatic_sheet.use_tooltip",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Hold in inventory to combine three layers into a Photograph",
+      "display_name_ru_ru": "Используется для соединения трёх цветовых каналов в фотографию",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:chromatic_sheet.use_tooltip"
+    },
+    {
+      "registry_id": "exposure:chromatic_sheet_one",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/chromatic_sheet_one.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/chromatic_sheet_one.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:chromatic_sheet_one"
+    },
+    {
+      "registry_id": "exposure:chromatic_sheet_three",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/chromatic_sheet_three.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/chromatic_sheet_three.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:chromatic_sheet_three"
+    },
+    {
+      "registry_id": "exposure:chromatic_sheet_two",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/chromatic_sheet_two.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/chromatic_sheet_two.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:chromatic_sheet_two"
+    },
+    {
+      "registry_id": "exposure:color_film",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/color_film.json",
+        "data/exposure/recipes/color_film.json"
+      ],
+      "display_name_en_us": "Color Film",
+      "display_name_ru_ru": "Цветная плёнка",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "exposure:items/color_film_rolls",
+        "exposure:items/film_rolls"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/color_film.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/color_film.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "exposure:color_film"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:color_film"
+    },
+    {
+      "registry_id": "exposure:developed_black_and_white_film",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/developed_black_and_white_film.json",
+        "data/exposure/recipes/black_and_white_film_developing.json"
+      ],
+      "display_name_en_us": "Developed Black and White Film",
+      "display_name_ru_ru": "Проявленная чёрно-белая плёнка",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "exposure:items/developed_film_rolls"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/developed_black_and_white_film.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/black_and_white_film_developing.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "exposure:black_and_white_film_developing"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:developed_black_and_white_film"
+    },
+    {
+      "registry_id": "exposure:developed_color_film",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/developed_color_film.json",
+        "data/exposure/recipes/color_film_developing.json"
+      ],
+      "display_name_en_us": "Developed Color Film",
+      "display_name_ru_ru": "Проявленная цветная плёнка",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "exposure:items/developed_film_rolls"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/developed_color_film.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/color_film_developing.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "exposure:color_film_developing"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:developed_color_film"
+    },
+    {
+      "registry_id": "exposure:developed_film.tooltip.frame_count",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Frames: %s",
+      "display_name_ru_ru": "Кадры: %s",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:developed_film.tooltip.frame_count"
+    },
+    {
+      "registry_id": "exposure:film_roll.tooltip.color_balance",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Color Balance: %s",
+      "display_name_ru_ru": "Цветовой баланс: %s",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:film_roll.tooltip.color_balance"
+    },
+    {
+      "registry_id": "exposure:film_roll.tooltip.contrast",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Contrast: %s",
+      "display_name_ru_ru": "Контраст: %s",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:film_roll.tooltip.contrast"
+    },
+    {
+      "registry_id": "exposure:film_roll.tooltip.details.develop",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Developed by crafting with:",
+      "display_name_ru_ru": "Проявляется при совмещении с:",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:film_roll.tooltip.details.develop"
+    },
+    {
+      "registry_id": "exposure:film_roll.tooltip.developing_step",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Developing: %s",
+      "display_name_ru_ru": "Проявка: %s",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:film_roll.tooltip.developing_step"
+    },
+    {
+      "registry_id": "exposure:film_roll.tooltip.frame_count",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "%s/%s",
+      "display_name_ru_ru": "%s/%s",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:film_roll.tooltip.frame_count"
+    },
+    {
+      "registry_id": "exposure:film_roll.tooltip.frame_size",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Size: %smm",
+      "display_name_ru_ru": "Размер: %sмм",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:film_roll.tooltip.frame_size"
+    },
+    {
+      "registry_id": "exposure:film_roll.tooltip.hsb",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "HSB: %s",
+      "display_name_ru_ru": "HSB: %s",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:film_roll.tooltip.hsb"
+    },
+    {
+      "registry_id": "exposure:film_roll.tooltip.levels",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Levels: %s",
+      "display_name_ru_ru": "Уровни: %s",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:film_roll.tooltip.levels"
+    },
+    {
+      "registry_id": "exposure:film_roll.tooltip.noise",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Noise: %s",
+      "display_name_ru_ru": "Шум: %s",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:film_roll.tooltip.noise"
+    },
+    {
+      "registry_id": "exposure:film_roll.tooltip.palette",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Palette: %s",
+      "display_name_ru_ru": "Палитра: %s",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:film_roll.tooltip.palette"
+    },
+    {
+      "registry_id": "exposure:film_roll.tooltip.renaming",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "§8[§7Use§8] to rename",
+      "display_name_ru_ru": "§8[§7Используйте§8], чтобы переименовать",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:film_roll.tooltip.renaming"
+    },
+    {
+      "registry_id": "exposure:film_roll.tooltip.sensitivity",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Sensitivity: %s",
+      "display_name_ru_ru": "Чувствительность: %s",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:film_roll.tooltip.sensitivity"
+    },
+    {
+      "registry_id": "exposure:glass_photograph_frame",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/glass_photograph_frame.json",
+        "data/exposure/recipes/glass_photograph_frame.json"
+      ],
+      "display_name_en_us": "Glass Photograph Frame",
+      "display_name_ru_ru": "Стеклянная фоторамка",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/glass_photograph_frame.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/glass_photograph_frame.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "exposure:glass_photograph_frame"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:glass_photograph_frame"
+    },
+    {
+      "registry_id": "exposure:high_sensitivity_black_and_white_film",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/high_sensitivity_black_and_white_film.json",
+        "data/exposure/recipes/high_sensitivity_black_and_white_film.json"
+      ],
+      "display_name_en_us": "High-Sensitivity Black and White Film",
+      "display_name_ru_ru": "Высокочувствительная чёрно-белая плёнка",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "exposure:items/black_and_white_film_rolls",
+        "exposure:items/film_rolls"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/high_sensitivity_black_and_white_film.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/high_sensitivity_black_and_white_film.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "exposure:high_sensitivity_black_and_white_film"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:high_sensitivity_black_and_white_film"
+    },
+    {
+      "registry_id": "exposure:high_sensitivity_color_film",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/high_sensitivity_color_film.json",
+        "data/exposure/recipes/high_sensitivity_color_film.json"
+      ],
+      "display_name_en_us": "High-Sensitivity Color Film",
+      "display_name_ru_ru": "Высокочувствительная цветная плёнка",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "exposure:items/color_film_rolls",
+        "exposure:items/film_rolls"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/high_sensitivity_color_film.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/high_sensitivity_color_film.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "exposure:high_sensitivity_color_film"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:high_sensitivity_color_film"
+    },
+    {
+      "registry_id": "exposure:interplanar_projector",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/interplanar_projector.json",
+        "data/exposure/recipes/broken_interplanar_projector_fixing.json",
+        "data/exposure/recipes/interplanar_projector.json"
+      ],
+      "display_name_en_us": "Interplanar Projector",
+      "display_name_ru_ru": "Межплоскостной проектор",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "exposure:items/filters"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/interplanar_projector.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/broken_interplanar_projector_fixing.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/interplanar_projector.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "exposure:broken_interplanar_projector_fixing",
+        "exposure:interplanar_projector"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:interplanar_projector"
+    },
+    {
+      "registry_id": "exposure:interplanar_projector.mode.clean",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json"
+      ],
+      "display_name_en_us": "§6Clean",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:interplanar_projector.mode.clean"
+    },
+    {
+      "registry_id": "exposure:interplanar_projector.mode.clear",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": "§6Чистое",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:interplanar_projector.mode.clear"
+    },
+    {
+      "registry_id": "exposure:interplanar_projector.mode.dithered",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "§6Dithered",
+      "display_name_ru_ru": "§6Зернистое",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:interplanar_projector.mode.dithered"
+    },
+    {
+      "registry_id": "exposure:interplanar_projector.tooltip.change_mode_info",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "§8[§7Right Click§8] to change mode",
+      "display_name_ru_ru": "§8[§7ПКМ§8] для смены режима",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:interplanar_projector.tooltip.change_mode_info"
+    },
+    {
+      "registry_id": "exposure:interplanar_projector.tooltip.consumed_info",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "§4Consumed on use",
+      "display_name_ru_ru": "§4Расходуется при использовании",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:interplanar_projector.tooltip.consumed_info"
+    },
+    {
+      "registry_id": "exposure:interplanar_projector.tooltip.disabled",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "§7This realm has protective barrier which makes projecting from another plane impossible.",
+      "display_name_ru_ru": "§7В этом Realm'е есть защитный барьер, который делает невозможным проецирование с другого плана.",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:interplanar_projector.tooltip.disabled"
+    },
+    {
+      "registry_id": "exposure:interplanar_projector.tooltip.info",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "§7When renamed to URL or file path and used as a filter, allows projecting an image from another plane",
+      "display_name_ru_ru": "§7Переименуйте в расположение файла, чтобы воссоздать изображение из иной плоскости",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:interplanar_projector.tooltip.info"
+    },
+    {
+      "registry_id": "exposure:interplanar_projector_active",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/interplanar_projector_active.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/interplanar_projector_active.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:interplanar_projector_active"
+    },
+    {
+      "registry_id": "exposure:lightroom",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/lightroom.json",
+        "data/exposure/recipes/lightroom.json"
+      ],
+      "display_name_en_us": "Lightroom",
+      "display_name_ru_ru": "Фотолаборатория",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/lightroom.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/lightroom.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "exposure:lightroom",
+      "acquisition_routes": [
+        "exposure:lightroom"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:lightroom"
+    },
+    {
+      "registry_id": "exposure:photograph",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/photograph.json",
+        "data/exposure/recipes/photograph_copying.json",
+        "data/exposure/recipes/photograph_copying_black_and_white.json"
+      ],
+      "display_name_en_us": "Photograph",
+      "display_name_ru_ru": "Фотография",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/photograph.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/photograph_copying.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/photograph_copying_black_and_white.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "exposure:photograph_copying",
+        "exposure:photograph_copying_black_and_white"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:photograph"
+    },
+    {
+      "registry_id": "exposure:photograph.generation.0",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Original",
+      "display_name_ru_ru": "Оригинал",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:photograph.generation.0"
+    },
+    {
+      "registry_id": "exposure:photograph.generation.1",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Copy of original",
+      "display_name_ru_ru": "Копия оригинала",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:photograph.generation.1"
+    },
+    {
+      "registry_id": "exposure:photograph.generation.2",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Copy of a copy",
+      "display_name_ru_ru": "Копия копии",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:photograph.generation.2"
+    },
+    {
+      "registry_id": "exposure:photograph.generation.3",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Tattered",
+      "display_name_ru_ru": "Потёрта",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:photograph.generation.3"
+    },
+    {
+      "registry_id": "exposure:photograph.message.no_data",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "The paper is clean. No trace of an image is found on it, even if it had one at some point.",
+      "display_name_ru_ru": "Бумага чиста. На ней нет и следа изображения, даже если оно когда-то и было.",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:photograph.message.no_data"
+    },
+    {
+      "registry_id": "exposure:photograph.photographer_tooltip",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Taken by: %s",
+      "display_name_ru_ru": "Автор: %s",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:photograph.photographer_tooltip"
+    },
+    {
+      "registry_id": "exposure:photograph.tooltip.details.copy",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Copied by crafting with:",
+      "display_name_ru_ru": "Можно снять копию, соединив с:",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:photograph.tooltip.details.copy"
+    },
+    {
+      "registry_id": "exposure:photograph_frame",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/photograph_frame.json",
+        "data/exposure/recipes/photograph_frame.json"
+      ],
+      "display_name_en_us": "Photograph Frame",
+      "display_name_ru_ru": "Фоторамка",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/photograph_frame.json",
+        "exposure-forge-1.20.1-1.9.21.jar:data/exposure/recipes/photograph_frame.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "exposure:photograph_frame"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:photograph_frame"
+    },
+    {
+      "registry_id": "exposure:selfie_stick",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/selfie_stick.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/selfie_stick.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:selfie_stick"
+    },
+    {
+      "registry_id": "exposure:signed_album",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/signed_album.json"
+      ],
+      "display_name_en_us": "Signed Photo Album",
+      "display_name_ru_ru": "Подписанный фотоальбом",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:items/bookshelf_books",
+        "minecraft:items/lectern_books"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/signed_album.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:signed_album"
+    },
+    {
+      "registry_id": "exposure:stacked_photographs",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/lang/en_us.json",
+        "assets/exposure/lang/ru_ru.json",
+        "assets/exposure/models/item/stacked_photographs.json"
+      ],
+      "display_name_en_us": "Stacked Photographs",
+      "display_name_ru_ru": "Стопка фотографий",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/en_us.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/lang/ru_ru.json",
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/stacked_photographs.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:stacked_photographs"
+    },
+    {
+      "registry_id": "exposure:stacked_photographs_three",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/stacked_photographs_three.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/stacked_photographs_three.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:stacked_photographs_three"
+    },
+    {
+      "registry_id": "exposure:stacked_photographs_two",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "exposure",
+      "mod_name": "Exposure",
+      "mod_version": "1.9.21",
+      "source_jar": "exposure-forge-1.20.1-1.9.21.jar",
+      "source_sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/exposure/models/item/stacked_photographs_two.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "exposure-forge-1.20.1-1.9.21.jar:assets/exposure/models/item/stacked_photographs_two.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:exposure:stacked_photographs_two"
+    }
+  ]
+}

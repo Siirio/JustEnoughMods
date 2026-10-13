@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "registry_type": "placeables",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "geckolib",
+    "name": "GeckoLib 4",
+    "version": "4.8.4"
+  },
+  "records": [
+    {
+      "item_id": "geckolib:fertilizer",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "geckolib",
+      "mod_name": "GeckoLib 4",
+      "mod_version": "4.8.4",
+      "source_jar": "geckolib-forge-1.20.1-4.8.4.jar",
+      "source_sha256": "c04abba4fd354dd8c0e8a732f1f05f4dca893d2e1d962b2ab128bbd411478747",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/geckolib/models/item/fertilizer.json"
+      ],
+      "display_name_en_us": "Fertilizer",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "geckolib-forge-1.20.1-4.8.4.jar:assets/geckolib/models/item/fertilizer.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "geckolib:fertilizer",
+      "placed_registry_ids": [
+        "geckolib:fertilizer"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": []
+    },
+    {
+      "item_id": "geckolib:gecko_habitat",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "geckolib",
+      "mod_name": "GeckoLib 4",
+      "mod_version": "4.8.4",
+      "source_jar": "geckolib-forge-1.20.1-4.8.4.jar",
+      "source_sha256": "c04abba4fd354dd8c0e8a732f1f05f4dca893d2e1d962b2ab128bbd411478747",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/geckolib/models/item/gecko_habitat.json"
+      ],
+      "display_name_en_us": "Gecko Habitat",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "geckolib-forge-1.20.1-4.8.4.jar:assets/geckolib/models/item/gecko_habitat.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "geckolib:gecko_habitat",
+      "placed_registry_ids": [
+        "geckolib:gecko_habitat"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": []
+    }
+  ]
+}

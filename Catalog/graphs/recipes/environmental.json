@@ -1,0 +1,313 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "environmental",
+    "name": "environmental",
+    "version": "unresolved"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "environmental:pine_button",
+      "mod_id": "environmental",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "environmental:pine_planks",
+        "forge:mod_loaded",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "environmental:pine_button"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/environmental/recipes/pine_button.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "environmental:pine_button_from_pine_logs_sawing",
+      "mod_id": "environmental",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "forge:conditional",
+      "machine_id": "forge:conditional",
+      "ingredient_groups": [
+        "environmental:pine_button",
+        "environmental:pine_logs",
+        "forge:conditional",
+        "forge:mod_loaded",
+        "woodworks:config",
+        "woodworks:sawmill"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/environmental/recipes/pine_button_from_pine_logs_sawing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "environmental:pine_button_from_pine_planks_sawing",
+      "mod_id": "environmental",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "forge:conditional",
+      "machine_id": "forge:conditional",
+      "ingredient_groups": [
+        "environmental:pine_button",
+        "environmental:pine_planks",
+        "forge:conditional",
+        "forge:mod_loaded",
+        "woodworks:config",
+        "woodworks:sawmill"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/environmental/recipes/pine_button_from_pine_planks_sawing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "environmental:plum_button",
+      "mod_id": "environmental",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "environmental:plum_planks",
+        "forge:mod_loaded",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "environmental:plum_button"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/environmental/recipes/plum_button.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "environmental:plum_button_from_plum_logs_sawing",
+      "mod_id": "environmental",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "forge:conditional",
+      "machine_id": "forge:conditional",
+      "ingredient_groups": [
+        "environmental:plum_button",
+        "environmental:plum_logs",
+        "forge:conditional",
+        "forge:mod_loaded",
+        "woodworks:config",
+        "woodworks:sawmill"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/environmental/recipes/plum_button_from_plum_logs_sawing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "environmental:plum_button_from_plum_planks_sawing",
+      "mod_id": "environmental",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "forge:conditional",
+      "machine_id": "forge:conditional",
+      "ingredient_groups": [
+        "environmental:plum_button",
+        "environmental:plum_planks",
+        "forge:conditional",
+        "forge:mod_loaded",
+        "woodworks:config",
+        "woodworks:sawmill"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/environmental/recipes/plum_button_from_plum_planks_sawing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "environmental:willow_button",
+      "mod_id": "environmental",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "environmental:willow_planks",
+        "forge:mod_loaded",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "environmental:willow_button"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/environmental/recipes/willow_button.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "environmental:willow_button_from_willow_logs_sawing",
+      "mod_id": "environmental",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "forge:conditional",
+      "machine_id": "forge:conditional",
+      "ingredient_groups": [
+        "environmental:willow_button",
+        "environmental:willow_logs",
+        "forge:conditional",
+        "forge:mod_loaded",
+        "woodworks:config",
+        "woodworks:sawmill"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/environmental/recipes/willow_button_from_willow_logs_sawing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "environmental:willow_button_from_willow_planks_sawing",
+      "mod_id": "environmental",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "forge:conditional",
+      "machine_id": "forge:conditional",
+      "ingredient_groups": [
+        "environmental:willow_button",
+        "environmental:willow_planks",
+        "forge:conditional",
+        "forge:mod_loaded",
+        "woodworks:config",
+        "woodworks:sawmill"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/environmental/recipes/willow_button_from_willow_planks_sawing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "environmental:wisteria_button",
+      "mod_id": "environmental",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "environmental:wisteria_planks",
+        "forge:mod_loaded",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "environmental:wisteria_button"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/environmental/recipes/wisteria_button.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "environmental:wisteria_button_from_wisteria_logs_sawing",
+      "mod_id": "environmental",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "forge:conditional",
+      "machine_id": "forge:conditional",
+      "ingredient_groups": [
+        "environmental:wisteria_button",
+        "environmental:wisteria_logs",
+        "forge:conditional",
+        "forge:mod_loaded",
+        "woodworks:config",
+        "woodworks:sawmill"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/environmental/recipes/wisteria_button_from_wisteria_logs_sawing.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "environmental:wisteria_button_from_wisteria_planks_sawing",
+      "mod_id": "environmental",
+      "mod_name": "Infinity Buttons",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "forge:conditional",
+      "machine_id": "forge:conditional",
+      "ingredient_groups": [
+        "environmental:wisteria_button",
+        "environmental:wisteria_planks",
+        "forge:conditional",
+        "forge:mod_loaded",
+        "woodworks:config",
+        "woodworks:sawmill"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "infinitybuttons-1.20.1-4.0.7.jar:data/environmental/recipes/wisteria_button_from_wisteria_planks_sawing.json"
+      ]
+    }
+  ]
+}

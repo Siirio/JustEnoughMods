@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "registry_type": "blocks",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "jem_server",
+    "name": "JEM Server",
+    "version": "2.0.0-dev"
+  },
+  "records": [
+    {
+      "registry_id": "jem_server:structure_barrier",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "jem_server",
+      "mod_name": "JEM Server",
+      "mod_version": "2.0.0-dev",
+      "source_jar": "jem-server-2.0.0-dev.jar",
+      "source_sha256": "2c670c9c7664bc0cd02e1ce3f2a4d569f774af750207ffc968b440e8710d0029",
+      "side_availability": [
+        "source"
+      ],
+      "observed_in": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/SmpEventBlocks.java"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": true,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "SmpEventBlocks.java:Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/SmpEventBlocks.java"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}

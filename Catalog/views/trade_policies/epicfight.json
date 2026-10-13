@@ -1,0 +1,2168 @@
+{
+  "schema_version": 1,
+  "registry_type": "trade_policies",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "epicfight",
+    "name": "Epic Fight",
+    "version": "20.14.17"
+  },
+  "records": [
+    {
+      "item_id": "epicfight:bokken",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/bokken.json"
+      ],
+      "display_name_en_us": "Bokken",
+      "display_name_ru_ru": "Боккен",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/bokken.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:dagger",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/models/item/dagger.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/dagger.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:diamond_dagger",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/diamond_dagger.json",
+        "data/epicfight/recipes/diamond_dagger.json"
+      ],
+      "display_name_en_us": "Diamond Dagger",
+      "display_name_ru_ru": "Алмазный кинжал",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/diamond_dagger.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/diamond_dagger.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:diamond_dagger"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:diamond_greatsword",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/diamond_greatsword.json",
+        "data/epicfight/recipes/diamond_greatsword.json"
+      ],
+      "display_name_en_us": "Diamond Greatsword",
+      "display_name_ru_ru": "Алмазный Большой меч",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/diamond_greatsword.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/diamond_greatsword.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:diamond_greatsword"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:diamond_longsword",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/diamond_longsword.json",
+        "data/epicfight/recipes/diamond_longsword.json"
+      ],
+      "display_name_en_us": "Diamond Longsword",
+      "display_name_ru_ru": "Алмазный Длинный меч",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/diamond_longsword.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/diamond_longsword.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:diamond_longsword"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:diamond_spear",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/diamond_spear.json",
+        "data/epicfight/recipes/diamond_spear.json"
+      ],
+      "display_name_en_us": "Diamond Spear",
+      "display_name_ru_ru": "Алмазное Копье",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/diamond_spear.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/diamond_spear.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:diamond_spear"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:diamond_tachi",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/diamond_tachi.json",
+        "data/epicfight/recipes/diamond_tachi.json"
+      ],
+      "display_name_en_us": "Diamond Tachi",
+      "display_name_ru_ru": "Алмазный Тати",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/diamond_tachi.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/diamond_tachi.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:diamond_tachi"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:glove",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/glove.json",
+        "data/epicfight/recipes/glove.json"
+      ],
+      "display_name_en_us": "Glove",
+      "display_name_ru_ru": "Перчатка",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/glove.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/glove.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:glove"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:golden_dagger",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/golden_dagger.json",
+        "data/epicfight/recipes/golden_dagger.json"
+      ],
+      "display_name_en_us": "Golden Dagger",
+      "display_name_ru_ru": "Золотой кинжал",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/golden_dagger.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/golden_dagger.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:golden_dagger"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:golden_greatsword",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/golden_greatsword.json",
+        "data/epicfight/recipes/golden_greatsword.json"
+      ],
+      "display_name_en_us": "Golden Greatsword",
+      "display_name_ru_ru": "Золотой Большой меч",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/golden_greatsword.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/golden_greatsword.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:golden_greatsword"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:golden_longsword",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/golden_longsword.json",
+        "data/epicfight/recipes/golden_longsword.json"
+      ],
+      "display_name_en_us": "Golden Longsword",
+      "display_name_ru_ru": "Золотой Длинный меч",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/golden_longsword.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/golden_longsword.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:golden_longsword"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:golden_spear",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/golden_spear.json",
+        "data/epicfight/recipes/golden_spear.json"
+      ],
+      "display_name_en_us": "Golden Spear",
+      "display_name_ru_ru": "Золотое Копье",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/golden_spear.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/golden_spear.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:golden_spear"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:golden_tachi",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/golden_tachi.json",
+        "data/epicfight/recipes/golden_tachi.json"
+      ],
+      "display_name_en_us": "Golden Tachi",
+      "display_name_ru_ru": "Золотой Тати",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/golden_tachi.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/golden_tachi.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:golden_tachi"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:greatsword",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/models/item/greatsword.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/greatsword.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:iron_dagger",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/iron_dagger.json",
+        "data/epicfight/recipes/iron_dagger.json"
+      ],
+      "display_name_en_us": "Iron Dagger",
+      "display_name_ru_ru": "Железный кинжал",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/iron_dagger.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/iron_dagger.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:iron_dagger"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:iron_greatsword",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/iron_greatsword.json",
+        "data/epicfight/recipes/iron_greatsword.json"
+      ],
+      "display_name_en_us": "Iron Greatsword",
+      "display_name_ru_ru": "Железный Большой меч",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/iron_greatsword.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/iron_greatsword.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:iron_greatsword"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:iron_longsword",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/iron_longsword.json",
+        "data/epicfight/recipes/iron_longsword.json"
+      ],
+      "display_name_en_us": "Iron Longsword",
+      "display_name_ru_ru": "Железный Длинный меч",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/iron_longsword.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/iron_longsword.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:iron_longsword"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:iron_spear",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/iron_spear.json",
+        "data/epicfight/recipes/iron_spear.json"
+      ],
+      "display_name_en_us": "Iron Spear",
+      "display_name_ru_ru": "Железное Копье",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/iron_spear.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/iron_spear.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:iron_spear"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:iron_tachi",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/iron_tachi.json",
+        "data/epicfight/recipes/iron_tachi.json"
+      ],
+      "display_name_en_us": "Iron Tachi",
+      "display_name_ru_ru": "Железный Тати",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/iron_tachi.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/iron_tachi.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:iron_tachi"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:longsword",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/models/item/longsword.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/longsword.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:netherite_dagger",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/netherite_dagger.json",
+        "data/epicfight/recipes/netherite_dagger.json"
+      ],
+      "display_name_en_us": "Netherite Dagger",
+      "display_name_ru_ru": "Незеритовый кинжал",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/netherite_dagger.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/netherite_dagger.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:netherite_dagger"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:netherite_greatsword",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/netherite_greatsword.json",
+        "data/epicfight/recipes/netherite_greatsword.json"
+      ],
+      "display_name_en_us": "Netherite Greatsword",
+      "display_name_ru_ru": "Незеритовый Большой меч",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/netherite_greatsword.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/netherite_greatsword.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:netherite_greatsword"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:netherite_longsword",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/netherite_longsword.json",
+        "data/epicfight/recipes/netherite_longsword.json"
+      ],
+      "display_name_en_us": "Netherite Longsword",
+      "display_name_ru_ru": "Незеритовый Длинный меч",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/netherite_longsword.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/netherite_longsword.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:netherite_longsword"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:netherite_spear",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/netherite_spear.json",
+        "data/epicfight/recipes/netherite_spear.json"
+      ],
+      "display_name_en_us": "Netherite Spear",
+      "display_name_ru_ru": "Незеритовое Копье",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/netherite_spear.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/netherite_spear.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:netherite_spear"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:netherite_tachi",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/netherite_tachi.json",
+        "data/epicfight/recipes/netherite_tachi.json"
+      ],
+      "display_name_en_us": "Netherite Tachi",
+      "display_name_ru_ru": "Незеритовый Тати",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/netherite_tachi.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/netherite_tachi.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:netherite_tachi"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:skillbook",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/skillbook.json",
+        "data/efn/recipes/efn_dodge.json",
+        "data/efn/recipes/efn_parry.json",
+        "data/efn/recipes/efn_step.json",
+        "data/efn/recipes/execution.json",
+        "data/efn/recipes/mortal_blade.json",
+        "data/efn/recipes/stomp.json",
+        "data/efn/recipes/zansetsu.json"
+      ],
+      "display_name_en_us": "Skill Book",
+      "display_name_ru_ru": "Книга навыков",
+      "source_provenance": [
+        "EpicFight%20Nightfall-3.4.1-all.jar:data/efn/recipes/efn_dodge.json",
+        "EpicFight%20Nightfall-3.4.1-all.jar:data/efn/recipes/efn_parry.json",
+        "EpicFight%20Nightfall-3.4.1-all.jar:data/efn/recipes/efn_step.json",
+        "EpicFight%20Nightfall-3.4.1-all.jar:data/efn/recipes/execution.json",
+        "EpicFight%20Nightfall-3.4.1-all.jar:data/efn/recipes/mortal_blade.json",
+        "EpicFight%20Nightfall-3.4.1-all.jar:data/efn/recipes/stomp.json",
+        "EpicFight%20Nightfall-3.4.1-all.jar:data/efn/recipes/zansetsu.json",
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/efn_dodge.json",
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/efn_parry.json",
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/efn_step.json",
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/execution.json",
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/mortal_blade.json",
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/stomp.json",
+        "EpicFight_20Nightfall-3.4.1-all.jar:data/efn/recipes/zansetsu.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/skillbook.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "efn:efn_dodge",
+        "efn:efn_parry",
+        "efn:efn_step",
+        "efn:execution",
+        "efn:mortal_blade",
+        "efn:stomp",
+        "efn:zansetsu"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:skillbook_dodge",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/models/item/skillbook_dodge.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/skillbook_dodge.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:skillbook_guard",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/models/item/skillbook_guard.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/skillbook_guard.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:skillbook_identity",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/models/item/skillbook_identity.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/skillbook_identity.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:skillbook_mover",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/models/item/skillbook_mover.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/skillbook_mover.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:skillbook_passive",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/models/item/skillbook_passive.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/skillbook_passive.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:spear",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/models/item/spear.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/spear.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:stone_dagger",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/stone_dagger.json",
+        "data/epicfight/recipes/stone_dagger.json"
+      ],
+      "display_name_en_us": "Stone Dagger",
+      "display_name_ru_ru": "Каменный кинжал",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/stone_dagger.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/stone_dagger.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:stone_dagger"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:stone_greatsword",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/stone_greatsword.json",
+        "data/epicfight/recipes/stone_greatsword.json"
+      ],
+      "display_name_en_us": "Stone Greatsword",
+      "display_name_ru_ru": "Каменный Большой меч",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/stone_greatsword.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/stone_greatsword.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:stone_greatsword"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:stone_longsword",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/models/item/stone_longsword.json",
+        "data/epicfight/recipes/stone_longsword.json"
+      ],
+      "display_name_en_us": "Stone Longsword",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/stone_longsword.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/stone_longsword.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:stone_longsword"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:stone_spear",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/stone_spear.json",
+        "data/epicfight/recipes/stone_spear.json"
+      ],
+      "display_name_en_us": "Stone Spear",
+      "display_name_ru_ru": "Каменное Копье",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/stone_spear.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/stone_spear.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:stone_spear"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:stone_tachi",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/models/item/stone_tachi.json",
+        "data/epicfight/recipes/stone_tachi.json"
+      ],
+      "display_name_en_us": "Stone Tachi",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/stone_tachi.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/stone_tachi.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:stone_tachi"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:stray_hat",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/stray_hat.json"
+      ],
+      "display_name_en_us": "Stray Hat",
+      "display_name_ru_ru": "Капюшон Зиморога",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/stray_hat.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:stray_pants",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/stray_pants.json"
+      ],
+      "display_name_en_us": "Stray Pants",
+      "display_name_ru_ru": "Штаны Зиморога",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/stray_pants.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:stray_robe",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/stray_robe.json"
+      ],
+      "display_name_en_us": "Stray Robe",
+      "display_name_ru_ru": "Мантия Зиморога",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/stray_robe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:tachi",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/models/item/tachi.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/tachi.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:uchigatana",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json",
+        "assets/epicfight/models/item/uchigatana.json"
+      ],
+      "display_name_en_us": "Uchigatana",
+      "display_name_ru_ru": "Утигатана",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/uchigatana.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:uchigatana.tooltip",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Sheathe Uchigatana after 5 seconds of inactivity and your next attack will be empowered.",
+      "display_name_ru_ru": "После 5 секунд вашего простоя, Утигатана уберётся в ножны и следующая атака будет усилена.",
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:uchigatana_sheath",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/models/item/uchigatana_sheath.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/uchigatana_sheath.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:wooden_dagger",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/models/item/wooden_dagger.json",
+        "data/epicfight/recipes/wooden_dagger.json"
+      ],
+      "display_name_en_us": "Wooden Dagger",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/wooden_dagger.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/wooden_dagger.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:wooden_dagger"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:wooden_greatsword",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/models/item/wooden_greatsword.json",
+        "data/epicfight/recipes/wooden_greatsword.json"
+      ],
+      "display_name_en_us": "Wooden Greatsword",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/wooden_greatsword.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/wooden_greatsword.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:wooden_greatsword"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:wooden_longsword",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/models/item/wooden_longsword.json",
+        "data/epicfight/recipes/wooden_longsword.json"
+      ],
+      "display_name_en_us": "Wooden Longsword",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/wooden_longsword.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/wooden_longsword.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:wooden_longsword"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:wooden_spear",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/models/item/wooden_spear.json",
+        "data/epicfight/recipes/wooden_spear.json"
+      ],
+      "display_name_en_us": "Wooden Spear",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/wooden_spear.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/wooden_spear.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:wooden_spear"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "epicfight:wooden_tachi",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "epicfight",
+      "mod_name": "Epic Fight",
+      "mod_version": "20.14.17",
+      "source_jar": "epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "source_sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/epicfight/lang/en_us.json",
+        "assets/epicfight/models/item/wooden_tachi.json",
+        "data/epicfight/recipes/wooden_tachi.json"
+      ],
+      "display_name_en_us": "Wooden Tachi",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/lang/en_us.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:assets/epicfight/models/item/wooden_tachi.json",
+        "epic-fight-20.14.17-mc1.20.1-forge.jar:data/epicfight/recipes/wooden_tachi.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "epicfight:wooden_tachi"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    }
+  ]
+}

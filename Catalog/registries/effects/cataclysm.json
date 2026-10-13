@@ -1,0 +1,591 @@
+{
+  "schema_version": 1,
+  "registry_type": "effects",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "cataclysm",
+    "name": "cataclysm",
+    "version": "3.31"
+  },
+  "records": [
+    {
+      "registry_id": "cataclysm:abyssal_burn",
+      "registry_type": "mob_effect",
+      "schema_version": 1,
+      "mod_id": "cataclysm",
+      "mod_name": "cataclysm",
+      "mod_version": "3.31",
+      "source_jar": "L_Enders_Cataclysm-3.31.jar",
+      "source_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/cataclysm/lang/en_us.json",
+        "assets/cataclysm/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Abyssal Burn",
+      "display_name_ru_ru": "Глубинный ожог",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "cataclysm:damage_type/bypasses_hurt_time",
+        "cataclysm:mob_effect/effective_for_bosses",
+        "minecraft:damage_type/bypasses_armor"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "cataclysm:abyssal_curse",
+      "registry_type": "mob_effect",
+      "schema_version": 1,
+      "mod_id": "cataclysm",
+      "mod_name": "cataclysm",
+      "mod_version": "3.31",
+      "source_jar": "L_Enders_Cataclysm-3.31.jar",
+      "source_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/cataclysm/lang/en_us.json",
+        "assets/cataclysm/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Abyssal Curse",
+      "display_name_ru_ru": "Глубинное проклятие",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "cataclysm:abyssal_fear",
+      "registry_type": "mob_effect",
+      "schema_version": 1,
+      "mod_id": "cataclysm",
+      "mod_name": "cataclysm",
+      "mod_version": "3.31",
+      "source_jar": "L_Enders_Cataclysm-3.31.jar",
+      "source_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/cataclysm/lang/en_us.json",
+        "assets/cataclysm/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Abyssal Fear",
+      "display_name_ru_ru": "Глубинный ужас",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "cataclysm:blazing_brand",
+      "registry_type": "mob_effect",
+      "schema_version": 1,
+      "mod_id": "cataclysm",
+      "mod_name": "cataclysm",
+      "mod_version": "3.31",
+      "source_jar": "L_Enders_Cataclysm-3.31.jar",
+      "source_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/cataclysm/lang/en_us.json",
+        "assets/cataclysm/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Blazing Brand",
+      "display_name_ru_ru": "Огненное клеймо",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "cataclysm:mob_effect/effective_for_bosses"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "cataclysm:blessing_of_amethyst",
+      "registry_type": "mob_effect",
+      "schema_version": 1,
+      "mod_id": "cataclysm",
+      "mod_name": "cataclysm",
+      "mod_version": "3.31",
+      "source_jar": "L_Enders_Cataclysm-3.31.jar",
+      "source_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/cataclysm/lang/en_us.json",
+        "assets/cataclysm/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Blessing of Amethyst",
+      "display_name_ru_ru": "Аметистовое благословение",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "cataclysm:bone_fracture",
+      "registry_type": "mob_effect",
+      "schema_version": 1,
+      "mod_id": "cataclysm",
+      "mod_name": "cataclysm",
+      "mod_version": "3.31",
+      "source_jar": "L_Enders_Cataclysm-3.31.jar",
+      "source_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/cataclysm/lang/en_us.json",
+        "assets/cataclysm/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Bone Fracture",
+      "display_name_ru_ru": "Переломанные кости",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "cataclysm:curse_of_desert",
+      "registry_type": "mob_effect",
+      "schema_version": 1,
+      "mod_id": "cataclysm",
+      "mod_name": "cataclysm",
+      "mod_version": "3.31",
+      "source_jar": "L_Enders_Cataclysm-3.31.jar",
+      "source_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/cataclysm/lang/en_us.json",
+        "assets/cataclysm/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Curse of Desert",
+      "display_name_ru_ru": "Пустынное проклятие",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "cataclysm:dragon_wound",
+      "registry_type": "mob_effect",
+      "schema_version": 1,
+      "mod_id": "cataclysm",
+      "mod_name": "cataclysm",
+      "mod_version": "3.31",
+      "source_jar": "L_Enders_Cataclysm-3.31.jar",
+      "source_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/cataclysm/lang/en_us.json"
+      ],
+      "display_name_en_us": "Dragon Wound",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "cataclysm:ghost_form",
+      "registry_type": "mob_effect",
+      "schema_version": 1,
+      "mod_id": "cataclysm",
+      "mod_name": "cataclysm",
+      "mod_version": "3.31",
+      "source_jar": "L_Enders_Cataclysm-3.31.jar",
+      "source_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/cataclysm/lang/en_us.json",
+        "assets/cataclysm/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Ghost Form",
+      "display_name_ru_ru": "Призрачная форма",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "cataclysm:ghost_sickness",
+      "registry_type": "mob_effect",
+      "schema_version": 1,
+      "mod_id": "cataclysm",
+      "mod_name": "cataclysm",
+      "mod_version": "3.31",
+      "source_jar": "L_Enders_Cataclysm-3.31.jar",
+      "source_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/cataclysm/lang/en_us.json",
+        "assets/cataclysm/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Ghost Sickness",
+      "display_name_ru_ru": "Призрачная болезнь",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "cataclysm:mob_effect/effective_for_bosses"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "cataclysm:lightning_hex",
+      "registry_type": "mob_effect",
+      "schema_version": 1,
+      "mod_id": "cataclysm",
+      "mod_name": "cataclysm",
+      "mod_version": "3.31",
+      "source_jar": "L_Enders_Cataclysm-3.31.jar",
+      "source_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/cataclysm/lang/en_us.json"
+      ],
+      "display_name_en_us": "Lightning Hex",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "cataclysm:monstrous",
+      "registry_type": "mob_effect",
+      "schema_version": 1,
+      "mod_id": "cataclysm",
+      "mod_name": "cataclysm",
+      "mod_version": "3.31",
+      "source_jar": "L_Enders_Cataclysm-3.31.jar",
+      "source_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/cataclysm/lang/en_us.json",
+        "assets/cataclysm/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Monstrous",
+      "display_name_ru_ru": "Чудище",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "cataclysm:mob_effect/effective_for_bosses"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "cataclysm:over_gravity",
+      "registry_type": "mob_effect",
+      "schema_version": 1,
+      "mod_id": "cataclysm",
+      "mod_name": "cataclysm",
+      "mod_version": "3.31",
+      "source_jar": "L_Enders_Cataclysm-3.31.jar",
+      "source_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/cataclysm/lang/en_us.json"
+      ],
+      "display_name_en_us": "Over Gravity",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "cataclysm:stun",
+      "registry_type": "mob_effect",
+      "schema_version": 1,
+      "mod_id": "cataclysm",
+      "mod_name": "cataclysm",
+      "mod_version": "3.31",
+      "source_jar": "L_Enders_Cataclysm-3.31.jar",
+      "source_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/cataclysm/lang/en_us.json",
+        "assets/cataclysm/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Stun",
+      "display_name_ru_ru": "Оглушение",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "cataclysm:wetness",
+      "registry_type": "mob_effect",
+      "schema_version": 1,
+      "mod_id": "cataclysm",
+      "mod_name": "cataclysm",
+      "mod_version": "3.31",
+      "source_jar": "L_Enders_Cataclysm-3.31.jar",
+      "source_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/cataclysm/lang/en_us.json",
+        "assets/cataclysm/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Wetness",
+      "display_name_ru_ru": "Влажность",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}

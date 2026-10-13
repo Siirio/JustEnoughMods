@@ -18,7 +18,7 @@ import net.minecraftforge.network.simple.SimpleChannel;
 import java.util.Set;
 
 public final class ProfessionsNetwork {
-    private static final String VERSION = "1";
+    private static final String VERSION = "2";
     private static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(JemProfessions.MOD_ID, "main"))
             .networkProtocolVersion(() -> VERSION).clientAcceptedVersions(VERSION::equals).serverAcceptedVersions(VERSION::equals).simpleChannel();
     private ProfessionsNetwork() {}
@@ -35,9 +35,20 @@ public final class ProfessionsNetwork {
                     DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> com.siirio.jemprofessions.client.ProfessionClientState.accept(packet));
                     context.get().setPacketHandled(true);
                 }).add();
+        CHANNEL.messageBuilder(ArchitectHotbarSlotPacket.class, 2, NetworkDirection.PLAY_TO_SERVER)
+                .encoder(ArchitectHotbarSlotPacket::encode).decoder(ArchitectHotbarSlotPacket::decode).consumerMainThread((packet, context) -> {
+                    ServerPlayer player = context.get().getSender();
+                    int slot = packet.logicalSlot();
+                    if (player != null && slot >= 9 && slot <= 12 && ProfessionApi.level(player, ProfessionId.ARCHITECT) >= 20
+                            && net.minecraftforge.fml.ModList.get().isLoaded("tinyinv")) {
+                        player.getInventory().selected = slot + 18;
+                    }
+                    context.get().setPacketHandled(true);
+                }).add();
     }
 
     public static void toggle(ProfessionId profession, String nodeId) { CHANNEL.sendToServer(new ProfessionTogglePacket(profession, nodeId)); }
+    public static void selectArchitectSlot(int logicalSlot) { CHANNEL.sendToServer(new ArchitectHotbarSlotPacket(logicalSlot)); }
 
     public static void sendStatus(ServerPlayer player, boolean open) {
         var principal = IdentityPolicy.resolve(player);

@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "endermanoverhaul",
+    "name": "Enderman Overhaul",
+    "version": "1.0.4"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "endermanoverhaul:corrupted_blade",
+      "mod_id": "endermanoverhaul",
+      "mod_name": "Enderman Overhaul",
+      "mod_version": "1.0.4",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "endermanoverhaul:enderman_tooth",
+        "minecraft:crafting_shaped",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "endermanoverhaul:corrupted_blade"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "endermanoverhaul-forge-1.20.1-1.0.4.jar:data/endermanoverhaul/recipes/corrupted_blade.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "endermanoverhaul:corrupted_shield",
+      "mod_id": "endermanoverhaul",
+      "mod_name": "Enderman Overhaul",
+      "mod_version": "1.0.4",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "endermanoverhaul:enderman_tooth",
+        "minecraft:crafting_shaped",
+        "minecraft:iron_ingot",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "endermanoverhaul:corrupted_shield"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "endermanoverhaul-forge-1.20.1-1.0.4.jar:data/endermanoverhaul/recipes/corrupted_shield.json"
+      ]
+    }
+  ]
+}

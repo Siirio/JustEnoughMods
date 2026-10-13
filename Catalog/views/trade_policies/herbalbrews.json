@@ -1,0 +1,1985 @@
+{
+  "schema_version": 1,
+  "registry_type": "trade_policies",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "herbalbrews",
+    "name": "[Let's Do] HerbalBrews",
+    "version": "1.0.12"
+  },
+  "records": [
+    {
+      "item_id": "herbalbrews:black_tea",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/black_tea.json",
+        "data/herbalbrews/recipes/kettle_brewing/black_tea.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/black_tea.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/kettle_brewing/black_tea.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "herbalbrews:kettle_brewing/black_tea"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:black_tea_leaf_block",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/black_tea_leaf_block.json"
+      ],
+      "display_name_en_us": "Black Tea Leaf Block",
+      "display_name_ru_ru": "Блок листьев чёрного чая",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/black_tea_leaf_block.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:cauldron",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/cauldron.json",
+        "data/herbalbrews/recipes/cauldron.json"
+      ],
+      "display_name_en_us": "Brewing Cauldron",
+      "display_name_ru_ru": "Котёл",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/cauldron.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/cauldron.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "herbalbrews:cauldron"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:coffee",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/coffee.json",
+        "data/herbalbrews/recipes/kettle_brewing/coffee.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/coffee.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/kettle_brewing/coffee.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "herbalbrews:kettle_brewing/coffee"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:coffee_beans",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/coffee_beans.json",
+        "data/herbalbrews/recipes/coffee_beans_from_plant.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/coffee_beans.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/coffee_beans_from_plant.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "BUY_AND_SELL",
+      "reason": "Verified HerbalBrews raw ingredient",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "herbalbrews:coffee_beans_from_plant"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": 4,
+      "sell_copper": 2,
+      "daily_player_units": 32,
+      "daily_global_units": 256,
+      "demand_group": "crops",
+      "price_basis": "Verified HerbalBrews raw ingredient",
+      "arbitrage_risk": "reviewed",
+      "review_status": "reviewed"
+    },
+    {
+      "item_id": "herbalbrews:copper_tea_kettle",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/copper_tea_kettle.json",
+        "data/herbalbrews/recipes/copper_tea_kettle.json"
+      ],
+      "display_name_en_us": "Copper Tea Kettle",
+      "display_name_ru_ru": "Медный чайник",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/copper_tea_kettle.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/copper_tea_kettle.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "herbalbrews:copper_tea_kettle"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:dried_black_tea",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json",
+        "assets/herbalbrews/models/item/dried_black_tea.json"
+      ],
+      "display_name_en_us": "Dried Black Tea",
+      "display_name_ru_ru": "Сухие листья чёрного чая",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/dried_black_tea.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:dried_green_tea",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json",
+        "assets/herbalbrews/models/item/dried_green_tea.json"
+      ],
+      "display_name_en_us": "Dried Green Tea",
+      "display_name_ru_ru": "Сухие листья зелёного чая",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/dried_green_tea.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:dried_green_tea_leaf_block",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/dried_green_tea_leaf_block.json",
+        "data/herbalbrews/recipes/dried_green_tea_leaf_block.json"
+      ],
+      "display_name_en_us": "Dried Green Tea Leaf Block",
+      "display_name_ru_ru": "Блок сушёных листьев зелёного чая",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/dried_green_tea_leaf_block.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/dried_green_tea_leaf_block.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "herbalbrews:dried_green_tea_leaf_block"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:dried_oolong_tea",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json",
+        "assets/herbalbrews/models/item/dried_oolong_tea.json"
+      ],
+      "display_name_en_us": "Dried Oolong Tea",
+      "display_name_ru_ru": "Сухие листья чая улун",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/dried_oolong_tea.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:dried_out_green_tea_leaf_block",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/dried_out_green_tea_leaf_block.json"
+      ],
+      "display_name_en_us": "Dried Green Tea Leaf Block",
+      "display_name_ru_ru": "Блок сушёных листьев зелёного чая",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/dried_out_green_tea_leaf_block.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:flask",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json",
+        "assets/herbalbrews/models/item/flask.json",
+        "data/herbalbrews/recipes/cauldron_brewing/dummy_recipe.json"
+      ],
+      "display_name_en_us": "Flask",
+      "display_name_ru_ru": "Колба",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/flask.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/cauldron_brewing/dummy_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "herbalbrews:cauldron_brewing/dummy_recipe"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:flask_1",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/flask_1.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/flask_1.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:flask_2",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/flask_2.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/flask_2.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:flask_3",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/flask_3.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/flask_3.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:flask_4",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/flask_4.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/flask_4.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:flask_5",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/flask_5.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/flask_5.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:flask_6",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/flask_6.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/flask_6.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:green_tea",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/green_tea.json",
+        "data/herbalbrews/recipes/kettle_brewing/green_tea.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/green_tea.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/kettle_brewing/green_tea.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "herbalbrews:kettle_brewing/green_tea"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:green_tea_leaf",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json",
+        "assets/herbalbrews/models/item/green_tea_leaf.json",
+        "data/herbalbrews/recipes/tea_leafs_from_crate.json"
+      ],
+      "display_name_en_us": "Green Tea Leaf",
+      "display_name_ru_ru": "Лист зелёного чая",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/green_tea_leaf.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/tea_leafs_from_crate.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "BUY_AND_SELL",
+      "reason": "Verified HerbalBrews raw ingredient",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "herbalbrews:tea_leafs_from_crate"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": 4,
+      "sell_copper": 2,
+      "daily_player_units": 32,
+      "daily_global_units": 256,
+      "demand_group": "crops",
+      "price_basis": "Verified HerbalBrews raw ingredient",
+      "arbitrage_risk": "reviewed",
+      "review_status": "reviewed"
+    },
+    {
+      "item_id": "herbalbrews:green_tea_leaf_block",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/green_tea_leaf_block.json",
+        "data/herbalbrews/recipes/green_tea_leaf_block.json"
+      ],
+      "display_name_en_us": "Green Tea Leaf Block",
+      "display_name_ru_ru": "Блок листьев зелёного чая",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/green_tea_leaf_block.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/green_tea_leaf_block.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "herbalbrews:green_tea_leaf_block"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:herbal_infusion",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json",
+        "assets/herbalbrews/models/item/herbal_infusion.json",
+        "data/herbalbrews/recipes/herbal_infusion.json"
+      ],
+      "display_name_en_us": "Herbal Infusion",
+      "display_name_ru_ru": "Травяная смесь",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/herbal_infusion.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/herbal_infusion.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "herbalbrews:herbal_infusion"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:herbalbrews_banner",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/herbalbrews_banner.json",
+        "data/herbalbrews/recipes/banner_from_smithing_table.json"
+      ],
+      "display_name_en_us": "Completionist Banner: §aHerbal Brews",
+      "display_name_ru_ru": "Знамя чайного мастера: §aHerbal Brews",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/herbalbrews_banner.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/banner_from_smithing_table.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "herbalbrews:banner_from_smithing_table"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:hibiscus",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/hibiscus.json"
+      ],
+      "display_name_en_us": "Hibiscus",
+      "display_name_ru_ru": "Гибискус",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/hibiscus.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "BUY_AND_SELL",
+      "reason": "Verified HerbalBrews raw ingredient",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": 4,
+      "sell_copper": 2,
+      "daily_player_units": 32,
+      "daily_global_units": 256,
+      "demand_group": "crops",
+      "price_basis": "Verified HerbalBrews raw ingredient",
+      "arbitrage_risk": "reviewed",
+      "review_status": "reviewed"
+    },
+    {
+      "item_id": "herbalbrews:hibiscus_tea",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/hibiscus_tea.json",
+        "data/herbalbrews/recipes/kettle_brewing/hibiscus_tea.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/hibiscus_tea.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/kettle_brewing/hibiscus_tea.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "herbalbrews:kettle_brewing/hibiscus_tea"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:hibiscus_tea_block",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/hibiscus_tea_block.json"
+      ],
+      "display_name_en_us": "Hibiscus Tea",
+      "display_name_ru_ru": "Чай из гибискуса",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/hibiscus_tea_block.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:jug",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/jug.json",
+        "data/herbalbrews/recipes/jug.json"
+      ],
+      "display_name_en_us": "Jug",
+      "display_name_ru_ru": "Кувшин",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/jug.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/jug.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "herbalbrews:jug"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:lavender",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/lavender.json"
+      ],
+      "display_name_en_us": "Lavender",
+      "display_name_ru_ru": "Лаванда",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/lavender.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "BUY_AND_SELL",
+      "reason": "Verified HerbalBrews raw ingredient",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": 4,
+      "sell_copper": 2,
+      "daily_player_units": 32,
+      "daily_global_units": 256,
+      "demand_group": "crops",
+      "price_basis": "Verified HerbalBrews raw ingredient",
+      "arbitrage_risk": "reviewed",
+      "review_status": "reviewed"
+    },
+    {
+      "item_id": "herbalbrews:lavender_blossom",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json",
+        "assets/herbalbrews/models/item/lavender_blossom.json"
+      ],
+      "display_name_en_us": "Lavender Blossom",
+      "display_name_ru_ru": "Веточка лаванды",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/lavender_blossom.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:lavender_tea",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/lavender_tea.json",
+        "data/herbalbrews/recipes/kettle_brewing/lavender_tea.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/lavender_tea.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/kettle_brewing/lavender_tea.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "herbalbrews:kettle_brewing/lavender_tea"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:milk_coffee",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/milk_coffee.json",
+        "data/herbalbrews/recipes/kettle_brewing/milk_coffee.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/milk_coffee.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/kettle_brewing/milk_coffee.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "herbalbrews:kettle_brewing/milk_coffee"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:milk_coffee_block",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/milk_coffee_block.json"
+      ],
+      "display_name_en_us": "Milk Coffee",
+      "display_name_ru_ru": "Кофе с молоком",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/milk_coffee_block.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:mixed_tea_leaf_block",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/mixed_tea_leaf_block.json",
+        "data/herbalbrews/recipes/mixed_tea_leaf_block.json"
+      ],
+      "display_name_en_us": "Mixed Tea Leaf Block",
+      "display_name_ru_ru": "Блок смешанных чайных листьев",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/mixed_tea_leaf_block.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/mixed_tea_leaf_block.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "herbalbrews:mixed_tea_leaf_block"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:oolong_tea",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/oolong_tea.json",
+        "data/herbalbrews/recipes/kettle_brewing/oolong_tea.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/oolong_tea.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/kettle_brewing/oolong_tea.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "herbalbrews:kettle_brewing/oolong_tea"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:oolong_tea_leaf_block",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/oolong_tea_leaf_block.json"
+      ],
+      "display_name_en_us": "Oolong Tea Leaf Block",
+      "display_name_ru_ru": "Блок листьев чая улун",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/oolong_tea_leaf_block.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:rooibos_leaf",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/rooibos_leaf.json",
+        "data/herbalbrews/recipes/rooibos_leaf_from_plant.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/rooibos_leaf.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/rooibos_leaf_from_plant.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "herbalbrews:rooibos_leaf_from_plant"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:rooibos_tea",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/rooibos_tea.json",
+        "data/herbalbrews/recipes/kettle_brewing/rooibos_tea.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/rooibos_tea.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/kettle_brewing/rooibos_tea.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "herbalbrews:kettle_brewing/rooibos_tea"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:stove",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/stove.json",
+        "data/herbalbrews/recipes/stove.json"
+      ],
+      "display_name_en_us": "Stove",
+      "display_name_ru_ru": "Чайная плита",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/stove.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/stove.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "herbalbrews:stove"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:tea_blossom",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/tea_blossom.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/tea_blossom.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:tea_kettle",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/tea_kettle.json",
+        "data/herbalbrews/recipes/tea_kettle.json"
+      ],
+      "display_name_en_us": "Tea Kettle",
+      "display_name_ru_ru": "Чайник",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/tea_kettle.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/tea_kettle.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "herbalbrews:tea_kettle"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:tea_leaf_crate",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/tea_leaf_crate.json",
+        "data/herbalbrews/recipes/tea_leaf_crate.json"
+      ],
+      "display_name_en_us": "Bag of Tea Leaves",
+      "display_name_ru_ru": "Мешок чайных листьев",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/tea_leaf_crate.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/tea_leaf_crate.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "herbalbrews:tea_leaf_crate"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:top_hat",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json",
+        "assets/herbalbrews/models/item/top_hat.json",
+        "data/herbalbrews/recipes/top_hat.json"
+      ],
+      "display_name_en_us": "Top Hat",
+      "display_name_ru_ru": "Цилиндр",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/top_hat.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/top_hat.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "herbalbrews:top_hat"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:wild_coffee_plant",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/wild_coffee_plant.json"
+      ],
+      "display_name_en_us": "Wild Coffee",
+      "display_name_ru_ru": "Дикий кофе",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/wild_coffee_plant.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:wild_rooibos_plant",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/wild_rooibos_plant.json"
+      ],
+      "display_name_en_us": "Wild Rooibos",
+      "display_name_ru_ru": "Дикий ройбос",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/wild_rooibos_plant.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:wild_yerba_mate_plant",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/wild_yerba_mate_plant.json"
+      ],
+      "display_name_en_us": "Wild Yerba Mate",
+      "display_name_ru_ru": "Дикий падуб",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/wild_yerba_mate_plant.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:witch_hat",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/lang/en_us.json",
+        "assets/herbalbrews/lang/ru_ru.json",
+        "assets/herbalbrews/models/item/witch_hat.json",
+        "data/herbalbrews/recipes/witch_hat.json"
+      ],
+      "display_name_en_us": "Witch Hat",
+      "display_name_ru_ru": "Шляпа ведьмы",
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/en_us.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/lang/ru_ru.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/witch_hat.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/witch_hat.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "herbalbrews:witch_hat"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:yerba_mate_leaf",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/yerba_mate_leaf.json",
+        "data/herbalbrews/recipes/yerba_mate_leaf_from_plant.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/yerba_mate_leaf.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/yerba_mate_leaf_from_plant.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "herbalbrews:yerba_mate_leaf_from_plant"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "herbalbrews:yerba_mate_tea",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "source_jar": "letsdo-herbalbrews-forge-1.0.12.jar",
+      "source_sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/herbalbrews/models/item/yerba_mate_tea.json",
+        "data/herbalbrews/recipes/kettle_brewing/yerba_mate_tea.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:assets/herbalbrews/models/item/yerba_mate_tea.json",
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/kettle_brewing/yerba_mate_tea.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "herbalbrews:kettle_brewing/yerba_mate_tea"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    }
+  ]
+}

@@ -1,0 +1,808 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "herbalbrews",
+    "name": "[Let's Do] HerbalBrews",
+    "version": "1.0.12"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:banner_from_smithing_table",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "minecraft:netherite_ingot",
+        "minecraft:netherite_upgrade_smithing_template",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "herbalbrews:herbalbrews_banner"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/banner_from_smithing_table.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:black_dye_from_dried_black_tea",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "herbalbrews:dried_black_tea",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:black_dye"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/black_dye_from_dried_black_tea.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:brown_dye_from_coffee_beans",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "herbalbrews:coffee_beans",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:brown_dye"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/brown_dye_from_coffee_beans.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:cauldron",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:iron_ingot",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "herbalbrews:cauldron"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/cauldron.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:cauldron_brewing/dummy_recipe",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "herbalbrews:cauldron_brewing",
+      "machine_id": "herbalbrews:cauldron_brewing",
+      "ingredient_groups": [
+        "herbalbrews:cauldron_brewing",
+        "minecraft:potion"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "herbalbrews:flask"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/cauldron_brewing/dummy_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:coffee_beans_from_plant",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "herbalbrews:wild_coffee_plant",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "herbalbrews:coffee_beans"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/coffee_beans_from_plant.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:copper_tea_kettle",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:copper_ingot",
+        "minecraft:crafting_shaped",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "herbalbrews:copper_tea_kettle"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/copper_tea_kettle.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:dried_green_tea_leaf_block",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "herbalbrews:dried_green_tea",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "herbalbrews:dried_green_tea_leaf_block"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/dried_green_tea_leaf_block.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:green_dye_from_dried_black_tea",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "herbalbrews:dried_oolong_tea",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:green_dye"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/green_dye_from_dried_black_tea.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:green_dye_from_leaf_smoking",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "minecraft:smoking",
+      "machine_id": "minecraft:smoking",
+      "ingredient_groups": [
+        "herbalbrews:green_tea_leaf",
+        "minecraft:smoking"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:green_dye"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/green_dye_from_leaf_smoking.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:green_tea_leaf_block",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "herbalbrews:green_tea_leaf",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "herbalbrews:green_tea_leaf_block"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/green_tea_leaf_block.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:herbal_infusion",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "herbalbrews:dried_black_tea",
+        "herbalbrews:dried_green_tea",
+        "herbalbrews:dried_oolong_tea",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "herbalbrews:herbal_infusion"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/herbal_infusion.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:jug",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:glass_pane"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "herbalbrews:jug"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/jug.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:kettle_brewing/black_tea",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "herbalbrews:kettle_brewing",
+      "machine_id": "herbalbrews:kettle_brewing",
+      "ingredient_groups": [
+        "herbalbrews:dried_black_tea",
+        "herbalbrews:kettle_brewing",
+        "herbalbrews:tough",
+        "minecraft:glass_bottle",
+        "minecraft:sugar"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "herbalbrews:black_tea"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/kettle_brewing/black_tea.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:kettle_brewing/coffee",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "herbalbrews:kettle_brewing",
+      "machine_id": "herbalbrews:kettle_brewing",
+      "ingredient_groups": [
+        "herbalbrews:coffee_beans",
+        "herbalbrews:deeprush",
+        "herbalbrews:kettle_brewing",
+        "minecraft:glass_bottle"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "herbalbrews:coffee"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/kettle_brewing/coffee.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:kettle_brewing/green_tea",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "herbalbrews:kettle_brewing",
+      "machine_id": "herbalbrews:kettle_brewing",
+      "ingredient_groups": [
+        "herbalbrews:balanced",
+        "herbalbrews:dried_green_tea",
+        "herbalbrews:kettle_brewing",
+        "minecraft:glass_bottle"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "herbalbrews:green_tea"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/kettle_brewing/green_tea.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:kettle_brewing/hibiscus_tea",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "herbalbrews:kettle_brewing",
+      "machine_id": "herbalbrews:kettle_brewing",
+      "ingredient_groups": [
+        "herbalbrews:hibiscus",
+        "herbalbrews:kettle_brewing",
+        "herbalbrews:lifeleech",
+        "minecraft:glass_bottle",
+        "minecraft:sugar"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "herbalbrews:hibiscus_tea"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/kettle_brewing/hibiscus_tea.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:kettle_brewing/lavender_tea",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "herbalbrews:kettle_brewing",
+      "machine_id": "herbalbrews:kettle_brewing",
+      "ingredient_groups": [
+        "herbalbrews:feral",
+        "herbalbrews:kettle_brewing",
+        "herbalbrews:lavender_blossom",
+        "minecraft:glass_bottle",
+        "minecraft:sugar"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "herbalbrews:lavender_tea"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/kettle_brewing/lavender_tea.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:kettle_brewing/milk_coffee",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "herbalbrews:kettle_brewing",
+      "machine_id": "herbalbrews:kettle_brewing",
+      "ingredient_groups": [
+        "herbalbrews:coffee",
+        "herbalbrews:deeprush",
+        "herbalbrews:kettle_brewing",
+        "minecraft:milk_bucket"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "herbalbrews:milk_coffee"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/kettle_brewing/milk_coffee.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:kettle_brewing/oolong_tea",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "herbalbrews:kettle_brewing",
+      "machine_id": "herbalbrews:kettle_brewing",
+      "ingredient_groups": [
+        "herbalbrews:dried_oolong_tea",
+        "herbalbrews:fortune",
+        "herbalbrews:kettle_brewing",
+        "minecraft:glass_bottle"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "herbalbrews:oolong_tea"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/kettle_brewing/oolong_tea.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:kettle_brewing/rooibos_tea",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "herbalbrews:kettle_brewing",
+      "machine_id": "herbalbrews:kettle_brewing",
+      "ingredient_groups": [
+        "herbalbrews:kettle_brewing",
+        "herbalbrews:rooibos_leaf",
+        "minecraft:glass_bottle",
+        "minecraft:regeneration"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "herbalbrews:rooibos_tea"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/kettle_brewing/rooibos_tea.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:kettle_brewing/yerba_mate_tea",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "herbalbrews:kettle_brewing",
+      "machine_id": "herbalbrews:kettle_brewing",
+      "ingredient_groups": [
+        "herbalbrews:bonding",
+        "herbalbrews:kettle_brewing",
+        "herbalbrews:yerba_mate_leaf",
+        "minecraft:glass_bottle",
+        "minecraft:sugar"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "herbalbrews:yerba_mate_tea"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/kettle_brewing/yerba_mate_tea.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:mixed_tea_leaf_block",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "herbalbrews:dried_black_tea",
+        "herbalbrews:dried_green_tea",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "herbalbrews:mixed_tea_leaf_block"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/mixed_tea_leaf_block.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:purple_dye_from_lavender",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "herbalbrews:lavender",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:purple_dye"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/purple_dye_from_lavender.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:red_dye_from_hibiscus",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "herbalbrews:hibiscus",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:red_dye"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/red_dye_from_hibiscus.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:rooibos_leaf_from_plant",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "herbalbrews:wild_rooibos_plant",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "herbalbrews:rooibos_leaf"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/rooibos_leaf_from_plant.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:stove",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:campfire",
+        "minecraft:crafting_shaped",
+        "minecraft:iron_nugget",
+        "minecraft:stone_tool_materials"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "herbalbrews:stove"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/stove.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:tea_kettle",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:iron_ingot",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "herbalbrews:tea_kettle"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/tea_kettle.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:tea_leaf_crate",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "herbalbrews:green_tea_leaf",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "herbalbrews:tea_leaf_crate"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/tea_leaf_crate.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:tea_leafs_from_crate",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "herbalbrews:tea_leaf_crate",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "herbalbrews:green_tea_leaf"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/tea_leafs_from_crate.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:top_hat",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:wool"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "herbalbrews:top_hat"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/top_hat.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:witch_hat",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:gold_ingot",
+        "minecraft:wool"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "herbalbrews:witch_hat"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/witch_hat.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "herbalbrews:yerba_mate_leaf_from_plant",
+      "mod_id": "herbalbrews",
+      "mod_name": "[Let's Do] HerbalBrews",
+      "mod_version": "1.0.12",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "herbalbrews:wild_yerba_mate_plant",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "herbalbrews:yerba_mate_leaf"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-herbalbrews-forge-1.0.12.jar:data/herbalbrews/recipes/yerba_mate_leaf_from_plant.json"
+      ]
+    }
+  ]
+}

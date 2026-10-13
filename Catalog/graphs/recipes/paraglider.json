@@ -1,0 +1,491 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "paraglider",
+    "name": "Paraglider",
+    "version": "20.1.3"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "paraglider:cosmetic/deku_leaf",
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "recipe_type": "paraglider:cosmetic",
+      "machine_id": "paraglider:cosmetic",
+      "ingredient_groups": [
+        "minecraft:leaves",
+        "paraglider:cosmetic",
+        "paraglider:paragliders"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "paraglider:deku_leaf"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:data/paraglider/recipes/cosmetic/deku_leaf.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "paraglider:cosmetic/goddess_statue",
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "recipe_type": "paraglider:cosmetic",
+      "machine_id": "paraglider:cosmetic",
+      "ingredient_groups": [
+        "forge:cobblestone",
+        "paraglider:cosmetic",
+        "paraglider:statues/goddess"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "paraglider:goddess_statue"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:data/paraglider/recipes/cosmetic/goddess_statue.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "paraglider:cosmetic/goron_goddess_statue",
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "recipe_type": "paraglider:cosmetic",
+      "machine_id": "paraglider:cosmetic",
+      "ingredient_groups": [
+        "forge:ingots/gold",
+        "paraglider:cosmetic",
+        "paraglider:statues/goddess"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "paraglider:goron_goddess_statue"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:data/paraglider/recipes/cosmetic/goron_goddess_statue.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "paraglider:cosmetic/kakariko_goddess_statue",
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "recipe_type": "paraglider:cosmetic",
+      "machine_id": "paraglider:cosmetic",
+      "ingredient_groups": [
+        "minecraft:planks",
+        "paraglider:cosmetic",
+        "paraglider:statues/goddess"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "paraglider:kakariko_goddess_statue"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:data/paraglider/recipes/cosmetic/kakariko_goddess_statue.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "paraglider:cosmetic/paraglider",
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "recipe_type": "paraglider:cosmetic",
+      "machine_id": "paraglider:cosmetic",
+      "ingredient_groups": [
+        "forge:rods/wooden",
+        "paraglider:cosmetic",
+        "paraglider:paragliders"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "paraglider:paraglider"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:data/paraglider/recipes/cosmetic/paraglider.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "paraglider:cosmetic/rito_goddess_statue",
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "recipe_type": "paraglider:cosmetic",
+      "machine_id": "paraglider:cosmetic",
+      "ingredient_groups": [
+        "minecraft:flowers",
+        "paraglider:cosmetic",
+        "paraglider:statues/goddess"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "paraglider:rito_goddess_statue"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:data/paraglider/recipes/cosmetic/rito_goddess_statue.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "paraglider:goddess_statue/heart_container",
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "recipe_type": "paraglider:statue_bargain",
+      "machine_id": "paraglider:statue_bargain",
+      "ingredient_groups": [
+        "paraglider:goddess_statue",
+        "paraglider:heart_container_enabled",
+        "paraglider:spirit_orb",
+        "paraglider:statue_bargain"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:data/paraglider/recipes/goddess_statue/heart_container.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "paraglider:goddess_statue/stamina_vessel",
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "recipe_type": "paraglider:statue_bargain",
+      "machine_id": "paraglider:statue_bargain",
+      "ingredient_groups": [
+        "paraglider:goddess_statue",
+        "paraglider:spirit_orb",
+        "paraglider:stamina_vessel_enabled",
+        "paraglider:statue_bargain"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:data/paraglider/recipes/goddess_statue/stamina_vessel.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "paraglider:horned_statue/buy_heart_container",
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "recipe_type": "paraglider:statue_bargain",
+      "machine_id": "paraglider:statue_bargain",
+      "ingredient_groups": [
+        "forge:gems/emerald",
+        "paraglider:heart_container_enabled",
+        "paraglider:horned_statue",
+        "paraglider:statue_bargain"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:data/paraglider/recipes/horned_statue/buy_heart_container.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "paraglider:horned_statue/buy_stamina_vessel",
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "recipe_type": "paraglider:statue_bargain",
+      "machine_id": "paraglider:statue_bargain",
+      "ingredient_groups": [
+        "forge:gems/emerald",
+        "paraglider:horned_statue",
+        "paraglider:stamina_vessel_enabled",
+        "paraglider:statue_bargain"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:data/paraglider/recipes/horned_statue/buy_stamina_vessel.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "paraglider:horned_statue/sell_heart_container",
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "recipe_type": "paraglider:statue_bargain",
+      "machine_id": "paraglider:statue_bargain",
+      "ingredient_groups": [
+        "minecraft:emerald",
+        "paraglider:heart_container_enabled",
+        "paraglider:horned_statue",
+        "paraglider:statue_bargain"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:data/paraglider/recipes/horned_statue/sell_heart_container.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "paraglider:horned_statue/sell_stamina_vessel",
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "recipe_type": "paraglider:statue_bargain",
+      "machine_id": "paraglider:statue_bargain",
+      "ingredient_groups": [
+        "minecraft:emerald",
+        "paraglider:horned_statue",
+        "paraglider:stamina_vessel_enabled",
+        "paraglider:statue_bargain"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:data/paraglider/recipes/horned_statue/sell_stamina_vessel.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "paraglider:misc/cosmetic/deku_leaf",
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "paraglider:cosmetic/deku_leaf",
+        "paraglider:paragliders"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:data/paraglider/advancements/recipes/misc/cosmetic/deku_leaf.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "paraglider:misc/cosmetic/goddess_statue",
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "paraglider:cosmetic/goddess_statue",
+        "paraglider:statues/goddess"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:data/paraglider/advancements/recipes/misc/cosmetic/goddess_statue.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "paraglider:misc/cosmetic/goron_goddess_statue",
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "paraglider:cosmetic/goron_goddess_statue",
+        "paraglider:statues/goddess"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:data/paraglider/advancements/recipes/misc/cosmetic/goron_goddess_statue.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "paraglider:misc/cosmetic/kakariko_goddess_statue",
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "paraglider:cosmetic/kakariko_goddess_statue",
+        "paraglider:statues/goddess"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:data/paraglider/advancements/recipes/misc/cosmetic/kakariko_goddess_statue.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "paraglider:misc/cosmetic/paraglider",
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "paraglider:cosmetic/paraglider",
+        "paraglider:paragliders"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:data/paraglider/advancements/recipes/misc/cosmetic/paraglider.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "paraglider:misc/cosmetic/rito_goddess_statue",
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "paraglider:cosmetic/rito_goddess_statue",
+        "paraglider:statues/goddess"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:data/paraglider/advancements/recipes/misc/cosmetic/rito_goddess_statue.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "paraglider:misc/paraglider",
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "forge:rods/wooden",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "paraglider:paraglider"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:data/paraglider/advancements/recipes/misc/paraglider.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "paraglider:paraglider",
+      "mod_id": "paraglider",
+      "mod_name": "Paraglider",
+      "mod_version": "20.1.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:leather",
+        "forge:rods/wooden",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "paraglider:paraglider"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Paraglider-forge-20.1.3.jar:data/paraglider/recipes/paraglider.json"
+      ]
+    }
+  ]
+}

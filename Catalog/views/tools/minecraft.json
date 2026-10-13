@@ -1,0 +1,873 @@
+{
+  "schema_version": 1,
+  "registry_type": "tools",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "minecraft",
+    "name": "Minecraft",
+    "version": "1.20.1"
+  },
+  "records": [
+    {
+      "item_id": "minecraft:copper_axe",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "assets/minecraft/lang/ru_ru.json",
+        "assets/minecraft/models/item/copper_axe.json",
+        "data/minecraft/recipes/copper_axe.json"
+      ],
+      "display_name_en_us": "Copper Axe",
+      "display_name_ru_ru": "Copper Axe",
+      "source_provenance": [
+        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/lang/en_us.json",
+        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/lang/ru_ru.json",
+        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/models/item/copper_axe.json",
+        "copperagebackport-forge-1.20.1-0.1.4.jar:data/minecraft/recipes/copper_axe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "axe",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:copper_hoe",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "assets/minecraft/lang/ru_ru.json",
+        "assets/minecraft/models/item/copper_hoe.json",
+        "data/minecraft/recipes/copper_hoe.json"
+      ],
+      "display_name_en_us": "Copper Hoe",
+      "display_name_ru_ru": "Copper Hoe",
+      "source_provenance": [
+        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/lang/en_us.json",
+        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/lang/ru_ru.json",
+        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/models/item/copper_hoe.json",
+        "copperagebackport-forge-1.20.1-0.1.4.jar:data/minecraft/recipes/copper_hoe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "hoe",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:copper_pickaxe",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "assets/minecraft/lang/ru_ru.json",
+        "assets/minecraft/models/item/copper_pickaxe.json",
+        "data/minecraft/recipes/copper_pickaxe.json"
+      ],
+      "display_name_en_us": "Copper Pickaxe",
+      "display_name_ru_ru": "Copper Pickaxe",
+      "source_provenance": [
+        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/lang/en_us.json",
+        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/lang/ru_ru.json",
+        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/models/item/copper_pickaxe.json",
+        "copperagebackport-forge-1.20.1-0.1.4.jar:data/minecraft/recipes/copper_pickaxe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "pickaxe",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:copper_shovel",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "assets/minecraft/lang/ru_ru.json",
+        "assets/minecraft/models/item/copper_shovel.json",
+        "data/minecraft/recipes/copper_shovel.json"
+      ],
+      "display_name_en_us": "Copper Shovel",
+      "display_name_ru_ru": "Copper Shovel",
+      "source_provenance": [
+        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/lang/en_us.json",
+        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/lang/ru_ru.json",
+        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/models/item/copper_shovel.json",
+        "copperagebackport-forge-1.20.1-0.1.4.jar:data/minecraft/recipes/copper_shovel.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "shovel",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:diamond_axe",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/diamond_axe.json"
+      ],
+      "display_name_en_us": "Diamond Axe",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/diamond_axe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "axe",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:diamond_hoe",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/diamond_hoe.json"
+      ],
+      "display_name_en_us": "Diamond Hoe",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/diamond_hoe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "hoe",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:diamond_pickaxe",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/diamond_pickaxe.json"
+      ],
+      "display_name_en_us": "Diamond Pickaxe",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/diamond_pickaxe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "pickaxe",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:diamond_shovel",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/diamond_shovel.json"
+      ],
+      "display_name_en_us": "Diamond Shovel",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/diamond_shovel.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "shovel",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:golden_axe",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/golden_axe.json"
+      ],
+      "display_name_en_us": "Golden Axe",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/golden_axe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "axe",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:golden_hoe",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/golden_hoe.json"
+      ],
+      "display_name_en_us": "Golden Hoe",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/golden_hoe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "hoe",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:golden_pickaxe",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/golden_pickaxe.json"
+      ],
+      "display_name_en_us": "Golden Pickaxe",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/golden_pickaxe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "pickaxe",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:golden_shovel",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/golden_shovel.json"
+      ],
+      "display_name_en_us": "Golden Shovel",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/golden_shovel.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "shovel",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:iron_axe",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/iron_axe.json"
+      ],
+      "display_name_en_us": "Iron Axe",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/iron_axe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "axe",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:iron_hoe",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/iron_hoe.json"
+      ],
+      "display_name_en_us": "Iron Hoe",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/iron_hoe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "hoe",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:iron_pickaxe",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/iron_pickaxe.json"
+      ],
+      "display_name_en_us": "Iron Pickaxe",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/iron_pickaxe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "pickaxe",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:iron_shovel",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/iron_shovel.json"
+      ],
+      "display_name_en_us": "Iron Shovel",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/iron_shovel.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "shovel",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:netherite_axe",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/legendary_monsters/recipes/enderitium_netherite_axe.json",
+        "data/minecraft/recipes/netherite_axe_smithing.json"
+      ],
+      "display_name_en_us": "Netherite Axe",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "legendarymonsters-2.2.2%20MC%201.20.1.jar:data/legendary_monsters/recipes/enderitium_netherite_axe.json",
+        "legendarymonsters-2.2.2_20MC_201.20.1.jar:data/legendary_monsters/recipes/enderitium_netherite_axe.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/netherite_axe_smithing.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "axe",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:netherite_hoe",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/legendary_monsters/recipes/enderitium_netherite_hoe.json",
+        "data/minecraft/recipes/netherite_hoe_smithing.json"
+      ],
+      "display_name_en_us": "Netherite Hoe",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "legendarymonsters-2.2.2%20MC%201.20.1.jar:data/legendary_monsters/recipes/enderitium_netherite_hoe.json",
+        "legendarymonsters-2.2.2_20MC_201.20.1.jar:data/legendary_monsters/recipes/enderitium_netherite_hoe.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/netherite_hoe_smithing.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "hoe",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:netherite_pickaxe",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/legendary_monsters/recipes/enderitium_netherite_pickaxe.json",
+        "data/minecraft/recipes/netherite_pickaxe_smithing.json"
+      ],
+      "display_name_en_us": "Netherite Pickaxe",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "legendarymonsters-2.2.2%20MC%201.20.1.jar:data/legendary_monsters/recipes/enderitium_netherite_pickaxe.json",
+        "legendarymonsters-2.2.2_20MC_201.20.1.jar:data/legendary_monsters/recipes/enderitium_netherite_pickaxe.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/netherite_pickaxe_smithing.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "pickaxe",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:netherite_shovel",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/legendary_monsters/recipes/enderitium_netherite_shovel.json",
+        "data/minecraft/recipes/netherite_shovel_smithing.json"
+      ],
+      "display_name_en_us": "Netherite Shovel",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "legendarymonsters-2.2.2%20MC%201.20.1.jar:data/legendary_monsters/recipes/enderitium_netherite_shovel.json",
+        "legendarymonsters-2.2.2_20MC_201.20.1.jar:data/legendary_monsters/recipes/enderitium_netherite_shovel.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/netherite_shovel_smithing.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "shovel",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:stone_axe",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/stone_axe.json",
+        "data/unearthed_journey/recipes/palagonite_stone_axe.json",
+        "data/unearthed_journey/recipes/slate_stone_axe.json",
+        "data/unearthed_journey/recipes/stone_axe.json"
+      ],
+      "display_name_en_us": "Stone Axe",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/stone_axe.json",
+        "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/palagonite_stone_axe.json",
+        "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/slate_stone_axe.json",
+        "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/stone_axe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "axe",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:stone_hoe",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/stone_hoe.json",
+        "data/unearthed_journey/recipes/palagonite_stone_hoe.json",
+        "data/unearthed_journey/recipes/slate_stone_hoe.json",
+        "data/unearthed_journey/recipes/stone_hoe.json"
+      ],
+      "display_name_en_us": "Stone Hoe",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/stone_hoe.json",
+        "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/palagonite_stone_hoe.json",
+        "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/slate_stone_hoe.json",
+        "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/stone_hoe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "hoe",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:stone_pickaxe",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/stone_pickaxe.json",
+        "data/unearthed_journey/recipes/palagonite_stone_pickaxe.json",
+        "data/unearthed_journey/recipes/slate_stone_pickaxe.json",
+        "data/unearthed_journey/recipes/stone_pickaxe.json"
+      ],
+      "display_name_en_us": "Stone Pickaxe",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/stone_pickaxe.json",
+        "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/palagonite_stone_pickaxe.json",
+        "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/slate_stone_pickaxe.json",
+        "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/stone_pickaxe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "pickaxe",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:stone_shovel",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/stone_shovel.json",
+        "data/unearthed_journey/recipes/palagonite_stone_shovel.json",
+        "data/unearthed_journey/recipes/slate_stone_shovel.json",
+        "data/unearthed_journey/recipes/stone_shovel.json"
+      ],
+      "display_name_en_us": "Stone Shovel",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/stone_shovel.json",
+        "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/palagonite_stone_shovel.json",
+        "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/slate_stone_shovel.json",
+        "unearthed_journey-2.2.3.jar:data/unearthed_journey/recipes/stone_shovel.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "shovel",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:wooden_axe",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/wooden_axe.json"
+      ],
+      "display_name_en_us": "Wooden Axe",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/wooden_axe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "axe",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:wooden_hoe",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/wooden_hoe.json"
+      ],
+      "display_name_en_us": "Wooden Hoe",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/wooden_hoe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "hoe",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:wooden_pickaxe",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/wooden_pickaxe.json"
+      ],
+      "display_name_en_us": "Wooden Pickaxe",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/wooden_pickaxe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "pickaxe",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "minecraft:wooden_shovel",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client",
+        "server"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "data/minecraft/recipes/wooden_shovel.json"
+      ],
+      "display_name_en_us": "Wooden Shovel",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/wooden_shovel.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "shovel",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    }
+  ]
+}

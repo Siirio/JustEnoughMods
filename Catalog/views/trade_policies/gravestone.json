@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "registry_type": "trade_policies",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "gravestone",
+    "name": "Gravestone Mod",
+    "version": "1.20.1-1.0.35"
+  },
+  "records": [
+    {
+      "item_id": "gravestone:gravestone",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "gravestone",
+      "mod_name": "Gravestone Mod",
+      "mod_version": "1.20.1-1.0.35",
+      "source_jar": "gravestone-forge-1.20.1-1.0.35.jar",
+      "source_sha256": "af6de8692229f07d203e118241f31c1dc4d03f8e3b44cacd155d76b449896387",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/gravestone/models/item/gravestone.json",
+        "data/gravestone/recipes/gravestone.json"
+      ],
+      "display_name_en_us": "Grave",
+      "display_name_ru_ru": "Могила",
+      "source_provenance": [
+        "gravestone-forge-1.20.1-1.0.35.jar:assets/gravestone/models/item/gravestone.json",
+        "gravestone-forge-1.20.1-1.0.35.jar:data/gravestone/recipes/gravestone.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "gravestone:gravestone"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "gravestone:obituary",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "gravestone",
+      "mod_name": "Gravestone Mod",
+      "mod_version": "1.20.1-1.0.35",
+      "source_jar": "gravestone-forge-1.20.1-1.0.35.jar",
+      "source_sha256": "af6de8692229f07d203e118241f31c1dc4d03f8e3b44cacd155d76b449896387",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/gravestone/lang/en_us.json",
+        "assets/gravestone/lang/ru_ru.json",
+        "assets/gravestone/models/item/obituary.json"
+      ],
+      "display_name_en_us": "Obituary",
+      "display_name_ru_ru": "Некролог",
+      "source_provenance": [
+        "gravestone-forge-1.20.1-1.0.35.jar:assets/gravestone/lang/en_us.json",
+        "gravestone-forge-1.20.1-1.0.35.jar:assets/gravestone/lang/ru_ru.json",
+        "gravestone-forge-1.20.1-1.0.35.jar:assets/gravestone/models/item/obituary.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    }
+  ]
+}

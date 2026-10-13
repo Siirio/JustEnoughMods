@@ -1,0 +1,1483 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "skarrier_mobs",
+    "name": "Skarrier Mobs",
+    "version": "1.0.6"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:blank_template_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:bone_block",
+        "minecraft:crafting_shaped",
+        "minecraft:polished_deepslate",
+        "minecraft:rotten_flesh",
+        "skarrier_mobs:semi_living_flesh"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:blank_template"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/blank_template_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:blank_totem_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:bone_block",
+        "minecraft:chiseled_deepslate",
+        "minecraft:crafting_shaped",
+        "minecraft:rotten_flesh",
+        "skarrier_mobs:semi_living_flesh"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:blank_totem"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/blank_totem_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:breacher_skull_disassemble_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "skarrier_mobs:breacher_skull"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:bone"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/breacher_skull_disassemble_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:cooked_slither_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:smelting",
+      "machine_id": "minecraft:smelting",
+      "ingredient_groups": [
+        "minecraft:smelting",
+        "skarrier_mobs:raw_slither"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:cooked_slither"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/cooked_slither_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:cooked_slither_recipe_smoking",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:smoking",
+      "machine_id": "minecraft:smoking",
+      "ingredient_groups": [
+        "minecraft:smoking",
+        "skarrier_mobs:raw_slither"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:cooked_slither"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/cooked_slither_recipe_smoking.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:crushing_pauldron_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:leather",
+        "skarrier_mobs:dragger_silk",
+        "skarrier_mobs:trawler_shell"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:crushing_pauldron_chestplate"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/crushing_pauldron_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:dragger_silk_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "skarrier_mobs:silk_block"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:dragger_silk"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/dragger_silk_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:heart_of_the_sea_duplication_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:diamond_block",
+        "minecraft:lapis_block",
+        "minecraft:prismarine_crystals",
+        "minecraft:prismarine_shard"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:heart_of_the_sea"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/heart_of_the_sea_duplication_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:invulnerite_axe_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "minecraft:netherite_axe",
+        "minecraft:smithing_transform",
+        "skarrier_mobs:invulnerite_chunk",
+        "skarrier_mobs:invulnerite_upgrade_template"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:invulnerite_axe"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/invulnerite_axe_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:invulnerite_chunk_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "skarrier_mobs:invulnerite_nugget"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:invulnerite_chunk"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/invulnerite_chunk_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:invulnerite_hoe_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "minecraft:netherite_hoe",
+        "minecraft:smithing_transform",
+        "skarrier_mobs:invulnerite_chunk",
+        "skarrier_mobs:invulnerite_upgrade_template"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:invulnerite_hoe"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/invulnerite_hoe_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:invulnerite_nugget_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "skarrier_mobs:invulnerite_chunk"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:invulnerite_nugget"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/invulnerite_nugget_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:invulnerite_pickaxe_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "minecraft:netherite_pickaxe",
+        "minecraft:smithing_transform",
+        "skarrier_mobs:invulnerite_chunk",
+        "skarrier_mobs:invulnerite_upgrade_template"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:invulnerite_pickaxe"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/invulnerite_pickaxe_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:invulnerite_shovel_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "minecraft:netherite_shovel",
+        "minecraft:smithing_transform",
+        "skarrier_mobs:invulnerite_chunk",
+        "skarrier_mobs:invulnerite_upgrade_template"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:invulnerite_shovel"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/invulnerite_shovel_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:invulnerite_sword_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "minecraft:netherite_sword",
+        "minecraft:smithing_transform",
+        "skarrier_mobs:invulnerite_chunk",
+        "skarrier_mobs:invulnerite_upgrade_template"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:invulnerite_sword"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/invulnerite_sword_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:invulnerite_upgrade_template_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "minecraft:netherite_upgrade_smithing_template",
+        "minecraft:smithing_transform",
+        "skarrier_mobs:blank_template",
+        "skarrier_mobs:invulnerite_chunk"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:invulnerite_upgrade_template"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/invulnerite_upgrade_template_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:netherite_upgrade_template_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:netherite_ingot",
+        "minecraft:netherrack",
+        "skarrier_mobs:blank_template"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:netherite_upgrade_smithing_template"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/netherite_upgrade_template_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:quake_boots_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:gunpowder",
+        "minecraft:iron_boots",
+        "skarrier_mobs:quake_bone"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:quake_boots_boots"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/quake_boots_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:resisteel_axe_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:stick",
+        "skarrier_mobs:resisteel_ingot"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:resisteel_axe"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/resisteel_axe_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:resisteel_block_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "skarrier_mobs:resisteel_ingot"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:resisteel_block"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/resisteel_block_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:resisteel_boots_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "skarrier_mobs:resisteel_ingot"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:resisteel_boots"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/resisteel_boots_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:resisteel_chestplate_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "skarrier_mobs:resisteel_ingot"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:resisteel_chestplate"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/resisteel_chestplate_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:resisteel_helmet_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "skarrier_mobs:resisteel_ingot"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:resisteel_helmet"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/resisteel_helmet_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:resisteel_hoe_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:stick",
+        "skarrier_mobs:resisteel_ingot"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:resisteel_hoe"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/resisteel_hoe_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:resisteel_ingot_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "skarrier_mobs:resisteel_block"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:resisteel_ingot"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/resisteel_ingot_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:resisteel_leggings_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "skarrier_mobs:resisteel_ingot"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:resisteel_leggings"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/resisteel_leggings_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:resisteel_pickaxe_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:stick",
+        "skarrier_mobs:resisteel_ingot"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:resisteel_pickaxe"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/resisteel_pickaxe_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:resisteel_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:iron_ingot",
+        "minecraft:obsidian",
+        "skarrier_mobs:wrought_scale"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:resisteel_ingot"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/resisteel_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:resisteel_shovel_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:stick",
+        "skarrier_mobs:resisteel_ingot"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:resisteel_shovel"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/resisteel_shovel_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:resisteel_sword_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:stick",
+        "skarrier_mobs:resisteel_ingot"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:resisteel_sword"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/resisteel_sword_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:silk_block_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "skarrier_mobs:dragger_silk"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:silk_block"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/silk_block_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:totem_of_undying_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:emerald",
+        "minecraft:gold_ingot",
+        "skarrier_mobs:blank_totem",
+        "skarrier_mobs:heart_of_tranquility"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:totem_of_undying"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/totem_of_undying_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:tremor_bomb_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:gunpowder",
+        "minecraft:observer",
+        "minecraft:tnt",
+        "skarrier_mobs:quake_bone"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:tremor_bomb"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/tremor_bomb_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_brick_slab_cutter_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "skarrier_mobs:wrong_deepslate_bricks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate_brick_slab"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_brick_slab_cutter_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_brick_slab_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "skarrier_mobs:wrong_deepslate_bricks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate_brick_slab"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_brick_slab_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_brick_stairs_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "skarrier_mobs:wrong_deepslate_bricks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate_brick_stairs"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_brick_stairs_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_brick_wall_cutter_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "skarrier_mobs:wrong_deepslate_bricks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate_brick_wall"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_brick_wall_cutter_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_brick_wall_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "skarrier_mobs:wrong_deepslate_bricks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate_brick_wall"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_brick_wall_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_bricks_cracked_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:smelting",
+      "machine_id": "minecraft:smelting",
+      "ingredient_groups": [
+        "minecraft:smelting",
+        "skarrier_mobs:wrong_deepslate_bricks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate_bricks_cracked"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_bricks_cracked_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_bricks_cutter_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "skarrier_mobs:wrong_deepslate"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate_bricks"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_bricks_cutter_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_bricks_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "skarrier_mobs:wrong_deepslate_polished"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate_bricks"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_bricks_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_chieseld_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "skarrier_mobs:wrong_deepslate_cobbled_slab"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate_chiseled"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_chieseld_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_cobbled_slab_cutter_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "skarrier_mobs:wrong_deepslate_cobbled"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate_cobbled_slab"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_cobbled_slab_cutter_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_cobbled_slab_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "skarrier_mobs:wrong_deepslate"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate_cobbled_slab"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_cobbled_slab_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_cobbled_stairs_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "skarrier_mobs:wrong_deepslate_cobbled"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate_cobble_stairs"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_cobbled_stairs_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_cobbled_wall_cutter_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "skarrier_mobs:wrong_deepslate_cobbled"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate_cobbled_wall"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_cobbled_wall_cutter_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_cobbled_wall_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "skarrier_mobs:wrong_deepslate_cobbled"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate_cobbled_wall"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_cobbled_wall_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_polished_cutter_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "skarrier_mobs:wrong_deepslate"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate_polished"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_polished_cutter_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_polished_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "skarrier_mobs:wrong_deepslate"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate_polished"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_polished_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_polished_slab_cutter_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "skarrier_mobs:wrong_deepslate_polished"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate_polished_slab"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_polished_slab_cutter_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_polished_slab_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "skarrier_mobs:wrong_deepslate_polished"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate_polished_slab"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_polished_slab_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_polished_stairs_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "skarrier_mobs:wrong_deepslate_polished"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate_polished_stairs"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_polished_stairs_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_polished_wall_cutter_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "skarrier_mobs:wrong_deepslate_polished"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate_polished_wall"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_polished_wall_cutter_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_polished_wall_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "skarrier_mobs:wrong_deepslate_polished"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate_polished_wall"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_polished_wall_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:smelting",
+      "machine_id": "minecraft:smelting",
+      "ingredient_groups": [
+        "minecraft:smelting",
+        "skarrier_mobs:wrong_deepslate_cobbled"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_tile_slab_cutter_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "skarrier_mobs:wrong_deepslate_tiles"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate_tile_slab"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_tile_slab_cutter_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_tile_slab_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "skarrier_mobs:wrong_deepslate_tiles"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate_tile_slab"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_tile_slab_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_tile_stairs_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "skarrier_mobs:wrong_deepslate_tiles"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate_tile_stairs"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_tile_stairs_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_tile_wall_cutter_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "skarrier_mobs:wrong_deepslate_tiles"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate_tile_wall"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_tile_wall_cutter_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_tile_wall_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "skarrier_mobs:wrong_deepslate_tiles"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate_tile_wall"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_tile_wall_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_tiles_cutter_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "skarrier_mobs:wrong_deepslate"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate_tiles"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_tiles_cutter_recipe.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "skarrier_mobs:wrong_deepslate_tiles_recipe",
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "skarrier_mobs:wrong_deepslate_bricks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "skarrier_mobs:wrong_deepslate_tiles"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_tiles_recipe.json"
+      ]
+    }
+  ]
+}

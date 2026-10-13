@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "entries": [
+    {
+      "type": "artifact_metadata",
+      "artifact": "kotlinforforge-4.12.0-all.jar",
+      "reason": "KeyError"
+    },
+    {
+      "type": "artifact_metadata",
+      "artifact": "kotlinforforge-4.12.0-all.jar",
+      "reason": "KeyError"
+    },
+    {
+      "type": "duplicate_mod_id",
+      "mod_id": "jem_economy",
+      "artifacts": [
+        "jem-economy-1.0.0.jar",
+        "jem-economy-1.2.0.jar"
+      ]
+    },
+    {
+      "type": "duplicate_mod_id",
+      "mod_id": "jem_settlements",
+      "artifacts": [
+        "jem-settlements-1.0.0.jar",
+        "jem-settlements-2.0.0.jar"
+      ]
+    },
+    {
+      "type": "dynamic_item_semantics",
+      "priority": "high",
+      "reason": "ItemStack-dependent max stack, food, attributes, capabilities, NBT variants and Java-only acquisition need a registry bootstrap or bytecode-specific overlay."
+    },
+    {
+      "type": "entity_semantics",
+      "priority": "high",
+      "reason": "Living status, AI roles, attributes, tame/ride contracts and boss relationships are not inferred from display names."
+    },
+    {
+      "type": "runtime_registry_boundary",
+      "priority": "high",
+      "reason": "No Minecraft/Forge runtime bootstrap was authorized; static evidence cannot prove dynamic registrations or absence."
+    },
+    {
+      "type": "villager_resourcepacks",
+      "priority": "medium",
+      "reason": "Canonical Client/ManagedPack has no resourcepacks directory entries to audit; private active-profile packs are diagnostic-only and were not copied."
+    }
+  ]
+}

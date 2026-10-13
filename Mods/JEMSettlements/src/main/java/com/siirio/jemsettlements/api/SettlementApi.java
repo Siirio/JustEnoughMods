@@ -111,6 +111,19 @@ public final class SettlementApi {
         if (!town.get().setStorageFeed(link, enabled)) return Result.INVALID; SettlementSavedData.get(player.getServer()).changed(); return Result.ACCEPTED;
     }
 
+    public static Result setTerritoryRadius(ServerPlayer player, int radius) {
+        var principal = IdentityPolicy.resolve(player); var town = ownedTown(player);
+        if (principal.isEmpty() || town.isEmpty()) return Result.UNAUTHENTICATED;
+        if (!town.get().owner().equals(principal.get().accountId()) || radius < 32 || radius > 256) return Result.INVALID;
+        SettlementSavedData data = SettlementSavedData.get(player.getServer());
+        for (TownRecord other : data.towns()) if (!other.id().equals(town.get().id()) && other.dimension().equals(town.get().dimension())) {
+            int separation = radius + other.territoryRadius() + 16;
+            if (Math.abs(other.center().getX() - town.get().center().getX()) < separation
+                    && Math.abs(other.center().getZ() - town.get().center().getZ()) < separation) return Result.CONFLICT;
+        }
+        town.get().territoryRadius(radius); data.changed(); return Result.ACCEPTED;
+    }
+
     public static long treasuryBalance(ServerPlayer player, TownRecord town) {
         return com.siirio.jemeconomy.api.EconomyApi.accountBalance(player,
                 com.siirio.jemeconomy.api.EconomyApi.townAccount(town.id()));

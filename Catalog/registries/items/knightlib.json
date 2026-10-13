@@ -1,0 +1,369 @@
+{
+  "schema_version": 1,
+  "registry_type": "items",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "knightlib",
+    "name": "Knight Lib",
+    "version": "2.0.0"
+  },
+  "records": [
+    {
+      "registry_id": "knightlib:empty_grail",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "knightlib",
+      "mod_name": "Knight Lib",
+      "mod_version": "2.0.0",
+      "source_jar": "knightlib-forge-1.20.1-2.0.0.jar",
+      "source_sha256": "ca30fa182da961b0ad3996b86fff029c801b7f3008b412aecb89c6809b2e9114",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/knightlib/lang/en_us.json",
+        "assets/knightlib/lang/ru_ru.json",
+        "assets/knightlib/models/item/empty_grail.json",
+        "data/knightlib/recipes/empty_grail.json"
+      ],
+      "display_name_en_us": "Empty Grail",
+      "display_name_ru_ru": "Пустой грааль",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "knightlib-forge-1.20.1-2.0.0.jar:assets/knightlib/lang/en_us.json",
+        "knightlib-forge-1.20.1-2.0.0.jar:assets/knightlib/lang/ru_ru.json",
+        "knightlib-forge-1.20.1-2.0.0.jar:assets/knightlib/models/item/empty_grail.json",
+        "knightlib-forge-1.20.1-2.0.0.jar:data/knightlib/recipes/empty_grail.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "knightlib:empty_grail"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:knightlib:empty_grail"
+    },
+    {
+      "registry_id": "knightlib:filled_grail",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "knightlib",
+      "mod_name": "Knight Lib",
+      "mod_version": "2.0.0",
+      "source_jar": "knightlib-forge-1.20.1-2.0.0.jar",
+      "source_sha256": "ca30fa182da961b0ad3996b86fff029c801b7f3008b412aecb89c6809b2e9114",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/knightlib/lang/en_us.json",
+        "assets/knightlib/lang/ru_ru.json",
+        "assets/knightlib/models/item/filled_grail.json"
+      ],
+      "display_name_en_us": "Filled Grail",
+      "display_name_ru_ru": "Наполненный грааль",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "knightlib-forge-1.20.1-2.0.0.jar:assets/knightlib/lang/en_us.json",
+        "knightlib-forge-1.20.1-2.0.0.jar:assets/knightlib/lang/ru_ru.json",
+        "knightlib-forge-1.20.1-2.0.0.jar:assets/knightlib/models/item/filled_grail.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:knightlib:filled_grail"
+    },
+    {
+      "registry_id": "knightlib:great_chalice",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "knightlib",
+      "mod_name": "Knight Lib",
+      "mod_version": "2.0.0",
+      "source_jar": "knightlib-forge-1.20.1-2.0.0.jar",
+      "source_sha256": "ca30fa182da961b0ad3996b86fff029c801b7f3008b412aecb89c6809b2e9114",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/knightlib/models/item/great_chalice.json",
+        "data/knightlib/recipes/great_chalice.json"
+      ],
+      "display_name_en_us": "Great Chalice",
+      "display_name_ru_ru": "Великий кубок",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/needs_stone_tool"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "knightlib-forge-1.20.1-2.0.0.jar:assets/knightlib/models/item/great_chalice.json",
+        "knightlib-forge-1.20.1-2.0.0.jar:data/knightlib/recipes/great_chalice.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "knightlib:great_chalice",
+      "acquisition_routes": [
+        "knightlib:great_chalice"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:knightlib:great_chalice"
+    },
+    {
+      "registry_id": "knightlib:great_essence",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "knightlib",
+      "mod_name": "Knight Lib",
+      "mod_version": "2.0.0",
+      "source_jar": "knightlib-forge-1.20.1-2.0.0.jar",
+      "source_sha256": "ca30fa182da961b0ad3996b86fff029c801b7f3008b412aecb89c6809b2e9114",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/knightlib/lang/en_us.json",
+        "assets/knightlib/lang/ru_ru.json",
+        "assets/knightlib/models/item/great_essence.json",
+        "data/knightlib/recipes/heart_of_the_sea_to_great_essence.json",
+        "data/knightlib/recipes/nether_star_to_great_essence.json",
+        "data/knightlib/recipes/small_essence_to_great_essence.json",
+        "data/knightlib/recipes/totem_of_undying_to_great_essence.json"
+      ],
+      "display_name_en_us": "Great Essence",
+      "display_name_ru_ru": "Великая эссенция",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "knightlib-forge-1.20.1-2.0.0.jar:assets/knightlib/lang/en_us.json",
+        "knightlib-forge-1.20.1-2.0.0.jar:assets/knightlib/lang/ru_ru.json",
+        "knightlib-forge-1.20.1-2.0.0.jar:assets/knightlib/models/item/great_essence.json",
+        "knightlib-forge-1.20.1-2.0.0.jar:data/knightlib/recipes/heart_of_the_sea_to_great_essence.json",
+        "knightlib-forge-1.20.1-2.0.0.jar:data/knightlib/recipes/nether_star_to_great_essence.json",
+        "knightlib-forge-1.20.1-2.0.0.jar:data/knightlib/recipes/small_essence_to_great_essence.json",
+        "knightlib-forge-1.20.1-2.0.0.jar:data/knightlib/recipes/totem_of_undying_to_great_essence.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "knightlib:heart_of_the_sea_to_great_essence",
+        "knightlib:nether_star_to_great_essence",
+        "knightlib:small_essence_to_great_essence",
+        "knightlib:totem_of_undying_to_great_essence"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:knightlib:great_essence"
+    },
+    {
+      "registry_id": "knightlib:homunculus",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "knightlib",
+      "mod_name": "Knight Lib",
+      "mod_version": "2.0.0",
+      "source_jar": "knightlib-forge-1.20.1-2.0.0.jar",
+      "source_sha256": "ca30fa182da961b0ad3996b86fff029c801b7f3008b412aecb89c6809b2e9114",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/knightlib/lang/en_us.json",
+        "assets/knightlib/lang/ru_ru.json",
+        "assets/knightlib/models/item/homunculus.json",
+        "data/knightlib/recipes/homunculus.json"
+      ],
+      "display_name_en_us": "Homunculus",
+      "display_name_ru_ru": "Гомункул",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "knightlib-forge-1.20.1-2.0.0.jar:assets/knightlib/lang/en_us.json",
+        "knightlib-forge-1.20.1-2.0.0.jar:assets/knightlib/lang/ru_ru.json",
+        "knightlib-forge-1.20.1-2.0.0.jar:assets/knightlib/models/item/homunculus.json",
+        "knightlib-forge-1.20.1-2.0.0.jar:data/knightlib/recipes/homunculus.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "knightlib:homunculus"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:knightlib:homunculus"
+    },
+    {
+      "registry_id": "knightlib:small_essence",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "knightlib",
+      "mod_name": "Knight Lib",
+      "mod_version": "2.0.0",
+      "source_jar": "knightlib-forge-1.20.1-2.0.0.jar",
+      "source_sha256": "ca30fa182da961b0ad3996b86fff029c801b7f3008b412aecb89c6809b2e9114",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/knightlib/lang/en_us.json",
+        "assets/knightlib/lang/ru_ru.json",
+        "assets/knightlib/models/item/small_essence.json",
+        "data/knightlib/recipes/great_essence_to_small_essence.json"
+      ],
+      "display_name_en_us": "Small Essence",
+      "display_name_ru_ru": "Малая эссенция",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "knightlib-forge-1.20.1-2.0.0.jar:assets/knightlib/lang/en_us.json",
+        "knightlib-forge-1.20.1-2.0.0.jar:assets/knightlib/lang/ru_ru.json",
+        "knightlib-forge-1.20.1-2.0.0.jar:assets/knightlib/models/item/small_essence.json",
+        "knightlib-forge-1.20.1-2.0.0.jar:data/knightlib/recipes/great_essence_to_small_essence.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [
+        "knightlib:great_essence_to_small_essence"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:knightlib:small_essence"
+    }
+  ]
+}

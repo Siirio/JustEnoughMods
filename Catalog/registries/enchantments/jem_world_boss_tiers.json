@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "registry_type": "enchantments",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "jem_world_boss_tiers",
+    "name": "JEM World Boss Tiers",
+    "version": "${file.jarVersion}"
+  },
+  "records": [
+    {
+      "registry_id": "jem_world_boss_tiers:progression",
+      "registry_type": "enchantment",
+      "schema_version": 1,
+      "mod_id": "jem_world_boss_tiers",
+      "mod_name": "JEM World Boss Tiers",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "jem-world-boss-tiers-2.5.0-dev.jar",
+      "source_sha256": "f525a201b0544893dbb7a9ce65a915df8ae5722c02b7ad5ecfc8e14299206bc1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/jem_world_boss_tiers/lang/en_us.json",
+        "assets/jem_world_boss_tiers/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Progression",
+      "display_name_ru_ru": "Прогрессия",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "jem-world-boss-tiers-2.5.0-dev.jar:assets/jem_world_boss_tiers/lang/en_us.json",
+        "jem-world-boss-tiers-2.5.0-dev.jar:assets/jem_world_boss_tiers/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "jem_world_boss_tiers:progression.desc",
+      "registry_type": "enchantment",
+      "schema_version": 1,
+      "mod_id": "jem_world_boss_tiers",
+      "mod_name": "JEM World Boss Tiers",
+      "mod_version": "${file.jarVersion}",
+      "source_jar": "jem-world-boss-tiers-2.5.0-dev.jar",
+      "source_sha256": "f525a201b0544893dbb7a9ce65a915df8ae5722c02b7ad5ecfc8e14299206bc1",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/jem_world_boss_tiers/lang/en_us.json",
+        "assets/jem_world_boss_tiers/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Applied only from a book through an anvil. Evolves compatible vanilla and modded weapons, tools, and armor through World Tier III. Equipment keeps normal durability, Mending, and Unbreaking, but cannot be lost to fire, despawn, or the void. Tier III to IV and IV to V add no further power.",
+      "display_name_ru_ru": "Накладывается только книгой через наковальню. Развивает совместимое обычное и модовое оружие, инструменты и броню до III мирового уровня. Прочность, Починка и Неразрушимость работают обычно, но предмет нельзя потерять в огне, при исчезновении или в пустоте. Переходы III–IV и IV–V больше не усиливают предмет.",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "jem-world-boss-tiers-2.5.0-dev.jar:assets/jem_world_boss_tiers/lang/en_us.json",
+        "jem-world-boss-tiers-2.5.0-dev.jar:assets/jem_world_boss_tiers/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}

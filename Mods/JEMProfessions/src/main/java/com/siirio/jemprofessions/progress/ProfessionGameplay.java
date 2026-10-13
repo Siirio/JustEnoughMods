@@ -9,6 +9,7 @@ import java.util.UUID;
 import java.util.ArrayDeque;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.LinkedHashMap;
 import java.util.concurrent.ConcurrentHashMap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -34,6 +35,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public final class ProfessionGameplay {
     private static final Set<UUID> VEIN_OPERATIONS = ConcurrentHashMap.newKeySet();
+    private static final LinkedHashMap<String, Long> RECENT_ARCHITECT_PLACEMENTS = new LinkedHashMap<>();
+    private static final int MAX_RECENT_ARCHITECT_PLACEMENTS = 8192;
     private ProfessionGameplay() {}
 
     @SubscribeEvent
@@ -43,6 +46,19 @@ public final class ProfessionGameplay {
         ProfessionSavedData data = ProfessionSavedData.get(player.getServer());
         if (event.getPlacedBlock().is(Tags.Blocks.ORES)) data.markPlayerPlaced(positionKey(player, event.getPos()));
         withRecord(player, (record, saved) -> {
+            String placement = positionKey(player, event.getPos());
+            long now = player.serverLevel().getGameTime();
+            Long prior = RECENT_ARCHITECT_PLACEMENTS.put(placement, now);
+            while (RECENT_ARCHITECT_PLACEMENTS.size() > MAX_RECENT_ARCHITECT_PLACEMENTS) {
+                RECENT_ARCHITECT_PLACEMENTS.remove(RECENT_ARCHITECT_PLACEMENTS.keySet().iterator().next());
+            }
+            if ((prior == null || now - prior > 12_000L) && !event.getPlacedBlock().isAir()) {
+                int earned = record.reserveDaily("architect:construction", utcDay(), 1, 600);
+                if (earned > 0) {
+                    saved.changed();
+                    credit(player, ProfessionId.ARCHITECT, SourceKind.BLOCK_PLACED, block, earned);
+                }
+            }
             if (record.claimDiscovery("architect:material:" + block)) {
                 saved.changed();
                 credit(player, ProfessionId.ARCHITECT, SourceKind.BLOCK_PLACED, block, 5);
@@ -134,6 +150,7 @@ public final class ProfessionGameplay {
     public static void playerTick(TickEvent.PlayerTickEvent event) {
         if (event.phase != TickEvent.Phase.END || !(event.player instanceof ServerPlayer player) || player.tickCount % 20 != 0
                 || player instanceof FakePlayer || player.isSpectator()) return;
+        ArchitectHotbarAccess.reconcile(player);
         String chunk = "explorer:chunk:" + player.level().dimension().location() + ":" + player.chunkPosition().x + ":" + player.chunkPosition().z;
         withRecord(player, (record, data) -> {
             if (!record.claimDiscovery(chunk)) return;

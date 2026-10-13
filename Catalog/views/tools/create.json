@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "registry_type": "tools",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "create",
+    "name": "Create",
+    "version": "6.0.8"
+  },
+  "records": [
+    {
+      "item_id": "create:mechanical_drill",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "create",
+      "mod_name": "Create",
+      "mod_version": "6.0.8",
+      "source_jar": "create-1.20.1-6.0.8.jar",
+      "source_sha256": "6fbb910c367dbce8e4fc7e5bf64b6edd4de980906ed00af8e47e4af843c0d9b0",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/create/models/item/mechanical_drill.json",
+        "data/create/recipes/crafting/kinetics/mechanical_drill.json"
+      ],
+      "display_name_en_us": "Mechanical Drill",
+      "display_name_ru_ru": "Механический бур",
+      "source_provenance": [
+        "create-1.20.1-6.0.8.jar:assets/create/models/item/mechanical_drill.json",
+        "create-1.20.1-6.0.8.jar:data/create/recipes/crafting/kinetics/mechanical_drill.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "tool_class": "drill",
+      "category_evidence": "registry path; requires runtime class confirmation"
+    }
+  ]
+}

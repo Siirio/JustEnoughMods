@@ -20,7 +20,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Architectury | `9.2.14` | Client + server |  |
 | AutoModpack | `5.0.0-rc.1` | Client + server | Tweaked |
 | Backpacked | `3.0.9` | Client + server |  |
-| BackToBed | `1.1.0` | Client + server |  |
+| BackToBed | `1.1.0` | Server | Removal pending the later release staging; absent from canonical managed client |
 | BadOptimizations | `2.4.1` | Client |  |
 | BaguetteLib | `2.0.5` | Client + server |  |
 | Balm | `7.3.42` | Client + server |  |
@@ -281,6 +281,7 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Terralith ReStoned | `1.3` | Client + server |  |
 | Tide | `2.1.1` | Client + server |  |
 | Tiny Item Animations | `1.20-1.1` | Client |  |
+| TinyInv | `1.1.0.1` | Client | Add to the server only during the later matching release staging |
 | Tom's Simple Storage Mod | `1.7.1` | Client + server |  |
 | TPA | `2.0.0` | Client + server |  |
 | Trade Cycling | `1.20.1-1.0.18` | Client + server |  |

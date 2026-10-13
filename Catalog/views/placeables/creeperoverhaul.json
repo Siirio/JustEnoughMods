@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "registry_type": "placeables",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "creeperoverhaul",
+    "name": "Creeper Overhaul",
+    "version": "3.0.2"
+  },
+  "records": [
+    {
+      "item_id": "creeperoverhaul:tiny_cactus",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "creeperoverhaul",
+      "mod_name": "Creeper Overhaul",
+      "mod_version": "3.0.2",
+      "source_jar": "creeperoverhaul-3.0.2-forge.jar",
+      "source_sha256": "212eb2a2d767f54fbfbac2336c63fe2bd1aae4d827ab358da329a746358b6dd9",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/creeperoverhaul/models/item/tiny_cactus.json"
+      ],
+      "display_name_en_us": "Tiny Cactus",
+      "display_name_ru_ru": "Крошечный кактус",
+      "source_provenance": [
+        "creeperoverhaul-3.0.2-forge.jar:assets/creeperoverhaul/models/item/tiny_cactus.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "creeperoverhaul:tiny_cactus",
+      "placed_registry_ids": [
+        "creeperoverhaul:tiny_cactus"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": []
+    }
+  ]
+}

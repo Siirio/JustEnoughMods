@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "registry_type": "blocks",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "golemoverhaul",
+    "name": "Golem Overhaul",
+    "version": "1.1.1"
+  },
+  "records": [
+    {
+      "registry_id": "golemoverhaul:candle_golem_block",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "golemoverhaul",
+      "mod_name": "Golem Overhaul",
+      "mod_version": "1.1.1",
+      "source_jar": "golemoverhaul-forge-1.20.1-1.1.1.jar",
+      "source_sha256": "115df3a7517b3cf8329ab35a00664d48e76282648c98843c8225ba2b5755cf90",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/golemoverhaul/blockstates/candle_golem_block.json",
+        "assets/golemoverhaul/lang/en_us.json",
+        "assets/golemoverhaul/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Candle Golem Block",
+      "display_name_ru_ru": "Блок свечного голема",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/blockstates/candle_golem_block.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/lang/en_us.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "golemoverhaul:clay_golem_statue",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "golemoverhaul",
+      "mod_name": "Golem Overhaul",
+      "mod_version": "1.1.1",
+      "source_jar": "golemoverhaul-forge-1.20.1-1.1.1.jar",
+      "source_sha256": "115df3a7517b3cf8329ab35a00664d48e76282648c98843c8225ba2b5755cf90",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/golemoverhaul/blockstates/clay_golem_statue.json",
+        "assets/golemoverhaul/lang/en_us.json",
+        "assets/golemoverhaul/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Clay Golem Statue",
+      "display_name_ru_ru": "Статуя глиняного голема",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/blockstates/clay_golem_statue.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/lang/en_us.json",
+        "golemoverhaul-forge-1.20.1-1.1.1.jar:assets/golemoverhaul/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}

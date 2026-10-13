@@ -14,7 +14,7 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceLocation;
 
 public final class TownRecord {
-    public static final int CURRENT_SCHEMA = 2;
+    public static final int CURRENT_SCHEMA = 4;
     private final UUID id;
     private final UUID owner;
     private final String name;
@@ -36,6 +36,7 @@ public final class TownRecord {
     private TownSpecialization secondarySpecialization = TownSpecialization.NONE;
     private long lastSpecializationEvaluation;
     private int housingScore = 50, foodScore = 50, safetyScore = 0, jobsScore = 25, communityScore = 40, decorationScore;
+    private int territoryRadius = 48;
 
     public TownRecord(UUID id, UUID owner, String name, ResourceLocation dimension, BlockPos center) {
         this.id = id; this.owner = owner; this.name = name; this.dimension = dimension; this.center = center.immutable(); members.add(owner);
@@ -50,6 +51,9 @@ public final class TownRecord {
     public long lastSpecializationEvaluation() { return lastSpecializationEvaluation; }
     public int housingScore() { return housingScore; } public int foodScore() { return foodScore; } public int safetyScore() { return safetyScore; }
     public int jobsScore() { return jobsScore; } public int communityScore() { return communityScore; } public int decorationScore() { return decorationScore; }
+    public int territoryRadius() { return territoryRadius; }
+    public boolean contains(BlockPos position) { return Math.abs(position.getX() - center.getX()) <= territoryRadius && Math.abs(position.getZ() - center.getZ()) <= territoryRadius; }
+    public void territoryRadius(int value) { territoryRadius = Math.max(32, Math.min(256, value)); }
     public void lastHappinessDay(long value) { lastHappinessDay = value; }
     public void happiness(int value) { happiness = clamp(value); }
     public void happinessEvidence(int housing, int food, int safety, int jobs, int community, int decoration) { housingScore = clamp(housing); foodScore = clamp(food); safetyScore = clamp(safety); jobsScore = clamp(jobs); communityScore = clamp(community); decorationScore = Math.max(0, Math.min(20, decoration)); }
@@ -70,6 +74,7 @@ public final class TownRecord {
         tag.putLong("PayrollEpoch", payrollEpoch); tag.putLong("NextPayrollGameTime", nextPayrollGameTime); tag.putLong("NextPayrollIndex", nextPayrollIndex); tag.putInt("ConsecutiveMissedPayrolls", consecutiveMissedPayrolls);
         tag.putString("Tier", tier.name()); tag.putString("PrimarySpecialization", primarySpecialization.name()); tag.putString("SecondarySpecialization", secondarySpecialization.name()); tag.putLong("LastSpecializationEvaluation", lastSpecializationEvaluation);
         tag.putInt("HousingScore", housingScore); tag.putInt("FoodScore", foodScore); tag.putInt("SafetyScore", safetyScore); tag.putInt("JobsScore", jobsScore); tag.putInt("CommunityScore", communityScore); tag.putInt("DecorationScore", decorationScore);
+        tag.putInt("TerritoryRadius", territoryRadius);
         ListTag memberTags = new ListTag(); members.forEach(value -> { CompoundTag row = new CompoundTag(); row.putUUID("Id", value); memberTags.add(row); }); tag.put("Members", memberTags);
         ListTag storageTags = new ListTag(); storage.forEach(value -> storageTags.add(value.save())); tag.put("Storage", storageTags);
         ListTag payrollTags = new ListTag(); payroll.forEach(value -> payrollTags.add(value.save())); tag.put("Payroll", payrollTags); tag.put("Simulation", simulation.save()); return tag;
@@ -84,6 +89,7 @@ public final class TownRecord {
         try { town.primarySpecialization = TownSpecialization.valueOf(tag.getString("PrimarySpecialization")); } catch (IllegalArgumentException ignored) { }
         try { town.secondarySpecialization = TownSpecialization.valueOf(tag.getString("SecondarySpecialization")); } catch (IllegalArgumentException ignored) { }
         town.lastSpecializationEvaluation = tag.getLong("LastSpecializationEvaluation"); if (tag.contains("HousingScore")) town.happinessEvidence(tag.getInt("HousingScore"), tag.getInt("FoodScore"), tag.getInt("SafetyScore"), tag.getInt("JobsScore"), tag.getInt("CommunityScore"), tag.getInt("DecorationScore"));
+        if (tag.contains("TerritoryRadius")) town.territoryRadius(tag.getInt("TerritoryRadius"));
         ListTag periods = tag.getList("Payroll", Tag.TAG_COMPOUND); for (int i = 0; i < periods.size(); i++) town.payroll.add(PayrollPeriod.load(periods.getCompound(i)));
         if (tag.contains("Simulation")) town.simulation = SettlementSimulationState.load(tag.getCompound("Simulation")); return town;
     }

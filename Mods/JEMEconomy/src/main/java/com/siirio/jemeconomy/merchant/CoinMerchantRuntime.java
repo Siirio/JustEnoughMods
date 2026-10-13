@@ -16,6 +16,7 @@ public final class CoinMerchantRuntime {
     @SubscribeEvent
     public static void interact(PlayerInteractEvent.EntityInteract event) {
         if (!(event.getEntity() instanceof ServerPlayer player) || !(event.getTarget() instanceof AbstractVillager merchant)
+                || com.siirio.jemeconomy.market.MarketRuntime.isBuyer(merchant)
                 || !DedicatedSmp.active(player) || event.getHand() != net.minecraft.world.InteractionHand.MAIN_HAND) return;
         event.setCanceled(true); event.setCancellationResult(net.minecraft.world.InteractionResult.CONSUME);
         if (IdentityPolicy.resolve(player).isEmpty()) { player.displayClientMessage(Component.translatable("jem.economy.shipping.identity_required"), true); return; }

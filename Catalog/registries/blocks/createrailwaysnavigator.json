@@ -1,0 +1,1967 @@
+{
+  "schema_version": 1,
+  "registry_type": "blocks",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "createrailwaysnavigator",
+    "name": "Create Railways Navigator",
+    "version": "1.20.1-beta-0.9.1-C6"
+  },
+  "records": [
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/blockstates/advanced_display.json",
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Advanced Display Board",
+      "display_name_ru_ru": "Продвинутое табло",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "createrailwaysnavigator:blocks/advanced_displays",
+        "createrailwaysnavigator:items/advanced_displays",
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/blockstates/advanced_display.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display.ber.arrival",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Arrival",
+      "display_name_ru_ru": "Прибытие",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display.ber.cancelled",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Cancelled",
+      "display_name_ru_ru": "Отменён",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display.ber.cancelled2",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "is cancelled today. We apologize for the inconvenience.",
+      "display_name_ru_ru": "отменён сегодня. Приносим извинения.",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display.ber.delay_abs_suffix",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "minutes",
+      "display_name_ru_ru": "минут",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display.ber.delayed",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Delay approx. %s",
+      "display_name_ru_ru": "Задержка ~%s",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display.ber.delayed2",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "today approx. %s%s delayed.",
+      "display_name_ru_ru": "сегодня задерживается на ~%s%s.",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display.ber.do_not_board",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Do not board!",
+      "display_name_ru_ru": "Посадки нет!",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display.ber.information_about_train",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Information about %s",
+      "display_name_ru_ru": "Информация о %s",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display.ber.not_in_service",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Out of service!",
+      "display_name_ru_ru": "Не работает!",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display.ber.passengers_leave_train",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Please all change here.",
+      "display_name_ru_ru": "Просьба освободить вагоны.",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display.ber.platform_and_station_changed",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Today at %s from platform %s",
+      "display_name_ru_ru": "Сегодня на станции %s с платформы %s",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display.ber.platform_changed",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Today from platform %s",
+      "display_name_ru_ru": "Сегодня с платформы %s",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display.ber.reason",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Reason: ",
+      "display_name_ru_ru": "Причина: ",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display.ber.this_train_terminates_there",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "This train terminates there!",
+      "display_name_ru_ru": "Поезд следует до этой станции!",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display.ber.train_terminates",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Train terminates here!",
+      "display_name_ru_ru": "Поезд дальше не идёт!",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display.tooltip.behaviour1",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Open a menu to _configure_ the _display_.",
+      "display_name_ru_ru": "Открывает меню _настройки_ табло.",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display.tooltip.condition1",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "When R-Clicked using a Wrench",
+      "display_name_ru_ru": "При нажатии ПКМ гаечным ключом",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display.tooltip.summary",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Use it on _trains_, as a _train destination display_ or _passenger information display_, or at _train stations_ as improved _platform displays_ which also shows more information than regular display boards.",
+      "display_name_ru_ru": "Используется в _поездах_ как _табло назначения_ или _информации пассажиров_, либо на _станциях_ как улучшенные _платформенные табло_ с расширенной информацией, чем обычные механическое табло.",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display_block",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/blockstates/advanced_display_block.json",
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Advanced Display Block",
+      "display_name_ru_ru": "Блок продвинутого табло",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "createrailwaysnavigator:blocks/advanced_displays",
+        "createrailwaysnavigator:items/advanced_displays",
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/blockstates/advanced_display_block.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display_block.tooltip.behaviour1",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Open a menu to _configure_ the _display_.",
+      "display_name_ru_ru": "Открывает меню _настройки_ табло.",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display_block.tooltip.condition1",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "When R-Clicked using a Wrench",
+      "display_name_ru_ru": "При нажатии ПКМ гаечным ключом",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display_block.tooltip.summary",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Use it on _trains_, as a _train destination display_ or _passenger information display_, or at _train stations_ as improved _platform displays_ which also shows more information than regular display boards.",
+      "display_name_ru_ru": "Используется в _поездах_ как _табло назначения_ или _информации пассажиров_, либо на _станциях_ как улучшенные _платформенные табло_ с расширенной информацией, чем обычные механическое табло.",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display_half_panel",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/blockstates/advanced_display_half_panel.json",
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Half Advanced Display Panel",
+      "display_name_ru_ru": "Половинная продвинутая информационная панель",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "createrailwaysnavigator:blocks/advanced_displays",
+        "createrailwaysnavigator:items/advanced_displays",
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/blockstates/advanced_display_half_panel.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display_half_panel.tooltip.behaviour1",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Open a menu to _configure_ the _display_.",
+      "display_name_ru_ru": "Открывает меню _настройки_ табло.",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display_half_panel.tooltip.condition1",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "When R-Clicked using a Wrench",
+      "display_name_ru_ru": "ПКМ гаечным ключом",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display_half_panel.tooltip.summary",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Use it on _trains_, as a _train destination display_ or _passenger information display_, or at _train stations_ as improved _platform displays_ which also shows more information than regular display boards.",
+      "display_name_ru_ru": "Используется в _поездах_ как _табло назначения_ или _информации пассажиров_, либо на _станциях_ как улучшенные _платформенные табло_ с расширенной информацией, чем обычные механическое табло.",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display_panel",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/blockstates/advanced_display_panel.json",
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Advanced Display Panel",
+      "display_name_ru_ru": "Продвинутая информационная панель",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "createrailwaysnavigator:blocks/advanced_displays",
+        "createrailwaysnavigator:items/advanced_displays",
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/blockstates/advanced_display_panel.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display_panel.tooltip.behaviour1",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Open a menu to _configure_ the _display_.",
+      "display_name_ru_ru": "Открывает меню _настройки_ табло.",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display_panel.tooltip.condition1",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "When R-Clicked using a Wrench",
+      "display_name_ru_ru": "При нажатии ПКМ гаечным ключом",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display_panel.tooltip.summary",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Use it on _trains_, as a _train destination display_ or _passenger information display_, or at _train stations_ as improved _platform displays_ which also shows more information than regular display boards.",
+      "display_name_ru_ru": "Используется в _поездах_ как _табло назначения_ или _информации пассажиров_, либо на _станциях_ как улучшенные _платформенные табло_ с расширенной информацией, чем обычные механическое табло.",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display_slab",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/blockstates/advanced_display_slab.json",
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Advanced Display Slab",
+      "display_name_ru_ru": "Продвинутая информационная плита",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "createrailwaysnavigator:blocks/advanced_displays",
+        "createrailwaysnavigator:items/advanced_displays",
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/blockstates/advanced_display_slab.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display_slab.tooltip.behaviour1",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Open a menu to _configure_ the _display_.",
+      "display_name_ru_ru": "Открывает меню _настройки_ табло.",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display_slab.tooltip.condition1",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "When R-Clicked using a Wrench",
+      "display_name_ru_ru": "При нажатии ПКМ гаечным ключом",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display_slab.tooltip.summary",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Use it on _trains_, as a _train destination display_ or _passenger information display_, or at _train stations_ as improved _platform displays_ which also shows more information than regular display boards.",
+      "display_name_ru_ru": "Используется в _поездах_ как _табло назначения_ или _информации пассажиров_, либо на _станциях_ как улучшенные _платформенные табло_ с расширенной информацией, чем обычные механическое табло.",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display_sloped",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/blockstates/advanced_display_sloped.json",
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Sloped Advanced Display",
+      "display_name_ru_ru": "Наклонное продвинутое табло",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "createrailwaysnavigator:blocks/advanced_displays",
+        "createrailwaysnavigator:items/advanced_displays",
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/blockstates/advanced_display_sloped.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display_sloped.tooltip.behaviour1",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Open a menu to _configure_ the _display_.",
+      "display_name_ru_ru": "Открывает меню _настройки_ табло.",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display_sloped.tooltip.condition1",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "When R-Clicked using a Wrench",
+      "display_name_ru_ru": "При нажатии ПКМ гаечным ключом",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display_sloped.tooltip.summary",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Use it on _trains_, as a _train destination display_ or _passenger information display_, or at _train stations_ as improved _platform displays_ which also shows more information than regular display boards.",
+      "display_name_ru_ru": "Используется в _поездах_ как _табло назначения_ или _информации пассажиров_, либо на _станциях_ как улучшенные _платформенные табло_ с расширенной информацией, чем обычные механическое табло.",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display_small",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/blockstates/advanced_display_small.json",
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Small Advanced Display",
+      "display_name_ru_ru": "Малое продвинутое табло",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "createrailwaysnavigator:blocks/advanced_displays",
+        "createrailwaysnavigator:items/advanced_displays",
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/blockstates/advanced_display_small.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display_small.tooltip.behaviour1",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Open a menu to _configure_ the _display_.",
+      "display_name_ru_ru": "Открывает меню _настройки_ табло.",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display_small.tooltip.condition1",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "When R-Clicked using a Wrench",
+      "display_name_ru_ru": "При нажатии ПКМ гаечным ключом",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:advanced_display_small.tooltip.summary",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Use it on _trains_, as a _train destination display_ or _passenger information display_, or at _train stations_ as improved _platform displays_ which also shows more information than regular display boards.",
+      "display_name_ru_ru": "Используется в _поездах_ как _табло назначения_ или _информации пассажиров_, либо на _станциях_ как улучшенные _платформенные табло_ с расширенной информацией, чем обычные механическое табло.",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:navigator_lectern",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/blockstates/navigator_lectern.json",
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Lectern with Navigator",
+      "display_name_ru_ru": "Кафедра с навигатором",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/blockstates/navigator_lectern.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:train_station_clock",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/blockstates/train_station_clock.json",
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Train Station Clock",
+      "display_name_ru_ru": "Станционные часы",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/blockstates/train_station_clock.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:train_station_clock.tooltip.behaviour1",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Displays the _current time_ above the _hotbar_.",
+      "display_name_ru_ru": "Отображает _текущее время_ над панелью быстрого доступа.",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:train_station_clock.tooltip.behaviour2",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Changes the clock to display the time on _all four sides_.",
+      "display_name_ru_ru": "Изменяет часы для отображения времени _со всех четырёх сторон_.",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:train_station_clock.tooltip.condition1",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "When R-Clicked",
+      "display_name_ru_ru": "При нажатии ПКМ",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:train_station_clock.tooltip.condition2",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "When R-Clicked on another Train Station Clock",
+      "display_name_ru_ru": "При нажатии ПКМ по другим станционным часам",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "createrailwaysnavigator:train_station_clock.tooltip.summary",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "createrailwaysnavigator",
+      "mod_name": "Create Railways Navigator",
+      "mod_version": "1.20.1-beta-0.9.1-C6",
+      "source_jar": "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+      "source_sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/createrailwaysnavigator/lang/en_us.json",
+        "assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Shows the _current time_.",
+      "display_name_ru_ru": "Показывает _текущее время_.",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/en_us.json",
+        "createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar:assets/createrailwaysnavigator/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}

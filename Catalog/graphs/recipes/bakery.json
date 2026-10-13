@@ -1,0 +1,1322 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "bakery",
+    "name": "[Let's Do] Bakery",
+    "version": "2.0.6"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:baking_station",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:bricks",
+        "minecraft:crafting_shaped",
+        "minecraft:sugar",
+        "minecraft:wooden_slabs"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:baker_station"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:baking_station/apple_cupcake",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "bakery:baking_station",
+      "machine_id": "bakery:baking_station",
+      "ingredient_groups": [
+        "bakery:apple_jam",
+        "bakery:baking_station",
+        "bakery:cake_dough"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:apple_cupcake"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/apple_cupcake.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:baking_station/chocolate_cake",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "bakery:baking_station",
+      "machine_id": "bakery:baking_station",
+      "ingredient_groups": [
+        "bakery:baking_station",
+        "bakery:cake_dough",
+        "bakery:chocolate_jam"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:chocolate_cake"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/chocolate_cake.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:baking_station/chocolate_cookie",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "bakery:baking_station",
+      "machine_id": "bakery:baking_station",
+      "ingredient_groups": [
+        "bakery:baking_station",
+        "bakery:cake_dough",
+        "bakery:chocolate_jam"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:chocolate_glazed_cookie"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/chocolate_cookie.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:baking_station/chocolate_gateau",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "bakery:baking_station",
+      "machine_id": "bakery:baking_station",
+      "ingredient_groups": [
+        "bakery:baking_station",
+        "bakery:cake_dough",
+        "bakery:chocolate_truffle"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:chocolate_gateau"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/chocolate_gateau.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:baking_station/strawberry_cake",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "bakery:baking_station",
+      "machine_id": "bakery:baking_station",
+      "ingredient_groups": [
+        "bakery:baking_station",
+        "bakery:cake_dough",
+        "bakery:strawberry_jam"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:strawberry_cake"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/strawberry_cake.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:baking_station/strawberry_cookie",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "bakery:baking_station",
+      "machine_id": "bakery:baking_station",
+      "ingredient_groups": [
+        "bakery:baking_station",
+        "bakery:cake_dough",
+        "bakery:strawberry_jam"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:strawberry_glazed_cookie"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/strawberry_cookie.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:baking_station/strawberry_cupcake",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "bakery:baking_station",
+      "machine_id": "bakery:baking_station",
+      "ingredient_groups": [
+        "bakery:baking_station",
+        "bakery:cake_dough",
+        "bakery:strawberry_jam"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:strawberry_cupcake"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/strawberry_cupcake.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:baking_station/sweetberry_cake",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "bakery:baking_station",
+      "machine_id": "bakery:baking_station",
+      "ingredient_groups": [
+        "bakery:baking_station",
+        "bakery:cake_dough",
+        "bakery:sweetberry_jam"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:sweetberry_cake"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/sweetberry_cake.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:baking_station/sweetberry_cookie",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "bakery:baking_station",
+      "machine_id": "bakery:baking_station",
+      "ingredient_groups": [
+        "bakery:baking_station",
+        "bakery:cake_dough",
+        "bakery:sweetberry_jam"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:sweetberry_glazed_cookie"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/sweetberry_cookie.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:baking_station/sweetberry_cupcake",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "bakery:baking_station",
+      "machine_id": "bakery:baking_station",
+      "ingredient_groups": [
+        "bakery:baking_station",
+        "bakery:cake_dough",
+        "bakery:sweetberry_jam"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:sweetberry_cupcake"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/baking_station/sweetberry_cupcake.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:banner_from_smithing_table",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "minecraft:smithing_transform",
+      "machine_id": "minecraft:smithing_transform",
+      "ingredient_groups": [
+        "minecraft:netherite_ingot",
+        "minecraft:netherite_upgrade_smithing_template",
+        "minecraft:smithing_transform"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:bakery_banner"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/banner_from_smithing_table.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:bread_basket",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "bakery:bread_basket",
+        "bakery:tray",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/advancements/recipes/bread_basket.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:bread_box",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "bakery:bread_box",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "minecraft:stick"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/advancements/recipes/bread_box.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:bread_crate",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "bakery:baguette",
+        "bakery:braided_bread",
+        "bakery:bread",
+        "bakery:bun",
+        "bakery:tray",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:bread_crate"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/bread_crate.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:bread_knife",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:iron_ingot",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:bread_knife"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/bread_knife.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:bread_with_jam",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "bakery:bread",
+        "bakery:jam",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:bread_with_jam"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/bread_with_jam.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:breadbox",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:stick",
+        "minecraft:wooden_slabs"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:breadbox"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/breadbox.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:brick_counter",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:bricks",
+        "minecraft:crafting_shaped",
+        "minecraft:wooden_slabs"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:brick_counter"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/brick_counter.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:brown_dye_from_chocolate",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "bakery:chocolate_truffle",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:brown_dye"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/brown_dye_from_chocolate.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:butter",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "farm_and_charm:yeast",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "minecraft:water_bucket"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/advancements/recipes/butter.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:cabinet",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:barrel",
+        "minecraft:crafting_shaped",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:cabinet"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/cabinet.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:cake_display",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:glass_pane",
+        "minecraft:planks",
+        "minecraft:wooden_slabs"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:cake_display"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/cake_display.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:cake_dough",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "bakery:cake_dough",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "minecraft:sugar"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/advancements/recipes/cake_dough.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:cake_stand",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:brick",
+        "minecraft:crafting_shaped",
+        "minecraft:glass_pane",
+        "minecraft:white_dye"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:cake_stand"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/cake_stand.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:chocolate_box",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "bakery:chocolate_truffle",
+        "minecraft:chest",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:chocolate_box"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/chocolate_box.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:cobblestone_stove",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "bakery:cobblestone_stove",
+        "minecraft:inventory_changed",
+        "minecraft:iron_ingot",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/advancements/recipes/cobblestone_stove.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:cupcake_display",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:iron_nugget",
+        "minecraft:wooden_slabs"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:cupcake_display"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/cupcake_display.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:deepslate_stove",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "bakery:deepslate_stove",
+        "minecraft:inventory_changed",
+        "minecraft:iron_ingot",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/advancements/recipes/deepslate_stove.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:dough",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "bakery:dough",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "minecraft:sugar"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/advancements/recipes/dough.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:drawer",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:barrel",
+        "minecraft:crafting_shaped",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:drawer"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/drawer.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:end_bricks_stove",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "bakery:end_bricks_stove",
+        "minecraft:inventory_changed",
+        "minecraft:iron_ingot",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/advancements/recipes/end_bricks_stove.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:faucet",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "bakery:faucet",
+        "minecraft:inventory_changed",
+        "minecraft:iron_ingot",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/advancements/recipes/faucet.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:granite_stove",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "bakery:granite_stove",
+        "minecraft:inventory_changed",
+        "minecraft:iron_ingot",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/advancements/recipes/granite_stove.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:iron_bench",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:iron_ingot",
+        "minecraft:iron_nugget"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:iron_bench"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/iron_bench.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:iron_chair",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:iron_ingot",
+        "minecraft:iron_nugget"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:iron_chair"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/iron_chair.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:iron_table",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:iron_ingot",
+        "minecraft:iron_nugget"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:iron_table"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/iron_table.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:jar",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:glass_pane",
+        "minecraft:wooden_slabs"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:jar"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/jar.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:kitchen_sink",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:bricks",
+        "minecraft:crafting_shaped",
+        "minecraft:iron_ingot"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:kitchen_sink"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/kitchen_sink.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:mud_bricks_stove",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "bakery:mud_bricks_stove",
+        "minecraft:inventory_changed",
+        "minecraft:iron_ingot",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/advancements/recipes/mud_bricks_stove.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:quartz_stove",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "bakery:quartz_stove",
+        "minecraft:inventory_changed",
+        "minecraft:iron_ingot",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/advancements/recipes/quartz_stove.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:red_nether_bricks_stove",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "bakery:red_nether_bricks_stove",
+        "minecraft:inventory_changed",
+        "minecraft:iron_ingot",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/advancements/recipes/red_nether_bricks_stove.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:rolling_pin",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:planks",
+        "minecraft:wooden_slabs"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:rolling_pin"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/rolling_pin.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:sandstone_stove",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "bakery:sandstone_stove",
+        "minecraft:inventory_changed",
+        "minecraft:iron_ingot",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/advancements/recipes/sandstone_stove.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:sandwich",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "bakery:bread",
+        "bakery:cooked_beef",
+        "farm_and_charm:cabbage",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:sandwich"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/sandwich.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:small_cooking_pot",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:iron_ingot",
+        "minecraft:wooden_slabs"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:small_cooking_pot"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/small_cooking_pot.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:stone_bricks_stove",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "bakery:stone_bricks_stove",
+        "minecraft:inventory_changed",
+        "minecraft:iron_ingot",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/advancements/recipes/stone_bricks_stove.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:strawberry_chocolate",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "bakery:strawberry_chocolate",
+        "farm_and_charm:strawberry",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/advancements/recipes/strawberry_chocolate.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:street_sign",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:paper",
+        "minecraft:planks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:street_sign"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/street_sign.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:sweet_dough",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "bakery:sweet_dough",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "minecraft:sugar"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/advancements/recipes/sweet_dough.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:tray",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:planks",
+        "minecraft:wooden_slabs"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:tray"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/tray.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:vegetable_sandwich",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "bakery:bread",
+        "farm_and_charm:cabbage",
+        "farm_and_charm:tomato",
+        "minecraft:beetroot",
+        "minecraft:carrot",
+        "minecraft:crafting_shapeless"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:vegetable_sandwich"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/vegetable_sandwich.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:wall_cabinet",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:barrel",
+        "minecraft:crafting_shaped",
+        "minecraft:wooden_slabs"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:wall_cabinet"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/wall_cabinet.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "bakery:wall_display",
+      "mod_id": "bakery",
+      "mod_name": "[Let's Do] Bakery",
+      "mod_version": "2.0.6",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:stick",
+        "minecraft:wooden_slabs"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "bakery:wall_display"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "letsdo-bakery-forge-2.0.6.jar:data/bakery/recipes/wall_display.json"
+      ]
+    }
+  ]
+}

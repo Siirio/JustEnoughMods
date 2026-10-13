@@ -40,6 +40,7 @@ import net.minecraftforge.event.entity.living.AnimalTameEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.MobSpawnEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -71,6 +72,7 @@ public final class SettlementRuntime {
     @SubscribeEvent public static void broken(BlockEvent.BreakEvent event) { if (event.getLevel() instanceof ServerLevel level) AmenityScanService.invalidate(level.getServer(), level.dimension(), event.getPos()); }
     @SubscribeEvent public static void finalizedSpawn(MobSpawnEvent.FinalizeSpawn event) { MountCollectionService.finalizedSpawn(event); }
     @SubscribeEvent public static void tamed(AnimalTameEvent event) { if (MountCollectionService.tame(event) && event.getTamer() instanceof ServerPlayer player) player.sendSystemMessage(Component.translatable("jem.settlements.mount.recorded"), true); }
+    @SubscribeEvent public static void login(PlayerEvent.PlayerLoggedInEvent event) { if (event.getEntity() instanceof ServerPlayer player && DedicatedSmp.active(player)) SettlementNetwork.sendFoodPolicy(player); }
 
     @SubscribeEvent
     public static void death(LivingDeathEvent event) {
@@ -88,7 +90,8 @@ public final class SettlementRuntime {
         AmenityScanService.tick(event.getServer());
         if (event.getServer().getTickCount() % 20 == 0) feedLoadedResidents(event.getServer().overworld().getGameTime(), SettlementSavedData.get(event.getServer()));
         if (event.getServer().getTickCount() % 200 != 0) return;
-        PayrollService.tick(event.getServer()); SettlementSimulationService.tick(event.getServer()); recomputeHappiness(SettlementSavedData.get(event.getServer()));
+        SettlementSavedData data = SettlementSavedData.get(event.getServer());
+        guideResidentsHome(data); PayrollService.tick(event.getServer()); SettlementSimulationService.tick(event.getServer()); recomputeHappiness(data);
     }
 
     private static void feedLoadedResidents(long now, SettlementSavedData data) {
@@ -121,7 +124,7 @@ public final class SettlementRuntime {
         return false;
     }
     private static boolean accept(ServerLevel level, Villager villager, ResidentMood resident, ItemStack stack, long now, Runnable consume) {
-        var value = FoodValueRegistry.classify(stack); var id = BuiltInRegistries.ITEM.getKey(stack.getItem()); if (value.isEmpty() || id == null || !resident.canEat(now, id)) return false;
+        var value = FoodValueRegistry.classify(stack, villager); var id = BuiltInRegistries.ITEM.getKey(stack.getItem()); if (value.isEmpty() || id == null || !resident.canEat(now, id)) return false;
         ItemStack accepted = stack.copy(); accepted.setCount(1); consume.run();
         if (value.get().mood() > 0 && isNativeBreedingFood(accepted)) villager.getInventory().addItem(accepted.copy());
         var food = stack.getItem().getFoodProperties(stack, villager); int nutrition = food == null || value.get().mood() < 0 ? 0 : food.getNutrition(); resident.acceptFood(id, value.get().group(), value.get().mood(), nutrition, now);
@@ -130,6 +133,22 @@ public final class SettlementRuntime {
     }
     private static boolean isNativeBreedingFood(ItemStack stack) {
         return stack.is(Items.BREAD) || stack.is(Items.CARROT) || stack.is(Items.POTATO) || stack.is(Items.BEETROOT);
+    }
+    private static void guideResidentsHome(SettlementSavedData data) {
+        for (TownRecord town : data.towns()) {
+            ServerLevel level = dataLevel(data, town); if (level == null) continue;
+            int softEdge = town.territoryRadius() + 12;
+            for (ResidentMood resident : data.residents(town.id())) {
+                var entity = level.getEntity(resident.villagerId()); if (!(entity instanceof Villager villager) || !villager.isAlive()
+                        || villager.isLeashed() || villager.isPassenger() || villager.hurtTime > 0) continue;
+                BlockPos current = villager.blockPosition();
+                if (Math.abs(current.getX() - town.center().getX()) <= softEdge && Math.abs(current.getZ() - town.center().getZ()) <= softEdge) continue;
+                BlockPos preferred = villager.getBrain().getMemory(MemoryModuleType.HOME).filter(pos -> pos.dimension().equals(level.dimension()) && town.contains(pos.pos())).map(GlobalPos::pos)
+                        .orElseGet(() -> villager.getBrain().getMemory(MemoryModuleType.MEETING_POINT).filter(pos -> pos.dimension().equals(level.dimension()) && town.contains(pos.pos())).map(GlobalPos::pos).orElse(town.center()));
+                double dx = preferred.getX() + .5D - villager.getX(), dz = preferred.getZ() + .5D - villager.getZ(), length = Math.max(1.0D, Math.sqrt(dx * dx + dz * dz));
+                villager.getNavigation().moveTo(villager.getX() + dx / length * 8.0D, villager.getY(), villager.getZ() + dz / length * 8.0D, 0.6D);
+            }
+        }
     }
     private static void recomputeHappiness(SettlementSavedData data) {
         for (TownRecord town : data.towns()) {

@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "spider_overhaul",
+    "name": "Spider Overhaul",
+    "version": "0.0.6-Forge-v1.20"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "spider_overhaul:giant_bamboo_block",
+      "mod_id": "spider_overhaul",
+      "mod_name": "Spider Overhaul",
+      "mod_version": "0.0.6-Forge-v1.20",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "spider_overhaul:giant_bamboo_block"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "minecraft:bamboo"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "SpiderOverhaul-0.0.6-Forge-v1.20.jar:data/spider_overhaul/recipes/giant_bamboo_block.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "spider_overhaul:ice_snowball",
+      "mod_id": "spider_overhaul",
+      "mod_name": "Spider Overhaul",
+      "mod_version": "0.0.6-Forge-v1.20",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "minecraft:snowball",
+        "spider_overhaul:ice_shard"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "spider_overhaul:ice_snowball"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "SpiderOverhaul-0.0.6-Forge-v1.20.jar:data/spider_overhaul/recipes/ice_snowball.json"
+      ]
+    }
+  ]
+}

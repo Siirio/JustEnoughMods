@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "registry_type": "weapons",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "netherexp",
+    "name": "Jaden's Nether Expansion",
+    "version": "2.3.5"
+  },
+  "records": [
+    {
+      "item_id": "netherexp:crossbow_black_icicle",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/netherexp/models/item/crossbow_black_icicle.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/models/item/crossbow_black_icicle.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "crossbow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "netherexp:jackhammer_fist",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/netherexp/lang/en_us.json",
+        "assets/netherexp/lang/ru_ru.json",
+        "assets/netherexp/models/item/jackhammer_fist.json"
+      ],
+      "display_name_en_us": "Jackhammer-Fist",
+      "display_name_ru_ru": "Ручной отбойный молоток",
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/en_us.json",
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/lang/ru_ru.json",
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/netherexp/models/item/jackhammer_fist.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "hammer"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    }
+  ]
+}

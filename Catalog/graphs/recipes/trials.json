@@ -1,0 +1,2457 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "f3bd0fcc177743d0c765d811b7c9b48126fc29e6",
+  "generation": {
+    "generated_utc": "2026-10-13T17:39:05.288434+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "trials",
+    "name": "Trials Chambers",
+    "version": "2.3.3"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:bolt_smith_trim",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:smithing_trim",
+      "machine_id": "minecraft:smithing_trim",
+      "ingredient_groups": [
+        "minecraft:smithing_trim",
+        "minecraft:trim_materials",
+        "minecraft:trimmable_armor",
+        "trials:bolt_template"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/bolt_smith_trim.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:bolt_trim_template",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:copper_block",
+        "minecraft:crafting_shaped",
+        "minecraft:diamond"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:bolt_template"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/bolt_trim_template.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:chiseled_copper",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:cut_copper_slab"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:chiseled_copper"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/chiseled_copper.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:chiseled_copper_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:cut_copper",
+        "minecraft:stonecutting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:chiseled_copper"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/chiseled_copper_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:chiseled_copper_1",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:copper_block",
+        "minecraft:stonecutting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:chiseled_copper"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/chiseled_copper_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:chiseled_tuff",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "trials:tuff_slab"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:chiseled_tuff"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/chiseled_tuff.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:chiseled_tuff_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "minecraft:tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:chiseled_tuff"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/chiseled_tuff_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:chiseled_tuff_bricks",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "trials:tuff_brick_slab"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:chiseled_tuff_bricks"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/chiseled_tuff_bricks.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:chiseled_tuff_bricks_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "minecraft:tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:chiseled_tuff_bricks"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/chiseled_tuff_bricks_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:chiseled_tuff_bricks_1",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "trials:polished_tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:chiseled_tuff_bricks"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/chiseled_tuff_bricks_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:chiseled_tuff_bricks_2",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "trials:tuff_bricks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:chiseled_tuff_bricks"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/chiseled_tuff_bricks_2.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:chiseled_tuff_bulb",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:blaze_rod",
+        "minecraft:crafting_shaped",
+        "minecraft:redstone",
+        "trials:polished_tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:chiseled_tuff_bulb"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/chiseled_tuff_bulb.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:copper_bulb",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:copper_ingot",
+        "minecraft:crafting_shaped",
+        "trials:chiseled_tuff_bulb"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:copper_bulb"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/copper_bulb.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:copper_door",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:copper_ingot",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:copper_door"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/copper_door.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:copper_grate",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:copper_block",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:copper_grate"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/copper_grate.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:copper_grate_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:copper_block",
+        "minecraft:stonecutting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:copper_grate"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/copper_grate_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:copper_trapdoor",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:copper_ingot",
+        "minecraft:crafting_shaped"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:copper_trapdoor"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/copper_trapdoor.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:crafter",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:crafting_table",
+        "minecraft:dropper",
+        "minecraft:iron_ingot",
+        "minecraft:redstone"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:crafter"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/crafter.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:exposed_chiseled_copper",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:exposed_cut_copper_slab"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:chiseled_copper_exposed"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/exposed_chiseled_copper.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:exposed_chiseled_copper_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:exposed_cut_copper",
+        "minecraft:stonecutting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:chiseled_copper_exposed"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/exposed_chiseled_copper_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:exposed_chiseled_copper_1",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:exposed_copper",
+        "minecraft:stonecutting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:chiseled_copper_exposed"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/exposed_chiseled_copper_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:exposed_copper_grate",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:exposed_copper"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:copper_grate_exposed"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/exposed_copper_grate.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:exposed_copper_grate_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:exposed_copper",
+        "minecraft:stonecutting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:copper_grate_exposed"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/exposed_copper_grate_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:flow_smith_trim",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:smithing_trim",
+      "machine_id": "minecraft:smithing_trim",
+      "ingredient_groups": [
+        "minecraft:smithing_trim",
+        "minecraft:trim_materials",
+        "minecraft:trimmable_armor",
+        "trials:flow_template"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/flow_smith_trim.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:flow_trim_template",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:diamond",
+        "trials:breeze_rod"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:flow_template"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/flow_trim_template.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:mace",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "trials:breeze_rod",
+        "trials:heavy_core"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:mace"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/mace.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:oxidized_chiseled_copper",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:oxidized_cut_copper_slab"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:chiseled_copper_oxidized"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/oxidized_chiseled_copper.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:oxidized_chiseled_copper_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:oxidized_cut_copper",
+        "minecraft:stonecutting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:chiseled_copper_oxidized"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/oxidized_chiseled_copper_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:oxidized_chiseled_copper_1",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:oxidized_copper",
+        "minecraft:stonecutting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:chiseled_copper_oxidized"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/oxidized_chiseled_copper_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:oxidized_copper_grate",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:oxidized_copper"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:copper_grate_oxidized"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/oxidized_copper_grate.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:oxidized_copper_grate_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:oxidized_copper",
+        "minecraft:stonecutting"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:copper_grate_oxidized"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/oxidized_copper_grate_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:polished_tuff",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:polished_tuff"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/polished_tuff.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:polished_tuff_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "minecraft:tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:polished_tuff"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/polished_tuff_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:polished_tuff_slab",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "trials:polished_tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:polished_tuff_slab"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/polished_tuff_slab.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:polished_tuff_slab_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "minecraft:tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:polished_tuff_slab"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/polished_tuff_slab_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:polished_tuff_slab_1",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "trials:polished_tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:polished_tuff_slab"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/polished_tuff_slab_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:polished_tuff_stairs",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "trials:polished_tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:polished_tuff_stairs"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/polished_tuff_stairs.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:polished_tuff_stairs_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "minecraft:tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:polished_tuff_stairs"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/polished_tuff_stairs_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:polished_tuff_stairs_1",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "trials:polished_tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:polished_tuff_stairs"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/polished_tuff_stairs_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:polished_tuff_wall",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "trials:polished_tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:polished_tuff_wall"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/polished_tuff_wall.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:polished_tuff_wall_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "minecraft:tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:polished_tuff_wall"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/polished_tuff_wall_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:polished_tuff_wall_1",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "trials:polished_tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:polished_tuff_wall"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/polished_tuff_wall_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:tuff_brick_slab",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "trials:tuff_bricks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:tuff_brick_slab"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/tuff_brick_slab.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:tuff_brick_slab_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "minecraft:tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:tuff_brick_slab"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/tuff_brick_slab_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:tuff_brick_slab_1",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "trials:polished_tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:tuff_brick_slab"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/tuff_brick_slab_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:tuff_brick_slab_2",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "trials:tuff_bricks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:tuff_brick_slab"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/tuff_brick_slab_2.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:tuff_brick_stairs",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "trials:tuff_bricks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:tuff_brick_stairs"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/tuff_brick_stairs.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:tuff_brick_stairs_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "minecraft:tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:tuff_brick_stairs"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/tuff_brick_stairs_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:tuff_brick_stairs_1",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "trials:polished_tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:tuff_brick_stairs"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/tuff_brick_stairs_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:tuff_brick_stairs_2",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "trials:tuff_bricks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:tuff_brick_stairs"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/tuff_brick_stairs_2.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:tuff_brick_wall",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "trials:tuff_bricks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:tuff_brick_wall"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/tuff_brick_wall.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:tuff_brick_wall_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "minecraft:tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:tuff_brick_wall"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/tuff_brick_wall_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:tuff_brick_wall_1",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "trials:polished_tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:tuff_brick_wall"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/tuff_brick_wall_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:tuff_brick_wall_2",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "trials:tuff_bricks"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:tuff_brick_wall"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/tuff_brick_wall_2.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:tuff_bricks",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "trials:polished_tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:tuff_bricks"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/tuff_bricks.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:tuff_bricks_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "minecraft:tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:tuff_bricks"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/tuff_bricks_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:tuff_bricks_1",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "trials:polished_tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:tuff_bricks"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/tuff_bricks_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:tuff_slab",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:tuff_slab"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/tuff_slab.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:tuff_slab_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "minecraft:tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:tuff_slab"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/tuff_slab_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:tuff_stairs",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:tuff_stairs"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/tuff_stairs.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:tuff_stairs_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "minecraft:tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:tuff_stairs"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/tuff_stairs_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:tuff_wall",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:tuff_wall"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/tuff_wall.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:tuff_wall_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "minecraft:tuff"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:tuff_wall"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/tuff_wall_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_chiseled_copper",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:waxed_cut_copper_slab"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_chiseled_copper"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_chiseled_copper.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_chiseled_copper_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "minecraft:waxed_cut_copper"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_chiseled_copper"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_chiseled_copper_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_chiseled_copper_1",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "minecraft:waxed_copper_block"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_chiseled_copper"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_chiseled_copper_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_chiseled_copper_2",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "minecraft:honeycomb",
+        "trials:chiseled_copper"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_chiseled_copper"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_chiseled_copper_2.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_copper_door",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "minecraft:honeycomb",
+        "trials:copper_door"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_copper_door"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_copper_door.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_copper_grate",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:waxed_copper_block"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_copper_grate"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_copper_grate.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_copper_grate_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "minecraft:waxed_copper_block"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_copper_grate"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_copper_grate_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_copper_grate_1",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "minecraft:honeycomb",
+        "trials:copper_grate"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_copper_grate"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_copper_grate_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_copper_grate_exposed",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:waxed_exposed_copper"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_copper_grate_exposed"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_copper_grate_exposed.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_copper_grate_oxidized",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:waxed_oxidized_copper"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_copper_grate_oxidized"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_copper_grate_oxidized.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_copper_grate_weathered",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:waxed_weathered_copper"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_copper_grate_weathered"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_copper_grate_weathered.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_copper_trapdoor",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "minecraft:honeycomb",
+        "trials:copper_trapdoor"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_copper_trapdoor"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_copper_trapdoor.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_exposed_chiseled_copper",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:waxed_exposed_cut_copper_slab"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_chiseled_copper_exposed"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_exposed_chiseled_copper.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_exposed_chiseled_copper_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "minecraft:waxed_exposed_cut_copper"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_chiseled_copper_exposed"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_exposed_chiseled_copper_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_exposed_chiseled_copper_1",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "minecraft:waxed_exposed_copper"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_chiseled_copper_exposed"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_exposed_chiseled_copper_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_exposed_chiseled_copper_2",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "minecraft:honeycomb",
+        "trials:chiseled_copper_exposed"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_chiseled_copper_exposed"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_exposed_chiseled_copper_2.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_exposed_copper_door",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "minecraft:honeycomb",
+        "trials:copper_door_exposed"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_copper_door_exposed"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_exposed_copper_door.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_exposed_copper_grate_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "minecraft:waxed_exposed_copper"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_copper_grate_exposed"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_exposed_copper_grate_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_exposed_copper_grate_1",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "minecraft:honeycomb",
+        "trials:copper_grate_exposed"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_copper_grate_exposed"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_exposed_copper_grate_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_exposed_copper_trapdoor",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "minecraft:honeycomb",
+        "trials:copper_trapdoor_exposed"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_copper_trapdoor_exposed"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_exposed_copper_trapdoor.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_oxidized_chiseled_copper",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:waxed_oxidized_cut_copper_slab"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_chiseled_copper_oxidized"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_oxidized_chiseled_copper.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_oxidized_chiseled_copper_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "minecraft:waxed_oxidized_cut_copper"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_chiseled_copper_oxidized"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_oxidized_chiseled_copper_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_oxidized_chiseled_copper_1",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "minecraft:waxed_oxidized_copper"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_chiseled_copper_oxidized"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_oxidized_chiseled_copper_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_oxidized_chiseled_copper_2",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "minecraft:honeycomb",
+        "trials:chiseled_copper_oxidized"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_chiseled_copper_oxidized"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_oxidized_chiseled_copper_2.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_oxidized_copper_door",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "minecraft:honeycomb",
+        "trials:copper_door_oxidized"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_copper_door_oxidized"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_oxidized_copper_door.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_oxidized_copper_grate_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "minecraft:waxed_oxidized_copper"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_copper_grate_oxidized"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_oxidized_copper_grate_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_oxidized_copper_grate_1",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "minecraft:honeycomb",
+        "trials:copper_grate_oxidized"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_copper_grate_oxidized"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_oxidized_copper_grate_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_oxidized_copper_trapdoor",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "minecraft:honeycomb",
+        "trials:copper_trapdoor_oxidized"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_copper_trapdoor_oxidized"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_oxidized_copper_trapdoor.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_weathered_chiseled_copper",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:waxed_weathered_cut_copper_slab"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_chiseled_copper_weathered"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_weathered_chiseled_copper.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_weathered_chiseled_copper_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "minecraft:waxed_weathered_cut_copper"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_chiseled_copper_weathered"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_weathered_chiseled_copper_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_weathered_chiseled_copper_1",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "minecraft:waxed_weathered_copper"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_chiseled_copper_weathered"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_weathered_chiseled_copper_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_weathered_chiseled_copper_2",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "minecraft:honeycomb",
+        "trials:chiseled_copper_weathered"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_chiseled_copper_weathered"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_weathered_chiseled_copper_2.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_weathered_copper_door",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "minecraft:honeycomb",
+        "trials:copper_door_weathered"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_copper_door_weathered"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_weathered_copper_door.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_weathered_copper_grate_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "minecraft:waxed_weathered_copper"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_copper_grate_weathered"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_weathered_copper_grate_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_weathered_copper_grate_1",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "minecraft:honeycomb",
+        "trials:copper_grate_weathered"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_copper_grate_weathered"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_weathered_copper_grate_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:waxed_weathered_copper_trapdoor",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shapeless",
+      "machine_id": "minecraft:crafting_shapeless",
+      "ingredient_groups": [
+        "minecraft:crafting_shapeless",
+        "minecraft:honeycomb",
+        "trials:copper_trapdoor_weathered"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:waxed_copper_trapdoor_weathered"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/waxed_weathered_copper_trapdoor.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:weathered_chiseled_copper",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:weathered_cut_copper_slab"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:chiseled_copper_weathered"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/weathered_chiseled_copper.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:weathered_chiseled_copper_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "minecraft:weathered_cut_copper"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:chiseled_copper_weathered"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/weathered_chiseled_copper_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:weathered_chiseled_copper_1",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "minecraft:weathered_copper"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:chiseled_copper_weathered"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/weathered_chiseled_copper_1.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:weathered_copper_grate",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "minecraft:weathered_copper"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:copper_grate_weathered"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/weathered_copper_grate.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:weathered_copper_grate_0",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:stonecutting",
+      "machine_id": "minecraft:stonecutting",
+      "ingredient_groups": [
+        "minecraft:stonecutting",
+        "minecraft:weathered_copper"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:copper_grate_weathered"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/weathered_copper_grate_0.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "trials:wind_charge",
+      "mod_id": "trials",
+      "mod_name": "Trials Chambers",
+      "mod_version": "2.3.3",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "minecraft:crafting_shaped",
+        "trials:breeze_rod"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "trials:wind_charge"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "Trials-2.3.3.jar:data/trials/recipes/wind_charge.json"
+      ]
+    }
+  ]
+}
