@@ -10,6 +10,7 @@ import com.siirio.jemidentity.api.DedicatedSmp;
 import com.siirio.jemidentity.api.IdentityPolicy;
 import java.util.UUID;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -194,6 +195,19 @@ public final class EconomyApi {
         if (IdentityPolicy.resolve(authenticatedActor).isEmpty()) return new TransferResult(TransferResult.Status.UNAUTHENTICATED, null, 0L, 0L);
         return EconomySavedData.get(authenticatedActor.getServer()).transfer(townAccount(townId), workerAccount, amount,
                 "townPayroll:" + townId + ":" + workerAccount + ":" + requestId);
+    }
+
+    /** Scheduled settlement debit. The town was previously created by an authenticated principal; no live client chooses either account. */
+    public static TransferResult settleTownPayroll(MinecraftServer server, UUID townId, long amount, long period) {
+        if (server == null || !server.isDedicatedServer() || townId == null || amount <= 0L || period < 0L) {
+            return new TransferResult(TransferResult.Status.INVALID, null, 0L, 0L);
+        }
+        return EconomySavedData.get(server).transfer(townAccount(townId), SystemAccount.CENTRAL_RESERVE.id(), amount,
+                "payroll:" + townId + ":" + period);
+    }
+
+    public static long townBalance(MinecraftServer server, UUID townId) {
+        return server == null || !server.isDedicatedServer() || townId == null ? 0L : EconomySavedData.get(server).balance(townAccount(townId));
     }
 
     public static MarketBulletin marketBulletin(ServerPlayer authenticatedActor) {

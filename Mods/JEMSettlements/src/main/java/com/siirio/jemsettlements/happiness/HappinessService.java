@@ -5,6 +5,10 @@ public final class HappinessService {
     }
 
     public static int calculate(int housing, int food, int safety, int jobs, int community, int taxPercent) {
+        return calculate(housing, food, safety, jobs, community, 0, taxPercent);
+    }
+
+    public static int calculate(int housing, int food, int safety, int jobs, int community, int decoration, int taxPercent) {
         int penalty = switch (taxPercent) {
             case 0 -> 0;
             case 5 -> 3;
@@ -14,7 +18,8 @@ public final class HappinessService {
         };
         long weighted = Math.round(0.25D * clamp(housing) + 0.25D * clamp(food) + 0.20D * clamp(safety)
                 + 0.15D * clamp(jobs) + 0.15D * clamp(community));
-        return clamp((int) weighted - penalty);
+        int decorationBonus = Math.min(10, Math.max(0, decoration) / 2);
+        return clamp((int) weighted + decorationBonus - penalty);
     }
 
     public static double productionFactor(int happiness) {

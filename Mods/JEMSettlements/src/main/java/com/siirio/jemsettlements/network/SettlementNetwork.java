@@ -24,7 +24,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class SettlementNetwork {
-    private static final String VERSION = "1";
+    private static final String VERSION = "2";
     private static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(JemSettlements.MOD_ID, "town"))
             .networkProtocolVersion(() -> VERSION).clientAcceptedVersions(VERSION::equals).serverAcceptedVersions(VERSION::equals).simpleChannel();
     private SettlementNetwork() {}
@@ -75,6 +75,8 @@ public final class SettlementNetwork {
     private static CompoundTag buildView(ServerPlayer player, TownRecord town) {
         CompoundTag view = new CompoundTag(); view.putUUID("Id", town.id()); view.putString("Name", town.name());
         view.putInt("Happiness", town.happiness()); view.putInt("Tax", town.taxPercent()); view.putLong("Center", town.center().asLong());
+        view.putString("Tier", town.tier().name()); view.putString("PrimarySpecialization", town.primarySpecialization().name()); view.putString("SecondarySpecialization", town.secondarySpecialization().name());
+        view.putInt("Housing", town.housingScore()); view.putInt("Food", town.foodScore()); view.putInt("Safety", town.safetyScore()); view.putInt("Jobs", town.jobsScore()); view.putInt("Community", town.communityScore()); view.putInt("Decoration", town.decorationScore());
         view.putLong("Treasury", SettlementApi.treasuryBalance(player, town));
         var bulletin = com.siirio.jemeconomy.api.EconomyApi.marketBulletin(player);
         view.putString("MarketPrimary", bulletin.primaryGroup()); view.putString("MarketSecondary", bulletin.secondaryGroup());
@@ -84,6 +86,24 @@ public final class SettlementNetwork {
         CompoundTag workforce = new CompoundTag();
         data.workforce(town.id()).forEach(record -> workforce.putInt(record.type().name(), workforce.getInt(record.type().name()) + 1));
         view.put("Workforce", workforce);
+        ListTag residents = new ListTag();
+        for (var resident : data.residents(town.id())) {
+            CompoundTag row = new CompoundTag(); row.putUUID("Id", resident.villagerId()); row.putInt("Mood", resident.mood()); row.putInt("Satiety", resident.satiety()); row.putBoolean("Living", resident.living());
+            row.putBoolean("Home", resident.home().isPresent()); row.putBoolean("Work", resident.workplace().isPresent()); row.putInt("HomeAmenities", resident.homeAmenities().points()); row.putInt("WorkAmenities", resident.workAmenities().points());
+            row.putBoolean("AmenitiesStale", resident.homeAmenities().stale() || resident.workAmenities().stale());
+            var residentLevel = player.getServer().getLevel(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION, town.dimension()));
+            var entity = residentLevel == null ? null : residentLevel.getEntity(resident.villagerId());
+            row.putString("Name", entity == null ? resident.villagerId().toString().substring(0, 8) : entity.getDisplayName().getString()); residents.add(row);
+        }
+        view.put("Residents", residents);
+        ListTag defense = new ListTag(); long projected = 0L;
+        for (var record : data.workforce(town.id())) if (record.type() == com.siirio.jemsettlements.workforce.WorkforceType.RECRUIT && record.living()) {
+            long wage = com.siirio.jemsettlements.payroll.RecruitRank.of(record.nativeEntityType()).wage(); projected += wage; CompoundTag row = new CompoundTag(); row.putUUID("Id", record.entityId()); row.putString("NativeType", record.nativeEntityType().toString()); row.putLong("Wage", wage); row.putLong("LastPaidPeriod", record.lastPaidPeriod()); row.putBoolean("Ready", town.consecutiveMissedPayrolls() < 2);
+            for (ServerLevel candidate : player.getServer().getAllLevels()) { var entity = candidate.getEntity(record.entityId()); var readiness = com.siirio.jemsettlements.compat.recruits.RecruitReadinessAdapter.read(entity); if (readiness.isPresent()) { row.putFloat("Morale", readiness.get().morale()); row.putFloat("Hunger", readiness.get().hunger()); row.putBoolean("Ready", row.getBoolean("Ready") && readiness.get().combatReady()); row.putString("Name", entity.getDisplayName().getString()); break; } }
+            if (!row.contains("Name")) row.putString("Name", record.entityId().toString().substring(0, 8)); defense.add(row);
+        }
+        view.put("Defense", defense); view.putLong("ProjectedPayroll", projected); view.putLong("NextPayroll", town.nextPayrollGameTime()); view.putInt("MissedPayrolls", town.consecutiveMissedPayrolls());
+        long unpaid = town.payroll().stream().filter(period -> !period.paid()).mapToLong(com.siirio.jemsettlements.payroll.PayrollPeriod::total).sum(); view.putLong("UnpaidPayroll", unpaid); view.putLong("PayrollShortfall", Math.max(0L, unpaid - com.siirio.jemeconomy.api.EconomyApi.townBalance(player.getServer(), town.id())));
         Map<String, Long> stock = new LinkedHashMap<>(); int loaded = 0; long food = 0;
         for (var link : town.storage()) {
             ServerLevel level = player.getServer().getLevel(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION, link.dimension()));
@@ -99,6 +119,8 @@ public final class SettlementNetwork {
             }
         }
         view.putInt("LoadedStorage", loaded); view.putLong("FoodUnits", food);
+        view.putLong("PendingNotSpendable", 0L); view.putLong("FailedQuarantined", 0L); view.putBoolean("SimulationActive", town.simulation().active());
+        ListTag journal = new ListTag(); for (var entry : town.simulation().journal()) { CompoundTag row = entry.save(); journal.add(row); } view.put("SimulationJournal", journal);
         ListTag items = new ListTag(); stock.entrySet().stream().sorted(Map.Entry.<String, Long>comparingByValue().reversed()).limit(32).forEach(entry -> {
             CompoundTag row = new CompoundTag(); row.putString("Item", entry.getKey()); row.putLong("Count", entry.getValue()); items.add(row);
         }); view.put("Stock", items);

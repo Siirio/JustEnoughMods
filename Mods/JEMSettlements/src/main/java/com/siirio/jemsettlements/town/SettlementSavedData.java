@@ -1,6 +1,7 @@
 package com.siirio.jemsettlements.town;
 
 import com.siirio.jemsettlements.workforce.WorkforceRecord;
+import com.siirio.jemsettlements.resident.ResidentMood;
 import java.util.LinkedHashMap;
 import java.util.Collection;
 import java.util.Map;
@@ -14,6 +15,7 @@ public final class SettlementSavedData extends SavedData {
     private static final String NAME = "jem_settlements";
     private final Map<UUID, TownRecord> towns = new LinkedHashMap<>();
     private final Map<UUID, WorkforceRecord> workforce = new LinkedHashMap<>();
+    private final Map<UUID, ResidentMood> residents = new LinkedHashMap<>();
 
     public static SettlementSavedData get(MinecraftServer server) {
         return server.overworld().getDataStorage().computeIfAbsent(SettlementSavedData::load, SettlementSavedData::new, NAME);
@@ -23,6 +25,9 @@ public final class SettlementSavedData extends SavedData {
     public Optional<TownRecord> town(UUID id) { return Optional.ofNullable(towns.get(id)); }
     public Collection<TownRecord> towns() { return java.util.List.copyOf(towns.values()); }
     public Collection<WorkforceRecord> workforce(UUID town) { return workforce.values().stream().filter(record -> record.townId().equals(town)).toList(); }
+    public Optional<WorkforceRecord> workforceEntity(UUID entity) { return Optional.ofNullable(workforce.get(entity)); }
+    public Collection<ResidentMood> residents(UUID town) { return residents.values().stream().filter(record -> record.townId().equals(town)).toList(); }
+    public Optional<ResidentMood> resident(UUID villager) { return Optional.ofNullable(residents.get(villager)); }
     public boolean nameUsed(String normalized) { return towns.values().stream().anyMatch(town -> town.name().equalsIgnoreCase(normalized)); }
     public boolean anchorWithin(net.minecraft.resources.ResourceLocation dimension, net.minecraft.core.BlockPos center, int distance) {
         long squared = (long) distance * distance;
@@ -30,8 +35,10 @@ public final class SettlementSavedData extends SavedData {
     }
     public long workforceCount(UUID town) { return workforce.values().stream().filter(record -> record.townId().equals(town)).count(); }
     public boolean entityAssigned(UUID entity) { return workforce.containsKey(entity); }
+    public boolean residentAssigned(UUID entity) { return residents.containsKey(entity); }
     public void add(TownRecord town) { towns.put(town.id(), town); setDirty(); }
     public void add(WorkforceRecord record) { workforce.put(record.entityId(), record); setDirty(); }
+    public void add(ResidentMood resident) { residents.put(resident.villagerId(), resident); setDirty(); }
     public void changed() { setDirty(); }
 
     @Override
@@ -42,6 +49,9 @@ public final class SettlementSavedData extends SavedData {
         workforce.forEach((id, worker) -> workerRows.put(id.toString(), worker.save()));
         tag.put("Towns", townRows);
         tag.put("Workforce", workerRows);
+        CompoundTag residentRows = new CompoundTag();
+        residents.forEach((id, resident) -> residentRows.put(id.toString(), resident.save()));
+        tag.put("Residents", residentRows);
         return tag;
     }
 
@@ -55,6 +65,11 @@ public final class SettlementSavedData extends SavedData {
         CompoundTag workers = tag.getCompound("Workforce");
         for (String key : workers.getAllKeys()) {
             try { WorkforceRecord worker = WorkforceRecord.load(workers.getCompound(key)); data.workforce.put(worker.entityId(), worker); }
+            catch (RuntimeException ignored) { }
+        }
+        CompoundTag residents = tag.getCompound("Residents");
+        for (String key : residents.getAllKeys()) {
+            try { ResidentMood resident = ResidentMood.load(residents.getCompound(key)); data.residents.put(resident.villagerId(), resident); }
             catch (RuntimeException ignored) { }
         }
         return data;

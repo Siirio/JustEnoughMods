@@ -52,7 +52,7 @@ Changelog описывает только запрошенные player-visible 
 | `JEMRoles` | Player race selection, racial traits and optional native-mod race adapters |
 | `JEMProfessions` | Ten profession tracks, bounded audited XP and optional native event adapters |
 | `JEMEconomy` | Fixed Coin supply, Wallet balances, five backed physical denominations, issuance/redemption lots, escrow accounts and idempotent funded transfers |
-| `JEMSettlements` | Town identity, physical storage links, one Workforce ledger and happiness; never land protection |
+| `JEMSettlements` | Town/resident identity, physical storage links, one native Workforce/Defense roster, funded payroll, bounded happiness/amenities, inactive-interval journal and personal mount evidence; never land protection or imaginary inventory |
 | `JEMVillagerTalking` | Изолированные реакции, реплики, сеть и HUD-текст жителей; мод остаётся development-only до отдельного решения о публикации |
 | `JEMClaims` | Territories, permissions и protection integration |
 | `JEMServer` | SMP, parties, shops и server UX; внутренний Events domain делегирует party operations в `EventParties`, принимает `EventParticipants` и регистрируется через `EventRuntime` |

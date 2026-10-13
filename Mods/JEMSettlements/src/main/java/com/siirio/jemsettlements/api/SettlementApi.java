@@ -16,6 +16,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.npc.Villager;
+import net.minecraft.world.entity.ai.memory.MemoryModuleType;
+import com.siirio.jemsettlements.resident.ResidentMood;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraft.world.level.block.Blocks;
 
@@ -61,7 +64,7 @@ public final class SettlementApi {
         if (blockEntity == null || !blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).isPresent()) return Result.INVALID;
         SettlementSavedData data = SettlementSavedData.get(player.getServer());
         StorageLink link = new StorageLink(player.serverLevel().dimension().location(), position.immutable());
-        for (TownRecord other : data.towns()) if (!other.id().equals(town.get().id()) && other.storage().contains(link)) return Result.CONFLICT;
+        for (TownRecord other : data.towns()) if (!other.id().equals(town.get().id()) && other.storage().stream().anyMatch(value -> value.dimension().equals(link.dimension()) && value.position().equals(link.position()))) return Result.CONFLICT;
         if (!town.get().addStorage(link)) return Result.CONFLICT;
         data.changed();
         return Result.ACCEPTED;
@@ -77,6 +80,7 @@ public final class SettlementApi {
         if (namespace.equals("recruits")) {
             if (!RecruitsAdapter.ownedBy(entity, principal.get().accountId())) return Result.INVALID;
             type = WorkforceType.RECRUIT;
+            coinWageEnabled = true;
         } else {
             var nativeType = WorkersAdapter.typeOwnedBy(entity, principal.get().accountId());
             if (nativeType.isEmpty()) return Result.INVALID;
@@ -84,8 +88,27 @@ public final class SettlementApi {
         }
         SettlementSavedData data = SettlementSavedData.get(player.getServer());
         if (data.entityAssigned(entity.getUUID())) return Result.CONFLICT;
-        data.add(new WorkforceRecord(entity.getUUID(), town.get().id(), principal.get().accountId(), type, namespace, coinWageEnabled));
+        var nativeType = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType());
+        data.add(new WorkforceRecord(entity.getUUID(), town.get().id(), principal.get().accountId(), type, namespace, nativeType, coinWageEnabled, player.serverLevel().getGameTime()));
+        if (type == WorkforceType.RECRUIT) town.get().initializePayroll(player.serverLevel().getGameTime());
         return Result.ACCEPTED;
+    }
+
+    public static Result registerResident(ServerPlayer player, Villager villager) {
+        if (!DedicatedSmp.active(player) || villager == null || !villager.isAlive() || villager.isBaby()) return Result.INVALID;
+        var town = ownedTown(player); if (town.isEmpty()) return Result.UNAUTHENTICATED;
+        if (!town.get().dimension().equals(player.serverLevel().dimension().location()) || town.get().center().distSqr(villager.blockPosition()) > 128L * 128L) return Result.INVALID;
+        SettlementSavedData data = SettlementSavedData.get(player.getServer()); if (data.residentAssigned(villager.getUUID())) return Result.CONFLICT;
+        int cap = switch (town.get().tier()) { case CAMP, VILLAGE -> 24; case TOWN -> 48; case CITY, CITADEL -> 96; };
+        if (data.residents(town.get().id()).stream().filter(ResidentMood::living).count() >= cap) return Result.CONFLICT;
+        var home = villager.getBrain().getMemory(MemoryModuleType.HOME).orElse(null); var work = villager.getBrain().getMemory(MemoryModuleType.JOB_SITE).orElse(null);
+        ResidentMood resident = new ResidentMood(villager.getUUID(), town.get().id(), home, work); resident.markAmenitiesDirty(player.serverLevel().getGameTime()); data.add(resident); return Result.ACCEPTED;
+    }
+
+    public static Result setFoodStorage(ServerPlayer player, BlockPos position, boolean enabled) {
+        var town = ownedTown(player); if (town.isEmpty()) return Result.UNAUTHENTICATED;
+        StorageLink link = new StorageLink(player.serverLevel().dimension().location(), position);
+        if (!town.get().setStorageFeed(link, enabled)) return Result.INVALID; SettlementSavedData.get(player.getServer()).changed(); return Result.ACCEPTED;
     }
 
     public static long treasuryBalance(ServerPlayer player, TownRecord town) {

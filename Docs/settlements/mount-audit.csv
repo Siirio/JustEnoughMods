@@ -1,0 +1,18 @@
+entity_id,decision,evidence,collection_rule
+minecraft:horse,include,AbstractHorse tame and ownership lifecycle,First authenticated real tame only
+minecraft:donkey,include,AbstractHorse tame and ownership lifecycle,First authenticated real tame only
+minecraft:mule,include,AbstractHorse tame and ownership lifecycle,First authenticated real tame only
+minecraft:llama,include,AbstractHorse tame and ownership lifecycle,First authenticated real tame only
+minecraft:trader_llama,include,AbstractHorse tame and ownership lifecycle,First authenticated real tame only
+minecraft:camel,include,AbstractHorse tame and ownership lifecycle,First authenticated real tame only
+minecraft:skeleton_horse,include,AbstractHorse ownership-compatible lifecycle,First authenticated legitimate acquisition event only
+minecraft:pig,exclude,Rideable but has no tame or owner transition,No qualifying acquisition signal
+minecraft:strider,exclude,Rideable but has no tame or owner transition,No qualifying acquisition signal
+barnyardbuddies:clydesdale_horse,include,Installed class extends TamableAnimal and is rideable,First authenticated real tame only
+barnyardbuddies:trader_clydesdale,include,Installed class extends TamableAnimal and is rideable,First authenticated real tame only
+alexsmobs:elephant,include,Installed class extends TamableAnimal and is rideable,First authenticated real tame only
+primal:walrus,include,Installed class extends AbstractHorse,First authenticated real tame only
+companions:antlion,include,Installed CompanionEntity is TamableAnimal and implements PlayerRideable,First authenticated real tame only
+immersive_aircraft:*,exclude,Vehicles are constructed entities rather than tameable animals,No animal-tame evidence
+critters_and_crawlers:*,exclude,Installed registry audit found no entity proving both rideability and ownership,Disabled until a precise adapter exists
+luminous_beasts:*,exclude,Installed registry audit found no entity proving both rideability and ownership,Disabled until a precise adapter exists

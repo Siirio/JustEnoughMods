@@ -28,9 +28,13 @@ public final class SettlementCommands {
                                         .executes(context -> create(context.getSource().getPlayerOrException(), StringArgumentType.getString(context, "name")))))
                         .then(Commands.literal("linkstorage")
                                 .executes(context -> linkStorage(context.getSource().getPlayerOrException())))
+                        .then(Commands.literal("feedstorage")
+                                .then(Commands.literal("on").executes(context -> feedStorage(context.getSource().getPlayerOrException(), true)))
+                                .then(Commands.literal("off").executes(context -> feedStorage(context.getSource().getPlayerOrException(), false))))
                         .then(Commands.literal("workforce")
                                 .then(Commands.argument("entity", EntityArgument.entity())
-                                        .executes(context -> workforce(context.getSource().getPlayerOrException(), EntityArgument.getEntity(context, "entity")))))));
+                                        .executes(context -> workforce(context.getSource().getPlayerOrException(), EntityArgument.getEntity(context, "entity")))))
+                        .then(Commands.literal("mounts").executes(context -> mounts(context.getSource().getPlayerOrException())))));
     }
 
     private static int create(ServerPlayer player, String name) {
@@ -71,5 +75,20 @@ public final class SettlementCommands {
         player.sendSystemMessage(Component.translatable(result == SettlementApi.Result.ACCEPTED
                 ? "jem.settlements.workforce_added" : "jem.settlements.workforce_rejected"));
         return result == SettlementApi.Result.ACCEPTED ? 1 : 0;
+    }
+
+    private static int feedStorage(ServerPlayer player, boolean enabled) {
+        var hit = player.pick(6.0D, 0.0F, false); if (!(hit instanceof net.minecraft.world.phys.BlockHitResult blockHit)) return 0;
+        SettlementApi.Result result = SettlementApi.setFoodStorage(player, blockHit.getBlockPos(), enabled);
+        player.sendSystemMessage(Component.translatable(result == SettlementApi.Result.ACCEPTED ? "jem.settlements.feed_storage_changed" : "jem.settlements.storage_rejected", enabled));
+        return result == SettlementApi.Result.ACCEPTED ? 1 : 0;
+    }
+
+    private static int mounts(ServerPlayer player) {
+        var principal = IdentityPolicy.resolve(player); if (principal.isEmpty()) { player.sendSystemMessage(Component.translatable("jem.settlements.identity_required")); return 0; }
+        var record = com.siirio.jemsettlements.collection.PlayerMountCollectionSavedData.get(player.getServer()).record(principal.get().accountId());
+        player.sendSystemMessage(Component.translatable("jem.settlements.mount.summary", record.individualCount(), record.livingCount(), record.typeCount(), com.siirio.jemsettlements.collection.MountRoster.eligible().size()));
+        if (record.rewards().contains("master_of_mounts")) player.sendSystemMessage(Component.translatable("jem.settlements.mount.master"));
+        return 1;
     }
 }

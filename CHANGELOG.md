@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-13 — Autonomous settlements Phase 2
+
+- User request and technical direction: implement the complete supplied Phase 2 settlement specification and push it, with happiness limited to registered residents, one funded all-or-nothing Recruit payroll, real single-item food/amenity evidence, bounded six-day unloaded catch-up, actionable Town Hall guidance and player-private mount collection. Economy eligibility remains only `BUY_AND_SELL` or `NONE`. The user prohibited automated tests and live host/pack publication.
+- Codex technical choice: upgraded JEM Economy's authenticated town-payroll API and JEM Settlements' versioned persistence, keeping old town UUID/owner/anchor/storage data. Added exact Recruits rank wages, monotonic 168,000-tick receipts, bounded native morale penalties, per-resident satiety/mood and native breeding-food transfer, data-driven food/amenity registries, debounced bounded scans, stable tier/specialization evidence, ten Hall tabs, RU/EN FTB guidance and authenticated exact-once mount UUID/type marks. The settlement network contract is revision 2 and therefore requires the matching client JAR.
+- Safe disabled paths: installed Workers 2.0.3 exposes native work state/area but no reliable remote rate/input/output-commit contract, so background Worker output is zero and journaled instead of invented. No authored permission-safe settlement blueprints exist, so project planning places zero blocks. Food and mount audit CSVs record only inspected registry/class coverage.
+- Verification boundary: production Gradle builds ran with tests excluded; JSON, diff and packaged-JAR contents were checked. No test class, fixture, GameTest, runtime launch, linter, static analysis, MineRENT deployment, stable-profile mutation, AutoModpack publication or release-baseline promotion was performed. Runtime/gameplay acceptance remains `in testing` pending an explicitly authorized manual run in `test jem`.
+
 ## 2026-10-13 — Boss entry prompt crash hotfix
 
 - `Bug / Server Sided / BossHostingPrompt отправлял клиенту устаревший entry kind BOSS, отсутствующий в EventEntryKind, поэтому подтверждение Solo или Party падало в EventNetwork.select при EventEntryKind.valueOf / in testing`

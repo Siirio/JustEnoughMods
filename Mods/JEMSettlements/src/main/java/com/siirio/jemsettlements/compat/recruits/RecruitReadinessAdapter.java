@@ -17,4 +17,10 @@ public final class RecruitReadinessAdapter {
         float hunger = recruit.getHunger();
         return Optional.of(new Readiness(morale, hunger, recruit.isAlive() && morale > 0.0F && hunger > 0.0F));
     }
+
+    /** Recruits 1.15.2 stores morale directly on a verified 0..100 scale. */
+    public static void applyPayrollPenalty(AbstractRecruitEntity recruit, float points) {
+        if (recruit == null || points <= 0.0F) return;
+        recruit.setMoral(Math.max(0.0F, recruit.getMorale() - points));
+    }
 }

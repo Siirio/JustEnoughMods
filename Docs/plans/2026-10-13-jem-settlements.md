@@ -172,3 +172,9 @@
 - [ ] Add semantic Settlement/Workforce navigation only when loaded.
 - [ ] Record town, workforce, storage, remote-work, happiness and no-claim ownership contracts in canonical docs/changelog.
 
+## Phase 2 implementation status — 2026-10-13
+
+Implemented versioned town/resident/workforce persistence, registered-villager food and amenity mood, authenticated atomic Recruit payroll, conservative six-day inactive-interval journaling, stable tier/specialization evidence, ten Town Hall tabs, RU/EN FTB guidance and personal authenticated mount marks. Town happiness keeps the established weighted categories/tax penalties with decoration bounded to +10.
+
+Two deliberately disabled paths remain part of the contract rather than placeholders: Workers 2.0.3 has no verified remote rate/input/output-commit API, so background item production is zero and journaled; physical projects have no authored permission-safe blueprint set, so they may be planned but place zero blocks. Both require a later explicit adapter/asset decision before their unchecked tasks can be completed.
+

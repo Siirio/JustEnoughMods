@@ -48,6 +48,8 @@
 - `jem town` / `jem town create <name>` — inspect or found a non-claim town.
 - `jem town linkstorage` — link the physically targeted item-handler container to the owned town.
 - `jem town workforce <entity>` — register a genuine owned Recruits/Workers NPC in the single Workforce ledger.
+- `jem town feedstorage on|off` — while looking at an already linked physical container, explicitly allow or stop one-item resident feeding from it.
+- `jem town mounts` — show the authenticated player's private lifetime/living mount counts and audited eligible-type progress; no town is required.
 - `jem project create <name>` — create a visual building project in the current dimension.
 - `jem project add <project-uuid> <x1> <z1> <x2> <z2>` — append a source rectangle.
 - `jem project remove <project-uuid> <zero-based-rectangle-index>` — remove a source rectangle and recompute its visual union.
