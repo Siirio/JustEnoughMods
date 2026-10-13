@@ -1,5 +1,6 @@
 package com.siirio.jemserver.smp;
 
+import com.siirio.jemserver.smp.events.EventEntryKind;
 import com.siirio.jemserver.smp.events.EventNetwork;
 import com.siirio.jemworldbosstiers.api.HostedEncounterApi;
 import com.siirio.jemworldbosstiers.api.WorldTierApi;
@@ -66,7 +67,7 @@ public final class BossHostingPrompt {
         }
         if(!canOffer(player,boss)) throw new com.siirio.jemserver.smp.SmpActionFailure("unavailable");
         var key = net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(boss.getType());
-        EventNetwork.prompt(player, id, "BOSS", boss.getDisplayName().getString(), key.toString());
+        EventNetwork.prompt(player, id, EventEntryKind.BOSS_FIGHT.name(), boss.getDisplayName().getString(), key.toString());
     }
 
     private static void enroll(LivingEntity boss) {

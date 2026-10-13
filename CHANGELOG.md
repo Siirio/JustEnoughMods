@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-13 — Boss entry prompt crash hotfix
+
+- `Bug / Server Sided / BossHostingPrompt отправлял клиенту устаревший entry kind BOSS, отсутствующий в EventEntryKind, поэтому подтверждение Solo или Party падало в EventNetwork.select при EventEntryKind.valueOf / in testing`
+  - Five whys: подтверждение входа закрывало клиент с `IllegalArgumentException` → `EventNetwork.select` преобразовывал строку prompt type через `EventEntryKind.valueOf` → сервер присылал `BOSS` → актуальный typed entry contract содержит `BOSS_FIGHT`, `BOSS_STRUCTURE` и `BOSS_RAID`, но не `BOSS` → `BossHostingPrompt` сохранил старое activity-имя после перехода prompt/choice канала на typed entry kinds.
+  - User request and technical direction: пользователь сообщил, что после Solo-запуска босса у Бако вылетели оба игрока, передал архив логов и попросил определить необходимость обновления server AutoModpack; если оно необходимо — сразу подготовить исправление, но не перезапускать сервер.
+  - Codex technical choice: ordinary non-structure boss prompt теперь берёт каноническое имя из `EventEntryKind.BOSS_FIGHT`, не меняя protocol version, packet shape, registry, resources или client decoder. Текущие клиенты уже содержат этот enum и ожидают его, поэтому хотфикс требует только нового server runtime JAR; новая AutoModpack generation, client/bootstrap, friend package и release baseline не требуются. Причина вылета второго игрока остаётся неподтверждённой без его client log.
+  - Preparation boundary: source исправлен; MineRENT не перезапускался и runtime JAR не загружался. Gradle, automated/gameplay tests, client/server launch, linter, formatter и static analysis не запускались.
+
 ## 2026-10-13 — Native campaign structure distribution
 
 - User request and technical direction: remove Sparse Structures, keep all 12 Campaign boss structures and native prerequisite boss structures at their upstream spawn frequency, allow them to remain close, and prevent the former salt-rewrite setup from forcing structures onto overlapping candidates.
