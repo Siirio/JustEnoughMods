@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-13 — Local MineRENT update rehearsal environment
+
+- User request and technical direction: recreate the local server from the supplied latest MineRENT backup, then overlay the complete accumulated update from both current feature commits rather than only the final prompt; rebuild `test jem` from the untouched original `JustEnoughMods` profile so the client starts on the currently published state and must receive the pending update from the server; remove JEM Claims from the rehearsal runtime.
+- Codex technical choice: validated and imported the 14,727-file MineRENT archive, preserved recoverable pre-import server and test-profile backups, restored every tracked server tuning/default-config change introduced since `9231ec7`, built and deployed the current reobfuscated JEM modules plus their required Forge dependencies, quarantined obsolete Claims/VSS/Saints runtime material, and staged the canonical `Client/ManagedPack` through native JEM Pack Sync. The stable `JustEnoughMods` profile and immutable release baseline were not changed.
+- Rehearsal boundary: the local server was intentionally left stopped and its staged generation remains unpublished. On first start, the operator must inspect `/jempack preview` and run `/jempack publish` before joining with `test jem`; this preserves the real friend update path instead of pre-seeding the test client. No automated/gameplay tests or client/server launch was run.
+
 ## 2026-10-13 — Five-Coin playable systems completion pass
 
 - User request and technical direction: implement the supplied full-playable completion specification, including five physical 1/10/100/1,000/10,000 Coin grades; treat supplied images only as visual references; permanently reject cropped/extracted AI-edged reference art and author every production asset at its exact target size and style.
