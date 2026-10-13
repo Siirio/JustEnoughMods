@@ -25,6 +25,10 @@ public enum CalendarEvent {
         return date.getYear();
     }
 
+    public String translationKey() {
+        return "jem.holiday." + name().toLowerCase(java.util.Locale.ROOT);
+    }
+
     public record Window(Instant start, Instant end) {
         public boolean active(Instant now) { return !now.isBefore(start) && now.isBefore(end); }
     }

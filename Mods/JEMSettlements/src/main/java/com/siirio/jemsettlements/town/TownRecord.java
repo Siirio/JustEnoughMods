@@ -21,6 +21,7 @@ public final class TownRecord {
     private final List<StorageLink> storage = new ArrayList<>();
     private int happiness = 50;
     private int taxPercent;
+    private long lastHappinessDay = Long.MIN_VALUE;
 
     public TownRecord(UUID id, UUID owner, String name, ResourceLocation dimension, BlockPos center) {
         this.id = id;
@@ -40,6 +41,8 @@ public final class TownRecord {
     public List<StorageLink> storage() { return List.copyOf(storage); }
     public int happiness() { return happiness; }
     public int taxPercent() { return taxPercent; }
+    public long lastHappinessDay() { return lastHappinessDay; }
+    public void lastHappinessDay(long value) { lastHappinessDay = value; }
     public void happiness(int value) { happiness = Math.max(0, Math.min(100, value)); }
     public void taxPercent(int value) {
         if (value != 0 && value != 5 && value != 10 && value != 15) throw new IllegalArgumentException("Unsupported tax rate");
@@ -56,6 +59,7 @@ public final class TownRecord {
         tag.putLong("Center", center.asLong());
         tag.putInt("Happiness", happiness);
         tag.putInt("Tax", taxPercent);
+        tag.putLong("LastHappinessDay", lastHappinessDay);
         ListTag residentTags = new ListTag();
         residents.forEach(value -> { CompoundTag row = new CompoundTag(); row.putUUID("Id", value); residentTags.add(row); });
         tag.put("Residents", residentTags);
@@ -70,6 +74,7 @@ public final class TownRecord {
                 new ResourceLocation(tag.getString("Dimension")), BlockPos.of(tag.getLong("Center")));
         town.happiness(tag.getInt("Happiness"));
         town.taxPercent(tag.getInt("Tax"));
+        town.lastHappinessDay(tag.getLong("LastHappinessDay"));
         ListTag residents = tag.getList("Residents", Tag.TAG_COMPOUND);
         for (int i = 0; i < residents.size(); i++) if (residents.getCompound(i).hasUUID("Id")) town.residents.add(residents.getCompound(i).getUUID("Id"));
         ListTag stores = tag.getList("Storage", Tag.TAG_COMPOUND);

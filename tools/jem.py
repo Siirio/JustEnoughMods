@@ -18,7 +18,7 @@ PACK_SYNC_MANIFEST = "jem-pack/manifest.json"
 
 def load_config():
     config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
-    for key in ("clientSource", "server", "packSyncHost", "state"):
+    for key in ("clientSource", "installerSource", "installerArchive", "server", "packSyncHost", "state"):
         config[key] = ROOT / config[key]
     for key in ("stableClient", "testClient", "updates"):
         config[key] = Path(config[key])
@@ -26,7 +26,11 @@ def load_config():
 
 
 def digest(path):
-    value = hashlib.sha256()
+    return file_digest(path, "sha256")
+
+
+def file_digest(path, algorithm):
+    value = hashlib.new(algorithm)
     with path.open("rb") as source:
         for chunk in iter(lambda: source.read(1024 * 1024), b""):
             value.update(chunk)
@@ -93,16 +97,15 @@ def write_json_atomic(path, payload):
 
 def release_inventory(config):
     source = config["clientSource"]
-    stable = config["stableClient"]
+    installer = config["installerSource"]
     ensure_directory(source, "Client source")
-    ensure_directory(stable, "Stable client")
+    ensure_directory(installer, "Installer source")
     source_files = inventory(source)
-    sync_source_files = inventory(source, config["stableExcluded"])
-    stable_files = inventory(stable, config["stableExcluded"])
-    mismatch = compare(sync_source_files, {path: stable_files[path] for path in sync_source_files if path in stable_files})
-    missing = sorted(set(sync_source_files) - set(stable_files))
-    if mismatch["changed"] or missing:
-        raise SystemExit(json.dumps({"changed": mismatch["changed"], "missing": missing}, ensure_ascii=False, indent=2))
+    bootstrap_path = "mods/jem-bootstrap.jar"
+    source_bootstrap = source / bootstrap_path
+    installer_bootstrap = installer / bootstrap_path
+    if not source_bootstrap.is_file() or not installer_bootstrap.is_file() or digest(source_bootstrap) != digest(installer_bootstrap):
+        raise SystemExit("Installer bootstrap differs from the managed pack bootstrap")
     return source_files
 
 
@@ -209,17 +212,46 @@ def profile_delta(source_files, profile_files):
     return {"missing": missing, "changed": changed}
 
 
+def pack_sync_publication(config):
+    manifest = config["packSyncHost"] / PACK_SYNC_MANIFEST
+    journal = config["server"] / "automodpack" / "server" / "journal.jsonl"
+    published = None
+    sequence = None
+    if journal.is_file():
+        entries = [json.loads(line) for line in journal.read_text(encoding="utf-8").splitlines() if line.strip()]
+        if entries:
+            sequence = entries[-1]["seq"]
+        for entry in reversed(entries):
+            for change in reversed(entry.get("changes", [])):
+                if change.get("path") == PACK_SYNC_MANIFEST:
+                    published = change.get("toSha1")
+                    break
+            if published is not None:
+                break
+    staged = file_digest(manifest, "sha1") if manifest.is_file() else None
+    return {
+        "published": staged is not None and staged == published,
+        "journalSequence": sequence,
+        "publishedManifestSha1": published,
+        "stagedManifestSha1": staged,
+    }
+
+
 def status(config):
     source_files = inventory(config["clientSource"])
-    stable_source_files = exclude_inventory(source_files, config["stableExcluded"])
+    installer_files = inventory(config["installerSource"])
+    bootstrap_path = "mods/jem-bootstrap.jar"
+    stable_source_files = {bootstrap_path: installer_files[bootstrap_path]} if bootstrap_path in installer_files else {}
     stable_files = inventory(config["stableClient"], config["stableExcluded"])
     delta = compare(load_baseline(config)["files"], source_files)
     stable_delta = profile_delta(stable_source_files, stable_files)
     result = {
         "releaseDelta": delta,
         "stableSync": stable_delta,
+        "packSyncPublication": pack_sync_publication(config),
         "counts": {
             "clientSource": len(source_files),
+            "installerSource": len(installer_files),
             "added": len(delta["added"]),
             "changed": len(delta["changed"]),
             "deleted": len(delta["deleted"]),
@@ -231,7 +263,7 @@ def status(config):
 
 
 def synchronize(config, target_name):
-    source = config["clientSource"]
+    source = config["installerSource"] if target_name == "stableClient" else config["clientSource"]
     target = config[target_name]
     ensure_directory(source, "Client source")
     ensure_directory(target, target_name)
@@ -250,12 +282,17 @@ def synchronize(config, target_name):
             return
     exclusions = config["testExcluded"] if target_name == "testClient" else config["stableExcluded"]
     current_files = inventory(source, exclusions)
+    if target_name == "stableClient":
+        bootstrap_path = "mods/jem-bootstrap.jar"
+        current_files = {bootstrap_path: current_files[bootstrap_path]}
     state_path = sync_state_path(config, target_name)
     previous_files = (
         json.loads(state_path.read_text(encoding="utf-8"))
         if state_path.is_file()
         else inventory_from_baseline(config, exclusions)
     )
+    if target_name == "stableClient":
+        previous_files = current_files
     previous_files = exclude_inventory(previous_files, exclusions)
     copied = []
     deleted = []
@@ -310,6 +347,7 @@ def recover_pack_sync(config, transaction_path):
         raise SystemExit("Transaction does not belong to the selected active installation")
     bootstrap = target / "mods" / "jem-bootstrap.jar"
     bootstrap_sources = [
+        config["installerSource"] / "mods" / "jem-bootstrap.jar",
         config["clientSource"] / "mods" / "jem-bootstrap.jar",
         ROOT / "Mods" / "JEMBootstrap" / "build" / "libs" / "jem-bootstrap.jar",
     ]
@@ -538,11 +576,34 @@ def package_full(config):
     config["updates"].mkdir(parents=True, exist_ok=True)
     timestamp = datetime.now().astimezone().strftime("%Y-%m-%d_%H-%M-%S")
     destination = config["updates"] / f"JustEnoughMods-full-{timestamp}.zip"
+    source = config["installerSource"]
+    trees = [(source, Path())]
+    for relative in map(Path, config["installerSeedPaths"]):
+        seed = config["clientSource"] / relative
+        ensure_directory(seed, f"Installer seed {relative.as_posix()}")
+        trees.append((seed, relative))
+    written = set()
     with zipfile.ZipFile(destination, "w", zipfile.ZIP_DEFLATED, compresslevel=6) as archive:
-        for path in sorted(config["clientSource"].rglob("*")):
-            if path.is_file():
-                archive.write(path, "JustEnoughMods/" + path.relative_to(config["clientSource"]).as_posix())
-    print(json.dumps({"archive": str(destination), "sha256": digest(destination)}, ensure_ascii=False, indent=2))
+        for tree, prefix in trees:
+            for path in sorted(tree.rglob("*")):
+                relative = (prefix / path.relative_to(tree)).as_posix()
+                member = f"JustEnoughMods/{relative}"
+                if path.is_dir():
+                    member += "/"
+                    if member not in written:
+                        archive.writestr(member, "")
+                        written.add(member)
+                if path.is_file():
+                    if member in written:
+                        raise SystemExit(f"Duplicate installer path: {relative}")
+                    archive.write(path, member)
+                    written.add(member)
+    shutil.copy2(destination, config["installerArchive"])
+    print(json.dumps({
+        "archive": str(destination),
+        "shareableArchive": str(config["installerArchive"]),
+        "sha256": digest(destination),
+    }, ensure_ascii=False, indent=2))
 
 
 def main():

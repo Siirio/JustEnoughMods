@@ -33,6 +33,10 @@ final class SmpIcons {
             case "RESOURCE_RUSH" -> Items.DIAMOND_PICKAXE;
             case "BLOOD_MOON", "bloodMoonClears" -> Items.ZOMBIE_HEAD;
             case "shops", "TRADING" -> Items.EMERALD;
+            case "wallet" -> Items.GOLD_NUGGET;
+            case "roles" -> Items.TOTEM_OF_UNDYING;
+            case "professions" -> Items.EXPERIENCE_BOTTLE;
+            case "town" -> Items.BELL;
             case "parties", "partiesHosted", "partiesJoined" -> Items.TOTEM_OF_UNDYING;
             case "back", "previous", "next" -> Items.ARROW;
             case "create", "submit", "publish", "join", "accept" -> Items.WRITABLE_BOOK;

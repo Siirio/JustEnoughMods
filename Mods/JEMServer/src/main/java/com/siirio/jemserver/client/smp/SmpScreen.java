@@ -13,6 +13,7 @@ import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.MultiLineEditBox;
 
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.*;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -1076,9 +1077,8 @@ public final class SmpScreen extends Screen {
                 int tradeWidth = Math.max(94, actionX - tradeX - 9);
                 var offers = row.getList("offers", Tag.TAG_COMPOUND);
                 var firstOffer = offers.isEmpty() ? new CompoundTag() : offers.getCompound(0);
-                var payment = ItemStack.of(offers.isEmpty() ? row.getCompound("payment") : firstOffer.getCompound("payment"));
+                var payment = new ItemStack(BuiltInRegistries.ITEM.get(new ResourceLocation("jem_economy", "copper_coin")));
                 var output = ItemStack.of(offers.isEmpty() ? row.getCompound("offer") : firstOffer.getCompound("output"));
-                if (offers.isEmpty() && !payment.isEmpty()) payment.setCount(Math.max(1, row.getInt("price")));
                 if (offers.isEmpty() && !output.isEmpty()) output.setCount(Math.max(1, row.getInt("quantity")));
                 int available = offers.isEmpty() ? (row.getString("state").equals("OUT_OF_STOCK") ? 0 : -1) : firstOffer.getInt("availableTrades");
                 Component stock = available == 0 ? Component.translatable("jem.smp.out_of_stock") : available < 0 ? Component.translatable("jem.smp.unlimited_stock") : Component.translatable("jem.smp.available_stock", available * Math.max(1, output.getCount()));
@@ -1087,13 +1087,14 @@ public final class SmpScreen extends Screen {
                 int paymentX = tradeX + 3;
                 int outputX = tradeX + Math.max(iconSize + 28, tradeWidth / 2 + 8);
                 renderShopTradeStack(g, payment, paymentX, y + 29, iconSize, mx, my);
+                text(g, Component.translatable("jem.smp.coin_price", row.getInt("price")), paymentX + iconSize + 3, y + 39, CREAM, Math.max(28, outputX - paymentX - iconSize - 26));
                 int arrowX = Math.max(paymentX + iconSize + 7, outputX - 22);
                 text(g, Component.literal("→"), arrowX, y + 39, PEACH, 18);
                 renderShopTradeStack(g, output, outputX, y + 29, iconSize, mx, my);
                 UUID shop = row.getUUID("id");
-                if (row.getBoolean("remoteAvailable") && row.getString("state").equals("ACTIVE"))
+                if (row.getBoolean("remoteAvailable") && row.getString("state").equals("ACTIVE") && !row.getBoolean("selectable"))
                     button(g, actionX, y + 20, actionWidth, 30, "buy", () -> sendFor(shop, row.getInt("revision"), "buy", new JsonObject()), mx, my);
-                else disabledButton(g, actionX, y + 20, actionWidth, 30, "buy", shopUnavailableReason(row), mx, my);
+                else disabledButton(g, actionX, y + 20, actionWidth, 30, "buy", row.getBoolean("selectable") ? "select_offer_at_shop" : shopUnavailableReason(row), mx, my);
                 iconButton(g, actionX + actionWidth + 4, y + 20, mapWidth, 30, "map", () -> navigateShop(row), mx, my);
             }
             y += rowHeight + GAP;
@@ -1649,7 +1650,10 @@ public final class SmpScreen extends Screen {
         if (button != 0) return true;
         if (!hoveredItem.isEmpty() && Set.of("events", "parties", "prizes").contains(tab) && JeiItemLink.open(hoveredItem)) return true;
         String sidebarTab = sidebar.at(x, y);
-        if (sidebarTab != null && !waiting) { selectTab(sidebarTab); return true; }
+        if (sidebarTab != null && !waiting) {
+            if (!SmpSidebar.openExternal(sidebarTab)) selectTab(sidebarTab);
+            return true;
+        }
         if (form.isEmpty() && selected == null) {
             if (tab.equals("shops") && seller.mouseClicked(x, y, button)) {
                 setFocused(seller);

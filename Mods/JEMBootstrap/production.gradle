@@ -2,7 +2,8 @@ allprojects {
     tasks.withType(org.gradle.api.tasks.bundling.Jar).configureEach {
         manifest.attributes(
             'JEM-Bootstrap-Revision': providers.gradleProperty('jemBootstrapRevision').get(),
-            'JEM-Upstream-Commit': providers.gradleProperty('jemUpstreamCommit').get()
+            'JEM-Upstream-Commit': providers.gradleProperty('jemUpstreamCommit').get(),
+            'JEM-Skip-Shaders': providers.gradleProperty('jemSkipShaders').orElse('false').get()
         )
     }
     tasks.configureEach {

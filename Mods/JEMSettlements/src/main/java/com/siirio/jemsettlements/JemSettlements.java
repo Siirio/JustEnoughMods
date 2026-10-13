@@ -1,6 +1,8 @@
 package com.siirio.jemsettlements;
 
 import com.siirio.jemsettlements.command.SettlementCommands;
+import com.siirio.jemsettlements.network.SettlementNetwork;
+import com.siirio.jemsettlements.runtime.SettlementRuntime;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 
@@ -9,6 +11,9 @@ public final class JemSettlements {
     public static final String MOD_ID = "jem_settlements";
 
     public JemSettlements() {
+        SettlementNetwork.register();
         MinecraftForge.EVENT_BUS.register(SettlementCommands.class);
+        MinecraftForge.EVENT_BUS.register(SettlementNetwork.class);
+        MinecraftForge.EVENT_BUS.register(SettlementRuntime.class);
     }
 }

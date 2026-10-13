@@ -31,6 +31,9 @@ public abstract class MapScreenMixin implements MapView {
     @Shadow private ResourceKey<Level> rightClickDim;
     @Shadow private int rightClickX;
     @Shadow private int rightClickZ;
+    @Shadow private ResourceKey<Level> mouseBlockDim;
+    @Shadow private int mouseBlockPosX;
+    @Shadow private int mouseBlockPosZ;
 
     @Override
     public net.minecraft.resources.ResourceLocation jem$dimension() {
@@ -49,7 +52,20 @@ public abstract class MapScreenMixin implements MapView {
     private void jem$claims(GuiGraphics graphics, int mouseX, int mouseY, float partialTick, CallbackInfo callback) {
         if (lastViewedDimensionId == null) return;
         var screen = (GuiMap) (Object) this;
+        com.siirio.jemserver.client.xaero.ProjectRegionClient.move(lastViewedDimensionId.location(), mouseBlockPosX, mouseBlockPosZ);
         MapClient.render(graphics, lastViewedDimensionId.location(), cameraX, cameraZ, scale / Minecraft.getInstance().getWindow().getGuiScale(), screen.width, screen.height);
+    }
+
+    @Inject(method = "m_6375_", at = @At("HEAD"), cancellable = true)
+    private void jem$projectPress(double mouseX, double mouseY, int button, CallbackInfoReturnable<Boolean> callback) {
+        if (button == 0 && mouseBlockDim != null && com.siirio.jemserver.client.xaero.ProjectRegionClient.press(
+                mouseBlockDim.location(), mouseBlockPosX, mouseBlockPosZ)) callback.setReturnValue(true);
+    }
+
+    @Inject(method = "m_6348_", at = @At("HEAD"), cancellable = true)
+    private void jem$projectRelease(double mouseX, double mouseY, int button, CallbackInfoReturnable<Boolean> callback) {
+        if (button == 0 && mouseBlockDim != null && com.siirio.jemserver.client.xaero.ProjectRegionClient.release(
+                (Screen) (Object) this, mouseBlockDim.location(), mouseBlockPosX, mouseBlockPosZ)) callback.setReturnValue(true);
     }
 
     @Inject(method = "getRightClickOptions", at = @At("RETURN"))
@@ -60,6 +76,21 @@ public abstract class MapScreenMixin implements MapView {
         if (event != null) {
             options.add(new RightClickOption("gui.jem_server.event_teleport", options.size(), (GuiMap) (Object) this) {
                 @Override public void onAction(Screen screen) { Minecraft.getInstance().setScreen(null); MapNetwork.teleportEvent(event.id()); }
+            });
+        }
+        options.add(new RightClickOption("gui.jem_server.project_plan_new", options.size(), (GuiMap) (Object) this) {
+            @Override public void onAction(Screen screen) {
+                com.siirio.jemserver.client.xaero.ProjectRegionClient.begin(null, rightClickDim.location());
+                Minecraft.getInstance().setScreen(screen);
+            }
+        });
+        var project = MapClient.project(rightClickDim.location(), rightClickX, rightClickZ);
+        if (project != null) {
+            options.add(new RightClickOption("gui.jem_server.project_extend", options.size(), (GuiMap) (Object) this) {
+                @Override public void onAction(Screen screen) {
+                    com.siirio.jemserver.client.xaero.ProjectRegionClient.begin(project.id(), rightClickDim.location());
+                    Minecraft.getInstance().setScreen(screen);
+                }
             });
         }
         var claim = MapClient.owned(rightClickDim.location(), rightClickX, rightClickZ);

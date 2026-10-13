@@ -11,6 +11,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import com.siirio.jemsettlements.network.SettlementNetwork;
 
 public final class SettlementCommands {
     private SettlementCommands() {
@@ -54,8 +55,7 @@ public final class SettlementCommands {
             player.sendSystemMessage(Component.translatable("jem.settlements.none"));
             return 0;
         }
-        long workers = SettlementSavedData.get(player.getServer()).workforceCount(town.get().id());
-        player.sendSystemMessage(Component.translatable("jem.settlements.status", town.get().name(), town.get().happiness(), workers, town.get().storage().size()));
+        SettlementNetwork.sendOwned(player, true);
         return 1;
     }
 

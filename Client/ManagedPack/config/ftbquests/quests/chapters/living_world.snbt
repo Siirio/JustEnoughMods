@@ -7,14 +7,11 @@
 	id: "1000000000000007"
 	order_index: 6
 	quest_links: []
-	quests: [{
-		description: ["Towns keep physical linked chest storage and hybrid distant production. Workers and Recruits share one Workforce ledger, readiness and happiness calculation.", "Coins, stock, wages, production and taxes each have one authoritative owner. Existing Spud shops remain part of the world while payments move safely to Coins."]
-		icon: "minecraft:bell"
-		id: "1100000000000007"
-		tasks: [{id: "1110000000000007", type: "checkmark"}]
-		title: "Settlements and Economy"
-		x: 0.0d
-		y: 0.0d
-	}]
+	quests: [
+		{description: ["Wallet and physical cash are two forms of one fixed Coin supply. Open /coins to see balance, backed cash, every denomination and Deposit/Withdraw actions."], icon: "jem_economy:copper_coin", id: "1100000000000007", tasks: [{id: "1110000000000007", item: {Count: 1b, id: "jem_economy:copper_coin"}, type: "item"}], title: "A Physical Coin", x: 0.0d, y: -1.0d},
+		{dependencies: ["1100000000000007"], description: ["Spud shops keep real blocks and stock. JEM catalog purchases use the numeric Coin price, reserve funds, recheck stock, deliver the item, then credit the seller."], icon: "minecraft:emerald", id: "1100000000000017", tasks: [{id: "1110000000000017", type: "checkmark"}], title: "Trade Without a Faucet", x: 2.0d, y: -1.0d},
+		{description: ["Find a real bell and use it to open Town founding. Names must be unique; towns stay separated; creating one never creates a land claim."], icon: "minecraft:bell", id: "1100000000000027", tasks: [{id: "1110000000000027", item: {Count: 1b, id: "minecraft:bell"}, type: "item"}], title: "Town Hall Bell", x: 0.0d, y: 1.0d},
+		{dependencies: ["1100000000000027"], description: ["Sneak-use the Town bell with a nearby loaded container to link physical supplies. Sneak-use while looking at an owned native Worker or Recruit to register Workforce."], icon: "minecraft:chest", id: "1100000000000037", tasks: [{id: "1110000000000037", item: {Count: 1b, id: "minecraft:chest"}, type: "item"}], title: "Supplies and Workforce", x: 2.0d, y: 1.0d}
+	]
 	title: "Living World"
 }

@@ -234,6 +234,49 @@
  		ProcessHandle parent = ProcessHandle.of(parentPid).orElse(null);
  		if (parent == null) return true;
 
+--- a/core/src/main/java/pl/skidam/automodpack_core/utils/DurableFiles.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/utils/DurableFiles.java
+@@ -5,7 +5,6 @@ import static pl.skidam.automodpack_core.Constants.LOGGER;
+ import java.io.IOException;
+ import java.nio.ByteBuffer;
+ import java.nio.channels.FileChannel;
+-import java.nio.file.AtomicMoveNotSupportedException;
+ import java.nio.file.Files;
+ import java.nio.file.LinkOption;
+ import java.nio.file.Path;
+@@ -33,8 +32,10 @@ public final class DurableFiles {
+ 	public static void replace(Path temporary, Path target) throws IOException {
+ 		try {
+ 			replaceAtomically(temporary, target);
+-		} catch (AtomicMoveNotSupportedException e) {
+-			replaceWithoutAtomicRename(temporary, target, e);
++		} catch (IOException | UnsupportedOperationException atomicMoveFailure) {
++			if (!Files.exists(temporary, LinkOption.NOFOLLOW_LINKS)
++					&& Files.isRegularFile(target, LinkOption.NOFOLLOW_LINKS)) return;
++			replaceWithoutAtomicRename(temporary, target, atomicMoveFailure);
+ 		}
+ 	}
+ 
+@@ -44,11 +45,16 @@ public final class DurableFiles {
+ 	}
+ 
+ 	/** The caller must have forced the temporary to stable storage; this publishes it and forces the directory entry. */
+-	static void replaceWithoutAtomicRename(Path temporary, Path target, AtomicMoveNotSupportedException cause) throws IOException {
++	static void replaceWithoutAtomicRename(Path temporary, Path target, Exception cause) throws IOException {
+ 		if (NON_ATOMIC_RENAME_WARNED.compareAndSet(false, true))
+ 			LOGGER.warn("The filesystem hosting {} lacks atomic rename; falling back to plain moves for durable replacement, where a power cut can lose the newest file but never corrupts the previous one",
+ 					target.toAbsolutePath().normalize(), cause);
+-		Files.move(temporary, target, StandardCopyOption.REPLACE_EXISTING);
++		try {
++			Files.move(temporary, target, StandardCopyOption.REPLACE_EXISTING);
++		} catch (IOException replacementFailure) {
++			replacementFailure.addSuppressed(cause);
++			throw replacementFailure;
++		}
+ 		Path parent = target.toAbsolutePath().normalize().getParent();
+ 		if (parent != null) FileTrees.forceDirectory(parent);
+ 	}
+
 --- a/core/src/main/java/pl/skidam/automodpack_core/utils/FileTrees.java
 +++ b/core/src/main/java/pl/skidam/automodpack_core/utils/FileTrees.java
 @@ -2,7 +2,6 @@
@@ -244,7 +287,7 @@
  import java.nio.file.DirectoryNotEmptyException;
  import java.nio.file.Files;
  import java.nio.file.LinkOption;
-@@ -23,7 +22,16 @@
+@@ -23,7 +22,15 @@
  			throw new IOException("Directory move requires concrete parent directories");
  		try {
  			Files.move(sourceDirectory, targetDirectory, StandardCopyOption.ATOMIC_MOVE);
@@ -261,3 +304,115 @@
  			try {
  				Files.move(sourceDirectory, targetDirectory);
  			} catch (IOException e) {
+
+--- a/core/src/main/java/pl/skidam/automodpack_core/loader/ImplStore.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/loader/ImplStore.java
+@@ -139,11 +139,8 @@
+ 		stamp.digest = manifest.digest();
+ 		DurableFiles.writeVolatile(staging.resolve(STAMP_FILE), ConfigTools.GSON.toJson(stamp).getBytes(StandardCharsets.UTF_8));
+ 
+-		// Publish is the rename: nothing at the live path until the whole tree is on disk.
+-		// On Windows a concurrent reader holding an impl open makes this delete fail - that is a loud
+-		// crash, never a half-published tree.
+ 		FileTrees.delete(cacheDir);
+-		FileTrees.moveRecoverableDirectory(staging, cacheDir);
++		publishStagedCache(staging, cacheDir, manifest);
+ 		// Records after publish so they key the final absolute paths; a crash here costs one rehash
+ 		// next boot (matchesImmutable recomputes and republishes), never a wrong hit.
+ 		for (ImplManifest.Entry entry : manifest.entries()) {
+@@ -151,6 +148,24 @@
+ 		}
+ 	}
+ 
++	private static void publishStagedCache(Path staging, Path cacheDir, ImplManifest manifest) throws IOException {
++		try {
++			FileTrees.moveRecoverableDirectory(staging, cacheDir);
++		} catch (IOException directoryMoveFailure) {
++			try {
++				Files.createDirectory(cacheDir);
++				for (ImplManifest.Entry entry : manifest.entries()) {
++					Files.copy(staging.resolve(entry.id() + ".jar"), cacheDir.resolve(entry.id() + ".jar"));
++				}
++				DurableFiles.writeVolatile(cacheDir.resolve(STAMP_FILE), Files.readAllBytes(staging.resolve(STAMP_FILE)));
++				FileTrees.delete(staging);
++			} catch (IOException filePublicationFailure) {
++				filePublicationFailure.addSuppressed(directoryMoveFailure);
++				throw filePublicationFailure;
++			}
++		}
++	}
++
+ 	/**
+ 	 * The persisted cache stamp: the one digest this tree was staged for. Regenerable, so a corrupt one is set aside and costs one restage. Document class, not record: this graph lands on disk where the game's Gson
+ 	 * cannot read records.
+
+--- a/core/src/main/java/pl/skidam/automodpack_core/modpack/group/SelectedTreeComposer.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/modpack/group/SelectedTreeComposer.java
+@@ -27,6 +27,7 @@ public final class SelectedTreeComposer {
+ 			if (group == null) throw new IllegalArgumentException("Selected group is absent from the catalogue: " + groupId);
+ 			for (var entry : group.files().entrySet()) {
+ 				if (!resolvePaths) break;
++				if (!ClientDistributionProfile.includes(entry.getKey())) continue;
+ 				GroupManifest.GroupFile previous = files.putIfAbsent(entry.getKey(), entry.getValue());
+ 				if (previous != null && !previous.sameEffectiveState(entry.getValue()))
+ 					throw new IllegalArgumentException("Selected groups produce conflicting path: " + entry.getKey());
+@@ -64,6 +65,7 @@ public final class SelectedTreeComposer {
+ 	private static Set<ModpackJsons.ModpackContentFields.ModpackContentItem> allItems(GroupManifest manifest, Collection<String> groupIds) {
+ 		Set<ModpackJsons.ModpackContentFields.ModpackContentItem> items = new LinkedHashSet<>();
+ 		for (String groupId : groupIds) for (var entry : manifest.groups().get(groupId).files().entrySet()) {
++			if (!ClientDistributionProfile.includes(entry.getKey())) continue;
+ 			GroupManifest.GroupFile file = entry.getValue();
+ 			items.add(new ModpackJsons.ModpackContentFields.ModpackContentItem(entry.getKey(), file.size(), file.type(), file.editable(), file.sha1(), file.murmur()));
+ 		}
+
+--- /dev/null
++++ b/core/src/main/java/pl/skidam/automodpack_core/modpack/group/ClientDistributionProfile.java
+@@ -0,0 +1,48 @@
++package pl.skidam.automodpack_core.modpack.group;
++
++import static pl.skidam.automodpack_core.Constants.LOGGER;
++import static pl.skidam.automodpack_core.Constants.THIS_MOD_JAR;
++
++import java.io.IOException;
++import java.nio.file.Files;
++import java.nio.file.Path;
++import java.util.jar.JarFile;
++import java.util.jar.Manifest;
++
++import pl.skidam.automodpack_core.utils.JarUtils;
++
++/** Build-time client distribution profile; absent or unreadable metadata always preserves the native full target. */
++final class ClientDistributionProfile {
++	private static final String SKIP_SHADERS_ATTRIBUTE = "JEM-Skip-Shaders";
++	private static final boolean SKIP_SHADERS = skipShaders();
++
++	private ClientDistributionProfile() {}
++
++	static boolean includes(String logicalPath) {
++		if (!SKIP_SHADERS || logicalPath == null) return true;
++		String normalized = logicalPath.replace('\\', '/');
++		return !normalized.equals("shaderpacks") && !normalized.startsWith("shaderpacks/");
++	}
++
++	private static boolean skipShaders() {
++		Path archive = THIS_MOD_JAR;
++		if (archive == null) {
++			try {
++				archive = JarUtils.getJarPath(ClientDistributionProfile.class);
++			} catch (RuntimeException e) {
++				LOGGER.warn("Cannot locate the bootstrap distribution profile; retaining the full client target", e);
++				return false;
++			}
++		}
++		if (!Files.isRegularFile(archive)) return false;
++		try (JarFile jar = new JarFile(archive.toFile())) {
++			Manifest manifest = jar.getManifest();
++			boolean skip = manifest != null && Boolean.parseBoolean(manifest.getMainAttributes().getValue(SKIP_SHADERS_ATTRIBUTE));
++			if (skip) LOGGER.info("Client distribution profile excludes shaderpacks/** from acquisition and projection");
++			return skip;
++		} catch (IOException | RuntimeException e) {
++			LOGGER.warn("Cannot read the bootstrap distribution profile; retaining the full client target", e);
++			return false;
++		}
++	}
++}

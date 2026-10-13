@@ -26,7 +26,7 @@
 0. Acquire and inspect the server-side authentication provider, then establish the shared principal boundary consumed by every account-owning module.
 1. [RPG Roles](2026-10-13-jem-rpg-roles.md) — race owner and role events.
 2. [Professions](2026-10-13-jem-professions.md) — player progression owner; consumes Roles optionally.
-3. [Economy](2026-10-13-jem-economy.md) — account, ledger, escrow and funded transaction owner.
+3. [Economy](2026-10-13-jem-economy.md) — account, ledger, five backed physical denominations, physical-outstanding, escrow and funded transaction owner.
 4. [Settlements](2026-10-13-jem-settlements.md) — town/workforce/happiness owner; consumes Economy optionally.
 5. [Integrations and Events](2026-10-13-jem-integrations-events.md) — owner-specific adapters, Xaero project regions, FTB content, holidays, Iron integration and peaceful activities.
 
@@ -34,9 +34,9 @@
 
 - Do not add Origins. Three custom modest races, the JEM confirmation/grace workflow and the required compatibility rules would replace most of Origins' default selection/power behavior. `JEMRoles` is smaller and keeps one owner.
 - Keep installed Pehkui `3.8.2` optional. Physical dwarf scaling remains disabled by default; only an isolated adapter may enable it after a future explicitly requested compatibility exercise.
-- Do not add Lightman's Currency. The required fixed-supply virtual ledger, cross-item escrow and current unauthenticated server mode make a second upstream balance owner unsuitable.
+- Do not add Lightman's Currency. JEM requires one fixed supply shared by digital Wallet balances and five backed physical denominations, plus cross-item escrow and connection-authenticated writes; a second upstream balance owner would split that authority.
 - Do not require Pufferfish Skills. `JEMProfessions` owns progression and uses the existing JEM UI primitives; a future display-only adapter may be added without moving XP ownership.
-- Preserve installed Spud's Shops `1.10.2` physical blocks and stock. JEMServer keeps the shop projection/mixins while `JEMEconomy` exclusively owns Coin settlement.
+- Preserve installed Spud's Shops `1.10.2` physical blocks and stock. JEMServer keeps the shop projection/mixins while `JEMEconomy` exclusively owns Wallet and validated inventory-cash settlement, fees, change and conservation.
 - Add the official Forge 1.20.1 Recruits `1.15.2`, Workers 2 `2.0.3`, Xaero Map Regions `1.0.8`, FTB Quests `2001.4.22` stack and Iron's Spells `3.15.6` stack during the integrations phase, then inspect their exact JAR metadata/classes before writing adapters. Iron `3.16.3` is intentionally not selected because its published 1.20.1 artifact has an open resource-generation regression; `3.15.6` is the latest 3.15.x release matching the approved data-driven contract.
 
 ## Cross-Module Public Contracts

@@ -51,6 +51,10 @@
 - `jem project create <name>` — create a visual building project in the current dimension.
 - `jem project add <project-uuid> <x1> <z1> <x2> <z2>` — append a source rectangle.
 - `jem project remove <project-uuid> <zero-based-rectangle-index>` — remove a source rectangle and recompute its visual union.
+- `jem holiday` — show persisted Halloween/New Year lifecycle and remaining active time.
+- `jem holiday mute <true|false>` — suppress or restore actual personal holiday notices.
+- `jem holiday join <calm|power>` — opt into the current holiday's peaceful objective or one bounded local combat encounter.
+- `jem holiday gift <player>` / `accept <gift-uuid>` / `cancel <gift-uuid>` — durable consent-based New Year item escrow.
 - `jem holiday preview|force|stop ...` — OP calendar-event inspection and control.
 - `claims` — открыть territories UI.
 - `landmarks` — свои сохранённые места и глобально открытые боссы.

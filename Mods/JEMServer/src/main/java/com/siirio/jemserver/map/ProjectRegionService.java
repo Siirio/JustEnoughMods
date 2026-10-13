@@ -26,6 +26,23 @@ public final class ProjectRegionService {
         return Result.ACCEPTED;
     }
 
+    public static Result createWithRectangle(ServerPlayer player, String rawName, int firstX, int firstZ, int secondX, int secondZ) {
+        var principal = IdentityPolicy.resolve(player);
+        if (principal.isEmpty()) return Result.UNAUTHENTICATED;
+        if (!allowMutation(player, principal.get().accountId())) return Result.RATE_LIMITED;
+        String name = rawName == null ? "" : rawName.strip().replaceAll("\\s+", " ");
+        if (name.length() < 3 || name.length() > 48) return Result.INVALID;
+        ProjectRegionData data = ProjectRegionData.get(player.server);
+        if (data.all().stream().filter(project -> project.owner().equals(principal.get().accountId())).count() >= 20) return Result.LIMIT;
+        int minX = Math.min(firstX, secondX), minZ = Math.min(firstZ, secondZ);
+        int maxX = Math.max(firstX, secondX) + 1, maxZ = Math.max(firstZ, secondZ) + 1;
+        if (maxX <= minX || maxZ <= minZ || (long) (maxX - minX) * (maxZ - minZ) > 1_000_000L) return Result.INVALID;
+        UUID id = UUID.randomUUID();
+        ProjectRegion project = new ProjectRegion(id, principal.get().accountId(), player.serverLevel().dimension().location(), name, RegionPalette.forProject(id));
+        project.add(new ClaimBoundaryGeometry.Rectangle(minX, minZ, maxX, maxZ)); data.put(project);
+        return Result.ACCEPTED;
+    }
+
     public static Result addRectangle(ServerPlayer player, UUID projectId, int firstX, int firstZ, int secondX, int secondZ) {
         var principal = IdentityPolicy.resolve(player);
         if (principal.isEmpty()) return Result.UNAUTHENTICATED;

@@ -24,6 +24,8 @@ Disconnect использует общий event-instance participant lifecycle:
 
 При активации боя общий hosted lifecycle включает AI босса и назначает ближайшего живого участника начальной целью, поэтому временный lobby hold не может оставить модового босса без target. После завершения безопасный выход ищется возле вертикального диапазона структуры и никогда не выводится из dimension heightmap, чтобы Nether roof не мог стать точкой выхода.
 
+Xaero не создаёт отдельную Raid-территорию: active Raid использует тот же canonical structure layer, что и обычный Boss Fight, без наложения второго прямоугольника.
+
 Пока encounter активен, существующий bounded encounter tick восстанавливает ближайшую допустимую живую цель только после потери прежней; он не переопределяет native goals, attack patterns или `NoAI` каждый tick. Reload активного hosted boss один раз восстанавливает combat AI state.
 
 ## Rejected

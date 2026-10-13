@@ -35,6 +35,7 @@ public final class EventRuntime {
     public static void login(ServerPlayer player) {
         var event = EncounterContext.reconnectFor(player);
         if (event != null) new EncounterContext(event).reconnected(player);
+        com.siirio.jemserver.smp.events.calendar.CalendarEventScheduler.login(player);
     }
 
     public static void logout(ServerPlayer player) {

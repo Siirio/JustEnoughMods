@@ -38,7 +38,7 @@ public final class SmpActions {
             return;
         }
         if (table.equals("shops")) {
-            com.siirio.jemserver.smp.shops.ShopIndex.action(player, request.id(), action.key());
+            com.siirio.jemserver.smp.shops.ShopIndex.action(player, request.id(), request.revision(), action.key(), request.request());
             return;
         }
         SmpRecords.require(

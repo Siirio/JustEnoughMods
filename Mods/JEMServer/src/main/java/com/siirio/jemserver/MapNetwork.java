@@ -41,6 +41,8 @@ public final class MapNetwork {
     private record Unclaim(UUID id) {}
     private record EventTeleport(UUID id) {}
     private record BossTeleport(UUID id) {}
+    private record ProjectCreate(String name, ResourceLocation dimension, int x1, int z1, int x2, int z2) {}
+    private record ProjectExtend(UUID id, ResourceLocation dimension, int x1, int z1, int x2, int z2) {}
 
     private MapNetwork() {}
     private static boolean compatible(String version) { return VERSION.equals(version) || NetworkRegistry.ABSENT.equals(version) || NetworkRegistry.ACCEPTVANILLA.equals(version); }
@@ -81,6 +83,20 @@ public final class MapNetwork {
                         com.siirio.jemserver.smp.events.EventTravel.requestBoss(player, packet.id());
                     context.get().setPacketHandled(true);
                 }).add();
+        CHANNEL.messageBuilder(ProjectCreate.class, 8, NetworkDirection.PLAY_TO_SERVER)
+                .encoder((packet, out) -> { out.writeUtf(packet.name(), 48); out.writeResourceLocation(packet.dimension()); out.writeInt(packet.x1()); out.writeInt(packet.z1()); out.writeInt(packet.x2()); out.writeInt(packet.z2()); })
+                .decoder(in -> new ProjectCreate(in.readUtf(48), in.readResourceLocation(), in.readInt(), in.readInt(), in.readInt(), in.readInt()))
+                .consumerMainThread((packet, context) -> { var player = context.get().getSender(); if (player != null && SmpEnvironment.active(player)
+                        && player.serverLevel().dimension().location().equals(packet.dimension()) && com.siirio.jemserver.smp.SmpRequests.allow(player)) {
+                    com.siirio.jemserver.map.ProjectRegionService.createWithRectangle(player, packet.name(), packet.x1(), packet.z1(), packet.x2(), packet.z2()); sync(player);
+                } context.get().setPacketHandled(true); }).add();
+        CHANNEL.messageBuilder(ProjectExtend.class, 9, NetworkDirection.PLAY_TO_SERVER)
+                .encoder((packet, out) -> { out.writeUUID(packet.id()); out.writeResourceLocation(packet.dimension()); out.writeInt(packet.x1()); out.writeInt(packet.z1()); out.writeInt(packet.x2()); out.writeInt(packet.z2()); })
+                .decoder(in -> new ProjectExtend(in.readUUID(), in.readResourceLocation(), in.readInt(), in.readInt(), in.readInt(), in.readInt()))
+                .consumerMainThread((packet, context) -> { var player = context.get().getSender(); if (player != null && SmpEnvironment.active(player)
+                        && player.serverLevel().dimension().location().equals(packet.dimension()) && com.siirio.jemserver.smp.SmpRequests.allow(player)) {
+                    com.siirio.jemserver.map.ProjectRegionService.addRectangle(player, packet.id(), packet.x1(), packet.z1(), packet.x2(), packet.z2()); sync(player);
+                } context.get().setPacketHandled(true); }).add();
     }
 
     @net.minecraftforge.eventbus.api.SubscribeEvent
@@ -141,6 +157,8 @@ public final class MapNetwork {
     public static void unclaim(UUID id) { CHANNEL.sendToServer(new Unclaim(id)); }
     public static void teleportEvent(UUID id) { CHANNEL.sendToServer(new EventTeleport(id)); }
     public static void teleportBoss(UUID id) { CHANNEL.sendToServer(new BossTeleport(id)); }
+    public static void createProject(String name, ResourceLocation dimension, int x1, int z1, int x2, int z2) { CHANNEL.sendToServer(new ProjectCreate(name, dimension, x1, z1, x2, z2)); }
+    public static void extendProject(UUID id, ResourceLocation dimension, int x1, int z1, int x2, int z2) { CHANNEL.sendToServer(new ProjectExtend(id, dimension, x1, z1, x2, z2)); }
 
     public static void sync(ServerPlayer player) {
         if (!SmpEnvironment.active(player) || !CHANNEL.isRemotePresent(player.connection.connection)) return;

@@ -12,13 +12,14 @@
 ## LOCKED: Client baseline and cumulative point updates
 - Scope: `Client`, `tools/jem.py`, `tools/workspace.json`, `tools/state/release-baseline.json`, and `C:/Users/user/.codex/skills/minerent-deploy/SKILL.md`
 - Approved signal: The user explicitly required stable-client fixation before every task, continuous synchronization and exact add/replace/delete ZIP delivery across parallel Codex sessions.
-- Protected behavior: `Client` is the only clean distribution source; the release baseline is immutable during ordinary tasks; every successful MineRENT deployment must publish the same release to the clean/stable client and an exact friend point-update, record its local date/time and changed/deleted paths, and include the complete current `Client/JustEnoughMods/kubejs` tree as a required recipient-support layer even when unchanged from baseline; then promote the published Client snapshot so all later tasks form the next update; stable synchronization deletes only previously managed paths removed from `Client`; release artifacts never include runtime-only personal files.
-- Allowed changes: Extend deterministic release metadata or packaging output without changing ownership, deletion scope, client/server release parity or the rule that baseline promotion happens only after the complete MineRENT/client release succeeds.
+- Protected behavior: `Client/ManagedPack` is the only canonical full AutoModpack source and release-baseline owner; `Client/JustEnoughMods` is a bootstrap-only installer containing matching launcher metadata, `mods/jem-bootstrap.jar` and only required empty user directories. Every successful MineRENT deployment publishes the managed source through native AutoModpack, records its local date/time and changed/deleted paths, and includes the complete current `Client/ManagedPack/kubejs` tree in any manual point-update; then it promotes the published managed snapshot so later tasks form the next delta. The installer never duplicates gameplay mods/configs and release artifacts never include runtime-only personal files.
+- Allowed changes: Extend deterministic release metadata or packaging output without merging installer and managed-pack ownership, changing AutoModpack deletion scope, client/server release parity or the rule that baseline promotion happens only after the complete MineRENT/client release succeeds.
 - Unlock condition: Explicit user request to publish a new baseline after the friends have installed the current cumulative update.
 - Created: 2026-10-02
 - Amended: 2026-10-03 after the user made every MineRENT update a simultaneous distributed-client release and required each later task to start a new tracked delta.
 - Amended: 2026-10-03 after the user reported that friend/shared ZIPs omitted Russian localizations already present in the maintainer client.
 - Amended: 2026-10-06 after the user clarified that every point-update must contain the complete KubeJS tree rather than only the Russian localization overlay.
+- Amended: 2026-10-11 after the user explicitly replaced the monolithic full client ZIP with a bootstrap-only installer backed by a separate canonical managed-pack source.
 
 ## LOCKED: One active event and SMP GUI specification
 - Scope: `Docs/events/*.md`, `Docs/SERVER_COMMANDS.md`, and `Docs/smp-gui/README.md`
@@ -44,4 +45,13 @@
 - Allowed changes: Optimize the same bounded participant checks, collision geometry or persisted restoration queue without adding a second lifecycle, movement-correction loop, global block scan or forced chunk loading.
 - Unlock condition: Explicit user request to change Blood Moon entry, containment, outsider isolation or temporary-terrain restoration behavior.
 - Created: 2026-10-10
+
+## LOCKED: Author target-sized game assets instead of cutting references
+- Scope: Production raster textures and item-model texture sets derived from visual references, especially Mods/JEMEconomy coin assets
+- Approved signal: images are only references - lock that cutting such images is a bad practice since in game we see the AI bad cutting of the edges. Better alternative - create the images urself on needed size and style
+- Protected behavior: Concept sheets and reference images remain reference-only: never crop, extract, background-remove, or stretch their depicted subjects into shipped game textures. Author each production image anew at its required native dimensions and game style, with intentional transparent edges and no AI cutout halos, clipped silhouettes, inherited backgrounds, labels, shadows, or perspective artifacts; validate the authored asset in every actual game presentation that consumes it.
+- Reuse pattern: Preserve the existing implementation pattern unless the unlock condition is met.
+- Allowed changes: Use the reference for approved motif, palette, material, silhouette, and lighting direction; regenerate or hand-author a new native-size asset, refine individual pixels and alpha, and replace an authored asset with another newly authored native-size version.
+- Unlock condition: Explicit user request to change this behavior or evidence that the core execution pipeline changed.
+- Created: 2026-10-13
 

@@ -6,20 +6,40 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
+import java.util.LinkedHashSet;
+import java.util.HashMap;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
 import net.minecraft.nbt.Tag;
 
 public final class ProfessionRecord {
-    public static final int SCHEMA = 1;
+    public static final int SCHEMA = 2;
     private static final int MAX_AUDITS = 2048;
     private final Map<ProfessionId, Long> xp = new EnumMap<>(ProfessionId.class);
     private final ArrayDeque<UUID> auditOrder = new ArrayDeque<>();
     private final Set<UUID> audits = new HashSet<>();
+    private final Set<String> discoveries = new LinkedHashSet<>();
+    private final Set<String> toggles = new HashSet<>();
+    private final Map<String, Long> cooldowns = new HashMap<>();
+    private final Map<String, DailyCounter> daily = new HashMap<>();
 
     public long xp(ProfessionId id) { return xp.getOrDefault(id, 0L); }
     public int level(ProfessionId id) { return ProfessionFormula.levelFor(xp(id)); }
+    public boolean claimDiscovery(String key) { return key != null && key.length() <= 256 && discoveries.size() < 8192 && discoveries.add(key); }
+    public boolean discovered(String key) { return discoveries.contains(key); }
+    public boolean toggle(String key) { if (!toggles.add(key)) { toggles.remove(key); return false; } return true; }
+    public boolean enabled(String key) { return toggles.contains(key); }
+    public Set<String> enabledKeys() { return Set.copyOf(toggles); }
+    public long cooldown(String key) { return cooldowns.getOrDefault(key, 0L); }
+    public void cooldown(String key, long until) { cooldowns.put(key, Math.max(0L, until)); }
+    public int reserveDaily(String key, long day, int requested, int cap) {
+        DailyCounter counter = daily.get(key);
+        if (counter == null || counter.day != day) counter = new DailyCounter(day, 0);
+        int grant = Math.max(0, Math.min(requested, Math.max(0, cap - counter.amount)));
+        daily.put(key, new DailyCounter(day, counter.amount + grant));
+        return grant;
+    }
 
     public boolean credit(ProfessionId id, int delta, UUID auditId) {
         if (delta <= 0 || auditId == null || !audits.add(auditId)) return false;
@@ -42,6 +62,18 @@ public final class ProfessionRecord {
         ListTag ids = new ListTag();
         auditOrder.forEach(id -> ids.add(StringTag.valueOf(id.toString())));
         tag.put("Audits", ids);
+        ListTag found = new ListTag();
+        discoveries.forEach(value -> found.add(StringTag.valueOf(value)));
+        tag.put("Discoveries", found);
+        ListTag active = new ListTag();
+        toggles.forEach(value -> active.add(StringTag.valueOf(value)));
+        tag.put("Toggles", active);
+        CompoundTag savedCooldowns = new CompoundTag();
+        cooldowns.forEach(savedCooldowns::putLong);
+        tag.put("Cooldowns", savedCooldowns);
+        CompoundTag savedDaily = new CompoundTag();
+        daily.forEach((key, value) -> { CompoundTag row = new CompoundTag(); row.putLong("Day", value.day); row.putInt("Amount", value.amount); savedDaily.put(key, row); });
+        tag.put("Daily", savedDaily);
         return tag;
     }
 
@@ -57,6 +89,16 @@ public final class ProfessionRecord {
             } catch (IllegalArgumentException ignored) {
             }
         }
+        ListTag found = tag.getList("Discoveries", Tag.TAG_STRING);
+        for (int i = 0; i < Math.min(8192, found.size()); i++) record.discoveries.add(found.getString(i));
+        ListTag active = tag.getList("Toggles", Tag.TAG_STRING);
+        for (int i = 0; i < Math.min(256, active.size()); i++) record.toggles.add(active.getString(i));
+        CompoundTag savedCooldowns = tag.getCompound("Cooldowns");
+        savedCooldowns.getAllKeys().forEach(key -> record.cooldowns.put(key, Math.max(0L, savedCooldowns.getLong(key))));
+        CompoundTag savedDaily = tag.getCompound("Daily");
+        savedDaily.getAllKeys().forEach(key -> { CompoundTag row = savedDaily.getCompound(key); record.daily.put(key, new DailyCounter(row.getLong("Day"), Math.max(0, row.getInt("Amount")))); });
         return record;
     }
+
+    private record DailyCounter(long day, int amount) {}
 }

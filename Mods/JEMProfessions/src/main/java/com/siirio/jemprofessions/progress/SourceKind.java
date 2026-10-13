@@ -2,10 +2,12 @@ package com.siirio.jemprofessions.progress;
 
 public enum SourceKind {
     BLOCK_BREAK,
+    BLOCK_PLACED,
     CROP_HARVEST,
     FISH_CAUGHT,
     MOB_DEFEATED,
     DIMENSION_DISCOVERED,
+    AREA_DISCOVERED,
     ITEM_CRAFTED,
     SPELL_CAST,
     ECONOMY_SETTLED,

@@ -91,11 +91,16 @@ public final class MapClient {
                 }))
                 .orElse(null);
     }
+    public static MapNetwork.ProjectArea project(ResourceLocation dimension, int x, int z) {
+        return projects.stream().filter(project -> project.dimension().equals(dimension) && project.rectangles().stream().anyMatch(rectangle ->
+                x >= rectangle.minX() && x < rectangle.maxX() && z >= rectangle.minZ() && z < rectangle.maxZ())).findFirst().orElse(null);
+    }
     public static void render(GuiGraphics graphics, ResourceLocation dimension, double cameraX, double cameraZ, double scale, int width, int height) {
         if (!connected) return;
         renderLayers(graphics, dimension, cameraX, cameraZ, scale, width, height, layers);
         renderLayers(graphics, dimension, cameraX, cameraZ, scale, width, height, projectLayers);
         renderLayers(graphics, dimension, cameraX, cameraZ, scale, width, height, eventLayers);
+        ProjectRegionClient.render(graphics, dimension, cameraX, cameraZ, scale, width, height);
         var font = Minecraft.getInstance().font;
         for (var area : events) {
             if (!area.dimension().equals(dimension)) continue;

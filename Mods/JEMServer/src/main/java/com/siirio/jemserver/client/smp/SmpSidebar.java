@@ -7,16 +7,24 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 
 public final class SmpSidebar {
-    private static final List<String> TABS = List.of("events", "parties", "shops", "claims", "profiles", "prizes");
+    private static final List<String> SMP_TABS = List.of("events", "parties", "shops", "claims", "profiles", "prizes");
     private int x, y, width, rowHeight;
+    private List<String> tabs = SMP_TABS;
     public void layout(int x, int y, int width, int availableHeight) {
         this.x = x; this.y = y; this.width = width;
-        rowHeight = Math.max(20, Math.min(38, availableHeight / TABS.size()));
+        var routes = new java.util.ArrayList<>(SMP_TABS);
+        var mods = net.minecraftforge.fml.ModList.get();
+        if (mods.isLoaded("jem_roles")) routes.add("roles");
+        if (mods.isLoaded("jem_professions")) routes.add("professions");
+        if (mods.isLoaded("jem_economy")) routes.add("wallet");
+        if (mods.isLoaded("jem_settlements")) routes.add("town");
+        tabs = List.copyOf(routes);
+        rowHeight = Math.max(18, Math.min(38, availableHeight / tabs.size()));
     }
     public void render(GuiGraphics g, String active, int mouseX, int mouseY) {
         var font = Minecraft.getInstance().font;
-        for (int i = 0; i < TABS.size(); i++) {
-            String tab = TABS.get(i);
+        for (int i = 0; i < tabs.size(); i++) {
+            String tab = tabs.get(i);
             int top = y + i * rowHeight;
             boolean selected = active.equals(tab), hovered = tab.equals(at(mouseX, mouseY));
             if (selected) g.fill(x, top, x + width, top + rowHeight - 4, ROW);
@@ -35,6 +43,20 @@ public final class SmpSidebar {
     public String at(double mouseX, double mouseY) {
         if (mouseX < x || mouseX >= x + width || mouseY < y) return null;
         int row = (int)(mouseY - y) / rowHeight;
-        return row < TABS.size() && (mouseY - y) % rowHeight < rowHeight - 4 ? TABS.get(row) : null;
+        return row < tabs.size() && (mouseY - y) % rowHeight < rowHeight - 4 ? tabs.get(row) : null;
+    }
+
+    public static boolean openExternal(String route) {
+        String command = switch (route) {
+            case "roles" -> "jem role";
+            case "professions" -> "jem professions";
+            case "wallet" -> "coins";
+            case "town" -> "jem town";
+            default -> null;
+        };
+        var connection = Minecraft.getInstance().getConnection();
+        if (command == null || connection == null) return false;
+        connection.sendCommand(command);
+        return true;
     }
 }

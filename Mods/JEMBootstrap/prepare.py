@@ -61,6 +61,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--source", type=Path)
     parser.add_argument("--build", action="store_true")
+    parser.add_argument("--skip-shaders", action="store_true")
     parser.add_argument("--java-home", type=Path)
     args = parser.parse_args()
     config = json.loads(CONFIG.read_text(encoding="utf-8"))
@@ -70,13 +71,16 @@ def main():
         environment = dict(os.environ)
         if args.java_home is not None:
             environment["JAVA_HOME"] = str(args.java_home.resolve())
+        revision = config["revision"] + ("-no-shaders.1" if args.skip_shaders else "")
         subprocess.run([
             str(source / "gradlew.bat"), *config["buildArguments"],
-            f"-Pmod_version={config['version']}", f"-PjemBootstrapRevision={config['revision']}",
+            f"-Pmod_version={config['version']}", f"-PjemBootstrapRevision={revision}",
+            f"-PjemSkipShaders={'true' if args.skip_shaders else 'false'}",
             f"-PjemUpstreamCommit={config['commit']}", "--init-script", str(MODULE / "production.gradle"),
         ], cwd=source, env=environment, check=True)
         artifact = source / "merged" / f"automodpack-{config['version']}.jar"
-        destination = MODULE / "build" / "libs" / "jem-bootstrap.jar"
+        filename = "jem-bootstrap-no-shaders.jar" if args.skip_shaders else "jem-bootstrap.jar"
+        destination = MODULE / "build" / "libs" / filename
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(artifact, destination)
         print(f"Native updater artifact: {destination}")

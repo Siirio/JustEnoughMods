@@ -7,7 +7,9 @@ public enum SystemAccount {
     CENTRAL_RESERVE(60_000L),
     NPC_MARKET(15_000L),
     OPERATIONS(20_000L),
-    CONTINGENCY(5_000L);
+    CONTINGENCY(5_000L),
+    MARKET_ESCROW(0L),
+    PHYSICAL_OUTSTANDING(0L);
 
     private final UUID id;
     private final long initialBalance;

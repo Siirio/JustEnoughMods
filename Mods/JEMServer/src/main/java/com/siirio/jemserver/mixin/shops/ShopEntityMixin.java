@@ -3,6 +3,7 @@ package com.siirio.jemserver.mixin.shops;
 import com.siirio.jemserver.smp.shops.ShopIndex;
 import com.siirio.jemserver.smp.shops.ShopSnapshot;
 import com.siirio.jemserver.smp.shops.ShopStock;
+import com.siirio.jemserver.smp.shops.ShopCoinAccess;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
@@ -20,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Pseudo
 @Mixin(targets = "net.spudacious5705.shops.block.entity.AbstractShopEntity", remap = false)
-public abstract class ShopEntityMixin implements ShopSnapshot {
+public abstract class ShopEntityMixin implements ShopSnapshot, ShopCoinAccess {
     @Shadow protected ShopInventory shopInventory;
     @Shadow protected java.util.EnumMap<ToggleButtonID, Boolean> toggleSettings;
 
@@ -77,5 +78,54 @@ public abstract class ShopEntityMixin implements ShopSnapshot {
         result.put("output", output.save(new CompoundTag()));
         result.putInt("availableTrades", availableTrades);
         return result;
+    }
+
+    @Override
+    public boolean jemCreativeStock() {
+        return toggleSettings.getOrDefault(ToggleButtonID.CreativeToggle, false);
+    }
+
+    @Override
+    public ItemStack jemTakeCoinSale(ItemStack expected, int quantity) {
+        if (expected.isEmpty() || quantity <= 0) return ItemStack.EMPTY;
+        if (jemCreativeStock()) return expected.copyWithCount(quantity);
+        int remaining = quantity;
+        for (int slot = 0; slot <= 53 && remaining > 0; slot++) {
+            ItemStack current = shopInventory.get(slot);
+            if (!ItemStack.isSameItemSameTags(current, expected)) continue;
+            remaining -= Math.min(remaining, current.getCount());
+        }
+        if (remaining > 0) return ItemStack.EMPTY;
+        remaining = quantity;
+        for (int slot = 0; slot <= 53 && remaining > 0; slot++) {
+            ItemStack current = shopInventory.get(slot);
+            if (!ItemStack.isSameItemSameTags(current, expected)) continue;
+            int take = Math.min(remaining, current.getCount());
+            current.shrink(take);
+            remaining -= take;
+        }
+        ((BlockEntity) (Object) this).setChanged();
+        return expected.copyWithCount(quantity);
+    }
+
+    @Override
+    public boolean jemRestoreCoinSale(ItemStack returned) {
+        if (returned.isEmpty() || jemCreativeStock()) return true;
+        int remaining = returned.getCount();
+        for (int slot = 0; slot <= 53 && remaining > 0; slot++) {
+            ItemStack current = shopInventory.get(slot);
+            if (current.isEmpty() || !ItemStack.isSameItemSameTags(current, returned)) continue;
+            int add = Math.min(remaining, current.getMaxStackSize() - current.getCount());
+            current.grow(add);
+            remaining -= add;
+        }
+        for (int slot = 0; slot <= 53 && remaining > 0; slot++) {
+            if (!shopInventory.get(slot).isEmpty()) continue;
+            int add = Math.min(remaining, returned.getMaxStackSize());
+            shopInventory.set(slot, returned.copyWithCount(add));
+            remaining -= add;
+        }
+        ((BlockEntity) (Object) this).setChanged();
+        return remaining == 0;
     }
 }

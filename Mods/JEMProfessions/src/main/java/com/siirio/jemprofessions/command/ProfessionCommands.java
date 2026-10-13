@@ -7,51 +7,66 @@ import com.siirio.jemprofessions.api.ProfessionApi;
 import com.siirio.jemprofessions.progress.ProfessionId;
 import com.siirio.jemprofessions.progress.ProfessionSavedData;
 import net.minecraft.commands.Commands;
+import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import com.siirio.jemprofessions.network.ProfessionsNetwork;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
 public final class ProfessionCommands {
+    private static final Logger LOGGER = LogUtils.getLogger();
     private ProfessionCommands() {
     }
 
     @SubscribeEvent
     public static void register(RegisterCommandsEvent event) {
         event.getDispatcher().register(Commands.literal("jem")
-                .then(Commands.literal("professions").executes(context -> show(context.getSource().getPlayerOrException()))));
-        event.getDispatcher().register(Commands.literal("jemprofession")
-                .executes(context -> show(context.getSource().getPlayerOrException()))
+                .then(Commands.literal("professions").executes(context -> open(context.getSource().getPlayerOrException()))));
+        var root = Commands.literal("jemprof")
+                .executes(context -> open(context.getSource().getPlayerOrException()))
+                .then(Commands.literal("inspect").requires(source -> source.hasPermission(2))
+                        .then(Commands.argument("player", EntityArgument.player()).executes(context ->
+                                show(context.getSource().getPlayerOrException(), EntityArgument.getPlayer(context, "player")))))
                 .then(Commands.literal("grantxp").requires(source -> source.hasPermission(4))
-                        .then(Commands.argument("profession", StringArgumentType.word())
-                                .then(Commands.argument("amount", IntegerArgumentType.integer(1, 1_000_000))
-                                        .executes(context -> grant(context.getSource().getPlayerOrException(),
-                                                StringArgumentType.getString(context, "profession"),
-                                                IntegerArgumentType.getInteger(context, "amount")))))));
+                        .then(Commands.argument("player", EntityArgument.player())
+                                .then(Commands.argument("profession", StringArgumentType.word())
+                                        .then(Commands.argument("amount", IntegerArgumentType.integer(1, 1_000_000))
+                                                .executes(context -> grant(context.getSource().getPlayerOrException(),
+                                                        EntityArgument.getPlayer(context, "player"),
+                                                        StringArgumentType.getString(context, "profession"),
+                                                        IntegerArgumentType.getInteger(context, "amount")))))));
+        event.getDispatcher().register(root);
     }
 
-    private static int show(ServerPlayer player) {
-        var principal = IdentityPolicy.resolve(player);
+    private static int open(ServerPlayer player) { ProfessionsNetwork.sendStatus(player, true); return 1; }
+
+    private static int show(ServerPlayer actor, ServerPlayer target) {
+        var principal = IdentityPolicy.resolve(target);
         if (principal.isEmpty()) {
-            player.sendSystemMessage(Component.translatable("jem.professions.identity_required"));
+            actor.sendSystemMessage(Component.translatable("jem.professions.identity_required"));
             return 0;
         }
-        var record = ProfessionSavedData.get(player.getServer()).findOrEmpty(principal.get().accountId());
-        player.sendSystemMessage(Component.translatable("jem.professions.header"));
+        var record = ProfessionSavedData.get(target.getServer()).findOrEmpty(principal.get().accountId());
+        actor.sendSystemMessage(Component.translatable("jem.professions.inspect_header", target.getDisplayName()));
         for (ProfessionId id : ProfessionId.values()) {
-            player.sendSystemMessage(Component.translatable("jem.professions.row", professionName(id), record.level(id), record.xp(id)));
+            actor.sendSystemMessage(Component.translatable("jem.professions.row", professionName(id), record.level(id), record.xp(id)));
         }
         return 1;
     }
 
-    private static int grant(ServerPlayer player, String raw, int amount) {
+    private static int grant(ServerPlayer actor, ServerPlayer target, String raw, int amount) {
         var id = ProfessionId.parse(raw);
         if (id.isEmpty()) {
-            player.sendSystemMessage(Component.translatable("jem.professions.invalid"));
+            actor.sendSystemMessage(Component.translatable("jem.professions.invalid"));
             return 0;
         }
-        ProfessionApi.administrativeCredit(player, id.get(), amount);
-        player.sendSystemMessage(Component.translatable("jem.professions.granted", amount, professionName(id.get())));
+        ProfessionApi.administrativeCredit(target, id.get(), amount);
+        LOGGER.info("JEM Professions administrative XP actor={} target={} profession={} amount={}", actor.getUUID(), target.getUUID(), id.get(), amount);
+        actor.sendSystemMessage(Component.translatable("jem.professions.granted", amount, professionName(id.get()), target.getDisplayName()));
+        ProfessionsNetwork.sendStatus(target, false);
         return 1;
     }
 

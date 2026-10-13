@@ -1,5 +1,7 @@
 # Blood Moon
 
+Xaero показывает exact arena rectangle всем игрокам только пока Blood Moon находится в `ACTIVE`; завершение event удаляет слой следующим authoritative map sync.
+
 ## Primary state
 
 Любая фактическая смерть принятого участника активной Blood Moon сохраняет inventory, armor, offhand и Curios на respawn без grave, включая смерть, которая исчерпывает жизни и помечает участника eliminated. Сохранение вещей не возвращает жизнь попытки и не действует после выхода из event lifecycle.

@@ -6,6 +6,7 @@ import com.siirio.jemserver.smp.Profiles;
 import com.siirio.jemserver.smp.SmpConfig;
 import com.siirio.jemserver.smp.SmpData;
 import com.siirio.jemserver.smp.SmpNetwork;
+import com.siirio.jemserver.smp.SmpRecords;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
@@ -159,7 +160,10 @@ public final class ShopIndex {
         row.putLong(
                 "created",
                 previous == null ? System.currentTimeMillis() : previous.getLong("created"));
-        if (!row.equals(previous)) data.put("shops", row);
+        if (!row.equals(previous)) {
+            if (previous != null) row.putInt("revision", previous.getInt("revision") + 1);
+            data.put("shops", row);
+        }
         positions(server).add(position);
     }
 
@@ -417,7 +421,7 @@ public final class ShopIndex {
                 : Double.POSITIVE_INFINITY;
     }
 
-    public static void action(ServerPlayer player, UUID id, String action) {
+    public static void action(ServerPlayer player, UUID id, int expectedRevision, String action, UUID requestId) {
         var row = id == null ? null : SmpData.get(player.server).find("shops", id);
         if (id == null) throw new com.siirio.jemserver.smp.SmpActionFailure("unavailable");
         if (action.equals("favorite")) {
@@ -439,7 +443,7 @@ public final class ShopIndex {
             row = SmpData.get(player.server).find("shops", id);
             if (row == null) throw new com.siirio.jemserver.smp.SmpActionFailure("unavailable");
             if (!net.minecraftforge.fml.ModList.get().isLoaded("spudaciousshops")) throw new com.siirio.jemserver.smp.SmpActionFailure("unavailable");
-            RemoteShop.open(player, row);
+            buyWithCoins(player, row, expectedRevision, requestId);
             return;
         }
         if (row == null || !action.equals("navigate"))
@@ -454,6 +458,63 @@ public final class ShopIndex {
                 System.currentTimeMillis()
                         + java.util.concurrent.TimeUnit.MINUTES.toMillis(
                                 SmpConfig.WAYPOINT_MINUTES.get()));
+    }
+
+    private static void buyWithCoins(ServerPlayer player, CompoundTag row, int expectedRevision, UUID requestId) {
+        SmpRecords.require(expectedRevision == row.getInt("revision"), "stale_revision");
+        SmpRecords.require(!row.getBoolean("selectable"), "select_offer_at_shop");
+        SmpRecords.require(row.hasUUID("owner") && !row.getUUID("owner").equals(player.getUUID()), "invalid_request");
+        SmpRecords.require(row.getString("state").equals("ACTIVE"), "unavailable");
+        int price = row.getInt("price");
+        int quantity = row.getInt("quantity");
+        ItemStack expected = ItemStack.of(row.getCompound("offer"));
+        SmpRecords.require(price > 0 && price <= 1_000_000_000 && quantity > 0 && quantity <= 64 && !expected.isEmpty(), "invalid_request");
+        expected.setCount(quantity);
+        SmpRecords.require(canAccept(player, expected), "inventory_full");
+
+        var position = position(row);
+        SmpRecords.require(position != null, "unavailable");
+        ServerLevel level = player.server.getLevel(ResourceKey.create(Registries.DIMENSION, position.dimension()));
+        SmpRecords.require(level != null && level.hasChunkAt(position.block()), "shop_unloaded");
+        var block = level.getBlockEntity(position.block());
+        SmpRecords.require(block instanceof ShopCoinAccess, "unavailable");
+        var shop = (ShopCoinAccess) block;
+
+        var reserve = com.siirio.jemeconomy.api.EconomyApi.reserveMarketPayment(player, price, requestId);
+        if (reserve.status() == com.siirio.jemeconomy.api.EconomyApi.MarketStatus.REPLAYED) return;
+        SmpRecords.require(reserve.status() == com.siirio.jemeconomy.api.EconomyApi.MarketStatus.RESERVED,
+                reserve.status() == com.siirio.jemeconomy.api.EconomyApi.MarketStatus.INSUFFICIENT_FUNDS ? "insufficient_coins" : "unavailable");
+
+        ItemStack sold = shop.jemTakeCoinSale(expected, quantity);
+        if (sold.isEmpty()) {
+            com.siirio.jemeconomy.api.EconomyApi.refundMarketPayment(player, price, requestId);
+            throw new com.siirio.jemserver.smp.SmpActionFailure("out_of_stock");
+        }
+        if (!player.getInventory().add(sold) || !sold.isEmpty()) {
+            shop.jemRestoreCoinSale(sold);
+            com.siirio.jemeconomy.api.EconomyApi.refundMarketPayment(player, price, requestId);
+            throw new com.siirio.jemserver.smp.SmpActionFailure("inventory_full");
+        }
+        var settled = com.siirio.jemeconomy.api.EconomyApi.settleMarketPayment(player, row.getUUID("owner"), price, requestId);
+        if (settled.status() != com.siirio.jemeconomy.api.EconomyApi.MarketStatus.COMMITTED
+                && settled.status() != com.siirio.jemeconomy.api.EconomyApi.MarketStatus.REPLAYED) {
+            throw new com.siirio.jemserver.smp.SmpActionFailure("settlement_pending");
+        }
+        player.getInventory().setChanged();
+        player.containerMenu.broadcastChanges();
+        refresh(player.server, position);
+    }
+
+    private static boolean canAccept(ServerPlayer player, ItemStack offered) {
+        int remaining = offered.getCount();
+        for (ItemStack current : player.getInventory().items) {
+            if (current.isEmpty()) return true;
+            if (ItemStack.isSameItemSameTags(current, offered)) {
+                remaining -= Math.max(0, Math.min(current.getMaxStackSize(), player.getInventory().getMaxStackSize()) - current.getCount());
+                if (remaining <= 0) return true;
+            }
+        }
+        return false;
     }
 
     private ShopIndex() {}

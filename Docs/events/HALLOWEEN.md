@@ -4,5 +4,7 @@ Halloween is owned by JEMServer's persistent calendar lifecycle. Its default Asi
 
 The scheduler persists year, UTC boundaries and idempotent `PLANNED`, `ACTIVE`, `ENDED`, `CLEANED` transition IDs. Restart, mid-window startup and wall-clock rollback must not repeat a transition. Operator preview/force/stop and per-player presentation mute are control surfaces; neither creates a daily-login reward.
 
-This lifecycle does not authorize settlement raids, permanent world changes or unbounded mob spawning. Any later activity must own and remove only its transient content and use funded Economy transfers for Coin rewards.
+Players opt in with `/jem holiday join calm` or `/jem holiday join power`. Calm progress observes four real pumpkin pickups and three ordinary fish catches, persists per authenticated account and awards each small real-item completion once. Power creates one bounded local group of five tagged zombies around the consenting player when loaded collision-safe positions exist; only those tagged mobs advance that player's objective. It does not change blocks, raid towns, create a global threat or mint Coins.
+
+Mute state suppresses actual lifecycle/login notices. Activity progress survives reconnects and restarts. The current implementation creates no transient block POI, so cleanup never touches world blocks or player builds.
 

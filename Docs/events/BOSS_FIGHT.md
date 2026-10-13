@@ -22,6 +22,8 @@ Verified native anchor записывается только при первом
 
 Телепорт с Xaero доступен только для server-owned discovered boss marker со стабильным arena ID. Сервер заново разрешает ID через canonical registered arena и Campaign eligibility, игнорирует клиентские coordinates и ищет безопасную поверхность минимум за два block centers от outer collision shell. Personal/home/base/death и поддельные markers не получают JEM teleport action. Если безопасная загруженная точка с полным player box не найдена, переход отклоняется.
 
+Пока hosted Boss Fight активен, Xaero показывает точный outer collision shell структуры как одну временную boss-территорию. Она исчезает при завершении общего hosted lifecycle.
+
 ## Arena
 
 Операторский revive является восстановлением структуры, а не rematch unlock: зарегистрированной структуры и отсутствия живого босса достаточно даже до первой победы. Устаревший UUID отсутствующей entity заменяется новым, первая последующая легитимная победа сохраняет право прогрессировать World Tier, а Raid остаётся закрытым до этой победы.

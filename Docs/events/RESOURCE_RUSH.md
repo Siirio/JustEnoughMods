@@ -8,6 +8,8 @@ Resource Rush — временный server-hosted event instance с отдел�
 
 Resource Rush не создаёт locked participant roster: игроки всегда свободно входят, выходят и возвращаются. Пока внутри нет игроков, mobs пересекают границу свободно; при появлении хотя бы одного игрока общий `EVENT_LOCK` добавляет mob-only collision geometry с обеих сторон без сохранения предыдущей позиции, teleport-back или velocity reversal. Кнопка Teleport переносит внутрь безопасной точки области; map travel к event location остаётся отдельным server-owned действием и высаживает снаружи примерно в одном блоке полного clearance от outer collision surface. Visual perimeter остаётся full-height и совпадает с collision coordinates.
 
+Xaero показывает exact reserved rectangle всем игрокам только пока Resource Rush находится в `ACTIVE`; завершение event удаляет слой следующим authoritative map sync.
+
 Общий containment policy не превращает Resource Rush в player teleport lock: ограничения source/destination для игроков к нему не применяются. Mob-only wall использует тот же vanilla collision pass, поэтому диагональное движение разрешается как у обычного solid block.
 
 ## Rejected
