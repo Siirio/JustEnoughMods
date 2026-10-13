@@ -47,11 +47,11 @@ public final class TierCommands {
     private static int grant(CommandSourceStack source, ResourceLocation profileId) {
         BossProfile profile = BalanceRegistry.bossByKey(profileId).orElse(null);
         if (profile == null) {
-            source.sendFailure(Component.literal("No boss profile for " + profileId));
+            source.sendFailure(Component.translatable("jem.world_tier.command.profile_missing", profileId));
             return 0;
         }
         com.siirio.jemworldbosstiers.JemWorldBossTiers.recordVictory(source.getServer(), profile);
-        source.sendSuccess(() -> Component.literal("Recorded victory over " + profile.displayName()), true);
+        source.sendSuccess(() -> Component.translatable("jem.world_tier.command.victory_recorded", profile.displayName()), true);
         return 1;
     }
 
@@ -61,31 +61,32 @@ public final class TierCommands {
         int next = BalanceRegistry.tierThresholds().stream().filter(threshold -> threshold > count).findFirst().orElse(-1);
         String defeated = data.defeatedBosses().stream().filter(BalanceRegistry.activeQualifyingKeys()::contains).sorted(Comparator.comparing(ResourceLocation::toString)).map(ResourceLocation::toString).collect(Collectors.joining(", "));
         String sourceName=data.tierOverride().isPresent()?"manual":"progression";
-        source.sendSuccess(() -> Component.literal("World Tier " + data.tier() + " | source " + sourceName + " | qualifying defeats " + count + " | next " + (next < 0 ? "MAX" : next) + " | defeated " + (defeated.isEmpty() ? "none" : defeated)), false);
+        source.sendSuccess(() -> Component.translatable("jem.world_tier.command.status", data.tier(), sourceName, count,
+                next < 0 ? "MAX" : Integer.toString(next), defeated.isEmpty() ? "none" : defeated), false);
         return data.tier();
     }
 
     private static int set(CommandSourceStack source,int tier) {
         int applied=com.siirio.jemworldbosstiers.JemWorldBossTiers.overrideWorldTier(source.getServer(),tier);
-        source.sendSuccess(()->Component.literal("World Tier set to "+applied),true);
+        source.sendSuccess(()->Component.translatable("jem.world_tier.command.set", applied),true);
         return applied;
     }
 
     private static int reset(CommandSourceStack source) {
         int applied=com.siirio.jemworldbosstiers.JemWorldBossTiers.resetWorldTier(source.getServer());
-        source.sendSuccess(()->Component.literal("World Tier reset to progression value "+applied),true);
+        source.sendSuccess(()->Component.translatable("jem.world_tier.command.reset", applied),true);
         return applied;
     }
 
     private static int boss(CommandSourceStack source, Entity entity) {
         if (!(entity instanceof LivingEntity living)) {
-            source.sendFailure(Component.literal("Entity is not living"));
+            source.sendFailure(Component.translatable("jem.world_tier.command.not_living"));
             return 0;
         }
         ResourceLocation entityId = BuiltInRegistries.ENTITY_TYPE.getKey(living.getType());
         BossProfile profile = BalanceRegistry.boss(entityId).orElse(null);
         if (profile == null) {
-            source.sendFailure(Component.literal("No boss profile for " + entityId));
+            source.sendFailure(Component.translatable("jem.world_tier.command.profile_missing", entityId));
             return 0;
         }
         EncounterData encounter = EncounterData.read(living.getPersistentData()).orElse(null);
@@ -100,10 +101,11 @@ public final class TierCommands {
         String dimension = source.getLevel().dimension().location().toString();
         ArenaRecord arena = WorldTierData.get(source.getServer()).arenas().stream().filter(value -> value.contains(dimension, source.getPosition().x, source.getPosition().y, source.getPosition().z)).findFirst().orElse(null);
         if (arena == null) {
-            source.sendFailure(Component.literal("No registered arena at this position"));
+            source.sendFailure(Component.translatable("jem.world_tier.command.arena_missing"));
             return 0;
         }
-        source.sendSuccess(() -> Component.literal("Arena " + arena.id() + " | profile=" + arena.profileKey() + " | unlocked=" + arena.unlocked() + " | active=" + (arena.activeEncounterId() == null ? "none" : arena.activeEncounterId())), false);
+        source.sendSuccess(() -> Component.translatable("jem.world_tier.command.arena", arena.id(), arena.profileKey(), arena.unlocked(),
+                arena.activeEncounterId() == null ? "none" : arena.activeEncounterId()), false);
         return 1;
     }
 }

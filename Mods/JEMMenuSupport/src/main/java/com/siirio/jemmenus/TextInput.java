@@ -1,6 +1,7 @@
 package com.siirio.jemmenus;
 
 import java.util.function.Consumer;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -23,7 +24,7 @@ final class TextInput extends AnvilMenu {
     }
 
     private void refresh() {
-        resultSlots.setItem(0, VanillaMenus.icon(Items.LIME_DYE, "Подтвердить", value == null ? "" : value));
+        resultSlots.setItem(0, VanillaMenus.icon(Items.LIME_DYE, Component.translatable("gui.done"), Component.literal(value == null ? "" : value)));
         setMaximumCost(0);
         broadcastChanges();
     }

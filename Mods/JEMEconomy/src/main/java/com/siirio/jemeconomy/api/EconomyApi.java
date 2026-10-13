@@ -3,6 +3,7 @@ package com.siirio.jemeconomy.api;
 import com.siirio.jemeconomy.ledger.EconomySavedData;
 import com.siirio.jemeconomy.ledger.SystemAccount;
 import com.siirio.jemeconomy.ledger.TransferResult;
+import com.siirio.jemidentity.api.DedicatedSmp;
 import com.siirio.jemidentity.api.IdentityPolicy;
 import java.util.UUID;
 import net.minecraft.server.level.ServerPlayer;
@@ -14,7 +15,7 @@ public final class EconomyApi {
     }
 
     public static long balance(ServerPlayer player) {
-        if (!player.getServer().isDedicatedServer()) return 0L;
+        if (!DedicatedSmp.active(player)) return 0L;
         return IdentityPolicy.resolve(player).map(principal -> {
             ensureStarter(player, principal.accountId());
             return EconomySavedData.get(player.getServer()).balance(principal.accountId());
@@ -22,7 +23,7 @@ public final class EconomyApi {
     }
 
     public static TransferResult send(ServerPlayer sender, UUID recipient, long amount, UUID requestId) {
-        if (!sender.getServer().isDedicatedServer()) return new TransferResult(TransferResult.Status.SERVER_ONLY, null, 0L, 0L);
+        if (!DedicatedSmp.active(sender)) return new TransferResult(TransferResult.Status.UNAVAILABLE, null, 0L, 0L);
         var principal = IdentityPolicy.resolve(sender);
         if (principal.isEmpty()) return new TransferResult(TransferResult.Status.UNAUTHENTICATED, null, 0L, 0L);
         ensureStarter(sender, principal.get().accountId());
@@ -32,7 +33,7 @@ public final class EconomyApi {
 
     public static TransferResult fundedSystemTransfer(ServerPlayer authenticatedActor, SystemAccount source, UUID destination,
                                                       long amount, String idempotencyKey) {
-        if (!authenticatedActor.getServer().isDedicatedServer()) return new TransferResult(TransferResult.Status.SERVER_ONLY, null, 0L, 0L);
+        if (!DedicatedSmp.active(authenticatedActor)) return new TransferResult(TransferResult.Status.UNAVAILABLE, null, 0L, 0L);
         if (IdentityPolicy.resolve(authenticatedActor).isEmpty()) return new TransferResult(TransferResult.Status.UNAUTHENTICATED, null, 0L, 0L);
         return EconomySavedData.get(authenticatedActor.getServer()).transfer(source.id(), destination, amount, idempotencyKey);
     }

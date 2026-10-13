@@ -19,13 +19,13 @@ import net.minecraft.world.item.Items;
 public final class Landmarks {
     private static final int PAGE_SIZE = 45;
     private static final UUID SERVER_CREATOR = UUID.nameUUIDFromBytes("jem_server:boss_landmarks".getBytes(java.nio.charset.StandardCharsets.UTF_8));
-    private record Category(String id, String title, Item icon) {}
+    private record Category(String id, Item icon) {}
     private static final List<Category> CATEGORIES = List.of(
-            new Category("scenery", "Красивое место", Items.FLOWERING_AZALEA),
-            new Category("building", "Постройка", Items.BRICKS),
-            new Category("landmark", "Достопримечательность", Items.MAP),
-            new Category("shop", "Магазин", Items.EMERALD),
-            new Category("danger", "Опасное место", Items.SKELETON_SKULL));
+            new Category("scenery", Items.FLOWERING_AZALEA),
+            new Category("building", Items.BRICKS),
+            new Category("landmark", Items.MAP),
+            new Category("shop", Items.EMERALD),
+            new Category("danger", Items.SKELETON_SKULL));
 
     private Landmarks() {}
 
@@ -34,31 +34,31 @@ public final class Landmarks {
         ServerData data = ServerData.get(player.server);
         var landmarks = data.landmarks(player.getUUID()).stream().sorted(Comparator.comparing(ServerData.Landmark::name).thenComparing(ServerData.Landmark::id)).toList();
         int page = Math.max(0, Math.min(requestedPage, Math.max(0, (landmarks.size() - 1) / PAGE_SIZE)));
-        VanillaMenus.chest(player, JemServer.MOD_ID, "landmarks", "Мои места и открытые боссы", menu -> {
+        VanillaMenus.chest(player, JemServer.MOD_ID, "landmarks", Component.translatable("jem.landmarks.title"), menu -> {
             for (int index = page * PAGE_SIZE; index < Math.min(landmarks.size(), (page + 1) * PAGE_SIZE); index++) {
                 var landmark = landmarks.get(index);
                 var icon = locationIcon(landmark);
                 menu.button(index % PAGE_SIZE, icon, () -> manage(player, landmark.id(), management));
             }
-            if (page > 0) menu.button(45, VanillaMenus.icon(Items.ARROW, "Назад"), () -> open(player, page - 1, management));
-            menu.button(48, VanillaMenus.icon(Items.WRITABLE_BOOK, "Сохранить это место"), () -> create(player));
-            if ((page + 1) * PAGE_SIZE < landmarks.size()) menu.button(53, VanillaMenus.icon(Items.ARROW, "Далее"), () -> open(player, page + 1, management));
+            if (page > 0) menu.button(45, VanillaMenus.icon(Items.ARROW, Component.translatable("jem.ui.back")), () -> open(player, page - 1, management));
+            menu.button(48, VanillaMenus.icon(Items.WRITABLE_BOOK, Component.translatable("jem.landmarks.save_here")), () -> create(player));
+            if ((page + 1) * PAGE_SIZE < landmarks.size()) menu.button(53, VanillaMenus.icon(Items.ARROW, Component.translatable("jem.ui.next")), () -> open(player, page + 1, management));
         });
     }
 
     public static void create(ServerPlayer player) {
         if (!ServerConfig.LANDMARKS_ENABLED.get()) return;
-        VanillaMenus.input(player, "Название места", "Новое место", value -> {
+        VanillaMenus.input(player, Component.translatable("jem.landmarks.name"), "", value -> {
             if (!ServerConfig.LANDMARKS_ENABLED.get()) return;
             String name = value.strip();
             if (name.isEmpty() || name.length() > ServerConfig.NAME_LENGTH.get() || name.codePoints().anyMatch(code -> Character.isISOControl(code) || code == 167)) {
-                player.sendSystemMessage(Component.literal("Введите название длиной от 1 до " + ServerConfig.NAME_LENGTH.get() + " символов без управляющих кодов."));
+                player.sendSystemMessage(Component.translatable("jem.landmarks.error.name_length", ServerConfig.NAME_LENGTH.get()));
                 return;
             }
-            VanillaMenus.chest(player, JemServer.MOD_ID, "landmark_category", "Категория места", menu -> {
+            VanillaMenus.chest(player, JemServer.MOD_ID, "landmark_category", Component.translatable("jem.landmarks.category"), menu -> {
                 for (int index = 0; index < CATEGORIES.size(); index++) {
                     Category category = CATEGORIES.get(index);
-                    menu.button(20 + index, VanillaMenus.icon(category.icon(), category.title()), () -> submit(player, name, category.id()));
+                    menu.button(20 + index, VanillaMenus.icon(category.icon(), categoryTitle(category.id())), () -> submit(player, name, category.id()));
                 }
             });
         });
@@ -77,13 +77,13 @@ public final class Landmarks {
         if (!ServerConfig.LANDMARKS_ENABLED.get() || !player.isAlive()) return false;
         if (clean.isEmpty() || clean.length() > ServerConfig.NAME_LENGTH.get()
                 || clean.codePoints().anyMatch(code -> Character.isISOControl(code) || code == 167)) {
-            player.sendSystemMessage(Component.literal("Недопустимое название метки."));
+            player.sendSystemMessage(Component.translatable("jem.landmarks.error.invalid_name"));
             return false;
         }
         if (!dimension.equals(player.level().dimension().location()) || !player.serverLevel().getWorldBorder().isWithinBounds(position)
                 || position.getY() < player.level().getMinBuildHeight() || position.getY() >= player.level().getMaxBuildHeight()
                 || !Claims.available(player, new ChunkPos(position))) {
-            player.sendSystemMessage(Component.literal("Свою метку можно сохранить в текущем измерении на загруженной для вас территории."));
+            player.sendSystemMessage(Component.translatable("jem.landmarks.error.location"));
             return false;
         }
         var data = ServerData.get(player.server);
@@ -91,11 +91,11 @@ public final class Landmarks {
                 && value.position().equals(position) && value.name().equals(clean))) return true;
         var landmark = new ServerData.Landmark(UUID.randomUUID(), clean, "", category, dimension, position.immutable(), player.getUUID(), player.getGameProfile().getName(), System.currentTimeMillis());
         if (!data.publish(landmark)) {
-            player.sendSystemMessage(Component.literal("Достигнут лимит сохранённых мест. Удалите одну из своих старых меток."));
+            player.sendSystemMessage(Component.translatable("jem.landmarks.error.limit"));
             return false;
         }
         LandmarkNetwork.changed(player.server, landmark);
-        player.sendSystemMessage(Component.literal("Место сохранено только для вас."));
+        player.sendSystemMessage(Component.translatable("jem.landmarks.saved"));
         return true;
     }
 
@@ -153,11 +153,11 @@ public final class Landmarks {
             open(player, 0, management);
             return;
         }
-        VanillaMenus.chest(player, JemServer.MOD_ID, "confirm", landmark.name(), menu -> {
+        VanillaMenus.chest(player, JemServer.MOD_ID, "confirm", Component.literal(landmark.name()), menu -> {
             menu.button(4, locationIcon(landmark), null);
             if (!isBoss(landmark) && landmark.creator().equals(player.getUUID()))
-                menu.button(22, VanillaMenus.icon(Items.BARRIER, "Удалить мою метку", "Исчезнет только с вашей карты"), () -> remove(player, id));
-            menu.button(49, VanillaMenus.icon(Items.ARROW, "Отмена"), () -> open(player, 0, management));
+                menu.button(22, VanillaMenus.icon(Items.BARRIER, Component.translatable("jem.landmarks.delete"), Component.translatable("jem.landmarks.delete_hint")), () -> remove(player, id));
+            menu.button(49, VanillaMenus.icon(Items.ARROW, Component.translatable("jem.ui.cancel")), () -> open(player, 0, management));
         });
     }
 
@@ -174,20 +174,21 @@ public final class Landmarks {
         if (landmark == null || isBoss(landmark) || !landmark.creator().equals(player.getUUID())) return 0;
         boolean changed = data.removeLandmark(id);
         if (changed) LandmarkNetwork.removed(player, id);
-        player.sendSystemMessage(Component.literal(changed ? "Ваша метка удалена." : "Метка уже удалена."));
+        player.sendSystemMessage(Component.translatable(changed ? "jem.landmarks.deleted" : "jem.landmarks.already_deleted"));
         return changed ? 1 : 0;
     }
 
     private static net.minecraft.world.item.ItemStack locationIcon(ServerData.Landmark landmark) {
-        var icon = VanillaMenus.icon(Items.COMPASS, landmark.name(), categoryTitle(landmark.category()), landmark.dimension().toString(),
-                "X: " + landmark.position().getX() + " Y: " + landmark.position().getY() + " Z: " + landmark.position().getZ(), "Автор: " + landmark.creatorName());
+        var icon = VanillaMenus.icon(Items.COMPASS, Component.literal(landmark.name()), categoryTitle(landmark.category()), Component.literal(landmark.dimension().toString()),
+                Component.translatable("jem.landmarks.coordinates", landmark.position().getX(), landmark.position().getY(), landmark.position().getZ()), Component.translatable("jem.landmarks.author", landmark.creatorName()));
         icon.getOrCreateTag().putString("jem_ui_dimension", landmark.dimension().toString());
         icon.getOrCreateTag().putLong("jem_ui_position", landmark.position().asLong());
         return icon;
     }
 
-    private static String categoryTitle(String id) {
-        return id.equals(ServerData.LOCATED_BOSS_CATEGORY) ? "Найденный босс"
-                : CATEGORIES.stream().filter(category -> category.id().equals(id)).map(Category::title).findFirst().orElse(id);
+    private static Component categoryTitle(String id) {
+        return CATEGORIES.stream().anyMatch(category -> category.id().equals(id)) || id.equals(ServerData.LOCATED_BOSS_CATEGORY)
+                ? Component.translatable("jem.landmarks.category." + id)
+                : Component.literal(id);
     }
 }

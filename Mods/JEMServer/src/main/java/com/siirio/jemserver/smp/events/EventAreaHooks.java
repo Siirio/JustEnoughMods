@@ -48,7 +48,7 @@ public final class EventAreaHooks {
             if(!row.getBoolean("combatStarted") && near && !promptedBefore.contains(id) && !member && (type.equals("BLOOD_MOON") || type.equals("BOSS_RAID")))
                 player.sendSystemMessage(Component.literal("▣ ").withStyle(ChatFormatting.GOLD)
                         .append(Component.translatable("jem.smp."+type)).append(" ")
-                        .append(Component.literal("[Открыть событие]").withStyle(style -> style.withColor(ChatFormatting.GREEN).withBold(true)
+                        .append(Component.translatable("jem.smp.open_event").withStyle(style -> style.withColor(ChatFormatting.GREEN).withBold(true)
                                 .withClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/smp event-open " + id)))));
             if(type.equals("BLOOD_MOON") && member && player.isAlive() && !player.isSpectator()) {
                 var entry=SmpRecords.members(row).getCompound(player.getStringUUID());

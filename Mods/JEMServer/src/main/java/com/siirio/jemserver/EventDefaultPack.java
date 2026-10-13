@@ -28,7 +28,7 @@ final class EventDefaultPack {
 
     private static void load(Consumer<Pack> consumer) {
         var root = ModList.get().getModFileById(JemServer.MOD_ID).getFile().findResource("builtin", "event_defaults");
-        Pack pack = Pack.readMetaAndCreate(PACK_ID, Component.literal("Blood Moon defaults"), true,
+        Pack pack = Pack.readMetaAndCreate(PACK_ID, Component.translatable("jem.server.pack.event_defaults"), true,
                 id -> new PathPackResources(id, true, root), PackType.SERVER_DATA, Pack.Position.BOTTOM, PackSource.BUILT_IN);
         if (pack == null) throw new IllegalStateException("Missing Blood Moon defaults pack metadata");
         consumer.accept(pack);

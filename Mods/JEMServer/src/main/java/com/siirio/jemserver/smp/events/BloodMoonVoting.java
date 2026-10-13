@@ -134,10 +134,10 @@ public final class BloodMoonVoting {
                         .withStyle(color).append(Component.translatable(vote.isEmpty()?"jem.smp.vote.pending":CONTINUE.equals(vote)?"jem.smp.vote.continue_state":"jem.smp.vote.cash_out_state").withStyle(color)));
             }
             if(!voting.getBoolean("resolved")) {
-                var message=Component.literal("[Продолжить]").withStyle(style->style.withColor(ChatFormatting.GREEN).withBold(true)
+                var message=Component.translatable("jem.smp.vote.continue_button").withStyle(style->style.withColor(ChatFormatting.GREEN).withBold(true)
                         .withClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND,"/smp vote "+event.getUUID("id")+" continue")));
                 message.append(Component.literal("   "));
-                message.append(Component.literal("[Забрать награду]").withStyle(style->style.withColor(ChatFormatting.RED).withBold(true)
+                message.append(Component.translatable("jem.smp.vote.cashout_button").withStyle(style->style.withColor(ChatFormatting.RED).withBold(true)
                         .withClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND,"/smp vote "+event.getUUID("id")+" cashout"))));
                 viewer.sendSystemMessage(message);
             }

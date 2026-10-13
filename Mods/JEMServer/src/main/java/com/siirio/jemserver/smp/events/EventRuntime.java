@@ -16,11 +16,11 @@ public final class EventRuntime {
         LOOT.register("resource_rush", () -> RushLoot.CODEC);
     }
 
-    public static void register(BiConsumer<ServerPlayer, EventChoice> entryActions) {
+    public static void register(BiConsumer<ServerPlayer, EventChoice> entryActions, boolean dedicated) {
         var bus = net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext.get().getModEventBus();
         SmpEventBlocks.register(bus);
         LOOT.register(bus);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, EventRules.SPEC, "jem-events-server.toml");
+        if (dedicated) ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, EventRules.SPEC, "jem-events-server.toml");
         EventNetwork.register(entryActions);
     }
 

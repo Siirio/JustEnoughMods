@@ -34,7 +34,7 @@ public final class ProjectCommands {
     }
 
     private static int report(CommandSourceStack source, ProjectRegionService.Result result) {
-        source.sendSuccess(() -> Component.literal("Project region: " + result.name()), false);
+        source.sendSuccess(() -> Component.translatable("jem.project.result." + result.name().toLowerCase(java.util.Locale.ROOT)), false);
         return result == ProjectRegionService.Result.ACCEPTED ? 1 : 0;
     }
 }

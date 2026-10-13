@@ -29,5 +29,5 @@ final class NoClaimsBackend implements ClaimsBackend {
     @Override public boolean canStay(ServerPlayer player, ServerLevel level, BlockPos position) { return true; }
     @Override public boolean bossAreaAvailable(ServerPlayer player, BlockPos first, BlockPos second) { return true; }
 
-    private static void unavailable(ServerPlayer player) { player.sendSystemMessage(Component.literal("Территории отключены в этом мире.")); }
+    private static void unavailable(ServerPlayer player) { player.sendSystemMessage(Component.translatable("jem.claims.unavailable")); }
 }

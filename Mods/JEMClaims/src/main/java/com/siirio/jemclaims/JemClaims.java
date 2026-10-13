@@ -80,7 +80,7 @@ public final class JemClaims {
         if (event.getAction() != PlayerInteractEvent.LeftClickBlock.Action.START) return;
         if (!ClaimSelectionGuard.click(player, event.getPos())) return;
         selections.put(player.getUUID(), new Selection(player.level().dimension(), event.getPos().immutable(), null));
-        player.sendSystemMessage(Component.literal("Первая точка: " + event.getPos().getX() + ", " + event.getPos().getZ()));
+        player.sendSystemMessage(Component.translatable("jem.claims.first_point", event.getPos().getX(), event.getPos().getZ()));
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
@@ -97,7 +97,7 @@ public final class JemClaims {
         if (!ClaimSelectionGuard.click(player, event.getPos())) return;
         Selection selection = selections.get(player.getUUID());
         if (selection == null || !selection.dimension().equals(player.level().dimension())) {
-            player.sendSystemMessage(Component.literal("Сначала выберите первую точку ЛКМ в этом измерении."));
+            player.sendSystemMessage(Component.translatable("jem.claims.error.first_point_required"));
             return;
         }
         BlockPos second = event.getPos().immutable();
@@ -106,15 +106,15 @@ public final class JemClaims {
         selections.put(player.getUUID(), pending);
         long width = Math.abs((long) selection.first().getX() - second.getX()) + 1;
         long length = Math.abs((long) selection.first().getZ() - second.getZ()) + 1;
-        VanillaMenus.chest(player, JemClaims.MOD_ID, "confirm", "Создать территорию?", menu -> {
-            menu.button(4, ClaimsMenus.location(VanillaMenus.icon(Items.OAK_FENCE, width + " × " + length,
-                    "Площадь: " + width * length, "Новых блоков: " + ClaimUnion.additional(player.serverLevel(), player.getUUID(), pending.first(), pending.second(), null), "Доступно: " + (FlanBridge.budget(player) - FlanBridge.used(player))), pending.dimension().location(), pending.first(), pending.second()), null);
-            menu.button(22, VanillaMenus.icon(Items.LIME_DYE, "Подтвердить"), () -> {
+        VanillaMenus.chest(player, JemClaims.MOD_ID, "confirm", Component.translatable("jem.claims.create_question"), menu -> {
+            menu.button(4, ClaimsMenus.location(VanillaMenus.icon(Items.OAK_FENCE, Component.translatable("jem.claims.dimensions", width, length),
+                    Component.translatable("jem.claims.area", width * length), Component.translatable("jem.claims.new_blocks", ClaimUnion.additional(player.serverLevel(), player.getUUID(), pending.first(), pending.second(), null)), Component.translatable("jem.claims.available", FlanBridge.budget(player) - FlanBridge.used(player))), pending.dimension().location(), pending.first(), pending.second()), null);
+            menu.button(22, VanillaMenus.icon(Items.LIME_DYE, Component.translatable("jem.claims.confirm")), () -> {
                 if (selections.get(player.getUUID()) != pending || !player.level().dimension().equals(pending.dimension())) return;
                 if (FlanBridge.create(player, pending.first(), pending.second()) != null) selections.remove(player.getUUID());
                 player.closeContainer();
             });
-            menu.button(49, VanillaMenus.icon(Items.ARROW, "Отмена"), () -> {
+            menu.button(49, VanillaMenus.icon(Items.ARROW, Component.translatable("jem.claims.cancel")), () -> {
                 selections.remove(player.getUUID());
                 player.closeContainer();
             });

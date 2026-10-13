@@ -1,6 +1,7 @@
 package com.siirio.jemsettlements.api;
 
 import com.siirio.jemidentity.api.IdentityPolicy;
+import com.siirio.jemidentity.api.DedicatedSmp;
 import com.siirio.jemsettlements.town.SettlementSavedData;
 import com.siirio.jemsettlements.town.StorageLink;
 import com.siirio.jemsettlements.town.TownRecord;
@@ -18,13 +19,13 @@ import net.minecraft.world.entity.Entity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 
 public final class SettlementApi {
-    public enum Result { ACCEPTED, SERVER_ONLY, UNAUTHENTICATED, ALREADY_OWNED, INVALID, CONFLICT }
+    public enum Result { ACCEPTED, UNAVAILABLE, UNAUTHENTICATED, ALREADY_OWNED, INVALID, CONFLICT }
 
     private SettlementApi() {
     }
 
     public static Result create(ServerPlayer player, String rawName) {
-        if (!player.getServer().isDedicatedServer()) return Result.SERVER_ONLY;
+        if (!DedicatedSmp.active(player)) return Result.UNAVAILABLE;
         var principal = IdentityPolicy.resolve(player);
         if (principal.isEmpty()) return Result.UNAUTHENTICATED;
         String name = rawName == null ? "" : rawName.strip().replaceAll("\\s+", " ");
@@ -42,7 +43,7 @@ public final class SettlementApi {
     }
 
     public static Result linkPhysicalStorage(ServerPlayer player, BlockPos position) {
-        if (!player.getServer().isDedicatedServer()) return Result.SERVER_ONLY;
+        if (!DedicatedSmp.active(player)) return Result.UNAVAILABLE;
         var town = ownedTown(player);
         if (town.isEmpty() || !player.serverLevel().hasChunkAt(position)) return Result.INVALID;
         var blockEntity = player.serverLevel().getBlockEntity(position);
@@ -56,7 +57,7 @@ public final class SettlementApi {
     }
 
     public static Result registerNativeWorker(ServerPlayer player, Entity entity, WorkforceType type, boolean coinWageEnabled) {
-        if (!player.getServer().isDedicatedServer()) return Result.SERVER_ONLY;
+        if (!DedicatedSmp.active(player)) return Result.UNAVAILABLE;
         var principal = IdentityPolicy.resolve(player);
         var town = ownedTown(player);
         if (principal.isEmpty() || town.isEmpty() || entity == null) return Result.UNAUTHENTICATED;

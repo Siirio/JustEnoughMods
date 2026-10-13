@@ -129,7 +129,7 @@ public final class PostEndEvents {
         if (safe == null) safe = new Vec3(start.getBoundingBox().minX() - 3.0D, player.getY(), start.getBoundingBox().minZ() - 3.0D);
         player.setDeltaMovement(Vec3.ZERO);
         player.teleportTo(player.serverLevel(), safe.x, safe.y, safe.z, player.getYRot(), player.getXRot());
-        Component remaining = Component.literal("Ender Guardian, Endersent, Shulker Mimic");
+        Component remaining = Component.translatable("message.jemcompat.post_end.required_bosses");
         CampaignNetwork.showGateWarning(player, Component.translatable("message.jemcompat.post_end.not_ready"), remaining, 200);
     }
 

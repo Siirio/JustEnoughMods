@@ -15,6 +15,7 @@ public final class JemServerMixinPlugin implements IMixinConfigPlugin {
     private static final String SHARED_MAP_MIXINS = XAERO_MIXINS + "shared.";
     private static final String SHARED_MAP_MOD = "unified_xaero_worldmap";
     private static final String SHARED_BOUNDARY_MIXIN = "com.siirio.jemserver.mixin.SolidBoundaryMixin";
+    private static final String REMOTE_SHOP_CLIENT_MIXIN = "com.siirio.jemserver.mixin.shops.RemoteShopClientMixin";
 
     @Override
     public void onLoad(String mixinPackage) {}
@@ -32,7 +33,8 @@ public final class JemServerMixinPlugin implements IMixinConfigPlugin {
         return FMLEnvironment.dist == Dist.DEDICATED_SERVER
                 || mixinClassName.startsWith(CLIENT_MIXINS)
                 || mixinClassName.startsWith(XAERO_MIXINS)
-                || mixinClassName.equals(SHARED_BOUNDARY_MIXIN);
+                || mixinClassName.equals(SHARED_BOUNDARY_MIXIN)
+                || mixinClassName.equals(REMOTE_SHOP_CLIENT_MIXIN);
     }
 
     @Override

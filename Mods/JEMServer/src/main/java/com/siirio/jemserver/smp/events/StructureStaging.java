@@ -520,7 +520,7 @@ public final class StructureStaging {
                     com.siirio.jemtwelveeyes.api.CampaignApi.explainLocked(player, close.boss());
                 else player.sendSystemMessage(Component.literal("▣ ").withStyle(ChatFormatting.GOLD)
                         .append(Component.translatable(BuiltInRegistries.ENTITY_TYPE.get(close.boss()).getDescriptionId())).append(" ")
-                        .append(Component.literal("[Открыть бой]").withStyle(style -> style.withColor(ChatFormatting.GREEN).withBold(true)
+                        .append(Component.translatable("jem.smp.open_fight").withStyle(style -> style.withColor(ChatFormatting.GREEN).withBold(true)
                                 .withClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/smp arena " + close.id())))));
             }
         }

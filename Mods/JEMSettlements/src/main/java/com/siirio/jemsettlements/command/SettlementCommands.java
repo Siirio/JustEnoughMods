@@ -2,6 +2,7 @@ package com.siirio.jemsettlements.command;
 
 import com.mojang.brigadier.arguments.StringArgumentType;
 import net.minecraft.commands.arguments.EntityArgument;
+import com.siirio.jemidentity.api.DedicatedSmp;
 import com.siirio.jemidentity.api.IdentityPolicy;
 import com.siirio.jemsettlements.api.SettlementApi;
 import com.siirio.jemsettlements.town.SettlementSavedData;
@@ -17,6 +18,7 @@ public final class SettlementCommands {
 
     @SubscribeEvent
     public static void register(RegisterCommandsEvent event) {
+        if (!DedicatedSmp.accepts(event)) return;
         event.getDispatcher().register(Commands.literal("jem")
                 .then(Commands.literal("town")
                         .executes(context -> status(context.getSource().getPlayerOrException()))
@@ -34,7 +36,6 @@ public final class SettlementCommands {
         SettlementApi.Result result = SettlementApi.create(player, name);
         switch (result) {
             case ACCEPTED -> player.sendSystemMessage(Component.translatable("jem.settlements.created", name));
-            case SERVER_ONLY -> player.sendSystemMessage(Component.translatable("jem.settlements.server_only"));
             case UNAUTHENTICATED -> player.sendSystemMessage(Component.translatable("jem.settlements.identity_required"));
             case ALREADY_OWNED -> player.sendSystemMessage(Component.translatable("jem.settlements.exists"));
             default -> player.sendSystemMessage(Component.translatable("jem.settlements.invalid_name"));
@@ -43,10 +44,6 @@ public final class SettlementCommands {
     }
 
     private static int status(ServerPlayer player) {
-        if (!player.getServer().isDedicatedServer()) {
-            player.sendSystemMessage(Component.translatable("jem.settlements.server_only"));
-            return 0;
-        }
         var principal = IdentityPolicy.resolve(player);
         if (principal.isEmpty()) {
             player.sendSystemMessage(Component.translatable("jem.settlements.identity_required"));

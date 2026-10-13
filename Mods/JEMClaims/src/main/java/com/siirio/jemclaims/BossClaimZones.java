@@ -97,11 +97,11 @@ public final class BossClaimZones extends SavedData {
     }
 
     private static boolean protectedMessage(ServerPlayer player) {
-        return ClaimSelectionGuard.deny(player, "Нельзя приватить территорию босса и полосу в 10 блоков вокруг неё, даже после победы.");
+        return ClaimSelectionGuard.deny(player, net.minecraft.network.chat.Component.translatable("jem.claims.error.boss_territory", MARGIN));
     }
 
     private static boolean incompleteMessage(ServerPlayer player) {
-        return ClaimSelectionGuard.deny(player, "Данные соседних структур ещё не загружены. Подойдите ближе к выделенной области и повторите попытку.");
+        return ClaimSelectionGuard.deny(player, net.minecraft.network.chat.Component.translatable("jem.claims.error.structure_not_loaded"));
     }
 
     private static BossClaimZones load(CompoundTag root) {

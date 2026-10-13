@@ -483,7 +483,7 @@ public final class BloodMoonSetPieces {
         row.putLong("setPiecePhaseUntil",level.getGameTime()+(combo?Math.max(4,telegraph/4):Math.max(10,telegraph/4)));
         stageGeometry(level,row,attack,bosses);
         bosses.forEach(mob->mob.getNavigation().stop());
-        if(attack==Attack.CRIMSON_DIVIDE) new EventSession(row).active(level.getServer()).forEach(player->player.sendSystemMessage(Component.literal("[Blood Moon] Ставьте блоки перед собой как стены!")));
+        if(attack==Attack.CRIMSON_DIVIDE) new EventSession(row).active(level.getServer()).forEach(player->player.sendSystemMessage(Component.translatable("jem.event.blood_moon.crimson_divide")));
         if(attack==Attack.TWIN_CATACLYSM) bosses.forEach(mob->mob.setInvulnerable(true));
         if(attack==Attack.COLLISION_COURSE) stageCollision(level,row,bosses);
         if(attack==Attack.CROSS_BLAST||attack==Attack.HUNTER_LATTICE) chooseTwinPattern(level,row);

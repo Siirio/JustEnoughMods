@@ -14,30 +14,43 @@ public final class VanillaMenus {
     private VanillaMenus() {}
 
     public static ItemStack icon(Item item, String title, String... lines) {
+        Component[] lore = java.util.Arrays.stream(lines).map(Component::literal).toArray(Component[]::new);
+        return icon(item, Component.literal(title), lore);
+    }
+
+    public static ItemStack icon(Item item, Component title, Component... lines) {
         ItemStack stack = new ItemStack(item);
-        stack.setHoverName(Component.literal(title));
+        stack.setHoverName(title);
         ListTag lore = new ListTag();
-        for (String line : lines) lore.add(StringTag.valueOf(Component.Serializer.toJson(Component.literal(line))));
+        for (Component line : lines) lore.add(StringTag.valueOf(Component.Serializer.toJson(line)));
         CompoundTag display = stack.getOrCreateTagElement("display");
         display.put("Lore", lore);
         return stack;
     }
 
     public static void chest(ServerPlayer player, String owner, String kind, String title, Consumer<Buttons> populate) {
+        chest(player, owner, kind, Component.literal(title), populate);
+    }
+
+    public static void chest(ServerPlayer player, String owner, String kind, Component title, Consumer<Buttons> populate) {
         if (player.containerMenu instanceof Buttons existing && existing.belongsTo(owner)) {
-            existing.populate(kind, title, populate);
+            existing.populate(kind, title.getString(), populate);
             existing.sendAllDataToRemote();
             return;
         }
         player.openMenu(new SimpleMenuProvider((id, inventory, user) -> {
             Buttons buttons = new Buttons(id, inventory, owner);
-            buttons.populate(kind, title, populate);
+            buttons.populate(kind, title.getString(), populate);
             return buttons;
-        }, Component.translatableWithFallback("jem.ui." + kind, title)));
+        }, title));
     }
 
     public static void input(ServerPlayer player, String title, String initial, Consumer<String> accept) {
-        player.openMenu(new SimpleMenuProvider((id, inventory, user) -> new TextInput(id, inventory, initial, accept), Component.translatableWithFallback("jem.ui.input", title)));
+        input(player, Component.literal(title), initial, accept);
+    }
+
+    public static void input(ServerPlayer player, Component title, String initial, Consumer<String> accept) {
+        player.openMenu(new SimpleMenuProvider((id, inventory, user) -> new TextInput(id, inventory, initial, accept), title));
     }
 
 }

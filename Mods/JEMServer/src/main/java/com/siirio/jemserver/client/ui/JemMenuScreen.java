@@ -145,9 +145,9 @@ public final class JemMenuScreen extends AbstractContainerScreen<AbstractContain
 
     private void renderInput(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
         int centerX = input.getX() + input.getWidth() / 2;
-        graphics.drawCenteredString(font, "Введите значение", centerX, input.getY() - 25, MUTED);
+        graphics.drawCenteredString(font, Component.translatable("jem.ui.enter_value"), centerX, input.getY() - 25, MUTED);
         input.render(graphics, mouseX, mouseY, partialTick);
-        button(graphics, 2, centerX - 70, input.getY() + 39, 140, 24, "Подтвердить", true, mouseX, mouseY);
+        button(graphics, 2, centerX - 70, input.getY() + 39, 140, 24, Component.translatable("jem.ui.confirm").getString(), true, mouseX, mouseY);
     }
 
     private void renderMenu(GuiGraphics graphics, int mouseX, int mouseY) {
@@ -238,7 +238,7 @@ public final class JemMenuScreen extends AbstractContainerScreen<AbstractContain
             contentY += 25;
         }
         if (rows.isEmpty()) {
-            graphics.drawCenteredString(font, "Пока ничего нет", contentX + contentWidth / 2, contentY + 35, MUTED);
+            graphics.drawCenteredString(font, Component.translatable("jem.ui.empty"), contentX + contentWidth / 2, contentY + 35, MUTED);
             maxScroll = 0;
             return;
         }
@@ -304,7 +304,7 @@ public final class JemMenuScreen extends AbstractContainerScreen<AbstractContain
         graphics.fill(x, y, x + 53, y + 16, OUTLINE);
         graphics.fill(x + 1, y + 1, x + 52, y + 15, enabled ? GREEN : RED);
         graphics.fill(enabled ? x + 39 : x + 3, y + 3, enabled ? x + 50 : x + 14, y + 13, CREAM);
-        graphics.drawString(font, enabled ? "Да" : "Нет", enabled ? x + 7 : x + 19, y + 4, CREAM, false);
+        graphics.drawString(font, Component.translatable(enabled ? "jem.ui.yes" : "jem.ui.no"), enabled ? x + 7 : x + 19, y + 4, CREAM, false);
     }
 
     private void button(GuiGraphics graphics, int slot, int x, int y, int buttonWidth, int buttonHeight, String label, boolean selected, int mouseX, int mouseY) {
@@ -370,8 +370,8 @@ public final class JemMenuScreen extends AbstractContainerScreen<AbstractContain
     }
 
     private static Boolean state(List<String> lines) {
-        if (lines.contains("Разрешено") || lines.contains("Включено")) return true;
-        if (lines.contains("Запрещено") || lines.contains("Выключено")) return false;
+        if (lines.contains(Component.translatable("jem.claims.allowed").getString()) || lines.contains(Component.translatable("jem.ui.enabled").getString())) return true;
+        if (lines.contains(Component.translatable("jem.claims.denied").getString()) || lines.contains(Component.translatable("jem.ui.disabled").getString())) return false;
         return null;
     }
 
@@ -428,11 +428,11 @@ public final class JemMenuScreen extends AbstractContainerScreen<AbstractContain
 
     private String section() {
         return switch (kind) {
-            case "claims_overview", "claim", "permissions", "members", "member", "member_defaults", "claim_settings", "claim_players", "claim_player", "profile_claims", "all_claims" -> "Территория";
-            case "deaths" -> "История смертей";
-            case "landmarks", "landmark", "landmark_category" -> "Места сервера";
-            case "bosses", "boss_details" -> "Боссы";
-            default -> "Управление";
+            case "claims_overview", "claim", "permissions", "members", "member", "member_defaults", "claim_settings", "claim_players", "claim_player", "profile_claims", "all_claims" -> Component.translatable("jem.ui.section.territory").getString();
+            case "deaths" -> Component.translatable("jem.ui.section.deaths").getString();
+            case "landmarks", "landmark", "landmark_category" -> Component.translatable("jem.ui.section.landmarks").getString();
+            case "bosses", "boss_details" -> Component.translatable("jem.ui.section.bosses").getString();
+            default -> Component.translatable("jem.ui.section.management").getString();
         };
     }
 

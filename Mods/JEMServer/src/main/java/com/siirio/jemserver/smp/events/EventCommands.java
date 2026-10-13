@@ -170,7 +170,7 @@ public final class EventCommands {
         if(boss!=null) return start(source,"BOSS_RAID",null,null,null,boss,null);
         var raid=StructureStaging.availableRaid(level,reference);
         if(raid==null) {
-            source.sendFailure(Component.literal("No eligible defeated raid boss or unlocked raid arena within "+radius+" blocks"));
+            source.sendFailure(Component.translatable("jem.smp.error.raid_target_missing", radius));
             return 0;
         }
         return start(source,"BOSS_RAID",null,null,null,null,raid);
@@ -205,7 +205,7 @@ public final class EventCommands {
         if(type.equals("BLOOD_MOON")&&waveThree!=null&&!BloodMoonSetPieces.select(row,waveThree,waveFive)) {
             row.putString("state","CANCELLED");
             data.changed(row);
-            source.sendFailure(Component.literal("Wave 3 and Wave 5 variants must come from their matching Blood Moon lists"));
+            source.sendFailure(Component.translatable("jem.smp.error.blood_moon_variants"));
             return 0;
         }
         long now=System.currentTimeMillis();
@@ -219,7 +219,7 @@ public final class EventCommands {
             var arena=com.siirio.jemworldbosstiers.api.RaidArenaApi.arena(targetBoss).orElse(null);
             if(arena==null) {
                 EventScheduler.finish(source.getServer(),row,"CANCELLED");
-                source.sendFailure(Component.literal("Nearest raid boss is no longer inside its registered structure arena"));
+                source.sendFailure(Component.translatable("jem.smp.error.raid_boss_left_arena"));
                 return 0;
             }
             var bounds=arena.bounds();
@@ -239,7 +239,7 @@ public final class EventCommands {
         }
         if(targetBoss!=null&&!com.siirio.jemworldbosstiers.api.HostedEncounterApi.hold(targetBoss)) {
             EventScheduler.cancelPreparation(source.getServer(),row);
-            source.sendFailure(Component.literal("Nearest raid boss is no longer available"));
+            source.sendFailure(Component.translatable("jem.smp.error.raid_boss_unavailable"));
             return 0;
         }
         data.prune("events");
@@ -264,14 +264,14 @@ public final class EventCommands {
 
     private static int listSchedule(net.minecraft.commands.CommandSourceStack source) {
         var definitions = EventSchedule.definitions(source.getServer());
-        source.sendSuccess(() -> Component.literal("Event schedule (Astana, Asia/Almaty):"), false);
+        source.sendSuccess(() -> Component.translatable("jem.smp.schedule.title"), false);
         definitions.forEach(definition -> source.sendSuccess(() -> Component.literal(definition), false));
         return definitions.size();
     }
 
     private static int resetSchedule(net.minecraft.commands.CommandSourceStack source) {
         EventSchedule.reset(source.getServer());
-        source.sendSuccess(() -> Component.literal("Event schedule reset to server config defaults"), true);
+        source.sendSuccess(() -> Component.translatable("jem.smp.schedule.reset"), true);
         return 1;
     }
 
@@ -286,14 +286,14 @@ public final class EventCommands {
             var definitions = new java.util.ArrayList<>(EventSchedule.definitions(source.getServer()));
             boolean changed = add ? !definitions.contains(definition) && definitions.add(definition) : definitions.remove(definition);
             if (!changed) {
-                source.sendFailure(Component.literal(add ? "Schedule entry already exists" : "Schedule entry not found"));
+                source.sendFailure(Component.translatable(add ? "jem.smp.schedule.exists" : "jem.smp.schedule.missing"));
                 return 0;
             }
             EventSchedule.replace(source.getServer(), definitions);
-            source.sendSuccess(() -> Component.literal((add ? "Added " : "Removed ") + definition), true);
+            source.sendSuccess(() -> Component.translatable(add ? "jem.smp.schedule.added" : "jem.smp.schedule.removed", definition), true);
             return 1;
         } catch (RuntimeException invalid) {
-            source.sendFailure(Component.literal("Invalid schedule entry. Use EVENT DAY HH:mm in Astana time"));
+            source.sendFailure(Component.translatable("jem.smp.schedule.invalid"));
             return 0;
         }
     }
@@ -341,7 +341,7 @@ public final class EventCommands {
             stopped++;
         }
         int result = stopped;
-        server.sendSystemMessage(Component.literal("Stopped active sessions: " + result));
+        server.sendSystemMessage(Component.translatable("jem.smp.admin.sessions_stopped", result));
         return result;
     }
 
@@ -368,7 +368,7 @@ public final class EventCommands {
             changed++;
         }
         int result = changed;
-        server.sendSystemMessage(Component.literal("Test participants attached to active sessions: " + result));
+        server.sendSystemMessage(Component.translatable("jem.smp.admin.test_participants", result));
         return result;
     }
 

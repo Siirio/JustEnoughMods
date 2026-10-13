@@ -34,7 +34,7 @@ public final class RoleCommands {
         }
         var snapshot = RaceApi.get(player.getServer(), principal.get().accountId());
         if (snapshot.isEmpty()) player.sendSystemMessage(Component.translatable("jem.roles.usage"));
-        else player.sendSystemMessage(Component.translatable("jem.roles.current", snapshot.get().race().name().toLowerCase()));
+        else player.sendSystemMessage(Component.translatable("jem.roles.current", raceName(snapshot.get().race())));
         return 1;
     }
 
@@ -47,7 +47,11 @@ public final class RoleCommands {
         RaceService.Result result = RaceService.choose(player, race.get());
         if (result == RaceService.Result.UNAUTHENTICATED) player.sendSystemMessage(Component.translatable("jem.roles.identity_required"));
         else if (result == RaceService.Result.CHANGE_LOCKED) player.sendSystemMessage(Component.translatable("jem.roles.change_locked"));
-        else player.sendSystemMessage(Component.translatable("jem.roles.chosen", race.get().name().toLowerCase()));
+        else player.sendSystemMessage(Component.translatable("jem.roles.chosen", raceName(race.get())));
         return result == RaceService.Result.CHOSEN || result == RaceService.Result.CHANGED || result == RaceService.Result.UNCHANGED ? 1 : 0;
+    }
+
+    private static Component raceName(RaceId race) {
+        return Component.translatable("jem.roles.race." + race.name().toLowerCase());
     }
 }

@@ -45,7 +45,7 @@ public final class HolidayCommands {
 
     private static int mute(CommandSourceStack source, boolean muted) throws com.mojang.brigadier.exceptions.CommandSyntaxException {
         source.getPlayerOrException().getPersistentData().putBoolean(MUTED, muted);
-        source.sendSuccess(() -> Component.literal("Holiday notices muted: " + muted), false);
+        source.sendSuccess(() -> Component.translatable(muted ? "jem.holiday.notices_muted" : "jem.holiday.notices_enabled"), false);
         return 1;
     }
 

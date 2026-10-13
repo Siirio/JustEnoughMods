@@ -58,7 +58,7 @@ public final class FlanBridge {
         }
     }
 
-    public record Territory(UUID id, UUID owner, String name, String ownerName, int area, int minX, int minZ, int maxX, int maxZ, ResourceLocation dimension, int color) {}
+    public record Territory(UUID id, UUID owner, String name, Component ownerName, int area, int minX, int minZ, int maxX, int maxZ, ResourceLocation dimension, int color) {}
 
     public static List<Territory> list(MinecraftServer server) {
         List<Territory> result = new ArrayList<>();
@@ -191,7 +191,9 @@ public final class FlanBridge {
     private static Territory view(Claim claim) {
         if (claim == null) return null;
         var box = claim.getDimensions();
-        String ownerName = claim.getOwner() == null ? "Администратор" : claim.getLevel().getServer().getProfileCache().get(claim.getOwner()).map(GameProfile::getName).orElse(claim.getOwner().toString());
+        Component ownerName = claim.getOwner() == null
+                ? Component.translatable("jem.claims.server_owner")
+                : Component.literal(claim.getLevel().getServer().getProfileCache().get(claim.getOwner()).map(GameProfile::getName).orElse(claim.getOwner().toString()));
         return new Territory(claim.getClaimID(), claim.getOwner(), claim.getClaimName(), ownerName, claim.getPlane(), box.minX(), box.minZ(), box.maxX(), box.maxZ(), claim.getLevel().dimension().location(), (ClaimsConfig.MAP_COLOR.get() ^ claim.getClaimID().hashCode()) & 0xFFFFFF);
     }
 
@@ -262,14 +264,14 @@ public final class FlanBridge {
                 && value.minX() <= (long) maxX + 1 && minX <= (long) value.maxX() + 1
                 && value.minZ() <= (long) maxZ + 1 && minZ <= (long) value.maxZ() + 1);
         if (!joinsExisting && ClaimGroups.connected(owned).size() >= ClaimsConfig.MAX_TERRITORIES.get()) {
-            player.sendSystemMessage(Component.literal("Достигнут лимит территорий."));
+            player.sendSystemMessage(Component.translatable("jem.claims.limit_reached"));
             return null;
         }
         PlayerClaimData data = PlayerClaimData.get(player);
         long area = (Math.abs((long) first.getX() - second.getX()) + 1) * (Math.abs((long) first.getZ() - second.getZ()) + 1);
         int additional = ClaimUnion.additional(player.serverLevel(), player.getUUID(), first, second, null);
         if (area > Integer.MAX_VALUE || !data.canUseClaimBlocks(additional)) {
-            player.sendSystemMessage(Component.literal("Недостаточно блоков привата: требуется " + additional + ", доступно " + data.remainingClaimBlocks() + "."));
+            player.sendSystemMessage(Component.translatable("jem.claims.error.not_enough_blocks", additional, data.remainingClaimBlocks()));
             return null;
         }
         ClaimMode previous = data.getClaimMode();
@@ -287,7 +289,7 @@ public final class FlanBridge {
             }
             claim.editGlobalPerms(player, new ResourceLocation("flan", "flight"), 1);
             claim.editGlobalPerms(player, new ResourceLocation("flan", "may_flight"), 0);
-            claim.setClaimName("Территория " + player.getGameProfile().getName());
+            claim.setClaimName(player.getGameProfile().getName());
             ClaimsData.get(player.server).territory(claim.getClaimID());
             var original = territory(player.server, claim.getClaimID()).stream().filter(value -> previousIds.contains(value.id())).findFirst();
             if (original.isPresent()) {
@@ -387,7 +389,7 @@ public final class FlanBridge {
         for (Territory value : territory(server, id)) {
             Claim claim = claim(server, value.id());
             claim.setEnterTitle(metadata.showName ? Component.literal("%2$s") : null,
-                    metadata.showName ? Component.literal(metadata.showOwner ? "Территория %1$s" : "") : null);
+                    metadata.showName && metadata.showOwner ? Component.translatable("jem.claims.enter_owner", Component.literal("%1$s")) : null);
             claim.setLeaveTitle(null, null);
         }
     }

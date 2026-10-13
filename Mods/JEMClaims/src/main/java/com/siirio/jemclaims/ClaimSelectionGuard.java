@@ -54,15 +54,15 @@ public final class ClaimSelectionGuard {
 
     public static boolean click(ServerPlayer player, BlockPos position) {
         if (player.isAlive() && player.canReach(position, 0) && available(player, new ChunkPos(position))) return true;
-        return deny(player, "Выберите блок в пределах досягаемости и текущей загруженной области.");
+        return deny(player, Component.translatable("jem.claims.error.reachable_loaded"));
     }
 
     public static boolean validate(ServerPlayer player, BlockPos first, BlockPos second) {
         if (player == null || !player.isAlive()) return false;
         long area = (Math.abs((long) first.getX() - second.getX()) + 1) * (Math.abs((long) first.getZ() - second.getZ()) + 1);
-        if (area < ClaimsConfig.MIN_AREA.get()) return deny(player, "Минимальная площадь территории: " + ClaimsConfig.MIN_AREA.get() + " блока.");
+        if (area < ClaimsConfig.MIN_AREA.get()) return deny(player, Component.translatable("jem.claims.error.minimum_area", ClaimsConfig.MIN_AREA.get()));
         if (!player.serverLevel().getWorldBorder().isWithinBounds(first) || !player.serverLevel().getWorldBorder().isWithinBounds(second))
-            return deny(player, "Территория выходит за границу мира.");
+            return deny(player, Component.translatable("jem.claims.error.world_border"));
         int minX = Math.min(first.getX(), second.getX()) >> 4;
         int minZ = Math.min(first.getZ(), second.getZ()) >> 4;
         int maxX = Math.max(first.getX(), second.getX()) >> 4;
@@ -70,15 +70,15 @@ public final class ClaimSelectionGuard {
         Watched watched = WATCHED.get(player.getUUID());
         long count = ((long) maxX - minX + 1) * ((long) maxZ - minZ + 1);
         if (watched == null || !watched.dimension().equals(player.level().dimension()) || count > watched.chunks().size())
-            return deny(player, "Вся территория должна быть в вашей текущей загруженной области. Подойдите ближе или уменьшите выделение.");
+            return deny(player, Component.translatable("jem.claims.error.selection_not_loaded"));
         for (int x = minX; x <= maxX; x++) {
             for (int z = minZ; z <= maxZ; z++) {
-                if (!available(player, new ChunkPos(x, z))) return deny(player, "Часть территории сейчас не загружена для вас. Подойдите ближе или уменьшите выделение.");
+                if (!available(player, new ChunkPos(x, z))) return deny(player, Component.translatable("jem.claims.error.selection_not_loaded"));
             }
         }
         Area bounds = new Area(Math.min(first.getX(), second.getX()), Math.min(first.getZ(), second.getZ()),
                 Math.max(first.getX(), second.getX()), Math.max(first.getZ(), second.getZ()));
-        if (!reservation.test(player, bounds)) return deny(player, "Эта область зарезервирована для события.");
+        if (!reservation.test(player, bounds)) return deny(player, Component.translatable("jem.claims.error.event_reserved"));
         return BossClaimZones.get(player.server).validate(player, first, second);
     }
 
@@ -88,8 +88,8 @@ public final class ClaimSelectionGuard {
                 && player.serverLevel().getChunkSource().getChunkNow(position.x, position.z) != null;
     }
 
-    static boolean deny(ServerPlayer player, String message) {
-        player.sendSystemMessage(Component.literal(message));
+    static boolean deny(ServerPlayer player, Component message) {
+        player.sendSystemMessage(message);
         return false;
     }
 }

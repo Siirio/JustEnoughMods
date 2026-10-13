@@ -143,7 +143,7 @@ public final class Parties {
                                                         + player.getGameProfile().getName()
                                                         + ": "
                                                         + row.getString("title")
-                                                        + " Р’В· "
+                                                        + " · "
                                                         + (row.getInt("limit") == 0
                                                                 ? "\u221e"
                                                                 : row.getInt("limit")))

@@ -29,50 +29,50 @@ public final class DeathHistory {
 
     public static void open(ServerPlayer player) {
         var history = ServerData.get(player.server).deaths(player.getUUID());
-        VanillaMenus.chest(player, JemServer.MOD_ID, "deaths", "Последние смерти", menu -> {
-            if (history.isEmpty()) menu.button(22, VanillaMenus.icon(Items.CLOCK, "История пуста"), null);
+        VanillaMenus.chest(player, JemServer.MOD_ID, "deaths", Component.translatable("jem.deaths.title"), menu -> {
+            if (history.isEmpty()) menu.button(22, VanillaMenus.icon(Items.CLOCK, Component.translatable("jem.deaths.empty")), null);
             for (int index = 0; index < history.size(); index++) {
                 var death = history.get(index);
                 menu.button(FIRST_SLOT + index * SLOT_SPACING, VanillaMenus.icon(Items.RECOVERY_COMPASS, age(death.timestamp()),
-                        death.dimension().toString(), "X: " + (int) Math.floor(death.x()), "Y: " + (int) Math.floor(death.y()), "Z: " + (int) Math.floor(death.z()),
-                        death.cause(), "Нажмите, чтобы вернуться"), () -> teleport(player, death.id()));
+                        Component.literal(death.dimension().toString()), Component.literal("X: " + (int) Math.floor(death.x())), Component.literal("Y: " + (int) Math.floor(death.y())), Component.literal("Z: " + (int) Math.floor(death.z())),
+                        Component.literal(death.cause()), Component.translatable("jem.deaths.return_hint")), () -> teleport(player, death.id()));
             }
         });
     }
 
-    private static String age(long timestamp) {
+    private static Component age(long timestamp) {
         long minutes = Math.max(0, (System.currentTimeMillis() - timestamp) / MINUTE_MILLIS);
-        if (minutes == 0) return "Только что";
-        if (minutes >= DAY_MINUTES) return minutes / DAY_MINUTES + " дн. назад";
-        return minutes + " мин. назад";
+        if (minutes == 0) return Component.translatable("jem.deaths.just_now");
+        if (minutes >= DAY_MINUTES) return Component.translatable("jem.deaths.days_ago", minutes / DAY_MINUTES);
+        return Component.translatable("jem.deaths.minutes_ago", minutes);
     }
 
     public static void teleport(ServerPlayer player, UUID id) {
         if (!player.isAlive()) return;
         var death = ServerData.get(player.server).deaths(player.getUUID()).stream().filter(record -> record.id().equals(id)).findFirst().orElse(null);
         if (death == null) {
-            message(player, "Эта смерть уже вытеснена из истории.");
+            message(player, "jem.deaths.error.expired");
             open(player);
             return;
         }
         ServerLevel level = player.server.getLevel(ResourceKey.create(Registries.DIMENSION, death.dimension()));
         if (level == null) {
-            message(player, "Это измерение недоступно.");
+            message(player, "jem.deaths.error.dimension");
             return;
         }
         Vec3 exact = new Vec3(death.x(), death.y(), death.z());
         BlockPos origin = BlockPos.containing(exact);
         if (!Claims.canStay(player, level, origin)) {
-            message(player, "Вход на территорию в месте смерти запрещён.");
+            message(player, "jem.deaths.error.claimed_location");
             return;
         }
         Vec3 target = safe(player, level, exact) ? exact : nearest(player, level, origin);
         if (target == null) {
-            message(player, "Рядом с местом смерти нет безопасной доступной точки.");
+            message(player, "jem.deaths.error.no_safe_point");
             return;
         }
         if (!Claims.canStay(player, level, BlockPos.containing(target))) {
-            message(player, "Вход на эту территорию запрещён.");
+            message(player, "jem.deaths.error.claimed_destination");
             return;
         }
         player.closeContainer();
@@ -112,5 +112,5 @@ public final class DeathHistory {
                 || state.is(Blocks.NETHER_PORTAL);
     }
 
-    private static void message(ServerPlayer player, String text) { player.sendSystemMessage(Component.literal(text)); }
+    private static void message(ServerPlayer player, String key) { player.sendSystemMessage(Component.translatable(key)); }
 }

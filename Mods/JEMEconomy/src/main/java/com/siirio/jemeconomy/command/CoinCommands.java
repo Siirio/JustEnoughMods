@@ -3,6 +3,7 @@ package com.siirio.jemeconomy.command;
 import com.mojang.brigadier.arguments.LongArgumentType;
 import com.siirio.jemeconomy.api.EconomyApi;
 import com.siirio.jemeconomy.ledger.TransferResult;
+import com.siirio.jemidentity.api.DedicatedSmp;
 import com.siirio.jemidentity.api.IdentityPolicy;
 import java.util.UUID;
 import net.minecraft.commands.Commands;
@@ -18,6 +19,7 @@ public final class CoinCommands {
 
     @SubscribeEvent
     public static void register(RegisterCommandsEvent event) {
+        if (!DedicatedSmp.accepts(event)) return;
         event.getDispatcher().register(Commands.literal("coins")
                 .executes(context -> balance(context.getSource().getPlayerOrException()))
                 .then(Commands.literal("send")
@@ -29,10 +31,6 @@ public final class CoinCommands {
     }
 
     private static int balance(ServerPlayer player) {
-        if (!player.getServer().isDedicatedServer()) {
-            player.sendSystemMessage(Component.translatable("jem.economy.server_only"));
-            return 0;
-        }
         if (IdentityPolicy.resolve(player).isEmpty()) {
             player.sendSystemMessage(Component.translatable("jem.economy.identity_required"));
             return 0;
@@ -44,8 +42,8 @@ public final class CoinCommands {
     private static int send(ServerPlayer sender, ServerPlayer recipient, long amount) {
         TransferResult result = EconomyApi.send(sender, recipient.getUUID(), amount, UUID.randomUUID());
         if (result.status() == TransferResult.Status.COMMITTED) {
-            sender.sendSystemMessage(Component.translatable("jem.economy.sent", amount, recipient.getGameProfile().getName(), result.receiptId()));
-            recipient.sendSystemMessage(Component.translatable("jem.economy.received", amount, sender.getGameProfile().getName(), result.receiptId()));
+            sender.sendSystemMessage(Component.translatable("jem.economy.sent", amount, recipient.getGameProfile().getName()));
+            recipient.sendSystemMessage(Component.translatable("jem.economy.received", amount, sender.getGameProfile().getName()));
             return 1;
         }
         if (result.status() == TransferResult.Status.UNAUTHENTICATED) sender.sendSystemMessage(Component.translatable("jem.economy.identity_required"));

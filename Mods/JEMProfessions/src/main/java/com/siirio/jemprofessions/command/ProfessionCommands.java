@@ -39,7 +39,7 @@ public final class ProfessionCommands {
         var record = ProfessionSavedData.get(player.getServer()).findOrEmpty(principal.get().accountId());
         player.sendSystemMessage(Component.translatable("jem.professions.header"));
         for (ProfessionId id : ProfessionId.values()) {
-            player.sendSystemMessage(Component.translatable("jem.professions.row", id.name().toLowerCase(), record.level(id), record.xp(id)));
+            player.sendSystemMessage(Component.translatable("jem.professions.row", professionName(id), record.level(id), record.xp(id)));
         }
         return 1;
     }
@@ -51,7 +51,11 @@ public final class ProfessionCommands {
             return 0;
         }
         ProfessionApi.administrativeCredit(player, id.get(), amount);
-        player.sendSystemMessage(Component.translatable("jem.professions.granted", amount, id.get().name().toLowerCase()));
+        player.sendSystemMessage(Component.translatable("jem.professions.granted", amount, professionName(id.get())));
         return 1;
+    }
+
+    private static Component professionName(ProfessionId profession) {
+        return Component.translatable("jem.professions.name." + profession.name().toLowerCase());
     }
 }

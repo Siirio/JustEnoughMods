@@ -17,18 +17,21 @@ import net.minecraftforge.eventbus.api.*;
 
 public final class SmpRuntime {
     public static void register() {
-        net.minecraftforge.fml.ModLoadingContext.get()
-                .registerConfig(
-                        net.minecraftforge.fml.config.ModConfig.Type.SERVER,
-                        SmpConfig.SPEC,
-                        "jem-smp-v2-server.toml");
-        net.minecraftforge.fml.ModLoadingContext.get().registerConfig(net.minecraftforge.fml.config.ModConfig.Type.SERVER, com.siirio.jemserver.smp.fishing.FishingConfig.SPEC, "jem-fishing-server.toml");
+        boolean dedicated = net.minecraftforge.fml.loading.FMLEnvironment.dist == net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER;
+        if (dedicated) {
+            net.minecraftforge.fml.ModLoadingContext.get()
+                    .registerConfig(
+                            net.minecraftforge.fml.config.ModConfig.Type.SERVER,
+                            SmpConfig.SPEC,
+                            "jem-smp-v2-server.toml");
+            net.minecraftforge.fml.ModLoadingContext.get().registerConfig(net.minecraftforge.fml.config.ModConfig.Type.SERVER, com.siirio.jemserver.smp.fishing.FishingConfig.SPEC, "jem-fishing-server.toml");
+        }
         com.siirio.jemserver.smp.fishing.FishingOddsNetwork.register();
-        EventRuntime.register(EventEntryActions::choose);
+        EventRuntime.register(EventEntryActions::choose, dedicated);
         SmpNetwork.register();
         Navigation.register();
         CombatNetwork.register();
-        if (net.minecraftforge.fml.loading.FMLEnvironment.dist == net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER) {
+        if (dedicated) {
             MinecraftForge.EVENT_BUS.register(new SmpRuntime());
             if (net.minecraftforge.fml.ModList.get().isLoaded("jem_world_boss_tiers")) registerBossHooks();
         }
@@ -58,7 +61,7 @@ public final class SmpRuntime {
 
     @SubscribeEvent
     public void commands(RegisterCommandsEvent event) {
-        if (event.getCommandSelection() != Commands.CommandSelection.DEDICATED) return;
+        if (!com.siirio.jemidentity.api.DedicatedSmp.accepts(event)) return;
         com.siirio.jemserver.smp.events.calendar.HolidayCommands.register(event.getDispatcher());
         com.siirio.jemserver.map.ProjectCommands.register(event.getDispatcher());
         var command =

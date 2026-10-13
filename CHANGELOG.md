@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-13 — Dedicated SMP boundary, localization and runtime inventory
+
+- User request and technical direction: integrated singleplayer must retain RPG Roles and Professions but must not register or expose Economy, Settlements, SMP commands, menus, events, territories or “server-only” errors; all custom JEM player text must use natural English and Russian; JEM Claims is now unused, while Settlement territories remain non-protective gameplay regions. The user requested a GitHub inventory with exact mod names/versions and a separate record of modified upstream mods.
+- Codex technical choice: introduced one shared dedicated-SMP capability boundary in JEM Identity; moved SMP command/service/config/Mixin activation behind that boundary while retaining only registry and protocol compatibility on clients; replaced hard-coded and backend-oriented player text with translatable components throughout Claims, Economy, Roles, Professions, Settlements, Server, World Boss Tiers, Pack Core, Compat and Drill Lifecycle. JEM Claims source is retained pending deletion but excluded from the intended runtime.
+- Documentation: `Docs/MODS.md` inventories the canonical managed client and local server JAR metadata; only directly modified upstream artifacts receive `Tweaked`. `Docs/TWEAKED_MODS.md` records the AutoModpack bootstrap source/JAR change separately and distinguishes unchanged upstream JARs extended through JEM adapters.
+- Compilation only: all affected modules completed `compileJava -x test`; no tests, launch, smoke workflow, linter or static-analysis task was run.
+
 ## 2026-10-13 — RPG, professions, economy, settlements and integration implementation
 
 - User request and technical direction: corrected all six implementation plans; TLauncher/offline mode must keep gameplay enabled only behind real server-side authentication, no username trust; Roles and Professions must work in integrated singleplayer; preserve Spud shops, physical storage, hybrid settlement production, one Workforce including Recruits, non-protective map regions, approved abilities/happiness/citadels/FTB/events; use real Iron spell IDs and existing World Tier; write and run no tests, while production compilation is allowed.
