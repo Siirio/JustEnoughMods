@@ -1,0 +1,70 @@
+{
+  "schema_version": 2,
+  "change_id": "economy.reviewed-item-policies",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "source_set",
+      "registry": "items",
+      "members_path": "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json",
+      "id_field": "item"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [],
+  "precedence": {
+    "layer": "jem_datapack_policy",
+    "priority": 400,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Reviewed item policies define the only system-market outcome and exact quote/cap fields for their selected item IDs.",
+    "modifiers": [
+      {
+        "property": "economy.trade_policy",
+        "operation": "set",
+        "before": {"value": "NONE", "source": "JEM Economy fail-closed default"},
+        "after": {
+          "source_member_fields": ["outcome", "sell_copper", "buy_copper", "daily_player_units", "daily_global_units", "demand_group", "notes"]
+        },
+        "notes": "Selector member details are emitted by behavior queries so different per-item values stay in one canonical source set."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMEconomy",
+    "kind": "jem_datapack_policy",
+    "source_files": [
+      "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Expose reviewed BUY_AND_SELL or NONE decisions while unknown and progression-protected items remain fail-closed.",
+    "decision_source": "Docs/DEVELOPMENT.md economy ownership and policy contract"
+  },
+  "introduced": {
+    "date": "2026-10-13",
+    "commit": null,
+    "action": "atlas_adoption",
+    "summary": "Existing reviewed policies were first linked into Atlas v2; individual original introduction commits remain unresolved."
+  },
+  "history": [
+    {
+      "date": "2026-10-13",
+      "commit": "SELF",
+      "action": "atlas_adoption",
+      "summary": "Linked the canonical policy source as one reusable selector and enabled recipe-impact lookup per matched item.",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json",
+        "Docs/DEVELOPMENT.md"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": ["economy", "recipes", "progression", "settlements", "market_buyer"],
+    "relations": ["item->market_quotes", "ingredient->dependent_recipes", "item->daily_market_caps"],
+    "notes": ["Changing an ingredient policy can affect every recipe and downstream output that consumes it; query_atlas reports direct recipe edges."],
+    "unresolved": ["Alternative runtime acquisition routes and transitive recipe consequences still require human review when static evidence is ambiguous."]
+  }
+}

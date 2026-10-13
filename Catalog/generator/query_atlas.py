@@ -3,34 +3,49 @@ from __future__ import annotations
 
 import json
 import sys
-from pathlib import Path
 
-
-ROOT = Path(__file__).resolve().parents[2]
-CATALOG = ROOT / "Catalog"
+from impact_model import ROOT, canonical_records, effective_for, iter_envelopes
 
 
 def records(pattern: str):
-    for path in CATALOG.glob(pattern):
-        try:
-            payload = json.loads(path.read_text(encoding="utf-8"))
-        except (OSError, json.JSONDecodeError):
-            continue
-        for row in payload.get("records", []):
-            yield path.relative_to(ROOT).as_posix(), row
+    for path, row in iter_envelopes(pattern):
+        yield path.relative_to(ROOT).as_posix(), row
+
+
+def find_id(value: str) -> list[dict]:
+    matches = []
+    for registry, rows in canonical_records().items():
+        if value in rows:
+            matches.append({
+                "registry": registry,
+                "path": f"Catalog/registries/{registry}/{value.partition(':')[0]}.json",
+                "record": rows[value],
+            })
+    return matches
 
 
 def main() -> int:
     if len(sys.argv) < 2:
-        print("usage: query_atlas.py id <namespace:path> | role <role> | trade <outcome> | food-negative")
+        print("usage: query_atlas.py id|behavior|impact <namespace:path> | role <role> | trade <outcome> | food-negative")
         return 2
     mode = sys.argv[1]
     value = sys.argv[2] if len(sys.argv) > 2 else ""
     matches = []
-    if mode == "id":
-        for path, row in records("registries/*/*.json"):
-            if value in (row.get("registry_id"), row.get("item_id"), row.get("entity_id")):
-                matches.append({"path": path, "record": row})
+    if mode in {"id", "behavior", "impact", "why"}:
+        base_matches = find_id(value)
+        if mode == "id":
+            matches = base_matches
+        else:
+            behavior = [effective_for(match["registry"], value, match["record"]) for match in base_matches]
+            if mode == "impact":
+                matches = [{
+                    "registry": row["original_registry"]["registry"],
+                    "id": value,
+                    "impact_analysis": row["impact_analysis"],
+                    "change_ids": [change["change_id"] for change in row["applied_jem_changes"]],
+                } for row in behavior]
+            else:
+                matches = behavior
     elif mode == "role":
         for path, row in records("views/mobs/*.json"):
             if value in row.get("roles", []):

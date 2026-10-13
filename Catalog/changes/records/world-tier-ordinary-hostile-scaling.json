@@ -1,0 +1,75 @@
+{
+  "schema_version": 2,
+  "change_id": "world-tier.ordinary-hostile-scaling",
+  "status": "conditional",
+  "selectors": [
+    {"type": "registry", "registry": "entities", "value": "*"}
+  ],
+  "exceptions": [
+    {"type": "tag", "registry": "entities", "value": "forge:bosses"},
+    {"type": "tag", "registry": "entities", "value": "c:bosses"}
+  ],
+  "conditions": [
+    {"expression": "entity instanceof Enemy", "confidence": "runtime"},
+    {"expression": "entity persistent data lacks jem:event_session_id", "confidence": "runtime"},
+    {"expression": "BalanceRegistry has no boss profile for entity ID", "confidence": "runtime"}
+  ],
+  "precedence": {
+    "layer": "jem_module",
+    "priority": 300,
+    "overrides": []
+  },
+  "change": {
+    "summary": "World Tier III-V increases ordinary hostile max health and attack damage while excluding event mobs and bosses.",
+    "modifiers": [
+      {
+        "property": "attributes.minecraft:generic.max_health",
+        "operation": "multiply_base",
+        "before": {"value": 1.0, "source": "original registry/runtime attribute"},
+        "after": {"by_world_tier": {"1": 1.0, "2": 1.0, "3": 1.1, "4": 1.15, "5": 1.2}},
+        "notes": "Existing health percentage is preserved when the modifier is reconciled."
+      },
+      {
+        "property": "attributes.minecraft:generic.attack_damage",
+        "operation": "multiply_base",
+        "before": {"value": 1.0, "source": "original registry/runtime attribute"},
+        "after": {"by_world_tier": {"1": 1.0, "2": 1.0, "3": 1.1, "4": 1.15, "5": 1.2}}
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMWorldBossTiers",
+    "kind": "jem_module",
+    "source_files": [
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/OrdinaryHostileScaler.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make global progression increase ordinary hostile pressure without stacking boss or event-specific scaling.",
+    "decision_source": "Mods/JEMWorldBossTiers/AGENTS.md and AGENTS.logic-locks.md"
+  },
+  "introduced": {
+    "date": "2026-10-13",
+    "commit": null,
+    "action": "atlas_adoption",
+    "summary": "Existing protected behavior was first recorded in Atlas v2; its original introduction commit remains unresolved."
+  },
+  "history": [
+    {
+      "date": "2026-10-13",
+      "commit": "SELF",
+      "action": "atlas_adoption",
+      "summary": "Recorded the verified selector, exclusions, tier multipliers and indirect systems without changing gameplay.",
+      "source_files": [
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/OrdinaryHostileScaler.java",
+        "Mods/JEMWorldBossTiers/AGENTS.md"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": ["combat", "mob_ai_pressure", "boss_exclusion", "event_balance", "progression"],
+    "relations": ["world_tier->entity_attributes", "boss_profile->scaling_exclusion", "event_session->scaling_exclusion"],
+    "notes": ["The registry-wide selector describes potential targets; runtime conditions decide actual applicability."],
+    "unresolved": ["Static Atlas evidence cannot prove which third-party entity classes implement Enemy at runtime."]
+  }
+}

@@ -1,8 +1,11 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "status": "stable",
-  "compatible_readers": [1],
+  "compatible_readers": [1, 2],
   "migration_policy": "Increment for semantic changes; add an explicit migration note and retain old meaning for existing fields.",
+  "migration_notes": [
+    "Version 2 adds Catalog/changes as the canonical JEM modification/history layer and Catalog/effective as its generated index. Existing version 1 registry, view and graph envelopes keep their original meaning and remain readable."
+  ],
   "enums": {
     "trade_outcome": ["BUY_AND_SELL", "NONE"],
     "confidence": ["verified", "inferred", "unresolved"],

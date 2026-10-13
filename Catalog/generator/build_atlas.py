@@ -504,6 +504,11 @@ def main() -> None:
     atlas.inventory()
     atlas.scan()
     atlas.emit()
+    from impact_model import build_effective_index, validate_change_records
+    change_errors = validate_change_records()
+    if change_errors:
+        raise RuntimeError("Atlas change records are invalid:\n" + "\n".join(change_errors))
+    build_effective_index()
     print(json.dumps({"head": atlas.head, "artifacts": len(atlas.artifacts), "registries": {name: len(rows) for name, rows in atlas.registries.items()}, "recipes": len(atlas.recipes), "unresolved": len(atlas.unresolved)}, indent=2))
 
 

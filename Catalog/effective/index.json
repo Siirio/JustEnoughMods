@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
+  "change_records_sha256": "7dc7e88893d4e802fbea772547465136bbe3ef0126873369947c38437556d4c8",
+  "precedence": {
+    "order": "priority ascending, selector specificity ascending, change_id ascending",
+    "specificity": {
+      "registry": 10,
+      "namespace": 20,
+      "category": 30,
+      "tag": 40,
+      "source_set": 50,
+      "id": 60
+    },
+    "conflict_policy": "Equal-order modifiers of one property are reported; history and base facts are never overwritten."
+  },
+  "changes": [
+    {
+      "change_id": "economy.reviewed-item-policies",
+      "status": "active",
+      "summary": "Reviewed item policies define the only system-market outcome and exact quote/cap fields for their selected item IDs.",
+      "record": "Catalog/changes/records/economy-item-policies.json",
+      "selectors": [
+        {
+          "type": "source_set",
+          "registry": "items",
+          "members_path": "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json",
+          "id_field": "item"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 62
+    },
+    {
+      "change_id": "world-tier.ordinary-hostile-scaling",
+      "status": "conditional",
+      "summary": "World Tier III-V increases ordinary hostile max health and attack damage while excluding event mobs and bosses.",
+      "record": "Catalog/changes/records/world-tier-ordinary-hostile-scaling.json",
+      "selectors": [
+        {
+          "type": "registry",
+          "registry": "entities",
+          "value": "*"
+        }
+      ],
+      "exceptions": [
+        {
+          "type": "tag",
+          "registry": "entities",
+          "value": "forge:bosses"
+        },
+        {
+          "type": "tag",
+          "registry": "entities",
+          "value": "c:bosses"
+        }
+      ],
+      "potential_static_target_count": 1593
+    }
+  ],
+  "source_fingerprints": {
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java": "ff67275e95e10dba4ae35b0a410b6d0ad933a463e69a245ba375b9041668a1a1",
+    "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json": "3eb8c0ebb817e171ce1be6641660132a80f0cb5e738edca71586aee55d5004c6",
+    "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/OrdinaryHostileScaler.java": "729980767df8c532c8463e4699a39ba6821053c9829995237ec56855009abeaf"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schema_version": 2,
+  "purpose": "Gameplay-owning sources whose changes require a same-diff Catalog change record.",
+  "watch": [
+    {"pattern": "Mods/*/src/main/java/**", "domain": "jem_java_or_mixin"},
+    {"pattern": "Mods/*/src/main/resources/**", "domain": "jem_resources_datapacks_configs"},
+    {"pattern": "Mods/*/build.gradle*", "domain": "dependencies"},
+    {"pattern": "Mods/*/gradle.properties", "domain": "dependencies"},
+    {"pattern": "Client/ManagedPack/kubejs/**", "domain": "kubejs"},
+    {"pattern": "Client/ManagedPack/config/**", "domain": "config"},
+    {"pattern": "Client/ManagedPack/defaultconfigs/**", "domain": "config"},
+    {"pattern": "Client/ManagedPack/mods/**", "domain": "installed_mods"},
+    {"pattern": "Client/ManagedPack/resourcepacks/**", "domain": "data_or_assets"}
+  ],
+  "ignore": [
+    "**/assets/*/lang/**",
+    "**/assets/*/sounds.json",
+    "**/META-INF/**"
+  ],
+  "notes": [
+    "Server is a runtime target, not a canonical source, and is intentionally excluded.",
+    "Localization-only changes are ignored unless they accompany a gameplay record update.",
+    "A watched file is covered only by a change record modified in the same working tree or compared commit range."
+  ]
+}
