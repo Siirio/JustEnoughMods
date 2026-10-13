@@ -8,6 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -34,5 +35,20 @@ public final class WalletClientState {
     @SubscribeEvent public static void tick(TickEvent.ClientTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
         while (OPEN.consumeClick()) if (status != null) Minecraft.getInstance().setScreen(new WalletScreen(status));
+    }
+
+    @SubscribeEvent public static void tooltip(ItemTooltipEvent event) {
+        var policy = com.siirio.jemeconomy.policy.ItemPolicyRegistry.policy(event.getItemStack());
+        if (policy.isPresent() && policy.get().sellable()) {
+            event.getToolTip().add(net.minecraft.network.chat.Component.translatable("jem.economy.tooltip.shipping_price",
+                    com.siirio.jemeconomy.physical.CoinFormatter.format(policy.get().sellCopper()),
+                    com.siirio.jemeconomy.physical.CoinFormatter.format(policy.get().buyCopper())));
+            event.getToolTip().add(net.minecraft.network.chat.Component.translatable("jem.economy.tooltip.shipping_quota",
+                    policy.get().dailyPlayerUnits(), policy.get().dailyGlobalUnits()));
+            if (status != null) event.getToolTip().add(net.minecraft.network.chat.Component.translatable("jem.economy.tooltip.shipping_next",
+                    status.accountRemaining(), status.ticksUntilUpdate()));
+        } else if (net.minecraftforge.registries.ForgeRegistries.ITEMS.getKey(event.getItemStack().getItem()) != null) {
+            event.getToolTip().add(net.minecraft.network.chat.Component.translatable("jem.economy.tooltip.shipping_blocked"));
+        }
     }
 }

@@ -4,6 +4,7 @@ import com.siirio.jemeconomy.JemEconomy;
 import com.siirio.jemeconomy.physical.CoinDenomination;
 import com.siirio.jemeconomy.physical.PhysicalCoinItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.BlockItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -15,6 +16,8 @@ public final class EconomyItems {
     public static final RegistryObject<Item> GOLD_COIN = register(CoinDenomination.GOLD);
     public static final RegistryObject<Item> AETHER_COIN = register(CoinDenomination.AETHER);
     public static final RegistryObject<Item> ARCANE_COIN = register(CoinDenomination.ARCANE);
+    public static final RegistryObject<Item> SHIPPING_BOX = ITEMS.register("shipping_box",
+            () -> new com.siirio.jemeconomy.shipping.ShippingBoxItem(EconomyBlocks.SHIPPING_BOX.get(), new Item.Properties()));
 
     private EconomyItems() {
     }

@@ -10,6 +10,10 @@
 
 **Spec:** ZIP entry `04_ECONOMICS_CODEX_PROMPT.md`.
 
+## Phase 1 Economy Addendum — implemented 2026-10-13
+
+The user replaced the earlier directional policy taxonomy: the executable market now permits only `BUY_AND_SELL` or `NONE`. Phase 1 adds the owned 54-input/9-payout Shipping Box, deterministic 06:00 market cycles, shared 1,500/world and 80/account NPC payout limits, two daily demand groups, direct backed container issuance, Coin villager overlay, full exact-ID audit artifacts, FTB onramp, Wallet/Town Hall bulletin and Phase 2 API contracts. Manual approval remains governed by `Docs/economy/PHASE1_MANUAL_ACCEPTANCE.md`.
+
 ## Global Constraints
 
 - Fixed initial supply 100,000: Central 60,000, NPC Market 15,000, Operations 20,000, Contingency 5,000.

@@ -19,7 +19,7 @@ public final class WalletScreen extends Screen {
     public void accept(WalletStatusPacket next) { status = next; }
 
     @Override protected void init() {
-        int x = width / 2 - 150, y = height / 2 - 82;
+        int x = width / 2 - 150, y = height / 2 - 104;
         amount = new EditBox(font, x + 16, y + 104, 168, 20, Component.translatable("jem.economy.wallet.amount"));
         amount.setHint(Component.translatable("jem.economy.wallet.amount"));
         amount.setFilter(value -> value.isBlank() || value.matches("[0-9]{1,10}"));
@@ -34,8 +34,8 @@ public final class WalletScreen extends Screen {
 
     @Override public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
         renderBackground(graphics);
-        int x = width / 2 - 150, y = height / 2 - 82;
-        graphics.fill(x, y, x + 300, y + 166, 0xEF2C211B);
+        int x = width / 2 - 150, y = height / 2 - 104;
+        graphics.fill(x, y, x + 300, y + 210, 0xEF2C211B);
         graphics.fill(x, y, x + 300, y + 3, 0xFFC27A3B);
         graphics.drawCenteredString(font, title, width / 2, y + 10, 0xFFFFE6C2);
         graphics.drawString(font, Component.translatable("jem.economy.wallet.digital", grouped(status.balance())), x + 16, y + 30, 0xFFFFD18A, false);
@@ -47,6 +47,10 @@ public final class WalletScreen extends Screen {
             graphics.drawString(font, "×" + counts[index], iconX + 18, y + 67, 0xFFE8D8BF, false);
         }
         if (status.invalid() > 0) graphics.drawString(font, Component.translatable("jem.economy.wallet.invalid", status.invalid()), x + 16, y + 88, 0xFFFF7777, false);
+        graphics.drawString(font, Component.translatable("jem.economy.wallet.demand", Component.translatable("jem.economy.demand." + status.primaryDemand()),
+                Component.translatable("jem.economy.demand." + status.secondaryDemand())), x + 16, y + 158, 0xFFFFD18A, false);
+        graphics.drawString(font, Component.translatable("jem.economy.wallet.market_limits", status.accountRemaining(), status.globalRemaining()), x + 16, y + 172, 0xFFD9C6A9, false);
+        graphics.drawString(font, Component.translatable("jem.economy.wallet.market_update", status.ticksUntilUpdate()), x + 16, y + 186, 0xFFD9C6A9, false);
         super.render(graphics, mouseX, mouseY, partialTick);
     }
 

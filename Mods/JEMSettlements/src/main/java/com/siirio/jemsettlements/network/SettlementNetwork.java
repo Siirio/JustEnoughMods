@@ -76,6 +76,9 @@ public final class SettlementNetwork {
         CompoundTag view = new CompoundTag(); view.putUUID("Id", town.id()); view.putString("Name", town.name());
         view.putInt("Happiness", town.happiness()); view.putInt("Tax", town.taxPercent()); view.putLong("Center", town.center().asLong());
         view.putLong("Treasury", SettlementApi.treasuryBalance(player, town));
+        var bulletin = com.siirio.jemeconomy.api.EconomyApi.marketBulletin(player);
+        view.putString("MarketPrimary", bulletin.primaryGroup()); view.putString("MarketSecondary", bulletin.secondaryGroup());
+        view.putLong("MarketTicks", bulletin.ticksUntilUpdate()); view.putLong("MarketAccountRemaining", bulletin.accountRemaining()); view.putLong("MarketGlobalRemaining", bulletin.globalRemaining());
         view.putString("Dimension", town.dimension().toString()); view.putInt("StorageLinks", town.storage().size());
         var data = SettlementSavedData.get(player.getServer());
         CompoundTag workforce = new CompoundTag();

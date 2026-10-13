@@ -4,10 +4,14 @@ import com.siirio.jemeconomy.ledger.EconomySavedData;
 import com.siirio.jemeconomy.ledger.SystemAccount;
 import com.siirio.jemeconomy.ledger.TransferResult;
 import com.siirio.jemeconomy.physical.PhysicalCoinService;
+import com.siirio.jemeconomy.market.MarketSavedData;
+import com.siirio.jemeconomy.policy.ItemPolicyRegistry;
 import com.siirio.jemidentity.api.DedicatedSmp;
 import com.siirio.jemidentity.api.IdentityPolicy;
 import java.util.UUID;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public final class EconomyApi {
     private static final long STARTER_GRANT = 100L;
@@ -140,8 +144,75 @@ public final class EconomyApi {
                 "accountWithdraw:" + requestId);
     }
 
+    public static ItemQuote quoteItem(ServerPlayer authenticatedActor, ItemStack stack, int quantity) {
+        if (!DedicatedSmp.active(authenticatedActor) || quantity <= 0) return new ItemQuote(QuoteStatus.UNAVAILABLE, 0L, 0L, 100, 0L);
+        var principal = IdentityPolicy.resolve(authenticatedActor);
+        var policy = ItemPolicyRegistry.policy(stack);
+        if (principal.isEmpty()) return new ItemQuote(QuoteStatus.UNAUTHENTICATED, 0L, 0L, 100, 0L);
+        if (policy.isEmpty() || !policy.get().sellable()) return new ItemQuote(QuoteStatus.NONE, 0L, 0L, 100, 0L);
+        MarketSavedData market = MarketSavedData.get(authenticatedActor.getServer());
+        int multiplier = market.multiplier(authenticatedActor.getServer(), policy.get().demandGroup());
+        long sellUnit = Math.floorDiv(Math.multiplyExact(policy.get().sellCopper(), multiplier), 100L);
+        long sell = Math.multiplyExact(sellUnit, quantity);
+        long buy = Math.multiplyExact(policy.get().buyCopper(), quantity);
+        return new ItemQuote(QuoteStatus.BUY_AND_SELL, sell, buy, multiplier,
+                market.accountRemaining(authenticatedActor.getServer(), principal.get().accountId()));
+    }
+
+    public static NpcSaleResult processNpcSale(ServerPlayer seller, ItemStack offered, int quantity, UUID requestId) {
+        if (!DedicatedSmp.active(seller) || requestId == null || quantity <= 0) return new NpcSaleResult(NpcSaleStatus.UNAVAILABLE, 0L, 0);
+        var principal = IdentityPolicy.resolve(seller); var optional = ItemPolicyRegistry.policy(offered);
+        if (principal.isEmpty()) return new NpcSaleResult(NpcSaleStatus.UNAUTHENTICATED, 0L, 0);
+        if (optional.isEmpty() || !optional.get().sellable()) return new NpcSaleResult(NpcSaleStatus.NONE, 0L, 0);
+        int held = 0;
+        for (ItemStack stack : seller.getInventory().items) if (ItemStack.isSameItemSameTags(stack, offered)) held += stack.getCount();
+        if (held < quantity) return new NpcSaleResult(NpcSaleStatus.INVENTORY_CHANGED, 0L, 0);
+        var policy = optional.get(); MarketSavedData market = MarketSavedData.get(seller.getServer());
+        long unit = Math.floorDiv(Math.multiplyExact(policy.sellCopper(), market.multiplier(seller.getServer(), policy.demandGroup())), 100L);
+        var allowed = market.allowance(seller.getServer(), principal.get().accountId(), policy, quantity, unit);
+        if (allowed.units() <= 0) return new NpcSaleResult(NpcSaleStatus.LIMIT_REACHED, 0L, 0);
+        String key = "npcSale:" + principal.get().accountId() + ":" + requestId;
+        TransferResult transfer = EconomySavedData.get(seller.getServer()).transfer(SystemAccount.NPC_MARKET.id(), principal.get().accountId(), allowed.payout(), key);
+        if (transfer.status() == TransferResult.Status.INSUFFICIENT_FUNDS) return new NpcSaleResult(NpcSaleStatus.MARKET_BUDGET_EXHAUSTED, 0L, 0);
+        if (transfer.status() != TransferResult.Status.COMMITTED && transfer.status() != TransferResult.Status.REPLAYED) return new NpcSaleResult(NpcSaleStatus.UNAVAILABLE, 0L, 0);
+        if (transfer.status() == TransferResult.Status.COMMITTED) {
+            int remaining = allowed.units();
+            for (ItemStack stack : seller.getInventory().items) if (remaining > 0 && ItemStack.isSameItemSameTags(stack, offered)) { int take = Math.min(remaining, stack.getCount()); stack.shrink(take); remaining -= take; }
+            var id = ForgeRegistries.ITEMS.getKey(offered.getItem());
+            if (id == null || !market.commit(seller.getServer(), key, principal.get().accountId(), java.util.Map.of(id, allowed.units()), allowed.payout())) {
+                return new NpcSaleResult(NpcSaleStatus.QUARANTINED, allowed.payout(), allowed.units());
+            }
+            seller.getInventory().setChanged();
+        }
+        return new NpcSaleResult(transfer.status() == TransferResult.Status.REPLAYED ? NpcSaleStatus.REPLAYED : NpcSaleStatus.COMMITTED,
+                allowed.payout(), allowed.units());
+    }
+
+    public static TransferResult payTownPayroll(ServerPlayer authenticatedActor, UUID townId, UUID workerAccount,
+                                                 long amount, UUID requestId) {
+        if (!DedicatedSmp.active(authenticatedActor)) return new TransferResult(TransferResult.Status.UNAVAILABLE, null, 0L, 0L);
+        if (IdentityPolicy.resolve(authenticatedActor).isEmpty()) return new TransferResult(TransferResult.Status.UNAUTHENTICATED, null, 0L, 0L);
+        return EconomySavedData.get(authenticatedActor.getServer()).transfer(townAccount(townId), workerAccount, amount,
+                "townPayroll:" + townId + ":" + workerAccount + ":" + requestId);
+    }
+
+    public static MarketBulletin marketBulletin(ServerPlayer authenticatedActor) {
+        if (!DedicatedSmp.active(authenticatedActor)) return new MarketBulletin("", "", 0L, 0L, 0L);
+        var principal = IdentityPolicy.resolve(authenticatedActor); if (principal.isEmpty()) return new MarketBulletin("", "", 0L, 0L, 0L);
+        MarketSavedData market = MarketSavedData.get(authenticatedActor.getServer()); var demand = market.demand(authenticatedActor.getServer());
+        long time = authenticatedActor.getServer().overworld().getDayTime();
+        long next = Math.addExact(Math.multiplyExact(Math.floorDiv(time - 1_000L, 24_000L) + 1L, 24_000L), 1_000L);
+        return new MarketBulletin(demand.primary(), demand.secondary(), Math.max(0L, next - time),
+                market.accountRemaining(authenticatedActor.getServer(), principal.get().accountId()), market.globalRemaining(authenticatedActor.getServer()));
+    }
+
     public enum MarketStatus { RESERVED, COMMITTED, REFUNDED, REPLAYED, INSUFFICIENT_FUNDS, UNAUTHENTICATED, UNAVAILABLE }
     public record MarketResult(MarketStatus status, long amount) { }
+    public enum QuoteStatus { BUY_AND_SELL, NONE, UNAUTHENTICATED, UNAVAILABLE }
+    public record ItemQuote(QuoteStatus status, long sellCopper, long buyCopper, int demandPercent, long accountDailyRemaining) { }
+    public enum NpcSaleStatus { COMMITTED, REPLAYED, NONE, LIMIT_REACHED, MARKET_BUDGET_EXHAUSTED, INVENTORY_CHANGED, UNAUTHENTICATED, UNAVAILABLE, QUARANTINED }
+    public record NpcSaleResult(NpcSaleStatus status, long paidCopper, int units) { }
+    public record MarketBulletin(String primaryGroup, String secondaryGroup, long ticksUntilUpdate, long accountRemaining, long globalRemaining) { }
 
     private static void ensureStarter(ServerPlayer player, UUID accountId) {
         EconomySavedData.get(player.getServer()).transfer(SystemAccount.CENTRAL_RESERVE.id(), accountId, STARTER_GRANT,

@@ -29,6 +29,7 @@ GUI не создаёт вторую модель SMP state: shops отража�
 - Spud trade не ограничивается claim permissions и сохраняет native management/stock protections.
 - Building Projects are authenticated Xaero overlays with stable colors and seam-free unions. They are planning metadata only and never grant or deny world interaction.
 - FTB Quests is a guide projection: it may explain Roles, Professions, Coins, towns, bosses and events, but it never becomes their state or reward owner.
+- Shipping Box and Coin merchant screens are Economy projections: item policy is only `BUY_AND_SELL` or `NONE`, the server re-quotes every transaction, and the client never owns demand, quotas, offer use, inventory consumption or money mutation.
 - The SMP sidebar adds Roles, Professions, Wallet and Town only when their modules are loaded. These buttons execute the real server-validated screen command and never print a dead command hint.
 - Shop rows display a numeric Coin price. A remote non-selectable purchase reserves one Wallet/cash-funded amount, rechecks the loaded physical Spud stock, delivers the real stack and credits the authenticated owner. Selectable Spud shops require choosing the exact item at their physical block until a bounded selection DTO is available.
 - Sleep vote длится девять секунд, показывает каждого eligible player и его выбор, sleepers считаются автоматически, большинство решает, tie сохраняет ночь.

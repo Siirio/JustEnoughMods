@@ -82,7 +82,8 @@ public final class EconomySavedData extends SavedData {
         PhysicalCoinOperation replay = physicalOperations.get(operationId);
         if (replay != null) {
             List<CoinLot> replayLots = replay.lotQuantities().keySet().stream().map(lots::get).filter(Objects::nonNull).toList();
-            return new WithdrawLedgerResult(PhysicalStatus.REPLAYED, operationId, replay.value(), replayLots);
+            return new WithdrawLedgerResult(replay.phase() == PhysicalCoinOperation.Phase.QUARANTINED ? PhysicalStatus.QUARANTINED : PhysicalStatus.REPLAYED,
+                    operationId, replay.value(), replayLots);
         }
         TransferResult debit = transfer(accountId, SystemAccount.PHYSICAL_OUTSTANDING.id(), amount, "withdraw:" + operationId);
         if (debit.status() == TransferResult.Status.INSUFFICIENT_FUNDS) {
@@ -120,10 +121,18 @@ public final class EconomySavedData extends SavedData {
         return new WithdrawLedgerResult(PhysicalStatus.PREPARED, operationId, amount, List.copyOf(created));
     }
 
+    public synchronized WithdrawLedgerResult prepareSystemIssuance(SystemAccount source, long amount, UUID operationId) {
+        if (source == null || source == SystemAccount.PHYSICAL_OUTSTANDING || source == SystemAccount.MARKET_ESCROW) {
+            return new WithdrawLedgerResult(PhysicalStatus.INVALID, operationId, 0L, List.of());
+        }
+        return prepareWithdraw(source.id(), amount, operationId);
+    }
+
     public synchronized boolean commitWithdraw(UUID operationId) {
         PhysicalCoinOperation operation = physicalOperations.get(operationId);
-        if (operation == null || operation.kind() != PhysicalCoinOperation.Kind.WITHDRAW ||
-                operation.phase() != PhysicalCoinOperation.Phase.PREPARED) return false;
+        if (operation == null || operation.kind() != PhysicalCoinOperation.Kind.WITHDRAW) return false;
+        if (operation.phase() == PhysicalCoinOperation.Phase.COMMITTED) return true;
+        if (operation.phase() != PhysicalCoinOperation.Phase.PREPARED) return false;
         physicalOperations.put(operationId, operation.withPhase(PhysicalCoinOperation.Phase.COMMITTED));
         setDirty();
         return true;

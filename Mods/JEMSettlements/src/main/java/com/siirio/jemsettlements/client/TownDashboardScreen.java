@@ -46,6 +46,8 @@ public final class TownDashboardScreen extends Screen {
             draw(graphics, x, line, "jem.settlements.view.happiness", view.getInt("Happiness")); line += 14;
             draw(graphics, x, line, "jem.settlements.view.center", BlockPosText()); line += 14;
             draw(graphics, x, line, "jem.settlements.view.mode", view.getInt("LoadedStorage") > 0 ? Component.translatable("jem.settlements.mode.active") : Component.translatable("jem.settlements.mode.waiting"));
+            line += 18; draw(graphics, x, line, "jem.settlements.view.market_demand", Component.translatable("jem.economy.demand." + view.getString("MarketPrimary")), Component.translatable("jem.economy.demand." + view.getString("MarketSecondary"))); line += 14;
+            draw(graphics, x, line, "jem.settlements.view.market_limits", view.getLong("MarketAccountRemaining"), view.getLong("MarketGlobalRemaining"));
         } else if (tab.equals("supplies")) {
             draw(graphics, x, line, "jem.settlements.view.storage", view.getInt("LoadedStorage"), view.getInt("StorageLinks")); line += 16;
             draw(graphics, x, line, "jem.settlements.view.food", view.getLong("FoodUnits")); line += 18;

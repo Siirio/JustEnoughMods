@@ -18,7 +18,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class EconomyNetwork {
-    private static final String VERSION = "1";
+    private static final String VERSION = "2";
     private static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(JemEconomy.MOD_ID, "wallet"))
             .networkProtocolVersion(() -> VERSION).clientAcceptedVersions(VERSION::equals).serverAcceptedVersions(VERSION::equals).simpleChannel();
     private EconomyNetwork() {}
@@ -65,8 +65,10 @@ public final class EconomyNetwork {
         if (!DedicatedSmp.active(player) || !CHANNEL.isRemotePresent(player.connection.connection)) return;
         var held = EconomyApi.heldCash(player); int[] counts = new int[5];
         for (CoinDenomination denomination : CoinDenomination.values()) counts[denomination.ordinal()] = held.counts().getOrDefault(denomination, 0);
+        var bulletin = EconomyApi.marketBulletin(player);
         CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new WalletStatusPacket(open, EconomyApi.balance(player), held.value(), counts,
-                held.invalidItems(), EconomyApi.physicalOutstanding(player)));
+                held.invalidItems(), EconomyApi.physicalOutstanding(player), bulletin.primaryGroup(), bulletin.secondaryGroup(), bulletin.ticksUntilUpdate(),
+                bulletin.accountRemaining(), bulletin.globalRemaining()));
     }
 
     @SubscribeEvent public static void login(PlayerEvent.PlayerLoggedInEvent event) {

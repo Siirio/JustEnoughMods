@@ -1,6 +1,7 @@
 package com.siirio.jemeconomy.physical;
 
 import com.siirio.jemeconomy.ledger.EconomySavedData;
+import com.siirio.jemeconomy.ledger.SystemAccount;
 import com.siirio.jemidentity.api.DedicatedSmp;
 import com.siirio.jemidentity.api.IdentityPolicy;
 import java.util.ArrayList;
@@ -92,6 +93,31 @@ public final class PhysicalCoinService {
         return new DepositResult(Status.COMMITTED, reservation.value(), accepted, stamped - accepted);
     }
 
+    public static ContainerPayment prepareContainerPayment(net.minecraft.server.MinecraftServer server, SystemAccount source,
+                                                            long amount, String idempotencyKey) {
+        if (server == null || !server.isDedicatedServer() || idempotencyKey == null || idempotencyKey.isBlank()) {
+            return new ContainerPayment(Status.UNAVAILABLE, null, 0L, List.of());
+        }
+        UUID operationId = UUID.nameUUIDFromBytes(("jem:container-payment:" + idempotencyKey).getBytes(java.nio.charset.StandardCharsets.UTF_8));
+        EconomySavedData.WithdrawLedgerResult plan = EconomySavedData.get(server).prepareSystemIssuance(source, amount, operationId);
+        if (plan.status() == EconomySavedData.PhysicalStatus.INSUFFICIENT_FUNDS) return new ContainerPayment(Status.INSUFFICIENT_FUNDS, operationId, 0L, List.of());
+        if (plan.status() == EconomySavedData.PhysicalStatus.REPLAYED) {
+            List<ItemStack> replayStacks = plan.lots().stream().map(lot -> CoinProvenance.issue(lot.denomination(), lot.issued(), lot.id(), operationId)).toList();
+            return new ContainerPayment(Status.REPLAYED, operationId, plan.value(), replayStacks);
+        }
+        if (plan.status() != EconomySavedData.PhysicalStatus.PREPARED) return new ContainerPayment(Status.INVALID, operationId, 0L, List.of());
+        List<ItemStack> stacks = plan.lots().stream().map(lot -> CoinProvenance.issue(lot.denomination(), lot.issued(), lot.id(), operationId)).toList();
+        return new ContainerPayment(Status.COMMITTED, operationId, amount, stacks);
+    }
+
+    public static boolean commitContainerPayment(net.minecraft.server.MinecraftServer server, UUID operationId) {
+        return server != null && operationId != null && EconomySavedData.get(server).commitWithdraw(operationId);
+    }
+
+    public static void quarantineContainerPayment(net.minecraft.server.MinecraftServer server, UUID operationId) {
+        if (server != null && operationId != null) EconomySavedData.get(server).quarantineWithdraw(operationId);
+    }
+
     public static HeldSummary heldSummary(ServerPlayer player) {
         EconomySavedData data = EconomySavedData.get(player.getServer());
         Map<CoinDenomination, Integer> counts = new EnumMap<>(CoinDenomination.class);
@@ -132,4 +158,5 @@ public final class PhysicalCoinService {
     public record WithdrawResult(Status status, long value, Map<CoinDenomination, Long> breakdown) { }
     public record DepositResult(Status status, long value, int acceptedItems, int rejectedItems) { }
     public record HeldSummary(long value, Map<CoinDenomination, Integer> counts, int invalidItems) { }
+    public record ContainerPayment(Status status, UUID operationId, long value, List<ItemStack> stacks) { }
 }

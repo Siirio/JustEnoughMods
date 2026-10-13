@@ -44,7 +44,7 @@
 
 - `jem role` / `jemrole choose <human|elf|dwarf>` — inspect or choose RPG role; the early first change is free.
 - `jem professions` — inspect all ten profession levels and XP.
-- `coins` / `coins send <online-player> <amount>` — inspect or transfer authenticated Coins.
+- `coins` / `coins send <online-player> <amount>` — inspect or transfer authenticated Coins; Wallet also shows the shared daily demand bulletin and remaining NPC payout limits.
 - `jem town` / `jem town create <name>` — inspect or found a non-claim town.
 - `jem town linkstorage` — link the physically targeted item-handler container to the owned town.
 - `jem town workforce <entity>` — register a genuine owned Recruits/Workers NPC in the single Workforce ledger.
