@@ -1,0 +1,31 @@
+[*]
+background:          ftblibrary:textures/gui/background_squares.png; color=#FFF3E4CF; tile_size=64
+selected_chapter_highlight_1: #70B76A3D
+selected_chapter_highlight_2: #38E0B77A
+
+text_color:          #FFF6E7D0
+hover_text_color:    #FFFFD48A
+disabled_text_color: #FF9C8D79
+
+widget_border:       #FF38281E
+widget_background:   #B85A3827
+button:              hollow_rectangle:{{widget_border}}
+panel:               {{container_slot}}
+disabled_button:     hollow_rectangle:{{widget_border}}
+hover_button:        {{button}} + {{widget_background}}; padding=1
+context_menu:        hollow_rectangle:{{widget_border}}; round_edges + {{background}}; color=#FFD6B98C; padding=1
+scroll_bar_background: {{widget_background}}
+scroll_bar:          {{button}} + {{widget_background}}; padding=1
+container_slot:      {{button}}; padding=-1
+text_box:            part:minecraft:textures/gui/container/enchanting_table.png; pos=0,185,108,19; corner=6
+
+quest_view_background:             {{context_menu}}
+quest_view_border:                 {{widget_border}}
+quest_view_title:                  #FFFFD48A
+quest_completed_color:             #C870A45C
+quest_started_color:               #C8D18B45
+quest_not_started_color:           #B8F6E7D0
+quest_locked_color:                #FF75695B
+dependency_line_completed_color:   #FF78A95B
+dependency_line_uncompleted_color: #FF8A6D58
+

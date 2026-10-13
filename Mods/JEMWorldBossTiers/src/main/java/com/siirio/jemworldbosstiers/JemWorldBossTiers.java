@@ -55,6 +55,7 @@ import net.minecraftforge.event.entity.player.AdvancementEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.ItemStack;
@@ -83,6 +84,9 @@ public final class JemWorldBossTiers {
         MinecraftForge.EVENT_BUS.register(new RevivalService());
         MinecraftForge.EVENT_BUS.register(bossRespawns);
         MinecraftForge.EVENT_BUS.register(new WeaponProtection());
+        if (ModList.get().isLoaded("irons_spellbooks")) {
+            MinecraftForge.EVENT_BUS.register(com.siirio.jemworldbosstiers.compat.irons.IronsSpellDamageAdapter.class);
+        }
     }
 
     @SubscribeEvent

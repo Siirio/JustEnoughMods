@@ -42,6 +42,16 @@
 
 ## Player systems
 
+- `jem role` / `jemrole choose <human|elf|dwarf>` — inspect or choose RPG role; the early first change is free.
+- `jem professions` — inspect all ten profession levels and XP.
+- `coins` / `coins send <online-player> <amount>` — inspect or transfer authenticated Coins.
+- `jem town` / `jem town create <name>` — inspect or found a non-claim town.
+- `jem town linkstorage` — link the physically targeted item-handler container to the owned town.
+- `jem town workforce <entity>` — register a genuine owned Recruits/Workers NPC in the single Workforce ledger.
+- `jem project create <name>` — create a visual building project in the current dimension.
+- `jem project add <project-uuid> <x1> <z1> <x2> <z2>` — append a source rectangle.
+- `jem project remove <project-uuid> <zero-based-rectangle-index>` — remove a source rectangle and recompute its visual union.
+- `jem holiday preview|force|stop ...` — OP calendar-event inspection and control.
 - `claims` — открыть territories UI.
 - `landmarks` — свои сохранённые места и глобально открытые боссы.
 - `landmarks create` — сохранить личное место; другим игрокам оно не передаётся.
@@ -63,7 +73,7 @@
 
 ## Chunk pre-generation
 
-Chunky `1.3.146` доступен server console и OP. Pre-generation создаёт настоящие чанки заранее, поэтому уменьшает server worldgen stalls и даёт VSS/Voxy готовые данные, но не устраняет клиентскую сборку LOD или shader rebuilds.
+Chunky `1.3.146` доступен server console и OP. Pre-generation создаёт настоящие чанки заранее и уменьшает server worldgen stalls; VSS/Voxy больше не входят в сборку.
 
 - `chunky world <world>` — выбрать dimension.
 - `chunky center <x> <z>` — установить центр.

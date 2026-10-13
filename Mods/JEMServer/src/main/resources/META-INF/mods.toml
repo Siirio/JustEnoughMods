@@ -27,6 +27,13 @@ ordering="AFTER"
 side="SERVER"
 
 [[dependencies.jem_server]]
+modId="jem_identity"
+mandatory=true
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.jem_server]]
 modId="tide"
 mandatory=true
 versionRange="[2.1.1,)"

@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-13 — RPG, professions, economy, settlements and integration implementation
+
+- User request and technical direction: corrected all six implementation plans; TLauncher/offline mode must keep gameplay enabled only behind real server-side authentication, no username trust; Roles and Professions must work in integrated singleplayer; preserve Spud shops, physical storage, hybrid settlement production, one Workforce including Recruits, non-protective map regions, approved abilities/happiness/citadels/FTB/events; use real Iron spell IDs and existing World Tier; write and run no tests, while production compilation is allowed.
+- Codex technical choice: added `JEMIdentity`, using integrated owner, online profile, or the exact connection-bound Server Login `AuthGate`; locked/unverifiable dedicated connections fail closed. Added persisted Roles, ten Professions, a fixed-supply funded Coin ledger, and non-claim Settlements with physical item-handler links, unified native Workforce and happiness. Added exact optional Iron/Recruits/Workers adapters, World Tier spell scaling, authenticated Xaero project overlays, a persistent Asia/Almaty holiday lifecycle, and observational FTB chapters/theme.
+- Official Forge 1.20.1 artifacts added to canonical managed client/server sources: Iron's Spells `3.15.6`, Iron's Spells Lib `1.0.2`, Player Animator `1.0.2-rc1`, Recruits `1.15.2`, Workers `2.0.3`, FTB Library `2001.2.13`, Teams `2001.3.2`, Quests `2001.4.22`, XMod Compat `2.1.3`; Server Login `1.0.3` is server-only. Xaero Regions was rejected because it requires Forge `47.4.20`, while JEM is pinned to `47.4.10`.
+- Production compilation only: affected Java modules were compiled with Gradle `compileJava -x test`; no test, GameTest, fixture, mock, smoke workflow, runtime launch, linter, formatter or static-analysis task was created or run.
+
 ## 2026-10-13 — Structural boss duplicate crash hotfix
 
 - `Bug / Server Sided / два duplicate Infernal Dragon удалялись JEM через discard внутри EntityJoinLevelEvent, после чего world tracking запрашивал packets для removed entities, а DistanceManager упал с ConcurrentModificationException и MineRENT перезапустился / in testing`

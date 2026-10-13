@@ -1,0 +1,31 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="jem_identity"
+version="1.0.0"
+displayName="JEM Identity"
+authors="Siirio"
+description='''Connection-bound verified principals shared by JEM account-owning modules.'''
+
+[[dependencies.jem_identity]]
+modId="forge"
+mandatory=true
+versionRange="[47.4.10,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.jem_identity]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1,1.21)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.jem_identity]]
+modId="serverlogin"
+mandatory=false
+versionRange="[1.0.3,)"
+ordering="AFTER"
+side="SERVER"

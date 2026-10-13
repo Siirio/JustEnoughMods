@@ -1,0 +1,53 @@
+package com.siirio.jemroles.race;
+
+import net.minecraft.nbt.CompoundTag;
+
+public final class RaceRecord {
+    public static final int SCHEMA = 1;
+    private RaceId race;
+    private final long selectedAt;
+    private long activeTicks;
+    private boolean freeSwitchUsed;
+    private long lastRespecAt;
+
+    public RaceRecord(RaceId race, long selectedAt) {
+        this(race, selectedAt, 0L, false, 0L);
+    }
+
+    private RaceRecord(RaceId race, long selectedAt, long activeTicks, boolean freeSwitchUsed, long lastRespecAt) {
+        this.race = race;
+        this.selectedAt = selectedAt;
+        this.activeTicks = Math.max(0L, activeTicks);
+        this.freeSwitchUsed = freeSwitchUsed;
+        this.lastRespecAt = Math.max(0L, lastRespecAt);
+    }
+
+    public RaceId race() { return race; }
+    public long selectedAt() { return selectedAt; }
+    public long activeTicks() { return activeTicks; }
+    public boolean freeSwitchUsed() { return freeSwitchUsed; }
+    public long lastRespecAt() { return lastRespecAt; }
+    public boolean freeSwitchAvailable() { return !freeSwitchUsed && activeTicks < 36_000L; }
+    public void addActiveTicks(long ticks) { activeTicks = Math.addExact(activeTicks, Math.max(0L, ticks)); }
+    public void change(RaceId next, boolean consumeFreeSwitch) {
+        race = next;
+        if (consumeFreeSwitch) freeSwitchUsed = true;
+        lastRespecAt = System.currentTimeMillis();
+    }
+
+    CompoundTag save() {
+        CompoundTag tag = new CompoundTag();
+        tag.putInt("Schema", SCHEMA);
+        tag.putString("Race", race.name());
+        tag.putLong("SelectedAt", selectedAt);
+        tag.putLong("ActiveTicks", activeTicks);
+        tag.putBoolean("FreeSwitchUsed", freeSwitchUsed);
+        tag.putLong("LastRespecAt", lastRespecAt);
+        return tag;
+    }
+
+    static RaceRecord load(CompoundTag tag) {
+        RaceId id = RaceId.parse(tag.getString("Race")).orElseThrow();
+        return new RaceRecord(id, tag.getLong("SelectedAt"), tag.getLong("ActiveTicks"), tag.getBoolean("FreeSwitchUsed"), tag.getLong("LastRespecAt"));
+    }
+}

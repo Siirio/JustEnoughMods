@@ -1,0 +1,15 @@
+plugins { id 'net.minecraftforge.gradle' version '[6.0,6.2)' }
+group = 'com.siirio.jemsettlements'
+version = '1.0.0'
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+minecraft { mappings channel: 'official', version: '1.20.1' }
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
+    compileOnly files('../JEMIdentity/build/classes/java/main')
+    compileOnly files('../JEMEconomy/build/classes/java/main')
+    compileOnly fg.deobf(files('../../Server/mods/recruits-1.20.1-1.15.2.jar'))
+    compileOnly fg.deobf(files('../../Server/mods/workers-1.20.1-2.0.3.jar'))
+}
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8'; options.release = 17 }
+tasks.withType(Test).configureEach { enabled = false }
+jar { archiveBaseName = 'jem-settlements'; finalizedBy 'reobfJar' }

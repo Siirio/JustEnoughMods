@@ -48,6 +48,11 @@ Changelog описывает только запрошенные player-visible 
 | `JEMDrillLifecycle` | Moving/stationary Create drill wear, replacement, servicing и optional Jade presentation; только Create является обязательным модом |
 | `JEMMenuSupport` | Небольшая native menu library без mod ID, registry, gameplay state или network; Claims и Server встраивают один и тот же JAR через Forge Jar-in-Jar |
 | `JEMPackCore` | Pack-specific data, resources и integration policy без чужой gameplay state |
+| `JEMIdentity` | Stable verified principal: integrated owner, online profile, or unlocked Server Login connection; never an offline username |
+| `JEMRoles` | Player race selection, racial traits and optional native-mod race adapters |
+| `JEMProfessions` | Ten profession tracks, bounded audited XP and optional native event adapters |
+| `JEMEconomy` | Fixed Coin supply, account balances and idempotent funded transfers |
+| `JEMSettlements` | Town identity, physical storage links, one Workforce ledger and happiness; never land protection |
 | `JEMVillagerTalking` | Изолированные реакции, реплики, сеть и HUD-текст жителей; мод остаётся development-only до отдельного решения о публикации |
 | `JEMClaims` | Territories, permissions и protection integration |
 | `JEMServer` | SMP, parties, shops и server UX; внутренний Events domain делегирует party operations в `EventParties`, принимает `EventParticipants` и регистрируется через `EventRuntime` |
@@ -74,6 +79,8 @@ Changelog описывает только запрошенные player-visible 
 - Network payload передаёт минимальный стабильный snapshot или transition, имеет предел размера и не дублирует весь server registry.
 - Client-facing entity names передаются translation keys и локализуются клиентом.
 - Existing world SavedData для boss defeats, campaign flags и player progression сохраняет schema без ненужной migration или reset.
+- Dedicated account writes resolve through `JEMIdentity`. `online-mode=false` is not a feature switch: an unlocked Server Login connection is authenticated, while a locked or unverifiable connection fails closed. Roles and Professions also accept the integrated-server owner.
+- Xaero building-project regions are visual metadata only and can never enter a permission check. Source rectangles remain canonical so removal can split the rendered union deterministically.
 - Collections, caches и pending requests имеют owner, expiry/size bound и cleanup lifecycle.
 
 ## Performance by construction

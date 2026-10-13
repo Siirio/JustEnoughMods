@@ -26,6 +26,7 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    compileOnly fg.deobf(files('../../Server/mods/irons_spellbooks-1.20.1-3.15.6.jar'))
 }
 
 mixin {

@@ -29,6 +29,7 @@ public final class SmpConfig {
             EVENT_DISTANCE,
             WAVE_PAUSE;
     public static final ForgeConfigSpec.ConfigValue<java.util.List<? extends String>> SCHEDULE;
+    public static final ForgeConfigSpec.ConfigValue<String> CALENDAR_TIMEZONE;
 
     public static final ForgeConfigSpec.IntValue COOKING_DISH_COUNT, COOKING_DISH_QUANTITY, COOKING_MINUTES;
 
@@ -58,6 +59,10 @@ public final class SmpConfig {
         EVENT_CLAIM_BUFFER = b.defineInRange("eventClaimBufferBlocks", 64, 16, 512);
         EVENT_DISTANCE = b.defineInRange("eventMinimumSpawnDistance", 4096, 1024, 30000000);
         WAVE_PAUSE = b.defineInRange("bloodMoonRecoverySeconds", 15, 5, 120);
+        CALENDAR_TIMEZONE = b.define("calendarTimezone", "Asia/Almaty", value -> {
+            try { java.time.ZoneId.of(String.valueOf(value)); return true; }
+            catch (java.time.DateTimeException invalid) { return false; }
+        });
         SCHEDULE =
                 b.defineList(
                         "weeklySlotsAstana",

@@ -46,11 +46,13 @@ public final class EventRuntime {
 
     public static void tick(MinecraftServer server) {
         EventScheduler.tick(server);
+        com.siirio.jemserver.smp.events.calendar.CalendarEventScheduler.tick(server);
     }
 
     public static void stopped() {
         EventHooks.unregister();
         EventScheduler.reset();
+        com.siirio.jemserver.smp.events.calendar.CalendarEventScheduler.reset();
     }
 
     private EventRuntime() {}

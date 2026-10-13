@@ -59,6 +59,8 @@ public final class SmpRuntime {
     @SubscribeEvent
     public void commands(RegisterCommandsEvent event) {
         if (event.getCommandSelection() != Commands.CommandSelection.DEDICATED) return;
+        com.siirio.jemserver.smp.events.calendar.HolidayCommands.register(event.getDispatcher());
+        com.siirio.jemserver.map.ProjectCommands.register(event.getDispatcher());
         var command =
                 Commands.literal("smp")
                         .executes(

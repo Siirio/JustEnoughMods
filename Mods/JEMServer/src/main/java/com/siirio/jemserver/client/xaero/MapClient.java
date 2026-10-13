@@ -20,6 +20,8 @@ public final class MapClient {
     private static List<Layer> layers = List.of();
     private static List<MapNetwork.EventArea> events = List.of();
     private static List<Layer> eventLayers = List.of();
+    private static List<MapNetwork.ProjectArea> projects = List.of();
+    private static List<Layer> projectLayers = List.of();
     private static boolean connected;
     private static final int FILL_ALPHA = 0x38000000;
     private static final int BORDER_ALPHA = 0xFF000000;
@@ -40,15 +42,21 @@ public final class MapClient {
                     .values().stream().map(group -> new Layer(group.get(0).dimension(), group.get(0).color(),
                             ClaimBoundaryGeometry.union(group.stream().map(claim -> new ClaimBoundaryGeometry.Rectangle(claim.minX(), claim.minZ(), claim.maxX() + 1, claim.maxZ() + 1)).toList()))).toList();
         }
-        deaths = List.copyOf(snapshot.deaths()); acceptEvents(snapshot.events()); connected = true;
+        deaths = List.copyOf(snapshot.deaths()); acceptEvents(snapshot.events()); acceptProjects(snapshot.projects()); connected = true;
+    }
+    private static void acceptProjects(List<MapNetwork.ProjectArea> areas) {
+        if (projects.equals(areas)) return;
+        projects = List.copyOf(areas);
+        projectLayers = projects.stream().map(project -> new Layer(project.dimension(), project.color(),
+                ClaimBoundaryGeometry.union(project.rectangles().stream().map(rectangle -> new ClaimBoundaryGeometry.Rectangle(
+                        rectangle.minX(), rectangle.minZ(), rectangle.maxX(), rectangle.maxZ())).toList()))).toList();
     }
     public static void acceptEvents(List<MapNetwork.EventArea> areas) {
         if (events.equals(areas)) return;
         events = List.copyOf(areas);
         eventLayers = events.stream().map(area -> new Layer(area.dimension(), eventColor(area.activity()),
                 ClaimBoundaryGeometry.union(List.of(new ClaimBoundaryGeometry.Rectangle(
-                        area.position().getX() - area.radius(), area.position().getZ() - area.radius(),
-                        area.position().getX() + area.radius() + 1, area.position().getZ() + area.radius() + 1))))).toList();
+                        area.minX(), area.minZ(), area.maxX() + 1, area.maxZ() + 1))))).toList();
     }
     private static int eventColor(String activity) {
         return switch (activity) {
@@ -63,7 +71,7 @@ public final class MapClient {
     }
     public static boolean connected() { return connected; }
     @SubscribeEvent
-    public static void logout(ClientPlayerNetworkEvent.LoggingOut event) { claims = List.of(); deaths = List.of(); layers = List.of(); events = List.of(); eventLayers = List.of(); connected = false; }
+    public static void logout(ClientPlayerNetworkEvent.LoggingOut event) { claims = List.of(); deaths = List.of(); layers = List.of(); events = List.of(); eventLayers = List.of(); projects = List.of(); projectLayers = List.of(); connected = false; }
     public static UUID death(ResourceLocation dimension, int x, int y, int z) {
         return deaths.stream().filter(death -> death.dimension().equals(dimension) && death.position().getX() == x && death.position().getY() == y && death.position().getZ() == z).map(MapNetwork.Death::id).findFirst().orElse(null);
     }
@@ -74,8 +82,8 @@ public final class MapClient {
     }
     public static MapNetwork.EventArea event(ResourceLocation dimension, int x, int z) {
         return events.stream().filter(area -> area.dimension().equals(dimension)
-                        && Math.abs(x - area.position().getX()) <= area.radius()
-                        && Math.abs(z - area.position().getZ()) <= area.radius())
+                        && x >= area.minX() && x <= area.maxX()
+                        && z >= area.minZ() && z <= area.maxZ())
                 .min(java.util.Comparator.comparingLong(area -> {
                     long dx = x - area.position().getX();
                     long dz = z - area.position().getZ();
@@ -86,6 +94,7 @@ public final class MapClient {
     public static void render(GuiGraphics graphics, ResourceLocation dimension, double cameraX, double cameraZ, double scale, int width, int height) {
         if (!connected) return;
         renderLayers(graphics, dimension, cameraX, cameraZ, scale, width, height, layers);
+        renderLayers(graphics, dimension, cameraX, cameraZ, scale, width, height, projectLayers);
         renderLayers(graphics, dimension, cameraX, cameraZ, scale, width, height, eventLayers);
         var font = Minecraft.getInstance().font;
         for (var area : events) {
@@ -95,6 +104,16 @@ public final class MapClient {
             if (x < 0 || x >= width || y < 0 || y >= height) continue;
             var label = net.minecraft.network.chat.Component.translatable("jem.smp." + area.activity());
             var fitted = font.substrByWidth(label, width);
+            graphics.drawString(font, fitted.getString(), Math.max(0, Math.min(width - font.width(fitted), x - font.width(fitted) / 2)),
+                    Math.max(0, Math.min(height - font.lineHeight, y)), com.siirio.jemserver.client.ui.JemPalette.CREAM, true);
+        }
+        for (var project : projects) {
+            if (!project.dimension().equals(dimension) || project.rectangles().isEmpty()) continue;
+            var first = project.rectangles().get(0);
+            int x = (int) Math.floor(width / 2.0 + (((first.minX() + first.maxX()) / 2.0) - cameraX) * scale);
+            int y = (int) Math.floor(height / 2.0 + (((first.minZ() + first.maxZ()) / 2.0) - cameraZ) * scale);
+            if (x < 0 || x >= width || y < 0 || y >= height) continue;
+            var fitted = font.substrByWidth(net.minecraft.network.chat.Component.literal(project.name()), width);
             graphics.drawString(font, fitted.getString(), Math.max(0, Math.min(width - font.width(fitted), x - font.width(fitted) / 2)),
                     Math.max(0, Math.min(height - font.lineHeight, y)), com.siirio.jemserver.client.ui.JemPalette.CREAM, true);
         }

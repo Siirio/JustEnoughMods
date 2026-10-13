@@ -18,8 +18,10 @@ import com.siirio.jemserver.smp.SmpEnvironment;
 
 @net.minecraftforge.fml.common.Mod.EventBusSubscriber(modid = "jem_server", value = Dist.DEDICATED_SERVER)
 public final class MapNetwork {
-    private static final String VERSION = "4";
+    private static final String VERSION = "5";
     private static final int MAX_EVENTS = 64;
+    private static final int MAX_PROJECTS = 128;
+    private static final int MAX_PROJECT_RECTANGLES = 64;
     private static final java.util.Map<UUID, List<EventArea>> LAST_EVENTS = new java.util.HashMap<>();
     private static final int MAX_CLAIMS = 16384;
     private static final String LAST_REQUEST = "jem_server_map_request";
@@ -29,8 +31,10 @@ public final class MapNetwork {
             .serverAcceptedVersions(MapNetwork::compatible).simpleChannel();
     public record Claim(UUID id, UUID owner, String name, ResourceLocation dimension, int minX, int minZ, int maxX, int maxZ, int color) {}
     public record Death(UUID id, ResourceLocation dimension, BlockPos position) {}
-    public record EventArea(UUID id, String activity, ResourceLocation dimension, BlockPos position, int radius) {}
-    public record Snapshot(List<Claim> claims, List<Death> deaths, List<EventArea> events) {}
+    public record EventArea(UUID id, String activity, ResourceLocation dimension, BlockPos position, int minX, int minZ, int maxX, int maxZ) {}
+    public record ProjectRectangle(int minX, int minZ, int maxX, int maxZ) {}
+    public record ProjectArea(UUID id, String name, ResourceLocation dimension, int color, List<ProjectRectangle> rectangles) {}
+    public record Snapshot(List<Claim> claims, List<Death> deaths, List<EventArea> events, List<ProjectArea> projects) {}
     private record Events(List<EventArea> areas) {}
     private record Request() {}
     private record Publish(String name, ResourceLocation dimension, BlockPos position) {}
@@ -99,25 +103,38 @@ public final class MapNetwork {
 
     private static List<EventArea> eventAreas(ServerPlayer player) {
         long now = System.currentTimeMillis();
-        return com.siirio.jemserver.smp.SmpData.get(player.server).all("events").stream()
+        var data = com.siirio.jemserver.smp.SmpData.get(player.server);
+        var areas = new java.util.ArrayList<>(data.all("events").stream()
                 .filter(row -> "ACTIVE".equals(row.getString("state")) && row.getLong("ends") > now
                         && row.hasUUID("id") && row.contains("position") && row.getInt("radius") > 0
                         && ResourceLocation.tryParse(row.getString("dimension")) != null)
-                .filter(row -> new com.siirio.jemserver.smp.events.EventSession(row).accepted(player.getUUID()))
-                .limit(MAX_EVENTS).map(row -> new EventArea(row.getUUID("id"), row.getString("activity"),
-                        new ResourceLocation(row.getString("dimension")), BlockPos.of(row.getLong("position")), row.getInt("radius"))).toList();
+                .filter(row -> row.getString("activity").equals("BLOOD_MOON") || row.getString("activity").equals("RESOURCE_RUSH"))
+                .map(row -> new EventArea(row.getUUID("id"), row.getString("activity"),
+                        new ResourceLocation(row.getString("dimension")), BlockPos.of(row.getLong("position")),
+                        com.siirio.jemserver.smp.events.EventRegions.minX(row), com.siirio.jemserver.smp.events.EventRegions.minZ(row),
+                        com.siirio.jemserver.smp.events.EventRegions.maxX(row), com.siirio.jemserver.smp.events.EventRegions.maxZ(row))).toList());
+        data.all("parties").stream().filter(row -> "ACTIVE".equals(row.getString("state")) && row.hasUUID("structureId")
+                        && row.contains("position") && row.getIntArray("structureBounds").length == 6
+                        && ResourceLocation.tryParse(row.getString("dimension")) != null)
+                .map(row -> {
+                    int[] bounds = row.getIntArray("structureBounds");
+                    return new EventArea(row.getUUID("structureId"), "BOSS_FIGHT", new ResourceLocation(row.getString("dimension")),
+                            BlockPos.of(row.getLong("position")), bounds[0] - 1, bounds[2] - 1, bounds[3] + 1, bounds[5] + 1);
+                }).forEach(areas::add);
+        return areas.stream().distinct().limit(MAX_EVENTS).toList();
     }
 
     private static void encodeEvents(List<EventArea> areas, FriendlyByteBuf out) {
         out.writeCollection(areas, (buffer, area) -> {
             buffer.writeUUID(area.id()); buffer.writeUtf(area.activity(), 64); buffer.writeResourceLocation(area.dimension());
-            buffer.writeBlockPos(area.position()); buffer.writeVarInt(area.radius());
+            buffer.writeBlockPos(area.position()); buffer.writeInt(area.minX()); buffer.writeInt(area.minZ()); buffer.writeInt(area.maxX()); buffer.writeInt(area.maxZ());
         });
     }
 
     private static List<EventArea> decodeEvents(FriendlyByteBuf in) {
         return in.readCollection(FriendlyByteBuf.limitValue(java.util.ArrayList::new, MAX_EVENTS),
-                buffer -> new EventArea(buffer.readUUID(), buffer.readUtf(64), buffer.readResourceLocation(), buffer.readBlockPos(), buffer.readVarInt()));
+                buffer -> new EventArea(buffer.readUUID(), buffer.readUtf(64), buffer.readResourceLocation(), buffer.readBlockPos(),
+                        buffer.readInt(), buffer.readInt(), buffer.readInt(), buffer.readInt()));
     }
 
     public static void request() { CHANNEL.sendToServer(new Request()); }
@@ -130,7 +147,18 @@ public final class MapNetwork {
         var claims = Claims.mapTerritories(player).stream().filter(claim -> claim.owner().equals(player.getUUID())).limit(MAX_CLAIMS)
                 .map(claim -> new Claim(claim.id(), claim.owner(), claim.name(), claim.dimension(), claim.minX(), claim.minZ(), claim.maxX(), claim.maxZ(), claim.color())).toList();
         var deaths = ServerData.get(player.server).deaths(player.getUUID()).stream().map(death -> new Death(death.id(), death.dimension(), BlockPos.containing(death.x(), death.y(), death.z()))).toList();
-        CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new Snapshot(claims, deaths, eventAreas(player)));
+        var principal = com.siirio.jemidentity.api.IdentityPolicy.resolve(player);
+        var projects = principal.isEmpty() ? java.util.List.<ProjectArea>of()
+                : com.siirio.jemserver.map.ProjectRegionData.get(player.server).all().stream()
+                        .filter(project -> project.owner().equals(principal.get().accountId())
+                                || project.collaborators().contains(principal.get().accountId()))
+                        .limit(MAX_PROJECTS)
+                        .map(project -> new ProjectArea(project.id(), project.name(), project.dimension(), project.color(),
+                                project.rectangles().stream().limit(MAX_PROJECT_RECTANGLES)
+                                        .map(rectangle -> new ProjectRectangle(rectangle.minX(), rectangle.minZ(), rectangle.maxX(), rectangle.maxZ()))
+                                        .toList()))
+                        .toList();
+        CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new Snapshot(claims, deaths, eventAreas(player), projects));
     }
 
     private static void encode(Snapshot packet, FriendlyByteBuf out) {
@@ -140,10 +168,21 @@ public final class MapNetwork {
         });
         out.writeCollection(packet.deaths(), (buffer, death) -> { buffer.writeUUID(death.id()); buffer.writeResourceLocation(death.dimension()); buffer.writeBlockPos(death.position()); });
         encodeEvents(packet.events(), out);
+        out.writeCollection(packet.projects(), (buffer, project) -> {
+            buffer.writeUUID(project.id()); buffer.writeUtf(project.name(), 48); buffer.writeResourceLocation(project.dimension()); buffer.writeInt(project.color());
+            buffer.writeCollection(project.rectangles(), (rectangleBuffer, rectangle) -> {
+                rectangleBuffer.writeInt(rectangle.minX()); rectangleBuffer.writeInt(rectangle.minZ());
+                rectangleBuffer.writeInt(rectangle.maxX()); rectangleBuffer.writeInt(rectangle.maxZ());
+            });
+        });
     }
 
     private static Snapshot decode(FriendlyByteBuf in) {
         return new Snapshot(in.readCollection(FriendlyByteBuf.limitValue(java.util.ArrayList::new, MAX_CLAIMS), buffer -> new Claim(buffer.readUUID(), buffer.readUUID(), buffer.readUtf(256), buffer.readResourceLocation(), buffer.readInt(), buffer.readInt(), buffer.readInt(), buffer.readInt(), buffer.readInt())),
-                in.readCollection(FriendlyByteBuf.limitValue(java.util.ArrayList::new, 64), buffer -> new Death(buffer.readUUID(), buffer.readResourceLocation(), buffer.readBlockPos())), decodeEvents(in));
+                in.readCollection(FriendlyByteBuf.limitValue(java.util.ArrayList::new, 64), buffer -> new Death(buffer.readUUID(), buffer.readResourceLocation(), buffer.readBlockPos())), decodeEvents(in),
+                in.readCollection(FriendlyByteBuf.limitValue(java.util.ArrayList::new, MAX_PROJECTS), buffer -> new ProjectArea(
+                        buffer.readUUID(), buffer.readUtf(48), buffer.readResourceLocation(), buffer.readInt(),
+                        buffer.readCollection(FriendlyByteBuf.limitValue(java.util.ArrayList::new, MAX_PROJECT_RECTANGLES), rectangleBuffer ->
+                                new ProjectRectangle(rectangleBuffer.readInt(), rectangleBuffer.readInt(), rectangleBuffer.readInt(), rectangleBuffer.readInt())))));
     }
 }

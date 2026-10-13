@@ -1,0 +1,31 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="jem_economy"
+version="1.0.0"
+displayName="JEM Economy"
+authors="Siirio"
+description='''Fixed-supply authenticated Coin ledger and funded settlement API.'''
+
+[[dependencies.jem_economy]]
+modId="forge"
+mandatory=true
+versionRange="[47.4.10,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.jem_economy]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1,1.21)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.jem_economy]]
+modId="jem_identity"
+mandatory=true
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
