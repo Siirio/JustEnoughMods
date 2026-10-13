@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-13 — Native campaign structure distribution
+
+- User request and technical direction: remove Sparse Structures, keep all 12 Campaign boss structures and native prerequisite boss structures at their upstream spawn frequency, allow them to remain close, and prevent the former salt-rewrite setup from forcing structures onto overlapping candidates.
+- Codex technical choice: removed `sparsestructures-forge-1.20.1-3.0.jar` and its config from the canonical managed client and local dedicated server, and removed it from the runtime inventory. The exact installed structure-set definitions were audited first: the 12 Campaign sets and eight native prerequisite sets already use distinct salts from one another, so native spacing/separation/salts and each mod's own biome, terrain and exclusion rules are retained without a replacement worldgen layer. JEM-generated prerequisite sites remain unchanged.
+- Distribution boundary: this is an accumulated client-and-server mod removal for a later explicit AutoModpack publication; MineRENT, the stable `JustEnoughMods` profile and the immutable release baseline were not changed. No Gradle task, server/client launch, automated test, linter, formatter or static analysis was run.
+
 ## 2026-10-13 — Local MineRENT update rehearsal environment
 
 - User request and technical direction: recreate the local server from the supplied latest MineRENT backup, then overlay the complete accumulated update from both current feature commits rather than only the final prompt; rebuild `test jem` from the untouched original `JustEnoughMods` profile so the client starts on the currently published state and must receive the pending update from the server; remove JEM Claims from the rehearsal runtime.

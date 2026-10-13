@@ -269,7 +269,6 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Some More Blocks | `1.0.7-bp` | Client + server |  |
 | Sooty Chimneys | `1.3.4` | Client + server |  |
 | Sounds | `2.2.1+1.20.1+forge` | Client |  |
-| SparseStructures | `3.0` | Client + server |  |
 | Spawn | `4.0.7-1.20.1` | Client + server |  |
 | Spider Overhaul | `0.0.6-Forge-v1.20` | Client + server |  |
 | Spud's Shops | `1.10.2-forge-1.20.1` | Client + server |  |

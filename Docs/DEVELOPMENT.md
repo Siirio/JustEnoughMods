@@ -211,6 +211,10 @@ Build или runtime action выполняется только по прямо�
 
 Runtime dependency принимается только если она удаляет JEM-код, закрепляет единый контракт или даёт недостижимое текущим stack качество при совместимости с Forge 1.20.1, Epic Fight, Embeddium/Oculus и dedicated server.
 
+### Campaign structure placement
+
+12 Campaign boss structures and their native prerequisite structures keep the exact placement owned by their installed mods: structure-set type, spacing, separation, salt, biome/terrain rules and native exclusion zones. A global spacing or salt rewriter must not make the rest of the world sparse or move these structures away from their native candidates. Before changing this inventory, inspect the exact installed structure-set JSONs; campaign/prerequisite sets must not reuse a placement salt with each other, while independent native candidates may remain close. Generated JEM sites for bosses without a native structure remain outside this structure-set contract.
+
 
 ## Границы после архитектурного разделения
 
