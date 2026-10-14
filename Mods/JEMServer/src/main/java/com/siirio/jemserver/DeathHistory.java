@@ -2,7 +2,6 @@ package com.siirio.jemserver;
 
 import com.siirio.jemmenus.VanillaMenus;
 
-import com.siirio.jemserver.claims.Claims;
 import java.util.Comparator;
 import java.util.UUID;
 import net.minecraft.core.BlockPos;
@@ -62,17 +61,9 @@ public final class DeathHistory {
         }
         Vec3 exact = new Vec3(death.x(), death.y(), death.z());
         BlockPos origin = BlockPos.containing(exact);
-        if (!Claims.canStay(player, level, origin)) {
-            message(player, "jem.deaths.error.claimed_location");
-            return;
-        }
         Vec3 target = safe(player, level, exact) ? exact : nearestSafe(player, level, origin, ServerConfig.SAFE_RADIUS.get());
         if (target == null) {
             message(player, "jem.deaths.error.no_safe_point");
-            return;
-        }
-        if (!Claims.canStay(player, level, BlockPos.containing(target))) {
-            message(player, "jem.deaths.error.claimed_destination");
             return;
         }
         player.closeContainer();
@@ -97,8 +88,7 @@ public final class DeathHistory {
         for (BlockPos block : BlockPos.betweenClosed(BlockPos.containing(box.minX, box.minY, box.minZ), BlockPos.containing(box.maxX, box.maxY, box.maxZ))) {
             level.getChunkAt(block);
             var state = level.getBlockState(block);
-            if (!state.getFluidState().isEmpty() || dangerous(state)
-                    || !Claims.canStay(player, level, block)) return false;
+            if (!state.getFluidState().isEmpty() || dangerous(state)) return false;
         }
         var floor = level.getBlockState(feet.below());
         return !dangerous(floor) && floor.isFaceSturdy(level, feet.below(), Direction.UP) && level.noCollision(player, box);

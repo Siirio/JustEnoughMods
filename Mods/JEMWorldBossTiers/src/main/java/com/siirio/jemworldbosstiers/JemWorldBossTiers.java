@@ -14,6 +14,7 @@ import com.siirio.jemworldbosstiers.progression.TierAdvancements;
 import com.siirio.jemworldbosstiers.progression.BossDefeatPolicy;
 import com.siirio.jemworldbosstiers.encounter.EncounterData;
 import com.siirio.jemworldbosstiers.command.TierCommands;
+import com.siirio.jemworldbosstiers.command.BossCommands;
 import com.siirio.jemworldbosstiers.event.WorldTierChangedEvent;
 import com.siirio.jemworldbosstiers.enchantment.TierEnchantments;
 import com.siirio.jemworldbosstiers.loot.TierLoot;
@@ -98,6 +99,7 @@ public final class JemWorldBossTiers {
     @SubscribeEvent
     public void registerCommands(RegisterCommandsEvent event) {
         TierCommands.register(event.getDispatcher());
+        BossCommands.register(event.getDispatcher());
     }
 
     @SubscribeEvent(priority = net.minecraftforge.eventbus.api.EventPriority.HIGH)

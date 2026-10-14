@@ -53,7 +53,6 @@ public final class JemServer {
         }
         LandmarkNetwork.register();
         MapNetwork.register();
-        ClaimBoundaryNetwork.register();
         com.siirio.jemserver.smp.SmpRuntime.register();
         if (dedicated && ModList.get().isLoaded("jem_world_boss_tiers")) {
             MinecraftForge.EVENT_BUS.register(this);
@@ -65,12 +64,6 @@ public final class JemServer {
     public void registerCommands(RegisterCommandsEvent event) {
         PackSyncCommands.register(event);
         var dispatcher = event.getDispatcher();
-        for (String name : new String[]{"deaths", "death"}) {
-            dispatcher.register(Commands.literal(name).executes(context -> {
-                DeathHistory.open(context.getSource().getPlayerOrException());
-                return 1;
-            }));
-        }
         dispatcher.register(Commands.literal("sleep")
                 .then(Commands.literal("agree").executes(context -> sleep.vote(context.getSource().getPlayerOrException(), true)))
                 .then(Commands.literal("disagree").executes(context -> sleep.vote(context.getSource().getPlayerOrException(), false))));

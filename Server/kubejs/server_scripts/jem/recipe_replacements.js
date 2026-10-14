@@ -17,21 +17,13 @@ ServerEvents.recipes(event => {
     'immersive_aircraft:nether_engine',
     'immersive_aircraft:quadrocopter',
     'immersive_aircraft:rotary_cannon',
+    'immersive_aircraft:sail',
     'immersive_aircraft:steel_boiler',
     'immersive_aircraft:sturdy_pipes',
     'immersive_aircraft:telescope',
     'immersive_aircraft:warship'
   ]
   removedTransportItems.forEach(item => event.remove({ output: item }))
-  event.shaped('immersive_aircraft:sail', [
-    'CCS',
-    'CCS',
-    'CCS'
-  ], {
-    C: 'minecraft:white_carpet',
-    S: 'minecraft:string'
-  }).id('immersive_aircraft:sail')
-  event.smelting('minecraft:leather', 'minecraft:rotten_flesh').id('jem:leather_from_rotten_flesh')
   event.shapeless('4x jemcompat:aircraft_fuel', [
     'minecraft:coal_block',
     'minecraft:blaze_powder',

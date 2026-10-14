@@ -1,7 +1,6 @@
 package com.siirio.jemserver;
 
 import com.siirio.jemserver.client.xaero.MapClient;
-import com.siirio.jemserver.claims.Claims;
 import java.util.List;
 import java.util.UUID;
 import net.minecraft.core.BlockPos;
@@ -18,27 +17,24 @@ import com.siirio.jemserver.smp.SmpEnvironment;
 
 @net.minecraftforge.fml.common.Mod.EventBusSubscriber(modid = "jem_server", value = Dist.DEDICATED_SERVER)
 public final class MapNetwork {
-    private static final String VERSION = "5";
+    private static final String VERSION = "6";
     private static final int MAX_EVENTS = 64;
     private static final int MAX_PROJECTS = 128;
     private static final int MAX_PROJECT_RECTANGLES = 64;
     private static final java.util.Map<UUID, List<EventArea>> LAST_EVENTS = new java.util.HashMap<>();
-    private static final int MAX_CLAIMS = 16384;
     private static final String LAST_REQUEST = "jem_server_map_request";
     private static final int REQUEST_INTERVAL = 20;
     private static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder.named(new ResourceLocation("jem_server", "map"))
             .networkProtocolVersion(() -> VERSION).clientAcceptedVersions(MapNetwork::compatible)
             .serverAcceptedVersions(MapNetwork::compatible).simpleChannel();
-    public record Claim(UUID id, UUID owner, String name, ResourceLocation dimension, int minX, int minZ, int maxX, int maxZ, int color) {}
     public record Death(UUID id, ResourceLocation dimension, BlockPos position) {}
     public record EventArea(UUID id, String activity, ResourceLocation dimension, BlockPos position, int minX, int minZ, int maxX, int maxZ) {}
     public record ProjectRectangle(int minX, int minZ, int maxX, int maxZ) {}
     public record ProjectArea(UUID id, String name, ResourceLocation dimension, int color, List<ProjectRectangle> rectangles) {}
-    public record Snapshot(List<Claim> claims, List<Death> deaths, List<EventArea> events, List<ProjectArea> projects) {}
+    public record Snapshot(List<Death> deaths, List<EventArea> events, List<ProjectArea> projects) {}
     private record Events(List<EventArea> areas) {}
     private record Request() {}
     private record Publish(String name, ResourceLocation dimension, BlockPos position) {}
-    private record Unclaim(UUID id) {}
     private record EventTeleport(UUID id) {}
     private record BossTeleport(UUID id) {}
     private record ProjectCreate(String name, ResourceLocation dimension, int x1, int z1, int x2, int z2) {}
@@ -63,8 +59,6 @@ public final class MapNetwork {
                 .encoder((packet, out) -> { out.writeUtf(packet.name(), 80); out.writeResourceLocation(packet.dimension()); out.writeBlockPos(packet.position()); })
                 .decoder(in -> new Publish(in.readUtf(80), in.readResourceLocation(), in.readBlockPos()))
                 .consumerMainThread((packet, context) -> { var player = context.get().getSender(); if (player != null && SmpEnvironment.active(player) && com.siirio.jemserver.smp.SmpRequests.allow(player)) Landmarks.publish(player, packet.name(), packet.dimension(), packet.position()); context.get().setPacketHandled(true); }).add();
-        CHANNEL.messageBuilder(Unclaim.class, 4, NetworkDirection.PLAY_TO_SERVER).encoder((packet, out) -> out.writeUUID(packet.id())).decoder(in -> new Unclaim(in.readUUID()))
-                .consumerMainThread((packet, context) -> { var player = context.get().getSender(); if (player != null && SmpEnvironment.active(player) && com.siirio.jemserver.smp.SmpRequests.allow(player)) Claims.confirmDelete(player, packet.id()); context.get().setPacketHandled(true); }).add();
         CHANNEL.messageBuilder(Events.class, 5, NetworkDirection.PLAY_TO_CLIENT)
                 .encoder((packet, out) -> encodeEvents(packet.areas(), out)).decoder(in -> new Events(decodeEvents(in)))
                 .consumerMainThread((packet, context) -> { DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> MapClient.acceptEvents(packet.areas())); context.get().setPacketHandled(true); }).add();
@@ -154,7 +148,6 @@ public final class MapNetwork {
     }
 
     public static void request() { CHANNEL.sendToServer(new Request()); }
-    public static void unclaim(UUID id) { CHANNEL.sendToServer(new Unclaim(id)); }
     public static void teleportEvent(UUID id) { CHANNEL.sendToServer(new EventTeleport(id)); }
     public static void teleportBoss(UUID id) { CHANNEL.sendToServer(new BossTeleport(id)); }
     public static void createProject(String name, ResourceLocation dimension, int x1, int z1, int x2, int z2) { CHANNEL.sendToServer(new ProjectCreate(name, dimension, x1, z1, x2, z2)); }
@@ -162,8 +155,6 @@ public final class MapNetwork {
 
     public static void sync(ServerPlayer player) {
         if (!SmpEnvironment.active(player) || !CHANNEL.isRemotePresent(player.connection.connection)) return;
-        var claims = Claims.mapTerritories(player).stream().filter(claim -> claim.owner().equals(player.getUUID())).limit(MAX_CLAIMS)
-                .map(claim -> new Claim(claim.id(), claim.owner(), claim.name(), claim.dimension(), claim.minX(), claim.minZ(), claim.maxX(), claim.maxZ(), claim.color())).toList();
         var deaths = ServerData.get(player.server).deaths(player.getUUID()).stream().map(death -> new Death(death.id(), death.dimension(), BlockPos.containing(death.x(), death.y(), death.z()))).toList();
         var principal = com.siirio.jemidentity.api.IdentityPolicy.resolve(player);
         var projects = principal.isEmpty() ? java.util.List.<ProjectArea>of()
@@ -176,14 +167,10 @@ public final class MapNetwork {
                                         .map(rectangle -> new ProjectRectangle(rectangle.minX(), rectangle.minZ(), rectangle.maxX(), rectangle.maxZ()))
                                         .toList()))
                         .toList();
-        CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new Snapshot(claims, deaths, eventAreas(player), projects));
+        CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new Snapshot(deaths, eventAreas(player), projects));
     }
 
     private static void encode(Snapshot packet, FriendlyByteBuf out) {
-        out.writeCollection(packet.claims(), (buffer, claim) -> {
-            buffer.writeUUID(claim.id()); buffer.writeUUID(claim.owner()); buffer.writeUtf(claim.name(), 256); buffer.writeResourceLocation(claim.dimension());
-            buffer.writeInt(claim.minX()); buffer.writeInt(claim.minZ()); buffer.writeInt(claim.maxX()); buffer.writeInt(claim.maxZ()); buffer.writeInt(claim.color());
-        });
         out.writeCollection(packet.deaths(), (buffer, death) -> { buffer.writeUUID(death.id()); buffer.writeResourceLocation(death.dimension()); buffer.writeBlockPos(death.position()); });
         encodeEvents(packet.events(), out);
         out.writeCollection(packet.projects(), (buffer, project) -> {
@@ -196,8 +183,7 @@ public final class MapNetwork {
     }
 
     private static Snapshot decode(FriendlyByteBuf in) {
-        return new Snapshot(in.readCollection(FriendlyByteBuf.limitValue(java.util.ArrayList::new, MAX_CLAIMS), buffer -> new Claim(buffer.readUUID(), buffer.readUUID(), buffer.readUtf(256), buffer.readResourceLocation(), buffer.readInt(), buffer.readInt(), buffer.readInt(), buffer.readInt(), buffer.readInt())),
-                in.readCollection(FriendlyByteBuf.limitValue(java.util.ArrayList::new, 64), buffer -> new Death(buffer.readUUID(), buffer.readResourceLocation(), buffer.readBlockPos())), decodeEvents(in),
+        return new Snapshot(in.readCollection(FriendlyByteBuf.limitValue(java.util.ArrayList::new, 64), buffer -> new Death(buffer.readUUID(), buffer.readResourceLocation(), buffer.readBlockPos())), decodeEvents(in),
                 in.readCollection(FriendlyByteBuf.limitValue(java.util.ArrayList::new, MAX_PROJECTS), buffer -> new ProjectArea(
                         buffer.readUUID(), buffer.readUtf(48), buffer.readResourceLocation(), buffer.readInt(),
                         buffer.readCollection(FriendlyByteBuf.limitValue(java.util.ArrayList::new, MAX_PROJECT_RECTANGLES), rectangleBuffer ->

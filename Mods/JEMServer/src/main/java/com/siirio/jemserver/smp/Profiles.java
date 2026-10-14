@@ -100,6 +100,24 @@ public final class Profiles {
                     "mobsKilled",
                     player.getStats().getValue(net.minecraft.stats.Stats.CUSTOM.get(net.minecraft.stats.Stats.MOB_KILLS)));
         else if (source.contains("mobsKilled")) row.putInt("mobsKilled", source.getInt("mobsKilled"));
+        com.siirio.jemroles.api.RaceApi.get(viewer.server, id).ifPresent(race -> row.putString("race", race.race().name()));
+        var professionRecord = com.siirio.jemprofessions.progress.ProfessionSavedData.get(viewer.server).findOrEmpty(id);
+        var professions = new net.minecraft.nbt.ListTag();
+        for (var profession : com.siirio.jemprofessions.progress.ProfessionId.values()) {
+            long xp = professionRecord.xp(profession);
+            if (xp <= 0L) continue;
+            var value = new CompoundTag(); value.putString("id", profession.name()); value.putLong("xp", xp);
+            value.putInt("level", com.siirio.jemprofessions.progress.ProfessionFormula.levelFor(xp)); professions.add(value);
+        }
+        row.put("professions", professions);
+        var settlements = com.siirio.jemsettlements.town.SettlementSavedData.get(viewer.server);
+        settlements.towns().stream().filter(town -> town.members().contains(id)).findFirst().ifPresent(town -> {
+            row.putString("settlement", town.name()); row.putBoolean("settlementOwner", town.owner().equals(id));
+            row.putString("settlementTier", town.tier().name());
+        });
+        long recruits = settlements.towns().stream().flatMap(town -> settlements.workforce(town.id()).stream())
+                .filter(record -> record.ownerId().equals(id) && record.type() == com.siirio.jemsettlements.workforce.WorkforceType.RECRUIT).count();
+        row.putLong("recruitCount", recruits);
         return row;
     }
 

@@ -115,7 +115,7 @@ public final class EconomySavedData extends SavedData {
             return new WithdrawLedgerResult(PhysicalStatus.QUARANTINED, operationId, amount, List.copyOf(created));
         }
         physicalOperations.put(operationId, new PhysicalCoinOperation(operationId, accountId,
-                PhysicalCoinOperation.Kind.WITHDRAW, PhysicalCoinOperation.Phase.PREPARED, amount, Map.copyOf(quantities)));
+                PhysicalCoinOperation.Kind.WITHDRAW, PhysicalCoinOperation.Phase.PREPARED, amount, Map.copyOf(quantities), Map.of()));
         trimPhysicalHistory();
         setDirty();
         return new WithdrawLedgerResult(PhysicalStatus.PREPARED, operationId, amount, List.copyOf(created));
@@ -176,7 +176,7 @@ public final class EconomySavedData extends SavedData {
         }
         allocated.forEach((lotId, count) -> lots.computeIfPresent(lotId, (ignored, lot) -> lot.reserve(count)));
         physicalOperations.put(operationId, new PhysicalCoinOperation(operationId, accountId,
-                PhysicalCoinOperation.Kind.DEPOSIT, PhysicalCoinOperation.Phase.PREPARED, value, Map.copyOf(allocated)));
+                PhysicalCoinOperation.Kind.DEPOSIT, PhysicalCoinOperation.Phase.PREPARED, value, Map.copyOf(allocated), Map.of()));
         trimPhysicalHistory();
         setDirty();
         return new DepositReservation(PhysicalStatus.PREPARED, operationId, value, List.copyOf(selections));
@@ -205,6 +205,78 @@ public final class EconomySavedData extends SavedData {
         if (operation == null || operation.kind() != PhysicalCoinOperation.Kind.DEPOSIT ||
                 operation.phase() != PhysicalCoinOperation.Phase.PREPARED) return;
         operation.lotQuantities().forEach((lotId, count) -> lots.computeIfPresent(lotId, (ignored, lot) -> lot.cancelReserved(count)));
+        physicalOperations.put(operationId, operation.withPhase(PhysicalCoinOperation.Phase.QUARANTINED));
+        setDirty();
+    }
+
+    public synchronized ExchangeReservation prepareExchange(UUID accountId, List<DepositCandidate> candidates,
+            CoinDenomination source, int sourceCount, CoinDenomination target, UUID operationId) {
+        if (frozen || accountId == null || candidates == null || source == null || target == null || source == target
+                || sourceCount <= 0 || sourceCount > 4_096 || operationId == null)
+            return new ExchangeReservation(PhysicalStatus.INVALID, operationId, 0L, List.of(), List.of());
+        PhysicalCoinOperation replay = physicalOperations.get(operationId);
+        if (replay != null) {
+            List<CoinLot> replayOutputs = replay.outputLots().keySet().stream().map(lots::get).filter(Objects::nonNull).toList();
+            return new ExchangeReservation(replay.phase() == PhysicalCoinOperation.Phase.QUARANTINED ? PhysicalStatus.QUARANTINED : PhysicalStatus.REPLAYED,
+                    operationId, replay.value(), List.of(), replayOutputs);
+        }
+        long value;
+        try { value = Math.multiplyExact((long) sourceCount, source.value()); }
+        catch (ArithmeticException overflow) { return new ExchangeReservation(PhysicalStatus.INVALID, operationId, 0L, List.of(), List.of()); }
+        if (value % target.value() != 0L || value / target.value() <= 0L || value / target.value() > 4_096L)
+            return new ExchangeReservation(PhysicalStatus.INVALID, operationId, 0L, List.of(), List.of());
+        int remaining = sourceCount;
+        Map<UUID, Integer> allocated = new LinkedHashMap<>();
+        List<DepositSelection> selections = new ArrayList<>();
+        for (DepositCandidate candidate : candidates) {
+            if (remaining <= 0) break;
+            CoinLot lot = lots.get(candidate.lotId());
+            if (lot == null || lot.denomination() != source || candidate.denomination() != source) continue;
+            int accepted = Math.min(Math.min(candidate.count(), lot.available()), remaining);
+            if (accepted <= 0) continue;
+            selections.add(new DepositSelection(candidate.slot(), lot.id(), source, candidate.count(), accepted));
+            allocated.put(lot.id(), accepted);
+            remaining -= accepted;
+        }
+        if (remaining != 0) return new ExchangeReservation(PhysicalStatus.INVALID, operationId, 0L, List.copyOf(selections), List.of());
+        allocated.forEach((lotId, count) -> lots.computeIfPresent(lotId, (ignored, lot) -> lot.reserve(count)));
+        Map<UUID, Integer> outputQuantities = new LinkedHashMap<>();
+        List<CoinLot> outputs = new ArrayList<>();
+        long units = value / target.value();
+        int sequence = 0;
+        while (units > 0L) {
+            int count = (int) Math.min(64L, units);
+            UUID lotId = UUID.nameUUIDFromBytes((operationId + ":exchange:" + target.id() + ":" + sequence++).getBytes(StandardCharsets.UTF_8));
+            CoinLot lot = new CoinLot(lotId, operationId, target, count, 0, 0);
+            lots.put(lotId, lot);
+            outputs.add(lot);
+            outputQuantities.put(lotId, count);
+            units -= count;
+        }
+        physicalOperations.put(operationId, new PhysicalCoinOperation(operationId, accountId,
+                PhysicalCoinOperation.Kind.EXCHANGE, PhysicalCoinOperation.Phase.PREPARED, value,
+                Map.copyOf(allocated), Map.copyOf(outputQuantities)));
+        trimPhysicalHistory();
+        setDirty();
+        return new ExchangeReservation(PhysicalStatus.PREPARED, operationId, value, List.copyOf(selections), List.copyOf(outputs));
+    }
+
+    public synchronized boolean commitExchange(UUID operationId) {
+        PhysicalCoinOperation operation = physicalOperations.get(operationId);
+        if (operation == null || operation.kind() != PhysicalCoinOperation.Kind.EXCHANGE) return false;
+        if (operation.phase() == PhysicalCoinOperation.Phase.COMMITTED) return true;
+        if (operation.phase() != PhysicalCoinOperation.Phase.PREPARED) return false;
+        operation.lotQuantities().forEach((lotId, count) -> lots.computeIfPresent(lotId, (ignored, lot) -> lot.commitReserved(count)));
+        physicalOperations.put(operationId, operation.withPhase(PhysicalCoinOperation.Phase.COMMITTED));
+        setDirty();
+        return true;
+    }
+
+    public synchronized void cancelExchange(UUID operationId) {
+        PhysicalCoinOperation operation = physicalOperations.get(operationId);
+        if (operation == null || operation.kind() != PhysicalCoinOperation.Kind.EXCHANGE || operation.phase() != PhysicalCoinOperation.Phase.PREPARED) return;
+        operation.lotQuantities().forEach((lotId, count) -> lots.computeIfPresent(lotId, (ignored, lot) -> lot.cancelReserved(count)));
+        operation.outputLots().keySet().forEach(lots::remove);
         physicalOperations.put(operationId, operation.withPhase(PhysicalCoinOperation.Phase.QUARANTINED));
         setDirty();
     }
@@ -293,4 +365,6 @@ public final class EconomySavedData extends SavedData {
     public record DepositCandidate(int slot, UUID lotId, CoinDenomination denomination, int count) { }
     public record DepositSelection(int slot, UUID lotId, CoinDenomination denomination, int requested, int accepted) { }
     public record DepositReservation(PhysicalStatus status, UUID operationId, long value, List<DepositSelection> selections) { }
+    public record ExchangeReservation(PhysicalStatus status, UUID operationId, long value,
+                                      List<DepositSelection> selections, List<CoinLot> outputs) { }
 }

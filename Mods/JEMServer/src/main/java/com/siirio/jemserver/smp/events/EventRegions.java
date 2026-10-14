@@ -1,6 +1,5 @@
 package com.siirio.jemserver.smp.events;
 
-import com.siirio.jemserver.claims.Claims;
 import com.siirio.jemserver.smp.*;
 
 import net.minecraft.core.BlockPos;
@@ -178,10 +177,8 @@ public final class EventRegions {
         int chunks = SmpConfig.EVENT_REGION_CHUNKS.get();
         int r = chunks * 8;
         boolean manual = event.getString("slot").startsWith("manual:");
-        int claimBuffer = SmpConfig.EVENT_CLAIM_BUFFER.get();
-        var claims = Claims.territories(server);
         if(event.contains("requestedPosition"))
-            return reserveRequested(server,event,level,BlockPos.of(event.getLong("requestedPosition")),chunks,claimBuffer,claims);
+            return reserveRequested(server,event,level,BlockPos.of(event.getLong("requestedPosition")),chunks);
         record Anchor(ServerPlayer player, BlockPos position) {}
         var anchors = new ArrayList<Anchor>();
         for (var player : server.getPlayerList().getPlayers()) {
@@ -223,16 +220,6 @@ public final class EventRegions {
                                             && other.getString("dimension")
                                                     .equals(level.dimension().location().toString())
                                             && minX <= maxX(other) && maxX >= minX(other) && minZ <= maxZ(other) && maxZ >= minZ(other))) continue;
-            if (claims.stream()
-                    .anyMatch(
-                            claim ->
-                                    claim.dimension().equals(level.dimension().location())
-                                            && claim.minX() <= maxX + claimBuffer
-                                            && claim.maxX() >= minX - claimBuffer
-                                            && claim.minZ() <= maxZ + claimBuffer
-                                            && claim.maxZ() >= minZ - claimBuffer)) continue;
-            if (anchor.player() != null && !Claims.bossAreaAvailable(anchor.player(), new BlockPos(minX,center.getY(),minZ), new BlockPos(maxX,center.getY(),maxZ)))
-                continue;
             boolean safe = true;
             for (int x = minX >> 4; x <= maxX >> 4 && safe; x++)
                 for (int z = minZ >> 4; z <= maxZ >> 4; z++) {
@@ -252,7 +239,7 @@ public final class EventRegions {
     }
 
     private static boolean reserveRequested(MinecraftServer server,CompoundTag event,ServerLevel level,BlockPos requested,
-                                            int chunks,int claimBuffer,java.util.List<Claims.Territory> claims) {
+                                            int chunks) {
         int size=chunks*16;
         int radius=size/2;
         int minX=requested.getX()-radius;
@@ -266,9 +253,6 @@ public final class EventRegions {
                 &&other.getString("state").equals("ACTIVE")
                 &&other.getString("dimension").equals(level.dimension().location().toString())
                 &&minX<=maxX(other)&&maxX>=minX(other)&&minZ<=maxZ(other)&&maxZ>=minZ(other))) return false;
-        if(claims.stream().anyMatch(claim->claim.dimension().equals(level.dimension().location())
-                &&claim.minX()<=maxX+claimBuffer&&claim.maxX()>=minX-claimBuffer
-                &&claim.minZ()<=maxZ+claimBuffer&&claim.maxZ()>=minZ-claimBuffer)) return false;
         for(int chunkX=minX>>4;chunkX<=maxX>>4;chunkX++)
             for(int chunkZ=minZ>>4;chunkZ<=maxZ>>4;chunkZ++) level.getChunk(chunkX,chunkZ);
         if(!enoughLand(level,minX,minZ,maxX,maxZ)) return false;
@@ -298,26 +282,6 @@ public final class EventRegions {
             if(state.isFaceSturdy(level,pos,net.minecraft.core.Direction.UP)) return true;
         }
         return false;
-    }
-
-    public static boolean claimAllowed(
-            net.minecraft.server.level.ServerPlayer player, Claims.Area area) {
-        return SmpData.get(player.server).all("events").stream()
-                .filter(
-                        e ->
-                                e.getString("state").equals("ACTIVE")
-                                        && e.getString("dimension")
-                                                .equals(
-                                                        player.level()
-                                                                .dimension()
-                                                                .location()
-                                                                .toString()))
-                .noneMatch(
-                        e -> {
-                            int buffer = SmpConfig.EVENT_CLAIM_BUFFER.get();
-                            return area.minX() <= maxX(e) + buffer && area.maxX() >= minX(e) - buffer
-                                    && area.minZ() <= maxZ(e) + buffer && area.maxZ() >= minZ(e) - buffer;
-                        });
     }
 
     private EventRegions() {}

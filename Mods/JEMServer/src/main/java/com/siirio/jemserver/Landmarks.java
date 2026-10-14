@@ -2,7 +2,6 @@ package com.siirio.jemserver;
 
 import com.siirio.jemmenus.VanillaMenus;
 
-import com.siirio.jemserver.claims.Claims;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ChunkPos;
@@ -81,8 +80,7 @@ public final class Landmarks {
             return false;
         }
         if (!dimension.equals(player.level().dimension().location()) || !player.serverLevel().getWorldBorder().isWithinBounds(position)
-                || position.getY() < player.level().getMinBuildHeight() || position.getY() >= player.level().getMaxBuildHeight()
-                || !Claims.available(player, new ChunkPos(position))) {
+                || position.getY() < player.level().getMinBuildHeight() || position.getY() >= player.level().getMaxBuildHeight()) {
             player.sendSystemMessage(Component.translatable("jem.landmarks.error.location"));
             return false;
         }

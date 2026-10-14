@@ -2,7 +2,6 @@ package com.siirio.jemserver.client.ui;
 
 import static com.siirio.jemserver.client.ui.JemPalette.*;
 
-import com.siirio.jemserver.client.smp.ClaimsScreenBridge;
 import com.siirio.jemserver.client.smp.SmpGuiAssets;
 import com.siirio.jemserver.client.smp.SmpSidebar;
 
@@ -64,8 +63,7 @@ public final class JemMenuScreen extends AbstractContainerScreen<AbstractContain
     public JemMenuScreen(AbstractContainerMenu menu, Inventory inventory, Component title, String kind) {
         super(menu, inventory, title);
         this.kind = kind;
-        claimsContext = claimKind(kind) || ClaimsScreenBridge.active()
-                || net.minecraft.client.Minecraft.getInstance().screen instanceof JemMenuScreen previous && previous.claimsContext;
+        claimsContext = false;
         this.displayTitle = title.getString();
     }
 
@@ -396,7 +394,6 @@ public final class JemMenuScreen extends AbstractContainerScreen<AbstractContain
             if (!kind.equals(nextKind) || !displayTitle.equals(nextTitle)) {
                 previewSlot = -1;
                 kind = nextKind;
-                claimsContext |= claimKind(nextKind);
                 displayTitle = nextTitle;
                 scroll = 0;
                 if (search != null) {
@@ -437,10 +434,6 @@ public final class JemMenuScreen extends AbstractContainerScreen<AbstractContain
     }
 
     private void activate(int slot) {
-        if (claimsContext && (slot == BACK_ACTION || slot == 49 && kind.equals("claims_overview"))) {
-            ClaimsScreenBridge.back();
-            return;
-        }
         if (slot == MAP_ACTION && mapLocation != null) {
             var dimension = net.minecraft.resources.ResourceLocation.tryParse(mapLocation.getString("jem_ui_dimension"));
             if (dimension != null) com.siirio.jemserver.client.xaero.MapClient.open(dimension, net.minecraft.core.BlockPos.of(mapLocation.getLong("jem_ui_position")));
@@ -459,10 +452,6 @@ public final class JemMenuScreen extends AbstractContainerScreen<AbstractContain
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
         if (button != 0) return true;
-        if (claimsContext) {
-            String route = sidebar.at(mouseX, mouseY);
-            if (route != null) { ClaimsScreenBridge.open(route); return true; }
-        }
         if (searching()) {
             boolean focused = search.mouseClicked(mouseX, mouseY, button);
             search.setFocused(focused);
@@ -523,13 +512,8 @@ public final class JemMenuScreen extends AbstractContainerScreen<AbstractContain
         return claimsContext ? Math.max(86, Math.min(126, imageWidth / 4)) : imageWidth >= 430 ? 133 : 99;
     }
 
-    private static boolean claimKind(String kind) {
-        return java.util.Set.of("claims_overview", "claim", "permissions", "members", "member", "member_defaults", "member_candidates", "claim_settings", "claim_players", "claim_player", "profile_claims", "all_claims").contains(kind);
-    }
-
     @Override
     public void onClose() {
-        if (claimsContext) ClaimsScreenBridge.clear();
         super.onClose();
     }
 

@@ -54,9 +54,6 @@ public final class SmpRuntime {
     public void starting(net.minecraftforge.event.server.ServerStartingEvent event) {
         if (!SmpEnvironment.active(event.getServer())) return;
         EventRuntime.starting();
-        com.siirio.jemserver.claims.Claims.configureReservation(EventRegions::claimAllowed);
-        if (net.minecraftforge.fml.ModList.get().isLoaded("create"))
-            com.siirio.jemserver.claims.Claims.configurePlacement(EventHooks::machinePlacement);
     }
 
     @SubscribeEvent
@@ -64,118 +61,10 @@ public final class SmpRuntime {
         if (!com.siirio.jemidentity.api.DedicatedSmp.accepts(event)) return;
         com.siirio.jemserver.smp.events.calendar.HolidayCommands.register(event.getDispatcher());
         com.siirio.jemserver.map.ProjectCommands.register(event.getDispatcher());
-        var command =
-                Commands.literal("smp")
-                        .executes(
-                                c -> {
-                                    SmpNetwork.open(
-                                            c.getSource().getPlayerOrException(), "events", null);
-                                    return 1;
-                                });
-        for (String tab : java.util.List.of("parties", "shops", "events", "profiles", "prizes"))
-            command.then(
-                    Commands.literal(tab)
-                            .executes(
-                                    c -> {
-                                        SmpNetwork.open(
-                                                c.getSource().getPlayerOrException(), tab, null);
-                                        return 1;
-                                    })
-                            .then(
-                                    Commands.argument("id", UuidArgument.uuid())
-                                            .executes(
-                                                    c -> {
-                                                        SmpNetwork.open(
-                                                                c.getSource()
-                                                                        .getPlayerOrException(),
-                                                                tab,
-                                                                UuidArgument.getUuid(c, "id"));
-                                                        return 1;
-                                                    })
-                                            .then(
-                                                    Commands.literal("join")
-                                                            .executes(
-                                                                    c -> {
-                                                                        var p =
-                                                                                c.getSource()
-                                                                                        .getPlayerOrException();
-                                                                        var row =
-                                                                                SmpData.get(
-                                                                                                p.server)
-                                                                                        .find(
-                                                                                                "parties",
-                                                                                                UuidArgument
-                                                                                                        .getUuid(
-                                                                                                                c,
-                                                                                                                "id"));
-                                                                        try {
-                                                                            SmpRecords.require(
-                                                                                    tab.equals(
-                                                                                                    "parties")
-                                                                                            && row
-                                                                                                    != null,
-                                                                                    "unavailable");
-                                                                            Parties.join(p, row);
-                                                                            Navigation.accepted(p);
-                                                                            SmpNetwork.open(
-                                                                                    p,
-                                                                                    tab,
-                                                                                    row.getUUID(
-                                                                                            "id"));
-                                                                        } catch (
-                                                                                IllegalArgumentException
-                                                                                        failure) {
-                                                                            p.sendSystemMessage(
-                                                                                    Component
-                                                                                            .translatable(
-                                                                                                    "jem.smp.error."
-                                                                                                            + failure
-                                                                                                                    .getMessage()));
-                                                                        }
-                                                                        return 1;
-                                                                    }))));
-        command.then(
-                Commands.literal("host")
-                        .executes(
-                                c -> {
-                                    var p = c.getSource().getPlayerOrException();
-                                    var bosses =
-                                            p.serverLevel()
-                                                    .getEntitiesOfClass(
-                                                            LivingEntity.class,
-                                                            p.getBoundingBox()
-                                                                    .inflate(
-                                                                            SmpConfig
-                                                                                    .ENCOUNTER_RADIUS
-                                                                                    .get()),
-                                                            b -> BossHostingPrompt.canOffer(p, b));
-                                    if (bosses.size() == 1) host(p, bosses.get(0));
-                                    else
-                                        p.sendSystemMessage(
-                                                Component.translatable(
-                                                        "jem.smp.error.one_awakened_boss_required"));
-                                    return 1;
-                                })
-                        .then(
-                                Commands.argument("boss", UuidArgument.uuid())
-                                        .executes(
-                                                c -> {
-                                                    var p = c.getSource().getPlayerOrException();
-                                                    var entity =
-                                                            p.serverLevel()
-                                                                    .getEntity(
-                                                                            UuidArgument.getUuid(
-                                                                                    c, "boss"));
-                                                    if (entity instanceof LivingEntity boss
-                                                            && BossHostingPrompt.canOffer(p, boss))
-                                                        host(p, boss);
-                                                    else
-                                                        p.sendSystemMessage(
-                                                                Component.translatable(
-                                                                        "jem.smp.error.one_awakened_boss_required"));
-                                                    return 1;
-                                                })));
-        event.getDispatcher().register(command);
+        event.getDispatcher().register(Commands.literal("smp").executes(c -> {
+            SmpNetwork.open(c.getSource().getPlayerOrException(), "home", null);
+            return 1;
+        }));
     }
 
     public static void host(ServerPlayer player, LivingEntity boss) {

@@ -1,6 +1,5 @@
 package com.siirio.jemserver.map;
 
-import com.siirio.jemserver.ClaimBoundaryGeometry;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -17,7 +16,7 @@ public final class ProjectRegion {
     private final ResourceLocation dimension;
     private String name;
     private final int color;
-    private final List<ClaimBoundaryGeometry.Rectangle> rectangles = new ArrayList<>();
+    private final List<RegionGeometry.Rectangle> rectangles = new ArrayList<>();
     private final Set<UUID> collaborators = new LinkedHashSet<>();
     private long revision;
 
@@ -30,10 +29,10 @@ public final class ProjectRegion {
     public ResourceLocation dimension() { return dimension; }
     public String name() { return name; }
     public int color() { return color; }
-    public List<ClaimBoundaryGeometry.Rectangle> rectangles() { return List.copyOf(rectangles); }
+    public List<RegionGeometry.Rectangle> rectangles() { return List.copyOf(rectangles); }
     public Set<UUID> collaborators() { return Set.copyOf(collaborators); }
     public long revision() { return revision; }
-    void add(ClaimBoundaryGeometry.Rectangle rectangle) { rectangles.add(rectangle); revision++; }
+    void add(RegionGeometry.Rectangle rectangle) { rectangles.add(rectangle); revision++; }
     boolean remove(int index) {
         if (index < 0 || index >= rectangles.size()) return false;
         rectangles.remove(index);
@@ -64,7 +63,7 @@ public final class ProjectRegion {
         for (Tag raw : tag.getList("Rectangles", Tag.TAG_COMPOUND)) {
             int[] bounds = ((CompoundTag) raw).getIntArray("Bounds");
             if (bounds.length == 4 && bounds[2] > bounds[0] && bounds[3] > bounds[1])
-                value.rectangles.add(new ClaimBoundaryGeometry.Rectangle(bounds[0], bounds[1], bounds[2], bounds[3]));
+                value.rectangles.add(new RegionGeometry.Rectangle(bounds[0], bounds[1], bounds[2], bounds[3]));
         }
         for (Tag raw : tag.getList("Collaborators", Tag.TAG_COMPOUND)) value.collaborators.add(((CompoundTag) raw).getUUID("Id"));
         value.revision = Math.max(0L, tag.getLong("Revision"));

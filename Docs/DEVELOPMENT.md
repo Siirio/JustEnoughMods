@@ -27,7 +27,7 @@
 | Одобренное поведение, которое нельзя регрессировать | `AGENTS.logic-locks.md` |
 | Module ownership, Forge engineering, integration, networking, performance, resources, release и distribution | этот документ |
 | Конкретный event, arena и encounter lifecycle | соответствующий `Docs/events/*.md` |
-| SMP, claims, shops, profiles, GUI navigation и visual language | `Docs/smp-gui/README.md` |
+| SMP, shops, Market, profiles, GUI navigation и visual language | `Docs/smp-gui/README.md` |
 | Server console и recovery operations | `Docs/SERVER_COMMANDS.md` |
 | Forge API/source/bytecode workflow | `minecraft-forge-lab` |
 | Новая gameplay system, campaign, boss AI и attack choreography | `minecraft-forge-feature-designer` |
@@ -46,7 +46,7 @@ Changelog описывает только запрошенные player-visible 
 | `JEMTwelveEyes` | Campaign graph, prerequisites, Eyes и locator/site state; внешний контракт — `CampaignApi` и immutable `CampaignTerritory` |
 | `JEMCompat` | Изолированные compatibility adapters; drill lifecycle принадлежит самостоятельному addon |
 | `JEMDrillLifecycle` | Moving/stationary Create drill wear, replacement, servicing и optional Jade presentation; только Create является обязательным модом |
-| `JEMMenuSupport` | Небольшая native menu library без mod ID, registry, gameplay state или network; Claims и Server встраивают один и тот же JAR через Forge Jar-in-Jar |
+| `JEMMenuSupport` | Небольшая native menu library без mod ID, registry, gameplay state или network; Server встраивает JAR через Forge Jar-in-Jar |
 | `JEMPackCore` | Pack-specific data, resources и integration policy без чужой gameplay state |
 | `JEMIdentity` | Stable verified principal: integrated owner, online profile, or unlocked Server Login connection; never an offline username |
 | `JEMRoles` | Player race selection, racial traits and optional native-mod race adapters |
@@ -54,7 +54,6 @@ Changelog описывает только запрошенные player-visible 
 | `JEMEconomy` | Fixed Coin supply, Wallet balances, five backed physical denominations, issuance/redemption lots, escrow accounts and idempotent funded transfers |
 | `JEMSettlements` | Town/resident identity, physical storage links, one native Workforce/Defense roster, funded payroll, bounded happiness/amenities, inactive-interval journal and personal mount evidence; never land protection or imaginary inventory |
 | `JEMVillagerTalking` | Изолированные реакции, реплики, сеть и HUD-текст жителей; мод остаётся development-only до отдельного решения о публикации |
-| `JEMClaims` | Territories, permissions и protection integration |
 | `JEMServer` | SMP, parties, shops и server UX; внутренний Events domain делегирует party operations в `EventParties`, принимает `EventParticipants` и регистрируется через `EventRuntime` |
 | `AutoModpack` | Bootstrap, manifest generations, verified delta transfer, managed-file deletion и client rollback для JEM Pack Sync |
 | `JEMBootstrap` | Узкий source patch native AutoModpack для повторяемой установки и восстановления до загрузки модов; не вводит второй updater или ownership ledger |
@@ -89,7 +88,7 @@ Changelog описывает только запрошенные player-visible 
 - NPC-origin payouts share the persisted `MarketSavedData` caps (currently4,000Copper world/day and240Copper account/day) across Shipping Box and the public inventory/native-container sale routes. Two deterministic global demand groups receive150% and125%; Wallet and Town Hall consume the same bulletin. These are existing source facts, not new balancing in this restoration.
 - Vanilla and compatible `AbstractVillager` offers retain native opening, `MerchantMenu`/`MerchantScreen`, full original list, real input slots and stock/restock callbacks. Dedicated-only Economy Mixins adapt monetary result takes; the old18-slot custom menu/screen is removed, its registry ID remains an unused native-screen compatibility alias. Display coins are not physical cash; sales credit Wallet, purchases fund NPC_MARKET through existing Wallet/lot redemption. Original item barter remains native. Unknown/NBT/protected offers remain visible/unavailable until an authoritative Coin price/eligibility exists; no exchange rate is invented.
 - Coin result actions acknowledge synchronized quote revision/selection and a bounded operation nonce; unquoted monetary takes are denied. The server validates original item terms, both input orientations, account, distance, stock, reserve, quota and output destination. Roles owns Human's one Coin discount and reads scoped paid-currency callback context to avoid emerald refunds after Coin settlement.
-- The Buyer uses native demand-derived offers and no chat bulletin/errors. `/market` opens a transient read-only native merchant projection without locating/loading an NPC chunk. Xaero visibility is local `jem-map-layers-client.toml`; native dropdown choices control outlines/hovered labels without changing access/private points.
+- The Buyer and `/smp` Market use the same canonical demand-derived quotes, policies and limits. The Market screen supports real server-authorized purchase/sale; finished meals remain outside the universal catalog. Xaero visibility is local `jem-map-layers-client.toml`; native dropdown choices control project/event outlines and hovered labels without changing access/private points.
 - Native-interface source introduces Economy wallet protocol3 and requires matching Economy/Roles/Server client-and-server artifacts upon an explicit build/release request. Build Identity/Economy before Roles (the optional Coin API is compile-only), then dependent Server. Source push does not update installed JARs; restoration has no build/game verification.
 - Collections, caches и pending requests имеют owner, expiry/size bound и cleanup lifecycle.
 
@@ -135,7 +134,7 @@ Changelog описывает только запрошенные player-visible 
 
 - GraveStone 1.0.35 владеет новыми смертями; Jack's Gravestones сохраняет legacy registry/saved-data recovery, но не захватывает новые inventories при наличии GraveStone.
 - Все неполученные graves сохраняются между смертями; любой player может recover/break grave, environment/mobs не уничтожают grave, equipped Backpacked backpack остаётся на игроке.
-- TPA new-world cooldown равен пяти секундам; `/deaths` и `/death` принадлежат JEM, `/back` остаётся TPA.
+- TPA new-world cooldown равен пяти секундам; Death History принадлежит профилю `/smp`, `/back` остаётся TPA.
 - `options.txt` distribution template сохраняет data version `3465`, language, полный resource-pack order и все Legacy keybinds.
 - TLauncher export содержит matching version JSON/JAR и sanitized `TLauncherAdditional.json` без локальных пользовательских путей.
 - Safe-mode/crash recovery не перезаписывает distributable options из случайно изменённого runtime-файла.
@@ -146,7 +145,7 @@ Build или runtime action выполняется только по прямо�
 
 Явно запрошенный overnight player QA использует `.agents/skills/jem-overnight-player-qa/SKILL.md` и durable отчёт в `Docs/playtests/`. Разрешение относится только к указанной локальной сессии: отдельный disposable world/server clone, `test jem`, native AutoModpack и проверенный backup; MineRENT, stable profile и release baseline не входят в этот scope. У JEMCompat нет compile-зависимости от удалённого BackToBed; `/home` принадлежит JEM Server.
 
-1. Production JAR обычного модуля завершает `jar` через `reobfJar`; unobfuscated dev JAR не устанавливается. У модулей с `JEMMenuSupport/embed.gradle` (`JEMServer`, `JEMClaims`) `jar` создаёт только `-slim.jar`: полный distributable собирается через `jarJar` и `reobfJarJar`. Перед установкой проверяются точный classifier, timestamp/hash свежего output, embedded MenuSupport и ключевой текущий класс; успешный `reobfJar` для slim не подтверждает freshness ранее существовавшего полного JAR.
+1. Production JAR обычного модуля завершает `jar` через `reobfJar`; unobfuscated dev JAR не устанавливается. У `JEMServer` с `JEMMenuSupport/embed.gradle` `jar` создаёт только `-slim.jar`: полный distributable собирается через `jarJar` и `reobfJarJar`. Перед установкой проверяются точный classifier, timestamp/hash свежего output, embedded MenuSupport и ключевой текущий класс; успешный `reobfJar` для slim не подтверждает freshness ранее существовавшего полного JAR.
 2. Client-loaded module заменяется в названном active client; shared module также обновляет dedicated server.
    Shared `embed.gradle` сохраняет generated refmap из свежего slim в полном JAR, объявляет native MixinGradle compiler metadata outputs и отключает incremental javac для этих модулей. Полная сборка отказывается публиковать JAR без refmap. После packaging-изменений проверяются свежая и обычная повторная сборки, фактический mapping и разрешённый runtime start; успешная компиляция сама по себе не подтверждает загрузку Mixins.
 3. Перед заменой server JAR сервер корректно останавливается, JVM должна завершиться, затем JAR заменяется и сервер запускается по запрошенному workflow.
@@ -232,15 +231,15 @@ Events остаётся внутри JEMServer: его event records наход�
 
 Drill addon публикует фактический `DrillLifecycleEvent` для work/replacement/service. Pack Core слушает этот event только при наличии addon и владеет pack advancement IDs. Moving-only batch/final-service условия сохранены. Compat больше не регистрирует drill Mixins и не содержит копию drill lifecycle. JEI выбирает свой overlay при discovery плагина, а optional Curios policy находится за изолированным adapter.
 
-MenuSupport остаётся общей библиотекой переводимых vanilla-menu primitives. JEM Claims больше не входит в intended runtime: его source временно сохранён до отдельного удаления, локальный disposable server запускается без его JAR, а MineRENT удалит JAR только в следующем явно разрешённом deployment. Settlement territories не являются приватами и никогда не дают land protection. `GAMELIBRARY` помещает MenuSupport в игровой module layer; вручную устанавливать library JAR не требуется, а `-slim.jar` не распространяется.
+MenuSupport остаётся общей библиотекой переводимых vanilla-menu primitives. JEM Claims и Flan удалены из source/intended canonical pack; старые world SavedData сохраняются. Settlement territories не являются приватами и никогда не дают land protection. `GAMELIBRARY` помещает MenuSupport в игровой module layer; вручную устанавливать library JAR не требуется, а `-slim.jar` не распространяется.
 
 ### Persistence и установка
 
 Сохраняются `jem_smp_v2`, `jemcompat_main_campaign`, `jem_claim_zones`, `jem_world_boss_tiers`, `jem_hosted_boss_rewards`, прежние NBT keys и registry IDs. Drill NBT `JemDrillWear`, `JemDrillRepairs`, `JemDrillReplacementPos` и legacy `jemcompat` resource namespace не меняются. Перенос Java не создаёт новый world schema и не повторяет исторические victories/rewards.
 
-SMP channel `jem_server:smp_v2` теперь использует protocol `3`: typed action kinds/inputs заменяют action JSON, Update включает session/base/current revision, Query поддерживает bounded resync. Требуется одновременная установка matching Server JAR на клиент и сервер. Старый Compat необходимо заменить новым вместе с добавлением `jem_drill_lifecycle-1.0.0.jar`; две версии Compat/addon одновременно недопустимы. Claims не распространяется, Adaptive Culling — client-only, Villager Talking — development-only.
+SMP channel `jem_server:smp_v2` использует protocol `4`: typed action kinds/inputs заменяют action JSON, Update включает session/base/current revision, Query поддерживает bounded resync и owner-only home preview. Требуется одновременная установка matching Server JAR на клиент и сервер. Старый Compat необходимо заменить новым вместе с добавлением `jem_drill_lifecycle-1.0.0.jar`; две версии Compat/addon одновременно недопустимы. Claims/Flan не распространяются, Adaptive Culling — client-only, Villager Talking — development-only.
 
-Build order: World Boss Tiers и Advancements → Twelve Eyes и Drill Lifecycle → Pack Core; MenuSupport → Claims → Server. Output каждого модуля находится в `build/libs`; подготовленный набор и installation manifest — `build/architecture-revamp/staged`. Live runtime, clean Client, stable profile и release baseline не обновляются архитектурной задачей.
+Build order: World Boss Tiers и Advancements → Twelve Eyes и Drill Lifecycle → Pack Core; MenuSupport → Server. Output каждого модуля находится в `build/libs`; подготовленный набор и installation manifest — `build/architecture-revamp/staged`. Live runtime, clean Client, stable profile и release baseline не обновляются архитектурной задачей.
 
 ### Resource ownership
 
@@ -266,8 +265,7 @@ World Boss Tiers загружает standalone `defaults/bosses` первым, �
 | Combat `jem_server:combat_v2` / 4 | 0 S2C Update; 1 C2S Claim; 2 C2S Vote | NBT accounting1MiB; result/event UUID; persisted reward owner и active participant vote validation | Combat participants; result/snapshot maps logout/stop, HUD logout/world unload |
 | Navigation `jem_server:navigation` / 2 | 0 S2C Points | ≤64 points, subsystem16/label80, ID/dimension/position/expiry; authorization у party/shop owner | Requesting player; expiry, logout/stop, optional Xaero teardown |
 | Landmarks `jem_server:landmarks` / 4 | 0 S2C bounded Snapshot/delta/reset; 1 C2S Remove | ≤4096 records/removals per frame, configurable syncBatchSize default128; name80/key160/category32/creator64; boss-only global, legacy ordinary creator-only, remove requires creator and excludes global boss | Bootstrap queue one frame/20 ticks/player; logout/offline/stop cleanup; persisted discoveries and personal legacy remain |
-| Map `jem_server:map` / 5 | 0 S2C Snapshot; 1 C2S Request; 2 C2S Publish; 4 C2S Unclaim; 5 S2C Events; 6 C2S EventTeleport; 7 C2S BossTeleport | own claims≤16384/active event areas≤64; exact min/max rectangle; legacy publish name80 + dimension/position сохраняет только creator-private Landmarks; event/boss packets carry only server-owned UUID; boss ID resolves through discovered system Landmark + canonical registered arena + Campaign eligibility; request cadence20 ticks, mutations используют общий action throttle | Requesting map viewer; Blood Moon/Resource Rush area exists only while its event is active; hosted Boss Fight and Boss Raid share one canonical structure layer; one bounded pending official travel/player with chunk-ticket expiry; per-player event cache offline/stop, client disconnect |
-| Claims view `jem_server:claim_boundaries` / 1 | 0 S2C Snapshot | ≤256 bounds, tool/name256, dimension/selection; Flan остаётся permission owner | Player holding territory tool; server logout/stop и client lifecycle |
+| Map `jem_server:map` / 6 | 0 S2C Snapshot; 1 C2S Request; 2 C2S Publish; 5 S2C Events; 6 C2S EventTeleport; 7 C2S BossTeleport; 8 C2S ProjectCreate; 9 C2S ProjectExtend | active event areas≤64/projects≤128; exact min/max rectangles; legacy publish name80 + dimension/position сохраняет только creator-private Landmarks; event/boss packets carry only server-owned UUID; boss ID resolves through discovered system Landmark + canonical registered arena + Campaign eligibility; request cadence20 ticks, mutations используют общий action throttle | Requesting map viewer; Blood Moon/Resource Rush area exists only while its event is active; hosted Boss Fight and Boss Raid share one canonical structure layer; project overlays contain only authorized owner/collaborator regions; per-player event cache offline/stop, client disconnect |
 | Fishing `jem_server:fishing_odds` / 1 | 0 S2C ProfileSync | bounded JSON131072 chars, ≤1024 validated rod profiles; сервер владеет odds | Login recipient; existing FishingTooltips logout очищает client profile state |
 | World Tier `jem_world_boss_tiers:main` / 5 | 0 S2C TierSync | tier/count/next threshold + ≤1024 weapon IDs | Connected players; current tier/registry owner lifecycle |
 | Campaign `jem_twelve_eyes:main` / 4 | 0 S2C OpenMap; 1 S2C GateWarning; 2 S2C Ending | position/dimension/marker key≤256/shared acknowledgement; two component JSON strings≤32767; empty ending intent | Target player; shared locator opens map without personal duplication; native singleplayer, warning cleanup and approved credits preserved |
@@ -283,7 +281,7 @@ SMP сохраняет 64 replay receipts на игрока и отвергае�
 
 Combat-balance navigation lives in `Docs/power-system/` and the deterministic derived `Catalog/views/power/` partitions. The power layer explains native expression -> modifiers -> JEM changes -> effective scenario -> acquisition -> assessment, but never becomes a universal damage owner. Rebuild it with `python Catalog/generator/build_power_views.py` after relevant Atlas, installed-artifact evidence or combat-owner changes. A warning is review evidence only and must not auto-edit production balance.
 
-Settlement background production owns durable obligations, not virtual stock. Only inspected Workers Farmer evidence may create the current wheat obligation; input is consumed from and output is materialized into explicitly linked loaded storage under bounded scans. Economy cannot sell a pending or quarantined obligation. Town territory is a persisted dimension-aware soft guidance boundary: it neither grants claim permissions nor replaces Flan.
+Settlement background production owns durable obligations, not virtual stock. Only inspected Workers Farmer evidence may create the current wheat obligation; input is consumed from and output is materialized into explicitly linked loaded storage under bounded scans. Economy cannot sell a pending or quarantined obligation. Town territory is a persisted dimension-aware soft guidance boundary and grants no land permissions.
 
 TinyInv remains the native owner of expanded inventory/hotbar indexing, scrolling and rendering. JEM Professions only grants its synchronized hotbar attribute to an eligible level-20 Architect and provides validated direct-slot packets. BackToBed is no longer a distribution dependency; JEM Server owns `/home` validation against server identity, recent damage, active event boundaries, vanilla respawn state and shared safe-arrival rules.
 

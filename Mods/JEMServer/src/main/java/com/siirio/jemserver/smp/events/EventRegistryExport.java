@@ -28,11 +28,8 @@ public final class EventRegistryExport {
             if(ids.isEmpty()) org.slf4j.LoggerFactory.getLogger(EventRegistryExport.class).warn("Blood Moon category {} has no installed entity entries",category);
             mobs.add(category.name(),ids);
         }
-        var structures=new JsonArray();
-        var registry=event.getServer().registryAccess().registryOrThrow(Registries.STRUCTURE);
-        registry.getTag(TagKey.create(Registries.STRUCTURE,new ResourceLocation("jem_claims","boss_territories"))).ifPresent(values->values.forEach(holder->structures.add(registry.getKey(holder.value()).toString())));
         var json=new GsonBuilder().setPrettyPrinting().create();
-        var snapshots=Map.of("boss_profiles.json",json.toJson(bosses),"blood_moon_entities.json",json.toJson(mobs),"event_structures.json",json.toJson(structures));
+        var snapshots=Map.of("boss_profiles.json",json.toJson(bosses),"blood_moon_entities.json",json.toJson(mobs));
         var output=FMLPaths.CONFIGDIR.get().resolve("jem/generated");
         java.util.concurrent.CompletableFuture.runAsync(()->{
             try { Files.createDirectories(output);for(var entry:snapshots.entrySet()) Files.writeString(output.resolve(entry.getKey()),entry.getValue()); }

@@ -1,22 +1,22 @@
 # Economy registry coverage
 
-Generated from Atlas schema 1 at `2026-10-13T17:39:05.288434+00:00` for `f3bd0fcc177743d0c765d811b7c9b48126fc29e6`.
+Generated from Atlas schema 1 at `2026-10-14T09:16:35.842387+00:00` for `1b1d50c522d3cb4b047edf0fce33a88582afbcff`.
 
-Static evidence observed 17,062 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
+Static evidence observed 17,063 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
 
 | Mod | Registered | Reviewed | Unknown | BUY_AND_SELL | NONE |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | alexscaves | 610 | 0 | 610 | 0 | 610 |
-| alexsmobs | 322 | 3 | 319 | 3 | 319 |
+| alexsmobs | 322 | 3 | 319 | 2 | 320 |
 | animal_feeding_trough | 1 | 0 | 1 | 0 | 1 |
-| aquamirae | 88 | 2 | 86 | 2 | 86 |
+| aquamirae | 88 | 2 | 86 | 1 | 87 |
 | backpacked | 12 | 0 | 12 | 0 | 12 |
 | backtobed | 6 | 0 | 6 | 0 | 6 |
 | baguettelib | 1 | 0 | 1 | 0 | 1 |
-| bakery | 84 | 3 | 81 | 3 | 81 |
+| bakery | 84 | 3 | 81 | 0 | 84 |
 | barnyardbuddies | 59 | 0 | 59 | 0 | 59 |
 | bbb | 263 | 0 | 263 | 0 | 263 |
-| beachparty | 86 | 2 | 84 | 2 | 84 |
+| beachparty | 86 | 2 | 84 | 1 | 85 |
 | bellsandwhistles | 38 | 0 | 38 | 0 | 38 |
 | blastfromthepast | 133 | 0 | 133 | 0 | 133 |
 | block_factorys_bosses | 137 | 0 | 137 | 0 | 137 |
@@ -26,7 +26,7 @@ Static evidence observed 17,062 canonical item IDs. This is not a Forge runtime 
 | cataclysm | 386 | 0 | 386 | 0 | 386 |
 | chimes | 7 | 0 | 7 | 0 | 7 |
 | citadel | 5 | 0 | 5 | 0 | 5 |
-| cnc | 103 | 2 | 101 | 2 | 101 |
+| cnc | 103 | 2 | 101 | 0 | 103 |
 | companions | 81 | 0 | 81 | 0 | 81 |
 | copperagebackport | 8 | 0 | 8 | 0 | 8 |
 | create | 903 | 0 | 903 | 0 | 903 |
@@ -63,13 +63,13 @@ Static evidence observed 17,062 canonical item IDs. This is not a Forge runtime 
 | irons_lib | 4 | 0 | 4 | 0 | 4 |
 | irons_spellbooks | 412 | 0 | 412 | 0 | 412 |
 | jacksgravestones | 1 | 0 | 1 | 0 | 1 |
-| jem_economy | 7 | 0 | 7 | 0 | 7 |
+| jem_economy | 8 | 0 | 8 | 0 | 8 |
 | jem_pack_core | 5 | 0 | 5 | 0 | 5 |
 | jem_server | 2 | 0 | 2 | 0 | 2 |
 | jemcompat | 80 | 0 | 80 | 0 | 80 |
 | jemtwelveeyes | 1 | 0 | 1 | 0 | 1 |
 | kaleidoscope_compat | 218 | 0 | 218 | 0 | 218 |
-| kaleidoscope_cookery | 224 | 2 | 222 | 2 | 222 |
+| kaleidoscope_cookery | 224 | 2 | 222 | 0 | 224 |
 | kaleidoscope_doll | 705 | 0 | 705 | 0 | 705 |
 | kaleidoscope_end | 81 | 0 | 81 | 0 | 81 |
 | kaleidoscope_nether | 166 | 0 | 166 | 0 | 166 |
@@ -82,17 +82,17 @@ Static evidence observed 17,062 canonical item IDs. This is not a Forge runtime 
 | luminous_beasts | 183 | 0 | 183 | 0 | 183 |
 | luminous_nether | 205 | 0 | 205 | 0 | 205 |
 | luminoustag | 1 | 0 | 1 | 0 | 1 |
-| minecraft | 1689 | 32 | 1657 | 25 | 1664 |
+| minecraft | 1689 | 32 | 1657 | 20 | 1669 |
 | moa_decor_holidays | 151 | 0 | 151 | 0 | 151 |
 | moonlight | 1 | 0 | 1 | 0 | 1 |
 | moretotems | 7 | 0 | 7 | 0 | 7 |
 | natures_spirit | 717 | 1 | 716 | 1 | 716 |
 | naturescompass | 32 | 0 | 32 | 0 | 32 |
 | netherexp | 394 | 0 | 394 | 0 | 394 |
-| oceanicrealms | 43 | 2 | 41 | 2 | 41 |
+| oceanicrealms | 43 | 2 | 41 | 1 | 42 |
 | paraglider | 14 | 0 | 14 | 0 | 14 |
 | patchouli | 13 | 0 | 13 | 0 | 13 |
-| primal | 104 | 2 | 102 | 2 | 102 |
+| primal | 104 | 2 | 102 | 0 | 104 |
 | railways | 1930 | 0 | 1930 | 0 | 1930 |
 | recruits | 14 | 0 | 14 | 0 | 14 |
 | ribbits | 21 | 0 | 21 | 0 | 21 |

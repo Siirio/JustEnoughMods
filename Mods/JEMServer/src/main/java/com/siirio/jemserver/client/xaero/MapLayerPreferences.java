@@ -4,9 +4,8 @@ import net.minecraftforge.common.ForgeConfigSpec;
 
 /** Local presentation preferences; never stored in Xaero or sent to the server. */
 public final class MapLayerPreferences {
-    public enum Layer { TERRITORIES, PROJECTS, EVENTS }
+    public enum Layer { PROJECTS, EVENTS }
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
-    private static final ForgeConfigSpec.BooleanValue TERRITORIES = BUILDER.define("territories", false);
     private static final ForgeConfigSpec.BooleanValue PROJECTS = BUILDER.define("projects", false);
     private static final ForgeConfigSpec.BooleanValue EVENTS = BUILDER.define("events", false);
     public static final ForgeConfigSpec SPEC = BUILDER.build();
@@ -21,7 +20,6 @@ public final class MapLayerPreferences {
     }
     private static ForgeConfigSpec.BooleanValue value(Layer layer) {
         return switch (layer) {
-            case TERRITORIES -> TERRITORIES;
             case PROJECTS -> PROJECTS;
             case EVENTS -> EVENTS;
         };

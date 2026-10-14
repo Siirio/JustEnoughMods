@@ -78,6 +78,20 @@ public final class SettlementNetwork {
         send(player, new TownViewPacket(open, buildView(player, town.get())));
     }
 
+    /** Bounded server-authorized projection for read-only consumers such as the SMP information screen. */
+    public static CompoundTag readOnlyView(ServerPlayer viewer, TownRecord town) {
+        CompoundTag view = buildView(viewer, town);
+        boolean owner = town.owner().equals(viewer.getUUID());
+        view.remove("Center");
+        view.remove("TerritoryMinX"); view.remove("TerritoryMaxX"); view.remove("TerritoryMinZ"); view.remove("TerritoryMaxZ");
+        if (!owner) {
+            view.remove("Treasury"); view.remove("Tax"); view.remove("Stock"); view.remove("Production"); view.remove("SimulationJournal");
+            view.remove("FoodUnits"); view.remove("LoadedStorage"); view.remove("PendingNotSpendable"); view.remove("FailedQuarantined");
+            view.remove("PayrollShortfall"); view.remove("UnpaidPayroll");
+        }
+        return view;
+    }
+
     private static CompoundTag buildView(ServerPlayer player, TownRecord town) {
         CompoundTag view = new CompoundTag(); view.putUUID("Id", town.id()); view.putString("Name", town.name());
         view.putInt("Happiness", town.happiness()); view.putInt("Tax", town.taxPercent()); view.putLong("Center", town.center().asLong());
@@ -104,8 +118,8 @@ public final class SettlementNetwork {
         }
         view.put("Residents", residents);
         ListTag defense = new ListTag(); long projected = 0L;
-        for (var record : data.workforce(town.id())) if (record.type() == com.siirio.jemsettlements.workforce.WorkforceType.RECRUIT && record.living()) {
-            long wage = com.siirio.jemsettlements.payroll.RecruitRank.of(record.nativeEntityType()).wage(); projected += wage; CompoundTag row = new CompoundTag(); row.putUUID("Id", record.entityId()); row.putString("NativeType", record.nativeEntityType().toString()); row.putLong("Wage", wage); row.putLong("LastPaidPeriod", record.lastPaidPeriod()); row.putBoolean("Ready", town.consecutiveMissedPayrolls() < 2);
+        for (var record : data.workforce(town.id())) if (record.type() == com.siirio.jemsettlements.workforce.WorkforceType.RECRUIT) {
+            long wage = com.siirio.jemsettlements.payroll.RecruitRank.of(record.nativeEntityType()).wage(); if (record.living()) projected += wage; CompoundTag row = new CompoundTag(); row.putUUID("Id", record.entityId()); row.putString("NativeType", record.nativeEntityType().toString()); row.putLong("Wage", wage); row.putLong("LastPaidPeriod", record.lastPaidPeriod()); row.putBoolean("Living", record.living()); row.putBoolean("Ready", record.living() && town.consecutiveMissedPayrolls() < 2);
             for (ServerLevel candidate : player.getServer().getAllLevels()) { var entity = candidate.getEntity(record.entityId()); var readiness = com.siirio.jemsettlements.compat.recruits.RecruitReadinessAdapter.read(entity); if (readiness.isPresent()) { row.putFloat("Morale", readiness.get().morale()); row.putFloat("Hunger", readiness.get().hunger()); row.putBoolean("Ready", row.getBoolean("Ready") && readiness.get().combatReady()); row.putString("Name", entity.getDisplayName().getString()); break; } }
             if (!row.contains("Name")) row.putString("Name", record.entityId().toString().substring(0, 8)); defense.add(row);
         }

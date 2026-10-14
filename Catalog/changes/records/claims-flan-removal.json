@@ -1,0 +1,191 @@
+{
+  "schema_version": 2,
+  "change_id": "smp.claims-flan-removal",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "category",
+      "registry": "*",
+      "value": "smp_runtime_ownership"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [],
+  "precedence": {
+    "layer": "jem_runtime_ownership",
+    "priority": 500,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Ordinary JEMClaims and Flan land protection are removed; settlement regions remain guidance-only while events and boss arenas retain their independent owners.",
+    "modifiers": [
+      {
+        "property": "smp.land_protection_owner",
+        "operation": "replace",
+        "before": {
+          "owner": "JEMClaims over Flan",
+          "features": [
+            "ordinary claims",
+            "claim permissions",
+            "claim overlays"
+          ]
+        },
+        "after": {
+          "ordinary_claims": "removed",
+          "settlement_regions": "informational only",
+          "active_event_boundaries": "JEMServer hosted-event lifecycle",
+          "boss_arenas": "JEMWorldBossTiers arena lifecycle"
+        },
+        "notes": "Existing world SavedData and runtime world files are preserved without an active reader."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMServer and JEMWorldBossTiers",
+    "kind": "runtime_ownership_removal",
+    "source_files": [
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventRegions.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/MapNetwork.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/ArenaProtection.java",
+      "Docs/smp-gui/README.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Remove an unused player-claim subsystem and its Flan dependency without turning settlement guidance into permissions or weakening the canonical event and boss-arena owners.",
+    "decision_source": "User approval on 2026-10-14: remove Flan if no longer needed and accept the remaining consolidation."
+  },
+  "introduced": {
+    "date": "2026-10-14",
+    "commit": "SELF",
+    "action": "remove_claim_owner",
+    "summary": "Removed JEMClaims source ownership, JEMServer claim adapters/channels/UI/map branches and the canonical disabled Flan artifact."
+  },
+  "history": [
+    {
+      "date": "2026-10-14",
+      "commit": "SELF",
+      "action": "remove_claim_owner",
+      "summary": "Decoupled event placement, death-history safety, landmarks and Xaero project/event layers from ordinary claims, then removed JEMClaims and Flan from intended source/pack ownership.",
+      "source_files": [
+        "Mods/JEMClaims/build.gradle",
+        "Mods/JEMClaims/gradle.properties",
+        "Mods/JEMClaims/gradle/wrapper/gradle-wrapper.properties",
+        "Mods/JEMClaims/gradlew",
+        "Mods/JEMClaims/gradlew.bat",
+        "Mods/JEMClaims/settings.gradle",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/BossClaimZone.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/BossClaimZones.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/CampaignClaimZones.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/ClaimCombatProtection.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/ClaimGroups.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/ClaimPermission.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/ClaimSelectionGuard.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/ClaimSetting.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/ClaimUnion.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/ClaimsConfig.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/ClaimsData.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/ClaimsMenus.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/FlanBridge.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/JemClaims.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/compat/CreatePlacement.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/compat/GraveCompat.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/compat/MachineContext.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/compat/storage/StorageAccess.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/compat/storage/StorageInventoryCache.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/compat/terrain/BossTerrainProtection.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/bridge/ClaimAreaMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/bridge/ClaimBudgetMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/bridge/MachinePermissionMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/bridge/OfflineClaimBudgetMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/bridge/PublicServiceMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/compat/CarryPickupMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/compat/CarryPlacementMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/compat/CarryStackMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/compat/ContraptionTransformAccessor.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/compat/CreateAssemblyMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/compat/CreateBlockBreakMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/compat/CreateCannonFlightMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/compat/CreateCannonMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/compat/CreateDeployerMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/compat/CreateDeployerPlayerAccessor.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/compat/CreateDisassemblyMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/compat/CreateDrillMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/compat/CreateHarvesterMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/compat/CreateMovingDeployerMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/compat/CreateMovingDrillMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/compat/CreateMovingSawMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/compat/CreateSawMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/compat/CreateSchematicBlockMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/compat/CreateTrainDisassemblyMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/compat/GraveRecoveryMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/compat/ShipCargoMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/compat/ShipIceMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/compat/SiegeFireMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/compat/TreeChopMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/compat/TreeFellMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/compat/WagonCargoMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/storage/CraftingMenuMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/storage/CraftingTerminalMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/storage/RecipeFillerMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/storage/RecipePlacerMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/storage/StorageCableMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/storage/StorageMenuMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/storage/StorageProvenanceMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/storage/StorageTerminalAccessor.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/terrain/BossDeathLaserTerrainMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/terrain/BossDefeatTerrainMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/terrain/BossLaserTerrainMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/terrain/BossLavaBombTerrainMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/terrain/BossRiftTerrainMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/terrain/GuardianRespawnerTerrainMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/terrain/HarbingerTerrainMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/terrain/IgnisTerrainMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/terrain/LeviathanTerrainMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/terrain/MaledictusDefeatTerrainMixin.java",
+        "Mods/JEMClaims/src/main/java/com/siirio/jemclaims/mixin/terrain/MonstrosityTerrainMixin.java",
+        "Mods/JEMClaims/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMClaims/src/main/resources/assets/jem_claims/lang/en_us.json",
+        "Mods/JEMClaims/src/main/resources/assets/jem_claims/lang/ru_ru.json",
+        "Mods/JEMClaims/src/main/resources/data/jem_claims/claim_interactions_override/buttons.json",
+        "Mods/JEMClaims/src/main/resources/data/jem_claims/tags/blocks/claim_buttons.json",
+        "Mods/JEMClaims/src/main/resources/data/jem_claims/tags/blocks/public_services.json",
+        "Mods/JEMClaims/src/main/resources/data/jem_claims/tags/entity_types/additional_bosses.json",
+        "Mods/JEMClaims/src/main/resources/data/jem_claims/tags/worldgen/structure/boss_territories.json",
+        "Mods/JEMClaims/src/main/resources/jem_claims.mixins.json",
+        "Mods/JEMClaims/src/main/resources/pack.mcmeta",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventRegions.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/MapNetwork.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/ArenaProtection.java",
+        "Docs/smp-gui/README.md",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/DeathHistory.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/Landmarks.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapClient.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "smp_navigation",
+      "settlements",
+      "events",
+      "boss_arenas",
+      "xaero_layers",
+      "death_history",
+      "landmarks"
+    ],
+    "relations": [
+      "territory->permissions",
+      "event->boundary_owner",
+      "boss->arena_owner",
+      "project->map_overlay"
+    ],
+    "notes": [
+      "Event regions still reject world-border violations, overlap with active events, unloaded or block-entity-heavy automatic candidates, and insufficient supported land.",
+      "Death-history arrival still validates full collision clearance, solid floor, fluids and hazardous blocks.",
+      "Boss arena authority remains in registered World Boss Tiers arena data and hosted encounter lifecycle; building projects remain non-protective planning metadata."
+    ],
+    "unresolved": [
+      "Runtime-only compatibility of the removed Flan/JEMClaims JAR set is not exercised because builds and gameplay launches were explicitly excluded from this task."
+    ]
+  }
+}

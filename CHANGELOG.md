@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-14 — SMP Market, profiles and custom command reference consolidated in source
+
+- User request and technical direction: make `/smp` the cohesive player interface for the compact pixel-art Market, five-denomination Wallet/physical exchange, complete privacy-aware profiles, read-only Settlements/Recruits, GUI-owned event actions and Xaero home viewing; remove obsolete SMP/economy/death commands and ordinary JEMClaims/Flan ownership while preserving native villagers, player shops, `/home`, event/arena safety and authoritative system owners.
+- User follow-up: remove Flan if it is no longer needed, exclude finished meals from the universal Market and proceed with the remaining approved consolidation.
+- Codex implementation: added the server-authoritative Market catalog and five-denomination Wallet exchange; retained 40 verified ingredients/resources and marked 18 finished meals `NONE`; added demand-adjusted tooltips, bounded purchase/sale quotas and online transfers. `/smp` now owns the cohesive navigation, enriched privacy-aware profiles, owner-only home-to-Xaero preview, and read-only Settlements/Recruits projections. Player command branches were replaced by GUI actions; only `/smp` remains, while operator control moved to `/jem event start|stop` and `/jem boss revive` with permission 2. `/home` remains.
+- Codex ownership choice: removed JEMClaims source, JEMServer claim adapters/channels/UI/map branches and the canonical disabled Flan artifact. Settlement regions remain guidance-only; event placement/world-border/terrain checks stay in JEMServer and boss arena authority stays in World Boss Tiers. Existing world SavedData and runtime configs were not deleted.
+- Documentation: updated the detailed Word reference with the new custom commands and GUI replacements, and reconciled SMP, development, command, mod and Atlas ownership docs. Verification remained source/Atlas/document-only: no Gradle build, automated test, Minecraft launch, deployment or stable profile change was performed. The user later explicitly authorized one combined commit and push containing this work together with the accumulated tracked server configuration, quest and datapack changes; local runtime caches, archives and live TPA request data remain excluded.
+
 ## 2026-10-14 — Native trading, Buyer window and quiet Xaero restored in source
 
 - User decision: approved both written plans, chose implementation by Codex in this session, explicitly included Xaero, and authorized immediate push. Preserve native Minecraft/Xaero interfaces; prices use the five existing Coin icons/counts; Buyer uses a native trading window without chat.

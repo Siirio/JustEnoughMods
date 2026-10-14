@@ -190,7 +190,6 @@ public final class SmpScreen extends Screen {
     @Override
     protected void init() {
         com.siirio.jemserver.client.ui.SmpRenderState.restoreAfterScreen();
-        if (pending != null && pending.kind().key().equals("claims")) { pending = null; waiting = false; }
         String initial = model.getString("querySearch");
         String[] pair = initial.split("\u001f", -1);
         String value = search == null ? (tab.equals("shops") ? (pair.length > 1 ? pair[1] : "") : initial) : search.getValue();
@@ -343,7 +342,9 @@ public final class SmpScreen extends Screen {
     }
 
     private void selectTab(String next) {
-        if (next.equals("claims")) { ClaimsScreenBridge.capture(this); send("claims", new JsonObject()); return; }
+        if (next.equals("market")) { com.siirio.jemeconomy.client.MarketClientState.open(this); return; }
+        if (next.equals("profile") && minecraft != null && minecraft.player != null) { visit("profiles", minecraft.player.getUUID()); return; }
+        if (next.equals("players")) { visit("profiles", null); return; }
         if (!next.equals(tab) || selected != null) visit(next, null);
     }
 
@@ -360,7 +361,9 @@ public final class SmpScreen extends Screen {
         text(g, title, left + 36, top + 12, CREAM, bodyX - left - 40);
         text(g, Component.translatable("jem.smp." + tab), bodyX, top + 12, CREAM, bodyWidth - 30);
         button(g, left + panelWidth - 28, top + 7, 20, 20, "close", this::onClose, mx, my);
-        sidebar.render(g, tab, mx, my);
+        String activeSidebar = tab.equals("profiles") && selected != null && minecraft != null && minecraft.player != null
+                && selected.equals(minecraft.player.getUUID()) ? "profile" : tab.equals("profiles") ? "players" : tab;
+        sidebar.render(g, activeSidebar, mx, my);
         if (navigation.available() || selected != null || !tab.equals("events") || !form.isEmpty())
             button(g, left + 8, top + panelHeight - 32, bodyX - left - 18, 22, "back", this::back, mx, my);
         bodyY = top + 66;
@@ -389,11 +392,14 @@ public final class SmpScreen extends Screen {
             clippingBody = true;
             g.enableScissor(bodyX, bodyY, bodyX + bodyWidth, bodyBottom);
             try {
-                if (tab.equals("prizes")) renderPrizes(g, mx, my);
+                if (tab.equals("home")) renderHome(g, mx, my);
+                else if (tab.equals("prizes")) renderPrizes(g, mx, my);
                 else if (selected != null) {
                     if (currentDetail()) renderDetail(g, mx, my);
                     else text(g, Component.translatable("jem.smp.loading"), bodyX + 6, bodyY + 10, MUTED, bodyWidth - 12);
                 } else if (tab.equals("events")) renderEvents(g, mx, my);
+                else if (tab.equals("settlements")) renderSettlements(g, mx, my);
+                else if (tab.equals("recruits")) renderRecruits(g, mx, my);
                 else renderRows(g, mx, my);
             } finally {
                 g.disableScissor();
@@ -415,6 +421,65 @@ public final class SmpScreen extends Screen {
         renderSellerSuggestions(g, mx, my);
         if (!hoveredItem.isEmpty() && my >= bodyY && my < bodyBottom) g.renderTooltip(font, hoveredItem, mx, my);
         else if (hoveredLabel != null) g.renderTooltip(font, hoveredLabel, mx, my);
+    }
+
+    private void renderHome(GuiGraphics g, int mx, int my) {
+        int cardWidth = Math.max(90, (bodyWidth - 12) / 2), cardHeight = 48;
+        text(g, Component.translatable("jem.smp.home.welcome"), bodyX + 8, bodyY + 8, CREAM, bodyWidth - 16);
+        homeCard(g, bodyX + 4, bodyY + 32, cardWidth, cardHeight, "events", () -> selectTab("events"), mx, my);
+        homeCard(g, bodyX + 8 + cardWidth, bodyY + 32, cardWidth, cardHeight, "market", () -> selectTab("market"), mx, my);
+        homeCard(g, bodyX + 4, bodyY + 36 + cardHeight, cardWidth, cardHeight, "profile", () -> selectTab("profile"), mx, my);
+        homeCard(g, bodyX + 8 + cardWidth, bodyY + 36 + cardHeight, cardWidth, cardHeight, "shops", () -> selectTab("shops"), mx, my);
+        maxScroll = 0;
+    }
+
+    private void renderSettlements(GuiGraphics g, int mx, int my) {
+        int y = bodyY - scroll;
+        for (Tag value : model.getList("rows", Tag.TAG_COMPOUND)) {
+            CompoundTag row = (CompoundTag) value; int height = row.contains("Treasury") ? 126 : 86;
+            if (y + height >= bodyY && y < bodyBottom) {
+                frame(g, bodyX, y, bodyWidth, height, ROW);
+                SmpIcons.draw(g, "settlements", bodyX + 8, y + 8, 26);
+                text(g, Component.literal(row.getString("name")), bodyX + 42, y + 8, CREAM, bodyWidth - 50);
+                text(g, Component.literal(row.getString("mayor") + " · " + row.getString("Tier") + " · " + row.getString("PrimarySpecialization")), bodyX + 42, y + 23, MUTED, bodyWidth - 50);
+                text(g, Component.translatable("jem.smp.settlement.population", row.getInt("population"), row.getInt("recruitCount")), bodyX + 8, y + 43, CREAM, bodyWidth - 16);
+                text(g, Component.translatable("jem.smp.settlement.scores", row.getInt("Happiness"), row.getInt("Housing"), row.getInt("Food"), row.getInt("Safety"), row.getInt("Jobs"), row.getInt("Community"), row.getInt("Decoration")), bodyX + 8, y + 59, MUTED, bodyWidth - 16);
+                if (row.contains("Treasury")) {
+                    text(g, Component.translatable("jem.smp.settlement.storage", row.getInt("LoadedStorage"), row.getInt("StorageLinks"), row.getLong("FoodUnits")), bodyX + 8, y + 79, CREAM, bodyWidth - 16);
+                    text(g, Component.translatable("jem.smp.settlement.production", row.getLong("PendingNotSpendable"), row.getLong("FailedQuarantined")), bodyX + 8, y + 95, MUTED, bodyWidth - 16);
+                    text(g, Component.translatable("jem.smp.settlement.treasury", com.siirio.jemeconomy.physical.CoinFormatter.format(row.getLong("Treasury"))), bodyX + 8, y + 111, PEACH, bodyWidth - 16);
+                }
+            }
+            y += height + GAP;
+        }
+        maxScroll = Math.max(0, y + scroll - bodyBottom); scroll = Math.max(0, Math.min(scroll, maxScroll));
+    }
+
+    private void renderRecruits(GuiGraphics g, int mx, int my) {
+        int y = bodyY - scroll;
+        for (Tag value : model.getList("rows", Tag.TAG_COMPOUND)) {
+            CompoundTag row = (CompoundTag) value; int height = 70;
+            if (y + height >= bodyY && y < bodyBottom) {
+                frame(g, bodyX, y, bodyWidth, height, ROW);
+                SmpIcons.draw(g, "recruits", bodyX + 8, y + 20, 26);
+                text(g, Component.literal(row.getString("name")), bodyX + 42, y + 8, row.getBoolean("living") ? CREAM : MUTED, bodyWidth - 50);
+                text(g, Component.literal(row.getString("settlement") + " · " + row.getString("type")), bodyX + 42, y + 23, MUTED, bodyWidth - 50);
+                Component readiness = Component.translatable(row.getBoolean("living") ? "jem.smp.recruit.living" : "jem.smp.recruit.dead")
+                        .append(" · ").append(Component.translatable(row.getBoolean("Ready") ? "jem.smp.recruit.ready" : "jem.smp.recruit.not_ready"));
+                if (row.contains("Morale")) readiness.append(" · ").append(Component.translatable("jem.smp.recruit.morale", Math.round(row.getFloat("Morale")), Math.round(row.getFloat("Hunger"))));
+                text(g, readiness, bodyX + 42, y + 39, row.getBoolean("Ready") ? GREEN : MUTED, bodyWidth - 50);
+                text(g, Component.translatable("jem.smp.recruit.payroll", com.siirio.jemeconomy.physical.CoinFormatter.format(row.getLong("Wage")), row.getLong("nextPayroll"), com.siirio.jemeconomy.physical.CoinFormatter.format(row.getLong("outstandingPayroll"))), bodyX + 42, y + 55, PEACH, bodyWidth - 50);
+            }
+            y += height + GAP;
+        }
+        maxScroll = Math.max(0, y + scroll - bodyBottom); scroll = Math.max(0, Math.min(scroll, maxScroll));
+    }
+
+    private void homeCard(GuiGraphics g, int x, int y, int width, int height, String route, Runnable action, int mx, int my) {
+        frame(g, x, y, width, height, ROW);
+        SmpIcons.draw(g, route, x + 8, y + 12, 24);
+        text(g, Component.translatable("jem.smp.sidebar." + route), x + 40, y + 19, CREAM, width - 48);
+        hits.add(new SmpHit(x, y, width, height, action));
     }
 
     private void renderSellerSuggestions(GuiGraphics g, int mx, int my) {
@@ -733,6 +798,18 @@ public final class SmpScreen extends Screen {
         text(g, Component.translatable(row.getBoolean("online") ? "jem.smp.online" : "jem.smp.offline"), bodyX + 9, y + portraitHeight - 20, row.getBoolean("online") ? GREEN : MUTED, portraitWidth - 18);
         int sx = bodyX + portraitWidth + 10, sw = bodyWidth - portraitWidth - 10;
         text(g, Component.literal(row.getString("name")), sx, y + 8, CREAM, sw);
+        int identityY = y + 22;
+        if (row.contains("race")) { text(g, Component.translatable("jem.smp.profile.race", Component.translatable("jem.roles.race." + row.getString("race").toLowerCase(Locale.ROOT))), sx, identityY, PEACH, sw); identityY += 14; }
+        if (row.contains("settlement")) { text(g, Component.translatable("jem.smp.profile.settlement", row.getString("settlement"), row.getString("settlementTier")), sx, identityY, MUTED, sw); identityY += 14; }
+        text(g, Component.translatable("jem.smp.profile.recruits", row.getLong("recruitCount")), sx, identityY, MUTED, sw); identityY += 14;
+        var professionRows = row.getList("professions", Tag.TAG_COMPOUND);
+        if (!professionRows.isEmpty()) {
+            String professionText = java.util.stream.IntStream.range(0, professionRows.size()).mapToObj(index -> {
+                var value = professionRows.getCompound(index);
+                return Component.translatable("jem.professions.name." + value.getString("id").toLowerCase(Locale.ROOT)).getString() + " " + value.getInt("level");
+            }).collect(java.util.stream.Collectors.joining(" · "));
+            text(g, Component.translatable("jem.smp.profile.professions", professionText), sx, identityY, MUTED, sw); identityY += 14;
+        }
         var stats = new ArrayList<CompoundTag>();
         var playTime = new CompoundTag();
         playTime.putString("type", "playTicks");
@@ -747,14 +824,14 @@ public final class SmpScreen extends Screen {
         for (int i = 0; i < stats.size(); i++) {
             var statistic = stats.get(i);
             String key = statistic.getString("type");
-            int cx = sx + (i % columns) * cellWidth, cy = y + 30 + (i / columns) * 47;
+            int cx = sx + (i % columns) * cellWidth, cy = identityY + 5 + (i / columns) * 47;
             frame(g, cx, cy, cellWidth - GAP, 43, ROW);
             SmpIcons.draw(g, key, cx + 7, cy + 12, 20);
             text(g, Component.translatable("jem.smp." + key), cx + 33, cy + 8, MUTED, cellWidth - 41);
             String value = key.equals("playTicks") ? java.time.Duration.ofSeconds(statistic.getLong("count") / 20).toHours() + " h" : Long.toString(statistic.getLong("count"));
             text(g, Component.literal(value), cx + 33, cy + 24, CREAM, cellWidth - 41);
         }
-        int statsBottom = y + 30 + ((stats.size() + columns - 1) / columns) * 47;
+        int statsBottom = identityY + 5 + ((stats.size() + columns - 1) / columns) * 47;
         var actions = row.getList("actions", Tag.TAG_STRING);
         int actionColumns = Math.max(1, Math.min(3, sw / 100));
         int actionWidth = (sw - (actionColumns - 1) * GAP) / actionColumns;
@@ -1230,7 +1307,8 @@ public final class SmpScreen extends Screen {
 
     private void invoke(String action) {
         if (action.equals("navigate")) { openLocation(model.getCompound("detail")); return; }
-        if (action.equals("territory_rights")) ClaimsScreenBridge.capture(this);
+        if (action.equals("settlements") || action.equals("recruits")) { selectTab(action); return; }
+        if (action.equals("roles") || action.equals("professions")) { SmpSidebar.openExternal(action); return; }
         if (action.equals("invite") && tab.equals("parties")) { openForm("invite"); return; }
         if (action.equals("dissolve")) { openForm("dissolve_confirm"); return; }
         if (Set.of("approve", "remove", "transfer").contains(action) && participant != null) {

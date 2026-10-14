@@ -15,6 +15,7 @@ import net.minecraft.world.item.ItemStack;
 public final class WalletScreen extends Screen {
     private WalletStatusPacket status;
     private EditBox amount;
+    private EditBox recipient;
     public WalletScreen(WalletStatusPacket status) { super(Component.translatable("jem.economy.wallet.title")); this.status = status; }
     public void accept(WalletStatusPacket next) { status = next; }
 
@@ -30,12 +31,18 @@ public final class WalletScreen extends Screen {
         }).bounds(x + 192, y + 104, 92, 20).build());
         addRenderableWidget(Button.builder(Component.translatable("jem.economy.wallet.deposit_all"), button ->
                 EconomyNetwork.action(WalletActionPacket.Action.DEPOSIT_ALL, 0L)).bounds(x + 16, y + 132, 268, 20).build());
+        recipient = new EditBox(font, x + 16, y + 160, 168, 20, Component.translatable("jem.economy.wallet.recipient"));
+        recipient.setHint(Component.translatable("jem.economy.wallet.recipient")); recipient.setMaxLength(16); addRenderableWidget(recipient);
+        addRenderableWidget(Button.builder(Component.translatable("jem.economy.wallet.send"), button -> {
+            try { EconomyNetwork.action(WalletActionPacket.Action.SEND, Long.parseLong(amount.getValue()), recipient.getValue()); }
+            catch (NumberFormatException ignored) { }
+        }).bounds(x + 192, y + 160, 92, 20).build());
     }
 
     @Override public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
         renderBackground(graphics);
         int x = width / 2 - 150, y = height / 2 - 104;
-        graphics.fill(x, y, x + 300, y + 210, 0xEF2C211B);
+        graphics.fill(x, y, x + 300, y + 238, 0xEF2C211B);
         graphics.fill(x, y, x + 300, y + 3, 0xFFC27A3B);
         graphics.drawCenteredString(font, title, width / 2, y + 10, 0xFFFFE6C2);
         graphics.drawString(font, Component.translatable("jem.economy.wallet.digital", grouped(status.balance())), x + 16, y + 30, 0xFFFFD18A, false);
@@ -48,9 +55,9 @@ public final class WalletScreen extends Screen {
         }
         if (status.invalid() > 0) graphics.drawString(font, Component.translatable("jem.economy.wallet.invalid", status.invalid()), x + 16, y + 88, 0xFFFF7777, false);
         graphics.drawString(font, Component.translatable("jem.economy.wallet.demand", Component.translatable("jem.economy.demand." + status.primaryDemand()),
-                Component.translatable("jem.economy.demand." + status.secondaryDemand())), x + 16, y + 158, 0xFFFFD18A, false);
-        graphics.drawString(font, Component.translatable("jem.economy.wallet.market_limits", status.accountRemaining(), status.globalRemaining()), x + 16, y + 172, 0xFFD9C6A9, false);
-        graphics.drawString(font, Component.translatable("jem.economy.wallet.market_update", status.ticksUntilUpdate()), x + 16, y + 186, 0xFFD9C6A9, false);
+                Component.translatable("jem.economy.demand." + status.secondaryDemand())), x + 16, y + 188, 0xFFFFD18A, false);
+        graphics.drawString(font, Component.translatable("jem.economy.wallet.market_limits", status.accountRemaining(), status.globalRemaining()), x + 16, y + 202, 0xFFD9C6A9, false);
+        graphics.drawString(font, Component.translatable("jem.economy.wallet.market_update", status.ticksUntilUpdate()), x + 16, y + 216, 0xFFD9C6A9, false);
         super.render(graphics, mouseX, mouseY, partialTick);
     }
 

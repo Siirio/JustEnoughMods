@@ -18,7 +18,7 @@
     "overrides": []
   },
   "change": {
-    "summary": "Reviewed item policies define the only system-market outcome and exact quote/cap fields for their selected item IDs.",
+    "summary": "Reviewed ingredient and resource policies define the only system-market outcome and exact quote/cap fields; finished meals remain outside the universal Market.",
     "modifiers": [
       {
         "property": "economy.trade_policy",
@@ -51,6 +51,16 @@
   },
   "history": [
     {
+      "date": "2026-10-14",
+      "commit": "SELF",
+      "action": "policy_review",
+      "summary": "Applied cap classes approved by the user, excluded 18 finished meals, and retained only one sellable recipe edge: wheat to dried wheat at 1:1 with no price uplift.",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json",
+        "Catalog/graphs/recipes/farm_and_charm.json"
+      ]
+    },
+    {
       "date": "2026-10-13",
       "commit": "SELF",
       "action": "atlas_adoption",
@@ -64,7 +74,11 @@
   "impacts": {
     "systems": ["economy", "recipes", "progression", "settlements", "market_buyer"],
     "relations": ["item->market_quotes", "ingredient->dependent_recipes", "item->daily_market_caps"],
-    "notes": ["Changing an ingredient policy can affect every recipe and downstream output that consumes it; query_atlas reports direct recipe edges."],
-    "unresolved": ["Alternative runtime acquisition routes and transitive recipe consequences still require human review when static evidence is ambiguous."]
+    "notes": [
+      "Cap classes are common crops 64/2048, raw food ingredients 32/512, processed intermediates 16/256, farmable drops and valuable minerals 16/128, and rare natural resources 2/32.",
+      "Prepared meals are explicit NONE policies and remain tradable only through separate player-owned shop mechanics.",
+      "The exact installed Brewery recipe converts one wheat into one dried wheat; both sell for two base copper, while either costs four to buy, so guaranteed NPC proceeds cannot exceed ingredient purchase cost even at the same demand multiplier."
+    ],
+    "unresolved": ["Static Atlas evidence does not prove every runtime-only acquisition path; any future commodity without exact recipe or acquisition evidence remains fail-closed."]
   }
 }

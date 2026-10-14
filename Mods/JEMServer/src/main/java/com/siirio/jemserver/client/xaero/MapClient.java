@@ -1,7 +1,7 @@
 package com.siirio.jemserver.client.xaero;
 
 import com.siirio.jemserver.MapNetwork;
-import com.siirio.jemserver.ClaimBoundaryGeometry;
+import com.siirio.jemserver.map.RegionGeometry;
 import java.util.List;
 import java.util.UUID;
 import net.minecraft.client.Minecraft;
@@ -14,10 +14,8 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = "jem_server", value = Dist.CLIENT)
 public final class MapClient {
-    private static List<MapNetwork.Claim> claims = List.of();
     private static List<MapNetwork.Death> deaths = List.of();
-    private record Layer(ResourceLocation dimension, int color, ClaimBoundaryGeometry.Mesh mesh) {}
-    private static List<Layer> layers = List.of();
+    private record Layer(ResourceLocation dimension, int color, RegionGeometry.Mesh mesh) {}
     private static List<MapNetwork.EventArea> events = List.of();
     private static List<Layer> eventLayers = List.of();
     private static List<MapNetwork.ProjectArea> projects = List.of();
@@ -34,27 +32,20 @@ public final class MapClient {
         if (++refreshTicks >= MAP_REFRESH_TICKS) { refreshTicks = 0; MapNetwork.request(); }
     }
     public static void accept(MapNetwork.Snapshot snapshot) {
-        if (!claims.equals(snapshot.claims())) {
-            claims = List.copyOf(snapshot.claims());
-            record Group(UUID owner, ResourceLocation dimension) {}
-            layers = claims.stream().collect(java.util.stream.Collectors.groupingBy(claim -> new Group(claim.owner(), claim.dimension())))
-                    .values().stream().map(group -> new Layer(group.get(0).dimension(), group.get(0).color(),
-                            ClaimBoundaryGeometry.union(group.stream().map(claim -> new ClaimBoundaryGeometry.Rectangle(claim.minX(), claim.minZ(), claim.maxX() + 1, claim.maxZ() + 1)).toList()))).toList();
-        }
         deaths = List.copyOf(snapshot.deaths()); acceptEvents(snapshot.events()); acceptProjects(snapshot.projects()); connected = true;
     }
     private static void acceptProjects(List<MapNetwork.ProjectArea> areas) {
         if (projects.equals(areas)) return;
         projects = List.copyOf(areas);
         projectLayers = projects.stream().map(project -> new Layer(project.dimension(), project.color(),
-                ClaimBoundaryGeometry.union(project.rectangles().stream().map(rectangle -> new ClaimBoundaryGeometry.Rectangle(
+                RegionGeometry.union(project.rectangles().stream().map(rectangle -> new RegionGeometry.Rectangle(
                         rectangle.minX(), rectangle.minZ(), rectangle.maxX(), rectangle.maxZ())).toList()))).toList();
     }
     public static void acceptEvents(List<MapNetwork.EventArea> areas) {
         if (events.equals(areas)) return;
         events = List.copyOf(areas);
         eventLayers = events.stream().map(area -> new Layer(area.dimension(), eventColor(area.activity()),
-                ClaimBoundaryGeometry.union(List.of(new ClaimBoundaryGeometry.Rectangle(
+                RegionGeometry.union(List.of(new RegionGeometry.Rectangle(
                         area.minX(), area.minZ(), area.maxX() + 1, area.maxZ() + 1))))).toList();
     }
     private static int eventColor(String activity) {
@@ -70,14 +61,9 @@ public final class MapClient {
     }
     public static boolean connected() { return connected; }
     @SubscribeEvent
-    public static void logout(ClientPlayerNetworkEvent.LoggingOut event) { claims = List.of(); deaths = List.of(); layers = List.of(); events = List.of(); eventLayers = List.of(); projects = List.of(); projectLayers = List.of(); connected = false; ProjectRegionClient.cancel(); }
+    public static void logout(ClientPlayerNetworkEvent.LoggingOut event) { deaths = List.of(); events = List.of(); eventLayers = List.of(); projects = List.of(); projectLayers = List.of(); connected = false; ProjectRegionClient.cancel(); }
     public static UUID death(ResourceLocation dimension, int x, int y, int z) {
         return deaths.stream().filter(death -> death.dimension().equals(dimension) && death.position().getX() == x && death.position().getY() == y && death.position().getZ() == z).map(MapNetwork.Death::id).findFirst().orElse(null);
-    }
-    public static MapNetwork.Claim owned(ResourceLocation dimension, int x, int z) {
-        var player = Minecraft.getInstance().player;
-        if (player == null) return null;
-        return claims.stream().filter(claim -> claim.owner().equals(player.getUUID()) && claim.dimension().equals(dimension) && x >= claim.minX() && x <= claim.maxX() && z >= claim.minZ() && z <= claim.maxZ()).findFirst().orElse(null);
     }
     public static MapNetwork.EventArea event(ResourceLocation dimension, int x, int z) {
         return events.stream().filter(area -> area.dimension().equals(dimension)
@@ -97,8 +83,6 @@ public final class MapClient {
     public static void render(GuiGraphics graphics, ResourceLocation dimension, double cameraX, double cameraZ, double scale, int width, int height,
                               int hoverX, int hoverZ, int mouseX, int mouseY) {
         if (!connected) return;
-        if (MapLayerPreferences.visible(MapLayerPreferences.Layer.TERRITORIES))
-            renderLayers(graphics, dimension, cameraX, cameraZ, scale, width, height, layers);
         if (MapLayerPreferences.visible(MapLayerPreferences.Layer.PROJECTS)) {
             renderLayers(graphics, dimension, cameraX, cameraZ, scale, width, height, projectLayers);
             ProjectRegionClient.render(graphics, dimension, cameraX, cameraZ, scale, width, height);

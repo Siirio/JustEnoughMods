@@ -1,0 +1,17 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: "gear"
+	filename: "create"
+	group: ""
+	icon: "create:wrench"
+	id: "1000000000000006"
+	order_index: 5
+	quest_links: []
+	quests: [
+		{description: ["Create remains the owner of machines, recipes, stress and trains. JEM observes legitimate engineering activity without replacing native balance."], icon: "create:cogwheel", id: "1100000000000006", tasks: [{id: "1110000000000006", item: {Count: 1b, id: "create:cogwheel"}, type: "item"}], title: "First Cogwheel", x: 0.0d, y: 0.0d},
+		{dependencies: ["1100000000000006"], description: ["Use Create's native wrench to configure and move supported machinery. Train speed remains entirely native."], icon: "create:wrench", id: "1100000000000016", tasks: [{id: "1110000000000016", item: {Count: 1b, id: "create:wrench"}, type: "item"}], title: "Native Tools", x: 2.0d, y: -1.0d},
+		{dependencies: ["1100000000000006"], description: ["Generate rotational force with a Water Wheel, then connect real components. Unique component placement supports Engineer progress."], icon: "create:water_wheel", id: "1100000000000026", tasks: [{id: "1110000000000026", item: {Count: 1b, id: "create:water_wheel"}, type: "item"}], title: "Rotational Power", x: 2.0d, y: 1.0d},
+		{dependencies: ["1100000000000026"], description: ["A Mechanical Press is a practical first processing line. Building Areas can coordinate a factory footprint without claiming land."], icon: "create:mechanical_press", id: "1100000000000036", tasks: [{id: "1110000000000036", item: {Count: 1b, id: "create:mechanical_press"}, type: "item"}], title: "First Processing Line", x: 4.0d, y: 1.0d}
+	]
+	title: "Create"
+}

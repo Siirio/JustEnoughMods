@@ -1,0 +1,17 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: "hexagon"
+	filename: "races"
+	group: ""
+	icon: "minecraft:player_head"
+	id: "1000000000000003"
+	order_index: 2
+	quest_links: []
+	quests: [
+		{description: ["Use /jem role or the unbound Roles key. Compare all three equal cards, confirm deliberately, and remember that your first early-game change is free."], icon: "minecraft:totem_of_undying", id: "1100000000000003", tasks: [{id: "1110000000000003", type: "checkmark"}], title: "Choose a Role", x: 0.0d, y: 0.0d},
+		{dependencies: ["1100000000000003"], description: ["Human supports broad play: a personal emerald-buy rebate, bounded profession growth bonus, and one extra level on direct Iron spell hits."], icon: "minecraft:emerald", id: "1100000000000013", tasks: [{id: "1110000000000013", item: {Count: 1b, id: "minecraft:emerald"}, type: "item"}], title: "Human Path", x: 2.0d, y: -2.0d},
+		{dependencies: ["1100000000000003"], description: ["Elf favors travel, careful falls and bows against non-player targets. It never adds a PvP damage advantage."], icon: "minecraft:bow", id: "1100000000000023", tasks: [{id: "1110000000000023", item: {Count: 1b, id: "minecraft:bow"}, type: "item"}], title: "Elf Path", x: 2.0d, y: 0.0d},
+		{dependencies: ["1100000000000003"], description: ["Dwarf favors tagged mining, knockback stability and occasional durability preservation after a completed harvest."], icon: "minecraft:iron_pickaxe", id: "1100000000000033", tasks: [{id: "1110000000000033", item: {Count: 1b, id: "minecraft:iron_pickaxe"}, type: "item"}], title: "Dwarf Path", x: 2.0d, y: 2.0d}
+	]
+	title: "RPG Roles"
+}

@@ -8,10 +8,10 @@ import net.minecraft.resources.ResourceLocation;
 import xaero.map.WorldMapSession;
 import xaero.map.gui.GuiMap;
 
-final class XaeroMapPreview {
+public final class XaeroMapPreview {
     private XaeroMapPreview() {}
 
-    static boolean open(ResourceLocation dimension, BlockPos position) {
+    public static boolean open(ResourceLocation dimension, BlockPos position) {
         var minecraft = Minecraft.getInstance();
         var session = WorldMapSession.getCurrentSession();
         if (minecraft.player == null || session == null || !session.isUsable()) return false;

@@ -40,6 +40,11 @@ public final class SmpNetwork {
                     if (player != null && SmpEnvironment.active(player)) SmpRequests.revive(player, packet.target());
                     context.get().setPacketHandled(true);
                 }).add();
+        CHANNEL.messageBuilder(HomePreview.class, 4, NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(HomePreview::encode).decoder(HomePreview::decode).consumerMainThread((packet, context) -> {
+                    DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> com.siirio.jemserver.client.XaeroLandmarks.showPrivateHome(packet.dimension(), packet.position()));
+                    context.get().setPacketHandled(true);
+                }).add();
     }
 
     public static void revive(UUID target) { CHANNEL.sendToServer(new SmpRevive(target)); }
@@ -52,6 +57,10 @@ public final class SmpNetwork {
     public static void clear() { SmpSubscriptions.clear(); SmpRequests.clear(); }
     public static void shopRemoved(MinecraftServer server, UUID shopId) { SmpSubscriptions.shopRemoved(server, shopId); }
     public static void tick(MinecraftServer server) { SmpSubscriptions.tick(server); }
+    static void homePreview(ServerPlayer player, net.minecraft.resources.ResourceLocation dimension, net.minecraft.core.BlockPos position) {
+        if (CHANNEL.isRemotePresent(player.connection.connection))
+            CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new HomePreview(dimension, position));
+    }
 
     static void send(ServerPlayer player, SmpUpdate update) {
         if (CHANNEL.isRemotePresent(player.connection.connection)) CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), update);

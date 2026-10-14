@@ -35,6 +35,18 @@ public final class XaeroLandmarks {
 
     private XaeroLandmarks() {}
 
+    public static void showPrivateHome(ResourceLocation dimension, net.minecraft.core.BlockPos position) {
+        if (dimension == null || position == null) return;
+        com.siirio.jemserver.client.smp.TemporaryWaypoints.showPreview(
+                java.util.UUID.nameUUIDFromBytes(("jem:private-home:" + dimension + ":" + position.asLong()).getBytes(java.nio.charset.StandardCharsets.UTF_8)),
+                Component.translatable("jem.smp.home.marker").getString(), dimension, position);
+        if (!com.siirio.jemserver.client.xaero.XaeroMapPreview.open(dimension, position)) {
+            var player = Minecraft.getInstance().player;
+            if (player != null) player.displayClientMessage(Component.translatable("jem.smp.home.map_unavailable", dimension.toString(),
+                    position.getX(), position.getY(), position.getZ()), false);
+        }
+    }
+
     public static ServerData.Landmark shared(Object waypoint) {
         Shared shared = SHARED_IDS.get(waypoint);
         return shared == null || snapshot == null ? null : snapshot.stream().filter(value -> value.id().equals(shared.id())).findFirst().orElse(null);

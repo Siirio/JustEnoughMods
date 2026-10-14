@@ -18,7 +18,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class EconomyNetwork {
-    private static final String VERSION = "3";
+    private static final String VERSION = "4";
     private static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(JemEconomy.MOD_ID, "wallet"))
             .networkProtocolVersion(() -> VERSION).clientAcceptedVersions(VERSION::equals).serverAcceptedVersions(VERSION::equals).simpleChannel();
     private EconomyNetwork() {}
@@ -48,6 +48,29 @@ public final class EconomyNetwork {
                             && access.jem$session() != null) access.jem$session().takeQuoted(packet);
                     context.get().setPacketHandled(true);
                 }).add();
+        CHANNEL.messageBuilder(MarketQueryPacket.class, 4, NetworkDirection.PLAY_TO_SERVER)
+                .encoder(MarketQueryPacket::encode).decoder(MarketQueryPacket::decode).consumerMainThread((packet, context) -> {
+                    var player = context.get().getSender();
+                    if (player != null && DedicatedSmp.active(player)) sendCatalog(player, packet.open(), packet.search(), packet.category(), packet.page(), "");
+                    context.get().setPacketHandled(true);
+                }).add();
+        CHANNEL.messageBuilder(MarketCatalogPacket.class, 5, NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(MarketCatalogPacket::encode).decoder(MarketCatalogPacket::decode).consumerMainThread((packet, context) -> {
+                    DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> com.siirio.jemeconomy.client.MarketClientState.accept(packet));
+                    context.get().setPacketHandled(true);
+                }).add();
+        CHANNEL.messageBuilder(MarketActionPacket.class, 6, NetworkDirection.PLAY_TO_SERVER)
+                .encoder(MarketActionPacket::encode).decoder(MarketActionPacket::decode).consumerMainThread((packet, context) -> {
+                    var player = context.get().getSender();
+                    if (player != null && DedicatedSmp.active(player)) handleMarket(player, packet);
+                    context.get().setPacketHandled(true);
+                }).add();
+        CHANNEL.messageBuilder(CoinExchangePacket.class, 7, NetworkDirection.PLAY_TO_SERVER)
+                .encoder(CoinExchangePacket::encode).decoder(CoinExchangePacket::decode).consumerMainThread((packet, context) -> {
+                    var player = context.get().getSender();
+                    if (player != null && DedicatedSmp.active(player)) handleExchange(player, packet);
+                    context.get().setPacketHandled(true);
+                }).add();
     }
 
     public static void sendTrade(ServerPlayer player, NativeTradePacket packet) {
@@ -56,6 +79,51 @@ public final class EconomyNetwork {
     }
 
     public static void tradeAction(NativeTradeActionPacket packet) { CHANNEL.sendToServer(packet); }
+    public static void marketQuery(String search, String category, int page, boolean open) {
+        CHANNEL.sendToServer(new MarketQueryPacket(search, category, page, open));
+    }
+    public static void marketAction(MarketActionPacket.Action action, ResourceLocation item, int units, long revision,
+                                    String search, String category, int page) {
+        CHANNEL.sendToServer(new MarketActionPacket(action, item, units, revision, UUID.randomUUID(), search, category, page));
+    }
+    public static void exchange(CoinDenomination source, int count, CoinDenomination target, String search, String category, int page) {
+        CHANNEL.sendToServer(new CoinExchangePacket(source, count, target, UUID.randomUUID(), search, category, page));
+    }
+
+    private static void handleMarket(ServerPlayer player, MarketActionPacket packet) {
+        String error = "";
+        var item = net.minecraftforge.registries.ForgeRegistries.ITEMS.getValue(packet.item());
+        if (packet.units() <= 0 || packet.units() > 64 || item == null) error = "jem.economy.market.invalid";
+        else if (com.siirio.jemeconomy.market.MarketSavedData.get(player.getServer()).revision(player.getServer()) != packet.revision())
+            error = "jem.economy.market.stale";
+        else if (packet.action() == MarketActionPacket.Action.BUY) {
+            var result = EconomyApi.purchaseMarketItem(player, packet.item(), packet.units(), packet.revision(), packet.requestId());
+            if (result.status() != EconomyApi.MarketPurchaseStatus.COMMITTED && result.status() != EconomyApi.MarketPurchaseStatus.REPLAYED)
+                error = "jem.economy.market.buy." + result.status().name().toLowerCase(java.util.Locale.ROOT);
+        } else if (packet.action() == WalletActionPacket.Action.DEPOSIT_ALL) {
+            var result = EconomyApi.processNpcSale(player, new net.minecraft.world.item.ItemStack(item), packet.units(), packet.requestId());
+            if (result.status() != EconomyApi.NpcSaleStatus.COMMITTED && result.status() != EconomyApi.NpcSaleStatus.REPLAYED)
+                error = "jem.economy.market.sell." + result.status().name().toLowerCase(java.util.Locale.ROOT);
+        }
+        sendCatalog(player, false, packet.search(), packet.category(), packet.page(), error);
+        sendStatus(player, false);
+    }
+
+    private static void handleExchange(ServerPlayer player, CoinExchangePacket packet) {
+        var result = EconomyApi.exchangePhysical(player, packet.source(), packet.sourceCount(), packet.target(), packet.requestId());
+        String error = result.status() == com.siirio.jemeconomy.physical.PhysicalCoinService.Status.COMMITTED
+                || result.status() == com.siirio.jemeconomy.physical.PhysicalCoinService.Status.REPLAYED ? ""
+                : "jem.economy.exchange." + result.status().name().toLowerCase(java.util.Locale.ROOT);
+        sendCatalog(player, false, packet.search(), packet.category(), packet.page(), error);
+        sendStatus(player, false);
+    }
+
+    private static void sendCatalog(ServerPlayer player, boolean open, String search, String category, int page, String error) {
+        var snapshot = EconomyApi.marketCatalog(player, search, category, Math.max(0, Math.min(page, 10_000)));
+        if (!error.isBlank()) snapshot = new com.siirio.jemeconomy.api.MarketCatalogSnapshot(snapshot.revision(), snapshot.page(), snapshot.pages(),
+                snapshot.search(), snapshot.category(), snapshot.walletBalance(), snapshot.physicalCounts(), snapshot.ticksUntilUpdate(), snapshot.items(), error);
+        CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new MarketCatalogPacket(open, snapshot));
+    }
 
     private static void handle(ServerPlayer player, WalletActionPacket packet) {
         if (packet.action() == WalletActionPacket.Action.WITHDRAW) {
@@ -70,6 +138,18 @@ public final class EconomyNetwork {
             };
             player.sendSystemMessage(Component.translatable(key, result.value()), true);
         } else {
+            if (packet.amount() <= 0 || packet.amount() > 1_000_000_000L) return;
+            ServerPlayer recipient = player.getServer().getPlayerList().getPlayerByName(packet.recipient());
+            if (recipient == null || recipient.getUUID().equals(player.getUUID())) player.sendSystemMessage(Component.translatable("jem.economy.invalid"), true);
+            else {
+                var result = EconomyApi.send(player, recipient.getUUID(), packet.amount(), packet.requestId());
+                if (result.status() == com.siirio.jemeconomy.ledger.TransferResult.Status.COMMITTED) {
+                    player.sendSystemMessage(Component.translatable("jem.economy.sent", packet.amount(), recipient.getGameProfile().getName()), true);
+                    recipient.sendSystemMessage(Component.translatable("jem.economy.received", packet.amount(), player.getGameProfile().getName()), true);
+                } else player.sendSystemMessage(Component.translatable(result.status() == com.siirio.jemeconomy.ledger.TransferResult.Status.INSUFFICIENT_FUNDS
+                        ? "jem.economy.insufficient" : "jem.economy.invalid"), true);
+            }
+        } else {
             var result = EconomyApi.depositAll(player, packet.requestId());
             String key = result.status() == com.siirio.jemeconomy.physical.PhysicalCoinService.Status.COMMITTED
                     ? "jem.economy.wallet.deposit_ok" : result.status() == com.siirio.jemeconomy.physical.PhysicalCoinService.Status.NO_VALID_COINS
@@ -79,7 +159,10 @@ public final class EconomyNetwork {
         sendStatus(player, true);
     }
 
-    public static void action(WalletActionPacket.Action action, long amount) { CHANNEL.sendToServer(new WalletActionPacket(action, amount, UUID.randomUUID())); }
+    public static void action(WalletActionPacket.Action action, long amount) { action(action, amount, ""); }
+    public static void action(WalletActionPacket.Action action, long amount, String recipient) {
+        CHANNEL.sendToServer(new WalletActionPacket(action, amount, recipient == null ? "" : recipient, UUID.randomUUID()));
+    }
 
     public static void sendStatus(ServerPlayer player, boolean open) {
         if (!DedicatedSmp.active(player) || !CHANNEL.isRemotePresent(player.connection.connection)) return;

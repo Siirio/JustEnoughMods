@@ -6,12 +6,12 @@ SMP различает server-hosted Events и player-hosted Party. Activities �
 
 Player-hosted Party является социальной группой, а не отдельным gameplay event: она не переходит в `ACTIVE`, не имеет ложной кнопки Start и остаётся доступной до выхода или роспуска. Start/Ready существуют только у encounter Party. Accepted member может нажать `К группе`: social Party переносит к текущей безопасной позиции лидера, encounter lobby — к безопасной staging position. Владелец выбирает участника в roster и там же принимает заявку, удаляет игрока или передаёт leadership; эти действия не требуют ручного UUID.
 
-Sidebar использует emerald для Shops и Ender Chest для Prizes. Shops toolbar содержит ровно два подписанных поля: seller и purchasable item; seller имеет live suggestions. Profile показывает full-body skin, но не recent achievements. Territories используют compact rows, semantic icons и fixed navigation positions.
+Sidebar открывает главную, собственный профиль, игроков, группы, события, магазины, системный Рынок и награды; Поселения, Рекруты, Роли и Профессии появляются только при наличии их реального владельца. Shops и Market остаются разными системами. Profile показывает full-body skin, но не recent achievements.
 
 ## Interaction ownership
 
 - Client владеет layout, hover, scroll, cursor, skin/entity preview и visual accents.
-- Server владеет доступностью actions, shop state, party membership, event state, claims и mutation result.
+- Server владеет доступностью actions, shop state, party membership, event state и mutation result.
 - Client не предсказывает удаление slot item для menu buttons.
 - Refresh обновляет содержимое in place и не открывает container заново.
 - Player preview использует preview-only `RemotePlayer`; live entity не передаётся в vanilla inventory renderer.
@@ -19,14 +19,14 @@ Sidebar использует emerald для Shops и Ender Chest для Prizes. 
 
 ## SMP domain projection
 
-GUI не создаёт вторую модель SMP state: shops отражают physical Spud shop block, territories отражают `JEMClaims`, parties/events отражают authoritative server instance.
+GUI не создаёт вторую модель SMP state: shops отражают physical Spud shop block, Market отражает JEM Economy policy/quotes, settlements/recruits являются read-only projection их владельцев, parties/events отражают authoritative server instance.
 
 - Server-hosted Events и player-hosted Party визуально и текстово различаются; Activities, inbox storage и activity-feed queries отсутствуют полностью.
 - Profile показывает full-body skin без recent achievements, reward actions, work contracts и UUID.
 - Shops toolbar содержит только seller и purchasable-item search; seller даёт live suggestions. Trade card явно показывает input и output.
 - Remote catalog открывает native Spud customer menu, если server chunk магазина загружен; seller может быть offline, а buyer client не обязан загружать chunk.
 - Разрушенный или заменённый Spud BlockEntity немедленно удаляет catalog record; `CLOSED` и `STALE` записи не существуют.
-- Spud trade не ограничивается claim permissions и сохраняет native management/stock protections.
+- Spud trade сохраняет native management/stock protections и не зависит от удалённой системы обычных claims.
 - Building Projects are authenticated Xaero overlays with stable colors and seam-free unions. They are planning metadata only and never grant or deny world interaction.
 - FTB Quests is a guide projection: it may explain Roles, Professions, Coins, towns, bosses and events, but it never becomes their state or reward owner.
 - Shipping Box and Coin merchant screens are Economy projections: item policy is only `BUY_AND_SELL` or `NONE`, the server re-quotes every transaction, and the client never owns demand, quotas, offer use, inventory consumption or money mutation.
@@ -35,7 +35,7 @@ GUI не создаёт вторую модель SMP state: shops отража�
 - Shop rows display a numeric Coin price. A remote non-selectable purchase reserves one Wallet/cash-funded amount, rechecks the loaded physical Spud stock, delivers the real stack and credits the authenticated owner. Selectable Spud shops require choosing the exact item at their physical block until a bounded selection DTO is available.
 - Sleep vote длится девять секунд, показывает каждого eligible player и его выбор, sleepers считаются автоматически, большинство решает, tie сохраняет ночь.
 - Глобальная карта Xaero содержит только общее исследование terrain и подтверждённые открытия boss locations. Обычные native waypoints, home/base, names/colors/groups/settings и death points остаются личными; редактор Xaero не публикует их на сервер.
-- Старые обычные Landmarks/Pending записи сохраняются в прежнем SavedData, но доступны только creator, включая /landmarks и map snapshot. Creator удаляет только свою сохранённую запись. Global boss discoveries не удаляются через чужой UI; локальная visibility/delete настройка third-party marker принадлежит native Xaero и не меняет серверное открытие. Active Blood Moon и Resource Rush показывают exact server-owned область всем игрокам на Xaero и исчезают вместе с завершением event. Active hosted Boss Fight показывает canonical structure boundary; Boss Raid переиспользует ту же boss-область и не накладывает второй слой. Контуры обычных claims по-прежнему показывают только собственные территории, без глобальной выдачи чужих names/coordinates.
+- Старые обычные Landmarks/Pending записи сохраняются в прежнем SavedData, но доступны только creator, включая /landmarks и map snapshot. Creator удаляет только свою сохранённую запись. Global boss discoveries не удаляются через чужой UI; локальная visibility/delete настройка third-party marker принадлежит native Xaero и не меняет серверное открытие. Active Blood Moon и Resource Rush показывают exact server-owned область всем игрокам на Xaero и исчезают вместе с завершением event. Active hosted Boss Fight показывает canonical structure boundary; Boss Raid переиспользует ту же boss-область и не накладывает второй слой. Обычные claims и их контуры удалены; независимые слои building projects и событий остаются скрываемыми.
 - Event card показывает и карту, и server-authoritative Teleport. Resource Rush переносит внутрь области; обычный переход к combat event или discovered boss всегда высаживает снаружи outer collision surface с clearance полного player box. Телепорт асинхронно подготавливает только bounded target chunks, выбирает прочный сухой безопасный пол и отклоняется с понятным сообщением, если подтверждённой точки нет.
 - Правый клик внутри event area на Xaero World Map показывает `Телепортироваться к границе события`; карта всегда переносит за ближайшую внешнюю границу через тот же server-authoritative travel path, а не выполняет клиентский `/tp`. Сервер дополнительно проверяет конечную позицию любого телепорта: Boss/Raid destination внутри закрытой арены заменяется на сохранённый staging point или безопасную точку снаружи, а Blood Moon и Resource Rush без закрытого player border не используют это выталкивание.
 - Во время активного combat canonical source/destination policy до перемещения блокирует portals, commands, TPA, pearls/fruit, Back to Bed, Xaero и modded travel items, если active participant или его mount должен оказаться снаружи. Лидер получает tokenized выбор завершить текущую attempt для всех, остальные — покинуть только свою попытку; Resource Rush не ограничивает вход и выход игроков.
@@ -59,19 +59,6 @@ Boss location становится общей только после физич
 Boss discoveries остаются в прежнем `jem_server` SavedData с system creator identity. Bootstrap делится на ограниченные frame batches, дальнейшие additions/removals передаются как metadata deltas. Discovery replay не пересылает personal records другим игрокам и не вытесняет их квоту. Boss markers используют native ThirdPartyWaypointManager, origin `jem_server:boss_discoveries`, стабильный UUID, локализованное имя, красный цвет и ◆; собственные legacy records имеют отдельный `personal_landmarks`. Native override storage сохраняет локальные color/initials/visibility/delete preferences. Очистка удаляет только JEM origins и никогда не сопоставляет native точки по совпавшим именам или координатам.
 
 Локатор на shared dedicated server открывает найденное место без создания второй личной метки; singleplayer сохраняет прежнее native поведение. На JEM dedicated server native Xaero teleport action удаляется у personal/home/base/death waypoint и появляется только у server-owned discovered boss marker; packet передаёт UUID, а server повторно разрешает canonical arena, progression и safe outside arrival без доверия client coordinates. После полного удаления клиента гарантируется восстановление общего terrain и global bosses; удалённые обычные personal/death files не обещаются восстановленными. Старые явно сохранённые creator-scoped Landmarks остаются существующим частным server storage.
-
-## Territories
-
-- Игрок видит только territories, а не внутренние rectangle pieces.
-- Bounds точны до blocks, minimum area равна двум blocks.
-- Overlapping selections одного owner объединяются с original territory; quota считает union area, outline показывает только внешний контур без внутренних seams.
-- `Claim Tool` — только stick с точным именем `Claim Tool`; anvil preview показывает glint.
-- Selection разрешается по server-observed player chunk tracking, а не по Xaero/global generation.
-- Permission menu плоское: all on/off, containers, fire, PvP, explosions, outside penetration, placement, breaking и beds.
-- Anvils, enchanting tables, doors, gates, trapdoors, buttons, levers и note blocks всегда доступны для interaction.
-- Fire spread owner-configurable и выключен по умолчанию; boss terrain damage запрещён независимо.
-- Через PvP-disabled boundary блокируется player→boss и boss→player damage, но AI и movement сохраняются.
-- Boundary рисуется в world render stage как high-contrast exterior outline без filled walls, остаётся привязанной к мировым координатам при движении камеры и видна с shader pipeline; overlap preview имеет отдельный цвет.
 
 ## Visual assets
 

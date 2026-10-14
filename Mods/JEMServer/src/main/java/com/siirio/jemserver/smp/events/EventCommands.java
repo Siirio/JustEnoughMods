@@ -16,7 +16,6 @@ import java.util.UUID;
 
 @Mod.EventBusSubscriber(modid = "jem_server", value = net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER)
 public final class EventCommands {
-    private static final String ADMINISTRATOR_NAME="Sirio_o";
     private static final java.util.Map<UUID, String> TEST_PLAYERS = java.util.Map.of(
             UUID.nameUUIDFromBytes("jem:test:ember".getBytes(java.nio.charset.StandardCharsets.UTF_8)), "Ember_Test",
             UUID.nameUUIDFromBytes("jem:test:frost".getBytes(java.nio.charset.StandardCharsets.UTF_8)), "Frost_Test");
@@ -24,93 +23,38 @@ public final class EventCommands {
     @SubscribeEvent
     public static void register(RegisterCommandsEvent event) {
         if (event.getCommandSelection() != Commands.CommandSelection.DEDICATED) return;
-        var root = Commands.literal("smp").then(Commands.literal("event")
-            .requires(EventCommands::administrator)
-            .then(Commands.literal("stop").then(Commands.literal("combat").executes(context -> stopCombat(context.getSource().getServer()))))
-            .then(Commands.literal("stop").then(Commands.literal("all").executes(context -> stopAll(context.getSource().getServer()))))
-            .then(Commands.literal("simulate").executes(context -> simulate(context.getSource().getServer())))
-            .then(Commands.literal("schedule")
-                .then(Commands.literal("list").executes(context -> listSchedule(context.getSource())))
-                .then(Commands.literal("reset").executes(context -> resetSchedule(context.getSource())))
-                .then(Commands.literal("add")
-                    .then(Commands.argument("type", StringArgumentType.word())
-                        .suggests((context, builder) -> SharedSuggestionProvider.suggest(WeeklySchedule.TYPES, builder))
-                        .then(Commands.argument("day", StringArgumentType.word())
-                            .suggests((context, builder) -> SharedSuggestionProvider.suggest(java.util.Arrays.stream(java.time.DayOfWeek.values()).map(Enum::name), builder))
-                            .then(Commands.argument("time", StringArgumentType.word())
-                                .executes(context -> changeSchedule(context.getSource(), true,
-                                        StringArgumentType.getString(context, "type"),
-                                        StringArgumentType.getString(context, "day"),
-                                        StringArgumentType.getString(context, "time")))))))
-                .then(Commands.literal("remove")
-                    .then(Commands.argument("type", StringArgumentType.word())
-                        .suggests((context, builder) -> SharedSuggestionProvider.suggest(WeeklySchedule.TYPES, builder))
-                        .then(Commands.argument("day", StringArgumentType.word())
-                            .suggests((context, builder) -> SharedSuggestionProvider.suggest(java.util.Arrays.stream(java.time.DayOfWeek.values()).map(Enum::name), builder))
-                            .then(Commands.argument("time", StringArgumentType.word())
-                                .executes(context -> changeSchedule(context.getSource(), false,
-                                        StringArgumentType.getString(context, "type"),
-                                        StringArgumentType.getString(context, "day"),
-                                        StringArgumentType.getString(context, "time"))))))))
-            .then(Commands.literal("stop").then(Commands.argument("id", UuidArgument.uuid()).executes(context -> {
-                var server = context.getSource().getServer();
-                var row = SmpData.get(server).find("events", UuidArgument.getUuid(context, "id"));
-                if (row == null || SmpData.closed(row)) return 0;
-                EventScheduler.finish(server, row, "CANCELLED");
-                context.getSource().sendSuccess(() -> Component.translatable("jem.smp.event_cancelled"), true);
-                return 1;
-            }))));
-        event.getDispatcher().register(root);
-        event.getDispatcher().register(Commands.literal("smp").then(Commands.literal("arena")
-                .then(Commands.argument("id", UuidArgument.uuid()).executes(context -> {
-                    try {
-                        StructureStaging.prompt(context.getSource().getPlayerOrException(), UuidArgument.getUuid(context, "id"));
-                    } catch(IllegalArgumentException failure) {
-                        context.getSource().sendFailure(Component.translatable("jem.smp.error."+failure.getMessage()));
-                    }
-                    return 1;
-                }))));
-        event.getDispatcher().register(Commands.literal("smp").then(Commands.literal("boss")
-                .executes(context -> reviveBoss(context.getSource()))
-                .then(Commands.literal("revive").requires(EventCommands::administrator).executes(context -> reviveBoss(context.getSource())))
-                .then(Commands.argument("id", UuidArgument.uuid()).executes(context -> {
-                    try {
-                        BossHostingPrompt.prompt(context.getSource().getPlayerOrException(), UuidArgument.getUuid(context, "id"));
-                    } catch(IllegalArgumentException failure) {
-                        context.getSource().sendFailure(Component.translatable("jem.smp.error."+failure.getMessage()));
-                    }
-                    return 1;
-                }))));
-        event.getDispatcher().register(Commands.literal("smp").then(Commands.literal("event-open")
-                .then(Commands.argument("id", UuidArgument.uuid()).executes(context -> {
-                    EventAreaHooks.prompt(context.getSource().getPlayerOrException(), UuidArgument.getUuid(context, "id"));
-                    return 1;
-                }))));
-        event.getDispatcher().register(Commands.literal("smp").then(Commands.literal("event-return")
-                .then(Commands.argument("event",UuidArgument.uuid())
-                        .then(Commands.argument("session",UuidArgument.uuid())
-                                .then(Commands.argument("choice",StringArgumentType.word()).executes(context->eventReturn(
-                                        context.getSource().getPlayerOrException(),UuidArgument.getUuid(context,"event"),
-                                        UuidArgument.getUuid(context,"session"),StringArgumentType.getString(context,"choice"))))))));
-        event.getDispatcher().register(Commands.literal("smp").then(Commands.literal("vote")
-                .then(Commands.argument("event",UuidArgument.uuid())
-                        .then(Commands.literal("continue").executes(context->vote(context.getSource(),UuidArgument.getUuid(context,"event"),true)))
-                        .then(Commands.literal("cashout").executes(context->vote(context.getSource(),UuidArgument.getUuid(context,"event"),false))))));
-        event.getDispatcher().register(Commands.literal("smp").then(Commands.literal("forfeit")
-                .then(Commands.argument("party",UuidArgument.uuid())
-                        .executes(context->forfeit(context.getSource(),UuidArgument.getUuid(context,"party"),null))
-                        .then(Commands.argument("action",UuidArgument.uuid()).executes(context->forfeit(context.getSource(),
-                                UuidArgument.getUuid(context,"party"),UuidArgument.getUuid(context,"action")))))));
-        event.getDispatcher().register(Commands.literal("smp").then(Commands.literal("encounter-leave")
-                .then(Commands.argument("party",UuidArgument.uuid()).executes(context->{
-                    try {
-                        com.siirio.jemserver.smp.HostedParties.leaveEncounter(context.getSource().getPlayerOrException(),UuidArgument.getUuid(context,"party"));
-                    } catch(IllegalArgumentException failure) {
-                        context.getSource().sendFailure(Component.translatable("jem.smp.error."+failure.getMessage()));
-                    }
-                    return 1;
-                }))));
-        for (String type : java.util.List.of("FISHING", "RESOURCE_RUSH", "BLOOD_MOON", "BOSS_RAID", "COOKING_SHOW")) registerStart(event,type);
+        var type = Commands.argument("event", StringArgumentType.word())
+                .suggests((context, builder) -> SharedSuggestionProvider.suggest(WeeklySchedule.TYPES, builder))
+                .executes(context -> startRequested(context.getSource(), StringArgumentType.getString(context, "event"), null))
+                .then(Commands.argument("position", BlockPosArgument.blockPos())
+                        .executes(context -> startRequested(context.getSource(), StringArgumentType.getString(context, "event"), BlockPosArgument.getBlockPos(context, "position"))));
+        var eventRoot = Commands.literal("event").requires(source -> source.hasPermission(2))
+                .then(Commands.literal("start").then(type))
+                .then(Commands.literal("stop").then(Commands.argument("id", UuidArgument.uuid())
+                        .suggests((context, builder) -> SharedSuggestionProvider.suggest(
+                                SmpData.get(context.getSource().getServer()).all("events").stream()
+                                        .filter(row -> !SmpData.closed(row) && row.hasUUID("id"))
+                                        .map(row -> row.getUUID("id").toString()), builder))
+                        .executes(context -> stopExact(context.getSource(), UuidArgument.getUuid(context, "id")))));
+        event.getDispatcher().register(Commands.literal("jem").then(eventRoot));
+    }
+
+    private static int startRequested(net.minecraft.commands.CommandSourceStack source, String rawType, BlockPos position) {
+        String type = rawType.toUpperCase(java.util.Locale.ROOT);
+        if (!WeeklySchedule.TYPES.contains(type)) { source.sendFailure(Component.translatable("jem.smp.error.unknown_event")); return 0; }
+        if (type.equals("BOSS_RAID")) return startNearestRaid(source, position == null ? BlockPos.containing(source.getPosition()) : position);
+        if (position != null && !type.equals("RESOURCE_RUSH") && !type.equals("BLOOD_MOON")) {
+            source.sendFailure(Component.translatable("jem.smp.error.position_not_supported")); return 0;
+        }
+        return start(source, type, position, null, null);
+    }
+
+    private static int stopExact(net.minecraft.commands.CommandSourceStack source, UUID id) {
+        var row = SmpData.get(source.getServer()).find("events", id);
+        if (row == null || SmpData.closed(row)) { source.sendFailure(Component.translatable("jem.smp.error.event_not_running")); return 0; }
+        EventScheduler.finish(source.getServer(), row, "CANCELLED");
+        source.sendSuccess(() -> Component.translatable("jem.smp.event_cancelled"), true);
+        return 1;
     }
 
     private static int forfeit(net.minecraft.commands.CommandSourceStack source,UUID party,UUID action) {
@@ -141,10 +85,7 @@ public final class EventCommands {
                 .requires(EventCommands::administrator).then(Commands.literal("start").then(command))));
     }
 
-    private static boolean administrator(net.minecraft.commands.CommandSourceStack source) {
-        return source.getEntity() instanceof net.minecraft.server.level.ServerPlayer player
-                && player.getGameProfile().getName().equalsIgnoreCase(ADMINISTRATOR_NAME);
-    }
+    private static boolean administrator(net.minecraft.commands.CommandSourceStack source) { return source.hasPermission(2); }
 
     private static com.mojang.brigadier.builder.RequiredArgumentBuilder<net.minecraft.commands.CommandSourceStack,String> waveSelections(boolean positioned) {
         return Commands.argument("wave3",StringArgumentType.word())

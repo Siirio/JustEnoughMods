@@ -24,10 +24,6 @@ public final class SmpActions {
                     (action == SmpActionKind.CLAIM_ALL) ? null : request.id()), "inventory_full");
             return;
         }
-        if ((action == SmpActionKind.CLAIMS)) {
-            com.siirio.jemserver.claims.Claims.openOverview(player);
-            return;
-        }
         if ((action == SmpActionKind.CREATE)) {
             if (table.equals("parties")) {
                 var party = Parties.create(player, (SmpPartyRequest) input);
@@ -94,6 +90,20 @@ public final class SmpActions {
                                 player.createCommandSourceStack(),
                                 "msg " + target.getGameProfile().getName() + " " + text);
             }
+            case HOME -> {
+                SmpRecords.require(table.equals("profiles") && row.getUUID("owner").equals(player.getUUID()), "private");
+                BlockPos home = player.getRespawnPosition();
+                SmpRecords.require(home != null, "home_missing");
+                SmpNetwork.homePreview(player, player.getRespawnDimension().location(), home);
+            }
+            case WALLET -> {
+                SmpRecords.require(table.equals("profiles") && row.getUUID("owner").equals(player.getUUID()), "private");
+                com.siirio.jemeconomy.network.EconomyNetwork.sendStatus(player, true);
+            }
+            case DEATH_HISTORY -> {
+                SmpRecords.require(table.equals("profiles") && row.getUUID("owner").equals(player.getUUID()), "private");
+                com.siirio.jemserver.DeathHistory.open(player);
+            }
             case JOIN_RAID, CREATE_PARTY, SOLO -> {
                 if (table.equals("parties")) Parties.action(player, row, action, input);
                 else {
@@ -127,7 +137,6 @@ public final class SmpActions {
                                     row.getString("name") + "\u001f",
                                     0,
                                     null));
-            case TERRITORY_RIGHTS -> com.siirio.jemserver.claims.Claims.openProfile(player, row.getUUID("id"));
             default -> {
                 if (table.equals("parties")) Parties.action(player, row, action, input);
                 else throw new SmpActionFailure("unknown_action");

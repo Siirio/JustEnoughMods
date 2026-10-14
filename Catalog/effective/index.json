@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "d50399f7732af0b0727cb58c7f6bc24df8c9534389a4839c71f92b2388b774de",
+  "change_records_sha256": "d142507e6885b5fcfba6922de87e896b6319fe423ed54950a02f5fde7901a136",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -15,6 +15,21 @@
     "conflict_policy": "Equal-order modifiers of one property are reported; history and base facts are never overwritten."
   },
   "changes": [
+    {
+      "change_id": "smp.claims-flan-removal",
+      "status": "active",
+      "summary": "Ordinary JEMClaims and Flan land protection are removed; settlement regions remain guidance-only while events and boss arenas retain their independent owners.",
+      "record": "Catalog/changes/records/claims-flan-removal.json",
+      "selectors": [
+        {
+          "type": "category",
+          "registry": "*",
+          "value": "smp_runtime_ownership"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 0
+    },
     {
       "change_id": "compat.removed-backtobed-build-dependency",
       "status": "active",
@@ -33,7 +48,7 @@
     {
       "change_id": "economy.reviewed-item-policies",
       "status": "active",
-      "summary": "Reviewed item policies define the only system-market outcome and exact quote/cap fields for their selected item IDs.",
+      "summary": "Reviewed ingredient and resource policies define the only system-market outcome and exact quote/cap fields; finished meals remain outside the universal Market.",
       "record": "Catalog/changes/records/economy-item-policies.json",
       "selectors": [
         {
@@ -137,6 +152,21 @@
       "potential_static_target_count": 1
     },
     {
+      "change_id": "smp.market-profile-consolidation",
+      "status": "active",
+      "summary": "JEM SMP consolidates its custom Market, Wallet, profiles, navigation, read-only settlement/recruit projections and operator event commands under their canonical server owners.",
+      "record": "Catalog/changes/records/smp-market-profile-consolidation.json",
+      "selectors": [
+        {
+          "type": "category",
+          "registry": "*",
+          "value": "smp_market_profile_consolidation"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 0
+    },
+    {
       "change_id": "world-tier.ordinary-hostile-scaling",
       "status": "conditional",
       "summary": "World Tier III-V increases ordinary hostile max health and attack damage while excluding event mobs and bosses.",
@@ -183,18 +213,27 @@
     "Catalog/generator/query_atlas.py": "cdca14d066ccd28d5098dfa17e9e0f5361fee62ae29dc7e684f7ee40ecef13a7",
     "Catalog/power-sources/irons-spellbooks-3.15.6.json": "879cdad98ec1ec3f29030ed8673a79fc57629f33887c55d449ee1375b8545b3c",
     "Docs/power-system/README.md": "e70dbc0a4c0755b8a13e67521e064dfe8791bc009db73e8301beab4d604b3dea",
+    "Docs/smp-gui/README.md": "c4d14df8f875f47a7c01946265ccfd66f7a338140bcdadc58760695845250448",
     "Mods/JEMCompat/build.gradle": "7b79f9161e4116f9e45f5e7ecb230252158b1dd696a4b0a990cfe6b80e131e02",
     "Mods/JEMEconomy/build.gradle": "c16da45d3674ad2a5e02825eb17b85af28f46d44ff23dc562060efad95ae2d49",
     "Mods/JEMEconomy/settings.gradle": "87a947f8eab9e0ca4b873486f492128e0b77e0190ff6c60ba4a1d04568d26e28",
-    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/JemEconomy.java": "850fa9907abb34a8eca1b443c5a18b367e2c8c72fa66d84ab8f43f82917135eb",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/JemEconomy.java": "7a5c02fce4b1b4ca11d19aee93457c7f9ecd98dfef8c4ebfd98b2ce9d5ba0aac",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/CoinTradeContext.java": "f915fd2f3de331c62ec9bcf550ce38fb992d2fd2407db6c8fb9ec65fbfcd69b4",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/CoinTradePriceEvent.java": "bdddd673945f7d03d927bf400c8b1ffce049ead391ab60b80380dddea26bf894",
-    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java": "a8919e1aaee3d0e218cb14c1362ec41f6685fc4fb0b3ec984fdc4584f1d850ab",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java": "636206c88c6d366a89c720f878f01a0b53b7626bdde3300cea4e3303c8a63922",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/MarketCatalogSnapshot.java": "bfb1fb0fe7be195e70906842713ba720a54c90de5700b389166a16706b2c5ccb",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/MarketItemSnapshot.java": "e9af92552953f1d02b300cd09e49fd3060de9fd0367232fa60300dbd305e2d75",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/CoinPriceRenderer.java": "676dda40c3dc9ab90489f3b0d63e1ffa32228acbccb56ee84073e8abb4820432",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/EconomyClient.java": "06b98327c19e57c294d1a3a619667b528bdce925342e0fd2325ba0bcae053180",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/MarketClientState.java": "0d89f0a59b088391a964e934446613d0dc2dc327c1f4db8a5c8b35a02f027d05",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java": "6aeed3fc0cf12a769113bcabc2fa7a06e14b7ea2f4844f1b550c10143960a22a",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/NativeTradeClient.java": "53172a9f531d1125b47eb0c6c3c1102995a95d41c3082b6dcbd8261d28f3906a",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/NativeTradeScreenAccess.java": "860f45d42f004d0d6a2062f2c8e19965a30629fcca7a57bde62cddd6c09d3bea",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/WalletClientState.java": "3678e855c6f123a3918f0e96b010cf518af896e2b5a26336f9592eb5d221aff5",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/WalletScreen.java": "f0b0ab7a6c875744d06bc81ad725a26a1cb370456aa39fb602b0532b7d392f7f",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java": "92721ec95e7692ba0bf11504e381ba58140a710e38d3215a1e0151222eb75b8e",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/market/MarketRuntime.java": "38cc2b02f5c450d049461e6b9aff83bde047daf653302a2d80e830d807db465d",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java": "d68e9b2879284a570db6edab345f4094d507fdae557575bd6fd4a1daece7e723",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/BuyerTradeOffers.java": "21d1f5441927e04c871ae7407597ce500a64c179eee6495f901de472b6eebfd3",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantRuntime.java": "7e33a20be4a421dbd2228d89169f01c43f9e64f852b5ed9689a756c892ea6481",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeCoinResultSlot.java": "92d32bb7d99ff6779efefaa48662874af9be80407dc7cc3fccb95ed18bbec088",
@@ -209,14 +248,22 @@
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/MerchantMenuMixin.java": "f06a5ea5324ec06dec3154fd85619178d7bbe3a6ea456fe3e0ad7fe09540aa35",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/MerchantScreenMixin.java": "60cc2bca070dc43b45d03a6ff0354b5197588f9ac3f6257fd34d9a923d3746aa",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/NativeTradeClickMixin.java": "cef771d1fb946fdc4b758b1de36d6dc598f89f934363a5d02d858b2dedcc3ffd",
-    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java": "0c07f51112abbea0f1a791fa8f85f9e25321c373936b0268b77f4365a13265b1",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/CoinExchangePacket.java": "f27b4580cd453fdbb80a42fc3afc2808bb6ba08d295d36cbe65de9982f646aab",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java": "172302d762f001b25c7e9ddd42bda56dc071e55b4e02fffca2d58107eb50ea99",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/MarketActionPacket.java": "817de81999fd23ea346a12121f798ac85be8959ace4ec831008ac20554d30b54",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/MarketCatalogPacket.java": "ff6604bba1b0b1d89734b01fed42cdb8ff155f0b167df2b937aadd2eeac8839d",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/MarketQueryPacket.java": "11335b814c52c5bce758e569582db7fb5f1c940a1f738cb0af682f0d5ca30e14",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/NativeTradeActionPacket.java": "665e270be99d92b317f0c8c9c0b069be5625af82f71e8d636c152ae90ba52eda",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/NativeTradePacket.java": "69d997e84c5845e9f95d1fdd79cf73b1a26916b604a4ddba4731711cd8bf4443",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/WalletActionPacket.java": "ae36e6b99f1b98cf9b35b5b2f3ac2a9d2332a41a53a8160d17f2b16ea95ebd3f",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinOperation.java": "b372a0d3cb6e77df53b22108b055cf2bf1b281a6c930ff426fae8d0ab38fc10d",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinService.java": "0bcf3d38bf0b48aaeeb2ae5fc82ae0b86772cbdcf393e1b24e63f5e77a17f4a5",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicy.java": "9003b105e4c46e5a51b0f3814dfa7db14395a9e7360df44c6668d82bf3617dd8",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java": "ff67275e95e10dba4ae35b0a410b6d0ad933a463e69a245ba375b9041668a1a1",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/registry/EconomyMenus.java": "954d6c44fc4fe48ec15d452dcd226cdc406045eef484af2e94c368699de2bed4",
-    "Mods/JEMEconomy/src/main/resources/assets/jem_economy/lang/en_us.json": "745493a51f542da6f956fe8be0da7fe8b164391dfbf4c30d69a65a10004204cb",
-    "Mods/JEMEconomy/src/main/resources/assets/jem_economy/lang/ru_ru.json": "0f8efe09f0a93c636a0b8406583c15cc9fc4e0e67238932106c17e83fa2ed1e3",
-    "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json": "3eb8c0ebb817e171ce1be6641660132a80f0cb5e738edca71586aee55d5004c6",
+    "Mods/JEMEconomy/src/main/resources/assets/jem_economy/lang/en_us.json": "98d35f3a9cd5d6a5022317d9f795e8c6fc9303066125eb776f9d5ecf329cb733",
+    "Mods/JEMEconomy/src/main/resources/assets/jem_economy/lang/ru_ru.json": "55aac9ca82adb43abca596c59a32b2fdb32a5833d8984cdeb52600b820881d43",
+    "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json": "0c45a5165f05585533eccbd6628932cd1d151a1846b9a2200fd5bc8586c131b1",
     "Mods/JEMEconomy/src/main/resources/jem_economy.mixins.json": "83057610c769e1cf6e8dda02fe0ff6c812f079852e863989fa3eea4887e5c5a9",
     "Mods/JEMMenuSupport/embed.gradle": "135a77fc8c1e7afb696fba2db9ee57d164e5dbb517b447bf979fd39742b6e4ad",
     "Mods/JEMRoles/build.gradle": "7ee741c5fd0c4227900e4da51250f4a3931046aa776a26971a4186b53d449613",
@@ -224,14 +271,46 @@
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/economy/CoinTradeRaceBridge.java": "9ace443bfb5edefae96a949abfdd33570b7cf9602d73aa4df955523962079844",
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceTraitRuntime.java": "f5a07551eca378b9de63fdf17fff4347f22447012f1fe735c6a2878c2cbeefea",
     "Mods/JEMRoles/src/main/resources/META-INF/mods.toml": "2e6a471cfa9468c67349708335e5e02f0a95bbba736640128cc3e46247b74b23",
-    "Mods/JEMServer/src/main/java/com/siirio/jemserver/JemServer.java": "8f2b9025eb2512d8f9dbc92be075d2bb7a42aff379ce24d74458d399b23db81d",
-    "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapClient.java": "e1a495fcf4b3df05a50d857032e35b5466682b4b70ca7e0726cb9e74498b234c",
-    "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapLayerPreferences.java": "bf2c11575520d4b523381633f6304813fd857d58e5428ca046a8dab57939ac3f",
+    "Mods/JEMServer/build.gradle": "20c41c486853280ab939c9ca47ed344e580f221ca4d5281bbdb0efae11bcea4c",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/DeathHistory.java": "3db9cde1b59ae7bef00278fcd9e4287f8ccce693227a9ec61e726da1ab367616",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/JemServer.java": "d9688a8fbdf01b240324d89cca5fcbcb3d6a6696e25356c38fd1f2cb62641bd9",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/Landmarks.java": "9f473bf8321a286f2f7fd3e9a589dbb5db56259a31dd512d2d7184b01e2b4ed7",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/MapNetwork.java": "b37e2fe8c8f90cce97334c3a79bcd08646bef843c931e9dfe91004f8cfbcf076",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/XaeroLandmarks.java": "192612640435da38bad5821297ec4617509f698ddad1ccf5c44ea2d08296a9b0",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpIcons.java": "b75755e31d73d8bcf6c1a3dae3a8ad58fa901cd875bf1848d898b9078c246ac9",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java": "b8e852625f496cd23bd19a71446f3adfdecb2398abf26ac29001083a44458bb2",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpSidebar.java": "caa95a123aa2c4d1979ed7fe47a0a220e1c28936981a699ed2fd0df43354f6b3",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/ui/JemMenuScreen.java": "655ee46a8a7b4ff6294b45025d07907fdb3b50636490a4487fda4c963d0e4b41",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapClient.java": "c604a6d433cba490652d3a0b2f906993c97173121b7107690ac817f0fb627940",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapLayerPreferences.java": "a5ec131f84203fa0379ae0db5162c7d0034d26dbab7c08fd9fde72225445eb23",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/ProjectRegionClient.java": "46a7b8b8c9086888a694ed7223d8df4e28e11cfc34e7932e12e7fa490895b9b1",
-    "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/MapScreenMixin.java": "41ea0c78ddff0786dd034e3112add310cb208cbe027721716eaa4750901dc2df",
-    "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json": "36a55fbaa9b50edc300334e3e57a051dea15aa54768baaf0c9ade815fdc07542",
-    "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json": "276aef3a32683abecded507646d77fe0f51a27aebe9b9e199fce63f1731ade7a",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/XaeroMapPreview.java": "b20d48cb807ab3fbf3239aefe0080210017751e3393507a564ad220d550ee34b",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/map/ProjectRegion.java": "e9d5fbabe6371b8702195c0b578cbac1402efc86a0335a42d27c2914f13533e8",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/map/ProjectRegionService.java": "90c14468480b2664ac751f37457a0b40a37c4899ea275bf61c7a1f53fa0eef1c",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/map/RegionGeometry.java": "c1f31dbe902744eccd25648363995e334ccaa4a477855c2a8cd2c3bf59d19a79",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/map/RegionUnion.java": "b12ff718613fef73f12845cb2203313ee7f5d9777684d16d20084a93c1172cd5",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/MapScreenMixin.java": "c507d0b7e766aa54c0b7f9d28c5a32677fda3f80fd783e776dd3dee16a804911",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/HomePreview.java": "8927a92e2b708d0ae510c7a2c2c4a2b02a20a47c60662a872f4853a156244b00",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Profiles.java": "408750b8099ce6423951c57cc7041f2fad4de6cc82394416174204d01da46cfb",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpActionKind.java": "cb2962bb4c791cecfffd9dfeabac2c1efe32ddec7e1b54fb7a0551da15e46947",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpActions.java": "ace130cda337ebe65342fa343bd9b292569da16304bfe056042bdc9cb834871a",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpNetwork.java": "e12f319ce4ee706eaf8018e8f698df9a4f57fcfc08bc31e08a665a9771e24eef",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpProtocol.java": "b20237062ada373210e000df3e63b8075e60736b1d0ebc899147b8597d0553a0",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpRuntime.java": "8fbf37d25ac64d153e210a8ba9de1046bc60c4fe786cc6257659e58ff14d4160",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViews.java": "9e827a29eda95ff41828277c09f7c654b4e0de07101518ccc61ee6fd6d0920be",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventCommands.java": "a00c29bde1e206afb6c01b8fa23463f24411624ff81ecd4ad8ba635e6a365207",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventRegions.java": "d88b2c69231c9c0345467249907157962c48d0b7140c1ccf35144da768ccbf73",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventRegistryExport.java": "bcf4f88213e84518f3657aff475eca9837b7c2206f03243e019996072db8ef63",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/recruits/RecruitProjection.java": "652961d83eeee3809142757a41715c5bdfd2dbb1dcab159c9f30e0e27655b3bc",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/settlements/SettlementProjection.java": "67709f2a3f3c4ec23219558478f63ffea1b6c0544b632b1f0b0336ca4f9b465d",
+    "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json": "5c68840be89a8b9919b79600fa27e708367bbddde829b8838808ce7d81dfbc8e",
+    "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json": "bb7c8b5dc924b4c412498836f721a957e905687995ef22cbc99d497e3b278c45",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java": "0a83287fb54882e636354c75ec1421ec9ba1b6073cd4a6104462f2a4f61bf621",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java": "9de1c3fb78f3c6f745957bb07836fd64618d7a0d696acf0b9ba30acea8e0972d",
-    "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/OrdinaryHostileScaler.java": "729980767df8c532c8463e4699a39ba6821053c9829995237ec56855009abeaf"
+    "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java": "c61a7005a954859d0be5bb6206ecac5a01db656734481d38fac8991225e6e3ae",
+    "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/OrdinaryHostileScaler.java": "729980767df8c532c8463e4699a39ba6821053c9829995237ec56855009abeaf",
+    "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/command/BossCommands.java": "9d9247f5b5d521c145a968cc0f1786f6dda7d9fba391ca34df4824bcb1c921f3",
+    "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/command/TierCommands.java": "065a2fb12fbec009307b4b447ef91e4ab8dca3a3aa258c59ed256c666a91982d",
+    "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/ArenaProtection.java": "834f9622b3f4ac70caa838ca31c32beacd3fc9f729098b6c36858d66ad3a9f7c"
   }
 }

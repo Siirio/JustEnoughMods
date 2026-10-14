@@ -93,6 +93,78 @@ public final class PhysicalCoinService {
         return new DepositResult(Status.COMMITTED, reservation.value(), accepted, stamped - accepted);
     }
 
+    public static ExchangeResult exchange(ServerPlayer player, CoinDenomination source, int sourceCount,
+                                          CoinDenomination target, UUID requestId) {
+        if (!DedicatedSmp.active(player)) return new ExchangeResult(Status.UNAVAILABLE, 0L, 0);
+        var principal = IdentityPolicy.resolve(player);
+        if (principal.isEmpty()) return new ExchangeResult(Status.UNAUTHENTICATED, 0L, 0);
+        if (source == null || target == null || source == target || sourceCount <= 0 || sourceCount > 4_096)
+            return new ExchangeResult(Status.INVALID, 0L, 0);
+        List<EconomySavedData.DepositCandidate> candidates = new ArrayList<>();
+        for (int slot = 0; slot < player.getInventory().items.size(); slot++) {
+            ItemStack stack = player.getInventory().items.get(slot);
+            var stamp = CoinProvenance.read(stack);
+            if (stamp.isPresent() && stamp.get().denomination() == source)
+                candidates.add(new EconomySavedData.DepositCandidate(slot, stamp.get().lotId(), source, stack.getCount()));
+        }
+        EconomySavedData data = EconomySavedData.get(player.getServer());
+        var reservation = data.prepareExchange(principal.get().accountId(), candidates, source, sourceCount, target, requestId);
+        if (reservation.status() == EconomySavedData.PhysicalStatus.REPLAYED)
+            return new ExchangeResult(Status.REPLAYED, reservation.value(), (int) (reservation.value() / target.value()));
+        if (reservation.status() != EconomySavedData.PhysicalStatus.PREPARED)
+            return new ExchangeResult(Status.NO_VALID_COINS, 0L, 0);
+
+        List<ItemStack> before = player.getInventory().items.stream().map(ItemStack::copy).toList();
+        List<ItemStack> after = before.stream().map(ItemStack::copy).collect(java.util.stream.Collectors.toCollection(ArrayList::new));
+        for (EconomySavedData.DepositSelection selection : reservation.selections()) {
+            ItemStack actual = player.getInventory().items.get(selection.slot());
+            var stamp = CoinProvenance.read(actual);
+            if (stamp.isEmpty() || !stamp.get().lotId().equals(selection.lotId()) || stamp.get().denomination() != source
+                    || actual.getCount() < selection.accepted()) {
+                data.cancelExchange(requestId);
+                return new ExchangeResult(Status.INVENTORY_CHANGED, 0L, 0);
+            }
+            after.get(selection.slot()).shrink(selection.accepted());
+        }
+        for (CoinLot lot : reservation.outputs()) {
+            ItemStack output = CoinProvenance.issue(lot.denomination(), lot.issued(), lot.id(), requestId);
+            if (!insertSimulated(after, output)) {
+                data.cancelExchange(requestId);
+                return new ExchangeResult(Status.NO_SPACE, 0L, 0);
+            }
+        }
+        for (int slot = 0; slot < after.size(); slot++) player.getInventory().items.set(slot, after.get(slot));
+        if (!data.commitExchange(requestId)) {
+            for (int slot = 0; slot < before.size(); slot++) player.getInventory().items.set(slot, before.get(slot));
+            data.cancelExchange(requestId);
+            return new ExchangeResult(Status.QUARANTINED, 0L, 0);
+        }
+        player.getInventory().setChanged();
+        player.containerMenu.broadcastChanges();
+        return new ExchangeResult(Status.COMMITTED, reservation.value(), (int) (reservation.value() / target.value()));
+    }
+
+    private static boolean insertSimulated(List<ItemStack> inventory, ItemStack incoming) {
+        for (ItemStack current : inventory) {
+            if (!current.isEmpty() && ItemStack.isSameItemSameTags(current, incoming) && current.getCount() < current.getMaxStackSize()) {
+                int moved = Math.min(incoming.getCount(), current.getMaxStackSize() - current.getCount());
+                current.grow(moved);
+                incoming.shrink(moved);
+                if (incoming.isEmpty()) return true;
+            }
+        }
+        for (int slot = 0; slot < inventory.size(); slot++) {
+            if (!inventory.get(slot).isEmpty()) continue;
+            int moved = Math.min(incoming.getCount(), incoming.getMaxStackSize());
+            ItemStack placed = incoming.copy();
+            placed.setCount(moved);
+            inventory.set(slot, placed);
+            incoming.shrink(moved);
+            if (incoming.isEmpty()) return true;
+        }
+        return false;
+    }
+
     public static ContainerPayment prepareContainerPayment(net.minecraft.server.MinecraftServer server, SystemAccount source,
                                                             long amount, String idempotencyKey) {
         if (server == null || !server.isDedicatedServer() || idempotencyKey == null || idempotencyKey.isBlank()) {
@@ -157,6 +229,7 @@ public final class PhysicalCoinService {
 
     public record WithdrawResult(Status status, long value, Map<CoinDenomination, Long> breakdown) { }
     public record DepositResult(Status status, long value, int acceptedItems, int rejectedItems) { }
+    public record ExchangeResult(Status status, long value, int targetItems) { }
     public record HeldSummary(long value, Map<CoinDenomination, Integer> counts, int invalidItems) { }
     public record ContainerPayment(Status status, UUID operationId, long value, List<ItemStack> stacks) { }
 }

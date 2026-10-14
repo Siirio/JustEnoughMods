@@ -4,34 +4,17 @@
 
 ## SMP and events
 
-Управляющая ветка `smp event ...` и восстановление босса через `smp boss`/`smp boss revive` доступны только игроку `Sirio_o`; OP-права и server console не обходят это ограничение. Пользовательские SMP-команды открытия GUI, участия, голосования, возврата и выхода остаются доступны своим участникам.
+`smp` — единственная публичная команда SMP: она открывает главную навигацию. Рынок, Кошелёк, профили, группы, события, магазины, поселения, рекруты, награды, голосование и выход из попытки доступны через серверно авторизованные действия GUI.
 
-- `smp` — открыть SMP.
-- `smp event stop combat` — завершить активные combat events через общий cleanup.
-- `smp event stop all` — завершить все events через общий cleanup.
-- `smp event simulate` — симуляция расписания оператором.
-- `smp event schedule list` — показать расписание.
-- `smp event schedule reset` — сбросить расписание.
-- `smp event schedule add <type> <DAY_OF_WEEK> <HH:mm>` — добавить слот расписания.
-- `smp event schedule remove <type> <DAY_OF_WEEK> <HH:mm>` — удалить слот расписания.
-- `smp event start fishing` — запустить Fishing.
-- `smp event start cooking_show` — запустить Cooking Show.
-- `smp event start resource_rush [x y z]` — запустить Resource Rush автоматически или в указанной точке.
-- `smp event start blood_moon [x y z] [wave3] [wave5]` — запустить Blood Moon с optional arena и set-piece selections.
-- `smp event start boss_raid [x y z]` — выбрать ближайшего допустимого босса/арену автоматически или от указанной точки.
-- `smp event stop <uuid>` — остановить конкретный event instance.
-- `smp arena <uuid>` — открыть staging prompt арены.
-- `smp boss` — восстановить босса ближайшей структурной арены в сохранённой нативной точке; живой босс с крыши возвращается на место, отсутствующий создаётся заново.
-- `smp boss <uuid>` — открыть boss hosting prompt; для структурного босса открыть его arena prompt.
-- `smp boss revive` — операторский alias для `smp boss`; если в зарегистрированной структурной арене нет живого босса, восстанавливает его без требования прежней победы и не разблокирует Raid до первой легитимной победы.
-- `smp event-open <uuid>` — открыть карточку события.
-- `smp event-return <uuid> <choice>` — применить Stay/Return choice участника.
-- `smp vote <uuid> continue|cashout` — голос после Blood Moon wave.
-- `smp forfeit <uuid>` — покинуть попытку.
+- `jem event start <event> [x y z]` — запустить реальный тип из `WeeklySchedule.TYPES`; позиция разрешена только для Resource Rush и Blood Moon, а Boss Raid сам выбирает ближайшую допустимую зарегистрированную арену.
+- `jem event stop <uuid>` — остановить ровно один незавершённый event через общий cleanup; автодополнение показывает UUID активных событий.
+- `jem boss revive` — восстановить босса ближайшей зарегистрированной арены через `BossRevivalApi`, не выдавая победу и не обходя progression.
+
+Все три управляющие операции требуют permission 2. Старые `smp event ...`, `smp boss ...`, `smp arena ...`, `smp event-open`, `smp event-return`, `smp vote`, `smp forfeit` и `smp encounter-leave` больше не регистрируются.
 
 ## World tier
 
-Вся управляющая и диагностическая ветка `jemtier ...` доступна только игроку `Sirio_o`; другие OP и server console не могут вручную изменить World Tier или выдать boss progression.
+Вся управляющая и диагностическая ветка `jemtier ...` требует permission 2.
 
 - `jemtier status` — текущий tier и progression.
 - `jemtier set <1..5>` — установить tier оператором.
@@ -44,7 +27,7 @@
 
 - `jem role` / `jemrole choose <human|elf|dwarf>` — inspect or choose RPG role; the early first change is free.
 - `jem professions` — inspect all ten profession levels and XP.
-- `coins` / `coins send <online-player> <amount>` — inspect or transfer authenticated Coins; Wallet also shows the shared daily demand bulletin and remaining NPC payout limits.
+- Кошелёк внутри `/smp` — баланс, перевод онлайн-игроку, внесение/снятие и точный обмен пяти физических номиналов.
 - `jem town` / `jem town create <name>` — inspect or found a non-claim town.
 - `jem town linkstorage` — link the physically targeted item-handler container to the owned town.
 - `jem town workforce <entity>` — register a genuine owned Recruits/Workers NPC in the single Workforce ledger.
@@ -52,7 +35,7 @@
 - `jem town territory radius <32..256>` — change the owned town's soft, non-claim guidance boundary; overlapping town bounds are rejected.
 - `jem town mounts` — show the authenticated player's private lifetime/living mount counts and audited eligible-type progress; no town is required.
 - `home` — return to the last valid vanilla bed or charged respawn anchor after server identity, combat, cooldown, active-event and safe-arrival validation.
-- `market` — inspect the current Market Buyer demand bulletin remotely; browsing is read-only and real goods still require a Shipping Box or supported nearby merchant.
+- Рынок внутри `/smp` — системная покупка и продажа проверенных ингредиентов/ресурсов с реальными котировками и дневными лимитами; готовые блюда исключены.
 - `jem project create <name>` — create a visual building project in the current dimension.
 - `jem project add <project-uuid> <x1> <z1> <x2> <z2>` — append a source rectangle.
 - `jem project remove <project-uuid> <zero-based-rectangle-index>` — remove a source rectangle and recompute its visual union.
@@ -60,13 +43,12 @@
 - `jem holiday mute <true|false>` — suppress or restore actual personal holiday notices.
 - `jem holiday gift <player>` / `accept <gift-uuid>` / `cancel <gift-uuid>` — durable consent-based New Year item escrow.
 - `jem holiday preview|force|stop ...` — OP calendar-event inspection and control.
-- `claims` — открыть territories UI.
 - `landmarks` — свои сохранённые места и глобально открытые боссы.
 - `landmarks create` — сохранить личное место; другим игрокам оно не передаётся.
 - `landmarks admin` — тот же личный список и общие открытия боссов для operator; чужие личные записи не раскрываются.
 - `sleep agree` / `sleep disagree` — голос сна.
 - `tpa accept` / `tpaccept` — принять запрос телепортации.
-- `deaths` / `death` — история смертей JEM.
+- История смертей открывается владельцем из собственного профиля `/smp`.
 
 ## JEM Pack Sync
 

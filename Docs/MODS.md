@@ -104,7 +104,6 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | FDLib | `1.0.9` | Client + server |  |
 | Ferrite Core | `6.0.1` | Client + server |  |
 | FishingReal | `1.9.1-backport` | Client + server |  |
-| Flan | `1.20.1-1.11.16` | Server |  |
 | Flashier Flashlights | `1.2.0` | Server |  |
 | Flashier Flashlights | `1.2.0` | Client |  |
 | Flerovium | `1.2.19` | Client + server |  |
@@ -315,6 +314,6 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Zipline | `1.3.0` | Client + server |  |
 | 细节盔甲条：重装 | `2.7.0+1.20.1-forge` | Client |  |
 
-## Unused / pending removal
+## Removed custom ownership
 
-- JEM Claims 2.0.0-dev is not part of the intended runtime. Its source remains in the repository for now; it is disabled in the disposable local test setup and is scheduled for removal from MineRENT at the next explicitly authorized deployment. Settlement territories remain and do not protect land.
+- JEM Claims 2.0.0-dev and Flan are no longer part of the source or intended canonical pack. Settlement territories remain informational and do not protect land. Existing world SavedData is preserved for recovery/history and is not treated as an active runtime dependency.

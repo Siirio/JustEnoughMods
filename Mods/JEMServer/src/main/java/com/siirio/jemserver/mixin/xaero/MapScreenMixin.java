@@ -106,10 +106,5 @@ public abstract class MapScreenMixin implements MapView {
                 }
             });
         }
-        var claim = MapClient.owned(rightClickDim.location(), rightClickX, rightClickZ);
-        if (claim == null) return;
-        options.add(new RightClickOption("gui.jem_server.unclaim", options.size(), (GuiMap) (Object) this) {
-            @Override public void onAction(Screen screen) { Minecraft.getInstance().setScreen(null); MapNetwork.unclaim(claim.id()); }
-        });
     }
 }

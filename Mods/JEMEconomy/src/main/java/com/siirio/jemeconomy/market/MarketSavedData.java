@@ -23,6 +23,7 @@ public final class MarketSavedData extends SavedData {
     private long activeCycle = Long.MIN_VALUE;
     private long seed;
     private long globalPaid;
+    private long revision;
     private final Map<UUID, Long> accountPaid = new HashMap<>();
     private final Map<ResourceLocation, Integer> globalUnits = new HashMap<>();
     private final Map<UUID, Map<ResourceLocation, Integer>> accountUnits = new HashMap<>();
@@ -71,6 +72,7 @@ public final class MarketSavedData extends SavedData {
         Map<ResourceLocation, Integer> perAccount = accountUnits.computeIfAbsent(account, ignored -> new HashMap<>());
         units.forEach((id, count) -> { globalUnits.merge(id, count, Integer::sum); perAccount.merge(id, count, Integer::sum); });
         committed.put(operationKey, Boolean.TRUE);
+        revision++;
         while (committed.size() > 50_000) committed.remove(committed.keySet().iterator().next());
         setDirty();
         return true;
@@ -78,17 +80,26 @@ public final class MarketSavedData extends SavedData {
 
     public synchronized long accountRemaining(MinecraftServer server, UUID account) { cycle(server); return Math.max(0L, ACCOUNT_DAILY_PAYOUT - accountPaid.getOrDefault(account, 0L)); }
     public synchronized long globalRemaining(MinecraftServer server) { cycle(server); return Math.max(0L, GLOBAL_DAILY_PAYOUT - globalPaid); }
+    public synchronized int accountItemRemaining(MinecraftServer server, UUID account, ItemPolicy policy) {
+        cycle(server);
+        return Math.max(0, policy.dailyPlayerUnits() - accountUnits.getOrDefault(account, Map.of()).getOrDefault(policy.item(), 0));
+    }
+    public synchronized int globalItemRemaining(MinecraftServer server, ItemPolicy policy) {
+        cycle(server);
+        return Math.max(0, policy.dailyGlobalUnits() - globalUnits.getOrDefault(policy.item(), 0));
+    }
+    public synchronized long revision(MinecraftServer server) { cycle(server); return revision; }
     public synchronized int multiplier(MinecraftServer server, String group) {
         Demand demand = demand(server); return demand.primary().equals(group) ? 150 : demand.secondary().equals(group) ? 125 : 100;
     }
 
     private void begin(long cycle) {
-        activeCycle = cycle; globalPaid = 0L; accountPaid.clear(); globalUnits.clear(); accountUnits.clear(); setDirty();
+        activeCycle = cycle; globalPaid = 0L; accountPaid.clear(); globalUnits.clear(); accountUnits.clear(); revision++; setDirty();
     }
     private static int mix(long value) { value ^= value >>> 33; value *= 0xff51afd7ed558ccdl; value ^= value >>> 33; return (int) (value ^ value >>> 32); }
 
     @Override public synchronized CompoundTag save(CompoundTag tag) {
-        tag.putLong("Cycle", activeCycle); tag.putLong("Seed", seed); tag.putLong("GlobalPaid", globalPaid);
+        tag.putLong("Cycle", activeCycle); tag.putLong("Seed", seed); tag.putLong("GlobalPaid", globalPaid); tag.putLong("Revision", revision);
         CompoundTag paid = new CompoundTag(); accountPaid.forEach((id, value) -> paid.putLong(id.toString(), value)); tag.put("AccountPaid", paid);
         CompoundTag gu = new CompoundTag(); globalUnits.forEach((id, value) -> gu.putInt(id.toString(), value)); tag.put("GlobalUnits", gu);
         ListTag au = new ListTag(); accountUnits.forEach((account, rows) -> { CompoundTag row = new CompoundTag(); row.putUUID("Account", account); CompoundTag values = new CompoundTag(); rows.forEach((id, count) -> values.putInt(id.toString(), count)); row.put("Values", values); au.add(row); }); tag.put("AccountUnits", au);
@@ -96,7 +107,7 @@ public final class MarketSavedData extends SavedData {
         return tag;
     }
     private static MarketSavedData load(CompoundTag tag) {
-        MarketSavedData data = new MarketSavedData(); data.activeCycle = tag.contains("Cycle") ? tag.getLong("Cycle") : Long.MIN_VALUE; data.seed = tag.contains("Seed") ? tag.getLong("Seed") : data.seed; data.globalPaid = tag.getLong("GlobalPaid");
+        MarketSavedData data = new MarketSavedData(); data.activeCycle = tag.contains("Cycle") ? tag.getLong("Cycle") : Long.MIN_VALUE; data.seed = tag.contains("Seed") ? tag.getLong("Seed") : data.seed; data.globalPaid = tag.getLong("GlobalPaid"); data.revision = tag.getLong("Revision");
         CompoundTag paid = tag.getCompound("AccountPaid"); paid.getAllKeys().forEach(key -> { try { data.accountPaid.put(UUID.fromString(key), paid.getLong(key)); } catch (IllegalArgumentException ignored) { } });
         CompoundTag gu = tag.getCompound("GlobalUnits"); gu.getAllKeys().forEach(key -> { ResourceLocation id = ResourceLocation.tryParse(key); if (id != null) data.globalUnits.put(id, gu.getInt(key)); });
         ListTag au = tag.getList("AccountUnits", Tag.TAG_COMPOUND); for (int i = 0; i < au.size(); i++) { CompoundTag row = au.getCompound(i); if (!row.hasUUID("Account")) continue; Map<ResourceLocation, Integer> values = new HashMap<>(); CompoundTag raw = row.getCompound("Values"); raw.getAllKeys().forEach(key -> { ResourceLocation id = ResourceLocation.tryParse(key); if (id != null) values.put(id, raw.getInt(key)); }); data.accountUnits.put(row.getUUID("Account"), values); }

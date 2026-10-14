@@ -14,7 +14,6 @@ import net.minecraft.commands.arguments.ResourceLocationArgument;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 
@@ -22,8 +21,6 @@ import java.util.Comparator;
 import java.util.stream.Collectors;
 
 public final class TierCommands {
-    private static final String ADMINISTRATOR_NAME = "Sirio_o";
-
     private TierCommands() {
     }
 
@@ -40,8 +37,7 @@ public final class TierCommands {
     }
 
     private static boolean administrator(CommandSourceStack source) {
-        return source.getEntity() instanceof ServerPlayer player
-                && player.getGameProfile().getName().equalsIgnoreCase(ADMINISTRATOR_NAME);
+        return source.hasPermission(2);
     }
 
     private static int grant(CommandSourceStack source, ResourceLocation profileId) {

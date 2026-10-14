@@ -1,7 +1,6 @@
 package com.siirio.jemserver.map;
 
 import com.siirio.jemidentity.api.IdentityPolicy;
-import com.siirio.jemserver.ClaimBoundaryGeometry;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -39,7 +38,7 @@ public final class ProjectRegionService {
         if (maxX <= minX || maxZ <= minZ || (long) (maxX - minX) * (maxZ - minZ) > 1_000_000L) return Result.INVALID;
         UUID id = UUID.randomUUID();
         ProjectRegion project = new ProjectRegion(id, principal.get().accountId(), player.serverLevel().dimension().location(), name, RegionPalette.forProject(id));
-        project.add(new ClaimBoundaryGeometry.Rectangle(minX, minZ, maxX, maxZ)); data.put(project);
+        project.add(new RegionGeometry.Rectangle(minX, minZ, maxX, maxZ)); data.put(project);
         return Result.ACCEPTED;
     }
 
@@ -54,7 +53,7 @@ public final class ProjectRegionService {
         int minX = Math.min(firstX, secondX), minZ = Math.min(firstZ, secondZ);
         int maxX = Math.max(firstX, secondX) + 1, maxZ = Math.max(firstZ, secondZ) + 1;
         if (maxX <= minX || maxZ <= minZ) return Result.INVALID;
-        var rectangle = new ClaimBoundaryGeometry.Rectangle(minX, minZ, maxX, maxZ);
+        var rectangle = new RegionGeometry.Rectangle(minX, minZ, maxX, maxZ);
         var proposed = new ArrayList<>(project.rectangles()); proposed.add(rectangle);
         if (RegionUnion.area(proposed) > 1_000_000L) return Result.LIMIT;
         project.add(rectangle); data.changed();

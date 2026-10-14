@@ -1,0 +1,209 @@
+{
+  "schema_version": 2,
+  "change_id": "smp.market-profile-consolidation",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "category",
+      "registry": "*",
+      "value": "smp_market_profile_consolidation"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [],
+  "precedence": {
+    "layer": "jem_runtime_ownership",
+    "priority": 510,
+    "overrides": []
+  },
+  "change": {
+    "summary": "JEM SMP consolidates its custom Market, Wallet, profiles, navigation, read-only settlement/recruit projections and operator event commands under their canonical server owners.",
+    "modifiers": [
+      {
+        "property": "smp.player_interface",
+        "operation": "replace",
+        "before": {
+          "entry_points": [
+            "multiple public economy/death/SMP command branches",
+            "claim-owned navigation"
+          ],
+          "market": "remote read-only bulletin"
+        },
+        "after": {
+          "entry_point": "/smp",
+          "market": "server-authorized catalog and transactions",
+          "wallet": "balance, transfer and physical exchange",
+          "profiles": "privacy-aware owner/public projections",
+          "administration": "permission-2 /jem event and /jem boss branches"
+        },
+        "notes": "Shops remain native Spud ownership; settlements and recruits remain read-only projections; home travel remains /home."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMServer, JEMEconomy, JEMSettlements and JEMWorldBossTiers",
+    "kind": "cross_module_interface_consolidation",
+    "source_files": [
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/JemEconomy.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/MarketCatalogSnapshot.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/MarketItemSnapshot.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/MarketClientState.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/WalletClientState.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/WalletScreen.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/CoinExchangePacket.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/MarketActionPacket.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/MarketCatalogPacket.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/MarketQueryPacket.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/WalletActionPacket.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinOperation.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinService.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicy.java",
+      "Mods/JEMServer/build.gradle",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/DeathHistory.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/JemServer.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/Landmarks.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/XaeroLandmarks.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpIcons.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpSidebar.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/ui/JemMenuScreen.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapClient.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapLayerPreferences.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/XaeroMapPreview.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/map/ProjectRegion.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/map/ProjectRegionService.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/map/RegionGeometry.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/map/RegionUnion.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/MapScreenMixin.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/HomePreview.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Profiles.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpActionKind.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpActions.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpNetwork.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpProtocol.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpRuntime.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViews.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventCommands.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventRegistryExport.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/recruits/RecruitProjection.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/settlements/SettlementProjection.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/command/BossCommands.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/command/TierCommands.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Give players one JEM-owned SMP interface without duplicating market, settlement, recruit, boss or Xaero authority.",
+    "decision_source": "User-approved SMP Market/profile consolidation and 2026-10-14 follow-up."
+  },
+  "introduced": {
+    "date": "2026-10-14",
+    "commit": "SELF",
+    "action": "interface_consolidation",
+    "summary": "Implemented the approved source-side SMP Market, Wallet, profiles, projections and command replacement."
+  },
+  "history": [
+    {
+      "date": "2026-10-14",
+      "commit": "SELF",
+      "action": "interface_consolidation",
+      "summary": "Added typed server-authorized projections/actions, removed obsolete command and claim entry points, and updated custom command documentation.",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/JemEconomy.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/MarketCatalogSnapshot.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/MarketItemSnapshot.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/MarketClientState.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/WalletClientState.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/WalletScreen.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/CoinExchangePacket.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/MarketActionPacket.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/MarketCatalogPacket.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/MarketQueryPacket.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/WalletActionPacket.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinOperation.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinService.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicy.java",
+        "Mods/JEMServer/build.gradle",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/ClaimBoundaryGeometry.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/ClaimBoundaryNetwork.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/DeathHistory.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/JemServer.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/Landmarks.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/claims/Claims.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/claims/ClaimsBackend.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/claims/JemClaimsBackend.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/claims/NoClaimsBackend.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/ClaimBoundaryClient.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/XaeroLandmarks.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/ClaimsScreenBridge.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpIcons.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpSidebar.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/ui/JemMenuScreen.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapClient.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapLayerPreferences.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/XaeroMapPreview.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/map/ProjectRegion.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/map/ProjectRegionService.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/map/RegionGeometry.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/map/RegionUnion.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/MapScreenMixin.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/HomePreview.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Profiles.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpActionKind.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpActions.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpNetwork.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpProtocol.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpRuntime.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViews.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventCommands.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventRegistryExport.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/recruits/RecruitProjection.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/settlements/SettlementProjection.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/command/BossCommands.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/command/TierCommands.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "economy",
+      "smp_navigation",
+      "profiles",
+      "settlements",
+      "recruits",
+      "events",
+      "boss_arenas",
+      "xaero",
+      "commands"
+    ],
+    "relations": [
+      "item->market_policy",
+      "wallet->authenticated_account",
+      "profile->privacy_projection",
+      "event->typed_action",
+      "home->private_xaero_focus"
+    ],
+    "notes": [
+      "Market prices, demand and quotas remain owned by JEMEconomy; client screens send typed requests and do not mutate ledgers directly.",
+      "Owner-only home coordinates and death history never enter another player's profile projection.",
+      "Settlement and recruit views contain no mutation action kind; native management remains unchanged."
+    ],
+    "unresolved": [
+      "Compilation, packet handshake, screen layout and gameplay behavior remain unverified because builds and runtime launches were explicitly excluded."
+    ]
+  }
+}
