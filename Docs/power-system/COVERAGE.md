@@ -1,4 +1,4 @@
-# Coverage Stage 3 после delegated-method pass
+# Coverage Stage 3.5A после deep boss-reward pass
 
 Машинный источник — `Catalog/views/power/coverage.json`. Текущий combat inventory содержит 2 365 записей:
 
@@ -14,6 +14,25 @@
 | Allies/troops/summons/mount candidates | 103 |
 
 Рост weapon view с 87 до 177 не возвращает модельный шум. Stage 3 source-backed добавляет все 36 boss-reward weapon IDs и active Epic Fight/Nightfall capability IDs; пересекающиеся записи остаются одним ItemStack ID. Все 36/36 reward ID зарегистрированы, прошли owner inspection и присутствуют в итоговом view.
+
+## Stage 3.5A: 36 boss-reward weapons
+
+| Метрика | `41b53db` | Сейчас |
+|---|---:|---:|
+| Канонические reward IDs | 36/36 | 36/36 |
+| Exact basic для этих 36 | 20/36 | 36/36 |
+| Численно закрытые special branches/abilities | 9 у reward-36 | 38 у reward-36 |
+| Полные verified combo chains | 0 | 0 |
+| Weapons с доказанным cooldown | 13/36 | 23/36 |
+| Burst upper-bound calculations | 0 | 6 |
+| Sustained cooldown windows | 0 | 18 |
+| Закрытые durability profiles | 6/36 reward profiles | 34/36 reward profiles |
+| Все named blockers | 4 105 | 3 900 |
+| Точные Stage 3.5A blockers | — | 40, из них 31 runtime |
+
+`20/36` для прежнего exact basic вычислен по карточкам boss-reward в снимке `41b53db`; глобальная прежняя метрика оставалась `34/177`. Новые 36 значений включают честный `1` для bow/utility предметов без main-hand damage modifier — это обычный melee игрока, не projectile damage.
+
+Снижение blockers произошло не из-за переименования: для этих 36 отключена генерация повторяющихся dimension-заглушек и оставлены только конкретные остатки — capability precedence, animation phase, projectile overlap, iframe либо branched helper. 31 поле действительно требует минимального server-authoritative наблюдения; Minecraft в этой задаче не запускался.
 
 ## Numeric coverage
 
@@ -58,6 +77,6 @@
 - Audit охватывает 448 weapon/defense/accessory records.
 - Exact max damage найден для 25, consumption path — для 21, обе стороны — для 8.
 - Tier-based durability читается из `Tiers.uses`/`ForgeTier.uses`; например Enderitium `2100`, Netherite-tier Ruinsgreatsword `2031`.
-- 4 105 named blocker records перечисляют ID, missing field, owner/candidate method, причину и необходимость runtime observation.
+- 3 900 named blocker records перечисляют ID, missing field, owner/candidate method, причину и необходимость runtime observation; reward-36 больше не создаёт прежние boilerplate dimensions.
 
 `not_observed` никогда не означает `0` или «механики нет».

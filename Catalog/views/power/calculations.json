@@ -1,7 +1,7 @@
 {
   "schema_version": 4,
   "view": "phase_3_numeric_calculations",
-  "snapshot_sha": "42024576c79f6e103eebc33355ecbca1ba8b5a69",
+  "snapshot_sha": "41b53dbe6373d41eb86ae181eccd2379818b36dd",
   "generation": {
     "generator": "Catalog/generator/build_power_views.py",
     "method": "offline derived evidence",
@@ -35017,6 +35017,3474 @@
           "confidence": "inferred"
         }
       ]
+    },
+    {
+      "id": "block_factorys_bosses:ice_gauntlet",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 5.0,
+        "attack_speed": 1.0,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 5.0,
+        "full_iron": 2.5,
+        "full_diamond": 1.25,
+        "full_netherite": 1.2,
+        "full_netherite_protection_iv": 0.432
+      },
+      "combo": {
+        "status": "no_active_capability_observed",
+        "provider": null
+      },
+      "special_abilities": [
+        {
+          "name": "ice spikes/bursts",
+          "formula": "spawned IceSpikeCluster base damage includes a verified 4.0 branch; fall/burst graph also contains a separate 10.0 hurt branch",
+          "status": "partial_branch_numeric",
+          "cooldown_ticks": 80,
+          "effects": [
+            "freezing 400 ticks on melee"
+          ]
+        }
+      ],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 5.0,
+          "2": 5.0,
+          "3": 5.0,
+          "4": 5.0,
+          "5": 5.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 5.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 5.25,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 5.5,
+            "critical_damage": 8.25,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 5.5,
+            "critical_damage": 8.25,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 5.5,
+            "critical_damage": 8.25,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "max_and_wear_traced",
+        "max_damage": 1200,
+        "normal_hit_wear": 1,
+        "special_wear": 1,
+        "repair": "minecraft:diamond"
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 0,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "block_factorys_bosses:knight_sword",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 14.0,
+        "attack_speed": 0.9,
+        "reach_addition": 0.5,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 14.0,
+        "full_iron": 9.52,
+        "full_diamond": 4.76,
+        "full_netherite": 4.368,
+        "full_netherite_protection_iv": 1.57248
+      },
+      "combo": {
+        "status": "no_active_capability_observed",
+        "provider": null
+      },
+      "special_abilities": [
+        {
+          "name": "charged sword waves",
+          "formula": "5 damage per wave; slashes = charge<5 ? 0 : min(((charge-5)/20)*2+1,7)",
+          "status": "resolved_piecewise",
+          "per_hit_damage": 5.0,
+          "max_hits": 7,
+          "max_burst_damage": 35.0,
+          "cooldown_ticks": 80,
+          "charge_ticks_for_max": 65,
+          "damage_source": "projectile owner damage"
+        }
+      ],
+      "special_cooldown_windows": [
+        {
+          "ability": "charged sword waves",
+          "burst_upper_bound": 35.0,
+          "cooldown_ticks": 80,
+          "windows": {
+            "30s": {
+              "activations": 8,
+              "damage_upper_bound": 280.0,
+              "dps_upper_bound": 9.333333
+            },
+            "60s": {
+              "activations": 15,
+              "damage_upper_bound": 525.0,
+              "dps_upper_bound": 8.75
+            },
+            "120s": {
+              "activations": 30,
+              "damage_upper_bound": 1050.0,
+              "dps_upper_bound": 8.75
+            }
+          },
+          "boundary": "Cooldown-limited special-only upper bound; excludes ordinary attacks and any hit-count field still marked runtime-dependent."
+        }
+      ],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 14.0,
+          "2": 14.0,
+          "3": 14.0,
+          "4": 14.0,
+          "5": 14.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 14.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 14.7,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 15.4,
+            "critical_damage": 23.1,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 15.4,
+            "critical_damage": 23.1,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 15.4,
+            "critical_damage": 23.1,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "max_and_normal_wear_traced_special_no_wear",
+        "max_damage": 1480,
+        "normal_hit_wear": 1,
+        "special_wear": 0,
+        "repair": "minecraft:iron_ingot"
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 1,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 1,
+        "sustained_window_count": 3
+      }
+    },
+    {
+      "id": "block_factorys_bosses:kraken_trident",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 10.0,
+        "attack_speed": 1.1,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 10.0,
+        "full_iron": 6.0,
+        "full_diamond": 3.0,
+        "full_netherite": 2.8,
+        "full_netherite_protection_iv": 1.008
+      },
+      "combo": {
+        "status": "no_active_capability_observed",
+        "provider": null
+      },
+      "special_abilities": [
+        {
+          "name": "thrown collision and pull",
+          "formula": "inherited thrown-trident direct hit 8 + custom 5 AoE to every living candidate within 5 blocks, including the direct target when still eligible",
+          "status": "resolved_formula_collision_count_runtime",
+          "direct_damage": 8.0,
+          "secondary_damage": 5.0,
+          "ideal_direct_target_burst": 13.0,
+          "range": 5.0,
+          "effects": [
+            "pull velocity 0.4 toward impact"
+          ],
+          "resource": "one durability through inherited TridentItem release; Loyalty/return inherited"
+        }
+      ],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 10.0,
+          "2": 10.0,
+          "3": 10.0,
+          "4": 10.0,
+          "5": 10.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 10.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 10.5,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 11.0,
+            "critical_damage": 16.5,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 11.0,
+            "critical_damage": 16.5,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 11.0,
+            "critical_damage": 16.5,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "max_and_normal_wear_traced",
+        "max_damage": 2500,
+        "normal_hit_wear": 1,
+        "thrown_use_wear": 1,
+        "repair": "BUG: m_6832_ checks the weapon stack against kraken_tooth instead of repairCandidate, so ordinary repair ingredient matching is effectively false"
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 1,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "block_factorys_bosses:sandworm_gauntlet",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 1.5,
+        "attack_speed": 4.0,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 1.5,
+        "full_iron": 0.645,
+        "full_diamond": 0.3225,
+        "full_netherite": 0.318,
+        "full_netherite_protection_iv": 0.11448
+      },
+      "combo": {
+        "status": "no_active_capability_observed",
+        "provider": null
+      },
+      "special_abilities": [
+        {
+          "name": "channelled sand columns",
+          "formula": "5 damage per SandColumnEntity application; while active, 10 durability is consumed every 20 ticks",
+          "status": "resolved_per_application_total_runtime",
+          "per_hit_damage": 5.0,
+          "hit_interval_ticks": 20,
+          "range": 14.0,
+          "resource": "10 durability/second"
+        }
+      ],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 1.5,
+          "2": 1.5,
+          "3": 1.5,
+          "4": 1.5,
+          "5": 1.5
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 1.5,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 1.575,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 1.65,
+            "critical_damage": 2.475,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 1.65,
+            "critical_damage": 2.475,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 1.65,
+            "critical_damage": 2.475,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "max_and_channel_wear_traced",
+        "max_damage": 1000,
+        "normal_hit_wear": 0,
+        "special_wear": "10 per 20 active ticks",
+        "repair": null
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 1,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "block_factorys_bosses:undying_tentacle",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 3.0,
+        "attack_speed": 1.0,
+        "reach_addition": 1.0,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 3.0,
+        "full_iron": 1.38,
+        "full_diamond": 0.69,
+        "full_netherite": 0.672,
+        "full_netherite_protection_iv": 0.24192
+      },
+      "combo": {
+        "status": "no_active_capability_observed",
+        "provider": null
+      },
+      "special_abilities": [
+        {
+          "name": "ghost tentacle",
+          "formula": "native projectile/tentacle owner and trigger traced; final target expression crosses GhostTentacleEntity tick state",
+          "status": "owner_traced_formula_unresolved",
+          "cooldown_ticks": 40,
+          "resource": "1 durability"
+        }
+      ],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 3.0,
+          "2": 3.0,
+          "3": 3.0,
+          "4": 3.0,
+          "5": 3.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 3.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 3.15,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 3.3,
+            "critical_damage": 4.95,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 3.3,
+            "critical_damage": 4.95,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 3.3,
+            "critical_damage": 4.95,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "max_and_special_wear_traced",
+        "max_damage": 1000,
+        "normal_hit_wear": 0,
+        "special_wear": 1,
+        "repair": null
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 1,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "cataclysm:ancient_spear",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 9.5,
+        "attack_speed": 1.4,
+        "reach_addition": 1.5,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 9.5,
+        "full_iron": 5.605,
+        "full_diamond": 2.8025,
+        "full_netherite": 2.622,
+        "full_netherite_protection_iv": 0.94392
+      },
+      "combo": {
+        "status": "active_standard_type_phase_numeric_unresolved",
+        "provider": "epicfight:spear"
+      },
+      "special_abilities": [
+        {
+          "name": "charged sandstorm projectile",
+          "formula": "6 damage per Sandstorm_Projectile application from effective cataclysm config",
+          "status": "resolved_per_application_total_runtime",
+          "per_hit_damage": 6.0,
+          "resource": "charged melee consumes 1 normal-hit wear plus 1 launch wear"
+        }
+      ],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 9.5,
+          "2": 9.5,
+          "3": 9.5,
+          "4": 9.5,
+          "5": 9.5
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 9.5,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 9.975,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 10.45,
+            "critical_damage": 15.675,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 10.45,
+            "critical_damage": 15.675,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 10.45,
+            "critical_damage": 15.675,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "normal_hit_wear": "calls wear but item has no max damage",
+        "special_wear": "calls wear but item has no max damage",
+        "repair": null
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 1,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "cataclysm:astrape",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 10.5,
+        "attack_speed": 1.4,
+        "reach_addition": 2.0,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 10.5,
+        "full_iron": 6.405,
+        "full_diamond": 3.2025,
+        "full_netherite": 2.982,
+        "full_netherite_protection_iv": 1.07352
+      },
+      "combo": {
+        "status": "active_java_moveset_phase_numeric_unresolved",
+        "provider": "p1nero_ec:astrape",
+        "moveset": [
+          "epicfight:spear_twohand_auto1",
+          "epicfight:spear_twohand_auto2",
+          "p1nero_ec:astrape_auto3"
+        ]
+      },
+      "special_abilities": [
+        {
+          "name": "lightning spear",
+          "formula": "11 direct + 2 area damage from effective Cataclysm config",
+          "status": "resolved_components_collision_count_runtime",
+          "direct_damage": 11.0,
+          "secondary_damage": 2.0,
+          "ideal_direct_target_burst": 13.0,
+          "cooldown_ticks": 60
+        }
+      ],
+      "special_cooldown_windows": [
+        {
+          "ability": "lightning spear",
+          "burst_upper_bound": 13.0,
+          "cooldown_ticks": 60,
+          "windows": {
+            "30s": {
+              "activations": 10,
+              "damage_upper_bound": 130.0,
+              "dps_upper_bound": 4.333333
+            },
+            "60s": {
+              "activations": 20,
+              "damage_upper_bound": 260.0,
+              "dps_upper_bound": 4.333333
+            },
+            "120s": {
+              "activations": 40,
+              "damage_upper_bound": 520.0,
+              "dps_upper_bound": 4.333333
+            }
+          },
+          "boundary": "Cooldown-limited special-only upper bound; excludes ordinary attacks and any hit-count field still marked runtime-dependent."
+        }
+      ],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 10.5,
+          "2": 10.5,
+          "3": 10.5,
+          "4": 10.5,
+          "5": 10.5
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 10.5,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 11.025,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 11.55,
+            "critical_damage": 17.325,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 11.55,
+            "critical_damage": 17.325,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 11.55,
+            "critical_damage": 17.325,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "normal_hit_wear": "cannot accumulate",
+        "special_wear": "cannot accumulate",
+        "repair": null
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 1,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 1,
+        "sustained_window_count": 3
+      }
+    },
+    {
+      "id": "cataclysm:ceraunus",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 16.0,
+        "attack_speed": 0.7,
+        "reach_addition": 1.0,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 16.0,
+        "full_iron": 11.52,
+        "full_diamond": 5.76,
+        "full_netherite": 5.248,
+        "full_netherite_protection_iv": 1.88928
+      },
+      "combo": {
+        "status": "active_java_moveset_phase_numeric_unresolved",
+        "provider": "p1nero_ec:ceraunus",
+        "moveset": [
+          "p1nero_ec:arc_auto1",
+          "p1nero_ec:arc_auto2",
+          "p1nero_ec:arc_auto3"
+        ]
+      },
+      "special_abilities": [
+        {
+          "name": "crouch wave fan",
+          "formula": "4 Wave_Entity instances, each configured for 6 damage",
+          "status": "resolved_spawn_and_per_application_total_runtime",
+          "per_hit_damage": 6.0,
+          "spawn_count": 4,
+          "ideal_overlap_upper_bound": 24.0,
+          "cooldown_ticks": 150
+        },
+        {
+          "name": "thrown ceraunus",
+          "formula": "projectile base damage is set to the user's current attack-damage attribute (16 before other loadout modifiers)",
+          "status": "resolved_formula",
+          "direct_damage": 16.0,
+          "effects": [
+            "returns to owner"
+          ]
+        }
+      ],
+      "special_cooldown_windows": [
+        {
+          "ability": "crouch wave fan",
+          "burst_upper_bound": 24.0,
+          "cooldown_ticks": 150,
+          "windows": {
+            "30s": {
+              "activations": 4,
+              "damage_upper_bound": 96.0,
+              "dps_upper_bound": 3.2
+            },
+            "60s": {
+              "activations": 8,
+              "damage_upper_bound": 192.0,
+              "dps_upper_bound": 3.2
+            },
+            "120s": {
+              "activations": 16,
+              "damage_upper_bound": 384.0,
+              "dps_upper_bound": 3.2
+            }
+          },
+          "boundary": "Cooldown-limited special-only upper bound; excludes ordinary attacks and any hit-count field still marked runtime-dependent."
+        }
+      ],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 16.0,
+          "2": 16.0,
+          "3": 16.0,
+          "4": 16.0,
+          "5": 16.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 16.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 16.8,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 17.6,
+            "critical_damage": 26.4,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 17.6,
+            "critical_damage": 26.4,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 17.6,
+            "critical_damage": 26.4,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "normal_hit_wear": "cannot accumulate",
+        "special_wear": "cannot accumulate",
+        "repair": null
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 2,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 1,
+        "sustained_window_count": 3
+      }
+    },
+    {
+      "id": "cataclysm:cursed_bow",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 1.0,
+        "attack_speed": 4.0,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 1.0,
+        "full_iron": 0.42,
+        "full_diamond": 0.21,
+        "full_netherite": 0.208,
+        "full_netherite_protection_iv": 0.07488
+      },
+      "combo": {
+        "status": "resource_collision_precedence_unresolved",
+        "provider_candidates": [
+          "epicfight:bow",
+          "p1nero_ec:cursed_bow"
+        ]
+      },
+      "special_abilities": [
+        {
+          "name": "phantom arrow",
+          "formula": "8 * vanilla bow charge factor; Power adds level*0.35+0.5 to the projectile base",
+          "status": "resolved_formula",
+          "full_charge_damage": 8.0,
+          "charge_ticks": 20
+        }
+      ],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 1.0,
+          "2": 1.0,
+          "3": 1.0,
+          "4": 1.0,
+          "5": 1.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 1.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 1.05,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 1.1,
+            "critical_damage": 1.65,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 1.1,
+            "critical_damage": 1.65,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 1.1,
+            "critical_damage": 1.65,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "normal_hit_wear": 0,
+        "special_wear": "cannot accumulate",
+        "repair": null
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 1,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "cataclysm:gauntlet_of_bulwark",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 11.0,
+        "attack_speed": 1.6,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 11.0,
+        "full_iron": 6.82,
+        "full_diamond": 3.41,
+        "full_netherite": 3.168,
+        "full_netherite_protection_iv": 1.14048
+      },
+      "combo": {
+        "status": "no_active_capability_observed",
+        "provider": null
+      },
+      "special_abilities": [
+        {
+          "name": "bulwark charge",
+          "formula": "mobility/control ability; no safely proven direct-damage expression",
+          "status": "non_numeric_control",
+          "cooldown_ticks": 80,
+          "effects": [
+            "Blazing Brand 40 ticks",
+            "charge movement"
+          ]
+        }
+      ],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 11.0,
+          "2": 11.0,
+          "3": 11.0,
+          "4": 11.0,
+          "5": 11.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 11.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 11.55,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 12.1,
+            "critical_damage": 18.15,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 12.1,
+            "critical_damage": 18.15,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 12.1,
+            "critical_damage": 18.15,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "normal_hit_wear": "cannot accumulate",
+        "special_wear": "cannot accumulate",
+        "repair": null
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 0,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "cataclysm:gauntlet_of_guard",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 11.0,
+        "attack_speed": 1.6,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 11.0,
+        "full_iron": 6.82,
+        "full_diamond": 3.41,
+        "full_netherite": 3.168,
+        "full_netherite_protection_iv": 1.14048
+      },
+      "combo": {
+        "status": "active_java_moveset_phase_numeric_unresolved",
+        "provider": "p1nero_ec:gauntlet_of_guard",
+        "moveset": [
+          "p1nero_ec:bedivere_auto1",
+          "p1nero_ec:bedivere_auto2",
+          "p1nero_ec:bedivere_auto3",
+          "p1nero_ec:bedivere_auto4",
+          "p1nero_ec:bedivere_auto5"
+        ]
+      },
+      "special_abilities": [
+        {
+          "name": "guard/pull",
+          "formula": "defensive/control skill; damage formula not proven",
+          "status": "non_numeric_control"
+        }
+      ],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 11.0,
+          "2": 11.0,
+          "3": 11.0,
+          "4": 11.0,
+          "5": 11.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 11.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 11.55,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 12.1,
+            "critical_damage": 18.15,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 12.1,
+            "critical_damage": 18.15,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 12.1,
+            "critical_damage": 18.15,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "normal_hit_wear": "cannot accumulate",
+        "special_wear": "cannot accumulate",
+        "repair": null
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 0,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "cataclysm:gauntlet_of_maelstrom",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 11.0,
+        "attack_speed": 1.6,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 11.0,
+        "full_iron": 6.82,
+        "full_diamond": 3.41,
+        "full_netherite": 3.168,
+        "full_netherite_protection_iv": 1.14048
+      },
+      "combo": {
+        "status": "no_active_capability_observed",
+        "provider": null
+      },
+      "special_abilities": [
+        {
+          "name": "void maelstrom",
+          "formula": "vortex owner and cooldown are proven; target damage operands remain delegated",
+          "status": "owner_traced_formula_unresolved",
+          "cooldown_ticks": 180
+        }
+      ],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 11.0,
+          "2": 11.0,
+          "3": 11.0,
+          "4": 11.0,
+          "5": 11.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 11.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 11.55,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 12.1,
+            "critical_damage": 18.15,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 12.1,
+            "critical_damage": 18.15,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 12.1,
+            "critical_damage": 18.15,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "normal_hit_wear": "cannot accumulate",
+        "special_wear": "cannot accumulate",
+        "repair": null
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 1,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "cataclysm:infernal_forge",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 13.0,
+        "attack_speed": 1.0,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 13.0,
+        "full_iron": 8.58,
+        "full_diamond": 4.29,
+        "full_netherite": 3.952,
+        "full_netherite_protection_iv": 1.42272
+      },
+      "combo": {
+        "status": "active_java_moveset_phase_numeric_unresolved",
+        "provider": "p1nero_ec:infernal_forge",
+        "moveset": [
+          "epicfight:greatsword_auto1",
+          "epicfight:greatsword_auto2",
+          "p1nero_ec:infernal_auto3"
+        ]
+      },
+      "special_abilities": [
+        {
+          "name": "earthquake",
+          "formula": "native EarthQuake graph uses wielder attack damage and distance/target gates; previous sink-only extraction cannot safely collapse it",
+          "status": "owner_traced_formula_unresolved",
+          "cooldown_ticks": 80
+        }
+      ],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 13.0,
+          "2": 13.0,
+          "3": 13.0,
+          "4": 13.0,
+          "5": 13.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 13.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 13.65,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 14.3,
+            "critical_damage": 21.45,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 14.3,
+            "critical_damage": 21.45,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 14.3,
+            "critical_damage": 21.45,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "nominal_tier_uses": 2800,
+        "mechanism": "Cataclysm_Tool_Item.isDamageable(ItemStack) returns false",
+        "repair": "cataclysm:monstrous_horn nominal tier ingredient"
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 1,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "cataclysm:laser_gatling",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 1.0,
+        "attack_speed": 4.0,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 1.0,
+        "full_iron": 0.42,
+        "full_diamond": 0.21,
+        "full_netherite": 0.208,
+        "full_netherite_protection_iv": 0.07488
+      },
+      "combo": {
+        "status": "active_ranged_capability_no_melee_combo",
+        "provider": "epicfight:bow"
+      },
+      "special_abilities": [
+        {
+          "name": "laser channel",
+          "formula": "7 damage per beam; one beam every 2 use ticks; 49 usable shots before reload boundary",
+          "status": "resolved_schedule_upper_bound",
+          "per_hit_damage": 7.0,
+          "hit_interval_ticks": 2,
+          "max_hits": 49,
+          "max_burst_damage": 343.0,
+          "activation_seconds": 4.9,
+          "cooldown_ticks": 20,
+          "resource": "49 durability then 1 redstone reload",
+          "iframe_behavior": "beam sets target invulnerableTime to 5 before hurt; restores it only when hurt fails"
+        }
+      ],
+      "special_cooldown_windows": [
+        {
+          "ability": "laser channel",
+          "burst_upper_bound": 343.0,
+          "cooldown_ticks": 20,
+          "windows": {
+            "30s": {
+              "activations": 30,
+              "damage_upper_bound": 10290.0,
+              "dps_upper_bound": 343.0
+            },
+            "60s": {
+              "activations": 60,
+              "damage_upper_bound": 20580.0,
+              "dps_upper_bound": 343.0
+            },
+            "120s": {
+              "activations": 120,
+              "damage_upper_bound": 41160.0,
+              "dps_upper_bound": 343.0
+            }
+          },
+          "boundary": "Cooldown-limited special-only upper bound; excludes ordinary attacks and any hit-count field still marked runtime-dependent."
+        }
+      ],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 1.0,
+          "2": 1.0,
+          "3": 1.0,
+          "4": 1.0,
+          "5": 1.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 1.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 1.05,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 1.1,
+            "critical_damage": 1.65,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 1.1,
+            "critical_damage": 1.65,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 1.1,
+            "critical_damage": 1.65,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "max_and_consumption_traced",
+        "max_damage": 50,
+        "normal_hit_wear": 0,
+        "special_wear": 1,
+        "repair": "one minecraft:redstone resets damage to 0"
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 1,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 1,
+        "sustained_window_count": 3
+      }
+    },
+    {
+      "id": "cataclysm:meat_shredder",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 8.5,
+        "attack_speed": 1.4,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 8.5,
+        "full_iron": 4.845,
+        "full_diamond": 2.4225,
+        "full_netherite": 2.278,
+        "full_netherite_protection_iv": 0.82008
+      },
+      "combo": {
+        "status": "active_standard_type_phase_numeric_unresolved",
+        "provider": "epicfight:sword"
+      },
+      "special_abilities": [
+        {
+          "name": "shredder channel",
+          "formula": "(current attack damage + enchantment bonus against target type) / 8.5 per use tick",
+          "status": "resolved_formula_application_count_runtime",
+          "base_per_tick_damage": 1.0,
+          "hit_interval_ticks": 1,
+          "damage_source": "cataclysm:shredder"
+        }
+      ],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 8.5,
+          "2": 8.5,
+          "3": 8.5,
+          "4": 8.5,
+          "5": 8.5
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 8.5,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 8.925,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 9.35,
+            "critical_damage": 14.025,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 9.35,
+            "critical_damage": 14.025,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 9.35,
+            "critical_damage": 14.025,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "normal_hit_wear": "cannot accumulate",
+        "special_wear": "cannot accumulate",
+        "repair": null
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 1,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "cataclysm:sandstorm_in_a_bottle",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 1.0,
+        "attack_speed": 4.0,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 1.0,
+        "full_iron": 0.42,
+        "full_diamond": 0.21,
+        "full_netherite": 0.208,
+        "full_netherite_protection_iv": 0.07488
+      },
+      "combo": {
+        "status": "no_active_capability_observed",
+        "provider": null
+      },
+      "special_abilities": [
+        {
+          "name": "two sandstorms",
+          "formula": "spawns 2 Sandstorm_Entity for 200 ticks; entity damage method has a verified literal sink but repeated target applications remain schedule-dependent",
+          "status": "per_application_literal_total_runtime",
+          "spawn_count": 2,
+          "duration_ticks": 200,
+          "cooldown_ticks": 300
+        }
+      ],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 1.0,
+          "2": 1.0,
+          "3": 1.0,
+          "4": 1.0,
+          "5": 1.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 1.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 1.05,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 1.1,
+            "critical_damage": 1.65,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 1.1,
+            "critical_damage": 1.65,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 1.1,
+            "critical_damage": 1.65,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "normal_hit_wear": 0,
+        "special_wear": "cannot accumulate",
+        "repair": null
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 0,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "cataclysm:soul_render",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 15.0,
+        "attack_speed": 1.05,
+        "reach_addition": 2.0,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 15.0,
+        "full_iron": 10.5,
+        "full_diamond": 5.25,
+        "full_netherite": 4.8,
+        "full_netherite_protection_iv": 1.728
+      },
+      "combo": {
+        "status": "resource_collision_and_phase_numeric_unresolved",
+        "provider_candidates": [
+          "epicfight:spear",
+          "p1nero_ec:soul_render"
+        ],
+        "java_moveset": [
+          "efn:lance_auto1",
+          "efn:lance_auto2",
+          "efn:lance_auto3",
+          "efn:lance_auto4"
+        ]
+      },
+      "special_abilities": [
+        {
+          "name": "phantom halberds",
+          "formula": "12 damage per spawned Phantom_Halberd_Entity from effective config",
+          "status": "resolved_per_application_spawn_count_branch_unresolved",
+          "per_hit_damage": 12.0,
+          "cooldown_ticks": 100
+        },
+        {
+          "name": "render rush",
+          "formula": "stores current player attack damage for the rush collision path",
+          "status": "resolved_formula_collision_count_runtime",
+          "base_per_hit_damage": 15.0
+        }
+      ],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 15.0,
+          "2": 15.0,
+          "3": 15.0,
+          "4": 15.0,
+          "5": 15.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 15.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 15.75,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 16.5,
+            "critical_damage": 24.75,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 16.5,
+            "critical_damage": 24.75,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 16.5,
+            "critical_damage": 24.75,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "normal_hit_wear": "cannot accumulate",
+        "special_wear": "cannot accumulate",
+        "repair": null
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 2,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "cataclysm:the_annihilator",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 8.5,
+        "attack_speed": 1.6,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 8.5,
+        "full_iron": 4.845,
+        "full_diamond": 2.4225,
+        "full_netherite": 2.278,
+        "full_netherite_protection_iv": 0.82008
+      },
+      "combo": {
+        "status": "resource_collision_and_phase_numeric_unresolved",
+        "provider_candidates": [
+          "epicfight:spear",
+          "p1nero_ec:dual_annihilator"
+        ],
+        "java_moveset": [
+          "p1nero_ec:annihilator_auto1",
+          "p1nero_ec:annihilator_auto2",
+          "p1nero_ec:annihilator_auto3",
+          "p1nero_ec:annihilator_auto4"
+        ]
+      },
+      "special_abilities": [
+        {
+          "name": "charged annihilation AoE",
+          "formula": "2 * current attack-damage attribute per accepted target",
+          "status": "resolved_formula",
+          "base_damage": 17.0,
+          "charge_ticks": 40,
+          "cooldown_ticks": 100,
+          "effects": [
+            "shield disable"
+          ]
+        }
+      ],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 8.5,
+          "2": 8.5,
+          "3": 8.5,
+          "4": 8.5,
+          "5": 8.5
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 8.5,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 8.925,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 9.35,
+            "critical_damage": 14.025,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 9.35,
+            "critical_damage": 14.025,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 9.35,
+            "critical_damage": 14.025,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "normal_hit_wear": "cannot accumulate",
+        "special_wear": "cannot accumulate",
+        "repair": null
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 1,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "cataclysm:the_incinerator",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 14.0,
+        "attack_speed": 1.4,
+        "reach_addition": 2.0,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 14.0,
+        "full_iron": 9.52,
+        "full_diamond": 4.76,
+        "full_netherite": 4.368,
+        "full_netherite_protection_iv": 1.57248
+      },
+      "combo": {
+        "status": "resource_collision_and_phase_numeric_unresolved",
+        "provider_candidates": [
+          "epicfight:greatsword",
+          "p1nero_ec:the_incinerator"
+        ],
+        "java_moveset": [
+          "efn:greatsword_auto1",
+          "efn:greatsword_auto2",
+          "efn:greatsword_auto3"
+        ]
+      },
+      "special_abilities": [
+        {
+          "name": "flame-strike line",
+          "formula": "each accepted application = 6 + target_max_hp*0.02; 10 delayed strike entities are spawned after a 60-tick charge",
+          "status": "resolved_formula_application_count_runtime",
+          "base_damage": 6.0,
+          "max_hp_fraction": 0.02,
+          "spawn_count": 10,
+          "charge_ticks": 60,
+          "active_ticks_per_strike": 40,
+          "damage_check_interval_ticks": 5,
+          "cooldown_ticks": 400,
+          "damage_source": "cataclysm:flame_strike",
+          "armor_behavior": "bypasses armor, enchantments and shields",
+          "effects": [
+            "Blazing Brand 200 ticks; amplifier increments and clamps 0..4"
+          ]
+        }
+      ],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 14.0,
+          "2": 14.0,
+          "3": 14.0,
+          "4": 14.0,
+          "5": 14.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 14.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 14.7,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 15.4,
+            "critical_damage": 23.1,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 15.4,
+            "critical_damage": 23.1,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 15.4,
+            "critical_damage": 23.1,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "normal_hit_wear": "cannot accumulate",
+        "special_wear": "cannot accumulate",
+        "repair": null
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 1,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "cataclysm:tidal_claws",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 8.0,
+        "attack_speed": 1.6,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 8.0,
+        "full_iron": 4.48,
+        "full_diamond": 2.24,
+        "full_netherite": 2.112,
+        "full_netherite_protection_iv": 0.76032
+      },
+      "combo": {
+        "status": "active_java_moveset_external_phase_numeric_unresolved",
+        "provider": "p1nero_ec:tidal_claw",
+        "moveset": [
+          "efn:claw_auto1",
+          "efn:claw_auto2",
+          "efn:claw_auto3"
+        ]
+      },
+      "special_abilities": [
+        {
+          "name": "tidal tendons/hook",
+          "formula": "tendon entity, chain target selection and hook range are traced; final damage operand remains delegated",
+          "status": "owner_traced_formula_unresolved",
+          "range": 30.0
+        }
+      ],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 8.0,
+          "2": 8.0,
+          "3": 8.0,
+          "4": 8.0,
+          "5": 8.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 8.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 8.4,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 8.8,
+            "critical_damage": 13.2,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 8.8,
+            "critical_damage": 13.2,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 8.8,
+            "critical_damage": 13.2,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "normal_hit_wear": "cannot accumulate",
+        "special_wear": "cannot accumulate",
+        "repair": null
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 1,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "cataclysm:wrath_of_the_desert",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 1.0,
+        "attack_speed": 4.0,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 1.0,
+        "full_iron": 0.42,
+        "full_diamond": 0.21,
+        "full_netherite": 0.208,
+        "full_netherite_protection_iv": 0.07488
+      },
+      "combo": {
+        "status": "resource_collision_precedence_unresolved",
+        "provider_candidates": [
+          "epicfight:bow",
+          "p1nero_ec:wrath_of_the_desert"
+        ]
+      },
+      "special_abilities": [
+        {
+          "name": "cursed sandstorm arrow",
+          "formula": "7.5 * vanilla bow charge factor * (1 + 0.05*Power level)",
+          "status": "resolved_formula",
+          "full_charge_damage": 7.5,
+          "charge_ticks": 20,
+          "effects": [
+            "optional homing target"
+          ]
+        }
+      ],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 1.0,
+          "2": 1.0,
+          "3": 1.0,
+          "4": 1.0,
+          "5": 1.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 1.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 1.05,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 1.1,
+            "critical_damage": 1.65,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 1.1,
+            "critical_damage": 1.65,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 1.1,
+            "critical_damage": 1.65,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "normal_hit_wear": 0,
+        "special_wear": "cannot accumulate",
+        "repair": null
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 1,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "legendary_monsters:atom_splitter",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 1.0,
+        "attack_speed": 4.0,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 1.0,
+        "full_iron": 0.42,
+        "full_diamond": 0.21,
+        "full_netherite": 0.208,
+        "full_netherite_protection_iv": 0.07488
+      },
+      "combo": {
+        "status": "no_active_capability_observed",
+        "provider": null
+      },
+      "special_abilities": [
+        {
+          "name": "annihilation beam",
+          "formula": "16 * AtomSplitterDamageMultiplier (effective 1.0)",
+          "status": "resolved_per_application_total_runtime",
+          "per_hit_damage": 16.0,
+          "charge_ticks": 20,
+          "cooldown_ticks": 30,
+          "resource": "1 of 4 damage capacity"
+        },
+        {
+          "name": "annihilation bomb branch",
+          "formula": "10 damage, radius parameter 16",
+          "status": "resolved_constructor_values_collision_runtime",
+          "per_hit_damage": 10.0,
+          "radius": 16.0
+        }
+      ],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 1.0,
+          "2": 1.0,
+          "3": 1.0,
+          "4": 1.0,
+          "5": 1.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 1.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 1.05,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 1.1,
+            "critical_damage": 1.65,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 1.1,
+            "critical_damage": 1.65,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 1.1,
+            "critical_damage": 1.65,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "max_and_special_wear_traced",
+        "max_damage": 4,
+        "normal_hit_wear": 0,
+        "special_wear": 1,
+        "repair": "2 legendary_monsters:bottle_of_annihilation reset damage to 0"
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 2,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "legendary_monsters:axe_of_lightning",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 13.0,
+        "attack_speed": 1.2,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 13.0,
+        "full_iron": 8.58,
+        "full_diamond": 4.29,
+        "full_netherite": 3.952,
+        "full_netherite_protection_iv": 1.42272
+      },
+      "combo": {
+        "status": "no_active_capability_observed",
+        "provider": null
+      },
+      "special_abilities": [
+        {
+          "name": "electricity",
+          "formula": "current attack-damage attribute per application",
+          "status": "resolved_formula_collision_runtime",
+          "base_damage": 13.0,
+          "cooldown_ticks": 60
+        },
+        {
+          "name": "lightning bolt",
+          "formula": "8 * ability multiplier (effective 1.0)",
+          "status": "resolved_per_application",
+          "per_hit_damage": 8.0,
+          "cooldown_ticks": 90
+        }
+      ],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 13.0,
+          "2": 13.0,
+          "3": 13.0,
+          "4": 13.0,
+          "5": 13.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 13.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 13.65,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 14.3,
+            "critical_damage": 21.45,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 14.3,
+            "critical_damage": 21.45,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 14.3,
+            "critical_damage": 21.45,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "nominal_tier_uses": 3000,
+        "mechanism": "setDamage always delegates -1, defeating normal hit/block wear",
+        "repair": "legendary_monsters:void_gem nominal tier ingredient"
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 2,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "legendary_monsters:chorus_blade",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 7.0,
+        "attack_speed": 1.4,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 7.0,
+        "full_iron": 3.78,
+        "full_diamond": 1.89,
+        "full_netherite": 1.792,
+        "full_netherite_protection_iv": 0.64512
+      },
+      "combo": {
+        "status": "no_active_capability_observed",
+        "provider": null
+      },
+      "special_abilities": [
+        {
+          "name": "Endersent right-click sweep",
+          "formula": "8 damage once to every LivingEntity in the 8-block query; loop also teleports the user around each entity",
+          "status": "resolved_per_target",
+          "per_hit_damage": 8.0,
+          "max_hits_per_target": 1,
+          "range": 8.0,
+          "cooldown_ticks": 80,
+          "effects": [
+            "strong launch"
+          ]
+        },
+        {
+          "name": "chorus infection proc",
+          "formula": "50% on attack",
+          "status": "resolved_probability",
+          "chance": 0.5,
+          "duration_ticks": 60
+        }
+      ],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 7.0,
+          "2": 7.0,
+          "3": 7.0,
+          "4": 7.0,
+          "5": 7.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 7.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 7.35,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 7.7,
+            "critical_damage": 11.55,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 7.7,
+            "critical_damage": 11.55,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 7.7,
+            "critical_damage": 11.55,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "max_and_normal_wear_traced",
+        "max_damage": 750,
+        "normal_hit_wear": 1,
+        "special_wear": 0,
+        "repair": "legendary_monsters:infected_chorus_fruit"
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 2,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "legendary_monsters:enderitium_axe",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 9.5,
+        "attack_speed": 1.0,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 9.5,
+        "full_iron": 5.605,
+        "full_diamond": 2.8025,
+        "full_netherite": 2.622,
+        "full_netherite_protection_iv": 0.94392
+      },
+      "combo": {
+        "status": "no_active_capability_observed",
+        "provider": null
+      },
+      "special_abilities": [],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 9.5,
+          "2": 9.5,
+          "3": 9.5,
+          "4": 9.5,
+          "5": 9.5
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 9.5,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 9.975,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 10.45,
+            "critical_damage": 15.675,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 10.45,
+            "critical_damage": 15.675,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 10.45,
+            "critical_damage": 15.675,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "max_and_normal_wear_traced",
+        "max_damage": 2100,
+        "normal_hit_wear": 1,
+        "block_wear": 2,
+        "repair": "legendary_monsters:enderitium_ingot"
+      },
+      "resolution": {
+        "status": "resolved_static_scope",
+        "basic_numeric": true,
+        "numeric_special_count": 0,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "legendary_monsters:enderitium_sword",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 7.5,
+        "attack_speed": 1.6,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 7.5,
+        "full_iron": 4.125,
+        "full_diamond": 2.0625,
+        "full_netherite": 1.95,
+        "full_netherite_protection_iv": 0.702
+      },
+      "combo": {
+        "status": "no_active_capability_observed",
+        "provider": null
+      },
+      "special_abilities": [],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 7.5,
+          "2": 7.5,
+          "3": 7.5,
+          "4": 7.5,
+          "5": 7.5
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 7.5,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 7.875,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 8.25,
+            "critical_damage": 12.375,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 8.25,
+            "critical_damage": 12.375,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 8.25,
+            "critical_damage": 12.375,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "max_and_normal_wear_traced",
+        "max_damage": 2100,
+        "normal_hit_wear": 1,
+        "block_wear": 2,
+        "repair": "legendary_monsters:enderitium_ingot"
+      },
+      "resolution": {
+        "status": "resolved_static_scope",
+        "basic_numeric": true,
+        "numeric_special_count": 0,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "legendary_monsters:knights_sword",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 6.0,
+        "attack_speed": 1.7,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 6.0,
+        "full_iron": 3.12,
+        "full_diamond": 1.56,
+        "full_netherite": 1.488,
+        "full_netherite_protection_iv": 0.53568
+      },
+      "combo": {
+        "status": "no_active_capability_observed",
+        "provider": null
+      },
+      "special_abilities": [],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 6.0,
+          "2": 6.0,
+          "3": 6.0,
+          "4": 6.0,
+          "5": 6.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 6.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 6.3,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 6.6,
+            "critical_damage": 9.9,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 6.6,
+            "critical_damage": 9.9,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 6.6,
+            "critical_damage": 9.9,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "max_and_normal_wear_traced",
+        "max_damage": 250,
+        "normal_hit_wear": 1,
+        "block_wear": 2,
+        "repair": "minecraft:iron_ingot"
+      },
+      "resolution": {
+        "status": "resolved_static_scope",
+        "basic_numeric": true,
+        "numeric_special_count": 0,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "legendary_monsters:monstrous_anchor",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 14.0,
+        "attack_speed": 0.65,
+        "reach_addition": 0.75,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 14.0,
+        "full_iron": 9.52,
+        "full_diamond": 4.76,
+        "full_netherite": 4.368,
+        "full_netherite_protection_iv": 1.57248
+      },
+      "combo": {
+        "status": "no_active_capability_observed",
+        "provider": null
+      },
+      "special_abilities": [
+        {
+          "name": "grounded charged bonus",
+          "formula": "separate 6 * ability multiplier damage after the normal hit",
+          "status": "resolved_formula",
+          "secondary_damage": 6.0,
+          "ideal_combined_damage": 20.0
+        },
+        {
+          "name": "anchor slam control",
+          "formula": "AoE stun/launch; no additional direct damage safely proven",
+          "status": "non_numeric_control",
+          "cooldown_ticks": 100,
+          "effects": [
+            "stun 60 ticks",
+            "vertical launch"
+          ]
+        }
+      ],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 14.0,
+          "2": 14.0,
+          "3": 14.0,
+          "4": 14.0,
+          "5": 14.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 14.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 14.7,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 15.4,
+            "critical_damage": 23.1,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 15.4,
+            "critical_damage": 23.1,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 15.4,
+            "critical_damage": 23.1,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "max_and_normal_wear_traced",
+        "max_damage": 1100,
+        "normal_hit_wear": 1,
+        "special_wear": 0,
+        "repair": "minecraft:obsidian"
+      },
+      "resolution": {
+        "status": "resolved_static_scope",
+        "basic_numeric": true,
+        "numeric_special_count": 1,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "legendary_monsters:mossy_hammer",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 9.0,
+        "attack_speed": 0.8,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 9.0,
+        "full_iron": 5.22,
+        "full_diamond": 2.61,
+        "full_netherite": 2.448,
+        "full_netherite_protection_iv": 0.88128
+      },
+      "combo": {
+        "status": "no_active_capability_observed",
+        "provider": null
+      },
+      "special_abilities": [
+        {
+          "name": "item use AoE",
+          "formula": "10 * damage multiplier (effective 1.0) within 3.25",
+          "status": "resolved_per_target",
+          "per_hit_damage": 10.0,
+          "range": 3.25,
+          "cooldown_ticks": 60,
+          "effects": [
+            "Slowness 40 ticks amplifier 0",
+            "launch"
+          ]
+        },
+        {
+          "name": "Forge right-click event AoE",
+          "formula": "literal 10 within 4 blocks",
+          "status": "resolved_per_target_parallel_trigger_risk",
+          "per_hit_damage": 10.0,
+          "range": 4.0,
+          "cooldown_ticks": 30,
+          "effects": [
+            "Slowness 40 ticks amplifier 2",
+            "launch"
+          ]
+        }
+      ],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 9.0,
+          "2": 9.0,
+          "3": 9.0,
+          "4": 9.0,
+          "5": 9.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 9.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 9.45,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 9.9,
+            "critical_damage": 14.85,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 9.9,
+            "critical_damage": 14.85,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 9.9,
+            "critical_damage": 14.85,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "max_and_normal_wear_traced_special_wear_unresolved",
+        "max_damage": 850,
+        "normal_hit_wear": 1,
+        "block_wear": 2,
+        "repair": "minecraft:iron_ingot"
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 2,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "legendary_monsters:shattered_greatsword",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 14.0,
+        "attack_speed": 1.2,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 14.0,
+        "full_iron": 9.52,
+        "full_diamond": 4.76,
+        "full_netherite": 4.368,
+        "full_netherite_protection_iv": 1.57248
+      },
+      "combo": {
+        "status": "no_active_capability_observed",
+        "provider": null
+      },
+      "special_abilities": [],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 14.0,
+          "2": 14.0,
+          "3": 14.0,
+          "4": 14.0,
+          "5": 14.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 14.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 14.7,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 15.4,
+            "critical_damage": 23.1,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 15.4,
+            "critical_damage": 23.1,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 15.4,
+            "critical_damage": 23.1,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "max_and_normal_wear_traced",
+        "max_damage": 1500,
+        "normal_hit_wear": 1,
+        "block_wear": 2,
+        "repair": null
+      },
+      "resolution": {
+        "status": "resolved_static_scope",
+        "basic_numeric": true,
+        "numeric_special_count": 0,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "legendary_monsters:soul_great_sword",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 13.0,
+        "attack_speed": 1.2,
+        "reach_addition": 1.0,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 13.0,
+        "full_iron": 8.58,
+        "full_diamond": 4.29,
+        "full_netherite": 3.952,
+        "full_netherite_protection_iv": 1.42272
+      },
+      "combo": {
+        "status": "no_active_capability_observed",
+        "provider": null
+      },
+      "special_abilities": [
+        {
+          "name": "phantom dagger spread",
+          "formula": "6 spawned daggers at 8 damage each",
+          "status": "resolved_spawn_and_per_application_overlap_runtime",
+          "per_hit_damage": 8.0,
+          "spawn_count": 6,
+          "ideal_overlap_upper_bound": 48.0,
+          "cooldown_ticks": 120
+        },
+        {
+          "name": "Soul Rage",
+          "formula": "self buff for 200 ticks; downstream damage contribution requires effect implementation/loadout context",
+          "status": "effect_duration_resolved",
+          "duration_ticks": 200,
+          "cooldown_ticks": 280
+        },
+        {
+          "name": "airborne bleed proc",
+          "formula": "50% on fully charged airborne hit",
+          "status": "resolved_probability",
+          "chance": 0.5,
+          "duration_ticks": 70
+        }
+      ],
+      "special_cooldown_windows": [
+        {
+          "ability": "phantom dagger spread",
+          "burst_upper_bound": 48.0,
+          "cooldown_ticks": 120,
+          "windows": {
+            "30s": {
+              "activations": 5,
+              "damage_upper_bound": 240.0,
+              "dps_upper_bound": 8.0
+            },
+            "60s": {
+              "activations": 10,
+              "damage_upper_bound": 480.0,
+              "dps_upper_bound": 8.0
+            },
+            "120s": {
+              "activations": 20,
+              "damage_upper_bound": 960.0,
+              "dps_upper_bound": 8.0
+            }
+          },
+          "boundary": "Cooldown-limited special-only upper bound; excludes ordinary attacks and any hit-count field still marked runtime-dependent."
+        }
+      ],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 13.0,
+          "2": 13.0,
+          "3": 13.0,
+          "4": 13.0,
+          "5": 13.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 13.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 13.65,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 14.3,
+            "critical_damage": 21.45,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 14.3,
+            "critical_damage": 21.45,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 14.3,
+            "critical_damage": 21.45,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "nominal_tier_uses": 2350,
+        "mechanism": "setDamage always delegates -1",
+        "repair": "minecraft:nether_star nominal tier ingredient"
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 3,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 1,
+        "sustained_window_count": 3
+      }
+    },
+    {
+      "id": "legendary_monsters:the_great_frost",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 7.0,
+        "attack_speed": 1.4,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 7.0,
+        "full_iron": 3.78,
+        "full_diamond": 1.89,
+        "full_netherite": 1.792,
+        "full_netherite_protection_iv": 0.64512
+      },
+      "combo": {
+        "status": "no_active_capability_observed",
+        "provider": null
+      },
+      "special_abilities": [
+        {
+          "name": "ice spike",
+          "formula": "3 * ability multiplier (effective 1.0) per accepted application; checks every 5 ticks during its active window",
+          "status": "resolved_per_application_count_runtime",
+          "per_hit_damage": 3.0,
+          "scheduled_hit_upper_bound": 4,
+          "cooldown_ticks": 50,
+          "effects": [
+            "Freeze 60 ticks"
+          ]
+        },
+        {
+          "name": "freeze melee proc",
+          "formula": "25% on attack",
+          "status": "resolved_probability",
+          "chance": 0.25,
+          "duration_ticks": 60
+        }
+      ],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 7.0,
+          "2": 7.0,
+          "3": 7.0,
+          "4": 7.0,
+          "5": 7.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 7.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 7.35,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 7.7,
+            "critical_damage": 11.55,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 7.7,
+            "critical_damage": 11.55,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 7.7,
+            "critical_damage": 11.55,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "max_and_normal_wear_traced",
+        "max_damage": 750,
+        "normal_hit_wear": 1,
+        "block_wear": 2,
+        "repair": "minecraft:iron_ingot"
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 2,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "legendary_monsters:the_tesseract",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 15.0,
+        "attack_speed": 1.2,
+        "reach_addition": 1.0,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 15.0,
+        "full_iron": 10.5,
+        "full_diamond": 5.25,
+        "full_netherite": 4.8,
+        "full_netherite_protection_iv": 1.728
+      },
+      "combo": {
+        "status": "no_active_capability_observed",
+        "provider": null
+      },
+      "special_abilities": [
+        {
+          "name": "annihilation portals",
+          "formula": "portal branches use 8 or 12.5 * ability multiplier (effective 1.0) per application",
+          "status": "resolved_piecewise_per_application_count_runtime",
+          "damage_branches": [
+            8.0,
+            12.5
+          ],
+          "cooldown_ticks": 150
+        }
+      ],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 15.0,
+          "2": 15.0,
+          "3": 15.0,
+          "4": 15.0,
+          "5": 15.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 15.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 15.75,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 16.5,
+            "critical_damage": 24.75,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 16.5,
+            "critical_damage": 24.75,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 16.5,
+            "critical_damage": 24.75,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "nominal_tier_uses": 2100,
+        "mechanism": "setDamage always delegates -1",
+        "repair": null
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 1,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "legendary_monsters:void_sword",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 10.0,
+        "attack_speed": 1.0,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 10.0,
+        "full_iron": 6.0,
+        "full_diamond": 3.0,
+        "full_netherite": 2.8,
+        "full_netherite_protection_iv": 1.008
+      },
+      "combo": {
+        "status": "no_active_capability_observed",
+        "provider": null
+      },
+      "special_abilities": [],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 10.0,
+          "2": 10.0,
+          "3": 10.0,
+          "4": 10.0,
+          "5": 10.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 10.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 10.5,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 11.0,
+            "critical_damage": 16.5,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 11.0,
+            "critical_damage": 16.5,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 11.0,
+            "critical_damage": 16.5,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "max_and_normal_wear_traced",
+        "max_damage": 250,
+        "normal_hit_wear": 1,
+        "block_wear": 2,
+        "repair": "legendary_monsters:void_gem"
+      },
+      "resolution": {
+        "status": "resolved_static_scope",
+        "basic_numeric": true,
+        "numeric_special_count": 0,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
+    },
+    {
+      "id": "legendary_monsters:wand_of_clouds",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 11.0,
+        "attack_speed": 1.3,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 11.0,
+        "full_iron": 6.82,
+        "full_diamond": 3.41,
+        "full_netherite": 3.168,
+        "full_netherite_protection_iv": 1.14048
+      },
+      "combo": {
+        "status": "no_active_capability_observed",
+        "provider": null
+      },
+      "special_abilities": [
+        {
+          "name": "cloud volley",
+          "formula": "large cloud 15/max(distance/2,1), then after 10 ticks three small clouds each 6/max(distance/2,1); fallback large-cloud construction leaves default 5",
+          "status": "resolved_piecewise_collision_count_runtime",
+          "direct_center_upper_bound": 33.0,
+          "fallback_center_upper_bound": 23.0,
+          "spawn_count": 4,
+          "cooldown_ticks": 80,
+          "activation_seconds": 0.5,
+          "range": 2.0
+        }
+      ],
+      "special_cooldown_windows": [
+        {
+          "ability": "cloud volley",
+          "burst_upper_bound": 33.0,
+          "cooldown_ticks": 80,
+          "windows": {
+            "30s": {
+              "activations": 8,
+              "damage_upper_bound": 264.0,
+              "dps_upper_bound": 8.8
+            },
+            "60s": {
+              "activations": 15,
+              "damage_upper_bound": 495.0,
+              "dps_upper_bound": 8.25
+            },
+            "120s": {
+              "activations": 30,
+              "damage_upper_bound": 990.0,
+              "dps_upper_bound": 8.25
+            }
+          },
+          "boundary": "Cooldown-limited special-only upper bound; excludes ordinary attacks and any hit-count field still marked runtime-dependent."
+        }
+      ],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 11.0,
+          "2": 11.0,
+          "3": 11.0,
+          "4": 11.0,
+          "5": 11.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 11.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 11.55,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 12.1,
+            "critical_damage": 18.15,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 12.1,
+            "critical_damage": 18.15,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 12.1,
+            "critical_damage": 18.15,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "max_resolved_consumption_not_observed",
+        "max_damage": 2000,
+        "normal_hit_wear": 0,
+        "special_wear": 0,
+        "repair": "minecraft:iron_ingot"
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 1,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 1,
+        "sustained_window_count": 3
+      }
+    },
+    {
+      "id": "legendary_monsters:withered_scythe",
+      "kind": "boss_reward_weapon_stage_3_5a_card",
+      "ordinary_attack": {
+        "damage": 10.0,
+        "attack_speed": 1.2,
+        "damage_source": "minecraft:player_attack"
+      },
+      "ordinary_reference_targets": {
+        "unarmored": 10.0,
+        "full_iron": 6.0,
+        "full_diamond": 3.0,
+        "full_netherite": 2.8,
+        "full_netherite_protection_iv": 1.008
+      },
+      "combo": {
+        "status": "no_active_capability_observed",
+        "provider": null
+      },
+      "special_abilities": [
+        {
+          "name": "dash AoE",
+          "formula": "10 * ability multiplier (effective 1.0) per target",
+          "status": "resolved_per_target",
+          "per_hit_damage": 10.0,
+          "cooldown_ticks": 75,
+          "effects": [
+            "Wither 100 ticks amplifier 1"
+          ]
+        },
+        {
+          "name": "undead delayed bonus",
+          "formula": "literal additional 41 damage after 2 ticks when target MobType is UNDEAD",
+          "status": "resolved_conditional_outlier",
+          "secondary_damage": 41.0,
+          "delay_ticks": 2
+        },
+        {
+          "name": "melee Wither proc",
+          "formula": "40% chance",
+          "status": "resolved_probability",
+          "chance": 0.4,
+          "duration_ticks": 30,
+          "amplifier": 2
+        }
+      ],
+      "special_cooldown_windows": [],
+      "world_tier": {
+        "without_progression_enchantment": {
+          "1": 10.0,
+          "2": 10.0,
+          "3": 10.0,
+          "4": 10.0,
+          "5": 10.0
+        },
+        "with_progression_enchantment": [
+          {
+            "tier": 1,
+            "ordinary_damage": 10.0,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 2,
+            "ordinary_damage": 10.5,
+            "critical_damage": null,
+            "critical_probability": 0.0
+          },
+          {
+            "tier": 3,
+            "ordinary_damage": 11.0,
+            "critical_damage": 16.5,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 4,
+            "ordinary_damage": 11.0,
+            "critical_damage": 16.5,
+            "critical_probability": 0.15
+          },
+          {
+            "tier": 5,
+            "ordinary_damage": 11.0,
+            "critical_damage": 16.5,
+            "critical_probability": 0.15
+          }
+        ],
+        "boundary": "JEM Progression is conditional on the enchantment being present. Tier I x1.00, Tier II x1.05, Tier III-V x1.10; Tier III-V additionally has a source-backed 15% x1.5 critical branch. It is not applied universally."
+      },
+      "durability": {
+        "status": "max_and_normal_wear_traced",
+        "max_damage": 700,
+        "normal_hit_wear": 1,
+        "block_wear": 2,
+        "repair": null
+      },
+      "resolution": {
+        "status": "partial",
+        "basic_numeric": true,
+        "numeric_special_count": 3,
+        "fully_numeric_combo": false,
+        "burst_calculation_count": 0,
+        "sustained_window_count": 0
+      }
     },
     {
       "id": "alexscaves:diving_boots",

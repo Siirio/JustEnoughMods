@@ -1,6 +1,6 @@
 {
   "schema_version": 4,
-  "snapshot_sha": "42024576c79f6e103eebc33355ecbca1ba8b5a69",
+  "snapshot_sha": "41b53dbe6373d41eb86ae181eccd2379818b36dd",
   "denominator": "All candidates from current Atlas weapon/armor/entity/enchantment views plus spell IDs from the exact-version integration registry; heuristic categories remain explicitly candidates.",
   "identified_by_view": {
     "weapons": 177,
@@ -15,10 +15,10 @@
     "combat_scenarios": 16,
     "regression_warnings": 2,
     "phase_3_source_findings": 6,
-    "phase_3_numeric_calculations": 756,
+    "phase_3_numeric_calculations": 792,
     "phase_3_durability_audit": 448,
     "phase_3_weapon_power_ladder": 177,
-    "phase_3_named_research_blockers": 4105
+    "phase_3_named_research_blockers": 3900
   },
   "boss_breakdown": {
     "jem_registered_profiles": 56,
@@ -31,7 +31,7 @@
     "unresolved": 2197
   },
   "fully_resolved": 0,
-  "partially_resolved": 368,
+  "partially_resolved": 398,
   "unresolved": 286,
   "reason_no_full_resolution": "No static record proves every runtime ItemStack attribute, target mitigation, attack channel and acquisition context.",
   "evidence_levels": [
@@ -67,7 +67,15 @@
     "epic_fight_fully_numeric_combos": 0,
     "durability_max_damage_resolved": 25,
     "durability_consumption_resolved": 21,
-    "durability_fully_traced": 8
+    "durability_fully_traced": 3,
+    "stage_3_5a_boss_reward_profiles": 36,
+    "stage_3_5a_exact_basic_melee_values": 36,
+    "stage_3_5a_numeric_special_abilities": 38,
+    "stage_3_5a_fully_numeric_combos": 0,
+    "stage_3_5a_burst_calculations": 6,
+    "stage_3_5a_sustained_dps_windows": 18,
+    "stage_3_5a_durability_profiles_closed": 34,
+    "stage_3_5a_runtime_blockers": 31
   },
   "known_gaps": [
     "Dynamic/helper-built item registrations and runtime ItemStack/NBT attribute variants",

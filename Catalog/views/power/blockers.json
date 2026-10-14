@@ -1,7 +1,7 @@
 {
   "schema_version": 4,
   "view": "phase_3_named_research_blockers",
-  "snapshot_sha": "42024576c79f6e103eebc33355ecbca1ba8b5a69",
+  "snapshot_sha": "41b53dbe6373d41eb86ae181eccd2379818b36dd",
   "generation": {
     "generator": "Catalog/generator/build_power_views.py",
     "method": "offline derived evidence",
@@ -5309,91 +5309,15 @@
     },
     {
       "id": "block_factorys_bosses:ice_gauntlet",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "special_total_hits",
       "owner_classes": [
         "net.unusual.block_factorys_bosses.item.IceGauntletItem"
       ],
-      "candidate_methods": [
-        "m_5551_",
-        "tick",
-        "onFall",
-        "iceBurst",
-        "delayedBurst",
-        "iceWave",
-        "lambda$onJump$8",
-        "lambda$onFall$5",
-        "lambda$baseTick$4",
-        "lambda$baseTick$2"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for block_factorys_bosses:ice_gauntlet; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "block_factorys_bosses:ice_gauntlet",
-      "kind": "item_missing_field",
-      "missing_field": "epic_fight_moveset",
-      "owner_classes": [
-        "net.unusual.block_factorys_bosses.item.IceGauntletItem"
-      ],
-      "candidate_methods": [
-        "m_5551_",
-        "tick",
-        "onFall",
-        "iceBurst",
-        "delayedBurst",
-        "iceWave",
-        "lambda$onJump$8",
-        "lambda$onFall$5",
-        "lambda$baseTick$4",
-        "lambda$baseTick$2"
-      ],
-      "why_unresolved": "epic_fight_moveset still requires a safely traced method expression or runtime ItemStack attributes for block_factorys_bosses:ice_gauntlet; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "block_factorys_bosses:ice_gauntlet",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "net.unusual.block_factorys_bosses.item.IceGauntletItem"
-      ],
-      "candidate_methods": [
-        "m_5551_",
-        "tick",
-        "onFall",
-        "iceBurst",
-        "delayedBurst",
-        "iceWave",
-        "lambda$onJump$8",
-        "lambda$onFall$5",
-        "lambda$baseTick$4",
-        "lambda$baseTick$2"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for block_factorys_bosses:ice_gauntlet; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "block_factorys_bosses:ice_gauntlet",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "net.unusual.block_factorys_bosses.item.IceGauntletItem"
-      ],
-      "candidate_methods": [
-        "m_5551_",
-        "tick",
-        "onFall",
-        "iceBurst",
-        "delayedBurst",
-        "iceWave",
-        "lambda$onJump$8",
-        "lambda$onFall$5",
-        "lambda$baseTick$4",
-        "lambda$baseTick$2"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for block_factorys_bosses:ice_gauntlet; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Gauntlet capability schedules clusters, delayed bursts and waves across multiple tick callbacks; one target can intersect multiple spawned hitboxes.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "block_factorys_bosses:infernal_dragon",
@@ -5783,72 +5707,15 @@
     },
     {
       "id": "block_factorys_bosses:knight_sword",
-      "kind": "durability_missing_field",
-      "missing_field": "native_max_damage",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "block_factorys_bosses:knight_sword",
-      "kind": "item_missing_field",
-      "missing_field": "durability",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "same_target_wave_hits",
       "owner_classes": [
         "net.unusual.block_factorys_bosses.item.KnightSwordItem"
       ],
-      "candidate_methods": [
-        "m_5551_",
-        "m_5790_"
-      ],
-      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for block_factorys_bosses:knight_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "block_factorys_bosses:knight_sword",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "net.unusual.block_factorys_bosses.item.KnightSwordItem"
-      ],
-      "candidate_methods": [
-        "m_5551_",
-        "m_5790_"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for block_factorys_bosses:knight_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "block_factorys_bosses:knight_sword",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "net.unusual.block_factorys_bosses.item.KnightSwordItem"
-      ],
-      "candidate_methods": [
-        "m_5551_",
-        "m_5790_"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for block_factorys_bosses:knight_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "block_factorys_bosses:knight_sword",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "net.unusual.block_factorys_bosses.item.KnightSwordItem"
-      ],
-      "candidate_methods": [
-        "m_5551_",
-        "m_5790_"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for block_factorys_bosses:knight_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Seven coincident projectiles are source-confirmed, but successful collisions and invulnerability-frame suppression need a controlled hit log.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "block_factorys_bosses:kraken",
@@ -5904,93 +5771,15 @@
     },
     {
       "id": "block_factorys_bosses:kraken_trident",
-      "kind": "durability_missing_field",
-      "missing_field": "native_max_damage",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "block_factorys_bosses:kraken_trident",
-      "kind": "item_missing_field",
-      "missing_field": "cooldown",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "direct_target_second_hit",
       "owner_classes": [
         "net.unusual.block_factorys_bosses.item.KrakenTridentItem"
       ],
       "candidate_methods": [],
-      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for block_factorys_bosses:kraken_trident; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "block_factorys_bosses:kraken_trident",
-      "kind": "item_missing_field",
-      "missing_field": "durability",
-      "owner_classes": [
-        "net.unusual.block_factorys_bosses.item.KrakenTridentItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for block_factorys_bosses:kraken_trident; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "block_factorys_bosses:kraken_trident",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "net.unusual.block_factorys_bosses.item.KrakenTridentItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for block_factorys_bosses:kraken_trident; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "block_factorys_bosses:kraken_trident",
-      "kind": "item_missing_field",
-      "missing_field": "epic_fight_moveset",
-      "owner_classes": [
-        "net.unusual.block_factorys_bosses.item.KrakenTridentItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "epic_fight_moveset still requires a safely traced method expression or runtime ItemStack attributes for block_factorys_bosses:kraken_trident; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "block_factorys_bosses:kraken_trident",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "net.unusual.block_factorys_bosses.item.KrakenTridentItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for block_factorys_bosses:kraken_trident; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "block_factorys_bosses:kraken_trident",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "net.unusual.block_factorys_bosses.item.KrakenTridentItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for block_factorys_bosses:kraken_trident; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "block_factorys_bosses:kraken_trident",
-      "kind": "item_missing_field",
-      "missing_field": "special_attacks",
-      "owner_classes": [
-        "net.unusual.block_factorys_bosses.item.KrakenTridentItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "special_attacks still requires a safely traced method expression or runtime ItemStack attributes for block_factorys_bosses:kraken_trident; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "why_unresolved": "The custom AoE runs after the inherited entity collision; whether the just-hit target accepts the second 5 damage is invulnerability-frame state dependent.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "block_factorys_bosses:large_sword",
@@ -6112,87 +5901,15 @@
     },
     {
       "id": "block_factorys_bosses:sandworm_gauntlet",
-      "kind": "item_missing_field",
-      "missing_field": "attack_speed",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "same_target_column_count",
       "owner_classes": [
         "net.unusual.block_factorys_bosses.item.SandwormGauntletItem"
       ],
-      "candidate_methods": [
-        "onUseTickWithEarthquake",
-        "damageEntity"
-      ],
-      "why_unresolved": "attack_speed still requires a safely traced method expression or runtime ItemStack attributes for block_factorys_bosses:sandworm_gauntlet; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "block_factorys_bosses:sandworm_gauntlet",
-      "kind": "item_missing_field",
-      "missing_field": "cooldown",
-      "owner_classes": [
-        "net.unusual.block_factorys_bosses.item.SandwormGauntletItem"
-      ],
-      "candidate_methods": [
-        "onUseTickWithEarthquake",
-        "damageEntity"
-      ],
-      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for block_factorys_bosses:sandworm_gauntlet; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "block_factorys_bosses:sandworm_gauntlet",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "net.unusual.block_factorys_bosses.item.SandwormGauntletItem"
-      ],
-      "candidate_methods": [
-        "onUseTickWithEarthquake",
-        "damageEntity"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for block_factorys_bosses:sandworm_gauntlet; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "block_factorys_bosses:sandworm_gauntlet",
-      "kind": "item_missing_field",
-      "missing_field": "epic_fight_moveset",
-      "owner_classes": [
-        "net.unusual.block_factorys_bosses.item.SandwormGauntletItem"
-      ],
-      "candidate_methods": [
-        "onUseTickWithEarthquake",
-        "damageEntity"
-      ],
-      "why_unresolved": "epic_fight_moveset still requires a safely traced method expression or runtime ItemStack attributes for block_factorys_bosses:sandworm_gauntlet; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "block_factorys_bosses:sandworm_gauntlet",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "net.unusual.block_factorys_bosses.item.SandwormGauntletItem"
-      ],
-      "candidate_methods": [
-        "onUseTickWithEarthquake",
-        "damageEntity"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for block_factorys_bosses:sandworm_gauntlet; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "block_factorys_bosses:sandworm_gauntlet",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "net.unusual.block_factorys_bosses.item.SandwormGauntletItem"
-      ],
-      "candidate_methods": [
-        "onUseTickWithEarthquake",
-        "damageEntity"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for block_factorys_bosses:sandworm_gauntlet; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Column placement and entity overlap across the channel depend on world collision and target movement.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "block_factorys_bosses:underworld_knight",
@@ -6235,67 +5952,15 @@
     },
     {
       "id": "block_factorys_bosses:undying_tentacle",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "ghost_tentacle_damage_and_hits",
       "owner_classes": [
         "net.unusual.block_factorys_bosses.item.UndyingTentacleItem"
       ],
-      "candidate_methods": [
-        "m_7203_",
-        "m_5922_",
-        "m_5551_",
-        "m_6075_"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for block_factorys_bosses:undying_tentacle; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "block_factorys_bosses:undying_tentacle",
-      "kind": "item_missing_field",
-      "missing_field": "epic_fight_moveset",
-      "owner_classes": [
-        "net.unusual.block_factorys_bosses.item.UndyingTentacleItem"
-      ],
-      "candidate_methods": [
-        "m_7203_",
-        "m_5922_",
-        "m_5551_",
-        "m_6075_"
-      ],
-      "why_unresolved": "epic_fight_moveset still requires a safely traced method expression or runtime ItemStack attributes for block_factorys_bosses:undying_tentacle; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "block_factorys_bosses:undying_tentacle",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "net.unusual.block_factorys_bosses.item.UndyingTentacleItem"
-      ],
-      "candidate_methods": [
-        "m_7203_",
-        "m_5922_",
-        "m_5551_",
-        "m_6075_"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for block_factorys_bosses:undying_tentacle; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "block_factorys_bosses:undying_tentacle",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "net.unusual.block_factorys_bosses.item.UndyingTentacleItem"
-      ],
-      "candidate_methods": [
-        "m_7203_",
-        "m_5922_",
-        "m_5551_",
-        "m_6075_"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for block_factorys_bosses:undying_tentacle; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Damage is delivered from the spawned entity tick state; static call operands do not establish its collision count.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "block_factorys_bosses:warrior_sword",
@@ -6645,209 +6310,51 @@
     },
     {
       "id": "cataclysm:ancient_spear",
-      "kind": "durability_missing_field",
-      "missing_field": "native_max_damage",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:ancient_spear",
-      "kind": "item_missing_field",
-      "missing_field": "cooldown",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "combo_phases",
       "owner_classes": [
         "com.github.L_Ender.cataclysm.items.Ancient_Spear"
       ],
-      "candidate_methods": [
-        "m_7579_",
-        "m_6813_",
-        "launchTornado",
-        "Sandstorm_Projectile",
-        "Sandstorm_Projectile",
-        "m_5790_",
-        "m_7378_"
-      ],
-      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:ancient_spear; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Standard Epic Fight spear capability is known, but inherited animation phase timing/multipliers were not serialized by the installed capability resource.",
+      "runtime_observation_required": false,
+      "diagnostic": "Continue exact-version static reconstruction of the named animation/helper chain."
     },
     {
       "id": "cataclysm:ancient_spear",
-      "kind": "item_missing_field",
-      "missing_field": "durability",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "sandstorm_application_count",
       "owner_classes": [
         "com.github.L_Ender.cataclysm.items.Ancient_Spear"
       ],
-      "candidate_methods": [
-        "m_7579_",
-        "m_6813_",
-        "launchTornado",
-        "Sandstorm_Projectile",
-        "Sandstorm_Projectile",
-        "m_5790_",
-        "m_7378_"
-      ],
-      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:ancient_spear; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:ancient_spear",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Ancient_Spear"
-      ],
-      "candidate_methods": [
-        "m_7579_",
-        "m_6813_",
-        "launchTornado",
-        "Sandstorm_Projectile",
-        "Sandstorm_Projectile",
-        "m_5790_",
-        "m_7378_"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:ancient_spear; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:ancient_spear",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Ancient_Spear"
-      ],
-      "candidate_methods": [
-        "m_7579_",
-        "m_6813_",
-        "launchTornado",
-        "Sandstorm_Projectile",
-        "Sandstorm_Projectile",
-        "m_5790_",
-        "m_7378_"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:ancient_spear; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:ancient_spear",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Ancient_Spear"
-      ],
-      "candidate_methods": [
-        "m_7579_",
-        "m_6813_",
-        "launchTornado",
-        "Sandstorm_Projectile",
-        "Sandstorm_Projectile",
-        "m_5790_",
-        "m_7378_"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:ancient_spear; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Projectile collision/tick behavior permits target-state-dependent applications.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "cataclysm:astrape",
-      "kind": "durability_missing_field",
-      "missing_field": "native_max_damage",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:astrape",
-      "kind": "item_missing_field",
-      "missing_field": "cooldown",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "combo_phases",
       "owner_classes": [
         "com.github.L_Ender.cataclysm.items.Astrape"
       ],
-      "candidate_methods": [
-        "m_5551_",
-        "Lightning_Spear_Entity",
-        "Lightning_Spear_Entity",
-        "m_5790_",
-        "m_8060_"
-      ],
-      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:astrape; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "p1nero Java moveset is active, but two inherited Epic Fight spear animations and its custom phase damage properties are not all closed into one timing chain.",
+      "runtime_observation_required": false,
+      "diagnostic": "Continue exact-version static reconstruction of the named animation/helper chain."
     },
     {
       "id": "cataclysm:astrape",
-      "kind": "item_missing_field",
-      "missing_field": "durability",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "lightning_area_same_target",
       "owner_classes": [
         "com.github.L_Ender.cataclysm.items.Astrape"
       ],
-      "candidate_methods": [
-        "m_5551_",
-        "Lightning_Spear_Entity",
-        "Lightning_Spear_Entity",
-        "m_5790_",
-        "m_8060_"
-      ],
-      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:astrape; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:astrape",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Astrape"
-      ],
-      "candidate_methods": [
-        "m_5551_",
-        "Lightning_Spear_Entity",
-        "Lightning_Spear_Entity",
-        "m_5790_",
-        "m_8060_"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:astrape; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:astrape",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Astrape"
-      ],
-      "candidate_methods": [
-        "m_5551_",
-        "Lightning_Spear_Entity",
-        "Lightning_Spear_Entity",
-        "m_5790_",
-        "m_8060_"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:astrape; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:astrape",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Astrape"
-      ],
-      "candidate_methods": [
-        "m_5551_",
-        "Lightning_Spear_Entity",
-        "Lightning_Spear_Entity",
-        "m_5790_",
-        "m_8060_"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:astrape; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Direct and area components are separate collision paths; same-target acceptance needs observation.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "cataclysm:belt_of_beginner",
@@ -7478,96 +6985,27 @@
     },
     {
       "id": "cataclysm:ceraunus",
-      "kind": "durability_missing_field",
-      "missing_field": "native_max_damage",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:ceraunus",
-      "kind": "item_missing_field",
-      "missing_field": "cooldown",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "combo_phases",
       "owner_classes": [
         "com.github.L_Ender.cataclysm.items.Ceraunus"
       ],
-      "candidate_methods": [
-        "m_5551_",
-        "Wave_Entity",
-        "attackEntities",
-        "m_5790_"
-      ],
-      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:ceraunus; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Custom ARC animation phase multipliers and recovery are not fully reconstructed.",
+      "runtime_observation_required": false,
+      "diagnostic": "Continue exact-version static reconstruction of the named animation/helper chain."
     },
     {
       "id": "cataclysm:ceraunus",
-      "kind": "item_missing_field",
-      "missing_field": "durability",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "wave_overlap",
       "owner_classes": [
         "com.github.L_Ender.cataclysm.items.Ceraunus"
       ],
-      "candidate_methods": [
-        "m_5551_",
-        "Wave_Entity",
-        "attackEntities",
-        "m_5790_"
-      ],
-      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:ceraunus; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:ceraunus",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Ceraunus"
-      ],
-      "candidate_methods": [
-        "m_5551_",
-        "Wave_Entity",
-        "attackEntities",
-        "m_5790_"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:ceraunus; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:ceraunus",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Ceraunus"
-      ],
-      "candidate_methods": [
-        "m_5551_",
-        "Wave_Entity",
-        "attackEntities",
-        "m_5790_"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:ceraunus; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:ceraunus",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Ceraunus"
-      ],
-      "candidate_methods": [
-        "m_5551_",
-        "Wave_Entity",
-        "attackEntities",
-        "m_5790_"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:ceraunus; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Four waves have distinct trajectories and hit gating; 24 is only an overlap upper bound.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "cataclysm:clawdian",
@@ -7814,120 +7252,15 @@
     },
     {
       "id": "cataclysm:cursed_bow",
-      "kind": "durability_missing_field",
-      "missing_field": "native_max_damage",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:cursed_bow",
-      "kind": "item_missing_field",
-      "missing_field": "attack_speed",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "active_capability_precedence",
       "owner_classes": [
         "com.github.L_Ender.cataclysm.items.Cursed_bow"
       ],
-      "candidate_methods": [
-        "m_5790_"
-      ],
-      "why_unresolved": "attack_speed still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:cursed_bow; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:cursed_bow",
-      "kind": "item_missing_field",
-      "missing_field": "base_damage",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Cursed_bow"
-      ],
-      "candidate_methods": [
-        "m_5790_"
-      ],
-      "why_unresolved": "base_damage still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:cursed_bow; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:cursed_bow",
-      "kind": "item_missing_field",
-      "missing_field": "cooldown",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Cursed_bow"
-      ],
-      "candidate_methods": [
-        "m_5790_"
-      ],
-      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:cursed_bow; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:cursed_bow",
-      "kind": "item_missing_field",
-      "missing_field": "durability",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Cursed_bow"
-      ],
-      "candidate_methods": [
-        "m_5790_"
-      ],
-      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:cursed_bow; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:cursed_bow",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Cursed_bow"
-      ],
-      "candidate_methods": [
-        "m_5790_"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:cursed_bow; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:cursed_bow",
-      "kind": "item_missing_field",
-      "missing_field": "epic_fight_moveset",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Cursed_bow"
-      ],
-      "candidate_methods": [
-        "m_5790_"
-      ],
-      "why_unresolved": "Multiple installed mod JARs provide an Epic Fight capability for the same item ID; static extraction preserves every resource but does not invent runtime resource-pack precedence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:cursed_bow",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Cursed_bow"
-      ],
-      "candidate_methods": [
-        "m_5790_"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:cursed_bow; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:cursed_bow",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Cursed_bow"
-      ],
-      "candidate_methods": [
-        "m_5790_"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:cursed_bow; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Two installed mod packs provide the same item capability and the read-only load log does not emit the winning resource.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "cataclysm:cursium_boots",
@@ -8451,270 +7784,39 @@
     },
     {
       "id": "cataclysm:gauntlet_of_bulwark",
-      "kind": "durability_missing_field",
-      "missing_field": "native_max_damage",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:gauntlet_of_bulwark",
-      "kind": "item_missing_field",
-      "missing_field": "cooldown",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "charge_collision_damage",
       "owner_classes": [
         "com.github.L_Ender.cataclysm.items.Gauntlet_of_Bulwark"
       ],
-      "candidate_methods": [
-        "m_5929_",
-        "m_5551_"
-      ],
-      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:gauntlet_of_bulwark; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:gauntlet_of_bulwark",
-      "kind": "item_missing_field",
-      "missing_field": "durability",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Gauntlet_of_Bulwark"
-      ],
-      "candidate_methods": [
-        "m_5929_",
-        "m_5551_"
-      ],
-      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:gauntlet_of_bulwark; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:gauntlet_of_bulwark",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Gauntlet_of_Bulwark"
-      ],
-      "candidate_methods": [
-        "m_5929_",
-        "m_5551_"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:gauntlet_of_bulwark; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:gauntlet_of_bulwark",
-      "kind": "item_missing_field",
-      "missing_field": "epic_fight_moveset",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Gauntlet_of_Bulwark"
-      ],
-      "candidate_methods": [
-        "m_5929_",
-        "m_5551_"
-      ],
-      "why_unresolved": "epic_fight_moveset still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:gauntlet_of_bulwark; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:gauntlet_of_bulwark",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Gauntlet_of_Bulwark"
-      ],
-      "candidate_methods": [
-        "m_5929_",
-        "m_5551_"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:gauntlet_of_bulwark; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:gauntlet_of_bulwark",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Gauntlet_of_Bulwark"
-      ],
-      "candidate_methods": [
-        "m_5929_",
-        "m_5551_"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:gauntlet_of_bulwark; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Owner method exposes charge state and effects but no safely assigned damage operand.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "cataclysm:gauntlet_of_guard",
-      "kind": "durability_missing_field",
-      "missing_field": "native_max_damage",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:gauntlet_of_guard",
-      "kind": "item_missing_field",
-      "missing_field": "cooldown",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "combo_phases",
       "owner_classes": [
         "com.github.L_Ender.cataclysm.items.Gauntlet_of_Guard"
       ],
       "candidate_methods": [],
-      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:gauntlet_of_guard; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "why_unresolved": "Five Java animation builders require complete phase-property reconstruction before per-hit totals are safe.",
+      "runtime_observation_required": false,
+      "diagnostic": "Continue exact-version static reconstruction of the named animation/helper chain."
     },
     {
-      "id": "cataclysm:gauntlet_of_guard",
-      "kind": "item_missing_field",
-      "missing_field": "durability",
+      "id": "cataclysm:gauntlet_of_maelstrom",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "vortex_damage_and_hits",
       "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Gauntlet_of_Guard"
+        "com.github.L_Ender.cataclysm.items.Gauntlet_of_Maelstrom"
       ],
       "candidate_methods": [],
-      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:gauntlet_of_guard; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:gauntlet_of_guard",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Gauntlet_of_Guard"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:gauntlet_of_guard; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:gauntlet_of_guard",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Gauntlet_of_Guard"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:gauntlet_of_guard; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:gauntlet_of_guard",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Gauntlet_of_Guard"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:gauntlet_of_guard; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:gauntlet_of_guard",
-      "kind": "item_missing_field",
-      "missing_field": "special_attacks",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Gauntlet_of_Guard"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "special_attacks still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:gauntlet_of_guard; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:gauntlet_of_maelstrom",
-      "kind": "durability_missing_field",
-      "missing_field": "native_max_damage",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:gauntlet_of_maelstrom",
-      "kind": "item_missing_field",
-      "missing_field": "cooldown",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Gauntlet_of_Maelstrom"
-      ],
-      "candidate_methods": [
-        "m_5551_"
-      ],
-      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:gauntlet_of_maelstrom; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:gauntlet_of_maelstrom",
-      "kind": "item_missing_field",
-      "missing_field": "durability",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Gauntlet_of_Maelstrom"
-      ],
-      "candidate_methods": [
-        "m_5551_"
-      ],
-      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:gauntlet_of_maelstrom; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:gauntlet_of_maelstrom",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Gauntlet_of_Maelstrom"
-      ],
-      "candidate_methods": [
-        "m_5551_"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:gauntlet_of_maelstrom; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:gauntlet_of_maelstrom",
-      "kind": "item_missing_field",
-      "missing_field": "epic_fight_moveset",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Gauntlet_of_Maelstrom"
-      ],
-      "candidate_methods": [
-        "m_5551_"
-      ],
-      "why_unresolved": "epic_fight_moveset still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:gauntlet_of_maelstrom; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:gauntlet_of_maelstrom",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Gauntlet_of_Maelstrom"
-      ],
-      "candidate_methods": [
-        "m_5551_"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:gauntlet_of_maelstrom; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:gauntlet_of_maelstrom",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Gauntlet_of_Maelstrom"
-      ],
-      "candidate_methods": [
-        "m_5551_"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:gauntlet_of_maelstrom; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "why_unresolved": "Spawned vortex tick/collision state determines applications.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "cataclysm:ignis",
@@ -9391,223 +8493,39 @@
     },
     {
       "id": "cataclysm:infernal_forge",
-      "kind": "durability_missing_field",
-      "missing_field": "native_max_damage",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:infernal_forge",
-      "kind": "item_missing_field",
-      "missing_field": "attack_speed",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "combo_phases",
       "owner_classes": [
         "com.github.L_Ender.cataclysm.items.Infernal_forge"
       ],
-      "candidate_methods": [
-        "m_6225_",
-        "EarthQuake"
-      ],
-      "why_unresolved": "attack_speed still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:infernal_forge; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Mixed inherited/custom animations are not yet a complete numeric chain.",
+      "runtime_observation_required": false,
+      "diagnostic": "Continue exact-version static reconstruction of the named animation/helper chain."
     },
     {
       "id": "cataclysm:infernal_forge",
-      "kind": "item_missing_field",
-      "missing_field": "base_damage",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "earthquake_target_formula",
       "owner_classes": [
         "com.github.L_Ender.cataclysm.items.Infernal_forge"
       ],
-      "candidate_methods": [
-        "m_6225_",
-        "EarthQuake"
-      ],
-      "why_unresolved": "base_damage still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:infernal_forge; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:infernal_forge",
-      "kind": "item_missing_field",
-      "missing_field": "cooldown",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Infernal_forge"
-      ],
-      "candidate_methods": [
-        "m_6225_",
-        "EarthQuake"
-      ],
-      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:infernal_forge; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:infernal_forge",
-      "kind": "item_missing_field",
-      "missing_field": "durability",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Infernal_forge"
-      ],
-      "candidate_methods": [
-        "m_6225_",
-        "EarthQuake"
-      ],
-      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:infernal_forge; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:infernal_forge",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Infernal_forge"
-      ],
-      "candidate_methods": [
-        "m_6225_",
-        "EarthQuake"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:infernal_forge; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:infernal_forge",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Infernal_forge"
-      ],
-      "candidate_methods": [
-        "m_6225_",
-        "EarthQuake"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:infernal_forge; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:infernal_forge",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Infernal_forge"
-      ],
-      "candidate_methods": [
-        "m_6225_",
-        "EarthQuake"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:infernal_forge; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Branched distance and entity filters must be reconstructed from the whole helper, not the nearest constants.",
+      "runtime_observation_required": false,
+      "diagnostic": "Continue exact-version static reconstruction of the named animation/helper chain."
     },
     {
       "id": "cataclysm:laser_gatling",
-      "kind": "durability_missing_field",
-      "missing_field": "native_max_damage",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:laser_gatling",
-      "kind": "item_missing_field",
-      "missing_field": "attack_speed",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "successful_same_target_beams",
       "owner_classes": [
         "com.github.L_Ender.cataclysm.items.Laser_Gatling"
       ],
-      "candidate_methods": [
-        "m_5929_",
-        "Laser_Beam_Entity",
-        "Laser_Beam_Entity",
-        "m_5790_"
-      ],
-      "why_unresolved": "attack_speed still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:laser_gatling; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:laser_gatling",
-      "kind": "item_missing_field",
-      "missing_field": "base_damage",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Laser_Gatling"
-      ],
-      "candidate_methods": [
-        "m_5929_",
-        "Laser_Beam_Entity",
-        "Laser_Beam_Entity",
-        "m_5790_"
-      ],
-      "why_unresolved": "base_damage still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:laser_gatling; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:laser_gatling",
-      "kind": "item_missing_field",
-      "missing_field": "durability",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Laser_Gatling"
-      ],
-      "candidate_methods": [
-        "m_5929_",
-        "Laser_Beam_Entity",
-        "Laser_Beam_Entity",
-        "m_5790_"
-      ],
-      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:laser_gatling; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:laser_gatling",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Laser_Gatling"
-      ],
-      "candidate_methods": [
-        "m_5929_",
-        "Laser_Beam_Entity",
-        "Laser_Beam_Entity",
-        "m_5790_"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:laser_gatling; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:laser_gatling",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Laser_Gatling"
-      ],
-      "candidate_methods": [
-        "m_5929_",
-        "Laser_Beam_Entity",
-        "Laser_Beam_Entity",
-        "m_5790_"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:laser_gatling; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:laser_gatling",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Laser_Gatling"
-      ],
-      "candidate_methods": [
-        "m_5929_",
-        "Laser_Beam_Entity",
-        "Laser_Beam_Entity",
-        "m_5790_"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:laser_gatling; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "49 is the source-scheduled upper bound; beam collision and target hurt acceptance require a controlled stationary-target log.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "cataclysm:maledictus",
@@ -9728,81 +8646,27 @@
     },
     {
       "id": "cataclysm:meat_shredder",
-      "kind": "durability_missing_field",
-      "missing_field": "native_max_damage",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:meat_shredder",
-      "kind": "item_missing_field",
-      "missing_field": "cooldown",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "channel_successful_hits",
       "owner_classes": [
         "com.github.L_Ender.cataclysm.items.Meat_Shredder"
       ],
-      "candidate_methods": [
-        "m_5929_"
-      ],
-      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:meat_shredder; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "20 scheduled applications/second is not automatically 20 successful damage events because target immunity/collision applies.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "cataclysm:meat_shredder",
-      "kind": "item_missing_field",
-      "missing_field": "durability",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "combo_phases",
       "owner_classes": [
         "com.github.L_Ender.cataclysm.items.Meat_Shredder"
       ],
-      "candidate_methods": [
-        "m_5929_"
-      ],
-      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:meat_shredder; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:meat_shredder",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Meat_Shredder"
-      ],
-      "candidate_methods": [
-        "m_5929_"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:meat_shredder; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:meat_shredder",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Meat_Shredder"
-      ],
-      "candidate_methods": [
-        "m_5929_"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:meat_shredder; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:meat_shredder",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Meat_Shredder"
-      ],
-      "candidate_methods": [
-        "m_5929_"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:meat_shredder; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Standard sword animation phases not fully numeric.",
+      "runtime_observation_required": false,
+      "diagnostic": "Continue exact-version static reconstruction of the named animation/helper chain."
     },
     {
       "id": "cataclysm:necklace_of_the_desert",
@@ -10064,128 +8928,15 @@
     },
     {
       "id": "cataclysm:sandstorm_in_a_bottle",
-      "kind": "durability_missing_field",
-      "missing_field": "native_max_damage",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:sandstorm_in_a_bottle",
-      "kind": "item_missing_field",
-      "missing_field": "attack_speed",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "sandstorm_per_hit_and_count",
       "owner_classes": [
         "com.github.L_Ender.cataclysm.items.Sandstorm_In_A_Bottle"
       ],
-      "candidate_methods": [
-        "m_7203_",
-        "damage"
-      ],
-      "why_unresolved": "attack_speed still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:sandstorm_in_a_bottle; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:sandstorm_in_a_bottle",
-      "kind": "item_missing_field",
-      "missing_field": "base_damage",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Sandstorm_In_A_Bottle"
-      ],
-      "candidate_methods": [
-        "m_7203_",
-        "damage"
-      ],
-      "why_unresolved": "base_damage still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:sandstorm_in_a_bottle; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:sandstorm_in_a_bottle",
-      "kind": "item_missing_field",
-      "missing_field": "cooldown",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Sandstorm_In_A_Bottle"
-      ],
-      "candidate_methods": [
-        "m_7203_",
-        "damage"
-      ],
-      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:sandstorm_in_a_bottle; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:sandstorm_in_a_bottle",
-      "kind": "item_missing_field",
-      "missing_field": "durability",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Sandstorm_In_A_Bottle"
-      ],
-      "candidate_methods": [
-        "m_7203_",
-        "damage"
-      ],
-      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:sandstorm_in_a_bottle; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:sandstorm_in_a_bottle",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Sandstorm_In_A_Bottle"
-      ],
-      "candidate_methods": [
-        "m_7203_",
-        "damage"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:sandstorm_in_a_bottle; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:sandstorm_in_a_bottle",
-      "kind": "item_missing_field",
-      "missing_field": "epic_fight_moveset",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Sandstorm_In_A_Bottle"
-      ],
-      "candidate_methods": [
-        "m_7203_",
-        "damage"
-      ],
-      "why_unresolved": "epic_fight_moveset still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:sandstorm_in_a_bottle; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:sandstorm_in_a_bottle",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Sandstorm_In_A_Bottle"
-      ],
-      "candidate_methods": [
-        "m_7203_",
-        "damage"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:sandstorm_in_a_bottle; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:sandstorm_in_a_bottle",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Sandstorm_In_A_Bottle"
-      ],
-      "candidate_methods": [
-        "m_7203_",
-        "damage"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:sandstorm_in_a_bottle; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Decompiled entity tick/collision flow must be observed to distinguish damage attempts from accepted hits.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "cataclysm:scylla",
@@ -10293,106 +9044,27 @@
     },
     {
       "id": "cataclysm:soul_render",
-      "kind": "durability_missing_field",
-      "missing_field": "native_max_damage",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:soul_render",
-      "kind": "item_missing_field",
-      "missing_field": "cooldown",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "active_capability_and_combo_phases",
       "owner_classes": [
         "com.github.L_Ender.cataclysm.items.Soul_Render"
       ],
-      "candidate_methods": [
-        "m_5551_",
-        "Phantom_Halberd_Entity",
-        "damage"
-      ],
-      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:soul_render; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Colliding resource plus p1nero Java preset; final resource winner and every EFN animation phase are not jointly proven.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "cataclysm:soul_render",
-      "kind": "item_missing_field",
-      "missing_field": "durability",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "halberd_spawn_and_hit_count",
       "owner_classes": [
         "com.github.L_Ender.cataclysm.items.Soul_Render"
       ],
-      "candidate_methods": [
-        "m_5551_",
-        "Phantom_Halberd_Entity",
-        "damage"
-      ],
-      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:soul_render; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:soul_render",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Soul_Render"
-      ],
-      "candidate_methods": [
-        "m_5551_",
-        "Phantom_Halberd_Entity",
-        "damage"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:soul_render; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:soul_render",
-      "kind": "item_missing_field",
-      "missing_field": "epic_fight_moveset",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Soul_Render"
-      ],
-      "candidate_methods": [
-        "m_5551_",
-        "Phantom_Halberd_Entity",
-        "damage"
-      ],
-      "why_unresolved": "Multiple installed mod JARs provide an Epic Fight capability for the same item ID; static extraction preserves every resource but does not invent runtime resource-pack precedence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:soul_render",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Soul_Render"
-      ],
-      "candidate_methods": [
-        "m_5551_",
-        "Phantom_Halberd_Entity",
-        "damage"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:soul_render; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:soul_render",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Soul_Render"
-      ],
-      "candidate_methods": [
-        "m_5551_",
-        "Phantom_Halberd_Entity",
-        "damage"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:soul_render; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Crouch branch placement/collision determines how many 12-damage entities strike one target.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "cataclysm:sturdy_boots",
@@ -10497,86 +9169,15 @@
     },
     {
       "id": "cataclysm:the_annihilator",
-      "kind": "durability_missing_field",
-      "missing_field": "native_max_damage",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:the_annihilator",
-      "kind": "item_missing_field",
-      "missing_field": "durability",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "active_capability_and_combo_phases",
       "owner_classes": [
         "com.github.L_Ender.cataclysm.items.The_Annihilator"
       ],
-      "candidate_methods": [
-        "m_5551_",
-        "yall"
-      ],
-      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:the_annihilator; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:the_annihilator",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.The_Annihilator"
-      ],
-      "candidate_methods": [
-        "m_5551_",
-        "yall"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:the_annihilator; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:the_annihilator",
-      "kind": "item_missing_field",
-      "missing_field": "epic_fight_moveset",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.The_Annihilator"
-      ],
-      "candidate_methods": [
-        "m_5551_",
-        "yall"
-      ],
-      "why_unresolved": "Multiple installed mod JARs provide an Epic Fight capability for the same item ID; static extraction preserves every resource but does not invent runtime resource-pack precedence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:the_annihilator",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.The_Annihilator"
-      ],
-      "candidate_methods": [
-        "m_5551_",
-        "yall"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:the_annihilator; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:the_annihilator",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.The_Annihilator"
-      ],
-      "candidate_methods": [
-        "m_5551_",
-        "yall"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:the_annihilator; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Resource collision and four custom attack builders remain unresolved as one effective numeric chain.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "cataclysm:the_harbinger",
@@ -10704,112 +9305,27 @@
     },
     {
       "id": "cataclysm:the_incinerator",
-      "kind": "durability_missing_field",
-      "missing_field": "native_max_damage",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:the_incinerator",
-      "kind": "item_missing_field",
-      "missing_field": "cooldown",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "active_capability_and_combo_phases",
       "owner_classes": [
         "com.github.L_Ender.cataclysm.items.The_Incinerator"
       ],
-      "candidate_methods": [
-        "m_5551_",
-        "Flame_Strike_Entity",
-        "damage",
-        "m_7378_"
-      ],
-      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:the_incinerator; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Resource collision and EFN animation phase properties are not closed.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "cataclysm:the_incinerator",
-      "kind": "item_missing_field",
-      "missing_field": "durability",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "flame_strike_same_target_count",
       "owner_classes": [
         "com.github.L_Ender.cataclysm.items.The_Incinerator"
       ],
-      "candidate_methods": [
-        "m_5551_",
-        "Flame_Strike_Entity",
-        "damage",
-        "m_7378_"
-      ],
-      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:the_incinerator; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:the_incinerator",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.The_Incinerator"
-      ],
-      "candidate_methods": [
-        "m_5551_",
-        "Flame_Strike_Entity",
-        "damage",
-        "m_7378_"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:the_incinerator; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:the_incinerator",
-      "kind": "item_missing_field",
-      "missing_field": "epic_fight_moveset",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.The_Incinerator"
-      ],
-      "candidate_methods": [
-        "m_5551_",
-        "Flame_Strike_Entity",
-        "damage",
-        "m_7378_"
-      ],
-      "why_unresolved": "Multiple installed mod JARs provide an Epic Fight capability for the same item ID; static extraction preserves every resource but does not invent runtime resource-pack precedence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:the_incinerator",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.The_Incinerator"
-      ],
-      "candidate_methods": [
-        "m_5551_",
-        "Flame_Strike_Entity",
-        "damage",
-        "m_7378_"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:the_incinerator; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:the_incinerator",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.The_Incinerator"
-      ],
-      "candidate_methods": [
-        "m_5551_",
-        "Flame_Strike_Entity",
-        "damage",
-        "m_7378_"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:the_incinerator; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Each strike can make multiple scheduled checks and ten strike volumes can overlap; accepted applications depend on geometry and immunity state.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "cataclysm:the_leviathan",
@@ -10956,81 +9472,27 @@
     },
     {
       "id": "cataclysm:tidal_claws",
-      "kind": "durability_missing_field",
-      "missing_field": "native_max_damage",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:tidal_claws",
-      "kind": "item_missing_field",
-      "missing_field": "cooldown",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "combo_phases",
       "owner_classes": [
         "com.github.L_Ender.cataclysm.items.Tidal_Claws"
       ],
-      "candidate_methods": [
-        "m_8119_"
-      ],
-      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:tidal_claws; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "External EFN claw phase multipliers/timings not fully resolved.",
+      "runtime_observation_required": false,
+      "diagnostic": "Continue exact-version static reconstruction of the named animation/helper chain."
     },
     {
       "id": "cataclysm:tidal_claws",
-      "kind": "item_missing_field",
-      "missing_field": "durability",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "tendon_damage_and_chain_count",
       "owner_classes": [
         "com.github.L_Ender.cataclysm.items.Tidal_Claws"
       ],
-      "candidate_methods": [
-        "m_8119_"
-      ],
-      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:tidal_claws; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:tidal_claws",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Tidal_Claws"
-      ],
-      "candidate_methods": [
-        "m_8119_"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:tidal_claws; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:tidal_claws",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Tidal_Claws"
-      ],
-      "candidate_methods": [
-        "m_8119_"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:tidal_claws; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:tidal_claws",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Tidal_Claws"
-      ],
-      "candidate_methods": [
-        "m_8119_"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:tidal_claws; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Tidal_Tentacle_Entity tick selects chained targets dynamically.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "cataclysm:void_assault_shoulder_weapon",
@@ -11204,136 +9666,27 @@
     },
     {
       "id": "cataclysm:wrath_of_the_desert",
-      "kind": "durability_missing_field",
-      "missing_field": "native_max_damage",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:wrath_of_the_desert",
-      "kind": "item_missing_field",
-      "missing_field": "attack_speed",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "active_capability_precedence",
       "owner_classes": [
         "com.github.L_Ender.cataclysm.items.Wrath_of_the_desert"
       ],
-      "candidate_methods": [
-        "Cursed_Sandstorm_Entity",
-        "m_7378_",
-        "m_5790_"
-      ],
-      "why_unresolved": "attack_speed still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:wrath_of_the_desert; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Two installed capability definitions collide and no winning resource is logged.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "cataclysm:wrath_of_the_desert",
-      "kind": "item_missing_field",
-      "missing_field": "base_damage",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "sandstorm_secondary_hits",
       "owner_classes": [
         "com.github.L_Ender.cataclysm.items.Wrath_of_the_desert"
       ],
-      "candidate_methods": [
-        "Cursed_Sandstorm_Entity",
-        "m_7378_",
-        "m_5790_"
-      ],
-      "why_unresolved": "base_damage still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:wrath_of_the_desert; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:wrath_of_the_desert",
-      "kind": "item_missing_field",
-      "missing_field": "cooldown",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Wrath_of_the_desert"
-      ],
-      "candidate_methods": [
-        "Cursed_Sandstorm_Entity",
-        "m_7378_",
-        "m_5790_"
-      ],
-      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:wrath_of_the_desert; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:wrath_of_the_desert",
-      "kind": "item_missing_field",
-      "missing_field": "durability",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Wrath_of_the_desert"
-      ],
-      "candidate_methods": [
-        "Cursed_Sandstorm_Entity",
-        "m_7378_",
-        "m_5790_"
-      ],
-      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:wrath_of_the_desert; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:wrath_of_the_desert",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Wrath_of_the_desert"
-      ],
-      "candidate_methods": [
-        "Cursed_Sandstorm_Entity",
-        "m_7378_",
-        "m_5790_"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:wrath_of_the_desert; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:wrath_of_the_desert",
-      "kind": "item_missing_field",
-      "missing_field": "epic_fight_moveset",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Wrath_of_the_desert"
-      ],
-      "candidate_methods": [
-        "Cursed_Sandstorm_Entity",
-        "m_7378_",
-        "m_5790_"
-      ],
-      "why_unresolved": "Multiple installed mod JARs provide an Epic Fight capability for the same item ID; static extraction preserves every resource but does not invent runtime resource-pack precedence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:wrath_of_the_desert",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Wrath_of_the_desert"
-      ],
-      "candidate_methods": [
-        "Cursed_Sandstorm_Entity",
-        "m_7378_",
-        "m_5790_"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:wrath_of_the_desert; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:wrath_of_the_desert",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.items.Wrath_of_the_desert"
-      ],
-      "candidate_methods": [
-        "Cursed_Sandstorm_Entity",
-        "m_7378_",
-        "m_5790_"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for cataclysm:wrath_of_the_desert; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Projectile entity movement/homing and collision decide repeated applications.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "cnc:buckskin_boots",
@@ -32754,202 +31107,27 @@
     },
     {
       "id": "legendary_monsters:atom_splitter",
-      "kind": "item_missing_field",
-      "missing_field": "attack_speed",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "beam_or_bomb_branch_and_hit_count",
       "owner_classes": [
         "net.miauczel.legendary_monsters.item.custom.AtomSplitterItem"
       ],
-      "candidate_methods": [
-        "m_7203_",
-        "m_5551_"
-      ],
-      "why_unresolved": "attack_speed still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:atom_splitter; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:atom_splitter",
-      "kind": "item_missing_field",
-      "missing_field": "base_damage",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.AtomSplitterItem"
-      ],
-      "candidate_methods": [
-        "m_7203_",
-        "m_5551_"
-      ],
-      "why_unresolved": "base_damage still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:atom_splitter; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:atom_splitter",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.AtomSplitterItem"
-      ],
-      "candidate_methods": [
-        "m_7203_",
-        "m_5551_"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:atom_splitter; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:atom_splitter",
-      "kind": "item_missing_field",
-      "missing_field": "epic_fight_moveset",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.AtomSplitterItem"
-      ],
-      "candidate_methods": [
-        "m_7203_",
-        "m_5551_"
-      ],
-      "why_unresolved": "epic_fight_moveset still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:atom_splitter; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:atom_splitter",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.AtomSplitterItem"
-      ],
-      "candidate_methods": [
-        "m_7203_",
-        "m_5551_"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:atom_splitter; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:atom_splitter",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.AtomSplitterItem"
-      ],
-      "candidate_methods": [
-        "m_7203_",
-        "m_5551_"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:atom_splitter; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Use/release state selects entity branch and spawned entity collision controls accepted applications.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "legendary_monsters:axe_of_lightning",
-      "kind": "durability_missing_field",
-      "missing_field": "native_max_damage",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:axe_of_lightning",
-      "kind": "item_missing_field",
-      "missing_field": "attack_speed",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "electricity_chain_hits",
       "owner_classes": [
         "net.miauczel.legendary_monsters.item.custom.Axe_Of_LightningItem"
       ],
-      "candidate_methods": [
-        "m_7579_",
-        "m_6813_",
-        "setDamage",
-        "m_6225_",
-        "m_7203_"
-      ],
-      "why_unresolved": "attack_speed still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:axe_of_lightning; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:axe_of_lightning",
-      "kind": "item_missing_field",
-      "missing_field": "base_damage",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.Axe_Of_LightningItem"
-      ],
-      "candidate_methods": [
-        "m_7579_",
-        "m_6813_",
-        "setDamage",
-        "m_6225_",
-        "m_7203_"
-      ],
-      "why_unresolved": "base_damage still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:axe_of_lightning; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:axe_of_lightning",
-      "kind": "item_missing_field",
-      "missing_field": "durability",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.Axe_Of_LightningItem"
-      ],
-      "candidate_methods": [
-        "m_7579_",
-        "m_6813_",
-        "setDamage",
-        "m_6225_",
-        "m_7203_"
-      ],
-      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:axe_of_lightning; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:axe_of_lightning",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.Axe_Of_LightningItem"
-      ],
-      "candidate_methods": [
-        "m_7579_",
-        "m_6813_",
-        "setDamage",
-        "m_6225_",
-        "m_7203_"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:axe_of_lightning; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:axe_of_lightning",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.Axe_Of_LightningItem"
-      ],
-      "candidate_methods": [
-        "m_7579_",
-        "m_6813_",
-        "setDamage",
-        "m_6225_",
-        "m_7203_"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:axe_of_lightning; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:axe_of_lightning",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.Axe_Of_LightningItem"
-      ],
-      "candidate_methods": [
-        "m_7579_",
-        "m_6813_",
-        "setDamage",
-        "m_6225_",
-        "m_7203_"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:axe_of_lightning; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Projectile/effect entity collision determines applications.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "legendary_monsters:beheaded_knight",
@@ -33119,114 +31297,15 @@
     },
     {
       "id": "legendary_monsters:chorus_blade",
-      "kind": "durability_missing_field",
-      "missing_field": "native_max_damage",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:chorus_blade",
-      "kind": "item_missing_field",
-      "missing_field": "attack_speed",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "multi_entity_teleport_safety",
       "owner_classes": [
         "net.miauczel.legendary_monsters.item.custom.ChorusBladeItem"
       ],
-      "candidate_methods": [
-        "m_7203_",
-        "execute"
-      ],
-      "why_unresolved": "attack_speed still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:chorus_blade; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:chorus_blade",
-      "kind": "item_missing_field",
-      "missing_field": "base_damage",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.ChorusBladeItem"
-      ],
-      "candidate_methods": [
-        "m_7203_",
-        "execute"
-      ],
-      "why_unresolved": "base_damage still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:chorus_blade; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:chorus_blade",
-      "kind": "item_missing_field",
-      "missing_field": "durability",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.ChorusBladeItem"
-      ],
-      "candidate_methods": [
-        "m_7203_",
-        "execute"
-      ],
-      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:chorus_blade; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:chorus_blade",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.ChorusBladeItem"
-      ],
-      "candidate_methods": [
-        "m_7203_",
-        "execute"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:chorus_blade; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:chorus_blade",
-      "kind": "item_missing_field",
-      "missing_field": "epic_fight_moveset",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.ChorusBladeItem"
-      ],
-      "candidate_methods": [
-        "m_7203_",
-        "execute"
-      ],
-      "why_unresolved": "epic_fight_moveset still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:chorus_blade; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:chorus_blade",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.ChorusBladeItem"
-      ],
-      "candidate_methods": [
-        "m_7203_",
-        "execute"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:chorus_blade; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:chorus_blade",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.ChorusBladeItem"
-      ],
-      "candidate_methods": [
-        "m_7203_",
-        "execute"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:chorus_blade; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "The loop mutates player position once per nearby entity; ordering and obstruction effects are world-state dependent.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "legendary_monsters:chorusling",
@@ -33437,141 +31516,6 @@
       "owner_classes": [],
       "candidate_methods": [],
       "why_unresolved": "special_attacks still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:ender_hammer; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:enderitium_axe",
-      "kind": "item_missing_field",
-      "missing_field": "cooldown",
-      "owner_classes": [
-        "net.minecraft.world.item.AxeItem"
-      ],
-      "candidate_methods": [
-        "useOn"
-      ],
-      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:enderitium_axe; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:enderitium_axe",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "net.minecraft.world.item.AxeItem"
-      ],
-      "candidate_methods": [
-        "useOn"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:enderitium_axe; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:enderitium_axe",
-      "kind": "item_missing_field",
-      "missing_field": "epic_fight_moveset",
-      "owner_classes": [
-        "net.minecraft.world.item.AxeItem"
-      ],
-      "candidate_methods": [
-        "useOn"
-      ],
-      "why_unresolved": "epic_fight_moveset still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:enderitium_axe; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:enderitium_axe",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "net.minecraft.world.item.AxeItem"
-      ],
-      "candidate_methods": [
-        "useOn"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:enderitium_axe; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:enderitium_axe",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "net.minecraft.world.item.AxeItem"
-      ],
-      "candidate_methods": [
-        "useOn"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:enderitium_axe; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:enderitium_sword",
-      "kind": "item_missing_field",
-      "missing_field": "cooldown",
-      "owner_classes": [
-        "net.minecraft.world.item.SwordItem"
-      ],
-      "candidate_methods": [
-        "hurtEnemy",
-        "mineBlock"
-      ],
-      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:enderitium_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:enderitium_sword",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "net.minecraft.world.item.SwordItem"
-      ],
-      "candidate_methods": [
-        "hurtEnemy",
-        "mineBlock"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:enderitium_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:enderitium_sword",
-      "kind": "item_missing_field",
-      "missing_field": "epic_fight_moveset",
-      "owner_classes": [
-        "net.minecraft.world.item.SwordItem"
-      ],
-      "candidate_methods": [
-        "hurtEnemy",
-        "mineBlock"
-      ],
-      "why_unresolved": "epic_fight_moveset still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:enderitium_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:enderitium_sword",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "net.minecraft.world.item.SwordItem"
-      ],
-      "candidate_methods": [
-        "hurtEnemy",
-        "mineBlock"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:enderitium_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:enderitium_sword",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "net.minecraft.world.item.SwordItem"
-      ],
-      "candidate_methods": [
-        "hurtEnemy",
-        "mineBlock"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:enderitium_sword; raw class constants are evidence, not assigned values",
       "runtime_observation_required": false
     },
     {
@@ -33976,107 +31920,6 @@
       "runtime_observation_required": false
     },
     {
-      "id": "legendary_monsters:knights_sword",
-      "kind": "durability_missing_field",
-      "missing_field": "native_max_damage",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:knights_sword",
-      "kind": "item_missing_field",
-      "missing_field": "attack_speed",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.KnightsSwordsItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "attack_speed still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:knights_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:knights_sword",
-      "kind": "item_missing_field",
-      "missing_field": "base_damage",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.KnightsSwordsItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "base_damage still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:knights_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:knights_sword",
-      "kind": "item_missing_field",
-      "missing_field": "cooldown",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.KnightsSwordsItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:knights_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:knights_sword",
-      "kind": "item_missing_field",
-      "missing_field": "durability",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.KnightsSwordsItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:knights_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:knights_sword",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.KnightsSwordsItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:knights_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:knights_sword",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.KnightsSwordsItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:knights_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:knights_sword",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.KnightsSwordsItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:knights_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:knights_sword",
-      "kind": "item_missing_field",
-      "missing_field": "special_attacks",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.KnightsSwordsItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "special_attacks still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:knights_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
       "id": "legendary_monsters:lava_eater",
       "kind": "boss_attack_missing_formula",
       "missing_field": "attack_damage_formula",
@@ -34152,103 +31995,6 @@
         "m_7378_"
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:monstrous_anchor",
-      "kind": "durability_missing_field",
-      "missing_field": "native_max_damage",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:monstrous_anchor",
-      "kind": "item_missing_field",
-      "missing_field": "attack_speed",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.MonstrousAnchorItem"
-      ],
-      "candidate_methods": [
-        "m_7579_",
-        "m_5551_"
-      ],
-      "why_unresolved": "attack_speed still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:monstrous_anchor; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:monstrous_anchor",
-      "kind": "item_missing_field",
-      "missing_field": "base_damage",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.MonstrousAnchorItem"
-      ],
-      "candidate_methods": [
-        "m_7579_",
-        "m_5551_"
-      ],
-      "why_unresolved": "base_damage still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:monstrous_anchor; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:monstrous_anchor",
-      "kind": "item_missing_field",
-      "missing_field": "durability",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.MonstrousAnchorItem"
-      ],
-      "candidate_methods": [
-        "m_7579_",
-        "m_5551_"
-      ],
-      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:monstrous_anchor; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:monstrous_anchor",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.MonstrousAnchorItem"
-      ],
-      "candidate_methods": [
-        "m_7579_",
-        "m_5551_"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:monstrous_anchor; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:monstrous_anchor",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.MonstrousAnchorItem"
-      ],
-      "candidate_methods": [
-        "m_7579_",
-        "m_5551_"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:monstrous_anchor; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:monstrous_anchor",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.MonstrousAnchorItem"
-      ],
-      "candidate_methods": [
-        "m_7579_",
-        "m_5551_"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:monstrous_anchor; raw class constants are evidence, not assigned values",
       "runtime_observation_required": false
     },
     {
@@ -34378,81 +32124,15 @@
     },
     {
       "id": "legendary_monsters:mossy_hammer",
-      "kind": "durability_missing_field",
-      "missing_field": "ability_or_standard_consumption",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:mossy_hammer",
-      "kind": "item_missing_field",
-      "missing_field": "attack_speed",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "dual_handler_activation",
       "owner_classes": [
         "net.miauczel.legendary_monsters.item.custom.MossyHammerItem"
       ],
-      "candidate_methods": [
-        "m_6225_"
-      ],
-      "why_unresolved": "attack_speed still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:mossy_hammer; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:mossy_hammer",
-      "kind": "item_missing_field",
-      "missing_field": "base_damage",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.MossyHammerItem"
-      ],
-      "candidate_methods": [
-        "m_6225_"
-      ],
-      "why_unresolved": "base_damage still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:mossy_hammer; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:mossy_hammer",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.MossyHammerItem"
-      ],
-      "candidate_methods": [
-        "m_6225_"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:mossy_hammer; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:mossy_hammer",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.MossyHammerItem"
-      ],
-      "candidate_methods": [
-        "m_6225_"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:mossy_hammer; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:mossy_hammer",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.MossyHammerItem"
-      ],
-      "candidate_methods": [
-        "m_6225_"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:mossy_hammer; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Both item method and Forge event subscribe to related right-click actions; a runtime event trace is required to prove whether one click can execute both 10-damage paths.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "legendary_monsters:overgrown_colossus",
@@ -34647,85 +32327,6 @@
         "stabHitbox"
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:shattered_greatsword",
-      "kind": "durability_missing_field",
-      "missing_field": "ability_or_standard_consumption",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:shattered_greatsword",
-      "kind": "item_missing_field",
-      "missing_field": "cooldown",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.ShatteredGreatSwordItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:shattered_greatsword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:shattered_greatsword",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.ShatteredGreatSwordItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:shattered_greatsword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:shattered_greatsword",
-      "kind": "item_missing_field",
-      "missing_field": "epic_fight_moveset",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.ShatteredGreatSwordItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "epic_fight_moveset still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:shattered_greatsword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:shattered_greatsword",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.ShatteredGreatSwordItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:shattered_greatsword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:shattered_greatsword",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.ShatteredGreatSwordItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:shattered_greatsword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:shattered_greatsword",
-      "kind": "item_missing_field",
-      "missing_field": "special_attacks",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.ShatteredGreatSwordItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "special_attacks still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:shattered_greatsword; raw class constants are evidence, not assigned values",
       "runtime_observation_required": false
     },
     {
@@ -35103,112 +32704,27 @@
     },
     {
       "id": "legendary_monsters:soul_great_sword",
-      "kind": "durability_missing_field",
-      "missing_field": "native_max_damage",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:soul_great_sword",
-      "kind": "item_missing_field",
-      "missing_field": "attack_speed",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "dagger_same_target_count",
       "owner_classes": [
         "net.miauczel.legendary_monsters.item.custom.SoulGreatSwordItem"
       ],
-      "candidate_methods": [
-        "setDamage",
-        "m_5929_",
-        "m_5551_",
-        "spreadDaggers"
-      ],
-      "why_unresolved": "attack_speed still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:soul_great_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Six radial projectiles are proven; how many can return through the same target is collision dependent.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "legendary_monsters:soul_great_sword",
-      "kind": "item_missing_field",
-      "missing_field": "base_damage",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "soul_rage_numeric_modifier",
       "owner_classes": [
         "net.miauczel.legendary_monsters.item.custom.SoulGreatSwordItem"
       ],
-      "candidate_methods": [
-        "setDamage",
-        "m_5929_",
-        "m_5551_",
-        "spreadDaggers"
-      ],
-      "why_unresolved": "base_damage still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:soul_great_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:soul_great_sword",
-      "kind": "item_missing_field",
-      "missing_field": "durability",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.SoulGreatSwordItem"
-      ],
-      "candidate_methods": [
-        "setDamage",
-        "m_5929_",
-        "m_5551_",
-        "spreadDaggers"
-      ],
-      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:soul_great_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:soul_great_sword",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.SoulGreatSwordItem"
-      ],
-      "candidate_methods": [
-        "setDamage",
-        "m_5929_",
-        "m_5551_",
-        "spreadDaggers"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:soul_great_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:soul_great_sword",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.SoulGreatSwordItem"
-      ],
-      "candidate_methods": [
-        "setDamage",
-        "m_5929_",
-        "m_5551_",
-        "spreadDaggers"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:soul_great_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:soul_great_sword",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.SoulGreatSwordItem"
-      ],
-      "candidate_methods": [
-        "setDamage",
-        "m_5929_",
-        "m_5551_",
-        "spreadDaggers"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:soul_great_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Effect handler must be followed separately from activation; duration alone is not a damage formula.",
+      "runtime_observation_required": false,
+      "diagnostic": "Continue exact-version static reconstruction of the named animation/helper chain."
     },
     {
       "id": "legendary_monsters:spiky_bug",
@@ -35345,100 +32861,15 @@
     },
     {
       "id": "legendary_monsters:the_great_frost",
-      "kind": "durability_missing_field",
-      "missing_field": "native_max_damage",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:the_great_frost",
-      "kind": "item_missing_field",
-      "missing_field": "attack_speed",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "ice_spike_successful_hits",
       "owner_classes": [
         "net.miauczel.legendary_monsters.item.custom.TheGreatFrostItem"
       ],
-      "candidate_methods": [
-        "m_7203_",
-        "m_6225_"
-      ],
-      "why_unresolved": "attack_speed still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:the_great_frost; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:the_great_frost",
-      "kind": "item_missing_field",
-      "missing_field": "base_damage",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.TheGreatFrostItem"
-      ],
-      "candidate_methods": [
-        "m_7203_",
-        "m_6225_"
-      ],
-      "why_unresolved": "base_damage still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:the_great_frost; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:the_great_frost",
-      "kind": "item_missing_field",
-      "missing_field": "durability",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.TheGreatFrostItem"
-      ],
-      "candidate_methods": [
-        "m_7203_",
-        "m_6225_"
-      ],
-      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:the_great_frost; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:the_great_frost",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.TheGreatFrostItem"
-      ],
-      "candidate_methods": [
-        "m_7203_",
-        "m_6225_"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:the_great_frost; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:the_great_frost",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.TheGreatFrostItem"
-      ],
-      "candidate_methods": [
-        "m_7203_",
-        "m_6225_"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:the_great_frost; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:the_great_frost",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.TheGreatFrostItem"
-      ],
-      "candidate_methods": [
-        "m_7203_",
-        "m_6225_"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:the_great_frost; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Four checks are possible but vanilla immunity can reject later hurt calls.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "legendary_monsters:the_obliterator",
@@ -35559,285 +32990,27 @@
     },
     {
       "id": "legendary_monsters:the_tesseract",
-      "kind": "durability_missing_field",
-      "missing_field": "ability_or_standard_consumption",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:the_tesseract",
-      "kind": "item_missing_field",
-      "missing_field": "cooldown",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "portal_spawn_and_hit_count",
       "owner_classes": [
         "net.miauczel.legendary_monsters.item.custom.TheTesseractItem"
       ],
-      "candidate_methods": [
-        "setDamage",
-        "m_5551_"
-      ],
-      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:the_tesseract; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:the_tesseract",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.TheTesseractItem"
-      ],
-      "candidate_methods": [
-        "setDamage",
-        "m_5551_"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:the_tesseract; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:the_tesseract",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.TheTesseractItem"
-      ],
-      "candidate_methods": [
-        "setDamage",
-        "m_5551_"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:the_tesseract; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:the_tesseract",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.TheTesseractItem"
-      ],
-      "candidate_methods": [
-        "setDamage",
-        "m_5551_"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:the_tesseract; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:void_sword",
-      "kind": "durability_missing_field",
-      "missing_field": "native_max_damage",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:void_sword",
-      "kind": "item_missing_field",
-      "missing_field": "attack_speed",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.VoidSwordItem"
-      ],
       "candidate_methods": [],
-      "why_unresolved": "attack_speed still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:void_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:void_sword",
-      "kind": "item_missing_field",
-      "missing_field": "base_damage",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.VoidSwordItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "base_damage still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:void_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:void_sword",
-      "kind": "item_missing_field",
-      "missing_field": "cooldown",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.VoidSwordItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:void_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:void_sword",
-      "kind": "item_missing_field",
-      "missing_field": "durability",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.VoidSwordItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:void_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:void_sword",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.VoidSwordItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:void_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:void_sword",
-      "kind": "item_missing_field",
-      "missing_field": "epic_fight_moveset",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.VoidSwordItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "epic_fight_moveset still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:void_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:void_sword",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.VoidSwordItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:void_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:void_sword",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.VoidSwordItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:void_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:void_sword",
-      "kind": "item_missing_field",
-      "missing_field": "special_attacks",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.VoidSwordItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "special_attacks still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:void_sword; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "why_unresolved": "Portal branch, placement, tick duration and target re-entry determine the total.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "legendary_monsters:wand_of_clouds",
-      "kind": "durability_missing_field",
-      "missing_field": "native_max_damage",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:wand_of_clouds",
-      "kind": "item_missing_field",
-      "missing_field": "attack_speed",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "cloud_same_target_landings",
       "owner_classes": [
         "net.miauczel.legendary_monsters.item.custom.WandOfCloudsItem"
       ],
       "candidate_methods": [],
-      "why_unresolved": "attack_speed still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:wand_of_clouds; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:wand_of_clouds",
-      "kind": "item_missing_field",
-      "missing_field": "base_damage",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.WandOfCloudsItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "base_damage still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:wand_of_clouds; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:wand_of_clouds",
-      "kind": "item_missing_field",
-      "missing_field": "cooldown",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.WandOfCloudsItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:wand_of_clouds; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:wand_of_clouds",
-      "kind": "item_missing_field",
-      "missing_field": "durability",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.WandOfCloudsItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:wand_of_clouds; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:wand_of_clouds",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.WandOfCloudsItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:wand_of_clouds; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:wand_of_clouds",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.WandOfCloudsItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:wand_of_clouds; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:wand_of_clouds",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.WandOfCloudsItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:wand_of_clouds; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:wand_of_clouds",
-      "kind": "item_missing_field",
-      "missing_field": "special_attacks",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.WandOfCloudsItem"
-      ],
-      "candidate_methods": [],
-      "why_unresolved": "special_attacks still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:wand_of_clouds; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "why_unresolved": "Projectile impact locations determine whether one target receives the large and all three small cloud AoEs.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "legendary_monsters:wandering_eye",
@@ -36008,112 +33181,15 @@
     },
     {
       "id": "legendary_monsters:withered_scythe",
-      "kind": "durability_missing_field",
-      "missing_field": "native_max_damage",
-      "owner_classes": [],
-      "candidate_methods": [
-        "registration factory",
-        "hurtAndBreak",
-        "getMaxDamage"
-      ],
-      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:withered_scythe",
-      "kind": "item_missing_field",
-      "missing_field": "attack_speed",
+      "kind": "boss_reward_weapon_stage_3_5a_blocker",
+      "missing_field": "dash_multi_application",
       "owner_classes": [
         "net.miauczel.legendary_monsters.item.custom.WitheredScytheItem"
       ],
-      "candidate_methods": [
-        "m_7579_",
-        "m_6813_",
-        "m_5551_",
-        "m_5929_"
-      ],
-      "why_unresolved": "attack_speed still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:withered_scythe; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:withered_scythe",
-      "kind": "item_missing_field",
-      "missing_field": "base_damage",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.WitheredScytheItem"
-      ],
-      "candidate_methods": [
-        "m_7579_",
-        "m_6813_",
-        "m_5551_",
-        "m_5929_"
-      ],
-      "why_unresolved": "base_damage still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:withered_scythe; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:withered_scythe",
-      "kind": "item_missing_field",
-      "missing_field": "durability",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.WitheredScytheItem"
-      ],
-      "candidate_methods": [
-        "m_7579_",
-        "m_6813_",
-        "m_5551_",
-        "m_5929_"
-      ],
-      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:withered_scythe; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:withered_scythe",
-      "kind": "item_missing_field",
-      "missing_field": "effects",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.WitheredScytheItem"
-      ],
-      "candidate_methods": [
-        "m_7579_",
-        "m_6813_",
-        "m_5551_",
-        "m_5929_"
-      ],
-      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:withered_scythe; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:withered_scythe",
-      "kind": "item_missing_field",
-      "missing_field": "penetration",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.WitheredScytheItem"
-      ],
-      "candidate_methods": [
-        "m_7579_",
-        "m_6813_",
-        "m_5551_",
-        "m_5929_"
-      ],
-      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:withered_scythe; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:withered_scythe",
-      "kind": "item_missing_field",
-      "missing_field": "resource_cost",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.item.custom.WitheredScytheItem"
-      ],
-      "candidate_methods": [
-        "m_7579_",
-        "m_6813_",
-        "m_5551_",
-        "m_5929_"
-      ],
-      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for legendary_monsters:withered_scythe; raw class constants are evidence, not assigned values",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Dash AoE movement can intersect a target over multiple ticks; accepted count requires event observation.",
+      "runtime_observation_required": true,
+      "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },
     {
       "id": "luminous_beasts:bone_stalker",

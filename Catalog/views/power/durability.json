@@ -1,7 +1,7 @@
 {
   "schema_version": 4,
   "view": "phase_3_durability_audit",
-  "snapshot_sha": "42024576c79f6e103eebc33355ecbca1ba8b5a69",
+  "snapshot_sha": "41b53dbe6373d41eb86ae181eccd2379818b36dd",
   "generation": {
     "generator": "Catalog/generator/build_power_views.py",
     "method": "offline derived evidence",
@@ -169,27 +169,48 @@
           "status": "exact_owner_bytecode"
         }
       ],
-      "status": "max_and_consumption_traced",
+      "status": "max_and_wear_traced",
       "unresolved_reason": null,
-      "runtime_observation_required": false
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "max_and_wear_traced",
+        "max_damage": 1200,
+        "normal_hit_wear": 1,
+        "special_wear": 1,
+        "repair": "minecraft:diamond"
+      }
     },
     {
       "id": "block_factorys_bosses:knight_sword",
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "max_and_normal_wear_traced_special_no_wear",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "max_and_normal_wear_traced_special_no_wear",
+        "max_damage": 1480,
+        "normal_hit_wear": 1,
+        "special_wear": 0,
+        "repair": "minecraft:iron_ingot"
+      }
     },
     {
       "id": "block_factorys_bosses:kraken_trident",
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "max_and_normal_wear_traced",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "max_and_normal_wear_traced",
+        "max_damage": 2500,
+        "normal_hit_wear": 1,
+        "thrown_use_wear": 1,
+        "repair": "BUG: m_6832_ checks the weapon stack against kraken_tooth instead of repairCandidate, so ordinary repair ingredient matching is effectively false"
+      }
     },
     {
       "id": "block_factorys_bosses:large_sword",
@@ -217,9 +238,16 @@
           "status": "exact_owner_bytecode"
         }
       ],
-      "status": "max_and_consumption_traced",
+      "status": "max_and_channel_wear_traced",
       "unresolved_reason": null,
-      "runtime_observation_required": false
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "max_and_channel_wear_traced",
+        "max_damage": 1000,
+        "normal_hit_wear": 0,
+        "special_wear": "10 per 20 active ticks",
+        "repair": null
+      }
     },
     {
       "id": "block_factorys_bosses:undying_tentacle",
@@ -238,9 +266,16 @@
           "status": "exact_owner_bytecode"
         }
       ],
-      "status": "max_and_consumption_traced",
+      "status": "max_and_special_wear_traced",
       "unresolved_reason": null,
-      "runtime_observation_required": false
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "max_and_special_wear_traced",
+        "max_damage": 1000,
+        "normal_hit_wear": 0,
+        "special_wear": 1,
+        "repair": null
+      }
     },
     {
       "id": "block_factorys_bosses:warrior_sword",
@@ -267,18 +302,32 @@
           "status": "exact_owner_bytecode"
         }
       ],
-      "status": "partial",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "verified_unbreakable_balance_issue",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "normal_hit_wear": "calls wear but item has no max damage",
+        "special_wear": "calls wear but item has no max damage",
+        "repair": null
+      }
     },
     {
       "id": "cataclysm:astrape",
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "verified_unbreakable_balance_issue",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "normal_hit_wear": "cannot accumulate",
+        "special_wear": "cannot accumulate",
+        "repair": null
+      }
     },
     {
       "id": "cataclysm:black_steel_sword",
@@ -321,9 +370,16 @@
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "verified_unbreakable_balance_issue",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "normal_hit_wear": "cannot accumulate",
+        "special_wear": "cannot accumulate",
+        "repair": null
+      }
     },
     {
       "id": "cataclysm:coral_bardiche",
@@ -359,45 +415,80 @@
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "verified_unbreakable_balance_issue",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "normal_hit_wear": 0,
+        "special_wear": "cannot accumulate",
+        "repair": null
+      }
     },
     {
       "id": "cataclysm:gauntlet_of_bulwark",
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "verified_unbreakable_balance_issue",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "normal_hit_wear": "cannot accumulate",
+        "special_wear": "cannot accumulate",
+        "repair": null
+      }
     },
     {
       "id": "cataclysm:gauntlet_of_guard",
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "verified_unbreakable_balance_issue",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "normal_hit_wear": "cannot accumulate",
+        "special_wear": "cannot accumulate",
+        "repair": null
+      }
     },
     {
       "id": "cataclysm:gauntlet_of_maelstrom",
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "verified_unbreakable_balance_issue",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "normal_hit_wear": "cannot accumulate",
+        "special_wear": "cannot accumulate",
+        "repair": null
+      }
     },
     {
       "id": "cataclysm:infernal_forge",
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "verified_unbreakable_balance_issue",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "nominal_tier_uses": 2800,
+        "mechanism": "Cataclysm_Tool_Item.isDamageable(ItemStack) returns false",
+        "repair": "cataclysm:monstrous_horn nominal tier ingredient"
+      }
     },
     {
       "id": "cataclysm:laser_gatling",
@@ -410,45 +501,80 @@
           "status": "exact_owner_bytecode"
         }
       ],
-      "status": "partial",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "max_and_consumption_traced",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "max_and_consumption_traced",
+        "max_damage": 50,
+        "normal_hit_wear": 0,
+        "special_wear": 1,
+        "repair": "one minecraft:redstone resets damage to 0"
+      }
     },
     {
       "id": "cataclysm:meat_shredder",
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "verified_unbreakable_balance_issue",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "normal_hit_wear": "cannot accumulate",
+        "special_wear": "cannot accumulate",
+        "repair": null
+      }
     },
     {
       "id": "cataclysm:sandstorm_in_a_bottle",
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "verified_unbreakable_balance_issue",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "normal_hit_wear": 0,
+        "special_wear": "cannot accumulate",
+        "repair": null
+      }
     },
     {
       "id": "cataclysm:soul_render",
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "verified_unbreakable_balance_issue",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "normal_hit_wear": "cannot accumulate",
+        "special_wear": "cannot accumulate",
+        "repair": null
+      }
     },
     {
       "id": "cataclysm:the_annihilator",
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "verified_unbreakable_balance_issue",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "normal_hit_wear": "cannot accumulate",
+        "special_wear": "cannot accumulate",
+        "repair": null
+      }
     },
     {
       "id": "cataclysm:the_immolator",
@@ -464,18 +590,32 @@
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "verified_unbreakable_balance_issue",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "normal_hit_wear": "cannot accumulate",
+        "special_wear": "cannot accumulate",
+        "repair": null
+      }
     },
     {
       "id": "cataclysm:tidal_claws",
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "verified_unbreakable_balance_issue",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "normal_hit_wear": "cannot accumulate",
+        "special_wear": "cannot accumulate",
+        "repair": null
+      }
     },
     {
       "id": "cataclysm:void_assault_shoulder_weapon",
@@ -500,9 +640,16 @@
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "verified_unbreakable_balance_issue",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "normal_hit_wear": 0,
+        "special_wear": "cannot accumulate",
+        "repair": null
+      }
     },
     {
       "id": "companions:crystallized_blood_sword",
@@ -1204,9 +1351,16 @@
           "status": "exact_owner_bytecode"
         }
       ],
-      "status": "max_and_consumption_traced",
+      "status": "max_and_special_wear_traced",
       "unresolved_reason": null,
-      "runtime_observation_required": false
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "max_and_special_wear_traced",
+        "max_damage": 4,
+        "normal_hit_wear": 0,
+        "special_wear": 1,
+        "repair": "2 legendary_monsters:bottle_of_annihilation reset damage to 0"
+      }
     },
     {
       "id": "legendary_monsters:axe_of_lightning",
@@ -1224,18 +1378,32 @@
           "status": "exact_owner_bytecode"
         }
       ],
-      "status": "partial",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "verified_unbreakable_balance_issue",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "nominal_tier_uses": 3000,
+        "mechanism": "setDamage always delegates -1, defeating normal hit/block wear",
+        "repair": "legendary_monsters:void_gem nominal tier ingredient"
+      }
     },
     {
       "id": "legendary_monsters:chorus_blade",
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "max_and_normal_wear_traced",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "max_and_normal_wear_traced",
+        "max_damage": 750,
+        "normal_hit_wear": 1,
+        "special_wear": 0,
+        "repair": "legendary_monsters:infected_chorus_fruit"
+      }
     },
     {
       "id": "legendary_monsters:ender_hammer",
@@ -1264,9 +1432,16 @@
           "status": "exact_owner_bytecode"
         }
       ],
-      "status": "max_and_consumption_traced",
+      "status": "max_and_normal_wear_traced",
       "unresolved_reason": null,
-      "runtime_observation_required": false
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "max_and_normal_wear_traced",
+        "max_damage": 2100,
+        "normal_hit_wear": 1,
+        "block_wear": 2,
+        "repair": "legendary_monsters:enderitium_ingot"
+      }
     },
     {
       "id": "legendary_monsters:enderitium_sword",
@@ -1291,27 +1466,48 @@
           "status": "exact_owner_bytecode"
         }
       ],
-      "status": "max_and_consumption_traced",
+      "status": "max_and_normal_wear_traced",
       "unresolved_reason": null,
-      "runtime_observation_required": false
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "max_and_normal_wear_traced",
+        "max_damage": 2100,
+        "normal_hit_wear": 1,
+        "block_wear": 2,
+        "repair": "legendary_monsters:enderitium_ingot"
+      }
     },
     {
       "id": "legendary_monsters:knights_sword",
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "max_and_normal_wear_traced",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "max_and_normal_wear_traced",
+        "max_damage": 250,
+        "normal_hit_wear": 1,
+        "block_wear": 2,
+        "repair": "minecraft:iron_ingot"
+      }
     },
     {
       "id": "legendary_monsters:monstrous_anchor",
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "max_and_normal_wear_traced",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "max_and_normal_wear_traced",
+        "max_damage": 1100,
+        "normal_hit_wear": 1,
+        "special_wear": 0,
+        "repair": "minecraft:obsidian"
+      }
     },
     {
       "id": "legendary_monsters:mossy_hammer",
@@ -1324,9 +1520,16 @@
         }
       ],
       "observed_consumption": [],
-      "status": "partial",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "max_and_normal_wear_traced_special_wear_unresolved",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "max_and_normal_wear_traced_special_wear_unresolved",
+        "max_damage": 850,
+        "normal_hit_wear": 1,
+        "block_wear": 2,
+        "repair": "minecraft:iron_ingot"
+      }
     },
     {
       "id": "legendary_monsters:shattered_greatsword",
@@ -1340,18 +1543,32 @@
         }
       ],
       "observed_consumption": [],
-      "status": "partial",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "max_and_normal_wear_traced",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "max_and_normal_wear_traced",
+        "max_damage": 1500,
+        "normal_hit_wear": 1,
+        "block_wear": 2,
+        "repair": null
+      }
     },
     {
       "id": "legendary_monsters:soul_great_sword",
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "verified_unbreakable_balance_issue",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "nominal_tier_uses": 2350,
+        "mechanism": "setDamage always delegates -1",
+        "repair": "minecraft:nether_star nominal tier ingredient"
+      }
     },
     {
       "id": "legendary_monsters:spiky_spear",
@@ -1367,9 +1584,16 @@
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "max_and_normal_wear_traced",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "max_and_normal_wear_traced",
+        "max_damage": 750,
+        "normal_hit_wear": 1,
+        "block_wear": 2,
+        "repair": "minecraft:iron_ingot"
+      }
     },
     {
       "id": "legendary_monsters:the_tesseract",
@@ -1383,27 +1607,48 @@
         }
       ],
       "observed_consumption": [],
-      "status": "partial",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "verified_unbreakable_balance_issue",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "verified_unbreakable_balance_issue",
+        "max_damage": null,
+        "nominal_tier_uses": 2100,
+        "mechanism": "setDamage always delegates -1",
+        "repair": null
+      }
     },
     {
       "id": "legendary_monsters:void_sword",
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
-      "status": "unresolved",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "max_and_normal_wear_traced",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "max_and_normal_wear_traced",
+        "max_damage": 250,
+        "normal_hit_wear": 1,
+        "block_wear": 2,
+        "repair": "legendary_monsters:void_gem"
+      }
     },
     {
       "id": "legendary_monsters:wand_of_clouds",
       "kind": "durability_audit",
       "native_max_damage": [],
       "observed_consumption": [],
-      "status": "unresolved",
+      "status": "max_resolved_consumption_not_observed",
       "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "max_resolved_consumption_not_observed",
+        "max_damage": 2000,
+        "normal_hit_wear": 0,
+        "special_wear": 0,
+        "repair": "minecraft:iron_ingot"
+      }
     },
     {
       "id": "legendary_monsters:withered_scythe",
@@ -1421,9 +1666,16 @@
           "status": "exact_owner_bytecode"
         }
       ],
-      "status": "partial",
-      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
-      "runtime_observation_required": false
+      "status": "max_and_normal_wear_traced",
+      "unresolved_reason": null,
+      "runtime_observation_required": false,
+      "stage_3_5a": {
+        "status": "max_and_normal_wear_traced",
+        "max_damage": 700,
+        "normal_hit_wear": 1,
+        "block_wear": 2,
+        "repair": null
+      }
     },
     {
       "id": "minecraft:bow",

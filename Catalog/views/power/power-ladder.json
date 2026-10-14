@@ -1,7 +1,7 @@
 {
   "schema_version": 4,
   "view": "phase_3_weapon_power_ladder",
-  "snapshot_sha": "42024576c79f6e103eebc33355ecbca1ba8b5a69",
+  "snapshot_sha": "41b53dbe6373d41eb86ae181eccd2379818b36dd",
   "generation": {
     "generator": "Catalog/generator/build_power_views.py",
     "method": "offline derived evidence",
@@ -42,6 +42,19 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "active_java_moveset_phase_numeric_unresolved",
+          "provider": "p1nero_ec:ceraunus",
+          "moveset": [
+            "p1nero_ec:arc_auto1",
+            "p1nero_ec:arc_auto2",
+            "p1nero_ec:arc_auto3"
+          ]
+        },
+        "special_ability_count": 2,
+        "verified_balance_issue": true
       }
     },
     {
@@ -81,6 +94,23 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "resource_collision_and_phase_numeric_unresolved",
+          "provider_candidates": [
+            "epicfight:spear",
+            "p1nero_ec:soul_render"
+          ],
+          "java_moveset": [
+            "efn:lance_auto1",
+            "efn:lance_auto2",
+            "efn:lance_auto3",
+            "efn:lance_auto4"
+          ]
+        },
+        "special_ability_count": 2,
+        "verified_balance_issue": true
       }
     },
     {
@@ -98,6 +128,14 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": false
       }
     },
     {
@@ -118,6 +156,22 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "resource_collision_and_phase_numeric_unresolved",
+          "provider_candidates": [
+            "epicfight:greatsword",
+            "p1nero_ec:the_incinerator"
+          ],
+          "java_moveset": [
+            "efn:greatsword_auto1",
+            "efn:greatsword_auto2",
+            "efn:greatsword_auto3"
+          ]
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": true
       }
     },
     {
@@ -135,12 +189,20 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 0,
+        "verified_balance_issue": false
       }
     },
     {
       "id": "legendary_monsters:the_tesseract",
       "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": 14.0,
+      "exact_basic_melee_damage": 15.0,
       "exact_epic_fight_armor_negation": [],
       "special_attack_methods_traced": 1,
       "boss_reward": true,
@@ -152,6 +214,14 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": true
       }
     },
     {
@@ -186,6 +256,14 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": true
       }
     },
     {
@@ -205,6 +283,21 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "active_java_moveset_phase_numeric_unresolved",
+          "provider": "p1nero_ec:gauntlet_of_guard",
+          "moveset": [
+            "p1nero_ec:bedivere_auto1",
+            "p1nero_ec:bedivere_auto2",
+            "p1nero_ec:bedivere_auto3",
+            "p1nero_ec:bedivere_auto4",
+            "p1nero_ec:bedivere_auto5"
+          ]
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": true
       }
     },
     {
@@ -222,6 +315,14 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": true
       }
     },
     {
@@ -260,6 +361,19 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "active_java_moveset_phase_numeric_unresolved",
+          "provider": "p1nero_ec:astrape",
+          "moveset": [
+            "epicfight:spear_twohand_auto1",
+            "epicfight:spear_twohand_auto2",
+            "p1nero_ec:astrape_auto3"
+          ]
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": true
       }
     },
     {
@@ -277,6 +391,14 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": false
       }
     },
     {
@@ -297,6 +419,14 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "active_standard_type_phase_numeric_unresolved",
+          "provider": "epicfight:spear"
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": true
       }
     },
     {
@@ -314,6 +444,14 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 0,
+        "verified_balance_issue": false
       }
     },
     {
@@ -350,6 +488,14 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "active_standard_type_phase_numeric_unresolved",
+          "provider": "epicfight:sword"
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": true
       }
     },
     {
@@ -370,6 +516,23 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "resource_collision_and_phase_numeric_unresolved",
+          "provider_candidates": [
+            "epicfight:spear",
+            "p1nero_ec:dual_annihilator"
+          ],
+          "java_moveset": [
+            "p1nero_ec:annihilator_auto1",
+            "p1nero_ec:annihilator_auto2",
+            "p1nero_ec:annihilator_auto3",
+            "p1nero_ec:annihilator_auto4"
+          ]
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": true
       }
     },
     {
@@ -389,6 +552,19 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "active_java_moveset_external_phase_numeric_unresolved",
+          "provider": "p1nero_ec:tidal_claw",
+          "moveset": [
+            "efn:claw_auto1",
+            "efn:claw_auto2",
+            "efn:claw_auto3"
+          ]
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": true
       }
     },
     {
@@ -406,6 +582,14 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 0,
+        "verified_balance_issue": false
       }
     },
     {
@@ -569,6 +753,14 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": false
       }
     },
     {
@@ -603,6 +795,14 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": false
       }
     },
     {
@@ -620,6 +820,14 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": false
       }
     },
     {
@@ -816,7 +1024,7 @@
     {
       "id": "cataclysm:cursed_bow",
       "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": null,
+      "exact_basic_melee_damage": 1.0,
       "exact_epic_fight_armor_negation": [
         1.0
       ],
@@ -830,12 +1038,23 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "resource_collision_precedence_unresolved",
+          "provider_candidates": [
+            "epicfight:bow",
+            "p1nero_ec:cursed_bow"
+          ]
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": true
       }
     },
     {
       "id": "cataclysm:infernal_forge",
       "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": null,
+      "exact_basic_melee_damage": 13.0,
       "exact_epic_fight_armor_negation": [
         10.0
       ],
@@ -849,12 +1068,25 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "active_java_moveset_phase_numeric_unresolved",
+          "provider": "p1nero_ec:infernal_forge",
+          "moveset": [
+            "epicfight:greatsword_auto1",
+            "epicfight:greatsword_auto2",
+            "p1nero_ec:infernal_auto3"
+          ]
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": true
       }
     },
     {
       "id": "cataclysm:laser_gatling",
       "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": null,
+      "exact_basic_melee_damage": 1.0,
       "exact_epic_fight_armor_negation": [
         2.0
       ],
@@ -868,12 +1100,20 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "active_ranged_capability_no_melee_combo",
+          "provider": "epicfight:bow"
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": false
       }
     },
     {
       "id": "cataclysm:sandstorm_in_a_bottle",
       "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": null,
+      "exact_basic_melee_damage": 1.0,
       "exact_epic_fight_armor_negation": [],
       "special_attack_methods_traced": 1,
       "boss_reward": true,
@@ -885,6 +1125,14 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": true
       }
     },
     {
@@ -947,7 +1195,7 @@
     {
       "id": "cataclysm:wrath_of_the_desert",
       "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": null,
+      "exact_basic_melee_damage": 1.0,
       "exact_epic_fight_armor_negation": [
         1.5
       ],
@@ -961,6 +1209,17 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "resource_collision_precedence_unresolved",
+          "provider_candidates": [
+            "epicfight:bow",
+            "p1nero_ec:wrath_of_the_desert"
+          ]
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": true
       }
     },
     {
@@ -2122,7 +2381,7 @@
     {
       "id": "legendary_monsters:atom_splitter",
       "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": null,
+      "exact_basic_melee_damage": 1.0,
       "exact_epic_fight_armor_negation": [],
       "special_attack_methods_traced": 0,
       "boss_reward": true,
@@ -2134,12 +2393,20 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 2,
+        "verified_balance_issue": false
       }
     },
     {
       "id": "legendary_monsters:axe_of_lightning",
       "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": null,
+      "exact_basic_melee_damage": 13.0,
       "exact_epic_fight_armor_negation": [],
       "special_attack_methods_traced": 1,
       "boss_reward": true,
@@ -2151,12 +2418,20 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 2,
+        "verified_balance_issue": true
       }
     },
     {
       "id": "legendary_monsters:chorus_blade",
       "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": null,
+      "exact_basic_melee_damage": 7.0,
       "exact_epic_fight_armor_negation": [],
       "special_attack_methods_traced": 0,
       "boss_reward": true,
@@ -2168,6 +2443,14 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 2,
+        "verified_balance_issue": false
       }
     },
     {
@@ -2190,7 +2473,7 @@
     {
       "id": "legendary_monsters:knights_sword",
       "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": null,
+      "exact_basic_melee_damage": 6.0,
       "exact_epic_fight_armor_negation": [],
       "special_attack_methods_traced": 0,
       "boss_reward": true,
@@ -2202,12 +2485,20 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 0,
+        "verified_balance_issue": false
       }
     },
     {
       "id": "legendary_monsters:monstrous_anchor",
       "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": null,
+      "exact_basic_melee_damage": 14.0,
       "exact_epic_fight_armor_negation": [],
       "special_attack_methods_traced": 2,
       "boss_reward": true,
@@ -2219,12 +2510,20 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 2,
+        "verified_balance_issue": false
       }
     },
     {
       "id": "legendary_monsters:mossy_hammer",
       "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": null,
+      "exact_basic_melee_damage": 9.0,
       "exact_epic_fight_armor_negation": [],
       "special_attack_methods_traced": 1,
       "boss_reward": true,
@@ -2236,12 +2535,20 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 2,
+        "verified_balance_issue": false
       }
     },
     {
       "id": "legendary_monsters:soul_great_sword",
       "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": null,
+      "exact_basic_melee_damage": 13.0,
       "exact_epic_fight_armor_negation": [],
       "special_attack_methods_traced": 2,
       "boss_reward": true,
@@ -2253,6 +2560,14 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 3,
+        "verified_balance_issue": true
       }
     },
     {
@@ -2275,7 +2590,7 @@
     {
       "id": "legendary_monsters:the_great_frost",
       "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": null,
+      "exact_basic_melee_damage": 7.0,
       "exact_epic_fight_armor_negation": [],
       "special_attack_methods_traced": 0,
       "boss_reward": true,
@@ -2287,12 +2602,20 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 2,
+        "verified_balance_issue": false
       }
     },
     {
       "id": "legendary_monsters:void_sword",
       "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": null,
+      "exact_basic_melee_damage": 10.0,
       "exact_epic_fight_armor_negation": [],
       "special_attack_methods_traced": 0,
       "boss_reward": true,
@@ -2304,12 +2627,20 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 0,
+        "verified_balance_issue": false
       }
     },
     {
       "id": "legendary_monsters:wand_of_clouds",
       "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": null,
+      "exact_basic_melee_damage": 11.0,
       "exact_epic_fight_armor_negation": [],
       "special_attack_methods_traced": 0,
       "boss_reward": true,
@@ -2321,12 +2652,20 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 1,
+        "verified_balance_issue": false
       }
     },
     {
       "id": "legendary_monsters:withered_scythe",
       "kind": "weapon_power_ladder_entry",
-      "exact_basic_melee_damage": null,
+      "exact_basic_melee_damage": 10.0,
       "exact_epic_fight_armor_negation": [],
       "special_attack_methods_traced": 1,
       "boss_reward": true,
@@ -2338,6 +2677,14 @@
         "status": "source_intent_only",
         "tier": "boss_reward",
         "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3."
+      },
+      "stage_3_5a": {
+        "combo": {
+          "status": "no_active_capability_observed",
+          "provider": null
+        },
+        "special_ability_count": 3,
+        "verified_balance_issue": false
       }
     },
     {

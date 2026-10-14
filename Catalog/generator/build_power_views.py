@@ -126,6 +126,146 @@ def reward_profiles() -> dict[str, list[dict[str, Any]]]:
     return result
 
 
+def boss_reward_weapon_evidence() -> dict[str, Any]:
+    evidence = load(CATALOG / "power-sources" / "boss-reward-weapons-stage35.json")
+    records = evidence.get("records", [])
+    ids = [row.get("id") for row in records]
+    if len(ids) != len(set(ids)):
+        duplicates = sorted(item_id for item_id, count in Counter(ids).items() if count > 1)
+        raise SystemExit(f"duplicate Stage 3.5A boss-reward weapon IDs: {duplicates}")
+    canonical_ids = {
+        item_id
+        for item_id, profiles in reward_profiles().items()
+        if any("weapon" in str(profile.get("category", "")).lower() for profile in profiles)
+    }
+    evidence_ids = set(ids)
+    if evidence_ids != canonical_ids:
+        raise SystemExit(
+            "Stage 3.5A roster differs from canonical reward JSON: "
+            f"missing={sorted(canonical_ids - evidence_ids)}, extra={sorted(evidence_ids - canonical_ids)}"
+        )
+    if len(evidence_ids) != 36:
+        raise SystemExit(f"Stage 3.5A requires exactly 36 unique weapon records, found {len(evidence_ids)}")
+    return evidence
+
+
+def attach_boss_reward_weapon_evidence(weapons: list[dict[str, Any]], evidence: dict[str, Any]) -> None:
+    by_id = {row["id"]: row for row in evidence["records"]}
+    weapon_by_id = {row["id"]: row for row in weapons}
+    missing = sorted(set(by_id) - set(weapon_by_id))
+    if missing:
+        raise SystemExit(f"Stage 3.5A records absent from generated weapons view: {missing}")
+    for item_id, profile in by_id.items():
+        weapon = weapon_by_id[item_id]
+        ordinary = profile.get("ordinary", {})
+        combo = profile.get("combo", {})
+        specials = profile.get("specials", [])
+        durability = profile.get("durability", {})
+        unresolved = profile.get("unresolved", [])
+        weapon["stage_3_5a"] = {
+            "status": "static_evidence_exhausted_runtime_gaps_explicit" if unresolved else "static_profile_resolved",
+            "owner_class_inspected": profile.get("owner"),
+            "ordinary_attack": ordinary,
+            "combo": combo,
+            "special_abilities": specials,
+            "durability": durability,
+            "world_tier": {
+                "without_progression_enchantment": {str(tier): ordinary.get("damage") for tier in range(1, 6)},
+                "with_progression_enchantment": [
+                    {
+                        "tier": tier,
+                        "ordinary_damage": round(float(ordinary["damage"]) * (1.0 if tier == 1 else 1.05 if tier == 2 else 1.10), 6)
+                        if isinstance(ordinary.get("damage"), (int, float)) else None,
+                        "critical_damage": round(float(ordinary["damage"]) * 1.10 * 1.5, 6)
+                        if tier >= 3 and isinstance(ordinary.get("damage"), (int, float)) else None,
+                        "critical_probability": 0.15 if tier >= 3 else 0.0,
+                    }
+                    for tier in range(1, 6)
+                ],
+                "boundary": evidence["shared_boundaries"]["progression"],
+            },
+            "effective_combat": {
+                "basic_pve_before_mitigation": ordinary.get("damage"),
+                "basic_pvp_before_mitigation": ordinary.get("damage"),
+                "combo_damage": combo.get("total_damage"),
+                "special_burst": next((
+                    ability.get("max_burst_damage", ability.get("ideal_overlap_upper_bound", ability.get("direct_center_upper_bound", ability.get("ideal_direct_target_burst"))))
+                    for ability in specials
+                    if any(key in ability for key in ("max_burst_damage", "ideal_overlap_upper_bound", "direct_center_upper_bound", "ideal_direct_target_burst"))
+                ), None),
+                "whole_weapon_burst_dps": None,
+                "whole_weapon_sustained_dps": {"30s": None, "60s": None, "120s": None},
+                "boundary": evidence["shared_boundaries"]["dps"],
+            },
+            "power_assessment": {
+                "boss_reward_suitability": "review_required",
+                "verified_balance_issue": durability.get("status") == "verified_unbreakable_balance_issue",
+                "confidence": "exact_static_components_with_named_runtime_boundaries",
+            },
+            "evidence": {
+                "installed_artifacts": evidence["artifacts"],
+                "effective_configs": ["Client/ManagedPack/config/cataclysm-common.toml", "Client/ManagedPack/config/legendary_monsters-common.toml"],
+                "reward_sources": [profile["source_file"] for profile in weapon.get("boss_reward_profiles", [])],
+                "owner_class": profile.get("owner"),
+                "unresolved_fields": unresolved,
+            },
+        }
+        weapon["assessment"] = weapon["stage_3_5a"]["power_assessment"]
+
+
+def stage35a_calculations(weapons: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    records = []
+    for weapon in weapons:
+        profile = weapon.get("stage_3_5a")
+        if not profile:
+            continue
+        damage = profile["ordinary_attack"].get("damage")
+        basic_targets = None
+        if isinstance(damage, (int, float)):
+            basic_targets = {
+                target["id"]: round(vanilla_post_mitigation(float(damage), target["armor"], target["toughness"], target["protection_epf"]), 6)
+                for target in REFERENCE_TARGETS
+            }
+        special_windows = []
+        for ability in profile["special_abilities"]:
+            burst = ability.get("max_burst_damage", ability.get("ideal_overlap_upper_bound", ability.get("direct_center_upper_bound", ability.get("ideal_direct_target_burst"))))
+            cooldown = ability.get("cooldown_ticks")
+            if not isinstance(burst, (int, float)) or not isinstance(cooldown, int) or cooldown <= 0:
+                continue
+            totals = {}
+            for seconds in (30, 60, 120):
+                activations = 1 + max(0, (seconds * 20 - 1) // cooldown)
+                total = round(float(burst) * activations, 6)
+                totals[f"{seconds}s"] = {"activations": activations, "damage_upper_bound": total, "dps_upper_bound": round(total / seconds, 6)}
+            special_windows.append({
+                "ability": ability["name"],
+                "burst_upper_bound": burst,
+                "cooldown_ticks": cooldown,
+                "windows": totals,
+                "boundary": "Cooldown-limited special-only upper bound; excludes ordinary attacks and any hit-count field still marked runtime-dependent.",
+            })
+        records.append({
+            "id": weapon["id"],
+            "kind": "boss_reward_weapon_stage_3_5a_card",
+            "ordinary_attack": profile["ordinary_attack"],
+            "ordinary_reference_targets": basic_targets,
+            "combo": profile["combo"],
+            "special_abilities": profile["special_abilities"],
+            "special_cooldown_windows": special_windows,
+            "world_tier": profile["world_tier"],
+            "durability": profile["durability"],
+            "resolution": {
+                "status": "partial" if profile["evidence"]["unresolved_fields"] else "resolved_static_scope",
+                "basic_numeric": isinstance(damage, (int, float)),
+                "numeric_special_count": sum("resolved" in str(row.get("status", "")) for row in profile["special_abilities"]),
+                "fully_numeric_combo": profile["combo"].get("status") == "fully_numeric",
+                "burst_calculation_count": len(special_windows),
+                "sustained_window_count": len(special_windows) * 3,
+            },
+        })
+    return sorted(records, key=lambda row: row["id"])
+
+
 def registry_item_map() -> dict[str, tuple[str, dict[str, Any]]]:
     return {row["registry_id"]: (source, row) for source, row in rows("registries/items/*.json")}
 
@@ -1096,6 +1236,21 @@ def research_blockers(
 ) -> list[dict[str, Any]]:
     blockers = []
     for record in weapons + defenses + accessories:
+        deep_profile = record.get("stage_3_5a")
+        if deep_profile:
+            for unresolved in deep_profile["evidence"]["unresolved_fields"]:
+                blockers.append({
+                    "id": record["id"],
+                    "kind": "boss_reward_weapon_stage_3_5a_blocker",
+                    "missing_field": unresolved["field"],
+                    "owner_classes": [deep_profile["owner_class_inspected"]],
+                    "candidate_methods": [],
+                    "why_unresolved": unresolved["reason"],
+                    "runtime_observation_required": unresolved.get("runtime_required", False),
+                    "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
+                    if unresolved.get("runtime_required") else "Continue exact-version static reconstruction of the named animation/helper chain.",
+                })
+            continue
         native = record.get("native_mechanics", {})
         owners = native.get("owner_classes", [])
         dimensions = native.get("dimensions", {})
@@ -1148,7 +1303,10 @@ def research_blockers(
                 "why_unresolved": attack.get("unresolved_reason"),
                 "runtime_observation_required": attack.get("runtime_observation_required", False),
             })
+    deep_ids = {record["id"] for record in weapons if record.get("stage_3_5a")}
     for row in durability:
+        if row["id"] in deep_ids:
+            continue
         if row["status"] == "max_and_consumption_traced":
             continue
         blockers.append({
@@ -1182,11 +1340,13 @@ def main() -> int:
     snapshot = git_head()
     evidence = load(CATALOG / "power-sources" / "irons-spellbooks-3.15.6.json")
     native = load(CATALOG / "power-sources" / "native-mechanics-phase3.json")
+    stage35a_evidence = boss_reward_weapon_evidence()
     evidence_jar = ROOT / evidence["artifact"]["canonical_path"]
     actual_sha256 = hashlib.sha256(evidence_jar.read_bytes()).hexdigest()
     if actual_sha256 != evidence["artifact"]["sha256"]:
         raise SystemExit(f"stale Iron's Spells power evidence: expected {evidence['artifact']['sha256']}, found {actual_sha256}")
     weapons = item_records("weapon_candidate", "views/weapons/*.json", ["damage", "attack speed", "reach/range", "area", "cooldown", "resource cost"], native, "progression enchantment conditional tier multiplier and critical")
+    attach_boss_reward_weapon_evidence(weapons, stage35a_evidence)
     armor = item_records("armor_candidate", "views/armor/*.json", ["armor", "toughness", "knockback resistance", "damage-type mitigation", "durability"], native, "progression enchantment conditional slot bonuses")
     accessories = accessory_records(native)
     enchantments = enchantment_records()
@@ -1196,6 +1356,7 @@ def main() -> int:
     calculations = (
         [reference_mitigation_table()]
         + weapon_numeric_calculations(weapons)
+        + stage35a_calculations(weapons)
         + defense_numeric_calculations(armor)
         + armor_set_calculations(armor)
         + accessory_numeric_calculations(accessories)
@@ -1205,7 +1366,22 @@ def main() -> int:
         + boss_attack_calculations(bosses)
     )
     durability = durability_audit(weapons + armor + accessories)
+    stage35a_by_id = {row["id"]: row["stage_3_5a"] for row in weapons if row.get("stage_3_5a")}
+    for durability_record in durability:
+        if durability_record["id"] in stage35a_by_id:
+            durability_record["stage_3_5a"] = stage35a_by_id[durability_record["id"]]["durability"]
+            durability_record["status"] = stage35a_by_id[durability_record["id"]]["durability"]["status"]
+            durability_record["unresolved_reason"] = None if "traced" in durability_record["status"] or "unbreakable" in durability_record["status"] else durability_record.get("unresolved_reason")
     power_ladder = weapon_power_ladder(weapons)
+    for ladder_record in power_ladder:
+        if ladder_record["id"] in stage35a_by_id:
+            deep = stage35a_by_id[ladder_record["id"]]
+            ladder_record["exact_basic_melee_damage"] = deep["ordinary_attack"].get("damage")
+            ladder_record["stage_3_5a"] = {
+                "combo": deep["combo"],
+                "special_ability_count": len(deep["special_abilities"]),
+                "verified_balance_issue": deep["power_assessment"]["verified_balance_issue"],
+            }
     blockers = research_blockers(weapons, armor, accessories, spells, bosses, durability)
     reward_weapon_ids = {
         item_id
@@ -1280,6 +1456,18 @@ def main() -> int:
             "durability_max_damage_resolved": sum(bool(row.get("native_max_damage")) for row in durability),
             "durability_consumption_resolved": sum(bool(row.get("observed_consumption")) for row in durability),
             "durability_fully_traced": sum(row.get("status") == "max_and_consumption_traced" for row in durability),
+            "stage_3_5a_boss_reward_profiles": sum(row.get("kind") == "boss_reward_weapon_stage_3_5a_card" for row in calculations),
+            "stage_3_5a_exact_basic_melee_values": sum(row.get("kind") == "boss_reward_weapon_stage_3_5a_card" and row.get("resolution", {}).get("basic_numeric") for row in calculations),
+            "stage_3_5a_numeric_special_abilities": sum(row.get("resolution", {}).get("numeric_special_count", 0) for row in calculations if row.get("kind") == "boss_reward_weapon_stage_3_5a_card"),
+            "stage_3_5a_fully_numeric_combos": sum(row.get("resolution", {}).get("fully_numeric_combo", False) for row in calculations if row.get("kind") == "boss_reward_weapon_stage_3_5a_card"),
+            "stage_3_5a_burst_calculations": sum(row.get("resolution", {}).get("burst_calculation_count", 0) for row in calculations if row.get("kind") == "boss_reward_weapon_stage_3_5a_card"),
+            "stage_3_5a_sustained_dps_windows": sum(row.get("resolution", {}).get("sustained_window_count", 0) for row in calculations if row.get("kind") == "boss_reward_weapon_stage_3_5a_card"),
+            "stage_3_5a_durability_profiles_closed": sum(
+                row.get("kind") == "boss_reward_weapon_stage_3_5a_card"
+                and row.get("durability", {}).get("status") in {"max_and_wear_traced", "max_and_normal_wear_traced", "max_and_normal_wear_traced_special_no_wear", "max_and_channel_wear_traced", "max_and_special_wear_traced", "max_and_consumption_traced", "verified_unbreakable_balance_issue"}
+                for row in calculations
+            ),
+            "stage_3_5a_runtime_blockers": sum(row.get("kind") == "boss_reward_weapon_stage_3_5a_blocker" and row.get("runtime_observation_required") for row in blockers),
         },
         "known_gaps": [
             "Dynamic/helper-built item registrations and runtime ItemStack/NBT attribute variants",

@@ -1,6 +1,17 @@
-# Граница баланса после Stage 3
+# Граница баланса после Stage 3.5A
 
 Phase 3 — это доказанные итоговые числа там, где цепочка уже полна, и конкретная символическая граница во всех остальных местах. Никакой auto-nerf, datapack override, config change или Java balance patch не применён.
+
+Stage 3.5A выявил новые review-only outliers среди 36 наград:
+
+1. Большая часть Cataclysm reward gear фактически не имеет уменьшаемой прочности; `Infernal Forge` дополнительно наследует nominal 2800 uses, но `Cataclysm_Tool_Item.isDamageable` возвращает false.
+2. `Axe of Lightning`, `Soul Great Sword` и `The Tesseract` имеют nominal tier durability, но их `setDamage(...,-1)` блокирует накопление wear.
+3. `Laser Gatling` планирует 49 лучей по 7 за 4.9 секунды (`343` raw upper bound), затем требует один redstone и одну секунду reload; луч вручную уменьшает iframe до 5.
+4. `Withered Scythe` добавляет отдельные 41 damage через 2 ticks против любого undead — помимо обычного удара, dash и Wither.
+5. `Mossy Hammer` имеет два разных right-click обработчика по 10 AoE с разными radius/effect/cooldown; совместное срабатывание одного клика требует runtime trace.
+6. `Chorus Blade` перебирает всех living entities в радиусе 8, наносит каждому 8 и телепортирует игрока внутри того же цикла, поэтому массовая цель меняет не только total damage, но и позицию следующих итераций.
+
+Это кандидаты Stage 4, но в текущей задаче не применено ни одного нерфа, durability patch или capability override.
 
 Подтверждены пять source findings в `Catalog/views/power/findings.json`:
 

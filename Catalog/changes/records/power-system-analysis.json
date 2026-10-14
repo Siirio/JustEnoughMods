@@ -7,7 +7,7 @@
   ],
   "precedence": {"layer": "derived_analysis", "priority": 900, "overrides": []},
   "change": {
-    "summary": "Maintain a derived, non-runtime combat inventory with Stage 3 exact-version registration factories, delegated combat methods, installed configuration evidence and numeric reference tables for items, bosses, spells and allies.",
+    "summary": "Maintain a derived, non-runtime combat inventory with Stage 3.5A exact-version boss-reward weapon profiles plus registration factories, delegated combat methods, installed configuration evidence and numeric reference tables for items, bosses, spells and allies.",
     "modifiers": [
       {
         "property": "documentation.combat_power_expression",
@@ -27,6 +27,7 @@
       "Catalog/generator/query_atlas.py",
       "Catalog/power-sources/irons-spellbooks-3.15.6.json",
       "Catalog/power-sources/native-mechanics-phase3.json",
+      "Catalog/power-sources/boss-reward-weapons-stage35.json",
       "Catalog/views/power/blockers.json",
       "Catalog/views/power/durability.json",
       "Catalog/views/power/power-ladder.json",
@@ -105,6 +106,21 @@
         "Docs/power-system/COVERAGE.md",
         "Docs/power-system/NUMERIC_TABLES.md"
       ]
+    },
+    {
+      "date": "2026-10-14",
+      "commit": "SELF",
+      "action": "stage_3_5a_boss_reward_weapon_resolution",
+      "summary": "Added strict set-equal deep profiles for all 36 reward-category weapons, closed exact ordinary damage, numeric special branches, cooldown and durability evidence where static sources permit, replaced their generic blockers with exact phase/collision/runtime boundaries, and added conditional World Tier and cooldown-window calculations without changing gameplay.",
+      "source_files": [
+        "Catalog/power-sources/boss-reward-weapons-stage35.json",
+        "Catalog/generator/build_power_views.py",
+        "Catalog/views/power/weapons.json",
+        "Catalog/views/power/calculations.json",
+        "Catalog/views/power/blockers.json",
+        "Docs/power-system/Weapons.md",
+        "Docs/power-system/COVERAGE.md"
+      ]
     }
   ],
   "impacts": {
@@ -112,7 +128,8 @@
     "relations": ["registry->power_view", "native_owner->effective_expression", "scenario->coverage", "warning->review_owner"],
     "notes": ["No Java, Mixin, config, datapack, installed JAR or runtime behavior is changed."],
     "unresolved": [
-      "Branched projectile/goal/effect formulas, runtime ItemStack attributes, target mitigation, complete Epic Fight/Nightfall attack phases and the exact reported beam ItemStack remain explicitly unresolved with per-field named blockers.",
+      "For the 36 boss rewards, remaining gaps are named capability precedence, external/custom animation phases, projectile overlap, iframe acceptance and branched entity scheduling; 31 require controlled runtime observation that was not authorized in Stage 3.5A.",
+      "Outside the 36-weapon scope, branched projectile/goal/effect formulas, runtime ItemStack attributes, target mitigation, complete Epic Fight/Nightfall attack phases and the exact reported beam ItemStack remain explicitly unresolved with per-field named blockers.",
       "Stage 3 calculates only fully traceable layers; runtime balance changes remain reserved for later approved phases."
     ]
   }

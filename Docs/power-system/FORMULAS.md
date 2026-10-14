@@ -1,5 +1,19 @@
 # Power formulas
 
+## Boss-reward Stage 3.5A
+
+Обычный удар: `1 player base + exact main-hand attack_damage addition`, затем фактическая цепочка DamageSource/armor/Protection. JEM Progression применяется только если зачарование реально есть: `×1.00` на Tier I, `×1.05` на Tier II, `×1.10` на Tier III–V; на Tier III–V отдельная ветка с вероятностью 15% даёт ещё `×1.5`. Tier сам по себе оружие не усиливает.
+
+Special cooldown window для безопасно известного burst upper bound `B` и cooldown `C` ticks:
+
+`activations(T seconds) = 1 + floor((20T - 1) / C)`
+
+`special-only upper DPS(T) = B × activations(T) / T`
+
+Первое применение считается в `t=0`; ordinary attacks и способности с runtime-dependent hit count не добавляются. Поэтому эта таблица не является whole-weapon DPS.
+
+Процентный Incinerator считается отдельно от обычной защиты: `6 + 0.02 × maxHP` на принятое flame-strike application. Его exact damage type находится в `bypasses_armor`, `bypasses_enchantments` и `bypasses_shield`; обычную vanilla mitigation table к нему применять нельзя.
+
 These are composition contracts, not replacement mechanics. `?` means unresolved and never means zero.
 
 ## General damage
