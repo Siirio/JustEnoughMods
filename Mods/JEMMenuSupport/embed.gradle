@@ -8,7 +8,31 @@ dependencies {
     }
 }
 tasks.named('jar', Jar).configure { archiveClassifier = 'slim' }
+afterEvaluate {
+    tasks.withType(JavaCompile).configureEach {
+        // MixinGradle deletes compiler maps before javac; incremental javac may
+        // omit annotation processing and leave a successful build without maps.
+        options.incremental = false
+        ['refMapFile', 'outTsrgFile'].each { name ->
+            if (extensions.extraProperties.has(name)) {
+                outputs.file(extensions.extraProperties.get(name))
+            }
+        }
+    }
+}
 tasks.named('jarJar').configure {
     archiveClassifier = ''
+    // MixinGradle attaches generated refmaps to jar, not Forge's jarJar task.
+    // Reuse only that metadata; jarJar retains ownership of classes and nesting.
+    dependsOn tasks.named('jar')
+    from({ zipTree(tasks.named('jar', Jar).get().archiveFile.get().asFile) }) {
+        include '**/*.refmap.json'
+    }
+    doFirst {
+        def slim = tasks.named('jar', Jar).get().archiveFile.get().asFile
+        if (zipTree(slim).matching { include '**/*.refmap.json' }.isEmpty()) {
+            throw new GradleException("Generated Mixin refmap missing from ${slim.name}")
+        }
+    }
     finalizedBy 'reobfJarJar'
 }

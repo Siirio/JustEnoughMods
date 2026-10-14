@@ -1,0 +1,23 @@
+{
+  "removed_clone_only": "BackToBed-Forge-1.20-1.1.0.jar",
+  "sha256": "c0c1b9710a41eb8cf4e76c77b9c91d4a34b3ead6d48cf990e9938a913d5dde05",
+  "prior_approved_contract": "Docs/releases/2026-10-13-two-stage-atlas-and-implementation.md:24; BackToBed absent both sides",
+  "root_cause": "clone preparation retained stale Server-only BackToBed after approved canonical removal; runtime item backtobed:magical_returner rejected Forge registry synchronization",
+  "original_server_untouched": true,
+  "removed_after_graceful_exit": true,
+  "post_repair_shared_mod_ids": 242,
+  "all_shared_mod_hashes_match": true,
+  "remaining_server_only_mod_ids": [
+    "flan",
+    "jem_claims",
+    "servercore",
+    "serverlogin"
+  ],
+  "additional_operator_correction": {
+    "removed": "jem-claims-2.0.0-dev-slim.jar",
+    "sha256": "0f6ab403fc7f4c665113ea259e4af521207c3ea08a94af81776a2ec048aeda46",
+    "owning_contract": "Docs/DEVELOPMENT.md:231 explicitly excludes Claims and distributes no slim JAR",
+    "after_graceful_exit": true,
+    "original_server_untouched": true
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": 2,
+  "change_id": "compat.removed-backtobed-build-dependency",
+  "status": "active",
+  "selectors": [{"type": "namespace", "registry": "*", "value": "backtobed"}],
+  "exceptions": [],
+  "conditions": [],
+  "precedence": {"layer": "build_dependencies", "priority": 100, "overrides": []},
+  "change": {
+    "summary": "Remove the obsolete unused BackToBed compile dependency after its approved distribution removal; runtime gameplay remains unchanged.",
+    "modifiers": [{
+      "property": "integration.jemcompat.compile_dependency",
+      "operation": "document",
+      "before": {"value": "BackToBed-*.jar required during build configuration", "source": "Mods/JEMCompat/build.gradle"},
+      "after": {"value": "No BackToBed dependency; JEM Server retains /home ownership"},
+      "notes": "Build-only correction. Does not remove/add a runtime registry, change /home, restore BackToBed or alter native singleplayer."
+    }]
+  },
+  "cause": {"owner": "JEMCompat", "kind": "build_dependency", "source_files": ["Mods/JEMCompat/build.gradle"]},
+  "rationale": {"purpose": "Allow current source to build against the canonical managed pack without restoring a deliberately removed mod.", "decision_source": "Explicit overnight local QA authorization; Docs/DEVELOPMENT.md /home ownership and BackToBed removal"},
+  "introduced": {"date": "2026-10-14", "commit": "SELF", "action": "remove_unused_compile_dependency", "summary": "The removed runtime mod no longer blocks configuration of JEMCompat."},
+  "history": [{"date": "2026-10-14", "commit": "SELF", "action": "remove_unused_compile_dependency", "summary": "Confirmed no source references; removed only the obsolete compileOnly declaration.", "source_files": ["Mods/JEMCompat/build.gradle"]}],
+  "impacts": {"systems": ["build", "compatibility", "home", "singleplayer"], "relations": ["canonical_managed_pack->jemcompat_compile_dependencies", "jem_server->home"], "notes": ["No new gameplay behavior. Installed artifact refresh and native client transaction require separate evidence."], "unresolved": ["In-game regression replay not yet completed."]}
+}

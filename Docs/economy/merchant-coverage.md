@@ -13,3 +13,14 @@ Policy has exactly two outcomes after the user's correction: `BUY_AND_SELL` or `
 | Spudacious Shops 1.10.2 | Existing JEMServer adapter retained | Shop blocks, stock and ownership remain native; numeric settlement already delegates to JEM Economy escrow. |
 
 The overlay uses Wallet settlement because a vanilla two-input offer cannot safely represent all five denominations and consuming stamped physical stacks through a native merchant would strand `PHYSICAL_OUTSTANDING`. If Wallet lacks funds, the existing reserve route may deposit valid physical cash first. No emerald item is minted, renamed, or exchanged.
+
+Native stock counting belongs to `AbstractVillager.notifyTrade`: the Coin adapter
+calls that notification once after an accepted settlement and does not separately
+increment `MerchantOffer.uses`. Overnight QA reproduced the old duplicate increment
+with one prepared sale (uses 0→2; Wallet 100→130; total ledger supply 100,000).
+The narrow correction remains in testing pending user approval. Native generation2
+replay verified sale/purchase uses +1, native XP +2, correct Coin/goods movement
+and unchanged empty-input/exhausted rejection. A prepared Human Coin purchase
+minted one emerald while Coin ledger supply stayed 100,000. Trading-player attribution and Human emerald-refund
+interaction remain separate open findings in the overnight report; stock correction
+does not certify those paths or the whole Economy module.

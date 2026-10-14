@@ -1,0 +1,42 @@
+{
+  "fresh_build": {
+    "started_utc": "2026-10-14T01:40:43.725631+00:00",
+    "module": "JEMServer",
+    "task": "jarJar reobfJarJar",
+    "reason": "Previous jar built slim while installed full artifact remained stale",
+    "exit_code": 0,
+    "ended_utc": "2026-10-14T01:41:50.452951+00:00",
+    "sha256": "3d8cdc44398a834deb4d0831bce0615eb9fe332721d69a46e9a680197153e50a"
+  },
+  "ordinary_repeat": {
+    "started_utc": "2026-10-14T01:42:22.432023+00:00",
+    "module": "JEMServer",
+    "task": "jarJar reobfJarJar",
+    "reason": "Previous jar built slim while installed full artifact remained stale",
+    "exit_code": 0,
+    "ended_utc": "2026-10-14T01:43:02.294394+00:00",
+    "sha256": "448589b50641a16e1c24271d125c999499fdc23143e51b8ae9c5907f9757bec6"
+  },
+  "refmap_bytes": 7474,
+  "refmap_sha256": "b2ef365c432c560274dbfd63167c3f82617bb64bc998d7e1913667925e351a2a",
+  "solid_boundary_mapping": {
+    "collideBoundingBox": "Lnet/minecraft/world/entity/Entity;m_198894_(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/AABB;Lnet/minecraft/world/level/Level;Ljava/util/List;)Lnet/minecraft/world/phys/Vec3;"
+  },
+  "ordinary_tasks": [
+    "> Task :downloadMcpConfig",
+    "> Task :extractSrg UP-TO-DATE",
+    "> Task :createMcpToSrg UP-TO-DATE",
+    "> Task :compileJava UP-TO-DATE",
+    "> Task :addMixinsToJarJar",
+    "> Task :processResources UP-TO-DATE",
+    "> Task :classes UP-TO-DATE",
+    "> Task :addMixinsToJar",
+    "> Task :jar",
+    "> Task :configureReobfTaskForReobfJar",
+    "> Task :reobfJar",
+    "> Task :jarJar",
+    "> Task :configureReobfTaskForReobfJarJar",
+    "> Task :reobfJarJar"
+  ],
+  "result": "PASS packaged_metadata; native_start_pending"
+}

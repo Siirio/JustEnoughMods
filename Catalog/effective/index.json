@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "7dc7e88893d4e802fbea772547465136bbe3ef0126873369947c38437556d4c8",
+  "change_records_sha256": "771921f0f69fcf5456a8973c1dbb45689224354f37ee11b87b7c26b423b1de31",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -15,6 +15,21 @@
     "conflict_policy": "Equal-order modifiers of one property are reported; history and base facts are never overwritten."
   },
   "changes": [
+    {
+      "change_id": "compat.removed-backtobed-build-dependency",
+      "status": "active",
+      "summary": "Remove the obsolete unused BackToBed compile dependency after its approved distribution removal; runtime gameplay remains unchanged.",
+      "record": "Catalog/changes/records/compat-removed-backtobed-build.json",
+      "selectors": [
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "backtobed"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 6
+    },
     {
       "change_id": "economy.reviewed-item-policies",
       "status": "active",
@@ -30,6 +45,61 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 62
+    },
+    {
+      "change_id": "economy.native-merchant-stock-owner",
+      "status": "active",
+      "summary": "Coin transactions delegate offer-use counting to native AbstractVillager.notifyTrade exactly once.",
+      "record": "Catalog/changes/records/economy-native-merchant-stock.json",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:villager"
+        },
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:wandering_trader"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 2
+    },
+    {
+      "change_id": "menu-support.full-distribution-refmap",
+      "status": "active",
+      "summary": "Full embedded distribution includes its freshly generated Mixin refmaps.",
+      "record": "Catalog/changes/records/menu-support-full-refmap-build.json",
+      "selectors": [
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "jem_server"
+        },
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "jem_claims"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 3
+    },
+    {
+      "change_id": "settlements.native-guidance-build-import",
+      "status": "active",
+      "summary": "Restore the missing BlockPos import required to compile existing soft town guidance; no runtime rule changes.",
+      "record": "Catalog/changes/records/settlements-native-guidance-build.json",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:villager"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 1
     },
     {
       "change_id": "world-tier.ordinary-hostile-scaling",
@@ -59,8 +129,12 @@
     }
   ],
   "source_fingerprints": {
+    "Mods/JEMCompat/build.gradle": "7b79f9161e4116f9e45f5e7ecb230252158b1dd696a4b0a990cfe6b80e131e02",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantMenu.java": "916e500370b3ceffa51ec06605725ed06831558efd1d27b3e414c85ce104e487",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java": "ff67275e95e10dba4ae35b0a410b6d0ad933a463e69a245ba375b9041668a1a1",
     "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json": "3eb8c0ebb817e171ce1be6641660132a80f0cb5e738edca71586aee55d5004c6",
+    "Mods/JEMMenuSupport/embed.gradle": "135a77fc8c1e7afb696fba2db9ee57d164e5dbb517b447bf979fd39742b6e4ad",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java": "9de1c3fb78f3c6f745957bb07836fd64618d7a0d696acf0b9ba30acea8e0972d",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/OrdinaryHostileScaler.java": "729980767df8c532c8463e4699a39ba6821053c9829995237ec56855009abeaf"
   }
 }

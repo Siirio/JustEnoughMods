@@ -1,0 +1,25 @@
+{
+  "build": {
+    "started_utc": "2026-10-14T01:42:22.432023+00:00",
+    "module": "JEMServer",
+    "task": "jarJar reobfJarJar",
+    "reason": "Previous jar built slim while installed full artifact remained stale",
+    "exit_code": 0,
+    "ended_utc": "2026-10-14T01:43:02.294394+00:00",
+    "sha256": "448589b50641a16e1c24271d125c999499fdc23143e51b8ae9c5907f9757bec6"
+  },
+  "before": [
+    {
+      "path": "C:\\MyProjects\\Minecraft\\JustEnoughMods\\Client\\ManagedPack\\mods\\jem-server-2.0.0-dev.jar",
+      "sha256": "74baa44db077d6634c07bca4ef76896767d0cf02fbdfadbb55c09a26cd5045da"
+    },
+    {
+      "path": "C:\\MyProjects\\Minecraft\\JustEnoughMods\\build\\overnight-qa\\server\\mods\\jem-server-2.0.0-dev.jar",
+      "sha256": "74baa44db077d6634c07bca4ef76896767d0cf02fbdfadbb55c09a26cd5045da"
+    }
+  ],
+  "installed_utc": "2026-10-14T01:43:57.219141+00:00",
+  "client": "PENDING_NATIVE_UPDATE",
+  "source_change": false,
+  "fresh_class_proof": "Packaged JemServer now contains home registration; previous full artifact did not"
+}

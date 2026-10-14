@@ -18,6 +18,7 @@ import com.siirio.jemsettlements.workforce.WorkforceType;
 import com.talhanation.recruits.entities.AbstractRecruitEntity;
 import java.util.Comparator;
 import net.minecraft.core.GlobalPos;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;

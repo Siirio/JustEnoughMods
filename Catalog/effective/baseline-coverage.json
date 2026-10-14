@@ -2,11 +2,11 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "7dc7e88893d4e802fbea772547465136bbe3ef0126873369947c38437556d4c8",
+  "change_records_sha256": "771921f0f69fcf5456a8973c1dbb45689224354f37ee11b87b7c26b423b1de31",
   "totals": {
     "watched": 3201,
-    "covered": 3,
-    "unresolved": 3198
+    "covered": 6,
+    "unresolved": 3195
   },
   "groups": {
     "Client/ManagedPack/config": {
@@ -1549,10 +1549,9 @@
     },
     "Mods/JEMCompat": {
       "watched": 67,
-      "covered": 0,
-      "unresolved": 67,
+      "covered": 1,
+      "unresolved": 66,
       "unresolved_paths": [
-        "Mods/JEMCompat/build.gradle",
         "Mods/JEMCompat/gradle.properties",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
@@ -1656,8 +1655,8 @@
     },
     "Mods/JEMEconomy": {
       "watched": 69,
-      "covered": 2,
-      "unresolved": 67,
+      "covered": 3,
+      "unresolved": 66,
       "unresolved_paths": [
         "Mods/JEMEconomy/build.gradle",
         "Mods/JEMEconomy/gradle.properties",
@@ -1674,7 +1673,6 @@
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/ledger/TransferResult.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/market/MarketRuntime.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java",
-        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantMenu.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantProvider.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantRuntime.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java",
@@ -3133,8 +3131,8 @@
     },
     "Mods/JEMSettlements": {
       "watched": 45,
-      "covered": 0,
-      "unresolved": 45,
+      "covered": 1,
+      "unresolved": 44,
       "unresolved_paths": [
         "Mods/JEMSettlements/build.gradle",
         "Mods/JEMSettlements/gradle.properties",
@@ -3166,7 +3164,6 @@
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/RecruitRank.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/AmenitySnapshot.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/ResidentMood.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/simulation/ProductionObligation.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/simulation/SettlementSimulationService.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/simulation/SettlementSimulationState.java",

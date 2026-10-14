@@ -97,7 +97,7 @@ public final class CoinMerchantMenu extends AbstractContainerMenu {
             var settled = EconomyApi.settleMarketPayment(player, SystemAccount.NPC_MARKET.id(), adapted.price, request);
             if (settled.status() != EconomyApi.MarketStatus.COMMITTED) { player.getInventory().clearOrCountMatchingItems(stack -> ItemStack.isSameItemSameTags(stack, delivery), delivery.getCount(), player.inventoryMenu.getCraftSlots()); EconomyApi.refundMarketPayment(player, adapted.price, request); return; }
         }
-        adapted.offer.increaseUses(); merchant.notifyTrade(adapted.offer); merchant.setTradingPlayer(player);
+        merchant.notifyTrade(adapted.offer); merchant.setTradingPlayer(player);
         broadcastChanges();
     }
 

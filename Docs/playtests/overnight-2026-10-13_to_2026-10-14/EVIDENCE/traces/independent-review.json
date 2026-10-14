@@ -1,0 +1,24 @@
+{
+  "head": "a1b04b4d531dcf196b870c33524a85e24f78168a plus two uncommitted one-line fixes",
+  "reviewed_ids": [
+    "JEMQA-20261014-0006",
+    "JEMQA-20261014-0009",
+    "JEMQA-20261014-0018",
+    "JEMQA-20261014-0019",
+    "JEMQA-20261014-0025",
+    "JEMQA-20261014-0026",
+    "JEMQA-20261014-0027",
+    "JEMQA-20261014-0029",
+    "JEMQA-20261014-0030"
+  ],
+  "code_changes": "No unintended behavior found in missing BlockPos import/unused BackToBed dependency deletion",
+  "result": "Nine source assertions validated; actual gameplay remains NOT_TESTED",
+  "qualifications": [
+    "Merchant stock doubles; native XP/event does not double",
+    "Merchant callback actor affects native criteria/lastTradedPlayer and development-only chatter; profession trade producer remains absent",
+    "Explorer ceiling excludes prior/admin/race XP and is reduced by other shared discovery keys",
+    "Workers inherit AbstractRecruitEntity; source life resurrection concerns original dying entity, not separate corpse",
+    "Architect +18 matches current TINYINV mode; native custom-key acknowledgement remains absent",
+    "Partial insertion/extraction recovery and death timing require exact runtime replay"
+  ]
+}

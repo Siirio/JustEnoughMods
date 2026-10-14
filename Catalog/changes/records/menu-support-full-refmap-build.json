@@ -1,0 +1,104 @@
+{
+  "schema_version": 2,
+  "change_id": "menu-support.full-distribution-refmap",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "jem_server"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "jem_claims"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [],
+  "precedence": {
+    "layer": "integration",
+    "priority": 100,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Full embedded distribution includes its freshly generated Mixin refmaps.",
+    "modifiers": [
+      {
+        "property": "build.full_jar.mixin_refmap",
+        "operation": "document",
+        "before": {
+          "value": "absent from freshly built jarJar output"
+        },
+        "after": {
+          "value": "generated metadata copied from owning jar output"
+        },
+        "notes": "Only refmap JSON metadata is reused; no class, gameplay registry, Mixin selector or security bypass is changed. Track native MixinGradle compiler metadata outputs and disable partial incremental javac; assembly fails when refmap absent."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMMenuSupport shared build adapter",
+    "kind": "packaging_metadata_omission",
+    "source_files": [
+      "Mods/JEMMenuSupport/embed.gradle"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make fresh full JEMServer/Claims artifacts load their existing mapped injections.",
+    "decision_source": "User explicitly authorized overnight local QA/fixes; Codex found fresh full server startup failure and chose metadata-only assembly correction. Claims remains excluded from this QA distribution."
+  },
+  "introduced": {
+    "date": "2026-10-14",
+    "commit": "SELF",
+    "action": "include_generated_refmaps",
+    "summary": "Native full launch failed SolidBoundaryMixin with No refMap loaded."
+  },
+  "history": [
+    {
+      "date": "2026-10-14",
+      "commit": "SELF",
+      "action": "include_generated_refmaps",
+      "summary": "Full jarJar lacked refmap although fresh slim contained it. Depend on jar and copy only its generated refmap JSON into full output.",
+      "source_files": [
+        "Mods/JEMMenuSupport/embed.gradle"
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "commit": "SELF",
+      "action": "track_compiler_metadata",
+      "summary": "Independent exact plugin lifecycle review plus repeated missing maps identified incremental AP metadata loss. Track native ext.refMapFile/outTsrgFile; full guard rejects absent maps.",
+      "source_files": [
+        "Mods/JEMMenuSupport/embed.gradle"
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "commit": "SELF",
+      "action": "native_full_artifact_replay",
+      "summary": "Fresh+ordinarybuild retain7474byteSolidBoundaryrefmap; full448589 SHAcloneDone06:47:04; realnativegen3commit06:55:07/all13hashmatch; currentSurvivalhome reachesmissingrespawnvalidation. Claimsruntimeexcluded.",
+      "source_files": [
+        "Mods/JEMMenuSupport/embed.gradle"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "packaging",
+      "mixins",
+      "server_startup",
+      "embedded_menu_support"
+    ],
+    "relations": [
+      "jar generated refmap -> jarJar full assembly -> reobfJarJar"
+    ],
+    "notes": [
+      "Earlier installed Server full JAR was stale; parity did not prove freshness.",
+      "No gameplay injection or class behavior change; Claims has no installed QA runtime."
+    ],
+    "unresolved": [
+      "Userapprovalpending; ClaimsfullassemblybuildnotreplayedandClaimsremainsruntimeexcluded."
+    ]
+  }
+}

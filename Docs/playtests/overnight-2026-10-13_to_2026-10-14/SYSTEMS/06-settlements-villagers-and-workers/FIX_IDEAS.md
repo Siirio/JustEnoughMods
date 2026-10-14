@@ -1,0 +1,7 @@
+# Repair and acceptance
+
+- **JEMQA-20261014-0009** — Stop automatic execution of quarantined obligations and add durable per-slot mutation/commit recovery against supported native inventory contracts. Do not patch with blind refunds. Acceptance: Partial acceptance cannot leave both accepted output and restored full input; ambiguous operations never auto-retry, restart preserves quarantine and operator-visible receipt.
+- **JEMQA-20261014-0010** — Update exact acceptance cases for supported Farmer, missing evidence, input deficit, output-full/unloaded/removed storage, six-day cap and quarantine. Acceptance: Operator follows one current scenario and can prove real input/output and journal behavior; no contradictory disabled-output expectation.
+- **JEMQA-20261014-0030** — Admit living evidence only from an actually alive native entity; preserve explicit death versus unload and do not revive records from mere UUID presence. Review native corpse/removal timing before final replay. Acceptance: Death marks survive subsequent loaded observations and restart; dead workers cannot produce or count as active jobs; unloaded living workers retain only approved evidence.
+
+Bell founding, treasury, resident food consumption, Recruits wages, loaded Worker output, six-day unloaded materialization, full/moved/unloaded storage and quarantine recovery are NOT_TESTED unless a later case explicitly records them. 824 fresh canonical food getter samples are not824feeding trials.

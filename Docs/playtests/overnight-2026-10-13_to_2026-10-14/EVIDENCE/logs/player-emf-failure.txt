@@ -1,0 +1,9 @@
+[02:12:06] [Render thread/ERROR]: [EMF]:  result was NaN in [player.jem] for expression: body.rx+var.body_rx as [variable[body.rx]=0.0, ADD, variable[var.body_rx]=NaN]
+[02:12:06] [Render thread/WARN]: [EMF]: result was NaN, expression not valid: body.rx+var.body_rx
+[02:12:06] [Render thread/ERROR]: [EMF]: EMF animation ERROR: for [body.rx] in [player.jem] because null
+[02:12:06] [Render thread/ERROR]: [EMF]: animation was invalid: [body.rx] = [body.rx+var.body_rx] in model [player.jem]
+[02:12:06] [Render thread/ERROR]: [EMF]:  result was NaN in [player_cape.jem] for expression: -var.body_rx-if(is_sneaking,0.5,0)-abs(var.cloak_spring_x) as [variable[var.body_rx]=NaN, SUBTRACT, traben.entity_model_features.models.animation.math.methods.optifine.IfMethod@575bc6c9, SUBTRACT, traben.entity_model_features.models.animation.math.methods.SimpleMethod@490cceaf]
+[02:12:06] [Render thread/WARN]: [EMF]: result was NaN, expression not valid: -var.body_rx-if(is_sneaking,0.5,0)-abs(var.cloak_spring_x)
+[02:12:06] [Render thread/ERROR]: [EMF]: EMF animation ERROR: for [cloak.rx] in [player_cape.jem] because null
+[02:12:06] [Render thread/ERROR]: [EMF]: animation was invalid: [cloak.rx] = [-var.body_rx-if(is_sneaking,0.5,0)-abs(var.cloak_spring_x)] in model [player_cape.jem]
+[02:17:59] [Render thread/ERROR]: [EMF]: model attempted creation more than 64 times {minecraft:player_head#main]. EMF is now ignoring this model. Please inform the mod maker that this is not how entity models are meant to be utilised. They should ALWAYS be stored and reused.

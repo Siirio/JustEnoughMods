@@ -1,0 +1,97 @@
+{
+  "schema_version": 2,
+  "change_id": "economy.native-merchant-stock-owner",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:villager"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:wandering_trader"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [],
+  "precedence": {
+    "layer": "integration",
+    "priority": 100,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Coin transactions delegate offer-use counting to native AbstractVillager.notifyTrade exactly once.",
+    "modifiers": [
+      {
+        "property": "economy.coin_trade.native_offer_use_increment",
+        "operation": "document",
+        "before": {
+          "value": 2,
+          "source": "CoinMerchantMenu.execute explicit increaseUses followed by native notifyTrade"
+        },
+        "after": {
+          "value": 1
+        },
+        "notes": "Exact Forge47.4.10 AbstractVillager.notifyTrade owns use increment, XP callback and trade event. Broader subclasses still use their native implementation; no manual merchant enrollment or state owner is added."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMEconomy",
+    "kind": "native_adapter_duplicate_mutation",
+    "source_files": [
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantMenu.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Preserve native merchant stock capacity without changing Coin payments, policy, delivery, XP callback or event count.",
+    "decision_source": "User explicitly authorized overnight local gameplay QA and verified fixes; Codex chose this one-line owner correction after actual sale use counter0->2 and independent native bytecode review."
+  },
+  "introduced": {
+    "date": "2026-10-14",
+    "commit": "SELF",
+    "action": "delegate_native_offer_use",
+    "summary": "Remove duplicate JEM increment; retain one native notification."
+  },
+  "history": [
+    {
+      "date": "2026-10-14",
+      "commit": "SELF",
+      "action": "delegate_native_offer_use",
+      "summary": "One prepared Survival GUI sale consumed15beetroots and credited30Coins with fixed100000ledger total, but native offer uses rose0->2. Repair removes only duplicate increment; trading-player/refund defects remain separate.",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantMenu.java"
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "commit": "SELF",
+      "action": "native_survival_replay",
+      "summary": "Nativegen2 Economy7df SHA, sale/purchase uses+1 and XP+2, empty-input/exhausted rejection unchanged; supply100000. Actual Human emerald mint separate open finding27.",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantMenu.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "economy",
+      "villagers",
+      "native_stock",
+      "merchant_xp",
+      "trade_events"
+    ],
+    "relations": [
+      "CoinMerchantMenu->AbstractVillager.notifyTrade->MerchantOffer.increaseUses"
+    ],
+    "notes": [
+      "Purchase/sale accounting and rejection paths remain unchanged.",
+      "Actor attribution and Human emerald-refund interaction intentionally remain open; this is not an Economy-wide repair."
+    ],
+    "unresolved": [
+      "Actor attribution/Human resource-refund callback remains open; stock fix awaiting user approval."
+    ]
+  }
+}

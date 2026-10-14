@@ -141,8 +141,11 @@ Changelog описывает только запрошенные player-visible 
 
 Build или runtime action выполняется только по прямому запросу пользователя. Когда такой запрос дан:
 
-1. Production JAR завершает `jar` через `reobfJar`; unobfuscated dev JAR не устанавливается.
+Явно запрошенный overnight player QA использует `.agents/skills/jem-overnight-player-qa/SKILL.md` и durable отчёт в `Docs/playtests/`. Разрешение относится только к указанной локальной сессии: отдельный disposable world/server clone, `test jem`, native AutoModpack и проверенный backup; MineRENT, stable profile и release baseline не входят в этот scope. У JEMCompat нет compile-зависимости от удалённого BackToBed; `/home` принадлежит JEM Server.
+
+1. Production JAR обычного модуля завершает `jar` через `reobfJar`; unobfuscated dev JAR не устанавливается. У модулей с `JEMMenuSupport/embed.gradle` (`JEMServer`, `JEMClaims`) `jar` создаёт только `-slim.jar`: полный distributable собирается через `jarJar` и `reobfJarJar`. Перед установкой проверяются точный classifier, timestamp/hash свежего output, embedded MenuSupport и ключевой текущий класс; успешный `reobfJar` для slim не подтверждает freshness ранее существовавшего полного JAR.
 2. Client-loaded module заменяется в названном active client; shared module также обновляет dedicated server.
+   Shared `embed.gradle` сохраняет generated refmap из свежего slim в полном JAR, объявляет native MixinGradle compiler metadata outputs и отключает incremental javac для этих модулей. Полная сборка отказывается публиковать JAR без refmap. После packaging-изменений проверяются свежая и обычная повторная сборки, фактический mapping и разрешённый runtime start; успешная компиляция сама по себе не подтверждает загрузку Mixins.
 3. Перед заменой server JAR сервер корректно останавливается, JVM должна завершиться, затем JAR заменяется и сервер запускается по запрошенному workflow.
 4. `test jem` является development client; фактический `--gameDir` берётся из его свежего `latest.log` перед установкой.
 5. Stable `JustEnoughMods` и `CLIENT_READY` не используются как development target без явного указания пользователя.
