@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-14 — Native trading design approved, Xaero included
+
+- User decision: approved the written native-trading design and explicitly confirmed Xaero restoration is included.
+- Codex planning: split implementation into independent Xaero presentation and native Coin trading/Buyer plans under Docs/superpowers/plans. Both preserve native interface ownership; trading retains the explicit boundary for offers without an authoritative Coin price.
+- Status: plans prepared for review and execution-method selection. No production source, JAR, active profile, world, running server or release baseline changed; no builds or gameplay checks run.
+
 ## 2026-10-14 — JEM and SMP command reference
 
 - User request and technical direction: create a DOCX that lists every `/jem` and `/smp` command, explains each one in plain language and then describes its exact code path in detail; do not push yet.
