@@ -13,7 +13,7 @@ from typing import Any, Iterable
 ROOT = Path(__file__).resolve().parents[2]
 CATALOG = ROOT / "Catalog"
 MODS = ROOT / "Client" / "ManagedPack" / "mods"
-OUTPUT = CATALOG / "power-sources" / "native-mechanics-phase2.json"
+OUTPUT = CATALOG / "power-sources" / "native-mechanics-phase3.json"
 MAPPED_FORGE = (
     Path.home() / ".gradle" / "caches" / "forge_gradle" / "minecraft_user_repo" /
     "net" / "minecraftforge" / "forge" / "1.20.1-47.4.10_mapped_official_1.20.1" /
@@ -29,6 +29,23 @@ def atlas_rows(pattern: str) -> Iterable[dict[str, Any]]:
     for path in sorted(CATALOG.glob(pattern)):
         for row in load(path).get("records", []):
             yield row
+
+
+def boss_reward_ids() -> set[str]:
+    directory = (
+        ROOT / "Mods" / "JEMPackCore" / "src" / "main" / "resources" / "data" /
+        "jem_world_boss_tiers" / "jem_world_boss_tiers" / "rewards"
+    )
+    return {
+        reward["item_id"]
+        for filename in ("major_rewards.json", "expanded_rewards.json")
+        for reward in load(directory / filename).get("rewards", [])
+        if "weapon" in str(reward.get("category", "")).lower() and reward.get("item_id")
+    }
+
+
+def registry_items_by_id() -> dict[str, dict[str, Any]]:
+    return {row["registry_id"]: row for row in atlas_rows("registries/items/*.json")}
 
 
 def sha256(path: Path) -> str:
@@ -487,6 +504,8 @@ def registration_classes(classes: list[str]) -> list[str]:
 
 def item_registrations() -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     candidates = list(atlas_rows("views/weapons/*.json")) + list(atlas_rows("views/armor/*.json"))
+    registry_items = registry_items_by_id()
+    candidates.extend(registry_items[item_id] for item_id in sorted(boss_reward_ids()) if item_id in registry_items)
     accessory_tokens = ("ring", "amulet", "necklace", "talisman", "charm", "bracelet", "belt", "curio", "relic")
     candidates.extend(
         row for row in atlas_rows("registries/items/*.json")
@@ -588,6 +607,9 @@ def item_mechanics(registrations: list[dict[str, Any]]) -> list[dict[str, Any]]:
     for row in atlas_rows("views/armor/*.json"):
         if row["item_id"] in registration_map:
             targets[row["item_id"]] = "armor"
+    for item_id in boss_reward_ids():
+        if item_id in registration_map:
+            targets[item_id] = "weapon"
     accessory_tokens = ("ring", "amulet", "necklace", "talisman", "charm", "bracelet", "belt", "curio", "relic")
     for row in atlas_rows("registries/items/*.json"):
         item_id = row["registry_id"]
@@ -595,6 +617,7 @@ def item_mechanics(registrations: list[dict[str, Any]]) -> list[dict[str, Any]]:
             targets.setdefault(item_id, "accessory")
     jars = {path.name: path for path in MODS.glob("*.jar")}
     class_cache: dict[str, list[str]] = {}
+    disassembly_cache: dict[tuple[str, str], str] = {}
     records = []
     for item_id, kind in sorted(targets.items()):
         registration = registration_map[item_id]
@@ -604,8 +627,15 @@ def item_mechanics(registrations: list[dict[str, Any]]) -> list[dict[str, Any]]:
         if jar.name not in class_cache:
             class_cache[jar.name] = class_names(jar)
         owners = item_owner_candidates(item_id, class_cache[jar.name])
-        text = "\n".join(javap(jar, owner) for owner in owners)
+        owner_texts = {}
+        for owner in owners:
+            key = (jar.name, owner)
+            if key not in disassembly_cache:
+                disassembly_cache[key] = javap(jar, owner)
+            owner_texts[owner] = disassembly_cache[key]
+        text = "\n".join(owner_texts.values())
         constants = sorted({value for line in text.splitlines() if (value := bytecode_number(line)) is not None}, key=float)
+        exact_mechanics = extract_item_numeric_mechanics(owner_texts)
         records.append({
             "item_id": item_id,
             "kind": kind,
@@ -620,8 +650,181 @@ def item_mechanics(registrations: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved",
             ),
             "numeric_constants": constants[:80],
+            "exact_numeric_mechanics": exact_mechanics,
         })
     return records
+
+
+ATTRIBUTE_FIELDS = {
+    "Attributes.f_22278_": "knockback_resistance_addition",
+    "Attributes.f_22281_": "attack_damage_addition",
+    "Attributes.f_22283_": "attack_speed_addition",
+    "Attributes.f_22284_": "armor_addition",
+    "Attributes.f_22285_": "armor_toughness_addition",
+    "ForgeMod.ENTITY_REACH": "entity_reach_addition",
+    "ForgeMod.BLOCK_REACH": "block_reach_addition",
+}
+
+
+def numeric_before(lines: list[str], index: int, window: int = 8) -> int | float | None:
+    for position in range(index - 1, max(-1, index - window - 1), -1):
+        value = bytecode_number(lines[position])
+        if value is not None:
+            return value
+    return None
+
+
+def extract_item_numeric_mechanics(owner_texts: dict[str, str]) -> dict[str, Any]:
+    attributes: list[dict[str, Any]] = []
+    durability_values: list[dict[str, Any]] = []
+    durability_costs: list[dict[str, Any]] = []
+    cooldowns: list[dict[str, Any]] = []
+    config_dependencies: set[str] = set()
+    for owner, text in owner_texts.items():
+        lines = text.splitlines()
+        for index, line in enumerate(lines):
+            for field, semantic in ATTRIBUTE_FIELDS.items():
+                if field not in line:
+                    continue
+                end = min(len(lines), index + 18)
+                modifier_index = next((p for p in range(index + 1, end) if 'AttributeModifier."<init>"' in lines[p]), None)
+                if modifier_index is not None:
+                    value = numeric_before(lines, modifier_index, 10)
+                    if value is not None:
+                        attributes.append({"attribute": semantic, "value": value, "owner_class": owner, "status": "exact_owner_bytecode"})
+            if "Item$Properties.m_41503_:(I)" in line or "Item$Properties.durability:(I)" in line:
+                value = numeric_before(lines, index, 3)
+                if value is not None:
+                    durability_values.append({"max_damage": int(value), "owner_class": owner, "status": "exact_owner_bytecode"})
+            if "ItemStack.m_41622_:(I" in line or "ItemStack.hurtAndBreak:(I" in line:
+                value = numeric_before(lines, index, 5)
+                if value is not None:
+                    durability_costs.append({"cost": int(value), "owner_class": owner, "status": "exact_owner_bytecode"})
+            if "ItemCooldowns.m_41524_" in line or "ItemCooldowns.addCooldown" in line:
+                value = numeric_before(lines, index, 5)
+                if value is not None:
+                    cooldowns.append({"ticks": int(value), "seconds": round(float(value) / 20.0, 3), "owner_class": owner, "status": "exact_owner_bytecode"})
+            match = re.search(r"Field ([A-Za-z0-9_/$]+(?:Damage|Speed|Range|Cooldown|Multiplier)[A-Za-z0-9_]*):", line, flags=re.IGNORECASE)
+            if match and "config" in line.lower():
+                config_dependencies.add(match.group(1).replace("/", "."))
+
+        constructor = re.search(
+            r"public [^(]+\(net\.minecraft\.world\.item\.Item\$Properties\);\r?\n    Code:\r?\n(?P<body>(?:[ \t]+\d+:.*\r?\n)+)",
+            text,
+        )
+        if constructor:
+            body_lines = constructor.group("body").splitlines()
+            for index, line in enumerate(body_lines):
+                if "Cataclysm_Weapon_Item.\"<init>\":(Lnet/minecraft/world/item/Item$Properties;DD)V" in line:
+                    values = [bytecode_number(candidate) for candidate in body_lines[max(0, index - 6):index]]
+                    values = [value for value in values if value is not None]
+                    if len(values) >= 2:
+                        attributes.extend([
+                            {"attribute": "attack_damage_addition", "value": values[-2], "owner_class": owner, "status": "exact_constructor_argument"},
+                            {"attribute": "attack_speed_addition", "value": values[-1], "owner_class": owner, "status": "exact_constructor_argument"},
+                        ])
+
+    def unique(records: list[dict[str, Any]], fields: tuple[str, ...]) -> list[dict[str, Any]]:
+        seen: set[tuple[Any, ...]] = set()
+        result = []
+        for record in records:
+            key = tuple(record.get(field) for field in fields)
+            if key not in seen:
+                seen.add(key)
+                result.append(record)
+        return result
+
+    return {
+        "attributes": unique(attributes, ("attribute", "value", "owner_class")),
+        "durability": unique(durability_values, ("max_damage", "owner_class")),
+        "durability_costs": unique(durability_costs, ("cost", "owner_class")),
+        "cooldowns": unique(cooldowns, ("ticks", "owner_class")),
+        "config_dependencies": sorted(config_dependencies),
+        "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent.",
+    }
+
+
+def data_driven_combat() -> dict[str, Any]:
+    raw_weapon_attributes: dict[str, dict[str, Any]] = {}
+    capabilities: list[dict[str, Any]] = []
+    skill_parameters: dict[str, dict[str, Any]] = {}
+    artifacts: dict[str, dict[str, str]] = {}
+    better_combat_installed = any(re.search(r"better.?combat", path.name, flags=re.IGNORECASE) for path in MODS.glob("*.jar"))
+    for jar in sorted(MODS.glob("*.jar"), key=lambda path: path.name.lower()):
+        found = False
+        try:
+            with zipfile.ZipFile(jar) as archive:
+                for name in sorted(archive.namelist()):
+                    match = re.fullmatch(r"data/([^/]+)/weapon_attributes/(.+)\.json", name)
+                    capability = re.fullmatch(r"data/([^/]+)/capabilities/(weapons|armors)/(.+)\.json", name)
+                    skill = re.fullmatch(r"data/([^/]+)/skill_parameters/(.+)\.json", name)
+                    if not (match or capability or skill):
+                        continue
+                    try:
+                        value = json.loads(archive.read(name).decode("utf-8-sig"))
+                    except (UnicodeDecodeError, json.JSONDecodeError):
+                        continue
+                    found = True
+                    if match:
+                        resource_id = f"{match.group(1)}:{match.group(2)}"
+                        raw_weapon_attributes[resource_id] = {
+                            "resource_id": resource_id,
+                            "artifact": jar.name,
+                            "path": name,
+                            "provider": "bettercombat",
+                            "provider_installed": better_combat_installed,
+                            "runtime_status": "active" if better_combat_installed else "inactive_optional_compatibility_data",
+                            "data": value,
+                        }
+                    elif capability:
+                        item_id = f"{capability.group(1)}:{capability.group(3)}"
+                        capabilities.append({"item_id": item_id, "kind": capability.group(2)[:-1], "artifact": jar.name, "path": name, "data": value})
+                    else:
+                        skill_id = f"{skill.group(1)}:{skill.group(2)}"
+                        skill_parameters[skill_id] = {"skill_id": skill_id, "artifact": jar.name, "path": name, "data": value}
+        except zipfile.BadZipFile:
+            continue
+        if found:
+            artifacts[jar.name] = {"file": jar.name, "sha256": sha256(jar)}
+
+    def resolve(resource_id: str, trail: tuple[str, ...] = ()) -> tuple[dict[str, Any], list[str], str | None]:
+        if resource_id in trail:
+            return {}, list(trail), f"weapon attribute inheritance cycle at {resource_id}"
+        row = raw_weapon_attributes.get(resource_id)
+        if row is None:
+            return {}, list(trail), f"parent {resource_id} is outside the extracted installed resources"
+        data = row["data"]
+        parent = data.get("parent")
+        merged: dict[str, Any] = {}
+        chain: list[str] = []
+        unresolved = None
+        if parent:
+            parent_values, chain, unresolved = resolve(parent, trail + (resource_id,))
+            merged.update(parent_values)
+        merged.update(data.get("attributes", {}))
+        return merged, chain + [resource_id], unresolved
+
+    weapons = []
+    for resource_id, row in sorted(raw_weapon_attributes.items()):
+        effective, chain, unresolved = resolve(resource_id)
+        weapons.append({**row, "inheritance_chain": chain, "effective_attributes": effective, "unresolved_reason": unresolved})
+    for row in capabilities:
+        type_id = row["data"].get("type")
+        if type_id in skill_parameters:
+            row["linked_skill_parameters"] = skill_parameters[type_id]
+    return {
+        "artifacts": [artifacts[name] for name in sorted(artifacts, key=str.lower)],
+        "better_combat_weapon_attributes": weapons,
+        "epic_fight_capabilities": sorted(capabilities, key=lambda row: (row["item_id"], row["kind"])),
+        "epic_fight_skill_parameters": [skill_parameters[key] for key in sorted(skill_parameters)],
+        "provider_status": {
+            "bettercombat": {
+                "installed": better_combat_installed,
+                "reason": "No Better Combat JAR is present in Client/ManagedPack/mods; embedded weapon_attributes JSON is dormant compatibility data." if not better_combat_installed else "Better Combat artifact is installed.",
+            },
+            "epicfight": {"installed": any(re.search(r"epic.?fight", path.name, flags=re.IGNORECASE) for path in MODS.glob("*.jar"))},
+        },
+    }
 
 
 def main() -> int:
@@ -630,10 +833,11 @@ def main() -> int:
     allies = ally_evidence()
     registrations, registration_artifacts = item_registrations()
     items = item_mechanics(registrations)
+    combat_data = data_driven_combat()
     payload = {
-        "schema_version": 1,
-        "phase": 2,
-        "scope": "native mechanics evidence only; no gameplay values are changed",
+        "schema_version": 2,
+        "phase": 3,
+        "scope": "native mechanics, active data-driven combat capabilities and safely traced numeric evidence; no gameplay values are changed",
         "generator": "Catalog/generator/extract_power_mechanics.py",
         "artifacts": {
             "irons_spellbooks": spell_artifact,
@@ -645,6 +849,7 @@ def main() -> int:
         "allies": allies,
         "item_registrations": registrations,
         "items": items,
+        "data_driven_combat": combat_data,
         "limits": [
             "Owner class matching for bosses is exact-artifact class/package evidence but is not a Forge registry bootstrap.",
             "A channel not observed in the selected class is unresolved, not proven absent; delegated goals, projectiles and effects are named explicitly.",

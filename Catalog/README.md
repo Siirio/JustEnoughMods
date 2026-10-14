@@ -133,10 +133,11 @@ python Catalog/generator/build_power_views.py
 python Catalog/generator/query_atlas.py power minecraft:wither
 ```
 
-The Phase 2 extractor links exact-version owner classes, registrations, native
-combat-channel signals and safely reconstructable spell formulas without launching
-Forge. The view generator composes that evidence with canonical registry candidates
-and existing JEM change/owner rules into `Catalog/views/power/`. See
+The Stage 3 extractor links exact-version owner classes, registrations, active
+Epic Fight/Nightfall data, native combat-channel signals and safely traceable numeric
+mechanics without launching Forge. The view generator composes that evidence with
+canonical registry candidates and existing JEM change/owner rules into
+`Catalog/views/power/`, including `calculations.json`. See
 `Docs/power-system/README.md`.
 Unknown runtime attributes and stack variants stay unresolved and are never treated
 as zero; generated warnings never auto-modify gameplay.

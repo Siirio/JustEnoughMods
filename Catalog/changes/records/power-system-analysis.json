@@ -7,7 +7,7 @@
   ],
   "precedence": {"layer": "derived_analysis", "priority": 900, "overrides": []},
   "change": {
-    "summary": "Maintain a derived, non-runtime combat inventory and add Phase 2 exact-version native mechanics for items, bosses, spells and allies.",
+    "summary": "Maintain a derived, non-runtime combat inventory with Stage 3 exact-version mechanics and numeric reference tables for items, bosses, spells and allies.",
     "modifiers": [
       {
         "property": "documentation.combat_power_expression",
@@ -26,7 +26,7 @@
       "Catalog/generator/extract_power_mechanics.py",
       "Catalog/generator/query_atlas.py",
       "Catalog/power-sources/irons-spellbooks-3.15.6.json",
-      "Catalog/power-sources/native-mechanics-phase2.json",
+      "Catalog/power-sources/native-mechanics-phase3.json",
       "Docs/power-system/README.md",
       "Docs/power-system/Weapons.md",
       "Docs/power-system/Armor.md",
@@ -34,7 +34,8 @@
       "Docs/power-system/Mobs.md",
       "Docs/power-system/Allies.md",
       "Docs/power-system/Balance.md",
-      "Docs/power-system/COVERAGE.md"
+      "Docs/power-system/COVERAGE.md",
+      "Docs/power-system/NUMERIC_TABLES.md"
     ]
   },
   "rationale": {
@@ -71,6 +72,19 @@
         "Catalog/views/power/findings.json",
         "Docs/power-system/Balance.md"
       ]
+    },
+    {
+      "date": "2026-10-14",
+      "commit": "SELF",
+      "action": "stage_3_numeric_tables_added",
+      "summary": "Restored all 36 boss-reward weapon IDs, added source-backed active Epic Fight/Nightfall capabilities, kept absent Better Combat profiles inactive, traced exact item attributes/durability/cooldowns where provable and generated spell, boss, weapon and mitigation tables without changing runtime balance.",
+      "source_files": [
+        "Catalog/generator/extract_power_mechanics.py",
+        "Catalog/generator/build_power_views.py",
+        "Catalog/power-sources/native-mechanics-phase3.json",
+        "Catalog/views/power/calculations.json",
+        "Docs/power-system/NUMERIC_TABLES.md"
+      ]
     }
   ],
   "impacts": {
@@ -79,7 +93,7 @@
     "notes": ["No Java, Mixin, config, datapack, installed JAR or runtime behavior is changed."],
     "unresolved": [
       "Complex projectile/goal/effect formulas, runtime ItemStack attributes, target mitigation, Epic Fight/Nightfall timings and the exact reported beam ItemStack remain explicitly unresolved with per-field reasons.",
-      "Phase 2 records findings only; numeric balance changes are reserved for later approved phases."
+      "Stage 3 calculates only fully traceable layers; runtime balance changes remain reserved for later approved phases."
     ]
   }
 }

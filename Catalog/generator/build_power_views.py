@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import ast
 import json
 import hashlib
 import re
@@ -13,7 +14,7 @@ from typing import Any, Iterable
 ROOT = Path(__file__).resolve().parents[2]
 CATALOG = ROOT / "Catalog"
 OUTPUT = CATALOG / "views" / "power"
-SCHEMA = 2
+SCHEMA = 3
 
 
 def load(path: Path) -> Any:
@@ -112,6 +113,23 @@ def registered_item_map(native: dict[str, Any]) -> dict[str, dict[str, Any]]:
     return {row["item_id"]: row for row in native["item_registrations"]}
 
 
+def reward_profiles() -> dict[str, list[dict[str, Any]]]:
+    directory = (
+        ROOT / "Mods" / "JEMPackCore" / "src" / "main" / "resources" / "data" /
+        "jem_world_boss_tiers" / "jem_world_boss_tiers" / "rewards"
+    )
+    result: dict[str, list[dict[str, Any]]] = {}
+    for filename in ("major_rewards.json", "expanded_rewards.json"):
+        for reward in load(directory / filename).get("rewards", []):
+            if reward.get("item_id"):
+                result.setdefault(reward["item_id"], []).append({"source_file": filename, **reward})
+    return result
+
+
+def registry_item_map() -> dict[str, tuple[str, dict[str, Any]]]:
+    return {row["registry_id"]: (source, row) for source, row in rows("registries/items/*.json")}
+
+
 def combat_item_signal(item_id: str, kind: str) -> bool:
     path = item_id.partition(":")[2].lower()
     if item_id.startswith("deep_dark_extended:"):
@@ -145,19 +163,55 @@ def native_item_mechanics(kind: str, item_id: str, native: dict[str, Any]) -> di
         else ("armor", "toughness", "knockback_resistance", "damage_type_reductions", "passives", "actives", "cooldown", "durability")
     )
     extracted = next((row for row in native.get("items", []) if row["item_id"] == item_id), None)
+    combat_data = native.get("data_driven_combat", {})
+    better_combat = next((row for row in combat_data.get("better_combat_weapon_attributes", []) if row["resource_id"] == item_id), None)
+    epic_fight = [row for row in combat_data.get("epic_fight_capabilities", []) if row["item_id"] == item_id]
+    numeric = extracted.get("exact_numeric_mechanics", {}) if extracted else {}
+    dimensions = {
+        field: {
+            "status": "unresolved",
+            "unresolved_reason": f"{field} still requires a safely traced method expression or runtime ItemStack attributes for {item_id}; raw class constants are evidence, not assigned values",
+        }
+        for field in fields
+    }
+    if numeric.get("attributes"):
+        for attribute in numeric["attributes"]:
+            mapping = {
+                "attack_damage_addition": "base_damage",
+                "attack_speed_addition": "attack_speed",
+                "armor_addition": "armor",
+                "armor_toughness_addition": "toughness",
+                "knockback_resistance_addition": "knockback_resistance",
+            }
+            field = mapping.get(attribute["attribute"])
+            if field in dimensions:
+                dimensions[field] = {"status": "exact_owner_bytecode", "value": attribute["value"], "semantic": attribute["attribute"]}
+    if numeric.get("durability"):
+        dimensions["durability"] = {"status": "exact_owner_bytecode", "values": numeric["durability"]}
+    if numeric.get("cooldowns") and "cooldown" in dimensions:
+        dimensions["cooldown"] = {"status": "exact_owner_bytecode", "values": numeric["cooldowns"]}
+    if better_combat and "epic_fight_moveset" in dimensions:
+        dimensions["epic_fight_moveset"] = {
+            "status": "inactive_optional_compatibility_data" if not better_combat.get("provider_installed") else "not_applicable_better_combat_present",
+            "unresolved_reason": "The owning mod embeds Better Combat weapon_attributes, but Better Combat is not installed and Punchy compatibility is disabled." if not better_combat.get("provider_installed") else "Exact installed data provides a Better Combat weapon attribute profile, not an Epic Fight capability.",
+        }
+    if epic_fight and "epic_fight_moveset" in dimensions:
+        dimensions["epic_fight_moveset"] = {
+            "status": "exact_installed_data" if len(epic_fight) == 1 else "installed_resource_collision_precedence_unresolved",
+            "values": epic_fight,
+            "unresolved_reason": None if len(epic_fight) == 1 else "Multiple installed mod JARs provide an Epic Fight capability for the same item ID; static extraction preserves every resource but does not invent runtime resource-pack precedence.",
+        }
     return {
         "owner_artifact": extracted.get("artifact") if extracted else None,
         "owner_classes": extracted.get("owner_classes", []) if extracted else [],
         "owner_status": extracted.get("owner_status", "unresolved") if extracted else "unresolved",
         "observed_channels": extracted.get("mechanics", []) if extracted else [],
         "numeric_constants": extracted.get("numeric_constants", []) if extracted else [],
-        "dimensions": {
-            field: {
-                "status": "unresolved",
-                "unresolved_reason": f"{field} still requires a safely traced method expression or runtime ItemStack attributes for {item_id}; raw class constants are evidence, not assigned values",
-            }
-            for field in fields
-        },
+        "exact_numeric_mechanics": numeric,
+        "better_combat": better_combat,
+        "epic_fight": epic_fight,
+        "epic_fight_resolution": "single_exact_resource" if len(epic_fight) == 1 else ("resource_collision_precedence_unresolved" if epic_fight else "not_observed"),
+        "dimensions": dimensions,
     }
 
 
@@ -165,14 +219,23 @@ def item_records(kind: str, pattern: str, dimensions: list[str], native: dict[st
     registrations = registered_item_map(native)
     excluded = load_tag_values(ROOT / "Mods" / "JEMCompat" / "src" / "main" / "resources" / "data" / "jemcompat" / "tags" / "items" / "not_weapons.json")
     included = load_tag_values(ROOT / "Mods" / "JEMCompat" / "src" / "main" / "resources" / "data" / "jemcompat" / "tags" / "items" / "weapons.json")
-    reward_ids = {
-        reward["item_id"]
-        for source in ("major_rewards.json", "expanded_rewards.json")
-        for reward in load(ROOT / "Mods" / "JEMPackCore" / "src" / "main" / "resources" / "data" / "jem_world_boss_tiers" / "jem_world_boss_tiers" / "rewards" / source).get("rewards", [])
+    rewards = reward_profiles()
+    reward_ids = {item_id for item_id, profiles in rewards.items() if any("weapon" in str(profile.get("category", "")).lower() for profile in profiles)}
+    capability_kind = "weapon" if kind == "weapon_candidate" else "armor"
+    capability_ids = {
+        row["item_id"]
+        for row in native.get("data_driven_combat", {}).get("epic_fight_capabilities", [])
+        if row.get("kind") == capability_kind
     }
     grouped: dict[str, list[tuple[str, dict[str, Any]]]] = {}
     for source, row in rows(pattern):
         grouped.setdefault(row["item_id"], []).append((source, row))
+    registry = registry_item_map()
+    source_backed_ids = reward_ids | capability_ids if kind == "weapon_candidate" else capability_ids
+    for item_id in sorted(source_backed_ids):
+        if item_id in registry:
+            source, row = registry[item_id]
+            grouped.setdefault(item_id, []).append((source, {**row, "item_id": item_id}))
     result = []
     for item_id, candidates in sorted(grouped.items()):
         source, row = max(candidates, key=lambda pair: (bool(pair[1].get("display_name_en_us")), pair[1].get("confidence") == "source_verified"))
@@ -181,7 +244,7 @@ def item_records(kind: str, pattern: str, dimensions: list[str], native: dict[st
         source_named = bool(row.get("display_name_en_us")) and "." not in item_id.partition(":")[2]
         if item_id in excluded:
             continue
-        if item_id not in included and item_id not in reward_ids and not combat_item_signal(item_id, kind):
+        if item_id not in included and item_id not in reward_ids and item_id not in capability_ids and not combat_item_signal(item_id, kind):
             continue
         if registration is None and not is_builtin and not source_named:
             continue
@@ -193,6 +256,8 @@ def item_records(kind: str, pattern: str, dimensions: list[str], native: dict[st
             "unresolved_reason": None if is_builtin else "no literal item register call was extracted; the exact translation-backed candidate remains visible for dynamic/helper registration review",
         }
         entry["native_mechanics"] = native_item_mechanics(kind, item_id, native)
+        if item_id in rewards:
+            entry["boss_reward_profiles"] = rewards[item_id]
         if tweak:
             entry["jem_tweaks"].append({"condition": tweak, "source": "JEMWorldBossTiers progression equipment rules"})
             entry["effective"]["expression"] = f"native ItemStack expression; then {tweak} when applicable"
@@ -571,10 +636,213 @@ def audit_findings() -> list[dict[str, Any]]:
     ]
 
 
+REFERENCE_TARGETS = [
+    {"id": "unarmored", "armor": 0.0, "toughness": 0.0, "protection_epf": 0},
+    {"id": "full_iron", "armor": 15.0, "toughness": 0.0, "protection_epf": 0},
+    {"id": "full_diamond", "armor": 20.0, "toughness": 8.0, "protection_epf": 0},
+    {"id": "full_netherite", "armor": 20.0, "toughness": 12.0, "protection_epf": 0},
+    {"id": "full_netherite_protection_iv", "armor": 20.0, "toughness": 12.0, "protection_epf": 16},
+]
+
+
+def evaluate_expression(expression: str, values: dict[str, float]) -> float:
+    operators = {
+        ast.Add: lambda left, right: left + right,
+        ast.Sub: lambda left, right: left - right,
+        ast.Mult: lambda left, right: left * right,
+        ast.Div: lambda left, right: left / right,
+    }
+
+    def visit(node: ast.AST) -> float:
+        if isinstance(node, ast.Expression):
+            return visit(node.body)
+        if isinstance(node, ast.Constant) and isinstance(node.value, (int, float)):
+            return float(node.value)
+        if isinstance(node, ast.Name) and node.id in values:
+            return float(values[node.id])
+        if isinstance(node, ast.BinOp) and type(node.op) in operators:
+            return operators[type(node.op)](visit(node.left), visit(node.right))
+        if isinstance(node, ast.UnaryOp) and isinstance(node.op, (ast.UAdd, ast.USub)):
+            value = visit(node.operand)
+            return value if isinstance(node.op, ast.UAdd) else -value
+        raise ValueError(f"unsupported expression node {type(node).__name__}")
+
+    return visit(ast.parse(expression, mode="eval"))
+
+
+def vanilla_post_mitigation(damage: float, armor: float, toughness: float, protection_epf: int) -> float:
+    armor_term = max(armor * 0.2, min(20.0, armor - damage / (2.0 + toughness / 4.0)))
+    after_armor = damage * (1.0 - armor_term / 25.0)
+    return after_armor * (1.0 - min(20, protection_epf) / 25.0)
+
+
+def spell_numeric_calculations(spells: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    tiers = {1: 0.65, 2: 0.80, 3: 0.95, 4: 1.10, 5: 1.20}
+    records = []
+    for spell in spells:
+        metadata = spell["original"]["known_dimensions"]
+        formula = spell.get("native_mechanics", {}).get("formulas", {}).get("getDamage", {})
+        expression = formula.get("expression") if formula.get("status") == "resolved_simple_bytecode" else None
+        base_power = metadata.get("base_spell_power")
+        per_level = metadata.get("spell_power_per_level")
+        max_level = metadata.get("max_level")
+        if expression is None or not all(isinstance(value, (int, float)) for value in (base_power, per_level, max_level)):
+            continue
+        levels = []
+        for level in range(1, int(max_level) + 1):
+            spell_power = float(base_power) + float(per_level) * (level - 1)
+            native = evaluate_expression(expression, {"spell_power": spell_power, "level": float(level)})
+            mana = None
+            if isinstance(metadata.get("base_mana_cost"), (int, float)) and isinstance(metadata.get("mana_cost_per_level"), (int, float)):
+                mana = float(metadata["base_mana_cost"]) + float(metadata["mana_cost_per_level"]) * (level - 1)
+            contexts = []
+            for context, tier, factor in [("pve", tier, factor) for tier, factor in tiers.items()] + [("pvp", None, 1.0)]:
+                outgoing = native * factor
+                contexts.append({
+                    "context": context,
+                    "world_tier": tier,
+                    "jem_outgoing_factor": factor,
+                    "pre_mitigation_hp": round(outgoing, 6),
+                    "reference_target_lost_hp": {
+                        target["id"]: round(vanilla_post_mitigation(outgoing, target["armor"], target["toughness"], target["protection_epf"]), 6)
+                        for target in REFERENCE_TARGETS
+                    },
+                })
+            levels.append({
+                "level": level,
+                "base_spell_power_without_caster_bonus": round(spell_power, 6),
+                "mana": mana,
+                "native_damage_per_application": round(native, 6),
+                "contexts": contexts,
+            })
+        records.append({
+            "id": spell["id"],
+            "kind": "spell_damage_table",
+            "native_expression": expression,
+            "levels": levels,
+            "calculation_boundary": "One successful native damage application with no caster spell-power bonus, Human +1, school resistance, Resistance effect, absorption, shield, iframe, hit-count or duration assumption.",
+            "mitigation_boundary": "Reference armor math is included because the exact installed Iron damage types are not tagged bypasses_armor; other mod integrations and school resistance remain unresolved.",
+            "evidence": spell["evidence"],
+        })
+    return records
+
+
+def hosted_factor(players: int, kind: str) -> float:
+    if kind == "health":
+        return {1: 1.0, 2: 1.45, 3: 1.8, 4: 2.1}.get(players, 2.1 + 0.2 * (players - 4))
+    return {1: 1.0, 2: 1.10, 3: 1.18, 4: 1.25}.get(players, min(1.45, 1.25 + 0.05 * (players - 4)))
+
+
+def boss_numeric_calculations(bosses: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    records = []
+    for boss in bosses:
+        if not boss.get("jem_registered_profile"):
+            continue
+        specials = boss.get("registered_profile", {}).get("special_damage_multiplier")
+        rows = []
+        for tier in range(1, 6):
+            tier_factor = 1.0 + 0.15 * tier
+            special = float(specials[tier - 1]) if isinstance(specials, list) and len(specials) >= tier else 1.0
+            for players in range(1, 7):
+                for raid in (False, True):
+                    raid_factor = 2.5 if raid else 1.0
+                    applied_special = 1.0 if raid else special
+                    rows.append({
+                        "world_tier": tier,
+                        "players": players,
+                        "raid": raid,
+                        "tier_factor": round(tier_factor, 6),
+                        "profile_special_damage_factor": round(applied_special, 6),
+                        "hosted_health_factor": round(hosted_factor(players, "health"), 6),
+                        "hosted_damage_factor": round(hosted_factor(players, "damage"), 6),
+                        "raid_factor": raid_factor,
+                        "effective_health_multiplier_over_native": round(tier_factor * hosted_factor(players, "health") * raid_factor, 6),
+                        "effective_owned_attack_multiplier_over_native": round(tier_factor * applied_special * hosted_factor(players, "damage") * raid_factor * 0.88, 6),
+                    })
+        records.append({
+            "id": boss["id"],
+            "kind": "registered_boss_scaling_table",
+            "rows": rows,
+            "calculation_boundary": "Multipliers over each native attack/health value. Native per-channel arithmetic, profile attribute overrides and non-owned environmental damage remain attached to their own owners.",
+            "evidence": boss["evidence"],
+        })
+    return records
+
+
+def weapon_numeric_calculations(weapons: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    records = []
+    for weapon in weapons:
+        native = weapon.get("native_mechanics", {})
+        exact = native.get("exact_numeric_mechanics", {})
+        damage_values = [row for row in exact.get("attributes", []) if row.get("attribute") == "attack_damage_addition"]
+        speed_values = [row for row in exact.get("attributes", []) if row.get("attribute") == "attack_speed_addition"]
+        better = native.get("better_combat")
+        if not (damage_values or speed_values or better or native.get("epic_fight") or exact.get("durability") or exact.get("cooldowns")):
+            continue
+        damage_addition = damage_values[0]["value"] if damage_values else None
+        player_total = 1.0 + float(damage_addition) if isinstance(damage_addition, (int, float)) else None
+        progression = []
+        if player_total is not None:
+            for tier, factor in ((1, 1.0), (2, 1.05), (3, 1.10), (4, 1.10), (5, 1.10)):
+                progression.append({
+                    "world_tier": tier,
+                    "ordinary_hit_before_target_mitigation": round(player_total * factor, 6),
+                    "tier_iii_plus_critical_before_target_mitigation": round(player_total * factor * 1.5, 6) if tier >= 3 else None,
+                    "critical_probability": 0.15 if tier >= 3 else 0.0,
+                })
+        combo = []
+        if better and better.get("provider_installed") and player_total is not None:
+            for position, attack in enumerate(better.get("effective_attributes", {}).get("attacks", []), start=1):
+                multiplier = attack.get("damage_multiplier")
+                combo.append({
+                    "position": position,
+                    "damage_multiplier": multiplier,
+                    "native_damage_before_target_mitigation": round(player_total * float(multiplier), 6) if isinstance(multiplier, (int, float)) else None,
+                    "attack": attack,
+                })
+        records.append({
+            "id": weapon["id"],
+            "kind": "weapon_numeric_card",
+            "attack_damage_addition": damage_addition,
+            "player_base_attack_damage": 1.0 if player_total is not None else None,
+            "native_basic_melee_damage_before_target_mitigation": round(player_total, 6) if player_total is not None else None,
+            "attack_speed_additions": speed_values,
+            "progression_enchantment_table": progression,
+            "progression_enchantment_applicability": "Conditional only: use these rows when the exact ItemStack is eligible and actually carries the JEM Progression enchantment; this table does not assert universal application.",
+            "better_combat_combo": combo,
+            "better_combat_profile": better,
+            "better_combat_runtime_active": bool(better and better.get("provider_installed")),
+            "epic_fight_capabilities": native.get("epic_fight", []),
+            "epic_fight_resolution": native.get("epic_fight_resolution", "not_observed"),
+            "durability": exact.get("durability", []),
+            "durability_costs": exact.get("durability_costs", []),
+            "cooldowns": exact.get("cooldowns", []),
+            "config_dependencies": exact.get("config_dependencies", []),
+            "calculation_boundary": "Basic melee totals use the vanilla player base attack-damage attribute 1 plus an exact ADDITION modifier. Projectile, beam, explosion, active ability and config-dependent values are not replaced by this number.",
+            "evidence": weapon["evidence"],
+        })
+    return records
+
+
+def reference_mitigation_table() -> dict[str, Any]:
+    inputs = (1.0, 2.0, 4.0, 8.0, 10.0, 20.0, 40.0, 80.0, 160.0)
+    return {
+        "id": "minecraft:vanilla_reference_mitigation",
+        "kind": "vanilla_reference_mitigation",
+        "formula": "damage * (1 - clamp(armor - damage/(2 + toughness/4), armor*0.2, 20)/25) * (1 - min(20, protection_epf)/25)",
+        "targets": REFERENCE_TARGETS,
+        "rows": [
+            {"incoming_hp": damage, "lost_hp": {target["id"]: round(vanilla_post_mitigation(damage, target["armor"], target["toughness"], target["protection_epf"]), 6) for target in REFERENCE_TARGETS}}
+            for damage in inputs
+        ],
+        "boundary": "Ordinary armor/enchantment reference only; bypass tags, shields, Resistance, mod passives, school resistance, absorption and JEM incoming reducers are separate layers.",
+    }
+
+
 def main() -> int:
     snapshot = git_head()
     evidence = load(CATALOG / "power-sources" / "irons-spellbooks-3.15.6.json")
-    native = load(CATALOG / "power-sources" / "native-mechanics-phase2.json")
+    native = load(CATALOG / "power-sources" / "native-mechanics-phase3.json")
     evidence_jar = ROOT / evidence["artifact"]["canonical_path"]
     actual_sha256 = hashlib.sha256(evidence_jar.read_bytes()).hexdigest()
     if actual_sha256 != evidence["artifact"]["sha256"]:
@@ -586,6 +854,17 @@ def main() -> int:
     spells = spell_records(evidence, native)
     bosses = boss_records(native)
     hostiles, allies = entity_records({row["id"] for row in bosses}, native)
+    calculations = (
+        [reference_mitigation_table()]
+        + weapon_numeric_calculations(weapons)
+        + spell_numeric_calculations(spells)
+        + boss_numeric_calculations(bosses)
+    )
+    reward_weapon_ids = {
+        item_id
+        for item_id, profiles in reward_profiles().items()
+        if any("weapon" in str(profile.get("category", "")).lower() for profile in profiles)
+    }
     outputs = {
         "weapons.json": ("weapons", weapons),
         "defenses.json": ("armor_and_defense", armor),
@@ -598,7 +877,8 @@ def main() -> int:
         "modifiers.json": ("shared_modifiers", modifier_records()),
         "scenarios.json": ("combat_scenarios", scenarios()),
         "warnings.json": ("regression_warnings", warnings(evidence)),
-        "findings.json": ("phase_2_source_findings", audit_findings())
+        "findings.json": ("phase_3_source_findings", audit_findings()),
+        "calculations.json": ("phase_3_numeric_calculations", calculations),
     }
     for name, (kind, values) in outputs.items():
         write(name, envelope(kind, values, snapshot))
@@ -621,7 +901,7 @@ def main() -> int:
         "reason_no_full_resolution": "No static record proves every runtime ItemStack attribute, target mitigation, attack channel and acquisition context.",
         "evidence_levels": ["atlas_static", "source_verified", "exact_jar_bytecode", "runtime_observed"],
         "unresolved_is_zero": False,
-        "phase": 2,
+        "phase": 3,
         "native_mechanics": {
             "spell_owner_classes_resolved": sum(bool(row.get("native_mechanics", {}).get("owner_class")) for row in spells),
             "boss_owner_classes_resolved": sum(bool(row.get("native_mechanics", {}).get("owner_classes")) for row in bosses),
@@ -629,10 +909,16 @@ def main() -> int:
             "spell_channel_slots": sum(len(row.get("native_mechanics", {}).get("channels", [])) for row in spells),
             "ally_owner_classes_resolved": sum(bool(row.get("native_mechanics", {}).get("owner_classes")) for row in allies),
             "literal_item_registrations_observed": len(native["item_registrations"]),
+            "boss_reward_weapon_ids": len(reward_weapon_ids),
+            "boss_reward_weapon_ids_in_weapon_view": len(reward_weapon_ids & {row["id"] for row in weapons}),
+            "spell_numeric_tables": sum(row.get("kind") == "spell_damage_table" for row in calculations),
+            "boss_scaling_numeric_tables": sum(row.get("kind") == "registered_boss_scaling_table" for row in calculations),
+            "weapon_numeric_cards": sum(row.get("kind") == "weapon_numeric_card" for row in calculations),
         },
         "known_gaps": [
-            "Dynamic/helper-built item registrations and ItemStack/NBT variants",
-            "Registered Item implementation attributes and Epic Fight/Nightfall moveset timing for each cleaned weapon",
+            "Dynamic/helper-built item registrations and runtime ItemStack/NBT attribute variants",
+            "Weapon active/projectile formulas delegated from the matched item owner into projectile/effect/config owners",
+            "Epic Fight/Nightfall animation hit timing and Java skill behavior beyond exact installed capability/skill-parameter JSON",
             "Complex Iron's Spells arithmetic delegated to projectile/effect classes beyond the safe symbolic bytecode subset",
             "Boss arithmetic delegated from matched owner classes into goals/projectiles/effects",
             "Entity hostility/taming/AI and native attributes for heuristic candidates",
@@ -641,7 +927,7 @@ def main() -> int:
     }
     write("coverage.json", coverage)
     index = []
-    for filename in ("weapons.json", "defenses.json", "accessories.json", "enchantments.json", "spells.json", "bosses.json", "entities.json", "allies.json"):
+    for filename in ("weapons.json", "defenses.json", "accessories.json", "enchantments.json", "spells.json", "bosses.json", "entities.json", "allies.json", "calculations.json"):
         data = load(OUTPUT / filename)
         for position, row in enumerate(data["records"]):
             index.append({"id": row["id"], "display_name": row.get("display_name"), "kind": row["kind"], "file": f"Catalog/views/power/{filename}", "record_index": position})

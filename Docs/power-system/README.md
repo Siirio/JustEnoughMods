@@ -17,7 +17,7 @@ python Catalog/generator/query_atlas.py power minecraft:wither
 python Catalog/generator/query_atlas.py power recruit
 ```
 
-Run the exact-artifact extractor first when installed JARs or native registrations change. It records owner classes, channel signals and only the small set of bytecode formulas it can reconstruct without guessing; the view generator then composes that evidence with JEM rules.
+Run the exact-artifact extractor first when installed JARs or native registrations change. It records owner classes, channel signals, active data-driven combat providers and only bytecode formulas/numeric mechanics it can trace without guessing; the view generator then composes that evidence with JEM rules and Stage 3 reference calculations.
 
 Each result follows the same chain:
 
@@ -28,10 +28,11 @@ An exact registry/spell ID is preferred. A display-name fragment is accepted and
 ## Files and ownership
 
 - `BALANCE_RULES.md`: approved player-facing rules and correction boundaries.
-- `Weapons.md`, `Armor.md`, `Bosses.md`, `Mobs.md`, `Allies.md`: Phase 2 native-mechanics entry points by domain.
+- `Weapons.md`, `Armor.md`, `Bosses.md`, `Mobs.md`, `Allies.md`: current native-mechanics entry points by domain.
 - `Balance.md`: confirmed source findings and the boundary before numeric balancing.
 - `FORMULAS.md`: source-traced composition rules.
 - `SCENARIOS.md`: the 16 reference scenarios and what can currently be calculated.
+- `NUMERIC_TABLES.md`: Phase 3 numeric-table semantics, denominators and calculation boundaries.
 - `COVERAGE.md`: honest denominators and unresolved evidence.
 - `CASE_STUDIES.md`: beam investigation and compact before/after decisions.
 - `Catalog/power-sources/`: small exact-version evidence overlays where registry JSON cannot express bytecode-only facts. They cite artifact hashes and are not gameplay owners.
