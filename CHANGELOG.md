@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-14 — Local server restarted after native profession update
+
+- User request: start the updated ordinary local server again.
+- Runtime result: the previous process was already absent and port `31605` was free, so no forced termination was needed. The current `Server` runtime loaded 302 mods, including `efiscompat 2.6.0`, `efs_iss 1.0.3`, `puffish_skills 0.19.2` and the rebuilt JEM modules; Pufferfish accepted its configuration, Forge reached `Done (2.718s)`, native AutoModpack hosting started and the Java process is listening on `31605`. Existing third-party advancement, Mixin metadata and scoreboard warnings remain visible and were not hidden or treated as restart failures. No build, test, source/config change, stable-profile mutation, MineRENT deployment or release-baseline promotion was performed.
+
 ## 2026-10-14 — Native profession skills and Iron's Spells combat addons
 
 - User request and correction: add Epic Fight x Iron's Spells Enhanced Animations and Epic Fight Skill – Iron's Spells `efs_iss-1.0.3`; move profession skill gaining and the tree itself into the purpose-built skill mod instead of JEM UI; retain the `settlements`/«Поселения» sidebar entry and do not confuse it with the already removed ordinary claims/«Территории» system.
