@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-14 — Local server synchronized and started
+
+- User request: update and launch the ordinary local server because it was missing part of the current project changes.
+- Codex operational synchronization: matched 13 server-compatible JARs to the exact artifacts already present in canonical `Client/ManagedPack`, including JEM Economy `1.2.0`, JEM Settlements `2.0.0`, current JEM Server/Identity/Professions/Roles/World Boss Tiers/Compat artifacts and TinyInv `1.20.1-1.1.0.1`; synchronized the two newer FTB Quest chapters and TinyInv server defaults. Client-only Adaptive Culling was deliberately excluded.
+- Obsolete local runtime artifacts `jem-economy-1.0.0.jar`, `jem-settlements-1.0.0.jar`, BackToBed and Flan were removed from the active `mods` directory in accordance with current ownership, with a recoverable ignored backup under `Server/local/runtime-backup-2026-10-14-jem-sync`. No Gradle build, MineRENT deployment, stable-profile mutation, AutoModpack generation publication or release-baseline promotion was performed.
+- Runtime result: Forge loaded the synchronized JEM/TinyInv set, the existing world reached `Done (6.242s)`, FTB Quests loaded eight chapters and 43 quests, and the local server is running on port `31604`. Existing third-party datapack/advancement warnings remain visible in the log and were not hidden or treated as part of this synchronization.
+
 ## 2026-10-14 — Power System Stage 3 numeric evidence
 
 - User request and supplied review: proceed from accepted Phase 2 into Stage 3, but first resolve the reported 36 boss-reward weapons versus only nine catalogued weapons; trace final projectile/effect/AI owners, real ItemStack attributes, Nightfall/Epic Fight mechanics, armor, cooldown and durability evidence; produce World Tier/PvE/PvP/reference-target numbers without changing balance code.
