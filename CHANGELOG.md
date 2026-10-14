@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-14 — JEM and SMP command reference
+
+- User request and technical direction: create a DOCX that lists every `/jem` and `/smp` command, explains each one in plain language and then describes its exact code path in detail; do not push yet.
+- Codex technical choice: audited Brigadier registrations and their execution paths across JEM Roles, Professions, Settlements, Server and World Boss Tiers, then created `Docs/JEM_SMP_COMMANDS.docx`. The reference records syntax, arguments, dedicated-server and permission boundaries, exact state/network mutations, results, error paths and current code quirks. A separate appendix covers the related root commands `/jemrole`, `/jemprof`, `/jempack` and `/jemtier`, which begin with `jem` but are not children of `/jem`.
+- Verification boundary: structurally reopened the DOCX, checked required command families and placeholder absence, exported it through installed Microsoft Word and visually inspected all 18 rendered pages with Poppler because the bundled workspace has no LibreOffice executable. No Gradle build, game launch, automated test, linter, formatter, static analysis, runtime mutation or deployment was performed. Git push is explicitly deferred by the user.
+
 ## 2026-10-14 — Native-interface restoration direction
 
 - User decision: reject the replacement Coin merchant screen; retain native villager offers, slots, scrolling and restocking, with five Coin icons/counts for prices. Preserve Xaero's original GUI/controls/private waypoint appearance; make JEM layers subtle and hideable. The Buyer must open a native trading window and show no bulletin/errors in chat. The user clarified that Copper3/Gold12 is an appearance example, not an instruction to invent a new emerald exchange rate.
