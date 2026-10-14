@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-14 — Native-interface restoration direction
+
+- User decision: reject the replacement Coin merchant screen; retain native villager offers, slots, scrolling and restocking, with five Coin icons/counts for prices. Preserve Xaero's original GUI/controls/private waypoint appearance; make JEM layers subtle and hideable. The Buyer must open a native trading window and show no bulletin/errors in chat. The user clarified that Copper3/Gold12 is an appearance example, not an instruction to invent a new emerald exchange rate.
+- Codex design work: traced the old interaction cancellation/custom18-slot menu, Buyer chat bulletin, inventory-only NPC settlement, native MerchantMenu/Container/ResultSlot signatures, and Human emerald-refund ownership. Recorded the concrete architecture and secure settlement/native-offer pricing boundaries in Docs/economy/native-trading-design.md and protected the approved presentation in AGENTS.logic-locks.md. The proposed map default (additional polygons hidden until enabled) is explicitly a Codex proposal for review.
+- Implementation boundary: no production Java, packet, texture, native profile, running server, JAR or release baseline was changed; no Gradle/build/launch/test was run for this task. Source implementation is awaiting architectural-spec review; unavailable native-offer prices are not silently guessed or admitted into the market.
+
 ## 2026-10-14 — Local operator granted on request
 
 - User request: grant OP to the current player. Executed native `op Sirio_o` only on the isolated local server (`world-qa`, loopback31605); the server confirmed the grant. Production and original-server permissions were not changed; the local ops/authentication files remain outside this commit.

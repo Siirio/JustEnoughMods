@@ -1,5 +1,6 @@
 # JustEnoughMods Project Rules
 
+- Extend native mod interfaces instead of replacing them unless the user explicitly approves that exact redesign. Native villager trading layout/offer list/slots/restocking and Xaero GUI/controls/waypoint appearance are protected; Coins change currency presentation/payment, the Market Buyer opens a native trading window without chat, and optional JEM map layers must remain unobtrusive and hideable. The separate JEM-owned SMP GUI is not automatically reverted by this rule.
 - Resolve current behavior from `AGENTS.logic-locks.md`, the owning `Docs` source and module source; old Codex chats, reports, plans, live-profile files and installed JARs are diagnostic evidence only.
 - Before every task, run `python tools/jem.py status` from the project root or `python ../tools/jem.py status` from `Server`; never replace the immutable release baseline during ordinary work.
 - For an explicitly requested overnight gameplay QA run, use `.agents/skills/jem-overnight-player-qa/SKILL.md`; its local testing scope does not authorize MineRENT/stable deployment or gameplay launches during ordinary tasks.

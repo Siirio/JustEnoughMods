@@ -1,5 +1,19 @@
 # Phase 1 Coin Merchant Coverage
 
+## Approved next direction — 2026-10-14
+
+The user rejected the replacement merchant GUI. The target is the original native
+MerchantScreen/list/input/result/inventory flow, with the five existing Coins shown
+as item icons and counts. The Buyer must open its own native trading window and
+must not print a bulletin or errors in chat. Wallet/physical-lot accounting and
+single native stock/XP callbacks remain authoritative. This is an approved target,
+not a claim that the existing code has already been replaced. The concrete design
+and unresolved native-offer price/policy boundary are in
+[native-trading-design.md](native-trading-design.md).
+
+The following Phase1 table describes the current implementation, not the accepted
+future presentation. The old18-slot screen is explicitly rejected.
+
 Policy has exactly two outcomes after the user's correction: `BUY_AND_SELL` or `NONE`. There is no directional sale-only, buy-only, earn-only, or blocked market state.
 
 | Provider | Phase 1 handling | Notes |

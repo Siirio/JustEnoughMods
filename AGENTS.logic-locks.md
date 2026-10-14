@@ -1,5 +1,14 @@
 # Approved Logic Locks
 
+## LOCKED: Native merchant and Xaero presentation
+- Scope: JEMEconomy merchant runtime/menu/client screen, MarketRuntime; JEMServer client/xaero/MapClient and mixin/xaero/MapScreenMixin; native MerchantMenu/MerchantScreen and Xaero GuiMap integration.
+- Approved signal: The user explicitly required currency replacement without replacing Minecraft trading, original Xaero GUI/controls/waypoint appearance, optional unobtrusive JEM layers, and a Buyer trading window with no chat.
+- Protected behavior: Ordinary trading keeps native offers, slots, scrolling, interaction and restock ownership. Five Coins are presented as original item icons/counts and settled by the authoritative Economy owner. The Buyer has a native trading window and does not deliver its interface/errors via chat. Xaero remains the native GUI; approved terrain/boss sharing and private personal points remain intact. JEM-owned SMP GUI is outside this restoration.
+- Allowed changes: Narrow currency/payment adapters, native offer projections, Buyer offers, explicit hideable client map overlays, secure trade-event context and necessary matching client/server synchronization; no arbitrary item-price invention, independent offer lifecycle or GUI replacement.
+- Implementation state: Approved target; architecture design recorded in Docs/economy/native-trading-design.md, production restoration pending implementation-stage approval and resolution of unpriced native-offer semantics.
+- Unlock condition: Explicit user approval of a specific replacement design.
+- Created: 2026-10-14.
+
 ## LOCKED: Semantic icons across JEM UI
 - Scope: JEM UI icon resolvers and menu item factories, especially Mods/JEMServer/client/smp/SmpIcons.java and Mods/JEMClaims/ClaimsMenus.java
 - Approved signal: Залокай - использовать правильные icon для всех UI моментов

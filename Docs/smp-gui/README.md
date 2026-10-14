@@ -91,3 +91,16 @@ Paper, dye и случайный 2D placeholder не заменяют семан
 
 `GuiGraphics.enableScissor` всегда закрывается ровно одним `GuiGraphics.disableScissor`; raw RenderSystem call не заменяет pop GUI stack. Final Minecraft capture используется только по прямому запросу пользователя.
 
+# Native Xaero preservation — approved direction, 2026-10-14
+
+Xaero's native GuiMap, navigation, zoom, controls and personal waypoint appearance
+remain the interface owner. JEM territory/project/event layers must be optional,
+hideable and unobtrusive; they must not globally reskin or replace the map. Only
+explored terrain and discovered boss locations are shared. Personal waypoint,
+home/base, labels/colors/groups/settings and death points remain private. Existing
+filled world-space event boundary geometry is unaffected. The separate JEM SMP GUI
+remains in scope as its own feature, not an automatic rollback target.
+
+This is the approved target, not an assertion that current rendering already has
+visibility controls. [Concrete integration design](../economy/native-trading-design.md).
+
