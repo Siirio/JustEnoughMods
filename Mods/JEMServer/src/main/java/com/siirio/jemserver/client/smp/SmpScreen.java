@@ -464,7 +464,7 @@ public final class SmpScreen extends Screen {
                 SmpIcons.draw(g, "recruits", bodyX + 8, y + 20, 26);
                 text(g, Component.literal(row.getString("name")), bodyX + 42, y + 8, row.getBoolean("living") ? CREAM : MUTED, bodyWidth - 50);
                 text(g, Component.literal(row.getString("settlement") + " · " + row.getString("type")), bodyX + 42, y + 23, MUTED, bodyWidth - 50);
-                Component readiness = Component.translatable(row.getBoolean("living") ? "jem.smp.recruit.living" : "jem.smp.recruit.dead")
+                var readiness = Component.translatable(row.getBoolean("living") ? "jem.smp.recruit.living" : "jem.smp.recruit.dead")
                         .append(" · ").append(Component.translatable(row.getBoolean("Ready") ? "jem.smp.recruit.ready" : "jem.smp.recruit.not_ready"));
                 if (row.contains("Morale")) readiness.append(" · ").append(Component.translatable("jem.smp.recruit.morale", Math.round(row.getFloat("Morale")), Math.round(row.getFloat("Hunger"))));
                 text(g, readiness, bodyX + 42, y + 39, row.getBoolean("Ready") ? GREEN : MUTED, bodyWidth - 50);

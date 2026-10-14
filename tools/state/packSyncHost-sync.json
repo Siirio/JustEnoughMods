@@ -243,6 +243,14 @@
     "sha256": "235a2b0be24bc83a89253e0ee4fc973abfc7cc7caed0fdd698dd139ba91ec367",
     "size": 115947
   },
+  "mods/efiscompat-2.6.0.jar": {
+    "sha256": "c5eef935e534139209e5bf002685c885662bc809d1c4e05ad1309bda8eea07ab",
+    "size": 247739
+  },
+  "mods/efs_iss-1.0.3.jar": {
+    "sha256": "d7f7a0405ff5b1c859513ff4baf54238b18542fb43d7d3a84a1629f4ec328aca",
+    "size": 299741
+  },
   "mods/ElysiumAPI-1.20.1-1.1.3.jar": {
     "sha256": "807095e7df50d25d400d07ed8bccca7ab12ea5a28cb8a99e077750ebbb8df765",
     "size": 107624
@@ -496,8 +504,8 @@
     "size": 9726
   },
   "mods/jem-economy-1.2.0.jar": {
-    "sha256": "7df61604cccd1b240d118cd47ecc9fe9816366232f253d27a0a7919d16701ec8",
-    "size": 179102
+    "sha256": "9e1ac104d2c256dc7e84e4e2634d7baa54f49c0cbabb4cfca24c7b47294e1628",
+    "size": 245554
   },
   "mods/jem-identity-1.0.0.jar": {
     "sha256": "062680dbc83a02fe28a455625d459a2c37b92cbe9c025589b4d06f5247d5feac",
@@ -508,20 +516,20 @@
     "size": 762040
   },
   "mods/jem-professions-1.0.0.jar": {
-    "sha256": "32dc16ea5d9745a1ade80d7597a4cc930235f1673452d85b7fc0b085e0b81e08",
-    "size": 75320
+    "sha256": "007f963c11a9e4c3416e4ae09b53b13110cc9048f035fcc887835241e76e5a78",
+    "size": 53343
   },
   "mods/jem-roles-1.0.0.jar": {
     "sha256": "40db27e0a882c9234ee751f6aba024e63d80d5cad67153b5d800bd3112da7c6d",
     "size": 46645
   },
   "mods/jem-server-2.0.0-dev.jar": {
-    "sha256": "448589b50641a16e1c24271d125c999499fdc23143e51b8ae9c5907f9757bec6",
-    "size": 19861669
+    "sha256": "4232cc7c434eae05a9860ba0b9ec9595f028f727e28cd1a0db2360e963fb29e0",
+    "size": 19828176
   },
   "mods/jem-settlements-2.0.0.jar": {
-    "sha256": "fecaa54377dfd8ec7f4f1ff2b5ea6d8c26ffae8d583cfa99ed203d8bbd9bc987",
-    "size": 151119
+    "sha256": "a036618565c630aaafb8742c91e84fc3bf71723bd602e968d2c85ee0319edbb0",
+    "size": 151320
   },
   "mods/jem-world-boss-tiers-2.5.0-dev.jar": {
     "sha256": "62101a635f08ea2172f1d71d499594fbc18e94d285784bd982785fddd14e2a73",
@@ -838,6 +846,10 @@
   "mods/ProPlacer-v8.0.3-1.20.1-Forge.jar": {
     "sha256": "98bc8708c95f2b7a3aeb632cd36bacb1b87b72e7c1c1286c11124266672470ac",
     "size": 63234
+  },
+  "mods/puffish_skills-0.19.2-1.20-forge.jar": {
+    "sha256": "b5df0b2d3561486076bdfa9318cf143d05b3eab0ccb93a009b396eee1312ca8d",
+    "size": 646512
   },
   "mods/punchy-2.7e-forge-1.20.1.jar": {
     "sha256": "459e6889c11ecfbd1faf13749dafa8eea8df39e4d569e8b2bb0cb80aae94dcf2",
@@ -2239,6 +2251,10 @@
     "sha256": "bdf1fa9794b8675d150137f761ddc0343428cf631c367ec9174477ff288790ec",
     "size": 894
   },
+  "config/irons_spellbooks-client.toml": {
+    "sha256": "1f2f0ebdd83a01b9a8452fd08ac5029fa1f11eb0ffaa18e38c5fe11246e42245",
+    "size": 1118
+  },
   "config/item_obliterator.json5": {
     "sha256": "81bae2a624a689a897658481d5c30a1719b39a1b6d1d40db1a32e607d397dde2",
     "size": 2655
@@ -2690,6 +2706,214 @@
   "config/paxi/datapacks/jem-content-consolidation/pack.mcmeta": {
     "sha256": "b0804388bfddc83ea4a347f26fa495bad86f514c655d5f62afa137e8dc8baf10",
     "size": 101
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/architect/category.json": {
+    "sha256": "b1d34c9bc32aaeec31f7783b6eea8715469b8ac457d5ab1647548d1881cb6f89",
+    "size": 358
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/architect/connections.json": {
+    "sha256": "7ab14a8c26f7d92f4f904759bb329374a569d0de9ac949dc113c3fc373068b40",
+    "size": 51
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/architect/definitions.json": {
+    "sha256": "01395a72711999f1550c89913952278034e910dea38807e2e67ab682e0c2a2fe",
+    "size": 349
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/architect/experience.json": {
+    "sha256": "b6dd7d66153c8ece7175160496cdfed206adae43f3027006f8d04a754ff191a9",
+    "size": 830
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/architect/skills.json": {
+    "sha256": "83c16339e0d7facf5f1ebdc801e2b122a1ce50f402593c702905fd73886f6c10",
+    "size": 121
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/engineer/category.json": {
+    "sha256": "7f54e403d8762985f5049df04d2afadac460b8c487a14fa7bbf101f6e06ac120",
+    "size": 349
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/engineer/connections.json": {
+    "sha256": "7ab14a8c26f7d92f4f904759bb329374a569d0de9ac949dc113c3fc373068b40",
+    "size": 51
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/engineer/definitions.json": {
+    "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f",
+    "size": 4
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/engineer/experience.json": {
+    "sha256": "b6dd7d66153c8ece7175160496cdfed206adae43f3027006f8d04a754ff191a9",
+    "size": 830
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/engineer/skills.json": {
+    "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f",
+    "size": 4
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/explorer/category.json": {
+    "sha256": "d00f6f142958ec91f956820c5db46161552a1ef3a3842078717808364021f8e2",
+    "size": 365
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/explorer/connections.json": {
+    "sha256": "7ab14a8c26f7d92f4f904759bb329374a569d0de9ac949dc113c3fc373068b40",
+    "size": 51
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/explorer/definitions.json": {
+    "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f",
+    "size": 4
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/explorer/experience.json": {
+    "sha256": "b6dd7d66153c8ece7175160496cdfed206adae43f3027006f8d04a754ff191a9",
+    "size": 830
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/explorer/skills.json": {
+    "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f",
+    "size": 4
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/farmer/category.json": {
+    "sha256": "ba02dea09ed594d657457ad9e54a4903af611427bc70a74834528ef886ac726f",
+    "size": 349
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/farmer/connections.json": {
+    "sha256": "7ab14a8c26f7d92f4f904759bb329374a569d0de9ac949dc113c3fc373068b40",
+    "size": 51
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/farmer/definitions.json": {
+    "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f",
+    "size": 4
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/farmer/experience.json": {
+    "sha256": "b6dd7d66153c8ece7175160496cdfed206adae43f3027006f8d04a754ff191a9",
+    "size": 830
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/farmer/skills.json": {
+    "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f",
+    "size": 4
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/fisher/category.json": {
+    "sha256": "d72e76c356f4cee22a36cb24dac4189a90d63560799e52e3730e4e0353d4a6f2",
+    "size": 353
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/fisher/connections.json": {
+    "sha256": "7ab14a8c26f7d92f4f904759bb329374a569d0de9ac949dc113c3fc373068b40",
+    "size": 51
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/fisher/definitions.json": {
+    "sha256": "ede6625a5e93d95c2b33343fcb7d3bc273e78224f9b0ed2561cf2330b45bdb63",
+    "size": 287
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/fisher/experience.json": {
+    "sha256": "b6dd7d66153c8ece7175160496cdfed206adae43f3027006f8d04a754ff191a9",
+    "size": 830
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/fisher/skills.json": {
+    "sha256": "8907f2cd6c86b5dee403acd2b2aa9e5b19edd450e0a6496d7612659b6adab13b",
+    "size": 113
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/mage/category.json": {
+    "sha256": "dfe06d301cdcab354e6d8344e25d7ecae742b16c8ce94ee00250e49d45a85624",
+    "size": 360
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/mage/connections.json": {
+    "sha256": "7ab14a8c26f7d92f4f904759bb329374a569d0de9ac949dc113c3fc373068b40",
+    "size": 51
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/mage/definitions.json": {
+    "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f",
+    "size": 4
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/mage/experience.json": {
+    "sha256": "b6dd7d66153c8ece7175160496cdfed206adae43f3027006f8d04a754ff191a9",
+    "size": 830
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/mage/skills.json": {
+    "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f",
+    "size": 4
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/mayor/category.json": {
+    "sha256": "10d101f3b2603e22c3f995f970bfb73393403e3bc45d8e3f3b012b704c8680a7",
+    "size": 342
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/mayor/connections.json": {
+    "sha256": "7ab14a8c26f7d92f4f904759bb329374a569d0de9ac949dc113c3fc373068b40",
+    "size": 51
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/mayor/definitions.json": {
+    "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f",
+    "size": 4
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/mayor/experience.json": {
+    "sha256": "b6dd7d66153c8ece7175160496cdfed206adae43f3027006f8d04a754ff191a9",
+    "size": 830
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/mayor/skills.json": {
+    "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f",
+    "size": 4
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/merchant/category.json": {
+    "sha256": "726f1f8b54de374774c25534169a46fde038283045b23561bced50997377a0d0",
+    "size": 355
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/merchant/connections.json": {
+    "sha256": "7ab14a8c26f7d92f4f904759bb329374a569d0de9ac949dc113c3fc373068b40",
+    "size": 51
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/merchant/definitions.json": {
+    "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f",
+    "size": 4
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/merchant/experience.json": {
+    "sha256": "b6dd7d66153c8ece7175160496cdfed206adae43f3027006f8d04a754ff191a9",
+    "size": 830
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/merchant/skills.json": {
+    "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f",
+    "size": 4
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/miner/category.json": {
+    "sha256": "fae61031b1f373b9c92d0ffa2e09c2b7cd8a668b7ec133858eec717b424dd457",
+    "size": 356
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/miner/connections.json": {
+    "sha256": "439fe2a6043e289b4bc83e0bfa08f888bb0471995f92b0b280ba3e0fdb570231",
+    "size": 252
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/miner/definitions.json": {
+    "sha256": "8e726533f2bb9247987d9f7b930c3aa888dbf334e9875a67abe1f2c429a47d5b",
+    "size": 1855
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/miner/experience.json": {
+    "sha256": "b6dd7d66153c8ece7175160496cdfed206adae43f3027006f8d04a754ff191a9",
+    "size": 830
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/miner/skills.json": {
+    "sha256": "421ca1d487849c44b88eb653a518d222d40dcd86ab46497695635194a949125f",
+    "size": 582
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/warrior/category.json": {
+    "sha256": "fecb050d820404a3f44c17a4b55f38afb1ab70884e5e90a8d1e999f4e592bc9e",
+    "size": 350
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/warrior/connections.json": {
+    "sha256": "7ab14a8c26f7d92f4f904759bb329374a569d0de9ac949dc113c3fc373068b40",
+    "size": 51
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/warrior/definitions.json": {
+    "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f",
+    "size": 4
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/warrior/experience.json": {
+    "sha256": "b6dd7d66153c8ece7175160496cdfed206adae43f3027006f8d04a754ff191a9",
+    "size": 830
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/warrior/skills.json": {
+    "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f",
+    "size": 4
+  },
+  "config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/config.json": {
+    "sha256": "b586d0814412c6c6998bc8ee118dbd7a380bc27f4fb49b497e77e8499dd9b952",
+    "size": 202
+  },
+  "config/paxi/datapacks/jem-profession-skills/pack.mcmeta": {
+    "sha256": "b6f8074292b48864c0739b74150472338f7df93cf07db5ff5c6ae365cd19e99e",
+    "size": 180
   },
   "config/paxi/datapacks/jem-twelve-eye-gates/data/cataclysm/tags/blocks/altar_destroy_immune.json": {
     "sha256": "fb1c7f51d8dba2ff4f3da841c84d52c03443ab264154412528d29bd07a988b16",
@@ -11004,7 +11228,7 @@
     "size": 1415
   },
   "jem-pack/manifest.json": {
-    "sha256": "34df01a7b8265f87c2c3a75b2a803438a19c281d1b98808311b4262e5dd58bc2",
-    "size": 584213
+    "sha256": "ae02a7e83d0ff0875ad853fa9a4b0c32263b4c8aa272120d1cecb34f665b3fbb",
+    "size": 596984
   }
 }

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "registry_type": "trade_policies",
+  "snapshot_sha": "a899c846257809df510e8bc6ab7543fa908ed5e1",
+  "generation": {
+    "generated_utc": "2026-10-14T16:39:03.825828+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "efiscompat",
+    "name": "Epic Fight & Iron's Spellbook animation compat",
+    "version": "2.6.0"
+  },
+  "records": [
+    {
+      "item_id": "efiscompat:purple_ball",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "efiscompat",
+      "mod_name": "Epic Fight & Iron's Spellbook animation compat",
+      "mod_version": "2.6.0",
+      "source_jar": "efiscompat-2.6.0.jar",
+      "source_sha256": "c5eef935e534139209e5bf002685c885662bc809d1c4e05ad1309bda8eea07ab",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/efiscompat/models/item/purple_ball.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "efiscompat-2.6.0.jar:assets/efiscompat/models/item/purple_ball.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    }
+  ]
+}

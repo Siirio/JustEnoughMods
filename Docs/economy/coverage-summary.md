@@ -1,8 +1,8 @@
 # Economy registry coverage
 
-Generated from Atlas schema 1 at `2026-10-14T09:16:35.842387+00:00` for `1b1d50c522d3cb4b047edf0fce33a88582afbcff`.
+Generated from Atlas schema 1 at `2026-10-14T16:39:03.825828+00:00` for `a899c846257809df510e8bc6ab7543fa908ed5e1`.
 
-Static evidence observed 17,063 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
+Static evidence observed 17,058 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
 
 | Mod | Registered | Reviewed | Unknown | BUY_AND_SELL | NONE |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -11,7 +11,6 @@ Static evidence observed 17,063 canonical item IDs. This is not a Forge runtime 
 | animal_feeding_trough | 1 | 0 | 1 | 0 | 1 |
 | aquamirae | 88 | 2 | 86 | 1 | 87 |
 | backpacked | 12 | 0 | 12 | 0 | 12 |
-| backtobed | 6 | 0 | 6 | 0 | 6 |
 | baguettelib | 1 | 0 | 1 | 0 | 1 |
 | bakery | 84 | 3 | 81 | 0 | 84 |
 | barnyardbuddies | 59 | 0 | 59 | 0 | 59 |
@@ -37,6 +36,7 @@ Static evidence observed 17,063 canonical item IDs. This is not a Forge runtime 
 | dragonlib | 1 | 0 | 1 | 0 | 1 |
 | dummmmmmy | 1 | 0 | 1 | 0 | 1 |
 | dustydecorations | 503 | 0 | 503 | 0 | 503 |
+| efiscompat | 1 | 0 | 1 | 0 | 1 |
 | efn | 65 | 0 | 65 | 0 | 65 |
 | endermanoverhaul | 36 | 0 | 36 | 0 | 36 |
 | endrem | 36 | 0 | 36 | 0 | 36 |

@@ -32,12 +32,18 @@ import net.minecraftforge.event.entity.player.ItemFishedEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 
 public final class ProfessionGameplay {
     private static final Set<UUID> VEIN_OPERATIONS = ConcurrentHashMap.newKeySet();
     private static final LinkedHashMap<String, Long> RECENT_ARCHITECT_PLACEMENTS = new LinkedHashMap<>();
     private static final int MAX_RECENT_ARCHITECT_PLACEMENTS = 8192;
     private ProfessionGameplay() {}
+
+    @SubscribeEvent
+    public static void login(PlayerEvent.PlayerLoggedInEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player) ProfessionApi.migrateLegacyProgress(player);
+    }
 
     @SubscribeEvent
     public static void placed(BlockEvent.EntityPlaceEvent event) {
@@ -83,9 +89,8 @@ public final class ProfessionGameplay {
             else {
                 dailyCredit(player, ProfessionId.MINER, SourceKind.BLOCK_BREAK, block, 3, "miner:ores", 750);
                 if (player.isShiftKeyDown() && !VEIN_OPERATIONS.contains(player.getUUID())
-                        && ProfessionApi.level(player, ProfessionId.MINER) >= 15
                         && ProfessionApi.enabled(player, ProfessionId.MINER, "vein_miner")) {
-                    mineVein(player, event.getPos(), event.getState().getBlock(), ProfessionApi.level(player, ProfessionId.MINER) >= 50 ? 32 : 8);
+                    mineVein(player, event.getPos(), event.getState().getBlock(), ProfessionApi.enabled(player, ProfessionId.MINER, "vein_master") ? 32 : 8);
                 }
             }
         }
@@ -94,8 +99,7 @@ public final class ProfessionGameplay {
     @SubscribeEvent
     public static void oreSense(PlayerInteractEvent.RightClickItem event) {
         if (!(event.getEntity() instanceof ServerPlayer player) || player instanceof FakePlayer || !player.isShiftKeyDown()) return;
-        if (!event.getItemStack().is(ItemTags.PICKAXES) || ProfessionApi.level(player, ProfessionId.MINER) < 5
-                || !ProfessionApi.enabled(player, ProfessionId.MINER, "ore_sense")) return;
+        if (!event.getItemStack().is(ItemTags.PICKAXES) || !ProfessionApi.enabled(player, ProfessionId.MINER, "ore_sense")) return;
         withRecord(player, (record, data) -> {
             long now = player.serverLevel().getGameTime();
             if (record.cooldown("miner:ore_sense") > now) {
@@ -130,7 +134,7 @@ public final class ProfessionGameplay {
             int amount = record.claimDiscovery("fisher:species:" + fish) ? 12 : record.reserveDaily("fisher:repeat", utcDay(), 3, 300);
             data.changed();
             if (amount > 0) credit(player, ProfessionId.FISHER, SourceKind.FISH_CAUGHT, fish, amount);
-            if (record.level(ProfessionId.FISHER) >= 50 && player.getRandom().nextFloat() < 0.10F) {
+            if (ProfessionApi.enabled(player, ProfessionId.FISHER, "double_catch") && player.getRandom().nextFloat() < 0.10F) {
                 ItemStack extra = ordinary.copy();
                 extra.setCount(1);
                 event.getDrops().add(extra);
@@ -164,12 +168,11 @@ public final class ProfessionGameplay {
     @SubscribeEvent
     public static void hurt(LivingHurtEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
-        int level = ProfessionApi.level(player, ProfessionId.MINER);
-        if (level >= 10 && event.getSource().is(net.minecraft.tags.DamageTypeTags.IS_FALL)
+        if (ProfessionApi.enabled(player, ProfessionId.MINER, "stone_step") && event.getSource().is(net.minecraft.tags.DamageTypeTags.IS_FALL)
                 && player.level().getBlockState(player.blockPosition().below()).is(Tags.Blocks.STONE)) {
             event.setAmount(event.getAmount() * 0.90F);
         }
-        if (level >= 30 && event.getSource().is(net.minecraft.tags.DamageTypeTags.IS_FIRE)) {
+        if (ProfessionApi.enabled(player, ProfessionId.MINER, "lava_shield") && event.getSource().is(net.minecraft.tags.DamageTypeTags.IS_FIRE)) {
             withRecord(player, (record, data) -> {
                 long now = player.serverLevel().getGameTime();
                 if (record.cooldown("miner:lava_shield") > now) return;
@@ -183,7 +186,7 @@ public final class ProfessionGameplay {
     @SubscribeEvent
     public static void breathe(LivingBreatheEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer player) || event.canBreathe()
-                || ProfessionApi.level(player, ProfessionId.MINER) < 40) return;
+                || !ProfessionApi.enabled(player, ProfessionId.MINER, "cave_breath")) return;
         if (player.getY() >= player.level().getSeaLevel() - 16 || !player.isUnderWater()) return;
         if (player.getRandom().nextFloat() < 0.15F) event.setConsumeAirAmount(0);
     }

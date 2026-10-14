@@ -50,7 +50,8 @@ Changelog описывает только запрошенные player-visible 
 | `JEMPackCore` | Pack-specific data, resources и integration policy без чужой gameplay state |
 | `JEMIdentity` | Stable verified principal: integrated owner, online profile, or unlocked Server Login connection; never an offline username |
 | `JEMRoles` | Player race selection, racial traits and optional native-mod race adapters |
-| `JEMProfessions` | Ten profession tracks, bounded audited XP and optional native event adapters |
+| `Pufferfish's Skills` | Native profession skill-tree screen, category experience, levels, points and unlocked skill state |
+| `JEMProfessions` | Bounded audited profession gain signals, legacy migration and gameplay adapters that query Pufferfish's Skills; never a second tree UI or progression ledger |
 | `JEMEconomy` | Fixed Coin supply, Wallet balances, five backed physical denominations, issuance/redemption lots, escrow accounts and idempotent funded transfers |
 | `JEMSettlements` | Town/resident identity, physical storage links, one native Workforce/Defense roster, funded payroll, bounded happiness/amenities, inactive-interval journal and personal mount evidence; never land protection or imaginary inventory |
 | `JEMVillagerTalking` | Изолированные реакции, реплики, сеть и HUD-текст жителей; мод остаётся development-only до отдельного решения о публикации |

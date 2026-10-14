@@ -12,7 +12,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import com.siirio.jemprofessions.network.ProfessionsNetwork;
+import net.puffish.skillsmod.api.SkillsAPI;
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
@@ -41,7 +41,7 @@ public final class ProfessionCommands {
         event.getDispatcher().register(root);
     }
 
-    private static int open(ServerPlayer player) { ProfessionsNetwork.sendStatus(player, true); return 1; }
+    private static int open(ServerPlayer player) { SkillsAPI.openScreen(player); return 1; }
 
     private static int show(ServerPlayer actor, ServerPlayer target) {
         var principal = IdentityPolicy.resolve(target);
@@ -52,7 +52,7 @@ public final class ProfessionCommands {
         var record = ProfessionSavedData.get(target.getServer()).findOrEmpty(principal.get().accountId());
         actor.sendSystemMessage(Component.translatable("jem.professions.inspect_header", target.getDisplayName()));
         for (ProfessionId id : ProfessionId.values()) {
-            actor.sendSystemMessage(Component.translatable("jem.professions.row", professionName(id), record.level(id), record.xp(id)));
+            actor.sendSystemMessage(Component.translatable("jem.professions.row", professionName(id), ProfessionApi.level(target, id), ProfessionApi.xp(target, id)));
         }
         return 1;
     }
@@ -66,7 +66,6 @@ public final class ProfessionCommands {
         ProfessionApi.administrativeCredit(target, id.get(), amount);
         LOGGER.info("JEM Professions administrative XP actor={} target={} profession={} amount={}", actor.getUUID(), target.getUUID(), id.get(), amount);
         actor.sendSystemMessage(Component.translatable("jem.professions.granted", amount, professionName(id.get()), target.getDisplayName()));
-        ProfessionsNetwork.sendStatus(target, false);
         return 1;
     }
 

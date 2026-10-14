@@ -100,7 +100,7 @@ public final class EconomyNetwork {
             var result = EconomyApi.purchaseMarketItem(player, packet.item(), packet.units(), packet.revision(), packet.requestId());
             if (result.status() != EconomyApi.MarketPurchaseStatus.COMMITTED && result.status() != EconomyApi.MarketPurchaseStatus.REPLAYED)
                 error = "jem.economy.market.buy." + result.status().name().toLowerCase(java.util.Locale.ROOT);
-        } else if (packet.action() == WalletActionPacket.Action.DEPOSIT_ALL) {
+        } else if (packet.action() == MarketActionPacket.Action.SELL) {
             var result = EconomyApi.processNpcSale(player, new net.minecraft.world.item.ItemStack(item), packet.units(), packet.requestId());
             if (result.status() != EconomyApi.NpcSaleStatus.COMMITTED && result.status() != EconomyApi.NpcSaleStatus.REPLAYED)
                 error = "jem.economy.market.sell." + result.status().name().toLowerCase(java.util.Locale.ROOT);
@@ -137,7 +137,7 @@ public final class EconomyNetwork {
                 default -> "jem.economy.invalid";
             };
             player.sendSystemMessage(Component.translatable(key, result.value()), true);
-        } else {
+        } else if (packet.action() == WalletActionPacket.Action.SEND) {
             if (packet.amount() <= 0 || packet.amount() > 1_000_000_000L) return;
             ServerPlayer recipient = player.getServer().getPlayerList().getPlayerByName(packet.recipient());
             if (recipient == null || recipient.getUUID().equals(player.getUUID())) player.sendSystemMessage(Component.translatable("jem.economy.invalid"), true);

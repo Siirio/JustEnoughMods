@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "a1b04b4d531dcf196b870c33524a85e24f78168a",
+  "snapshot_sha": "a899c846257809df510e8bc6ab7543fa908ed5e1",
   "generation": {
-    "generated_utc": "2026-10-14T01:44:58.936048+00:00",
+    "generated_utc": "2026-10-14T16:39:03.825828+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
   "mod": {
     "id": "jem_economy",
     "name": "JEM Economy",
-    "version": "1.0.0"
+    "version": "1.2.0"
   },
   "records": [
     {
@@ -19,11 +19,11 @@
       "schema_version": 1,
       "mod_id": "jem_economy",
       "mod_name": "JEM Economy",
-      "mod_version": "1.0.0",
-      "source_jar": "jem-economy-1.0.0.jar",
-      "source_sha256": "d8e928f116c4b90979ecd871cd69c86a5e53e2bcbfe5cc78130c654a8116cea1",
+      "mod_version": "1.2.0",
+      "source_jar": "jem-economy-1.2.0.jar",
+      "source_sha256": "9e1ac104d2c256dc7e84e4e2634d7baa54f49c0cbabb4cfca24c7b47294e1628",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/jem_economy/lang/en_us.json",
@@ -33,12 +33,47 @@
       "display_name_en_us": "Aether Coin",
       "display_name_ru_ru": "Эфирная монета",
       "source_provenance": [
-        "jem-economy-1.0.0.jar:assets/jem_economy/lang/en_us.json",
-        "jem-economy-1.0.0.jar:assets/jem_economy/lang/ru_ru.json",
-        "jem-economy-1.0.0.jar:assets/jem_economy/models/item/aether_coin.json",
         "jem-economy-1.2.0.jar:assets/jem_economy/lang/en_us.json",
         "jem-economy-1.2.0.jar:assets/jem_economy/lang/ru_ru.json",
         "jem-economy-1.2.0.jar:assets/jem_economy/models/item/aether_coin.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "jem_economy:all",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "jem_economy",
+      "mod_name": "JEM Economy",
+      "mod_version": "1.2.0",
+      "source_jar": "jem-economy-1.2.0.jar",
+      "source_sha256": "9e1ac104d2c256dc7e84e4e2634d7baa54f49c0cbabb4cfca24c7b47294e1628",
+      "side_availability": [
+        "source"
+      ],
+      "observed_in": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "EconomyApi.java:Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -64,11 +99,11 @@
       "schema_version": 1,
       "mod_id": "jem_economy",
       "mod_name": "JEM Economy",
-      "mod_version": "1.0.0",
-      "source_jar": "jem-economy-1.0.0.jar",
-      "source_sha256": "d8e928f116c4b90979ecd871cd69c86a5e53e2bcbfe5cc78130c654a8116cea1",
+      "mod_version": "1.2.0",
+      "source_jar": "jem-economy-1.2.0.jar",
+      "source_sha256": "9e1ac104d2c256dc7e84e4e2634d7baa54f49c0cbabb4cfca24c7b47294e1628",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/jem_economy/lang/en_us.json",
@@ -78,9 +113,6 @@
       "display_name_en_us": "Arcane Coin",
       "display_name_ru_ru": "Арканная монета",
       "source_provenance": [
-        "jem-economy-1.0.0.jar:assets/jem_economy/lang/en_us.json",
-        "jem-economy-1.0.0.jar:assets/jem_economy/lang/ru_ru.json",
-        "jem-economy-1.0.0.jar:assets/jem_economy/models/item/arcane_coin.json",
         "jem-economy-1.2.0.jar:assets/jem_economy/lang/en_us.json",
         "jem-economy-1.2.0.jar:assets/jem_economy/lang/ru_ru.json",
         "jem-economy-1.2.0.jar:assets/jem_economy/models/item/arcane_coin.json"
@@ -109,11 +141,11 @@
       "schema_version": 1,
       "mod_id": "jem_economy",
       "mod_name": "JEM Economy",
-      "mod_version": "1.0.0",
-      "source_jar": "jem-economy-1.0.0.jar",
-      "source_sha256": "d8e928f116c4b90979ecd871cd69c86a5e53e2bcbfe5cc78130c654a8116cea1",
+      "mod_version": "1.2.0",
+      "source_jar": "jem-economy-1.2.0.jar",
+      "source_sha256": "9e1ac104d2c256dc7e84e4e2634d7baa54f49c0cbabb4cfca24c7b47294e1628",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/jem_economy/models/item/coin_base.json"
@@ -121,7 +153,6 @@
       "display_name_en_us": null,
       "display_name_ru_ru": null,
       "source_provenance": [
-        "jem-economy-1.0.0.jar:assets/jem_economy/models/item/coin_base.json",
         "jem-economy-1.2.0.jar:assets/jem_economy/models/item/coin_base.json"
       ],
       "confidence": "inferred",
@@ -148,11 +179,11 @@
       "schema_version": 1,
       "mod_id": "jem_economy",
       "mod_name": "JEM Economy",
-      "mod_version": "1.0.0",
-      "source_jar": "jem-economy-1.0.0.jar",
-      "source_sha256": "d8e928f116c4b90979ecd871cd69c86a5e53e2bcbfe5cc78130c654a8116cea1",
+      "mod_version": "1.2.0",
+      "source_jar": "jem-economy-1.2.0.jar",
+      "source_sha256": "9e1ac104d2c256dc7e84e4e2634d7baa54f49c0cbabb4cfca24c7b47294e1628",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/jem_economy/lang/en_us.json",
@@ -162,9 +193,6 @@
       "display_name_en_us": "Copper Coin",
       "display_name_ru_ru": "Медная монета",
       "source_provenance": [
-        "jem-economy-1.0.0.jar:assets/jem_economy/lang/en_us.json",
-        "jem-economy-1.0.0.jar:assets/jem_economy/lang/ru_ru.json",
-        "jem-economy-1.0.0.jar:assets/jem_economy/models/item/copper_coin.json",
         "jem-economy-1.2.0.jar:assets/jem_economy/lang/en_us.json",
         "jem-economy-1.2.0.jar:assets/jem_economy/lang/ru_ru.json",
         "jem-economy-1.2.0.jar:assets/jem_economy/models/item/copper_coin.json"
@@ -193,11 +221,11 @@
       "schema_version": 1,
       "mod_id": "jem_economy",
       "mod_name": "JEM Economy",
-      "mod_version": "1.0.0",
-      "source_jar": "jem-economy-1.0.0.jar",
-      "source_sha256": "d8e928f116c4b90979ecd871cd69c86a5e53e2bcbfe5cc78130c654a8116cea1",
+      "mod_version": "1.2.0",
+      "source_jar": "jem-economy-1.2.0.jar",
+      "source_sha256": "9e1ac104d2c256dc7e84e4e2634d7baa54f49c0cbabb4cfca24c7b47294e1628",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/jem_economy/lang/en_us.json",
@@ -207,9 +235,6 @@
       "display_name_en_us": "Gold Coin",
       "display_name_ru_ru": "Золотая монета",
       "source_provenance": [
-        "jem-economy-1.0.0.jar:assets/jem_economy/lang/en_us.json",
-        "jem-economy-1.0.0.jar:assets/jem_economy/lang/ru_ru.json",
-        "jem-economy-1.0.0.jar:assets/jem_economy/models/item/gold_coin.json",
         "jem-economy-1.2.0.jar:assets/jem_economy/lang/en_us.json",
         "jem-economy-1.2.0.jar:assets/jem_economy/lang/ru_ru.json",
         "jem-economy-1.2.0.jar:assets/jem_economy/models/item/gold_coin.json"
@@ -238,9 +263,9 @@
       "schema_version": 1,
       "mod_id": "jem_economy",
       "mod_name": "JEM Economy",
-      "mod_version": "1.0.0",
-      "source_jar": "jem-economy-1.0.0.jar",
-      "source_sha256": "d8e928f116c4b90979ecd871cd69c86a5e53e2bcbfe5cc78130c654a8116cea1",
+      "mod_version": "1.2.0",
+      "source_jar": "jem-economy-1.2.0.jar",
+      "source_sha256": "9e1ac104d2c256dc7e84e4e2634d7baa54f49c0cbabb4cfca24c7b47294e1628",
       "side_availability": [
         "client"
       ],
@@ -282,11 +307,11 @@
       "schema_version": 1,
       "mod_id": "jem_economy",
       "mod_name": "JEM Economy",
-      "mod_version": "1.0.0",
-      "source_jar": "jem-economy-1.0.0.jar",
-      "source_sha256": "d8e928f116c4b90979ecd871cd69c86a5e53e2bcbfe5cc78130c654a8116cea1",
+      "mod_version": "1.2.0",
+      "source_jar": "jem-economy-1.2.0.jar",
+      "source_sha256": "9e1ac104d2c256dc7e84e4e2634d7baa54f49c0cbabb4cfca24c7b47294e1628",
       "side_availability": [
-        "server"
+        "client"
       ],
       "observed_in": [
         "assets/jem_economy/lang/en_us.json",
@@ -296,9 +321,6 @@
       "display_name_en_us": "Silver Coin",
       "display_name_ru_ru": "Серебряная монета",
       "source_provenance": [
-        "jem-economy-1.0.0.jar:assets/jem_economy/lang/en_us.json",
-        "jem-economy-1.0.0.jar:assets/jem_economy/lang/ru_ru.json",
-        "jem-economy-1.0.0.jar:assets/jem_economy/models/item/silver_coin.json",
         "jem-economy-1.2.0.jar:assets/jem_economy/lang/en_us.json",
         "jem-economy-1.2.0.jar:assets/jem_economy/lang/ru_ru.json",
         "jem-economy-1.2.0.jar:assets/jem_economy/models/item/silver_coin.json"

@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "81b07059b3a4fec4fc4011e00a91ca5efda3b7ae7df5f9f948f20a4d47d22f90",
+  "change_records_sha256": "da9b8d63238b599f58c403b6d57445906e56f7555ea4da4d386b5b2fc2cdb321",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -137,6 +137,21 @@
       "potential_static_target_count": 0
     },
     {
+      "change_id": "professions.native-skills-and-spell-combat",
+      "status": "active",
+      "summary": "Pufferfish's Skills owns profession progression presentation and state; JEMProfessions supplies audited gain signals and implemented effects. Iron's Spells gains its requested Epic Fight animation and skill integrations.",
+      "record": "Catalog/changes/records/profession-native-skills-and-spell-combat.json",
+      "selectors": [
+        {
+          "type": "category",
+          "registry": "*",
+          "value": "profession_progression"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 0
+    },
+    {
       "change_id": "settlements.native-guidance-build-import",
       "status": "active",
       "summary": "Restore the missing BlockPos import required to compile existing soft town guidance; no runtime rule changes.",
@@ -218,6 +233,7 @@
     "Catalog/views/power/blockers.json": "470915682d4a7a75c8ffefe2cc58c63d6b2a875468019c0c7f7a17ac96437d33",
     "Catalog/views/power/durability.json": "a3c8450bacca8e288c137ab88b20ec0742cced93089a81fcad54f7aa9600e34d",
     "Catalog/views/power/power-ladder.json": "23d7b09384515296d33bc3c909d4fdd26567491e67ade76377cbf5b70bd562ad",
+    "Client/ManagedPack/config/irons_spellbooks-client.toml": "1f2f0ebdd83a01b9a8452fd08ac5029fa1f11eb0ffaa18e38c5fe11246e42245",
     "Docs/power-system/Allies.md": "829e010d57941891c31134a0707b3e74f2f6d943f9c57325f4f903c341ed9875",
     "Docs/power-system/Armor.md": "3b4aa27f324ff99cbccf95eaf67416adb77df8e65e6bae7be5abf7fef1c59b4c",
     "Docs/power-system/Balance.md": "6b5bb380d3c11d2105e196ff24de3f83959d68eb641e85bc03387f1c7653bb5e",
@@ -227,7 +243,7 @@
     "Docs/power-system/NUMERIC_TABLES.md": "e5a717574c2e0995b36677949a6543ebe3ad0cb8468429d03b5e2fb03dd3e399",
     "Docs/power-system/README.md": "551a6b29be4c68cbc292f693c23fdc0512814089f5388974dedaeb90f7344cd8",
     "Docs/power-system/Weapons.md": "c63a055513709e21af477ec465fcb28941255999d571907d27c34100d534f0e7",
-    "Docs/smp-gui/README.md": "c4d14df8f875f47a7c01946265ccfd66f7a338140bcdadc58760695845250448",
+    "Docs/smp-gui/README.md": "2425c94e2c57bf43ba8db528c81873ece47527e8a8c2ad3f4cbec11a64cce7b1",
     "Mods/JEMCompat/build.gradle": "7b79f9161e4116f9e45f5e7ecb230252158b1dd696a4b0a990cfe6b80e131e02",
     "Mods/JEMEconomy/build.gradle": "c16da45d3674ad2a5e02825eb17b85af28f46d44ff23dc562060efad95ae2d49",
     "Mods/JEMEconomy/settings.gradle": "87a947f8eab9e0ca4b873486f492128e0b77e0190ff6c60ba4a1d04568d26e28",
@@ -263,7 +279,7 @@
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/MerchantScreenMixin.java": "60cc2bca070dc43b45d03a6ff0354b5197588f9ac3f6257fd34d9a923d3746aa",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/NativeTradeClickMixin.java": "cef771d1fb946fdc4b758b1de36d6dc598f89f934363a5d02d858b2dedcc3ffd",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/CoinExchangePacket.java": "f27b4580cd453fdbb80a42fc3afc2808bb6ba08d295d36cbe65de9982f646aab",
-    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java": "172302d762f001b25c7e9ddd42bda56dc071e55b4e02fffca2d58107eb50ea99",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java": "282d7a285ed365595881e5d5a947f404901ede6dc3bc54a356b7c401699a1747",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/MarketActionPacket.java": "817de81999fd23ea346a12121f798ac85be8959ace4ec831008ac20554d30b54",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/MarketCatalogPacket.java": "ff6604bba1b0b1d89734b01fed42cdb8ff155f0b167df2b937aadd2eeac8839d",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/MarketQueryPacket.java": "11335b814c52c5bce758e569582db7fb5f1c940a1f738cb0af682f0d5ca30e14",
@@ -285,14 +301,14 @@
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/economy/CoinTradeRaceBridge.java": "9ace443bfb5edefae96a949abfdd33570b7cf9602d73aa4df955523962079844",
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceTraitRuntime.java": "f5a07551eca378b9de63fdf17fff4347f22447012f1fe735c6a2878c2cbeefea",
     "Mods/JEMRoles/src/main/resources/META-INF/mods.toml": "2e6a471cfa9468c67349708335e5e02f0a95bbba736640128cc3e46247b74b23",
-    "Mods/JEMServer/build.gradle": "20c41c486853280ab939c9ca47ed344e580f221ca4d5281bbdb0efae11bcea4c",
+    "Mods/JEMServer/build.gradle": "03ec61cc737f55f319e03a3f67d6a62e89a0f3dcb7ad20e54fbe8372d16968d6",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/DeathHistory.java": "3db9cde1b59ae7bef00278fcd9e4287f8ccce693227a9ec61e726da1ab367616",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/JemServer.java": "d9688a8fbdf01b240324d89cca5fcbcb3d6a6696e25356c38fd1f2cb62641bd9",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/Landmarks.java": "9f473bf8321a286f2f7fd3e9a589dbb5db56259a31dd512d2d7184b01e2b4ed7",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/MapNetwork.java": "b37e2fe8c8f90cce97334c3a79bcd08646bef843c931e9dfe91004f8cfbcf076",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/XaeroLandmarks.java": "192612640435da38bad5821297ec4617509f698ddad1ccf5c44ea2d08296a9b0",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpIcons.java": "b75755e31d73d8bcf6c1a3dae3a8ad58fa901cd875bf1848d898b9078c246ac9",
-    "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java": "b8e852625f496cd23bd19a71446f3adfdecb2398abf26ac29001083a44458bb2",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java": "74f81465b2903682536f466fe04351954546fee8ff47a179620dc40f3c7bd97d",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpSidebar.java": "caa95a123aa2c4d1979ed7fe47a0a220e1c28936981a699ed2fd0df43354f6b3",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/ui/JemMenuScreen.java": "655ee46a8a7b4ff6294b45025d07907fdb3b50636490a4487fda4c963d0e4b41",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapClient.java": "c604a6d433cba490652d3a0b2f906993c97173121b7107690ac817f0fb627940",
@@ -305,7 +321,7 @@
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/map/RegionUnion.java": "b12ff718613fef73f12845cb2203313ee7f5d9777684d16d20084a93c1172cd5",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/MapScreenMixin.java": "c507d0b7e766aa54c0b7f9d28c5a32677fda3f80fd783e776dd3dee16a804911",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/HomePreview.java": "8927a92e2b708d0ae510c7a2c2c4a2b02a20a47c60662a872f4853a156244b00",
-    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Profiles.java": "408750b8099ce6423951c57cc7041f2fad4de6cc82394416174204d01da46cfb",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Profiles.java": "1b9966f09f11c80ef7ed8882974901e15e312b2437e4a431076decebdd821b18",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpActionKind.java": "cb2962bb4c791cecfffd9dfeabac2c1efe32ddec7e1b54fb7a0551da15e46947",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpActions.java": "ace130cda337ebe65342fa343bd9b292569da16304bfe056042bdc9cb834871a",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpNetwork.java": "e12f319ce4ee706eaf8018e8f698df9a4f57fcfc08bc31e08a665a9771e24eef",
@@ -325,6 +341,7 @@
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/OrdinaryHostileScaler.java": "729980767df8c532c8463e4699a39ba6821053c9829995237ec56855009abeaf",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/command/BossCommands.java": "9d9247f5b5d521c145a968cc0f1786f6dda7d9fba391ca34df4824bcb1c921f3",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/command/TierCommands.java": "065a2fb12fbec009307b4b447ef91e4ab8dca3a3aa258c59ed256c666a91982d",
-    "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/ArenaProtection.java": "834f9622b3f4ac70caa838ca31c32beacd3fc9f729098b6c36858d66ad3a9f7c"
+    "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/ArenaProtection.java": "834f9622b3f4ac70caa838ca31c32beacd3fc9f729098b6c36858d66ad3a9f7c",
+    "tools/generate_profession_skills.py": "066fd34d725c8218c8c52fecb0a418235939430e4e8f57a723fe7018a7719dc3"
   }
 }

@@ -21,6 +21,7 @@ public final class ProfessionRecord {
     private final Set<UUID> audits = new HashSet<>();
     private final Set<String> discoveries = new LinkedHashSet<>();
     private final Set<String> toggles = new HashSet<>();
+    private final Set<ProfessionId> puffishMigrations = java.util.EnumSet.noneOf(ProfessionId.class);
     private final Map<String, Long> cooldowns = new HashMap<>();
     private final Map<String, DailyCounter> daily = new HashMap<>();
 
@@ -41,13 +42,14 @@ public final class ProfessionRecord {
         return grant;
     }
 
-    public boolean credit(ProfessionId id, int delta, UUID auditId) {
-        if (delta <= 0 || auditId == null || !audits.add(auditId)) return false;
+    public boolean reserveAudit(UUID auditId) {
+        if (auditId == null || !audits.add(auditId)) return false;
         auditOrder.addLast(auditId);
         while (auditOrder.size() > MAX_AUDITS) audits.remove(auditOrder.removeFirst());
-        xp.merge(id, (long) delta, Math::addExact);
         return true;
     }
+
+    public boolean markPuffishMigrated(ProfessionId id) { return puffishMigrations.add(id); }
 
     public void administrativeCredit(ProfessionId id, int delta) {
         if (delta > 0) xp.merge(id, (long) delta, Math::addExact);
@@ -68,6 +70,9 @@ public final class ProfessionRecord {
         ListTag active = new ListTag();
         toggles.forEach(value -> active.add(StringTag.valueOf(value)));
         tag.put("Toggles", active);
+        ListTag migrated = new ListTag();
+        puffishMigrations.forEach(id -> migrated.add(StringTag.valueOf(id.name())));
+        tag.put("PuffishMigrations", migrated);
         CompoundTag savedCooldowns = new CompoundTag();
         cooldowns.forEach(savedCooldowns::putLong);
         tag.put("Cooldowns", savedCooldowns);
@@ -93,6 +98,8 @@ public final class ProfessionRecord {
         for (int i = 0; i < Math.min(8192, found.size()); i++) record.discoveries.add(found.getString(i));
         ListTag active = tag.getList("Toggles", Tag.TAG_STRING);
         for (int i = 0; i < Math.min(256, active.size()); i++) record.toggles.add(active.getString(i));
+        ListTag migrated = tag.getList("PuffishMigrations", Tag.TAG_STRING);
+        for (int i = 0; i < migrated.size(); i++) ProfessionId.parse(migrated.getString(i)).ifPresent(record.puffishMigrations::add);
         CompoundTag savedCooldowns = tag.getCompound("Cooldowns");
         savedCooldowns.getAllKeys().forEach(key -> record.cooldowns.put(key, Math.max(0L, savedCooldowns.getLong(key))));
         CompoundTag savedDaily = tag.getCompound("Daily");

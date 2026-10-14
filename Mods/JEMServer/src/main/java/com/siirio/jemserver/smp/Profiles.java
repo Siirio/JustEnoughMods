@@ -101,13 +101,17 @@ public final class Profiles {
                     player.getStats().getValue(net.minecraft.stats.Stats.CUSTOM.get(net.minecraft.stats.Stats.MOB_KILLS)));
         else if (source.contains("mobsKilled")) row.putInt("mobsKilled", source.getInt("mobsKilled"));
         com.siirio.jemroles.api.RaceApi.get(viewer.server, id).ifPresent(race -> row.putString("race", race.race().name()));
-        var professionRecord = com.siirio.jemprofessions.progress.ProfessionSavedData.get(viewer.server).findOrEmpty(id);
-        var professions = new net.minecraft.nbt.ListTag();
-        for (var profession : com.siirio.jemprofessions.progress.ProfessionId.values()) {
-            long xp = professionRecord.xp(profession);
-            if (xp <= 0L) continue;
-            var value = new CompoundTag(); value.putString("id", profession.name()); value.putLong("xp", xp);
-            value.putInt("level", com.siirio.jemprofessions.progress.ProfessionFormula.levelFor(xp)); professions.add(value);
+        var professions = source.getList("professions", net.minecraft.nbt.Tag.TAG_COMPOUND).copy();
+        if (player != null) {
+            professions.clear();
+            for (var profession : com.siirio.jemprofessions.progress.ProfessionId.values()) {
+                long xp = com.siirio.jemprofessions.api.ProfessionApi.xp(player, profession);
+                if (xp <= 0L) continue;
+                var value = new CompoundTag(); value.putString("id", profession.name()); value.putLong("xp", xp);
+                value.putInt("level", com.siirio.jemprofessions.api.ProfessionApi.level(player, profession)); professions.add(value);
+            }
+            source.put("professions", professions.copy());
+            SmpData.get(viewer.server).changed(source);
         }
         row.put("professions", professions);
         var settlements = com.siirio.jemsettlements.town.SettlementSavedData.get(viewer.server);

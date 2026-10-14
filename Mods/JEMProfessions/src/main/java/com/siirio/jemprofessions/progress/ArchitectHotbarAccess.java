@@ -21,7 +21,7 @@ final class ArchitectHotbarAccess {
         if (attribute == null) return;
         AttributeInstance instance = player.getAttribute(attribute);
         if (instance == null) return;
-        boolean eligible = ProfessionApi.level(player, ProfessionId.ARCHITECT) >= 20;
+        boolean eligible = ProfessionApi.enabled(player, ProfessionId.ARCHITECT, "architect_hotbar");
         AttributeModifier current = instance.getModifier(MODIFIER_ID);
         if (eligible && current == null) instance.addTransientModifier(FOUR_SLOTS);
         else if (!eligible && current != null) instance.removeModifier(MODIFIER_ID);

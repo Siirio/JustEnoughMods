@@ -15,7 +15,6 @@ public final class JemProfessions {
         ProfessionsNetwork.register();
         MinecraftForge.EVENT_BUS.register(ProfessionCommands.class);
         MinecraftForge.EVENT_BUS.register(ProfessionGameplay.class);
-        MinecraftForge.EVENT_BUS.register(ProfessionsNetwork.class);
         if (ModList.get().isLoaded("irons_spellbooks")) {
             MinecraftForge.EVENT_BUS.register(com.siirio.jemprofessions.compat.irons.IronsProfessionAdapter.class);
         }

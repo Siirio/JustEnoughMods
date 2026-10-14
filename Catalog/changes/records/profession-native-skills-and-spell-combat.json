@@ -1,0 +1,77 @@
+{
+  "schema_version": 2,
+  "change_id": "professions.native-skills-and-spell-combat",
+  "status": "active",
+  "selectors": [
+    {"type": "category", "registry": "*", "value": "profession_progression"}
+  ],
+  "exceptions": [],
+  "conditions": ["dedicated_server_gameplay", "matching_client_and_server_mods"],
+  "precedence": {"layer": "jem_runtime_ownership", "priority": 520, "overrides": []},
+  "change": {
+    "summary": "Pufferfish's Skills owns profession progression presentation and state; JEMProfessions supplies audited gain signals and implemented effects. Iron's Spells gains its requested Epic Fight animation and skill integrations.",
+    "modifiers": [
+      {
+        "property": "professions.progression_owner",
+        "operation": "replace",
+        "before": {"owner": "JEMProfessions", "ui": "custom JEM tree", "state": "JEM XP and toggles"},
+        "after": {"owner": "Pufferfish's Skills 0.19.2", "ui": "native skill screen", "state": "native category XP, levels, points and unlocked skills"},
+        "notes": "Legacy JEM XP and enabled nodes migrate once; audit IDs, discovery caps and cooldown evidence remain in JEMProfessions. Only effects backed by current implementation are exposed as skills."
+      },
+      {
+        "property": "epic_fight.irons_spellbooks.integration",
+        "operation": "add",
+        "before": {"enhanced_animations": false, "epic_fight_spell_skill": false},
+        "after": {"enhanced_animations": "efiscompat 2.6.0", "epic_fight_spell_skill": "efs_iss 1.0.3"},
+        "notes": "Iron's first-person arms/items are disabled as required by the animation addon. The EFS ISS magic-sword skill can cast the selected spell and reduce its level while cooling down; this native addon behavior is an explicit balance surface."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Pufferfish's Skills, JEMProfessions, EFIS Compat and EFS ISS",
+    "kind": "native_mod_integration",
+    "source_files": [
+      "Mods/JEMProfessions/**",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/**",
+      "Mods/JEMServer/build.gradle",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Profiles.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventCommands.java",
+      "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/**",
+      "Client/ManagedPack/config/irons_spellbooks-client.toml",
+      "tools/generate_profession_skills.py"
+    ]
+  },
+  "rationale": {
+    "purpose": "Use the purpose-built installed skill-tree mod instead of maintaining a competing JEM profession UI, and add the two requested Iron's Spells/Epic Fight integrations.",
+    "decision_source": "User requests on 2026-10-14, including the clarification that Settlements must remain in the sidebar."
+  },
+  "introduced": {
+    "date": "2026-10-14",
+    "commit": "SELF",
+    "action": "native_skill_owner_and_spell_combat_addons",
+    "summary": "Migrated profession progression to Pufferfish's Skills and added exact requested spell-combat addon versions."
+  },
+  "history": [
+    {
+      "date": "2026-10-14",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "Removed the JEM tree/status packets and screens, generated native categories for all profession gains, retained Settlements navigation, and installed matching client/server addon JARs.",
+      "source_files": [
+        "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/api/ProfessionApi.java",
+        "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/progress/ProfessionRecord.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpSidebar.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": ["professions", "progression", "smp_navigation", "epic_fight", "irons_spellbooks", "network_handshake"],
+    "relations": ["profession_signal->puffish_category_xp", "puffish_skill_state->JEM_effect_adapter", "SMP_professions->native_skills_screen", "Iron_spell_cast->Epic_Fight_skill"],
+    "notes": [
+      "Installed artifact hashes: puffish B5DF0B2D3561486076BDFA9318CF143D05B3EAB0CCB93A009B396EEE1312CA8D; efiscompat C5EEF935E534139209E5BF002685C885662BC809D1C4E05AD1309BDA8EEA07AB; efs_iss D7F7A0405FF5B1C859513FF4BAF54238B18542FB43D7D3A84A1629F4EC328ACA.",
+      "Settlements stays visible when JEMSettlements is loaded; no ordinary claims/Territories tab is added."
+    ],
+    "unresolved": ["Player acceptance of the native tree layout and spell-combat balance remains pending local replay."]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "registry_type": "items",
+  "snapshot_sha": "a899c846257809df510e8bc6ab7543fa908ed5e1",
+  "generation": {
+    "generated_utc": "2026-10-14T16:39:03.825828+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "efiscompat",
+    "name": "Epic Fight & Iron's Spellbook animation compat",
+    "version": "2.6.0"
+  },
+  "records": [
+    {
+      "registry_id": "efiscompat:purple_ball",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "efiscompat",
+      "mod_name": "Epic Fight & Iron's Spellbook animation compat",
+      "mod_version": "2.6.0",
+      "source_jar": "efiscompat-2.6.0.jar",
+      "source_sha256": "c5eef935e534139209e5bf002685c885662bc809d1c4e05ad1309bda8eea07ab",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/efiscompat/models/item/purple_ball.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "efiscompat-2.6.0.jar:assets/efiscompat/models/item/purple_ball.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:efiscompat:purple_ball"
+    }
+  ]
+}

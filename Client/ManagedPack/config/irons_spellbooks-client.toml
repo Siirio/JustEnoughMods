@@ -1,0 +1,48 @@
+
+###############################################################################################
+###   ATTENTION: These are client configs. For gameplay settings, go to the SERVER CONFIGS   ##
+###############################################################################################
+[UI]
+
+	[UI.ManaBar]
+		manaBarDisplay = "Contextual"
+		manaBarXOffset = 0
+		manaBarYOffset = 0
+		manaBarTextVisible = true
+		manaBarAnchor = "Hunger"
+		manaTextXOffset = 0
+		manaTextYOffset = 0
+
+	[UI.SpellBar]
+		spellBarDisplay = "Always"
+		spellBarXOffset = 0
+		spellBarYOffset = 0
+		spellBarAnchor = "Hotbar"
+
+	[UI.RecastOverlay]
+		recastAnchor = "TopCenter"
+		recastXOffset = 0
+		recastYOffset = 0
+
+	[UI.SpellWheel]
+		ignoreGuiScale = false
+		ignoreGuiScaleSizeMultiplier = 1.0
+
+[Animations]
+	# Required by Epic Fight & Iron's Spellbook animation compat.
+	showFirstPersonArms = false
+	showFirstPersonItems = false
+
+[Renderers]
+	replaceGhastFireballs = true
+	replaceBlazeFireballs = true
+
+[Music]
+	enableBossMusic = true
+
+[Misc]
+	shieldParticleCollisions = true
+
+[Summons]
+	ownedSummonsGlow = true
+	summonGlowColor = "0xAAFFAA"
