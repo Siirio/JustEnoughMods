@@ -128,12 +128,16 @@ a complete Atlas regeneration.
 Combat power has a separate derived view, not a second source of gameplay truth:
 
 ```powershell
+python Catalog/generator/extract_power_mechanics.py
 python Catalog/generator/build_power_views.py
 python Catalog/generator/query_atlas.py power minecraft:wither
 ```
 
-It composes canonical registry candidates, exact-version evidence and existing JEM
-change/owner rules into `Catalog/views/power/`. See `Docs/power-system/README.md`.
+The Phase 2 extractor links exact-version owner classes, registrations, native
+combat-channel signals and safely reconstructable spell formulas without launching
+Forge. The view generator composes that evidence with canonical registry candidates
+and existing JEM change/owner rules into `Catalog/views/power/`. See
+`Docs/power-system/README.md`.
 Unknown runtime attributes and stack variants stay unresolved and are never treated
 as zero; generated warnings never auto-modify gameplay.
 

@@ -9,12 +9,15 @@ The system deliberately does not reduce combat to one score. It tracks damage, c
 From the repository root:
 
 ```text
+python Catalog/generator/extract_power_mechanics.py
 python Catalog/generator/build_power_views.py
 python Catalog/generator/query_atlas.py power minecraft:diamond_sword
 python Catalog/generator/query_atlas.py power "Ray of Siphoning"
 python Catalog/generator/query_atlas.py power minecraft:wither
 python Catalog/generator/query_atlas.py power recruit
 ```
+
+Run the exact-artifact extractor first when installed JARs or native registrations change. It records owner classes, channel signals and only the small set of bytecode formulas it can reconstruct without guessing; the view generator then composes that evidence with JEM rules.
 
 Each result follows the same chain:
 
@@ -25,6 +28,8 @@ An exact registry/spell ID is preferred. A display-name fragment is accepted and
 ## Files and ownership
 
 - `BALANCE_RULES.md`: approved player-facing rules and correction boundaries.
+- `Weapons.md`, `Armor.md`, `Bosses.md`, `Mobs.md`, `Allies.md`: Phase 2 native-mechanics entry points by domain.
+- `Balance.md`: confirmed source findings and the boundary before numeric balancing.
 - `FORMULAS.md`: source-traced composition rules.
 - `SCENARIOS.md`: the 16 reference scenarios and what can currently be calculated.
 - `COVERAGE.md`: honest denominators and unresolved evidence.

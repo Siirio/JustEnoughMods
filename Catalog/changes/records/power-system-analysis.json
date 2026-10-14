@@ -7,7 +7,7 @@
   ],
   "precedence": {"layer": "derived_analysis", "priority": 900, "overrides": []},
   "change": {
-    "summary": "Add a derived, non-runtime combat inventory, formula lookup, scenario model, honest coverage report and deterministic review warnings.",
+    "summary": "Maintain a derived, non-runtime combat inventory and add Phase 2 exact-version native mechanics for items, bosses, spells and allies.",
     "modifiers": [
       {
         "property": "documentation.combat_power_expression",
@@ -23,9 +23,18 @@
     "kind": "documentation_and_offline_analysis",
     "source_files": [
       "Catalog/generator/build_power_views.py",
+      "Catalog/generator/extract_power_mechanics.py",
       "Catalog/generator/query_atlas.py",
       "Catalog/power-sources/irons-spellbooks-3.15.6.json",
-      "Docs/power-system/README.md"
+      "Catalog/power-sources/native-mechanics-phase2.json",
+      "Docs/power-system/README.md",
+      "Docs/power-system/Weapons.md",
+      "Docs/power-system/Armor.md",
+      "Docs/power-system/Bosses.md",
+      "Docs/power-system/Mobs.md",
+      "Docs/power-system/Allies.md",
+      "Docs/power-system/Balance.md",
+      "Docs/power-system/COVERAGE.md"
     ]
   },
   "rationale": {
@@ -49,12 +58,28 @@
         "Catalog/power-sources/irons-spellbooks-3.15.6.json",
         "Docs/power-system/CASE_STUDIES.md"
       ]
+    },
+    {
+      "date": "2026-10-14",
+      "commit": "SELF",
+      "action": "phase_2_native_mechanics_added",
+      "summary": "Cleaned asset/model false positives from combat items; linked all 61 bosses and 106 Iron's Spells IDs to exact-version owner classes; recorded channel evidence, safe spell formulas, item/armor/accessory signals, ally owner evidence and five source-verified audit findings without changing runtime balance.",
+      "source_files": [
+        "Catalog/generator/extract_power_mechanics.py",
+        "Catalog/generator/build_power_views.py",
+        "Catalog/power-sources/native-mechanics-phase2.json",
+        "Catalog/views/power/findings.json",
+        "Docs/power-system/Balance.md"
+      ]
     }
   ],
   "impacts": {
     "systems": ["combat", "progression", "boss_scaling", "pvp", "allies", "documentation"],
     "relations": ["registry->power_view", "native_owner->effective_expression", "scenario->coverage", "warning->review_owner"],
     "notes": ["No Java, Mixin, config, datapack, installed JAR or runtime behavior is changed."],
-    "unresolved": ["Runtime-only values and the exact reported beam ItemStack remain explicitly unresolved in the generated coverage and warning views."]
+    "unresolved": [
+      "Complex projectile/goal/effect formulas, runtime ItemStack attributes, target mitigation, Epic Fight/Nightfall timings and the exact reported beam ItemStack remain explicitly unresolved with per-field reasons.",
+      "Phase 2 records findings only; numeric balance changes are reserved for later approved phases."
+    ]
   }
 }

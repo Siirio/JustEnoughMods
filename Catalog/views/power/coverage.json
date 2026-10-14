@@ -1,11 +1,11 @@
 {
-  "schema_version": 1,
-  "snapshot_sha": "f81e1b92cb02ace680e4a480aa8cd1a30ff37a79",
+  "schema_version": 2,
+  "snapshot_sha": "5e22e299576eb74c7a484a6536e3cd3a10f65f88",
   "denominator": "All candidates from current Atlas weapon/armor/entity/enchantment views plus spell IDs from the exact-version integration registry; heuristic categories remain explicitly candidates.",
   "identified_by_view": {
-    "weapons": 379,
-    "armor_and_defense": 261,
-    "accessories": 218,
+    "weapons": 87,
+    "armor_and_defense": 216,
+    "accessories": 52,
     "enchantments": 218,
     "spells": 106,
     "bosses": 61,
@@ -13,17 +13,18 @@
     "allies_troops_summons_mounts": 103,
     "shared_modifiers": 6,
     "combat_scenarios": 16,
-    "regression_warnings": 2
+    "regression_warnings": 2,
+    "phase_2_source_findings": 5
   },
   "boss_breakdown": {
     "jem_registered_profiles": 56,
     "additional_native_boss_candidates": 5,
     "total_boss_inventory": 61
   },
-  "combat_inventory_total": 2775,
+  "combat_inventory_total": 2272,
   "effective_expression_status": {
-    "partial": 66,
-    "unresolved": 2709
+    "partial": 168,
+    "unresolved": 2104
   },
   "fully_resolved": 0,
   "reason_no_full_resolution": "No static record proves every runtime ItemStack attribute, target mitigation, attack channel and acquisition context.",
@@ -34,11 +35,20 @@
     "runtime_observed"
   ],
   "unresolved_is_zero": false,
+  "phase": 2,
+  "native_mechanics": {
+    "spell_owner_classes_resolved": 106,
+    "boss_owner_classes_resolved": 61,
+    "boss_channel_slots": 671,
+    "spell_channel_slots": 1060,
+    "ally_owner_classes_resolved": 95,
+    "literal_item_registrations_observed": 2802
+  },
   "known_gaps": [
-    "Dynamic Java-only registrations and ItemStack/NBT variants",
-    "Native weapon attributes and Epic Fight moveset timing for every weapon",
-    "Native formula for every Iron's Spells spell beyond the priority beam candidates",
-    "Every individual boss attack channel",
+    "Dynamic/helper-built item registrations and ItemStack/NBT variants",
+    "Registered Item implementation attributes and Epic Fight/Nightfall moveset timing for each cleaned weapon",
+    "Complex Iron's Spells arithmetic delegated to projectile/effect classes beyond the safe symbolic bytecode subset",
+    "Boss arithmetic delegated from matched owner classes into goals/projectiles/effects",
     "Entity hostility/taming/AI and native attributes for heuristic candidates",
     "Actual observed beam ItemStack spell ID, level, caster attributes and target resistances"
   ]

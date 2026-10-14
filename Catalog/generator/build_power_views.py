@@ -13,7 +13,7 @@ from typing import Any, Iterable
 ROOT = Path(__file__).resolve().parents[2]
 CATALOG = ROOT / "Catalog"
 OUTPUT = CATALOG / "views" / "power"
-SCHEMA = 1
+SCHEMA = 2
 
 
 def load(path: Path) -> Any:
@@ -99,12 +99,100 @@ def irons_spell_names(evidence: dict[str, Any]) -> dict[str, str]:
             if key.startswith(prefix) and "." not in key[len(prefix):]}
 
 
-def item_records(kind: str, pattern: str, dimensions: list[str], tweak: str | None = None) -> list[dict[str, Any]]:
-    result = []
+def load_tag_values(path: Path) -> set[str]:
+    if not path.exists():
+        return set()
+    return {
+        value if isinstance(value, str) else value.get("id", "")
+        for value in load(path).get("values", [])
+    }
+
+
+def registered_item_map(native: dict[str, Any]) -> dict[str, dict[str, Any]]:
+    return {row["item_id"]: row for row in native["item_registrations"]}
+
+
+def combat_item_signal(item_id: str, kind: str) -> bool:
+    path = item_id.partition(":")[2].lower()
+    if item_id.startswith("deep_dark_extended:"):
+        return False
+    if any(marker in path for marker in (
+        "spawn_egg", "_visual_", "_pulling_", "_inventory", "_hand", "blade_half",
+        "spearhead_pennant", "bowman_block", "crossbowman_block", "upgrade/", "_charge_", "_invisible_",
+    )):
+        return False
+    tokens = set(filter(None, re.split(r"[/_.-]+", path)))
+    if any(token in {"bowl", "bowls", "pennant", "string", "frame", "dust"} for token in tokens):
+        return False
+    if kind == "weapon_candidate":
+        weapon_tokens = {
+            "sword", "blade", "spear", "javelin", "dagger", "katana", "scythe", "sickle",
+            "claw", "mace", "halberd", "halbert", "greatsword", "claymore", "glaive", "rapier",
+            "sabre", "saber", "cutlass", "trident", "shield", "bow", "crossbow", "cannon", "staff",
+            "hammer", "axe", "pickaxe", "shovel", "hoe",
+        }
+        if tokens & weapon_tokens:
+            return True
+        return bool(re.search(r"(?:dread|long|short|war|great|cross)?bow$", path)) and not path.endswith(("rainbow", "bowlder"))
+    armor_tokens = {"helmet", "chestplate", "leggings", "boots", "armor", "armour", "robe", "robes"}
+    return bool(tokens & armor_tokens)
+
+
+def native_item_mechanics(kind: str, item_id: str, native: dict[str, Any]) -> dict[str, Any]:
+    fields = (
+        ("base_damage", "attack_speed", "epic_fight_moveset", "special_attacks", "effects", "cooldown", "resource_cost", "penetration", "durability")
+        if kind == "weapon_candidate"
+        else ("armor", "toughness", "knockback_resistance", "damage_type_reductions", "passives", "actives", "cooldown", "durability")
+    )
+    extracted = next((row for row in native.get("items", []) if row["item_id"] == item_id), None)
+    return {
+        "owner_artifact": extracted.get("artifact") if extracted else None,
+        "owner_classes": extracted.get("owner_classes", []) if extracted else [],
+        "owner_status": extracted.get("owner_status", "unresolved") if extracted else "unresolved",
+        "observed_channels": extracted.get("mechanics", []) if extracted else [],
+        "numeric_constants": extracted.get("numeric_constants", []) if extracted else [],
+        "dimensions": {
+            field: {
+                "status": "unresolved",
+                "unresolved_reason": f"{field} still requires a safely traced method expression or runtime ItemStack attributes for {item_id}; raw class constants are evidence, not assigned values",
+            }
+            for field in fields
+        },
+    }
+
+
+def item_records(kind: str, pattern: str, dimensions: list[str], native: dict[str, Any], tweak: str | None = None) -> list[dict[str, Any]]:
+    registrations = registered_item_map(native)
+    excluded = load_tag_values(ROOT / "Mods" / "JEMCompat" / "src" / "main" / "resources" / "data" / "jemcompat" / "tags" / "items" / "not_weapons.json")
+    included = load_tag_values(ROOT / "Mods" / "JEMCompat" / "src" / "main" / "resources" / "data" / "jemcompat" / "tags" / "items" / "weapons.json")
+    reward_ids = {
+        reward["item_id"]
+        for source in ("major_rewards.json", "expanded_rewards.json")
+        for reward in load(ROOT / "Mods" / "JEMPackCore" / "src" / "main" / "resources" / "data" / "jem_world_boss_tiers" / "jem_world_boss_tiers" / "rewards" / source).get("rewards", [])
+    }
+    grouped: dict[str, list[tuple[str, dict[str, Any]]]] = {}
     for source, row in rows(pattern):
-        item_id = row["item_id"]
+        grouped.setdefault(row["item_id"], []).append((source, row))
+    result = []
+    for item_id, candidates in sorted(grouped.items()):
+        source, row = max(candidates, key=lambda pair: (bool(pair[1].get("display_name_en_us")), pair[1].get("confidence") == "source_verified"))
+        registration = registrations.get(item_id)
+        is_builtin = item_id.startswith("minecraft:")
+        source_named = bool(row.get("display_name_en_us")) and "." not in item_id.partition(":")[2]
+        if item_id in excluded:
+            continue
+        if item_id not in included and item_id not in reward_ids and not combat_item_signal(item_id, kind):
+            continue
+        if registration is None and not is_builtin and not source_named:
+            continue
         entry = basic(item_id, kind, row, source)
         entry["power_dimensions"] = dimensions
+        entry["registration"] = registration or {
+            "item_id": item_id,
+            "status": "minecraft_builtin_static" if is_builtin else "language_named_registration_unresolved",
+            "unresolved_reason": None if is_builtin else "no literal item register call was extracted; the exact translation-backed candidate remains visible for dynamic/helper registration review",
+        }
+        entry["native_mechanics"] = native_item_mechanics(kind, item_id, native)
         if tweak:
             entry["jem_tweaks"].append({"condition": tweak, "source": "JEMWorldBossTiers progression equipment rules"})
             entry["effective"]["expression"] = f"native ItemStack expression; then {tweak} when applicable"
@@ -112,8 +200,9 @@ def item_records(kind: str, pattern: str, dimensions: list[str], tweak: str | No
     return sorted(result, key=lambda value: value["id"])
 
 
-def accessory_records() -> list[dict[str, Any]]:
+def accessory_records(native: dict[str, Any]) -> list[dict[str, Any]]:
     tokens = ("ring", "amulet", "necklace", "talisman", "charm", "bracelet", "belt", "curio", "relic")
+    registrations = registered_item_map(native)
     result = []
     for source, row in rows("registries/items/*.json"):
         item_id = row["registry_id"]
@@ -121,9 +210,24 @@ def accessory_records() -> list[dict[str, Any]]:
         name = (row.get("display_name_en_us") or "").lower()
         if not any(token in path or token in name for token in tokens):
             continue
+        if item_id not in registrations:
+            continue
         entry = basic(item_id, "accessory_candidate", row, source)
         entry["power_dimensions"] = ["attribute modifiers", "spell power", "resistance", "resource economy", "conditional effects"]
-        entry["assessment"]["reason"] = "Name/path identifies an accessory candidate; slot, Curios capability and runtime attributes remain unresolved until source-verified."
+        entry["registration"] = registrations.get(item_id, {
+            "status": "language_named_registration_unresolved",
+            "unresolved_reason": "no literal register call was extracted from the owning exact-version artifact",
+        })
+        entry["native_mechanics"] = {
+            "owner_artifact": next((item.get("artifact") for item in native.get("items", []) if item["item_id"] == item_id), None),
+            "owner_classes": next((item.get("owner_classes", []) for item in native.get("items", []) if item["item_id"] == item_id), []),
+            "observed_channels": next((item.get("mechanics", []) for item in native.get("items", []) if item["item_id"] == item_id), []),
+            "dimensions": {
+                field: {"status": "unresolved", "unresolved_reason": f"{field} requires Curios slot/capability and registered item implementation evidence for {item_id}"}
+                for field in ("slot", "attributes", "passive", "active", "trigger", "cooldown", "resource_cost")
+            },
+        }
+        entry["assessment"]["reason"] = "Registration/name evidence identifies an accessory candidate; each native capability stays explicitly unresolved until its item implementation is traced."
         result.append(entry)
     return sorted(result, key=lambda value: value["id"])
 
@@ -144,11 +248,17 @@ def enchantment_records() -> list[dict[str, Any]]:
     return sorted(result, key=lambda value: value["id"])
 
 
-def spell_records(evidence: dict[str, Any]) -> list[dict[str, Any]]:
+def spell_records(evidence: dict[str, Any], native: dict[str, Any]) -> list[dict[str, Any]]:
     verified = {row["spell_id"]: row for row in evidence["beam_candidates"]}
+    mechanics = {row["spell_id"]: row for row in native["spells"]}
     names = irons_spell_names(evidence)
     result = []
     for spell_id, school in spell_ids():
+        mechanic = mechanics.get(spell_id, {})
+        formulas = mechanic.get("formulas", {})
+        primary = formulas.get("getDamage") or formulas.get("getHealing")
+        metadata = dict(mechanic.get("metadata", {}))
+        metadata.update({key: value for key, value in verified.get(spell_id, {}).items() if key in {"rarity", "cast_type", "max_level", "base_spell_power", "spell_power_per_level", "cast_time_ticks"}})
         entry = {
             "id": spell_id,
             "kind": "spell",
@@ -156,10 +266,17 @@ def spell_records(evidence: dict[str, Any]) -> list[dict[str, Any]]:
             "school": school,
             "power_dimensions": ["per-hit damage", "hit count", "cast time", "cooldown", "mana", "range/area", "control", "sustain"],
             "original": {
-                "status": "source_verified_partial" if spell_id in verified else "unresolved",
-                "expression": verified.get(spell_id, {}).get("native_damage_expression"),
-                "known_dimensions": {key: value for key, value in verified.get(spell_id, {}).items() if key in {"rarity", "cast_type", "max_level", "base_spell_power", "spell_power_per_level", "cast_time_ticks"}},
+                "status": "source_verified_partial" if mechanic.get("owner_class") else "unresolved",
+                "expression": verified.get(spell_id, {}).get("native_damage_expression") or (primary or {}).get("expression"),
+                "known_dimensions": metadata,
                 "unknown_is_zero": False
+            },
+            "native_mechanics": {
+                "owner_class": mechanic.get("owner_class"),
+                "owner_status": mechanic.get("owner_status", "unresolved"),
+                "channels": mechanic.get("channels", []),
+                "formulas": formulas,
+                "unresolved_reason": mechanic.get("unresolved_reason"),
             },
             "modifiers": [{"owner": "Iron's Spells", "expression": "school resistance soft-cap multiplier after SpellDamageEvent"}],
             "jem_tweaks": [
@@ -167,7 +284,7 @@ def spell_records(evidence: dict[str, Any]) -> list[dict[str, Any]]:
                 {"owner": "JEMRoles", "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"}
             ],
             "effective": {
-                "status": "partial" if spell_id in verified else "unresolved",
+                "status": "partial" if mechanic.get("owner_class") else "unresolved",
                 "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
             },
             "acquisition": {
@@ -176,10 +293,13 @@ def spell_records(evidence: dict[str, Any]) -> list[dict[str, Any]]:
                 "unresolved": "Exact per-spell loot probability and observed stack level are not proven by the registry item ID."
             },
             "assessment": {
-                "status": "unverified" if spell_id not in verified else "source_reviewed_runtime_unverified",
-                "reason": verified.get(spell_id, {}).get("unresolved", "Native formula is source-extracted; the observed ItemStack, caster attributes, target mitigation and runtime result remain unverified.")
+                "status": "source_reviewed_runtime_unverified" if mechanic.get("owner_class") else "unverified",
+                "reason": verified.get(spell_id, {}).get("unresolved", "Exact owner-class mechanics are extracted where safely recognizable; delegated entities/effects, the observed ItemStack, caster attributes, target mitigation and runtime result remain unverified.")
             },
-            "evidence": [{"type": "exact_jar", "source": evidence["artifact"]["file"], "sha256": evidence["artifact"]["sha256"]}]
+            "evidence": [
+                {"type": "exact_jar", "source": evidence["artifact"]["file"], "sha256": evidence["artifact"]["sha256"]},
+                {"type": "owner_bytecode", "source": mechanic.get("owner_class"), "confidence": "exact_installed_class" if mechanic.get("owner_class") else "unresolved"},
+            ]
         }
         result.append(entry)
     return result
@@ -221,7 +341,7 @@ def native_boss_tags() -> dict[str, list[dict[str, str]]]:
     return result
 
 
-def boss_records() -> list[dict[str, Any]]:
+def boss_records(native_mechanics: dict[str, Any]) -> list[dict[str, Any]]:
     directory = ROOT / "Mods" / "JEMPackCore" / "src" / "main" / "resources" / "data" / "jem_world_boss_tiers" / "jem_world_boss_tiers" / "bosses"
     profiles: dict[str, tuple[dict[str, Any], Path]] = {}
     for source in sorted(directory.glob("*.json")):
@@ -229,6 +349,7 @@ def boss_records() -> list[dict[str, Any]]:
             for entity_id in profile["entity_ids"]:
                 profiles[entity_id] = (profile, source)
     native = native_boss_tags()
+    mechanics = {row["entity_id"]: row for row in native_mechanics["bosses"]}
     entity_names = {row["entity_id"]: row.get("display_name_en_us") for _, row in rows("views/mobs/*.json") if row.get("display_name_en_us")}
     result = []
     for entity_id in sorted(set(profiles) | set(native)):
@@ -236,6 +357,15 @@ def boss_records() -> list[dict[str, Any]]:
         profile = profile_source[0] if profile_source else None
         source = profile_source[1] if profile_source else None
         registered = profile is not None
+        mechanic = mechanics.get(entity_id, {})
+        profile_values = mechanic.get("profile", profile or {})
+        special_values = profile_values.get("special_damage_multiplier")
+        tier_expression = "native attack"
+        if registered:
+            tier_expression += " * (1 + 0.15 * world_tier)"
+            if special_values:
+                tier_expression += f" * special_damage_multiplier{special_values} when the encounter is not Raid"
+            tier_expression += " * hosted participant damage factor when hosted; hosted owned attacks then x0.88"
         result.append({
                 "id": entity_id,
                 "kind": "registered_boss" if registered else "native_boss_candidate",
@@ -243,30 +373,39 @@ def boss_records() -> list[dict[str, Any]]:
                 "display_name": profile.get("display_name") if profile else entity_names.get(entity_id),
                 "jem_registered_profile": registered,
                 "native_boss_tag": entity_id in native,
-                "attacks": [{
-                    "id": f"{entity_id}#native_attack_channels",
-                    "status": "unresolved",
-                    "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
-                    "unknown_is_zero": False
-                }],
-                "original": {"status": "unresolved", "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient", "unknown_is_zero": False},
+                "native_mechanics": {
+                    "owner_artifact": mechanic.get("owner_artifact"),
+                    "owner_classes": mechanic.get("owner_classes", []),
+                    "owner_status": mechanic.get("owner_status", "unresolved"),
+                    "unresolved_reason": mechanic.get("unresolved_reason"),
+                    "channels": mechanic.get("channels", []),
+                },
+                "registered_profile": {
+                    key: profile_values.get(key)
+                    for key in ("native_threat", "hp_scaling_safety", "attributes", "special_damage_multiplier", "damage_adapter", "healing_adapter", "stagger_adapter", "arena_strategy", "anti_cheese_profile")
+                    if key in profile_values
+                },
+                "attacks": mechanic.get("channels", []),
+                "original": {"status": "source_verified_partial" if mechanic.get("owner_classes") else "unresolved", "expression": "exact owner-class attack channels; attack-specific arithmetic stays attached to its native class/projectile", "unknown_is_zero": False},
                 "modifiers": [{"owner": "native boss mod", "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"}],
                 "jem_tweaks": ([
-                    {"expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"},
+                    {"expression": tier_expression},
                     {"expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"},
                     {"expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"}
                 ] if registered else [{"expression": "No JEM registered profile proven; native boss behavior remains authoritative."}]),
-                "effective": {"status": "partial", "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"},
+                "effective": {"status": "partial", "expression": tier_expression + "; each delegated projectile/goal without a resolved arithmetic formula remains symbolic"},
                 "acquisition": {"status": "not_applicable", "routes": []},
-                "assessment": {"status": "in_testing", "reason": ("JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE." if registered else "Native boss tag is source-verified, but the entity is not in the canonical JEM Pack Core boss profiles.")},
+                "assessment": {"status": "source_reviewed_runtime_unverified", "reason": ("JEM registration, exact owner class and observed attack-channel signals are recorded; non-observed delegated goals/projectiles remain explicitly unresolved and no runtime result is claimed." if registered else "Native boss tag/owner evidence is recorded, but the entity is not in the canonical JEM Pack Core boss profiles.")},
                 "evidence": (([{"type": "jem_owner", "source": source.relative_to(ROOT).as_posix(), "confidence": "source_verified"}] if source else [])
-                             + [{"type": "native_boss_tag", **item, "confidence": "source_verified"} for item in native.get(entity_id, [])])
+                             + [{"type": "native_boss_tag", **item, "confidence": "source_verified"} for item in native.get(entity_id, [])]
+                             + ([{"type": "owner_bytecode", "artifact": mechanic.get("owner_artifact"), "classes": mechanic.get("owner_classes", []), "confidence": mechanic.get("owner_status")} ] if mechanic else []))
             })
     return result
 
 
-def entity_records(boss_ids: set[str]) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+def entity_records(boss_ids: set[str], native: dict[str, Any]) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     allies, others = [], []
+    ally_mechanics = {row["entity_id"]: row for row in native.get("allies", [])}
     ally_tokens = ("recruit", "companion", "summon", "tamed", "golem", "polar_bear", "vex", "horse")
     ally_namespaces = {"recruits", "workers", "companions"}
     for source, row in rows("views/mobs/*.json"):
@@ -278,7 +417,18 @@ def entity_records(boss_ids: set[str]) -> tuple[list[dict[str, Any]], list[dict[
         is_ally_candidate = namespace in ally_namespaces or any(token in path for token in ally_tokens)
         entry = basic(entity_id, "ally_candidate" if is_ally_candidate else "damage_capable_entity_candidate", row, source)
         entry["power_dimensions"] = ["health", "armor", "attack channels", "speed/range", "AI uptime", "owner scaling", "cost/upkeep"]
-        entry["assessment"]["reason"] = "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+        if is_ally_candidate:
+            mechanic = ally_mechanics.get(entity_id, {})
+            entry["native_mechanics"] = {
+                "owner_artifact": mechanic.get("owner_artifact"),
+                "owner_classes": mechanic.get("owner_classes", []),
+                "owner_status": mechanic.get("owner_status", "unresolved"),
+                "combat_channels": mechanic.get("combat_channels", []),
+                "unresolved_reason": mechanic.get("unresolved_reason"),
+            }
+            entry["assessment"]["reason"] = "Exact owner-class combat signals are recorded when matched; ownership, tameability, AI uptime and delegated goals remain explicit unresolved dimensions."
+        else:
+            entry["assessment"]["reason"] = "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
         (allies if is_ally_candidate else others).append(entry)
     return sorted(others, key=lambda value: value["id"]), sorted(allies, key=lambda value: value["id"])
 
@@ -358,20 +508,84 @@ def warnings(evidence: dict[str, Any]) -> list[dict[str, Any]]:
     ]
 
 
+def audit_findings() -> list[dict[str, Any]]:
+    return [
+        {
+            "id": "boss-reward-json-unused-fields",
+            "status": "source_verified",
+            "severity": "high",
+            "finding": "attribute_contributions and ability_multipliers exist in reward JSON but are not parsed into RewardProfile and therefore do not affect EquipmentScaler.",
+            "mechanism": "BalanceDataParser.parseRewards constructs RewardProfile(item_id, source_boss, category); RewardProfile has exactly those three components; EquipmentScaler adds only Progression enchantment contributions.",
+            "sources": [
+                "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BalanceDataParser.java",
+                "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/RewardProfile.java",
+                "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/EquipmentScaler.java",
+            ],
+            "runtime_change": False,
+        },
+        {
+            "id": "frostbitten-golem-special-stack",
+            "status": "source_verified",
+            "severity": "critical_review",
+            "finding": "Frostbitten Golem special damage multipliers [2.7, 2.8, 3.2, 5.0, 5.0] stack with the ordinary registered-boss tier boost and hosted participant damage factor outside Raid; hosted owned attacks then receive x0.88. Raid skips the profile special multiplier.",
+            "mechanism": "JemWorldBossTiers multiplies factor by BossTierScaling.boost(tier), then non-Raid specialDamageMultiplier, then HostedEncounters.damageFactor; a later hosted-owner branch multiplies by 0.88.",
+            "sources": [
+                "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+                "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java",
+            ],
+            "runtime_change": False,
+        },
+        {
+            "id": "blood-moon-penetration-post-mitigation",
+            "status": "source_verified",
+            "severity": "semantic_mismatch",
+            "finding": "Blood Moon Armor Penetration is post-mitigation damage amplification, not removal of a fraction of armor/toughness.",
+            "mechanism": "LivingDamageEvent amount is divided by (1 - min(0.30, penetration)); the event is after armor mitigation. The player debuff is another damage multiplier.",
+            "sources": [
+                "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventMobModifiers.java",
+                "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BossDebuffController.java",
+            ],
+            "runtime_change": False,
+        },
+        {
+            "id": "progression-guard-any-hurt-event",
+            "status": "source_verified",
+            "severity": "review",
+            "finding": "Tier III Progression chest guard is consumed by the first qualifying LivingHurtEvent while ready, without a heavy-hit, projectile, minimum-damage or damage-type gate of its own.",
+            "mechanism": "The guardReady branch adds 35% reduction and immediately writes a 240-tick cooldown; it is independent of the separate heavy-hit branch.",
+            "sources": ["Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/ProgressionArmor.java"],
+            "runtime_change": False,
+        },
+        {
+            "id": "equipment-durability-current-state",
+            "status": "source_verified",
+            "severity": "resolved_before_phase_2",
+            "finding": "The current main branch does not grant artificial infinite durability or default max-damage values to progression/boss equipment. Eligible equipment keeps native wear, Mending and Unbreaking; dropped-item protection is a separate loss-prevention rule.",
+            "mechanism": "Current module logic lock and localization explicitly preserve normal durability; no InfiniteEquipmentDurability production class exists in the current source tree.",
+            "sources": [
+                "Mods/JEMWorldBossTiers/AGENTS.logic-locks.md",
+                "Mods/JEMWorldBossTiers/src/main/resources/assets/jem_world_boss_tiers/lang/en_us.json",
+            ],
+            "runtime_change": False,
+        },
+    ]
+
+
 def main() -> int:
     snapshot = git_head()
     evidence = load(CATALOG / "power-sources" / "irons-spellbooks-3.15.6.json")
+    native = load(CATALOG / "power-sources" / "native-mechanics-phase2.json")
     evidence_jar = ROOT / evidence["artifact"]["canonical_path"]
     actual_sha256 = hashlib.sha256(evidence_jar.read_bytes()).hexdigest()
     if actual_sha256 != evidence["artifact"]["sha256"]:
         raise SystemExit(f"stale Iron's Spells power evidence: expected {evidence['artifact']['sha256']}, found {actual_sha256}")
-    weapons = item_records("weapon_candidate", "views/weapons/*.json", ["damage", "attack speed", "reach/range", "area", "cooldown", "resource cost"], "progression enchantment conditional tier multiplier and critical")
-    armor = item_records("armor_candidate", "views/armor/*.json", ["armor", "toughness", "knockback resistance", "damage-type mitigation", "durability"], "progression enchantment conditional slot bonuses")
-    accessories = accessory_records()
+    weapons = item_records("weapon_candidate", "views/weapons/*.json", ["damage", "attack speed", "reach/range", "area", "cooldown", "resource cost"], native, "progression enchantment conditional tier multiplier and critical")
+    armor = item_records("armor_candidate", "views/armor/*.json", ["armor", "toughness", "knockback resistance", "damage-type mitigation", "durability"], native, "progression enchantment conditional slot bonuses")
+    accessories = accessory_records(native)
     enchantments = enchantment_records()
-    spells = spell_records(evidence)
-    bosses = boss_records()
-    hostiles, allies = entity_records({row["id"] for row in bosses})
+    spells = spell_records(evidence, native)
+    bosses = boss_records(native)
+    hostiles, allies = entity_records({row["id"] for row in bosses}, native)
     outputs = {
         "weapons.json": ("weapons", weapons),
         "defenses.json": ("armor_and_defense", armor),
@@ -383,7 +597,8 @@ def main() -> int:
         "allies.json": ("allies_troops_summons_mounts", allies),
         "modifiers.json": ("shared_modifiers", modifier_records()),
         "scenarios.json": ("combat_scenarios", scenarios()),
-        "warnings.json": ("regression_warnings", warnings(evidence))
+        "warnings.json": ("regression_warnings", warnings(evidence)),
+        "findings.json": ("phase_2_source_findings", audit_findings())
     }
     for name, (kind, values) in outputs.items():
         write(name, envelope(kind, values, snapshot))
@@ -406,11 +621,20 @@ def main() -> int:
         "reason_no_full_resolution": "No static record proves every runtime ItemStack attribute, target mitigation, attack channel and acquisition context.",
         "evidence_levels": ["atlas_static", "source_verified", "exact_jar_bytecode", "runtime_observed"],
         "unresolved_is_zero": False,
+        "phase": 2,
+        "native_mechanics": {
+            "spell_owner_classes_resolved": sum(bool(row.get("native_mechanics", {}).get("owner_class")) for row in spells),
+            "boss_owner_classes_resolved": sum(bool(row.get("native_mechanics", {}).get("owner_classes")) for row in bosses),
+            "boss_channel_slots": sum(len(row.get("attacks", [])) for row in bosses),
+            "spell_channel_slots": sum(len(row.get("native_mechanics", {}).get("channels", [])) for row in spells),
+            "ally_owner_classes_resolved": sum(bool(row.get("native_mechanics", {}).get("owner_classes")) for row in allies),
+            "literal_item_registrations_observed": len(native["item_registrations"]),
+        },
         "known_gaps": [
-            "Dynamic Java-only registrations and ItemStack/NBT variants",
-            "Native weapon attributes and Epic Fight moveset timing for every weapon",
-            "Native formula for every Iron's Spells spell beyond the priority beam candidates",
-            "Every individual boss attack channel",
+            "Dynamic/helper-built item registrations and ItemStack/NBT variants",
+            "Registered Item implementation attributes and Epic Fight/Nightfall moveset timing for each cleaned weapon",
+            "Complex Iron's Spells arithmetic delegated to projectile/effect classes beyond the safe symbolic bytecode subset",
+            "Boss arithmetic delegated from matched owner classes into goals/projectiles/effects",
             "Entity hostility/taming/AI and native attributes for heuristic candidates",
             "Actual observed beam ItemStack spell ID, level, caster attributes and target resistances"
         ]

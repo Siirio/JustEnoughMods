@@ -1,0 +1,72 @@
+{
+  "schema_version": 2,
+  "view": "phase_2_source_findings",
+  "snapshot_sha": "5e22e299576eb74c7a484a6536e3cd3a10f65f88",
+  "generation": {
+    "generator": "Catalog/generator/build_power_views.py",
+    "method": "offline derived evidence",
+    "deterministic": true
+  },
+  "records": [
+    {
+      "id": "boss-reward-json-unused-fields",
+      "status": "source_verified",
+      "severity": "high",
+      "finding": "attribute_contributions and ability_multipliers exist in reward JSON but are not parsed into RewardProfile and therefore do not affect EquipmentScaler.",
+      "mechanism": "BalanceDataParser.parseRewards constructs RewardProfile(item_id, source_boss, category); RewardProfile has exactly those three components; EquipmentScaler adds only Progression enchantment contributions.",
+      "sources": [
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BalanceDataParser.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/RewardProfile.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/EquipmentScaler.java"
+      ],
+      "runtime_change": false
+    },
+    {
+      "id": "frostbitten-golem-special-stack",
+      "status": "source_verified",
+      "severity": "critical_review",
+      "finding": "Frostbitten Golem special damage multipliers [2.7, 2.8, 3.2, 5.0, 5.0] stack with the ordinary registered-boss tier boost and hosted participant damage factor outside Raid; hosted owned attacks then receive x0.88. Raid skips the profile special multiplier.",
+      "mechanism": "JemWorldBossTiers multiplies factor by BossTierScaling.boost(tier), then non-Raid specialDamageMultiplier, then HostedEncounters.damageFactor; a later hosted-owner branch multiplies by 0.88.",
+      "sources": [
+        "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java"
+      ],
+      "runtime_change": false
+    },
+    {
+      "id": "blood-moon-penetration-post-mitigation",
+      "status": "source_verified",
+      "severity": "semantic_mismatch",
+      "finding": "Blood Moon Armor Penetration is post-mitigation damage amplification, not removal of a fraction of armor/toughness.",
+      "mechanism": "LivingDamageEvent amount is divided by (1 - min(0.30, penetration)); the event is after armor mitigation. The player debuff is another damage multiplier.",
+      "sources": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventMobModifiers.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BossDebuffController.java"
+      ],
+      "runtime_change": false
+    },
+    {
+      "id": "progression-guard-any-hurt-event",
+      "status": "source_verified",
+      "severity": "review",
+      "finding": "Tier III Progression chest guard is consumed by the first qualifying LivingHurtEvent while ready, without a heavy-hit, projectile, minimum-damage or damage-type gate of its own.",
+      "mechanism": "The guardReady branch adds 35% reduction and immediately writes a 240-tick cooldown; it is independent of the separate heavy-hit branch.",
+      "sources": [
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/ProgressionArmor.java"
+      ],
+      "runtime_change": false
+    },
+    {
+      "id": "equipment-durability-current-state",
+      "status": "source_verified",
+      "severity": "resolved_before_phase_2",
+      "finding": "The current main branch does not grant artificial infinite durability or default max-damage values to progression/boss equipment. Eligible equipment keeps native wear, Mending and Unbreaking; dropped-item protection is a separate loss-prevention rule.",
+      "mechanism": "Current module logic lock and localization explicitly preserve normal durability; no InfiniteEquipmentDurability production class exists in the current source tree.",
+      "sources": [
+        "Mods/JEMWorldBossTiers/AGENTS.logic-locks.md",
+        "Mods/JEMWorldBossTiers/src/main/resources/assets/jem_world_boss_tiers/lang/en_us.json"
+      ],
+      "runtime_change": false
+    }
+  ]
+}
