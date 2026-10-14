@@ -26,7 +26,7 @@
     "overrides": []
   },
   "change": {
-    "summary": "Original native opening/menu/screen/offers with Coin icon quotes; guarded quoted monetary result actions and Wallet credit; native Buyer with no chat; one paid-currency Human benefit",
+    "summary": "Original native opening/menu/screen/offers and resource-pack presentation with non-rendering secured Coin actions and Wallet credit; native Buyer with no chat; one paid-currency Human benefit",
     "modifiers": [
       {
         "property": "economy.native_trade.presentation",
@@ -35,7 +35,7 @@
           "value": "Canceled native opening, custom18-slot immediate-click GUI; Buyer chat bulletin; Human emerald refund after Coin payment"
         },
         "after": {
-          "value": "Original native opening/menu/screen/offers with Coin icon quotes; guarded quoted monetary result actions and Wallet credit; native Buyer with no chat; one paid-currency Human benefit"
+          "value": "Original native opening/menu/screen/offers and resource-pack styling; no JEM price/status/balance renderer; guarded quoted monetary result actions and Wallet credit; native Buyer with no chat; one paid-currency Human benefit"
         }
       }
     ]
@@ -50,7 +50,6 @@
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/CoinTradeContext.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/CoinTradePriceEvent.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/CoinPriceRenderer.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/EconomyClient.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/NativeTradeClient.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/NativeTradeScreenAccess.java",
@@ -84,8 +83,8 @@
     ]
   },
   "rationale": {
-    "purpose": "Extend approved native interfaces instead of replacing them.",
-    "decision_source": "Direct user native GUI/Coin/Buyer/Xaero brief and approved written design/plans2026-10-14; implementation mechanisms chosen by Codex."
+    "purpose": "Keep Minecraft and the selected resource pack as the merchant presentation owner while retaining authoritative Coin settlement.",
+    "decision_source": "Direct user runtime correction2026-10-14 that the visible merchant overhaul was JEM-owned and CoffeeGUI must remain; non-rendering adapter boundary chosen by Codex."
   },
   "introduced": {
     "date": "2026-10-14",
@@ -193,6 +192,16 @@
         "Catalog/generator/impact_model.py",
         "Catalog/README.md"
       ]
+    },
+    {
+      "date": "2026-10-14",
+      "commit": "SELF",
+      "action": "remove_jem_merchant_rendering",
+      "summary": "Removed MerchantScreen cost/result redirects, price/status/balance drawing and the dead CoinPriceRenderer while retaining native selection synchronization and secured Coin click settlement. CoffeeGUI remains unchanged.",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/CoinPriceRenderer.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/MerchantScreenMixin.java"
+      ]
     }
   ],
   "impacts": {
@@ -213,13 +222,14 @@
     "notes": [
       "Native item barter preserves the original slot and selected-offer lifecycle; both orientations remain supported.",
       "Wallet protocol2->3 requires matching Economy/Roles/Server client/server artifacts; none built or deployed.",
-      "Unknown/protected/NBT offers stay visible/unavailable; no item policy, emerald rate, supply or cap was changed.",
+      "Unknown/protected/NBT offers stay server-denied; no item policy, emerald rate, supply or cap was changed.",
       "Quote actions acknowledge revision/selection/nonce and original terms; source-only review addressed four important findings.",
       "Common monetary Mixins and command/listener registration are physically dedicated-only; client retains presentation/registry/network compatibility.",
-      "Removed custom screen/menu/provider paths remain in history, not current cause evidence."
+      "Removed custom screen/menu/provider and CoinPriceRenderer paths remain in history, not current cause evidence.",
+      "CoffeeGUI remains the selected merchant texture owner; JEM's remaining MerchantScreen Mixin performs no rendering."
     ],
     "unresolved": [
-      "Build, Mixin runtime, gameplay and rendered acceptance were not authorized or performed."
+      "Fresh artifacts load on the dedicated server; player gameplay and rendered acceptance remain pending."
     ]
   }
 }

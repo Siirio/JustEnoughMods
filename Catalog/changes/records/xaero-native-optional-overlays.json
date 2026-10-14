@@ -21,16 +21,26 @@
     "overrides": []
   },
   "change": {
-    "summary": "Native GuiMap with local per-layer native-dropdown choices, hidden by default; enabled union outlines and one hovered label; hiding/logout cancels unfinished local draft",
+    "summary": "Xaero owns GuiMap construction, rendering, camera, controls, right-click menus and waypoint actions; JEM retains only data adapters and may invoke Xaero's native open-map control",
     "modifiers": [
       {
         "property": "client.xaero.jem_overlay_presentation",
         "operation": "replace",
         "before": {
-          "value": "Always drawn filled territories/projects/events with persistent labels and no visibility preference"
+          "value": "JEM MapScreen, WaypointMenu and WaypointTeleport Mixins added overlays, menu actions and native waypoint teleport cancellation"
         },
         "after": {
-          "value": "Native GuiMap with local per-layer native-dropdown choices, hidden by default; enabled union outlines and one hovered label; hiding/logout cancels unfinished local draft"
+          "value": "No JEM GuiMap rendering, right-click entry or waypoint action interception"
+        }
+      },
+      {
+        "property": "client.xaero.screen_ownership",
+        "operation": "replace",
+        "before": {
+          "value": "JEM constructed and reflectively centered GuiMap from profile and campaign locator flows"
+        },
+        "after": {
+          "value": "Only Xaero's native ControlsHandler opens GuiMap; JEM does not construct, center or mutate the screen"
         }
       }
     ]
@@ -41,16 +51,17 @@
     "source_files": [
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/JemServer.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapClient.java",
-      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapLayerPreferences.java",
-      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/ProjectRegionClient.java",
-      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/MapScreenMixin.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/XaeroMapPreview.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/JemServerMixinPlugin.java",
+      "Mods/JEMServer/src/main/resources/jem_server.mixins.json",
+      "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/client/CampaignMapClient.java",
       "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json",
       "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json"
     ]
   },
   "rationale": {
-    "purpose": "Extend approved native interfaces instead of replacing them.",
-    "decision_source": "Direct user native GUI/Coin/Buyer/Xaero brief and approved written design/plans2026-10-14; implementation mechanisms chosen by Codex."
+    "purpose": "Keep Xaero's screen construction, presentation, camera and actions entirely native while retaining narrow data sharing adapters.",
+    "decision_source": "Direct user runtime corrections on2026-10-14 that Xaero remained overhauled and that JEM's Xaero screen must also be removed; native ControlsHandler invocation was selected from exact installed Xaero 1.46.0 bytecode evidence."
   },
   "introduced": {
     "date": "2026-10-14",
@@ -62,7 +73,6 @@
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapClient.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapLayerPreferences.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/ProjectRegionClient.java",
-      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/MapScreenMixin.java",
       "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json",
       "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json"
     ]
@@ -78,9 +88,34 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapClient.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapLayerPreferences.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/ProjectRegionClient.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/MapScreenMixin.java",
         "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json",
         "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json"
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "commit": "SELF",
+      "action": "remove_xaero_screen_interception",
+      "summary": "Disabled JEM MapScreen, WaypointMenu and WaypointTeleport Mixins and removed the unused JEM map-layer client config registration; native shared terrain/full-cave and boss marker adapters remain.",
+      "source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/JemServer.java",
+        "Mods/JEMServer/src/main/resources/jem_server.mixins.json"
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "commit": "SELF",
+      "action": "remove_jem_xaero_screen_construction",
+      "summary": "Deleted the disabled JEM Xaero screen/menu/action Mixin sources, their MapView bridge and JEMTwelveEyes' reflective XaeroBossMapScreen; profile and locator flows now call Xaero's native open-map control without screen construction or camera mutation.",
+      "source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapView.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/XaeroMapPreview.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/MapScreenMixin.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/WaypointMenuMixin.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/WaypointTeleportMixin.java",
+        "Mods/JEMServer/src/main/resources/jem_server.mixins.json",
+        "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/client/CampaignMapClient.java",
+        "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/client/XaeroBossMapScreen.java"
       ]
     }
   ],
@@ -98,11 +133,12 @@
       "native producer -> server authoritative state -> synchronized client presentation"
     ],
     "notes": [
-      "No native GUI/resource replacement, waypoint/terrain/boss sharing change, permissions mutation or world-space event wall change.",
-      "Preferences persist in client-only jem-map-layers-client.toml, not native Xaero files or server SavedData."
+      "No native GUI/resource replacement, terrain/boss sharing change, permissions mutation or world-space event wall change.",
+      "Locator coordinates are shown as a normal client message because JEM no longer controls Xaero's dimension or camera.",
+      "JEM no longer registers jem-map-layers-client.toml because no JEM layer is presented inside Xaero."
     ],
     "unresolved": [
-      "Build, Mixin runtime, gameplay and rendered acceptance were not authorized or performed."
+      "Fresh artifacts load on the dedicated server and contain none of the deleted screen classes; player-rendered acceptance remains pending."
     ]
   }
 }

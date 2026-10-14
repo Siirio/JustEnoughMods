@@ -42,8 +42,6 @@ public final class JemServer {
 
     public JemServer() {
         boolean dedicated = net.minecraftforge.fml.loading.FMLEnvironment.dist == net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER;
-        if (!dedicated) ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT,
-                com.siirio.jemserver.client.xaero.MapLayerPreferences.SPEC, "jem-map-layers-client.toml");
         sleep = dedicated ? new SleepVote() : null;
         pendingDeaths = dedicated ? new HashMap<>() : null;
         if (dedicated) {

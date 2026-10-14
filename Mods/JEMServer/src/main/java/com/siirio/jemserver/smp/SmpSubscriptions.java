@@ -12,7 +12,7 @@ final class SmpSubscriptions {
 
     static void query(ServerPlayer player, SmpQuery query) {
         if (query.tab().isEmpty()) { close(player); return; }
-        try { SmpTable.fromKey(query.tab()); } catch (IllegalArgumentException invalid) { return; }
+        if (!SmpTable.viewable(query.tab())) return;
         if (query.page() < 0 || query.page() > SmpProtocol.MAX_PAGE) return;
         VIEWS.computeIfAbsent(player.getUUID(), ignored -> new SmpViewSession(query)).select(query);
     }

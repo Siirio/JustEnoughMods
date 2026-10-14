@@ -2,16 +2,16 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "da9b8d63238b599f58c403b6d57445906e56f7555ea4da4d386b5b2fc2cdb321",
+  "change_records_sha256": "65bded811c45bed8e79d972bd096846fddc23f10e014888caec266028d8c9765",
   "totals": {
-    "watched": 3147,
-    "covered": 135,
-    "unresolved": 3012
+    "watched": 3192,
+    "covered": 183,
+    "unresolved": 3009
   },
   "groups": {
     "Client/ManagedPack/config": {
-      "watched": 1365,
-      "covered": 0,
+      "watched": 1418,
+      "covered": 53,
       "unresolved": 1365,
       "unresolved_paths": [
         "Client/ManagedPack/config/Barnyard Buddies Config.toml",
@@ -1568,8 +1568,8 @@
       ]
     },
     "Mods/JEMEconomy": {
-      "watched": 95,
-      "covered": 64,
+      "watched": 94,
+      "covered": 63,
       "unresolved": 31,
       "unresolved_paths": [
         "Mods/JEMEconomy/gradle.properties",
@@ -2639,8 +2639,8 @@
       ]
     },
     "Mods/JEMProfessions": {
-      "watched": 27,
-      "covered": 27,
+      "watched": 20,
+      "covered": 20,
       "unresolved": 0,
       "unresolved_paths": []
     },
@@ -2672,8 +2672,8 @@
     },
     "Mods/JEMServer": {
       "watched": 297,
-      "covered": 32,
-      "unresolved": 265,
+      "covered": 34,
+      "unresolved": 263,
       "unresolved_paths": [
         "Mods/JEMServer/gradle.properties",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/BossLeaderboard.java",
@@ -2716,12 +2716,12 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/ui/SmpRenderState.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapView.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/ProjectNameScreen.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/ProjectRegionClient.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/compat/TpaCompat.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/map/ProjectCommands.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/map/ProjectRegionData.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/map/RegionPalette.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/map/RegionPermissions.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/JemServerMixinPlugin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/PlayerSaveAccess.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/SleepStatusVoteMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/SolidBoundaryMixin.java",
@@ -2759,6 +2759,7 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/staging/VoidAltarStagingMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/teleport/MobBoundaryTeleportMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/teleport/ServerPlayerTeleportMixin.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/MapScreenMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/WaypointMenuMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/WaypointTeleportMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/shared/FullCaveLayerPolicyMixin.java",
@@ -2794,8 +2795,6 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpRecords.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpRequests.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpRevive.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpSubscriptions.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpTable.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpUpdate.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViewRevision.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViewSession.java",
@@ -2935,7 +2934,6 @@
         "Mods/JEMServer/src/main/resources/data/jem_server/tags/items/cooking/nether_ingredients.json",
         "Mods/JEMServer/src/main/resources/data/jem_server/tags/items/cooking/rare_ingredients.json",
         "Mods/JEMServer/src/main/resources/data/jem_server/tags/items/cooking/world_ingredients.json",
-        "Mods/JEMServer/src/main/resources/jem_server.mixins.json",
         "Mods/JEMServer/src/main/resources/jem_server_fishing.mixins.json",
         "Mods/JEMServer/src/main/resources/jem_server_revive.mixins.json",
         "Mods/JEMServer/src/main/resources/jem_server_shops.mixins.json",
@@ -2994,8 +2992,8 @@
     },
     "Mods/JEMTwelveEyes": {
       "watched": 44,
-      "covered": 0,
-      "unresolved": 44,
+      "covered": 1,
+      "unresolved": 43,
       "unresolved_paths": [
         "Mods/JEMTwelveEyes/build.gradle",
         "Mods/JEMTwelveEyes/gradle.properties",
@@ -3030,7 +3028,6 @@
         "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/api/BossLocation.java",
         "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/api/CampaignApi.java",
         "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/api/CampaignTerritory.java",
-        "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/client/CampaignMapClient.java",
         "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/client/GateWarningLayout.java",
         "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/client/GateWarningOverlay.java",
         "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/client/XaeroBossMapScreen.java",

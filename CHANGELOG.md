@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-14 — `/smp`, Market and native interface regressions corrected
+
+- User runtime report and correction: `/smp` did not open, the Global Market was absent from the reachable SMP UI, Xaero still behaved as a JEM-overhauled screen, and vanilla villager trading still had JEM-owned presentation. CoffeeGUI is explicitly retained; it was not the unwanted owner.
+- `Bug / Both Sided / the SMP query validator accepted only mutable SmpTable names and silently rejected the read-only start route home, so /smp created no view session or open packet and its existing Market sidebar route could never be reached / in testing`: read-only `home`, `settlements` and `recruits` routes now pass separate bounded view validation without changing action-table wire ordinals.
+- `Bug / Client / three active JEMServer Mixins still injected map rendering, right-click entries and waypoint teleport rewrites into native Xaero / in testing`: those GuiMap/waypoint Mixins and their client preference registration are disabled; native shared-terrain/full-cave reconciliation, discovered-boss markers and authorized profile Home focus remain.
+- User correction: remove JEM's own Xaero screen as well. The disabled screen/menu/action Mixin sources, their `MapView` bridge and JEMTwelveEyes' reflective `XaeroBossMapScreen` are deleted. Home/locator actions now only invoke Xaero 1.46.0's native `ControlsHandler` open-map path; JEM no longer constructs or centers `GuiMap`, and locator coordinates remain visible in chat.
+- `Bug / Client / JEMEconomy still redirected and drew MerchantScreen costs, payouts, status and Wallet balance over the native resource-pack-owned screen / in testing`: all JEM merchant rendering and the now-dead price renderer are removed. The native MerchantScreen and CoffeeGUI presentation remain; only selection synchronization and the secured server-authoritative Coin click adapter remain.
+- No CoffeeGUI file or selection was removed. JEMServer, JEMEconomy and JEMTwelveEyes built successfully without tests; matching artifacts were installed in `Client/ManagedPack` and local `Server`. The server reached `Done` on `127.0.0.1:31605`, `/smp` is registered, and native AutoModpack published token `1c54e76` with exactly the manifest plus those three JARs changed. Player-rendered acceptance remains `in testing` until the user relaunches and verifies the screens.
+
 ## 2026-10-14 — Local server restarted after native profession update
 
 - User request: start the updated ordinary local server again.
