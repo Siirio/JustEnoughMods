@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "771921f0f69fcf5456a8973c1dbb45689224354f37ee11b87b7c26b423b1de31",
+  "change_records_sha256": "a116b9758b1093c5ef3cfa6ea612b8e1f01350afb0592386c15d8882fbd8de9a",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -87,6 +87,21 @@
       "potential_static_target_count": 3
     },
     {
+      "change_id": "atlas.power-system-analysis",
+      "status": "active",
+      "summary": "Add a derived, non-runtime combat inventory, formula lookup, scenario model, honest coverage report and deterministic review warnings.",
+      "record": "Catalog/changes/records/power-system-analysis.json",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "jem:power_system_analysis"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 0
+    },
+    {
       "change_id": "settlements.native-guidance-build-import",
       "status": "active",
       "summary": "Restore the missing BlockPos import required to compile existing soft town guidance; no runtime rule changes.",
@@ -129,6 +144,10 @@
     }
   ],
   "source_fingerprints": {
+    "Catalog/generator/build_power_views.py": "8f752e94bba81bec1bf6ccc4d87787404d78ad1ba5273a7b6a822ae3f0d72c94",
+    "Catalog/generator/query_atlas.py": "cdca14d066ccd28d5098dfa17e9e0f5361fee62ae29dc7e684f7ee40ecef13a7",
+    "Catalog/power-sources/irons-spellbooks-3.15.6.json": "879cdad98ec1ec3f29030ed8673a79fc57629f33887c55d449ee1375b8545b3c",
+    "Docs/power-system/README.md": "e70dbc0a4c0755b8a13e67521e064dfe8791bc009db73e8301beab4d604b3dea",
     "Mods/JEMCompat/build.gradle": "7b79f9161e4116f9e45f5e7ecb230252158b1dd696a4b0a990cfe6b80e131e02",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantMenu.java": "916e500370b3ceffa51ec06605725ed06831558efd1d27b3e414c85ce104e487",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java": "ff67275e95e10dba4ae35b0a410b6d0ad933a463e69a245ba375b9041668a1a1",

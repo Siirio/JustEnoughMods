@@ -1,0 +1,3566 @@
+{
+  "schema_version": 1,
+  "view": "bosses",
+  "snapshot_sha": "f81e1b92cb02ace680e4a480aa8cd1a30ff37a79",
+  "generation": {
+    "generator": "Catalog/generator/build_power_views.py",
+    "method": "offline derived evidence",
+    "deterministic": true
+  },
+  "records": [
+    {
+      "id": "alexscaves:luxtructosaurus",
+      "kind": "registered_boss",
+      "profile_key": "alexscaves:luxtructosaurus",
+      "display_name": "Luxtructosaurus",
+      "jem_registered_profile": true,
+      "native_boss_tag": true,
+      "attacks": [
+        {
+          "id": "alexscaves:luxtructosaurus#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        },
+        {
+          "type": "native_boss_tag",
+          "jar": "alexscaves-2.0.2.jar",
+          "tag": "data/forge/tags/entity_types/bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "aquamirae:captain_cornelia",
+      "kind": "registered_boss",
+      "profile_key": "aquamirae:captain_cornelia",
+      "display_name": "Captain Cornelia",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "aquamirae:captain_cornelia#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "block_factorys_bosses:infernal_dragon",
+      "kind": "registered_boss",
+      "profile_key": "block_factorys_bosses:infernal_dragon",
+      "display_name": "Ashlord, The Infernal Dragon",
+      "jem_registered_profile": true,
+      "native_boss_tag": true,
+      "attacks": [
+        {
+          "id": "block_factorys_bosses:infernal_dragon#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+          "confidence": "source_verified"
+        },
+        {
+          "type": "native_boss_tag",
+          "jar": "block_factorys_bosses-2.1.2-forge-1.20.1.jar",
+          "tag": "data/block_factorys_bosses/tags/entity_types/bf_boss.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "block_factorys_bosses:kraken",
+      "kind": "registered_boss",
+      "profile_key": "block_factorys_bosses:kraken",
+      "display_name": "Nerakyss, The Kraken",
+      "jem_registered_profile": true,
+      "native_boss_tag": true,
+      "attacks": [
+        {
+          "id": "block_factorys_bosses:kraken#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+          "confidence": "source_verified"
+        },
+        {
+          "type": "native_boss_tag",
+          "jar": "block_factorys_bosses-2.1.2-forge-1.20.1.jar",
+          "tag": "data/block_factorys_bosses/tags/entity_types/bf_boss.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "block_factorys_bosses:sandworm",
+      "kind": "registered_boss",
+      "profile_key": "block_factorys_bosses:sandworm",
+      "display_name": "Sirok, The Sandworm",
+      "jem_registered_profile": true,
+      "native_boss_tag": true,
+      "attacks": [
+        {
+          "id": "block_factorys_bosses:sandworm#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+          "confidence": "source_verified"
+        },
+        {
+          "type": "native_boss_tag",
+          "jar": "block_factorys_bosses-2.1.2-forge-1.20.1.jar",
+          "tag": "data/block_factorys_bosses/tags/entity_types/bf_boss.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "block_factorys_bosses:underworld_knight",
+      "kind": "registered_boss",
+      "profile_key": "block_factorys_bosses:underworld_knight",
+      "display_name": "Helvar, the Underworld Knight",
+      "jem_registered_profile": true,
+      "native_boss_tag": true,
+      "attacks": [
+        {
+          "id": "block_factorys_bosses:underworld_knight#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+          "confidence": "source_verified"
+        },
+        {
+          "type": "native_boss_tag",
+          "jar": "block_factorys_bosses-2.1.2-forge-1.20.1.jar",
+          "tag": "data/block_factorys_bosses/tags/entity_types/bf_boss.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "block_factorys_bosses:yeti",
+      "kind": "registered_boss",
+      "profile_key": "block_factorys_bosses:yeti",
+      "display_name": "Skor, The Yeti",
+      "jem_registered_profile": true,
+      "native_boss_tag": true,
+      "attacks": [
+        {
+          "id": "block_factorys_bosses:yeti#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+          "confidence": "source_verified"
+        },
+        {
+          "type": "native_boss_tag",
+          "jar": "block_factorys_bosses-2.1.2-forge-1.20.1.jar",
+          "tag": "data/block_factorys_bosses/tags/entity_types/bf_boss.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "cataclysm:ancient_remnant",
+      "kind": "registered_boss",
+      "profile_key": "cataclysm:ancient_remnant",
+      "display_name": "Ancient Remnant",
+      "jem_registered_profile": true,
+      "native_boss_tag": true,
+      "attacks": [
+        {
+          "id": "cataclysm:ancient_remnant#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+          "confidence": "source_verified"
+        },
+        {
+          "type": "native_boss_tag",
+          "jar": "L_Enders_Cataclysm-3.31.jar",
+          "tag": "data/forge/tags/entity_types/bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "cataclysm:clawdian",
+      "kind": "registered_boss",
+      "profile_key": "cataclysm:clawdian",
+      "display_name": "Clawdian",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "cataclysm:clawdian#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "cataclysm:ender_golem",
+      "kind": "registered_boss",
+      "profile_key": "cataclysm:ender_golem",
+      "display_name": "Ender Golem",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "cataclysm:ender_golem#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "cataclysm:ender_guardian",
+      "kind": "registered_boss",
+      "profile_key": "cataclysm:ender_guardian",
+      "display_name": "Ender Guardian",
+      "jem_registered_profile": true,
+      "native_boss_tag": true,
+      "attacks": [
+        {
+          "id": "cataclysm:ender_guardian#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+          "confidence": "source_verified"
+        },
+        {
+          "type": "native_boss_tag",
+          "jar": "L_Enders_Cataclysm-3.31.jar",
+          "tag": "data/forge/tags/entity_types/bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "cataclysm:ignis",
+      "kind": "registered_boss",
+      "profile_key": "cataclysm:ignis",
+      "display_name": "Ignis",
+      "jem_registered_profile": true,
+      "native_boss_tag": true,
+      "attacks": [
+        {
+          "id": "cataclysm:ignis#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+          "confidence": "source_verified"
+        },
+        {
+          "type": "native_boss_tag",
+          "jar": "L_Enders_Cataclysm-3.31.jar",
+          "tag": "data/forge/tags/entity_types/bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "cataclysm:ignited_revenant",
+      "kind": "registered_boss",
+      "profile_key": "cataclysm:ignited_revenant",
+      "display_name": "Ignited Revenant",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "cataclysm:ignited_revenant#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "cataclysm:maledictus",
+      "kind": "registered_boss",
+      "profile_key": "cataclysm:maledictus",
+      "display_name": "Maledictus",
+      "jem_registered_profile": true,
+      "native_boss_tag": true,
+      "attacks": [
+        {
+          "id": "cataclysm:maledictus#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+          "confidence": "source_verified"
+        },
+        {
+          "type": "native_boss_tag",
+          "jar": "L_Enders_Cataclysm-3.31.jar",
+          "tag": "data/forge/tags/entity_types/bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "cataclysm:netherite_monstrosity",
+      "kind": "registered_boss",
+      "profile_key": "cataclysm:netherite_monstrosity",
+      "display_name": "Netherite Monstrosity",
+      "jem_registered_profile": true,
+      "native_boss_tag": true,
+      "attacks": [
+        {
+          "id": "cataclysm:netherite_monstrosity#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+          "confidence": "source_verified"
+        },
+        {
+          "type": "native_boss_tag",
+          "jar": "L_Enders_Cataclysm-3.31.jar",
+          "tag": "data/forge/tags/entity_types/bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "cataclysm:scylla",
+      "kind": "registered_boss",
+      "profile_key": "cataclysm:scylla",
+      "display_name": "Scylla",
+      "jem_registered_profile": true,
+      "native_boss_tag": true,
+      "attacks": [
+        {
+          "id": "cataclysm:scylla#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+          "confidence": "source_verified"
+        },
+        {
+          "type": "native_boss_tag",
+          "jar": "L_Enders_Cataclysm-3.31.jar",
+          "tag": "data/forge/tags/entity_types/bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "cataclysm:the_harbinger",
+      "kind": "registered_boss",
+      "profile_key": "cataclysm:the_harbinger",
+      "display_name": "The Harbinger",
+      "jem_registered_profile": true,
+      "native_boss_tag": true,
+      "attacks": [
+        {
+          "id": "cataclysm:the_harbinger#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+          "confidence": "source_verified"
+        },
+        {
+          "type": "native_boss_tag",
+          "jar": "L_Enders_Cataclysm-3.31.jar",
+          "tag": "data/forge/tags/entity_types/bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "cataclysm:the_leviathan",
+      "kind": "registered_boss",
+      "profile_key": "cataclysm:the_leviathan",
+      "display_name": "The Leviathan",
+      "jem_registered_profile": true,
+      "native_boss_tag": true,
+      "attacks": [
+        {
+          "id": "cataclysm:the_leviathan#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+          "confidence": "source_verified"
+        },
+        {
+          "type": "native_boss_tag",
+          "jar": "L_Enders_Cataclysm-3.31.jar",
+          "tag": "data/forge/tags/entity_types/bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "companions:sacred_pontiff",
+      "kind": "native_boss_candidate",
+      "profile_key": null,
+      "display_name": "Sacred Pontiff",
+      "jem_registered_profile": false,
+      "native_boss_tag": true,
+      "attacks": [
+        {
+          "id": "companions:sacred_pontiff#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "No JEM registered profile proven; native boss behavior remains authoritative."
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "Native boss tag is source-verified, but the entity is not in the canonical JEM Pack Core boss profiles."
+      },
+      "evidence": [
+        {
+          "type": "native_boss_tag",
+          "jar": "companions-forge-1.20.1-1.3.3.jar",
+          "tag": "data/forge/tags/entity_types/bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "irons_spellbooks:dead_king",
+      "kind": "native_boss_candidate",
+      "profile_key": null,
+      "display_name": "The Dead King",
+      "jem_registered_profile": false,
+      "native_boss_tag": true,
+      "attacks": [
+        {
+          "id": "irons_spellbooks:dead_king#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "No JEM registered profile proven; native boss behavior remains authoritative."
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "Native boss tag is source-verified, but the entity is not in the canonical JEM Pack Core boss profiles."
+      },
+      "evidence": [
+        {
+          "type": "native_boss_tag",
+          "jar": "irons_spellbooks-1.20.1-3.15.6.jar",
+          "tag": "data/forge/tags/entity_types/bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "irons_spellbooks:fire_boss",
+      "kind": "native_boss_candidate",
+      "profile_key": null,
+      "display_name": "Echo of Tyros, First Flamebearer",
+      "jem_registered_profile": false,
+      "native_boss_tag": true,
+      "attacks": [
+        {
+          "id": "irons_spellbooks:fire_boss#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "No JEM registered profile proven; native boss behavior remains authoritative."
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "Native boss tag is source-verified, but the entity is not in the canonical JEM Pack Core boss profiles."
+      },
+      "evidence": [
+        {
+          "type": "native_boss_tag",
+          "jar": "irons_spellbooks-1.20.1-3.15.6.jar",
+          "tag": "data/forge/tags/entity_types/bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "legendary_monsters:ambusher",
+      "kind": "registered_boss",
+      "profile_key": "legendary_monsters:ambusher",
+      "display_name": "Ambusher",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "legendary_monsters:ambusher#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "legendary_monsters:ancient_guardian",
+      "kind": "registered_boss",
+      "profile_key": "legendary_monsters:ancient_guardian",
+      "display_name": "Ancient Guardian",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "legendary_monsters:ancient_guardian#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "legendary_monsters:annihilation_pursuer",
+      "kind": "registered_boss",
+      "profile_key": "legendary_monsters:annihilation_pursuer",
+      "display_name": "Annihilation Pursuer",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "legendary_monsters:annihilation_pursuer#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "legendary_monsters:beheaded_knight",
+      "kind": "registered_boss",
+      "profile_key": "legendary_monsters:beheaded_knight",
+      "display_name": "Beheaded Knight",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "legendary_monsters:beheaded_knight#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "legendary_monsters:bomber",
+      "kind": "registered_boss",
+      "profile_key": "legendary_monsters:bomber",
+      "display_name": "Bomber",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "legendary_monsters:bomber#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "legendary_monsters:chorusling",
+      "kind": "registered_boss",
+      "profile_key": "legendary_monsters:chorusling",
+      "display_name": "Chorusling",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "legendary_monsters:chorusling#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "legendary_monsters:cloud_golem",
+      "kind": "registered_boss",
+      "profile_key": "legendary_monsters:cloud_golem",
+      "display_name": "Cumulonimbus",
+      "jem_registered_profile": true,
+      "native_boss_tag": true,
+      "attacks": [
+        {
+          "id": "legendary_monsters:cloud_golem#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+          "confidence": "source_verified"
+        },
+        {
+          "type": "native_boss_tag",
+          "jar": "legendarymonsters-2.2.2%20MC%201.20.1.jar",
+          "tag": "data/forge/tags/entity_types/bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "legendary_monsters:dune_sentinel",
+      "kind": "registered_boss",
+      "profile_key": "legendary_monsters:dune_sentinel",
+      "display_name": "Dune Sentinel",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "legendary_monsters:dune_sentinel#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "legendary_monsters:endersent",
+      "kind": "registered_boss",
+      "profile_key": "legendary_monsters:endersent",
+      "display_name": "Endersent",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "legendary_monsters:endersent#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "legendary_monsters:flame_drifter",
+      "kind": "registered_boss",
+      "profile_key": "legendary_monsters:flame_drifter",
+      "display_name": "Flame Drifter",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "legendary_monsters:flame_drifter#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "legendary_monsters:flameborn_guard",
+      "kind": "registered_boss",
+      "profile_key": "legendary_monsters:flameborn_guard",
+      "display_name": "Flameborn Guard",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "legendary_monsters:flameborn_guard#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "legendary_monsters:fractured",
+      "kind": "registered_boss",
+      "profile_key": "legendary_monsters:fractured",
+      "display_name": "Fractured",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "legendary_monsters:fractured#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "legendary_monsters:fractured_apostle",
+      "kind": "registered_boss",
+      "profile_key": "legendary_monsters:fractured_apostle",
+      "display_name": "Fractured Apostle",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "legendary_monsters:fractured_apostle#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "legendary_monsters:frostbitten_golem",
+      "kind": "registered_boss",
+      "profile_key": "legendary_monsters:frostbitten_golem",
+      "display_name": "Frostbitten Golem",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "legendary_monsters:frostbitten_golem#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "legendary_monsters:haunted_guard",
+      "kind": "registered_boss",
+      "profile_key": "legendary_monsters:haunted_guard",
+      "display_name": "Haunted Guard",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "legendary_monsters:haunted_guard#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "legendary_monsters:haunted_knight",
+      "kind": "registered_boss",
+      "profile_key": "legendary_monsters:haunted_knight",
+      "display_name": "Haunted Knight",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "legendary_monsters:haunted_knight#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "legendary_monsters:lava_eater",
+      "kind": "registered_boss",
+      "profile_key": "legendary_monsters:lava_eater",
+      "display_name": "Lava Eater",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "legendary_monsters:lava_eater#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "legendary_monsters:overgrown_colossus",
+      "kind": "registered_boss",
+      "profile_key": "legendary_monsters:overgrown_colossus",
+      "display_name": "Overgrown Colossus",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "legendary_monsters:overgrown_colossus#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "legendary_monsters:posessed_paladin",
+      "kind": "registered_boss",
+      "profile_key": "legendary_monsters:posessed_paladin",
+      "display_name": "Possessed Paladin",
+      "jem_registered_profile": true,
+      "native_boss_tag": true,
+      "attacks": [
+        {
+          "id": "legendary_monsters:posessed_paladin#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+          "confidence": "source_verified"
+        },
+        {
+          "type": "native_boss_tag",
+          "jar": "legendarymonsters-2.2.2%20MC%201.20.1.jar",
+          "tag": "data/forge/tags/entity_types/bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "legendary_monsters:resurrected_knight",
+      "kind": "registered_boss",
+      "profile_key": "legendary_monsters:resurrected_knight",
+      "display_name": "Resurrected Knight",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "legendary_monsters:resurrected_knight#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "legendary_monsters:shulker_mimic",
+      "kind": "registered_boss",
+      "profile_key": "legendary_monsters:shulker_mimic",
+      "display_name": "Shulker Mimic",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "legendary_monsters:shulker_mimic#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "legendary_monsters:skeletosaurus",
+      "kind": "registered_boss",
+      "profile_key": "legendary_monsters:skeletosaurus",
+      "display_name": "Skeletosaurus",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "legendary_monsters:skeletosaurus#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "legendary_monsters:spiky_bug",
+      "kind": "registered_boss",
+      "profile_key": "legendary_monsters:spiky_bug",
+      "display_name": "Spiky Bug",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "legendary_monsters:spiky_bug#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "legendary_monsters:the_obliterator",
+      "kind": "registered_boss",
+      "profile_key": "legendary_monsters:the_obliterator",
+      "display_name": "The Obliterator",
+      "jem_registered_profile": true,
+      "native_boss_tag": true,
+      "attacks": [
+        {
+          "id": "legendary_monsters:the_obliterator#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+          "confidence": "source_verified"
+        },
+        {
+          "type": "native_boss_tag",
+          "jar": "legendarymonsters-2.2.2%20MC%201.20.1.jar",
+          "tag": "data/forge/tags/entity_types/bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "legendary_monsters:wandering_eye",
+      "kind": "registered_boss",
+      "profile_key": "legendary_monsters:wandering_eye",
+      "display_name": "Wandering Eye",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "legendary_monsters:wandering_eye#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "legendary_monsters:warped_fungussus",
+      "kind": "registered_boss",
+      "profile_key": "legendary_monsters:warped_fungussus",
+      "display_name": "Warped Fungussus",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "legendary_monsters:warped_fungussus#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "legendary_monsters:withered_abomination",
+      "kind": "registered_boss",
+      "profile_key": "legendary_monsters:withered_abomination",
+      "display_name": "Withered Abomination",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "legendary_monsters:withered_abomination#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "luminous_beasts:bone_stalker",
+      "kind": "registered_boss",
+      "profile_key": "luminous_beasts:bone_stalker",
+      "display_name": "Bone Stalker",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "luminous_beasts:bone_stalker#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "luminous_beasts:golden_hermit_king",
+      "kind": "registered_boss",
+      "profile_key": "luminous_beasts:golden_hermit_king",
+      "display_name": "Golden Hermit King",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "luminous_beasts:golden_hermit_king#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "luminous_beasts:mummy",
+      "kind": "registered_boss",
+      "profile_key": "luminous_beasts:mummy",
+      "display_name": "Mummy",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "luminous_beasts:mummy#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "luminous_beasts:piglin_executioner",
+      "kind": "registered_boss",
+      "profile_key": "luminous_beasts:piglin_executioner",
+      "display_name": "Piglin Executioner",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "luminous_beasts:piglin_executioner#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "luminous_beasts:sea_viper",
+      "kind": "registered_boss",
+      "profile_key": "luminous_beasts:sea_viper",
+      "display_name": "Sea Viper",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "luminous_beasts:sea_viper#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "luminous_beasts:the_furnace",
+      "kind": "registered_boss",
+      "profile_key": "luminous_beasts:the_furnace",
+      "display_name": "Furnace",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "luminous_beasts:the_furnace#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "luminous_beasts:the_scarecrow",
+      "kind": "registered_boss",
+      "profile_key": "luminous_beasts:the_scarecrow",
+      "display_name": "The Scarecrow",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "luminous_beasts:the_scarecrow#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "luminous_beasts:wind_phoenix",
+      "kind": "registered_boss",
+      "profile_key": "luminous_beasts:wind_phoenix",
+      "display_name": "Wind Phoenix",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "luminous_beasts:wind_phoenix#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "luminous_beasts:yeti",
+      "kind": "registered_boss",
+      "profile_key": "luminous_beasts:yeti",
+      "display_name": "Yeti",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "luminous_beasts:yeti#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "luminous_nether:soul_furnace",
+      "kind": "registered_boss",
+      "profile_key": "luminous_nether:soul_furnace",
+      "display_name": "Soul Furnace",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "luminous_nether:soul_furnace#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "luminous_nether:warped_mushlin_king",
+      "kind": "registered_boss",
+      "profile_key": "luminous_nether:warped_mushlin_king",
+      "display_name": "Warped Mushlin King",
+      "jem_registered_profile": true,
+      "native_boss_tag": false,
+      "attacks": [
+        {
+          "id": "luminous_nether:warped_mushlin_king#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "if scales_with_world_tier: outgoing damage x(1 + 0.15*tier); optional profile special multiplier; hosted participant/raid damage factor; hosted owned attacks x0.88"
+        },
+        {
+          "expression": "max health receives profile/generic tier attributes, then x(1 + 0.15*tier), then hosted participant/raid health factor"
+        },
+        {
+          "expression": "below 30% health: +15% movement speed and attack speed (not direct damage)"
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "JEM registration and shared wrapper are resolved; individual native attacks are not uniformly represented by entity ATTACK_DAMAGE."
+      },
+      "evidence": [
+        {
+          "type": "jem_owner",
+          "source": "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "minecraft:ender_dragon",
+      "kind": "native_boss_candidate",
+      "profile_key": null,
+      "display_name": "Ender Dragon",
+      "jem_registered_profile": false,
+      "native_boss_tag": true,
+      "attacks": [
+        {
+          "id": "minecraft:ender_dragon#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "No JEM registered profile proven; native boss behavior remains authoritative."
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "Native boss tag is source-verified, but the entity is not in the canonical JEM Pack Core boss profiles."
+      },
+      "evidence": [
+        {
+          "type": "native_boss_tag",
+          "jar": "Minecraft 1.20.1 server",
+          "tag": "native boss contract",
+          "confidence": "source_verified"
+        }
+      ]
+    },
+    {
+      "id": "minecraft:wither",
+      "kind": "native_boss_candidate",
+      "profile_key": null,
+      "display_name": "Wither",
+      "jem_registered_profile": false,
+      "native_boss_tag": true,
+      "attacks": [
+        {
+          "id": "minecraft:wither#native_attack_channels",
+          "status": "unresolved",
+          "expression": "native melee/projectile/explosion/beam/summon/custom damage channels must be enumerated from the owning exact-version mod",
+          "unknown_is_zero": false
+        }
+      ],
+      "original": {
+        "status": "unresolved",
+        "expression": "native boss attack-specific logic; ATTACK_DAMAGE alone is insufficient",
+        "unknown_is_zero": false
+      },
+      "modifiers": [
+        {
+          "owner": "native boss mod",
+          "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"
+        }
+      ],
+      "jem_tweaks": [
+        {
+          "expression": "No JEM registered profile proven; native boss behavior remains authoritative."
+        }
+      ],
+      "effective": {
+        "status": "partial",
+        "expression": "native attack expression * applicable registered boss tier/special/hosted factors; each non-attribute attack still needs source tracing"
+      },
+      "acquisition": {
+        "status": "not_applicable",
+        "routes": []
+      },
+      "assessment": {
+        "status": "in_testing",
+        "reason": "Native boss tag is source-verified, but the entity is not in the canonical JEM Pack Core boss profiles."
+      },
+      "evidence": [
+        {
+          "type": "native_boss_tag",
+          "jar": "Minecraft 1.20.1 server",
+          "tag": "native boss contract",
+          "confidence": "source_verified"
+        }
+      ]
+    }
+  ]
+}

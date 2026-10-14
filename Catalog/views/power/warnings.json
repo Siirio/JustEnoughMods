@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "view": "regression_warnings",
+  "snapshot_sha": "f81e1b92cb02ace680e4a480aa8cd1a30ff37a79",
+  "generation": {
+    "generator": "Catalog/generator/build_power_views.py",
+    "method": "offline derived evidence",
+    "deterministic": true
+  },
+  "records": [
+    {
+      "id": "beam.reported-item-unidentified",
+      "exact_ids": [
+        "irons_spellbooks:sunbeam",
+        "irons_spellbooks:ray_of_frost",
+        "irons_spellbooks:ray_of_siphoning",
+        "irons_spellbooks:electrocute"
+      ],
+      "context": "Reported easy-to-obtain unenchanted book/scroll removes about half of Nightfall-armored player health.",
+      "original_expression": "Candidate-specific fixed or per-channel-hit expressions; none of the inspected candidates uses percentage-health damage.",
+      "jem_expression": "PvP x1.00; PvE x0.65/0.80/0.95/1.10/1.20, plus conditional Human direct-hit +1, then Iron resistance.",
+      "effective_expression": "Cannot be made unique without spell ID, level and caster/target attributes from the observed ItemStack/context.",
+      "suspicion": "Common continuous spells can accumulate several native hit applications and Ray of Siphoning also heals for post-event damage.",
+      "evidence": [
+        "exact installed Iron's Spells 3.15.6 bytecode",
+        "native loot randomize_spell tables",
+        "JEM spell adapters"
+      ],
+      "confidence": "candidate_set_source_verified_identity_unresolved",
+      "suggested_owner": "Iron's Spells native spell config/code first; narrow JEM adapter only if the exact native seam cannot express the approved correction",
+      "action": "No speculative nerf applied. Capture exact localized spell name or scroll ItemStack spell ID/level."
+    },
+    {
+      "id": "boss.attack-channel-coverage",
+      "exact_ids": [
+        "registered boss profiles"
+      ],
+      "context": "Bosses may damage through projectiles, explosions, beams, summons or custom sources.",
+      "original_expression": "attack-specific native code",
+      "jem_expression": "registered boss tier and hosted multipliers apply around native damage events",
+      "effective_expression": "partial until each native attack channel is traced",
+      "suspicion": "Using ATTACK_DAMAGE as the complete boss model would silently miss burst channels.",
+      "evidence": [
+        "canonical JEM Pack Core boss profiles",
+        "native boss tags",
+        "JemWorldBossTiers.java"
+      ],
+      "confidence": "high",
+      "suggested_owner": "owning boss mod per attack; JEMWorldBossTiers only for shared wrapper rules"
+    }
+  ]
+}

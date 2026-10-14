@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "view": "shared_modifiers",
+  "snapshot_sha": "f81e1b92cb02ace680e4a480aa8cd1a30ff37a79",
+  "generation": {
+    "generator": "Catalog/generator/build_power_views.py",
+    "method": "offline derived evidence",
+    "deterministic": true
+  },
+  "records": [
+    {
+      "id": "economy.reviewed-item-policies",
+      "status": "active",
+      "selectors": [
+        {
+          "type": "source_set",
+          "registry": "items",
+          "members_path": "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json",
+          "id_field": "item"
+        }
+      ],
+      "modifiers": [
+        {
+          "property": "economy.trade_policy",
+          "operation": "set",
+          "before": {
+            "value": "NONE",
+            "source": "JEM Economy fail-closed default"
+          },
+          "after": {
+            "source_member_fields": [
+              "outcome",
+              "sell_copper",
+              "buy_copper",
+              "daily_player_units",
+              "daily_global_units",
+              "demand_group",
+              "notes"
+            ]
+          },
+          "notes": "Selector member details are emitted by behavior queries so different per-item values stay in one canonical source set."
+        }
+      ],
+      "owner": "JEMEconomy",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java"
+      ]
+    },
+    {
+      "id": "world-tier.ordinary-hostile-scaling",
+      "status": "conditional",
+      "selectors": [
+        {
+          "type": "registry",
+          "registry": "entities",
+          "value": "*"
+        }
+      ],
+      "modifiers": [
+        {
+          "property": "attributes.minecraft:generic.max_health",
+          "operation": "multiply_base",
+          "before": {
+            "value": 1.0,
+            "source": "original registry/runtime attribute"
+          },
+          "after": {
+            "by_world_tier": {
+              "1": 1.0,
+              "2": 1.0,
+              "3": 1.1,
+              "4": 1.15,
+              "5": 1.2
+            }
+          },
+          "notes": "Existing health percentage is preserved when the modifier is reconciled."
+        },
+        {
+          "property": "attributes.minecraft:generic.attack_damage",
+          "operation": "multiply_base",
+          "before": {
+            "value": 1.0,
+            "source": "original registry/runtime attribute"
+          },
+          "after": {
+            "by_world_tier": {
+              "1": 1.0,
+              "2": 1.0,
+              "3": 1.1,
+              "4": 1.15,
+              "5": 1.2
+            }
+          }
+        }
+      ],
+      "owner": "JEMWorldBossTiers",
+      "source_files": [
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/OrdinaryHostileScaler.java"
+      ]
+    },
+    {
+      "id": "jem.progression-weapon",
+      "owner": "JEMWorldBossTiers",
+      "expression": "eligible progression weapon x1.00/x1.05/x1.10; Tier III+ 15% x1.5 critical",
+      "source_files": [
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java"
+      ]
+    },
+    {
+      "id": "jem.spell-tier",
+      "owner": "JEMWorldBossTiers",
+      "expression": "non-PvP player spell x0.65/0.80/0.95/1.10/1.20; PvP x1.00",
+      "source_files": [
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/compat/irons/SpellTierFactors.java"
+      ]
+    },
+    {
+      "id": "jem.hosted-boss",
+      "owner": "JEMWorldBossTiers",
+      "expression": "participant health 1/1.45/1.8/2.1/+0.2; damage 1/1.10/1.18/1.25/+0.05 capped1.45; raid defaults x2.5; owned attacks x0.88",
+      "source_files": [
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedScaling.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedConfig.java"
+      ]
+    },
+    {
+      "id": "jem.race-profession-defense",
+      "owner": "JEMRoles/JEMProfessions",
+      "expression": "Elf fall x0.90; Miner level10 stone fall x0.90; Human direct spell +1; Elf eligible arrow +1",
+      "source_files": [
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceTraitRuntime.java",
+        "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/progress/ProfessionGameplay.java"
+      ]
+    }
+  ]
+}

@@ -106,6 +106,7 @@ python Catalog/generator/query_atlas.py impact minecraft:diamond
 python Catalog/generator/query_atlas.py role mountable
 python Catalog/generator/query_atlas.py trade NONE
 python Catalog/generator/query_atlas.py food-negative
+python Catalog/generator/query_atlas.py power "Ray of Siphoning"
 ```
 
 Each per-mod file is a stable envelope containing schema version, source snapshot,
@@ -118,6 +119,18 @@ commit, in which precedence order, and which conflicts remain. `impact` gives th
 compact dependency view, including recipes that consume or produce an item and the
 declared affected systems. These lookups read existing partitions and never require
 a complete Atlas regeneration.
+
+Combat power has a separate derived view, not a second source of gameplay truth:
+
+```powershell
+python Catalog/generator/build_power_views.py
+python Catalog/generator/query_atlas.py power minecraft:wither
+```
+
+It composes canonical registry candidates, exact-version evidence and existing JEM
+change/owner rules into `Catalog/views/power/`. See `Docs/power-system/README.md`.
+Unknown runtime attributes and stack variants stay unresolved and are never treated
+as zero; generated warnings never auto-modify gameplay.
 
 ## Trade and acquisition semantics
 

@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "change_id": "atlas.power-system-analysis",
+  "status": "active",
+  "selectors": [
+    {"type": "id", "registry": "items", "value": "jem:power_system_analysis"}
+  ],
+  "precedence": {"layer": "derived_analysis", "priority": 900, "overrides": []},
+  "change": {
+    "summary": "Add a derived, non-runtime combat inventory, formula lookup, scenario model, honest coverage report and deterministic review warnings.",
+    "modifiers": [
+      {
+        "property": "documentation.combat_power_expression",
+        "operation": "document",
+        "before": {"value": null, "reason": "Combat evidence was distributed across registry partitions and owning sources."},
+        "after": {"model": "Original -> Modifiers -> JEM tweaks -> Effective -> Acquisition -> Assessment", "runtime_behavior_changed": false},
+        "notes": "The generated view is evidence only. Unknown values stay unresolved and warnings never auto-balance gameplay."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Registry Atlas derived analysis",
+    "kind": "documentation_and_offline_analysis",
+    "source_files": [
+      "Catalog/generator/build_power_views.py",
+      "Catalog/generator/query_atlas.py",
+      "Catalog/power-sources/irons-spellbooks-3.15.6.json",
+      "Docs/power-system/README.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make every combat candidate findable and every claimed power expression traceable without duplicating runtime ownership or fabricating missing values.",
+    "decision_source": "User-supplied CODEX TASK — JEM Universal Power Balance System"
+  },
+  "introduced": {
+    "date": "2026-10-14",
+    "commit": null,
+    "action": "derived_analysis_added",
+    "summary": "Created the permanent power-system documentation and source-derived power views without changing production gameplay."
+  },
+  "history": [
+    {
+      "date": "2026-10-14",
+      "commit": "WORKTREE",
+      "action": "derived_analysis_added",
+      "summary": "Inventoried combat candidates, documented shared formulas, added 16 reference scenarios and recorded the unresolved beam candidate set.",
+      "source_files": [
+        "Catalog/generator/build_power_views.py",
+        "Catalog/power-sources/irons-spellbooks-3.15.6.json",
+        "Docs/power-system/CASE_STUDIES.md"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": ["combat", "progression", "boss_scaling", "pvp", "allies", "documentation"],
+    "relations": ["registry->power_view", "native_owner->effective_expression", "scenario->coverage", "warning->review_owner"],
+    "notes": ["No Java, Mixin, config, datapack, installed JAR or runtime behavior is changed."],
+    "unresolved": ["Runtime-only values and the exact reported beam ItemStack remain explicitly unresolved in the generated coverage and warning views."]
+  }
+}

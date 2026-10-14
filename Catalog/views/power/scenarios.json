@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "view": "combat_scenarios",
+  "snapshot_sha": "f81e1b92cb02ace680e4a480aa8cd1a30ff37a79",
+  "generation": {
+    "generator": "Catalog/generator/build_power_views.py",
+    "method": "offline derived evidence",
+    "deterministic": true
+  },
+  "records": [
+    {
+      "scenario": 1,
+      "name": "Weak early player",
+      "exact_ids": [
+        "minecraft:stone_sword",
+        "minecraft:iron_chestplate"
+      ],
+      "expression": "native melee against ordinary hostile at World Tier I",
+      "result_status": "partial",
+      "unresolved_policy": "unknown values remain symbolic and are never substituted with zero"
+    },
+    {
+      "scenario": 2,
+      "name": "Mid-game player",
+      "exact_ids": [
+        "minecraft:diamond_sword",
+        "minecraft:diamond_chestplate"
+      ],
+      "expression": "native weapon + actual ItemStack enchantments; no assumed enchant levels",
+      "result_status": "partial",
+      "unresolved_policy": "unknown values remain symbolic and are never substituted with zero"
+    },
+    {
+      "scenario": 3,
+      "name": "Advanced player",
+      "exact_ids": [
+        "minecraft:diamond_sword"
+      ],
+      "expression": "scenario requires exact accessory IDs/buffs before numeric comparison",
+      "result_status": "partial",
+      "unresolved_policy": "unknown values remain symbolic and are never substituted with zero"
+    },
+    {
+      "scenario": 4,
+      "name": "Legitimate endgame player",
+      "exact_ids": [
+        "minecraft:netherite_sword",
+        "minecraft:netherite_chestplate"
+      ],
+      "expression": "native gear plus exact verified modifiers",
+      "result_status": "partial",
+      "unresolved_policy": "unknown values remain symbolic and are never substituted with zero"
+    },
+    {
+      "scenario": 5,
+      "name": "Endgame without consumables",
+      "exact_ids": [
+        "minecraft:netherite_sword"
+      ],
+      "expression": "same as endgame but consumable effects omitted, not treated as zero-cost preparation",
+      "result_status": "partial",
+      "unresolved_policy": "unknown values remain symbolic and are never substituted with zero"
+    },
+    {
+      "scenario": 6,
+      "name": "Two-player mixed party",
+      "exact_ids": [],
+      "expression": "boss health x1.45 and damage x1.10 before optional raid factors",
+      "result_status": "partial",
+      "unresolved_policy": "unknown values remain symbolic and are never substituted with zero"
+    },
+    {
+      "scenario": 7,
+      "name": "Full cooperative party",
+      "exact_ids": [],
+      "expression": "four-player boss health x2.10 and damage x1.25 before optional raid factors",
+      "result_status": "partial",
+      "unresolved_policy": "unknown values remain symbolic and are never substituted with zero"
+    },
+    {
+      "scenario": 8,
+      "name": "Comparable PvP",
+      "exact_ids": [],
+      "expression": "Iron spell tier factor is exactly x1.00; use actual armor, resistance and ItemStack state",
+      "result_status": "partial",
+      "unresolved_policy": "unknown values remain symbolic and are never substituted with zero"
+    },
+    {
+      "scenario": 9,
+      "name": "Undergeared versus top PvP",
+      "exact_ids": [],
+      "expression": "report time-to-defeat and control uptime; no PvE tier spell multiplier",
+      "result_status": "partial",
+      "unresolved_policy": "unknown values remain symbolic and are never substituted with zero"
+    },
+    {
+      "scenario": 10,
+      "name": "One recruit or tameable",
+      "exact_ids": [
+        "recruits:recruit"
+      ],
+      "expression": "native companion attributes/AI; JEM does not invent combat scaling",
+      "result_status": "partial",
+      "unresolved_policy": "unknown values remain symbolic and are never substituted with zero"
+    },
+    {
+      "scenario": 11,
+      "name": "Several mixed troops",
+      "exact_ids": [],
+      "expression": "sum source-resolved per-unit output with target access and uptime; unresolved units stay unresolved",
+      "result_status": "partial",
+      "unresolved_policy": "unknown values remain symbolic and are never substituted with zero"
+    },
+    {
+      "scenario": 12,
+      "name": "Large funded army",
+      "exact_ids": [],
+      "expression": "include Recruits payroll/acquisition, congestion, survival and native AI; never multiply one unit by count blindly",
+      "result_status": "partial",
+      "unresolved_policy": "unknown values remain symbolic and are never substituted with zero"
+    },
+    {
+      "scenario": 13,
+      "name": "Iron's Spells mage",
+      "exact_ids": [
+        "irons_spellbooks:ray_of_siphoning"
+      ],
+      "expression": "native per-hit expression -> PvE tier factor -> conditional Human +1 -> school resistance",
+      "result_status": "partial",
+      "unresolved_policy": "unknown values remain symbolic and are never substituted with zero"
+    },
+    {
+      "scenario": 14,
+      "name": "Epic Fight melee",
+      "exact_ids": [],
+      "expression": "requires exact weapon moveset, animation timings, stamina and target context from installed Nightfall/Epic Fight owners",
+      "result_status": "partial",
+      "unresolved_policy": "unknown values remain symbolic and are never substituted with zero"
+    },
+    {
+      "scenario": 15,
+      "name": "Heavy armor versus beam",
+      "exact_ids": [
+        "irons_spellbooks:sunbeam",
+        "irons_spellbooks:ray_of_siphoning"
+      ],
+      "expression": "magic damage is not tagged bypasses_armor by Iron, but school resistance and actual armor integration must be measured separately",
+      "result_status": "partial",
+      "unresolved_policy": "unknown values remain symbolic and are never substituted with zero"
+    },
+    {
+      "scenario": 16,
+      "name": "World Tier hosted raid boss",
+      "exact_ids": [
+        "minecraft:wither"
+      ],
+      "expression": "native attack * boss tier * optional profile factor * party damage * raid x2.5 * hosted owned-attack x0.88; health uses corresponding health factors",
+      "result_status": "partial",
+      "unresolved_policy": "unknown values remain symbolic and are never substituted with zero"
+    }
+  ]
+}

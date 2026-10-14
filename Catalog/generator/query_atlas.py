@@ -24,14 +24,32 @@ def find_id(value: str) -> list[dict]:
     return matches
 
 
+def find_power(value: str) -> list[dict]:
+    index_path = ROOT / "Catalog" / "views" / "power" / "index.json"
+    if not index_path.exists():
+        return []
+    query = value.casefold()
+    pointers = json.loads(index_path.read_text(encoding="utf-8")).get("records", [])
+    exact = [pointer for pointer in pointers if any(query == name.casefold() for name in (pointer.get("id", ""), pointer.get("display_name") or ""))]
+    candidates = exact or [pointer for pointer in pointers if any(query in name.casefold() for name in (pointer.get("id", ""), pointer.get("display_name") or ""))]
+    matches = []
+    for pointer in candidates:
+        path = ROOT / pointer["file"]
+        row = json.loads(path.read_text(encoding="utf-8"))["records"][pointer["record_index"]]
+        matches.append({"path": pointer["file"], "record": row})
+    return matches
+
+
 def main() -> int:
     if len(sys.argv) < 2:
-        print("usage: query_atlas.py id|behavior|impact <namespace:path> | role <role> | trade <outcome> | food-negative")
+        print("usage: query_atlas.py id|behavior|impact|power <id-or-display-name> | role <role> | trade <outcome> | food-negative")
         return 2
     mode = sys.argv[1]
     value = sys.argv[2] if len(sys.argv) > 2 else ""
     matches = []
-    if mode in {"id", "behavior", "impact", "why"}:
+    if mode == "power":
+        matches = find_power(value)
+    elif mode in {"id", "behavior", "impact", "why"}:
         base_matches = find_id(value)
         if mode == "id":
             matches = base_matches

@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "artifact": {
+    "file": "irons_spellbooks-1.20.1-3.15.6.jar",
+    "version": "1.20.1-3.15.6",
+    "sha256": "61996bb3cdb9601d83376f81295967f19a6f036563bb5a0e0f672967344a6fa7",
+    "canonical_path": "Client/ManagedPack/mods/irons_spellbooks-1.20.1-3.15.6.jar"
+  },
+  "method": "Exact installed JAR resources and javap bytecode inspection; this file is evidence, not a gameplay owner.",
+  "damage_pipeline": {
+    "expression": "native spell level/power expression -> SpellDamageEvent -> JEM world-tier factor for non-PvP player casts -> Human direct-hit +1 when applicable -> Iron school resistance -> ordinary LivingEntity mitigation",
+    "armor_contract": "Spell damage types are members of neoforge:is_magic; the installed JAR does not add them to minecraft:bypasses_armor.",
+    "sources": [
+      "io.redspace.ironsspellbooks.damage.DamageSources#applyDamage",
+      "io.redspace.ironsspellbooks.damage.SpellDamageSource",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/compat/irons/IronsSpellDamageAdapter.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/irons/IronsRaceBridge.java"
+    ]
+  },
+  "beam_candidates": [
+    {
+      "spell_id": "irons_spellbooks:sunbeam",
+      "display_name": "Sunbeam",
+      "rarity": "uncommon",
+      "school": "holy",
+      "cast_type": "instant",
+      "max_level": 10,
+      "base_spell_power": 24.0,
+      "spell_power_per_level": 3.0,
+      "native_damage_expression": "0.5 * spell_power; SunbeamEntity applies the hit at its native delayed hit point",
+      "percentage_health_damage": false,
+      "confidence": "source_verified",
+      "source": "SunbeamSpell and SunbeamEntity bytecode in exact installed JAR"
+    },
+    {
+      "spell_id": "irons_spellbooks:ray_of_frost",
+      "display_name": "Ray of Frost",
+      "rarity": "common",
+      "school": "ice",
+      "cast_type": "instant",
+      "max_level": 5,
+      "base_spell_power": 6.0,
+      "spell_power_per_level": 1.0,
+      "native_damage_expression": "3 + 1.5 * spell_power; also adds 15 * spell_power freeze ticks before native post-hit handling",
+      "percentage_health_damage": false,
+      "confidence": "source_verified",
+      "source": "RayOfFrostSpell bytecode in exact installed JAR"
+    },
+    {
+      "spell_id": "irons_spellbooks:ray_of_siphoning",
+      "display_name": "Ray of Siphoning",
+      "rarity": "common",
+      "school": "blood",
+      "cast_type": "continuous",
+      "max_level": 10,
+      "base_spell_power": 4.0,
+      "spell_power_per_level": 1.0,
+      "cast_time_ticks": 100,
+      "native_damage_expression": "0.25 * spell_power per successful native channel damage application; native lifesteal fraction is 1.0 of post-event damage",
+      "percentage_health_damage": false,
+      "confidence": "source_verified_partial",
+      "unresolved": "The exact observed scroll/book level, caster spell-power attributes and successful channel hit count are not present in repository evidence.",
+      "source": "RayOfSiphoningSpell bytecode in exact installed JAR"
+    },
+    {
+      "spell_id": "irons_spellbooks:electrocute",
+      "display_name": "Electrocute",
+      "rarity": "common",
+      "school": "lightning",
+      "cast_type": "continuous",
+      "max_level": 10,
+      "base_spell_power": 1.0,
+      "spell_power_per_level": 1.0,
+      "cast_time_ticks": 100,
+      "native_damage_expression": "1 + 0.75 * spell_power per successful native projectile/channel hit",
+      "percentage_health_damage": false,
+      "confidence": "source_verified_partial",
+      "unresolved": "The exact observed scroll/book level, caster spell-power attributes and successful channel hit count are not present in repository evidence.",
+      "source": "ElectrocuteSpell bytecode in exact installed JAR"
+    }
+  ],
+  "acquisition": {
+    "carrier_item": "irons_spellbooks:scroll",
+    "variant_key": "spell ID and level in ItemStack data",
+    "fact": "The exact installed JAR uses irons_spellbooks:randomize_spell in many chest and entity loot tables, including school-filtered mob drops.",
+    "conclusion": "The registry item ID alone cannot identify the reported spell or prove its rarity/level. ItemStack NBT/components or the exact localized spell name is required."
+  }
+}
