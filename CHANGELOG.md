@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-14 — Local server restarted on request
+
+- User request: start the local server again and provide its connection address and port.
+- Codex operational choice: restarted the same isolated overnight instance in `build/overnight-qa/server`, world `world-qa`, bound to `127.0.0.1:31605`; native AutoModpack transport remains on loopback port31606. The manual runner has no expired overnight deadline and does not replay prior queued commands. Existing authentication remains enabled; no gameplay scenario, build, MineRENT action, stable-profile change or original-world mutation was requested or performed.
+
 ## 2026-10-14 — Explicit overnight local player QA (user stopped desktop interaction)
 
 - User request and supplied direction: execute `JEM_AUTONOMOUS_OVERNIGHT_PLAYER_QA.md` through 08:00 Asia/Almaty, prioritize a navigable evidence-backed report, explicitly allow local builds/disposable gameplay QA, protect MineRENT and stable `JustEnoughMods`, and create a small reusable QA skill. Source review and actual player observations must remain distinct.
