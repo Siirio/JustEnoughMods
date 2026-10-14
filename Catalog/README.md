@@ -46,6 +46,11 @@ datapack, recipe, loot, config, JAR or dependency path is covered only when a ch
 record that names it is modified in the same diff. Runtime `Server/` files are not
 canonical inputs and are intentionally ignored.
 
+Deleted watched sources are linked through the same changed record's history,
+while current/new sources must remain in `cause.source_files`. A removed source
+must not be represented as an existing cause or retained as dead production code
+just to satisfy coverage.
+
 Canonical client JARs may be Git-ignored, so the scan also hashes
 `Client/ManagedPack/mods/*.jar` against `manifest.json`. Added, removed or changed
 artifacts make the scan fail with `full_regeneration_required`; run the existing full

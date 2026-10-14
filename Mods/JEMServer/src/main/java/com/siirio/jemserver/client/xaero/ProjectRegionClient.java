@@ -15,10 +15,16 @@ public final class ProjectRegionClient {
     private static int startX, startZ, currentX, currentZ;
     private ProjectRegionClient() {}
 
+    public static void cancel() {
+        project = null; dimension = null; planning = false; dragging = false;
+    }
+
     public static void begin(UUID projectId, ResourceLocation targetDimension) {
         project = projectId; dimension = targetDimension; planning = true; dragging = false;
     }
-    public static boolean planning(ResourceLocation targetDimension) { return planning && targetDimension != null && targetDimension.equals(dimension); }
+    public static boolean planning(ResourceLocation targetDimension) { return MapClient.connected()
+            && MapLayerPreferences.visible(MapLayerPreferences.Layer.PROJECTS)
+            && planning && targetDimension != null && targetDimension.equals(dimension); }
     public static boolean press(ResourceLocation targetDimension, int x, int z) {
         if (!planning(targetDimension)) return false;
         dragging = true; startX = currentX = x; startZ = currentZ = z; return true;

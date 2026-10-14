@@ -1,40 +1,35 @@
-# Phase 1 Coin Merchant Coverage
+# Native Coin Merchant Coverage
 
-## Approved next direction — 2026-10-14
+Source restoration implemented2026-10-14 following the approved
+[native-interface design](native-trading-design.md). Compilation, Mixin application,
+gameplay and rendered acceptance remain unverified; installed JARs were not changed.
 
-The user rejected the replacement merchant GUI. The target is the original native
-MerchantScreen/list/input/result/inventory flow, with the five existing Coins shown
-as item icons and counts. The Buyer must open its own native trading window and
-must not print a bulletin or errors in chat. Wallet/physical-lot accounting and
-single native stock/XP callbacks remain authoritative. This is an approved target,
-not a claim that the existing code has already been replaced. The concrete design
-and unresolved native-offer price/policy boundary are in
-[native-trading-design.md](native-trading-design.md).
-
-The following Phase1 table describes the current implementation, not the accepted
-future presentation. The old18-slot screen is explicitly rejected.
-
-Policy has exactly two outcomes after the user's correction: `BUY_AND_SELL` or `NONE`. There is no directional sale-only, buy-only, earn-only, or blocked market state.
-
-| Provider | Phase 1 handling | Notes |
+| Provider | Source handling | Limits |
 |---|---|---|
-| `minecraft:villager` | Supported through Coin overlay | Existing `MerchantOffer` list, uses, stock, profession XP/restock callback and result stack remain native. Emerald-direction offers are adapted only when the traded item is `BUY_AND_SELL`. |
-| `minecraft:wandering_trader` | Supported through Coin overlay | Same `AbstractVillager` adapter. Unsupported/progression outputs are `NONE`. |
-| Modded entities that actually subclass `AbstractVillager` and expose ordinary `MerchantOffer` | Conditionally supported | The runtime adapter discovers them by real class inheritance, not mod name. Exact item policy still gates every offer. |
-| Vinery wandering winemaker and other custom merchant entities not deriving from `AbstractVillager` | Intentionally unsupported | No verified public transaction API was established; native emerald UI is not rewritten by a guessed adapter. |
-| Shop/station blocks from Bakery, Beachparty, Brewery, Farm & Charm, HerbalBrews, Vinery and similar mods | Not merchant entities | Their native crafting/service blocks remain unchanged. They do not become NPC Coin sources. |
-| Recruits and Workers | Not merchant providers | JEM Settlements owns workforce registration; payroll uses `EconomyApi.payTownPayroll`, not an emerald offer. |
-| Spudacious Shops 1.10.2 | Existing JEMServer adapter retained | Shop blocks, stock and ownership remain native; numeric settlement already delegates to JEM Economy escrow. |
+| minecraft:villager and wandering_trader | Original native opening, MerchantMenu/Screen, full offers/input/result/inventory/scroll/restock | Coin-priced monetary offers require existing authoritative prices; unknown/protected/NBT rows remain visible/unavailable. |
+| Actual AbstractVillager subclasses | Same class-based native adapter, no enrollment | Exact optional-mod lifecycle and monetary coverage remain unverified. |
+| Buyer tagged jem_market_buyer | Native demand-derived offers, all rows, no chat | Whole sales share funded NPC_MARKET/demand/quota and credit Wallet. |
+| /market | Transient read-only native merchant presentation | No remote sales, NPC search/spawn, world save or chunk loading. |
+| Item-only native barter | Original result slot and callbacks | Both input orientations retained; no Coin reinterpretation. |
+| Custom merchants outside AbstractVillager | Native behavior untouched | No guessed Coin integration API. |
+| Service/crafting blocks, Recruits/Workers | Existing native/Settlements owners retained | Not converted into Coin providers. |
+| Spudacious Shops1.10.2 | Existing JEMServer escrow adapter retained | Physical stock and verified shop ownership unchanged. |
 
-The overlay uses Wallet settlement because a vanilla two-input offer cannot safely represent all five denominations and consuming stamped physical stacks through a native merchant would strand `PHYSICAL_OUTSTANDING`. If Wallet lacks funds, the existing reserve route may deposit valid physical cash first. No emerald item is minted, renamed, or exchanged.
+Market policy remains exactly BUY_AND_SELL or NONE. Native monetary offers without
+a canonical price are an unresolved boundary, not a new market outcome. This task
+does not invent diamond-gear prices or an emerald exchange rate.
 
-Native stock counting belongs to `AbstractVillager.notifyTrade`: the Coin adapter
-calls that notification once after an accepted settlement and does not separately
-increment `MerchantOffer.uses`. Overnight QA reproduced the old duplicate increment
-with one prepared sale (uses 0→2; Wallet 100→130; total ledger supply 100,000).
-The narrow correction remains in testing pending user approval. Native generation2
-replay verified sale/purchase uses +1, native XP +2, correct Coin/goods movement
-and unchanged empty-input/exhausted rejection. A prepared Human Coin purchase
-minted one emerald while Coin ledger supply stayed 100,000. Trading-player attribution and Human emerald-refund
-interaction remain separate open findings in the overnight report; stock correction
-does not certify those paths or the whole Economy module.
+Coin result actions acknowledge quote revision/selection and a bounded nonce.
+Server validation checks current original item terms, either native input order,
+identity/distance, stock, funds/reserve/quota and delivery capacity. Guarded display
+coins cannot become physical cash. Native notifyTrade owns uses once; Roles prices
+one Human Coin benefit and suppresses emerald refund only for Coin settlement.
+
+The old176-pixel/18-offer screen/menu/provider are removed; its registered menu ID
+is retained as an unused native-screen compatibility alias. Wallet protocol3 needs
+matching Economy/Roles/Server client-and-server artifacts after a separately
+requested build/release. Original coin assets and supply remain unchanged.
+
+One fresh read-only review found stale-price acknowledgement, shrinking-demand
+selection, reversed monetary inputs and native-tooltip overlap; one source fix
+pass addressed them. Source review is not proof of runtime success.

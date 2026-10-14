@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.siirio.jemeconomy.mixin",
+  "plugin": "com.siirio.jemeconomy.mixin.JemEconomyMixinPlugin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "jem_economy.refmap.json",
+  "mixins": ["MerchantMenuMixin", "MerchantContainerMixin"],
+  "client": ["MerchantScreenMixin", "NativeTradeClickMixin"],
+  "injectors": {"defaultRequire": 1}
+}

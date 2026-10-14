@@ -113,6 +113,8 @@ public final class RaceTraitRuntime {
     @SubscribeEvent
     public static void trade(net.minecraftforge.event.entity.player.TradeWithVillagerEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
+        if (net.minecraftforge.fml.ModList.get().isLoaded("jem_economy")
+                && com.siirio.jemroles.compat.economy.CoinTradeRaceBridge.coinPaid(player)) return;
         if (RaceApi.effectiveRace(player.getServer(), player.getUUID()) != RaceId.HUMAN) return;
         var offer = event.getMerchantOffer();
         ItemStack cost = offer.getCostA();

@@ -2,11 +2,11 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "a116b9758b1093c5ef3cfa6ea612b8e1f01350afb0592386c15d8882fbd8de9a",
+  "change_records_sha256": "d50399f7732af0b0727cb58c7f6bc24df8c9534389a4839c71f92b2388b774de",
   "totals": {
-    "watched": 3201,
-    "covered": 6,
-    "unresolved": 3195
+    "watched": 3221,
+    "covered": 43,
+    "unresolved": 3178
   },
   "groups": {
     "Client/ManagedPack/config": {
@@ -1654,16 +1654,11 @@
       ]
     },
     "Mods/JEMEconomy": {
-      "watched": 69,
-      "covered": 3,
-      "unresolved": 66,
+      "watched": 87,
+      "covered": 31,
+      "unresolved": 56,
       "unresolved_paths": [
-        "Mods/JEMEconomy/build.gradle",
         "Mods/JEMEconomy/gradle.properties",
-        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/JemEconomy.java",
-        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
-        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/CoinMerchantScreen.java",
-        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/EconomyClient.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/ShippingBoxScreen.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/WalletClientState.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/WalletScreen.java",
@@ -1671,11 +1666,7 @@
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/ledger/SystemAccount.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/ledger/TransferResult.java",
-        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/market/MarketRuntime.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java",
-        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantProvider.java",
-        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantRuntime.java",
-        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/WalletActionPacket.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/WalletStatusPacket.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/CoinDenomination.java",
@@ -1689,7 +1680,6 @@
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/registry/EconomyBlockEntities.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/registry/EconomyBlocks.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/registry/EconomyItems.java",
-        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/registry/EconomyMenus.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlock.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlockEntity.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxItem.java",
@@ -2794,13 +2784,11 @@
       ]
     },
     "Mods/JEMRoles": {
-      "watched": 22,
-      "covered": 0,
-      "unresolved": 22,
+      "watched": 23,
+      "covered": 4,
+      "unresolved": 19,
       "unresolved_paths": [
-        "Mods/JEMRoles/build.gradle",
         "Mods/JEMRoles/gradle.properties",
-        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/JemRoles.java",
         "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceApi.java",
         "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceChangedEvent.java",
         "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceChosenEvent.java",
@@ -2817,15 +2805,14 @@
         "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRecord.java",
         "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceSavedData.java",
         "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceService.java",
-        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceTraitRuntime.java",
         "Mods/JEMRoles/src/main/resources/data/jem_roles/tags/blocks/dwarf_mining.json",
         "Mods/JEMRoles/src/main/resources/pack.mcmeta"
       ]
     },
     "Mods/JEMServer": {
-      "watched": 300,
-      "covered": 0,
-      "unresolved": 300,
+      "watched": 301,
+      "covered": 5,
+      "unresolved": 296,
       "unresolved_paths": [
         "Mods/JEMServer/build.gradle",
         "Mods/JEMServer/gradle.properties",
@@ -2834,7 +2821,6 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/ClaimBoundaryNetwork.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/DeathHistory.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/EventDefaultPack.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/JemServer.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/LandmarkNetwork.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/Landmarks.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/MapNetwork.java",
@@ -2884,10 +2870,8 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/ui/JemPalette.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/ui/JemScreens.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/ui/SmpRenderState.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapClient.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapView.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/ProjectNameScreen.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/ProjectRegionClient.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/XaeroMapPreview.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/compat/TpaCompat.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/map/ProjectCommands.java",
@@ -2935,7 +2919,6 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/staging/VoidAltarStagingMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/teleport/MobBoundaryTeleportMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/teleport/ServerPlayerTeleportMixin.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/MapScreenMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/WaypointMenuMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/WaypointTeleportMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/shared/FullCaveLayerPolicyMixin.java",

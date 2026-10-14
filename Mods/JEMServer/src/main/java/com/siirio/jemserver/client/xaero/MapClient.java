@@ -23,7 +23,6 @@ public final class MapClient {
     private static List<MapNetwork.ProjectArea> projects = List.of();
     private static List<Layer> projectLayers = List.of();
     private static boolean connected;
-    private static final int FILL_ALPHA = 0x38000000;
     private static final int BORDER_ALPHA = 0xFF000000;
     private static final int MAP_REFRESH_TICKS = 40;
     private static int refreshTicks;
@@ -71,7 +70,7 @@ public final class MapClient {
     }
     public static boolean connected() { return connected; }
     @SubscribeEvent
-    public static void logout(ClientPlayerNetworkEvent.LoggingOut event) { claims = List.of(); deaths = List.of(); layers = List.of(); events = List.of(); eventLayers = List.of(); projects = List.of(); projectLayers = List.of(); connected = false; }
+    public static void logout(ClientPlayerNetworkEvent.LoggingOut event) { claims = List.of(); deaths = List.of(); layers = List.of(); events = List.of(); eventLayers = List.of(); projects = List.of(); projectLayers = List.of(); connected = false; ProjectRegionClient.cancel(); }
     public static UUID death(ResourceLocation dimension, int x, int y, int z) {
         return deaths.stream().filter(death -> death.dimension().equals(dimension) && death.position().getX() == x && death.position().getY() == y && death.position().getZ() == z).map(MapNetwork.Death::id).findFirst().orElse(null);
     }
@@ -95,46 +94,34 @@ public final class MapClient {
         return projects.stream().filter(project -> project.dimension().equals(dimension) && project.rectangles().stream().anyMatch(rectangle ->
                 x >= rectangle.minX() && x < rectangle.maxX() && z >= rectangle.minZ() && z < rectangle.maxZ())).findFirst().orElse(null);
     }
-    public static void render(GuiGraphics graphics, ResourceLocation dimension, double cameraX, double cameraZ, double scale, int width, int height) {
+    public static void render(GuiGraphics graphics, ResourceLocation dimension, double cameraX, double cameraZ, double scale, int width, int height,
+                              int hoverX, int hoverZ, int mouseX, int mouseY) {
         if (!connected) return;
-        renderLayers(graphics, dimension, cameraX, cameraZ, scale, width, height, layers);
-        renderLayers(graphics, dimension, cameraX, cameraZ, scale, width, height, projectLayers);
-        renderLayers(graphics, dimension, cameraX, cameraZ, scale, width, height, eventLayers);
-        ProjectRegionClient.render(graphics, dimension, cameraX, cameraZ, scale, width, height);
-        var font = Minecraft.getInstance().font;
-        for (var area : events) {
-            if (!area.dimension().equals(dimension)) continue;
-            int x = (int) Math.floor(width / 2.0 + (area.position().getX() - cameraX) * scale);
-            int y = (int) Math.floor(height / 2.0 + (area.position().getZ() - cameraZ) * scale);
-            if (x < 0 || x >= width || y < 0 || y >= height) continue;
-            var label = net.minecraft.network.chat.Component.translatable("jem.smp." + area.activity());
-            var fitted = font.substrByWidth(label, width);
-            graphics.drawString(font, fitted.getString(), Math.max(0, Math.min(width - font.width(fitted), x - font.width(fitted) / 2)),
-                    Math.max(0, Math.min(height - font.lineHeight, y)), com.siirio.jemserver.client.ui.JemPalette.CREAM, true);
+        if (MapLayerPreferences.visible(MapLayerPreferences.Layer.TERRITORIES))
+            renderLayers(graphics, dimension, cameraX, cameraZ, scale, width, height, layers);
+        if (MapLayerPreferences.visible(MapLayerPreferences.Layer.PROJECTS)) {
+            renderLayers(graphics, dimension, cameraX, cameraZ, scale, width, height, projectLayers);
+            ProjectRegionClient.render(graphics, dimension, cameraX, cameraZ, scale, width, height);
         }
-        for (var project : projects) {
-            if (!project.dimension().equals(dimension) || project.rectangles().isEmpty()) continue;
-            var first = project.rectangles().get(0);
-            int x = (int) Math.floor(width / 2.0 + (((first.minX() + first.maxX()) / 2.0) - cameraX) * scale);
-            int y = (int) Math.floor(height / 2.0 + (((first.minZ() + first.maxZ()) / 2.0) - cameraZ) * scale);
-            if (x < 0 || x >= width || y < 0 || y >= height) continue;
-            var fitted = font.substrByWidth(net.minecraft.network.chat.Component.literal(project.name()), width);
-            graphics.drawString(font, fitted.getString(), Math.max(0, Math.min(width - font.width(fitted), x - font.width(fitted) / 2)),
-                    Math.max(0, Math.min(height - font.lineHeight, y)), com.siirio.jemserver.client.ui.JemPalette.CREAM, true);
+        if (MapLayerPreferences.visible(MapLayerPreferences.Layer.EVENTS))
+            renderLayers(graphics, dimension, cameraX, cameraZ, scale, width, height, eventLayers);
+        var font = Minecraft.getInstance().font;
+        var project = MapLayerPreferences.visible(MapLayerPreferences.Layer.PROJECTS) ? project(dimension, hoverX, hoverZ) : null;
+        var area = MapLayerPreferences.visible(MapLayerPreferences.Layer.EVENTS) ? event(dimension, hoverX, hoverZ) : null;
+        net.minecraft.network.chat.Component label = project != null
+                ? net.minecraft.network.chat.Component.literal(project.name())
+                : area != null ? net.minecraft.network.chat.Component.translatable("jem.smp." + area.activity()) : null;
+        if (label != null && mouseX >= 0 && mouseX < width && mouseY >= 0 && mouseY < height) {
+            var fitted = font.substrByWidth(label, Math.max(1, width - 8));
+            int x = Math.max(4, Math.min(width - font.width(fitted) - 4, mouseX + 8));
+            int y = Math.max(4, Math.min(height - font.lineHeight - 4, mouseY + 12));
+            graphics.drawString(font, fitted.getString(), x, y, com.siirio.jemserver.client.ui.JemPalette.CREAM, true);
         }
     }
     private static void renderLayers(GuiGraphics graphics, ResourceLocation dimension, double cameraX, double cameraZ, double scale, int width, int height, List<Layer> source) {
         for (var layer : source) {
             if (!layer.dimension().equals(dimension)) continue;
             int color = layer.color() & 0xFFFFFF;
-            for (var rect : layer.mesh().fills()) {
-                int left = (int) Math.floor(width / 2.0 + (rect.minX() - cameraX) * scale);
-                int top = (int) Math.floor(height / 2.0 + (rect.minZ() - cameraZ) * scale);
-                int right = (int) Math.floor(width / 2.0 + (rect.maxX() - cameraX) * scale);
-                int bottom = (int) Math.floor(height / 2.0 + (rect.maxZ() - cameraZ) * scale);
-                if (right >= 0 && bottom >= 0 && left <= width && top <= height)
-                    graphics.fill(Math.max(0, left), Math.max(0, top), Math.min(width, right), Math.min(height, bottom), FILL_ALPHA | color);
-            }
             for (var edge : layer.mesh().edges()) {
                 int x1 = (int) Math.floor(width / 2.0 + (edge.x1() - cameraX) * scale);
                 int z1 = (int) Math.floor(height / 2.0 + (edge.z1() - cameraZ) * scale);

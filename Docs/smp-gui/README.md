@@ -101,6 +101,11 @@ home/base, labels/colors/groups/settings and death points remain private. Existi
 filled world-space event boundary geometry is unaffected. The separate JEM SMP GUI
 remains in scope as its own feature, not an automatic rollback target.
 
-This is the approved target, not an assertion that current rendering already has
-visibility controls. [Concrete integration design](../economy/native-trading-design.md).
+Source now provides three native right-click visibility actions, persisted locally
+in `jem-map-layers-client.toml`, all hidden by default. Enabled layers use cached
+union outlines and a hovered project/event label; hiding projects or logging out
+clears only the unfinished local draft. Starting a project enables its layer.
+Server snapshots, access checks, personal points and world-space walls retain their
+owners. No rendered/gameplay verification or installed-JAR update was performed.
+[Concrete integration design](../economy/native-trading-design.md).
 

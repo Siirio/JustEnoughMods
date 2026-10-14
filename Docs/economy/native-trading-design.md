@@ -1,8 +1,11 @@
 # Нативная торговля Coins и Закупщик
 
-Статус: письменная схема одобрена пользователем 2026-10-14 сообщением
-«Xaero тоже исправишь? А так да approve»; production-код и установленные JAR
-ещё не изменены. Одобрение включает Xaero. Следующий этап — review плана реализации.
+Статус: схема и оба плана одобрены2026-10-14; реализация в исходниках выполнена
+в этой сессии по команде «делай сам ... Сразу пуш». Изменены Economy, Roles и Server;
+установленные JAR, игра и release baseline не обновлены. Сборка, применение Mixins
+и визуальный результат не проверены: отдельного разрешения на эти действия нет.
+Выполнено одно независимое read-only ревью исходников и один проход исправлений
+четырёх существенных замечаний, без повторного ревью.
 Основание: прямое решение пользователя от 2026-10-14 — заменить
 валюту, сохранить нативную торговлю и Xaero, дать Закупщику торговое окно без чата.
 
@@ -25,7 +28,7 @@
 - Новый общий принцип: расширять интерфейс исходного мода; заменять его только
   после явного одобрения конкретного редизайна.
 
-## Подтверждённое текущее состояние
+## Подтверждённое состояние до восстановления
 
 Исходники проверены на main после `1bb1569`; установленная поверхность отдельно
 зафиксирована в ночном отчёте и не считается владельцем исходных правил.
@@ -154,12 +157,42 @@ currency contract и точно определяется существующа�
 
 ## Поверхность реализации и поставка
 
+### Реализованный source contract
+
+- Native NPC opening не отменяется. MerchantMenu/Container получают узкий адаптер;
+  старые CoinMerchantMenu/Provider/Screen удалены. Зарегистрированный coin_merchant
+  ID сохранён как неиспользуемый alias нативного экрана.
+- Coin result защищён от нативного pickup/clone/drop/pick-all. Native GameMode
+  передаёт revision/selection/button/type/request nonce; сервер проверяет
+  показанные и актуальные условия. Unquoted vanilla monetary take не исполняется.
+  Item-only barter использует исходный result slot.
+- Оба порядка реальных входов поддерживаются. Whole sale не вызывает прежнее
+  inventory-удаление. Native notifyTrade вызывается один раз, actor установлен,
+  Human получает Coin-скидку через Roles и не возвращает emerald.
+- Закупщик имеет demand-derived native offers без limit8/18, статусы внутри окна.
+  /market — transient read-only native projection без поиска NPC/chunk load.
+- Xaero: три локальных native-dropdown toggle territories/projects/events,
+  default off; контуры и одна hovered label, hide/logout отменяет local draft.
+  Native/private waypoint и world event walls не менялись.
+- Узкий payout cell показывает точную сумму одним медным номиналом, если полное
+  разложение не помещается при читаемом масштабе; выбранная строка дополнительно
+  показывает полное разложение иконками под native trade slots. Это Codex-решение
+  о размещении; визуальная приёмка остаётся непроверенной.
+- Snapshot/nonce ограничены4096 строками/256 последними request IDs на меню;
+  refresh максимум раз в20ticks плюс немедленные локальные изменения/операции.
+  Shift-click ограничен64 целыми сделками за запрос с проверкой цены, исходных
+  item terms, средств/запасов/места; дальнейшие сделки — новый клик.
+- Unknown/NBT/protected prices не сочиняются: предложения видны с причиной
+  недоступности. Это не утверждение полной Coin-оценки native gear.
+- Economy protocol2→3 требует matching client/server Economy и соответствующие
+  Roles/Server JAR при последующей явно разрешённой сборке/поставке.
+
 Economy: merchant adapter/runtime/menu, registry/client registration, network
 currency projection, MarketRuntime, общий settlement API. Roles: native trade
 callback/currency context. Server: MapClient, MapScreenMixin и локальные settings.
 Исходная геометрия/ресурсы иконок монет остаются прежними.
 
-Старая CoinMerchantScreen перестаёт открываться; совместимость зарегистрированных
+Старая CoinMerchantScreen удалена; совместимость зарегистрированных
 ID оценивается отдельно от удаления неиспользуемого класса. Нативный singleplayer
 не получает SMP listeners, платежные Mixins или дополнительную authority.
 Новый клиентский renderer/packet контракт требует matching client/server JAR.
@@ -184,7 +217,8 @@ native публикация или MineRENT; работа следующего �
 
 ## Источники
 
-- [Текущий merchant menu](../../Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantMenu.java)
+- [Нативный merchant adapter](../../Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/MerchantMenuMixin.java)
+- [Native settlement session](../../Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSession.java)
 - [Interaction interception](../../Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantRuntime.java)
 - [Buyer/chat owner](../../Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/market/MarketRuntime.java)
 - [Economy settlement](../../Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java)

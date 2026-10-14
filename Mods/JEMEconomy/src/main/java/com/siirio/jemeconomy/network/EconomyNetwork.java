@@ -18,7 +18,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class EconomyNetwork {
-    private static final String VERSION = "2";
+    private static final String VERSION = "3";
     private static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(JemEconomy.MOD_ID, "wallet"))
             .networkProtocolVersion(() -> VERSION).clientAcceptedVersions(VERSION::equals).serverAcceptedVersions(VERSION::equals).simpleChannel();
     private EconomyNetwork() {}
@@ -35,7 +35,27 @@ public final class EconomyNetwork {
                     DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> com.siirio.jemeconomy.client.WalletClientState.accept(packet));
                     context.get().setPacketHandled(true);
                 }).add();
+        CHANNEL.messageBuilder(NativeTradePacket.class, 2, NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(NativeTradePacket::encode).decoder(NativeTradePacket::decode).consumerMainThread((packet, context) -> {
+                    DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> com.siirio.jemeconomy.client.NativeTradeClient.accept(packet));
+                    context.get().setPacketHandled(true);
+                }).add();
+        CHANNEL.messageBuilder(NativeTradeActionPacket.class, 3, NetworkDirection.PLAY_TO_SERVER)
+                .encoder(NativeTradeActionPacket::encode).decoder(NativeTradeActionPacket::decode).consumerMainThread((packet, context) -> {
+                    var player = context.get().getSender();
+                    if (player != null && DedicatedSmp.active(player)
+                            && player.containerMenu instanceof com.siirio.jemeconomy.merchant.NativeMerchantAccess access
+                            && access.jem$session() != null) access.jem$session().takeQuoted(packet);
+                    context.get().setPacketHandled(true);
+                }).add();
     }
+
+    public static void sendTrade(ServerPlayer player, NativeTradePacket packet) {
+        if (DedicatedSmp.active(player) && CHANNEL.isRemotePresent(player.connection.connection))
+            CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), packet);
+    }
+
+    public static void tradeAction(NativeTradeActionPacket packet) { CHANNEL.sendToServer(packet); }
 
     private static void handle(ServerPlayer player, WalletActionPacket packet) {
         if (packet.action() == WalletActionPacket.Action.WITHDRAW) {

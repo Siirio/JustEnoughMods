@@ -24,10 +24,12 @@ public final class JemEconomy {
         EconomyBlockEntities.BLOCK_ENTITIES.register(modBus);
         EconomyMenus.MENUS.register(modBus);
         EconomyNetwork.register();
-        MinecraftForge.EVENT_BUS.register(CoinCommands.class);
-        MinecraftForge.EVENT_BUS.register(EconomyNetwork.class);
-        MinecraftForge.EVENT_BUS.register(ItemPolicyRegistry.class);
-        MinecraftForge.EVENT_BUS.register(MarketRuntime.class);
-        MinecraftForge.EVENT_BUS.register(CoinMerchantRuntime.class);
+        if (net.minecraftforge.fml.loading.FMLEnvironment.dist == net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER) {
+            MinecraftForge.EVENT_BUS.register(CoinCommands.class);
+            MinecraftForge.EVENT_BUS.register(EconomyNetwork.class);
+            MinecraftForge.EVENT_BUS.register(ItemPolicyRegistry.class);
+            MinecraftForge.EVENT_BUS.register(MarketRuntime.class);
+            MinecraftForge.EVENT_BUS.register(CoinMerchantRuntime.class);
+        }
     }
 }

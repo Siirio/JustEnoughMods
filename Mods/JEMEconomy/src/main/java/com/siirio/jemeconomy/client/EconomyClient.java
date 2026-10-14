@@ -13,6 +13,6 @@ public final class EconomyClient {
     private EconomyClient() { }
     @SubscribeEvent public static void setup(FMLClientSetupEvent event) { event.enqueueWork(() -> {
         MenuScreens.register(EconomyMenus.SHIPPING_BOX.get(), ShippingBoxScreen::new);
-        MenuScreens.register(EconomyMenus.COIN_MERCHANT.get(), CoinMerchantScreen::new);
+        MenuScreens.register(EconomyMenus.COIN_MERCHANT.get(), net.minecraft.client.gui.screens.inventory.MerchantScreen::new);
     }); }
 }

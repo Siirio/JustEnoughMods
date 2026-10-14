@@ -189,6 +189,39 @@ public final class EconomyApi {
                 allowed.payout(), allowed.units());
     }
 
+    /** Native merchant inputs, exact full trade. Shipping Box retains its inventory sale API. */
+    public static NpcSaleResult processNpcSaleFromContainer(ServerPlayer seller,
+            net.minecraft.world.inventory.MerchantContainer inputs, ItemStack offered, int quantity,
+            long expectedPayout, int sourceSlot, UUID requestId) {
+        if (!DedicatedSmp.active(seller) || requestId == null || quantity <= 0 || sourceSlot < 0 || sourceSlot > 1)
+            return new NpcSaleResult(NpcSaleStatus.UNAVAILABLE, 0L, 0);
+        var principal = IdentityPolicy.resolve(seller);
+        var optional = ItemPolicyRegistry.policy(offered).filter(policy -> policy.sellable());
+        if (principal.isEmpty()) return new NpcSaleResult(NpcSaleStatus.UNAUTHENTICATED, 0L, 0);
+        if (optional.isEmpty()) return new NpcSaleResult(NpcSaleStatus.NONE, 0L, 0);
+        ItemStack actual = inputs.getItem(sourceSlot);
+        if (!ItemStack.isSameItemSameTags(actual, offered) || actual.getCount() < quantity)
+            return new NpcSaleResult(NpcSaleStatus.INVENTORY_CHANGED, 0L, 0);
+        var policy = optional.get();
+        MarketSavedData market = MarketSavedData.get(seller.getServer());
+        long unit = Math.floorDiv(Math.multiplyExact(policy.sellCopper(), market.multiplier(seller.getServer(), policy.demandGroup())), 100L);
+        var allowed = market.allowance(seller.getServer(), principal.get().accountId(), policy, quantity, unit);
+        if (allowed.units() != quantity || allowed.payout() != expectedPayout)
+            return new NpcSaleResult(NpcSaleStatus.LIMIT_REACHED, 0L, 0);
+        String key = "nativeSale:" + principal.get().accountId() + ":" + requestId;
+        var transfer = EconomySavedData.get(seller.getServer()).transfer(SystemAccount.NPC_MARKET.id(),
+                principal.get().accountId(), allowed.payout(), key);
+        if (transfer.status() == TransferResult.Status.INSUFFICIENT_FUNDS)
+            return new NpcSaleResult(NpcSaleStatus.MARKET_BUDGET_EXHAUSTED, 0L, 0);
+        if (transfer.status() != TransferResult.Status.COMMITTED)
+            return new NpcSaleResult(transfer.status() == TransferResult.Status.REPLAYED ? NpcSaleStatus.REPLAYED : NpcSaleStatus.UNAVAILABLE, 0L, 0);
+        // Same server-thread preflight and commit: no callbacks can change quota between them.
+        if (!market.commit(seller.getServer(), key, principal.get().accountId(), java.util.Map.of(policy.item(), quantity), allowed.payout()))
+            throw new IllegalStateException("Native market allowance changed during synchronous settlement");
+        // Session consumes both native nonmoney inputs once after this monetary commit.
+        return new NpcSaleResult(NpcSaleStatus.COMMITTED, allowed.payout(), quantity);
+    }
+
     public static TransferResult payTownPayroll(ServerPlayer authenticatedActor, UUID townId, UUID workerAccount,
                                                  long amount, UUID requestId) {
         if (!DedicatedSmp.active(authenticatedActor)) return new TransferResult(TransferResult.Status.UNAVAILABLE, null, 0L, 0L);

@@ -5,7 +5,7 @@
 - Approved signal: The user explicitly required currency replacement without replacing Minecraft trading, original Xaero GUI/controls/waypoint appearance, optional unobtrusive JEM layers, and a Buyer trading window with no chat.
 - Protected behavior: Ordinary trading keeps native offers, slots, scrolling, interaction and restock ownership. Five Coins are presented as original item icons/counts and settled by the authoritative Economy owner. The Buyer has a native trading window and does not deliver its interface/errors via chat. Xaero remains the native GUI; approved terrain/boss sharing and private personal points remain intact. JEM-owned SMP GUI is outside this restoration.
 - Allowed changes: Narrow currency/payment adapters, native offer projections, Buyer offers, explicit hideable client map overlays, secure trade-event context and necessary matching client/server synchronization; no arbitrary item-price invention, independent offer lifecycle or GUI replacement.
-- Implementation state: Written architecture in Docs/economy/native-trading-design.md approved on 2026-10-14, explicitly including Xaero. Production restoration awaits written-plan review/execution-method selection; unpriced native-offer semantics cannot be resolved by inventing prices.
+- Implementation state: Architecture/plans approved2026-10-14, native inline execution and push authorized. Restoration implemented in Economy/Roles/Server source with one fresh source review and one fix pass; build/Mixin/rendered/gameplay acceptance remains unverified. Unpriced native-offer semantics are visible/unavailable and never resolved by invented prices.
 - Unlock condition: Explicit user approval of a specific replacement design.
 - Created: 2026-10-14.
 

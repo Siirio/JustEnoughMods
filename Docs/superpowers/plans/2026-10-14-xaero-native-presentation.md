@@ -1,6 +1,6 @@
 # Xaero Native Presentation Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking. The user must review this plan and select execution before product changes.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking. Reviewed and approved2026-10-14; user selected native inline execution and immediate push. Source implemented; compilation/runtime/visual verification remain unperformed under the project execution prohibition.
 
 **Goal:** Restore the native Xaero appearance while retaining optional JEM territories, projects and events.
 
@@ -46,15 +46,15 @@ public static void setVisible(Layer layer, boolean visible);
 public static void cancel();
 ```
 
-- [ ] Read the exact installed GuiMap dropdown/API and existing client-config conventions before editing. Record the available public seam; retain the current return-list Mixin only where required.
-- [ ] Resolve an exact Taste Engine pair for native Xaero extension, grounded in the approved original-interface brief and installed resources. No new art or unrelated restyling.
-- [ ] Run Atlas lookup and before-change impact scan; include map rendering/privacy owners and actual installed-mod versions.
-- [ ] Store three booleans in a dedicated client config using Forge's client config mechanism, all false by default. Do not write native Xaero settings/waypoints. Report an actual persistence failure instead of silently changing ownership.
-- [ ] Append three localized visibility actions to the existing native right-click options; do not replace options or open a replacement map/settings screen. Toggle label reflects current state.
-- [ ] Gate `MapClient.render` separately for territory, project and event layers. Hidden projects skip draft rendering and call `cancel()` on hide/logout. `cancel()` clears all local planning fields without network mutations.
-- [ ] Guard press/release/move by connected state and project visibility. Entering an explicit new/extend project action enables the project layer before beginning its draft. Otherwise leave native mouse handling untouched.
-- [ ] Retain authoritative event/claim/project queries for existing actions; toggles do not hide permissions or change server snapshots.
-- [ ] Review the actual diff against hidden-drag, reconnect and missing-Xaero conditions; do not claim an unrun game check passed.
+- [x] Read the exact installed GuiMap dropdown/API and existing client-config conventions before editing. Record the available public seam; retain the current return-list Mixin only where required.
+- [x] Resolve an exact Taste Engine pair for native Xaero extension, grounded in the approved original-interface brief and installed resources. No new art or unrelated restyling.
+- [x] Run Atlas lookup and before-change impact scan; include map rendering/privacy owners and actual installed-mod versions.
+- [x] Store three booleans in a dedicated client config using Forge's client config mechanism, all false by default. Do not write native Xaero settings/waypoints. Report an actual persistence failure instead of silently changing ownership.
+- [x] Append three localized visibility actions to the existing native right-click options; do not replace options or open a replacement map/settings screen. Toggle label reflects current state.
+- [x] Gate `MapClient.render` separately for territory, project and event layers. Hidden projects skip draft rendering and call `cancel()` on hide/logout. `cancel()` clears all local planning fields without network mutations.
+- [x] Guard press/release/move by connected state and project visibility. Entering an explicit new/extend project action enables the project layer before beginning its draft. Otherwise leave native mouse handling untouched.
+- [x] Retain authoritative event/claim/project queries for existing actions; toggles do not hide permissions or change server snapshots.
+- [x] Review the actual diff against hidden-drag, reconnect and missing-Xaero conditions; do not claim an unrun game check passed.
 
 ### Task 2: Quiet overlay drawing and completion
 
@@ -62,13 +62,13 @@ public static void cancel();
 
 **Interface:** Extend the existing `MapClient.render(...)` signature with native hover block coordinates, passed from existing GuiMap shadows. Keep dimension/camera/scale ownership in GuiMap.
 
-- [ ] Remove persistent polygon fills from enabled JEM layers; draw one GUI-pixel borders from existing union meshes. Keep meshes cached on snapshot changes, not recomputed per frame.
-- [ ] Replace always-on event/project labels with a single hovered-region label, using existing `event(...)`/`project(...)` queries and native font/tooltip conventions. Bound the label to the viewport and preserve dropdown draw order.
-- [ ] Leave `XaeroLandmarks`, terrain transport, native waypoint files and world boundary geometry untouched. Preserve snapshot request cadence and existing server validation.
-- [ ] Review rendering coordinates under GUI scaling, negative camera positions, low zoom and overlapping regions. Runtime visual acceptance remains pending an explicit launch/check request.
-- [ ] Update the canonical map document and Atlas change/effective history; run the mandatory Atlas validation, not Gradle or automated tests.
-- [ ] Record `Bug / Client / unconditional JEM overlay fill and labels without visibility controls / in testing`, naming visibility gating, outlines and hovered labels as the mechanism. Mark resolved only after user acceptance.
-- [ ] Review task-only diff, commit and push source/docs/Atlas on the intended branch. Do not copy source-only work into runtime JARs or call it deployed.
+- [x] Remove persistent polygon fills from enabled JEM layers; draw one GUI-pixel borders from existing union meshes. Keep meshes cached on snapshot changes, not recomputed per frame.
+- [x] Replace always-on event/project labels with a single hovered-region label, using existing `event(...)`/`project(...)` queries and native font/tooltip conventions. Bound the label to the viewport and preserve dropdown draw order.
+- [x] Leave `XaeroLandmarks`, terrain transport, native waypoint files and world boundary geometry untouched. Preserve snapshot request cadence and existing server validation.
+- [x] Review rendering coordinates under GUI scaling, negative camera positions, low zoom and overlapping regions. Runtime visual acceptance remains pending an explicit launch/check request.
+- [x] Update the canonical map document and Atlas change/effective history; run the mandatory Atlas validation, not Gradle or automated tests.
+- [x] Record `Bug / Client / unconditional JEM overlay fill and labels without visibility controls / in testing`, naming visibility gating, outlines and hovered labels as the mechanism. Mark resolved only after user acceptance.
+- [x] Review task-only diff, commit and push source/docs/Atlas on the intended branch. Do not copy source-only work into runtime JARs or call it deployed.
 
 ## Later explicit acceptance and packaging
 

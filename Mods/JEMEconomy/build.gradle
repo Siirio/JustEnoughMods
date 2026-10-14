@@ -1,4 +1,7 @@
-plugins { id 'net.minecraftforge.gradle' version '[6.0,6.2)' }
+plugins {
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
+}
 group = 'com.siirio.jemeconomy'
 version = '1.2.0'
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -6,7 +9,9 @@ minecraft { mappings channel: 'official', version: '1.20.1' }
 dependencies {
     minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
     compileOnly files('../JEMIdentity/build/classes/java/main')
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
+mixin { add sourceSets.main, 'jem_economy.refmap.json'; config 'jem_economy.mixins.json' }
 tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8'; options.release = 17 }
 tasks.withType(Test).configureEach { enabled = false }
-jar { archiveBaseName = 'jem-economy'; finalizedBy 'reobfJar' }
+jar { archiveBaseName = 'jem-economy'; manifest { attributes 'MixinConfigs': 'jem_economy.mixins.json' }; finalizedBy 'reobfJar' }

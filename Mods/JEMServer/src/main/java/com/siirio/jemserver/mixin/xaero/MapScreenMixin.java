@@ -53,7 +53,8 @@ public abstract class MapScreenMixin implements MapView {
         if (lastViewedDimensionId == null) return;
         var screen = (GuiMap) (Object) this;
         com.siirio.jemserver.client.xaero.ProjectRegionClient.move(lastViewedDimensionId.location(), mouseBlockPosX, mouseBlockPosZ);
-        MapClient.render(graphics, lastViewedDimensionId.location(), cameraX, cameraZ, scale / Minecraft.getInstance().getWindow().getGuiScale(), screen.width, screen.height);
+        MapClient.render(graphics, lastViewedDimensionId.location(), cameraX, cameraZ, scale / Minecraft.getInstance().getWindow().getGuiScale(), screen.width, screen.height,
+                mouseBlockPosX, mouseBlockPosZ, mouseX, mouseY);
     }
 
     @Inject(method = "m_6375_", at = @At("HEAD"), cancellable = true)
@@ -70,8 +71,18 @@ public abstract class MapScreenMixin implements MapView {
 
     @Inject(method = "getRightClickOptions", at = @At("RETURN"))
     private void jem$unclaim(CallbackInfoReturnable<ArrayList<RightClickOption>> callback) {
-        if (rightClickDim == null) return;
+        if (rightClickDim == null || !MapClient.connected()) return;
         var options = callback.getReturnValue();
+        for (var layer : com.siirio.jemserver.client.xaero.MapLayerPreferences.Layer.values()) {
+            String key = "gui.jem_server.layer." + layer.name().toLowerCase(java.util.Locale.ROOT)
+                    + (com.siirio.jemserver.client.xaero.MapLayerPreferences.visible(layer) ? ".hide" : ".show");
+            options.add(new RightClickOption(key, options.size(), (GuiMap) (Object) this) {
+                @Override public void onAction(Screen screen) {
+                    com.siirio.jemserver.client.xaero.MapLayerPreferences.setVisible(layer,
+                            !com.siirio.jemserver.client.xaero.MapLayerPreferences.visible(layer));
+                }
+            });
+        }
         var event = MapClient.event(rightClickDim.location(), rightClickX, rightClickZ);
         if (event != null) {
             options.add(new RightClickOption("gui.jem_server.event_teleport", options.size(), (GuiMap) (Object) this) {
@@ -80,6 +91,7 @@ public abstract class MapScreenMixin implements MapView {
         }
         options.add(new RightClickOption("gui.jem_server.project_plan_new", options.size(), (GuiMap) (Object) this) {
             @Override public void onAction(Screen screen) {
+                com.siirio.jemserver.client.xaero.MapLayerPreferences.setVisible(com.siirio.jemserver.client.xaero.MapLayerPreferences.Layer.PROJECTS, true);
                 com.siirio.jemserver.client.xaero.ProjectRegionClient.begin(null, rightClickDim.location());
                 Minecraft.getInstance().setScreen(screen);
             }
@@ -88,6 +100,7 @@ public abstract class MapScreenMixin implements MapView {
         if (project != null) {
             options.add(new RightClickOption("gui.jem_server.project_extend", options.size(), (GuiMap) (Object) this) {
                 @Override public void onAction(Screen screen) {
+                    com.siirio.jemserver.client.xaero.MapLayerPreferences.setVisible(com.siirio.jemserver.client.xaero.MapLayerPreferences.Layer.PROJECTS, true);
                     com.siirio.jemserver.client.xaero.ProjectRegionClient.begin(project.id(), rightClickDim.location());
                     Minecraft.getInstance().setScreen(screen);
                 }

@@ -37,32 +37,20 @@ public final class MarketRuntime {
         }
     }
 
-    @SubscribeEvent
-    public static void interact(PlayerInteractEvent.EntityInteract event) {
-        if (event.getEntity() instanceof ServerPlayer player && event.getTarget().getTags().contains(BUYER_TAG)) {
-            bulletin(player); event.setCanceled(true); event.setCancellationResult(net.minecraft.world.InteractionResult.SUCCESS);
-        }
-    }
-
     public static int bulletin(ServerPlayer player) {
-        if (com.siirio.jemidentity.api.IdentityPolicy.resolve(player).isEmpty()) { player.sendSystemMessage(Component.translatable("jem.economy.identity_required")); return 0; }
-        MarketSavedData market = MarketSavedData.get(player.getServer()); var demand = market.demand(player.getServer());
-        long funding = com.siirio.jemeconomy.ledger.EconomySavedData.get(player.getServer()).balance(com.siirio.jemeconomy.ledger.SystemAccount.NPC_MARKET.id());
-        player.sendSystemMessage(Component.translatable("jem.economy.buyer.header", Component.translatable("jem.economy.demand." + demand.primary()), Component.translatable("jem.economy.demand." + demand.secondary()), funding));
-        var rows = com.siirio.jemeconomy.policy.ItemPolicyRegistry.reviewed().stream().filter(policy -> policy.sellable()
-                && (policy.demandGroup().equals(demand.primary()) || policy.demandGroup().equals(demand.secondary())))
-                .sorted(java.util.Comparator.comparing(policy -> policy.item().toString())).limit(8).toList();
-        for (var policy : rows) {
-            int multiplier = market.multiplier(player.getServer(), policy.demandGroup());
-            long price = Math.floorDiv(Math.multiplyExact(policy.sellCopper(), multiplier), 100L);
-            var item = net.minecraftforge.registries.ForgeRegistries.ITEMS.getValue(policy.item());
-            player.sendSystemMessage(Component.translatable("jem.economy.buyer.row", item == null ? policy.item().toString() : item.getDescription(), price, policy.dailyPlayerUnits(), policy.dailyGlobalUnits()));
-        }
-        if (rows.isEmpty() || funding <= 0 || market.globalRemaining(player.getServer()) <= 0)
-            player.sendSystemMessage(Component.translatable("jem.economy.buyer.sold_out"));
-        player.sendSystemMessage(Component.translatable("jem.economy.buyer.remote_read_only"));
+        if (!com.siirio.jemidentity.api.DedicatedSmp.active(player)) return 0;
+        // A transient native merchant supplies remote read-only offers; no NPC lookup/chunk load.
+        Villager preview = net.minecraft.world.entity.EntityType.VILLAGER.create(player.serverLevel());
+        if (preview == null) return 0;
+        preview.addTag(BUYER_TAG); preview.addTag("jem_market_preview");
+        preview.setCustomName(Component.translatable("jem.economy.buyer.preview_title"));
+        com.siirio.jemeconomy.merchant.BuyerTradeOffers.refresh(preview, player);
+        preview.setTradingPlayer(player);
+        preview.openTradingScreen(player, preview.getDisplayName(), 1);
         return 1;
     }
+
+    public static boolean isPreview(net.minecraft.world.entity.Entity entity) { return entity.getTags().contains("jem_market_preview"); }
 
     private static void reconcileBuyer(ServerLevel level) {
         BlockPos spawn = level.getSharedSpawnPos(); if (!level.hasChunkAt(spawn)) return;

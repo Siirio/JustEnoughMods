@@ -416,7 +416,12 @@ def scan_coverage(base: str | None = None, head: str | None = None) -> dict[str,
     for entry in watched:
         covering = []
         for record_path, rule in changed_rules:
-            sources = rule.get("cause", {}).get("source_files", [])
+            sources = list(rule.get("cause", {}).get("source_files", []))
+            # Deleted sources are historical evidence, never a missing current cause.
+            # Only absent changed paths can use history; existing/new code still needs
+            # a current cause reference in the same changed record.
+            sources.extend(source for event in rule.get("history", [])
+                           for source in event.get("source_files", []) if not (ROOT / source).exists())
             if any(path_matches(entry["path"], source) for source in sources):
                 covering.append(rule["change_id"])
         if not covering:

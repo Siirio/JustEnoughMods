@@ -42,7 +42,7 @@
     "owner": "JEMEconomy",
     "kind": "native_adapter_duplicate_mutation",
     "source_files": [
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantMenu.java"
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSession.java"
     ]
   },
   "rationale": {
@@ -73,6 +73,15 @@
       "source_files": [
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantMenu.java"
       ]
+    },
+    {
+      "date": "2026-10-14",
+      "commit": "SELF",
+      "action": "native_result_adapter",
+      "summary": "Moved the single notifyTrade call into guarded native monetary session; original item barter uses its native result slot. Scoped Coin context prevents Human emerald refund; new runtime acceptance remains pending.",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSession.java"
+      ]
     }
   ],
   "impacts": {
@@ -84,14 +93,14 @@
       "trade_events"
     ],
     "relations": [
-      "CoinMerchantMenu->AbstractVillager.notifyTrade->MerchantOffer.increaseUses"
+      "NativeTradeSession -> AbstractVillager.notifyTrade -> native offer uses/XP/trade event"
     ],
     "notes": [
-      "Purchase/sale accounting and rejection paths remain unchanged.",
-      "Actor attribution and Human emerald-refund interaction intentionally remain open; this is not an Economy-wide repair."
+      "Single native notifyTrade ownership is preserved in the new source path; no separate offer-use counter.",
+      "Human Coin callback source correction is recorded by economy.native-trading-presentation; not a runtime certification."
     ],
     "unresolved": [
-      "Actor attribution/Human resource-refund callback remains open; stock fix awaiting user approval."
+      "New native-session runtime and stock/XP acceptance remain pending; no build/game check performed."
     ]
   }
 }

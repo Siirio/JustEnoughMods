@@ -16,6 +16,9 @@ public final class JemRoles {
         MinecraftForge.EVENT_BUS.register(RoleCommands.class);
         MinecraftForge.EVENT_BUS.register(RaceTraitRuntime.class);
         MinecraftForge.EVENT_BUS.register(RolesNetwork.class);
+        if (ModList.get().isLoaded("jem_economy")) {
+            MinecraftForge.EVENT_BUS.register(com.siirio.jemroles.compat.economy.CoinTradeRaceBridge.class);
+        }
         if (ModList.get().isLoaded("jem_professions")) {
             MinecraftForge.EVENT_BUS.register(com.siirio.jemroles.compat.professions.ProfessionRaceBridge.class);
         }
