@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-14 — Local operator granted on request
+
+- User request: grant OP to the current player. Executed native `op Sirio_o` only on the isolated local server (`world-qa`, loopback31605); the server confirmed the grant. Production and original-server permissions were not changed; the local ops/authentication files remain outside this commit.
+
 ## 2026-10-14 — Local server restarted on request
 
 - User request: start the local server again and provide its connection address and port.
