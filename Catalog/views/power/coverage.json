@@ -1,9 +1,9 @@
 {
-  "schema_version": 3,
-  "snapshot_sha": "ea954d30220f1b3ac6d9d5f86b9d8865b483beb5",
+  "schema_version": 4,
+  "snapshot_sha": "42024576c79f6e103eebc33355ecbca1ba8b5a69",
   "denominator": "All candidates from current Atlas weapon/armor/entity/enchantment views plus spell IDs from the exact-version integration registry; heuristic categories remain explicitly candidates.",
   "identified_by_view": {
-    "weapons": 175,
+    "weapons": 177,
     "armor_and_defense": 219,
     "accessories": 52,
     "enchantments": 218,
@@ -14,20 +14,25 @@
     "shared_modifiers": 6,
     "combat_scenarios": 16,
     "regression_warnings": 2,
-    "phase_3_source_findings": 5,
-    "phase_3_numeric_calculations": 238
+    "phase_3_source_findings": 6,
+    "phase_3_numeric_calculations": 756,
+    "phase_3_durability_audit": 448,
+    "phase_3_weapon_power_ladder": 177,
+    "phase_3_named_research_blockers": 4105
   },
   "boss_breakdown": {
     "jem_registered_profiles": 56,
     "additional_native_boss_candidates": 5,
     "total_boss_inventory": 61
   },
-  "combat_inventory_total": 2363,
+  "combat_inventory_total": 2365,
   "effective_expression_status": {
     "partial": 168,
-    "unresolved": 2195
+    "unresolved": 2197
   },
   "fully_resolved": 0,
+  "partially_resolved": 368,
+  "unresolved": 286,
   "reason_no_full_resolution": "No static record proves every runtime ItemStack attribute, target mitigation, attack channel and acquisition context.",
   "evidence_levels": [
     "atlas_static",
@@ -40,22 +45,36 @@
   "native_mechanics": {
     "spell_owner_classes_resolved": 106,
     "boss_owner_classes_resolved": 61,
-    "boss_channel_slots": 671,
+    "boss_combat_method_records": 233,
     "spell_channel_slots": 1060,
     "ally_owner_classes_resolved": 95,
-    "literal_item_registrations_observed": 2802,
+    "literal_item_registrations_observed": 2852,
     "boss_reward_weapon_ids": 36,
     "boss_reward_weapon_ids_in_weapon_view": 36,
     "spell_numeric_tables": 45,
     "boss_scaling_numeric_tables": 56,
-    "weapon_numeric_cards": 136
+    "weapon_numeric_cards": 177,
+    "defense_numeric_cards": 219,
+    "armor_set_cards": 39,
+    "accessory_numeric_cards": 52,
+    "spell_method_cards": 106,
+    "boss_attack_tables": 61,
+    "boss_attack_methods_traced": 231,
+    "boss_attacks_fully_numeric": 14,
+    "weapon_special_attack_methods_traced": 63,
+    "weapon_special_attacks_fully_numeric": 12,
+    "epic_fight_capability_records": 111,
+    "epic_fight_fully_numeric_combos": 0,
+    "durability_max_damage_resolved": 25,
+    "durability_consumption_resolved": 21,
+    "durability_fully_traced": 8
   },
   "known_gaps": [
     "Dynamic/helper-built item registrations and runtime ItemStack/NBT attribute variants",
-    "Weapon active/projectile formulas delegated from the matched item owner into projectile/effect/config owners",
-    "Epic Fight/Nightfall animation hit timing and Java skill behavior beyond exact installed capability/skill-parameter JSON",
-    "Complex Iron's Spells arithmetic delegated to projectile/effect classes beyond the safe symbolic bytecode subset",
-    "Boss arithmetic delegated from matched owner classes into goals/projectiles/effects",
+    "Arbitrary branched bytecode cannot be collapsed into a verified formula merely because its sink, constants and installed config inputs are now named",
+    "Epic Fight/Nightfall combo damage multipliers and attack phases remain unresolved where Java animation builders do not expose a safe data expression",
+    "Continuous spell total applications remain unresolved when scheduling/hit gating spans multiple entity ticks",
+    "Boss attack frequency and recovery remain unresolved unless a goal/animation scheduler exposes exact timing",
     "Entity hostility/taming/AI and native attributes for heuristic candidates",
     "Actual observed beam ItemStack spell ID, level, caster attributes and target resistances"
   ]

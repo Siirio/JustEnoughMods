@@ -1,7 +1,7 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "view": "accessories",
-  "snapshot_sha": "ea954d30220f1b3ac6d9d5f86b9d8865b483beb5",
+  "snapshot_sha": "42024576c79f6e103eebc33355ecbca1ba8b5a69",
   "generation": {
     "generator": "Catalog/generator/build_power_views.py",
     "method": "offline derived evidence",
@@ -50,26 +50,56 @@
         "item_id": "alexscaves:amber_curiosity",
         "artifact": "alexscaves-2.0.2.jar",
         "owner_class": "com.github.alexmodguy.alexscaves.server.item.ACItemRegistry",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$35",
+        "bootstrap_index": 47,
+        "implementation_class": "net.minecraft.world.item.Item",
+        "constructor_calls": [
+          {
+            "owner_class": "net.minecraft.world.item.Item$Properties",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          },
+          {
+            "owner_class": "net.minecraft.world.item.Item",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": []
+          }
+        ],
+        "field_references": [],
+        "numeric_constants": []
       },
       "native_mechanics": {
         "owner_artifact": "alexscaves-2.0.2.jar",
-        "owner_classes": [],
+        "owner_classes": [
+          "net.minecraft.world.item.Item"
+        ],
         "observed_channels": [
           {
             "channel": "attributes",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "ATTACK_DAMAGE",
+              "ATTACK_SPEED",
+              "AttributeModifier"
+            ]
           },
           {
             "channel": "special_attack_or_active",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "hurtEnemy",
+              "inventoryTick",
+              "onUseTick",
+              "releaseUsing"
+            ]
           },
           {
             "channel": "projectile_or_range",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "clip"
+            ]
           },
           {
             "channel": "area",
@@ -78,8 +108,10 @@
           },
           {
             "channel": "effects_or_passive",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "inventoryTick"
+            ]
           },
           {
             "channel": "cooldown",
@@ -88,13 +120,18 @@
           },
           {
             "channel": "resource_cost",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "consume"
+            ]
           },
           {
             "channel": "durability",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "getMaxDamage",
+              "maxDamage"
+            ]
           },
           {
             "channel": "curios_capability",
@@ -102,6 +139,16 @@
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -178,16 +225,42 @@
         "item_id": "cataclysm:belt_of_beginner",
         "artifact": "L_Enders_Cataclysm-3.31.jar",
         "owner_class": "com.github.L_Ender.cataclysm.init.ModItems",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$146",
+        "bootstrap_index": 146,
+        "implementation_class": "com.github.L_Ender.cataclysm.items.CuriosItem.CuriosItem",
+        "constructor_calls": [
+          {
+            "owner_class": "net.minecraft.world.item.Item$Properties",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          },
+          {
+            "owner_class": "com.github.L_Ender.cataclysm.items.CuriosItem.CuriosItem",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              1
+            ]
+          }
+        ],
+        "field_references": [],
+        "numeric_constants": [
+          1,
+          2
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "L_Enders_Cataclysm-3.31.jar",
-        "owner_classes": [],
+        "owner_classes": [
+          "com.github.L_Ender.cataclysm.items.CuriosItem.CuriosItem"
+        ],
         "observed_channels": [
           {
             "channel": "attributes",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "AttributeModifier"
+            ]
           },
           {
             "channel": "special_attack_or_active",
@@ -226,10 +299,23 @@
           },
           {
             "channel": "curios_capability",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "SlotContext",
+              "curios"
+            ]
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -304,16 +390,42 @@
         "item_id": "cataclysm:belt_of_monstrosity",
         "artifact": "L_Enders_Cataclysm-3.31.jar",
         "owner_class": "com.github.L_Ender.cataclysm.init.ModItems",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$147",
+        "bootstrap_index": 147,
+        "implementation_class": "com.github.L_Ender.cataclysm.items.CuriosItem.CuriosItem",
+        "constructor_calls": [
+          {
+            "owner_class": "net.minecraft.world.item.Item$Properties",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          },
+          {
+            "owner_class": "com.github.L_Ender.cataclysm.items.CuriosItem.CuriosItem",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              1
+            ]
+          }
+        ],
+        "field_references": [],
+        "numeric_constants": [
+          1,
+          2
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "L_Enders_Cataclysm-3.31.jar",
-        "owner_classes": [],
+        "owner_classes": [
+          "com.github.L_Ender.cataclysm.items.CuriosItem.CuriosItem"
+        ],
         "observed_channels": [
           {
             "channel": "attributes",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "AttributeModifier"
+            ]
           },
           {
             "channel": "special_attack_or_active",
@@ -352,10 +464,23 @@
           },
           {
             "channel": "curios_capability",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "SlotContext",
+              "curios"
+            ]
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -430,16 +555,92 @@
         "item_id": "cataclysm:berserker_soul_amulet",
         "artifact": "L_Enders_Cataclysm-3.31.jar",
         "owner_class": "com.github.L_Ender.cataclysm.init.ModItems",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$151",
+        "bootstrap_index": 151,
+        "implementation_class": "com.github.L_Ender.cataclysm.items.CuriosItem.CuriosItem",
+        "constructor_calls": [
+          {
+            "owner_class": "net.minecraft.world.item.Item$Properties",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          },
+          {
+            "owner_class": "com.github.L_Ender.cataclysm.items.CuriosItem.CuriosItem",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              1
+            ]
+          },
+          {
+            "owner_class": "com.github.L_Ender.cataclysm.items.CuriosItem.AttributeContainer",
+            "descriptor": "(Lnet/minecraft/world/entity/ai/attributes/Attribute;DLnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;)V",
+            "preceding_numeric_sequence": [
+              1,
+              2,
+              0,
+              0.1
+            ]
+          },
+          {
+            "owner_class": "com.github.L_Ender.cataclysm.items.CuriosItem.AttributeContainer",
+            "descriptor": "(Lnet/minecraft/world/entity/ai/attributes/Attribute;DLnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;)V",
+            "preceding_numeric_sequence": [
+              2,
+              0,
+              0.1,
+              1,
+              -0.25
+            ]
+          }
+        ],
+        "field_references": [
+          {
+            "owner_class": "net.minecraft.world.item.Rarity",
+            "field": "EPIC",
+            "descriptor": "Lnet/minecraft/world/item/Rarity;"
+          },
+          {
+            "owner_class": "net.minecraft.world.entity.ai.attributes.Attributes",
+            "field": "f_22281_",
+            "descriptor": "Lnet/minecraft/world/entity/ai/attributes/Attribute;"
+          },
+          {
+            "owner_class": "net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation",
+            "field": "MULTIPLY_TOTAL",
+            "descriptor": "Lnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;"
+          },
+          {
+            "owner_class": "net.minecraft.world.entity.ai.attributes.Attributes",
+            "field": "f_22284_",
+            "descriptor": "Lnet/minecraft/world/entity/ai/attributes/Attribute;"
+          },
+          {
+            "owner_class": "net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation",
+            "field": "MULTIPLY_TOTAL",
+            "descriptor": "Lnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;"
+          }
+        ],
+        "numeric_constants": [
+          -0.25,
+          0,
+          0.1,
+          1,
+          2
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "L_Enders_Cataclysm-3.31.jar",
-        "owner_classes": [],
+        "owner_classes": [
+          "com.github.L_Ender.cataclysm.items.CuriosItem.CuriosItem"
+        ],
         "observed_channels": [
           {
             "channel": "attributes",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "AttributeModifier"
+            ]
           },
           {
             "channel": "special_attack_or_active",
@@ -478,10 +679,23 @@
           },
           {
             "channel": "curios_capability",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "SlotContext",
+              "curios"
+            ]
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -556,7 +770,30 @@
         "item_id": "cataclysm:necklace_of_the_desert",
         "artifact": "L_Enders_Cataclysm-3.31.jar",
         "owner_class": "com.github.L_Ender.cataclysm.init.ModItems",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$185",
+        "bootstrap_index": 185,
+        "implementation_class": "com.github.L_Ender.cataclysm.items.Necklace_Of_The_Desert",
+        "constructor_calls": [
+          {
+            "owner_class": "net.minecraft.world.item.Item$Properties",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          },
+          {
+            "owner_class": "com.github.L_Ender.cataclysm.items.Necklace_Of_The_Desert",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": []
+          }
+        ],
+        "field_references": [
+          {
+            "owner_class": "net.minecraft.world.item.Rarity",
+            "field": "RARE",
+            "descriptor": "Lnet/minecraft/world/item/Rarity;"
+          }
+        ],
+        "numeric_constants": []
       },
       "native_mechanics": {
         "owner_artifact": "L_Enders_Cataclysm-3.31.jar",
@@ -610,6 +847,16 @@
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -684,16 +931,69 @@
         "item_id": "cataclysm:ring_of_grudged",
         "artifact": "L_Enders_Cataclysm-3.31.jar",
         "owner_class": "com.github.L_Ender.cataclysm.init.ModItems",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$150",
+        "bootstrap_index": 150,
+        "implementation_class": "com.github.L_Ender.cataclysm.items.CuriosItem.CuriosItem",
+        "constructor_calls": [
+          {
+            "owner_class": "net.minecraft.world.item.Item$Properties",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          },
+          {
+            "owner_class": "com.github.L_Ender.cataclysm.items.CuriosItem.CuriosItem",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              1
+            ]
+          },
+          {
+            "owner_class": "com.github.L_Ender.cataclysm.items.CuriosItem.AttributeContainer",
+            "descriptor": "(Lnet/minecraft/world/entity/ai/attributes/Attribute;DLnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;)V",
+            "preceding_numeric_sequence": [
+              1,
+              1,
+              0,
+              10
+            ]
+          }
+        ],
+        "field_references": [
+          {
+            "owner_class": "net.minecraft.world.item.Rarity",
+            "field": "EPIC",
+            "descriptor": "Lnet/minecraft/world/item/Rarity;"
+          },
+          {
+            "owner_class": "com.github.L_Ender.cataclysm.init.ModAttribute",
+            "field": "ADDITIONAL_CRITICAL_DAMAGE",
+            "descriptor": "Lnet/minecraftforge/registries/RegistryObject;"
+          },
+          {
+            "owner_class": "net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation",
+            "field": "ADDITION",
+            "descriptor": "Lnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;"
+          }
+        ],
+        "numeric_constants": [
+          0,
+          1,
+          10
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "L_Enders_Cataclysm-3.31.jar",
-        "owner_classes": [],
+        "owner_classes": [
+          "com.github.L_Ender.cataclysm.items.CuriosItem.CuriosItem"
+        ],
         "observed_channels": [
           {
             "channel": "attributes",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "AttributeModifier"
+            ]
           },
           {
             "channel": "special_attack_or_active",
@@ -732,10 +1032,23 @@
           },
           {
             "channel": "curios_capability",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "SlotContext",
+              "curios"
+            ]
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -810,7 +1123,39 @@
         "item_id": "cnc:ringtail_spawn_egg",
         "artifact": "Critters n' Crawlers-2.2.5-mc1.20.1.jar",
         "owner_class": "net.imasillylittleguy.cnc.init.CncModItems",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$14",
+        "bootstrap_index": 15,
+        "implementation_class": "net.minecraftforge.common.ForgeSpawnEggItem",
+        "constructor_calls": [
+          {
+            "owner_class": "net.minecraft.world.item.Item$Properties",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": [
+              -7570582,
+              -2899793
+            ]
+          },
+          {
+            "owner_class": "net.minecraftforge.common.ForgeSpawnEggItem",
+            "descriptor": "(Ljava/util/function/Supplier;IILnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              -7570582,
+              -2899793
+            ]
+          }
+        ],
+        "field_references": [
+          {
+            "owner_class": "net.imasillylittleguy.cnc.init.CncModEntities",
+            "field": "RINGTAIL",
+            "descriptor": "Lnet/minecraftforge/registries/RegistryObject;"
+          }
+        ],
+        "numeric_constants": [
+          -7570582,
+          -2899793
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "Critters n' Crawlers-2.2.5-mc1.20.1.jar",
@@ -862,6 +1207,16 @@
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -936,7 +1291,28 @@
         "item_id": "companions:book_heal_ring",
         "artifact": "companions-forge-1.20.1-1.3.3.jar",
         "owner_class": "dev.xylonity.companions.registry.CompanionsItems",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$20",
+        "bootstrap_index": 20,
+        "implementation_class": "dev.xylonity.companions.common.item.book.books.HealRingBook",
+        "constructor_calls": [
+          {
+            "owner_class": "net.minecraft.world.item.Item$Properties",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          },
+          {
+            "owner_class": "dev.xylonity.companions.common.item.book.books.HealRingBook",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              1
+            ]
+          }
+        ],
+        "field_references": [],
+        "numeric_constants": [
+          1
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "companions-forge-1.20.1-1.3.3.jar",
@@ -993,6 +1369,78 @@
             "channel": "curios_capability",
             "status": "not_observed",
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+          }
+        ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [
+            {
+              "owner": "dev.xylonity.companions.config.CompanionsConfig",
+              "field": "HEAL_RING_COOLDOWN",
+              "status": "config_key_ambiguous_or_missing",
+              "matches": [],
+              "unresolved_reason": "expected one installed TOML key for CompanionsConfig.HEAL_RING_COOLDOWN, found 0"
+            },
+            {
+              "owner": "dev.xylonity.companions.config.CompanionsConfig",
+              "field": "MAGE_SET_COOLDOWN_REDUCTION",
+              "status": "config_key_ambiguous_or_missing",
+              "matches": [],
+              "unresolved_reason": "expected one installed TOML key for CompanionsConfig.MAGE_SET_COOLDOWN_REDUCTION, found 0"
+            }
+          ],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [
+          {
+            "owner_class": "dev.xylonity.companions.common.item.book.books.HealRingBook",
+            "method": "m_7203_",
+            "declaration": "public net.minecraft.world.InteractionResultHolder<net.minecraft.world.item.ItemStack> m_7203_(net.minecraft.world.level.Level, net.minecraft.world.entity.player.Player, net.minecraft.world.InteractionHand)",
+            "damage_or_defense_sinks": [
+              "cooldown"
+            ],
+            "numeric_constants": [
+              1.0
+            ],
+            "literal_sink_arguments": [],
+            "config_references": [
+              {
+                "owner": "dev.xylonity.companions.config.CompanionsConfig",
+                "field": "HEAL_RING_COOLDOWN",
+                "status": "config_key_ambiguous_or_missing",
+                "matches": [],
+                "unresolved_reason": "expected one installed TOML key for CompanionsConfig.HEAL_RING_COOLDOWN, found 0"
+              },
+              {
+                "owner": "dev.xylonity.companions.config.CompanionsConfig",
+                "field": "MAGE_SET_COOLDOWN_REDUCTION",
+                "status": "config_key_ambiguous_or_missing",
+                "matches": [],
+                "unresolved_reason": "expected one installed TOML key for CompanionsConfig.MAGE_SET_COOLDOWN_REDUCTION, found 0"
+              }
+            ],
+            "calls": [
+              "dev/xylonity/companions/common/item/book/AbstractMagicBook.m_7203_",
+              "dev/xylonity/companions/common/util/Util.hasFullSetOn",
+              "dev/xylonity/knightlib/api/armor/KnightLibArmorMaterial.get",
+              "dev/xylonity/knightlib/api/registrar/ResourceEntry.get",
+              "net/minecraft/world/entity/EntityType.m_20615_",
+              "net/minecraft/world/entity/player/Player.m_20185_",
+              "net/minecraft/world/entity/player/Player.m_20186_",
+              "net/minecraft/world/entity/player/Player.m_20189_",
+              "net/minecraft/world/entity/player/Player.m_36335_",
+              "net/minecraft/world/entity/projectile/Projectile.m_5602_",
+              "net/minecraft/world/entity/projectile/Projectile.m_6027_",
+              "net/minecraft/world/item/ItemCooldowns.m_41524_",
+              "net/minecraft/world/level/Level.m_7967_"
+            ],
+            "formula_status": "sink_and_inputs_traced_formula_unresolved",
+            "unresolved_reason": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
+            "runtime_observation_required": false
           }
         ],
         "dimensions": {
@@ -1069,11 +1517,30 @@
         "item_id": "companions:relic_gold",
         "artifact": "companions-forge-1.20.1-1.3.3.jar",
         "owner_class": "dev.xylonity.companions.registry.CompanionsItems",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$13",
+        "bootstrap_index": 13,
+        "implementation_class": "dev.xylonity.companions.common.item.TooltipItem",
+        "constructor_calls": [
+          {
+            "owner_class": "net.minecraft.world.item.Item$Properties",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          },
+          {
+            "owner_class": "dev.xylonity.companions.common.item.TooltipItem",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;Ljava/lang/String;)V",
+            "preceding_numeric_sequence": []
+          }
+        ],
+        "field_references": [],
+        "numeric_constants": []
       },
       "native_mechanics": {
         "owner_artifact": "companions-forge-1.20.1-1.3.3.jar",
-        "owner_classes": [],
+        "owner_classes": [
+          "dev.xylonity.companions.common.item.TooltipItem"
+        ],
         "observed_channels": [
           {
             "channel": "attributes",
@@ -1121,6 +1588,16 @@
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -1197,7 +1674,19 @@
         "item_id": "create:belt_connector",
         "artifact": "create-1.20.1-6.0.8.jar",
         "owner_class": "com.simibubi.create.AllItems",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "<init>",
+        "bootstrap_index": 30,
+        "implementation_class": "com.simibubi.create.content.kinetics.belt.item.BeltConnectorItem",
+        "constructor_calls": [
+          {
+            "owner_class": "com.simibubi.create.content.kinetics.belt.item.BeltConnectorItem",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": []
+          }
+        ],
+        "field_references": [],
+        "numeric_constants": []
       },
       "native_mechanics": {
         "owner_artifact": "create-1.20.1-6.0.8.jar",
@@ -1249,6 +1738,96 @@
             "channel": "curios_capability",
             "status": "not_observed",
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+          }
+        ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [
+            {
+              "ticks": 5,
+              "seconds": 0.25,
+              "owner_class": "com.simibubi.create.content.kinetics.belt.item.BeltConnectorItem",
+              "status": "exact_owner_bytecode"
+            }
+          ],
+          "config_dependencies": [
+            {
+              "owner": "com.simibubi.create.infrastructure.config.CServer",
+              "field": "kinetics",
+              "status": "config_key_ambiguous_or_missing",
+              "matches": [],
+              "unresolved_reason": "expected one installed TOML key for CServer.kinetics, found 0"
+            },
+            {
+              "owner": "com.simibubi.create.infrastructure.config.CKinetics",
+              "field": "maxBeltLength",
+              "status": "config_key_ambiguous_or_missing",
+              "matches": [],
+              "unresolved_reason": "expected one installed TOML key for CKinetics.maxBeltLength, found 0"
+            }
+          ],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [
+          {
+            "owner_class": "com.simibubi.create.content.kinetics.belt.item.BeltConnectorItem",
+            "method": "m_6225_",
+            "declaration": "public net.minecraft.world.InteractionResult m_6225_(net.minecraft.world.item.context.UseOnContext)",
+            "damage_or_defense_sinks": [
+              "cooldown"
+            ],
+            "numeric_constants": [
+              1,
+              2,
+              5
+            ],
+            "literal_sink_arguments": [
+              {
+                "sink": "cooldown",
+                "value": 5,
+                "status": "exact_literal_immediately_before_sink"
+              },
+              {
+                "sink": "cooldown",
+                "value": 5,
+                "status": "exact_literal_immediately_before_sink"
+              }
+            ],
+            "config_references": [],
+            "calls": [
+              "canConnect",
+              "com/simibubi/create/foundation/advancement/CreateAdvancement.awardTo",
+              "createBelts",
+              "java/lang/Integer.intValue",
+              "maxLength",
+              "net/minecraft/core/BlockPos.equals",
+              "net/minecraft/core/BlockPos.m_123314_",
+              "net/minecraft/nbt/CompoundTag.m_128365_",
+              "net/minecraft/nbt/CompoundTag.m_128441_",
+              "net/minecraft/nbt/CompoundTag.m_128469_",
+              "net/minecraft/nbt/CompoundTag.m_128473_",
+              "net/minecraft/nbt/NbtUtils.m_129224_",
+              "net/minecraft/nbt/NbtUtils.m_129239_",
+              "net/minecraft/world/entity/player/Player.m_36335_",
+              "net/minecraft/world/entity/player/Player.m_6144_",
+              "net/minecraft/world/entity/player/Player.m_7500_",
+              "net/minecraft/world/item/ItemCooldowns.m_41524_",
+              "net/minecraft/world/item/ItemStack.m_41619_",
+              "net/minecraft/world/item/ItemStack.m_41751_",
+              "net/minecraft/world/item/ItemStack.m_41774_",
+              "net/minecraft/world/item/ItemStack.m_41784_",
+              "net/minecraft/world/item/context/UseOnContext.m_43722_",
+              "net/minecraft/world/item/context/UseOnContext.m_43723_",
+              "net/minecraft/world/item/context/UseOnContext.m_43725_",
+              "net/minecraft/world/item/context/UseOnContext.m_8083_",
+              "validateAxis"
+            ],
+            "formula_status": "sink_and_inputs_traced_formula_unresolved",
+            "unresolved_reason": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
+            "runtime_observation_required": false
           }
         ],
         "dimensions": {
@@ -1325,13 +1904,23 @@
         "item_id": "deep_dark_extended:void_collar_charge_chestplate",
         "artifact": "Deep Dark Regrowth 1.2.6.1 - 1.20.1.jar",
         "owner_class": "net.mcreator.deepdarkregrowth.init.DeepDarkRegrowthModItems",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$11",
+        "bootstrap_index": 13,
+        "implementation_class": "net.mcreator.deepdarkregrowth.item.VoidCollarChargeItem$Chestplate",
+        "constructor_calls": [
+          {
+            "owner_class": "net.mcreator.deepdarkregrowth.item.VoidCollarChargeItem$Chestplate",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          }
+        ],
+        "field_references": [],
+        "numeric_constants": []
       },
       "native_mechanics": {
         "owner_artifact": "Deep Dark Regrowth 1.2.6.1 - 1.20.1.jar",
         "owner_classes": [
-          "net.mcreator.deepdarkregrowth.item.VoidCollarChargeItem",
-          "net.mcreator.deepdarkregrowth.item.VoidCollarChargeItem$1",
           "net.mcreator.deepdarkregrowth.item.VoidCollarChargeItem$Chestplate"
         ],
         "observed_channels": [
@@ -1381,6 +1970,16 @@
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -1455,14 +2054,24 @@
         "item_id": "deep_dark_extended:void_collar_chestplate",
         "artifact": "Deep Dark Regrowth 1.2.6.1 - 1.20.1.jar",
         "owner_class": "net.mcreator.deepdarkregrowth.init.DeepDarkRegrowthModItems",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$10",
+        "bootstrap_index": 12,
+        "implementation_class": "net.mcreator.deepdarkregrowth.item.VoidCollarItem$Chestplate",
+        "constructor_calls": [
+          {
+            "owner_class": "net.mcreator.deepdarkregrowth.item.VoidCollarItem$Chestplate",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          }
+        ],
+        "field_references": [],
+        "numeric_constants": []
       },
       "native_mechanics": {
         "owner_artifact": "Deep Dark Regrowth 1.2.6.1 - 1.20.1.jar",
         "owner_classes": [
-          "net.mcreator.deepdarkregrowth.item.VoidCollarItem",
-          "net.mcreator.deepdarkregrowth.item.VoidCollarChargeItem",
-          "net.mcreator.deepdarkregrowth.item.VoidCollarItem$1"
+          "net.mcreator.deepdarkregrowth.item.VoidCollarItem$Chestplate"
         ],
         "observed_channels": [
           {
@@ -1511,6 +2120,16 @@
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -1585,13 +2204,23 @@
         "item_id": "deep_dark_regrowth:void_collar_charge_chestplate",
         "artifact": "Deep Dark Regrowth 1.2.6.1 - 1.20.1.jar",
         "owner_class": "net.mcreator.deepdarkregrowth.init.DeepDarkRegrowthModItems",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$11",
+        "bootstrap_index": 13,
+        "implementation_class": "net.mcreator.deepdarkregrowth.item.VoidCollarChargeItem$Chestplate",
+        "constructor_calls": [
+          {
+            "owner_class": "net.mcreator.deepdarkregrowth.item.VoidCollarChargeItem$Chestplate",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          }
+        ],
+        "field_references": [],
+        "numeric_constants": []
       },
       "native_mechanics": {
         "owner_artifact": "Deep Dark Regrowth 1.2.6.1 - 1.20.1.jar",
         "owner_classes": [
-          "net.mcreator.deepdarkregrowth.item.VoidCollarChargeItem",
-          "net.mcreator.deepdarkregrowth.item.VoidCollarChargeItem$1",
           "net.mcreator.deepdarkregrowth.item.VoidCollarChargeItem$Chestplate"
         ],
         "observed_channels": [
@@ -1641,6 +2270,16 @@
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -1717,14 +2356,24 @@
         "item_id": "deep_dark_regrowth:void_collar_chestplate",
         "artifact": "Deep Dark Regrowth 1.2.6.1 - 1.20.1.jar",
         "owner_class": "net.mcreator.deepdarkregrowth.init.DeepDarkRegrowthModItems",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$10",
+        "bootstrap_index": 12,
+        "implementation_class": "net.mcreator.deepdarkregrowth.item.VoidCollarItem$Chestplate",
+        "constructor_calls": [
+          {
+            "owner_class": "net.mcreator.deepdarkregrowth.item.VoidCollarItem$Chestplate",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          }
+        ],
+        "field_references": [],
+        "numeric_constants": []
       },
       "native_mechanics": {
         "owner_artifact": "Deep Dark Regrowth 1.2.6.1 - 1.20.1.jar",
         "owner_classes": [
-          "net.mcreator.deepdarkregrowth.item.VoidCollarItem",
-          "net.mcreator.deepdarkregrowth.item.VoidCollarChargeItem",
-          "net.mcreator.deepdarkregrowth.item.VoidCollarItem$1"
+          "net.mcreator.deepdarkregrowth.item.VoidCollarItem$Chestplate"
         ],
         "observed_channels": [
           {
@@ -1773,6 +2422,16 @@
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -1849,19 +2508,36 @@
         "item_id": "irons_spellbooks:affinity_ring",
         "artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_class": "io.redspace.ironsspellbooks.registries.ItemRegistry",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$196",
+        "bootstrap_index": 209,
+        "implementation_class": "io.redspace.ironsspellbooks.item.curios.AffinityRing",
+        "constructor_calls": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.curios.AffinityRing",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              1
+            ]
+          }
+        ],
+        "field_references": [],
+        "numeric_constants": [
+          1
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_classes": [
-          "io.redspace.ironsspellbooks.item.curios.AffinityRing",
-          "io.redspace.ironsspellbooks.item.curios.AffinityRing$ClientExtension"
+          "io.redspace.ironsspellbooks.item.curios.AffinityRing"
         ],
         "observed_channels": [
           {
             "channel": "attributes",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "AttributeModifier"
+            ]
           },
           {
             "channel": "special_attack_or_active",
@@ -1902,10 +2578,22 @@
             "channel": "curios_capability",
             "status": "observed_in_owner_bytecode",
             "signals": [
+              "ICurio",
+              "SlotContext",
               "curios"
             ]
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -1982,16 +2670,64 @@
         "item_id": "irons_spellbooks:amethyst_resonance_charm",
         "artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_class": "io.redspace.ironsspellbooks.registries.ItemRegistry",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$198",
+        "bootstrap_index": 212,
+        "implementation_class": "io.redspace.ironsspellbooks.item.curios.CurioBaseItem",
+        "constructor_calls": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.curios.CurioBaseItem",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              1
+            ]
+          },
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+            "descriptor": "(Ljava/util/function/Supplier;DLnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;)V",
+            "preceding_numeric_sequence": [
+              1,
+              1,
+              0,
+              0.15
+            ]
+          }
+        ],
+        "field_references": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.compat.Curios",
+            "field": "NECKLACE_SLOT",
+            "descriptor": "Ljava/lang/String;"
+          },
+          {
+            "owner_class": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+            "field": "MANA_REGEN",
+            "descriptor": "Lnet/minecraftforge/registries/RegistryObject;"
+          },
+          {
+            "owner_class": "net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation",
+            "field": "MULTIPLY_BASE",
+            "descriptor": "Lnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;"
+          }
+        ],
+        "numeric_constants": [
+          0,
+          0.15,
+          1
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
-        "owner_classes": [],
+        "owner_classes": [
+          "io.redspace.ironsspellbooks.item.curios.CurioBaseItem"
+        ],
         "observed_channels": [
           {
             "channel": "attributes",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "AttributeModifier"
+            ]
           },
           {
             "channel": "special_attack_or_active",
@@ -2030,10 +2766,24 @@
           },
           {
             "channel": "curios_capability",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "ICurio",
+              "SlotContext",
+              "curios"
+            ]
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -2110,20 +2860,64 @@
         "item_id": "irons_spellbooks:cast_time_ring",
         "artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_class": "io.redspace.ironsspellbooks.registries.ItemRegistry",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$191",
+        "bootstrap_index": 201,
+        "implementation_class": "io.redspace.ironsspellbooks.item.curios.CurioBaseItem",
+        "constructor_calls": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.curios.CurioBaseItem",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              1
+            ]
+          },
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+            "descriptor": "(Ljava/util/function/Supplier;DLnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;)V",
+            "preceding_numeric_sequence": [
+              1,
+              1,
+              0,
+              0.15
+            ]
+          }
+        ],
+        "field_references": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.compat.Curios",
+            "field": "RING_SLOT",
+            "descriptor": "Ljava/lang/String;"
+          },
+          {
+            "owner_class": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+            "field": "CAST_TIME_REDUCTION",
+            "descriptor": "Lnet/minecraftforge/registries/RegistryObject;"
+          },
+          {
+            "owner_class": "net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation",
+            "field": "MULTIPLY_BASE",
+            "descriptor": "Lnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;"
+          }
+        ],
+        "numeric_constants": [
+          0,
+          0.15,
+          1
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_classes": [
-          "io.redspace.ironsspellbooks.item.CastingItem",
-          "io.redspace.ironsspellbooks.item.curios.BetrayerSignetRingItem",
-          "io.redspace.ironsspellbooks.item.armor.WanderingMagicianArmorItem"
+          "io.redspace.ironsspellbooks.item.curios.CurioBaseItem"
         ],
         "observed_channels": [
           {
             "channel": "attributes",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "AttributeModifier"
+            ]
           },
           {
             "channel": "special_attack_or_active",
@@ -2147,19 +2941,13 @@
           },
           {
             "channel": "cooldown",
-            "status": "observed_in_owner_bytecode",
-            "signals": [
-              "Cooldown",
-              "cooldown"
-            ]
+            "status": "not_observed",
+            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           },
           {
             "channel": "resource_cost",
-            "status": "observed_in_owner_bytecode",
-            "signals": [
-              "Mana",
-              "mana"
-            ]
+            "status": "not_observed",
+            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           },
           {
             "channel": "durability",
@@ -2170,10 +2958,22 @@
             "channel": "curios_capability",
             "status": "observed_in_owner_bytecode",
             "signals": [
+              "ICurio",
+              "SlotContext",
               "curios"
             ]
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -2250,25 +3050,47 @@
         "item_id": "irons_spellbooks:concentration_amulet",
         "artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_class": "io.redspace.ironsspellbooks.registries.ItemRegistry",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$197",
+        "bootstrap_index": 210,
+        "implementation_class": "io.redspace.ironsspellbooks.item.curios.SimpleDescriptiveCurio",
+        "constructor_calls": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.curios.SimpleDescriptiveCurio",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;Ljava/lang/String;)V",
+            "preceding_numeric_sequence": [
+              1
+            ]
+          }
+        ],
+        "field_references": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.compat.Curios",
+            "field": "NECKLACE_SLOT",
+            "descriptor": "Ljava/lang/String;"
+          }
+        ],
+        "numeric_constants": [
+          1
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_classes": [
-          "io.redspace.ironsspellbooks.item.curios.TeleportationAmuletItem"
+          "io.redspace.ironsspellbooks.item.curios.SimpleDescriptiveCurio"
         ],
         "observed_channels": [
           {
             "channel": "attributes",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "AttributeModifier"
+            ]
           },
           {
             "channel": "special_attack_or_active",
-            "status": "observed_in_owner_bytecode",
-            "signals": [
-              "use:"
-            ]
+            "status": "not_observed",
+            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           },
           {
             "channel": "projectile_or_range",
@@ -2304,11 +3126,22 @@
             "channel": "curios_capability",
             "status": "observed_in_owner_bytecode",
             "signals": [
+              "ICurio",
               "SlotContext",
               "curios"
             ]
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -2385,16 +3218,64 @@
         "item_id": "irons_spellbooks:conjurers_talisman",
         "artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_class": "io.redspace.ironsspellbooks.registries.ItemRegistry",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$194",
+        "bootstrap_index": 207,
+        "implementation_class": "io.redspace.ironsspellbooks.item.curios.CurioBaseItem",
+        "constructor_calls": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.curios.CurioBaseItem",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              1
+            ]
+          },
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+            "descriptor": "(Ljava/util/function/Supplier;DLnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;)V",
+            "preceding_numeric_sequence": [
+              1,
+              1,
+              0,
+              0.15
+            ]
+          }
+        ],
+        "field_references": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.compat.Curios",
+            "field": "NECKLACE_SLOT",
+            "descriptor": "Ljava/lang/String;"
+          },
+          {
+            "owner_class": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+            "field": "SUMMON_DAMAGE",
+            "descriptor": "Lnet/minecraftforge/registries/RegistryObject;"
+          },
+          {
+            "owner_class": "net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation",
+            "field": "MULTIPLY_BASE",
+            "descriptor": "Lnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;"
+          }
+        ],
+        "numeric_constants": [
+          0,
+          0.15,
+          1
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
-        "owner_classes": [],
+        "owner_classes": [
+          "io.redspace.ironsspellbooks.item.curios.CurioBaseItem"
+        ],
         "observed_channels": [
           {
             "channel": "attributes",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "AttributeModifier"
+            ]
           },
           {
             "channel": "special_attack_or_active",
@@ -2433,10 +3314,24 @@
           },
           {
             "channel": "curios_capability",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "ICurio",
+              "SlotContext",
+              "curios"
+            ]
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -2513,19 +3408,64 @@
         "item_id": "irons_spellbooks:cooldown_ring",
         "artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_class": "io.redspace.ironsspellbooks.registries.ItemRegistry",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$190",
+        "bootstrap_index": 200,
+        "implementation_class": "io.redspace.ironsspellbooks.item.curios.CurioBaseItem",
+        "constructor_calls": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.curios.CurioBaseItem",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              1
+            ]
+          },
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+            "descriptor": "(Ljava/util/function/Supplier;DLnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;)V",
+            "preceding_numeric_sequence": [
+              1,
+              1,
+              0,
+              0.15
+            ]
+          }
+        ],
+        "field_references": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.compat.Curios",
+            "field": "RING_SLOT",
+            "descriptor": "Ljava/lang/String;"
+          },
+          {
+            "owner_class": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+            "field": "COOLDOWN_REDUCTION",
+            "descriptor": "Lnet/minecraftforge/registries/RegistryObject;"
+          },
+          {
+            "owner_class": "net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation",
+            "field": "MULTIPLY_BASE",
+            "descriptor": "Lnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;"
+          }
+        ],
+        "numeric_constants": [
+          0,
+          0.15,
+          1
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_classes": [
-          "io.redspace.ironsspellbooks.item.curios.BetrayerSignetRingItem",
-          "io.redspace.ironsspellbooks.item.armor.WanderingMagicianArmorItem"
+          "io.redspace.ironsspellbooks.item.curios.CurioBaseItem"
         ],
         "observed_channels": [
           {
             "channel": "attributes",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "AttributeModifier"
+            ]
           },
           {
             "channel": "special_attack_or_active",
@@ -2549,19 +3489,13 @@
           },
           {
             "channel": "cooldown",
-            "status": "observed_in_owner_bytecode",
-            "signals": [
-              "Cooldown",
-              "cooldown"
-            ]
+            "status": "not_observed",
+            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           },
           {
             "channel": "resource_cost",
-            "status": "observed_in_owner_bytecode",
-            "signals": [
-              "Mana",
-              "mana"
-            ]
+            "status": "not_observed",
+            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           },
           {
             "channel": "durability",
@@ -2572,10 +3506,22 @@
             "channel": "curios_capability",
             "status": "observed_in_owner_bytecode",
             "signals": [
+              "ICurio",
+              "SlotContext",
               "curios"
             ]
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -2652,19 +3598,42 @@
         "item_id": "irons_spellbooks:emerald_stoneplate_ring",
         "artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_class": "io.redspace.ironsspellbooks.registries.ItemRegistry",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$193",
+        "bootstrap_index": 203,
+        "implementation_class": "io.redspace.ironsspellbooks.item.curios.SimpleDescriptiveCurio",
+        "constructor_calls": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.curios.SimpleDescriptiveCurio",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;Ljava/lang/String;)V",
+            "preceding_numeric_sequence": [
+              1
+            ]
+          }
+        ],
+        "field_references": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.compat.Curios",
+            "field": "RING_SLOT",
+            "descriptor": "Ljava/lang/String;"
+          }
+        ],
+        "numeric_constants": [
+          1
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_classes": [
-          "io.redspace.ironsspellbooks.item.curios.BetrayerSignetRingItem",
-          "io.redspace.ironsspellbooks.item.armor.WanderingMagicianArmorItem"
+          "io.redspace.ironsspellbooks.item.curios.SimpleDescriptiveCurio"
         ],
         "observed_channels": [
           {
             "channel": "attributes",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "AttributeModifier"
+            ]
           },
           {
             "channel": "special_attack_or_active",
@@ -2688,19 +3657,13 @@
           },
           {
             "channel": "cooldown",
-            "status": "observed_in_owner_bytecode",
-            "signals": [
-              "Cooldown",
-              "cooldown"
-            ]
+            "status": "not_observed",
+            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           },
           {
             "channel": "resource_cost",
-            "status": "observed_in_owner_bytecode",
-            "signals": [
-              "Mana",
-              "mana"
-            ]
+            "status": "not_observed",
+            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           },
           {
             "channel": "durability",
@@ -2711,10 +3674,22 @@
             "channel": "curios_capability",
             "status": "observed_in_owner_bytecode",
             "signals": [
+              "ICurio",
+              "SlotContext",
               "curios"
             ]
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -2791,7 +3766,19 @@
         "item_id": "irons_spellbooks:fireward_ring",
         "artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_class": "io.redspace.ironsspellbooks.registries.ItemRegistry",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "<init>",
+        "bootstrap_index": 204,
+        "implementation_class": "io.redspace.ironsspellbooks.item.curios.FirewardRing",
+        "constructor_calls": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.curios.FirewardRing",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          }
+        ],
+        "field_references": [],
+        "numeric_constants": []
       },
       "native_mechanics": {
         "owner_artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
@@ -2847,6 +3834,16 @@
             ]
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -2923,7 +3920,19 @@
         "item_id": "irons_spellbooks:frostward_ring",
         "artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_class": "io.redspace.ironsspellbooks.registries.ItemRegistry",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "<init>",
+        "bootstrap_index": 205,
+        "implementation_class": "io.redspace.ironsspellbooks.item.curios.FrostwardRing",
+        "constructor_calls": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.curios.FrostwardRing",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          }
+        ],
+        "field_references": [],
+        "numeric_constants": []
       },
       "native_mechanics": {
         "owner_artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
@@ -2980,6 +3989,16 @@
             ]
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -3056,16 +4075,64 @@
         "item_id": "irons_spellbooks:greater_conjurers_talisman",
         "artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_class": "io.redspace.ironsspellbooks.registries.ItemRegistry",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$195",
+        "bootstrap_index": 208,
+        "implementation_class": "io.redspace.ironsspellbooks.item.curios.SimpleDescriptiveCurio",
+        "constructor_calls": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.curios.SimpleDescriptiveCurio",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              1
+            ]
+          },
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+            "descriptor": "(Ljava/util/function/Supplier;DLnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;)V",
+            "preceding_numeric_sequence": [
+              1,
+              1,
+              0,
+              0.15
+            ]
+          }
+        ],
+        "field_references": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.compat.Curios",
+            "field": "NECKLACE_SLOT",
+            "descriptor": "Ljava/lang/String;"
+          },
+          {
+            "owner_class": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+            "field": "SUMMON_DAMAGE",
+            "descriptor": "Lnet/minecraftforge/registries/RegistryObject;"
+          },
+          {
+            "owner_class": "net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation",
+            "field": "MULTIPLY_BASE",
+            "descriptor": "Lnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;"
+          }
+        ],
+        "numeric_constants": [
+          0,
+          0.15,
+          1
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
-        "owner_classes": [],
+        "owner_classes": [
+          "io.redspace.ironsspellbooks.item.curios.SimpleDescriptiveCurio"
+        ],
         "observed_channels": [
           {
             "channel": "attributes",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "AttributeModifier"
+            ]
           },
           {
             "channel": "special_attack_or_active",
@@ -3104,10 +4171,24 @@
           },
           {
             "channel": "curios_capability",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "ICurio",
+              "SlotContext",
+              "curios"
+            ]
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -3184,18 +4265,64 @@
         "item_id": "irons_spellbooks:heavy_chain_necklace",
         "artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_class": "io.redspace.ironsspellbooks.registries.ItemRegistry",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$192",
+        "bootstrap_index": 202,
+        "implementation_class": "io.redspace.ironsspellbooks.item.curios.CurioBaseItem",
+        "constructor_calls": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.curios.CurioBaseItem",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              1
+            ]
+          },
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+            "descriptor": "(Ljava/util/function/Supplier;DLnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;)V",
+            "preceding_numeric_sequence": [
+              1,
+              1,
+              0,
+              0.15
+            ]
+          }
+        ],
+        "field_references": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.compat.Curios",
+            "field": "NECKLACE_SLOT",
+            "descriptor": "Ljava/lang/String;"
+          },
+          {
+            "owner_class": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+            "field": "SPELL_RESIST",
+            "descriptor": "Lnet/minecraftforge/registries/RegistryObject;"
+          },
+          {
+            "owner_class": "net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation",
+            "field": "MULTIPLY_BASE",
+            "descriptor": "Lnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;"
+          }
+        ],
+        "numeric_constants": [
+          0,
+          0.15,
+          1
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_classes": [
-          "io.redspace.ironsspellbooks.item.UnchainedBookItem"
+          "io.redspace.ironsspellbooks.item.curios.CurioBaseItem"
         ],
         "observed_channels": [
           {
             "channel": "attributes",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "AttributeModifier"
+            ]
           },
           {
             "channel": "special_attack_or_active",
@@ -3234,10 +4361,24 @@
           },
           {
             "channel": "curios_capability",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "ICurio",
+              "SlotContext",
+              "curios"
+            ]
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -3312,13 +4453,24 @@
         "item_id": "irons_spellbooks:invisibility_ring",
         "artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_class": "io.redspace.ironsspellbooks.registries.ItemRegistry",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "<init>",
+        "bootstrap_index": 213,
+        "implementation_class": "io.redspace.ironsspellbooks.item.curios.InvisibiltyRing",
+        "constructor_calls": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.curios.InvisibiltyRing",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          }
+        ],
+        "field_references": [],
+        "numeric_constants": []
       },
       "native_mechanics": {
         "owner_artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_classes": [
-          "io.redspace.ironsspellbooks.item.curios.BetrayerSignetRingItem",
-          "io.redspace.ironsspellbooks.item.armor.WanderingMagicianArmorItem"
+          "io.redspace.ironsspellbooks.item.curios.InvisibiltyRing"
         ],
         "observed_channels": [
           {
@@ -3348,19 +4500,13 @@
           },
           {
             "channel": "cooldown",
-            "status": "observed_in_owner_bytecode",
-            "signals": [
-              "Cooldown",
-              "cooldown"
-            ]
+            "status": "not_observed",
+            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           },
           {
             "channel": "resource_cost",
-            "status": "observed_in_owner_bytecode",
-            "signals": [
-              "Mana",
-              "mana"
-            ]
+            "status": "not_observed",
+            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           },
           {
             "channel": "durability",
@@ -3375,6 +4521,16 @@
             ]
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -3449,7 +4605,19 @@
         "item_id": "irons_spellbooks:lurker_ring",
         "artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_class": "io.redspace.ironsspellbooks.registries.ItemRegistry",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "<init>",
+        "bootstrap_index": 211,
+        "implementation_class": "io.redspace.ironsspellbooks.item.curios.LurkerRing",
+        "constructor_calls": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.curios.LurkerRing",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          }
+        ],
+        "field_references": [],
+        "numeric_constants": []
       },
       "native_mechanics": {
         "owner_artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
@@ -3464,8 +4632,10 @@
           },
           {
             "channel": "special_attack_or_active",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "Ability"
+            ]
           },
           {
             "channel": "projectile_or_range",
@@ -3506,6 +4676,40 @@
             "signals": [
               "curios"
             ]
+          }
+        ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.curios.PassiveAbilityCurio",
+            "method": "tryProcCooldown",
+            "declaration": "public boolean tryProcCooldown(net.minecraft.world.entity.player.Player)",
+            "damage_or_defense_sinks": [
+              "cooldown"
+            ],
+            "numeric_constants": [
+              0,
+              1
+            ],
+            "literal_sink_arguments": [],
+            "config_references": [],
+            "calls": [
+              "getCooldownTicks",
+              "net/minecraft/world/entity/player/Player.m_36335_",
+              "net/minecraft/world/item/ItemCooldowns.m_41519_",
+              "net/minecraft/world/item/ItemCooldowns.m_41524_"
+            ],
+            "formula_status": "sink_and_inputs_traced_formula_unresolved",
+            "unresolved_reason": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
+            "runtime_observation_required": false
           }
         ],
         "dimensions": {
@@ -3584,19 +4788,64 @@
         "item_id": "irons_spellbooks:mana_ring",
         "artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_class": "io.redspace.ironsspellbooks.registries.ItemRegistry",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$188",
+        "bootstrap_index": 198,
+        "implementation_class": "io.redspace.ironsspellbooks.item.curios.CurioBaseItem",
+        "constructor_calls": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.curios.CurioBaseItem",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              1
+            ]
+          },
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+            "descriptor": "(Ljava/util/function/Supplier;DLnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;)V",
+            "preceding_numeric_sequence": [
+              1,
+              1,
+              0,
+              100
+            ]
+          }
+        ],
+        "field_references": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.compat.Curios",
+            "field": "RING_SLOT",
+            "descriptor": "Ljava/lang/String;"
+          },
+          {
+            "owner_class": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+            "field": "MAX_MANA",
+            "descriptor": "Lnet/minecraftforge/registries/RegistryObject;"
+          },
+          {
+            "owner_class": "net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation",
+            "field": "ADDITION",
+            "descriptor": "Lnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;"
+          }
+        ],
+        "numeric_constants": [
+          0,
+          1,
+          100
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_classes": [
-          "io.redspace.ironsspellbooks.item.curios.BetrayerSignetRingItem",
-          "io.redspace.ironsspellbooks.item.armor.WanderingMagicianArmorItem"
+          "io.redspace.ironsspellbooks.item.curios.CurioBaseItem"
         ],
         "observed_channels": [
           {
             "channel": "attributes",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "AttributeModifier"
+            ]
           },
           {
             "channel": "special_attack_or_active",
@@ -3620,19 +4869,13 @@
           },
           {
             "channel": "cooldown",
-            "status": "observed_in_owner_bytecode",
-            "signals": [
-              "Cooldown",
-              "cooldown"
-            ]
+            "status": "not_observed",
+            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           },
           {
             "channel": "resource_cost",
-            "status": "observed_in_owner_bytecode",
-            "signals": [
-              "Mana",
-              "mana"
-            ]
+            "status": "not_observed",
+            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           },
           {
             "channel": "durability",
@@ -3643,10 +4886,22 @@
             "channel": "curios_capability",
             "status": "observed_in_owner_bytecode",
             "signals": [
+              "ICurio",
+              "SlotContext",
               "curios"
             ]
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -3723,7 +4978,34 @@
         "item_id": "irons_spellbooks:paladin_chestplate",
         "artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_class": "io.redspace.ironsspellbooks.registries.ItemRegistry",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$183",
+        "bootstrap_index": 193,
+        "implementation_class": "io.redspace.ironsspellbooks.item.armor.PaladinArmorItem",
+        "constructor_calls": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.armor.PaladinArmorItem",
+            "descriptor": "(Lnet/minecraft/world/item/ArmorItem$Type;Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              1
+            ]
+          }
+        ],
+        "field_references": [
+          {
+            "owner_class": "net.minecraft.world.item.ArmorItem$Type",
+            "field": "CHESTPLATE",
+            "descriptor": "Lnet/minecraft/world/item/ArmorItem$Type;"
+          },
+          {
+            "owner_class": "net.minecraft.world.item.Rarity",
+            "field": "EPIC",
+            "descriptor": "Lnet/minecraft/world/item/Rarity;"
+          }
+        ],
+        "numeric_constants": [
+          1
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
@@ -3782,6 +5064,16 @@
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -3858,7 +5150,19 @@
         "item_id": "irons_spellbooks:poisonward_ring",
         "artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_class": "io.redspace.ironsspellbooks.registries.ItemRegistry",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "<init>",
+        "bootstrap_index": 206,
+        "implementation_class": "io.redspace.ironsspellbooks.item.curios.PoisonwardRing",
+        "constructor_calls": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.curios.PoisonwardRing",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          }
+        ],
+        "field_references": [],
+        "numeric_constants": []
       },
       "native_mechanics": {
         "owner_artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
@@ -3917,6 +5221,16 @@
             ]
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -3991,19 +5305,64 @@
         "item_id": "irons_spellbooks:silver_ring",
         "artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_class": "io.redspace.ironsspellbooks.registries.ItemRegistry",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$189",
+        "bootstrap_index": 199,
+        "implementation_class": "io.redspace.ironsspellbooks.item.curios.CurioBaseItem",
+        "constructor_calls": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.curios.CurioBaseItem",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              1
+            ]
+          },
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+            "descriptor": "(Ljava/util/function/Supplier;DLnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;)V",
+            "preceding_numeric_sequence": [
+              1,
+              1,
+              0,
+              25
+            ]
+          }
+        ],
+        "field_references": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.compat.Curios",
+            "field": "RING_SLOT",
+            "descriptor": "Ljava/lang/String;"
+          },
+          {
+            "owner_class": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+            "field": "MAX_MANA",
+            "descriptor": "Lnet/minecraftforge/registries/RegistryObject;"
+          },
+          {
+            "owner_class": "net.minecraft.world.entity.ai.attributes.AttributeModifier$Operation",
+            "field": "ADDITION",
+            "descriptor": "Lnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;"
+          }
+        ],
+        "numeric_constants": [
+          0,
+          1,
+          25
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_classes": [
-          "io.redspace.ironsspellbooks.item.curios.BetrayerSignetRingItem",
-          "io.redspace.ironsspellbooks.item.armor.WanderingMagicianArmorItem"
+          "io.redspace.ironsspellbooks.item.curios.CurioBaseItem"
         ],
         "observed_channels": [
           {
             "channel": "attributes",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "AttributeModifier"
+            ]
           },
           {
             "channel": "special_attack_or_active",
@@ -4027,19 +5386,13 @@
           },
           {
             "channel": "cooldown",
-            "status": "observed_in_owner_bytecode",
-            "signals": [
-              "Cooldown",
-              "cooldown"
-            ]
+            "status": "not_observed",
+            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           },
           {
             "channel": "resource_cost",
-            "status": "observed_in_owner_bytecode",
-            "signals": [
-              "Mana",
-              "mana"
-            ]
+            "status": "not_observed",
+            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           },
           {
             "channel": "durability",
@@ -4050,10 +5403,22 @@
             "channel": "curios_capability",
             "status": "observed_in_owner_bytecode",
             "signals": [
+              "ICurio",
+              "SlotContext",
               "curios"
             ]
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -4128,7 +5493,23 @@
         "item_id": "irons_spellbooks:teleportation_amulet",
         "artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_class": "io.redspace.ironsspellbooks.registries.ItemRegistry",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$199",
+        "bootstrap_index": 215,
+        "implementation_class": "io.redspace.ironsspellbooks.item.curios.TeleportationAmuletItem",
+        "constructor_calls": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.curios.TeleportationAmuletItem",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              1
+            ]
+          }
+        ],
+        "field_references": [],
+        "numeric_constants": [
+          1
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
@@ -4187,6 +5568,16 @@
             ]
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -4263,7 +5654,19 @@
         "item_id": "irons_spellbooks:visibility_ring",
         "artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_class": "io.redspace.ironsspellbooks.registries.ItemRegistry",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "<init>",
+        "bootstrap_index": 214,
+        "implementation_class": "io.redspace.ironsspellbooks.item.curios.VisibilityRing",
+        "constructor_calls": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.curios.VisibilityRing",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          }
+        ],
+        "field_references": [],
+        "numeric_constants": []
       },
       "native_mechanics": {
         "owner_artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
@@ -4322,6 +5725,16 @@
             ]
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -4398,7 +5811,29 @@
         "item_id": "irons_spellbooks:wandering_magician_boots",
         "artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_class": "io.redspace.ironsspellbooks.registries.ItemRegistry",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$137",
+        "bootstrap_index": 147,
+        "implementation_class": "io.redspace.ironsspellbooks.item.armor.WanderingMagicianArmorItem",
+        "constructor_calls": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.armor.WanderingMagicianArmorItem",
+            "descriptor": "(Lnet/minecraft/world/item/ArmorItem$Type;Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              1
+            ]
+          }
+        ],
+        "field_references": [
+          {
+            "owner_class": "net.minecraft.world.item.ArmorItem$Type",
+            "field": "BOOTS",
+            "descriptor": "Lnet/minecraft/world/item/ArmorItem$Type;"
+          }
+        ],
+        "numeric_constants": [
+          1
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
@@ -4408,8 +5843,10 @@
         "observed_channels": [
           {
             "channel": "attributes",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "AttributeModifier"
+            ]
           },
           {
             "channel": "special_attack_or_active",
@@ -4438,8 +5875,11 @@
           },
           {
             "channel": "resource_cost",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "Mana",
+              "mana"
+            ]
           },
           {
             "channel": "durability",
@@ -4452,6 +5892,16 @@
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -4528,7 +5978,29 @@
         "item_id": "irons_spellbooks:wandering_magician_chestplate",
         "artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_class": "io.redspace.ironsspellbooks.registries.ItemRegistry",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$135",
+        "bootstrap_index": 145,
+        "implementation_class": "io.redspace.ironsspellbooks.item.armor.WanderingMagicianArmorItem",
+        "constructor_calls": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.armor.WanderingMagicianArmorItem",
+            "descriptor": "(Lnet/minecraft/world/item/ArmorItem$Type;Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              1
+            ]
+          }
+        ],
+        "field_references": [
+          {
+            "owner_class": "net.minecraft.world.item.ArmorItem$Type",
+            "field": "CHESTPLATE",
+            "descriptor": "Lnet/minecraft/world/item/ArmorItem$Type;"
+          }
+        ],
+        "numeric_constants": [
+          1
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
@@ -4538,8 +6010,10 @@
         "observed_channels": [
           {
             "channel": "attributes",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "AttributeModifier"
+            ]
           },
           {
             "channel": "special_attack_or_active",
@@ -4568,8 +6042,11 @@
           },
           {
             "channel": "resource_cost",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "Mana",
+              "mana"
+            ]
           },
           {
             "channel": "durability",
@@ -4582,6 +6059,16 @@
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -4658,7 +6145,29 @@
         "item_id": "irons_spellbooks:wandering_magician_helmet",
         "artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_class": "io.redspace.ironsspellbooks.registries.ItemRegistry",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$134",
+        "bootstrap_index": 144,
+        "implementation_class": "io.redspace.ironsspellbooks.item.armor.WanderingMagicianArmorItem",
+        "constructor_calls": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.armor.WanderingMagicianArmorItem",
+            "descriptor": "(Lnet/minecraft/world/item/ArmorItem$Type;Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              1
+            ]
+          }
+        ],
+        "field_references": [
+          {
+            "owner_class": "net.minecraft.world.item.ArmorItem$Type",
+            "field": "HELMET",
+            "descriptor": "Lnet/minecraft/world/item/ArmorItem$Type;"
+          }
+        ],
+        "numeric_constants": [
+          1
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
@@ -4668,8 +6177,10 @@
         "observed_channels": [
           {
             "channel": "attributes",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "AttributeModifier"
+            ]
           },
           {
             "channel": "special_attack_or_active",
@@ -4698,8 +6209,11 @@
           },
           {
             "channel": "resource_cost",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "Mana",
+              "mana"
+            ]
           },
           {
             "channel": "durability",
@@ -4712,6 +6226,16 @@
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -4788,7 +6312,29 @@
         "item_id": "irons_spellbooks:wandering_magician_leggings",
         "artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
         "owner_class": "io.redspace.ironsspellbooks.registries.ItemRegistry",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$136",
+        "bootstrap_index": 146,
+        "implementation_class": "io.redspace.ironsspellbooks.item.armor.WanderingMagicianArmorItem",
+        "constructor_calls": [
+          {
+            "owner_class": "io.redspace.ironsspellbooks.item.armor.WanderingMagicianArmorItem",
+            "descriptor": "(Lnet/minecraft/world/item/ArmorItem$Type;Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              1
+            ]
+          }
+        ],
+        "field_references": [
+          {
+            "owner_class": "net.minecraft.world.item.ArmorItem$Type",
+            "field": "LEGGINGS",
+            "descriptor": "Lnet/minecraft/world/item/ArmorItem$Type;"
+          }
+        ],
+        "numeric_constants": [
+          1
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "irons_spellbooks-1.20.1-3.15.6.jar",
@@ -4798,8 +6344,10 @@
         "observed_channels": [
           {
             "channel": "attributes",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "AttributeModifier"
+            ]
           },
           {
             "channel": "special_attack_or_active",
@@ -4828,8 +6376,11 @@
           },
           {
             "channel": "resource_cost",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "Mana",
+              "mana"
+            ]
           },
           {
             "channel": "durability",
@@ -4842,6 +6393,16 @@
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -4916,7 +6477,39 @@
         "item_id": "legendary_monsters:hovering_hurricane_spawn_egg",
         "artifact": "legendarymonsters-2.2.2%20MC%201.20.1.jar",
         "owner_class": "net.miauczel.legendary_monsters.item.ModItems",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$94",
+        "bootstrap_index": 94,
+        "implementation_class": "net.minecraftforge.common.ForgeSpawnEggItem",
+        "constructor_calls": [
+          {
+            "owner_class": "net.minecraft.world.item.Item$Properties",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": [
+              -6035969,
+              -11635812
+            ]
+          },
+          {
+            "owner_class": "net.minecraftforge.common.ForgeSpawnEggItem",
+            "descriptor": "(Ljava/util/function/Supplier;IILnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              -6035969,
+              -11635812
+            ]
+          }
+        ],
+        "field_references": [
+          {
+            "owner_class": "net.miauczel.legendary_monsters.entity.ModEntities",
+            "field": "HoverinngHurricane",
+            "descriptor": "Lnet/minecraftforge/registries/RegistryObject;"
+          }
+        ],
+        "numeric_constants": [
+          -11635812,
+          -6035969
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "legendarymonsters-2.2.2%20MC%201.20.1.jar",
@@ -4968,6 +6561,16 @@
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -5042,21 +6645,35 @@
         "item_id": "legendary_monsters:somber_key_ring",
         "artifact": "legendarymonsters-2.2.2%20MC%201.20.1.jar",
         "owner_class": "net.miauczel.legendary_monsters.item.ModItems",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$126",
+        "bootstrap_index": 127,
+        "implementation_class": "net.miauczel.legendary_monsters.item.custom.SomberKeyPart",
+        "constructor_calls": [
+          {
+            "owner_class": "net.minecraft.world.item.Item$Properties",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          },
+          {
+            "owner_class": "net.miauczel.legendary_monsters.item.custom.SomberKeyPart",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": []
+          }
+        ],
+        "field_references": [],
+        "numeric_constants": []
       },
       "native_mechanics": {
         "owner_artifact": "legendarymonsters-2.2.2%20MC%201.20.1.jar",
         "owner_classes": [
-          "net.miauczel.legendary_monsters.item.custom.SomberKeyItem",
-          "net.miauczel.legendary_monsters.item.custom.SomberKeyItem$1"
+          "net.miauczel.legendary_monsters.item.custom.SomberKeyPart"
         ],
         "observed_channels": [
           {
             "channel": "attributes",
-            "status": "observed_in_owner_bytecode",
-            "signals": [
-              "AttributeModifier"
-            ]
+            "status": "not_observed",
+            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           },
           {
             "channel": "special_attack_or_active",
@@ -5099,6 +6716,16 @@
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -5173,7 +6800,39 @@
         "item_id": "legendary_monsters:wandering_eye_spawn_egg",
         "artifact": "legendarymonsters-2.2.2%20MC%201.20.1.jar",
         "owner_class": "net.miauczel.legendary_monsters.item.ModItems",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$120",
+        "bootstrap_index": 120,
+        "implementation_class": "net.minecraftforge.common.ForgeSpawnEggItem",
+        "constructor_calls": [
+          {
+            "owner_class": "net.minecraft.world.item.Item$Properties",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": [
+              14015124,
+              6658941
+            ]
+          },
+          {
+            "owner_class": "net.minecraftforge.common.ForgeSpawnEggItem",
+            "descriptor": "(Ljava/util/function/Supplier;IILnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              14015124,
+              6658941
+            ]
+          }
+        ],
+        "field_references": [
+          {
+            "owner_class": "net.miauczel.legendary_monsters.entity.ModEntities",
+            "field": "WANDERING_EYE",
+            "descriptor": "Lnet/minecraftforge/registries/RegistryObject;"
+          }
+        ],
+        "numeric_constants": [
+          6658941,
+          14015124
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "legendarymonsters-2.2.2%20MC%201.20.1.jar",
@@ -5225,6 +6884,16 @@
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -5299,11 +6968,41 @@
         "item_id": "simplybows:upgrades/enchanted_bow_string",
         "artifact": "simplybows-forge-neoforge-0.1.4.jar",
         "owner_class": "net.sweenus.simplybows.registry.ItemRegistry",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$34",
+        "bootstrap_index": 34,
+        "implementation_class": "net.sweenus.simplybows.item.upgrade.BowUpgradeComponentItem",
+        "constructor_calls": [
+          {
+            "owner_class": "net.minecraft.world.item.Item$Properties",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          },
+          {
+            "owner_class": "net.sweenus.simplybows.item.upgrade.BowUpgradeComponentItem",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;Lnet/sweenus/simplybows/item/upgrade/BowUpgradeComponentItem$UpgradeKind;Lnet/sweenus/simplybows/upgrade/RuneEtching;)V",
+            "preceding_numeric_sequence": []
+          }
+        ],
+        "field_references": [
+          {
+            "owner_class": "net.sweenus.simplybows.item.upgrade.BowUpgradeComponentItem$UpgradeKind",
+            "field": "ENCHANTED_STRING",
+            "descriptor": "Lnet/sweenus/simplybows/item/upgrade/BowUpgradeComponentItem$UpgradeKind;"
+          },
+          {
+            "owner_class": "net.sweenus.simplybows.upgrade.RuneEtching",
+            "field": "NONE",
+            "descriptor": "Lnet/sweenus/simplybows/upgrade/RuneEtching;"
+          }
+        ],
+        "numeric_constants": []
       },
       "native_mechanics": {
         "owner_artifact": "simplybows-forge-neoforge-0.1.4.jar",
-        "owner_classes": [],
+        "owner_classes": [
+          "net.sweenus.simplybows.item.upgrade.BowUpgradeComponentItem"
+        ],
         "observed_channels": [
           {
             "channel": "attributes",
@@ -5351,6 +7050,16 @@
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -5425,7 +7134,19 @@
         "item_id": "skarrier_mobs:blaring_horn",
         "artifact": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
         "owner_class": "net.mcreator.skarriermobs.init.SkarrierMobsModItems",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$43",
+        "bootstrap_index": 44,
+        "implementation_class": "net.mcreator.skarriermobs.item.BlaringHornItem",
+        "constructor_calls": [
+          {
+            "owner_class": "net.mcreator.skarriermobs.item.BlaringHornItem",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          }
+        ],
+        "field_references": [],
+        "numeric_constants": []
       },
       "native_mechanics": {
         "owner_artifact": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
@@ -5450,13 +7171,18 @@
           },
           {
             "channel": "area",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "AABB"
+            ]
           },
           {
             "channel": "effects_or_passive",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "Effect",
+              "MobEffectInstance"
+            ]
           },
           {
             "channel": "cooldown",
@@ -5477,6 +7203,131 @@
             "channel": "curios_capability",
             "status": "not_observed",
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+          }
+        ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [
+            {
+              "max_damage": 64,
+              "owner_class": "net.mcreator.skarriermobs.item.BlaringHornItem",
+              "status": "exact_owner_bytecode"
+            }
+          ],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [
+          {
+            "owner_class": "net.mcreator.skarriermobs.procedures.BlaringHornPlayerFinishesUsingItemProcedure",
+            "method": "execute",
+            "declaration": "public static void execute(net.minecraft.world.level.LevelAccessor, double, double, double, net.minecraft.world.entity.Entity, net.minecraft.world.item.ItemStack)",
+            "damage_or_defense_sinks": [
+              "hurt",
+              "effect",
+              "cooldown"
+            ],
+            "numeric_constants": [
+              0,
+              0.07,
+              0.35,
+              0.5,
+              1,
+              1.75,
+              2.0,
+              5,
+              6,
+              10,
+              20,
+              60,
+              120,
+              240,
+              260
+            ],
+            "literal_sink_arguments": [
+              {
+                "sink": "cooldown",
+                "value": 260,
+                "status": "exact_literal_immediately_before_sink"
+              },
+              {
+                "sink": "effect",
+                "value": 0,
+                "status": "exact_literal_immediately_before_sink"
+              },
+              {
+                "sink": "effect",
+                "value": 0,
+                "status": "exact_literal_immediately_before_sink"
+              },
+              {
+                "sink": "hurt",
+                "value": 20,
+                "status": "exact_literal_immediately_before_sink"
+              },
+              {
+                "sink": "effect",
+                "value": 0,
+                "status": "exact_literal_immediately_before_sink"
+              },
+              {
+                "sink": "effect",
+                "value": 0,
+                "status": "exact_literal_immediately_before_sink"
+              },
+              {
+                "sink": "hurt",
+                "value": 2.0,
+                "status": "exact_literal_immediately_before_sink"
+              }
+            ],
+            "config_references": [],
+            "calls": [
+              "java/util/Comparator.comparingDouble",
+              "java/util/Iterator.hasNext",
+              "java/util/Iterator.next",
+              "java/util/List.iterator",
+              "java/util/List.stream",
+              "java/util/stream/Stream.sorted",
+              "java/util/stream/Stream.toList",
+              "net/minecraft/core/BlockPos.m_274561_",
+              "net/minecraft/core/Registry.m_246971_",
+              "net/minecraft/core/RegistryAccess.m_175515_",
+              "net/minecraft/resources/ResourceLocation.\"<init>\"",
+              "net/minecraft/server/level/ServerLevel.m_8767_",
+              "net/minecraft/util/RandomSource.m_216327_",
+              "net/minecraft/world/damagesource/DamageSource.\"<init>\"",
+              "net/minecraft/world/effect/MobEffectInstance.\"<init>\"",
+              "net/minecraft/world/entity/Entity.m_6469_",
+              "net/minecraft/world/entity/LivingEntity.m_7292_",
+              "net/minecraft/world/entity/LivingEntity.m_9236_",
+              "net/minecraft/world/entity/TamableAnimal.m_21830_",
+              "net/minecraft/world/entity/player/Player.m_36335_",
+              "net/minecraft/world/item/ItemCooldowns.m_41519_",
+              "net/minecraft/world/item/ItemCooldowns.m_41524_",
+              "net/minecraft/world/item/ItemStack.m_220157_",
+              "net/minecraft/world/item/ItemStack.m_41720_",
+              "net/minecraft/world/item/ItemStack.m_41721_",
+              "net/minecraft/world/item/ItemStack.m_41774_",
+              "net/minecraft/world/level/Level.m_5594_",
+              "net/minecraft/world/level/Level.m_5776_",
+              "net/minecraft/world/level/Level.m_7785_",
+              "net/minecraft/world/level/LevelAccessor.m_5776_",
+              "net/minecraft/world/level/LevelAccessor.m_6443_",
+              "net/minecraft/world/level/LevelAccessor.m_7106_",
+              "net/minecraft/world/level/LevelAccessor.m_9598_",
+              "net/minecraft/world/phys/AABB.\"<init>\"",
+              "net/minecraft/world/phys/AABB.m_82400_",
+              "net/minecraft/world/phys/Vec3.\"<init>\"",
+              "net/minecraftforge/registries/IForgeRegistry.getValue",
+              "net/minecraftforge/registries/RegistryObject.get"
+            ],
+            "formula_status": "resolved_literal_sink_argument",
+            "unresolved_reason": null,
+            "runtime_observation_required": false
           }
         ],
         "dimensions": {
@@ -5553,7 +7404,39 @@
         "item_id": "somemoreblocks:flowering_azalea_leaves_bucket",
         "artifact": "SomeMoreBlocks@forge-1.20.1-1.0.7-bp.jar",
         "owner_class": "net.seface.somemoreblocks.registries.SMBItems",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$6",
+        "bootstrap_index": 6,
+        "implementation_class": "net.seface.somemoreblocks.item.LeavesBucketItem",
+        "constructor_calls": [
+          {
+            "owner_class": "net.minecraft.world.item.Item$Properties",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          },
+          {
+            "owner_class": "net.seface.somemoreblocks.item.LeavesBucketItem",
+            "descriptor": "(Lnet/minecraft/world/level/block/Block;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              1
+            ]
+          }
+        ],
+        "field_references": [
+          {
+            "owner_class": "net.seface.somemoreblocks.registries.SMBBlocks",
+            "field": "FLOWERING_AZALEA_LEAF_LITTER",
+            "descriptor": "Lnet/seface/somemoreblocks/platform/registry/PlatformRegistryObject;"
+          },
+          {
+            "owner_class": "net.minecraft.sounds.SoundEvents",
+            "field": "f_144057_",
+            "descriptor": "Lnet/minecraft/sounds/SoundEvent;"
+          }
+        ],
+        "numeric_constants": [
+          1
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "SomeMoreBlocks@forge-1.20.1-1.0.7-bp.jar",
@@ -5607,6 +7490,16 @@
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -5683,11 +7576,45 @@
         "item_id": "spawn:canned_herring",
         "artifact": "spawn-4.0.7-1.20.1.jar",
         "owner_class": "com.ninni.spawn.registry.SpawnItems",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$108",
+        "bootstrap_index": 114,
+        "implementation_class": "com.ninni.spawn.server.item.DurabilityFoodItem",
+        "constructor_calls": [
+          {
+            "owner_class": "net.minecraft.world.item.Item$Properties",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          },
+          {
+            "owner_class": "net.minecraft.world.food.FoodProperties$Builder",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": [
+              8
+            ]
+          },
+          {
+            "owner_class": "com.ninni.spawn.server.item.DurabilityFoodItem",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              8,
+              3,
+              0.3
+            ]
+          }
+        ],
+        "field_references": [],
+        "numeric_constants": [
+          0.3,
+          3,
+          8
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "spawn-4.0.7-1.20.1.jar",
-        "owner_classes": [],
+        "owner_classes": [
+          "com.ninni.spawn.server.item.DurabilityFoodItem"
+        ],
         "observed_channels": [
           {
             "channel": "attributes",
@@ -5711,8 +7638,11 @@
           },
           {
             "channel": "effects_or_passive",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "Effect",
+              "MobEffectInstance"
+            ]
           },
           {
             "channel": "cooldown",
@@ -5733,6 +7663,76 @@
             "channel": "curios_capability",
             "status": "not_observed",
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+          }
+        ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [
+            {
+              "cost": 1,
+              "owner_class": "com.ninni.spawn.server.item.DurabilityFoodItem",
+              "status": "exact_owner_bytecode"
+            }
+          ],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [
+          {
+            "owner_class": "com.ninni.spawn.server.item.DurabilityFoodItem",
+            "method": "m_5922_",
+            "declaration": "public net.minecraft.world.item.ItemStack m_5922_(net.minecraft.world.item.ItemStack, net.minecraft.world.level.Level, net.minecraft.world.entity.LivingEntity)",
+            "damage_or_defense_sinks": [
+              "effect",
+              "durability_cost"
+            ],
+            "numeric_constants": [
+              0.1,
+              0.4,
+              0.5,
+              0.9,
+              1.0
+            ],
+            "literal_sink_arguments": [],
+            "config_references": [],
+            "calls": [
+              "com/mojang/datafixers/util/Pair.getFirst",
+              "com/mojang/datafixers/util/Pair.getSecond",
+              "java/lang/Float.floatValue",
+              "java/util/Iterator.hasNext",
+              "java/util/Iterator.next",
+              "java/util/List.iterator",
+              "net/minecraft/advancements/critereon/ConsumeItemTrigger.m_23682_",
+              "net/minecraft/stats/StatType.m_12902_",
+              "net/minecraft/util/RandomSource.m_188501_",
+              "net/minecraft/world/effect/MobEffectInstance.\"<init>\"",
+              "net/minecraft/world/entity/LivingEntity.m_146850_",
+              "net/minecraft/world/entity/LivingEntity.m_20185_",
+              "net/minecraft/world/entity/LivingEntity.m_20186_",
+              "net/minecraft/world/entity/LivingEntity.m_20189_",
+              "net/minecraft/world/entity/LivingEntity.m_7292_",
+              "net/minecraft/world/entity/LivingEntity.m_7866_",
+              "net/minecraft/world/entity/player/Player.m_150110_",
+              "net/minecraft/world/entity/player/Player.m_20185_",
+              "net/minecraft/world/entity/player/Player.m_20186_",
+              "net/minecraft/world/entity/player/Player.m_20189_",
+              "net/minecraft/world/entity/player/Player.m_36246_",
+              "net/minecraft/world/entity/player/Player.m_36324_",
+              "net/minecraft/world/food/FoodData.eat",
+              "net/minecraft/world/food/FoodProperties.m_38749_",
+              "net/minecraft/world/item/Item.m_41472_",
+              "net/minecraft/world/item/ItemStack.getFoodProperties",
+              "net/minecraft/world/item/ItemStack.m_41614_",
+              "net/minecraft/world/item/ItemStack.m_41622_",
+              "net/minecraft/world/item/ItemStack.m_41720_",
+              "net/minecraft/world/level/Level.m_6263_"
+            ],
+            "formula_status": "sink_and_inputs_traced_formula_unresolved",
+            "unresolved_reason": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
+            "runtime_observation_required": false
           }
         ],
         "dimensions": {
@@ -5813,26 +7813,67 @@
         "item_id": "spawn:cooked_herring",
         "artifact": "spawn-4.0.7-1.20.1.jar",
         "owner_class": "com.ninni.spawn.registry.SpawnItems",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$104",
+        "bootstrap_index": 110,
+        "implementation_class": "net.minecraft.world.item.Item",
+        "constructor_calls": [
+          {
+            "owner_class": "net.minecraft.world.item.Item$Properties",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          },
+          {
+            "owner_class": "net.minecraft.world.food.FoodProperties$Builder",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          },
+          {
+            "owner_class": "net.minecraft.world.item.Item",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              4,
+              0.5
+            ]
+          }
+        ],
+        "field_references": [],
+        "numeric_constants": [
+          0.5,
+          4
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "spawn-4.0.7-1.20.1.jar",
-        "owner_classes": [],
+        "owner_classes": [
+          "net.minecraft.world.item.Item"
+        ],
         "observed_channels": [
           {
             "channel": "attributes",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "ATTACK_DAMAGE",
+              "ATTACK_SPEED",
+              "AttributeModifier"
+            ]
           },
           {
             "channel": "special_attack_or_active",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "hurtEnemy",
+              "inventoryTick",
+              "onUseTick",
+              "releaseUsing"
+            ]
           },
           {
             "channel": "projectile_or_range",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "clip"
+            ]
           },
           {
             "channel": "area",
@@ -5841,8 +7882,10 @@
           },
           {
             "channel": "effects_or_passive",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "inventoryTick"
+            ]
           },
           {
             "channel": "cooldown",
@@ -5851,13 +7894,18 @@
           },
           {
             "channel": "resource_cost",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "consume"
+            ]
           },
           {
             "channel": "durability",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "getMaxDamage",
+              "maxDamage"
+            ]
           },
           {
             "channel": "curios_capability",
@@ -5865,6 +7913,16 @@
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -5943,26 +8001,67 @@
         "item_id": "spawn:cooked_herring_slice",
         "artifact": "spawn-4.0.7-1.20.1.jar",
         "owner_class": "com.ninni.spawn.registry.SpawnItems",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$106",
+        "bootstrap_index": 112,
+        "implementation_class": "net.minecraft.world.item.Item",
+        "constructor_calls": [
+          {
+            "owner_class": "net.minecraft.world.item.Item$Properties",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          },
+          {
+            "owner_class": "net.minecraft.world.food.FoodProperties$Builder",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          },
+          {
+            "owner_class": "net.minecraft.world.item.Item",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              2,
+              0.3
+            ]
+          }
+        ],
+        "field_references": [],
+        "numeric_constants": [
+          0.3,
+          2
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "spawn-4.0.7-1.20.1.jar",
-        "owner_classes": [],
+        "owner_classes": [
+          "net.minecraft.world.item.Item"
+        ],
         "observed_channels": [
           {
             "channel": "attributes",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "ATTACK_DAMAGE",
+              "ATTACK_SPEED",
+              "AttributeModifier"
+            ]
           },
           {
             "channel": "special_attack_or_active",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "hurtEnemy",
+              "inventoryTick",
+              "onUseTick",
+              "releaseUsing"
+            ]
           },
           {
             "channel": "projectile_or_range",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "clip"
+            ]
           },
           {
             "channel": "area",
@@ -5971,8 +8070,10 @@
           },
           {
             "channel": "effects_or_passive",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "inventoryTick"
+            ]
           },
           {
             "channel": "cooldown",
@@ -5981,13 +8082,18 @@
           },
           {
             "channel": "resource_cost",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "consume"
+            ]
           },
           {
             "channel": "durability",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "getMaxDamage",
+              "maxDamage"
+            ]
           },
           {
             "channel": "curios_capability",
@@ -5995,6 +8101,16 @@
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -6069,28 +8185,67 @@
         "item_id": "spawn:herring",
         "artifact": "spawn-4.0.7-1.20.1.jar",
         "owner_class": "com.ninni.spawn.registry.SpawnItems",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$103",
+        "bootstrap_index": 109,
+        "implementation_class": "net.minecraft.world.item.Item",
+        "constructor_calls": [
+          {
+            "owner_class": "net.minecraft.world.item.Item$Properties",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          },
+          {
+            "owner_class": "net.minecraft.world.food.FoodProperties$Builder",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          },
+          {
+            "owner_class": "net.minecraft.world.item.Item",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              2,
+              0.2
+            ]
+          }
+        ],
+        "field_references": [],
+        "numeric_constants": [
+          0.2,
+          2
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "spawn-4.0.7-1.20.1.jar",
         "owner_classes": [
-          "com.ninni.spawn.server.entity.mob.Herring"
+          "net.minecraft.world.item.Item"
         ],
         "observed_channels": [
           {
             "channel": "attributes",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "ATTACK_DAMAGE",
+              "ATTACK_SPEED",
+              "AttributeModifier"
+            ]
           },
           {
             "channel": "special_attack_or_active",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "hurtEnemy",
+              "inventoryTick",
+              "onUseTick",
+              "releaseUsing"
+            ]
           },
           {
             "channel": "projectile_or_range",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "clip"
+            ]
           },
           {
             "channel": "area",
@@ -6099,8 +8254,10 @@
           },
           {
             "channel": "effects_or_passive",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "inventoryTick"
+            ]
           },
           {
             "channel": "cooldown",
@@ -6109,13 +8266,18 @@
           },
           {
             "channel": "resource_cost",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "consume"
+            ]
           },
           {
             "channel": "durability",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "getMaxDamage",
+              "maxDamage"
+            ]
           },
           {
             "channel": "curios_capability",
@@ -6123,6 +8285,16 @@
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -6197,13 +8369,39 @@
         "item_id": "spawn:herring_bucket",
         "artifact": "spawn-4.0.7-1.20.1.jar",
         "owner_class": "com.ninni.spawn.registry.SpawnItems",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$102",
+        "bootstrap_index": 108,
+        "implementation_class": "com.ninni.spawn.server.item.SpawnMobBucketItem",
+        "constructor_calls": [
+          {
+            "owner_class": "net.minecraft.world.item.Item$Properties",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          },
+          {
+            "owner_class": "com.ninni.spawn.server.item.SpawnMobBucketItem",
+            "descriptor": "(Ljava/util/function/Supplier;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              1
+            ]
+          }
+        ],
+        "field_references": [
+          {
+            "owner_class": "com.ninni.spawn.registry.SpawnEntityType",
+            "field": "HERRING",
+            "descriptor": "Lnet/minecraftforge/registries/RegistryObject;"
+          }
+        ],
+        "numeric_constants": [
+          1
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "spawn-4.0.7-1.20.1.jar",
         "owner_classes": [
-          "com.ninni.spawn.server.item.SpawnMobBucketItem",
-          "com.ninni.spawn.server.item.CatchableMobBucketItem"
+          "com.ninni.spawn.server.item.SpawnMobBucketItem"
         ],
         "observed_channels": [
           {
@@ -6252,6 +8450,16 @@
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -6328,26 +8536,67 @@
         "item_id": "spawn:herring_roll",
         "artifact": "spawn-4.0.7-1.20.1.jar",
         "owner_class": "com.ninni.spawn.registry.SpawnItems",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$107",
+        "bootstrap_index": 113,
+        "implementation_class": "net.minecraft.world.item.Item",
+        "constructor_calls": [
+          {
+            "owner_class": "net.minecraft.world.item.Item$Properties",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          },
+          {
+            "owner_class": "net.minecraft.world.food.FoodProperties$Builder",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          },
+          {
+            "owner_class": "net.minecraft.world.item.Item",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              8,
+              0.7
+            ]
+          }
+        ],
+        "field_references": [],
+        "numeric_constants": [
+          0.7,
+          8
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "spawn-4.0.7-1.20.1.jar",
-        "owner_classes": [],
+        "owner_classes": [
+          "net.minecraft.world.item.Item"
+        ],
         "observed_channels": [
           {
             "channel": "attributes",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "ATTACK_DAMAGE",
+              "ATTACK_SPEED",
+              "AttributeModifier"
+            ]
           },
           {
             "channel": "special_attack_or_active",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "hurtEnemy",
+              "inventoryTick",
+              "onUseTick",
+              "releaseUsing"
+            ]
           },
           {
             "channel": "projectile_or_range",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "clip"
+            ]
           },
           {
             "channel": "area",
@@ -6356,8 +8605,10 @@
           },
           {
             "channel": "effects_or_passive",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "inventoryTick"
+            ]
           },
           {
             "channel": "cooldown",
@@ -6366,13 +8617,18 @@
           },
           {
             "channel": "resource_cost",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "consume"
+            ]
           },
           {
             "channel": "durability",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "getMaxDamage",
+              "maxDamage"
+            ]
           },
           {
             "channel": "curios_capability",
@@ -6380,6 +8636,16 @@
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -6454,26 +8720,67 @@
         "item_id": "spawn:herring_slice",
         "artifact": "spawn-4.0.7-1.20.1.jar",
         "owner_class": "com.ninni.spawn.registry.SpawnItems",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$105",
+        "bootstrap_index": 111,
+        "implementation_class": "net.minecraft.world.item.Item",
+        "constructor_calls": [
+          {
+            "owner_class": "net.minecraft.world.item.Item$Properties",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          },
+          {
+            "owner_class": "net.minecraft.world.food.FoodProperties$Builder",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          },
+          {
+            "owner_class": "net.minecraft.world.item.Item",
+            "descriptor": "(Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              1,
+              0.1
+            ]
+          }
+        ],
+        "field_references": [],
+        "numeric_constants": [
+          0.1,
+          1
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "spawn-4.0.7-1.20.1.jar",
-        "owner_classes": [],
+        "owner_classes": [
+          "net.minecraft.world.item.Item"
+        ],
         "observed_channels": [
           {
             "channel": "attributes",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "ATTACK_DAMAGE",
+              "ATTACK_SPEED",
+              "AttributeModifier"
+            ]
           },
           {
             "channel": "special_attack_or_active",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "hurtEnemy",
+              "inventoryTick",
+              "onUseTick",
+              "releaseUsing"
+            ]
           },
           {
             "channel": "projectile_or_range",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "clip"
+            ]
           },
           {
             "channel": "area",
@@ -6482,8 +8789,10 @@
           },
           {
             "channel": "effects_or_passive",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "inventoryTick"
+            ]
           },
           {
             "channel": "cooldown",
@@ -6492,13 +8801,18 @@
           },
           {
             "channel": "resource_cost",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "consume"
+            ]
           },
           {
             "channel": "durability",
-            "status": "not_observed",
-            "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
+            "status": "observed_in_owner_bytecode",
+            "signals": [
+              "getMaxDamage",
+              "maxDamage"
+            ]
           },
           {
             "channel": "curios_capability",
@@ -6506,6 +8820,16 @@
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -6580,7 +8904,39 @@
         "item_id": "spawn:herring_spawn_egg",
         "artifact": "spawn-4.0.7-1.20.1.jar",
         "owner_class": "com.ninni.spawn.registry.SpawnItems",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$99",
+        "bootstrap_index": 107,
+        "implementation_class": "com.ninni.spawn.server.item.SpawnSpawnEggItem",
+        "constructor_calls": [
+          {
+            "owner_class": "net.minecraft.world.item.Item$Properties",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": [
+              1069485,
+              13290186
+            ]
+          },
+          {
+            "owner_class": "com.ninni.spawn.server.item.SpawnSpawnEggItem",
+            "descriptor": "(Ljava/util/function/Supplier;IILnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": [
+              1069485,
+              13290186
+            ]
+          }
+        ],
+        "field_references": [
+          {
+            "owner_class": "com.ninni.spawn.registry.SpawnEntityType",
+            "field": "HERRING",
+            "descriptor": "Lnet/minecraftforge/registries/RegistryObject;"
+          }
+        ],
+        "numeric_constants": [
+          1069485,
+          13290186
+        ]
       },
       "native_mechanics": {
         "owner_artifact": "spawn-4.0.7-1.20.1.jar",
@@ -6634,6 +8990,16 @@
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",
@@ -6708,11 +9074,36 @@
         "item_id": "spawn:spring_dragon_reeds",
         "artifact": "spawn-4.0.7-1.20.1.jar",
         "owner_class": "com.ninni.spawn.registry.SpawnItems",
-        "status": "observed_literal_in_item_registry_class"
+        "status": "exact_registration_factory",
+        "factory_method": "lambda$static$168",
+        "bootstrap_index": 174,
+        "implementation_class": "net.minecraft.world.item.DoubleHighBlockItem",
+        "constructor_calls": [
+          {
+            "owner_class": "net.minecraft.world.item.Item$Properties",
+            "descriptor": "()V",
+            "preceding_numeric_sequence": []
+          },
+          {
+            "owner_class": "net.minecraft.world.item.DoubleHighBlockItem",
+            "descriptor": "(Lnet/minecraft/world/level/block/Block;Lnet/minecraft/world/item/Item$Properties;)V",
+            "preceding_numeric_sequence": []
+          }
+        ],
+        "field_references": [
+          {
+            "owner_class": "com.ninni.spawn.registry.SpawnBlocks",
+            "field": "SPRING_DRAGON_REEDS",
+            "descriptor": "Lnet/minecraftforge/registries/RegistryObject;"
+          }
+        ],
+        "numeric_constants": []
       },
       "native_mechanics": {
         "owner_artifact": "spawn-4.0.7-1.20.1.jar",
-        "owner_classes": [],
+        "owner_classes": [
+          "net.minecraft.world.item.DoubleHighBlockItem"
+        ],
         "observed_channels": [
           {
             "channel": "attributes",
@@ -6760,6 +9151,16 @@
             "unresolved_reason": "no matching signal was found in the matched item implementation; inherited/shared behavior or data-driven Epic Fight capability remains unresolved"
           }
         ],
+        "exact_numeric_mechanics": {
+          "attributes": [],
+          "durability": [],
+          "durability_costs": [],
+          "cooldowns": [],
+          "config_dependencies": [],
+          "tier_values": [],
+          "absence_policy": "An empty list means not observed in the matched owner class, never numeric zero or proof that the mechanic is absent."
+        },
+        "special_attack_methods": [],
         "dimensions": {
           "slot": {
             "status": "unresolved",

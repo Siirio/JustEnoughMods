@@ -7,7 +7,7 @@
   ],
   "precedence": {"layer": "derived_analysis", "priority": 900, "overrides": []},
   "change": {
-    "summary": "Maintain a derived, non-runtime combat inventory with Stage 3 exact-version mechanics and numeric reference tables for items, bosses, spells and allies.",
+    "summary": "Maintain a derived, non-runtime combat inventory with Stage 3 exact-version registration factories, delegated combat methods, installed configuration evidence and numeric reference tables for items, bosses, spells and allies.",
     "modifiers": [
       {
         "property": "documentation.combat_power_expression",
@@ -27,6 +27,9 @@
       "Catalog/generator/query_atlas.py",
       "Catalog/power-sources/irons-spellbooks-3.15.6.json",
       "Catalog/power-sources/native-mechanics-phase3.json",
+      "Catalog/views/power/blockers.json",
+      "Catalog/views/power/durability.json",
+      "Catalog/views/power/power-ladder.json",
       "Docs/power-system/README.md",
       "Docs/power-system/Weapons.md",
       "Docs/power-system/Armor.md",
@@ -85,6 +88,23 @@
         "Catalog/views/power/calculations.json",
         "Docs/power-system/NUMERIC_TABLES.md"
       ]
+    },
+    {
+      "date": "2026-10-14",
+      "commit": "SELF",
+      "action": "stage_3_delegated_numeric_research_extended",
+      "summary": "Resolved DeferredRegister suppliers through their real JVM bootstrap method handles, followed bounded delegated attack/effect classes, linked installed TOML values, exposed exact basic weapon constructors and tiers, separated offensive methods from wear/support paths, and generated per-object durability, power-ladder and named-blocker records. Remaining dynamic formulas stay explicitly unresolved; runtime combat values are unchanged.",
+      "source_files": [
+        "Catalog/generator/extract_power_mechanics.py",
+        "Catalog/generator/build_power_views.py",
+        "Catalog/power-sources/native-mechanics-phase3.json",
+        "Catalog/views/power/calculations.json",
+        "Catalog/views/power/blockers.json",
+        "Catalog/views/power/durability.json",
+        "Catalog/views/power/power-ladder.json",
+        "Docs/power-system/COVERAGE.md",
+        "Docs/power-system/NUMERIC_TABLES.md"
+      ]
     }
   ],
   "impacts": {
@@ -92,7 +112,7 @@
     "relations": ["registry->power_view", "native_owner->effective_expression", "scenario->coverage", "warning->review_owner"],
     "notes": ["No Java, Mixin, config, datapack, installed JAR or runtime behavior is changed."],
     "unresolved": [
-      "Complex projectile/goal/effect formulas, runtime ItemStack attributes, target mitigation, Epic Fight/Nightfall timings and the exact reported beam ItemStack remain explicitly unresolved with per-field reasons.",
+      "Branched projectile/goal/effect formulas, runtime ItemStack attributes, target mitigation, complete Epic Fight/Nightfall attack phases and the exact reported beam ItemStack remain explicitly unresolved with per-field named blockers.",
       "Stage 3 calculates only fully traceable layers; runtime balance changes remain reserved for later approved phases."
     ]
   }

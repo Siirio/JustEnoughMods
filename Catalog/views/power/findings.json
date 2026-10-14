@@ -1,7 +1,7 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "view": "phase_3_source_findings",
-  "snapshot_sha": "ea954d30220f1b3ac6d9d5f86b9d8865b483beb5",
+  "snapshot_sha": "42024576c79f6e103eebc33355ecbca1ba8b5a69",
   "generation": {
     "generator": "Catalog/generator/build_power_views.py",
     "method": "offline derived evidence",
@@ -65,6 +65,18 @@
       "sources": [
         "Mods/JEMWorldBossTiers/AGENTS.logic-locks.md",
         "Mods/JEMWorldBossTiers/src/main/resources/assets/jem_world_boss_tiers/lang/en_us.json"
+      ],
+      "runtime_change": false
+    },
+    {
+      "id": "skarrier-ban-sword-1499-damage",
+      "status": "exact_jar_bytecode",
+      "severity": "critical_if_player_obtainable",
+      "finding": "skarrier_mobs:ban_sword registers BanSwordItem with an exact +1499 attack-damage modifier and -2.4 attack-speed modifier, producing 1500 basic melee damage with the vanilla player base attribute.",
+      "mechanism": "BanSwordItem constructs its main-hand AttributeModifier map with literal attack damage 1499. The current Atlas has no linked recipe, loot or other acquisition route, so player accessibility is unresolved rather than assumed.",
+      "sources": [
+        "Client/ManagedPack/mods/skarrier_mobs-1.0.6-forge-1.20.1.jar",
+        "net.mcreator.skarriermobs.item.BanSwordItem"
       ],
       "runtime_change": false
     }

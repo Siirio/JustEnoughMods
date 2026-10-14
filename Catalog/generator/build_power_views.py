@@ -14,7 +14,7 @@ from typing import Any, Iterable
 ROOT = Path(__file__).resolve().parents[2]
 CATALOG = ROOT / "Catalog"
 OUTPUT = CATALOG / "views" / "power"
-SCHEMA = 3
+SCHEMA = 4
 
 
 def load(path: Path) -> Any:
@@ -190,6 +190,13 @@ def native_item_mechanics(kind: str, item_id: str, native: dict[str, Any]) -> di
         dimensions["durability"] = {"status": "exact_owner_bytecode", "values": numeric["durability"]}
     if numeric.get("cooldowns") and "cooldown" in dimensions:
         dimensions["cooldown"] = {"status": "exact_owner_bytecode", "values": numeric["cooldowns"]}
+    special_methods = extracted.get("special_attack_methods", []) if extracted else []
+    if special_methods and "special_attacks" in dimensions:
+        dimensions["special_attacks"] = {
+            "status": "exact_method_sinks_formula_partial",
+            "values": special_methods,
+            "unresolved_reason": "Each native sink is named; only methods with a safely reconstructed expression may be converted into final damage.",
+        }
     if better_combat and "epic_fight_moveset" in dimensions:
         dimensions["epic_fight_moveset"] = {
             "status": "inactive_optional_compatibility_data" if not better_combat.get("provider_installed") else "not_applicable_better_combat_present",
@@ -204,10 +211,13 @@ def native_item_mechanics(kind: str, item_id: str, native: dict[str, Any]) -> di
     return {
         "owner_artifact": extracted.get("artifact") if extracted else None,
         "owner_classes": extracted.get("owner_classes", []) if extracted else [],
+        "delegated_classes": extracted.get("delegated_classes", []) if extracted else [],
         "owner_status": extracted.get("owner_status", "unresolved") if extracted else "unresolved",
         "observed_channels": extracted.get("mechanics", []) if extracted else [],
         "numeric_constants": extracted.get("numeric_constants", []) if extracted else [],
         "exact_numeric_mechanics": numeric,
+        "special_attack_methods": special_methods,
+        "special_attack_coverage": extracted.get("special_attack_coverage", {}) if extracted else {},
         "better_combat": better_combat,
         "epic_fight": epic_fight,
         "epic_fight_resolution": "single_exact_resource" if len(epic_fight) == 1 else ("resource_collision_precedence_unresolved" if epic_fight else "not_observed"),
@@ -256,6 +266,18 @@ def item_records(kind: str, pattern: str, dimensions: list[str], native: dict[st
             "unresolved_reason": None if is_builtin else "no literal item register call was extracted; the exact translation-backed candidate remains visible for dynamic/helper registration review",
         }
         entry["native_mechanics"] = native_item_mechanics(kind, item_id, native)
+        registry_row = registry.get(item_id, (None, {}))[1]
+        entry["identity"] = {
+            "source_mod": registry_row.get("mod_name") or registry_row.get("mod_id"),
+            "installed_version": registry_row.get("mod_version"),
+            "source_jar": registry_row.get("source_jar"),
+        }
+        entry["acquisition"] = {
+            "status": "source_verified_partial" if registry_row.get("acquisition_routes") else "unresolved",
+            "routes": registry_row.get("acquisition_routes", []),
+            "class": registry_row.get("acquisition_class"),
+            "unresolved": None if registry_row.get("acquisition_routes") else "No static recipe/loot/acquisition route is linked to this registry ID.",
+        }
         if item_id in rewards:
             entry["boss_reward_profiles"] = rewards[item_id]
         if tweak:
@@ -287,6 +309,8 @@ def accessory_records(native: dict[str, Any]) -> list[dict[str, Any]]:
             "owner_artifact": next((item.get("artifact") for item in native.get("items", []) if item["item_id"] == item_id), None),
             "owner_classes": next((item.get("owner_classes", []) for item in native.get("items", []) if item["item_id"] == item_id), []),
             "observed_channels": next((item.get("mechanics", []) for item in native.get("items", []) if item["item_id"] == item_id), []),
+            "exact_numeric_mechanics": next((item.get("exact_numeric_mechanics", {}) for item in native.get("items", []) if item["item_id"] == item_id), {}),
+            "special_attack_methods": next((item.get("special_attack_methods", []) for item in native.get("items", []) if item["item_id"] == item_id), []),
             "dimensions": {
                 field: {"status": "unresolved", "unresolved_reason": f"{field} requires Curios slot/capability and registered item implementation evidence for {item_id}"}
                 for field in ("slot", "attributes", "passive", "active", "trigger", "cooldown", "resource_cost")
@@ -339,8 +363,10 @@ def spell_records(evidence: dict[str, Any], native: dict[str, Any]) -> list[dict
             "native_mechanics": {
                 "owner_class": mechanic.get("owner_class"),
                 "owner_status": mechanic.get("owner_status", "unresolved"),
+                "delegated_classes": mechanic.get("delegated_classes", []),
                 "channels": mechanic.get("channels", []),
                 "formulas": formulas,
+                "effect_methods": mechanic.get("effect_methods", []),
                 "unresolved_reason": mechanic.get("unresolved_reason"),
             },
             "modifiers": [{"owner": "Iron's Spells", "expression": "school resistance soft-cap multiplier after SpellDamageEvent"}],
@@ -441,16 +467,20 @@ def boss_records(native_mechanics: dict[str, Any]) -> list[dict[str, Any]]:
                 "native_mechanics": {
                     "owner_artifact": mechanic.get("owner_artifact"),
                     "owner_classes": mechanic.get("owner_classes", []),
+                    "delegated_classes": mechanic.get("delegated_classes", []),
                     "owner_status": mechanic.get("owner_status", "unresolved"),
                     "unresolved_reason": mechanic.get("unresolved_reason"),
                     "channels": mechanic.get("channels", []),
+                    "native_attributes": mechanic.get("native_attributes", []),
+                    "attack_methods": mechanic.get("attack_methods", []),
+                    "attack_coverage": mechanic.get("attack_coverage", {}),
                 },
                 "registered_profile": {
                     key: profile_values.get(key)
                     for key in ("native_threat", "hp_scaling_safety", "attributes", "special_damage_multiplier", "damage_adapter", "healing_adapter", "stagger_adapter", "arena_strategy", "anti_cheese_profile")
                     if key in profile_values
                 },
-                "attacks": mechanic.get("channels", []),
+                "attacks": mechanic.get("attack_methods", []),
                 "original": {"status": "source_verified_partial" if mechanic.get("owner_classes") else "unresolved", "expression": "exact owner-class attack channels; attack-specific arithmetic stays attached to its native class/projectile", "unknown_is_zero": False},
                 "modifiers": [{"owner": "native boss mod", "expression": "projectile/explosion/beam/summon/custom-source behavior remains attack-specific"}],
                 "jem_tweaks": ([
@@ -487,8 +517,11 @@ def entity_records(boss_ids: set[str], native: dict[str, Any]) -> tuple[list[dic
             entry["native_mechanics"] = {
                 "owner_artifact": mechanic.get("owner_artifact"),
                 "owner_classes": mechanic.get("owner_classes", []),
+                "delegated_classes": mechanic.get("delegated_classes", []),
                 "owner_status": mechanic.get("owner_status", "unresolved"),
                 "combat_channels": mechanic.get("combat_channels", []),
+                "native_attributes": mechanic.get("native_attributes", []),
+                "attack_methods": mechanic.get("attack_methods", []),
                 "unresolved_reason": mechanic.get("unresolved_reason"),
             }
             entry["assessment"]["reason"] = "Exact owner-class combat signals are recorded when matched; ownership, tameability, AI uptime and delegated goals remain explicit unresolved dimensions."
@@ -633,6 +666,18 @@ def audit_findings() -> list[dict[str, Any]]:
             ],
             "runtime_change": False,
         },
+        {
+            "id": "skarrier-ban-sword-1499-damage",
+            "status": "exact_jar_bytecode",
+            "severity": "critical_if_player_obtainable",
+            "finding": "skarrier_mobs:ban_sword registers BanSwordItem with an exact +1499 attack-damage modifier and -2.4 attack-speed modifier, producing 1500 basic melee damage with the vanilla player base attribute.",
+            "mechanism": "BanSwordItem constructs its main-hand AttributeModifier map with literal attack damage 1499. The current Atlas has no linked recipe, loot or other acquisition route, so player accessibility is unresolved rather than assumed.",
+            "sources": [
+                "Client/ManagedPack/mods/skarrier_mobs-1.0.6-forge-1.20.1.jar",
+                "net.mcreator.skarriermobs.item.BanSwordItem",
+            ],
+            "runtime_change": False,
+        },
     ]
 
 
@@ -769,16 +814,23 @@ def boss_numeric_calculations(bosses: list[dict[str, Any]]) -> list[dict[str, An
     return records
 
 
+OFFENSIVE_SINKS = {"hurt", "projectile_damage", "explosion", "effect"}
+
+
+def offensive_method(method: dict[str, Any]) -> bool:
+    return bool(OFFENSIVE_SINKS & set(method.get("damage_or_defense_sinks", [])))
+
+
 def weapon_numeric_calculations(weapons: list[dict[str, Any]]) -> list[dict[str, Any]]:
     records = []
     for weapon in weapons:
         native = weapon.get("native_mechanics", {})
         exact = native.get("exact_numeric_mechanics", {})
+        special_methods = [row for row in native.get("special_attack_methods", []) if offensive_method(row)]
         damage_values = [row for row in exact.get("attributes", []) if row.get("attribute") == "attack_damage_addition"]
+        factory_damage = [row for row in exact.get("attributes", []) if row.get("attribute") == "factory_attack_damage_parameter"]
         speed_values = [row for row in exact.get("attributes", []) if row.get("attribute") == "attack_speed_addition"]
         better = native.get("better_combat")
-        if not (damage_values or speed_values or better or native.get("epic_fight") or exact.get("durability") or exact.get("cooldowns")):
-            continue
         damage_addition = damage_values[0]["value"] if damage_values else None
         player_total = 1.0 + float(damage_addition) if isinstance(damage_addition, (int, float)) else None
         progression = []
@@ -804,6 +856,7 @@ def weapon_numeric_calculations(weapons: list[dict[str, Any]]) -> list[dict[str,
             "id": weapon["id"],
             "kind": "weapon_numeric_card",
             "attack_damage_addition": damage_addition,
+            "factory_attack_damage_parameters": factory_damage,
             "player_base_attack_damage": 1.0 if player_total is not None else None,
             "native_basic_melee_damage_before_target_mitigation": round(player_total, 6) if player_total is not None else None,
             "attack_speed_additions": speed_values,
@@ -818,10 +871,296 @@ def weapon_numeric_calculations(weapons: list[dict[str, Any]]) -> list[dict[str,
             "durability_costs": exact.get("durability_costs", []),
             "cooldowns": exact.get("cooldowns", []),
             "config_dependencies": exact.get("config_dependencies", []),
+            "special_attack_methods": special_methods,
+            "support_and_wear_methods": [row for row in native.get("special_attack_methods", []) if not offensive_method(row)],
+            "special_attack_coverage": {
+                "method_count": len(special_methods),
+                "fully_numeric_count": sum(row.get("formula_status", "").startswith("resolved") for row in special_methods),
+                "boundary": "Pure cooldown, healing and durability-consumption methods are preserved separately and are not counted as weapon special attacks.",
+            },
+            "resolution": {
+                "status": "partial" if any((damage_values, factory_damage, speed_values, special_methods, native.get("epic_fight"))) else "unresolved",
+                "missing": [
+                    field for field, resolved in {
+                        "basic_attack_total": bool(damage_values),
+                        "special_attack_formula": any(row.get("formula_status", "").startswith("resolved") for row in special_methods),
+                        "epic_fight_combo_damage": bool(combo),
+                        "durability": bool(exact.get("durability")),
+                    }.items() if not resolved
+                ],
+            },
             "calculation_boundary": "Basic melee totals use the vanilla player base attack-damage attribute 1 plus an exact ADDITION modifier. Projectile, beam, explosion, active ability and config-dependent values are not replaced by this number.",
             "evidence": weapon["evidence"],
         })
     return records
+
+
+def defense_numeric_calculations(defenses: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    records = []
+    for defense in defenses:
+        native = defense.get("native_mechanics", {})
+        exact = native.get("exact_numeric_mechanics", {})
+        attributes = exact.get("attributes", [])
+        records.append({
+            "id": defense["id"],
+            "kind": "defense_numeric_card",
+            "attributes": attributes,
+            "epic_fight_capabilities": native.get("epic_fight", []),
+            "durability": exact.get("durability", []),
+            "durability_costs": exact.get("durability_costs", []),
+            "passive_or_active_methods": native.get("special_attack_methods", []),
+            "config_dependencies": exact.get("config_dependencies", []),
+            "resolution": {
+                "status": "partial" if any((attributes, native.get("epic_fight"), exact.get("durability"), native.get("special_attack_methods"))) else "unresolved",
+                "missing": [
+                    field for field, resolved in {
+                        "armor_and_toughness": any(row.get("attribute") in {"armor_addition", "armor_toughness_addition"} for row in attributes),
+                        "durability": bool(exact.get("durability")),
+                        "passive_active_formula": any(row.get("formula_status", "").startswith("resolved") for row in native.get("special_attack_methods", [])),
+                    }.items() if not resolved
+                ],
+            },
+            "evidence": defense["evidence"],
+        })
+    return records
+
+
+def accessory_numeric_calculations(accessories: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    records = []
+    for accessory in accessories:
+        native = accessory.get("native_mechanics", {})
+        exact = native.get("exact_numeric_mechanics", {})
+        records.append({
+            "id": accessory["id"],
+            "kind": "accessory_numeric_card",
+            "attributes": exact.get("attributes", []),
+            "active_or_passive_methods": native.get("special_attack_methods", []),
+            "cooldowns": exact.get("cooldowns", []),
+            "config_dependencies": exact.get("config_dependencies", []),
+            "resolution": {
+                "status": "partial" if any((exact.get("attributes"), native.get("special_attack_methods"), exact.get("cooldowns"))) else "unresolved",
+                "missing": ["curios_slot_and_stack_limit", "complete_passive_or_active_formula"],
+            },
+            "evidence": accessory["evidence"],
+        })
+    return records
+
+
+def spell_method_calculations(spells: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return [{
+        "id": spell["id"],
+        "kind": "spell_method_card",
+        "native_formulas": spell.get("native_mechanics", {}).get("formulas", {}),
+        "delegated_classes": spell.get("native_mechanics", {}).get("delegated_classes", []),
+        "effect_methods": spell.get("native_mechanics", {}).get("effect_methods", []),
+        "resolution": {
+            "status": "partial" if spell.get("native_mechanics", {}).get("effect_methods") or spell.get("native_mechanics", {}).get("formulas") else "unresolved",
+            "missing": ["full_application_count"] if any(channel.get("channel") == "multi_hit_or_channel" and channel.get("status", "").startswith("observed") for channel in spell.get("native_mechanics", {}).get("channels", [])) else [],
+        },
+        "evidence": spell["evidence"],
+    } for spell in spells]
+
+
+def boss_attack_calculations(bosses: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    records = []
+    for boss in bosses:
+        all_methods = boss.get("native_mechanics", {}).get("attack_methods", [])
+        attacks = [row for row in all_methods if offensive_method(row)]
+        records.append({
+            "id": boss["id"],
+            "kind": "boss_attack_table",
+            "native_attributes": boss.get("native_mechanics", {}).get("native_attributes", []),
+            "attack_methods": attacks,
+            "support_and_recovery_methods": [row for row in all_methods if not offensive_method(row)],
+            "delegated_classes": boss.get("native_mechanics", {}).get("delegated_classes", []),
+            "resolution": {
+                "status": "partial" if attacks else "unresolved",
+                "attack_method_count": len(attacks),
+                "fully_numeric_attack_count": sum(row.get("formula_status", "").startswith("resolved") for row in attacks),
+            },
+            "evidence": boss["evidence"],
+        })
+    return records
+
+
+def durability_audit(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    records = []
+    for item in items:
+        exact = item.get("native_mechanics", {}).get("exact_numeric_mechanics", {})
+        durability = exact.get("durability", [])
+        costs = exact.get("durability_costs", [])
+        records.append({
+            "id": item["id"],
+            "kind": "durability_audit",
+            "native_max_damage": durability,
+            "observed_consumption": costs,
+            "status": "max_and_consumption_traced" if durability and costs else ("partial" if durability or costs else "unresolved"),
+            "unresolved_reason": None if durability and costs else "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+            "runtime_observation_required": False,
+        })
+    return records
+
+
+ARMOR_SUFFIXES = ("helmet", "chestplate", "leggings", "boots")
+
+
+def armor_set_calculations(defenses: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    groups: dict[str, dict[str, dict[str, Any]]] = {}
+    for defense in defenses:
+        namespace, _, path = defense["id"].partition(":")
+        slot = next((suffix for suffix in ARMOR_SUFFIXES if path.endswith(f"_{suffix}")), None)
+        if slot is None:
+            continue
+        stem = path[:-(len(slot) + 1)]
+        groups.setdefault(f"{namespace}:{stem}", {})[slot] = defense
+    records = []
+    for set_id, pieces in sorted(groups.items()):
+        if len(pieces) < 4:
+            continue
+        attributes = [
+            attribute
+            for piece in pieces.values()
+            for attribute in piece.get("native_mechanics", {}).get("exact_numeric_mechanics", {}).get("attributes", [])
+        ]
+        capabilities = [
+            capability
+            for piece in pieces.values()
+            for capability in piece.get("native_mechanics", {}).get("epic_fight", [])
+        ]
+        totals = {
+            semantic: round(sum(float(row["value"]) for row in attributes if row.get("attribute") == semantic), 6)
+            for semantic in ("armor_addition", "armor_toughness_addition", "knockback_resistance_addition")
+        }
+        exact_totals = any(totals.values())
+        records.append({
+            "id": set_id,
+            "kind": "armor_set_card",
+            "pieces": {slot: piece["id"] for slot, piece in sorted(pieces.items())},
+            "summed_exact_attributes": totals,
+            "epic_fight_capabilities": capabilities,
+            "resolution": {
+                "status": "partial" if exact_totals or capabilities else "unresolved",
+                "missing": [
+                    field for field, resolved in {
+                        "all_native_armor_values": exact_totals,
+                        "all_set_passive_active_formulas": all(piece.get("native_mechanics", {}).get("special_attack_methods") for piece in pieces.values()),
+                    }.items() if not resolved
+                ],
+            },
+            "boundary": "Only four-piece registry stems are grouped. Set bonuses are not inferred from naming; exact capability and owner-method evidence stays attached to each piece.",
+        })
+    return records
+
+
+def weapon_power_ladder(weapons: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    records = []
+    for weapon in weapons:
+        native = weapon.get("native_mechanics", {})
+        exact = native.get("exact_numeric_mechanics", {})
+        damage = next((row.get("value") for row in exact.get("attributes", []) if row.get("attribute") == "attack_damage_addition"), None)
+        capabilities = native.get("epic_fight", [])
+        armor_negation = [
+            style.get("armor_negation")
+            for capability in capabilities
+            for style in capability.get("data", {}).get("attributes", {}).values()
+            if isinstance(style, dict) and isinstance(style.get("armor_negation"), (int, float))
+        ]
+        is_reward = bool(weapon.get("boss_reward_profiles"))
+        records.append({
+            "id": weapon["id"],
+            "kind": "weapon_power_ladder_entry",
+            "exact_basic_melee_damage": round(1.0 + float(damage), 6) if isinstance(damage, (int, float)) else None,
+            "exact_epic_fight_armor_negation": armor_negation,
+            "special_attack_methods_traced": sum(offensive_method(row) for row in native.get("special_attack_methods", [])),
+            "boss_reward": is_reward,
+            "actual_current_power_ranking": {
+                "status": "unresolved_full_ranking",
+                "reason": "A truthful overall rank requires complete special/combo DPS, acquisition and target-context evidence; the exact basic-melee value is exposed only as a sub-ranking input.",
+            },
+            "recommended_progression_ranking": {
+                "status": "source_intent_only" if is_reward else "unresolved",
+                "tier": "boss_reward" if is_reward else None,
+                "reason": "Boss-reward association is source-backed intent; no recommended buff/nerf is invented during analysis-only Stage 3." if is_reward else "No approved intended tier is encoded for this item.",
+            },
+        })
+    return sorted(records, key=lambda row: (row["exact_basic_melee_damage"] is None, -(row["exact_basic_melee_damage"] or 0), row["id"]))
+
+
+def research_blockers(
+    weapons: list[dict[str, Any]],
+    defenses: list[dict[str, Any]],
+    accessories: list[dict[str, Any]],
+    spells: list[dict[str, Any]],
+    bosses: list[dict[str, Any]],
+    durability: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    blockers = []
+    for record in weapons + defenses + accessories:
+        native = record.get("native_mechanics", {})
+        owners = native.get("owner_classes", [])
+        dimensions = native.get("dimensions", {})
+        for field, value in dimensions.items():
+            if value.get("status", "").startswith(("exact", "inactive_optional")):
+                continue
+            blockers.append({
+                "id": record["id"],
+                "kind": "item_missing_field",
+                "missing_field": field,
+                "owner_classes": owners,
+                "candidate_methods": [row.get("method") for row in native.get("special_attack_methods", [])],
+                "why_unresolved": value.get("unresolved_reason") or "No safe static expression was reconstructed for this field.",
+                "runtime_observation_required": field in {"acquisition_probability", "runtime_itemstack_nbt"},
+            })
+    for spell in spells:
+        native = spell.get("native_mechanics", {})
+        for method, formula in native.get("formulas", {}).items():
+            if formula.get("status") == "resolved_simple_bytecode":
+                continue
+            blockers.append({
+                "id": spell["id"],
+                "kind": "spell_missing_formula",
+                "missing_field": method,
+                "owner_classes": [native.get("owner_class")] + native.get("delegated_classes", []),
+                "candidate_methods": [method],
+                "why_unresolved": formula.get("unresolved_reason"),
+                "runtime_observation_required": False,
+            })
+        if any(channel.get("channel") == "multi_hit_or_channel" and channel.get("status", "").startswith("observed") for channel in native.get("channels", [])):
+            blockers.append({
+                "id": spell["id"],
+                "kind": "spell_missing_application_count",
+                "missing_field": "full_cast_application_count",
+                "owner_classes": [native.get("owner_class")] + native.get("delegated_classes", []),
+                "candidate_methods": [row.get("method") for row in native.get("effect_methods", [])],
+                "why_unresolved": "Continuous scheduling, collision gating and invulnerability frames span owner and delegated entity tick methods.",
+                "runtime_observation_required": False,
+            })
+    for boss in bosses:
+        for attack in boss.get("native_mechanics", {}).get("attack_methods", []):
+            if attack.get("formula_status", "").startswith("resolved"):
+                continue
+            blockers.append({
+                "id": boss["id"],
+                "kind": "boss_attack_missing_formula",
+                "missing_field": "attack_damage_formula",
+                "owner_classes": [attack.get("owner_class")],
+                "candidate_methods": [attack.get("method")],
+                "why_unresolved": attack.get("unresolved_reason"),
+                "runtime_observation_required": attack.get("runtime_observation_required", False),
+            })
+    for row in durability:
+        if row["status"] == "max_and_consumption_traced":
+            continue
+        blockers.append({
+            "id": row["id"],
+            "kind": "durability_missing_field",
+            "missing_field": "native_max_damage" if not row["native_max_damage"] else "ability_or_standard_consumption",
+            "owner_classes": [],
+            "candidate_methods": ["registration factory", "hurtAndBreak", "getMaxDamage"],
+            "why_unresolved": row["unresolved_reason"],
+            "runtime_observation_required": False,
+        })
+    return sorted(blockers, key=lambda row: (row["id"], row["kind"], row["missing_field"], str(row.get("candidate_methods"))))
 
 
 def reference_mitigation_table() -> dict[str, Any]:
@@ -857,9 +1196,17 @@ def main() -> int:
     calculations = (
         [reference_mitigation_table()]
         + weapon_numeric_calculations(weapons)
+        + defense_numeric_calculations(armor)
+        + armor_set_calculations(armor)
+        + accessory_numeric_calculations(accessories)
+        + spell_method_calculations(spells)
         + spell_numeric_calculations(spells)
         + boss_numeric_calculations(bosses)
+        + boss_attack_calculations(bosses)
     )
+    durability = durability_audit(weapons + armor + accessories)
+    power_ladder = weapon_power_ladder(weapons)
+    blockers = research_blockers(weapons, armor, accessories, spells, bosses, durability)
     reward_weapon_ids = {
         item_id
         for item_id, profiles in reward_profiles().items()
@@ -879,6 +1226,9 @@ def main() -> int:
         "warnings.json": ("regression_warnings", warnings(evidence)),
         "findings.json": ("phase_3_source_findings", audit_findings()),
         "calculations.json": ("phase_3_numeric_calculations", calculations),
+        "durability.json": ("phase_3_durability_audit", durability),
+        "power-ladder.json": ("phase_3_weapon_power_ladder", power_ladder),
+        "blockers.json": ("phase_3_named_research_blockers", blockers),
     }
     for name, (kind, values) in outputs.items():
         write(name, envelope(kind, values, snapshot))
@@ -897,7 +1247,9 @@ def main() -> int:
         },
         "combat_inventory_total": len(all_inventory),
         "effective_expression_status": dict(sorted(status_counts.items())),
-        "fully_resolved": 0,
+        "fully_resolved": sum(row.get("resolution", {}).get("status") == "resolved" for row in calculations),
+        "partially_resolved": sum(row.get("resolution", {}).get("status") == "partial" for row in calculations),
+        "unresolved": sum(row.get("resolution", {}).get("status") == "unresolved" for row in calculations),
         "reason_no_full_resolution": "No static record proves every runtime ItemStack attribute, target mitigation, attack channel and acquisition context.",
         "evidence_levels": ["atlas_static", "source_verified", "exact_jar_bytecode", "runtime_observed"],
         "unresolved_is_zero": False,
@@ -905,7 +1257,7 @@ def main() -> int:
         "native_mechanics": {
             "spell_owner_classes_resolved": sum(bool(row.get("native_mechanics", {}).get("owner_class")) for row in spells),
             "boss_owner_classes_resolved": sum(bool(row.get("native_mechanics", {}).get("owner_classes")) for row in bosses),
-            "boss_channel_slots": sum(len(row.get("attacks", [])) for row in bosses),
+            "boss_combat_method_records": sum(len(row.get("attacks", [])) for row in bosses),
             "spell_channel_slots": sum(len(row.get("native_mechanics", {}).get("channels", [])) for row in spells),
             "ally_owner_classes_resolved": sum(bool(row.get("native_mechanics", {}).get("owner_classes")) for row in allies),
             "literal_item_registrations_observed": len(native["item_registrations"]),
@@ -914,20 +1266,34 @@ def main() -> int:
             "spell_numeric_tables": sum(row.get("kind") == "spell_damage_table" for row in calculations),
             "boss_scaling_numeric_tables": sum(row.get("kind") == "registered_boss_scaling_table" for row in calculations),
             "weapon_numeric_cards": sum(row.get("kind") == "weapon_numeric_card" for row in calculations),
+            "defense_numeric_cards": sum(row.get("kind") == "defense_numeric_card" for row in calculations),
+            "armor_set_cards": sum(row.get("kind") == "armor_set_card" for row in calculations),
+            "accessory_numeric_cards": sum(row.get("kind") == "accessory_numeric_card" for row in calculations),
+            "spell_method_cards": sum(row.get("kind") == "spell_method_card" for row in calculations),
+            "boss_attack_tables": sum(row.get("kind") == "boss_attack_table" for row in calculations),
+            "boss_attack_methods_traced": sum(len(row.get("attack_methods", [])) for row in calculations if row.get("kind") == "boss_attack_table"),
+            "boss_attacks_fully_numeric": sum(row.get("resolution", {}).get("fully_numeric_attack_count", 0) for row in calculations if row.get("kind") == "boss_attack_table"),
+            "weapon_special_attack_methods_traced": sum(len(row.get("special_attack_methods", [])) for row in calculations if row.get("kind") == "weapon_numeric_card"),
+            "weapon_special_attacks_fully_numeric": sum(sum(method.get("formula_status", "").startswith("resolved") for method in row.get("special_attack_methods", [])) for row in calculations if row.get("kind") == "weapon_numeric_card"),
+            "epic_fight_capability_records": sum(len(row.get("epic_fight_capabilities", [])) for row in calculations if row.get("kind") == "weapon_numeric_card"),
+            "epic_fight_fully_numeric_combos": sum(bool(row.get("better_combat_combo")) for row in calculations if row.get("kind") == "weapon_numeric_card" and row.get("epic_fight_capabilities")),
+            "durability_max_damage_resolved": sum(bool(row.get("native_max_damage")) for row in durability),
+            "durability_consumption_resolved": sum(bool(row.get("observed_consumption")) for row in durability),
+            "durability_fully_traced": sum(row.get("status") == "max_and_consumption_traced" for row in durability),
         },
         "known_gaps": [
             "Dynamic/helper-built item registrations and runtime ItemStack/NBT attribute variants",
-            "Weapon active/projectile formulas delegated from the matched item owner into projectile/effect/config owners",
-            "Epic Fight/Nightfall animation hit timing and Java skill behavior beyond exact installed capability/skill-parameter JSON",
-            "Complex Iron's Spells arithmetic delegated to projectile/effect classes beyond the safe symbolic bytecode subset",
-            "Boss arithmetic delegated from matched owner classes into goals/projectiles/effects",
+            "Arbitrary branched bytecode cannot be collapsed into a verified formula merely because its sink, constants and installed config inputs are now named",
+            "Epic Fight/Nightfall combo damage multipliers and attack phases remain unresolved where Java animation builders do not expose a safe data expression",
+            "Continuous spell total applications remain unresolved when scheduling/hit gating spans multiple entity ticks",
+            "Boss attack frequency and recovery remain unresolved unless a goal/animation scheduler exposes exact timing",
             "Entity hostility/taming/AI and native attributes for heuristic candidates",
             "Actual observed beam ItemStack spell ID, level, caster attributes and target resistances"
         ]
     }
     write("coverage.json", coverage)
     index = []
-    for filename in ("weapons.json", "defenses.json", "accessories.json", "enchantments.json", "spells.json", "bosses.json", "entities.json", "allies.json", "calculations.json"):
+    for filename in ("weapons.json", "defenses.json", "accessories.json", "enchantments.json", "spells.json", "bosses.json", "entities.json", "allies.json", "calculations.json", "durability.json", "power-ladder.json", "blockers.json"):
         data = load(OUTPUT / filename)
         for position, row in enumerate(data["records"]):
             index.append({"id": row["id"], "display_name": row.get("display_name"), "kind": row["kind"], "file": f"Catalog/views/power/{filename}", "record_index": position})

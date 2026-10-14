@@ -17,7 +17,7 @@ python Catalog/generator/query_atlas.py power minecraft:wither
 python Catalog/generator/query_atlas.py power recruit
 ```
 
-Run the exact-artifact extractor first when installed JARs or native registrations change. It records owner classes, channel signals, active data-driven combat providers and only bytecode formulas/numeric mechanics it can trace without guessing; the view generator then composes that evidence with JEM rules and Stage 3 reference calculations.
+Run the exact-artifact extractor first when installed JARs, native registrations or effective TOML configuration changes. It resolves `DeferredRegister` suppliers through the JVM `BootstrapMethods` table, follows a bounded same-artifact call graph into projectile/goal/effect owners, reads active data-driven combat providers and records only formulas/numeric mechanics it can trace without guessing. The view generator then composes that evidence with JEM rules and Stage 3 reference calculations.
 
 Each result follows the same chain:
 
@@ -37,6 +37,10 @@ An exact registry/spell ID is preferred. A display-name fragment is accepted and
 - `CASE_STUDIES.md`: beam investigation and compact before/after decisions.
 - `Catalog/power-sources/`: small exact-version evidence overlays where registry JSON cannot express bytecode-only facts. They cite artifact hashes and are not gameplay owners.
 - `Catalog/views/power/`: regenerated inventory, expressions, warnings, scenarios and lookup index.
+- `Catalog/views/power/calculations.json`: reproducible weapon, defense, armor-set, accessory, spell-method, spell-damage, boss-scaling and boss-attack cards.
+- `Catalog/views/power/durability.json`: item-by-item max-damage/consumption audit; a missing side is unresolved, not “unbreakable”.
+- `Catalog/views/power/power-ladder.json`: exact basic-melee sub-ranking plus separately labelled intended progression evidence; full rankings remain blocked where specials/acquisition are incomplete.
+- `Catalog/views/power/blockers.json`: one named missing field at a time with registry ID, owner class, candidate methods, cause and whether runtime observation is actually required.
 
 To request a tweak, identify the exact ID, scenario, observed value, World Tier, PvE/PvP context, relevant ItemStack data and desired player experience. The correction belongs in the native/config/data owner when possible; the power catalog then records the resulting expression and evidence.
 

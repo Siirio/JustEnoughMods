@@ -1,0 +1,4366 @@
+{
+  "schema_version": 4,
+  "view": "phase_3_durability_audit",
+  "snapshot_sha": "42024576c79f6e103eebc33355ecbca1ba8b5a69",
+  "generation": {
+    "generator": "Catalog/generator/build_power_views.py",
+    "method": "offline derived evidence",
+    "deterministic": true
+  },
+  "records": [
+    {
+      "id": "alexscaves:desolate_dagger",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexscaves:dreadbow",
+      "kind": "durability_audit",
+      "native_max_damage": [
+        {
+          "max_damage": 500,
+          "owner_class": "com.github.alexmodguy.alexscaves.server.item.DreadbowItem",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "observed_consumption": [
+        {
+          "cost": 1,
+          "owner_class": "com.github.alexmodguy.alexscaves.server.item.DreadbowItem",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "status": "max_and_consumption_traced",
+      "unresolved_reason": null,
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexscaves:extinction_spear",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [
+        {
+          "cost": 1,
+          "owner_class": "com.github.alexmodguy.alexscaves.server.item.ExtinctionSpearItem",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexscaves:frostmint_spear",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexscaves:limestone_spear",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexscaves:sea_staff",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [
+        {
+          "cost": 1,
+          "owner_class": "com.github.alexmodguy.alexscaves.server.item.SeaStaffItem",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexscaves:sugar_staff",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [
+        {
+          "cost": 1,
+          "owner_class": "com.github.alexmodguy.alexscaves.server.item.SugarStaffItem",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexsmobs:skelewag_sword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "aquamirae:dagger_of_greed",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "bbb:hammer",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "blastfromthepast:ice_spear",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [
+        {
+          "cost": 1,
+          "owner_class": "team.recrafted.blastfromthepast.item.IceSpear",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "block_factorys_bosses:dagger",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "block_factorys_bosses:ice_gauntlet",
+      "kind": "durability_audit",
+      "native_max_damage": [
+        {
+          "max_damage": 1200,
+          "owner_class": "net.unusual.block_factorys_bosses.item.IceGauntletItem",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "observed_consumption": [
+        {
+          "cost": 1,
+          "owner_class": "net.unusual.block_factorys_bosses.item.IceGauntletItem",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "status": "max_and_consumption_traced",
+      "unresolved_reason": null,
+      "runtime_observation_required": false
+    },
+    {
+      "id": "block_factorys_bosses:knight_sword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "block_factorys_bosses:kraken_trident",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "block_factorys_bosses:large_sword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "block_factorys_bosses:sandworm_gauntlet",
+      "kind": "durability_audit",
+      "native_max_damage": [
+        {
+          "max_damage": 1000,
+          "owner_class": "net.unusual.block_factorys_bosses.item.SandwormGauntletItem",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "observed_consumption": [
+        {
+          "cost": 10,
+          "owner_class": "net.unusual.block_factorys_bosses.item.SandwormGauntletItem",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "status": "max_and_consumption_traced",
+      "unresolved_reason": null,
+      "runtime_observation_required": false
+    },
+    {
+      "id": "block_factorys_bosses:undying_tentacle",
+      "kind": "durability_audit",
+      "native_max_damage": [
+        {
+          "max_damage": 1000,
+          "owner_class": "net.unusual.block_factorys_bosses.item.UndyingTentacleItem",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "observed_consumption": [
+        {
+          "cost": 1,
+          "owner_class": "net.unusual.block_factorys_bosses.item.UndyingTentacleItem",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "status": "max_and_consumption_traced",
+      "unresolved_reason": null,
+      "runtime_observation_required": false
+    },
+    {
+      "id": "block_factorys_bosses:warrior_sword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:ancient_spear",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [
+        {
+          "cost": 1,
+          "owner_class": "com.github.L_Ender.cataclysm.items.Ancient_Spear",
+          "status": "exact_owner_bytecode"
+        },
+        {
+          "cost": 2,
+          "owner_class": "com.github.L_Ender.cataclysm.items.Ancient_Spear",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:astrape",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:black_steel_sword",
+      "kind": "durability_audit",
+      "native_max_damage": [
+        {
+          "max_damage": 750,
+          "owner_class": "com.github.L_Ender.cataclysm.items.Tooltier",
+          "status": "exact_forge_tier_static_initializer",
+          "source_field": "BLACK_STEEL"
+        }
+      ],
+      "observed_consumption": [
+        {
+          "cost": 1,
+          "owner_class": "net.minecraft.world.item.SwordItem",
+          "status": "exact_owner_bytecode"
+        },
+        {
+          "cost": 2,
+          "owner_class": "net.minecraft.world.item.SwordItem",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "status": "max_and_consumption_traced",
+      "unresolved_reason": null,
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:bulwark_of_the_flame",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:ceraunus",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:coral_bardiche",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:coral_spear",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [
+        {
+          "cost": 1,
+          "owner_class": "com.github.L_Ender.cataclysm.items.Coral_Spear",
+          "status": "exact_owner_bytecode"
+        },
+        {
+          "cost": 2,
+          "owner_class": "com.github.L_Ender.cataclysm.items.Coral_Spear",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:cursed_bow",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:gauntlet_of_bulwark",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:gauntlet_of_guard",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:gauntlet_of_maelstrom",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:infernal_forge",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:laser_gatling",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [
+        {
+          "cost": 1,
+          "owner_class": "com.github.L_Ender.cataclysm.items.Laser_Gatling",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:meat_shredder",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:sandstorm_in_a_bottle",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:soul_render",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:the_annihilator",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:the_immolator",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:the_incinerator",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:tidal_claws",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:void_assault_shoulder_weapon",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:wither_assault_shoulder_weapon",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:wrath_of_the_desert",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "companions:crystallized_blood_sword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "companions:mage_staff",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "companions:netherite_dagger",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [
+        {
+          "cost": 1,
+          "owner_class": "net.minecraft.world.item.SwordItem",
+          "status": "exact_owner_bytecode"
+        },
+        {
+          "cost": 2,
+          "owner_class": "net.minecraft.world.item.SwordItem",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "companions:shade_sword_altar",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "create:cardboard_sword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:air_tachi",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:broadblade",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:co_tachi",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:crescent_moon",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:crimson_moon",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:exsiliumgladius",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:fire_exsiliumgladius",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:hf_blade",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:hf_murasama",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:kusabimaru",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:meen_spear",
+      "kind": "durability_audit",
+      "native_max_damage": [
+        {
+          "max_damage": 2031,
+          "owner_class": "net.minecraft.world.item.Tiers",
+          "status": "exact_minecraft_1_20_1_tier_enum",
+          "source_field": "NETHERITE"
+        }
+      ],
+      "observed_consumption": [],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:nf_claw",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:nf_dual_sword",
+      "kind": "durability_audit",
+      "native_max_damage": [
+        {
+          "max_damage": 2031,
+          "owner_class": "net.minecraft.world.item.Tiers",
+          "status": "exact_minecraft_1_20_1_tier_enum",
+          "source_field": "NETHERITE"
+        }
+      ],
+      "observed_consumption": [],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:nf_shortsword",
+      "kind": "durability_audit",
+      "native_max_damage": [
+        {
+          "max_damage": 2031,
+          "owner_class": "net.minecraft.world.item.Tiers",
+          "status": "exact_minecraft_1_20_1_tier_enum",
+          "source_field": "NETHERITE"
+        }
+      ],
+      "observed_consumption": [],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:nf_shortsword_2",
+      "kind": "durability_audit",
+      "native_max_damage": [
+        {
+          "max_damage": 2031,
+          "owner_class": "net.minecraft.world.item.Tiers",
+          "status": "exact_minecraft_1_20_1_tier_enum",
+          "source_field": "NETHERITE"
+        }
+      ],
+      "observed_consumption": [],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:ruinsgreatsword",
+      "kind": "durability_audit",
+      "native_max_damage": [
+        {
+          "max_damage": 2031,
+          "owner_class": "net.minecraft.world.item.Tiers",
+          "status": "exact_minecraft_1_20_1_tier_enum",
+          "source_field": "NETHERITE"
+        }
+      ],
+      "observed_consumption": [],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:sword_of_pioneer",
+      "kind": "durability_audit",
+      "native_max_damage": [
+        {
+          "max_damage": 2031,
+          "owner_class": "net.minecraft.world.item.Tiers",
+          "status": "exact_minecraft_1_20_1_tier_enum",
+          "source_field": "NETHERITE"
+        }
+      ],
+      "observed_consumption": [],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:thornwheel",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:yamato_dmc",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:yamato_dmc4",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:yamato_dmc4_in_sheath",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:yamato_dmc_in_sheath",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:diamond_dagger",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:diamond_greatsword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:diamond_longsword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:diamond_spear",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:diamond_tachi",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:glove",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:golden_dagger",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:golden_greatsword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:golden_longsword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:golden_spear",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:golden_tachi",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:iron_dagger",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:iron_greatsword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:iron_longsword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:iron_spear",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:iron_tachi",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:netherite_dagger",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:netherite_greatsword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:netherite_longsword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:netherite_spear",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:netherite_tachi",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:stone_dagger",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:stone_greatsword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:stone_longsword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:stone_spear",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:stone_tachi",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:uchigatana",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:wooden_dagger",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:wooden_greatsword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:wooden_longsword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:wooden_spear",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:wooden_tachi",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "handcrafted:hammer",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "immersive_aircraft:heavy_crossbow",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:autoloader_crossbow",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:blood_staff",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:dev_staff",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:fiery_dagger",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:graybeard_staff",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:ice_staff",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:improved_blood_staff",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:pyrium_staff",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:staff_of_the_nines",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:atom_splitter",
+      "kind": "durability_audit",
+      "native_max_damage": [
+        {
+          "max_damage": 4,
+          "owner_class": "net.miauczel.legendary_monsters.item.custom.AtomSplitterItem",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "observed_consumption": [
+        {
+          "cost": 1,
+          "owner_class": "net.miauczel.legendary_monsters.item.custom.AtomSplitterItem",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "status": "max_and_consumption_traced",
+      "unresolved_reason": null,
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:axe_of_lightning",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [
+        {
+          "cost": 1,
+          "owner_class": "net.miauczel.legendary_monsters.item.custom.Axe_Of_LightningItem",
+          "status": "exact_owner_bytecode"
+        },
+        {
+          "cost": 2,
+          "owner_class": "net.miauczel.legendary_monsters.item.custom.Axe_Of_LightningItem",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:chorus_blade",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:ender_hammer",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:enderitium_axe",
+      "kind": "durability_audit",
+      "native_max_damage": [
+        {
+          "max_damage": 2100,
+          "owner_class": "net.miauczel.legendary_monsters.item.ModToolTiers",
+          "status": "exact_forge_tier_static_initializer",
+          "source_field": "ENDIRITIUM"
+        }
+      ],
+      "observed_consumption": [
+        {
+          "cost": 1,
+          "owner_class": "net.minecraft.world.item.AxeItem",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "status": "max_and_consumption_traced",
+      "unresolved_reason": null,
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:enderitium_sword",
+      "kind": "durability_audit",
+      "native_max_damage": [
+        {
+          "max_damage": 2100,
+          "owner_class": "net.miauczel.legendary_monsters.item.ModToolTiers",
+          "status": "exact_forge_tier_static_initializer",
+          "source_field": "ENDIRITIUM"
+        }
+      ],
+      "observed_consumption": [
+        {
+          "cost": 1,
+          "owner_class": "net.minecraft.world.item.SwordItem",
+          "status": "exact_owner_bytecode"
+        },
+        {
+          "cost": 2,
+          "owner_class": "net.minecraft.world.item.SwordItem",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "status": "max_and_consumption_traced",
+      "unresolved_reason": null,
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:knights_sword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:monstrous_anchor",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:mossy_hammer",
+      "kind": "durability_audit",
+      "native_max_damage": [
+        {
+          "max_damage": 850,
+          "owner_class": "net.miauczel.legendary_monsters.item.custom.MossyHammerItem",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "observed_consumption": [],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:shattered_greatsword",
+      "kind": "durability_audit",
+      "native_max_damage": [
+        {
+          "max_damage": 1500,
+          "owner_class": "net.miauczel.legendary_monsters.item.ModToolTiers",
+          "status": "exact_forge_tier_static_initializer",
+          "source_field": "SHATTERED_GREATSWORD"
+        }
+      ],
+      "observed_consumption": [],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:soul_great_sword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:spiky_spear",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:the_great_frost",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:the_tesseract",
+      "kind": "durability_audit",
+      "native_max_damage": [
+        {
+          "max_damage": 2100,
+          "owner_class": "net.miauczel.legendary_monsters.item.ModToolTiers",
+          "status": "exact_forge_tier_static_initializer",
+          "source_field": "TESSERACT"
+        }
+      ],
+      "observed_consumption": [],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:void_sword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:wand_of_clouds",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:withered_scythe",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [
+        {
+          "cost": 1,
+          "owner_class": "net.miauczel.legendary_monsters.item.custom.WitheredScytheItem",
+          "status": "exact_owner_bytecode"
+        },
+        {
+          "cost": 2,
+          "owner_class": "net.miauczel.legendary_monsters.item.custom.WitheredScytheItem",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:bow",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:copper_sword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:crossbow",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:crossbow.projectile",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:diamond_axe",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:diamond_hoe",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:diamond_pickaxe",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:diamond_shovel",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:diamond_sword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:golden_axe",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:golden_hoe",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:golden_pickaxe",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:golden_shovel",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:golden_sword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:iron_axe",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:iron_hoe",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:iron_pickaxe",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:iron_shovel",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:iron_sword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:netherite_axe",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:netherite_hoe",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:netherite_pickaxe",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:netherite_shovel",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:netherite_sword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:stone_axe",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:stone_hoe",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:stone_pickaxe",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:stone_shovel",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:stone_sword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:trident",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:wooden_axe",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:wooden_hoe",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:wooden_pickaxe",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:wooden_shovel",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:wooden_sword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "rottencreatures:spear",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "simplybows:bee_bow/bee_bow",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "simplybows:blossom_bow/blossom_bow",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "simplybows:bubble_bow/bubble_bow",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [
+        {
+          "cost": 1,
+          "owner_class": "net.sweenus.simplybows.item.unique.BubbleBowItem",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "simplybows:earth_bow/earth_bow",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "simplybows:echo_bow/echo_bow",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "simplybows:ice_bow/ice_bow",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "simplybows:vine_bow/vine_bow",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:ban_sword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_sword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:resisteel_sword",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "tide:starlight_bow",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [
+        {
+          "cost": 1,
+          "owner_class": "com.li64.tide.registries.items.StarlightBowItem",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "unearthed_journey:fang_dagger",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexscaves:diving_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexscaves:diving_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexscaves:diving_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexscaves:diving_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexscaves:gingerbread_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexscaves:gingerbread_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexscaves:gingerbread_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexscaves:gingerbread_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexscaves:hazmat_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexscaves:hazmat_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexscaves:hazmat_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexscaves:primordial_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexscaves:rainbounce_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexsmobs:centipede_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexsmobs:crocodile_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexsmobs:emu_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexsmobs:flying_fish_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexsmobs:froststalker_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexsmobs:roadrunner_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexsmobs:rocky_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexsmobs:straddle_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "aquamirae:abyssal_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "aquamirae:abyssal_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "aquamirae:salvager_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "aquamirae:salvager_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "aquamirae:terrible_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "aquamirae:terrible_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "aquamirae:terrible_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "aquamirae:terrible_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "barnyardbuddies:silkie_armor_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "blastfromthepast:frostbite_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "blastfromthepast:frostbite_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "blastfromthepast:frostbite_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "blastfromthepast:frostbite_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "block_factorys_bosses:dragon_bones_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [
+        {
+          "max_damage": 455,
+          "owner_class": "net.unusual.block_factorys_bosses.item.DragonBonesItem$Boots",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "observed_consumption": [],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "block_factorys_bosses:dragon_bones_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [
+        {
+          "max_damage": 560,
+          "owner_class": "net.unusual.block_factorys_bosses.item.DragonBonesItem$Chestplate",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "observed_consumption": [],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "block_factorys_bosses:dragon_bones_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [
+        {
+          "max_damage": 525,
+          "owner_class": "net.unusual.block_factorys_bosses.item.DragonBonesItem$Leggings",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "observed_consumption": [],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "block_factorys_bosses:knight_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [
+        {
+          "max_damage": 390,
+          "owner_class": "net.unusual.block_factorys_bosses.item.KnightItem$Boots",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "observed_consumption": [],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "block_factorys_bosses:knight_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [
+        {
+          "max_damage": 480,
+          "owner_class": "net.unusual.block_factorys_bosses.item.KnightItem$Chestplate",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "observed_consumption": [],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "block_factorys_bosses:knight_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [
+        {
+          "max_damage": 330,
+          "owner_class": "net.unusual.block_factorys_bosses.item.KnightItem$Helmet",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "observed_consumption": [],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "block_factorys_bosses:knight_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [
+        {
+          "max_damage": 450,
+          "owner_class": "net.unusual.block_factorys_bosses.item.KnightItem$Leggings",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "observed_consumption": [],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "brewery:brewfest_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:bone_reptile_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:bone_reptile_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:cursium_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:cursium_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:cursium_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:cursium_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:ignitium_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:ignitium_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:ignitium_elytra_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:ignitium_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:ignitium_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:sturdy_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cnc:buckskin_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cnc:buckskin_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cnc:buckskin_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cnc:buckskin_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "companions:crystallized_blood_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "companions:crystallized_blood_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "companions:crystallized_blood_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "companions:crystallized_blood_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "companions:holy_robe_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "companions:mage_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "create:cardboard_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "create:cardboard_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "create:cardboard_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "create:cardboard_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "create:copper_diving_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "create:copper_diving_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "create:netherite_diving_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "create:netherite_diving_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "deep_dark_regrowth:ancient_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "deep_dark_regrowth:ancient_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "deep_dark_regrowth:ancient_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "deep_dark_regrowth:ancient_illusioner_mask_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "deep_dark_regrowth:ancient_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "deep_dark_regrowth:awareness_glasses_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "deep_dark_regrowth:corruption_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "deep_dark_regrowth:corruption_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "deep_dark_regrowth:corruption_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "deep_dark_regrowth:corruption_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "deep_dark_regrowth:dead_warden_helmet_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "deep_dark_regrowth:phantom_armor_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "deep_dark_regrowth:phantom_armor_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "deep_dark_regrowth:phantom_armor_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "deep_dark_regrowth:phantom_armor_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "deep_dark_regrowth:void_collar_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "deep_dark_regrowth:warden_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:duskfire_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:duskfire_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:duskfire_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:duskfire_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:ruinfighter_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:ruinfighter_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:ruinfighter_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "efn:ruinfighter_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:stray_hat",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:stray_pants",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "epicfight:stray_robe",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "geckolib:gecko_armor_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "geckolib:gecko_armor_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "geckolib:gecko_armor_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "geckolib:gecko_armor_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "geckolib:wolf_armor_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "geckolib:wolf_armor_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "geckolib:wolf_armor_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "geckolib:wolf_armor_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:archevoker_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:archevoker_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:archevoker_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:archevoker_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:cryomancer_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:cryomancer_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:cryomancer_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:cryomancer_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:cultist_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:cultist_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:cultist_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:cultist_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:electromancer_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:electromancer_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:electromancer_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:electromancer_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:infernal_sorcerer_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:netherite_mage_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:netherite_mage_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:netherite_mage_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:netherite_mage_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:paladin_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:plagued_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:plagued_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:plagued_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:plagued_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:priest_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:priest_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:priest_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:priest_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:pumpkin_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:pumpkin_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:pumpkin_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:pumpkin_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:pyromancer_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:pyromancer_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:pyromancer_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:pyromancer_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:shadowwalker_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:shadowwalker_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:shadowwalker_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:shadowwalker_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:speed_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:tarnished_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:wandering_magician_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:wandering_magician_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:wandering_magician_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:wandering_magician_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:wizard_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:wizard_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:wizard_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:wizard_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "kaleidoscope_cookery:farmer_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "kaleidoscope_cookery:farmer_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:annihilator_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:annihilator_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:annihilator_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:annihilator_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:atmospheric_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:blastproof_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:fiery_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:mossy_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:shulker_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "luminous_beasts:executioner_cowl_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "luminous_beasts:mummy_wraps_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "luminous_beasts:pumpkin_helmet_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "luminous_beasts:shellmet_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "luminous_nether:executioner_hood_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:chainmail_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:chainmail_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:chainmail_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:chainmail_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:copper_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:copper_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:copper_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:copper_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:diamond_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:diamond_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:diamond_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:diamond_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:golden_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:golden_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:golden_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:golden_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:iron_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:iron_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:iron_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:iron_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:leather_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:leather_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:leather_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:leather_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:netherite_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:netherite_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:netherite_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:netherite_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:turtle_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:crushing_pauldron_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:quake_boots_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:resisteel_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:resisteel_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:resisteel_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:resisteel_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "spawn:blue_footed_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "tide:dragonfin_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "unearthed_journey:padded_armor_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "unearthed_journey:padded_armor_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "unearthed_journey:padded_armor_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "unearthed_journey:padded_armor_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "vinery:winemaker_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "vinery:winemaker_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "alexscaves:amber_curiosity",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:belt_of_beginner",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:belt_of_monstrosity",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:berserker_soul_amulet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:necklace_of_the_desert",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:ring_of_grudged",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "cnc:ringtail_spawn_egg",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "companions:book_heal_ring",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "companions:relic_gold",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "create:belt_connector",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "deep_dark_extended:void_collar_charge_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "deep_dark_extended:void_collar_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "deep_dark_regrowth:void_collar_charge_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "deep_dark_regrowth:void_collar_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:affinity_ring",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:amethyst_resonance_charm",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:cast_time_ring",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:concentration_amulet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:conjurers_talisman",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:cooldown_ring",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:emerald_stoneplate_ring",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:fireward_ring",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:frostward_ring",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:greater_conjurers_talisman",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:heavy_chain_necklace",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:invisibility_ring",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:lurker_ring",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:mana_ring",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:paladin_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:poisonward_ring",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:silver_ring",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:teleportation_amulet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:visibility_ring",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:wandering_magician_boots",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:wandering_magician_chestplate",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:wandering_magician_helmet",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:wandering_magician_leggings",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:hovering_hurricane_spawn_egg",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:somber_key_ring",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:wandering_eye_spawn_egg",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "simplybows:upgrades/enchanted_bow_string",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:blaring_horn",
+      "kind": "durability_audit",
+      "native_max_damage": [
+        {
+          "max_damage": 64,
+          "owner_class": "net.mcreator.skarriermobs.item.BlaringHornItem",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "observed_consumption": [],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "somemoreblocks:flowering_azalea_leaves_bucket",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "spawn:canned_herring",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [
+        {
+          "cost": 1,
+          "owner_class": "com.ninni.spawn.server.item.DurabilityFoodItem",
+          "status": "exact_owner_bytecode"
+        }
+      ],
+      "status": "partial",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "spawn:cooked_herring",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "spawn:cooked_herring_slice",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "spawn:herring",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "spawn:herring_bucket",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "spawn:herring_roll",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "spawn:herring_slice",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "spawn:herring_spawn_egg",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "spawn:spring_dragon_reeds",
+      "kind": "durability_audit",
+      "native_max_damage": [],
+      "observed_consumption": [],
+      "status": "unresolved",
+      "unresolved_reason": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    }
+  ]
+}
