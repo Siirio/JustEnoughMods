@@ -43,18 +43,28 @@ public abstract class MapScreenMixin {
                 mouseBlockPosX, mouseBlockPosZ, mouseX, mouseY);
     }
 
+    @Inject(method = "m_6375_", at = @At("HEAD"), cancellable = true)
+    private void jem$beginSettlementDrag(double mouseX, double mouseY, int button, CallbackInfoReturnable<Boolean> callback) {
+        if (button == 0 && lastViewedDimensionId != null && MapClient.beginSettlementDrag(lastViewedDimensionId.location(), mouseBlockPosX, mouseBlockPosZ)) callback.setReturnValue(true);
+    }
+
+    @Inject(method = "m_6348_", at = @At("HEAD"), cancellable = true)
+    private void jem$finishSettlementDrag(double mouseX, double mouseY, int button, CallbackInfoReturnable<Boolean> callback) {
+        if (button != 0 || !MapClient.finishSettlementDrag()) return;
+        ((GuiMap) (Object) this).m_6375_(mouseX, mouseY, 1);
+        callback.setReturnValue(true);
+    }
+
     @Inject(method = "getRightClickOptions", at = @At("RETURN"))
     private void jem$expand(CallbackInfoReturnable<ArrayList<RightClickOption>> callback) {
         if (rightClickDim == null || !MapClient.connected()) return;
-        var town = MapClient.settlement(rightClickDim.location(), rightClickX, rightClickZ, true);
-        if (town == null || town.radius() >= 256) return;
+        var draft = MapClient.pendingSettlement(rightClickDim.location(), rightClickX, rightClickZ);
+        if (draft == null) return;
         var options = callback.getReturnValue();
-        boolean confirming = MapClient.previewing(town.id());
-        options.add(new RightClickOption(confirming ? "gui.jem_server.settlement_expand_confirm" : "gui.jem_server.settlement_expand_preview", options.size(), (GuiMap) (Object) this) {
+        options.add(new RightClickOption("gui.jem_server.settlement_claim", options.size(), (GuiMap) (Object) this) {
             @Override public void onAction(Screen screen) {
-                if (confirming) { MapNetwork.expandSettlement(town.id()); MapClient.clearSettlementPreview(); }
-                else MapClient.preview(town.id());
+                MapNetwork.expandSettlement(draft.id(), draft.targetX(), draft.targetZ()); MapClient.clearSettlementPreview();
             }
-        });
+        }.setNameFormatArgs(com.siirio.jemeconomy.physical.CoinFormatter.format(draft.cost())));
     }
 }

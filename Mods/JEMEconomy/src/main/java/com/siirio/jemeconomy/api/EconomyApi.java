@@ -63,6 +63,10 @@ public final class EconomyApi {
         return PhysicalCoinService.spendOneGold(player, requestId);
     }
 
+    public static PhysicalCoinService.Status spendPhysical(ServerPlayer player, long amount, UUID requestId, String purpose) {
+        return PhysicalCoinService.spend(player, amount, requestId, purpose);
+    }
+
     public static PhysicalCoinService.ExchangeResult exchangePhysical(ServerPlayer player,
             com.siirio.jemeconomy.physical.CoinDenomination source, int sourceCount,
             com.siirio.jemeconomy.physical.CoinDenomination target, UUID requestId) {

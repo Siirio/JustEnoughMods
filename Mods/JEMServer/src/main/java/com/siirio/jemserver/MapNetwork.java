@@ -17,7 +17,7 @@ import com.siirio.jemserver.smp.SmpEnvironment;
 
 @net.minecraftforge.fml.common.Mod.EventBusSubscriber(modid = "jem_server", value = Dist.DEDICATED_SERVER)
 public final class MapNetwork {
-    private static final String VERSION = "7";
+    private static final String VERSION = "8";
     private static final int MAX_EVENTS = 64;
     private static final int MAX_PROJECTS = 128;
     private static final int MAX_PROJECT_RECTANGLES = 64;
@@ -31,7 +31,9 @@ public final class MapNetwork {
     public record EventArea(UUID id, String activity, ResourceLocation dimension, BlockPos position, int minX, int minZ, int maxX, int maxZ) {}
     public record ProjectRectangle(int minX, int minZ, int maxX, int maxZ) {}
     public record ProjectArea(UUID id, String name, ResourceLocation dimension, int color, List<ProjectRectangle> rectangles) {}
-    public record SettlementArea(UUID id, String name, ResourceLocation dimension, BlockPos center, int radius, boolean owned) {}
+    public record SettlementArea(UUID id, String name, ResourceLocation dimension, BlockPos center, int minX, int minZ, int maxX, int maxZ, boolean owned) {
+        public long area() { return (long) (maxX - minX + 1) * (maxZ - minZ + 1); }
+    }
     public record Snapshot(List<Death> deaths, List<EventArea> events, List<ProjectArea> projects, List<SettlementArea> settlements) {}
     private record Events(List<EventArea> areas) {}
     private record Request() {}
@@ -40,7 +42,7 @@ public final class MapNetwork {
     private record BossTeleport(UUID id) {}
     private record ProjectCreate(String name, ResourceLocation dimension, int x1, int z1, int x2, int z2) {}
     private record ProjectExtend(UUID id, ResourceLocation dimension, int x1, int z1, int x2, int z2) {}
-    private record SettlementExpand(UUID id, UUID request) {}
+    private record SettlementExpand(UUID id, int targetX, int targetZ, UUID request) {}
 
     private MapNetwork() {}
     private static boolean compatible(String version) { return VERSION.equals(version) || NetworkRegistry.ABSENT.equals(version) || NetworkRegistry.ACCEPTVANILLA.equals(version); }
@@ -94,11 +96,11 @@ public final class MapNetwork {
                     com.siirio.jemserver.map.ProjectRegionService.addRectangle(player, packet.id(), packet.x1(), packet.z1(), packet.x2(), packet.z2()); sync(player);
                 } context.get().setPacketHandled(true); }).add();
         CHANNEL.messageBuilder(SettlementExpand.class, 10, NetworkDirection.PLAY_TO_SERVER)
-                .encoder((packet, out) -> { out.writeUUID(packet.id()); out.writeUUID(packet.request()); })
-                .decoder(in -> new SettlementExpand(in.readUUID(), in.readUUID()))
+                .encoder((packet, out) -> { out.writeUUID(packet.id()); out.writeInt(packet.targetX()); out.writeInt(packet.targetZ()); out.writeUUID(packet.request()); })
+                .decoder(in -> new SettlementExpand(in.readUUID(), in.readInt(), in.readInt(), in.readUUID()))
                 .consumerMainThread((packet, context) -> { var player = context.get().getSender(); if (player != null && SmpEnvironment.active(player)
                         && com.siirio.jemserver.smp.SmpRequests.allow(player)) {
-                    var result = com.siirio.jemsettlements.api.SettlementApi.expandTerritory(player, packet.id(), packet.request());
+                    var result = com.siirio.jemsettlements.api.SettlementApi.expandTerritory(player, packet.id(), packet.targetX(), packet.targetZ(), packet.request());
                     player.sendSystemMessage(net.minecraft.network.chat.Component.translatable("jem.smp.settlement.action." + result.name().toLowerCase(java.util.Locale.ROOT)), true);
                     sync(player);
                 } context.get().setPacketHandled(true); }).add();
@@ -163,7 +165,7 @@ public final class MapNetwork {
     public static void teleportBoss(UUID id) { CHANNEL.sendToServer(new BossTeleport(id)); }
     public static void createProject(String name, ResourceLocation dimension, int x1, int z1, int x2, int z2) { CHANNEL.sendToServer(new ProjectCreate(name, dimension, x1, z1, x2, z2)); }
     public static void extendProject(UUID id, ResourceLocation dimension, int x1, int z1, int x2, int z2) { CHANNEL.sendToServer(new ProjectExtend(id, dimension, x1, z1, x2, z2)); }
-    public static void expandSettlement(UUID id) { CHANNEL.sendToServer(new SettlementExpand(id, UUID.randomUUID())); }
+    public static void expandSettlement(UUID id, int targetX, int targetZ) { CHANNEL.sendToServer(new SettlementExpand(id, targetX, targetZ, UUID.randomUUID())); }
 
     public static void sync(ServerPlayer player) {
         if (!SmpEnvironment.active(player) || !CHANNEL.isRemotePresent(player.connection.connection)) return;
@@ -180,7 +182,7 @@ public final class MapNetwork {
                                         .toList()))
                         .toList();
         var settlements = com.siirio.jemsettlements.town.SettlementSavedData.get(player.server).towns().stream().limit(256)
-                .map(town -> new SettlementArea(town.id(), town.name(), town.dimension(), town.center(), town.territoryRadius(),
+                .map(town -> new SettlementArea(town.id(), town.name(), town.dimension(), town.center(), town.territoryMinX(), town.territoryMinZ(), town.territoryMaxX(), town.territoryMaxZ(),
                         principal.isPresent() && town.owner().equals(principal.get().accountId()))).toList();
         CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new Snapshot(deaths, eventAreas(player), projects, settlements));
     }
@@ -196,7 +198,7 @@ public final class MapNetwork {
             });
         });
         out.writeCollection(packet.settlements(), (buffer, settlement) -> { buffer.writeUUID(settlement.id()); buffer.writeUtf(settlement.name(), 32);
-            buffer.writeResourceLocation(settlement.dimension()); buffer.writeBlockPos(settlement.center()); buffer.writeVarInt(settlement.radius()); buffer.writeBoolean(settlement.owned()); });
+            buffer.writeResourceLocation(settlement.dimension()); buffer.writeBlockPos(settlement.center()); buffer.writeInt(settlement.minX()); buffer.writeInt(settlement.minZ()); buffer.writeInt(settlement.maxX()); buffer.writeInt(settlement.maxZ()); buffer.writeBoolean(settlement.owned()); });
     }
 
     private static Snapshot decode(FriendlyByteBuf in) {
@@ -206,6 +208,6 @@ public final class MapNetwork {
                         buffer.readCollection(FriendlyByteBuf.limitValue(java.util.ArrayList::new, MAX_PROJECT_RECTANGLES), rectangleBuffer ->
                                 new ProjectRectangle(rectangleBuffer.readInt(), rectangleBuffer.readInt(), rectangleBuffer.readInt(), rectangleBuffer.readInt())))),
                 in.readCollection(FriendlyByteBuf.limitValue(java.util.ArrayList::new, 256), buffer -> new SettlementArea(buffer.readUUID(), buffer.readUtf(32),
-                        buffer.readResourceLocation(), buffer.readBlockPos(), buffer.readVarInt(), buffer.readBoolean())));
+                        buffer.readResourceLocation(), buffer.readBlockPos(), buffer.readInt(), buffer.readInt(), buffer.readInt(), buffer.readInt(), buffer.readBoolean())));
     }
 }

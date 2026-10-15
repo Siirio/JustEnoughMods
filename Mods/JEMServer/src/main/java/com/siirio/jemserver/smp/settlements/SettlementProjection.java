@@ -31,7 +31,7 @@ public final class SettlementProjection {
             CompoundTag detail = SettlementNetwork.readOnlyView(viewer, chosen);
             detail.putUUID("id", chosen.id()); detail.putString("name", chosen.name()); detail.putString("title", chosen.name());
             detail.putString("dimension", chosen.dimension().toString()); detail.putLong("position", chosen.center().asLong());
-            detail.putInt("revision", chosen.territoryRadius() + chosen.name().hashCode());
+            detail.putInt("revision", java.util.Objects.hash(chosen.territoryMinX(), chosen.territoryMinZ(), chosen.territoryMaxX(), chosen.territoryMaxZ(), chosen.name()));
             result.put("detail", detail);
         }
         return result;

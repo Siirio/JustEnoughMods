@@ -18,6 +18,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 public final class MarketScreen extends Screen {
     private static final int PANEL = 0xF52B2019, INNER = 0xF0382A20, EDGE = 0xFFC17A3C, CREAM = 0xFFFFE7C2, MUTED = 0xFFD0B99A;
@@ -31,6 +32,7 @@ public final class MarketScreen extends Screen {
     private CoinDenomination source = CoinDenomination.COPPER, target = CoinDenomination.SILVER;
     private int exchangeCount = 10;
     private int left, top, panelWidth, panelHeight;
+    private boolean categoriesOpen;
 
     MarketScreen(Screen parent, MarketCatalogSnapshot data) {
         super(Component.translatable("jem.economy.market.title"));
@@ -90,7 +92,7 @@ public final class MarketScreen extends Screen {
 
     private void renderCatalog(GuiGraphics g, int mouseX, int mouseY) {
         int categoryX = left + panelWidth - 98;
-        button(g, categoryX, top + 72, 90, 18, Component.translatable("jem.economy.market.category." + data.category()), this::nextCategory);
+        categoryButton(g, categoryX, top + 72, 90, data.category(), () -> categoriesOpen = !categoriesOpen);
         int contentTop = top + 96, bottom = top + panelHeight - 22;
         int columns = Math.max(2, Math.min(4, panelWidth / 102));
         int gap = 4, cardWidth = (panelWidth - 16 - gap * (columns - 1)) / columns, cardHeight = 58;
@@ -114,6 +116,32 @@ public final class MarketScreen extends Screen {
         button(g, left + 8, top + panelHeight - 19, 44, 14, Component.literal("<"), () -> queryPage(data.page() - 1));
         g.drawCenteredString(font, (data.page() + 1) + "/" + data.pages(), width / 2, top + panelHeight - 16, MUTED);
         button(g, left + panelWidth - 52, top + panelHeight - 19, 44, 14, Component.literal(">"), () -> queryPage(data.page() + 1));
+        if (categoriesOpen) renderCategories(g, categoryX, top + 92);
+    }
+
+    private void renderCategories(GuiGraphics g, int x, int y) {
+        g.pose().pushPose(); g.pose().translate(0, 0, 300);
+        for (int i = 0; i < CATEGORIES.length; i++) {
+            String category = CATEGORIES[i]; int cy = y + i * 20;
+            g.fill(x, cy, x + 90, cy + 20, category.equals(data.category()) ? 0xFF70482F : 0xFF3B2A21);
+            g.fill(x, cy, x + 90, cy + 1, EDGE);
+            g.renderItem(categoryIcon(category), x + 3, cy + 2);
+            g.drawString(font, font.plainSubstrByWidth(Component.translatable("jem.economy.market.category." + category).getString(), 65), x + 22, cy + 6, CREAM, false);
+            hits.add(new Hit(x, cy, 90, 20, () -> { categoriesOpen = false; EconomyNetwork.marketQuery(search.getValue(), category, 0, false); }));
+        }
+        g.pose().popPose();
+    }
+
+    private void categoryButton(GuiGraphics g, int x, int y, int w, String category, Runnable action) {
+        g.fill(x, y, x + w, y + 18, categoriesOpen ? 0xFF70482F : 0xFF4A3327); g.fill(x, y, x + w, y + 1, EDGE);
+        g.renderItem(categoryIcon(category), x + 3, y + 1);
+        g.drawString(font, font.plainSubstrByWidth(Component.translatable("jem.economy.market.category." + category).getString(), w - 34), x + 22, y + 5, CREAM, false);
+        g.drawString(font, categoriesOpen ? "▲" : "▼", x + w - 11, y + 5, EDGE, false);
+        hits.add(new Hit(x, y, w, 18, action));
+    }
+
+    private static ItemStack categoryIcon(String category) {
+        return new ItemStack(switch (category) { case "food" -> Items.BREAD; case "resources" -> Items.IRON_INGOT; case "blocks" -> Items.BRICKS; case "drops" -> Items.ROTTEN_FLESH; default -> Items.CHEST; });
     }
 
     private void renderExchange(GuiGraphics g, int mouseX, int mouseY) {
@@ -161,13 +189,12 @@ public final class MarketScreen extends Screen {
         g.fill(x, y, x + w, y + h, 0xFF4A3327); g.fill(x, y, x + w, y + 1, 0xFF8B5A38);
         g.drawCenteredString(font, font.plainSubstrByWidth(label.getString(), w - 4), x + w / 2, y + Math.max(2, (h - 8) / 2), CREAM); hits.add(new Hit(x, y, w, h, action));
     }
-    private void nextCategory() { int i = java.util.Arrays.asList(CATEGORIES).indexOf(data.category()); String next = CATEGORIES[(i + 1) % CATEGORIES.length]; EconomyNetwork.marketQuery(search.getValue(), next, 0, false); }
     private void queryPage(int page) { if (page >= 0 && page < data.pages()) EconomyNetwork.marketQuery(search.getValue(), data.category(), page, false); }
     private static CoinDenomination next(CoinDenomination value) { CoinDenomination[] values = CoinDenomination.values(); return values[(value.ordinal() + 1) % values.length]; }
     private static Component denominationName(CoinDenomination value) { return Component.translatable("item.jem_economy." + value.id()); }
 
     @Override public boolean mouseClicked(double mouseX, double mouseY, int button) {
-        if (button == 0) for (Hit hit : List.copyOf(hits)) if (hit.contains(mouseX, mouseY)) { hit.action.run(); return true; }
+        if (button == 0) { var current = List.copyOf(hits); for (int i = current.size() - 1; i >= 0; i--) { Hit hit = current.get(i); if (hit.contains(mouseX, mouseY)) { hit.action.run(); return true; } } }
         return super.mouseClicked(mouseX, mouseY, button);
     }
     @Override public void onClose() { Minecraft.getInstance().setScreen(parent); }

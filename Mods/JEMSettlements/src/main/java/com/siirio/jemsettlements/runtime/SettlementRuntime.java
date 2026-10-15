@@ -47,6 +47,7 @@ import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public final class SettlementRuntime {
+    private static final java.util.List<FoundingWave> FOUNDING_WAVES = new java.util.ArrayList<>();
     private SettlementRuntime() { }
 
     @SubscribeEvent public static void reload(AddReloadListenerEvent event) { event.addListener(new FoodValueRegistry()); event.addListener(new AmenityRegistry()); }
@@ -84,6 +85,8 @@ public final class SettlementRuntime {
     @SubscribeEvent public static void tamed(AnimalTameEvent event) { if (MountCollectionService.tame(event) && event.getTamer() instanceof ServerPlayer player) player.sendSystemMessage(Component.translatable("jem.settlements.mount.recorded"), true); }
     @SubscribeEvent public static void login(PlayerEvent.PlayerLoggedInEvent event) { if (event.getEntity() instanceof ServerPlayer player && DedicatedSmp.active(player)) SettlementNetwork.sendFoodPolicy(player); }
 
+    public static void celebrateFounding(ServerLevel level, BlockPos bell) { if (level != null && bell != null) FOUNDING_WAVES.add(new FoundingWave(level.dimension(), bell.immutable(), 0)); }
+
     @SubscribeEvent
     public static void death(LivingDeathEvent event) {
         if (!(event.getEntity().level() instanceof ServerLevel level) || !level.getServer().isDedicatedServer()) return;
@@ -109,6 +112,7 @@ public final class SettlementRuntime {
     @SubscribeEvent
     public static void serverTick(TickEvent.ServerTickEvent event) {
         if (event.phase != TickEvent.Phase.END || !event.getServer().isDedicatedServer()) return;
+        tickFoundingWaves(event.getServer());
         AmenityScanService.tick(event.getServer());
         if (event.getServer().getTickCount() % 20 == 0) feedLoadedResidents(event.getServer().overworld().getGameTime(), SettlementSavedData.get(event.getServer()));
         if (event.getServer().getTickCount() % 200 != 0) return;
@@ -116,21 +120,47 @@ public final class SettlementRuntime {
         guideResidentsHome(data); PayrollService.tick(event.getServer()); SettlementSimulationService.tick(event.getServer()); recomputeHappiness(data);
     }
 
+    private static void tickFoundingWaves(net.minecraft.server.MinecraftServer server) {
+        var iterator = FOUNDING_WAVES.listIterator();
+        while (iterator.hasNext()) {
+            FoundingWave wave = iterator.next(); ServerLevel level = server.getLevel(wave.dimension());
+            if (level == null || wave.age() > 48) { iterator.remove(); continue; }
+            int radius = wave.age() + 1, samples = Math.min(96, Math.max(16, radius * 8));
+            var yellow = new net.minecraft.core.particles.DustParticleOptions(new org.joml.Vector3f(1.0F, 0.78F, 0.12F), 1.0F);
+            for (int i = 0; i < samples; i++) {
+                double angle = Math.PI * 2.0D * i / samples; int x = wave.bell().getX() + (int) Math.round(Math.cos(angle) * radius), z = wave.bell().getZ() + (int) Math.round(Math.sin(angle) * radius);
+                if (!level.hasChunkAt(new BlockPos(x, wave.bell().getY(), z))) continue;
+                int surface = level.getHeight(net.minecraft.world.level.levelgen.Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, x, z);
+                level.sendParticles(yellow, x + .5D, surface + .08D, z + .5D, 1, .08D, .02D, .08D, 0.0D);
+                if (surface > wave.bell().getY() + 1) for (int y = wave.bell().getY() + 1; y < Math.min(surface, wave.bell().getY() + 7); y++)
+                    level.sendParticles(yellow, x + .5D, y + .5D, z + .5D, 1, .02D, .08D, .02D, 0.0D);
+            }
+            iterator.set(new FoundingWave(wave.dimension(), wave.bell(), wave.age() + 1));
+        }
+    }
+    private record FoundingWave(net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level> dimension, BlockPos bell, int age) {}
+
     private static void feedLoadedResidents(long now, SettlementSavedData data) {
-        int attempts = 0;
         for (TownRecord town : data.towns()) {
             ServerLevel level = dataLevel(data, town); if (level == null) continue;
             long day = Math.floorDiv(level.getGameTime(), 24_000L);
             var availableDishes = com.siirio.jemsettlements.happiness.AvailableDishService.moddedDishes(level.getServer());
             for (ResidentMood resident : data.residents(town.id())) {
-                if (attempts >= 8) break; var entity = level.getEntity(resident.villagerId()); if (!(entity instanceof Villager villager) || !villager.isAlive()) continue;
+                var entity = level.getEntity(resident.villagerId()); if (!(entity instanceof Villager villager) || !villager.isAlive()) continue;
                 resident.seen(villager.getBrain().getMemory(MemoryModuleType.HOME).orElse(null), villager.getBrain().getMemory(MemoryModuleType.JOB_SITE).orElse(null)); resident.dailyUpdate(day);
-                if (resident.satiety() < 60 && resident.requestedDish().isEmpty() && !availableDishes.isEmpty()) {
+                resident.refreshCraving();
+                if (resident.craving() && resident.requestedDish().isEmpty() && !availableDishes.isEmpty()) {
                     var requestable = availableDishes.stream().filter(resident::canRequest).toList();
                     if (!requestable.isEmpty()) resident.requestedDish(requestable.get(Math.floorMod(resident.villagerId().hashCode() * 31 + Long.hashCode(day), requestable.size())));
                 }
-                if (resident.satiety() >= 60 || !level.getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING)) continue; attempts++;
-                if (!consumeDrop(level, villager, resident, now)) consumeStorage(level, town, villager, resident, now);
+                if (!resident.craving() || !level.getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING)) continue;
+                if (consumeDrop(level, villager, resident, now)) continue;
+                boolean available = approachAndConsumeStorage(level, town, villager, resident, now);
+                if (!available) {
+                    if (resident.satiety() < 10 && Math.floorMod(now + resident.villagerId().hashCode(), 200L) < 20L)
+                        villager.hurt(level.damageSources().starve(), 1.0F);
+                    else resident.abandonCraving();
+                }
             }
         }
         data.changed();
@@ -142,14 +172,31 @@ public final class SettlementRuntime {
         var candidates = level.getEntitiesOfClass(ItemEntity.class, villager.getBoundingBox().inflate(3.0D), item -> item.isAlive() && item.getOwner() == null && !item.hasPickUpDelay()).stream().sorted(Comparator.comparingDouble(villager::distanceToSqr)).toList();
         for (ItemEntity item : candidates) if (accept(level, villager, resident, item.getItem(), now, () -> { item.getItem().shrink(1); if (item.getItem().isEmpty()) item.discard(); })) return true; return false;
     }
-    private static boolean consumeStorage(ServerLevel level, TownRecord town, Villager villager, ResidentMood resident, long now) {
+    private static boolean approachAndConsumeStorage(ServerLevel level, TownRecord town, Villager villager, ResidentMood resident, long now) {
+        StorageFood selected = null;
         for (var link : town.storage()) {
             if (!link.feedResidents() || !link.dimension().equals(level.dimension().location()) || !level.hasChunkAt(link.position())) continue;
             var blockEntity = level.getBlockEntity(link.position()); if (blockEntity == null) continue; var optional = blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).resolve(); if (optional.isEmpty()) continue; var handler = optional.get();
-            for (int slot = 0; slot < handler.getSlots(); slot++) { ItemStack simulated = handler.extractItem(slot, 1, true); if (simulated.isEmpty()) continue; final int selected = slot; if (accept(level, villager, resident, simulated, now, () -> handler.extractItem(selected, 1, false))) return true; }
+            for (int slot = 0; slot < handler.getSlots(); slot++) {
+                ItemStack simulated = handler.extractItem(slot, 1, true); var id = BuiltInRegistries.ITEM.getKey(simulated.getItem());
+                if (simulated.isEmpty() || id == null || FoodValueRegistry.classify(simulated, villager).isEmpty()) continue;
+                boolean requested = resident.requestedDish().map(id::equals).orElse(false);
+                StorageFood candidate = new StorageFood(link.position(), handler, slot, simulated, requested);
+                if (selected == null || candidate.requested() && !selected.requested()
+                        || candidate.requested() == selected.requested() && villager.distanceToSqr(candidate.position().getX() + .5D, candidate.position().getY() + .5D, candidate.position().getZ() + .5D)
+                        < villager.distanceToSqr(selected.position().getX() + .5D, selected.position().getY() + .5D, selected.position().getZ() + .5D)) selected = candidate;
+            }
         }
-        return false;
+        if (selected == null) return false;
+        double distance = villager.distanceToSqr(selected.position().getX() + .5D, selected.position().getY() + .5D, selected.position().getZ() + .5D);
+        if (distance > 6.25D) {
+            villager.getNavigation().moveTo(selected.position().getX() + .5D, selected.position().getY(), selected.position().getZ() + .5D, 0.65D);
+            return true;
+        }
+        StorageFood food = selected;
+        return accept(level, villager, resident, food.stack(), now, () -> food.handler().extractItem(food.slot(), 1, false));
     }
+    private record StorageFood(BlockPos position, net.minecraftforge.items.IItemHandler handler, int slot, ItemStack stack, boolean requested) {}
     private static boolean accept(ServerLevel level, Villager villager, ResidentMood resident, ItemStack stack, long now, Runnable consume) {
         var value = FoodValueRegistry.classify(stack, villager); var id = BuiltInRegistries.ITEM.getKey(stack.getItem()); if (value.isEmpty() || id == null || !resident.canEat(now, id)) return false;
         ItemStack accepted = stack.copy(); accepted.setCount(1); consume.run();
@@ -164,12 +211,11 @@ public final class SettlementRuntime {
     private static void guideResidentsHome(SettlementSavedData data) {
         for (TownRecord town : data.towns()) {
             ServerLevel level = dataLevel(data, town); if (level == null) continue;
-            int softEdge = town.territoryRadius() + 12;
             for (ResidentMood resident : data.residents(town.id())) {
                 var entity = level.getEntity(resident.villagerId()); if (!(entity instanceof Villager villager) || !villager.isAlive()
                         || villager.isLeashed() || villager.isPassenger() || villager.hurtTime > 0) continue;
                 BlockPos current = villager.blockPosition();
-                if (Math.abs(current.getX() - town.center().getX()) <= softEdge && Math.abs(current.getZ() - town.center().getZ()) <= softEdge) continue;
+                if (current.getX() >= town.territoryMinX() - 12 && current.getX() <= town.territoryMaxX() + 12 && current.getZ() >= town.territoryMinZ() - 12 && current.getZ() <= town.territoryMaxZ() + 12) continue;
                 BlockPos preferred = villager.getBrain().getMemory(MemoryModuleType.HOME).filter(pos -> pos.dimension().equals(level.dimension()) && town.contains(pos.pos())).map(GlobalPos::pos)
                         .orElseGet(() -> villager.getBrain().getMemory(MemoryModuleType.MEETING_POINT).filter(pos -> pos.dimension().equals(level.dimension()) && town.contains(pos.pos())).map(GlobalPos::pos).orElse(town.center()));
                 double dx = preferred.getX() + .5D - villager.getX(), dz = preferred.getZ() + .5D - villager.getZ(), length = Math.max(1.0D, Math.sqrt(dx * dx + dz * dz));
@@ -187,7 +233,7 @@ public final class SettlementRuntime {
     private static void recomputeTown(SettlementSavedData data, TownRecord town, ServerLevel level) {
         var residents = data.residents(town.id()).stream().filter(ResidentMood::living).toList(); var workers = data.workforce(town.id()); int population = residents.size();
         int housing = population == 0 ? 50 : (int) Math.round(residents.stream().mapToInt(value -> value.home().isPresent() ? Math.min(100, 45 + value.homeAmenities().points() * 4) : 20).average().orElse(50));
-        int food = population == 0 ? 50 : (int) Math.round(residents.stream().mapToInt(ResidentMood::satiety).average().orElse(50));
+        int food = population == 0 ? 50 : (int) Math.round(residents.stream().mapToInt(value -> value.craving() ? (value.satiety() < 10 ? 0 : 35) : 100).average().orElse(50));
         int community = population == 0 ? 40 : (int) Math.round(residents.stream().mapToInt(ResidentMood::mood).average().orElse(50));
         int recruits = (int) workers.stream().filter(value -> value.type() == WorkforceType.RECRUIT && value.living()).count(); int safety = Math.min(100, recruits * 25);
         int jobs = population == 0 ? 25 : (int) Math.min(100L, residents.stream().filter(value -> value.workplace().isPresent()).count() * 100L / population);

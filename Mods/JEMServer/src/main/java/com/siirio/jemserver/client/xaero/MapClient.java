@@ -22,7 +22,9 @@ public final class MapClient {
     private static List<Layer> projectLayers = List.of();
     private static List<MapNetwork.SettlementArea> settlements = List.of();
     private static List<Layer> settlementLayers = List.of();
-    private static UUID previewSettlement;
+    public record SettlementDraft(UUID id, ResourceLocation dimension, int targetX, int targetZ, int minX, int minZ, int maxX, int maxZ, long cost) {}
+    private static SettlementDraft settlementDraft;
+    private static boolean draggingSettlement;
     private static boolean connected;
     private static final int BORDER_ALPHA = 0xFF000000;
     private static final int MAP_REFRESH_TICKS = 40;
@@ -38,7 +40,7 @@ public final class MapClient {
         deaths = List.copyOf(snapshot.deaths()); acceptEvents(snapshot.events()); acceptProjects(snapshot.projects());
         settlements = List.copyOf(snapshot.settlements());
         settlementLayers = settlements.stream().map(town -> new Layer(town.dimension(), town.owned() ? com.siirio.jemserver.client.ui.JemPalette.PEACH : com.siirio.jemserver.client.ui.JemPalette.COPPER,
-                RegionGeometry.union(List.of(new RegionGeometry.Rectangle(town.center().getX() - town.radius(), town.center().getZ() - town.radius(), town.center().getX() + town.radius() + 1, town.center().getZ() + town.radius() + 1))))).toList();
+                RegionGeometry.union(List.of(new RegionGeometry.Rectangle(town.minX(), town.minZ(), town.maxX() + 1, town.maxZ() + 1))))).toList();
         connected = true;
     }
     private static void acceptProjects(List<MapNetwork.ProjectArea> areas) {
@@ -68,13 +70,27 @@ public final class MapClient {
     }
     public static boolean connected() { return connected; }
     @SubscribeEvent
-    public static void logout(ClientPlayerNetworkEvent.LoggingOut event) { deaths = List.of(); events = List.of(); eventLayers = List.of(); projects = List.of(); projectLayers = List.of(); settlements = List.of(); settlementLayers = List.of(); previewSettlement = null; connected = false; ProjectRegionClient.cancel(); }
-    public static boolean previewing(UUID id) { return id != null && id.equals(previewSettlement); }
-    public static void preview(UUID id) { previewSettlement = id; }
-    public static void clearSettlementPreview() { previewSettlement = null; }
+    public static void logout(ClientPlayerNetworkEvent.LoggingOut event) { deaths = List.of(); events = List.of(); eventLayers = List.of(); projects = List.of(); projectLayers = List.of(); settlements = List.of(); settlementLayers = List.of(); settlementDraft = null; draggingSettlement = false; connected = false; ProjectRegionClient.cancel(); }
+    public static boolean beginSettlementDrag(ResourceLocation dimension, int x, int z) {
+        var town = settlement(dimension, x, z, true); if (town == null) return false;
+        draggingSettlement = true; updateSettlementDrag(dimension, x, z); return true;
+    }
+    public static void updateSettlementDrag(ResourceLocation dimension, int x, int z) {
+        if (!draggingSettlement || settlementDraft == null && settlement(dimension, x, z, true) == null) return;
+        var town = settlementDraft == null ? settlement(dimension, x, z, true) : settlements.stream().filter(value -> value.id().equals(settlementDraft.id())).findFirst().orElse(null);
+        if (town == null || !town.dimension().equals(dimension)) return;
+        int tx = Math.max(town.center().getX() - 256, Math.min(town.center().getX() + 256, x));
+        int tz = Math.max(town.center().getZ() - 256, Math.min(town.center().getZ() + 256, z));
+        int minX = Math.min(town.minX(), tx), maxX = Math.max(town.maxX(), tx), minZ = Math.min(town.minZ(), tz), maxZ = Math.max(town.maxZ(), tz);
+        long cost = (long) (maxX - minX + 1) * (maxZ - minZ + 1) - town.area();
+        settlementDraft = new SettlementDraft(town.id(), dimension, tx, tz, minX, minZ, maxX, maxZ, Math.max(0L, cost));
+    }
+    public static boolean finishSettlementDrag() { boolean result = draggingSettlement && settlementDraft != null && settlementDraft.cost() > 0L; draggingSettlement = false; return result; }
+    public static SettlementDraft pendingSettlement(ResourceLocation dimension, int x, int z) { return settlementDraft != null && settlementDraft.dimension().equals(dimension) && settlementDraft.targetX() == x && settlementDraft.targetZ() == z ? settlementDraft : null; }
+    public static void clearSettlementPreview() { settlementDraft = null; draggingSettlement = false; }
     public static MapNetwork.SettlementArea settlement(ResourceLocation dimension, int x, int z, boolean ownedOnly) {
         return settlements.stream().filter(town -> (!ownedOnly || town.owned()) && town.dimension().equals(dimension)
-                && Math.abs(x - town.center().getX()) <= town.radius() && Math.abs(z - town.center().getZ()) <= town.radius()).findFirst().orElse(null);
+                && x >= town.minX() && x <= town.maxX() && z >= town.minZ() && z <= town.maxZ()).findFirst().orElse(null);
     }
     public static UUID death(ResourceLocation dimension, int x, int y, int z) {
         return deaths.stream().filter(death -> death.dimension().equals(dimension) && death.position().getX() == x && death.position().getY() == y && death.position().getZ() == z).map(MapNetwork.Death::id).findFirst().orElse(null);
@@ -98,13 +114,13 @@ public final class MapClient {
                               int hoverX, int hoverZ, int mouseX, int mouseY) {
         if (!connected) return;
         renderLayers(graphics, dimension, cameraX, cameraZ, scale, width, height, settlementLayers);
-        settlements.stream().filter(town -> previewing(town.id()) && town.dimension().equals(dimension) && town.radius() < 256).findFirst().ifPresent(town -> {
-            int radius = town.radius() + 16;
-            var layer = new Layer(town.dimension(), com.siirio.jemserver.client.ui.JemPalette.GREEN,
-                    RegionGeometry.union(List.of(new RegionGeometry.Rectangle(town.center().getX() - radius, town.center().getZ() - radius,
-                            town.center().getX() + radius + 1, town.center().getZ() + radius + 1))));
+        if (draggingSettlement) updateSettlementDrag(dimension, hoverX, hoverZ);
+        if (settlementDraft != null && settlementDraft.dimension().equals(dimension)) {
+            var draft = settlementDraft;
+            var layer = new Layer(draft.dimension(), com.siirio.jemserver.client.ui.JemPalette.GREEN,
+                    RegionGeometry.union(List.of(new RegionGeometry.Rectangle(draft.minX(), draft.minZ(), draft.maxX() + 1, draft.maxZ() + 1))));
             renderLayers(graphics, dimension, cameraX, cameraZ, scale, width, height, List.of(layer));
-        });
+        }
         var font = Minecraft.getInstance().font;
         var settlement = settlement(dimension, hoverX, hoverZ, false);
         net.minecraft.network.chat.Component label = settlement == null ? null : net.minecraft.network.chat.Component.literal(settlement.name());

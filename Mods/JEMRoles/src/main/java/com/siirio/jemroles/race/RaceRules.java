@@ -4,6 +4,7 @@ import net.minecraftforge.common.ForgeConfigSpec;
 import java.util.List;
 
 public final class RaceRules {
+    private static final String TEST_RESELECT_PROPERTY = "jem.test.allowRaceReselect";
     public static final ForgeConfigSpec SPEC;
     public static final ForgeConfigSpec.IntValue GUARDIAN_COOLDOWN;
     public static final ForgeConfigSpec.IntValue LIFE_CHORUS_COOLDOWN;
@@ -44,4 +45,7 @@ public final class RaceRules {
     }
 
     private RaceRules() {}
+
+    /** Local test-stand override. It is false unless the server JVM explicitly enables it. */
+    public static boolean testRaceReselect() { return Boolean.getBoolean(TEST_RESELECT_PROPERTY); }
 }

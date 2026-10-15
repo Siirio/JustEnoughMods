@@ -139,25 +139,26 @@ public final class SettlementApi {
         town.get().territoryRadius(radius); data.changed(); return Result.ACCEPTED;
     }
 
-    public static Result expandTerritory(ServerPlayer player, UUID townId, UUID requestId) {
+    public static Result expandTerritory(ServerPlayer player, UUID townId, int targetX, int targetZ, UUID requestId) {
         if (!DedicatedSmp.active(player) || requestId == null) return Result.INVALID;
         var town = ownedTown(player, townId);
         if (town.isEmpty()) return Result.UNAUTHENTICATED;
         if (town.get().expansionSeen(requestId)) return Result.REPLAYED;
-        int radius = town.get().territoryRadius() + 16;
-        if (radius > 256) return Result.CONFLICT;
+        int minX = Math.min(town.get().territoryMinX(), targetX), maxX = Math.max(town.get().territoryMaxX(), targetX);
+        int minZ = Math.min(town.get().territoryMinZ(), targetZ), maxZ = Math.max(town.get().territoryMaxZ(), targetZ);
+        if (minX < town.get().center().getX() - 256 || maxX > town.get().center().getX() + 256 || minZ < town.get().center().getZ() - 256 || maxZ > town.get().center().getZ() + 256) return Result.CONFLICT;
+        long area = (long) (maxX - minX + 1) * (maxZ - minZ + 1), added = area - town.get().territoryArea();
+        if (added <= 0L) return Result.INVALID;
         SettlementSavedData data = SettlementSavedData.get(player.getServer());
         for (TownRecord other : data.towns()) if (!other.id().equals(townId) && other.dimension().equals(town.get().dimension())) {
-            int separation = radius + other.territoryRadius() + 16;
-            if (Math.abs(other.center().getX() - town.get().center().getX()) < separation
-                    && Math.abs(other.center().getZ() - town.get().center().getZ()) < separation) return Result.CONFLICT;
+            if (minX <= other.territoryMaxX() + 16 && maxX >= other.territoryMinX() - 16 && minZ <= other.territoryMaxZ() + 16 && maxZ >= other.territoryMinZ() - 16) return Result.CONFLICT;
         }
-        var payment = com.siirio.jemeconomy.api.EconomyApi.spendOneGold(player, requestId);
+        var payment = com.siirio.jemeconomy.api.EconomyApi.spendPhysical(player, added, requestId, "settlementTerritorySpend");
         if (payment == com.siirio.jemeconomy.physical.PhysicalCoinService.Status.NO_VALID_COINS
                 || payment == com.siirio.jemeconomy.physical.PhysicalCoinService.Status.INSUFFICIENT_FUNDS) return Result.INSUFFICIENT_FUNDS;
         if (payment != com.siirio.jemeconomy.physical.PhysicalCoinService.Status.COMMITTED
                 && payment != com.siirio.jemeconomy.physical.PhysicalCoinService.Status.REPLAYED) return Result.UNAVAILABLE;
-        town.get().territoryRadius(radius);
+        town.get().territoryBounds(minX, minZ, maxX, maxZ);
         town.get().recordExpansion(requestId);
         data.changed();
         return payment == com.siirio.jemeconomy.physical.PhysicalCoinService.Status.REPLAYED ? Result.REPLAYED : Result.ACCEPTED;

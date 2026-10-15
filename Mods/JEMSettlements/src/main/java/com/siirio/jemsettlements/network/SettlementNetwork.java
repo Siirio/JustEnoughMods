@@ -35,6 +35,7 @@ public final class SettlementNetwork {
                     ServerPlayer player = context.get().getSender();
                     if (player != null && DedicatedSmp.active(player)) {
                         SettlementApi.Result result = SettlementApi.create(player, packet.name(), packet.bell());
+                        if (result == SettlementApi.Result.ACCEPTED) com.siirio.jemsettlements.runtime.SettlementRuntime.celebrateFounding(player.serverLevel(), packet.bell());
                         player.sendSystemMessage(Component.translatable(result == SettlementApi.Result.ACCEPTED
                                 ? "jem.settlements.created" : "jem.settlements.found_failed", packet.name()), true);
                         sendOwned(player, true);
@@ -95,7 +96,7 @@ public final class SettlementNetwork {
     private static CompoundTag buildView(ServerPlayer player, TownRecord town) {
         CompoundTag view = new CompoundTag(); view.putUUID("Id", town.id()); view.putString("Name", town.name());
         view.putInt("Happiness", town.happiness()); view.putInt("Tax", town.taxPercent()); view.putLong("Center", town.center().asLong());
-        view.putInt("TerritoryRadius", town.territoryRadius()); view.putInt("TerritoryMinX", town.center().getX() - town.territoryRadius()); view.putInt("TerritoryMaxX", town.center().getX() + town.territoryRadius()); view.putInt("TerritoryMinZ", town.center().getZ() - town.territoryRadius()); view.putInt("TerritoryMaxZ", town.center().getZ() + town.territoryRadius());
+        view.putInt("TerritoryRadius", town.territoryRadius()); view.putInt("TerritoryMinX", town.territoryMinX()); view.putInt("TerritoryMaxX", town.territoryMaxX()); view.putInt("TerritoryMinZ", town.territoryMinZ()); view.putInt("TerritoryMaxZ", town.territoryMaxZ()); view.putLong("TerritoryArea", town.territoryArea());
         view.putString("Tier", town.tier().name()); view.putString("PrimarySpecialization", town.primarySpecialization().name()); view.putString("SecondarySpecialization", town.secondarySpecialization().name());
         view.putInt("Housing", town.housingScore()); view.putInt("Food", town.foodScore()); view.putInt("Safety", town.safetyScore()); view.putInt("Jobs", town.jobsScore()); view.putInt("Community", town.communityScore()); view.putInt("Decoration", town.decorationScore());
         view.putLong("Treasury", SettlementApi.treasuryBalance(player, town));
@@ -109,7 +110,7 @@ public final class SettlementNetwork {
         view.put("Workforce", workforce);
         ListTag residents = new ListTag();
         for (var resident : data.residents(town.id())) {
-            CompoundTag row = new CompoundTag(); row.putUUID("Id", resident.villagerId()); row.putInt("Mood", resident.mood()); row.putInt("Satiety", resident.satiety()); row.putInt("Hunger", resident.hunger()); row.putBoolean("Living", resident.living());
+            CompoundTag row = new CompoundTag(); row.putUUID("Id", resident.villagerId()); row.putInt("Mood", resident.mood()); row.putInt("Satiety", resident.satiety()); row.putBoolean("Craving", resident.craving()); row.putBoolean("Living", resident.living());
             row.putBoolean("Home", resident.home().isPresent()); row.putBoolean("Work", resident.workplace().isPresent()); row.putInt("HomeAmenities", resident.homeAmenities().points()); row.putInt("WorkAmenities", resident.workAmenities().points());
             row.putBoolean("AmenitiesStale", resident.homeAmenities().stale() || resident.workAmenities().stale());
             var residentLevel = player.getServer().getLevel(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION, town.dimension()));

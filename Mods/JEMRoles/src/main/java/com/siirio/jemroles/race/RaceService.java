@@ -36,8 +36,9 @@ public final class RaceService {
         }
         RaceRecord record = existing.get();
         if (record.race() == next) return Result.UNCHANGED;
-        if (!record.freeSwitchAvailable()) return Result.CHANGE_LOCKED;
-        record.change(next, true);
+        boolean testOverride = RaceRules.testRaceReselect();
+        if (!testOverride && !record.freeSwitchAvailable()) return Result.CHANGE_LOCKED;
+        record.change(next, !testOverride);
         data.changed();
         MinecraftForge.EVENT_BUS.post(new RaceChangedEvent(player, next));
         return Result.CHANGED;

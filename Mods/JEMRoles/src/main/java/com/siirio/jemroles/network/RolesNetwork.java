@@ -12,6 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.network.NetworkDirection;
@@ -75,7 +76,7 @@ public final class RolesNetwork {
         var snapshot = principal.flatMap(value -> RaceApi.get(player.getServer(), value.accountId()));
         RaceStatusPacket packet = snapshot
                 .map(value -> new RaceStatusPacket(open, true, true, value.race(), value.activeTicks(),
-                        value.freeSwitchAvailable(), nonce, value.spellTier(), value.spellProgress(), value.resonance(),
+                        value.freeSwitchAvailable() || RaceRules.testRaceReselect(), nonce, value.spellTier(), value.spellProgress(), value.resonance(),
                         value.waterExposure(), value.lavaExposure(), RaceRules.LAVA_BREATH.get(), value.livingPath()))
                 .orElseGet(() -> new RaceStatusPacket(open, principal.isPresent(), false, RaceId.ANCESTORS,
                         0L, true, nonce, 1, 0, 0, 0, 0, RaceRules.LAVA_BREATH.get(), false));
@@ -92,6 +93,15 @@ public final class RolesNetwork {
         var principal = IdentityPolicy.resolve(player);
         boolean needsChoice = principal.isPresent() && RaceApi.get(player.getServer(), principal.get().accountId()).isEmpty();
         sendStatus(player, needsChoice);
+    }
+
+    @SubscribeEvent
+    public static void enforceChoice(TickEvent.ServerTickEvent event) {
+        if (event.phase != TickEvent.Phase.END || event.getServer().getTickCount() % 20 != 0) return;
+        for (ServerPlayer player : event.getServer().getPlayerList().getPlayers()) {
+            var principal = IdentityPolicy.resolve(player);
+            if (principal.isPresent() && RaceApi.get(player.getServer(), principal.get().accountId()).isEmpty()) sendStatus(player, true);
+        }
     }
 
     @SubscribeEvent

@@ -29,7 +29,7 @@ public final class SettlementJadePlugin implements IWailaPlugin {
             if (resident.isEmpty()) return;
             tag.putBoolean("JemResident", true);
             tag.putInt("JemHappiness", resident.get().mood());
-            tag.putInt("JemHunger", resident.get().hunger());
+            tag.putInt("JemSatiety", resident.get().satiety()); tag.putBoolean("JemCraving", resident.get().craving());
             tag.putString("JemProfession", net.minecraft.core.registries.BuiltInRegistries.VILLAGER_PROFESSION
                     .getKey(villager.getVillagerData().getProfession()).toString());
             resident.get().requestedDish().ifPresent(value -> tag.putString("JemRequestedDish", value.toString()));
@@ -39,7 +39,8 @@ public final class SettlementJadePlugin implements IWailaPlugin {
             CompoundTag tag = accessor.getServerData();
             if (!tag.getBoolean("JemResident")) return;
             tooltip.add(Component.translatable("jade.jem_settlements.happiness", tag.getInt("JemHappiness")));
-            tooltip.add(Component.translatable("jade.jem_settlements.hunger", tag.getInt("JemHunger")));
+            tooltip.add(Component.translatable("jade.jem_settlements.satiety", tag.getInt("JemSatiety")));
+            if (tag.getBoolean("JemCraving")) tooltip.add(Component.translatable("jade.jem_settlements.craving"));
             ResourceLocation profession = ResourceLocation.tryParse(tag.getString("JemProfession"));
             if (profession != null) tooltip.add(Component.translatable("jade.jem_settlements.profession",
                     Component.translatable("entity.minecraft.villager." + profession.getPath())));

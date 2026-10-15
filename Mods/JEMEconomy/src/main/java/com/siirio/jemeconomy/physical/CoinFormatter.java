@@ -23,4 +23,17 @@ public final class CoinFormatter {
         }
         return result;
     }
+    public static Component formatAll(long copper) {
+        MutableComponent result = Component.empty();
+        long remainder = Math.max(0L, copper);
+        var values = CoinDenomination.descending();
+        for (int i = 0; i < values.length; i++) {
+            CoinDenomination denomination = values[i];
+            long count = remainder / denomination.value();
+            remainder %= denomination.value();
+            if (i > 0) result.append(Component.literal(" + "));
+            result.append(Component.translatable("jem.economy.amount." + denomination.id(), count));
+        }
+        return result;
+    }
 }

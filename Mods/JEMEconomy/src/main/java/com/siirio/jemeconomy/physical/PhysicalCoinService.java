@@ -144,6 +144,41 @@ public final class PhysicalCoinService {
         };
     }
 
+    /** Redeems an exact value of backed physical Coins, then moves that value to the reserve. */
+    public static Status spend(ServerPlayer player, long amount, UUID requestId, String purpose) {
+        if (!DedicatedSmp.active(player) || requestId == null || amount <= 0L || amount > 1_000_000_000L) return Status.UNAVAILABLE;
+        var principal = IdentityPolicy.resolve(player); if (principal.isEmpty()) return Status.UNAUTHENTICATED;
+        EconomySavedData data = EconomySavedData.get(player.getServer());
+        String paymentKey = purpose + ":" + requestId; if (data.hasReceipt(paymentKey)) return Status.REPLAYED;
+        long remaining = amount; List<EconomySavedData.DepositCandidate> candidates = new ArrayList<>(); Map<UUID, Integer> selectedByLot = new LinkedHashMap<>();
+        for (CoinDenomination denomination : CoinDenomination.descending()) {
+            for (int slot = 0; slot < player.getInventory().getContainerSize() && remaining >= denomination.value(); slot++) {
+                ItemStack stack = player.getInventory().getItem(slot); var stamp = CoinProvenance.read(stack);
+                if (stamp.isEmpty() || stamp.get().denomination() != denomination) continue;
+                int already = selectedByLot.getOrDefault(stamp.get().lotId(), 0);
+                int backed = Math.min(stack.getCount(), Math.max(0, data.redeemable(stamp.get().lotId(), denomination) - already));
+                int take = (int) Math.min(backed, remaining / denomination.value());
+                if (take <= 0) continue;
+                candidates.add(new EconomySavedData.DepositCandidate(slot, stamp.get().lotId(), denomination, take)); selectedByLot.put(stamp.get().lotId(), already + take);
+                remaining -= (long) take * denomination.value();
+            }
+        }
+        if (remaining != 0L) return Status.INSUFFICIENT_FUNDS;
+        UUID depositId = UUID.nameUUIDFromBytes((purpose + ":deposit:" + requestId).getBytes(java.nio.charset.StandardCharsets.UTF_8));
+        var reservation = data.prepareDeposit(principal.get().accountId(), candidates, depositId);
+        if (reservation.status() == EconomySavedData.PhysicalStatus.PREPARED) {
+            for (var selection : reservation.selections()) {
+                ItemStack current = player.getInventory().getItem(selection.slot()); var stamp = CoinProvenance.read(current);
+                if (stamp.isEmpty() || !stamp.get().lotId().equals(selection.lotId()) || stamp.get().denomination() != selection.denomination() || current.getCount() < selection.accepted()) { data.cancelDeposit(depositId); return Status.INVENTORY_CHANGED; }
+            }
+            reservation.selections().forEach(selection -> player.getInventory().getItem(selection.slot()).shrink(selection.accepted()));
+            if (!data.commitDeposit(depositId)) return Status.QUARANTINED;
+            player.getInventory().setChanged(); player.containerMenu.broadcastChanges();
+        } else if (reservation.status() != EconomySavedData.PhysicalStatus.REPLAYED) return Status.NO_VALID_COINS;
+        var payment = data.transfer(principal.get().accountId(), SystemAccount.CENTRAL_RESERVE.id(), amount, paymentKey);
+        return switch (payment.status()) { case COMMITTED -> Status.COMMITTED; case REPLAYED -> Status.REPLAYED; case INSUFFICIENT_FUNDS -> Status.INSUFFICIENT_FUNDS; default -> Status.QUARANTINED; };
+    }
+
     public static ExchangeResult exchange(ServerPlayer player, CoinDenomination source, int sourceCount,
                                           CoinDenomination target, UUID requestId) {
         if (!DedicatedSmp.active(player)) return new ExchangeResult(Status.UNAVAILABLE, 0L, 0);

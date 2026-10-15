@@ -1167,6 +1167,10 @@ public final class SmpScreen extends Screen {
         int separator = value.indexOf(':');
         return separator >= 0 ? value.substring(separator + 1) : value;
     }
+    private Component dimensionNameComponent(String value) {
+        ResourceLocation id = ResourceLocation.tryParse(value);
+        return id == null ? Component.literal(value) : Component.translatable("dimension." + id.getNamespace() + "." + id.getPath());
+    }
 
     private String shopUnavailableReason(CompoundTag row) {
         if (!row.getBoolean("remoteAvailable")) return "shop_unloaded";
@@ -1213,14 +1217,14 @@ public final class SmpScreen extends Screen {
             String[] scores = {"Housing", "Food", "Safety", "Jobs", "Community", "Decoration"};
             for (String score : scores) { text(g, Component.translatable("jem.smp.settlement.score." + score.toLowerCase(Locale.ROOT), row.getInt(score)), bodyX + 4, y, CREAM, bodyWidth - 8); y += 18; }
         } else if (settlementTab.equals("treasury")) {
-            text(g, Component.translatable("jem.smp.settlement.treasury", com.siirio.jemeconomy.physical.CoinFormatter.format(row.getLong("Treasury"))), bodyX + 4, y, PEACH, bodyWidth - 8); y += 28;
+            text(g, Component.translatable("jem.smp.settlement.treasury", com.siirio.jemeconomy.physical.CoinFormatter.formatAll(row.getLong("Treasury"))), bodyX + 4, y, PEACH, bodyWidth - 8); y += 28;
             button(g, bodyX, y, Math.max(70, bodyWidth / 2 - 4), 24, "treasury_deposit", () -> openForm("settlement_deposit"), mx, my);
             button(g, bodyX + bodyWidth / 2 + 4, y, Math.max(70, bodyWidth / 2 - 4), 24, "treasury_withdraw", () -> openForm("settlement_withdraw"), mx, my); y += 32;
             text(g, Component.translatable("jem.smp.settlement.payroll", row.getLong("ProjectedPayroll"), row.getLong("UnpaidPayroll")), bodyX + 4, y, MUTED, bodyWidth - 8); y += 18;
         } else {
             var pos = net.minecraft.core.BlockPos.of(row.getLong("position"));
-            text(g, Component.literal(pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " · " + row.getString("dimension")), bodyX + 4, y, PEACH, bodyWidth - 8); y += 24;
-            text(g, Component.translatable("jem.smp.settlement.radius", row.getInt("TerritoryRadius")), bodyX + 4, y, CREAM, bodyWidth - 8); y += 24;
+            text(g, Component.literal(pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " · ").append(dimensionNameComponent(row.getString("dimension"))), bodyX + 4, y, PEACH, bodyWidth - 8); y += 24;
+            text(g, Component.translatable("jem.smp.settlement.area", row.getLong("TerritoryArea")), bodyX + 4, y, CREAM, bodyWidth - 8); y += 24;
             button(g, bodyX, y, Math.max(90, bodyWidth / 2 - 4), 24, "map", () -> openSettlementMap(row), mx, my);
             button(g, bodyX + bodyWidth / 2 + 4, y, Math.max(90, bodyWidth / 2 - 4), 24, "rename", () -> openForm("settlement_rename"), mx, my); y += 34;
             text(g, Component.translatable("jem.smp.settlement.expand_hint"), bodyX + 4, y, MUTED, bodyWidth - 8); y += 26;
@@ -1237,7 +1241,7 @@ public final class SmpScreen extends Screen {
             text(g, Component.literal(person.getString("Name")), bodyX + 36, y + 6, person.getBoolean("Living") ? CREAM : MUTED, bodyWidth - 126);
             if (person.getBoolean("Resident")) {
                 String profession = person.getString("Profession"); if (profession.contains(":")) profession = profession.substring(profession.indexOf(':') + 1);
-                text(g, Component.translatable("jem.smp.settlement.resident_state", person.getInt("Mood"), person.getInt("Hunger"), profession), bodyX + 36, y + 22, MUTED, bodyWidth - 126);
+                text(g, Component.translatable("jem.smp.settlement.resident_state", person.getInt("Mood"), person.getInt("Satiety"), Component.translatable("entity.minecraft.villager." + profession)), bodyX + 36, y + 22, MUTED, bodyWidth - 126);
                 ResourceLocation request = ResourceLocation.tryParse(person.getString("RequestedDish")); if (request != null && BuiltInRegistries.ITEM.containsKey(request)) { ItemStack dish = new ItemStack(BuiltInRegistries.ITEM.get(request)); g.renderItem(dish, bodyX + 36, y + 31); text(g, dish.getHoverName(), bodyX + 56, y + 36, PEACH, bodyWidth - 146); }
             } else text(g, Component.translatable("jem.smp.settlement.worker_type", person.getString("Type")), bodyX + 36, y + 22, MUTED, bodyWidth - 126);
             int bx = bodyX + bodyWidth - 82;
