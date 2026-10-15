@@ -98,9 +98,9 @@ Critical shapes use conservative depth-tested world geometry with a small surfac
 
 Compilation cannot establish compatibility with Embeddium, Oculus, Photon or Complementary. No claim of shader compatibility is made until the user explicitly authorizes launching the `test jem` profile and the actual configurations are inspected. Until then, shader-on presentation remains `in testing`, with shader-off static implementation evidence only.
 
-## Developer preview
+## Invocation boundary
 
-An operator-only dedicated-server command `/jem vfx preview <effect> [tier]` emits the same validated visual packet used by real gameplay but performs no damage, healing, movement, block placement, cooldown or mastery change. Effect IDs come from the closed visual catalog. A stop/clear subcommand removes persistent local preview timelines. The preview command is excluded from integrated singleplayer with other server-owned JEM commands.
+The visual catalog has no command, preview, debug or synthetic gameplay trigger. A race VFX timeline starts only from a real transition already accepted by its server-owned gameplay path. This keeps `/jem` free of a user-rejected `vfx` branch and prevents a second route from bypassing cooldown, targeting or progression owners.
 
 ## Taste Engine record
 
