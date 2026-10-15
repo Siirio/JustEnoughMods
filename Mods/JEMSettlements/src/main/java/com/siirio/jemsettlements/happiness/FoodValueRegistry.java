@@ -37,11 +37,13 @@ public final class FoodValueRegistry extends SimpleJsonResourceReloadListener {
         catch (RuntimeException dynamicFoodFailure) { return Optional.empty(); }
         if (food == null) return Optional.empty();
         ResourceLocation id = ForgeRegistries.ITEMS.getKey(stack.getItem()); if (id == null) return Optional.empty();
-        Value reviewed = values.get(id); if (reviewed != null) return Optional.of(reviewed);
+        Value reviewed = values.get(id);
         boolean harmful = food.getEffects().stream().anyMatch(effect -> effect.getFirst().getEffect().getCategory() == net.minecraft.world.effect.MobEffectCategory.HARMFUL && effect.getSecond() > 0.0F);
-        if (harmful) return Optional.of(new Value(food.getNutrition() <= 2 ? -8 : -6, "unsafe", "derived_harmful_food_effect"));
+        if (harmful) return Optional.of(new Value(reviewed == null ? (food.getNutrition() <= 2 ? -8 : -6) : reviewed.mood(), id.toString(), "unsafe"));
+        if (id.getNamespace().equals("minecraft")) return Optional.empty();
+        if (reviewed != null) return Optional.of(new Value(reviewed.mood(), id.toString(), "modded_dish"));
         int mood = food.getNutrition() >= 8 ? 5 : food.getNutrition() >= 6 ? 3 : food.getNutrition() >= 3 ? 2 : 1;
-        return Optional.of(new Value(mood, mood >= 5 ? "complex_meal" : mood >= 3 ? "meal" : "basic", "derived_food_properties"));
+        return Optional.of(new Value(mood, id.toString(), "modded_dish"));
     }
     public static Map<ResourceLocation, Value> snapshot() { return values; }
     public static void applySynced(Map<ResourceLocation, Value> synced) { values = Map.copyOf(synced); }

@@ -22,6 +22,7 @@ public final class SettlementSavedData extends SavedData {
     }
 
     public Optional<TownRecord> ownedBy(UUID owner) { return towns.values().stream().filter(town -> town.owner().equals(owner)).findFirst(); }
+    public java.util.List<TownRecord> ownedTowns(UUID owner) { return towns.values().stream().filter(town -> town.owner().equals(owner)).toList(); }
     public Optional<TownRecord> town(UUID id) { return Optional.ofNullable(towns.get(id)); }
     public Collection<TownRecord> towns() { return java.util.List.copyOf(towns.values()); }
     public Collection<WorkforceRecord> workforce(UUID town) { return workforce.values().stream().filter(record -> record.townId().equals(town)).toList(); }
@@ -39,6 +40,8 @@ public final class SettlementSavedData extends SavedData {
     public void add(TownRecord town) { towns.put(town.id(), town); setDirty(); }
     public void add(WorkforceRecord record) { workforce.put(record.entityId(), record); setDirty(); }
     public void add(ResidentMood resident) { residents.put(resident.villagerId(), resident); setDirty(); }
+    public boolean removeResident(UUID town, UUID entity) { ResidentMood value = residents.get(entity); if (value == null || !value.townId().equals(town)) return false; residents.remove(entity); setDirty(); return true; }
+    public boolean removeWorkforce(UUID town, UUID entity) { WorkforceRecord value = workforce.get(entity); if (value == null || !value.townId().equals(town)) return false; workforce.remove(entity); setDirty(); return true; }
     public void changed() { setDirty(); }
 
     @Override

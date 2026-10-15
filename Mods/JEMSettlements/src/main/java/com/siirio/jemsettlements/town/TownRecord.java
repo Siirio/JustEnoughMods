@@ -14,10 +14,10 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceLocation;
 
 public final class TownRecord {
-    public static final int CURRENT_SCHEMA = 4;
+    public static final int CURRENT_SCHEMA = 5;
     private final UUID id;
     private final UUID owner;
-    private final String name;
+    private String name;
     private final ResourceLocation dimension;
     private final BlockPos center;
     private final Set<UUID> members = new LinkedHashSet<>();
@@ -37,6 +37,7 @@ public final class TownRecord {
     private long lastSpecializationEvaluation;
     private int housingScore = 50, foodScore = 50, safetyScore = 0, jobsScore = 25, communityScore = 40, decorationScore;
     private int territoryRadius = 48;
+    private final Set<UUID> expansionReceipts = new LinkedHashSet<>();
 
     public TownRecord(UUID id, UUID owner, String name, ResourceLocation dimension, BlockPos center) {
         this.id = id; this.owner = owner; this.name = name; this.dimension = dimension; this.center = center.immutable(); members.add(owner);
@@ -52,6 +53,9 @@ public final class TownRecord {
     public int housingScore() { return housingScore; } public int foodScore() { return foodScore; } public int safetyScore() { return safetyScore; }
     public int jobsScore() { return jobsScore; } public int communityScore() { return communityScore; } public int decorationScore() { return decorationScore; }
     public int territoryRadius() { return territoryRadius; }
+    public void rename(String value) { name = value; }
+    public boolean expansionSeen(UUID request) { return expansionReceipts.contains(request); }
+    public void recordExpansion(UUID request) { expansionReceipts.add(request); while (expansionReceipts.size() > 64) expansionReceipts.remove(expansionReceipts.iterator().next()); }
     public boolean contains(BlockPos position) { return Math.abs(position.getX() - center.getX()) <= territoryRadius && Math.abs(position.getZ() - center.getZ()) <= territoryRadius; }
     public void territoryRadius(int value) { territoryRadius = Math.max(32, Math.min(256, value)); }
     public void lastHappinessDay(long value) { lastHappinessDay = value; }
@@ -75,6 +79,7 @@ public final class TownRecord {
         tag.putString("Tier", tier.name()); tag.putString("PrimarySpecialization", primarySpecialization.name()); tag.putString("SecondarySpecialization", secondarySpecialization.name()); tag.putLong("LastSpecializationEvaluation", lastSpecializationEvaluation);
         tag.putInt("HousingScore", housingScore); tag.putInt("FoodScore", foodScore); tag.putInt("SafetyScore", safetyScore); tag.putInt("JobsScore", jobsScore); tag.putInt("CommunityScore", communityScore); tag.putInt("DecorationScore", decorationScore);
         tag.putInt("TerritoryRadius", territoryRadius);
+        ListTag receiptTags = new ListTag(); expansionReceipts.forEach(value -> { CompoundTag row = new CompoundTag(); row.putUUID("Id", value); receiptTags.add(row); }); tag.put("ExpansionReceipts", receiptTags);
         ListTag memberTags = new ListTag(); members.forEach(value -> { CompoundTag row = new CompoundTag(); row.putUUID("Id", value); memberTags.add(row); }); tag.put("Members", memberTags);
         ListTag storageTags = new ListTag(); storage.forEach(value -> storageTags.add(value.save())); tag.put("Storage", storageTags);
         ListTag payrollTags = new ListTag(); payroll.forEach(value -> payrollTags.add(value.save())); tag.put("Payroll", payrollTags); tag.put("Simulation", simulation.save()); return tag;
@@ -90,6 +95,7 @@ public final class TownRecord {
         try { town.secondarySpecialization = TownSpecialization.valueOf(tag.getString("SecondarySpecialization")); } catch (IllegalArgumentException ignored) { }
         town.lastSpecializationEvaluation = tag.getLong("LastSpecializationEvaluation"); if (tag.contains("HousingScore")) town.happinessEvidence(tag.getInt("HousingScore"), tag.getInt("FoodScore"), tag.getInt("SafetyScore"), tag.getInt("JobsScore"), tag.getInt("CommunityScore"), tag.getInt("DecorationScore"));
         if (tag.contains("TerritoryRadius")) town.territoryRadius(tag.getInt("TerritoryRadius"));
+        ListTag receipts = tag.getList("ExpansionReceipts", Tag.TAG_COMPOUND); for (int i = 0; i < receipts.size() && i < 64; i++) if (receipts.getCompound(i).hasUUID("Id")) town.expansionReceipts.add(receipts.getCompound(i).getUUID("Id"));
         ListTag periods = tag.getList("Payroll", Tag.TAG_COMPOUND); for (int i = 0; i < periods.size(); i++) town.payroll.add(PayrollPeriod.load(periods.getCompound(i)));
         if (tag.contains("Simulation")) town.simulation = SettlementSimulationState.load(tag.getCompound("Simulation")); return town;
     }

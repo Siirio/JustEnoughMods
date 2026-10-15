@@ -51,12 +51,19 @@ public final class SmpNetwork {
                     if (player != null && SmpEnvironment.active(player)) packet.open(player);
                     context.get().setPacketHandled(true);
                 }).add();
+        CHANNEL.messageBuilder(SettlementUiAction.class, 6, NetworkDirection.PLAY_TO_SERVER)
+                .encoder(SettlementUiAction::encode).decoder(SettlementUiAction::decode).consumerMainThread((packet, context) -> {
+                    var player = context.get().getSender();
+                    if (player != null && SmpEnvironment.active(player) && SmpRequests.allow(player)) packet.handle(player);
+                    context.get().setPacketHandled(true);
+                }).add();
     }
 
     public static void revive(UUID target) { CHANNEL.sendToServer(new SmpRevive(target)); }
     public static void query(SmpQuery query) { CHANNEL.sendToServer(query); }
     public static void action(SmpAction action) { CHANNEL.sendToServer(action); }
     public static void openModule(SmpModuleOpen.Module module) { CHANNEL.sendToServer(new SmpModuleOpen(module)); }
+    public static void settlement(SettlementUiAction action) { CHANNEL.sendToServer(action); }
     public static void open(ServerPlayer player, String tab, UUID selected) { open(player, new SmpQuery(tab, "", "", 0, selected)); }
     public static void open(ServerPlayer player, SmpQuery query) { if (SmpEnvironment.active(player)) SmpSubscriptions.open(player, query); }
     public static void close(ServerPlayer player) { SmpSubscriptions.close(player); }

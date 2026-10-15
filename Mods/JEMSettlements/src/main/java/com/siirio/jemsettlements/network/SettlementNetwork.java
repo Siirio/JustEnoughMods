@@ -81,7 +81,7 @@ public final class SettlementNetwork {
     /** Bounded server-authorized projection for read-only consumers such as the SMP information screen. */
     public static CompoundTag readOnlyView(ServerPlayer viewer, TownRecord town) {
         CompoundTag view = buildView(viewer, town);
-        boolean owner = town.owner().equals(viewer.getUUID());
+        boolean owner = com.siirio.jemidentity.api.IdentityPolicy.resolve(viewer).map(value -> town.owner().equals(value.accountId())).orElse(false);
         view.remove("Center");
         view.remove("TerritoryMinX"); view.remove("TerritoryMaxX"); view.remove("TerritoryMinZ"); view.remove("TerritoryMaxZ");
         if (!owner) {
@@ -109,14 +109,24 @@ public final class SettlementNetwork {
         view.put("Workforce", workforce);
         ListTag residents = new ListTag();
         for (var resident : data.residents(town.id())) {
-            CompoundTag row = new CompoundTag(); row.putUUID("Id", resident.villagerId()); row.putInt("Mood", resident.mood()); row.putInt("Satiety", resident.satiety()); row.putBoolean("Living", resident.living());
+            CompoundTag row = new CompoundTag(); row.putUUID("Id", resident.villagerId()); row.putInt("Mood", resident.mood()); row.putInt("Satiety", resident.satiety()); row.putInt("Hunger", resident.hunger()); row.putBoolean("Living", resident.living());
             row.putBoolean("Home", resident.home().isPresent()); row.putBoolean("Work", resident.workplace().isPresent()); row.putInt("HomeAmenities", resident.homeAmenities().points()); row.putInt("WorkAmenities", resident.workAmenities().points());
             row.putBoolean("AmenitiesStale", resident.homeAmenities().stale() || resident.workAmenities().stale());
             var residentLevel = player.getServer().getLevel(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION, town.dimension()));
             var entity = residentLevel == null ? null : residentLevel.getEntity(resident.villagerId());
-            row.putString("Name", entity == null ? resident.villagerId().toString().substring(0, 8) : entity.getDisplayName().getString()); residents.add(row);
+            row.putString("Name", entity == null ? resident.villagerId().toString().substring(0, 8) : entity.getDisplayName().getString());
+            if (entity instanceof net.minecraft.world.entity.npc.Villager villager) row.putString("Profession", net.minecraft.core.registries.BuiltInRegistries.VILLAGER_PROFESSION.getKey(villager.getVillagerData().getProfession()).toString());
+            resident.requestedDish().ifPresent(value -> row.putString("RequestedDish", value.toString())); residents.add(row);
         }
         view.put("Residents", residents);
+        ListTag workforceRows = new ListTag();
+        for (var record : data.workforce(town.id())) {
+            CompoundTag row = new CompoundTag(); row.putUUID("Id", record.entityId()); row.putString("Type", record.type().name()); row.putBoolean("Living", record.living());
+            String name = record.entityId().toString().substring(0, 8);
+            for (ServerLevel candidate : player.getServer().getAllLevels()) { var entity = candidate.getEntity(record.entityId()); if (entity != null) { name = entity.getDisplayName().getString(); break; } }
+            row.putString("Name", name); workforceRows.add(row);
+        }
+        view.put("WorkforceRows", workforceRows);
         ListTag defense = new ListTag(); long projected = 0L;
         for (var record : data.workforce(town.id())) if (record.type() == com.siirio.jemsettlements.workforce.WorkforceType.RECRUIT) {
             long wage = com.siirio.jemsettlements.payroll.RecruitRank.of(record.nativeEntityType()).wage(); if (record.living()) projected += wage; CompoundTag row = new CompoundTag(); row.putUUID("Id", record.entityId()); row.putString("NativeType", record.nativeEntityType().toString()); row.putLong("Wage", wage); row.putLong("LastPaidPeriod", record.lastPaidPeriod()); row.putBoolean("Living", record.living()); row.putBoolean("Ready", record.living() && town.consecutiveMissedPayrolls() < 2);

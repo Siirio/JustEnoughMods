@@ -25,7 +25,10 @@ public final class SettlementClientState {
     private SettlementClientState() {}
     public static void accept(TownViewPacket packet) {
         status = packet; Minecraft client = Minecraft.getInstance();
-        if (packet.open()) client.setScreen(packet.view().getBoolean("Founding") ? new TownFoundingScreen(packet.view()) : new TownDashboardScreen(packet.view()));
+        if (packet.open()) {
+            if (packet.view().getBoolean("Founding")) client.setScreen(new TownFoundingScreen(packet.view()));
+            else openSmp();
+        }
     }
     public static void acceptFoodPolicy(FoodPolicyPacket packet) { FoodValueRegistry.applySynced(packet.values()); foodPolicySynced = true; }
     @Mod.EventBusSubscriber(modid = JemSettlements.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -35,8 +38,7 @@ public final class SettlementClientState {
     }
     @SubscribeEvent public static void tick(TickEvent.ClientTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
-        while (OPEN.consumeClick()) if (status != null && !status.view().getBoolean("NoTown"))
-            Minecraft.getInstance().setScreen(new TownDashboardScreen(status.view()));
+        while (OPEN.consumeClick()) openSmp();
     }
     @SubscribeEvent public static void tooltip(ItemTooltipEvent event) {
         if (!foodPolicySynced) return;
@@ -46,7 +48,10 @@ public final class SettlementClientState {
         event.getToolTip().add(Component.translatable("jem.settlements.food.header").withStyle(ChatFormatting.GOLD));
         event.getToolTip().add(Component.translatable("jem.settlements.food.happiness", String.format("%+d", value.get().mood())).withStyle(value.get().mood() < 0 ? ChatFormatting.RED : ChatFormatting.GREEN));
         event.getToolTip().add(Component.translatable("jem.settlements.food.satiety", "+" + satiety).withStyle(value.get().mood() < 0 ? ChatFormatting.RED : ChatFormatting.GREEN));
-        event.getToolTip().add(Component.translatable("jem.settlements.food.type", Component.translatable("jem.settlements.food.class." + value.get().classification())).withStyle(ChatFormatting.GRAY));
         if (net.minecraft.client.gui.screens.Screen.hasShiftDown()) event.getToolTip().add(Component.translatable("jem.settlements.food.detail").withStyle(ChatFormatting.DARK_GRAY));
+    }
+    private static void openSmp() {
+        try { Class.forName("com.siirio.jemserver.client.smp.SmpScreen").getMethod("openRoute", String.class, java.util.UUID.class).invoke(null, "settlements", null); }
+        catch (ReflectiveOperationException | LinkageError ignored) { }
     }
 }

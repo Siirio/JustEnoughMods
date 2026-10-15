@@ -10,18 +10,30 @@ import net.minecraft.server.level.ServerPlayer;
 public final class SettlementProjection {
     private SettlementProjection() {}
 
-    public static CompoundTag view(ServerPlayer viewer) {
+    public static CompoundTag view(ServerPlayer viewer, java.util.UUID selected) {
         CompoundTag result = new CompoundTag(); result.putString("tab", "settlements");
         ListTag rows = new ListTag();
-        for (var town : SettlementSavedData.get(viewer.getServer()).towns()) {
-            CompoundTag row = SettlementNetwork.readOnlyView(viewer, town);
+        var principal = com.siirio.jemidentity.api.IdentityPolicy.resolve(viewer);
+        var towns = principal.isEmpty() ? java.util.List.<com.siirio.jemsettlements.town.TownRecord>of()
+                : SettlementSavedData.get(viewer.getServer()).ownedTowns(principal.get().accountId());
+        for (var town : towns) {
+            CompoundTag full = SettlementNetwork.readOnlyView(viewer, town);
+            CompoundTag row = new CompoundTag();
             row.putUUID("id", town.id()); row.putString("name", town.name());
-            row.putString("mayor", Profiles.get(viewer.getServer(), town.owner()).getString("name"));
-            row.putInt("population", town.members().size() + row.getList("Residents", net.minecraft.nbt.Tag.TAG_COMPOUND).size());
-            row.putInt("recruitCount", row.getList("Defense", net.minecraft.nbt.Tag.TAG_COMPOUND).size());
+            row.putString("dimension", town.dimension().toString()); row.putLong("position", town.center().asLong());
+            row.putInt("happiness", town.happiness());
+            row.putInt("population", full.getList("Residents", net.minecraft.nbt.Tag.TAG_COMPOUND).size() + SettlementSavedData.get(viewer.getServer()).workforce(town.id()).size());
             rows.add(row);
         }
         result.put("rows", rows); result.putInt("total", rows.size()); result.putInt("pageSize", 64);
+        var chosen = selected == null && towns.size() == 1 ? towns.get(0) : towns.stream().filter(town -> town.id().equals(selected)).findFirst().orElse(null);
+        if (chosen != null) {
+            CompoundTag detail = SettlementNetwork.readOnlyView(viewer, chosen);
+            detail.putUUID("id", chosen.id()); detail.putString("name", chosen.name()); detail.putString("title", chosen.name());
+            detail.putString("dimension", chosen.dimension().toString()); detail.putLong("position", chosen.center().asLong());
+            detail.putInt("revision", chosen.territoryRadius() + chosen.name().hashCode());
+            result.put("detail", detail);
+        }
         return result;
     }
 }

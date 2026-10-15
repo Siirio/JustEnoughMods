@@ -35,9 +35,15 @@ final class SmpIcons {
             case "BLOOD_MOON", "bloodMoonClears" -> Items.ZOMBIE_HEAD;
             case "shops", "market", "TRADING" -> Items.EMERALD;
             case "wallet" -> Items.GOLD_NUGGET;
+            case "treasury_deposit", "treasury_withdraw" -> Items.GOLD_INGOT;
             case "roles" -> Items.TOTEM_OF_UNDYING;
             case "professions" -> Items.EXPERIENCE_BOTTLE;
             case "town", "settlements" -> Items.BELL;
+            case "residents" -> Items.VILLAGER_SPAWN_EGG;
+            case "supplies" -> Items.CHEST;
+            case "happiness" -> Items.SUNFLOWER;
+            case "treasury" -> Items.GOLD_INGOT;
+            case "development" -> Items.OAK_SAPLING;
             case "recruits" -> Items.IRON_HELMET;
             case "parties", "partiesHosted", "partiesJoined" -> Items.TOTEM_OF_UNDYING;
             case "back", "previous", "next" -> Items.ARROW;

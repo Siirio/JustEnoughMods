@@ -43,7 +43,6 @@ public final class SettlementApi {
         if (bellPosition == null || player.distanceToSqr(bellPosition.getX() + 0.5D, bellPosition.getY() + 0.5D, bellPosition.getZ() + 0.5D) > 256.0D
                 || !player.serverLevel().getBlockState(bellPosition).is(Blocks.BELL)) return Result.INVALID;
         SettlementSavedData data = SettlementSavedData.get(player.getServer());
-        if (data.ownedBy(principal.get().accountId()).isPresent()) return Result.ALREADY_OWNED;
         if (data.nameUsed(name) || data.anchorWithin(player.serverLevel().dimension().location(), bellPosition, 64)) return Result.CONFLICT;
         TownRecord town = new TownRecord(UUID.randomUUID(), principal.get().accountId(), name,
                 player.serverLevel().dimension().location(), bellPosition);
@@ -55,9 +54,25 @@ public final class SettlementApi {
         return IdentityPolicy.resolve(player).flatMap(principal -> SettlementSavedData.get(player.getServer()).ownedBy(principal.accountId()));
     }
 
+    public static java.util.List<TownRecord> ownedTowns(ServerPlayer player) {
+        return IdentityPolicy.resolve(player).map(principal -> SettlementSavedData.get(player.getServer()).ownedTowns(principal.accountId())).orElseGet(java.util.List::of);
+    }
+
+    public static Optional<TownRecord> ownedTown(ServerPlayer player, UUID townId) {
+        if (townId == null) return Optional.empty();
+        var principal = IdentityPolicy.resolve(player);
+        if (principal.isEmpty()) return Optional.empty();
+        return SettlementSavedData.get(player.getServer()).town(townId).filter(town -> town.owner().equals(principal.get().accountId()));
+    }
+
+    private static Optional<TownRecord> ownedTownNear(ServerPlayer player, BlockPos position) {
+        return ownedTowns(player).stream().filter(town -> town.dimension().equals(player.serverLevel().dimension().location()))
+                .min(java.util.Comparator.comparingDouble(town -> town.center().distSqr(position)));
+    }
+
     public static Result linkPhysicalStorage(ServerPlayer player, BlockPos position) {
         if (!DedicatedSmp.active(player)) return Result.UNAVAILABLE;
-        var town = ownedTown(player);
+        var town = ownedTownNear(player, position);
         if (town.isEmpty() || !player.serverLevel().hasChunkAt(position)) return Result.INVALID;
         if (!town.get().dimension().equals(player.serverLevel().dimension().location()) || town.get().center().distSqr(position) > 128L * 128L) return Result.INVALID;
         var blockEntity = player.serverLevel().getBlockEntity(position);
@@ -73,7 +88,7 @@ public final class SettlementApi {
     public static Result registerNativeWorker(ServerPlayer player, Entity entity, WorkforceType type, boolean coinWageEnabled) {
         if (!DedicatedSmp.active(player)) return Result.UNAVAILABLE;
         var principal = IdentityPolicy.resolve(player);
-        var town = ownedTown(player);
+        var town = ownedTownNear(player, entity == null ? player.blockPosition() : entity.blockPosition());
         if (principal.isEmpty() || town.isEmpty() || entity == null) return Result.UNAUTHENTICATED;
         String namespace = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).getNamespace().toLowerCase(Locale.ROOT);
         if (!namespace.equals("workers") && !namespace.equals("recruits")) return Result.INVALID;
@@ -96,7 +111,7 @@ public final class SettlementApi {
 
     public static Result registerResident(ServerPlayer player, Villager villager) {
         if (!DedicatedSmp.active(player) || villager == null || !villager.isAlive() || villager.isBaby()) return Result.INVALID;
-        var town = ownedTown(player); if (town.isEmpty()) return Result.UNAUTHENTICATED;
+        var town = ownedTownNear(player, villager.blockPosition()); if (town.isEmpty()) return Result.UNAUTHENTICATED;
         if (!town.get().dimension().equals(player.serverLevel().dimension().location()) || town.get().center().distSqr(villager.blockPosition()) > 128L * 128L) return Result.INVALID;
         SettlementSavedData data = SettlementSavedData.get(player.getServer()); if (data.residentAssigned(villager.getUUID())) return Result.CONFLICT;
         int cap = switch (town.get().tier()) { case CAMP, VILLAGE -> 24; case TOWN -> 48; case CITY, CITADEL -> 96; };
@@ -124,15 +139,60 @@ public final class SettlementApi {
         town.get().territoryRadius(radius); data.changed(); return Result.ACCEPTED;
     }
 
+    public static Result expandTerritory(ServerPlayer player, UUID townId, UUID requestId) {
+        if (!DedicatedSmp.active(player) || requestId == null) return Result.INVALID;
+        var town = ownedTown(player, townId);
+        if (town.isEmpty()) return Result.UNAUTHENTICATED;
+        if (town.get().expansionSeen(requestId)) return Result.REPLAYED;
+        int radius = town.get().territoryRadius() + 16;
+        if (radius > 256) return Result.CONFLICT;
+        SettlementSavedData data = SettlementSavedData.get(player.getServer());
+        for (TownRecord other : data.towns()) if (!other.id().equals(townId) && other.dimension().equals(town.get().dimension())) {
+            int separation = radius + other.territoryRadius() + 16;
+            if (Math.abs(other.center().getX() - town.get().center().getX()) < separation
+                    && Math.abs(other.center().getZ() - town.get().center().getZ()) < separation) return Result.CONFLICT;
+        }
+        var payment = com.siirio.jemeconomy.api.EconomyApi.spendOneGold(player, requestId);
+        if (payment == com.siirio.jemeconomy.physical.PhysicalCoinService.Status.NO_VALID_COINS
+                || payment == com.siirio.jemeconomy.physical.PhysicalCoinService.Status.INSUFFICIENT_FUNDS) return Result.INSUFFICIENT_FUNDS;
+        if (payment != com.siirio.jemeconomy.physical.PhysicalCoinService.Status.COMMITTED
+                && payment != com.siirio.jemeconomy.physical.PhysicalCoinService.Status.REPLAYED) return Result.UNAVAILABLE;
+        town.get().territoryRadius(radius);
+        town.get().recordExpansion(requestId);
+        data.changed();
+        return payment == com.siirio.jemeconomy.physical.PhysicalCoinService.Status.REPLAYED ? Result.REPLAYED : Result.ACCEPTED;
+    }
+
+    public static Result rename(ServerPlayer player, UUID townId, String rawName) {
+        var town = ownedTown(player, townId);
+        if (town.isEmpty()) return Result.UNAUTHENTICATED;
+        String name = rawName == null ? "" : rawName.strip().replaceAll("\\s+", " ");
+        if (name.length() < 3 || name.length() > 32) return Result.INVALID;
+        SettlementSavedData data = SettlementSavedData.get(player.getServer());
+        if (!town.get().name().equalsIgnoreCase(name) && data.nameUsed(name)) return Result.CONFLICT;
+        town.get().rename(name); data.changed(); return Result.ACCEPTED;
+    }
+
+    public static Result removeRegistration(ServerPlayer player, UUID townId, UUID entityId) {
+        if (ownedTown(player, townId).isEmpty()) return Result.UNAUTHENTICATED;
+        SettlementSavedData data = SettlementSavedData.get(player.getServer());
+        return data.removeResident(townId, entityId) || data.removeWorkforce(townId, entityId) ? Result.ACCEPTED : Result.INVALID;
+    }
+
     public static long treasuryBalance(ServerPlayer player, TownRecord town) {
         return com.siirio.jemeconomy.api.EconomyApi.accountBalance(player,
                 com.siirio.jemeconomy.api.EconomyApi.townAccount(town.id()));
     }
 
     public static Result treasury(ServerPlayer player, boolean deposit, long amount, UUID requestId) {
+        var owned = ownedTowns(player);
+        return owned.size() == 1 ? treasury(player, owned.get(0).id(), deposit, amount, requestId) : Result.INVALID;
+    }
+
+    public static Result treasury(ServerPlayer player, UUID townId, boolean deposit, long amount, UUID requestId) {
         if (!DedicatedSmp.active(player) || amount <= 0L || amount > 1_000_000_000L || requestId == null) return Result.INVALID;
         var principal = IdentityPolicy.resolve(player);
-        var town = ownedTown(player);
+        var town = ownedTown(player, townId);
         if (principal.isEmpty()) return Result.UNAUTHENTICATED;
         if (town.isEmpty() || !town.get().owner().equals(principal.get().accountId())) return Result.UNAVAILABLE;
         UUID account = com.siirio.jemeconomy.api.EconomyApi.townAccount(town.get().id());

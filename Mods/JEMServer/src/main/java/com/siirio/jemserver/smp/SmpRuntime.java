@@ -62,7 +62,7 @@ public final class SmpRuntime {
         com.siirio.jemserver.smp.events.calendar.HolidayCommands.register(event.getDispatcher());
         com.siirio.jemserver.map.ProjectCommands.register(event.getDispatcher());
         event.getDispatcher().register(Commands.literal("smp").executes(c -> {
-            SmpNetwork.open(c.getSource().getPlayerOrException(), "home", null);
+            SmpNetwork.open(c.getSource().getPlayerOrException(), "events", null);
             return 1;
         }));
     }

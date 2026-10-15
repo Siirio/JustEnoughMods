@@ -6,7 +6,7 @@ public enum SmpTable {
     PARTIES, SHOPS, EVENTS, PROFILES, PRIZES;
 
     private static final java.util.Set<String> READ_ONLY_ROUTES =
-            java.util.Set.of("home", "settlements", "recruits");
+            java.util.Set.of("settlements");
 
     public String key() {
         return name().toLowerCase(Locale.ROOT);

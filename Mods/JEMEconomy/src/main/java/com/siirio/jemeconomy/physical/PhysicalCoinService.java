@@ -93,6 +93,57 @@ public final class PhysicalCoinService {
         return new DepositResult(Status.COMMITTED, reservation.value(), accepted, stamped - accepted);
     }
 
+    /** Redeems exactly one backed Gold Coin and moves its value to the central reserve. */
+    public static Status spendOneGold(ServerPlayer player, UUID requestId) {
+        if (!DedicatedSmp.active(player) || requestId == null) return Status.UNAVAILABLE;
+        var principal = IdentityPolicy.resolve(player);
+        if (principal.isEmpty()) return Status.UNAUTHENTICATED;
+        EconomySavedData data = EconomySavedData.get(player.getServer());
+        String paymentKey = "settlementGoldSpend:" + requestId;
+        if (data.hasReceipt(paymentKey)) return Status.REPLAYED;
+        int slot = -1;
+        CoinProvenance.Stamp selected = null;
+        for (int index = 0; index < player.getInventory().getContainerSize(); index++) {
+            ItemStack stack = player.getInventory().getItem(index);
+            var stamp = CoinProvenance.read(stack);
+            if (stamp.isPresent() && stamp.get().denomination() == CoinDenomination.GOLD
+                    && data.redeemable(stamp.get().lotId(), CoinDenomination.GOLD) > 0) {
+                slot = index;
+                selected = stamp.get();
+                break;
+            }
+        }
+        UUID depositId = UUID.nameUUIDFromBytes(("settlementGoldDeposit:" + requestId)
+                .getBytes(java.nio.charset.StandardCharsets.UTF_8));
+        if (selected == null) return Status.NO_VALID_COINS;
+        {
+            var reservation = data.prepareDeposit(principal.get().accountId(),
+                    List.of(new EconomySavedData.DepositCandidate(slot, selected.lotId(), CoinDenomination.GOLD, 1)), depositId);
+            if (reservation.status() == EconomySavedData.PhysicalStatus.PREPARED) {
+                ItemStack current = player.getInventory().getItem(slot);
+                var currentStamp = CoinProvenance.read(current);
+                if (currentStamp.isEmpty() || !currentStamp.get().lotId().equals(selected.lotId())
+                        || currentStamp.get().denomination() != CoinDenomination.GOLD || current.isEmpty()) {
+                    data.cancelDeposit(depositId);
+                    return Status.INVENTORY_CHANGED;
+                }
+                current.shrink(1);
+                if (!data.commitDeposit(depositId)) return Status.QUARANTINED;
+                player.getInventory().setChanged();
+                player.containerMenu.broadcastChanges();
+            } else if (reservation.status() != EconomySavedData.PhysicalStatus.REPLAYED) {
+                return Status.NO_VALID_COINS;
+            }
+        }
+        var payment = data.transfer(principal.get().accountId(), SystemAccount.CENTRAL_RESERVE.id(), CoinDenomination.GOLD.value(), paymentKey);
+        return switch (payment.status()) {
+            case COMMITTED -> Status.COMMITTED;
+            case REPLAYED -> Status.REPLAYED;
+            case INSUFFICIENT_FUNDS -> Status.INSUFFICIENT_FUNDS;
+            default -> Status.QUARANTINED;
+        };
+    }
+
     public static ExchangeResult exchange(ServerPlayer player, CoinDenomination source, int sourceCount,
                                           CoinDenomination target, UUID requestId) {
         if (!DedicatedSmp.active(player)) return new ExchangeResult(Status.UNAVAILABLE, 0L, 0);

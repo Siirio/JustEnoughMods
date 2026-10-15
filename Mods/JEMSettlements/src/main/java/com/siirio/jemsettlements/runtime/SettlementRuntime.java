@@ -39,6 +39,7 @@ import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.AnimalTameEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.MobSpawnEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -54,7 +55,10 @@ public final class SettlementRuntime {
     public static void blockInteraction(PlayerInteractEvent.RightClickBlock event) {
         if (!(event.getEntity() instanceof ServerPlayer player) || !DedicatedSmp.active(player)) return;
         var state = player.serverLevel().getBlockState(event.getPos());
-        if (state.is(Blocks.BELL)) { if (SettlementApi.ownedTown(player).isPresent()) SettlementNetwork.sendOwned(player, true); else SettlementNetwork.sendFounding(player, event.getPos()); event.setCanceled(true); return; }
+        if (state.is(Blocks.BELL)) {
+            if (player.isShiftKeyDown()) { openSettlementsRoute(player); event.setCanceled(true); }
+            return;
+        }
         if (!player.isShiftKeyDown() || !player.getMainHandItem().is(Items.BELL)) return;
         var blockEntity = player.serverLevel().getBlockEntity(event.getPos()); if (blockEntity == null || !blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).isPresent()) return;
         SettlementApi.Result result = SettlementApi.linkPhysicalStorage(player, event.getPos()); player.sendSystemMessage(Component.translatable(result == SettlementApi.Result.ACCEPTED ? "jem.settlements.storage_linked" : "jem.settlements.storage_rejected"), true);
@@ -69,7 +73,12 @@ public final class SettlementRuntime {
         if (result == SettlementApi.Result.ACCEPTED) { player.sendSystemMessage(Component.translatable(event.getTarget() instanceof Villager ? "jem.settlements.resident_added" : "jem.settlements.workforce_added"), true); SettlementNetwork.sendOwned(player, false); event.setCanceled(true); }
     }
 
-    @SubscribeEvent public static void placed(BlockEvent.EntityPlaceEvent event) { if (event.getLevel() instanceof ServerLevel level) AmenityScanService.invalidate(level.getServer(), level.dimension(), event.getPos()); }
+    @SubscribeEvent public static void placed(BlockEvent.EntityPlaceEvent event) {
+        if (!(event.getLevel() instanceof ServerLevel level)) return;
+        AmenityScanService.invalidate(level.getServer(), level.dimension(), event.getPos());
+        if (event.getPlacedBlock().is(Blocks.BELL) && event.getEntity() instanceof ServerPlayer player && DedicatedSmp.active(player))
+            SettlementNetwork.sendFounding(player, event.getPos());
+    }
     @SubscribeEvent public static void broken(BlockEvent.BreakEvent event) { if (event.getLevel() instanceof ServerLevel level) AmenityScanService.invalidate(level.getServer(), level.dimension(), event.getPos()); }
     @SubscribeEvent public static void finalizedSpawn(MobSpawnEvent.FinalizeSpawn event) { MountCollectionService.finalizedSpawn(event); }
     @SubscribeEvent public static void tamed(AnimalTameEvent event) { if (MountCollectionService.tame(event) && event.getTamer() instanceof ServerPlayer player) player.sendSystemMessage(Component.translatable("jem.settlements.mount.recorded"), true); }
@@ -83,6 +92,18 @@ public final class SettlementRuntime {
         if (event.getEntity() instanceof Villager) { var resident = data.resident(event.getEntity().getUUID()); if (resident.isPresent()) { resident.get().markDead(); changed = true; } }
         if (event.getEntity() instanceof AbstractRecruitEntity) { var worker = data.workforceEntity(event.getEntity().getUUID()); if (worker.isPresent()) { worker.get().markDead(); changed = true; } }
         if (changed) data.changed();
+    }
+
+    @SubscribeEvent
+    public static void damaged(LivingDamageEvent event) {
+        if (!(event.getEntity() instanceof Villager) || !(event.getEntity().level() instanceof ServerLevel level)
+                || event.getAmount() <= 0.0F || event.getSource().is(net.minecraft.world.damagesource.DamageTypes.FALL)) return;
+        SettlementSavedData data = SettlementSavedData.get(level.getServer());
+        var resident = data.resident(event.getEntity().getUUID());
+        if (resident.isEmpty() || !resident.get().living()) return;
+        resident.get().damaged(event.getAmount());
+        data.town(resident.get().townId()).ifPresent(town -> recomputeTown(data, town, level));
+        data.changed();
     }
 
     @SubscribeEvent
@@ -100,9 +121,14 @@ public final class SettlementRuntime {
         for (TownRecord town : data.towns()) {
             ServerLevel level = dataLevel(data, town); if (level == null) continue;
             long day = Math.floorDiv(level.getGameTime(), 24_000L);
+            var availableDishes = com.siirio.jemsettlements.happiness.AvailableDishService.moddedDishes(level.getServer());
             for (ResidentMood resident : data.residents(town.id())) {
                 if (attempts >= 8) break; var entity = level.getEntity(resident.villagerId()); if (!(entity instanceof Villager villager) || !villager.isAlive()) continue;
                 resident.seen(villager.getBrain().getMemory(MemoryModuleType.HOME).orElse(null), villager.getBrain().getMemory(MemoryModuleType.JOB_SITE).orElse(null)); resident.dailyUpdate(day);
+                if (resident.satiety() < 60 && resident.requestedDish().isEmpty() && !availableDishes.isEmpty()) {
+                    var requestable = availableDishes.stream().filter(resident::canRequest).toList();
+                    if (!requestable.isEmpty()) resident.requestedDish(requestable.get(Math.floorMod(resident.villagerId().hashCode() * 31 + Long.hashCode(day), requestable.size())));
+                }
                 if (resident.satiety() >= 60 || !level.getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING)) continue; attempts++;
                 if (!consumeDrop(level, villager, resident, now)) consumeStorage(level, town, villager, resident, now);
             }
@@ -128,7 +154,7 @@ public final class SettlementRuntime {
         var value = FoodValueRegistry.classify(stack, villager); var id = BuiltInRegistries.ITEM.getKey(stack.getItem()); if (value.isEmpty() || id == null || !resident.canEat(now, id)) return false;
         ItemStack accepted = stack.copy(); accepted.setCount(1); consume.run();
         if (value.get().mood() > 0 && isNativeBreedingFood(accepted)) villager.getInventory().addItem(accepted.copy());
-        var food = stack.getItem().getFoodProperties(stack, villager); int nutrition = food == null || value.get().mood() < 0 ? 0 : food.getNutrition(); resident.acceptFood(id, value.get().group(), value.get().mood(), nutrition, now);
+        var food = stack.getItem().getFoodProperties(stack, villager); int nutrition = food == null || value.get().mood() < 0 ? 0 : food.getNutrition(); resident.acceptFood(id, value.get().mood(), nutrition, now);
         villager.playSound(SoundEvents.GENERIC_EAT, 0.8F, 0.9F + villager.getRandom().nextFloat() * 0.2F); villager.gameEvent(GameEvent.EAT);
         ItemStack particle = stack.copy(); particle.setCount(1); level.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, particle), villager.getX(), villager.getEyeY(), villager.getZ(), 8, .2D, .2D, .2D, .05D); return true;
     }
@@ -153,16 +179,29 @@ public final class SettlementRuntime {
     }
     private static void recomputeHappiness(SettlementSavedData data) {
         for (TownRecord town : data.towns()) {
-            ServerLevel level = dataLevel(data, town); if (level == null) continue; long day = Math.floorDiv(level.getGameTime(), 24_000L); if (town.lastHappinessDay() == day) continue;
-            var residents = data.residents(town.id()).stream().filter(ResidentMood::living).toList(); var workers = data.workforce(town.id()); int population = residents.size();
-            int housing = population == 0 ? 50 : (int) Math.round(residents.stream().mapToInt(value -> value.home().isPresent() ? Math.min(100, 45 + value.homeAmenities().points() * 4) : 20).average().orElse(50));
-            int food = population == 0 ? 50 : (int) Math.round(residents.stream().mapToInt(ResidentMood::satiety).average().orElse(50));
-            int community = population == 0 ? 40 : (int) Math.round(residents.stream().mapToInt(ResidentMood::mood).average().orElse(50));
-            int recruits = (int) workers.stream().filter(value -> value.type() == WorkforceType.RECRUIT && value.living()).count(); int safety = Math.min(100, recruits * 25);
-            int jobs = population == 0 ? 25 : (int) Math.min(100L, residents.stream().filter(value -> value.workplace().isPresent()).count() * 100L / population);
-            int decoration = population == 0 ? 0 : (int) Math.min(20, Math.round(residents.stream().mapToInt(value -> value.homeAmenities().points() + value.workAmenities().points()).average().orElse(0)));
-            town.happinessEvidence(housing, food, safety, jobs, community, decoration); town.happiness(HappinessService.calculate(housing, food, safety, jobs, community, decoration, town.taxPercent())); town.lastHappinessDay(day);
+            ServerLevel level = dataLevel(data, town); if (level == null) continue; recomputeTown(data, town, level);
         }
         data.changed();
+    }
+
+    private static void recomputeTown(SettlementSavedData data, TownRecord town, ServerLevel level) {
+        var residents = data.residents(town.id()).stream().filter(ResidentMood::living).toList(); var workers = data.workforce(town.id()); int population = residents.size();
+        int housing = population == 0 ? 50 : (int) Math.round(residents.stream().mapToInt(value -> value.home().isPresent() ? Math.min(100, 45 + value.homeAmenities().points() * 4) : 20).average().orElse(50));
+        int food = population == 0 ? 50 : (int) Math.round(residents.stream().mapToInt(ResidentMood::satiety).average().orElse(50));
+        int community = population == 0 ? 40 : (int) Math.round(residents.stream().mapToInt(ResidentMood::mood).average().orElse(50));
+        int recruits = (int) workers.stream().filter(value -> value.type() == WorkforceType.RECRUIT && value.living()).count(); int safety = Math.min(100, recruits * 25);
+        int jobs = population == 0 ? 25 : (int) Math.min(100L, residents.stream().filter(value -> value.workplace().isPresent()).count() * 100L / population);
+        int decoration = population == 0 ? 0 : (int) Math.min(20, Math.round(residents.stream().mapToInt(value -> value.homeAmenities().points() + value.workAmenities().points()).average().orElse(0)));
+        town.happinessEvidence(housing, food, safety, jobs, community, decoration); town.happiness(HappinessService.calculate(housing, food, safety, jobs, community, decoration, town.taxPercent())); town.lastHappinessDay(Math.floorDiv(level.getGameTime(), 24_000L));
+    }
+
+    private static void openSettlementsRoute(ServerPlayer player) {
+        try {
+            Class<?> network = Class.forName("com.siirio.jemserver.smp.SmpNetwork");
+            network.getMethod("open", ServerPlayer.class, String.class, java.util.UUID.class)
+                    .invoke(null, player, "settlements", null);
+        } catch (ReflectiveOperationException | LinkageError unavailable) {
+            SettlementNetwork.sendOwned(player, true);
+        }
     }
 }

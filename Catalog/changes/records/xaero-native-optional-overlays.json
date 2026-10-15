@@ -21,7 +21,7 @@
     "overrides": []
   },
   "change": {
-    "summary": "Xaero owns GuiMap construction, rendering, camera, controls, right-click menus and waypoint actions; JEM retains only data adapters and may invoke Xaero's native open-map control",
+    "summary": "Xaero owns GuiMap construction, camera, controls and waypoint actions; the only JEM screen extension is the approved settlement boundary and owner expansion action",
     "modifiers": [
       {
         "property": "client.xaero.jem_overlay_presentation",
@@ -30,7 +30,7 @@
           "value": "JEM MapScreen, WaypointMenu and WaypointTeleport Mixins added overlays, menu actions and native waypoint teleport cancellation"
         },
         "after": {
-          "value": "No JEM GuiMap rendering, right-click entry or waypoint action interception"
+          "value": "No broad JEM GuiMap replacement or waypoint interception; only thin settlement boundaries and owner-only preview/confirm expansion are appended"
         }
       },
       {
@@ -52,6 +52,7 @@
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/JemServer.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapClient.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/XaeroMapPreview.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/MapScreenMixin.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/JemServerMixinPlugin.java",
       "Mods/JEMServer/src/main/resources/jem_server.mixins.json",
       "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/client/CampaignMapClient.java",
@@ -117,6 +118,16 @@
         "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/client/CampaignMapClient.java",
         "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/client/XaeroBossMapScreen.java"
       ]
+    },
+    {
+      "date": "2026-10-15",
+      "commit": "SELF",
+      "action": "allow_settlement_boundary_extension",
+      "summary": "User-approved Settlements Update 1 restores only a tail-rendered settlement outline and one owner-only preview/confirm right-click action; projects, events and personal waypoint actions remain outside the Mixin.",
+      "source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/MapScreenMixin.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapClient.java"
+      ]
     }
   ],
   "impacts": {
@@ -135,7 +146,7 @@
     "notes": [
       "No native GUI/resource replacement, terrain/boss sharing change, permissions mutation or world-space event wall change.",
       "Locator coordinates are shown as a normal client message because JEM no longer controls Xaero's dimension or camera.",
-      "JEM no longer registers jem-map-layers-client.toml because no JEM layer is presented inside Xaero."
+      "JEM no longer registers jem-map-layers-client.toml; settlement boundaries are always visible by explicit user decision and cannot expose personal waypoint data."
     ],
     "unresolved": [
       "Fresh artifacts load on the dedicated server and contain none of the deleted screen classes; player-rendered acceptance remains pending."

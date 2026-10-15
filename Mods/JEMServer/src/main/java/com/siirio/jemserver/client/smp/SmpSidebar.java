@@ -7,18 +7,12 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 
 public final class SmpSidebar {
-    private static final List<String> SMP_TABS = List.of("home", "profile", "players", "parties", "events", "shops", "market", "prizes");
+    private static final List<String> SMP_TABS = List.of("profile", "players", "parties", "events", "market", "settlements", "prizes", "roles", "professions");
     private int x, y, width, rowHeight;
     private List<String> tabs = SMP_TABS;
     public void layout(int x, int y, int width, int availableHeight) {
         this.x = x; this.y = y; this.width = width;
-        var routes = new java.util.ArrayList<>(SMP_TABS);
-        var mods = net.minecraftforge.fml.ModList.get();
-        if (mods.isLoaded("jem_settlements")) routes.add(routes.indexOf("prizes"), "settlements");
-        if (mods.isLoaded("recruits")) routes.add(routes.indexOf("prizes"), "recruits");
-        if (mods.isLoaded("jem_roles")) routes.add("roles");
-        if (mods.isLoaded("jem_professions")) routes.add("professions");
-        tabs = List.copyOf(routes);
+        tabs = SMP_TABS;
         rowHeight = Math.max(18, Math.min(38, availableHeight / tabs.size()));
     }
     public void render(GuiGraphics g, String active, int mouseX, int mouseY) {

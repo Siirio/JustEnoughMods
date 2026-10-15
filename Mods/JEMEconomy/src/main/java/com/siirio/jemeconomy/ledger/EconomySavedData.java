@@ -46,6 +46,8 @@ public final class EconomySavedData extends SavedData {
         return frozen;
     }
 
+    public synchronized boolean hasReceipt(String idempotencyKey) { return receipts.containsKey(idempotencyKey); }
+
     public synchronized long physicalOutstanding() {
         return balance(SystemAccount.PHYSICAL_OUTSTANDING.id());
     }

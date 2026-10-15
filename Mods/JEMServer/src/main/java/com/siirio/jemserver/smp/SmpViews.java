@@ -16,7 +16,7 @@ public final class SmpViews {
         result.putUUID("viewer", player.getUUID());
         int pendingRewards = com.siirio.jemworldbosstiers.encounter.PendingRewardContainer.count(player);
         result.putInt("pendingRewards", pendingRewards);
-        if (query.tab().equals("settlements")) return com.siirio.jemserver.smp.settlements.SettlementProjection.view(player);
+        if (query.tab().equals("settlements")) return com.siirio.jemserver.smp.settlements.SettlementProjection.view(player, query.selected());
         if (query.tab().equals("recruits")) return com.siirio.jemserver.smp.recruits.RecruitProjection.view(player);
         if (query.tab().equals("prizes")) {
             int pageSize = SmpConfig.PAGE_SIZE.get();
@@ -244,8 +244,8 @@ public final class SmpViews {
                 member = SmpRecords.member(row, player.getUUID());
         boolean closed = SmpData.closed(row);
         if (table.equals("profiles")) {
-            if (owner) add(result, "home", "wallet", "death_history", "settlements", "recruits", "roles", "professions");
-            else add(result, "message", "tpa", "invite", "view_shops", "settlements", "recruits");
+            if (owner) add(result, "wallet", "death_history", "settlements", "roles", "professions");
+            else add(result, "message", "tpa", "invite", "view_shops", "settlements");
             return result;
         }
         if (!closed && table.equals("parties") && !row.getString("state").equals("ACTIVE")) {

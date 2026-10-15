@@ -58,6 +58,8 @@ public final class SmpScreen extends Screen {
     private final Set<UUID> expandedPrizeGroups = new HashSet<>();
     private final LinkedHashSet<String> sellerSuggestions = new LinkedHashSet<>();
     private UUID hoveredPrize;
+    private String settlementTab = "residents";
+    private UUID pendingSettlementRemoval;
     private UUID selected;
     private UUID participant;
     private int page,
@@ -121,6 +123,9 @@ public final class SmpScreen extends Screen {
                 form = "";
             }
             if (update.open() || next.equals(tab)) model = incoming;
+            if (!update.open() && next.equals("settlements") && next.equals(tab) && selected == null
+                    && incoming.getInt("total") == 1 && incoming.contains("detail") && incoming.getCompound("detail").hasUUID("id"))
+                selected = incoming.getCompound("detail").getUUID("id");
             if (next.equals("shops")) {
                 for (Tag value : incoming.getList("rows", Tag.TAG_COMPOUND)) {
                     String name = ((CompoundTag) value).getString("name");
@@ -392,14 +397,12 @@ public final class SmpScreen extends Screen {
             clippingBody = true;
             g.enableScissor(bodyX, bodyY, bodyX + bodyWidth, bodyBottom);
             try {
-                if (tab.equals("home")) renderHome(g, mx, my);
-                else if (tab.equals("prizes")) renderPrizes(g, mx, my);
+                if (tab.equals("prizes")) renderPrizes(g, mx, my);
                 else if (selected != null) {
                     if (currentDetail()) renderDetail(g, mx, my);
                     else text(g, Component.translatable("jem.smp.loading"), bodyX + 6, bodyY + 10, MUTED, bodyWidth - 12);
                 } else if (tab.equals("events")) renderEvents(g, mx, my);
                 else if (tab.equals("settlements")) renderSettlements(g, mx, my);
-                else if (tab.equals("recruits")) renderRecruits(g, mx, my);
                 else renderRows(g, mx, my);
             } finally {
                 g.disableScissor();
@@ -423,63 +426,31 @@ public final class SmpScreen extends Screen {
         else if (hoveredLabel != null) g.renderTooltip(font, hoveredLabel, mx, my);
     }
 
-    private void renderHome(GuiGraphics g, int mx, int my) {
-        int cardWidth = Math.max(90, (bodyWidth - 12) / 2), cardHeight = 48;
-        text(g, Component.translatable("jem.smp.home.welcome"), bodyX + 8, bodyY + 8, CREAM, bodyWidth - 16);
-        homeCard(g, bodyX + 4, bodyY + 32, cardWidth, cardHeight, "events", () -> selectTab("events"), mx, my);
-        homeCard(g, bodyX + 8 + cardWidth, bodyY + 32, cardWidth, cardHeight, "market", () -> selectTab("market"), mx, my);
-        homeCard(g, bodyX + 4, bodyY + 36 + cardHeight, cardWidth, cardHeight, "profile", () -> selectTab("profile"), mx, my);
-        homeCard(g, bodyX + 8 + cardWidth, bodyY + 36 + cardHeight, cardWidth, cardHeight, "shops", () -> selectTab("shops"), mx, my);
-        maxScroll = 0;
-    }
-
     private void renderSettlements(GuiGraphics g, int mx, int my) {
+        if (model.getInt("total") == 0) {
+            SmpIcons.draw(g, "settlements", bodyX + 8, bodyY + 8, 28);
+            text(g, Component.translatable("jem.smp.settlement.none"), bodyX + 44, bodyY + 10, CREAM, bodyWidth - 52);
+            for (var line : font.split(Component.translatable("jem.smp.settlement.place_bell"), bodyWidth - 16)) {
+                g.drawString(font, line, bodyX + 8, bodyY + 48, MUTED, false);
+            }
+            maxScroll = 0;
+            return;
+        }
         int y = bodyY - scroll;
         for (Tag value : model.getList("rows", Tag.TAG_COMPOUND)) {
-            CompoundTag row = (CompoundTag) value; int height = row.contains("Treasury") ? 126 : 86;
+            CompoundTag row = (CompoundTag) value; int height = 58;
             if (y + height >= bodyY && y < bodyBottom) {
                 frame(g, bodyX, y, bodyWidth, height, ROW);
                 SmpIcons.draw(g, "settlements", bodyX + 8, y + 8, 26);
                 text(g, Component.literal(row.getString("name")), bodyX + 42, y + 8, CREAM, bodyWidth - 50);
-                text(g, Component.literal(row.getString("mayor") + " · " + row.getString("Tier") + " · " + row.getString("PrimarySpecialization")), bodyX + 42, y + 23, MUTED, bodyWidth - 50);
-                text(g, Component.translatable("jem.smp.settlement.population", row.getInt("population"), row.getInt("recruitCount")), bodyX + 8, y + 43, CREAM, bodyWidth - 16);
-                text(g, Component.translatable("jem.smp.settlement.scores", row.getInt("Happiness"), row.getInt("Housing"), row.getInt("Food"), row.getInt("Safety"), row.getInt("Jobs"), row.getInt("Community"), row.getInt("Decoration")), bodyX + 8, y + 59, MUTED, bodyWidth - 16);
-                if (row.contains("Treasury")) {
-                    text(g, Component.translatable("jem.smp.settlement.storage", row.getInt("LoadedStorage"), row.getInt("StorageLinks"), row.getLong("FoodUnits")), bodyX + 8, y + 79, CREAM, bodyWidth - 16);
-                    text(g, Component.translatable("jem.smp.settlement.production", row.getLong("PendingNotSpendable"), row.getLong("FailedQuarantined")), bodyX + 8, y + 95, MUTED, bodyWidth - 16);
-                    text(g, Component.translatable("jem.smp.settlement.treasury", com.siirio.jemeconomy.physical.CoinFormatter.format(row.getLong("Treasury"))), bodyX + 8, y + 111, PEACH, bodyWidth - 16);
-                }
+                text(g, Component.translatable("jem.smp.settlement.summary", row.getInt("population"), row.getInt("happiness")), bodyX + 42, y + 26, MUTED, bodyWidth - 50);
+                var pos = net.minecraft.core.BlockPos.of(row.getLong("position"));
+                text(g, Component.literal(pos.getX() + ", " + pos.getZ()), bodyX + 42, y + 42, PEACH, bodyWidth - 50);
+                hit(bodyX, y, bodyWidth, height, () -> visit("settlements", row.getUUID("id")));
             }
             y += height + GAP;
         }
         maxScroll = Math.max(0, y + scroll - bodyBottom); scroll = Math.max(0, Math.min(scroll, maxScroll));
-    }
-
-    private void renderRecruits(GuiGraphics g, int mx, int my) {
-        int y = bodyY - scroll;
-        for (Tag value : model.getList("rows", Tag.TAG_COMPOUND)) {
-            CompoundTag row = (CompoundTag) value; int height = 70;
-            if (y + height >= bodyY && y < bodyBottom) {
-                frame(g, bodyX, y, bodyWidth, height, ROW);
-                SmpIcons.draw(g, "recruits", bodyX + 8, y + 20, 26);
-                text(g, Component.literal(row.getString("name")), bodyX + 42, y + 8, row.getBoolean("living") ? CREAM : MUTED, bodyWidth - 50);
-                text(g, Component.literal(row.getString("settlement") + " · " + row.getString("type")), bodyX + 42, y + 23, MUTED, bodyWidth - 50);
-                var readiness = Component.translatable(row.getBoolean("living") ? "jem.smp.recruit.living" : "jem.smp.recruit.dead")
-                        .append(" · ").append(Component.translatable(row.getBoolean("Ready") ? "jem.smp.recruit.ready" : "jem.smp.recruit.not_ready"));
-                if (row.contains("Morale")) readiness.append(" · ").append(Component.translatable("jem.smp.recruit.morale", Math.round(row.getFloat("Morale")), Math.round(row.getFloat("Hunger"))));
-                text(g, readiness, bodyX + 42, y + 39, row.getBoolean("Ready") ? GREEN : MUTED, bodyWidth - 50);
-                text(g, Component.translatable("jem.smp.recruit.payroll", com.siirio.jemeconomy.physical.CoinFormatter.format(row.getLong("Wage")), row.getLong("nextPayroll"), com.siirio.jemeconomy.physical.CoinFormatter.format(row.getLong("outstandingPayroll"))), bodyX + 42, y + 55, PEACH, bodyWidth - 50);
-            }
-            y += height + GAP;
-        }
-        maxScroll = Math.max(0, y + scroll - bodyBottom); scroll = Math.max(0, Math.min(scroll, maxScroll));
-    }
-
-    private void homeCard(GuiGraphics g, int x, int y, int width, int height, String route, Runnable action, int mx, int my) {
-        frame(g, x, y, width, height, ROW);
-        SmpIcons.draw(g, route, x + 8, y + 12, 24);
-        text(g, Component.translatable("jem.smp.sidebar." + route), x + 40, y + 19, CREAM, width - 48);
-        hits.add(new SmpHit(x, y, width, height, action));
     }
 
     private void renderSellerSuggestions(GuiGraphics g, int mx, int my) {
@@ -1207,9 +1178,87 @@ public final class SmpScreen extends Screen {
     }
 
     private void renderDetail(GuiGraphics g, int mx, int my) {
+        if (tab.equals("settlements")) { renderSettlementDetail(g, mx, my); return; }
         if (tab.equals("events")) { renderEventDetail(g, model.getCompound("detail"), mx, my); return; }
         if (tab.equals("parties")) { renderPartyLobby(g, mx, my); return; }
         renderDetailBody(g, mx, my);
+    }
+
+    private void renderSettlementDetail(GuiGraphics g, int mx, int my) {
+        CompoundTag row = model.getCompound("detail");
+        int tabWidth = Math.max(58, bodyWidth / 5);
+        String[] tabs = {"residents", "supplies", "happiness", "treasury", "development"};
+        for (int i = 0; i < tabs.length; i++) {
+            int x = bodyX + i * tabWidth;
+            int w = i == tabs.length - 1 ? bodyX + bodyWidth - x : tabWidth - 2;
+            String target = tabs[i];
+            boolean active = target.equals(settlementTab);
+            frame(g, x, bodyY, w, 24, active ? HOVER : ROW);
+            SmpIcons.draw(g, target, x + 4, bodyY + 4, 16);
+            text(g, Component.translatable("jem.smp.settlement.tab." + target), x + 23, bodyY + 8, active ? PEACH : CREAM, w - 27);
+            hit(x, bodyY, w, 24, () -> { settlementTab = target; scroll = 0; pendingSettlementRemoval = null; });
+        }
+        int y = bodyY + 32 - scroll;
+        if (settlementTab.equals("residents")) y = renderSettlementPeople(g, row, y, mx, my);
+        else if (settlementTab.equals("supplies")) {
+            text(g, Component.translatable("jem.smp.settlement.storage", row.getInt("LoadedStorage"), row.getInt("StorageLinks"), row.getLong("FoodUnits")), bodyX + 4, y, CREAM, bodyWidth - 8); y += 22;
+            for (Tag value : row.getList("Stock", Tag.TAG_COMPOUND)) {
+                CompoundTag item = (CompoundTag) value; ResourceLocation id = ResourceLocation.tryParse(item.getString("Item"));
+                ItemStack stack = id == null ? ItemStack.EMPTY : new ItemStack(BuiltInRegistries.ITEM.get(id));
+                if (!stack.isEmpty()) { g.renderItem(stack, bodyX + 4, y - 4); text(g, stack.getHoverName().copy().append(" × " + item.getLong("Count")), bodyX + 26, y, CREAM, bodyWidth - 30); }
+                y += 22;
+            }
+        } else if (settlementTab.equals("happiness")) {
+            text(g, Component.translatable("jem.smp.settlement.happiness_total", row.getInt("Happiness")), bodyX + 4, y, PEACH, bodyWidth - 8); y += 22;
+            String[] scores = {"Housing", "Food", "Safety", "Jobs", "Community", "Decoration"};
+            for (String score : scores) { text(g, Component.translatable("jem.smp.settlement.score." + score.toLowerCase(Locale.ROOT), row.getInt(score)), bodyX + 4, y, CREAM, bodyWidth - 8); y += 18; }
+        } else if (settlementTab.equals("treasury")) {
+            text(g, Component.translatable("jem.smp.settlement.treasury", com.siirio.jemeconomy.physical.CoinFormatter.format(row.getLong("Treasury"))), bodyX + 4, y, PEACH, bodyWidth - 8); y += 28;
+            button(g, bodyX, y, Math.max(70, bodyWidth / 2 - 4), 24, "treasury_deposit", () -> openForm("settlement_deposit"), mx, my);
+            button(g, bodyX + bodyWidth / 2 + 4, y, Math.max(70, bodyWidth / 2 - 4), 24, "treasury_withdraw", () -> openForm("settlement_withdraw"), mx, my); y += 32;
+            text(g, Component.translatable("jem.smp.settlement.payroll", row.getLong("ProjectedPayroll"), row.getLong("UnpaidPayroll")), bodyX + 4, y, MUTED, bodyWidth - 8); y += 18;
+        } else {
+            var pos = net.minecraft.core.BlockPos.of(row.getLong("position"));
+            text(g, Component.literal(pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " · " + row.getString("dimension")), bodyX + 4, y, PEACH, bodyWidth - 8); y += 24;
+            text(g, Component.translatable("jem.smp.settlement.radius", row.getInt("TerritoryRadius")), bodyX + 4, y, CREAM, bodyWidth - 8); y += 24;
+            button(g, bodyX, y, Math.max(90, bodyWidth / 2 - 4), 24, "map", () -> openSettlementMap(row), mx, my);
+            button(g, bodyX + bodyWidth / 2 + 4, y, Math.max(90, bodyWidth / 2 - 4), 24, "rename", () -> openForm("settlement_rename"), mx, my); y += 34;
+            text(g, Component.translatable("jem.smp.settlement.expand_hint"), bodyX + 4, y, MUTED, bodyWidth - 8); y += 26;
+        }
+        maxScroll = Math.max(0, y + scroll - bodyBottom + 6); scroll = Math.max(0, Math.min(scroll, maxScroll));
+    }
+
+    private int renderSettlementPeople(GuiGraphics g, CompoundTag detail, int y, int mx, int my) {
+        var people = new ArrayList<CompoundTag>();
+        for (Tag value : detail.getList("Residents", Tag.TAG_COMPOUND)) { CompoundTag copy = ((CompoundTag) value).copy(); copy.putBoolean("Resident", true); people.add(copy); }
+        for (Tag value : detail.getList("WorkforceRows", Tag.TAG_COMPOUND)) people.add(((CompoundTag) value).copy());
+        for (CompoundTag person : people) {
+            int height = 50; frame(g, bodyX, y, bodyWidth, height, ROW); SmpIcons.draw(g, person.getBoolean("Resident") ? "residents" : "recruits", bodyX + 6, y + 8, 24);
+            text(g, Component.literal(person.getString("Name")), bodyX + 36, y + 6, person.getBoolean("Living") ? CREAM : MUTED, bodyWidth - 126);
+            if (person.getBoolean("Resident")) {
+                String profession = person.getString("Profession"); if (profession.contains(":")) profession = profession.substring(profession.indexOf(':') + 1);
+                text(g, Component.translatable("jem.smp.settlement.resident_state", person.getInt("Mood"), person.getInt("Hunger"), profession), bodyX + 36, y + 22, MUTED, bodyWidth - 126);
+                ResourceLocation request = ResourceLocation.tryParse(person.getString("RequestedDish")); if (request != null && BuiltInRegistries.ITEM.containsKey(request)) { ItemStack dish = new ItemStack(BuiltInRegistries.ITEM.get(request)); g.renderItem(dish, bodyX + 36, y + 31); text(g, dish.getHoverName(), bodyX + 56, y + 36, PEACH, bodyWidth - 146); }
+            } else text(g, Component.translatable("jem.smp.settlement.worker_type", person.getString("Type")), bodyX + 36, y + 22, MUTED, bodyWidth - 126);
+            int bx = bodyX + bodyWidth - 82;
+            if (person.getUUID("Id").equals(pendingSettlementRemoval)) {
+                button(g, bx, y + 5, 50, 20, "confirm", () -> settlementRemove(person.getUUID("Id")), mx, my);
+                button(g, bx, y + 27, 50, 18, "cancel", () -> pendingSettlementRemoval = null, mx, my);
+            } else button(g, bx, y + 14, 74, 22, "unregister", () -> pendingSettlementRemoval = person.getUUID("Id"), mx, my);
+            y += height + GAP;
+        }
+        if (people.isEmpty()) { text(g, Component.translatable("jem.smp.settlement.no_people"), bodyX + 4, y, MUTED, bodyWidth - 8); y += 20; }
+        return y;
+    }
+
+    private void openSettlementMap(CompoundTag detail) {
+        var dimension = ResourceLocation.tryParse(detail.getString("dimension"));
+        if (dimension != null) com.siirio.jemserver.client.xaero.MapClient.open(dimension, net.minecraft.core.BlockPos.of(detail.getLong("position")));
+    }
+
+    private void settlementRemove(UUID target) {
+        SmpNetwork.settlement(new com.siirio.jemserver.smp.SettlementUiAction(UUID.randomUUID(), selected, "remove", target, "", 0));
+        pendingSettlementRemoval = null;
     }
 
     private boolean openLocation(CompoundTag detail) {
@@ -1347,6 +1396,10 @@ public final class SmpScreen extends Screen {
             fields.get("day").setValue(String.format(Locale.ROOT, "%02d", scheduled.getDayOfMonth()));
             fields.get("hour").setValue(String.format(Locale.ROOT, "%02d", scheduled.getHour()));
             fields.get("minute").setValue(String.format(Locale.ROOT, "%02d", scheduled.getMinute() / 15 * 15));
+        } else if (action.equals("settlement_rename")) {
+            field("name", model.getCompound("detail").getString("name"));
+        } else if (action.equals("settlement_deposit") || action.equals("settlement_withdraw")) {
+            field("amount", "100");
         } else if (action.equals("message")) {
             messageBox = new MultiLineEditBox(font, bodyX + 8, bodyY + 52, Math.max(80, bodyWidth - 16), Math.max(72, bodyBottom - bodyY - 94), Component.translatable("jem.smp.field.message"), Component.translatable("jem.smp.message_placeholder"));
             messageBox.setCharacterLimit(256);
@@ -1447,6 +1500,7 @@ public final class SmpScreen extends Screen {
                 23,
                 "submit",
                 () -> {
+                    if (form.startsWith("settlement_")) { submitSettlementForm(); return; }
                     var args = new JsonObject();
                     fields.forEach((key, box) -> {
                         if (!Set.of("schedule", "year", "month", "day", "hour", "minute").contains(key)) args.addProperty(key, box.getValue());
@@ -1470,6 +1524,22 @@ public final class SmpScreen extends Screen {
                 mx,
                 my);
 
+    }
+
+    private void submitSettlementForm() {
+        if (selected == null) return;
+        String action;
+        String text = "";
+        long amount = 0L;
+        if (form.equals("settlement_rename")) { action = "rename"; text = fields.get("name").getValue(); }
+        else {
+            action = form.equals("settlement_deposit") ? "deposit" : "withdraw";
+            try { amount = Long.parseLong(fields.get("amount").getValue()); }
+            catch (NumberFormatException invalid) { error = "invalid_amount"; return; }
+            if (amount <= 0L || amount > 1_000_000_000L) { error = "invalid_amount"; return; }
+        }
+        SmpNetwork.settlement(new com.siirio.jemserver.smp.SettlementUiAction(UUID.randomUUID(), selected, action, null, text, amount));
+        clearForm();
     }
 
     private void renderMessageForm(GuiGraphics g, int mx, int my, float partial) {
@@ -1608,7 +1678,7 @@ public final class SmpScreen extends Screen {
         String role = switch (key) {
             case "start", "claim", "claim_all", "create", "create_party", "submit" -> "primary";
             case "ready", "confirm", "approve", "buy" -> "confirm";
-            case "leave", "dissolve", "remove" -> "danger";
+            case "leave", "dissolve", "remove", "unregister" -> "danger";
             default -> "secondary";
         };
         SmpGuiAssets.button(g, x, y, w, h, role, over, waiting && !key.equals("close"));

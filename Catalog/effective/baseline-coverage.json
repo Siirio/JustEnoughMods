@@ -2,11 +2,11 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "9430254537a7caef4877b8d280c8d069042d4618ddae88868a456042c7262e76",
+  "change_records_sha256": "3f961ac58f319fb470d29020aaee02dfbab7b052b27f5cb9ae051eb6b2b7337b",
   "totals": {
-    "watched": 3186,
-    "covered": 191,
-    "unresolved": 2995
+    "watched": 3194,
+    "covered": 212,
+    "unresolved": 2982
   },
   "groups": {
     "Client/ManagedPack/config": {
@@ -2639,31 +2639,27 @@
       ]
     },
     "Mods/JEMProfessions": {
-      "watched": 20,
-      "covered": 20,
+      "watched": 19,
+      "covered": 19,
       "unresolved": 0,
       "unresolved_paths": []
     },
     "Mods/JEMRoles": {
-      "watched": 23,
-      "covered": 13,
-      "unresolved": 10,
+      "watched": 31,
+      "covered": 25,
+      "unresolved": 6,
       "unresolved_paths": [
         "Mods/JEMRoles/gradle.properties",
         "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceChangedEvent.java",
         "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceChosenEvent.java",
-        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/command/RoleCommands.java",
-        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/irons/IronsRaceBridge.java",
-        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/professions/ProfessionRaceBridge.java",
         "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RaceChoosePacket.java",
         "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceSavedData.java",
-        "Mods/JEMRoles/src/main/resources/data/jem_roles/tags/blocks/dwarf_mining.json",
         "Mods/JEMRoles/src/main/resources/pack.mcmeta"
       ]
     },
     "Mods/JEMServer": {
-      "watched": 293,
-      "covered": 34,
+      "watched": 294,
+      "covered": 35,
       "unresolved": 259,
       "unresolved_paths": [
         "Mods/JEMServer/gradle.properties",
@@ -2929,20 +2925,16 @@
     },
     "Mods/JEMSettlements": {
       "watched": 45,
-      "covered": 2,
-      "unresolved": 43,
+      "covered": 11,
+      "unresolved": 34,
       "unresolved_paths": [
-        "Mods/JEMSettlements/build.gradle",
         "Mods/JEMSettlements/gradle.properties",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/JemSettlements.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementClientState.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/TownDashboardScreen.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/TownFoundingScreen.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/collection/MountCollectionService.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/collection/MountRoster.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/collection/PlayerMountCollectionSavedData.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/command/SettlementCommands.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitReadinessAdapter.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitsAdapter.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/workers/WorkerStorageAdapter.java",
@@ -2950,7 +2942,6 @@
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/workers/WorkersAdapter.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AmenityRegistry.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AmenityScanService.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/FoodValueRegistry.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/HappinessService.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/FoodPolicyPacket.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/TownFoundPacket.java",
@@ -2960,20 +2951,16 @@
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollService.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/RecruitRank.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/AmenitySnapshot.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/ResidentMood.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/simulation/ProductionObligation.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/simulation/SettlementSimulationService.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/simulation/SettlementSimulationState.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/simulation/SimulationJournalEntry.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/SettlementSavedData.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/StorageLink.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownRecord.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownSpecialization.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownTier.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/workforce/WorkforceRecord.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/workforce/WorkforceType.java",
         "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/amenities.json",
-        "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/food_values.json",
         "Mods/JEMSettlements/src/main/resources/pack.mcmeta"
       ]
     },
