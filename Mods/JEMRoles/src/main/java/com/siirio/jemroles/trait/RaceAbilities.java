@@ -1,21 +1,26 @@
 package com.siirio.jemroles.trait;
 
 import com.siirio.jemroles.network.RaceActionPacket;
+import com.siirio.jemroles.network.RaceVfxPacket;
 import com.siirio.jemroles.network.RolesNetwork;
 import com.siirio.jemroles.race.RaceId;
 import com.siirio.jemroles.race.RaceRecord;
 import com.siirio.jemroles.race.RaceRules;
 import com.siirio.jemroles.race.RaceService;
+import com.siirio.jemroles.vfx.RaceVfxEmitter;
+import com.siirio.jemroles.vfx.RaceVfxId;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -93,7 +98,12 @@ public final class RaceAbilities {
         switch (record.race()) {
             case VOID_WALKERS -> {
                 if (player.isShiftKeyDown()) gravityDenial(player, record, now);
-                else VOID_CHARGE.put(player.getUUID(), now);
+                else {
+                    VOID_CHARGE.put(player.getUUID(), now);
+                    emit(player, RaceVfxId.VOID_PROJECTILE_CHARGE, player.position().add(0.0D, 1.25D, 0.0D),
+                            player.position().add(player.getLookAngle().scale(2.0D)).add(0.0D, 1.25D, 0.0D),
+                            player.getId(), -1, new int[0], List.of(), record.spellTier(), 30);
+                }
             }
             case BORN_IN_BLOOM -> RaceService.mutate(player, value -> value.livingPath(!value.livingPath()));
             case INFECTED_BY_SCULK -> {
@@ -118,22 +128,28 @@ public final class RaceAbilities {
         ThrownEnderpearl pearl = new ThrownEnderpearl(player.level(), player);
         pearl.getPersistentData().putBoolean("JemVoidProjectile", true);
         pearl.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 0.25F);
-        player.level().addFreshEntity(pearl);
+        if (!player.level().addFreshEntity(pearl)) return;
+        emit(player, RaceVfxId.VOID_PROJECTILE_RELEASE, player.position().add(0.0D, 1.25D, 0.0D),
+                player.position().add(player.getLookAngle().scale(10.0D)).add(0.0D, 1.25D, 0.0D),
+                player.getId(), pearl.getId(), new int[0], List.of(), record.spellTier(), 36);
         RaceService.mutate(player, value -> value.cooldown("void_projectile", now + RaceRules.VOID_PROJECTILE_COOLDOWN.get()));
     }
 
     private static boolean lifeChorus(ServerPlayer player, int tier) {
         double radius = tier >= 2 ? 16.0D : 12.0D;
+        List<Integer> affected = new ArrayList<>();
         for (LivingEntity target : player.serverLevel().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(radius), LivingEntity::isAlive)) {
             if (target instanceof Animal || target instanceof AbstractVillager || recruit(target)) target.setHealth(target.getMaxHealth());
             else if (target instanceof Player) target.heal(6.0F);
             else continue;
+            if (affected.size() < 7) affected.add(target.getId());
             if (tier >= 2) target.getActiveEffects().stream()
                     .filter(effect -> effect.getEffect().getCategory() == MobEffectCategory.HARMFUL)
                     .map(MobEffectInstance::getEffect).toList().forEach(target::removeEffect);
             if (tier >= 3 && target.getHealth() >= target.getMaxHealth()) target.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 600, 1));
         }
-        player.serverLevel().sendParticles(ParticleTypes.HEART, player.getX(), player.getY() + 1, player.getZ(), 24, radius / 3, 1, radius / 3, 0.1);
+        emit(player, RaceVfxId.LIFE_CHORUS, player.position(), player.position(), player.getId(), -1,
+                affected.stream().mapToInt(Integer::intValue).toArray(), List.of(), tier, 32);
         return true;
     }
 
@@ -143,8 +159,14 @@ public final class RaceAbilities {
         Vec3 behind = target.position().subtract(target.getLookAngle().normalize().scale(1.8D));
         BlockPos safe = RaceEnvironment.nearestSafe(player, player.serverLevel(), BlockPos.containing(behind), 3, true).orElse(null);
         if (safe == null) return false;
+        Vec3 departure = player.position();
+        Vec3 arrival = Vec3.atBottomCenterOf(safe);
+        emit(player, RaceVfxId.RIFT_DEPART, departure, arrival, player.getId(), target.getId(),
+                new int[0], List.of(), tier, 18);
         if (tier >= 2) spawnVoidEcho(player);
         player.teleportTo(player.serverLevel(), safe.getX() + 0.5D, safe.getY(), safe.getZ() + 0.5D, target.getYRot(), player.getXRot());
+        emit(player, RaceVfxId.RIFT_ARRIVE, arrival, departure, player.getId(), target.getId(),
+                new int[0], List.of(), tier, 24);
         player.attack(target);
         if (tier >= 3) for (LivingEntity nearby : player.serverLevel().getEntitiesOfClass(LivingEntity.class, target.getBoundingBox().inflate(4), e -> e != player && e != target))
             nearby.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 40, 2));
@@ -167,9 +189,12 @@ public final class RaceAbilities {
                 rooted.add(spread);
             }
         hit = rooted.size();
-        if (tier >= 3 && hit > 0) ZONES.add(new Zone(player.serverLevel().dimension(), player.blockPosition(),
-                player.level().getGameTime() + 100, player.getUUID(), ZoneType.GROVE));
-        player.serverLevel().sendParticles(ParticleTypes.HAPPY_VILLAGER, player.getX(), player.getY(), player.getZ(), 20 + tier * 10, radius / 2, 0.5, radius / 2, 0.1);
+        if (hit > 0) {
+            if (tier >= 3) ZONES.add(new Zone(player.serverLevel().dimension(), player.blockPosition(),
+                    player.level().getGameTime() + 100, player.getUUID(), ZoneType.GROVE));
+            emit(player, RaceVfxId.VERDANT_DOMINION, player.position(), player.position(), player.getId(), -1,
+                    rooted.stream().limit(8).mapToInt(LivingEntity::getId).toArray(), List.of(), tier, tier >= 3 ? 100 : 44);
+        }
         return hit > 0;
     }
 
@@ -180,6 +205,7 @@ public final class RaceAbilities {
         int range = tier == 1 ? 32 : tier == 2 ? 48 : 64;
         ArrayDeque<BlockPos> queue = new ArrayDeque<>();
         Set<BlockPos> visited = new HashSet<>();
+        Map<BlockPos, BlockPos> parent = new HashMap<>();
         queue.add(start); visited.add(start);
         BlockPos best = start;
         double bestAim = -Double.MAX_VALUE;
@@ -194,13 +220,18 @@ public final class RaceAbilities {
             }
             for (var direction : net.minecraft.core.Direction.values()) {
                 BlockPos next = pos.relative(direction);
-                if (visited.add(next) && sculk(level, next)) queue.addLast(next);
+                if (visited.add(next) && sculk(level, next)) {
+                    parent.put(next.immutable(), pos.immutable());
+                    queue.addLast(next.immutable());
+                }
             }
         }
         BlockPos destination = RaceEnvironment.nearestSafe(player, level, best.above(), 3, true).orElse(null);
         if (destination == null || destination.closerToCenterThan(player.position(), 4.0D)) return false;
+        List<Vec3> path = samplePath(start, best, parent);
+        emit(player, RaceVfxId.SCULK_VEINS, Vec3.atCenterOf(start), Vec3.atBottomCenterOf(destination),
+                player.getId(), -1, new int[0], path, tier, 40);
         player.teleportTo(level, destination.getX() + 0.5D, destination.getY(), destination.getZ() + 0.5D, player.getYRot(), player.getXRot());
-        level.sendParticles(ParticleTypes.SCULK_SOUL, player.getX(), player.getY() + 1, player.getZ(), 20, 0.5, 0.7, 0.5, 0.05);
         return true;
     }
 
@@ -210,10 +241,19 @@ public final class RaceAbilities {
         Vec3 line = primary.position().subtract(player.position()).normalize();
         int fissures = tier == 1 ? 1 : 3;
         long now = player.level().getGameTime();
-        for (int i = 0; i < fissures; i++) ERUPTIONS.add(new Eruption(player.serverLevel().dimension(),
-                primary.position().add(line.scale(i * 2.5D)), now + 8 + i * 3L, player.getUUID(), tier));
-        if (tier >= 3) ZONES.add(new Zone(player.serverLevel().dimension(), primary.blockPosition(),
-                player.level().getGameTime() + 100, player.getUUID(), ZoneType.VOLCANIC));
+        for (int i = 0; i < fissures; i++) {
+            Vec3 center = primary.position().add(line.scale(i * 2.5D));
+            int delay = 8 + i * 3;
+            ERUPTIONS.add(new Eruption(player.serverLevel().dimension(), center, now + delay, player.getUUID(), tier));
+            emit(player, RaceVfxId.INFERNAL_TELEGRAPH, center, center.add(line.scale(2.5D)),
+                    player.getId(), primary.getId(), new int[0], List.of(), tier, delay);
+        }
+        if (tier >= 3) {
+            ZONES.add(new Zone(player.serverLevel().dimension(), primary.blockPosition(),
+                    player.level().getGameTime() + 100, player.getUUID(), ZoneType.VOLCANIC));
+            emit(player, RaceVfxId.VOLCANIC_ZONE, Vec3.atCenterOf(primary.blockPosition()), primary.position(),
+                    player.getId(), primary.getId(), new int[0], List.of(), tier, 100);
+        }
         return true;
     }
 
@@ -231,7 +271,6 @@ public final class RaceAbilities {
             target.setSecondsOnFire(3 + tier);
             target.push(0, 0.7D + tier * 0.15D, 0);
         }
-        player.serverLevel().sendParticles(ParticleTypes.FLAME, center.x, center.y, center.z, 35, radius, 0.3, radius, 0.08);
     }
 
     private static void spawnVoidEcho(ServerPlayer player) {
@@ -241,12 +280,11 @@ public final class RaceAbilities {
         echo.setInvulnerable(true);
         echo.setNoGravity(true);
         echo.setCustomName(Component.literal("Void Echo"));
-        echo.setCustomNameVisible(true);
+        echo.setCustomNameVisible(false);
         echo.getPersistentData().putLong("JemVoidEchoExpiry", player.level().getGameTime() + 60);
         if (!player.serverLevel().addFreshEntity(echo)) return;
         for (Mob mob : player.serverLevel().getEntitiesOfClass(Mob.class, echo.getBoundingBox().inflate(12), entity -> entity instanceof Enemy))
             mob.setTarget(echo);
-        player.serverLevel().sendParticles(ParticleTypes.PORTAL, echo.getX(), echo.getY() + 1, echo.getZ(), 40, 0.4, 0.8, 0.4, 0.1);
     }
 
     public static void serverTick(MinecraftServer server) {
@@ -255,12 +293,9 @@ public final class RaceAbilities {
             ServerLevel level = server.getLevel(eruption.dimension);
             ServerPlayer owner = server.getPlayerList().getPlayer(eruption.owner);
             if (level == null || owner == null || owner.serverLevel() != level) return true;
-            for (int layer = 0; layer < 7; layer++) {
-                double y = eruption.center.y + layer * 0.55D;
-                level.sendParticles(layer < 2 ? ParticleTypes.LAVA : ParticleTypes.FLAME,
-                        eruption.center.x, y, eruption.center.z, 4, 0.22D, 0.12D, 0.22D, 0.015D);
-            }
             if (now < eruption.impactAt) return false;
+            emit(owner, RaceVfxId.INFERNAL_IMPACT, eruption.center, eruption.center.add(0.0D, 4.0D, 0.0D),
+                    owner.getId(), -1, new int[0], List.of(), eruption.tier, 24);
             erupt(owner, eruption.center, eruption.tier);
             return true;
         });
@@ -275,8 +310,6 @@ public final class RaceAbilities {
                 target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 15, zone.type == ZoneType.GROVE ? 2 : 1, false, false));
                 if (zone.type == ZoneType.VOLCANIC && server.getTickCount() % 20 == 0) target.setSecondsOnFire(2);
             }
-            if (server.getTickCount() % 10 == 0) level.sendParticles(zone.type == ZoneType.GROVE ? ParticleTypes.HAPPY_VILLAGER : ParticleTypes.FLAME,
-                    zone.center.getX() + 0.5D, zone.center.getY() + 0.2D, zone.center.getZ() + 0.5D, 12, 3, 0.2, 3, 0.03);
             return false;
         });
     }
@@ -287,6 +320,9 @@ public final class RaceAbilities {
             value.cooldown("gravity_active", now + RaceRules.GRAVITY_DURATION.get());
             value.cooldown("gravity", now + RaceRules.GRAVITY_COOLDOWN.get());
         });
+        emit(player, RaceVfxId.GRAVITY_DENIAL, player.position(), player.position().add(0.0D, 3.0D, 0.0D),
+                player.getId(), -1, new int[0], List.of(), record.spellTier(),
+                Math.min(200, RaceRules.GRAVITY_DURATION.get()));
     }
 
     private static void consumeEcho(ServerPlayer player, RaceRecord record) {
@@ -294,13 +330,19 @@ public final class RaceAbilities {
         RaceService.mutate(player, value -> value.resonance(value.resonance() - 25));
         player.heal(6.0F);
         player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 400, 1));
+        emit(player, RaceVfxId.ECHO_ABSORB, player.position(), player.position().add(0.0D, 1.2D, 0.0D),
+                player.getId(), -1, new int[0], List.of(), record.spellTier(), 28);
     }
 
     private static void echoVision(ServerPlayer player) {
+        List<Integer> revealed = new ArrayList<>();
         for (LivingEntity target : player.serverLevel().getEntitiesOfClass(LivingEntity.class,
-                player.getBoundingBox().inflate(32), entity -> entity != player && entity.isAlive()))
+                player.getBoundingBox().inflate(32), entity -> entity != player && entity.isAlive())) {
             target.addEffect(new MobEffectInstance(MobEffects.GLOWING, 80, 0, false, false));
-        player.serverLevel().sendParticles(ParticleTypes.SCULK_SOUL, player.getX(), player.getY() + 1, player.getZ(), 32, 8, 3, 8, 0.02);
+            if (revealed.size() < 8) revealed.add(target.getId());
+        }
+        emit(player, RaceVfxId.ECHO_VISION, player.position(), player.position(), player.getId(), -1,
+                revealed.stream().mapToInt(Integer::intValue).toArray(), List.of(), 1, 36);
     }
 
     private static void startLavaDrink(ServerPlayer player, RaceRecord record, long now) {
@@ -312,6 +354,9 @@ public final class RaceAbilities {
             return;
         }
         player.startUsingItem(hand);
+        emit(player, RaceVfxId.LAVA_DRINK_START, player.position().add(0.0D, 1.2D, 0.0D),
+                player.position().add(player.getLookAngle().scale(0.5D)).add(0.0D, 1.4D, 0.0D),
+                player.getId(), -1, new int[0], List.of(), record.spellTier(), 32);
     }
 
     private static boolean recruit(LivingEntity target) {
@@ -337,6 +382,35 @@ public final class RaceAbilities {
         var state = level.getBlockState(pos);
         return state.is(Blocks.SCULK) || state.is(Blocks.SCULK_VEIN) || state.is(Blocks.SCULK_CATALYST)
                 || state.is(Blocks.SCULK_SENSOR) || state.is(Blocks.SCULK_SHRIEKER);
+    }
+
+    private static List<Vec3> samplePath(BlockPos start, BlockPos end, Map<BlockPos, BlockPos> parent) {
+        List<BlockPos> reversed = new ArrayList<>();
+        BlockPos cursor = end;
+        reversed.add(cursor);
+        while (!cursor.equals(start) && reversed.size() < 2048) {
+            cursor = parent.get(cursor);
+            if (cursor == null) break;
+            reversed.add(cursor);
+        }
+        java.util.Collections.reverse(reversed);
+        if (reversed.size() <= RaceVfxPacket.MAX_PATH_POINTS)
+            return reversed.stream().map(Vec3::atCenterOf).toList();
+        List<Vec3> sampled = new ArrayList<>(RaceVfxPacket.MAX_PATH_POINTS);
+        for (int i = 0; i < RaceVfxPacket.MAX_PATH_POINTS; i++) {
+            int index = (int)Math.round(i * (reversed.size() - 1.0D) / (RaceVfxPacket.MAX_PATH_POINTS - 1.0D));
+            sampled.add(Vec3.atCenterOf(reversed.get(index)));
+        }
+        return List.copyOf(sampled);
+    }
+
+    private static void emit(ServerPlayer player, RaceVfxId id, Vec3 origin, Vec3 target,
+                             int sourceEntityId, int targetEntityId, int[] relatedEntityIds,
+                             List<Vec3> path, int tier, int duration) {
+        RaceVfxEmitter.near(player.serverLevel(), new RaceVfxPacket(id,
+                player.serverLevel().dimension().location(), origin, target, sourceEntityId, targetEntityId,
+                relatedEntityIds, path, Math.max(0, Math.min(3, tier)), Math.max(1, Math.min(200, duration)),
+                player.getRandom().nextLong()));
     }
 
     private static void cooldown(ServerPlayer player, long ticks) {

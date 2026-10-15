@@ -19,7 +19,7 @@
   ],
   "exceptions": [],
   "conditions": [
-    {"runtime": "authenticated player on dedicated SMP with matching JEM Races protocol 2 client"}
+    {"runtime": "authenticated player on dedicated SMP with matching JEM Races protocol 3 client"}
   ],
   "precedence": {
     "layer": "gameplay",
@@ -52,6 +52,24 @@
         "operation": "set",
         "before": {"value": "canonical managed-client Paxi datapack absent from ordinary dedicated Server"},
         "after": {"value": "same complete profession Paxi datapack present on managed client and dedicated Server"}
+      },
+      {
+        "property": "jem_roles.protected_target_acquisition",
+        "operation": "replace",
+        "before": {"value": "protected Piglin, End-kin and green-biome acquisition replaced the Forge target with null"},
+        "after": {"value": "protected acquisition cancels LivingChangeTargetEvent and never supplies a null target to Brain behavior"}
+      },
+      {
+        "property": "jem_roles.nether_fire_immunity",
+        "operation": "replace",
+        "before": {"value": "tagged fire damage canceled at LivingHurtEvent after client-visible hurt feedback could begin"},
+        "after": {"value": "tagged fire attacks canceled at highest-priority LivingAttackEvent with the later hurt guard retained and residual fire cleared"}
+      },
+      {
+        "property": "jem_roles.visual_event_transport",
+        "operation": "set",
+        "before": {"value": "server-spawned generic Heart, Portal, Sculk Soul, Happy Villager and Flame bursts"},
+        "after": {"value": "bounded protocol-3 accepted-transition events drive client-only Lodestone particles and depth-tested world geometry with LOW/MEDIUM/HIGH/ULTRA decorative budgets"}
       }
     ]
   },
@@ -67,6 +85,12 @@
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RaceSelectionScreen.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RaceTraitDetailsScreen.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RoleClientState.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/vfx/RaceVfxController.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/vfx/RaceVfxInstance.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/vfx/RaceVfxPalettes.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/vfx/RaceVfxParticles.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/vfx/RaceVfxRenderer.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/vfx/RaceVfxShaderState.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/economy/CoinTradeRaceBridge.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/loot/PiglinFortuneLoot.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/loot/RaceLoot.java",
@@ -74,6 +98,7 @@
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/mixin/LavaBucketUseMixin.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RaceActionPacket.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RaceStatusPacket.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RaceVfxPacket.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RolesNetwork.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceId.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRecord.java",
@@ -83,6 +108,9 @@
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceEnvironment.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceTraitRuntime.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/TemporaryPathSavedData.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/vfx/RaceVfxClientConfig.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/vfx/RaceVfxEmitter.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/vfx/RaceVfxId.java",
       "Mods/JEMRoles/src/main/resources/META-INF/mods.toml",
       "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/en_us.json",
       "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/ru_ru.json",
@@ -151,24 +179,43 @@
         "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RaceTraitDetailsScreen.java",
         "Mods/JEMRoles/src/main/java/com/siirio/jemroles/mixin/LavaBucketUseMixin.java"
       ]
+    },
+    {
+      "date": "2026-10-16",
+      "commit": "SELF",
+      "action": "repair_targeting_and_add_layered_race_vfx",
+      "summary": "Canceled protected target acquisition instead of injecting null into Piglin Brain behavior, moved Nether fire rejection to the pre-feedback attack phase, and replaced race-owned generic particle bursts with bounded protocol-3 client timelines using Lodestone recipes plus depth-tested Minecraft-native geometry for all five race families.",
+      "source_files": [
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RaceVfxPacket.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RolesNetwork.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceAbilities.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceTraitRuntime.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/vfx/RaceVfxController.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/vfx/RaceVfxRenderer.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/vfx/RaceVfxParticles.java"
+      ]
     }
   ],
   "impacts": {
-    "systems": ["identity", "races", "professions", "economy", "villagers", "animals", "piglins", "biomes", "sculk", "lava", "network", "SMP UI", "boss boundaries"],
+    "systems": ["identity", "races", "professions", "economy", "villagers", "animals", "piglins", "biomes", "sculk", "lava", "network", "visual effects", "Lodestone", "SMP UI", "boss boundaries"],
     "relations": [
       "JEM Identity account -> race SavedData -> server validation -> synchronized client UI",
       "SMP sidebar -> bounded module packet -> native owning screen",
-      "race signature use -> separate mastery -> behavior-changing tier"
+      "race signature use -> separate mastery -> behavior-changing tier",
+      "accepted race transition -> bounded protocol-3 visual event -> client-only geometry and Lodestone composition"
     ],
     "notes": [
       "Legacy active time and free-switch state survive deterministic race migration; changing race resets only race-local mastery/resources.",
       "The installed Iron's 3.15.6 innate-wheel boundary was inspected; no scroll, spellbook or invented spell ID is introduced.",
       "Temporary path blocks persist expiry across unload/restart and drop no resources; short-lived zones and decoys clean themselves while loaded.",
       "Race cards keep concise summaries; clicking a semantic trait icon opens the exact effect in a bounded modal instead of overloading the carousel.",
+      "Race VFX has no `/jem vfx` command or synthetic preview route; only real server-accepted transitions emit it.",
+      "Critical silhouettes render at every preset without camera shake; presets reduce only decorative particles and trails.",
       "No automated tests or gameplay launch are created or run because project policy requires manual player acceptance."
     ],
     "unresolved": [
-      "Player-rendered UI and multiplayer gameplay acceptance remain in testing.",
+      "Player-rendered UI, race VFX appearance/FPS and multiplayer gameplay acceptance remain in testing.",
+      "Oculus with Photon and Complementary remains unverified until an explicitly authorized `test jem` client launch.",
       "Third-party merchants, barter systems, peaceful mobs or End creatures that do not reuse the verified native classes/events/tables require an explicit adapter or exact configured registry ID."
     ]
   }

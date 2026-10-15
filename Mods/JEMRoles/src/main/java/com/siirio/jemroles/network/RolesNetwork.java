@@ -9,7 +9,9 @@ import com.siirio.jemroles.race.RaceRules;
 import java.util.UUID;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.TickEvent;
@@ -21,7 +23,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class RolesNetwork {
-    private static final String VERSION = "2";
+    private static final String VERSION = "3";
     private static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder
             .named(new ResourceLocation(JemRoles.MOD_ID, "main"))
             .networkProtocolVersion(() -> VERSION)
@@ -62,6 +64,9 @@ public final class RolesNetwork {
                     if (player != null) com.siirio.jemroles.trait.RaceAbilities.handle(player, packet.action());
                     context.get().setPacketHandled(true);
                 }).add();
+        CHANNEL.messageBuilder(RaceVfxPacket.class, 3, NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(RaceVfxPacket::encode).decoder(RaceVfxPacket::decode)
+                .consumerNetworkThread(RaceVfxPacket::handle).add();
     }
 
     public static void choose(RaceId race, UUID nonce) {
@@ -69,6 +74,11 @@ public final class RolesNetwork {
     }
 
     public static void action(RaceActionPacket.Action action) { CHANNEL.sendToServer(new RaceActionPacket(action)); }
+
+    public static void sendNear(ServerLevel level, Vec3 origin, RaceVfxPacket packet) {
+        CHANNEL.send(PacketDistributor.NEAR.with(() -> new PacketDistributor.TargetPoint(
+                origin.x, origin.y, origin.z, 96.0D, level.dimension())), packet);
+    }
 
     public static void sendStatus(ServerPlayer player, boolean open) {
         var principal = IdentityPolicy.resolve(player);

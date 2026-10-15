@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-16 — Race VFX and Nether runtime repair implemented
+
+- User request and supplied visual direction: remove the remaining Nether Hearteds false fire-hit feedback, repair the server crash, and replace minimal race particles with layered, readable, Minecraft-native effects for every race ability. The user explicitly approved recording this visual language in Taste Engine and rejected `/jem vfx preview <effect>` or equivalent clear/debug commands.
+- `Bug / Server Sided / protected Piglin targeting used LivingChangeTargetEvent.setNewTarget(null), and vanilla Piglin StartAttacking passed the null into Optional.of / in testing`: protected target acquisition is now canceled through Forge's event contract, so the Piglin keeps a valid lifecycle instead of receiving a manufactured null target.
+- `Bug / Both Sided / Nether Hearteds fire immunity canceled damage only at LivingHurtEvent, after vanilla could already begin hurt and fire presentation / in testing`: tagged fire attacks are rejected at highest-priority LivingAttackEvent, the retained hurt guard remains defensive, and residual fire state is cleared without changing the established full fire/lava immunity.
+- Implementation: `jem_roles` protocol 3 carries bounded server-authoritative VFX events; the client owns only presentation through one world render pass, capped timelines and Lodestone particle recipes. All five race families now have distinct preparation, impact and dissipation language for their accepted abilities, movement/environment reactions, guardians, healing, teleports, roots, sculk paths, resonance, lava drinking and Infernal Eruption. No camera shake or generic always-on particle spam was added.
+- `Bug / Both Sided / Lodestone's installed Forge metadata reports 1.20.1-1.6.4.1, while the first JEM dependency range used the shortened 1.6.4.1 and Forge therefore rejected the otherwise matching artifact during local server startup / resolved`: the mandatory dependency now pins the exact installed metadata namespace through `[1.20.1-1.6.4.1,1.20.1-1.6.4.2)`.
+- `Bug / Both Sided / JEMRoles incremental compilation produced no packaged jem_roles.refmap.json, so the required LavaBucketUseMixin searched unobfuscated method names on the dedicated server and aborted bootstrap / resolved`: JEMRoles now disables incremental Mixin annotation processing, declares the exact refmap output and fails the production `jar` task if the refmap is missing.
+- Preservation boundary: ability damage, healing, cooldowns, targeting and progression remain server-owned. Quality presets preserve critical telegraphs while reducing decorative particles and range. Player-rendered visual/shader acceptance remains `in testing`; automated tests and gameplay launches remain excluded by project policy.
+
 ## 2026-10-16 — Atlas Phase 2 evidence closure published
 
 - User request and supplied technical direction: use the Ultimate Skills Atlas, complete the approved Phase 2 evidence-closure work, and push the resulting JEM catalog without launching gameplay or claiming unavailable runtime evidence.
