@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-16 — Local Server Atlas evidence published
+
+- User request and supplied technical direction: run the shared Ultimate Skills JEM Atlas against the actual local dedicated `Server` runtime and push its generated evidence catalog to the existing `main` upstream.
+- Atlas publication: the deterministic FAST export under `Server/Catalog/Atlas` records 35,269 subjects, 36,767 facts, 269,213 evidence records, 57,487 candidates and 1,644 retained coverage gaps from 1,774 exact runtime inputs. The input lock SHA-256 is `9e9de8ca0dde9f0c3e5a7122ad46b733bf1e767c665726ec43c3ec4b28e8d132`; `atlas diff` found no live-input drift and `atlas verify` returned `VALID` with zero conflicts.
+- Evidence boundary: this is a static audit and does not claim runtime combat results. For example, `cataclysm:laser_gatling` has verified installed-JAR registration and recipe evidence, while damage, beam count and accepted-hit behavior remain unresolved until their owning method chain or controlled runtime evidence is available. No gameplay, configuration, AutoModpack generation, stable profile, MineRENT deployment or release baseline changed.
+
 ## 2026-10-16 — Immersive Aircraft sail recipe restored server-side
 
 - User request and supplied release direction: restore crafting of the Immersive Aircraft sail needed for aircraft progression on MineRENT and publish only a dedicated-server update so friends keep their current clients.
