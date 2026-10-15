@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-15 — Per-prompt JEM delivery workflow fixed
+
+- User request and supplied workflow direction: replace task-branch-oriented completion rules with a JustEnoughMods-specific workflow that has no per-prompt task definition or task branch, always commits and pushes completed project changes, always brings the ordinary local Server and native AutoModpack publication up to date, and never launches a test server unless explicitly requested.
+- Codex documentation implementation: `AGENTS.md` now requires exact-path isolation of unrelated work, current-checkout delivery, remote-divergence inspection without automatic rebases or history loss, full source/Client/Server/docs consequence-chain completion, exact production-artifact synchronization, native `stage-pack-sync` plus `/jempack preview` and `/jempack publish`, manifest-hash confirmation, exact-path staging, automatic commit/push, remote-tip verification and a second delivery commit when an in-scope file changes after the first push.
+- Runtime boundary: the standing workflow authorizes only production builds and ordinary local dedicated-server activity required to synchronize prompt-owned artifacts and publish a downloadable native AutoModpack generation. It does not authorize Gradle tests, automated verification, disposable/test servers, gameplay QA, the `test jem` client, stable-profile mutation, MineRENT deployment or release-baseline promotion. This documentation-only prompt changed no managed client file or server artifact; the existing local AutoModpack publication is already current with matching staged/published manifest SHA-1 `de9f0b78b0722c5a8a9f8a0aedf9bad7e7a52bcc`.
+
 ## 2026-10-15 — Power System Stage 3.5C armor, accessories and durability resolution
 
 - User request and supplied technical direction: resolve the 219 defense records, 52 accessories, 39 armor sets and 448 durability records against exact installed sources; produce numerical defensive comparisons and outlier evidence without changing gameplay or starting Stage 4/5.
