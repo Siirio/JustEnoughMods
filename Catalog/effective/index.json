@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "a604014d647ca7999cf289e3de90d059471187ecda78df26e93dfa44760a90fa",
+  "change_records_sha256": "fca3d70382f51e56b70d8d3006fd8d5b65fcc51808a6e102799475229e4763d3",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -139,7 +139,7 @@
     {
       "change_id": "professions.native-skills-and-spell-combat",
       "status": "active",
-      "summary": "Pufferfish's Skills owns profession progression presentation and state; JEMProfessions supplies audited gain signals and implemented effects. Iron's Spells gains its requested Epic Fight animation and skill integrations.",
+      "summary": "Pufferfish's Skills owns profession progression state; JEMProfessions presents its complete 57-node graph in one radial screen and supplies audited gain signals and implemented effects. Iron's Spells receives the chosen native racial spell.",
       "record": "Catalog/changes/records/profession-native-skills-and-spell-combat.json",
       "selectors": [
         {
@@ -357,7 +357,7 @@
     "Docs/power-system/NUMERIC_TABLES.md": "328838a5d28016b792c136f3e4642f3400c8785f2f9ddcdac4246a3ba53fb114",
     "Docs/power-system/README.md": "ca69c9b298c3c62c4e48f71c1d39b1f9152fcef62a3f7d02983968c75d9c03f1",
     "Docs/power-system/Weapons.md": "c63a055513709e21af477ec465fcb28941255999d571907d27c34100d534f0e7",
-    "Docs/smp-gui/README.md": "6efd08e1a979b84af2a91346d52f2704acfa17ad75f26c419d7780019d96c580",
+    "Docs/smp-gui/README.md": "1edf6c3cc452cad26371774252d06a7e192913d87badec7946400043a2e5c4e0",
     "Mods/JEMCompat/build.gradle": "7b79f9161e4116f9e45f5e7ecb230252158b1dd696a4b0a990cfe6b80e131e02",
     "Mods/JEMEconomy/build.gradle": "c16da45d3674ad2a5e02825eb17b85af28f46d44ff23dc562060efad95ae2d49",
     "Mods/JEMEconomy/settings.gradle": "87a947f8eab9e0ca4b873486f492128e0b77e0190ff6c60ba4a1d04568d26e28",
@@ -411,32 +411,32 @@
     "Mods/JEMEconomy/src/main/resources/jem_economy.mixins.json": "83057610c769e1cf6e8dda02fe0ff6c812f079852e863989fa3eea4887e5c5a9",
     "Mods/JEMMenuSupport/embed.gradle": "135a77fc8c1e7afb696fba2db9ee57d164e5dbb517b447bf979fd39742b6e4ad",
     "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/JemProfessions.java": "38db0bc525800d494956cd0d8d1be75048a31f33200947b4b0a3f94705ad16fd",
-    "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/api/ProfessionApi.java": "16bbedee6953c6bf685c3ce22e223a81f3f2c419de0136afe40c73cb1587b332",
-    "Mods/JEMRoles/build.gradle": "15fcd6cdde51cec071e73cfc00fdefb661b0b333cd129fd5181912685fcf9685",
+    "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/api/ProfessionApi.java": "aa5ecd8be66a6444e27e495c156be722f08abaefc704a4837c38a8a83044f7b6",
+    "Mods/JEMRoles/build.gradle": "674c9f5bc697d1db0ce3ee673cf705c35c575ae5ce31babc546d25f56b286001",
     "Mods/JEMRoles/settings.gradle": "04e25fec2a8d684663401d3ddc4a4936b7a513f7c174ba97ed330da411896d7b",
-    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/JemRoles.java": "4bab1cdf510e5a4b5c5ed84efd6dc81f1d3eb302986401faed72abeab5d3fb08",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/JemRoles.java": "1f7662e2e366c04a0e77f6c60ff4228fddaf41cd48d80a1522977ac7890a0a36",
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceApi.java": "7bafb84db9f153c226473327f15fce461ac7058493784ddd3a6fe77a0707db85",
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceSnapshot.java": "8a422a0b22580989522dd998bee9117ff167230f80c461971ab5d793bdb19a12",
-    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RaceSelectionScreen.java": "ec0705251f6002ff5f3bd01036a010da51db4faae428c636d70a9826b88d5ae0",
-    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RoleClientState.java": "c0173e02ae90c16f3efb0039e7ae0baedb00def540e70b3c7a1d42c6afecf470",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RaceSelectionScreen.java": "dc1fcfe1b1485d3e4bd3c315d43d9f8f08208a586ead366848e6c8724f4b89ef",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RoleClientState.java": "61ae4694f25853d355f59e711682f8f20271dc37d34a0a6d8fdccbe86453b991",
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/economy/CoinTradeRaceBridge.java": "3364aa25549b1edd93c788d29024a39327bd259c08b6b1d3d9118bcdeab9f621",
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/loot/PiglinFortuneLoot.java": "626cb095816b9f62844e4be0382b07773437622dec9306a49b222afa57493773",
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/loot/RaceLoot.java": "e40b8d8cd31be7d831f4555d7c64bcb54ec02aa36bcbfd1431a3fbfefdac27cb",
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/mixin/AvoidEntityGoalMixin.java": "bbfcd96a5b3bd5e55b3ab331284bd0b868eab3b14ea97f14cf2cd870e208e041",
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RaceActionPacket.java": "1530cb390cd3950e1c5192e0aa9f5aba1661ed485c2d5683a6ad3312e853ca24",
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RaceStatusPacket.java": "a759e2c2e65ef168e3c599cc6013f8fc41463f3a9e673927fdb7793f82e63e09",
-    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RolesNetwork.java": "d76681a7345279f21fe4e1e2b3e0b842269726892f39aa417481eb936b35638e",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RolesNetwork.java": "9a3cb7db194e4053e0517420f4e70c25213fc040f1cee936d82220cc15529941",
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceId.java": "f758b8e370e8cff540ca84ab0b822a6964db27da08619458994dbcbecf7b6fe6",
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRecord.java": "43c0eb3292ea920598e6d19846a1f2252f698eae75edda4ad269b113bd78b21d",
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRules.java": "86ad7acbcf29de25ca235b037d1911a1aa759ecb0ecbedfea852d462365d59ba",
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceService.java": "2eb678110b157064e636e9e20345507d0a76b2f76985a22d0025ff097fa2d449",
-    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceAbilities.java": "9f4b5f60cd0add7c8f1e18aa6d486b6f68a91f327038e0574be49c9b09f90ea0",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceAbilities.java": "769d21625d79146c86233122ff07e3c44a17031bb2261958db5a7956e85a1daf",
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceEnvironment.java": "2013d030fb36f50acf447ae973ac1a182ee84c8d5f05cd6cb99d4500e3c4c2db",
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceTraitRuntime.java": "4827b0c68bd63d112f05d4d817241352c7ab639af11567f02303388032213dee",
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/TemporaryPathSavedData.java": "f1b37a80a1d138eef64294a0b14d7f57ac5c8120dff460ba29bbc7bf4431e19f",
     "Mods/JEMRoles/src/main/resources/META-INF/mods.toml": "b3c37f65822d12e09ba7edaffc17af06b7446f8a7aaec59a6066f475907d50bd",
-    "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/en_us.json": "2c7674ee5d3ae46f063d13e5736d3b0cdfd458d3c868be7f1cb249b83888ede0",
-    "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/ru_ru.json": "da4e3a2f8a34dcce734e0c42b0e56686057e110e9f47191aa541421ef21d92df",
+    "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/en_us.json": "8a3f3c201c0f9ec312bd210134b3fe11f4229a09b1ec32d4988916887770825b",
+    "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/ru_ru.json": "0528a24e2782487e8f61e001ddcd52fc832c8bd34062ce590cd1177ec4864431",
     "Mods/JEMRoles/src/main/resources/data/forge/loot_modifiers/global_loot_modifiers.json": "23843003d453647cbd47a508f3eb836454dc899ed8ea112bcadd40505209f057",
     "Mods/JEMRoles/src/main/resources/data/jem_roles/damage_type/lunge_burn.json": "585449650e19c4463932ae69871429f86a579d4037d72941c828de566ad2ed78",
     "Mods/JEMRoles/src/main/resources/data/jem_roles/loot_modifiers/piglin_fortune.json": "904633681f1e8839a632c1d2b95ad71ce5127e0a7684ace52ff1938d3b7c20ab",
@@ -500,6 +500,6 @@
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/command/BossCommands.java": "9d9247f5b5d521c145a968cc0f1786f6dda7d9fba391ca34df4824bcb1c921f3",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/command/TierCommands.java": "065a2fb12fbec009307b4b447ef91e4ab8dca3a3aa258c59ed256c666a91982d",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/ArenaProtection.java": "834f9622b3f4ac70caa838ca31c32beacd3fc9f729098b6c36858d66ad3a9f7c",
-    "tools/generate_profession_skills.py": "066fd34d725c8218c8c52fecb0a418235939430e4e8f57a723fe7018a7719dc3"
+    "tools/generate_profession_skills.py": "31295dcb8d6e2cc0bd0d846c3289773e6ebb58c1f0475090734f273d4a88f6fa"
   }
 }

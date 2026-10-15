@@ -36,6 +36,9 @@ public final class RaceSelectionScreen extends Screen {
                     .bounds(x + 8, layout.bottom - 28, layout.cardWidth - 16, 20).build();
             select.active = status.authenticated() && (!status.selected() || status.freeSwitchAvailable() || status.race() == race);
             addRenderableWidget(select);
+            addRenderableWidget(Button.builder(Component.translatable("jem.roles.details"), value ->
+                    Minecraft.getInstance().setScreen(new RacePowerDetailsScreen(this, status, race)))
+                    .bounds(x + 8, layout.bottom - 52, layout.cardWidth - 16, 18).build());
         }
         addRenderableWidget(Button.builder(Component.literal("<"), b -> page(-1)).bounds(layout.left - 40, height / 2 - 10, 20, 20).build());
         addRenderableWidget(Button.builder(Component.literal(">"), b -> page(1)).bounds(layout.right + 20, height / 2 - 10, 20, 20).build());
@@ -64,10 +67,9 @@ public final class RaceSelectionScreen extends Screen {
         renderBackground(g);
         Layout layout = layout();
         g.drawCenteredString(font, title, width / 2, 18, 0xFFFFE7C7);
-        g.drawCenteredString(font, Component.translatable("jem.roles.screen.subtitle"), width / 2, 31, 0xFFD4C2A9);
         drawPeek(g, raceAt(-1), layout.left - 18, layout);
         drawPeek(g, raceAt(VISIBLE), layout.right - 26, layout);
-        for (int slot = 0; slot < VISIBLE; slot++) drawCard(g, raceAt(slot), layout.left + slot * (layout.cardWidth + GAP), layout);
+        for (int slot = 0; slot < VISIBLE; slot++) drawCard(g, raceAt(slot), layout.left + slot * (layout.cardWidth + GAP), layout, mouseX, mouseY);
         Component footer = !status.authenticated() ? Component.translatable("jem.roles.identity_required")
                 : status.selected() && !status.freeSwitchAvailable() ? Component.translatable("jem.roles.change_locked")
                 : Component.translatable("jem.roles.free_first_choice");
@@ -88,10 +90,10 @@ public final class RaceSelectionScreen extends Screen {
         return RaceId.values()[Math.floorMod(first + offset, RaceId.values().length)];
     }
 
-    private void drawCard(GuiGraphics g, RaceId race, int x, Layout layout) {
+    private void drawCard(GuiGraphics g, RaceId race, int x, Layout layout, int mouseX, int mouseY) {
         boolean selected = status.selected() && status.race() == race;
-        int border = selected ? 0xFFD99B4E : 0xFF6D4B32;
-        g.fill(x, layout.top, x + layout.cardWidth, layout.bottom, 0xE82C211B);
+        int border = selected ? 0xFFFFC45A : accent(race);
+        g.fill(x, layout.top, x + layout.cardWidth, layout.bottom, background(race));
         g.fill(x, layout.top, x + layout.cardWidth, layout.top + 2, border);
         g.fill(x, layout.bottom - 2, x + layout.cardWidth, layout.bottom, border);
         g.fill(x, layout.top, x + 2, layout.bottom, border);
@@ -99,28 +101,32 @@ public final class RaceSelectionScreen extends Screen {
         ItemStack icon = new ItemStack(icon(race));
         g.renderItem(icon, x + layout.cardWidth / 2 - 8, layout.top + 8);
         g.drawCenteredString(font, Component.translatable(name(race)), x + layout.cardWidth / 2, layout.top + 29, 0xFFFFE7C7);
-        g.drawCenteredString(font, Component.translatable(base(race) + ".lore"), x + layout.cardWidth / 2, layout.top + 41, 0xFFD4C2A9);
+        g.drawCenteredString(font, Component.translatable(base(race) + ".lore"), x + layout.cardWidth / 2, layout.top + 41, 0xFFE0D5C8);
         g.fill(x + 8, layout.top + 54, x + layout.cardWidth - 8, layout.top + 55, 0xFF8A5D36);
-        int y = layout.top + 59;
-        for (int i = 1; i <= 5; i++) y = line(g, x, y, layout.cardWidth, 0xFFB7DB88, "+ ", base(race) + ".buff." + i);
-        y += 2;
-        for (int i = 1; i <= 2; i++) y = line(g, x, y, layout.cardWidth, 0xFFE0876A, "- ", base(race) + ".debuff." + i);
-        y += 3;
-        g.drawString(font, Component.translatable(base(race) + ".spell"), x + 9, y, 0xFFE1BE83, false);
-        y += 11;
+        int y = layout.top + 62;
+        g.drawString(font, Component.translatable("jem.roles.strengths"), x + 9, y, 0xFFB7DB88, false);
+        for (int i = 1; i <= 5; i++) g.renderItem(new ItemStack(traitIcon(race, i, true)), x + 9 + (i - 1) * 22, y + 11);
+        y += 31;
+        g.drawString(font, Component.translatable("jem.roles.weaknesses"), x + 9, y, 0xFFE0876A, false);
+        for (int i = 1; i <= 2; i++) g.renderItem(new ItemStack(traitIcon(race, i, false)), x + 9 + (i - 1) * 22, y + 11);
+        y += 34;
+        g.fill(x + 8, y - 3, x + layout.cardWidth - 8, y - 2, 0x887B5A35);
+        g.renderItem(new ItemStack(powerIcon(race)), x + 9, y);
+        g.drawString(font, Component.translatable(base(race) + ".spell.short"), x + 30, y + 4, 0xFFFFD58E, false);
+        y += 24;
         int tier = selected ? status.spellTier() : 1;
         for (int i = 1; i <= 3; i++) {
             int color = i <= tier ? 0xFFB7DB88 : 0xFF7F7265;
-            g.drawString(font, Component.literal((i <= tier ? "◆ " : "◇ ")).append(Component.translatable(base(race) + ".tier." + i)), x + 9, y, color, false);
+            g.drawString(font, Component.literal((i <= tier ? "◆ " : "◇ ")).append(Component.translatable(base(race) + ".tier.short." + i)), x + 9, y, color, false);
             y += 9;
         }
-        if (selected) g.drawString(font, Component.translatable("jem.roles.progress", status.spellProgress(), 30), x + 9, y + 2, 0xFFD4C2A9, false);
-    }
+        if (selected) g.drawString(font, Component.translatable("jem.roles.progress", status.spellProgress(), 30), x + 9, y + 1, 0xFFD4C2A9, false);
 
-    private int line(GuiGraphics g, int x, int y, int width, int color, String prefix, String key) {
-        List<net.minecraft.util.FormattedCharSequence> lines = font.split(Component.literal(prefix).append(Component.translatable(key)), width - 18);
-        for (var line : lines) { g.drawString(font, line, x + 9, y, color, false); y += 9; }
-        return y + 1;
+        // Every compact icon explains itself on hover; full mechanics live in the clickable details panel.
+        for (int i = 1; i <= 5; i++) if (inside(mouseX, mouseY, x + 9 + (i - 1) * 22, layout.top + 73, 16, 16))
+            g.renderTooltip(font, Component.translatable(base(race) + ".buff." + i), mouseX, mouseY);
+        for (int i = 1; i <= 2; i++) if (inside(mouseX, mouseY, x + 9 + (i - 1) * 22, layout.top + 104, 16, 16))
+            g.renderTooltip(font, Component.translatable(base(race) + ".debuff." + i), mouseX, mouseY);
     }
 
     private Layout layout() {
@@ -139,6 +145,41 @@ public final class RaceSelectionScreen extends Screen {
             case NETHER_HEARTEDS -> Items.MAGMA_CREAM;
         };
     }
+
+    private static int background(RaceId race) { return switch (race) {
+        case ANCESTORS -> 0xEB30251A; case VOID_WALKERS -> 0xEB211A38; case BORN_IN_BLOOM -> 0xEB1C3422;
+        case INFECTED_BY_SCULK -> 0xEB102F32; case NETHER_HEARTEDS -> 0xEB3B1A14;
+    }; }
+    private static int accent(RaceId race) { return switch (race) {
+        case ANCESTORS -> 0xFFCC9A52; case VOID_WALKERS -> 0xFF9B6FE8; case BORN_IN_BLOOM -> 0xFF70B877;
+        case INFECTED_BY_SCULK -> 0xFF38A7AA; case NETHER_HEARTEDS -> 0xFFE36B35;
+    }; }
+    static net.minecraft.world.item.Item powerIcon(RaceId race) { return switch (race) {
+        case ANCESTORS -> Items.SOUL_LANTERN; case VOID_WALKERS -> Items.ENDER_EYE; case BORN_IN_BLOOM -> Items.FLOWERING_AZALEA;
+        case INFECTED_BY_SCULK -> Items.ECHO_SHARD; case NETHER_HEARTEDS -> Items.FIRE_CHARGE;
+    }; }
+    private static net.minecraft.world.item.Item traitIcon(RaceId race, int index, boolean positive) {
+        if (!positive) return switch (race) {
+            case ANCESTORS -> index == 1 ? Items.ELYTRA : Items.CROSSBOW;
+            case VOID_WALKERS -> index == 1 ? Items.WATER_BUCKET : Items.ROTTEN_FLESH;
+            case BORN_IN_BLOOM -> index == 1 ? Items.FLINT_AND_STEEL : Items.DEAD_BUSH;
+            case INFECTED_BY_SCULK -> index == 1 ? Items.SUNFLOWER : Items.GOAT_HORN;
+            case NETHER_HEARTEDS -> index == 1 ? Items.HEART_OF_THE_SEA : Items.POWDER_SNOW_BUCKET;
+        };
+        net.minecraft.world.item.Item[] icons = switch (race) {
+            case ANCESTORS -> new net.minecraft.world.item.Item[]{Items.TOTEM_OF_UNDYING, Items.WHEAT, Items.EMERALD, Items.GOLD_INGOT, Items.SOUL_LANTERN};
+            case VOID_WALKERS -> new net.minecraft.world.item.Item[]{Items.CHORUS_FRUIT, Items.END_STONE, Items.ENDER_PEARL, Items.ENDER_EYE, Items.FEATHER};
+            case BORN_IN_BLOOM -> new net.minecraft.world.item.Item[]{Items.FLOWERING_AZALEA, Items.MOSS_BLOCK, Items.OAK_SAPLING, Items.SUNFLOWER, Items.SPORE_BLOSSOM};
+            case INFECTED_BY_SCULK -> new net.minecraft.world.item.Item[]{Items.SCULK_SENSOR, Items.SCULK_VEIN, Items.ECHO_SHARD, Items.SCULK_CATALYST, Items.EXPERIENCE_BOTTLE};
+            case NETHER_HEARTEDS -> new net.minecraft.world.item.Item[]{Items.LAVA_BUCKET, Items.BLAZE_POWDER, Items.MAGMA_CREAM, Items.FIRE_CHARGE, Items.GOLDEN_SWORD};
+        };
+        return icons[Math.max(0, Math.min(icons.length - 1, index - 1))];
+    }
+    private static boolean inside(double px, double py, int x, int y, int w, int h) { return px >= x && px < x + w && py >= y && py < y + h; }
+
+    @Override public boolean shouldCloseOnEsc() { return status.selected(); }
+    @Override public void onClose() { if (status.selected()) super.onClose(); }
+    @Override public boolean isPauseScreen() { return false; }
 
     private static String name(RaceId race) { return base(race) + ".name"; }
     private static String base(RaceId race) { return "jem.roles.race." + race.key(); }

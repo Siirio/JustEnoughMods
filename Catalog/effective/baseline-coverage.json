@@ -2,11 +2,11 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "a604014d647ca7999cf289e3de90d059471187ecda78df26e93dfa44760a90fa",
+  "change_records_sha256": "fca3d70382f51e56b70d8d3006fd8d5b65fcc51808a6e102799475229e4763d3",
   "totals": {
     "watched": 3198,
-    "covered": 217,
-    "unresolved": 2981
+    "covered": 223,
+    "unresolved": 2975
   },
   "groups": {
     "Client/ManagedPack/config": {
@@ -2646,16 +2646,9 @@
     },
     "Mods/JEMRoles": {
       "watched": 31,
-      "covered": 25,
-      "unresolved": 6,
-      "unresolved_paths": [
-        "Mods/JEMRoles/gradle.properties",
-        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceChangedEvent.java",
-        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceChosenEvent.java",
-        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RaceChoosePacket.java",
-        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceSavedData.java",
-        "Mods/JEMRoles/src/main/resources/pack.mcmeta"
-      ]
+      "covered": 31,
+      "unresolved": 0,
+      "unresolved_paths": []
     },
     "Mods/JEMServer": {
       "watched": 296,

@@ -27,9 +27,16 @@ public final class RoleClientState {
     private RoleClientState() {}
 
     public static void accept(RaceStatusPacket packet) {
+        boolean firstSelection = status != null && !status.selected() && packet.selected();
         status = packet;
+        if (packet.selected() && net.minecraftforge.fml.ModList.get().isLoaded("irons_spellbooks")) {
+            com.siirio.jemroles.compat.irons.RacialSpellBridge.refreshClient(firstSelection);
+        }
         if (packet.open()) Minecraft.getInstance().setScreen(new RaceSelectionScreen(packet));
     }
+
+    public static com.siirio.jemroles.race.RaceId race() { return status != null && status.selected() ? status.race() : null; }
+    public static int spellTier() { return status == null ? 1 : status.spellTier(); }
 
     @Mod.EventBusSubscriber(modid = JemRoles.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static final class ModBus {

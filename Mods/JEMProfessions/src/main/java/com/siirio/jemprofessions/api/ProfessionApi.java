@@ -15,7 +15,7 @@ public final class ProfessionApi {
     }
 
     public static void openScreen(ServerPlayer player) {
-        if (IdentityPolicy.resolve(player).isPresent()) SkillsAPI.openScreen(player);
+        if (IdentityPolicy.resolve(player).isPresent()) com.siirio.jemprofessions.network.ProfessionsNetwork.sendStatus(player, true);
     }
 
     public static ProfessionProgressResult credit(ServerPlayer player, ProfessionProgressRequest request) {
@@ -72,7 +72,7 @@ public final class ProfessionApi {
         }
     }
 
-    private static java.util.Optional<net.puffish.skillsmod.api.Category> category(ProfessionId id) {
+    public static java.util.Optional<net.puffish.skillsmod.api.Category> category(ProfessionId id) {
         return SkillsAPI.getCategory(new ResourceLocation(JemProfessions.MOD_ID, id.name().toLowerCase(java.util.Locale.ROOT)));
     }
 

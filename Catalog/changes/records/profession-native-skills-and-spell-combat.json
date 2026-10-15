@@ -9,14 +9,14 @@
   "conditions": ["dedicated_server_gameplay", "matching_client_and_server_mods"],
   "precedence": {"layer": "jem_runtime_ownership", "priority": 520, "overrides": []},
   "change": {
-    "summary": "Pufferfish's Skills owns profession progression presentation and state; JEMProfessions supplies audited gain signals and implemented effects. Iron's Spells gains its requested Epic Fight animation and skill integrations.",
+    "summary": "Pufferfish's Skills owns profession progression state; JEMProfessions presents its complete 57-node graph in one radial screen and supplies audited gain signals and implemented effects. Iron's Spells receives the chosen native racial spell.",
     "modifiers": [
       {
         "property": "professions.progression_owner",
         "operation": "replace",
         "before": {"owner": "JEMProfessions", "ui": "custom JEM tree", "state": "JEM XP and toggles"},
-        "after": {"owner": "Pufferfish's Skills 0.19.2", "ui": "native skill screen", "state": "native category XP, levels, points and unlocked skills"},
-        "notes": "Legacy JEM XP and enabled nodes migrate once; audit IDs, discovery caps and cooldown evidence remain in JEMProfessions. Only effects backed by current implementation are exposed as skills."
+        "after": {"owner": "Pufferfish's Skills 0.19.2", "ui": "JEM unified radial presentation adapter", "state": "native category XP, levels, points and unlocked skills", "node_count": 57},
+        "notes": "Legacy JEM XP and enabled nodes migrate once; audit IDs, discovery caps and cooldown evidence remain in JEMProfessions. JEM presents but does not duplicate Pufferfish progression state."
       },
       {
         "property": "epic_fight.irons_spellbooks.integration",
@@ -24,6 +24,13 @@
         "before": {"enhanced_animations": false, "epic_fight_spell_skill": false},
         "after": {"enhanced_animations": "efiscompat 2.6.0", "epic_fight_spell_skill": "efs_iss 1.0.3"},
         "notes": "Iron's first-person arms/items are disabled as required by the animation addon. The EFS ISS magic-sword skill can cast the selected spell and reduce its level while cooling down; this native addon behavior is an explicit balance surface."
+      },
+      {
+        "property": "races.irons_spellbooks.signature",
+        "operation": "add",
+        "before": {"native_spell_selection": false, "cast_route": "JEM V key only"},
+        "after": {"native_spell_selection": true, "spell_ids": ["jem_roles:life_chorus", "jem_roles:rift_ambush", "jem_roles:verdant_dominion", "jem_roles:sculk_veins", "jem_roles:infernal_eruption"], "cast_route": "shared server-authoritative race signature"},
+        "notes": "SpellSelectionEvent adds only the chosen race spell to the standard Iron's Spells HUD and wheel; no physical scroll, crafting recipe or loot entry is created."
       }
     ]
   },
@@ -32,6 +39,7 @@
     "kind": "native_mod_integration",
     "source_files": [
       "Mods/JEMProfessions/**",
+      "Mods/JEMRoles/**",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/**",
       "Mods/JEMServer/build.gradle",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java",
@@ -63,6 +71,18 @@
         "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/progress/ProfessionRecord.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpSidebar.java"
       ]
+    },
+    {
+      "date": "2026-10-15",
+      "commit": "SELF",
+      "action": "unified_radial_ui_and_racial_spells",
+      "summary": "Restored the complete 57-node parent-child catalog in the Paxi source, added a one-screen JEM radial presentation over Pufferfish state, compacted race cards, enforced post-authentication choice and registered five native racial spell selections.",
+      "source_files": [
+        "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/client/ProfessionRadialScreen.java",
+        "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/tree/ProfessionCatalog.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/irons/RacialSpells.java",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/**"
+      ]
     }
   ],
   "impacts": {
@@ -72,6 +92,6 @@
       "Installed artifact hashes: puffish B5DF0B2D3561486076BDFA9318CF143D05B3EAB0CCB93A009B396EEE1312CA8D; efiscompat C5EEF935E534139209E5BF002685C885662BC809D1C4E05AD1309BDA8EEA07AB; efs_iss D7F7A0405FF5B1C859513FF4BAF54238B18542FB43D7D3A84A1629F4EC328ACA.",
       "Settlements stays visible when JEMSettlements is loaded; no ordinary claims/Territories tab is added."
     ],
-    "unresolved": ["Player acceptance of the native tree layout and spell-combat balance remains pending local replay."]
+    "unresolved": ["Player acceptance of the radial tree layout, compact race cards and native racial spell placement remains pending local replay."]
   }
 }

@@ -1,4 +1,59 @@
 {
+  "long_arms_1": {
+    "title": "Длинные руки I",
+    "description": "+3 блока к дальности установки.",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:scaffolding"
+      }
+    },
+    "cost": 1
+  },
+  "long_arms_2": {
+    "title": "Длинные руки II",
+    "description": "+5 блоков к дальности установки.",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:spyglass"
+      }
+    },
+    "cost": 1
+  },
+  "phantom_3": {
+    "title": "Площадь 3×3",
+    "description": "Установка плоскости 3×3.",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:bricks"
+      }
+    },
+    "cost": 1
+  },
+  "phantom_5": {
+    "title": "Площадь 5×5",
+    "description": "Установка плоскости 5×5.",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:stone_bricks"
+      }
+    },
+    "cost": 1
+  },
+  "phantom_7": {
+    "title": "Площадь 7×7",
+    "description": "Установка плоскости 7×7.",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:chiseled_stone_bricks"
+      }
+    },
+    "cost": 1
+  },
   "architect_hotbar": {
     "title": "Расширенная панель",
     "description": "13 настоящих ячеек быстрого доступа.",
@@ -12,5 +67,16 @@
     "required_mods": [
       "tinyinv"
     ]
+  },
+  "architect_supply": {
+    "title": "Строительный резерв",
+    "description": "Резерв до 126 строительных блоков.",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:shulker_box"
+      }
+    },
+    "cost": 1
   }
 }

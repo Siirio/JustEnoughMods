@@ -1,6 +1,10 @@
 # JEM Races
 
-JEM Races — dedicated-server-authoritative система из пяти рас. Раса и её мастерство принадлежат подтверждённому `JEM Identity` account ID, а не отображаемому нику. Любая раса совместима с любой профессией.
+JEM Races — dedicated-server-authoritative система из пяти рас. Раса и её мастерство принадлежат UUID подтверждённой `JEM Identity` сессии, а не произвольной строке из GUI. Любая раса совместима с любой профессией.
+
+После успешной регистрации или входа игрок без расы получает обязательный экран выбора: Esc его не закрывает, а сервер повторно открывает экран до подтверждения. Карточки остаются короткими; наведение на отдельные semantic icons объясняет бафф/дебафф, а кнопка способности открывает точные числа и развитие. После выбора соответствующее заклинание постоянно присутствует в штатном HUD и колесе Iron's Spells; его успешные применения развивают tier I→II→III.
+
+На текущем offline-mode сервере ServerLogin подтверждает пароль конкретного Minecraft-профиля, после чего `JEM Identity` использует его name-derived UUID. Поэтому два клиента с буквально одинаковым ником `Sirio_o` не являются двумя отдельными аккаунтами: им нужен один и тот же пароль, они получают один UUID/прогресс и не могут одновременно занять одну игровую идентичность. Один человек с никами `Sirio_o` и `Sirio_2` получает два UUID, две регистрации и два независимых прогресса. Объединение нескольких ников в один человеческий аккаунт сейчас не реализовано; для этого нужен отдельный безопасный link/unlink flow, а не чтение паролей ServerLogin.
 
 ## Как открыть и управлять
 
@@ -26,16 +30,16 @@ JEM Races — dedicated-server-authoritative система из пяти рас
 
 ## Профессии и дерево навыков
 
-`/smp` → `Профессии` выполняет server-validated открытие нативного Pufferfish's Skills. Команды `/jem professions` и `/jemprof` удалены. Канонический datapack `Client/ManagedPack/config/paxi/datapacks/jem-profession-skills` должен одновременно присутствовать в `Server/config/paxi/datapacks`; без серверной копии Pufferfish загружает ноль категорий и показывает пустое окно.
+`/smp` → `Профессии` выполняет server-validated открытие единого радиального атласа JEM: игрок находится в центре, десять профессий образуют внутреннее кольцо, а parent-child ветви выбранной профессии раскрываются в том же окне. Команды `/jem professions` и `/jemprof` удалены. Канонический datapack `Client/ManagedPack/config/paxi/datapacks/jem-profession-skills` должен одновременно присутствовать в `Server/config/paxi/datapacks`; без серверной копии Pufferfish загружает ноль категорий и прогресса.
 
-JEM не рисует копию профессий и не хранит вторую модель узлов: категории, XP, уровни, очки и разблокировки принадлежат Pufferfish's Skills, а JEMProfessions только принимает подтверждённые сигналы прогресса и применяет эффекты реально открытых узлов.
+JEM рисует только presentation adapter и стабильную геометрию 57 узлов. Категории, XP, уровни, очки и разблокировки по-прежнему принадлежат Pufferfish's Skills; JEMProfessions не хранит второй progression ledger, а принимает подтверждённые сигналы прогресса и применяет эффекты реально открытых узлов. Наведение на корень профессии показывает точные действия, начисляющие её XP.
 
 ## Интеграции и границы
 
 | Система | Проверено или переиспользовано | Реализация JEM | Ограничение |
 |---|---|---|---|
-| JEM Identity | `IdentityPolicy` и подтверждённый account ID | выбор, прогресс и действия разрешаются через account ID | Offline-mode Minecraft UUID/ник не является владельцем прогресса |
-| Iron's Spells 3.15.6 | фактический JAR и API регистрации заклинаний просмотрены | innate сигнатуры используют отдельный server-validated racial cast без предмета | Native wheel Iron's требует физический spell container; сигнатуры не вставляются в него и не становятся scroll/loot |
+| JEM Identity | `IdentityPolicy`, UUID игровой сессии и ServerLogin lock-state | до разблокировки выбор, прогресс и действия запрещены; после неё владельцем записи становится UUID профиля | На online-mode это Mojang UUID; на текущем offline-mode UUID выводится из ника. Одинаковый ник не создаёт две личности, разные ники не объединяются автоматически |
+| Iron's Spells 3.15.6 | `SpellRegistry` и публичный `SpellSelectionEvent.addSelectionOption` | пять JEM spell IDs используют те же server-authoritative сигнатуры, собственные иконки, cooldown и текущий tier расы | Расовое заклинание добавляется в native HUD/колесо без физического предмета и не попадает в loot/crafting |
 | JEM Economy | `CoinTradePriceEvent` и `CoinTradeContext` | ровно одна скидка 20% в authoritative quote | Неизвестная сторонняя экономика требует явного adapter вместо определения по имени |
 | Vanilla merchants | `TradeWithVillagerEvent`, native offers и slots | возврат разницы до фактической цены 80% только для покупок за изумруды | Не меняет продажу игроком предметов торговцу |
 | Piglin barter | global loot modifier для `gameplay/piglin_bartering` | независимое 30% дублирование уже выпавшего stack сохраняет распределение | Сторонняя система, не использующая этот loot table, требует отдельного modifier/adapter |
@@ -44,7 +48,7 @@ JEM не рисует копию профессий и не хранит вто�
 | Biomes | vanilla biome tags, Lush Caves и climate settings | единая классификация зелёной среды | Экзотический биом с нетипичным климатом требует tag/config расширения |
 | Boss/event boundaries | существующие `ServerPlayerTeleportMixin` и `BossTeleportSafety` | все same-dimension racial teleports проходят общий серверный gate | Отдельной копии boundary policy в JEM Races нет |
 | Temporary path | server SavedData с dimension, block position и expiry | блоки живут ровно 800 ticks и удаляются после повторной загрузки chunk | Активный путь использует oak leaves как существующий семантический block, без нового registry object |
-| Profession UI | Pufferfish's Skills API и Paxi | SMP packet открывает native screen; сервер получает тот же datapack | Игровая приёмка после публикации остаётся ручной по правилам проекта |
+| Profession UI | Pufferfish's Skills API и Paxi | SMP packet открывает единый JEM radial screen поверх Pufferfish state; сервер получает тот же datapack из 57 узлов | Игровая приёмка после публикации остаётся ручной по правилам проекта |
 
 ## Серверная конфигурация
 

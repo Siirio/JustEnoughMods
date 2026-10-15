@@ -53,6 +53,12 @@ public final class RaceAbilities {
         });
     }
 
+    /** Iron's Spells entry point; uses the same authoritative cooldown, tier and effect path as the V key. */
+    public static void castSignature(ServerPlayer player) {
+        if (!player.server.isDedicatedServer() || !player.isAlive() || player.isSpectator()) return;
+        RaceService.record(player).ifPresent(record -> signature(player, record));
+    }
+
     private static void signature(ServerPlayer player, RaceRecord record) {
         String key = "signature";
         long now = player.level().getGameTime();

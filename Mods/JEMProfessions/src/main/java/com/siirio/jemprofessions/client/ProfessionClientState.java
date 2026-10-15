@@ -2,6 +2,7 @@ package com.siirio.jemprofessions.client;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import com.siirio.jemprofessions.JemProfessions;
+import com.siirio.jemprofessions.network.ProfessionStatusPacket;
 import net.minecraft.client.KeyMapping;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
@@ -11,6 +12,7 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = JemProfessions.MOD_ID, value = Dist.CLIENT)
 public final class ProfessionClientState {
+    private static ProfessionStatusPacket status;
     private static final KeyMapping[] ARCHITECT_SLOTS = new KeyMapping[]{
             new KeyMapping("key.jem_professions.architect_slot_10", InputConstants.Type.KEYSYM, InputConstants.UNKNOWN.getValue(), "key.categories.jem_professions"),
             new KeyMapping("key.jem_professions.architect_slot_11", InputConstants.Type.KEYSYM, InputConstants.UNKNOWN.getValue(), "key.categories.jem_professions"),
@@ -18,6 +20,11 @@ public final class ProfessionClientState {
             new KeyMapping("key.jem_professions.architect_slot_13", InputConstants.Type.KEYSYM, InputConstants.UNKNOWN.getValue(), "key.categories.jem_professions")
     };
     private ProfessionClientState() {}
+
+    public static void accept(ProfessionStatusPacket packet) {
+        status = packet;
+        if (packet.open()) net.minecraft.client.Minecraft.getInstance().setScreen(new ProfessionRadialScreen(packet));
+    }
 
     @Mod.EventBusSubscriber(modid = JemProfessions.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static final class ModBus {

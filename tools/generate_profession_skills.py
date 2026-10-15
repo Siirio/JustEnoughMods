@@ -14,10 +14,24 @@ CATEGORIES = PACK / "data/jem_professions/puffish_skills/categories"
 
 PROFESSIONS = {
     "architect": ("Архитектор", "minecraft:bricks", {
+        "long_arms_1": ("Длинные руки I", "+3 блока к дальности установки.", "minecraft:scaffolding", "", "", True),
+        "long_arms_2": ("Длинные руки II", "+5 блоков к дальности установки.", "minecraft:spyglass", "", "long_arms_1", False),
+        "phantom_3": ("Площадь 3×3", "Установка плоскости 3×3.", "minecraft:bricks", "", "", True),
+        "phantom_5": ("Площадь 5×5", "Установка плоскости 5×5.", "minecraft:stone_bricks", "", "phantom_3", False),
+        "phantom_7": ("Площадь 7×7", "Установка плоскости 7×7.", "minecraft:chiseled_stone_bricks", "", "phantom_5", False),
         "architect_hotbar": ("Расширенная панель", "13 настоящих ячеек быстрого доступа.", "minecraft:chest", "tinyinv", "", True),
+        "architect_supply": ("Строительный резерв", "Резерв до 126 строительных блоков.", "minecraft:shulker_box", "", "architect_hotbar", False),
     }),
-    "farmer": ("Фермер", "minecraft:wheat", {}),
+    "farmer": ("Фермер", "minecraft:wheat", {
+        "crop_sense": ("Чувство урожая", "Показывает зрелые культуры в радиусе 12 блоков.", "minecraft:wheat", "", "", True),
+        "sweep": ("Сбор площади", "Последовательно собирает соседние зрелые культуры.", "minecraft:iron_hoe", "", "crop_sense", False),
+        "herd_call": ("Зов стада", "Привлекает до 8 животных на 10 секунд.", "minecraft:wheat_seeds", "", "", True),
+        "feed_herd": ("Накормить стадо", "Кормит до 8 взрослых животных.", "minecraft:golden_carrot", "", "herd_call", False),
+        "quick_shear": ("Быстрая стрижка", "Стрижёт до 8 готовых овец.", "minecraft:shears", "", "feed_herd", False),
+        "greenhouse_master": ("Мастер теплицы", "+10% шанса роста культур в теплице 9×9.", "minecraft:glass", "", "", True),
+    }),
     "fisher": ("Рыбак", "minecraft:fishing_rod", {
+        "target_fishing": ("Целевой улов", "+20% относительного веса выбранной рыбы.", "minecraft:tropical_fish", "", "", True),
         "double_catch": ("Двойной улов", "10% шанс получить ещё одну обычную рыбу.", "minecraft:cod", "", "", True),
     }),
     "miner": ("Шахтёр", "minecraft:iron_pickaxe", {
@@ -28,12 +42,54 @@ PROFESSIONS = {
         "lava_shield": ("Лавовый щит", "При огненном уроне даёт краткую защиту от огня с перезарядкой.", "minecraft:lava_bucket", "", "stone_step", False),
         "cave_breath": ("Дыхание пещер", "Иногда сохраняет воздух глубоко под водой.", "minecraft:heart_of_the_sea", "", "lava_shield", False),
     }),
-    "explorer": ("Исследователь", "minecraft:compass", {}),
-    "engineer": ("Инженер", "create:wrench", {}),
-    "warrior": ("Воин", "minecraft:iron_sword", {}),
-    "merchant": ("Торговец", "minecraft:emerald", {}),
-    "mayor": ("Мэр", "minecraft:bell", {}),
-    "mage": ("Маг", "irons_spellbooks:iron_spell_book", {}),
+    "explorer": ("Исследователь", "minecraft:compass", {
+        "wall_climb": ("Подъём", "Поднимает на безопасный уступ до 2 блоков.", "minecraft:ladder", "", "", True),
+        "fast_traveler": ("Быстрый путник", "+8% скорости пешком в новых чанках.", "minecraft:leather_boots", "", "wall_climb", False),
+        "ledge_catch": ("Захват уступа", "Удерживает на краю до 2 секунд.", "minecraft:lead", "", "fast_traveler", False),
+        "ration_saver": ("Экономия провизии", "Бег тратит на 10% меньше насыщения.", "minecraft:bread", "", "", True),
+        "river_runner": ("Речной ходок", "+8% скорости обычной лодки.", "minecraft:oak_boat", "", "ration_saver", False),
+        "portable_camp": ("Походный лагерь", "Разворачивает временный лагерь из припасов.", "minecraft:campfire", "", "river_runner", False),
+    }),
+    "engineer": ("Инженер", "create:wrench", {
+        "gear_swap": ("Замена передач", "Безопасная смена детали Create.", "create:wrench", "", "", True),
+        "shaft_builder": ("Монтаж валов", "Укладывает проверенную линию до 16 валов.", "create:shaft", "", "gear_swap", False),
+        "factory_copy": ("Копия фабрики", "Хранит до 3 шаблонов 7×7×7.", "create:schematic", "", "shaft_builder", False),
+        "track_run": ("Укладка пути", "Укладывает линию до 12 рельсов.", "create:track", "", "", True),
+        "schedule_templates": ("Шаблоны расписаний", "Хранит до 3 расписаний поездов.", "create:schedule", "", "track_run", False),
+        "cargo_contract": ("Грузовой контракт", "Доставка с резервированием награды.", "minecraft:minecart", "", "schedule_templates", False),
+    }),
+    "warrior": ("Воин", "minecraft:iron_sword", {
+        "endurance": ("Выносливость", "Уклонение тратит на 5% меньше стамины.", "minecraft:leather_boots", "", "", True),
+        "battle_recovery": ("Восстановление", "+2 стамины после уклонения, откат 30 с.", "minecraft:glistering_melon_slice", "", "endurance", False),
+        "second_wind": ("Второе дыхание", "Скорость I на 4 с при здоровье ниже 30%.", "minecraft:rabbit_foot", "", "battle_recovery", False),
+        "parry_master": ("Мастер парирования", "Идеальный блок дешевле на 15%.", "minecraft:shield", "", "", True),
+        "counter_step": ("Ответный шаг", "Следующий удар наносит +1 урона.", "minecraft:iron_sword", "", "parry_master", False),
+        "field_medic": ("Полевой медик", "Поддерживаемое воскрешение быстрее на 20%.", "minecraft:golden_apple", "", "", True),
+    }),
+    "merchant": ("Торговец", "minecraft:emerald", {
+        "buy_orders": ("Заказы на покупку", "До 3 профинансированных запросов.", "minecraft:paper", "", "", True),
+        "auction": ("Аукцион", "Торги длительностью 1–24 часа с эскроу.", "minecraft:clock", "", "buy_orders", False),
+        "commission_escrow": ("Эскроу заказа", "Защищённая приёмка заказа до 72 часов.", "minecraft:written_book", "", "auction", False),
+        "stall_sign": ("Вывеска лавки", "Публикует до 3 Coin-магазинов.", "minecraft:oak_sign", "", "", True),
+        "trading_post": ("Торговый пост", "Заказы из реального резерва.", "minecraft:emerald", "", "stall_sign", False),
+        "market_network": ("Рыночная сеть", "До 8 собственных объявлений.", "minecraft:ender_chest", "", "trading_post", False),
+    }),
+    "mayor": ("Мэр", "minecraft:bell", {
+        "invite_residents": ("Пригласить жителей", "До 2 настоящих NPC за 3 игровых дня.", "minecraft:player_head", "", "", True),
+        "supply_notice": ("Запасы", "Следит за 3 категориями запасов.", "minecraft:barrel", "", "invite_residents", False),
+        "resident_move": ("Переезд", "До 2 согласных жителей в игровой день.", "minecraft:minecart", "", "supply_notice", False),
+        "taxes": ("Налоги", "Ставка 0/5/10/15% профинансированного дохода NPC.", "minecraft:gold_ingot", "", "", True),
+        "rally": ("Сбор", "Созывает до 12 собственных бойцов.", "minecraft:goat_horn", "", "", True),
+        "patrol_route": ("Маршрут патруля", "6 точек для 12 собственных стражей.", "minecraft:filled_map", "", "rally", False),
+    }),
+    "mage": ("Маг", "irons_spellbooks:iron_spell_book", {
+        "mana_saver": ("Экономия маны", "Обычные заклинания дешевле на 5%.", "irons_spellbooks:arcane_essence", "", "", True),
+        "meditation": ("Медитация", "+5% регенерации маны после 10 с покоя.", "minecraft:amethyst_shard", "", "mana_saver", False),
+        "combo_magic": ("Комбо", "После 3 разных заклинаний следующее дешевле на 20%.", "irons_spellbooks:blank_rune", "", "meditation", False),
+        "magic_school": ("Школа магии", "+8% силы выбранной школы.", "irons_spellbooks:upgrade_orb", "", "", True),
+        "arcane_guard": ("Магический щит", "25 маны поглощают 2 HP урона.", "minecraft:enchanted_golden_apple", "", "", True),
+        "magic_circle": ("Магический круг", "Радиус 6, 8 с, +10% регенерации.", "minecraft:lodestone", "", "arcane_guard", False),
+    }),
 }
 
 
@@ -63,6 +119,8 @@ def main() -> None:
         skills = {}
         links = []
         children: dict[str, list[str]] = {}
+        branch_roots = [node_id for node_id, node in nodes.items() if not node[4]]
+        root_order = {node_id: index for index, node_id in enumerate(branch_roots)}
         for node_id, (node_title, description, icon, required_mod, parent, root) in nodes.items():
             definition = {
                 "title": node_title,
@@ -73,11 +131,14 @@ def main() -> None:
             if required_mod:
                 definition["required_mods"] = [required_mod]
             definitions[node_id] = definition
-            siblings = children.setdefault(parent, [])
-            x = (len(siblings) - 1) * 96
-            y = 0 if not parent else 96
+            branch_root = node_id
+            depth = 0
+            while nodes[branch_root][4]:
+                branch_root = nodes[branch_root][4]
+                depth += 1
+            x = (root_order[branch_root] - (len(branch_roots) - 1) / 2) * 144
+            y = depth * 96
             skills[node_id] = {"x": x, "y": y, "definition": node_id, **({"root": True} if root else {})}
-            siblings.append(node_id)
             if parent:
                 links.append([parent, node_id])
         if profession == "miner":
