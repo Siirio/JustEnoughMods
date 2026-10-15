@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-15 — Settlements Update 1 scope fixed before implementation
+
+- User request and supplied product direction: allow one authenticated account to found unlimited settlements; skip settlement selection only when exactly one exists; remove the Overview tab; add map-driven territory expansion for exactly 1 Gold Coin; always show settlement space on Xaero; expose resident happiness, hunger, food monotony and progression-safe vanilla/modded food requests through Jade; add `/settlements help`, town rename and resident/worker unregistration.
+- Codex documentation: created `Docs/settlements/settlements-update-1.md` as the single Update 1 scope, including the zero/one/many-settlement flow, static `/smp` navigation rules, native Xaero/Jade boundaries, server-authoritative operations, strict Russian/English guidebook localization, manual acceptance criteria and unresolved balance/UI decisions that must not be invented during implementation.
+- `Bug / Server Sided / registered-resident damage has no settlement mood handler, while unsafe-food penalties apply only after guarded consumption and aggregate town happiness refreshes once per Minecraft day / in testing`: current source confirms that attacks cannot change resident mood; rotten flesh already carries a `-6` unsafe-food mood value, but only after guarded consumption, and town happiness can remain visibly stale until the next daily recomputation. This task records the evidence and requested behavior only; no fix was implemented.
+- No Java, Mixin, packet, asset, localization, configuration, Atlas effective behavior, JAR, build, launch, client package, MineRENT deployment or release baseline was changed.
+
 ## 2026-10-15 — Power System Stage 3.5B boss combat resolution
 
 - User request and supplied direction: continue after pushed Stage 3.5A with boss attacks/combat across the full current 61-boss inventory, compose World Tier, player-count, hosted/Raid and native mod mechanics, and preserve Stage 4/5 as later review and approved gameplay work.
