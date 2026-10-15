@@ -7,7 +7,7 @@ import hashlib
 import re
 import subprocess
 import zipfile
-from collections import Counter
+from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -638,6 +638,51 @@ def boss_records(native_mechanics: dict[str, Any]) -> list[dict[str, Any]]:
     return result
 
 
+def attach_boss_stage35b(bosses: list[dict[str, Any]], evidence: dict[str, Any]) -> None:
+    if len(bosses) != 61 or len({boss["id"] for boss in bosses}) != 61:
+        raise SystemExit(f"Stage 3.5B requires the canonical 61 unique boss records, found {len(bosses)}")
+    by_id = {boss["id"]: boss for boss in bosses}
+    overrides: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for override in evidence.get("formula_overrides", []):
+        if override["entity_id"] not in by_id:
+            raise SystemExit(f"Stage 3.5B formula override references unknown boss {override['entity_id']}")
+        overrides[override["entity_id"]].append(override)
+    for boss in bosses:
+        native = boss.get("native_mechanics", {})
+        attributes = {
+            row["attribute"]: row["value"]
+            for row in native.get("native_attributes", [])
+            if row.get("status") == "exact_attribute_builder_bytecode"
+        }
+        boss_overrides = overrides.get(boss["id"], [])
+        override_by_method = {(row["owner_class"], row["method"]): row for row in boss_overrides}
+        inbound = []
+        for method in native.get("attack_methods", []):
+            if method.get("method") in INBOUND_DAMAGE_HANDLERS:
+                inbound.append(method)
+                continue
+            override = override_by_method.get((method.get("owner_class"), method.get("method")))
+            if override:
+                method["stage_3_5b_formula"] = override
+                method["formula_status"] = override["status"]
+                method["unresolved_reason"] = None
+        profile_attack = boss.get("registered_profile", {}).get("attributes", {}).get("minecraft:generic.attack_damage")
+        boss["stage_3_5b"] = {
+            "status": "static_combat_profile_with_explicit_runtime_boundaries",
+            "native_attributes": attributes,
+            "native_base_melee_damage": attributes.get("attack_damage"),
+            "profile_attack_damage_by_tier": profile_attack,
+            "formula_overrides": boss_overrides,
+            "inbound_damage_handlers_excluded_from_offense": inbound,
+            "boundaries": evidence["boundaries"],
+            "evidence": {
+                "owner_artifact": native.get("owner_artifact"),
+                "owner_classes": native.get("owner_classes", []),
+                "formula_artifacts": evidence.get("artifacts", {}),
+            },
+        }
+
+
 def entity_records(boss_ids: set[str], native: dict[str, Any]) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     allies, others = [], []
     ally_mechanics = {row["entity_id"]: row for row in native.get("allies", [])}
@@ -924,14 +969,29 @@ def boss_numeric_calculations(bosses: list[dict[str, Any]]) -> list[dict[str, An
         if not boss.get("jem_registered_profile"):
             continue
         specials = boss.get("registered_profile", {}).get("special_damage_multiplier")
+        profile_attack = boss.get("stage_3_5b", {}).get("profile_attack_damage_by_tier")
+        native_attack = boss.get("stage_3_5b", {}).get("native_base_melee_damage")
         rows = []
         for tier in range(1, 6):
             tier_factor = 1.0 + 0.15 * tier
             special = float(specials[tier - 1]) if isinstance(specials, list) and len(specials) >= tier else 1.0
+            profile_tier_attack = profile_attack[tier - 1] if isinstance(profile_attack, list) and len(profile_attack) >= tier else None
+            base_melee = (
+                float(profile_tier_attack)
+                if isinstance(profile_tier_attack, (int, float))
+                else float(native_attack) if isinstance(native_attack, (int, float)) else None
+            )
+            base_melee_source = (
+                "profile tier attribute" if isinstance(profile_tier_attack, (int, float))
+                else "native attribute builder" if isinstance(native_attack, (int, float))
+                else None
+            )
             for players in range(1, 7):
                 for raid in (False, True):
                     raid_factor = 2.5 if raid else 1.0
                     applied_special = 1.0 if raid else special
+                    owned_attack_multiplier = tier_factor * applied_special * hosted_factor(players, "damage") * raid_factor * 0.88
+                    effective_melee = round(base_melee * owned_attack_multiplier, 6) if base_melee is not None else None
                     rows.append({
                         "world_tier": tier,
                         "players": players,
@@ -942,23 +1002,35 @@ def boss_numeric_calculations(bosses: list[dict[str, Any]]) -> list[dict[str, An
                         "hosted_damage_factor": round(hosted_factor(players, "damage"), 6),
                         "raid_factor": raid_factor,
                         "effective_health_multiplier_over_native": round(tier_factor * hosted_factor(players, "health") * raid_factor, 6),
-                        "effective_owned_attack_multiplier_over_native": round(tier_factor * applied_special * hosted_factor(players, "damage") * raid_factor * 0.88, 6),
+                        "effective_owned_attack_multiplier_over_native": round(owned_attack_multiplier, 6),
+                        "effective_owned_attack_multiplier_over_profile_or_native_base": round(owned_attack_multiplier, 6),
+                        "base_melee_before_jem_scaling": base_melee,
+                        "base_melee_source": base_melee_source,
+                        "effective_base_melee_before_target_mitigation": effective_melee,
+                        "effective_base_melee_reference_targets": ({
+                            target["id"]: round(vanilla_post_mitigation(effective_melee, target["armor"], target["toughness"], target["protection_epf"]), 6)
+                            for target in REFERENCE_TARGETS
+                        } if effective_melee is not None else None),
                     })
         records.append({
             "id": boss["id"],
             "kind": "registered_boss_scaling_table",
             "rows": rows,
-            "calculation_boundary": "Multipliers over each native attack/health value. Native per-channel arithmetic, profile attribute overrides and non-owned environmental damage remain attached to their own owners.",
+            "calculation_boundary": "Absolute melee rows use the tier-specific profile attack-damage attribute when supplied, otherwise the exact native attribute builder. Special/projectile formulas, accepted hit count, damage-type bypasses and non-owned environmental damage remain attached to their own owners.",
             "evidence": boss["evidence"],
         })
     return records
 
 
 OFFENSIVE_SINKS = {"hurt", "projectile_damage", "explosion", "effect"}
+INBOUND_DAMAGE_HANDLERS = {"m_6469_", "hurt", "reallyHurt", "processHurt", "hurtParts", "applyPartDamage"}
 
 
 def offensive_method(method: dict[str, Any]) -> bool:
-    return bool(OFFENSIVE_SINKS & set(method.get("damage_or_defense_sinks", [])))
+    return (
+        method.get("method") not in INBOUND_DAMAGE_HANDLERS
+        and bool(OFFENSIVE_SINKS & set(method.get("damage_or_defense_sinks", [])))
+    )
 
 
 def weapon_numeric_calculations(weapons: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -1106,18 +1178,32 @@ def boss_attack_calculations(bosses: list[dict[str, Any]]) -> list[dict[str, Any
     for boss in bosses:
         all_methods = boss.get("native_mechanics", {}).get("attack_methods", [])
         attacks = [row for row in all_methods if offensive_method(row)]
+        inbound = [row for row in all_methods if row.get("method") in INBOUND_DAMAGE_HANDLERS]
+        base_melee = boss.get("stage_3_5b", {}).get("native_base_melee_damage")
         records.append({
             "id": boss["id"],
             "kind": "boss_attack_table",
             "native_attributes": boss.get("native_mechanics", {}).get("native_attributes", []),
+            "base_melee_channel": {
+                "status": "resolved_native_attribute" if isinstance(base_melee, (int, float)) else "unresolved",
+                "damage_before_jem_and_target_mitigation": base_melee,
+                "formula": "ATTACK_DAMAGE attribute through inherited/native melee handling" if isinstance(base_melee, (int, float)) else None,
+                "boundary": "This proves the base melee amount, not AI uptime, reach, animation contact, cooldown or accepted-hit frequency.",
+            },
             "attack_methods": attacks,
-            "support_and_recovery_methods": [row for row in all_methods if not offensive_method(row)],
+            "inbound_damage_handlers": inbound,
+            "support_and_recovery_methods": [row for row in all_methods if not offensive_method(row) and row not in inbound],
             "delegated_classes": boss.get("native_mechanics", {}).get("delegated_classes", []),
             "resolution": {
-                "status": "partial" if attacks else "unresolved",
+                "status": "partial" if attacks or isinstance(base_melee, (int, float)) else "unresolved",
                 "attack_method_count": len(attacks),
-                "fully_numeric_attack_count": sum(row.get("formula_status", "").startswith("resolved") for row in attacks),
+                "fully_numeric_attack_count": sum(row.get("formula_status") == "resolved_literal_sink_argument" for row in attacks),
+                "resolved_attack_formula_count": sum(row.get("formula_status", "").startswith("resolved") for row in attacks),
+                "base_melee_numeric": isinstance(base_melee, (int, float)),
+                "inbound_handlers_removed_from_offensive_denominator": len(inbound),
+                "frequency_status": "runtime_or_scheduler_resolution_required",
             },
+            "stage_3_5b": boss.get("stage_3_5b"),
             "evidence": boss["evidence"],
         })
     return records
@@ -1292,6 +1378,8 @@ def research_blockers(
             })
     for boss in bosses:
         for attack in boss.get("native_mechanics", {}).get("attack_methods", []):
+            if not offensive_method(attack):
+                continue
             if attack.get("formula_status", "").startswith("resolved"):
                 continue
             blockers.append({
@@ -1303,6 +1391,25 @@ def research_blockers(
                 "why_unresolved": attack.get("unresolved_reason"),
                 "runtime_observation_required": attack.get("runtime_observation_required", False),
             })
+        if not isinstance(boss.get("stage_3_5b", {}).get("native_base_melee_damage"), (int, float)):
+            blockers.append({
+                "id": boss["id"],
+                "kind": "boss_stage_3_5b_missing_base_melee",
+                "missing_field": "native_base_melee_damage",
+                "owner_classes": boss.get("native_mechanics", {}).get("owner_classes", []),
+                "candidate_methods": ["createAttributes", "inherited doHurtTarget"],
+                "why_unresolved": "No exact ATTACK_DAMAGE value was recovered from the matched attribute builder; a ranged-only boss may legitimately have no meaningful melee channel.",
+                "runtime_observation_required": False,
+            })
+        blockers.append({
+            "id": boss["id"],
+            "kind": "boss_stage_3_5b_missing_frequency",
+            "missing_field": "attack_selection_and_accepted_hit_frequency",
+            "owner_classes": boss.get("native_mechanics", {}).get("owner_classes", []) + boss.get("native_mechanics", {}).get("delegated_classes", []),
+            "candidate_methods": [method.get("method") for method in boss.get("native_mechanics", {}).get("attack_methods", []) if offensive_method(method)],
+            "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+            "runtime_observation_required": True,
+        })
     deep_ids = {record["id"] for record in weapons if record.get("stage_3_5a")}
     for row in durability:
         if row["id"] in deep_ids:
@@ -1341,6 +1448,7 @@ def main() -> int:
     evidence = load(CATALOG / "power-sources" / "irons-spellbooks-3.15.6.json")
     native = load(CATALOG / "power-sources" / "native-mechanics-phase3.json")
     stage35a_evidence = boss_reward_weapon_evidence()
+    stage35b_evidence = load(CATALOG / "power-sources" / "boss-combat-stage35b.json")
     evidence_jar = ROOT / evidence["artifact"]["canonical_path"]
     actual_sha256 = hashlib.sha256(evidence_jar.read_bytes()).hexdigest()
     if actual_sha256 != evidence["artifact"]["sha256"]:
@@ -1352,6 +1460,7 @@ def main() -> int:
     enchantments = enchantment_records()
     spells = spell_records(evidence, native)
     bosses = boss_records(native)
+    attach_boss_stage35b(bosses, stage35b_evidence)
     hostiles, allies = entity_records({row["id"] for row in bosses}, native)
     calculations = (
         [reference_mitigation_table()]
@@ -1433,7 +1542,8 @@ def main() -> int:
         "native_mechanics": {
             "spell_owner_classes_resolved": sum(bool(row.get("native_mechanics", {}).get("owner_class")) for row in spells),
             "boss_owner_classes_resolved": sum(bool(row.get("native_mechanics", {}).get("owner_classes")) for row in bosses),
-            "boss_combat_method_records": sum(len(row.get("attacks", [])) for row in bosses),
+            "boss_combat_method_records": sum(offensive_method(method) for row in bosses for method in row.get("attacks", [])),
+            "boss_inbound_damage_handlers_excluded": sum(method.get("method") in INBOUND_DAMAGE_HANDLERS for row in bosses for method in row.get("attacks", [])),
             "spell_channel_slots": sum(len(row.get("native_mechanics", {}).get("channels", [])) for row in spells),
             "ally_owner_classes_resolved": sum(bool(row.get("native_mechanics", {}).get("owner_classes")) for row in allies),
             "literal_item_registrations_observed": len(native["item_registrations"]),
@@ -1468,6 +1578,21 @@ def main() -> int:
                 for row in calculations
             ),
             "stage_3_5a_runtime_blockers": sum(row.get("kind") == "boss_reward_weapon_stage_3_5a_blocker" and row.get("runtime_observation_required") for row in blockers),
+            "stage_3_5b_boss_profiles": len(bosses),
+            "stage_3_5b_bosses_with_exact_native_attributes": sum(bool(row.get("stage_3_5b", {}).get("native_attributes")) for row in bosses),
+            "stage_3_5b_exact_native_base_melee_channels": sum(isinstance(row.get("stage_3_5b", {}).get("native_base_melee_damage"), (int, float)) for row in bosses),
+            "stage_3_5b_registered_bosses_with_absolute_scaled_melee_tables": sum(
+                row.get("jem_registered_profile") and isinstance(row.get("stage_3_5b", {}).get("native_base_melee_damage"), (int, float))
+                for row in bosses
+            ),
+            "stage_3_5b_absolute_scaled_melee_rows": sum(
+                60 for row in bosses
+                if row.get("jem_registered_profile") and isinstance(row.get("stage_3_5b", {}).get("native_base_melee_damage"), (int, float))
+            ),
+            "stage_3_5b_resolved_special_method_formulas": sum(
+                method.get("formula_status", "").startswith("resolved")
+                for row in bosses for method in row.get("attacks", []) if offensive_method(method)
+            ),
         },
         "known_gaps": [
             "Dynamic/helper-built item registrations and runtime ItemStack/NBT attribute variants",

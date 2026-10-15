@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "phase": "3.5B",
+  "scope": "Exact-version boss combat formula overrides that are safe to compose with the native attributes and JEM scaling model; no gameplay values are changed.",
+  "artifacts": {
+    "cataclysm": {"file": "L_Enders_Cataclysm-3.31.jar", "sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362"},
+    "legendary_monsters": {"file": "legendarymonsters-2.2.2%20MC%201.20.1.jar", "sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8"}
+  },
+  "inbound_damage_handlers": ["m_6469_", "hurt", "reallyHurt", "processHurt", "hurtParts", "applyPartDamage"],
+  "formula_overrides": [
+    {
+      "entity_id": "legendary_monsters:frostbitten_golem",
+      "owner_class": "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Frostbitten_GolemEntity",
+      "method": "attackTargets",
+      "status": "resolved_symbolic_config_and_difficulty",
+      "formula": "base = 14 * FrostbittenGolemDamageMutliplier; HARD = base - 4; NORMAL = base; EASY = base + 13",
+      "effective_config": {"value": 1.0, "source": "Client/ManagedPack/config/legendary_monsters-common.toml:Frostbitten Golem Damage Multiplier"},
+      "notes": "The installed code really orders the difficulty branches this way; the counter-intuitive HARD/EASY result is evidence, not a correction."
+    },
+    {
+      "entity_id": "legendary_monsters:frostbitten_golem",
+      "owner_class": "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Frostbitten_GolemEntity",
+      "method": "AreaAttack",
+      "status": "resolved_symbolic_config",
+      "formula": "damage_parameter * FrostbittenGolemDamageMutliplier",
+      "effective_config": {"value": 1.0, "source": "Client/ManagedPack/config/legendary_monsters-common.toml:Frostbitten Golem Damage Multiplier"},
+      "variants": [
+        {"trigger_tick": 16, "damage_parameter": 12, "range": 6, "arc": 150},
+        {"trigger_tick": 18, "damage_parameter": 13, "range": 7, "arc": 170},
+        {"trigger_tick": 12, "damage_parameter": 13, "range": 4.5, "arc": 100}
+      ]
+    },
+    {
+      "entity_id": "cataclysm:ignis",
+      "owner_class": "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignis_Entity",
+      "method": "AreaAttack",
+      "status": "resolved_symbolic",
+      "formula": "attack_damage * damage_parameter + target_max_health * hpdamage_parameter",
+      "observed_parameter_pairs": [[0.4, 0.03], [0.75, 0.05], [1.0, 0.05], [1.0, 0.06], [1.0, 0.1], [1.1, 0.1], [1.2, 0.08], [1.25, 0.1], [1.5, 0.15], [2.0, 0.25]],
+      "notes": "Pairs are exact call-site damage/hpdamage arguments; geometry, shield break, fire, brand, healing and airborne parameters remain attached to each call site."
+    },
+    {
+      "entity_id": "cataclysm:ignis",
+      "owner_class": "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignis_Entity",
+      "method": "BodyCheckAttack",
+      "status": "resolved_symbolic",
+      "formula": "attack_damage * damage_parameter + target_max_health * hpdamage_parameter"
+    },
+    {
+      "entity_id": "cataclysm:ignis",
+      "owner_class": "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignis_Entity",
+      "method": "Poke",
+      "status": "resolved_symbolic",
+      "formula": "attack_damage + 0.10 * target_max_health"
+    },
+    {
+      "entity_id": "cataclysm:ignis",
+      "owner_class": "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignis_Entity",
+      "method": "m_19956_",
+      "status": "resolved_symbolic_hit_schedule",
+      "formula": "4 + 0.02 * target_max_health per accepted mounted-target application",
+      "schedule": "(animation_tick - 10) % 4 == 0; the target is dismounted at tick 46",
+      "maximum_scheduled_applications": 10,
+      "notes": "Accepted hit count can be lower because hurt invulnerability and state changes remain runtime-owned."
+    },
+    {
+      "entity_id": "cataclysm:maledictus",
+      "owner_class": "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Maledictus.Maledictus_Entity",
+      "method": "ComboAreaAttack",
+      "status": "resolved_symbolic_config",
+      "formula": "DMG * damage_parameter + min(DMG * damage_parameter, target_max_health * hpdamage_parameter)",
+      "observed_call": {"damage_parameter": 1.2, "hpdamage_parameter": "CMCommonConfig.Maledictus.HpDamage", "shield_break_ticks": 200}
+    },
+    {
+      "entity_id": "cataclysm:maledictus",
+      "owner_class": "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Maledictus.Maledictus_Entity",
+      "method": "Grab",
+      "status": "resolved_symbolic",
+      "formula": "DMG * damage_parameter + min(DMG * damage_parameter, target_max_health * hpdamage_parameter)",
+      "observed_call": {"damage_parameter": 0.2, "hpdamage_parameter": 0.0}
+    },
+    {
+      "entity_id": "cataclysm:the_leviathan",
+      "owner_class": "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Leviathan.The_Leviathan_Entity",
+      "method": "biteattack",
+      "status": "resolved_symbolic",
+      "formula": "attack_damage + 0.10 * target_max_health"
+    }
+  ],
+  "boundaries": {
+    "frequency": "A trigger tick or modulo schedule proves when code attempts an application, not that the target is in the hitbox or that hurt accepts every attempt.",
+    "scaling": "JEM registered-boss outgoing scaling is applied after the native expression. Profile attack-damage attributes replace the native base where the profile supplies a tier-specific value.",
+    "raid": "Raid skips profile special_damage_multiplier and applies its own raid factor; hosted owned attacks apply the final 0.88 factor."
+  }
+}

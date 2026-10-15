@@ -1,31 +1,59 @@
-# Боссы — Phase 3
+# Боссы — Stage 3.5B
 
-`Catalog/views/power/bosses.json` содержит 61 босса: 56 зарегистрированных JEM-профилей и 5 дополнительных native boss candidates. Учтены Legendary Monsters, Cataclysm, Bosses'Rise (`block_factorys_bosses`), Luminous Beasts, Luminous Nether, Aquamirae, Alex's Caves, Iron's Spells и vanilla bosses.
+`Catalog/views/power/bosses.json` содержит 61 босса: 56 зарегистрированных JEM-профилей и 5 дополнительных native boss candidates. Учтены Legendary Monsters, Cataclysm, Bosses'Rise (`block_factorys_bosses`), Luminous Beasts, Luminous Nether, Aquamirae, Alex's Caves, Iron's Spells, Companions и vanilla bosses.
 
-Для каждой из 61 записи найден exact-version owner class либо официальный mapped Minecraft/Forge class. Stage 3 идёт глубже прежних 11 channel-сигналов: ограниченно следует только реально вызванным или созданным goal/projectile/effect классам и сохраняет конкретные методы с `hurt`, projectile damage, explosion, effect, healing и cooldown sinks. Class literal для AI target, cast/`instanceof` и registry field не дают права импортировать методы чужой сущности. Offensive attack records отделены от recovery/support methods. `not_observed` означает только отсутствие сигнала в доказанной цепочке, а не отсутствие атаки.
+Для всех 61 найден exact-version owner class либо официальный mapped Minecraft/Forge class. Исправленный extractor понимает как mapped `AttributeSupplier.Builder.add`, так и реальный Forge 1.20.1 вызов `m_22268_`: exact native attributes теперь есть у 60/61 боссов, а `ATTACK_DAMAGE` — у 56/61.
 
-## Состав boss attack table
+## Исправленный denominator
 
-| Поле | Что хранится | Когда считается числом |
-|---|---|---|
-| `native_attributes` | HP, movement, attack, armor, toughness, knockback из attribute builder | Literal, привязанный к конкретному attribute |
-| `attack_methods` | Owner class, точный method declaration, calls, sinks, constants, config references | Только доказанный literal sink argument либо безопасно свёрнутая формула |
-| `support_and_recovery_methods` | Healing/cooldown/служебный износ вне offensive denominator | Не увеличивает счётчик boss attacks |
-| `delegated_classes` | Прослеженные goal/projectile/effect owners | Сам факт класса не означает готовый урон |
-| `resolution` | Число traced/fully numeric attacks | Частота и recovery остаются blockers, пока scheduler их не доказывает |
+Прежние `231 offensive methods` включали 76 обработчиков входящего урона: `m_6469_`/`hurt`, `reallyHurt`, `processHurt`, `hurtParts` и `applyPartDamage`. Их вызов `super.hurt(...)` ошибочно считался атакой босса. Stage 3.5B сохраняет эти методы в `inbound_damage_handlers`, но исключает из offensive denominator.
 
-Текущий denominator: 231 offensive method records, из них 14 literal-numeric; две дополнительные combat records относятся к support/recovery и не считаются атаками. Это покрытие методов, а не обещание, что все возможные AI transitions каждой сущности уже перечислены.
+| Метрика | Stage 3 | Stage 3.5B |
+|---|---:|---:|
+| Boss records | 61 | 61 |
+| Exact owner classes | 61 | 61 |
+| Bosses с exact native attributes | 2 | 60 |
+| Bosses с exact native base melee | 0 отдельных каналов | 56 |
+| Traced offensive special methods | 231, включая inbound false positives | 155 |
+| Resolved special formulas | 14 | 22 |
+| Inbound handlers в offensive denominator | 76 | 0 |
+| Registered bosses с absolute scaling table | multiplier-only | 54/56 |
+| Absolute Tier/player/Raid melee rows | 0 | 3 240 |
 
-Карточка также хранит полный зарегистрированный JEM profile: native threat, T1–T5 attributes, special damage multiplier, damage/healing/stagger adapters и arena/anti-cheese ownership.
+`base_melee_channel` — доказанный `ATTACK_DAMAGE` attribute через inherited/native melee handling. Он не означает, что AI гарантированно попал, и не подменяет projectile/AoE damage.
 
-Общий damage chain для зарегистрированного не-event босса:
+## JEM scaling и абсолютный melee
 
-`native channel × (1 + 0.15 × world tier) × optional non-Raid special multiplier × hosted participant damage factor`
+Для каждого зарегистрированного босса и каждого World Tier используется tier-specific profile `minecraft:generic.attack_damage`, если профиль его задаёт; иначе exact native `ATTACK_DAMAGE`:
 
-Для attack, принадлежащей hosted boss, после этого применяется `×0.88`. Raid не получает profile `special_damage_multiplier`, но использует собственные raid/party factors.
+`base × (1 + 0.15 × tier) × non-Raid special × hosted damage factor × Raid factor × 0.88`
 
-`Catalog/views/power/calculations.json` содержит 56 полных таблиц JEM scaling (по одной на зарегистрированный профиль): Tier I–V × 1–6 игроков × обычный hosted/Raid, а также 61 attack table. Scaling — точный множитель над native health/attack, но не подмена ещё не сведённой арифметики projectile/goal/effect.
+Raid пропускает profile `special_damage_multiplier`, но использует собственный raid factor. Каждая из 3 240 строк хранит raw damage и потерю HP против unarmored, full iron, full diamond, full netherite и full netherite Protection IV. Reference armor применяется только к обычному не-bypass DamageSource.
 
-Критический source finding: Frostbitten Golem имеет special multiplier `[2.7, 2.8, 3.2, 5.0, 5.0]`. Например, Tier V hosted на четырёх игроков вне Raid даёт owned attack `×9.625` от native; Raid в том же сценарии пропускает special и даёт `×4.8125`. Stage 3 это не меняет, только численно раскрывает существующую цепочку.
+Пример Frostbitten Golem с native melee `16`:
 
-Полный TTK/TTD не заявлен там, где native attack formula, частота, iframe или representative loadout ещё неизвестны. Для каждого такого поля `blockers.json` называет entity ID, owner class, candidate methods и объясняет, почему runtime observation требуется или не требуется.
+| Контекст | До защиты | Full netherite | Netherite Protection IV |
+|---|---:|---:|---:|
+| Tier I, 1 игрок, hosted | 43.7184 | 24.034068 | 8.652264 |
+| Tier V, 4 игрока, hosted non-Raid | 154 | 129.36 | 46.5696 |
+| Tier V, 4 игрока, Raid | 77 | 62.832 | 22.61952 |
+
+Это раскрывает прежнее абстрактное `×9.625`: для native melee оно действительно даёт `154` до защиты. Но другие Frostbitten attacks используют собственные параметры и не обязаны равняться melee attribute.
+
+## Закрытые специальные формулы
+
+- Frostbitten Golem `attackTargets`: `base = 14 × configured multiplier`; HARD `base−4`, NORMAL `base`, EASY `base+13`. В effective config multiplier равен `1.0`; нелогичный порядок difficulty находится в установленном коде и не исправлялся.
+- Frostbitten Golem `AreaAttack`: `damage_parameter × configured multiplier`; доказаны call variants `12` на animation tick 16 и `13` на ticks 18/12 с разными hitbox.
+- Ignis `AreaAttack`/`BodyCheckAttack`: `attack_damage × damage_parameter + target_max_health × hpdamage_parameter`. Exact call-site пары идут от `(0.4, 0.03)` до `(2.0, 0.25)`.
+- Ignis `Poke`: `attack_damage + 10% target max health`.
+- Ignis mounted sequence: `4 + 2% target max health` каждые 4 ticks начиная с tick 10; до dismount tick 46 планируется до 10 применений, но accepted hits зависят от iframe/state.
+- Maledictus `ComboAreaAttack`/`Grab`: `DMG × damage + min(DMG × damage, target max health × hpdamage)`; config HP term остаётся точным именованным input.
+- Leviathan bite: `attack_damage + 10% target max health`.
+
+Полные structured overrides находятся в `Catalog/power-sources/boss-combat-stage35b.json`; исходный bytecode evidence остаётся в `native-mechanics-phase3.json`.
+
+## Что всё ещё нельзя назвать DPS
+
+Для каждого босса остаётся frequency blocker. Animation tick или modulo schedule доказывает попытку атаки, но не вероятность выбора AI-ветки, положение цели, прерывание, успешность hitbox, iframe acceptance и смену цели в multiplayer. Поэтому Stage 3.5B не умножает один attack на теоретическое число тиков и не выдаёт scheduling upper bound за sustained DPS.
+
+Полный TTK/TTD также требует конкретный loadout, Resistance/absorption/shield, damage-type tags и runtime accepted-hit trace. Эти пробелы перечислены в `Catalog/views/power/blockers.json`; ни один nerf, buff, config override или gameplay patch не применён.

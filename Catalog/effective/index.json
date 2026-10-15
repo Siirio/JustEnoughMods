@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "65bded811c45bed8e79d972bd096846fddc23f10e014888caec266028d8c9765",
+  "change_records_sha256": "10c86e7ac4180769c2746082c530a7fbc7835cb094bda0dcb433c26f4a525f2f",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -124,7 +124,7 @@
     {
       "change_id": "atlas.power-system-analysis",
       "status": "active",
-      "summary": "Maintain a derived, non-runtime combat inventory with Stage 3.5A exact-version boss-reward weapon profiles plus registration factories, delegated combat methods, installed configuration evidence and numeric reference tables for items, bosses, spells and allies.",
+      "summary": "Maintain a derived, non-runtime combat inventory with Stage 3.5A boss-reward weapon profiles and Stage 3.5B exact-version boss attributes, corrected attack classification, special formulas and absolute JEM scaling tables plus registration factories, installed configuration evidence and numeric reference tables.",
       "record": "Catalog/changes/records/power-system-analysis.json",
       "selectors": [
         {
@@ -224,24 +224,26 @@
     }
   ],
   "source_fingerprints": {
-    "Catalog/generator/build_power_views.py": "e915d54301caf75bead732ade7b2346eadf37b08e33a9ec075ace4a153e09cca",
-    "Catalog/generator/extract_power_mechanics.py": "459944c742b2d2883bc6402ececaba31c17c1edab06766be3a3e063d3918f3ba",
+    "Catalog/generator/build_power_views.py": "618e97f5684f49b313e4bb21f20125016b7854162631bfdbd56728ed985450b8",
+    "Catalog/generator/extract_power_mechanics.py": "f60a7195bd1cf246783e0dbf276c0d5a5a08dcfc6959cca68dd141228ba818ee",
     "Catalog/generator/query_atlas.py": "cdca14d066ccd28d5098dfa17e9e0f5361fee62ae29dc7e684f7ee40ecef13a7",
+    "Catalog/power-sources/boss-combat-stage35b.json": "4d39145bb6f7cb3dbbf814d1cc8068b062407a25afcba72774f7c89f5332c570",
     "Catalog/power-sources/boss-reward-weapons-stage35.json": "0093b10d2fa639e8f8895c2429f96fc6f7d1852cd5ff0a71144601b1387f8a81",
     "Catalog/power-sources/irons-spellbooks-3.15.6.json": "879cdad98ec1ec3f29030ed8673a79fc57629f33887c55d449ee1375b8545b3c",
-    "Catalog/power-sources/native-mechanics-phase3.json": "36a649c1487efa7b2e27c71e1bfdbcfee078a09ed5ccf31f7a7f8a7d02625aec",
-    "Catalog/views/power/blockers.json": "470915682d4a7a75c8ffefe2cc58c63d6b2a875468019c0c7f7a17ac96437d33",
-    "Catalog/views/power/durability.json": "a3c8450bacca8e288c137ab88b20ec0742cced93089a81fcad54f7aa9600e34d",
-    "Catalog/views/power/power-ladder.json": "23d7b09384515296d33bc3c909d4fdd26567491e67ade76377cbf5b70bd562ad",
+    "Catalog/power-sources/native-mechanics-phase3.json": "94f9dea2e557dffe2812134af68b724ab150741527ad713c1e6da14dcd5485bd",
+    "Catalog/views/power/blockers.json": "68679ddf00b25a3e64531c121272aff4c7177314628154bd0ad7a14562353a88",
+    "Catalog/views/power/durability.json": "fa505e267a2bce51d273f362a9ae3a97ec36bdef726d40e4c2d41c8b47d7271d",
+    "Catalog/views/power/power-ladder.json": "b71974e69c6ec1f5316cbae81af77fc0ff776ba1d061a81798ad276de6144061",
     "Client/ManagedPack/config/irons_spellbooks-client.toml": "1f2f0ebdd83a01b9a8452fd08ac5029fa1f11eb0ffaa18e38c5fe11246e42245",
     "Docs/power-system/Allies.md": "829e010d57941891c31134a0707b3e74f2f6d943f9c57325f4f903c341ed9875",
     "Docs/power-system/Armor.md": "3b4aa27f324ff99cbccf95eaf67416adb77df8e65e6bae7be5abf7fef1c59b4c",
-    "Docs/power-system/Balance.md": "6b5bb380d3c11d2105e196ff24de3f83959d68eb641e85bc03387f1c7653bb5e",
-    "Docs/power-system/Bosses.md": "8bd1a1e570a89da8929261999ce81f0d8c7be9814c34cc0f0fd1f0ff09e70f7b",
-    "Docs/power-system/COVERAGE.md": "76e51ae10d2582b9b9d55dca87d2bddfd02368752da43f62e470dcae8184cfe8",
+    "Docs/power-system/Balance.md": "d89cd990cdc639a560b3c6e9515d3c6e0ea5e35b33f4a00de4d94c6513418474",
+    "Docs/power-system/Bosses.md": "2fb830b190c2fcf821a5c57cb355ede5a76142a5a2a344a10da9c02577a2199b",
+    "Docs/power-system/COVERAGE.md": "853df03ad20265e019821fd2d096fa53ba99f0f8644312d365b1f32f565d6a90",
+    "Docs/power-system/FORMULAS.md": "b9e07cc0e4fd57bf866177bf69efcecdfe8434f486313d1c0e68d943607d91cc",
     "Docs/power-system/Mobs.md": "1b49e8f87bac426bd4025771590075cea6293decf08adfa1dec5f656a8f0527f",
-    "Docs/power-system/NUMERIC_TABLES.md": "e5a717574c2e0995b36677949a6543ebe3ad0cb8468429d03b5e2fb03dd3e399",
-    "Docs/power-system/README.md": "551a6b29be4c68cbc292f693c23fdc0512814089f5388974dedaeb90f7344cd8",
+    "Docs/power-system/NUMERIC_TABLES.md": "1db5cdaa98e767f22d20e465a516a8fd387bd30cfceb66ef815e1b994670a8da",
+    "Docs/power-system/README.md": "3e594f1826175be40e35ca0d224c005274f40dffdd4793d82e8005130d47258b",
     "Docs/power-system/Weapons.md": "c63a055513709e21af477ec465fcb28941255999d571907d27c34100d534f0e7",
     "Docs/smp-gui/README.md": "36f7d7156469ea7399d5495564531bd6dfd1777b405d8d9c98bd0a1fbfb1676e",
     "Mods/JEMCompat/build.gradle": "7b79f9161e4116f9e45f5e7ecb230252158b1dd696a4b0a990cfe6b80e131e02",

@@ -7,7 +7,7 @@
   ],
   "precedence": {"layer": "derived_analysis", "priority": 900, "overrides": []},
   "change": {
-    "summary": "Maintain a derived, non-runtime combat inventory with Stage 3.5A exact-version boss-reward weapon profiles plus registration factories, delegated combat methods, installed configuration evidence and numeric reference tables for items, bosses, spells and allies.",
+    "summary": "Maintain a derived, non-runtime combat inventory with Stage 3.5A boss-reward weapon profiles and Stage 3.5B exact-version boss attributes, corrected attack classification, special formulas and absolute JEM scaling tables plus registration factories, installed configuration evidence and numeric reference tables.",
     "modifiers": [
       {
         "property": "documentation.combat_power_expression",
@@ -28,6 +28,7 @@
       "Catalog/power-sources/irons-spellbooks-3.15.6.json",
       "Catalog/power-sources/native-mechanics-phase3.json",
       "Catalog/power-sources/boss-reward-weapons-stage35.json",
+      "Catalog/power-sources/boss-combat-stage35b.json",
       "Catalog/views/power/blockers.json",
       "Catalog/views/power/durability.json",
       "Catalog/views/power/power-ladder.json",
@@ -39,6 +40,7 @@
       "Docs/power-system/Allies.md",
       "Docs/power-system/Balance.md",
       "Docs/power-system/COVERAGE.md",
+      "Docs/power-system/FORMULAS.md",
       "Docs/power-system/NUMERIC_TABLES.md"
     ]
   },
@@ -121,6 +123,25 @@
         "Docs/power-system/Weapons.md",
         "Docs/power-system/COVERAGE.md"
       ]
+    },
+    {
+      "date": "2026-10-15",
+      "commit": "SELF",
+      "action": "stage_3_5b_boss_combat_resolution",
+      "summary": "Recovered exact native attributes and base melee for the 61-boss inventory, removed inbound hurt handlers from the offensive denominator, attached source-proven percent-health/config formulas, and generated absolute Tier/player/hosted/Raid melee plus reference-mitigation rows without changing gameplay.",
+      "source_files": [
+        "Catalog/generator/extract_power_mechanics.py",
+        "Catalog/generator/build_power_views.py",
+        "Catalog/power-sources/native-mechanics-phase3.json",
+        "Catalog/power-sources/boss-combat-stage35b.json",
+        "Catalog/views/power/bosses.json",
+        "Catalog/views/power/calculations.json",
+        "Catalog/views/power/blockers.json",
+        "Docs/power-system/Bosses.md",
+        "Docs/power-system/COVERAGE.md",
+        "Docs/power-system/FORMULAS.md",
+        "Docs/power-system/NUMERIC_TABLES.md"
+      ]
     }
   ],
   "impacts": {
@@ -129,6 +150,7 @@
     "notes": ["No Java, Mixin, config, datapack, installed JAR or runtime behavior is changed."],
     "unresolved": [
       "For the 36 boss rewards, remaining gaps are named capability precedence, external/custom animation phases, projectile overlap, iframe acceptance and branched entity scheduling; 31 require controlled runtime observation that was not authorized in Stage 3.5A.",
+      "For bosses, 133 special formulas, 61 AI/frequency fields and 5 base-melee fields remain named blockers; trigger ticks alone are not treated as accepted-hit frequency or sustained DPS.",
       "Outside the 36-weapon scope, branched projectile/goal/effect formulas, runtime ItemStack attributes, target mitigation, complete Epic Fight/Nightfall attack phases and the exact reported beam ItemStack remain explicitly unresolved with per-field named blockers.",
       "Stage 3 calculates only fully traceable layers; runtime balance changes remain reserved for later approved phases."
     ]

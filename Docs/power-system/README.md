@@ -10,6 +10,7 @@ From the repository root:
 
 ```text
 python Catalog/generator/extract_power_mechanics.py
+python Catalog/generator/extract_power_mechanics.py --bosses-only
 python Catalog/generator/build_power_views.py
 python Catalog/generator/query_atlas.py power minecraft:diamond_sword
 python Catalog/generator/query_atlas.py power "Ray of Siphoning"
@@ -17,7 +18,7 @@ python Catalog/generator/query_atlas.py power minecraft:wither
 python Catalog/generator/query_atlas.py power recruit
 ```
 
-Run the exact-artifact extractor first when installed JARs, native registrations or effective TOML configuration changes. It resolves `DeferredRegister` suppliers through the JVM `BootstrapMethods` table, follows a bounded same-artifact call graph into projectile/goal/effect owners, reads active data-driven combat providers and records only formulas/numeric mechanics it can trace without guessing. The view generator then composes that evidence with JEM rules and Stage 3 reference calculations.
+Run the exact-artifact extractor first when installed JARs, native registrations or effective TOML configuration changes. Use `--bosses-only` when only boss owner/attribute/combat evidence needs refreshing; it preserves the existing weapon, spell and ally sections. The extractor resolves `DeferredRegister` suppliers through the JVM `BootstrapMethods` table, follows a bounded same-artifact call graph into projectile/goal/effect owners, reads active data-driven combat providers and records only formulas/numeric mechanics it can trace without guessing. The view generator then composes that evidence with JEM rules and Stage 3.5 reference calculations.
 
 Each result follows the same chain:
 
@@ -32,7 +33,7 @@ An exact registry/spell ID is preferred. A display-name fragment is accepted and
 - `Balance.md`: confirmed source findings and the boundary before numeric balancing.
 - `FORMULAS.md`: source-traced composition rules.
 - `SCENARIOS.md`: the 16 reference scenarios and what can currently be calculated.
-- `NUMERIC_TABLES.md`: Phase 3 numeric-table semantics, denominators and calculation boundaries.
+- `NUMERIC_TABLES.md`: Stage 3.5 numeric-table semantics, denominators and calculation boundaries.
 - `COVERAGE.md`: honest denominators and unresolved evidence.
 - `CASE_STUDIES.md`: beam investigation and compact before/after decisions.
 - `Catalog/power-sources/`: small exact-version evidence overlays where registry JSON cannot express bytecode-only facts. They cite artifact hashes and are not gameplay owners.

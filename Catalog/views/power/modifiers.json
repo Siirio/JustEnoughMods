@@ -1,7 +1,7 @@
 {
   "schema_version": 4,
   "view": "shared_modifiers",
-  "snapshot_sha": "41b53dbe6373d41eb86ae181eccd2379818b36dd",
+  "snapshot_sha": "f4385fbd8d694b75b7fd0c6a9d06f01959ebe0b7",
   "generation": {
     "generator": "Catalog/generator/build_power_views.py",
     "method": "offline derived evidence",
@@ -45,6 +45,59 @@
       "source_files": [
         "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java"
+      ]
+    },
+    {
+      "id": "professions.native-skills-and-spell-combat",
+      "status": "active",
+      "selectors": [
+        {
+          "type": "category",
+          "registry": "*",
+          "value": "profession_progression"
+        }
+      ],
+      "modifiers": [
+        {
+          "property": "professions.progression_owner",
+          "operation": "replace",
+          "before": {
+            "owner": "JEMProfessions",
+            "ui": "custom JEM tree",
+            "state": "JEM XP and toggles"
+          },
+          "after": {
+            "owner": "Pufferfish's Skills 0.19.2",
+            "ui": "native skill screen",
+            "state": "native category XP, levels, points and unlocked skills"
+          },
+          "notes": "Legacy JEM XP and enabled nodes migrate once; audit IDs, discovery caps and cooldown evidence remain in JEMProfessions. Only effects backed by current implementation are exposed as skills."
+        },
+        {
+          "property": "epic_fight.irons_spellbooks.integration",
+          "operation": "add",
+          "before": {
+            "enhanced_animations": false,
+            "epic_fight_spell_skill": false
+          },
+          "after": {
+            "enhanced_animations": "efiscompat 2.6.0",
+            "epic_fight_spell_skill": "efs_iss 1.0.3"
+          },
+          "notes": "Iron's first-person arms/items are disabled as required by the animation addon. The EFS ISS magic-sword skill can cast the selected spell and reduce its level while cooling down; this native addon behavior is an explicit balance surface."
+        }
+      ],
+      "owner": "Pufferfish's Skills, JEMProfessions, EFIS Compat and EFS ISS",
+      "source_files": [
+        "Mods/JEMProfessions/**",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/**",
+        "Mods/JEMServer/build.gradle",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Profiles.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventCommands.java",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/**",
+        "Client/ManagedPack/config/irons_spellbooks-client.toml",
+        "tools/generate_profession_skills.py"
       ]
     },
     {

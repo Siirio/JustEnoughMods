@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-15 — Power System Stage 3.5B boss combat resolution
+
+- User request and supplied direction: continue after pushed Stage 3.5A with boss attacks/combat across the full current 61-boss inventory, compose World Tier, player-count, hosted/Raid and native mod mechanics, and preserve Stage 4/5 as later review and approved gameplay work.
+- `Bug / Catalog offline analysis / native boss attributes were nearly empty because the extractor recognized mapped AttributeSupplier.Builder.add but not Forge 1.20.1's obfuscated m_22268_ call / resolved in analysis`: boss-only exact-JAR extraction now handles both forms. Exact native attributes improve from 2/61 to 60/61 and exact native base melee is available for 56/61 bosses.
+- `Bug / Catalog offline analysis / 76 boss hurt, reallyHurt and related inbound-damage handlers were counted as offensive attacks merely because they called a hurt sink / resolved in analysis`: those methods remain visible as inbound evidence but are excluded from offense; the corrected special-method denominator is 155 rather than 231.
+- Codex evidence implementation: 54/56 registered JEM boss profiles now have 3,240 absolute Tier I-V x 1-6 player x hosted/Raid melee rows with five reference armor outcomes. Resolved special formulas increase from 14 to 22, including Frostbitten Golem config/difficulty and AoE branches, Ignis attack-plus-target-HP attacks and tick schedule, Maledictus capped HP term and Leviathan's 10% max-health bite. Together with 56 exact base-melee channels, these are per-hit facts, not claimed DPS.
+- Balance boundary: no Java/Mixin/config/datapack/JAR/gameplay value, world, client package, MineRENT deployment or release baseline was changed. AI branch frequency, hitbox contact, interruption and iframe acceptance remain explicit runtime blockers; Stage 4 comparison and Stage 5 nerfs/buffs were not started.
+
 ## 2026-10-14 — `/smp`, Market and native interface regressions corrected
 
 - User runtime report and correction: `/smp` did not open, the Global Market was absent from the reachable SMP UI, Xaero still behaved as a JEM-overhauled screen, and vanilla villager trading still had JEM-owned presentation. CoffeeGUI is explicitly retained; it was not the unwanted owner.

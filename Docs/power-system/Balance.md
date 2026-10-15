@@ -1,4 +1,4 @@
-# Граница баланса после Stage 3.5A
+# Граница баланса после Stage 3.5B
 
 Phase 3 — это доказанные итоговые числа там, где цепочка уже полна, и конкретная символическая граница во всех остальных местах. Никакой auto-nerf, datapack override, config change или Java balance patch не применён.
 
@@ -12,6 +12,16 @@ Stage 3.5A выявил новые review-only outliers среди 36 награ
 6. `Chorus Blade` перебирает всех living entities в радиусе 8, наносит каждому 8 и телепортирует игрока внутри того же цикла, поэтому массовая цель меняет не только total damage, но и позицию следующих итераций.
 
 Это кандидаты Stage 4, но в текущей задаче не применено ни одного нерфа, durability patch или capability override.
+
+Stage 3.5B добавляет boss-side review signals без изменения runtime:
+
+1. Frostbitten Golem имеет native melee `16`; существующая T5/4-player hosted non-Raid композиция `×9.625` превращает его в `154` до защиты, `129.36` против full netherite и `46.5696` потерянных HP против full netherite Protection IV.
+2. Его отдельный `attackTargets` использует counter-intuitive difficulty branch: при effective multiplier `1.0` HARD наносит `10`, NORMAL `14`, EASY `27` до JEM scaling. Это точный код installed JAR, а не предложение баланса.
+3. Ignis имеет special attacks до `2.0 × attack_damage + 25% target max health`; Poke и Leviathan bite отдельно используют `attack_damage + 10% target max health`.
+4. Maledictus ограничивает percent-health добавку через `min(base term, target max health × hp term)`, поэтому это не неограниченный чистый процент.
+5. Прежний показатель `231 boss attacks` был завышен 76 inbound damage handlers. Исправленный denominator — 155 special methods плюс 56 отдельных base-melee channels.
+
+Stage 4 должен сравнивать эти выражения на одинаковых целях и отдельно учитывать damage-type bypasses. Частота применения и accepted-hit uptime остаются runtime inputs, поэтому even exact per-hit formula ещё не является DPS.
 
 Подтверждены пять source findings в `Catalog/views/power/findings.json`:
 
@@ -36,8 +46,8 @@ Stage 3 теперь хранит четыре разные вещи, котор
 
 | Сигнал | Доказанный результат | Что пока нельзя заключить |
 |---|---|---|
-| Frostbitten Golem, T5, 4 игрока, hosted non-Raid | Owned attack `×9.625` от native | TTK/one-shot без exact native attack и защиты цели |
-| Тот же профиль в Raid | `×4.8125`, потому что profile special не применяется | Что Raid всегда легче: reinforcement/frequency остаются отдельными |
+| Frostbitten Golem, T5, 4 игрока, hosted non-Raid | Native melee `16` → `154` raw → `46.5696` HP через netherite Protection IV reference | TTK без AI frequency, Resistance, absorption и accepted-hit trace |
+| Тот же профиль в Raid | Native melee `16` → `77` raw → `22.61952` HP через тот же reference target | Что Raid всегда легче: reinforcements/frequency остаются отдельными |
 | Enderitium Axe | Exact factory `5 + tier bonus 3.5`, то есть addition `8.5`; player basic total `9.5`, speed addition `-3.0` | Общую силу без Epic Fight/special/acquisition |
 | Enderitium Sword | Exact factory `3 + tier bonus 3.5`, addition `6.5`; player basic total `7.5`, speed addition `-2.4` | Что топор лучше меча во всех сценариях |
 | Incinerator | Addition `13`, speed `-2.6`, reach `+2`, установленный cooldown `400 ticks` | Полный flame-strike burst, пока его разветвлённая damage/HP-damage цепочка не сведена безопасно |

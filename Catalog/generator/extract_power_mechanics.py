@@ -5,6 +5,7 @@ import hashlib
 import json
 import re
 import subprocess
+import sys
 import tomllib
 import zipfile
 from collections import Counter, defaultdict
@@ -655,7 +656,12 @@ def entity_attribute_defaults(owner_texts: dict[str, str]) -> list[dict[str, Any
             if semantic is None:
                 continue
             add_index = next(
-                (position for position in range(index + 1, min(len(lines), index + 8)) if "AttributeSupplier$Builder" in lines[position] and ".add:" in lines[position]),
+                (
+                    position
+                    for position in range(index + 1, min(len(lines), index + 8))
+                    if "AttributeSupplier$Builder" in lines[position]
+                    and any(marker in lines[position] for marker in (".add:", ".m_22268_:"))
+                ),
                 None,
             )
             if add_index is None:
@@ -1484,6 +1490,19 @@ def data_driven_combat() -> dict[str, Any]:
 
 def main() -> int:
     config_values = installed_config_values()
+    if "--bosses-only" in sys.argv[1:]:
+        existing = load(OUTPUT)
+        bosses, boss_artifacts = boss_evidence(config_values)
+        existing["bosses"] = bosses
+        existing.setdefault("artifacts", {})["boss_mods"] = boss_artifacts
+        existing["installed_config_value_count"] = len(config_values)
+        OUTPUT.write_text(json.dumps(existing, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        print(json.dumps({
+            "output": OUTPUT.relative_to(ROOT).as_posix(),
+            "mode": "bosses-only",
+            "bosses": len(bosses),
+        }, ensure_ascii=False, indent=2))
+        return 0
     spells, spell_artifact = spell_evidence(config_values)
     bosses, boss_artifacts = boss_evidence(config_values)
     allies = ally_evidence(config_values)

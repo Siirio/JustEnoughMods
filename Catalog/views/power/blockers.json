@@ -1,7 +1,7 @@
 {
   "schema_version": 4,
   "view": "phase_3_named_research_blockers",
-  "snapshot_sha": "41b53dbe6373d41eb86ae181eccd2379818b36dd",
+  "snapshot_sha": "f4385fbd8d694b75b7fd0c6a9d06f01959ebe0b7",
   "generation": {
     "generator": "Catalog/generator/build_power_views.py",
     "method": "offline derived evidence",
@@ -1896,36 +1896,33 @@
         "com.github.alexmodguy.alexscaves.server.entity.living.LuxtructosaurusEntity"
       ],
       "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "alexscaves:luxtructosaurus",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "com.github.alexmodguy.alexscaves.server.entity.living.SauropodBaseEntity"
-      ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "alexscaves:luxtructosaurus",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "com.github.alexmodguy.alexscaves.server.entity.living.LuxtructosaurusEntity"
-      ],
-      "candidate_methods": [
         "scareMobs"
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
       "runtime_observation_required": false
+    },
+    {
+      "id": "alexscaves:luxtructosaurus",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
+      "owner_classes": [
+        "com.github.alexmodguy.alexscaves.server.entity.living.LuxtructosaurusEntity",
+        "com.github.alexmodguy.alexscaves.server.entity.living.LuxtructosaurusEntity$1",
+        "com.github.alexmodguy.alexscaves.server.entity.ai.LookForwardsGoal",
+        "com.github.alexmodguy.alexscaves.server.entity.ai.LuxtructosaurusMeleeGoal",
+        "com.github.alexmodguy.alexscaves.server.entity.ai.MobTarget3DGoal",
+        "com.github.alexmodguy.alexscaves.server.entity.item.TephraEntity",
+        "com.github.alexmodguy.alexscaves.server.entity.living.SauropodBaseEntity",
+        "com.github.alexmodguy.alexscaves.server.entity.living.SauropodPartEntity",
+        "com.github.alexmodguy.alexscaves.server.entity.util.ACBossEvent"
+      ],
+      "candidate_methods": [
+        "scareMobs",
+        "explode",
+        "hurtEntitiesAround"
+      ],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "alexscaves:primordial_helmet",
@@ -3500,19 +3497,6 @@
         "dev.obscuria.aquamirae.common.entity.CaptainCorneliaBoss"
       ],
       "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "aquamirae:captain_cornelia",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "dev.obscuria.aquamirae.common.entity.CaptainCorneliaBoss"
-      ],
-      "candidate_methods": [
         "m_6518_"
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
@@ -3530,6 +3514,45 @@
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
       "runtime_observation_required": false
+    },
+    {
+      "id": "aquamirae:captain_cornelia",
+      "kind": "boss_stage_3_5b_missing_base_melee",
+      "missing_field": "native_base_melee_damage",
+      "owner_classes": [
+        "dev.obscuria.aquamirae.common.entity.CaptainCorneliaBoss",
+        "dev.obscuria.aquamirae.common.entity.CaptainCorneliaBoss$WeaponOption",
+        "dev.obscuria.aquamirae.common.entity.CaptainCorneliaBoss$WeaponLoadout",
+        "dev.obscuria.aquamirae.common.entity.CaptainCorneliaBoss$LoadoutContext"
+      ],
+      "candidate_methods": [
+        "createAttributes",
+        "inherited doHurtTarget"
+      ],
+      "why_unresolved": "No exact ATTACK_DAMAGE value was recovered from the matched attribute builder; a ranged-only boss may legitimately have no meaningful melee channel.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "aquamirae:captain_cornelia",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
+      "owner_classes": [
+        "dev.obscuria.aquamirae.common.entity.CaptainCorneliaBoss",
+        "dev.obscuria.aquamirae.common.entity.CaptainCorneliaBoss$WeaponOption",
+        "dev.obscuria.aquamirae.common.entity.CaptainCorneliaBoss$WeaponLoadout",
+        "dev.obscuria.aquamirae.common.entity.CaptainCorneliaBoss$LoadoutContext",
+        "dev.obscuria.aquamirae.common.deprecated.EntityUtils",
+        "dev.obscuria.aquamirae.common.entity.ai.GenericMeleeAttackGoal",
+        "dev.obscuria.aquamirae.common.entity.animation.AnimController",
+        "dev.obscuria.aquamirae.common.entity.animation.AnimState"
+      ],
+      "candidate_methods": [
+        "m_6075_",
+        "rage",
+        "m_6518_"
+      ],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "aquamirae:dagger_of_greed",
@@ -5334,16 +5357,26 @@
     },
     {
       "id": "block_factorys_bosses:infernal_dragon",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.unusual.block_factorys_bosses.entity.boss.dragon.boss.InfernalDragonEntity"
+        "net.unusual.block_factorys_bosses.entity.boss.dragon.boss.InfernalDragonEntity",
+        "net.unusual.block_factorys_bosses.entity.boss.dragon.boss.InfernalDragonEntity$1",
+        "net.unusual.block_factorys_bosses.entity.boss.dragon.boss.InfernalDragonEntity$2",
+        "net.unusual.block_factorys_bosses.entity.boss.dragon.boss.InfernalDragonEntity$3",
+        "net.unusual.block_factorys_bosses.entity.boss.dragon.boss.InfernalDragonEntity$4",
+        "net.unusual.block_factorys_bosses.entity.boss.dragon.boss.InfernalDragonEntity$5",
+        "net.unusual.block_factorys_bosses.entity.boss.dragon.boss.InfernalDragonEntity$6",
+        "net.unusual.block_factorys_bosses.entity.boss.dragon.boss.InfernalDragonEntity$CircleFlightGoal",
+        "net.unusual.block_factorys_bosses.entity.boss.dragon.boss.InfernalDragonEntity$DirectMoveToTargetGoal",
+        "net.unusual.block_factorys_bosses.entity.boss.dragon.boss.InfernalDragonEntity$GroundFollowGoal"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "lambda$spawnFireBreath$5",
+        "lambda$onCinematicStarted$2"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "block_factorys_bosses:knight_boots",
@@ -5745,29 +5778,23 @@
     },
     {
       "id": "block_factorys_bosses:kraken",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.unusual.block_factorys_bosses.entity.boss.kraken.KrakenEntity"
-      ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "block_factorys_bosses:kraken",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
+        "net.unusual.block_factorys_bosses.entity.boss.kraken.KrakenEntity",
+        "net.unusual.block_factorys_bosses.entity.boss.kraken.KrakenEntity$1",
+        "net.unusual.block_factorys_bosses.entity.boss.kraken.KrakenEntity$TentacleDefinition",
+        "net.unusual.block_factorys_bosses.entity.boss.kraken.KrakenEntity$TentacleRespawnTimer",
+        "net.unusual.block_factorys_bosses.entity.boss.AbstractStateBossEntity",
+        "net.unusual.block_factorys_bosses.entity.boss.kraken.KrakenCinematicEntity",
         "net.unusual.block_factorys_bosses.entity.boss.kraken.KrakenTentacleEntity"
       ],
       "candidate_methods": [
-        "reallyHurt"
+        "attackEntity",
+        "attackEntityWithSlam"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "block_factorys_bosses:kraken_trident",
@@ -5888,16 +5915,26 @@
     },
     {
       "id": "block_factorys_bosses:sandworm",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.unusual.block_factorys_bosses.entity.boss.sandworm.SandwormEntity"
+        "net.unusual.block_factorys_bosses.entity.boss.sandworm.SandwormEntity",
+        "net.unusual.block_factorys_bosses.entity.boss.sandworm.SandwormEntity$1",
+        "net.unusual.block_factorys_bosses.entity.boss.sandworm.SandwormEntity$LineCollision",
+        "net.unusual.block_factorys_bosses.entity.boss.sandworm.SandwormEntity$PartCollision",
+        "net.unusual.block_factorys_bosses.entity.boss.AbstractStateBossEntity",
+        "net.unusual.block_factorys_bosses.entity.boss.part.AbstractGeoEntityPart",
+        "net.unusual.block_factorys_bosses.entity.boss.sandworm.SandwormEntity$SandwormLookControl",
+        "net.unusual.block_factorys_bosses.entity.boss.sandworm.SandwormEntity$SandwormMoveControl",
+        "net.unusual.block_factorys_bosses.entity.boss.sandworm.SandwormEntity$SandwormPathNavigation",
+        "net.unusual.block_factorys_bosses.entity.boss.sandworm.SandwormEntityPart"
       ],
       "candidate_methods": [
-        "reallyHurt"
+        "lambda$static$33",
+        "attackEntity"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "block_factorys_bosses:sandworm_gauntlet",
@@ -5926,29 +5963,24 @@
     },
     {
       "id": "block_factorys_bosses:underworld_knight",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
+        "net.unusual.block_factorys_bosses.entity.boss.knight.UnderworldKnightEntity",
+        "net.unusual.block_factorys_bosses.entity.boss.knight.UnderworldKnightEntity$1",
+        "net.unusual.block_factorys_bosses.entity.boss.knight.UnderworldKnightEntity$2",
+        "net.unusual.block_factorys_bosses.entity.boss.AbstractBossEntity",
+        "net.unusual.block_factorys_bosses.entity.boss.AbstractBossEntity$Attack",
+        "net.unusual.block_factorys_bosses.entity.boss.AbstractBossEntity$AttackPattern",
+        "net.unusual.block_factorys_bosses.entity.boss.AbstractBossEntity$AttackPatternPool",
+        "net.unusual.block_factorys_bosses.entity.boss.AbstractBossEntity$State",
         "net.unusual.block_factorys_bosses.entity.boss.knight.KnightMarkEntity"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "attackEntity"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "block_factorys_bosses:underworld_knight",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "net.unusual.block_factorys_bosses.entity.boss.knight.UnderworldKnightEntity"
-      ],
-      "candidate_methods": [
-        "processHurt"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "block_factorys_bosses:undying_tentacle",
@@ -6111,19 +6143,6 @@
       "kind": "boss_attack_missing_formula",
       "missing_field": "attack_damage_formula",
       "owner_classes": [
-        "net.unusual.block_factorys_bosses.entity.boss.yeti.YetiEntity"
-      ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "block_factorys_bosses:yeti",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
         "net.unusual.block_factorys_bosses.entity.boss.yeti.GlacialShoveEntity"
       ],
       "candidate_methods": [
@@ -6144,6 +6163,36 @@
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
       "runtime_observation_required": false
+    },
+    {
+      "id": "block_factorys_bosses:yeti",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
+      "owner_classes": [
+        "net.unusual.block_factorys_bosses.entity.boss.yeti.YetiEntity",
+        "net.unusual.block_factorys_bosses.entity.boss.yeti.YetiEntity$1",
+        "net.unusual.block_factorys_bosses.entity.boss.yeti.YetiEntity$YetiState",
+        "net.unusual.block_factorys_bosses.entity.boss.yeti.YetiEntity$YetiEvents",
+        "net.unusual.block_factorys_bosses.entity.boss.AbstractBossEntity",
+        "net.unusual.block_factorys_bosses.entity.boss.AbstractBossEntity$State",
+        "net.unusual.block_factorys_bosses.entity.boss.yeti.GlacialShoveEntity",
+        "net.unusual.block_factorys_bosses.entity.boss.yeti.IceSpikeEntity",
+        "net.unusual.block_factorys_bosses.entity.boss.yeti.IceSpikeProjectileEntity",
+        "net.unusual.block_factorys_bosses.entity.boss.yeti.YetiEntity$YetiAttackPattern"
+      ],
+      "candidate_methods": [
+        "lambda$hurt$23",
+        "attackEntity",
+        "m_8119_",
+        "lambda$baseTick$3",
+        "lambda$baseTick$1",
+        "m_6123_",
+        "m_5790_",
+        "shoot",
+        "shoot"
+      ],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "brewery:brewfest_boots",
@@ -6290,23 +6339,36 @@
         "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Ancient_Remnant.Ancient_Remnant_Entity"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "spawnBlocks"
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
       "runtime_observation_required": false
     },
     {
       "id": "cataclysm:ancient_remnant",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Ancient_Remnant.Ancient_Remnant_Entity"
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Ancient_Remnant.Ancient_Remnant_Entity",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Ancient_Remnant.Ancient_Remnant_Entity$1",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Ancient_Remnant.Ancient_Remnant_Entity$2",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Ancient_Remnant.Ancient_Remnant_Entity$3",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Ancient_Remnant.Ancient_Remnant_Entity$4",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Ancient_Remnant.Ancient_Remnant_Entity$RemnantAttackGoal",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Ancient_Remnant.Ancient_Remnant_Entity$RemnantAttackModeGoal",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Ancient_Remnant.Ancient_Remnant_Entity$RemnantAwakenGoal",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Ancient_Remnant.Ancient_Remnant_Entity$RemnantChargeGoal",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Ancient_Remnant.Ancient_Remnant_Entity$RemnantDoNothingGoal"
       ],
       "candidate_methods": [
-        "spawnBlocks"
+        "Charge",
+        "AreaAttack",
+        "TailAreaAttack",
+        "spawnBlocks",
+        "EarthQuakeSummon"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "cataclysm:ancient_spear",
@@ -7054,23 +7116,35 @@
         "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.AcropolisMonsters.Clawdian_Entity"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "m_8107_"
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
       "runtime_observation_required": false
     },
     {
       "id": "cataclysm:clawdian",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.AcropolisMonsters.Clawdian_Entity"
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.AcropolisMonsters.Clawdian_Entity",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.AcropolisMonsters.Clawdian_Entity$1",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.AcropolisMonsters.Clawdian_Entity$2",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.AcropolisMonsters.Clawdian_Entity$3",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.AI.InternalMoveGoal",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.AcropolisMonsters.ClawdianMoveController",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.AcropolisMonsters.Clawdian_Entity$4",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.AcropolisMonsters.Clawdian_Entity$5",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.AcropolisMonsters.Clawdian_Entity$6",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.AcropolisMonsters.Clawdian_Entity$7"
       ],
       "candidate_methods": [
-        "m_8107_"
+        "m_8107_",
+        "BlockSmashDamage",
+        "AreaAttack",
+        "HoldAttack"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "cataclysm:coral_bardiche",
@@ -7712,36 +7786,27 @@
         "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ender_Golem_Entity"
       ],
       "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:ender_golem",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.LLibrary_Boss_Monster"
-      ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:ender_golem",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ender_Golem_Entity"
-      ],
-      "candidate_methods": [
         "m_8119_"
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
       "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:ender_golem",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
+      "owner_classes": [
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ender_Golem_Entity",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ender_Golem_Entity$AttackGoal",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ender_Golem_Entity$AwakenGoal",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.LLibrary_Boss_Monster"
+      ],
+      "candidate_methods": [
+        "m_8119_",
+        "EarthQuake"
+      ],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "cataclysm:ender_guardian",
@@ -7771,16 +7836,26 @@
     },
     {
       "id": "cataclysm:ender_guardian",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ender_Guardian_Entity"
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ender_Guardian_Entity",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ender_Guardian_Entity$1",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ender_Guardian_Entity$HugmeGoal",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ender_Guardian_Entity$RageUppercut",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.AI.AttackAnimationGoal1",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.AI.AttackAnimationGoal2",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.AI.AttackMoveGoal",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.AI.SimpleAnimationGoal",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ender_Guardian_Entity$PunchAttackGoal",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ender_Guardian_Entity$RocketPunchGoal"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "AreaAttack",
+        "MassDestruction"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "cataclysm:gauntlet_of_bulwark",
@@ -7826,46 +7901,7 @@
         "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignis_Entity"
       ],
       "candidate_methods": [
-        "AreaAttack"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:ignis",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignis_Entity"
-      ],
-      "candidate_methods": [
-        "BodyCheckAttack"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:ignis",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignis_Entity"
-      ],
-      "candidate_methods": [
         "Phase_Transition"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:ignis",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignis_Entity"
-      ],
-      "candidate_methods": [
-        "Poke"
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
       "runtime_observation_required": false
@@ -7904,62 +7940,39 @@
         "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignis_Entity"
       ],
       "candidate_methods": [
-        "m_19956_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:ignis",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignis_Entity"
-      ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:ignis",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignis_Entity"
-      ],
-      "candidate_methods": [
         "m_8107_"
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
       "runtime_observation_required": false
     },
     {
-      "id": "cataclysm:ignited_revenant",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "id": "cataclysm:ignis",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignited_Revenant_Entity"
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignis_Entity",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignis_Entity$1",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignis_Entity$Poked",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignis_Entity$Combo1",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.AI.AttackAniamtionGoal3",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.AI.AttackAnimationGoal1",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.AI.AttackAnimationGoal2",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.AI.AttackMoveGoal",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignis_Entity$Air_Smash",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignis_Entity$Body_Check_Attack"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "m_8107_",
+        "AreaAttack",
+        "BodyCheckAttack",
+        "Poke",
+        "m_19956_",
+        "ShieldSmashDamage",
+        "UltimateAttack",
+        "Phase_Transition"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:ignited_revenant",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.LLibrary_Boss_Monster"
-      ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "cataclysm:ignited_revenant",
@@ -7973,6 +7986,25 @@
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
       "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:ignited_revenant",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
+      "owner_classes": [
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignited_Revenant_Entity",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignited_Revenant_Entity$ShootGoal",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignited_Revenant_Entity$BoneStormGoal",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignited_Revenant_Entity$Ignited_Revenant_Goal",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.AI.AttackMoveGoal",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.AI.SimpleAnimationGoal",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.LLibrary_Boss_Monster"
+      ],
+      "candidate_methods": [
+        "m_8119_"
+      ],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "cataclysm:ignitium_boots",
@@ -8548,32 +8580,6 @@
         "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Maledictus.Maledictus_Entity"
       ],
       "candidate_methods": [
-        "ComboAreaAttack"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:maledictus",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Maledictus.Maledictus_Entity"
-      ],
-      "candidate_methods": [
-        "Grab"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:maledictus",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Maledictus.Maledictus_Entity"
-      ],
-      "candidate_methods": [
         "Rushattack"
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
@@ -8588,32 +8594,6 @@
       ],
       "candidate_methods": [
         "ShieldSmashDamage"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:maledictus",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Maledictus.Maledictus_Entity"
-      ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:maledictus",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.IABoss_monster"
-      ],
-      "candidate_methods": [
-        "m_6469_"
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
       "runtime_observation_required": false
@@ -8643,6 +8623,34 @@
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
       "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:maledictus",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
+      "owner_classes": [
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Maledictus.Maledictus_Entity",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Maledictus.Maledictus_Entity$1",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Maledictus.Maledictus_Entity$2",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Maledictus.Maledictus_Entity$3",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.IABoss_monster",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Maledictus.Maledictus_Entity$4",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Maledictus.Maledictus_Entity$5",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Maledictus.Maledictus_Entity$6",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Maledictus.Maledictus_Entity$7",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Maledictus.Maledictus_Entity$MaledictusChargeGoal"
+      ],
+      "candidate_methods": [
+        "m_8107_",
+        "ComboAreaAttack",
+        "Grab",
+        "ShieldSmashDamage",
+        "Rushattack",
+        "uppercut",
+        "AreaAttack"
+      ],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "cataclysm:meat_shredder",
@@ -8779,45 +8787,6 @@
         "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.NewNetherite_Monstrosity.Netherite_Monstrosity_Entity"
       ],
       "candidate_methods": [
-        "hurtParts"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:netherite_monstrosity",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.NewNetherite_Monstrosity.Netherite_Monstrosity_Entity"
-      ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:netherite_monstrosity",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.IABoss_monster"
-      ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:netherite_monstrosity",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.NewNetherite_Monstrosity.Netherite_Monstrosity_Entity"
-      ],
-      "candidate_methods": [
         "m_8107_"
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
@@ -8835,6 +8804,30 @@
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
       "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:netherite_monstrosity",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
+      "owner_classes": [
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.NewNetherite_Monstrosity.Netherite_Monstrosity_Entity",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.NewNetherite_Monstrosity.Netherite_Monstrosity_Entity$1",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.NewNetherite_Monstrosity.Netherite_Monstrosity_Entity$2",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.NewNetherite_Monstrosity.Netherite_Monstrosity_Entity$3",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.IABoss_monster",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.NewNetherite_Monstrosity.Netherite_Monstrosity_Entity$4",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.NewNetherite_Monstrosity.Netherite_Monstrosity_Entity$5",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.NewNetherite_Monstrosity.Netherite_Monstrosity_Entity$Flareshoot",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.NewNetherite_Monstrosity.Netherite_Monstrosity_Entity$Magmashoot",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.NewNetherite_Monstrosity.Netherite_Monstrosity_Entity$MonstrosityPhaseChangeGoal"
+      ],
+      "candidate_methods": [
+        "m_8107_",
+        "spawnBlocks",
+        "EarthQuake"
+      ],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "cataclysm:ring_of_grudged",
@@ -8995,32 +8988,6 @@
       "kind": "boss_attack_missing_formula",
       "missing_field": "attack_damage_formula",
       "owner_classes": [
-        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Scylla.Scylla_Entity"
-      ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:scylla",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.IABoss_monster"
-      ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:scylla",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
         "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Scylla.Scylla_Ceraunus_Entity"
       ],
       "candidate_methods": [
@@ -9041,6 +9008,34 @@
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
       "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:scylla",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
+      "owner_classes": [
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Scylla.Scylla_Entity",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Scylla.Scylla_Entity$1",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Scylla.Scylla_Entity$2",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Scylla.Scylla_Entity$3",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.IABoss_monster",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Scylla.Scylla_Ceraunus_Entity",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Scylla.Scylla_Entity$4",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Scylla.Scylla_Entity$5",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Scylla.Scylla_Entity$6",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Scylla.Scylla_Entity$7"
+      ],
+      "candidate_methods": [
+        "m_8107_",
+        "Whip",
+        "LightningAttack",
+        "SpinDamage",
+        "AreaAttack",
+        "m_5790_",
+        "m_8060_"
+      ],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "cataclysm:soul_render",
@@ -9194,29 +9189,25 @@
     },
     {
       "id": "cataclysm:the_harbinger",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Harbinger_Entity"
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Harbinger_Entity",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Harbinger_Entity$AwakenGoal",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Harbinger_Entity$ChargeGoal",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Harbinger_Entity$LaunchGoal",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.AI.AttackAniamtionGoal3",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.AI.SimpleAnimationGoal",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.LLibrary_Boss_Monster",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Harbinger_Entity$DeathLaserGoal",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Harbinger_Entity$MissileLaunchGoal",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Harbinger_Entity$MissileLaunchGoal2"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "blockbreak"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:the_harbinger",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.LLibrary_Boss_Monster"
-      ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "cataclysm:the_immolator",
@@ -9387,19 +9378,6 @@
         "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Leviathan.The_Leviathan_Entity"
       ],
       "candidate_methods": [
-        "biteattack"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:the_leviathan",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Leviathan.The_Leviathan_Entity"
-      ],
-      "candidate_methods": [
         "chargeDamage"
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
@@ -9414,32 +9392,6 @@
       ],
       "candidate_methods": [
         "m_5790_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:the_leviathan",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Leviathan.The_Leviathan_Entity"
-      ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "cataclysm:the_leviathan",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.LLibrary_Boss_Monster"
-      ],
-      "candidate_methods": [
-        "m_6469_"
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
       "runtime_observation_required": false
@@ -9469,6 +9421,37 @@
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
       "runtime_observation_required": false
+    },
+    {
+      "id": "cataclysm:the_leviathan",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
+      "owner_classes": [
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Leviathan.The_Leviathan_Entity",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Leviathan.The_Leviathan_Entity$AttackMode",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Leviathan.The_Leviathan_Entity$BiteHitResult",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Leviathan.The_Leviathan_Entity$LeviathanStunGoal",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.LLibrary_Boss_Monster",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Leviathan.Abyss_Orb_Entity",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Leviathan.Abyss_Portal_Entity",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Leviathan.Dimensional_Rift_Entity",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Leviathan.The_Leviathan_Entity$LeviathanAbyssBlastPortalAttackGoal",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Leviathan.The_Leviathan_Entity$LeviathanAbyssDimensionAttackGoal"
+      ],
+      "candidate_methods": [
+        "roarDarkness",
+        "TailWhips",
+        "chargeDamage",
+        "biteattack",
+        "Tentacleattack",
+        "TentacleHoldattack",
+        "Abyss_Orb_Entity",
+        "m_7378_",
+        "m_5790_",
+        "damage"
+      ],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "cataclysm:tidal_claws",
@@ -11310,16 +11293,38 @@
     },
     {
       "id": "companions:sacred_pontiff",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_base_melee",
+      "missing_field": "native_base_melee_damage",
       "owner_classes": [
-        "dev.xylonity.companions.common.entity.hostile.SacredPontiffEntity"
+        "dev.xylonity.companions.common.entity.hostile.SacredPontiffEntity",
+        "dev.xylonity.companions.common.entity.hostile.SacredPontiffEntity$1"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "createAttributes",
+        "inherited doHurtTarget"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
+      "why_unresolved": "No exact ATTACK_DAMAGE value was recovered from the matched attribute builder; a ranged-only boss may legitimately have no meaningful melee channel.",
       "runtime_observation_required": false
+    },
+    {
+      "id": "companions:sacred_pontiff",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
+      "owner_classes": [
+        "dev.xylonity.companions.common.entity.hostile.SacredPontiffEntity",
+        "dev.xylonity.companions.common.entity.hostile.SacredPontiffEntity$1",
+        "dev.xylonity.companions.common.entity.HostileEntity",
+        "dev.xylonity.companions.common.entity.ai.pontiff.goal.HolinessDoubleThrowAttackGoal",
+        "dev.xylonity.companions.common.entity.ai.pontiff.goal.HolinessImpactAttackGoal",
+        "dev.xylonity.companions.common.entity.ai.pontiff.goal.HolinessMeleeAttackGoal",
+        "dev.xylonity.companions.common.entity.ai.pontiff.goal.HolinessStakeAttackGoal",
+        "dev.xylonity.companions.common.entity.ai.pontiff.goal.HolinessStarAttackGoal",
+        "dev.xylonity.companions.common.entity.ai.pontiff.goal.PontiffDashAttackGoal",
+        "dev.xylonity.companions.common.entity.ai.pontiff.goal.PontiffMeleeAttackGoal"
+      ],
+      "candidate_methods": [],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "companions:shade_sword_altar",
@@ -23511,19 +23516,6 @@
       "kind": "boss_attack_missing_formula",
       "missing_field": "attack_damage_formula",
       "owner_classes": [
-        "io.redspace.ironsspellbooks.entity.mobs.dead_king_boss.DeadKingBoss"
-      ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "irons_spellbooks:dead_king",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
         "io.redspace.ironsspellbooks.entity.mobs.IMagicSummon"
       ],
       "candidate_methods": [
@@ -23531,6 +23523,29 @@
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
       "runtime_observation_required": false
+    },
+    {
+      "id": "irons_spellbooks:dead_king",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
+      "owner_classes": [
+        "io.redspace.ironsspellbooks.entity.mobs.dead_king_boss.DeadKingCorpseEntity",
+        "io.redspace.ironsspellbooks.entity.mobs.dead_king_boss.DeadKingBoss",
+        "io.redspace.ironsspellbooks.entity.mobs.dead_king_boss.DeadKingModel",
+        "io.redspace.ironsspellbooks.entity.mobs.dead_king_boss.DeadKingRenderer",
+        "io.redspace.ironsspellbooks.entity.mobs.IMagicSummon",
+        "io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob",
+        "io.redspace.ironsspellbooks.entity.mobs.dead_king_boss.DeadKingAmbienceSoundManager",
+        "io.redspace.ironsspellbooks.entity.mobs.dead_king_boss.DeadKingAnimatedWarlockAttackGoal",
+        "io.redspace.ironsspellbooks.entity.mobs.dead_king_boss.DeadKingBoss$1",
+        "io.redspace.ironsspellbooks.entity.mobs.dead_king_boss.DeadKingBoss$2"
+      ],
+      "candidate_methods": [
+        "onRemovedHelper",
+        "lambda$handleAttackLogic$0"
+      ],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "irons_spellbooks:dev_staff",
@@ -24322,16 +24337,28 @@
     },
     {
       "id": "irons_spellbooks:fire_boss",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "io.redspace.ironsspellbooks.entity.mobs.wizards.fire_boss.FireBossEntity"
+        "io.redspace.ironsspellbooks.entity.mobs.wizards.fire_boss.FireBossEntity",
+        "io.redspace.ironsspellbooks.entity.mobs.wizards.fire_boss.FireBossEntity$1",
+        "io.redspace.ironsspellbooks.entity.mobs.wizards.GenericAnimatedWarlockAttackGoal",
+        "io.redspace.ironsspellbooks.entity.mobs.wizards.fire_boss.ExtendedServerBossEvent",
+        "io.redspace.ironsspellbooks.entity.mobs.wizards.fire_boss.FieryDaggerSwarmAbilityGoal",
+        "io.redspace.ironsspellbooks.entity.mobs.wizards.fire_boss.FieryDaggerZoneAbilityGoal",
+        "io.redspace.ironsspellbooks.entity.mobs.wizards.fire_boss.FireBossAttackGoal",
+        "io.redspace.ironsspellbooks.entity.mobs.wizards.fire_boss.FireBossAttackKeyframe",
+        "io.redspace.ironsspellbooks.entity.mobs.wizards.fire_boss.FireBossAttackKeyframe$SwingData",
+        "io.redspace.ironsspellbooks.entity.mobs.wizards.fire_boss.FireBossMoveControl"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "handleHalfHealthSequence",
+        "createEruptionEntity",
+        "doAction",
+        "doAction"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "irons_spellbooks:fire_breath",
@@ -30416,29 +30443,18 @@
     },
     {
       "id": "legendary_monsters:ambusher",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.AncientStronghold.AmbusherEntity"
-      ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:ambusher",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.AncientStronghold.AmbusherEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.AncientStronghold.AmbusherEntity$1",
         "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.AncientStronghold.SpikebugEntity"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "AreaAttack"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "legendary_monsters:ancient_guardian",
@@ -30455,16 +30471,24 @@
     },
     {
       "id": "legendary_monsters:ancient_guardian",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.AncientStronghold.Ancient_GuardianEntity"
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.AncientStronghold.Ancient_GuardianEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.AncientStronghold.Ancient_GuardianEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.AncientStronghold.Ancient_GuardianEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.AncientStronghold.Ancient_GuardianEntity$3",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.AncientStronghold.Ancient_GuardianEntity$4",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.AncientStronghold.Ancient_GuardianEntity$5",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.AncientStronghold.Ancient_GuardianEntity$6",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.AncientStronghold.Ancient_GuardianEntity$7",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.AncientStronghold.Ancient_GuardianEntity$Crackiness"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "AreaAttack"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "legendary_monsters:annihilation_pursuer",
@@ -30526,23 +30550,36 @@
         "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.Flameborn.AnnihilationPursuer.AnnihilationPursuerEntity"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "nextSideAreaAttack"
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
       "runtime_observation_required": false
     },
     {
       "id": "legendary_monsters:annihilation_pursuer",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.Flameborn.AnnihilationPursuer.AnnihilationPursuerEntity"
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.Flameborn.AnnihilationPursuer.AnnihilationPursuerEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.Flameborn.AnnihilationPursuer.AnnihilationPursuerEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.Flameborn.AnnihilationPursuer.AnnihilationPursuerEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.Flameborn.AnnihilationPursuer.AnnihilationPursuerEntity$3",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.Flameborn.AnnihilationPursuer.AnnihilationPursuerEntity$10",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.Flameborn.AnnihilationPursuer.AnnihilationPursuerEntity$11",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.Flameborn.AnnihilationPursuer.AnnihilationPursuerEntity$12",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.Flameborn.AnnihilationPursuer.AnnihilationPursuerEntity$13",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.Flameborn.AnnihilationPursuer.AnnihilationPursuerEntity$14",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.Flameborn.AnnihilationPursuer.AnnihilationPursuerEntity$15"
       ],
       "candidate_methods": [
-        "nextSideAreaAttack"
+        "UpdateWithAttack",
+        "SideAreaAttack",
+        "StraightLineAreaAttack",
+        "nextSideAreaAttack",
+        "SideGrab"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "legendary_monsters:annihilator_boots",
@@ -31157,16 +31194,26 @@
     },
     {
       "id": "legendary_monsters:beheaded_knight",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.BeheadedKnight.BeheadedKnightEntity"
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.BeheadedKnight.BeheadedKnightEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.BeheadedKnight.BeheadedKnightEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.BeheadedKnight.BeheadedKnightEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.BeheadedKnight.BeheadedKnightEntity$3",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.BeheadedKnight.BeheadedKnightEntity$4",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.BeheadedKnight.BeheadedKnightEntity$5",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.BeheadedKnight.BeheadedKnightEntity$6",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.BeheadedKnight.BeheadedKnightEntity$7",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.BeheadedKnight.BeheadedKnightEntity$8",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.BeheadedKnight.BeheadedKnightEntity$9"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "StraightLineAreaAttack",
+        "SideAreaAttack"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "legendary_monsters:blastproof_helmet",
@@ -31284,16 +31331,30 @@
     },
     {
       "id": "legendary_monsters:bomber",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_base_melee",
+      "missing_field": "native_base_melee_damage",
       "owner_classes": [
         "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.RuinedPyramid.BomberEntity"
       ],
       "candidate_methods": [
-        "m_6071_"
+        "createAttributes",
+        "inherited doHurtTarget"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
+      "why_unresolved": "No exact ATTACK_DAMAGE value was recovered from the matched attribute builder; a ranged-only boss may legitimately have no meaningful melee channel.",
       "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:bomber",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.RuinedPyramid.BomberEntity"
+      ],
+      "candidate_methods": [
+        "CurseEntities"
+      ],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "legendary_monsters:chorus_blade",
@@ -31328,36 +31389,24 @@
         "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Chorusling.ChoruslingEntity"
       ],
       "candidate_methods": [
-        "m_21424_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:chorusling",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Chorusling.ChoruslingEntity"
-      ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:chorusling",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Chorusling.ChoruslingEntity"
-      ],
-      "candidate_methods": [
         "m_7327_"
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
       "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:chorusling",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Chorusling.ChoruslingEntity"
+      ],
+      "candidate_methods": [
+        "m_7327_",
+        "attackTargets"
+      ],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "legendary_monsters:cloud_golem",
@@ -31387,16 +31436,27 @@
     },
     {
       "id": "legendary_monsters:cloud_golem",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.CloudGolem.Cloud_GolemEntity"
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.CloudGolem.Cloud_GolemEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.CloudGolem.Cloud_GolemEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.CloudGolem.Cloud_GolemEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.CloudGolem.Cloud_GolemEntity$3",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.CloudGolem.Cloud_GolemEntity$10",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.CloudGolem.Cloud_GolemEntity$11",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.CloudGolem.Cloud_GolemEntity$12",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.CloudGolem.Cloud_GolemEntity$13",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.CloudGolem.Cloud_GolemEntity$14",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.CloudGolem.Cloud_GolemEntity$15"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "SpawnDamagingBlocks",
+        "AreaAttack",
+        "summonControlledCloud"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "legendary_monsters:dune_sentinel",
@@ -31413,16 +31473,17 @@
     },
     {
       "id": "legendary_monsters:dune_sentinel",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.RuinedPyramid.DuneSentinelEntity"
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.RuinedPyramid.DuneSentinelEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.RuinedPyramid.DuneSentinelEntity$Crackiness"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "attackTargets"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "legendary_monsters:ender_hammer",
@@ -31533,16 +31594,20 @@
     },
     {
       "id": "legendary_monsters:endersent",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Chorusling.EndersentEntity"
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Chorusling.EndersentEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Chorusling.EndersentEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Chorusling.EndersentEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Chorusling.EndersentEntity$3",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Chorusling.EndersentEntity$4"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "AreaAttack"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "legendary_monsters:fiery_boots",
@@ -31662,6 +31727,23 @@
       "runtime_observation_required": false
     },
     {
+      "id": "legendary_monsters:flame_drifter",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.FlameDrifter.FlameDrifterEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.FlameDrifter.FlameDrifterEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.FlameDrifter.FlameDrifterEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.FlameDrifter.FlameDrifterEntity$3",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.FlameDrifter.FlameDrifterEntity$4"
+      ],
+      "candidate_methods": [
+        "SideAreaAttack"
+      ],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
+    },
+    {
       "id": "legendary_monsters:flameborn_guard",
       "kind": "boss_attack_missing_formula",
       "missing_field": "attack_damage_formula",
@@ -31689,16 +31771,22 @@
     },
     {
       "id": "legendary_monsters:flameborn_guard",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.Flameborn.FlamebornGuardEntity"
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.Flameborn.FlamebornGuardEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.Flameborn.FlamebornGuardEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.Flameborn.FlamebornGuardEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.Flameborn.FlamebornGuardEntity$3",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.Flameborn.FlamebornGuardBlockGoal",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.Flameborn.FlamebornGuardEntity$4"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "SideAreaAttack",
+        "StraightLineAreaAttack"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "legendary_monsters:fractured",
@@ -31714,6 +31802,20 @@
       "runtime_observation_required": false
     },
     {
+      "id": "legendary_monsters:fractured",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.Fractured.FracturedEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.Fractured.FracturedEntity$1"
+      ],
+      "candidate_methods": [
+        "SideAreaAttack"
+      ],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
+    },
+    {
       "id": "legendary_monsters:fractured_apostle",
       "kind": "boss_attack_missing_formula",
       "missing_field": "attack_damage_formula",
@@ -31727,56 +31829,44 @@
       "runtime_observation_required": false
     },
     {
-      "id": "legendary_monsters:frostbitten_golem",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "id": "legendary_monsters:fractured_apostle",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Frostbitten_GolemEntity"
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.Fractured.FracturedApostleEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.Fractured.FracturedApostleEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.Fractured.FracturedApostleEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.Fractured.FracturedApostleEntity$3"
       ],
       "candidate_methods": [
-        "AreaAttack"
+        "UpdateWithAttack",
+        "SideAreaAttack"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "legendary_monsters:frostbitten_golem",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Frostbitten_GolemEntity"
-      ],
-      "candidate_methods": [
-        "attackTargets"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:frostbitten_golem",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Frostbitten_GolemEntity"
-      ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:frostbitten_golem",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Frostbitten_GolemEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Frostbitten_GolemEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Frostbitten_GolemEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Frostbitten_GolemEntity$3",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Effect.CameraShakeEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Frostbitten_GolemEntity$4",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Frostbitten_GolemEntity$5",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Frostbitten_GolemEntity$6",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Frostbitten_GolemEntity$Crackiness",
         "net.miauczel.legendary_monsters.entity.AnimatedMonster.OriginClasses.IAnimatedMiniBoss"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "attackTargets",
+        "AreaAttack"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "legendary_monsters:haunted_guard",
@@ -31806,16 +31896,20 @@
     },
     {
       "id": "legendary_monsters:haunted_guard",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.HauntedGuardEntity"
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.HauntedGuardEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.HauntedGuardEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.HauntedGuardEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.HauntedGuardEntity$3"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "AreaAttack",
+        "StraightLineAreaAttack"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "legendary_monsters:haunted_knight",
@@ -31832,16 +31926,23 @@
     },
     {
       "id": "legendary_monsters:haunted_knight",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.HauntedKnightEntity"
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.HauntedKnightEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.HauntedKnightEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.HauntedKnightEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.HauntedKnightEntity$3",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.HauntedKnightEntity$4",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.HauntedKnightEntity$5",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.HauntedKnightEntity$6",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.KnightParryGoal"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "AreaAttack"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "legendary_monsters:hovering_hurricane_spawn_egg",
@@ -31963,32 +32064,6 @@
       "kind": "boss_attack_missing_formula",
       "missing_field": "attack_damage_formula",
       "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Lava_eaterEntity"
-      ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:lava_eater",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.OriginClasses.IAnimatedMiniBoss"
-      ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:lava_eater",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
         "net.miauczel.legendary_monsters.entity.AnimatedMonster.Projectile.FireBreath"
       ],
       "candidate_methods": [
@@ -31996,6 +32071,32 @@
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
       "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:lava_eater",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Lava_eaterEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Lava_eaterEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Lava_eaterEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Lava_eaterEntity$3",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Lava_eaterEntity$4",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Lava_eaterEntity$5",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Lava_eaterEntity$6",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.OriginClasses.IAnimatedMiniBoss",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Projectile.FireBreath",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Projectile.FireColumnEntity"
+      ],
+      "candidate_methods": [
+        "AreaAttack",
+        "FireBreath",
+        "hitEntities",
+        "m_7378_",
+        "damage"
+      ],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "legendary_monsters:mossy_chestplate",
@@ -32168,23 +32269,36 @@
         "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Overgrown_colossusEntity"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "performAreaAttack"
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
       "runtime_observation_required": false
     },
     {
       "id": "legendary_monsters:overgrown_colossus",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Overgrown_colossusEntity"
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Overgrown_colossusEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Overgrown_colossusEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Overgrown_colossusEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Overgrown_colossusEntity$3",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Effect.CameraShakeEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Overgrown_colossusEntity$4",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Overgrown_colossusEntity$5",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Overgrown_colossusEntity$6",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Overgrown_colossusEntity$7",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Overgrown_colossusEntity$Crackiness"
       ],
       "candidate_methods": [
-        "performAreaAttack"
+        "performAreaAttack",
+        "attackTargets",
+        "updateWithAttack",
+        "AreaAttack",
+        "m_8041_"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "legendary_monsters:posessed_paladin",
@@ -32214,16 +32328,27 @@
     },
     {
       "id": "legendary_monsters:posessed_paladin",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.PosessedPaladinEntity"
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.PosessedPaladinEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.PosessedPaladinEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.PosessedPaladinEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.PosessedPaladinEntity$3",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.PosessedPaladinEntity$10",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.PosessedPaladinEntity$11",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.PosessedPaladinEntity$12",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.PosessedPaladinEntity$13",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.PosessedPaladinEntity$14",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.PosessedPaladinEntity$15"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "attackTargets",
+        "AreaAttack",
+        "EarthQuakeSummon"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "legendary_monsters:resurrected_knight",
@@ -32298,36 +32423,37 @@
         "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.ResurrectedKnight.ResurrectedKnightEntity"
       ],
       "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:resurrected_knight",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.BeheadedKnight.BeheadedKnightEntity"
-      ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:resurrected_knight",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.ResurrectedKnight.ResurrectedKnightEntity"
-      ],
-      "candidate_methods": [
         "stabHitbox"
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
       "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:resurrected_knight",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.ResurrectedKnight.ResurrectedKnightEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.ResurrectedKnight.ResurrectedKnightEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.ResurrectedKnight.ResurrectedKnightEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.ResurrectedKnight.ResurrectedKnightEntity$3",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.BeheadedKnight.BeheadedKnightEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.ResurrectedKnight.ResurrectedKnightEntity$10",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.ResurrectedKnight.ResurrectedKnightEntity$11",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.ResurrectedKnight.ResurrectedKnightEntity$4",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.ResurrectedKnight.ResurrectedKnightEntity$5",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.ResurrectedKnight.ResurrectedKnightEntity$6"
+      ],
+      "candidate_methods": [
+        "stabHitbox",
+        "StraightLineAreaAttack",
+        "StraightLineAreaAttackGambit",
+        "SideAreaAttack",
+        "StraightLineAreaAttack",
+        "SideAreaAttack"
+      ],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "legendary_monsters:shulker_helmet",
@@ -32510,29 +32636,30 @@
     },
     {
       "id": "legendary_monsters:shulker_mimic",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.ShulkerTower.Shulker_MimicEntity"
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.ShulkerTower.Shulker_MimicEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.ShulkerTower.Shulker_MimicEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.ShulkerTower.Shulker_MimicEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.ShulkerTower.Shulker_MimicEntity$3",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.ShulkerTower.ShulkerMimicPart",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.ShulkerTower.Shulker_MimicEntity$10",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.ShulkerTower.Shulker_MimicEntity$11",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.ShulkerTower.Shulker_MimicEntity$12",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.ShulkerTower.Shulker_MimicEntity$13",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.ShulkerTower.Shulker_MimicEntity$14"
       ],
       "candidate_methods": [
-        "applyPartDamage"
+        "StraightLineAreaAttack",
+        "PushEntitiesAwayInFrontOf",
+        "AreaAttack",
+        "SpawnDamagingBlocks",
+        "Grab",
+        "SideGrab"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:shulker_mimic",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.ShulkerTower.Shulker_MimicEntity"
-      ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "legendary_monsters:skeletosaurus",
@@ -32581,36 +32708,35 @@
         "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SkeletosaurusEntity"
       ],
       "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:skeletosaurus",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.OriginClasses.IAnimatedMiniBoss"
-      ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:skeletosaurus",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SkeletosaurusEntity"
-      ],
-      "candidate_methods": [
         "performAreaAttack"
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
       "runtime_observation_required": false
+    },
+    {
+      "id": "legendary_monsters:skeletosaurus",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SkeletosaurusEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SkeletosaurusEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SkeletosaurusEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SkeletosaurusEntity$3",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Effect.CameraShakeEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SkeletosaurusEntity$4",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SkeletosaurusEntity$5",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SkeletosaurusEntity$6",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SkeletosaurusEntity$Crackiness",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.OriginClasses.IAnimatedMiniBoss"
+      ],
+      "candidate_methods": [
+        "performAreaAttack",
+        "attackTargets",
+        "ApplyEffects",
+        "AreaAttack"
+      ],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "legendary_monsters:somber_key_ring",
@@ -32741,29 +32867,25 @@
     },
     {
       "id": "legendary_monsters:spiky_bug",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.AncientStronghold.SpikebugEntity"
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.AncientStronghold.SpikebugEntity",
+        "net.miauczel.legendary_monsters.entity.ai.SpikeBugAttackGoal",
+        "net.miauczel.legendary_monsters.entity.animations.SpikebugAnimations",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Lava_eaterEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Lava_eaterEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Lava_eaterEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Lava_eaterEntity$3",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Lava_eaterEntity$4",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Lava_eaterEntity$5",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Lava_eaterEntity$6"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "AreaAttack"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "legendary_monsters:spiky_bug",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Lava_eaterEntity"
-      ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "legendary_monsters:spiky_spear",
@@ -32977,16 +33099,32 @@
     },
     {
       "id": "legendary_monsters:the_obliterator",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.TheObliterator.TheObliteratorEntity"
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.TheObliterator.TheObliteratorEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.TheObliterator.TheObliteratorEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.TheObliterator.TheObliteratorEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.TheObliterator.TheObliteratorEntity$3",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.TheObliterator.TheObliteratorEntity$10",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.TheObliterator.TheObliteratorEntity$11",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.TheObliterator.TheObliteratorEntity$12",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.TheObliterator.TheObliteratorEntity$13",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.TheObliterator.TheObliteratorEntity$14",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.TheObliterator.TheObliteratorEntity$15"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "Grab",
+        "PreGrab",
+        "StraightLineAreaAttack",
+        "StraightLineAreaAttack",
+        "AreaAttack",
+        "SideAreaAttack",
+        "SideGrab",
+        "SideAreaAttack"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "legendary_monsters:the_tesseract",
@@ -33027,16 +33165,18 @@
     },
     {
       "id": "legendary_monsters:wandering_eye",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.WanderingEyeEntity"
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.WanderingEyeEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.WanderingEyeEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.WanderingEyeEntity$2"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "SideAreaAttack"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "legendary_monsters:wandering_eye_spawn_egg",
@@ -33116,16 +33256,14 @@
     },
     {
       "id": "legendary_monsters:warped_fungussus",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
         "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Warped_FungussusEntity"
       ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "legendary_monsters:withered_abomination",
@@ -33161,23 +33299,35 @@
         "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Withered_AbominationEntity"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "performAreaAttack"
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
       "runtime_observation_required": false
     },
     {
       "id": "legendary_monsters:withered_abomination",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Withered_AbominationEntity"
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Withered_AbominationEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Withered_AbominationEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Withered_AbominationEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Withered_AbominationEntity$3",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Effect.CameraShakeEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Withered_AbominationEntity$10",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Withered_AbominationEntity$11",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Withered_AbominationEntity$12",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Withered_AbominationEntity$4",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Withered_AbominationEntity$5"
       ],
       "candidate_methods": [
-        "performAreaAttack"
+        "performAreaAttack",
+        "attackTargets",
+        "UpdateWithAttack",
+        "AreaAttack"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "legendary_monsters:withered_scythe",
@@ -33203,6 +33353,21 @@
       ],
       "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
       "runtime_observation_required": false
+    },
+    {
+      "id": "luminous_beasts:bone_stalker",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
+      "owner_classes": [
+        "net.mcreator.luminousbeasts.entity.BoneStalkerEntity",
+        "net.mcreator.luminousbeasts.entity.BoneStalkerEntity$1",
+        "net.mcreator.luminousbeasts.procedures.BoneStalkerOnEntityTickUpdateProcedure"
+      ],
+      "candidate_methods": [
+        "execute"
+      ],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "luminous_beasts:executioner_cowl_helmet",
@@ -33307,29 +33472,36 @@
     },
     {
       "id": "luminous_beasts:golden_hermit_king",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.mcreator.luminousbeasts.entity.GoldenHermitKingEntity"
+        "net.mcreator.luminousbeasts.entity.GoldenHermitKingEntity",
+        "net.mcreator.luminousbeasts.entity.GoldenHermitKingEntity$1",
+        "net.mcreator.luminousbeasts.entity.GoldenHermitKingEntity$2",
+        "net.mcreator.luminousbeasts.entity.GoldenHermitKingEntity$3",
+        "net.mcreator.luminousbeasts.entity.GoldenHermitKingEntity$4",
+        "net.mcreator.luminousbeasts.entity.GoldenHermitKingEntity$5"
       ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "luminous_beasts:mummy",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.mcreator.luminousbeasts.entity.MummyEntity"
+        "net.mcreator.luminousbeasts.entity.MummyEntity",
+        "net.mcreator.luminousbeasts.entity.MummyEntity$1",
+        "net.mcreator.luminousbeasts.entity.MummyEntity$2",
+        "net.mcreator.luminousbeasts.entity.MummyEntity$3",
+        "net.mcreator.luminousbeasts.entity.MummyEntity$4",
+        "net.mcreator.luminousbeasts.entity.MummyEntity$5",
+        "net.mcreator.luminousbeasts.entity.MummyEntity$6"
       ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "luminous_beasts:mummy_wraps_helmet",
@@ -33434,16 +33606,15 @@
     },
     {
       "id": "luminous_beasts:piglin_executioner",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.mcreator.luminousbeasts.entity.PiglinExecutionerEntity"
+        "net.mcreator.luminousbeasts.entity.PiglinExecutionerEntity",
+        "net.mcreator.luminousbeasts.entity.PiglinExecutionerEntity$1"
       ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "luminous_beasts:pumpkin_helmet_helmet",
@@ -33561,16 +33732,19 @@
     },
     {
       "id": "luminous_beasts:sea_viper",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.mcreator.luminousbeasts.entity.SeaViperEntity"
+        "net.mcreator.luminousbeasts.entity.SeaViperEntity",
+        "net.mcreator.luminousbeasts.entity.SeaViperEntity$1",
+        "net.mcreator.luminousbeasts.entity.SeaViperEntity$2",
+        "net.mcreator.luminousbeasts.procedures.SeaViperEntityIsHurtProcedure"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "execute"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "luminous_beasts:shellmet_helmet",
@@ -33688,55 +33862,59 @@
     },
     {
       "id": "luminous_beasts:the_furnace",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.mcreator.luminousbeasts.entity.TheFurnaceEntity"
+        "net.mcreator.luminousbeasts.entity.TheFurnaceEntity",
+        "net.mcreator.luminousbeasts.entity.TheFurnaceEntity$1",
+        "net.mcreator.luminousbeasts.procedures.TheFurnaceEntityIsHurtProcedure",
+        "net.mcreator.luminousbeasts.procedures.TheFurnaceOnEntityTickUpdateProcedure"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "execute"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "luminous_beasts:the_scarecrow",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.mcreator.luminousbeasts.entity.TheScarecrowEntity"
+        "net.mcreator.luminousbeasts.entity.TheScarecrowEntity",
+        "net.mcreator.luminousbeasts.entity.TheScarecrowEntity$1"
       ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "luminous_beasts:wind_phoenix",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.mcreator.luminousbeasts.entity.WindPhoenixEntity"
+        "net.mcreator.luminousbeasts.entity.WindPhoenixEntity",
+        "net.mcreator.luminousbeasts.entity.WindPhoenixEntity$1",
+        "net.mcreator.luminousbeasts.entity.WindPhoenixEntity$2",
+        "net.mcreator.luminousbeasts.entity.WindPhoenixEntity$RangedAttackGoal",
+        "net.mcreator.luminousbeasts.entity.WindyFBEntity"
       ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "luminous_beasts:yeti",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.mcreator.luminousbeasts.entity.YetiEntity"
+        "net.mcreator.luminousbeasts.entity.YetiEntity",
+        "net.mcreator.luminousbeasts.entity.YetiEntity$1",
+        "net.mcreator.luminousbeasts.entity.YetiEntity$2"
       ],
-      "candidate_methods": [
-        "m_6469_"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "candidate_methods": [],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "luminous_nether:executioner_hood_helmet",
@@ -33854,16 +34032,31 @@
     },
     {
       "id": "luminous_nether:soul_furnace",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
       "owner_classes": [
-        "net.mcreator.luminousnether.entity.SoulFurnaceEntity"
+        "net.mcreator.luminousnether.entity.SoulFurnaceEntity",
+        "net.mcreator.luminousnether.entity.SoulFurnaceEntity$1",
+        "net.mcreator.luminousnether.procedures.SoulFurnaceEntityIsHurtProcedure"
       ],
       "candidate_methods": [
-        "m_6469_"
+        "execute"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
+    },
+    {
+      "id": "luminous_nether:warped_mushlin_king",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
+      "owner_classes": [
+        "net.mcreator.luminousnether.entity.WarpedMushlinKingEntity",
+        "net.mcreator.luminousnether.entity.WarpedMushlinKingEntity$1",
+        "net.mcreator.luminousnether.procedures.WarpedSpewerOnEntityTickUpdateProcedure"
+      ],
+      "candidate_methods": [],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "minecraft:bow",
@@ -35670,42 +35863,35 @@
     },
     {
       "id": "minecraft:ender_dragon",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "net.minecraft.world.entity.boss.EnderDragonPart"
-      ],
-      "candidate_methods": [
-        "hurt"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "minecraft:ender_dragon",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
-      "owner_classes": [
-        "net.minecraft.world.entity.boss.enderdragon.EndCrystal"
-      ],
-      "candidate_methods": [
-        "hurt"
-      ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
-      "runtime_observation_required": false
-    },
-    {
-      "id": "minecraft:ender_dragon",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_base_melee",
+      "missing_field": "native_base_melee_damage",
       "owner_classes": [
         "net.minecraft.world.entity.boss.enderdragon.EnderDragon"
       ],
       "candidate_methods": [
-        "reallyHurt"
+        "createAttributes",
+        "inherited doHurtTarget"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
+      "why_unresolved": "No exact ATTACK_DAMAGE value was recovered from the matched attribute builder; a ranged-only boss may legitimately have no meaningful melee channel.",
       "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:ender_dragon",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
+      "owner_classes": [
+        "net.minecraft.world.entity.boss.enderdragon.EnderDragon",
+        "net.minecraft.world.entity.boss.EnderDragonPart",
+        "net.minecraft.world.entity.boss.enderdragon.EndCrystal",
+        "net.minecraft.world.entity.boss.enderdragon.phases.DragonPhaseInstance",
+        "net.minecraft.world.entity.boss.enderdragon.phases.EnderDragonPhase",
+        "net.minecraft.world.entity.boss.enderdragon.phases.EnderDragonPhaseManager"
+      ],
+      "candidate_methods": [
+        "knockBack"
+      ],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "minecraft:golden_axe",
@@ -38952,16 +39138,31 @@
     },
     {
       "id": "minecraft:wither",
-      "kind": "boss_attack_missing_formula",
-      "missing_field": "attack_damage_formula",
+      "kind": "boss_stage_3_5b_missing_base_melee",
+      "missing_field": "native_base_melee_damage",
       "owner_classes": [
         "net.minecraft.world.entity.boss.wither.WitherBoss"
       ],
       "candidate_methods": [
-        "hurt"
+        "createAttributes",
+        "inherited doHurtTarget"
       ],
-      "why_unresolved": "The exact damage/defense sink and inputs are located, but arbitrary control flow is not collapsed into one value unless the safe symbolic evaluator proves the expression.",
+      "why_unresolved": "No exact ATTACK_DAMAGE value was recovered from the matched attribute builder; a ranged-only boss may legitimately have no meaningful melee channel.",
       "runtime_observation_required": false
+    },
+    {
+      "id": "minecraft:wither",
+      "kind": "boss_stage_3_5b_missing_frequency",
+      "missing_field": "attack_selection_and_accepted_hit_frequency",
+      "owner_classes": [
+        "net.minecraft.world.entity.boss.wither.WitherBoss",
+        "net.minecraft.world.entity.boss.wither.WitherBoss$WitherDoNothingGoal"
+      ],
+      "candidate_methods": [
+        "customServerAiStep"
+      ],
+      "why_unresolved": "Static trigger ticks do not prove target-in-hitbox probability, AI branch selection, interruption, iframe acceptance or multiplayer target switching.",
+      "runtime_observation_required": true
     },
     {
       "id": "minecraft:wooden_axe",

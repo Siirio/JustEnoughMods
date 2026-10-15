@@ -1,4 +1,4 @@
-# Stage 3.5A numeric tables
+# Stage 3.5B numeric tables
 
 Канонический машинный результат находится в `Catalog/views/power/calculations.json`. Все числа вычисляются только из exact installed JAR/data и подтверждённых JEM-формул; неизвестное значение остаётся символическим.
 
@@ -7,17 +7,19 @@
 | Таблица | Количество | Что численно доказано |
 |---|---:|---|
 | Spell damage | 45 | Каждый уровень, PvE World Tier I–V, PvP и потеря HP против пяти vanilla reference targets для одного native damage application |
-| Registered boss scaling | 56 | Tier I–V, 1–6 игроков, hosted/Raid health и owned-attack multiplier над native значением |
+| Registered boss scaling | 56 | Tier I–V, 1–6 игроков, hosted/Raid health/attack multiplier; 54 профиля дополнительно имеют абсолютный melee и reference mitigation |
 | Weapon cards | 177 | Для каждого weapon ID: exact factory/owner, basic attributes где доказаны, offensive methods, config, durability и capability evidence |
 | Defense cards | 219 | Exact attributes, durability и passive/active method evidence по каждому defense ID |
 | Four-piece armor-set cards | 39 | Сумма только доказанных attributes для полного registry stem; set bonus не выводится из имени |
 | Accessory cards | 52 | Attributes, active/passive methods, cooldown/config evidence и явные Curios blockers |
 | Spell method cards | 106 | Owner/delegated methods для всех spells; 67 effect/combat methods прослежены |
-| Boss attack tables | 61 | 231 offensive methods прослежены; 14 имеют literal numeric sink result |
+| Boss attack tables | 61 | 155 настоящих offensive methods после удаления 76 inbound handlers; 22 имеют resolved formula, ещё 56 боссов имеют exact base-melee channel |
 | Vanilla mitigation | 1 | Armor/toughness/Protection для входящего урона 1–160 HP |
 | Boss-reward weapon deep cards | 36 | Basic, specials, conditional World Tier, cooldown windows, durability and exact blockers |
 
 Для reward-36 теперь доказаны все 36 обычных melee значений и 38 числовых special branches/abilities. Шесть способностей имеют статически безопасную activation upper bound и поэтому дают 18 отдельных cooldown-limited окон 30/60/120 секунд. Это **special-only upper bounds**, а не полный sustained DPS оружия: обычные атаки, stamina и ещё не доказанные successful hit counts туда не подмешиваются.
+
+Stage 3.5B добавляет 3 240 абсолютных boss-melee строк: 54 зарегистрированных профиля × 5 World Tier × 6 размеров группы × hosted/Raid. Каждая строка начинается с tier-specific profile attack attribute либо exact native `ATTACK_DAMAGE`, затем применяет JEM composition и пять reference armor targets. Два зарегистрированных профиля (`aquamirae:captain_cornelia`, `legendary_monsters:bomber`) остаются без доказанного base-melee числа; ranged/special поведение не объявляется нулём.
 
 Ключевые формулы:
 
@@ -28,7 +30,7 @@
 - Withered Scythe: отдельные `10` dash damage и условные `+41` через 2 ticks против undead;
 - Wand of Clouds: `15/max(distance/2,1)` и три отложенных `6/max(distance/2,1)`; fallback large cloud сохраняет default `5`.
 
-Полный combat inventory содержит 2 365 записей. Из 654 item/spell/boss calculation cards полностью resolved `0`, partial `368`, unresolved `286`: ни одна карточка не называется полностью resolved, пока не известны все обязательные native каналы, runtime ItemStack, acquisition и representative target context. Это не отменяет локально закрытых полей: 34 weapons имеют exact basic melee, 12 из 63 traced weapon offensive methods — literal-numeric, а 14 из 231 boss offensive methods — literal-numeric.
+Полный combat inventory содержит 2 365 записей. Ни одна составная карточка не называется полностью resolved, пока не известны все обязательные native channels, target mitigation и runtime context. Это не отменяет локально закрытых полей: 36/36 boss-reward weapons имеют exact basic melee; у боссов есть 56 exact base-melee channels и 22 resolved special formulas из 155 корректно классифицированных offensive methods.
 
 ## Exact basic melee examples
 

@@ -16,6 +16,33 @@ Special cooldown window для безопасно известного burst upp
 
 These are composition contracts, not replacement mechanics. `?` means unresolved and never means zero.
 
+## Boss combat Stage 3.5B
+
+Absolute registered-boss melee starts from the profile's tier-specific attack attribute when present, otherwise the exact native attribute builder:
+
+```text
+effective owned melee = profile-or-native ATTACK_DAMAGE
+                      * (1 + 0.15 * world tier)
+                      * (non-Raid profile special, otherwise 1)
+                      * hosted participant damage factor
+                      * (Raid factor, otherwise 1)
+                      * 0.88 hosted-owned factor
+```
+
+The same JEM outgoing chain composes after a native special expression; it does not replace percent-health or config terms. Exact Stage 3.5B special forms include:
+
+```text
+Ignis AreaAttack = attack_damage * damage_parameter
+                 + target_max_health * hpdamage_parameter
+Ignis Poke       = attack_damage + 0.10 * target_max_health
+Ignis mounted    = 4 + 0.02 * target_max_health per accepted scheduled hit
+Maledictus       = DMG * damage_parameter
+                 + min(DMG * damage_parameter, target_max_health * hpdamage_parameter)
+Leviathan bite   = attack_damage + 0.10 * target_max_health
+```
+
+Animation ticks and modulo schedules are attempted-application evidence only. They do not prove AI selection probability, target contact or iframe acceptance and therefore are not automatically converted to sustained DPS.
+
 ## General damage
 
 ```text

@@ -1,4 +1,4 @@
-# Coverage Stage 3.5A после deep boss-reward pass
+# Coverage Stage 3.5B после boss combat resolution
 
 Машинный источник — `Catalog/views/power/coverage.json`. Текущий combat inventory содержит 2 365 записей:
 
@@ -34,14 +34,27 @@
 
 Снижение blockers произошло не из-за переименования: для этих 36 отключена генерация повторяющихся dimension-заглушек и оставлены только конкретные остатки — capability precedence, animation phase, projectile overlap, iframe либо branched helper. 31 поле действительно требует минимального server-authoritative наблюдения; Minecraft в этой задаче не запускался.
 
+## Stage 3.5B: 61 boss combat profiles
+
+| Метрика | До 3.5B | Сейчас |
+|---|---:|---:|
+| Exact native attributes | 2/61 | 60/61 |
+| Exact native base melee | не моделировалось | 56/61 |
+| Offensive special methods | 231 | 155 |
+| Ошибочно offensive inbound handlers | 76 | 0 |
+| Resolved special formulas | 14 | 22 |
+| Absolute registered-boss melee rows | 0 | 3 240 |
+
+Сокращение `231 → 155` — исправление классификации, а не потеря evidence: методы входящего `hurt` сохранены отдельно в каждой attack card. Разрешённые combat channels теперь состоят из 56 base-melee значений и 22 special formulas; только 13 special methods имеют literal numeric sink без дополнительных параметров. Эти каналы нельзя складывать в один DPS без AI frequency/accepted-hit данных.
+
 ## Numeric coverage
 
 - 45 spells имеют безопасную `getDamage` формулу и полную таблицу по level, PvE Tier I–V, PvP и пяти reference targets.
-- 56 зарегистрированных JEM boss profiles имеют таблицу Tier I–V × 1–6 players × hosted/Raid; пять дополнительных native boss candidates не получают выдуманный JEM profile.
+- 56 зарегистрированных JEM boss profiles имеют таблицу Tier I–V × 1–6 players × hosted/Raid; 54 из них дают абсолютные melee-значения и пять reference mitigation результатов в каждой строке. Пять дополнительных native boss candidates не получают выдуманный JEM profile.
 - 177/177 weapons, 219/219 defenses, 52/52 accessories, 106/106 spells и 61/61 bosses имеют calculation cards, даже когда результат честно unresolved.
 - 34 weapons имеют exact basic melee total; остальные не получают число из сырой константы.
 - 63 offensive weapon methods прослежены до bounded owner chain, 12 имеют literal-numeric sink result.
-- 231 offensive boss methods прослежены, 14 имеют literal-numeric sink result; ещё две combat method records относятся к support/recovery и не раздувают attack denominator.
+- 155 настоящих offensive boss methods прослежены после удаления 76 inbound `hurt` handlers из denominator; 22 имеют resolved literal/symbolic formula. Отдельно 56 боссов имеют exact native base-melee channel.
 - 67 spell effect/combat methods прослежены; 45 spells имеют безопасную per-application damage table.
 - 39 четырёхчастных armor set stems сгруппированы без выдумывания set bonus.
 - Vanilla mitigation reference содержит armor/toughness/Protection результаты для входящего 1–160 HP.
@@ -77,6 +90,6 @@
 - Audit охватывает 448 weapon/defense/accessory records.
 - Exact max damage найден для 25, consumption path — для 21, обе стороны — для 8.
 - Tier-based durability читается из `Tiers.uses`/`ForgeTier.uses`; например Enderitium `2100`, Netherite-tier Ruinsgreatsword `2031`.
-- 3 900 named blocker records перечисляют ID, missing field, owner/candidate method, причину и необходимость runtime observation; reward-36 больше не создаёт прежние boilerplate dimensions.
+- 3 880 named blocker records перечисляют ID, missing field, owner/candidate method, причину и необходимость runtime observation. Для боссов остаются 133 unresolved special formulas, 61 frequency/AI-uptime blocker и 5 missing base-melee полей; reward-36 больше не создаёт прежние boilerplate dimensions.
 
 `not_observed` никогда не означает `0` или «механики нет».
