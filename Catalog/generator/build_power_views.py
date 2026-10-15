@@ -461,6 +461,75 @@ def accessory_records(native: dict[str, Any]) -> list[dict[str, Any]]:
     return sorted(result, key=lambda value: value["id"])
 
 
+def attach_defense_stage35c(
+    defenses: list[dict[str, Any]],
+    accessories: list[dict[str, Any]],
+    evidence: dict[str, Any],
+) -> None:
+    if len(defenses) != 219 or len({row["id"] for row in defenses}) != 219:
+        raise SystemExit(f"Stage 3.5C requires the canonical 219 unique defense records, found {len(defenses)}")
+    if len(accessories) != 52 or len({row["id"] for row in accessories}) != 52:
+        raise SystemExit(f"Stage 3.5C requires the canonical 52 unique accessory records, found {len(accessories)}")
+    for artifact in evidence.get("artifacts", []):
+        path = ROOT / "Client" / "ManagedPack" / "mods" / artifact["file"]
+        actual = hashlib.sha256(path.read_bytes()).hexdigest()
+        if actual != artifact["sha256"]:
+            raise SystemExit(f"stale Stage 3.5C artifact evidence for {artifact['file']}: expected {artifact['sha256']}, found {actual}")
+    armor_by_id = {row["item_id"]: row for row in evidence.get("armor_records", [])}
+    accessory_by_id = {row["item_id"]: row for row in evidence.get("accessory_records", [])}
+    set_by_id = {row["set_id"]: row for row in evidence.get("armor_set_records", [])}
+    for defense in defenses:
+        resolved = armor_by_id.get(defense["id"])
+        if not resolved:
+            continue
+        exact = defense["native_mechanics"].setdefault("exact_numeric_mechanics", {})
+        attributes = exact.setdefault("attributes", [])
+        additions = [
+            {"attribute": "armor_addition", "value": resolved["armor"], "slot": resolved["slot"], "status": resolved["material"]["status"], "owner_class": resolved["material"]["material_class"]},
+            {"attribute": "armor_toughness_addition", "value": resolved["toughness"], "slot": resolved["slot"], "status": resolved["material"]["status"], "owner_class": resolved["material"]["material_class"]},
+            {"attribute": "knockback_resistance_addition", "value": resolved["knockback_resistance"], "slot": resolved["slot"], "status": resolved["material"]["status"], "owner_class": resolved["material"]["material_class"]},
+        ]
+        known = {(row.get("attribute"), row.get("value"), row.get("slot")) for row in attributes}
+        attributes.extend(row for row in additions if isinstance(row["value"], (int, float)) and (row["attribute"], row["value"], row["slot"]) not in known)
+        if isinstance(resolved.get("max_damage"), (int, float)):
+            durability = exact.setdefault("durability", [])
+            if not any(row.get("max_damage") == resolved["max_damage"] for row in durability):
+                durability.append({
+                    "max_damage": int(resolved["max_damage"]),
+                    "owner_class": resolved["material"]["material_class"],
+                    "status": resolved["material"]["status"],
+                    "source_field": resolved["material"]["material_field"],
+                })
+        defense["stage_3_5c"] = resolved
+        defense["native_mechanics"]["dimensions"]["armor"] = {"status": "resolved_armor_material", "value": resolved["armor"]}
+        defense["native_mechanics"]["dimensions"]["toughness"] = {"status": "resolved_armor_material", "value": resolved["toughness"]}
+        defense["native_mechanics"]["dimensions"]["knockback_resistance"] = {"status": "resolved_armor_material", "value": resolved["knockback_resistance"]}
+        defense["native_mechanics"]["dimensions"]["durability"] = {
+            "status": "explicitly_unbreakable" if resolved.get("durability_override") else "resolved_nominal_and_inherited_wear",
+            "nominal_max_damage": resolved.get("max_damage"),
+            "override": resolved.get("durability_override"),
+        }
+    for accessory in accessories:
+        resolved = accessory_by_id.get(accessory["id"])
+        if not resolved:
+            continue
+        exact = accessory["native_mechanics"].setdefault("exact_numeric_mechanics", {})
+        exact["attributes"] = resolved.get("attributes", [])
+        accessory["stage_3_5c"] = resolved
+        accessory["native_mechanics"]["dimensions"]["slot"] = {"status": "resolved_curios_item_tag_or_factory", "valid_slots": resolved.get("valid_slots", [])}
+        accessory["native_mechanics"]["dimensions"]["attributes"] = {
+            "status": "resolved_registration_factory" if resolved.get("attributes") else "not_observed_in_registration_factory",
+            "values": resolved.get("attributes", []),
+        }
+    for defense in defenses:
+        namespace, _, path = defense["id"].partition(":")
+        slot = next((suffix for suffix in ARMOR_SUFFIXES if path.endswith(f"_{suffix}")), None)
+        if slot:
+            set_id = f"{namespace}:{path[:-(len(slot) + 1)]}"
+            if set_id in set_by_id:
+                defense.setdefault("stage_3_5c_set", set_by_id[set_id])
+
+
 def enchantment_records() -> list[dict[str, Any]]:
     result = []
     for source, row in rows("registries/enchantments/*.json"):
@@ -852,6 +921,28 @@ def audit_findings() -> list[dict[str, Any]]:
             "runtime_change": False,
         },
         {
+            "id": "cataclysm-armor-explicitly-unbreakable",
+            "status": "exact_jar_bytecode",
+            "severity": "balance_review",
+            "finding": "Installed Ignitium and Cursium armor implementations explicitly return false from isDamageable(ItemStack). Their ArmorMaterial still exposes nominal max-damage values, but runtime wear is disabled for those exact item classes.",
+            "mechanism": "Ignitium_Armor.isDamageable and Cursium_Armor.isDamageable each return iconst_0 directly; nominal material durability therefore must not be reported as effective break capacity.",
+            "sources": [
+                "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+                "com.github.L_Ender.cataclysm.items.Ignitium_Armor",
+                "com.github.L_Ender.cataclysm.items.Cursium_Armor",
+            ],
+            "runtime_change": False,
+        },
+        {
+            "id": "epic-fight-armor-capability-separate-layer",
+            "status": "exact_jar_data",
+            "severity": "composition_boundary",
+            "finding": "Installed Epic Fight/Nightfall armor capabilities expose stun_armor and weight as a separate combat layer; they are not vanilla armor or toughness and are not folded into vanilla damage mitigation.",
+            "mechanism": "Exact item capability JSON is attached per defense ID. The defensive matrices preserve the capability values but calculate HP loss only from proven vanilla armor/toughness and explicitly named incoming reducers.",
+            "sources": ["installed Epic Fight/Nightfall item capability JSON", "Catalog/power-sources/native-mechanics-phase3.json"],
+            "runtime_change": False,
+        },
+        {
             "id": "skarrier-ban-sword-1499-damage",
             "status": "exact_jar_bytecode",
             "severity": "critical_if_player_obtainable",
@@ -1122,6 +1213,7 @@ def defense_numeric_calculations(defenses: list[dict[str, Any]]) -> list[dict[st
             "durability_costs": exact.get("durability_costs", []),
             "passive_or_active_methods": native.get("special_attack_methods", []),
             "config_dependencies": exact.get("config_dependencies", []),
+            "stage_3_5c": defense.get("stage_3_5c"),
             "resolution": {
                 "status": "partial" if any((attributes, native.get("epic_fight"), exact.get("durability"), native.get("special_attack_methods"))) else "unresolved",
                 "missing": [
@@ -1149,9 +1241,15 @@ def accessory_numeric_calculations(accessories: list[dict[str, Any]]) -> list[di
             "active_or_passive_methods": native.get("special_attack_methods", []),
             "cooldowns": exact.get("cooldowns", []),
             "config_dependencies": exact.get("config_dependencies", []),
+            "stage_3_5c": accessory.get("stage_3_5c"),
             "resolution": {
                 "status": "partial" if any((exact.get("attributes"), native.get("special_attack_methods"), exact.get("cooldowns"))) else "unresolved",
-                "missing": ["curios_slot_and_stack_limit", "complete_passive_or_active_formula"],
+                "missing": [
+                    field for field, resolved in {
+                        "curios_slot_and_stack_limit": bool(accessory.get("stage_3_5c", {}).get("valid_slots")),
+                        "complete_passive_or_active_formula": bool(native.get("special_attack_methods")) or bool(exact.get("attributes")),
+                    }.items() if not resolved
+                ],
             },
             "evidence": accessory["evidence"],
         })
@@ -1215,13 +1313,37 @@ def durability_audit(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
         exact = item.get("native_mechanics", {}).get("exact_numeric_mechanics", {})
         durability = exact.get("durability", [])
         costs = exact.get("durability_costs", [])
+        stage35c = item.get("stage_3_5c") or {}
+        inherited_wear = stage35c.get("standard_wear")
+        override = stage35c.get("durability_override")
+        observed = list(costs)
+        if inherited_wear and not override:
+            observed.append(inherited_wear)
+        if override:
+            status = "verified_explicitly_unbreakable_armor"
+            unresolved_reason = None
+        elif durability and observed:
+            status = "max_and_consumption_traced"
+            unresolved_reason = None
+        elif durability or observed:
+            status = "partial"
+            unresolved_reason = "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence."
+        else:
+            status = "unresolved"
+            unresolved_reason = "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence."
         records.append({
             "id": item["id"],
             "kind": "durability_audit",
             "native_max_damage": durability,
-            "observed_consumption": costs,
-            "status": "max_and_consumption_traced" if durability and costs else ("partial" if durability or costs else "unresolved"),
-            "unresolved_reason": None if durability and costs else "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+            "observed_consumption": observed,
+            "nominal_vs_effective": {
+                "nominal_max_damage": durability,
+                "explicit_override": override,
+                "unbreaking_expected_wear_probability": {"0": 1.0, "1": 0.8, "2": 0.733333, "3": 0.7} if inherited_wear and not override else None,
+                "mending_boundary": "Native Mending chooses an eligible damaged equipped/held stack and repairs 2 durability per XP point; allocation and XP supply remain runtime-dependent." if inherited_wear and not override else None,
+            },
+            "status": status,
+            "unresolved_reason": unresolved_reason,
             "runtime_observation_required": False,
         })
     return records
@@ -1264,17 +1386,117 @@ def armor_set_calculations(defenses: list[dict[str, Any]]) -> list[dict[str, Any
             "pieces": {slot: piece["id"] for slot, piece in sorted(pieces.items())},
             "summed_exact_attributes": totals,
             "epic_fight_capabilities": capabilities,
+            "set_bonus_evidence": next((piece.get("stage_3_5c_set") for piece in pieces.values() if piece.get("stage_3_5c_set")), None),
             "resolution": {
                 "status": "partial" if exact_totals or capabilities else "unresolved",
                 "missing": [
                     field for field, resolved in {
                         "all_native_armor_values": exact_totals,
-                        "all_set_passive_active_formulas": all(piece.get("native_mechanics", {}).get("special_attack_methods") for piece in pieces.values()),
+                        "explicit_full_set_gate": bool(next((piece.get("stage_3_5c_set", {}).get("confirmed_set_gates") for piece in pieces.values() if piece.get("stage_3_5c_set")), [])),
                     }.items() if not resolved
                 ],
             },
             "boundary": "Only four-piece registry stems are grouped. Set bonuses are not inferred from naming; exact capability and owner-method evidence stays attached to each piece.",
         })
+    return records
+
+
+def stage35c_defensive_calculations(
+    defenses: list[dict[str, Any]],
+    accessories: list[dict[str, Any]],
+    bosses: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    sets = armor_set_calculations(defenses)
+    attacks = [
+        {"id": "ordinary_physical_10", "incoming_hp": 10.0, "armor_applies": True, "protection_applies": True},
+        {"id": "ordinary_heavy_40", "incoming_hp": 40.0, "armor_applies": True, "protection_applies": True},
+        {"id": "projectile_20", "incoming_hp": 20.0, "armor_applies": True, "protection_applies": True},
+        {"id": "explosion_40", "incoming_hp": 40.0, "armor_applies": True, "protection_applies": True},
+        {"id": "installed_irons_magic_20", "incoming_hp": 20.0, "armor_applies": True, "protection_applies": True},
+        {"id": "armor_bypass_only_20", "incoming_hp": 20.0, "armor_applies": False, "protection_applies": True},
+        {"id": "armor_and_enchantment_bypass_20", "incoming_hp": 20.0, "armor_applies": False, "protection_applies": False},
+    ]
+    frost = next((row for row in boss_numeric_calculations(bosses) if row["id"] == "legendary_monsters:frostbitten_golem"), None)
+    if frost:
+        for row in frost["rows"]:
+            if row["world_tier"] == 1 and row["players"] == 1 and not row["raid"]:
+                attacks.append({"id": "frostbitten_t1_solo_hosted_melee", "incoming_hp": row["effective_base_melee_before_target_mitigation"], "armor_applies": True, "protection_applies": True})
+            if row["world_tier"] == 5 and row["players"] == 4 and not row["raid"]:
+                attacks.append({"id": "frostbitten_t5_four_player_hosted_melee", "incoming_hp": row["effective_base_melee_before_target_mitigation"], "armor_applies": True, "protection_applies": True})
+    records = []
+    for armor_set in sets:
+        totals = armor_set["summed_exact_attributes"]
+        if totals["armor_addition"] <= 0:
+            continue
+        rows = []
+        for tier in range(1, 6):
+            progression = 0.0 if tier == 1 else (0.05 if tier == 2 else 0.10)
+            armor = totals["armor_addition"] * (1.0 + progression)
+            toughness = totals["armor_toughness_addition"] * (1.0 + progression)
+            outcomes = []
+            for attack in attacks:
+                incoming = attack.get("incoming_hp")
+                if not isinstance(incoming, (int, float)):
+                    continue
+                armor_epf0 = vanilla_post_mitigation(incoming, armor, toughness, 0) if attack["armor_applies"] else incoming
+                protection_epf = 16 if attack["protection_applies"] else 0
+                lost = (
+                    vanilla_post_mitigation(incoming, armor, toughness, protection_epf)
+                    if attack["armor_applies"]
+                    else incoming * (1.0 - min(20, protection_epf) / 25.0)
+                )
+                outcomes.append({
+                    **attack,
+                    "lost_hp_without_protection": round(armor_epf0, 6),
+                    "lost_hp_with_full_protection_iv": round(lost, 6),
+                    "mitigation_fraction_with_full_protection_iv": round(1.0 - lost / incoming, 6) if incoming else None,
+                    "effective_hp_at_20_health": round(20.0 * incoming / lost, 6) if lost else None,
+                })
+            rows.append({
+                "world_tier": tier,
+                "progression_enchantment_assumption": "all four pieces carry JEM Progression",
+                "armor": round(armor, 6),
+                "toughness": round(toughness, 6),
+                "knockback_resistance": totals["knockback_resistance_addition"],
+                "outcomes": outcomes,
+            })
+        records.append({
+            "id": armor_set["id"],
+            "kind": "stage_3_5c_defense_matrix",
+            "pieces": armor_set["pieces"],
+            "base_attributes": totals,
+            "epic_fight_capabilities": armor_set["epic_fight_capabilities"],
+            "set_bonus_evidence": armor_set.get("set_bonus_evidence"),
+            "rows": rows,
+            "percent_health_boundary": "A 10% max-health term equals 2 HP at 20 max health, but it is not armor-mitigated here until the exact native DamageSource tags for that attack branch are attached.",
+            "calculation_boundary": "Ordinary rows apply vanilla armor then optional generic Protection EPF 16. Shield, Resistance, absorption, school resistance, passive procs and damage-type-specific enchantments stay separate unless the row names them.",
+        })
+    slot_best: dict[str, dict[str, Any]] = {}
+    for defense in defenses:
+        resolved = defense.get("stage_3_5c") or {}
+        slot = resolved.get("slot")
+        if slot not in ARMOR_SUFFIXES:
+            continue
+        score = (float(resolved.get("armor") or 0), float(resolved.get("toughness") or 0), float(resolved.get("knockback_resistance") or 0))
+        current = slot_best.get(slot)
+        if current is None or score > current["score"]:
+            slot_best[slot] = {"id": defense["id"], "score": score}
+    if len(slot_best) == 4:
+        totals = [sum(slot_best[slot]["score"][index] for slot in ARMOR_SUFFIXES) for index in range(3)]
+        records.append({
+            "id": "jem:stage_3_5c_mixed_maximum_material_attributes",
+            "kind": "stage_3_5c_mixed_armor_reference",
+            "pieces": {slot: slot_best[slot]["id"] for slot in ARMOR_SUFFIXES},
+            "summed_attributes": {"armor": totals[0], "toughness": totals[1], "knockback_resistance": totals[2]},
+            "boundary": "This is a legal-slot material-attribute ceiling, not a recommendation: piece passives, acquisition, Epic Fight weight/stun armor, durability and cross-mod conflicts remain attached to their owners.",
+        })
+    resolved_accessories = [row for row in accessories if row.get("stage_3_5c", {}).get("attributes")]
+    records.append({
+        "id": "jem:stage_3_5c_accessory_attribute_matrix",
+        "kind": "stage_3_5c_accessory_attribute_matrix",
+        "records": [{"id": row["id"], **row["stage_3_5c"]} for row in resolved_accessories],
+        "boundary": "Values are exact equipped Curios factory modifiers. ADDITION, MULTIPLY_BASE and MULTIPLY_TOTAL remain distinct; slot sizes and modifier UUID collisions prevent blind summation.",
+    })
     return records
 
 
@@ -1341,7 +1563,7 @@ def research_blockers(
         owners = native.get("owner_classes", [])
         dimensions = native.get("dimensions", {})
         for field, value in dimensions.items():
-            if value.get("status", "").startswith(("exact", "inactive_optional")):
+            if value.get("status", "").startswith(("exact", "resolved", "explicitly_unbreakable", "inactive_optional")):
                 continue
             blockers.append({
                 "id": record["id"],
@@ -1414,7 +1636,7 @@ def research_blockers(
     for row in durability:
         if row["id"] in deep_ids:
             continue
-        if row["status"] == "max_and_consumption_traced":
+        if row["status"] in {"max_and_consumption_traced", "verified_explicitly_unbreakable_armor"}:
             continue
         blockers.append({
             "id": row["id"],
@@ -1449,6 +1671,7 @@ def main() -> int:
     native = load(CATALOG / "power-sources" / "native-mechanics-phase3.json")
     stage35a_evidence = boss_reward_weapon_evidence()
     stage35b_evidence = load(CATALOG / "power-sources" / "boss-combat-stage35b.json")
+    stage35c_evidence = load(CATALOG / "power-sources" / "defense-mechanics-stage35c.json")
     evidence_jar = ROOT / evidence["artifact"]["canonical_path"]
     actual_sha256 = hashlib.sha256(evidence_jar.read_bytes()).hexdigest()
     if actual_sha256 != evidence["artifact"]["sha256"]:
@@ -1457,6 +1680,7 @@ def main() -> int:
     attach_boss_reward_weapon_evidence(weapons, stage35a_evidence)
     armor = item_records("armor_candidate", "views/armor/*.json", ["armor", "toughness", "knockback resistance", "damage-type mitigation", "durability"], native, "progression enchantment conditional slot bonuses")
     accessories = accessory_records(native)
+    attach_defense_stage35c(armor, accessories, stage35c_evidence)
     enchantments = enchantment_records()
     spells = spell_records(evidence, native)
     bosses = boss_records(native)
@@ -1473,6 +1697,7 @@ def main() -> int:
         + spell_numeric_calculations(spells)
         + boss_numeric_calculations(bosses)
         + boss_attack_calculations(bosses)
+        + stage35c_defensive_calculations(armor, accessories, bosses)
     )
     durability = durability_audit(weapons + armor + accessories)
     stage35a_by_id = {row["id"]: row["stage_3_5a"] for row in weapons if row.get("stage_3_5a")}
@@ -1592,6 +1817,37 @@ def main() -> int:
             "stage_3_5b_resolved_special_method_formulas": sum(
                 method.get("formula_status", "").startswith("resolved")
                 for row in bosses for method in row.get("attacks", []) if offensive_method(method)
+            ),
+            "stage_3_5c_exact_armor_attribute_profiles": sum(bool(row.get("stage_3_5c")) for row in armor),
+            "stage_3_5c_complete_sets_with_exact_material_totals": sum(row.get("kind") == "stage_3_5c_defense_matrix" for row in calculations),
+            "stage_3_5c_confirmed_explicit_set_gates": sum(
+                bool(row.get("set_bonus_evidence", {}).get("confirmed_set_gates"))
+                for row in calculations if row.get("kind") == "armor_set_card"
+            ),
+            "stage_3_5c_accessories_with_exact_slots": sum(bool(row.get("stage_3_5c", {}).get("valid_slots")) for row in accessories),
+            "stage_3_5c_accessories_with_exact_attributes": sum(bool(row.get("stage_3_5c", {}).get("attributes")) for row in accessories),
+            "stage_3_5c_accessories_with_resolved_effect_evidence": sum(
+                bool(row.get("stage_3_5c", {}).get("attributes") or row.get("native_mechanics", {}).get("special_attack_methods"))
+                for row in accessories
+            ),
+            "stage_3_5c_explicitly_unbreakable_armor": sum(bool(row.get("stage_3_5c", {}).get("durability_override")) for row in armor),
+            "stage_3_5c_exact_durability_profiles": sum(
+                row.get("status") in {
+                    "max_and_consumption_traced", "verified_explicitly_unbreakable_armor",
+                    "max_and_wear_traced", "max_and_normal_wear_traced", "max_and_normal_wear_traced_special_no_wear",
+                    "max_and_channel_wear_traced", "max_and_special_wear_traced", "verified_unbreakable_balance_issue",
+                }
+                for row in durability
+            ),
+            "stage_3_5c_resolved_defensive_ability_formulas": sum(
+                method.get("formula_status", "").startswith("resolved")
+                for row in armor + accessories
+                for method in row.get("native_mechanics", {}).get("special_attack_methods", [])
+            ),
+            "stage_3_5c_mitigation_comparisons": sum(
+                len(tier_row.get("outcomes", []))
+                for row in calculations if row.get("kind") == "stage_3_5c_defense_matrix"
+                for tier_row in row.get("rows", [])
             ),
         },
         "known_gaps": [

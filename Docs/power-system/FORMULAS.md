@@ -1,5 +1,24 @@
 # Power formulas
 
+## Armor, accessories and durability Stage 3.5C
+
+Vanilla armor reduction for incoming damage `D`, armor `A` and toughness `T`:
+
+```text
+effective armor = min(20, max(A / 5, A - 4 * D / (T + 8)))
+after armor = D * (1 - effective armor / 25)
+after Protection = after armor * (1 - min(20, EPF) * 0.04)
+EHP = reference health * D / final lost HP
+```
+
+`bypasses_armor` skips the first reduction. `bypasses_enchantments` skips Protection. The two flags are independent; no shield, Resistance, absorption, iframe or school resistance is silently assumed.
+
+For a complete four-piece material set, attributes are the exact sum of helmet/chestplate/leggings/boots getters. Conditional JEM Progression armor uses native values per enchanted piece: Tier I `×1.00`, Tier II `×1.05`, Tier III–V `×1.10`; boots separately add `+0/+0.15/+0.25` knockback resistance.
+
+Standard armor wear per qualifying accepted hit is `max(1, floor(incoming damage / 4))` per equipped piece. Expected wear with Unbreaking level `n` is `wear × (0.60 + 0.40 / (n + 1))`; Mending repairs 2 durability per consumed XP point.
+
+An exact constant-false `isDamageable(ItemStack)` override supersedes nominal material durability. Curios attribute modifiers retain their native operation (`ADDITION`, `MULTIPLY_BASE`, `MULTIPLY_TOTAL`) and are not flattened into armor unless their target attribute is exactly armor.
+
 ## Boss-reward Stage 3.5A
 
 Обычный удар: `1 player base + exact main-hand attack_damage addition`, затем фактическая цепочка DamageSource/armor/Protection. JEM Progression применяется только если зачарование реально есть: `×1.00` на Tier I, `×1.05` на Tier II, `×1.10` на Tier III–V; на Tier III–V отдельная ветка с вероятностью 15% даёт ещё `×1.5`. Tier сам по себе оружие не усиливает.

@@ -1,6 +1,6 @@
 {
   "schema_version": 4,
-  "snapshot_sha": "f4385fbd8d694b75b7fd0c6a9d06f01959ebe0b7",
+  "snapshot_sha": "146fcbee566646e14098e664012a32b7c8acca5a",
   "denominator": "All candidates from current Atlas weapon/armor/entity/enchantment views plus spell IDs from the exact-version integration registry; heuristic categories remain explicitly candidates.",
   "identified_by_view": {
     "weapons": 177,
@@ -14,11 +14,11 @@
     "shared_modifiers": 7,
     "combat_scenarios": 16,
     "regression_warnings": 2,
-    "phase_3_source_findings": 6,
-    "phase_3_numeric_calculations": 792,
+    "phase_3_source_findings": 8,
+    "phase_3_numeric_calculations": 818,
     "phase_3_durability_audit": 448,
     "phase_3_weapon_power_ladder": 177,
-    "phase_3_named_research_blockers": 3880
+    "phase_3_named_research_blockers": 3223
   },
   "boss_breakdown": {
     "jem_registered_profiles": 56,
@@ -31,8 +31,8 @@
     "unresolved": 2197
   },
   "fully_resolved": 0,
-  "partially_resolved": 398,
-  "unresolved": 286,
+  "partially_resolved": 507,
+  "unresolved": 177,
   "reason_no_full_resolution": "No static record proves every runtime ItemStack attribute, target mitigation, attack channel and acquisition context.",
   "evidence_levels": [
     "atlas_static",
@@ -66,9 +66,9 @@
     "weapon_special_attacks_fully_numeric": 12,
     "epic_fight_capability_records": 111,
     "epic_fight_fully_numeric_combos": 0,
-    "durability_max_damage_resolved": 25,
-    "durability_consumption_resolved": 21,
-    "durability_fully_traced": 3,
+    "durability_max_damage_resolved": 155,
+    "durability_consumption_resolved": 138,
+    "durability_fully_traced": 120,
     "stage_3_5a_boss_reward_profiles": 36,
     "stage_3_5a_exact_basic_melee_values": 36,
     "stage_3_5a_numeric_special_abilities": 38,
@@ -82,7 +82,17 @@
     "stage_3_5b_exact_native_base_melee_channels": 56,
     "stage_3_5b_registered_bosses_with_absolute_scaled_melee_tables": 54,
     "stage_3_5b_absolute_scaled_melee_rows": 3240,
-    "stage_3_5b_resolved_special_method_formulas": 22
+    "stage_3_5b_resolved_special_method_formulas": 22,
+    "stage_3_5c_exact_armor_attribute_profiles": 125,
+    "stage_3_5c_complete_sets_with_exact_material_totals": 24,
+    "stage_3_5c_confirmed_explicit_set_gates": 1,
+    "stage_3_5c_accessories_with_exact_slots": 22,
+    "stage_3_5c_accessories_with_exact_attributes": 10,
+    "stage_3_5c_accessories_with_resolved_effect_evidence": 15,
+    "stage_3_5c_explicitly_unbreakable_armor": 8,
+    "stage_3_5c_exact_durability_profiles": 161,
+    "stage_3_5c_resolved_defensive_ability_formulas": 10,
+    "stage_3_5c_mitigation_comparisons": 1080
   },
   "known_gaps": [
     "Dynamic/helper-built item registrations and runtime ItemStack/NBT attribute variants",

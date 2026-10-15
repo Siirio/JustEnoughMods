@@ -1,4 +1,4 @@
-# Stage 3.5B numeric tables
+# Stage 3.5C numeric tables
 
 Канонический машинный результат находится в `Catalog/views/power/calculations.json`. Все числа вычисляются только из exact installed JAR/data и подтверждённых JEM-формул; неизвестное значение остаётся символическим.
 
@@ -16,10 +16,17 @@
 | Boss attack tables | 61 | 155 настоящих offensive methods после удаления 76 inbound handlers; 22 имеют resolved formula, ещё 56 боссов имеют exact base-melee channel |
 | Vanilla mitigation | 1 | Armor/toughness/Protection для входящего урона 1–160 HP |
 | Boss-reward weapon deep cards | 36 | Basic, specials, conditional World Tier, cooldown windows, durability and exact blockers |
+| Exact armor material profiles | 125 | Armor, toughness, knockback resistance and nominal max damage from installed constructors/getters |
+| Complete comparable armor sets | 24 | Four exact pieces, five conditional Progression tiers and nine incoming-damage scenarios |
+| Armor mitigation outcomes | 1 080 | 24 sets × 5 tiers × 9 attacks, including bypass semantics and EHP |
+| Exact Curios slots / attributes | 22 / 10 | Installed item tags plus factory attribute containers, without inferred effects |
+| Explicitly unbreakable armor | 8 | Exact constant-false `isDamageable` override, separated from unresolved wear |
 
 Для reward-36 теперь доказаны все 36 обычных melee значений и 38 числовых special branches/abilities. Шесть способностей имеют статически безопасную activation upper bound и поэтому дают 18 отдельных cooldown-limited окон 30/60/120 секунд. Это **special-only upper bounds**, а не полный sustained DPS оружия: обычные атаки, stamina и ещё не доказанные successful hit counts туда не подмешиваются.
 
 Stage 3.5B добавляет 3 240 абсолютных boss-melee строк: 54 зарегистрированных профиля × 5 World Tier × 6 размеров группы × hosted/Raid. Каждая строка начинается с tier-specific profile attack attribute либо exact native `ATTACK_DAMAGE`, затем применяет JEM composition и пять reference armor targets. Два зарегистрированных профиля (`aquamirae:captain_cornelia`, `legendary_monsters:bomber`) остаются без доказанного base-melee числа; ranged/special поведение не объявляется нулём.
+
+Stage 3.5C добавляет 1 080 одинаково вычисленных defensive outcomes. В таблицу допускается только полный набор, у которого все четыре material-профиля точны; поэтому denominator равен 24, а не всем 39 сгруппированным stems. Armor/Protection bypass обрабатывается по damage-type flags. Модовые пассивы, shield, Resistance, absorption и school resistance остаются отдельными слоями и не маскируются reference-числом.
 
 Ключевые формулы:
 

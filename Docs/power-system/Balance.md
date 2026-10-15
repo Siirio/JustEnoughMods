@@ -1,4 +1,4 @@
-# Граница баланса после Stage 3.5B
+# Граница баланса после Stage 3.5C
 
 Phase 3 — это доказанные итоговые числа там, где цепочка уже полна, и конкретная символическая граница во всех остальных местах. Никакой auto-nerf, datapack override, config change или Java balance patch не применён.
 
@@ -20,6 +20,14 @@ Stage 3.5B добавляет boss-side review signals без изменения
 3. Ignis имеет special attacks до `2.0 × attack_damage + 25% target max health`; Poke и Leviathan bite отдельно используют `attack_damage + 10% target max health`.
 4. Maledictus ограничивает percent-health добавку через `min(base term, target max health × hp term)`, поэтому это не неограниченный чистый процент.
 5. Прежний показатель `231 boss attacks` был завышен 76 inbound damage handlers. Исправленный denominator — 155 special methods плюс 56 отдельных base-melee channels.
+
+Stage 3.5C добавляет defense-side review signals без изменения runtime:
+
+1. Восемь Cataclysm armor items явно возвращают `false` из `isDamageable(ItemStack)`: три части Cursium и пять частей Ignitium, включая elytra chestplate. Nominal material durability при этом существует, но фактический vanilla wear запрещён owner-классом.
+2. Cursium chestplate не использует тот же unbreakable-класс, поэтому весь визуально единый набор нельзя называть одинаково неразрушимым.
+3. Только один из 39 сгруппированных наборов имеет доказанный именованный full-set gate — Annihilator. Имя/четыре части не используются как доказательство бонуса.
+4. 24 комплекта допускают честное сравнение armor/toughness/Protection на 1 080 одинаковых сценариях; остальные 15 не получают придуманных нулей.
+5. Curios slots доказаны для 22/52, точные attribute containers для 10/52. Остальные аксессуары нельзя ранжировать только по tooltip или имени.
 
 Stage 4 должен сравнивать эти выражения на одинаковых целях и отдельно учитывать damage-type bypasses. Частота применения и accepted-hit uptime остаются runtime inputs, поэтому even exact per-hit formula ещё не является DPS.
 

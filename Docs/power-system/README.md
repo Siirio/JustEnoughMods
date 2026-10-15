@@ -11,6 +11,7 @@ From the repository root:
 ```text
 python Catalog/generator/extract_power_mechanics.py
 python Catalog/generator/extract_power_mechanics.py --bosses-only
+python Catalog/generator/extract_defense_mechanics.py
 python Catalog/generator/build_power_views.py
 python Catalog/generator/query_atlas.py power minecraft:diamond_sword
 python Catalog/generator/query_atlas.py power "Ray of Siphoning"
@@ -18,7 +19,7 @@ python Catalog/generator/query_atlas.py power minecraft:wither
 python Catalog/generator/query_atlas.py power recruit
 ```
 
-Run the exact-artifact extractor first when installed JARs, native registrations or effective TOML configuration changes. Use `--bosses-only` when only boss owner/attribute/combat evidence needs refreshing; it preserves the existing weapon, spell and ally sections. The extractor resolves `DeferredRegister` suppliers through the JVM `BootstrapMethods` table, follows a bounded same-artifact call graph into projectile/goal/effect owners, reads active data-driven combat providers and records only formulas/numeric mechanics it can trace without guessing. The view generator then composes that evidence with JEM rules and Stage 3.5 reference calculations.
+Run the exact-artifact extractors first when installed JARs, native registrations or effective TOML configuration changes. Use `--bosses-only` when only boss owner/attribute/combat evidence needs refreshing; it preserves the existing weapon, spell and ally sections. The defense extractor resolves armor-material constructors/getters, Curios tags/attribute factories, explicit set gates and durability overrides. The view generator then composes that evidence with JEM rules and Stage 3.5 reference calculations.
 
 Each result follows the same chain:
 

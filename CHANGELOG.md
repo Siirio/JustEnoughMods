@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-15 — Power System Stage 3.5C armor, accessories and durability resolution
+
+- User request and supplied technical direction: resolve the 219 defense records, 52 accessories, 39 armor sets and 448 durability records against exact installed sources; produce numerical defensive comparisons and outlier evidence without changing gameplay or starting Stage 4/5.
+- Codex analysis implementation: added a deterministic installed-JAR defense extractor and integrated its evidence into the canonical power views. It resolves 125 exact armor material profiles, 24 complete four-piece sets, 22 exact Curios slot contracts, 10 exact accessory attribute containers and 15 accessory records with resolved mechanical evidence. The generator now emits 1,080 comparable mitigation/EHP outcomes across five conditional JEM Progression tiers and nine attack scenarios.
+- Durability result: the 448-record audit now has 155 exact max-damage values, 138 proven consumption paths and 120 strict max-plus-consumption traces. Eight Cataclysm armor items explicitly override `isDamageable(ItemStack)` to false: Cursium boots/helmet/leggings and five Ignitium variants. Cursium chestplate remains damageable through a different class. Missing wear evidence is still unresolved, never silently classified as infinite durability.
+- Set/accessory boundary: only the Annihilator group has a confirmed named full-set gate among the 39 stems; grouping does not invent a set bonus. Dynamic Curios capabilities, runtime NBT, shields, Resistance, absorption, school resistance, iframe and proc uptime remain named blockers where exact static evidence ends.
+- No Java, Mixin, config, datapack, installed JAR, gameplay value, client/server runtime, stable profile, world, MineRENT deployment or release baseline was changed. No Gradle task, automated test, Minecraft launch, linter, formatter or static-analysis task was run.
+
 ## 2026-10-15 — Settlements Update 1 scope fixed before implementation
 
 - User request and supplied product direction: allow one authenticated account to found unlimited settlements; skip settlement selection only when exactly one exists; remove the Overview tab; add map-driven territory expansion for exactly 1 Gold Coin; always show settlement space on Xaero; expose resident happiness, hunger, food monotony and progression-safe vanilla/modded food requests through Jade; add `/settlements help`, town rename and resident/worker unregistration.

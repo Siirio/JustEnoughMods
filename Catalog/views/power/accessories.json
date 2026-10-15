@@ -1,7 +1,7 @@
 {
   "schema_version": 4,
   "view": "accessories",
-  "snapshot_sha": "f4385fbd8d694b75b7fd0c6a9d06f01959ebe0b7",
+  "snapshot_sha": "146fcbee566646e14098e664012a32b7c8acca5a",
   "generation": {
     "generator": "Catalog/generator/build_power_views.py",
     "method": "offline derived evidence",
@@ -318,12 +318,14 @@
         "special_attack_methods": [],
         "dimensions": {
           "slot": {
-            "status": "unresolved",
-            "unresolved_reason": "slot requires Curios slot/capability and registered item implementation evidence for cataclysm:belt_of_beginner"
+            "status": "resolved_curios_item_tag_or_factory",
+            "valid_slots": [
+              "waist"
+            ]
           },
           "attributes": {
-            "status": "unresolved",
-            "unresolved_reason": "attributes requires Curios slot/capability and registered item implementation evidence for cataclysm:belt_of_beginner"
+            "status": "not_observed_in_registration_factory",
+            "values": []
           },
           "passive": {
             "status": "unresolved",
@@ -346,6 +348,16 @@
             "unresolved_reason": "resource_cost requires Curios slot/capability and registered item implementation evidence for cataclysm:belt_of_beginner"
           }
         }
+      },
+      "stage_3_5c": {
+        "item_id": "cataclysm:belt_of_beginner",
+        "valid_slots": [
+          "waist"
+        ],
+        "attributes": [],
+        "equipped_only": true,
+        "stacking_boundary": "Curios slot size and the attribute modifier UUID/operation govern stacking; an item tag proves slot validity, not unlimited copies.",
+        "status": "partial_exact_curios_evidence"
       }
     },
     {
@@ -483,12 +495,14 @@
         "special_attack_methods": [],
         "dimensions": {
           "slot": {
-            "status": "unresolved",
-            "unresolved_reason": "slot requires Curios slot/capability and registered item implementation evidence for cataclysm:belt_of_monstrosity"
+            "status": "resolved_curios_item_tag_or_factory",
+            "valid_slots": [
+              "waist"
+            ]
           },
           "attributes": {
-            "status": "unresolved",
-            "unresolved_reason": "attributes requires Curios slot/capability and registered item implementation evidence for cataclysm:belt_of_monstrosity"
+            "status": "not_observed_in_registration_factory",
+            "values": []
           },
           "passive": {
             "status": "unresolved",
@@ -511,6 +525,16 @@
             "unresolved_reason": "resource_cost requires Curios slot/capability and registered item implementation evidence for cataclysm:belt_of_monstrosity"
           }
         }
+      },
+      "stage_3_5c": {
+        "item_id": "cataclysm:belt_of_monstrosity",
+        "valid_slots": [
+          "waist"
+        ],
+        "attributes": [],
+        "equipped_only": true,
+        "stacking_boundary": "Curios slot size and the attribute modifier UUID/operation govern stacking; an item tag proves slot validity, not unlimited copies.",
+        "status": "partial_exact_curios_evidence"
       }
     },
     {
@@ -687,7 +711,24 @@
           }
         ],
         "exact_numeric_mechanics": {
-          "attributes": [],
+          "attributes": [
+            {
+              "attribute_owner": "net.minecraft.world.entity.ai.attributes.Attributes",
+              "attribute_field": "f_22281_",
+              "value": 0.1,
+              "operation": "MULTIPLY_TOTAL",
+              "owner_class": "com.github.L_Ender.cataclysm.items.CuriosItem.AttributeContainer",
+              "status": "exact_registration_attribute_container"
+            },
+            {
+              "attribute_owner": "net.minecraft.world.entity.ai.attributes.Attributes",
+              "attribute_field": "f_22284_",
+              "value": -0.25,
+              "operation": "MULTIPLY_TOTAL",
+              "owner_class": "com.github.L_Ender.cataclysm.items.CuriosItem.AttributeContainer",
+              "status": "exact_registration_attribute_container"
+            }
+          ],
           "durability": [],
           "durability_costs": [],
           "cooldowns": [],
@@ -698,12 +739,31 @@
         "special_attack_methods": [],
         "dimensions": {
           "slot": {
-            "status": "unresolved",
-            "unresolved_reason": "slot requires Curios slot/capability and registered item implementation evidence for cataclysm:berserker_soul_amulet"
+            "status": "resolved_curios_item_tag_or_factory",
+            "valid_slots": [
+              "necklace"
+            ]
           },
           "attributes": {
-            "status": "unresolved",
-            "unresolved_reason": "attributes requires Curios slot/capability and registered item implementation evidence for cataclysm:berserker_soul_amulet"
+            "status": "resolved_registration_factory",
+            "values": [
+              {
+                "attribute_owner": "net.minecraft.world.entity.ai.attributes.Attributes",
+                "attribute_field": "f_22281_",
+                "value": 0.1,
+                "operation": "MULTIPLY_TOTAL",
+                "owner_class": "com.github.L_Ender.cataclysm.items.CuriosItem.AttributeContainer",
+                "status": "exact_registration_attribute_container"
+              },
+              {
+                "attribute_owner": "net.minecraft.world.entity.ai.attributes.Attributes",
+                "attribute_field": "f_22284_",
+                "value": -0.25,
+                "operation": "MULTIPLY_TOTAL",
+                "owner_class": "com.github.L_Ender.cataclysm.items.CuriosItem.AttributeContainer",
+                "status": "exact_registration_attribute_container"
+              }
+            ]
           },
           "passive": {
             "status": "unresolved",
@@ -726,6 +786,33 @@
             "unresolved_reason": "resource_cost requires Curios slot/capability and registered item implementation evidence for cataclysm:berserker_soul_amulet"
           }
         }
+      },
+      "stage_3_5c": {
+        "item_id": "cataclysm:berserker_soul_amulet",
+        "valid_slots": [
+          "necklace"
+        ],
+        "attributes": [
+          {
+            "attribute_owner": "net.minecraft.world.entity.ai.attributes.Attributes",
+            "attribute_field": "f_22281_",
+            "value": 0.1,
+            "operation": "MULTIPLY_TOTAL",
+            "owner_class": "com.github.L_Ender.cataclysm.items.CuriosItem.AttributeContainer",
+            "status": "exact_registration_attribute_container"
+          },
+          {
+            "attribute_owner": "net.minecraft.world.entity.ai.attributes.Attributes",
+            "attribute_field": "f_22284_",
+            "value": -0.25,
+            "operation": "MULTIPLY_TOTAL",
+            "owner_class": "com.github.L_Ender.cataclysm.items.CuriosItem.AttributeContainer",
+            "status": "exact_registration_attribute_container"
+          }
+        ],
+        "equipped_only": true,
+        "stacking_boundary": "Curios slot size and the attribute modifier UUID/operation govern stacking; an item tag proves slot validity, not unlimited copies.",
+        "status": "exact_curios_tag_and_factory_evidence"
       }
     },
     {
@@ -1040,7 +1127,16 @@
           }
         ],
         "exact_numeric_mechanics": {
-          "attributes": [],
+          "attributes": [
+            {
+              "attribute_owner": "com.github.L_Ender.cataclysm.init.ModAttribute",
+              "attribute_field": "ADDITIONAL_CRITICAL_DAMAGE",
+              "value": 10,
+              "operation": "ADDITION",
+              "owner_class": "com.github.L_Ender.cataclysm.items.CuriosItem.AttributeContainer",
+              "status": "exact_registration_attribute_container"
+            }
+          ],
           "durability": [],
           "durability_costs": [],
           "cooldowns": [],
@@ -1051,12 +1147,23 @@
         "special_attack_methods": [],
         "dimensions": {
           "slot": {
-            "status": "unresolved",
-            "unresolved_reason": "slot requires Curios slot/capability and registered item implementation evidence for cataclysm:ring_of_grudged"
+            "status": "resolved_curios_item_tag_or_factory",
+            "valid_slots": [
+              "rings"
+            ]
           },
           "attributes": {
-            "status": "unresolved",
-            "unresolved_reason": "attributes requires Curios slot/capability and registered item implementation evidence for cataclysm:ring_of_grudged"
+            "status": "resolved_registration_factory",
+            "values": [
+              {
+                "attribute_owner": "com.github.L_Ender.cataclysm.init.ModAttribute",
+                "attribute_field": "ADDITIONAL_CRITICAL_DAMAGE",
+                "value": 10,
+                "operation": "ADDITION",
+                "owner_class": "com.github.L_Ender.cataclysm.items.CuriosItem.AttributeContainer",
+                "status": "exact_registration_attribute_container"
+              }
+            ]
           },
           "passive": {
             "status": "unresolved",
@@ -1079,6 +1186,25 @@
             "unresolved_reason": "resource_cost requires Curios slot/capability and registered item implementation evidence for cataclysm:ring_of_grudged"
           }
         }
+      },
+      "stage_3_5c": {
+        "item_id": "cataclysm:ring_of_grudged",
+        "valid_slots": [
+          "rings"
+        ],
+        "attributes": [
+          {
+            "attribute_owner": "com.github.L_Ender.cataclysm.init.ModAttribute",
+            "attribute_field": "ADDITIONAL_CRITICAL_DAMAGE",
+            "value": 10,
+            "operation": "ADDITION",
+            "owner_class": "com.github.L_Ender.cataclysm.items.CuriosItem.AttributeContainer",
+            "status": "exact_registration_attribute_container"
+          }
+        ],
+        "equipped_only": true,
+        "stacking_boundary": "Curios slot size and the attribute modifier UUID/operation govern stacking; an item tag proves slot validity, not unlimited copies.",
+        "status": "exact_curios_tag_and_factory_evidence"
       }
     },
     {
@@ -2596,12 +2722,14 @@
         "special_attack_methods": [],
         "dimensions": {
           "slot": {
-            "status": "unresolved",
-            "unresolved_reason": "slot requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:affinity_ring"
+            "status": "resolved_curios_item_tag_or_factory",
+            "valid_slots": [
+              "ring"
+            ]
           },
           "attributes": {
-            "status": "unresolved",
-            "unresolved_reason": "attributes requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:affinity_ring"
+            "status": "not_observed_in_registration_factory",
+            "values": []
           },
           "passive": {
             "status": "unresolved",
@@ -2624,6 +2752,16 @@
             "unresolved_reason": "resource_cost requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:affinity_ring"
           }
         }
+      },
+      "stage_3_5c": {
+        "item_id": "irons_spellbooks:affinity_ring",
+        "valid_slots": [
+          "ring"
+        ],
+        "attributes": [],
+        "equipped_only": true,
+        "stacking_boundary": "Curios slot size and the attribute modifier UUID/operation govern stacking; an item tag proves slot validity, not unlimited copies.",
+        "status": "partial_exact_curios_evidence"
       }
     },
     {
@@ -2775,7 +2913,16 @@
           }
         ],
         "exact_numeric_mechanics": {
-          "attributes": [],
+          "attributes": [
+            {
+              "attribute_owner": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+              "attribute_field": "MANA_REGEN",
+              "value": 0.15,
+              "operation": "MULTIPLY_BASE",
+              "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+              "status": "exact_registration_attribute_container"
+            }
+          ],
           "durability": [],
           "durability_costs": [],
           "cooldowns": [],
@@ -2786,12 +2933,23 @@
         "special_attack_methods": [],
         "dimensions": {
           "slot": {
-            "status": "unresolved",
-            "unresolved_reason": "slot requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:amethyst_resonance_charm"
+            "status": "resolved_curios_item_tag_or_factory",
+            "valid_slots": [
+              "necklace"
+            ]
           },
           "attributes": {
-            "status": "unresolved",
-            "unresolved_reason": "attributes requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:amethyst_resonance_charm"
+            "status": "resolved_registration_factory",
+            "values": [
+              {
+                "attribute_owner": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+                "attribute_field": "MANA_REGEN",
+                "value": 0.15,
+                "operation": "MULTIPLY_BASE",
+                "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+                "status": "exact_registration_attribute_container"
+              }
+            ]
           },
           "passive": {
             "status": "unresolved",
@@ -2814,6 +2972,25 @@
             "unresolved_reason": "resource_cost requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:amethyst_resonance_charm"
           }
         }
+      },
+      "stage_3_5c": {
+        "item_id": "irons_spellbooks:amethyst_resonance_charm",
+        "valid_slots": [
+          "necklace"
+        ],
+        "attributes": [
+          {
+            "attribute_owner": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+            "attribute_field": "MANA_REGEN",
+            "value": 0.15,
+            "operation": "MULTIPLY_BASE",
+            "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+            "status": "exact_registration_attribute_container"
+          }
+        ],
+        "equipped_only": true,
+        "stacking_boundary": "Curios slot size and the attribute modifier UUID/operation govern stacking; an item tag proves slot validity, not unlimited copies.",
+        "status": "exact_curios_tag_and_factory_evidence"
       }
     },
     {
@@ -2965,7 +3142,16 @@
           }
         ],
         "exact_numeric_mechanics": {
-          "attributes": [],
+          "attributes": [
+            {
+              "attribute_owner": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+              "attribute_field": "CAST_TIME_REDUCTION",
+              "value": 0.15,
+              "operation": "MULTIPLY_BASE",
+              "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+              "status": "exact_registration_attribute_container"
+            }
+          ],
           "durability": [],
           "durability_costs": [],
           "cooldowns": [],
@@ -2976,12 +3162,23 @@
         "special_attack_methods": [],
         "dimensions": {
           "slot": {
-            "status": "unresolved",
-            "unresolved_reason": "slot requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:cast_time_ring"
+            "status": "resolved_curios_item_tag_or_factory",
+            "valid_slots": [
+              "ring"
+            ]
           },
           "attributes": {
-            "status": "unresolved",
-            "unresolved_reason": "attributes requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:cast_time_ring"
+            "status": "resolved_registration_factory",
+            "values": [
+              {
+                "attribute_owner": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+                "attribute_field": "CAST_TIME_REDUCTION",
+                "value": 0.15,
+                "operation": "MULTIPLY_BASE",
+                "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+                "status": "exact_registration_attribute_container"
+              }
+            ]
           },
           "passive": {
             "status": "unresolved",
@@ -3004,6 +3201,25 @@
             "unresolved_reason": "resource_cost requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:cast_time_ring"
           }
         }
+      },
+      "stage_3_5c": {
+        "item_id": "irons_spellbooks:cast_time_ring",
+        "valid_slots": [
+          "ring"
+        ],
+        "attributes": [
+          {
+            "attribute_owner": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+            "attribute_field": "CAST_TIME_REDUCTION",
+            "value": 0.15,
+            "operation": "MULTIPLY_BASE",
+            "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+            "status": "exact_registration_attribute_container"
+          }
+        ],
+        "equipped_only": true,
+        "stacking_boundary": "Curios slot size and the attribute modifier UUID/operation govern stacking; an item tag proves slot validity, not unlimited copies.",
+        "status": "exact_curios_tag_and_factory_evidence"
       }
     },
     {
@@ -3144,12 +3360,14 @@
         "special_attack_methods": [],
         "dimensions": {
           "slot": {
-            "status": "unresolved",
-            "unresolved_reason": "slot requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:concentration_amulet"
+            "status": "resolved_curios_item_tag_or_factory",
+            "valid_slots": [
+              "necklace"
+            ]
           },
           "attributes": {
-            "status": "unresolved",
-            "unresolved_reason": "attributes requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:concentration_amulet"
+            "status": "not_observed_in_registration_factory",
+            "values": []
           },
           "passive": {
             "status": "unresolved",
@@ -3172,6 +3390,16 @@
             "unresolved_reason": "resource_cost requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:concentration_amulet"
           }
         }
+      },
+      "stage_3_5c": {
+        "item_id": "irons_spellbooks:concentration_amulet",
+        "valid_slots": [
+          "necklace"
+        ],
+        "attributes": [],
+        "equipped_only": true,
+        "stacking_boundary": "Curios slot size and the attribute modifier UUID/operation govern stacking; an item tag proves slot validity, not unlimited copies.",
+        "status": "partial_exact_curios_evidence"
       }
     },
     {
@@ -3323,7 +3551,16 @@
           }
         ],
         "exact_numeric_mechanics": {
-          "attributes": [],
+          "attributes": [
+            {
+              "attribute_owner": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+              "attribute_field": "SUMMON_DAMAGE",
+              "value": 0.15,
+              "operation": "MULTIPLY_BASE",
+              "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+              "status": "exact_registration_attribute_container"
+            }
+          ],
           "durability": [],
           "durability_costs": [],
           "cooldowns": [],
@@ -3334,12 +3571,23 @@
         "special_attack_methods": [],
         "dimensions": {
           "slot": {
-            "status": "unresolved",
-            "unresolved_reason": "slot requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:conjurers_talisman"
+            "status": "resolved_curios_item_tag_or_factory",
+            "valid_slots": [
+              "necklace"
+            ]
           },
           "attributes": {
-            "status": "unresolved",
-            "unresolved_reason": "attributes requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:conjurers_talisman"
+            "status": "resolved_registration_factory",
+            "values": [
+              {
+                "attribute_owner": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+                "attribute_field": "SUMMON_DAMAGE",
+                "value": 0.15,
+                "operation": "MULTIPLY_BASE",
+                "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+                "status": "exact_registration_attribute_container"
+              }
+            ]
           },
           "passive": {
             "status": "unresolved",
@@ -3362,6 +3610,25 @@
             "unresolved_reason": "resource_cost requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:conjurers_talisman"
           }
         }
+      },
+      "stage_3_5c": {
+        "item_id": "irons_spellbooks:conjurers_talisman",
+        "valid_slots": [
+          "necklace"
+        ],
+        "attributes": [
+          {
+            "attribute_owner": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+            "attribute_field": "SUMMON_DAMAGE",
+            "value": 0.15,
+            "operation": "MULTIPLY_BASE",
+            "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+            "status": "exact_registration_attribute_container"
+          }
+        ],
+        "equipped_only": true,
+        "stacking_boundary": "Curios slot size and the attribute modifier UUID/operation govern stacking; an item tag proves slot validity, not unlimited copies.",
+        "status": "exact_curios_tag_and_factory_evidence"
       }
     },
     {
@@ -3513,7 +3780,16 @@
           }
         ],
         "exact_numeric_mechanics": {
-          "attributes": [],
+          "attributes": [
+            {
+              "attribute_owner": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+              "attribute_field": "COOLDOWN_REDUCTION",
+              "value": 0.15,
+              "operation": "MULTIPLY_BASE",
+              "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+              "status": "exact_registration_attribute_container"
+            }
+          ],
           "durability": [],
           "durability_costs": [],
           "cooldowns": [],
@@ -3524,12 +3800,23 @@
         "special_attack_methods": [],
         "dimensions": {
           "slot": {
-            "status": "unresolved",
-            "unresolved_reason": "slot requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:cooldown_ring"
+            "status": "resolved_curios_item_tag_or_factory",
+            "valid_slots": [
+              "ring"
+            ]
           },
           "attributes": {
-            "status": "unresolved",
-            "unresolved_reason": "attributes requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:cooldown_ring"
+            "status": "resolved_registration_factory",
+            "values": [
+              {
+                "attribute_owner": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+                "attribute_field": "COOLDOWN_REDUCTION",
+                "value": 0.15,
+                "operation": "MULTIPLY_BASE",
+                "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+                "status": "exact_registration_attribute_container"
+              }
+            ]
           },
           "passive": {
             "status": "unresolved",
@@ -3552,6 +3839,25 @@
             "unresolved_reason": "resource_cost requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:cooldown_ring"
           }
         }
+      },
+      "stage_3_5c": {
+        "item_id": "irons_spellbooks:cooldown_ring",
+        "valid_slots": [
+          "ring"
+        ],
+        "attributes": [
+          {
+            "attribute_owner": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+            "attribute_field": "COOLDOWN_REDUCTION",
+            "value": 0.15,
+            "operation": "MULTIPLY_BASE",
+            "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+            "status": "exact_registration_attribute_container"
+          }
+        ],
+        "equipped_only": true,
+        "stacking_boundary": "Curios slot size and the attribute modifier UUID/operation govern stacking; an item tag proves slot validity, not unlimited copies.",
+        "status": "exact_curios_tag_and_factory_evidence"
       }
     },
     {
@@ -3692,12 +3998,14 @@
         "special_attack_methods": [],
         "dimensions": {
           "slot": {
-            "status": "unresolved",
-            "unresolved_reason": "slot requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:emerald_stoneplate_ring"
+            "status": "resolved_curios_item_tag_or_factory",
+            "valid_slots": [
+              "ring"
+            ]
           },
           "attributes": {
-            "status": "unresolved",
-            "unresolved_reason": "attributes requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:emerald_stoneplate_ring"
+            "status": "not_observed_in_registration_factory",
+            "values": []
           },
           "passive": {
             "status": "unresolved",
@@ -3720,6 +4028,16 @@
             "unresolved_reason": "resource_cost requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:emerald_stoneplate_ring"
           }
         }
+      },
+      "stage_3_5c": {
+        "item_id": "irons_spellbooks:emerald_stoneplate_ring",
+        "valid_slots": [
+          "ring"
+        ],
+        "attributes": [],
+        "equipped_only": true,
+        "stacking_boundary": "Curios slot size and the attribute modifier UUID/operation govern stacking; an item tag proves slot validity, not unlimited copies.",
+        "status": "partial_exact_curios_evidence"
       }
     },
     {
@@ -3846,12 +4164,14 @@
         "special_attack_methods": [],
         "dimensions": {
           "slot": {
-            "status": "unresolved",
-            "unresolved_reason": "slot requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:fireward_ring"
+            "status": "resolved_curios_item_tag_or_factory",
+            "valid_slots": [
+              "ring"
+            ]
           },
           "attributes": {
-            "status": "unresolved",
-            "unresolved_reason": "attributes requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:fireward_ring"
+            "status": "not_observed_in_registration_factory",
+            "values": []
           },
           "passive": {
             "status": "unresolved",
@@ -3874,6 +4194,16 @@
             "unresolved_reason": "resource_cost requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:fireward_ring"
           }
         }
+      },
+      "stage_3_5c": {
+        "item_id": "irons_spellbooks:fireward_ring",
+        "valid_slots": [
+          "ring"
+        ],
+        "attributes": [],
+        "equipped_only": true,
+        "stacking_boundary": "Curios slot size and the attribute modifier UUID/operation govern stacking; an item tag proves slot validity, not unlimited copies.",
+        "status": "partial_exact_curios_evidence"
       }
     },
     {
@@ -4001,12 +4331,14 @@
         "special_attack_methods": [],
         "dimensions": {
           "slot": {
-            "status": "unresolved",
-            "unresolved_reason": "slot requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:frostward_ring"
+            "status": "resolved_curios_item_tag_or_factory",
+            "valid_slots": [
+              "ring"
+            ]
           },
           "attributes": {
-            "status": "unresolved",
-            "unresolved_reason": "attributes requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:frostward_ring"
+            "status": "not_observed_in_registration_factory",
+            "values": []
           },
           "passive": {
             "status": "unresolved",
@@ -4029,6 +4361,16 @@
             "unresolved_reason": "resource_cost requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:frostward_ring"
           }
         }
+      },
+      "stage_3_5c": {
+        "item_id": "irons_spellbooks:frostward_ring",
+        "valid_slots": [
+          "ring"
+        ],
+        "attributes": [],
+        "equipped_only": true,
+        "stacking_boundary": "Curios slot size and the attribute modifier UUID/operation govern stacking; an item tag proves slot validity, not unlimited copies.",
+        "status": "partial_exact_curios_evidence"
       }
     },
     {
@@ -4180,7 +4522,16 @@
           }
         ],
         "exact_numeric_mechanics": {
-          "attributes": [],
+          "attributes": [
+            {
+              "attribute_owner": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+              "attribute_field": "SUMMON_DAMAGE",
+              "value": 0.15,
+              "operation": "MULTIPLY_BASE",
+              "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+              "status": "exact_registration_attribute_container"
+            }
+          ],
           "durability": [],
           "durability_costs": [],
           "cooldowns": [],
@@ -4191,12 +4542,23 @@
         "special_attack_methods": [],
         "dimensions": {
           "slot": {
-            "status": "unresolved",
-            "unresolved_reason": "slot requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:greater_conjurers_talisman"
+            "status": "resolved_curios_item_tag_or_factory",
+            "valid_slots": [
+              "necklace"
+            ]
           },
           "attributes": {
-            "status": "unresolved",
-            "unresolved_reason": "attributes requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:greater_conjurers_talisman"
+            "status": "resolved_registration_factory",
+            "values": [
+              {
+                "attribute_owner": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+                "attribute_field": "SUMMON_DAMAGE",
+                "value": 0.15,
+                "operation": "MULTIPLY_BASE",
+                "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+                "status": "exact_registration_attribute_container"
+              }
+            ]
           },
           "passive": {
             "status": "unresolved",
@@ -4219,6 +4581,25 @@
             "unresolved_reason": "resource_cost requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:greater_conjurers_talisman"
           }
         }
+      },
+      "stage_3_5c": {
+        "item_id": "irons_spellbooks:greater_conjurers_talisman",
+        "valid_slots": [
+          "necklace"
+        ],
+        "attributes": [
+          {
+            "attribute_owner": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+            "attribute_field": "SUMMON_DAMAGE",
+            "value": 0.15,
+            "operation": "MULTIPLY_BASE",
+            "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+            "status": "exact_registration_attribute_container"
+          }
+        ],
+        "equipped_only": true,
+        "stacking_boundary": "Curios slot size and the attribute modifier UUID/operation govern stacking; an item tag proves slot validity, not unlimited copies.",
+        "status": "exact_curios_tag_and_factory_evidence"
       }
     },
     {
@@ -4370,7 +4751,16 @@
           }
         ],
         "exact_numeric_mechanics": {
-          "attributes": [],
+          "attributes": [
+            {
+              "attribute_owner": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+              "attribute_field": "SPELL_RESIST",
+              "value": 0.15,
+              "operation": "MULTIPLY_BASE",
+              "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+              "status": "exact_registration_attribute_container"
+            }
+          ],
           "durability": [],
           "durability_costs": [],
           "cooldowns": [],
@@ -4381,12 +4771,23 @@
         "special_attack_methods": [],
         "dimensions": {
           "slot": {
-            "status": "unresolved",
-            "unresolved_reason": "slot requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:heavy_chain_necklace"
+            "status": "resolved_curios_item_tag_or_factory",
+            "valid_slots": [
+              "necklace"
+            ]
           },
           "attributes": {
-            "status": "unresolved",
-            "unresolved_reason": "attributes requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:heavy_chain_necklace"
+            "status": "resolved_registration_factory",
+            "values": [
+              {
+                "attribute_owner": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+                "attribute_field": "SPELL_RESIST",
+                "value": 0.15,
+                "operation": "MULTIPLY_BASE",
+                "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+                "status": "exact_registration_attribute_container"
+              }
+            ]
           },
           "passive": {
             "status": "unresolved",
@@ -4409,6 +4810,25 @@
             "unresolved_reason": "resource_cost requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:heavy_chain_necklace"
           }
         }
+      },
+      "stage_3_5c": {
+        "item_id": "irons_spellbooks:heavy_chain_necklace",
+        "valid_slots": [
+          "necklace"
+        ],
+        "attributes": [
+          {
+            "attribute_owner": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+            "attribute_field": "SPELL_RESIST",
+            "value": 0.15,
+            "operation": "MULTIPLY_BASE",
+            "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+            "status": "exact_registration_attribute_container"
+          }
+        ],
+        "equipped_only": true,
+        "stacking_boundary": "Curios slot size and the attribute modifier UUID/operation govern stacking; an item tag proves slot validity, not unlimited copies.",
+        "status": "exact_curios_tag_and_factory_evidence"
       }
     },
     {
@@ -4533,12 +4953,14 @@
         "special_attack_methods": [],
         "dimensions": {
           "slot": {
-            "status": "unresolved",
-            "unresolved_reason": "slot requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:invisibility_ring"
+            "status": "resolved_curios_item_tag_or_factory",
+            "valid_slots": [
+              "ring"
+            ]
           },
           "attributes": {
-            "status": "unresolved",
-            "unresolved_reason": "attributes requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:invisibility_ring"
+            "status": "not_observed_in_registration_factory",
+            "values": []
           },
           "passive": {
             "status": "unresolved",
@@ -4561,6 +4983,16 @@
             "unresolved_reason": "resource_cost requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:invisibility_ring"
           }
         }
+      },
+      "stage_3_5c": {
+        "item_id": "irons_spellbooks:invisibility_ring",
+        "valid_slots": [
+          "ring"
+        ],
+        "attributes": [],
+        "equipped_only": true,
+        "stacking_boundary": "Curios slot size and the attribute modifier UUID/operation govern stacking; an item tag proves slot validity, not unlimited copies.",
+        "status": "partial_exact_curios_evidence"
       }
     },
     {
@@ -4714,12 +5146,14 @@
         ],
         "dimensions": {
           "slot": {
-            "status": "unresolved",
-            "unresolved_reason": "slot requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:lurker_ring"
+            "status": "resolved_curios_item_tag_or_factory",
+            "valid_slots": [
+              "ring"
+            ]
           },
           "attributes": {
-            "status": "unresolved",
-            "unresolved_reason": "attributes requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:lurker_ring"
+            "status": "not_observed_in_registration_factory",
+            "values": []
           },
           "passive": {
             "status": "unresolved",
@@ -4742,6 +5176,16 @@
             "unresolved_reason": "resource_cost requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:lurker_ring"
           }
         }
+      },
+      "stage_3_5c": {
+        "item_id": "irons_spellbooks:lurker_ring",
+        "valid_slots": [
+          "ring"
+        ],
+        "attributes": [],
+        "equipped_only": true,
+        "stacking_boundary": "Curios slot size and the attribute modifier UUID/operation govern stacking; an item tag proves slot validity, not unlimited copies.",
+        "status": "partial_exact_curios_evidence"
       }
     },
     {
@@ -4893,7 +5337,16 @@
           }
         ],
         "exact_numeric_mechanics": {
-          "attributes": [],
+          "attributes": [
+            {
+              "attribute_owner": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+              "attribute_field": "MAX_MANA",
+              "value": 100,
+              "operation": "ADDITION",
+              "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+              "status": "exact_registration_attribute_container"
+            }
+          ],
           "durability": [],
           "durability_costs": [],
           "cooldowns": [],
@@ -4904,12 +5357,23 @@
         "special_attack_methods": [],
         "dimensions": {
           "slot": {
-            "status": "unresolved",
-            "unresolved_reason": "slot requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:mana_ring"
+            "status": "resolved_curios_item_tag_or_factory",
+            "valid_slots": [
+              "ring"
+            ]
           },
           "attributes": {
-            "status": "unresolved",
-            "unresolved_reason": "attributes requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:mana_ring"
+            "status": "resolved_registration_factory",
+            "values": [
+              {
+                "attribute_owner": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+                "attribute_field": "MAX_MANA",
+                "value": 100,
+                "operation": "ADDITION",
+                "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+                "status": "exact_registration_attribute_container"
+              }
+            ]
           },
           "passive": {
             "status": "unresolved",
@@ -4932,6 +5396,25 @@
             "unresolved_reason": "resource_cost requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:mana_ring"
           }
         }
+      },
+      "stage_3_5c": {
+        "item_id": "irons_spellbooks:mana_ring",
+        "valid_slots": [
+          "ring"
+        ],
+        "attributes": [
+          {
+            "attribute_owner": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+            "attribute_field": "MAX_MANA",
+            "value": 100,
+            "operation": "ADDITION",
+            "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+            "status": "exact_registration_attribute_container"
+          }
+        ],
+        "equipped_only": true,
+        "stacking_boundary": "Curios slot size and the attribute modifier UUID/operation govern stacking; an item tag proves slot validity, not unlimited copies.",
+        "status": "exact_curios_tag_and_factory_evidence"
       }
     },
     {
@@ -5065,8 +5548,37 @@
           }
         ],
         "exact_numeric_mechanics": {
-          "attributes": [],
-          "durability": [],
+          "attributes": [
+            {
+              "attribute": "armor_addition",
+              "value": 8,
+              "slot": "chestplate",
+              "status": "exact_installed_armor_material_bytecode",
+              "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials"
+            },
+            {
+              "attribute": "armor_toughness_addition",
+              "value": 4,
+              "slot": "chestplate",
+              "status": "exact_installed_armor_material_bytecode",
+              "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials"
+            },
+            {
+              "attribute": "knockback_resistance_addition",
+              "value": 0.4,
+              "slot": "chestplate",
+              "status": "exact_installed_armor_material_bytecode",
+              "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials"
+            }
+          ],
+          "durability": [
+            {
+              "max_damage": 640,
+              "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
+              "status": "exact_installed_armor_material_bytecode",
+              "source_field": "PALADIN"
+            }
+          ],
           "durability_costs": [],
           "cooldowns": [],
           "config_dependencies": [],
@@ -5233,12 +5745,14 @@
         "special_attack_methods": [],
         "dimensions": {
           "slot": {
-            "status": "unresolved",
-            "unresolved_reason": "slot requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:poisonward_ring"
+            "status": "resolved_curios_item_tag_or_factory",
+            "valid_slots": [
+              "ring"
+            ]
           },
           "attributes": {
-            "status": "unresolved",
-            "unresolved_reason": "attributes requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:poisonward_ring"
+            "status": "not_observed_in_registration_factory",
+            "values": []
           },
           "passive": {
             "status": "unresolved",
@@ -5261,6 +5775,16 @@
             "unresolved_reason": "resource_cost requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:poisonward_ring"
           }
         }
+      },
+      "stage_3_5c": {
+        "item_id": "irons_spellbooks:poisonward_ring",
+        "valid_slots": [
+          "ring"
+        ],
+        "attributes": [],
+        "equipped_only": true,
+        "stacking_boundary": "Curios slot size and the attribute modifier UUID/operation govern stacking; an item tag proves slot validity, not unlimited copies.",
+        "status": "partial_exact_curios_evidence"
       }
     },
     {
@@ -5410,7 +5934,16 @@
           }
         ],
         "exact_numeric_mechanics": {
-          "attributes": [],
+          "attributes": [
+            {
+              "attribute_owner": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+              "attribute_field": "MAX_MANA",
+              "value": 25,
+              "operation": "ADDITION",
+              "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+              "status": "exact_registration_attribute_container"
+            }
+          ],
           "durability": [],
           "durability_costs": [],
           "cooldowns": [],
@@ -5421,12 +5954,23 @@
         "special_attack_methods": [],
         "dimensions": {
           "slot": {
-            "status": "unresolved",
-            "unresolved_reason": "slot requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:silver_ring"
+            "status": "resolved_curios_item_tag_or_factory",
+            "valid_slots": [
+              "ring"
+            ]
           },
           "attributes": {
-            "status": "unresolved",
-            "unresolved_reason": "attributes requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:silver_ring"
+            "status": "resolved_registration_factory",
+            "values": [
+              {
+                "attribute_owner": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+                "attribute_field": "MAX_MANA",
+                "value": 25,
+                "operation": "ADDITION",
+                "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+                "status": "exact_registration_attribute_container"
+              }
+            ]
           },
           "passive": {
             "status": "unresolved",
@@ -5449,6 +5993,25 @@
             "unresolved_reason": "resource_cost requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:silver_ring"
           }
         }
+      },
+      "stage_3_5c": {
+        "item_id": "irons_spellbooks:silver_ring",
+        "valid_slots": [
+          "ring"
+        ],
+        "attributes": [
+          {
+            "attribute_owner": "io.redspace.ironsspellbooks.api.registry.AttributeRegistry",
+            "attribute_field": "MAX_MANA",
+            "value": 25,
+            "operation": "ADDITION",
+            "owner_class": "io.redspace.ironsspellbooks.item.weapons.AttributeContainer",
+            "status": "exact_registration_attribute_container"
+          }
+        ],
+        "equipped_only": true,
+        "stacking_boundary": "Curios slot size and the attribute modifier UUID/operation govern stacking; an item tag proves slot validity, not unlimited copies.",
+        "status": "exact_curios_tag_and_factory_evidence"
       }
     },
     {
@@ -5580,12 +6143,14 @@
         "special_attack_methods": [],
         "dimensions": {
           "slot": {
-            "status": "unresolved",
-            "unresolved_reason": "slot requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:teleportation_amulet"
+            "status": "resolved_curios_item_tag_or_factory",
+            "valid_slots": [
+              "necklace"
+            ]
           },
           "attributes": {
-            "status": "unresolved",
-            "unresolved_reason": "attributes requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:teleportation_amulet"
+            "status": "not_observed_in_registration_factory",
+            "values": []
           },
           "passive": {
             "status": "unresolved",
@@ -5608,6 +6173,16 @@
             "unresolved_reason": "resource_cost requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:teleportation_amulet"
           }
         }
+      },
+      "stage_3_5c": {
+        "item_id": "irons_spellbooks:teleportation_amulet",
+        "valid_slots": [
+          "necklace"
+        ],
+        "attributes": [],
+        "equipped_only": true,
+        "stacking_boundary": "Curios slot size and the attribute modifier UUID/operation govern stacking; an item tag proves slot validity, not unlimited copies.",
+        "status": "partial_exact_curios_evidence"
       }
     },
     {
@@ -5737,12 +6312,14 @@
         "special_attack_methods": [],
         "dimensions": {
           "slot": {
-            "status": "unresolved",
-            "unresolved_reason": "slot requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:visibility_ring"
+            "status": "resolved_curios_item_tag_or_factory",
+            "valid_slots": [
+              "ring"
+            ]
           },
           "attributes": {
-            "status": "unresolved",
-            "unresolved_reason": "attributes requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:visibility_ring"
+            "status": "not_observed_in_registration_factory",
+            "values": []
           },
           "passive": {
             "status": "unresolved",
@@ -5765,6 +6342,16 @@
             "unresolved_reason": "resource_cost requires Curios slot/capability and registered item implementation evidence for irons_spellbooks:visibility_ring"
           }
         }
+      },
+      "stage_3_5c": {
+        "item_id": "irons_spellbooks:visibility_ring",
+        "valid_slots": [
+          "ring"
+        ],
+        "attributes": [],
+        "equipped_only": true,
+        "stacking_boundary": "Curios slot size and the attribute modifier UUID/operation govern stacking; an item tag proves slot validity, not unlimited copies.",
+        "status": "partial_exact_curios_evidence"
       }
     },
     {
@@ -5893,8 +6480,37 @@
           }
         ],
         "exact_numeric_mechanics": {
-          "attributes": [],
-          "durability": [],
+          "attributes": [
+            {
+              "attribute": "armor_addition",
+              "value": 2,
+              "slot": "boots",
+              "status": "exact_installed_armor_material_bytecode",
+              "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials"
+            },
+            {
+              "attribute": "armor_toughness_addition",
+              "value": 0,
+              "slot": "boots",
+              "status": "exact_installed_armor_material_bytecode",
+              "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials"
+            },
+            {
+              "attribute": "knockback_resistance_addition",
+              "value": 0,
+              "slot": "boots",
+              "status": "exact_installed_armor_material_bytecode",
+              "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials"
+            }
+          ],
+          "durability": [
+            {
+              "max_damage": 130,
+              "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
+              "status": "exact_installed_armor_material_bytecode",
+              "source_field": "WANDERING_MAGICIAN"
+            }
+          ],
           "durability_costs": [],
           "cooldowns": [],
           "config_dependencies": [],
@@ -6060,8 +6676,37 @@
           }
         ],
         "exact_numeric_mechanics": {
-          "attributes": [],
-          "durability": [],
+          "attributes": [
+            {
+              "attribute": "armor_addition",
+              "value": 6,
+              "slot": "chestplate",
+              "status": "exact_installed_armor_material_bytecode",
+              "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials"
+            },
+            {
+              "attribute": "armor_toughness_addition",
+              "value": 0,
+              "slot": "chestplate",
+              "status": "exact_installed_armor_material_bytecode",
+              "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials"
+            },
+            {
+              "attribute": "knockback_resistance_addition",
+              "value": 0,
+              "slot": "chestplate",
+              "status": "exact_installed_armor_material_bytecode",
+              "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials"
+            }
+          ],
+          "durability": [
+            {
+              "max_damage": 160,
+              "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
+              "status": "exact_installed_armor_material_bytecode",
+              "source_field": "WANDERING_MAGICIAN"
+            }
+          ],
           "durability_costs": [],
           "cooldowns": [],
           "config_dependencies": [],
@@ -6227,8 +6872,37 @@
           }
         ],
         "exact_numeric_mechanics": {
-          "attributes": [],
-          "durability": [],
+          "attributes": [
+            {
+              "attribute": "armor_addition",
+              "value": 2,
+              "slot": "helmet",
+              "status": "exact_installed_armor_material_bytecode",
+              "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials"
+            },
+            {
+              "attribute": "armor_toughness_addition",
+              "value": 0,
+              "slot": "helmet",
+              "status": "exact_installed_armor_material_bytecode",
+              "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials"
+            },
+            {
+              "attribute": "knockback_resistance_addition",
+              "value": 0,
+              "slot": "helmet",
+              "status": "exact_installed_armor_material_bytecode",
+              "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials"
+            }
+          ],
+          "durability": [
+            {
+              "max_damage": 110,
+              "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
+              "status": "exact_installed_armor_material_bytecode",
+              "source_field": "WANDERING_MAGICIAN"
+            }
+          ],
           "durability_costs": [],
           "cooldowns": [],
           "config_dependencies": [],
@@ -6394,8 +7068,37 @@
           }
         ],
         "exact_numeric_mechanics": {
-          "attributes": [],
-          "durability": [],
+          "attributes": [
+            {
+              "attribute": "armor_addition",
+              "value": 5,
+              "slot": "leggings",
+              "status": "exact_installed_armor_material_bytecode",
+              "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials"
+            },
+            {
+              "attribute": "armor_toughness_addition",
+              "value": 0,
+              "slot": "leggings",
+              "status": "exact_installed_armor_material_bytecode",
+              "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials"
+            },
+            {
+              "attribute": "knockback_resistance_addition",
+              "value": 0,
+              "slot": "leggings",
+              "status": "exact_installed_armor_material_bytecode",
+              "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials"
+            }
+          ],
+          "durability": [
+            {
+              "max_damage": 150,
+              "owner_class": "io.redspace.ironsspellbooks.item.armor.ExtendedArmorMaterials",
+              "status": "exact_installed_armor_material_bytecode",
+              "source_field": "WANDERING_MAGICIAN"
+            }
+          ],
           "durability_costs": [],
           "cooldowns": [],
           "config_dependencies": [],

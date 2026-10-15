@@ -1,4 +1,4 @@
-# Coverage Stage 3.5B после boss combat resolution
+# Coverage Stage 3.5C после armor/accessory/durability resolution
 
 Машинный источник — `Catalog/views/power/coverage.json`. Текущий combat inventory содержит 2 365 записей:
 
@@ -48,6 +48,23 @@
 Сокращение `231 → 155` — исправление классификации, а не потеря evidence: методы входящего `hurt` сохранены отдельно в каждой attack card. Разрешённые combat channels теперь состоят из 56 base-melee значений и 22 special formulas; только 13 special methods имеют literal numeric sink без дополнительных параметров. Эти каналы нельзя складывать в один DPS без AI frequency/accepted-hit данных.
 
 ## Numeric coverage
+
+### Stage 3.5C
+
+| Метрика | Результат |
+|---|---:|
+| Exact armor attribute profiles | 125/219 |
+| Complete exact four-piece sets | 24/39 |
+| Confirmed explicit full-set gates | 1/39 |
+| Exact Curios slots | 22/52 |
+| Exact accessory attributes | 10/52 |
+| Accessory records with resolved mechanical evidence | 15/52 |
+| Exact durability profiles | 161/448 |
+| Explicitly unbreakable armor | 8 |
+| Defensive ability formulas represented | 10 |
+| Comparable mitigation outcomes | 1 080 |
+
+`161 exact durability profiles` — закрытые карточки разных типов во всём 448-item audit, а не число предметов брони. Более строгая пара `exact max damage + consumption path` закрыта для 120 записей. Все остальные пропуски остаются blockers; они не получают значение zero/unbreakable.
 
 - 45 spells имеют безопасную `getDamage` формулу и полную таблицу по level, PvE Tier I–V, PvP и пяти reference targets.
 - 56 зарегистрированных JEM boss profiles имеют таблицу Tier I–V × 1–6 players × hosted/Raid; 54 из них дают абсолютные melee-значения и пять reference mitigation результатов в каждой строке. Пять дополнительных native boss candidates не получают выдуманный JEM profile.

@@ -1,7 +1,7 @@
 {
   "schema_version": 4,
   "view": "phase_3_source_findings",
-  "snapshot_sha": "f4385fbd8d694b75b7fd0c6a9d06f01959ebe0b7",
+  "snapshot_sha": "146fcbee566646e14098e664012a32b7c8acca5a",
   "generation": {
     "generator": "Catalog/generator/build_power_views.py",
     "method": "offline derived evidence",
@@ -65,6 +65,31 @@
       "sources": [
         "Mods/JEMWorldBossTiers/AGENTS.logic-locks.md",
         "Mods/JEMWorldBossTiers/src/main/resources/assets/jem_world_boss_tiers/lang/en_us.json"
+      ],
+      "runtime_change": false
+    },
+    {
+      "id": "cataclysm-armor-explicitly-unbreakable",
+      "status": "exact_jar_bytecode",
+      "severity": "balance_review",
+      "finding": "Installed Ignitium and Cursium armor implementations explicitly return false from isDamageable(ItemStack). Their ArmorMaterial still exposes nominal max-damage values, but runtime wear is disabled for those exact item classes.",
+      "mechanism": "Ignitium_Armor.isDamageable and Cursium_Armor.isDamageable each return iconst_0 directly; nominal material durability therefore must not be reported as effective break capacity.",
+      "sources": [
+        "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+        "com.github.L_Ender.cataclysm.items.Ignitium_Armor",
+        "com.github.L_Ender.cataclysm.items.Cursium_Armor"
+      ],
+      "runtime_change": false
+    },
+    {
+      "id": "epic-fight-armor-capability-separate-layer",
+      "status": "exact_jar_data",
+      "severity": "composition_boundary",
+      "finding": "Installed Epic Fight/Nightfall armor capabilities expose stun_armor and weight as a separate combat layer; they are not vanilla armor or toughness and are not folded into vanilla damage mitigation.",
+      "mechanism": "Exact item capability JSON is attached per defense ID. The defensive matrices preserve the capability values but calculate HP loss only from proven vanilla armor/toughness and explicitly named incoming reducers.",
+      "sources": [
+        "installed Epic Fight/Nightfall item capability JSON",
+        "Catalog/power-sources/native-mechanics-phase3.json"
       ],
       "runtime_change": false
     },
