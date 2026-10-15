@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-15 — Settlements Update 1 founding, food and damage rules corrected
+
+- User correction: placing a bell must immediately offer settlement founding with a safe cancel path; ordinary right-click must remain the native bell action, while Shift + right-click must enter the exact `/smp` Settlements route instead of a separate bell-owned screen.
+- User correction: removed proposed per-food taste classes and derived labels such as sweet, bread, satisfied-with-variety or tired-of-sweets. Positive vanilla food no longer satisfies registered-resident hunger or requests; residents require exact, currently obtainable modded dishes, and monotony tracks repetition of the exact accepted item. Harmful vanilla food such as rotten flesh remains a negative zero-nutrition path.
+- User correction: happiness loss applies whenever a registered resident actually receives health damage from any source, with fall damage as the explicit exception. The scope now requires immediate Jade feedback and forbids spam suppression from hiding individual damage events.
+- Documentation only: updated `Docs/settlements/settlements-update-1.md`; no Java, data, config, Atlas effective behavior, build, runtime, package or deployment changed.
+
 ## 2026-10-15 — Per-prompt JEM delivery workflow fixed
 
 - User request and supplied workflow direction: replace task-branch-oriented completion rules with a JustEnoughMods-specific workflow that has no per-prompt task definition or task branch, always commits and pushes completed project changes, always brings the ordinary local Server and native AutoModpack publication up to date, and never launches a test server unless explicitly requested.
