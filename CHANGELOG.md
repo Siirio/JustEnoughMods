@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-15 — Deep economy evidence added to the Registry Atlas
+
+- User request and supplied technical direction: add the missing economy evidence to the existing repository knowledge with the strongest Atlas engine mode, without designing the economy, inventing prices or converting unavailable evidence into item-specific exclusions.
+- Codex evidence implementation: ran the shared JEM Atlas engine in `DEEP` mode against the canonical `Client/ManagedPack` rather than repository build outputs, and published its deterministic evidence layer under `Catalog/generated/atlas`. The export records 35,438 subjects, 37,100 facts, 269,550 evidence references, 57,670 candidates, 14,470 recipes, 9,780 loot records, 2,011 item objects and 2,086 block objects with pack-lock hash `ad47e283c09a80d9013ef601fa56fe84521920510e0b41d41f70e0a652961d39`.
+- Evidence boundary: the deep audit is `STATIC_ONLY` and deliberately remains `PARTIAL`: 1,642 coverage gaps are retained (`1,537 NOT_TESTED`, `103 BLOCKED_INVALID_SOURCE`, one ambiguous namespace and one missing mod ID). Version-scoped mechanics adapters and matching runtime evidence are still required for runtime registrations, dynamic ItemStack/NBT semantics, complete acquisition mechanics, NPC offers and other Java-only behavior. No gap was rewritten as `NONE`, `EXCLUDE` or another gameplay decision.
+- Existing knowledge refresh: regenerated the permanent `Catalog/registries`, recipe/loot/tag/progression graphs, category and trade-policy views, compatibility reports, coverage summary and effective index from the exact installed managed-pack artifacts. The canonical static inventory remains 17,058 observed item IDs, while validation accounts for 17,064 effective item records after JEM overlays; all 62 reviewed source policy members and the fail-closed default retain their prior ownership and values.
+- No Java, Mixin, KubeJS, datapack, configuration, installed JAR, economy outcome, price, quota, NPC behavior, client/server runtime, AutoModpack generation, stable profile, world, MineRENT deployment or release baseline changed.
+
 ## 2026-10-15 — Unified profession atlas and native racial spells
 
 - User request and supplied product direction: keep all ten professions; expose the established 57 skills as readable parent→child branches in one circular screen around the player; show exact XP acquisition on profession hover; keep race cards compact with clickable detailed power information; require an unskippable race choice immediately after authenticated registration; reset the local `Sirio_o` ServerLogin registration; and make every chosen race spell permanently available in Iron's Spells HUD and TAB wheel with a custom icon, cooldown and effect.

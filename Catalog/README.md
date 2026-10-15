@@ -90,6 +90,12 @@ static sources. Dynamic registrations, Java-only FoodProperties, ItemStack/NBT
 variants, capabilities and entity AI are recorded in `unresolved.json`; null means
 “not proved”, never zero or false.
 
+The shared JEM Atlas engine publishes its reproducible, Git-readable evidence export
+under `generated/atlas/`. Its canonical objects, facts, evidence, candidates and
+coverage gaps supplement this permanent catalog; they do not replace the ownership
+of `registries/`, `changes/` or `effective/`. Read `generated/atlas/catalog-manifest.json`
+for the exact pack lock, adapter versions, verification state and coverage counts.
+
 ## Regenerate and validate
 
 From the repository root:
