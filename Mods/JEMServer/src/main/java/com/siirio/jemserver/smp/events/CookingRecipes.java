@@ -13,6 +13,8 @@ public final class CookingRecipes {
     private static final int NETHER_DIMENSION = 1;
     private static final int END_DIMENSION = 2;
     private static final int RARE_INGREDIENT_WEIGHT = 4;
+    private static final Set<String> NETHER_ONLY_NAMESPACES = Set.of("kaleidoscope_nether", "netherexp", "luminous_nether");
+    private static final Set<String> END_ONLY_NAMESPACES = Set.of("kaleidoscope_end");
     private static MinecraftServer cachedServer;
     private static Object cachedManager;
     private static int cachedProgression = -1;
@@ -81,7 +83,8 @@ public final class CookingRecipes {
         String id = ForgeRegistries.ITEMS.getKey(stack.getItem()).toString();
         ingredients.computeIfAbsent(id, ignored -> new CookingRecipeGraph.Ingredient(
                 stack.getRarity().ordinal() + (stack.is(IngredientTags.RARE) ? RARE_INGREDIENT_WEIGHT : 0),
-                (stack.is(IngredientTags.NETHER) ? NETHER_DIMENSION : 0) | (stack.is(IngredientTags.END) ? END_DIMENSION : 0),
+                (stack.is(IngredientTags.NETHER) || NETHER_ONLY_NAMESPACES.contains(ForgeRegistries.ITEMS.getKey(stack.getItem()).getNamespace()) ? NETHER_DIMENSION : 0)
+                        | (stack.is(IngredientTags.END) || END_ONLY_NAMESPACES.contains(ForgeRegistries.ITEMS.getKey(stack.getItem()).getNamespace()) ? END_DIMENSION : 0),
                 stack.is(IngredientTags.WORLD)));
         return id;
     }

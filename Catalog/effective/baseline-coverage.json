@@ -2,11 +2,11 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "82bdc6c06a198a8c3a96104fd2230bcb8ba9055209ab01848b3298e39ed5e2f3",
+  "change_records_sha256": "2c064cdf1cbf3807408a1ed7b6c0867eb4743a73280647d6ec737e92156c9a49",
   "totals": {
     "watched": 3213,
-    "covered": 238,
-    "unresolved": 2975
+    "covered": 243,
+    "unresolved": 2970
   },
   "groups": {
     "Client/ManagedPack/config": {
@@ -2652,8 +2652,8 @@
     },
     "Mods/JEMServer": {
       "watched": 296,
-      "covered": 37,
-      "unresolved": 259,
+      "covered": 38,
+      "unresolved": 258,
       "unresolved_paths": [
         "Mods/JEMServer/gradle.properties",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/BossLeaderboard.java",
@@ -2793,7 +2793,6 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BossStaging.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BossTeleportSafety.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/CookingRecipeGraph.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/CookingRecipes.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/CookingShow.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/CookingStations.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/DimensionProgress.java",
@@ -2918,8 +2917,8 @@
     },
     "Mods/JEMSettlements": {
       "watched": 47,
-      "covered": 14,
-      "unresolved": 33,
+      "covered": 18,
+      "unresolved": 29,
       "unresolved_paths": [
         "Mods/JEMSettlements/gradle.properties",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/JemSettlements.java",
@@ -2935,22 +2934,18 @@
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AmenityRegistry.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AmenityScanService.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/HappinessService.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/FoodPolicyPacket.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/TownFoundPacket.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/TownViewPacket.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/TreasuryActionPacket.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollPeriod.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollService.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/RecruitRank.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/AmenitySnapshot.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/simulation/ProductionObligation.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/simulation/SettlementSimulationService.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/simulation/SettlementSimulationState.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/simulation/SimulationJournalEntry.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/StorageLink.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownSpecialization.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownTier.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/workforce/WorkforceRecord.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/workforce/WorkforceType.java",
         "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/amenities.json",
         "Mods/JEMSettlements/src/main/resources/pack.mcmeta"

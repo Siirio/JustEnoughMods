@@ -50,7 +50,7 @@ public final class SettlementSimulationService {
         for (WorkforceRecord worker : data.workforce(town.id())) {
             for (ServerLevel level : server.getAllLevels()) {
                 var entity = level.getEntity(worker.entityId());
-                if (entity == null) continue;
+                if (entity == null || !entity.isAlive()) continue;
                 worker.seen(level.getGameTime());
                 if (worker.nativeModId().equals("workers")) WorkersAdapter.currentEvidence(entity)
                         .ifPresent(evidence -> worker.observeWorkArea(evidence.workAreaId(), evidence.observedGameTime()));
@@ -64,7 +64,7 @@ public final class SettlementSimulationService {
         for (int day = 1; day <= simulated; day++) { long dayNumber = Math.floorDiv(start, 24_000L) + day; data.residents(town.id()).forEach(resident -> resident.dailyUpdate(dayNumber)); }
         int reserved = 0, unsupported = 0, missingEvidence = 0;
         if (simulated > 0) for (WorkforceRecord worker : data.workforce(town.id())) {
-            if (!worker.living() || !worker.nativeModId().equals("workers")) continue;
+            if (!worker.settlementActive() || !worker.nativeModId().equals("workers")) continue;
             if (worker.lastWorkAreaId() == null || worker.lastWorkEvidenceGameTime() < start - 24_000L) { missingEvidence++; continue; }
             if (worker.type() != WorkforceType.FARMER) { unsupported++; continue; }
             int output = Math.max(0, (int) Math.floor(simulated * 8.0D * com.siirio.jemsettlements.happiness.HappinessService.productionFactor(town.happiness())));
@@ -135,14 +135,14 @@ public final class SettlementSimulationService {
                                  boolean productionInput, boolean productionOutput, int admittedSlots, IItemHandler handler) { }
     private static void evaluateProgress(SettlementSavedData data, TownRecord town, long now) {
         var residents = data.residents(town.id()).stream().filter(value -> value.living()).toList(); long homes = residents.stream().filter(value -> value.home().isPresent()).count();
-        long distinctJobs = data.workforce(town.id()).stream().filter(WorkforceRecord::living).map(WorkforceRecord::type).distinct().count();
+        long distinctJobs = data.workforce(town.id()).stream().filter(WorkforceRecord::settlementActive).map(WorkforceRecord::type).distinct().count();
         if (homes >= 16 && distinctJobs >= 3 && !town.storage().isEmpty() && town.happiness() >= 65) town.upgrade(TownTier.CITY);
         else if (homes >= 8 && distinctJobs >= 2 && !town.storage().isEmpty() && town.happiness() >= 55) town.upgrade(TownTier.TOWN);
         else if (homes >= 4 && distinctJobs >= 1 && !town.storage().isEmpty() && town.happiness() >= 45) town.upgrade(TownTier.VILLAGE);
         if (now - town.lastSpecializationEvaluation() < 72_000L) return;
         Map<TownSpecialization, Integer> scores = new EnumMap<>(TownSpecialization.class);
         for (WorkforceRecord worker : data.workforce(town.id())) {
-            if (!worker.living() || now - worker.enlistedGameTime() < 168_000L) continue;
+            if (!worker.settlementActive() || now - worker.enlistedGameTime() < 168_000L) continue;
             TownSpecialization specialization = switch (worker.type()) {
                 case FARMER, FISHER, COOK, ANIMAL_FARMER -> TownSpecialization.AGRICULTURAL;
                 case MINER -> TownSpecialization.MINING;

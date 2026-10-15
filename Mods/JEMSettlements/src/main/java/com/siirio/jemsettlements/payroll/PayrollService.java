@@ -23,7 +23,7 @@ public final class PayrollService {
                 var entity = level.getEntity(record.entityId());
                 if (entity != null && entity.isAlive()) { record.verifyNativeEntityType(BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()), now); break; }
             }
-            List<WorkforceRecord> recruits = data.workforce(town.id()).stream().filter(value -> value.type() == WorkforceType.RECRUIT && value.coinWageEnabled() && value.living() && RecruitRank.of(value.nativeEntityType()) != RecruitRank.UNSUPPORTED).sorted(Comparator.comparing(WorkforceRecord::entityId)).toList();
+            List<WorkforceRecord> recruits = data.workforce(town.id()).stream().filter(value -> value.type() == WorkforceType.RECRUIT && value.coinWageEnabled() && value.settlementActive() && RecruitRank.of(value.nativeEntityType()) != RecruitRank.UNSUPPORTED).sorted(Comparator.comparing(WorkforceRecord::entityId)).toList();
             if (recruits.isEmpty()) continue; town.initializePayroll(recruits.stream().mapToLong(WorkforceRecord::enlistedGameTime).filter(value -> value > 0L).min().orElse(now));
             int created = 0; while (now >= town.nextPayrollGameTime() && created++ < 8) {
                 long index = town.nextPayrollIndex(); List<PayrollPeriod.Wage> roster = recruits.stream().map(value -> new PayrollPeriod.Wage(value.entityId(), value.nativeEntityType(), RecruitRank.of(value.nativeEntityType()).wage())).toList();
@@ -45,6 +45,7 @@ public final class PayrollService {
             WorkforceRecord record = data.workforceEntity(wage.soldierId()).orElse(null); if (record == null || record.lastPenaltyPeriod() >= period.index()) continue;
             record.penalized(period.index()); newlyMissed = true;
             server.getAllLevels().forEach(level -> { var entity = level.getEntity(record.entityId()); if (entity instanceof AbstractRecruitEntity recruit && recruit.isAlive()) RecruitReadinessAdapter.applyPayrollPenalty(recruit, 10.0F); });
+            if (record.missedPayrolls() >= 3) record.rebel();
         }
         if (newlyMissed) town.payrollMissed();
     }

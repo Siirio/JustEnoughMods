@@ -106,10 +106,11 @@ public final class SettlementNetwork {
         view.putString("Dimension", town.dimension().toString()); view.putInt("StorageLinks", town.storage().size());
         var data = SettlementSavedData.get(player.getServer());
         CompoundTag workforce = new CompoundTag();
-        data.workforce(town.id()).forEach(record -> workforce.putInt(record.type().name(), workforce.getInt(record.type().name()) + 1));
+        data.workforce(town.id()).stream().filter(com.siirio.jemsettlements.workforce.WorkforceRecord::settlementActive)
+                .forEach(record -> workforce.putInt(record.type().name(), workforce.getInt(record.type().name()) + 1));
         view.put("Workforce", workforce);
         ListTag residents = new ListTag();
-        for (var resident : data.residents(town.id())) {
+        for (var resident : data.residents(town.id()).stream().filter(com.siirio.jemsettlements.resident.ResidentMood::living).toList()) {
             CompoundTag row = new CompoundTag(); row.putUUID("Id", resident.villagerId()); row.putInt("Mood", resident.mood()); row.putInt("Satiety", resident.satiety()); row.putBoolean("Craving", resident.craving()); row.putBoolean("Living", resident.living());
             row.putBoolean("Home", resident.home().isPresent()); row.putBoolean("Work", resident.workplace().isPresent()); row.putInt("HomeAmenities", resident.homeAmenities().points()); row.putInt("WorkAmenities", resident.workAmenities().points());
             row.putBoolean("AmenitiesStale", resident.homeAmenities().stale() || resident.workAmenities().stale());
@@ -123,6 +124,7 @@ public final class SettlementNetwork {
         ListTag workforceRows = new ListTag();
         for (var record : data.workforce(town.id())) {
             CompoundTag row = new CompoundTag(); row.putUUID("Id", record.entityId()); row.putString("Type", record.type().name()); row.putBoolean("Living", record.living());
+            row.putString("Loyalty", record.loyalty().name()); row.putInt("MissedPayrolls", record.missedPayrolls());
             String name = record.entityId().toString().substring(0, 8);
             for (ServerLevel candidate : player.getServer().getAllLevels()) { var entity = candidate.getEntity(record.entityId()); if (entity != null) { name = entity.getDisplayName().getString(); break; } }
             row.putString("Name", name); workforceRows.add(row);
@@ -130,7 +132,7 @@ public final class SettlementNetwork {
         view.put("WorkforceRows", workforceRows);
         ListTag defense = new ListTag(); long projected = 0L;
         for (var record : data.workforce(town.id())) if (record.type() == com.siirio.jemsettlements.workforce.WorkforceType.RECRUIT) {
-            long wage = com.siirio.jemsettlements.payroll.RecruitRank.of(record.nativeEntityType()).wage(); if (record.living()) projected += wage; CompoundTag row = new CompoundTag(); row.putUUID("Id", record.entityId()); row.putString("NativeType", record.nativeEntityType().toString()); row.putLong("Wage", wage); row.putLong("LastPaidPeriod", record.lastPaidPeriod()); row.putBoolean("Living", record.living()); row.putBoolean("Ready", record.living() && town.consecutiveMissedPayrolls() < 2);
+            long wage = com.siirio.jemsettlements.payroll.RecruitRank.of(record.nativeEntityType()).wage(); if (record.settlementActive()) projected += wage; CompoundTag row = new CompoundTag(); row.putUUID("Id", record.entityId()); row.putString("NativeType", record.nativeEntityType().toString()); row.putLong("Wage", wage); row.putLong("LastPaidPeriod", record.lastPaidPeriod()); row.putBoolean("Living", record.living()); row.putBoolean("Ready", record.settlementActive() && town.consecutiveMissedPayrolls() < 2);
             for (ServerLevel candidate : player.getServer().getAllLevels()) { var entity = candidate.getEntity(record.entityId()); var readiness = com.siirio.jemsettlements.compat.recruits.RecruitReadinessAdapter.read(entity); if (readiness.isPresent()) { row.putFloat("Morale", readiness.get().morale()); row.putFloat("Hunger", readiness.get().hunger()); row.putBoolean("Ready", row.getBoolean("Ready") && readiness.get().combatReady()); row.putString("Name", entity.getDisplayName().getString()); break; } }
             if (!row.contains("Name")) row.putString("Name", record.entityId().toString().substring(0, 8)); defense.add(row);
         }

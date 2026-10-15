@@ -38,8 +38,11 @@ public final class SettlementJadePlugin implements IWailaPlugin {
         @Override public void appendTooltip(ITooltip tooltip, EntityAccessor accessor, IPluginConfig config) {
             CompoundTag tag = accessor.getServerData();
             if (!tag.getBoolean("JemResident")) return;
-            tooltip.add(Component.translatable("jade.jem_settlements.happiness", tag.getInt("JemHappiness")));
-            tooltip.add(Component.translatable("jade.jem_settlements.satiety", tag.getInt("JemSatiety")));
+            var elements = tooltip.getElementHelper();
+            tooltip.add(elements.progress(tag.getInt("JemHappiness") / 100.0F, Component.translatable("jade.jem_settlements.happiness_bar"),
+                    elements.progressStyle().color(0xFFB75046, 0xFF789B65).textColor(0xFFFFFFFF), snownee.jade.api.ui.BoxStyle.DEFAULT, true));
+            tooltip.add(elements.progress(tag.getInt("JemSatiety") / 100.0F, Component.translatable("jade.jem_settlements.satiety_bar"),
+                    elements.progressStyle().color(0xFFB75046, 0xFF789B65).textColor(0xFFFFFFFF), snownee.jade.api.ui.BoxStyle.DEFAULT, true));
             if (tag.getBoolean("JemCraving")) tooltip.add(Component.translatable("jade.jem_settlements.craving"));
             ResourceLocation profession = ResourceLocation.tryParse(tag.getString("JemProfession"));
             if (profession != null) tooltip.add(Component.translatable("jade.jem_settlements.profession",

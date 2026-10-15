@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "items",
-  "snapshot_sha": "29f9540c469ef1fdfafe407cd79b48182451ae5e",
+  "snapshot_sha": "403744f8380e7d91d3ed2a30358e0fb6825398f8",
   "generation": {
-    "generated_utc": "2026-10-15T18:48:30.095087+00:00",
+    "generated_utc": "2026-10-15T19:50:57.409061+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -21,7 +21,7 @@
       "mod_name": "JEM Server",
       "mod_version": "2.0.0-dev",
       "source_jar": "jem-server-2.0.0-dev.jar",
-      "source_sha256": "a397578de16b7e69d8a36cfb34ca4bc4d95e2f282a635e5427c5a627d1f0d6c7",
+      "source_sha256": "ffc8dc1457884dc91d6da033418b50301c93880889c557a9502caac0ce462979",
       "side_availability": [
         "source"
       ],
@@ -71,7 +71,7 @@
       "mod_name": "JEM Server",
       "mod_version": "2.0.0-dev",
       "source_jar": "jem-server-2.0.0-dev.jar",
-      "source_sha256": "a397578de16b7e69d8a36cfb34ca4bc4d95e2f282a635e5427c5a627d1f0d6c7",
+      "source_sha256": "ffc8dc1457884dc91d6da033418b50301c93880889c557a9502caac0ce462979",
       "side_availability": [
         "source"
       ],
@@ -112,6 +112,106 @@
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:jem_server:helmet"
+    },
+    {
+      "registry_id": "jem_server:kaleidoscope_end",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "jem_server",
+      "mod_name": "JEM Server",
+      "mod_version": "2.0.0-dev",
+      "source_jar": "jem-server-2.0.0-dev.jar",
+      "source_sha256": "ffc8dc1457884dc91d6da033418b50301c93880889c557a9502caac0ce462979",
+      "side_availability": [
+        "source"
+      ],
+      "observed_in": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/CookingRecipes.java"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": true,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "CookingRecipes.java:Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/CookingRecipes.java"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:jem_server:kaleidoscope_end"
+    },
+    {
+      "registry_id": "jem_server:kaleidoscope_nether",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "jem_server",
+      "mod_name": "JEM Server",
+      "mod_version": "2.0.0-dev",
+      "source_jar": "jem-server-2.0.0-dev.jar",
+      "source_sha256": "ffc8dc1457884dc91d6da033418b50301c93880889c557a9502caac0ce462979",
+      "side_availability": [
+        "source"
+      ],
+      "observed_in": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/CookingRecipes.java"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": true,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "CookingRecipes.java:Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/CookingRecipes.java"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:jem_server:kaleidoscope_nether"
     }
   ]
 }

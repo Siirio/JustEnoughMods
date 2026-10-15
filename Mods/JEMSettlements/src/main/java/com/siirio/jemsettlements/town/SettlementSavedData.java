@@ -42,6 +42,24 @@ public final class SettlementSavedData extends SavedData {
     public void add(ResidentMood resident) { residents.put(resident.villagerId(), resident); setDirty(); }
     public boolean removeResident(UUID town, UUID entity) { ResidentMood value = residents.get(entity); if (value == null || !value.townId().equals(town)) return false; residents.remove(entity); setDirty(); return true; }
     public boolean removeWorkforce(UUID town, UUID entity) { WorkforceRecord value = workforce.get(entity); if (value == null || !value.townId().equals(town)) return false; workforce.remove(entity); setDirty(); return true; }
+    public boolean removeEntity(UUID entity) {
+        boolean removed = residents.remove(entity) != null;
+        removed |= workforce.remove(entity) != null;
+        if (removed) setDirty();
+        return removed;
+    }
+    public boolean removeTown(UUID town) {
+        if (towns.remove(town) == null) return false;
+        residents.values().removeIf(value -> value.townId().equals(town));
+        workforce.values().removeIf(value -> value.townId().equals(town));
+        setDirty();
+        return true;
+    }
+    public void purgeDeadRecords() {
+        boolean changed = residents.values().removeIf(value -> !value.living());
+        changed |= workforce.values().removeIf(value -> !value.living());
+        if (changed) setDirty();
+    }
     public void changed() { setDirty(); }
 
     @Override

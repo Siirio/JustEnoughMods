@@ -44,10 +44,10 @@ public final class SettlementClientState {
         if (!foodPolicySynced) return;
         var value = FoodValueRegistry.classify(event.getItemStack(), Minecraft.getInstance().player); if (value.isEmpty()) return;
         var food = event.getItemStack().getItem().getFoodProperties(event.getItemStack(), Minecraft.getInstance().player); if (food == null) return;
-        int satiety = value.get().mood() < 0 ? 0 : Math.max(0, food.getNutrition()) * 4;
+        int satiety = value.get().satiety() != 0 ? value.get().satiety() : Math.max(0, food.getNutrition()) * 4;
         event.getToolTip().add(Component.translatable("jem.settlements.food.header").withStyle(ChatFormatting.GOLD));
         event.getToolTip().add(Component.translatable("jem.settlements.food.happiness", String.format("%+d", value.get().mood())).withStyle(value.get().mood() < 0 ? ChatFormatting.RED : ChatFormatting.GREEN));
-        event.getToolTip().add(Component.translatable("jem.settlements.food.satiety", "+" + satiety).withStyle(value.get().mood() < 0 ? ChatFormatting.RED : ChatFormatting.GREEN));
+        event.getToolTip().add(Component.translatable("jem.settlements.food.satiety", String.format("%+d", satiety)).withStyle(satiety < 0 ? ChatFormatting.RED : ChatFormatting.GREEN));
         if (net.minecraft.client.gui.screens.Screen.hasShiftDown()) event.getToolTip().add(Component.translatable("jem.settlements.food.detail").withStyle(ChatFormatting.DARK_GRAY));
     }
     private static void openSmp() {

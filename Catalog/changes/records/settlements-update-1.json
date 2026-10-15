@@ -5,6 +5,12 @@
   "selectors": [
     {"type": "id", "registry": "blocks", "value": "minecraft:bell"},
     {"type": "id", "registry": "entities", "value": "minecraft:villager"},
+    {"type": "id", "registry": "entities", "value": "recruits:recruit"},
+    {"type": "id", "registry": "entities", "value": "recruits:bowman"},
+    {"type": "id", "registry": "entities", "value": "recruits:crossbowman"},
+    {"type": "id", "registry": "entities", "value": "recruits:recruit_shieldman"},
+    {"type": "id", "registry": "entities", "value": "recruits:horseman"},
+    {"type": "id", "registry": "entities", "value": "recruits:captain"},
     {"type": "id", "registry": "items", "value": "minecraft:rotten_flesh"},
     {"type": "id", "registry": "items", "value": "jem_economy:copper_coin"},
     {"type": "id", "registry": "items", "value": "jem_economy:silver_coin"},
@@ -16,14 +22,17 @@
   "conditions": [{"expression": "Authenticated player on the ordinary dedicated SMP", "confidence": "source"}],
   "precedence": {"layer": "jem_settlements", "priority": 220, "overrides": ["settlements.native-guidance-build-import"]},
   "change": {
-    "summary": "Implement multiple owned settlements, exact-dish resident needs, damage-driven happiness and paid Xaero territory expansion.",
+    "summary": "Implement multiple owned settlements, exact-dish resident needs, persistent resident and recruit consequences, and paid Xaero territory expansion.",
     "modifiers": [
       {"property": "settlements.account_town_limit", "operation": "replace", "before": {"maximum": 1}, "after": {"maximum": "unbounded", "selection": "skip only when exactly one"}},
       {"property": "minecraft:bell.settlement_interaction", "operation": "replace", "before": {"right_click": "opened Town Dashboard"}, "after": {"place": "offer founding", "right_click": "native bell", "shift_right_click": "open /smp settlements"}},
-      {"property": "minecraft:villager.settlement_food", "operation": "replace", "before": {"positive_vanilla_food": "accepted", "monotony": "taste group"}, "after": {"positive_vanilla_food": "ignored", "positive_modded_food": "recipe/progression-gated", "monotony": "exact item", "display": "satiety 0..100", "craving": "persistent randomized threshold from 10..99; forced below 10", "storage_behavior": "native navigation; requested dish first, any valid modded dish fallback; eat toward 100", "starvation": "damage when below 10 and no food", "happiness": "active unmet craving, not low satiety alone"}},
+      {"property": "minecraft:villager.settlement_food", "operation": "replace", "before": {"positive_vanilla_food": "accepted", "monotony": "taste group"}, "after": {"positive_vanilla_food": "ignored", "positive_modded_food": "recipe/progression-gated including installed Nether/End food namespaces", "monotony": "exact item; maximum 10 servings of one item per game day", "harmful_food": "negative happiness and negative satiety", "display": "red-to-green happiness and satiety bars", "craving": "persistent randomized threshold from 10..99; forced below 10", "storage_behavior": "native navigation; requested dish first, any valid modded dish fallback; reject capped item before extraction; eat toward 100", "starvation": "damage when below 10 and no food", "happiness": "active unmet craving, not low satiety alone"}},
       {"property": "minecraft:villager.settlement_damage_happiness", "operation": "derive", "before": {"damage_handler": false, "aggregate_refresh": "daily"}, "after": {"damage_handler": "all positive actual damage except fall", "aggregate_refresh": "immediate after damage"}},
+      {"property": "minecraft:villager.settlement_hostility", "operation": "allow", "before": {"low_happiness_combat": false}, "after": {"threshold_below": 10, "target": "authenticated settlement owner", "persistence": "derived from saved mood across owner death and reconnect", "recovery_at": 10}},
+      {"property": "recruits:recruit.settlement_payroll_loyalty", "operation": "allow", "before": {"missed_payroll": "morale penalty only"}, "after": {"period_ticks": 168000, "rebellion_after_consecutive_misses": 3, "native_owner_removed": true, "persistent_former_owner_target": true, "recovery": "former owner must defeat nonlethally, then use native Recruits hire flow", "old_debt_auto_recovery": false}},
+      {"property": "settlements.lifecycle", "operation": "allow", "before": {"dead_rows_retained": true, "town_deletion": false}, "after": {"dead_registrations_removed": true, "owner_confirmed_town_deletion": true, "treasury_refund": "owner ledger account", "world_entities_and_blocks_deleted": false}},
       {"property": "jem_economy:coin.settlement_expansion", "operation": "allow", "before": {"cost": "one Gold Coin per +16 radius"}, "after": {"cost_copper_per_added_block": 1, "payment": "exact provenance-backed physical five-denomination value and idempotent"}},
-      {"property": "settlements.xaero_boundary", "operation": "allow", "before": {"visible": false}, "after": {"visible": "always while native map is open", "preview": "owner held-LMB exact-block rectangular union", "confirmation": "localized native Xaero context menu", "claims": false}}
+      {"property": "settlements.xaero_boundary", "operation": "allow", "before": {"visible": false}, "after": {"visible": "always while native map is open", "presentation": "low-alpha area fill plus clear outline", "preview": "distinct owner held-LMB exact-block rectangular union fill", "confirmation": "localized native Xaero context menu", "claims": false}}
     ]
   },
   "cause": {
@@ -44,13 +53,18 @@
       "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/command/SettlementCommands.java",
       "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/command/SettlementGuidebook.java",
       "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/jade/SettlementJadePlugin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitRebellionService.java",
       "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AvailableDishService.java",
       "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/FoodValueRegistry.java",
       "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/FoodPolicyPacket.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollService.java",
       "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/simulation/SettlementSimulationService.java",
       "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/ResidentMood.java",
       "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/SettlementSavedData.java",
       "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownRecord.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/workforce/WorkforceRecord.java",
       "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/food_values.json",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/MapNetwork.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpIcons.java",
@@ -61,6 +75,7 @@
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SettlementUiAction.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpNetwork.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpProtocol.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/CookingRecipes.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpRuntime.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpTable.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViews.java",
@@ -72,11 +87,11 @@
     "decision_source": "User-approved Docs/settlements/settlements-update-1.md and 2026-10-15 implementation request"
   },
   "introduced": {"date": "2026-10-15", "commit": "SELF", "action": "implement", "summary": "Implemented Settlements Update 1 across the owning modules."},
-  "history": [{"date": "2026-10-15", "commit": "SELF", "action": "implement", "summary": "Added multi-town selection, resident state, guidebook, UI, Jade, Xaero boundary and backed Gold Coin expansion; removed the superseded standalone Town Dashboard.", "source_files": ["Docs/settlements/settlements-update-1.md", "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/TownDashboardScreen.java"]}, {"date": "2026-10-15", "commit": "SELF", "action": "follow_up", "summary": "Replaced the rejected radius step with exact-block Xaero drag expansion and redesigned resident satiety, cravings, storage navigation and starvation.", "source_files": ["Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/ResidentMood.java", "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java", "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownRecord.java", "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/MapScreenMixin.java"]}],
+  "history": [{"date": "2026-10-15", "commit": "SELF", "action": "implement", "summary": "Added multi-town selection, resident state, guidebook, UI, Jade, Xaero boundary and backed Gold Coin expansion; removed the superseded standalone Town Dashboard.", "source_files": ["Docs/settlements/settlements-update-1.md", "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/TownDashboardScreen.java"]}, {"date": "2026-10-15", "commit": "SELF", "action": "follow_up", "summary": "Replaced the rejected radius step with exact-block Xaero drag expansion and redesigned resident satiety, cravings, storage navigation and starvation.", "source_files": ["Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/ResidentMood.java", "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java", "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownRecord.java", "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/MapScreenMixin.java"]}, {"date": "2026-10-16", "commit": "SELF", "action": "stabilize", "summary": "Removed dead registrations, added settlement deletion, filled Xaero territories, hardened dimension-gated dish requests and daily food refusal, added resident hostility and persistent three-period recruit rebellion with defeat and native rehire.", "source_files": ["Docs/settlements/settlements-update-1.md", "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitRebellionService.java", "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/ResidentMood.java", "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java", "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapClient.java", "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java"]}],
   "impacts": {
     "systems": ["settlements", "villager_happiness", "food_progression", "economy", "xaero", "jade", "smp_ui"],
-    "relations": ["CookingRecipes->AvailableDishService", "PhysicalCoinService->SettlementApi.expandTerritory", "SettlementSavedData->SettlementProjection->SmpScreen", "SettlementSavedData->Jade"],
-    "notes": ["Territory remains informational and grants no block, container, PvP or teleport permissions.", "Personal Xaero waypoints remain private and native."],
+    "relations": ["DimensionProgress->CookingRecipes->AvailableDishService", "PhysicalCoinService->SettlementApi.expandTerritory", "SettlementSavedData->SettlementProjection->SmpScreen", "ResidentMood->SettlementRuntime->Jade", "PayrollService->WorkforceRecord->RecruitRebellionService->native Recruits"],
+    "notes": ["Territory fill remains informational and grants no block, container, PvP or teleport permissions.", "Personal Xaero waypoints remain private and native.", "Rebel defeat is nonlethal; repeat purchase remains owned by native Recruits hire UI."],
     "unresolved": ["Player-rendered and gameplay acceptance remains in testing."]
   }
 }

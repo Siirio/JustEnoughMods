@@ -174,10 +174,35 @@ public final class SettlementApi {
         town.get().rename(name); data.changed(); return Result.ACCEPTED;
     }
 
+    public static Result delete(ServerPlayer player, UUID townId, UUID requestId) {
+        if (!DedicatedSmp.active(player) || requestId == null) return Result.INVALID;
+        var town = ownedTown(player, townId);
+        if (town.isEmpty()) return Result.UNAUTHENTICATED;
+        long balance = com.siirio.jemeconomy.api.EconomyApi.townBalance(player.getServer(), townId);
+        boolean replayed = false;
+        if (balance > 0L) {
+            var refund = com.siirio.jemeconomy.api.EconomyApi.withdrawFromAccount(player,
+                    com.siirio.jemeconomy.api.EconomyApi.townAccount(townId), balance, requestId);
+            if (refund.status() == com.siirio.jemeconomy.ledger.TransferResult.Status.INSUFFICIENT_FUNDS) return Result.CONFLICT;
+            if (refund.status() != com.siirio.jemeconomy.ledger.TransferResult.Status.COMMITTED
+                    && refund.status() != com.siirio.jemeconomy.ledger.TransferResult.Status.REPLAYED) return Result.UNAVAILABLE;
+            replayed = refund.status() == com.siirio.jemeconomy.ledger.TransferResult.Status.REPLAYED;
+        }
+        SettlementSavedData.get(player.getServer()).removeTown(townId);
+        return replayed ? Result.REPLAYED : Result.ACCEPTED;
+    }
+
     public static Result removeRegistration(ServerPlayer player, UUID townId, UUID entityId) {
         if (ownedTown(player, townId).isEmpty()) return Result.UNAUTHENTICATED;
         SettlementSavedData data = SettlementSavedData.get(player.getServer());
         return data.removeResident(townId, entityId) || data.removeWorkforce(townId, entityId) ? Result.ACCEPTED : Result.INVALID;
+    }
+
+    public static Result openRecruitBuyback(ServerPlayer player, UUID townId, UUID entityId) {
+        if (ownedTown(player, townId).isEmpty()) return Result.UNAUTHENTICATED;
+        var record = SettlementSavedData.get(player.getServer()).workforceEntity(entityId);
+        if (record.isEmpty() || !record.get().townId().equals(townId) || !record.get().ownerId().equals(IdentityPolicy.resolve(player).map(value -> value.accountId()).orElse(null))) return Result.INVALID;
+        return com.siirio.jemsettlements.compat.recruits.RecruitRebellionService.openBuyback(player, entityId) ? Result.ACCEPTED : Result.UNAVAILABLE;
     }
 
     public static long treasuryBalance(ServerPlayer player, TownRecord town) {

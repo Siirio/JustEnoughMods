@@ -1,8 +1,8 @@
 # Economy registry coverage
 
-Generated from Atlas schema 1 at `2026-10-15T18:48:30.095087+00:00` for `29f9540c469ef1fdfafe407cd79b48182451ae5e`.
+Generated from Atlas schema 1 at `2026-10-15T19:50:57.409061+00:00` for `403744f8380e7d91d3ed2a30358e0fb6825398f8`.
 
-Static evidence observed 17,058 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
+Static evidence observed 17,060 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
 
 | Mod | Registered | Reviewed | Unknown | BUY_AND_SELL | NONE |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -65,7 +65,7 @@ Static evidence observed 17,058 canonical item IDs. This is not a Forge runtime 
 | jacksgravestones | 1 | 0 | 1 | 0 | 1 |
 | jem_economy | 8 | 0 | 8 | 0 | 8 |
 | jem_pack_core | 5 | 0 | 5 | 0 | 5 |
-| jem_server | 2 | 0 | 2 | 0 | 2 |
+| jem_server | 4 | 0 | 4 | 0 | 4 |
 | jemcompat | 80 | 0 | 80 | 0 | 80 |
 | jemtwelveeyes | 1 | 0 | 1 | 0 | 1 |
 | kaleidoscope_compat | 218 | 0 | 218 | 0 | 218 |

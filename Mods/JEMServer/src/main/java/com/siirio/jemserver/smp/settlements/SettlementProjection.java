@@ -22,7 +22,8 @@ public final class SettlementProjection {
             row.putUUID("id", town.id()); row.putString("name", town.name());
             row.putString("dimension", town.dimension().toString()); row.putLong("position", town.center().asLong());
             row.putInt("happiness", town.happiness());
-            row.putInt("population", full.getList("Residents", net.minecraft.nbt.Tag.TAG_COMPOUND).size() + SettlementSavedData.get(viewer.getServer()).workforce(town.id()).size());
+            row.putInt("population", full.getList("Residents", net.minecraft.nbt.Tag.TAG_COMPOUND).size()
+                    + (int) SettlementSavedData.get(viewer.getServer()).workforce(town.id()).stream().filter(com.siirio.jemsettlements.workforce.WorkforceRecord::settlementActive).count());
             rows.add(row);
         }
         result.put("rows", rows); result.putInt("total", rows.size()); result.putInt("pageSize", 64);

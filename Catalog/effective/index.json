@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "82bdc6c06a198a8c3a96104fd2230bcb8ba9055209ab01848b3298e39ed5e2f3",
+  "change_records_sha256": "2c064cdf1cbf3807408a1ed7b6c0867eb4743a73280647d6ec737e92156c9a49",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -119,7 +119,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 3
+      "potential_static_target_count": 5
     },
     {
       "change_id": "atlas.power-system-analysis",
@@ -259,7 +259,7 @@
     {
       "change_id": "settlements.update-1",
       "status": "active",
-      "summary": "Implement multiple owned settlements, exact-dish resident needs, damage-driven happiness and paid Xaero territory expansion.",
+      "summary": "Implement multiple owned settlements, exact-dish resident needs, persistent resident and recruit consequences, and paid Xaero territory expansion.",
       "record": "Catalog/changes/records/settlements-update-1.json",
       "selectors": [
         {
@@ -271,6 +271,36 @@
           "type": "id",
           "registry": "entities",
           "value": "minecraft:villager"
+        },
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "recruits:recruit"
+        },
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "recruits:bowman"
+        },
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "recruits:crossbowman"
+        },
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "recruits:recruit_shieldman"
+        },
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "recruits:horseman"
+        },
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "recruits:captain"
         },
         {
           "type": "id",
@@ -304,7 +334,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 8
+      "potential_static_target_count": 14
     },
     {
       "change_id": "smp.market-profile-consolidation",
@@ -387,7 +417,7 @@
     "Docs/power-system/NUMERIC_TABLES.md": "328838a5d28016b792c136f3e4642f3400c8785f2f9ddcdac4246a3ba53fb114",
     "Docs/power-system/README.md": "ca69c9b298c3c62c4e48f71c1d39b1f9152fcef62a3f7d02983968c75d9c03f1",
     "Docs/power-system/Weapons.md": "c63a055513709e21af477ec465fcb28941255999d571907d27c34100d534f0e7",
-    "Docs/smp-gui/README.md": "9aef50a55a394f101efcbcbb8df54c29d7a0f9b42bc2848d7475b0c04da7b525",
+    "Docs/smp-gui/README.md": "700af31333fc81e64913936da0b18b2e8b0f9a9313732589f1c2014cd4d54027",
     "Mods/JEMCompat/build.gradle": "7b79f9161e4116f9e45f5e7ecb230252158b1dd696a4b0a990cfe6b80e131e02",
     "Mods/JEMEconomy/build.gradle": "c16da45d3674ad2a5e02825eb17b85af28f46d44ff23dc562060efad95ae2d49",
     "Mods/JEMEconomy/settings.gradle": "87a947f8eab9e0ca4b873486f492128e0b77e0190ff6c60ba4a1d04568d26e28",
@@ -479,10 +509,10 @@
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/MapNetwork.java": "df874af6870e1e76eeeefff00149294bccf848cfd12ba78828616c862b65da58",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/XaeroLandmarks.java": "192612640435da38bad5821297ec4617509f698ddad1ccf5c44ea2d08296a9b0",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpIcons.java": "445f428d518fad525218161457d181999102a5db475f2c34744b30eb2294afab",
-    "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java": "ecd353576060982d74f427c0466660aaf43f87c9fbe9aec99c59cb9ab645ee24",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java": "9cd4fb5fb25af54647e93cad784526607e5471d576ef804cd4a3f1ca182fb9a2",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpSidebar.java": "3fb85346c875f93c14ffa011d45c5a311fc7c88becf0ad124baff3203d1966ee",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/ui/JemMenuScreen.java": "655ee46a8a7b4ff6294b45025d07907fdb3b50636490a4487fda4c963d0e4b41",
-    "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapClient.java": "0a7f2ca6aaf3dc69c655252108527f02864ff57bfdcd22656ebcb34b48ddcd7f",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapClient.java": "da589e89ea5aac25e01d0bcdf047aa561118df31e93f072fcab368137f65a0d0",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapLayerPreferences.java": "a5ec131f84203fa0379ae0db5162c7d0034d26dbab7c08fd9fde72225445eb23",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/XaeroMapPreview.java": "4f0868f4a1848a352b0fd4cda07ccc7cb185fd79e8f522c379100a1c05e8d516",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/map/ProjectRegion.java": "e9d5fbabe6371b8702195c0b578cbac1402efc86a0335a42d27c2914f13533e8",
@@ -493,7 +523,7 @@
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/MapScreenMixin.java": "c58ed7539fd21c81d9c9091055ff57e0aec9b3fbbfa579eb9d2af97f9b9ca73c",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/HomePreview.java": "8927a92e2b708d0ae510c7a2c2c4a2b02a20a47c60662a872f4853a156244b00",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Profiles.java": "1b9966f09f11c80ef7ed8882974901e15e312b2437e4a431076decebdd821b18",
-    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SettlementUiAction.java": "660ccfb2a5445df26d696ae713492fb4318e6aa12ed679fb6851adbb287b02ea",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SettlementUiAction.java": "769f451af3543468f3d79b845c9f17c5b88b96f1fa1d6d00390f599779d20474",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpActionKind.java": "cb2962bb4c791cecfffd9dfeabac2c1efe32ddec7e1b54fb7a0551da15e46947",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpActions.java": "ace130cda337ebe65342fa343bd9b292569da16304bfe056042bdc9cb834871a",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpModuleOpen.java": "d6ddfa3aca3b9de6ce7f3dfe27c88aafa564b3aa834e5d030b4e13b1bab60bd2",
@@ -503,28 +533,34 @@
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpSubscriptions.java": "b28c233f499f57e4fad94b2949a4cd0e8bff579ad52ac5ff71a65e7271cadd1c",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpTable.java": "8b0065265a3ff9d99f951f77ee5e07d25fb3eb585c731a82330b3fc53f5e3103",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViews.java": "ad929a18df754d1b1279e7a5ab0e71fa18fd1f47e131e423909190c979f9c0b4",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/CookingRecipes.java": "f07011ea6cd34e987334bce4d412da2e9521aeea72229fd5658c0ba54b0d6c6c",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventCommands.java": "d965dd860b5f737fffab4666df0e7f90b2ac9166f9c89530041be9b999f35366",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventRegions.java": "d88b2c69231c9c0345467249907157962c48d0b7140c1ccf35144da768ccbf73",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventRegistryExport.java": "bcf4f88213e84518f3657aff475eca9837b7c2206f03243e019996072db8ef63",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/recruits/RecruitProjection.java": "652961d83eeee3809142757a41715c5bdfd2dbb1dcab159c9f30e0e27655b3bc",
-    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/settlements/SettlementProjection.java": "8d999e67ad9b2d71766aa0d3e0e6dfd8059138ffd4b0f990596601bf0914ddb1",
-    "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json": "b87ac6579fa74a97ab357a8033ccc9dbb251d088365f223bcd59ebb391a6f5bb",
-    "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json": "077a80f04f57edca8569107e6cd927daf264adebbee49aec64618c0e272da5f4",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/settlements/SettlementProjection.java": "7284d0d46b8ab129529295c81468b1aa5f584c25a8ab348ffecf00b79c7a13c2",
+    "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json": "289cb9c3dc46df895964a44cd476bc533214ffe05dc07fda2de8eea96313c7fb",
+    "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json": "166939770d2ce46098d9c45958e7afa5b797471fd5329fff8e874867d966f68e",
     "Mods/JEMServer/src/main/resources/jem_server.mixins.json": "6554916da0150a55295cb292d3c79d759bc4ffcf613bc51aaea0ad567275bb84",
     "Mods/JEMSettlements/build.gradle": "387b14d15562224b4607ec5fe5d8ba4ab698e0f049192d6bbb3bfbebff5c8078",
-    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java": "016a89218bbbc8b38fad0f1d25346e1e4d06bd6263274462bb4c1a449bb86a21",
-    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementClientState.java": "1d3f76b9184109ddd69a808758e9f530bbefbadb4161d994aab971ddc5b422ff",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java": "c3195a783ff9943fb9490ce9447ea54b2d36b203a47a20aa35b4b46aecac2c85",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementClientState.java": "aff1e5b2ecd367caa2ded088c12e965bced08a66142f7a7ef00bdeff2a253d20",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/command/SettlementCommands.java": "5f8aabcd88dc25a2c5160ad95a6034c42ee95dd72b6ef249cc651509e30dab58",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/command/SettlementGuidebook.java": "469924771919341e1f4cdbcb45bce8236680d40bda789caf9dd3a87d2f550277",
-    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/jade/SettlementJadePlugin.java": "1a5bc50aacbbf3bc1ee26fc0798e53f721dcb990a0ef18501e0ebcc745cdff4b",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/jade/SettlementJadePlugin.java": "998804129ccafc8db87147b25a102f6789d7d04f33c45a6f87b23d67baaa4a73",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitRebellionService.java": "5599a6a70e3a5d1f33ba25a597a67e5bda2785f4c316afa4750e25a84c46da8b",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AvailableDishService.java": "31bbaba741941932bffc77bd57f360a3c9e432e4eb594d3834504dce433131da",
-    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/FoodValueRegistry.java": "cf2f0e509033210e78841fd4e5e0a252b4e3e9679c361ff5855b02d94c8f8d20",
-    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java": "38e374810caf403fcc00f47ba9406df942d5253e42fbf5c20d946e741d28b1bf",
-    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/ResidentMood.java": "bc2582e8f939ccb7639ba60c102074934ca07a5c31944679fa6a9012aaecf896",
-    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java": "a819e17b2d815e0ec6d0e6c934984e6098f611772eca40a33e24be64a56902ee",
-    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/SettlementSavedData.java": "13eab06f6e874feec02c69313343f2872161495409f713ced050363801c817a6",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/FoodValueRegistry.java": "7ead5436ffbea5c2ce7755b729968ef78e2605cf8e740a04700a1c750eceee2c",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/FoodPolicyPacket.java": "e6709937be403c85116192089ea1d90583b8d90d26d600f8386ef8d58d491c9e",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java": "9c1cdad93a3827611f8cf1389c1344c44083c0394bb148e11848768cea605e84",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollService.java": "a314e8568bed55697b83ade1057f45accfe24bad97825eaf6218bc0d5388e6cb",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/ResidentMood.java": "ed844db6766b5e389e4619985b9262eaa1367b78e31264d652eb963393e572d4",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java": "357fddef4830398907822e51fdb37a94181c7a8fc1572e8f1b5732b4956f7228",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/simulation/SettlementSimulationService.java": "f3dc7cf443e996cbd5244d56d983bfa939fe86906867f0781d03f149df1dfd83",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/SettlementSavedData.java": "a397f889d491fc6b576d03360c67ae53f4f41e612165b94b92969fd7b2d40bb5",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownRecord.java": "ea4d56fe69a289ea22d0dd5e90b2cb42ed4218e61ab8b0375daf376910334934",
-    "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/food_values.json": "d969cc7dd2b53126c328917742c9c5591c4c6e15c3bcaa339eaed0ef0c0e6971",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/workforce/WorkforceRecord.java": "7d96ae8b2c587ab6ae7e2908f750846dff97e11f0c0951e64b0b6f573399978d",
+    "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/food_values.json": "6afcd8db2aefa388f07f30939a9c69724da65e3bc38a8b3f6508e7b0af7c615d",
     "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/client/CampaignMapClient.java": "adec11232ba62576cd56e6f902c7a6af5ce8ab40b00531a21a4bb0e395ce749b",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java": "c61a7005a954859d0be5bb6206ecac5a01db656734481d38fac8991225e6e3ae",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/OrdinaryHostileScaler.java": "729980767df8c532c8463e4699a39ba6821053c9829995237ec56855009abeaf",

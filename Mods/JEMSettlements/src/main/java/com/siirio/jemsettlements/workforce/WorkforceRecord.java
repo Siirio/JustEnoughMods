@@ -6,6 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 
 /** One native NPC assignment. Defense is a filtered view of this record. */
 public final class WorkforceRecord {
+    public enum Loyalty { LOYAL, REBELLIOUS, DEFEATED }
     private final UUID entityId;
     private final UUID townId;
     private final UUID ownerId;
@@ -18,6 +19,8 @@ public final class WorkforceRecord {
     private long lastSeenGameTime;
     private long lastPaidPeriod = -1L;
     private long lastPenaltyPeriod = -1L;
+    private int missedPayrolls;
+    private Loyalty loyalty = Loyalty.LOYAL;
     private UUID lastWorkAreaId;
     private long lastWorkEvidenceGameTime = Long.MIN_VALUE;
 
@@ -44,13 +47,19 @@ public final class WorkforceRecord {
     public long lastSeenGameTime() { return lastSeenGameTime; }
     public long lastPaidPeriod() { return lastPaidPeriod; }
     public long lastPenaltyPeriod() { return lastPenaltyPeriod; }
+    public int missedPayrolls() { return missedPayrolls; }
+    public Loyalty loyalty() { return loyalty; }
+    public boolean settlementActive() { return living && loyalty == Loyalty.LOYAL; }
     public UUID lastWorkAreaId() { return lastWorkAreaId; }
     public long lastWorkEvidenceGameTime() { return lastWorkEvidenceGameTime; }
     public void seen(long gameTime) { living = true; lastSeenGameTime = Math.max(lastSeenGameTime, gameTime); }
     public void verifyNativeEntityType(ResourceLocation value, long gameTime) { if (value != null && value.getNamespace().equals(nativeModId)) nativeEntityType = value; seen(gameTime); }
     public void markDead() { living = false; }
-    public void paid(long period) { lastPaidPeriod = Math.max(lastPaidPeriod, period); }
-    public void penalized(long period) { lastPenaltyPeriod = Math.max(lastPenaltyPeriod, period); }
+    public void paid(long period) { lastPaidPeriod = Math.max(lastPaidPeriod, period); if (loyalty == Loyalty.LOYAL) missedPayrolls = 0; }
+    public void penalized(long period) { if (period <= lastPenaltyPeriod) return; lastPenaltyPeriod = period; if (loyalty == Loyalty.LOYAL) missedPayrolls = Math.min(3, missedPayrolls + 1); }
+    public void rebel() { if (loyalty == Loyalty.LOYAL) loyalty = Loyalty.REBELLIOUS; }
+    public void defeated() { if (loyalty == Loyalty.REBELLIOUS) loyalty = Loyalty.DEFEATED; }
+    public void rehired() { loyalty = Loyalty.LOYAL; missedPayrolls = 0; }
     public void observeWorkArea(UUID workAreaId, long gameTime) {
         if (workAreaId == null) return;
         lastWorkAreaId = workAreaId;
@@ -63,6 +72,7 @@ public final class WorkforceRecord {
         tag.putString("Type", type.name()); tag.putString("NativeMod", nativeModId); tag.putString("NativeEntityType", nativeEntityType.toString());
         tag.putBoolean("CoinWage", coinWageEnabled); tag.putBoolean("Living", living); tag.putLong("EnlistedGameTime", enlistedGameTime);
         tag.putLong("LastSeenGameTime", lastSeenGameTime); tag.putLong("LastPaidPeriod", lastPaidPeriod); tag.putLong("LastPenaltyPeriod", lastPenaltyPeriod);
+        tag.putInt("MissedPayrolls", missedPayrolls); tag.putString("Loyalty", loyalty.name());
         if (lastWorkAreaId != null) tag.putUUID("LastWorkArea", lastWorkAreaId);
         tag.putLong("LastWorkEvidenceGameTime", lastWorkEvidenceGameTime); return tag;
     }
@@ -76,6 +86,8 @@ public final class WorkforceRecord {
         record.living = !tag.contains("Living") || tag.getBoolean("Living"); record.lastSeenGameTime = tag.getLong("LastSeenGameTime");
         record.lastPaidPeriod = tag.contains("LastPaidPeriod") ? tag.getLong("LastPaidPeriod") : -1L;
         record.lastPenaltyPeriod = tag.contains("LastPenaltyPeriod") ? tag.getLong("LastPenaltyPeriod") : -1L;
+        record.missedPayrolls = Math.max(0, Math.min(3, tag.getInt("MissedPayrolls")));
+        try { record.loyalty = Loyalty.valueOf(tag.getString("Loyalty")); } catch (IllegalArgumentException ignored) { }
         record.lastWorkAreaId = tag.hasUUID("LastWorkArea") ? tag.getUUID("LastWorkArea") : null;
         record.lastWorkEvidenceGameTime = tag.contains("LastWorkEvidenceGameTime") ? tag.getLong("LastWorkEvidenceGameTime") : Long.MIN_VALUE; return record;
     }

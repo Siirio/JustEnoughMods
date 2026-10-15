@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = "jem_server", value = Dist.CLIENT)
 public final class MapClient {
     private static List<MapNetwork.Death> deaths = List.of();
-    private record Layer(ResourceLocation dimension, int color, RegionGeometry.Mesh mesh) {}
+    private record Layer(ResourceLocation dimension, int color, int fillAlpha, RegionGeometry.Mesh mesh) {}
     private static List<MapNetwork.EventArea> events = List.of();
     private static List<Layer> eventLayers = List.of();
     private static List<MapNetwork.ProjectArea> projects = List.of();
@@ -39,21 +39,21 @@ public final class MapClient {
     public static void accept(MapNetwork.Snapshot snapshot) {
         deaths = List.copyOf(snapshot.deaths()); acceptEvents(snapshot.events()); acceptProjects(snapshot.projects());
         settlements = List.copyOf(snapshot.settlements());
-        settlementLayers = settlements.stream().map(town -> new Layer(town.dimension(), town.owned() ? com.siirio.jemserver.client.ui.JemPalette.PEACH : com.siirio.jemserver.client.ui.JemPalette.COPPER,
+        settlementLayers = settlements.stream().map(town -> new Layer(town.dimension(), town.owned() ? com.siirio.jemserver.client.ui.JemPalette.PEACH : com.siirio.jemserver.client.ui.JemPalette.COPPER, town.owned() ? 0x42 : 0x2C,
                 RegionGeometry.union(List.of(new RegionGeometry.Rectangle(town.minX(), town.minZ(), town.maxX() + 1, town.maxZ() + 1))))).toList();
         connected = true;
     }
     private static void acceptProjects(List<MapNetwork.ProjectArea> areas) {
         if (projects.equals(areas)) return;
         projects = List.copyOf(areas);
-        projectLayers = projects.stream().map(project -> new Layer(project.dimension(), project.color(),
+        projectLayers = projects.stream().map(project -> new Layer(project.dimension(), project.color(), 0,
                 RegionGeometry.union(project.rectangles().stream().map(rectangle -> new RegionGeometry.Rectangle(
                         rectangle.minX(), rectangle.minZ(), rectangle.maxX(), rectangle.maxZ())).toList()))).toList();
     }
     public static void acceptEvents(List<MapNetwork.EventArea> areas) {
         if (events.equals(areas)) return;
         events = List.copyOf(areas);
-        eventLayers = events.stream().map(area -> new Layer(area.dimension(), eventColor(area.activity()),
+        eventLayers = events.stream().map(area -> new Layer(area.dimension(), eventColor(area.activity()), 0,
                 RegionGeometry.union(List.of(new RegionGeometry.Rectangle(
                         area.minX(), area.minZ(), area.maxX() + 1, area.maxZ() + 1))))).toList();
     }
@@ -117,7 +117,7 @@ public final class MapClient {
         if (draggingSettlement) updateSettlementDrag(dimension, hoverX, hoverZ);
         if (settlementDraft != null && settlementDraft.dimension().equals(dimension)) {
             var draft = settlementDraft;
-            var layer = new Layer(draft.dimension(), com.siirio.jemserver.client.ui.JemPalette.GREEN,
+            var layer = new Layer(draft.dimension(), com.siirio.jemserver.client.ui.JemPalette.GREEN, 0x56,
                     RegionGeometry.union(List.of(new RegionGeometry.Rectangle(draft.minX(), draft.minZ(), draft.maxX() + 1, draft.maxZ() + 1))));
             renderLayers(graphics, dimension, cameraX, cameraZ, scale, width, height, List.of(layer));
         }
@@ -135,6 +135,14 @@ public final class MapClient {
         for (var layer : source) {
             if (!layer.dimension().equals(dimension)) continue;
             int color = layer.color() & 0xFFFFFF;
+            if (layer.fillAlpha() > 0) for (var fill : layer.mesh().fills()) {
+                int x1 = (int) Math.floor(width / 2.0 + (fill.minX() - cameraX) * scale);
+                int z1 = (int) Math.floor(height / 2.0 + (fill.minZ() - cameraZ) * scale);
+                int x2 = (int) Math.ceil(width / 2.0 + (fill.maxX() - cameraX) * scale);
+                int z2 = (int) Math.ceil(height / 2.0 + (fill.maxZ() - cameraZ) * scale);
+                if (x2 > 0 && z2 > 0 && x1 < width && z1 < height)
+                    graphics.fill(Math.max(0, x1), Math.max(0, z1), Math.min(width, x2), Math.min(height, z2), layer.fillAlpha() << 24 | color);
+            }
             for (var edge : layer.mesh().edges()) {
                 int x1 = (int) Math.floor(width / 2.0 + (edge.x1() - cameraX) * scale);
                 int z1 = (int) Math.floor(height / 2.0 + (edge.z1() - cameraZ) * scale);

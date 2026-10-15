@@ -60,6 +60,7 @@ public final class SmpScreen extends Screen {
     private UUID hoveredPrize;
     private String settlementTab = "residents";
     private UUID pendingSettlementRemoval;
+    private boolean pendingSettlementDelete;
     private UUID selected;
     private UUID participant;
     private int page,
@@ -1200,7 +1201,7 @@ public final class SmpScreen extends Screen {
             frame(g, x, bodyY, w, 24, active ? HOVER : ROW);
             SmpIcons.draw(g, target, x + 4, bodyY + 4, 16);
             text(g, Component.translatable("jem.smp.settlement.tab." + target), x + 23, bodyY + 8, active ? PEACH : CREAM, w - 27);
-            hit(x, bodyY, w, 24, () -> { settlementTab = target; scroll = 0; pendingSettlementRemoval = null; });
+            hit(x, bodyY, w, 24, () -> { settlementTab = target; scroll = 0; pendingSettlementRemoval = null; pendingSettlementDelete = false; });
         }
         int y = bodyY + 32 - scroll;
         if (settlementTab.equals("residents")) y = renderSettlementPeople(g, row, y, mx, my);
@@ -1228,6 +1229,11 @@ public final class SmpScreen extends Screen {
             button(g, bodyX, y, Math.max(90, bodyWidth / 2 - 4), 24, "map", () -> openSettlementMap(row), mx, my);
             button(g, bodyX + bodyWidth / 2 + 4, y, Math.max(90, bodyWidth / 2 - 4), 24, "rename", () -> openForm("settlement_rename"), mx, my); y += 34;
             text(g, Component.translatable("jem.smp.settlement.expand_hint"), bodyX + 4, y, MUTED, bodyWidth - 8); y += 26;
+            if (pendingSettlementDelete) {
+                text(g, Component.translatable("jem.smp.settlement.delete_warning", row.getString("name")), bodyX + 4, y, RED, bodyWidth - 8); y += 28;
+                button(g, bodyX, y, Math.max(90, bodyWidth / 2 - 4), 24, "confirm", this::settlementDelete, mx, my);
+                button(g, bodyX + bodyWidth / 2 + 4, y, Math.max(90, bodyWidth / 2 - 4), 24, "cancel", () -> pendingSettlementDelete = false, mx, my); y += 34;
+            } else { button(g, bodyX, y, Math.min(180, bodyWidth), 24, "delete_settlement", () -> pendingSettlementDelete = true, mx, my); y += 34; }
         }
         maxScroll = Math.max(0, y + scroll - bodyBottom + 6); scroll = Math.max(0, Math.min(scroll, maxScroll));
     }
@@ -1237,17 +1243,28 @@ public final class SmpScreen extends Screen {
         for (Tag value : detail.getList("Residents", Tag.TAG_COMPOUND)) { CompoundTag copy = ((CompoundTag) value).copy(); copy.putBoolean("Resident", true); people.add(copy); }
         for (Tag value : detail.getList("WorkforceRows", Tag.TAG_COMPOUND)) people.add(((CompoundTag) value).copy());
         for (CompoundTag person : people) {
-            int height = 50; frame(g, bodyX, y, bodyWidth, height, ROW); SmpIcons.draw(g, person.getBoolean("Resident") ? "residents" : "recruits", bodyX + 6, y + 8, 24);
+            ResourceLocation request = person.getBoolean("Resident") ? ResourceLocation.tryParse(person.getString("RequestedDish")) : null;
+            int height = person.getBoolean("Resident") ? request == null ? 62 : 80 : person.getString("Loyalty").equals("DEFEATED") ? 62 : 50;
+            frame(g, bodyX, y, bodyWidth, height, ROW); SmpIcons.draw(g, person.getBoolean("Resident") ? "residents" : "recruits", bodyX + 6, y + 8, 24);
             text(g, Component.literal(person.getString("Name")), bodyX + 36, y + 6, person.getBoolean("Living") ? CREAM : MUTED, bodyWidth - 126);
             if (person.getBoolean("Resident")) {
                 String profession = person.getString("Profession"); if (profession.contains(":")) profession = profession.substring(profession.indexOf(':') + 1);
-                text(g, Component.translatable("jem.smp.settlement.resident_state", person.getInt("Mood"), person.getInt("Satiety"), Component.translatable("entity.minecraft.villager." + profession)), bodyX + 36, y + 22, MUTED, bodyWidth - 126);
-                ResourceLocation request = ResourceLocation.tryParse(person.getString("RequestedDish")); if (request != null && BuiltInRegistries.ITEM.containsKey(request)) { ItemStack dish = new ItemStack(BuiltInRegistries.ITEM.get(request)); g.renderItem(dish, bodyX + 36, y + 31); text(g, dish.getHoverName(), bodyX + 56, y + 36, PEACH, bodyWidth - 146); }
-            } else text(g, Component.translatable("jem.smp.settlement.worker_type", person.getString("Type")), bodyX + 36, y + 22, MUTED, bodyWidth - 126);
+                text(g, Component.translatable("entity.minecraft.villager." + profession), bodyX + 36, y + 19, MUTED, bodyWidth - 126);
+                settlementBar(g, bodyX + 36, y + 33, bodyWidth - 126, "happiness_short", person.getInt("Mood"), mx, my);
+                settlementBar(g, bodyX + 36, y + 46, bodyWidth - 126, "satiety_short", person.getInt("Satiety"), mx, my);
+                if (request != null && BuiltInRegistries.ITEM.containsKey(request)) { ItemStack dish = new ItemStack(BuiltInRegistries.ITEM.get(request)); g.renderItem(dish, bodyX + 36, y + 60); text(g, dish.getHoverName(), bodyX + 56, y + 65, PEACH, bodyWidth - 146); }
+            } else {
+                text(g, Component.translatable("jem.smp.settlement.worker_type", person.getString("Type")), bodyX + 36, y + 22, MUTED, bodyWidth - 126);
+                if (!person.getString("Loyalty").isEmpty() && !person.getString("Loyalty").equals("LOYAL"))
+                    text(g, Component.translatable("jem.smp.settlement.loyalty." + person.getString("Loyalty").toLowerCase(Locale.ROOT)), bodyX + 36, y + 35, RED, bodyWidth - 126);
+            }
             int bx = bodyX + bodyWidth - 82;
             if (person.getUUID("Id").equals(pendingSettlementRemoval)) {
                 button(g, bx, y + 5, 50, 20, "confirm", () -> settlementRemove(person.getUUID("Id")), mx, my);
                 button(g, bx, y + 27, 50, 18, "cancel", () -> pendingSettlementRemoval = null, mx, my);
+            } else if (person.getString("Loyalty").equals("DEFEATED")) {
+                button(g, bx, y + 4, 74, 22, "buyback", () -> settlementBuyback(person.getUUID("Id")), mx, my);
+                button(g, bx, y + 32, 74, 22, "unregister", () -> pendingSettlementRemoval = person.getUUID("Id"), mx, my);
             } else button(g, bx, y + 14, 74, 22, "unregister", () -> pendingSettlementRemoval = person.getUUID("Id"), mx, my);
             y += height + GAP;
         }
@@ -1263,6 +1280,24 @@ public final class SmpScreen extends Screen {
     private void settlementRemove(UUID target) {
         SmpNetwork.settlement(new com.siirio.jemserver.smp.SettlementUiAction(UUID.randomUUID(), selected, "remove", target, "", 0));
         pendingSettlementRemoval = null;
+    }
+    private void settlementBuyback(UUID target) {
+        SmpNetwork.settlement(new com.siirio.jemserver.smp.SettlementUiAction(UUID.randomUUID(), selected, "buyback", target, "", 0));
+    }
+    private void settlementDelete() {
+        if (selected == null) return;
+        SmpNetwork.settlement(new com.siirio.jemserver.smp.SettlementUiAction(UUID.randomUUID(), selected, "delete", null, "", 0));
+        pendingSettlementDelete = false;
+    }
+    private void settlementBar(GuiGraphics g, int x, int y, int width, String key, int value, int mx, int my) {
+        int labelWidth = Math.min(52, Math.max(36, width / 3));
+        text(g, Component.translatable("jem.smp.settlement." + key), x, y + 1, MUTED, labelWidth - 4);
+        int barX = x + labelWidth, barWidth = Math.max(12, width - labelWidth), clamped = Math.max(0, Math.min(100, value));
+        g.fill(barX, y + 2, barX + barWidth, y + 10, INSET);
+        int red = 183 + (120 - 183) * clamped / 100, green = 80 + (155 - 80) * clamped / 100, blue = 70 + (101 - 70) * clamped / 100;
+        g.fill(barX + 1, y + 3, barX + 1 + Math.max(0, (barWidth - 2) * clamped / 100), y + 9, 0xFF000000 | red << 16 | green << 8 | blue);
+        if (mx >= barX && mx < barX + barWidth && my >= y + 2 && my < y + 10)
+            hoveredLabel = Component.translatable("jem.smp.settlement.bar_value", Component.translatable("jem.smp.settlement." + key), clamped);
     }
 
     private boolean openLocation(CompoundTag detail) {
@@ -1682,7 +1717,7 @@ public final class SmpScreen extends Screen {
         String role = switch (key) {
             case "start", "claim", "claim_all", "create", "create_party", "submit" -> "primary";
             case "ready", "confirm", "approve", "buy" -> "confirm";
-            case "leave", "dissolve", "remove", "unregister" -> "danger";
+            case "leave", "dissolve", "remove", "unregister", "delete_settlement" -> "danger";
             default -> "secondary";
         };
         SmpGuiAssets.button(g, x, y, w, h, role, over, waiting && !key.equals("close"));
