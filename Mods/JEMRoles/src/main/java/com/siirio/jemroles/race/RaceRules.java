@@ -8,6 +8,8 @@ public final class RaceRules {
     public static final ForgeConfigSpec SPEC;
     public static final ForgeConfigSpec.IntValue GUARDIAN_COOLDOWN;
     public static final ForgeConfigSpec.IntValue LIFE_CHORUS_COOLDOWN;
+    public static final ForgeConfigSpec.IntValue SCULK_VEINS_COOLDOWN;
+    public static final ForgeConfigSpec.IntValue VERDANT_DOMINION_COOLDOWN;
     public static final ForgeConfigSpec.IntValue RIFT_AMBUSH_COOLDOWN;
     public static final ForgeConfigSpec.IntValue VOID_PROJECTILE_COOLDOWN;
     public static final ForgeConfigSpec.IntValue GRAVITY_DURATION;
@@ -22,7 +24,9 @@ public final class RaceRules {
         ForgeConfigSpec.Builder b = new ForgeConfigSpec.Builder();
         b.push("cooldowns");
         GUARDIAN_COOLDOWN = b.defineInRange("ancestralGuardianTicks", 24_000, 20, 240_000);
-        LIFE_CHORUS_COOLDOWN = b.defineInRange("lifeChorusTicks", 1_800, 20, 72_000);
+        LIFE_CHORUS_COOLDOWN = b.defineInRange("lifeChorusTicks", 500, 20, 72_000);
+        SCULK_VEINS_COOLDOWN = b.defineInRange("sculkVeinsTicks", 400, 20, 72_000);
+        VERDANT_DOMINION_COOLDOWN = b.defineInRange("verdantDominionTicks", 500, 20, 72_000);
         RIFT_AMBUSH_COOLDOWN = b.defineInRange("riftAmbushTicks", 1_200, 20, 72_000);
         VOID_PROJECTILE_COOLDOWN = b.defineInRange("voidProjectileTicks", 2_400, 20, 72_000);
         GRAVITY_DURATION = b.defineInRange("gravityDenialDurationTicks", 100, 20, 1_200);

@@ -26,12 +26,15 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrownEnderpearl;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
@@ -41,6 +44,7 @@ import net.minecraft.world.phys.Vec3;
 public final class RaceAbilities {
     private static final Map<UUID, Long> VOID_CHARGE = new ConcurrentHashMap<>();
     private static final CopyOnWriteArrayList<Zone> ZONES = new CopyOnWriteArrayList<>();
+    private static final CopyOnWriteArrayList<Eruption> ERUPTIONS = new CopyOnWriteArrayList<>();
 
     private RaceAbilities() {}
 
@@ -65,6 +69,8 @@ public final class RaceAbilities {
         int cooldown = switch (record.race()) {
             case ANCESTORS -> RaceRules.LIFE_CHORUS_COOLDOWN.get();
             case VOID_WALKERS -> RaceRules.RIFT_AMBUSH_COOLDOWN.get();
+            case BORN_IN_BLOOM -> RaceRules.VERDANT_DOMINION_COOLDOWN.get();
+            case INFECTED_BY_SCULK -> RaceRules.SCULK_VEINS_COOLDOWN.get();
             default -> 1_200;
         };
         if (!record.ready(key, now)) { cooldown(player, record.remaining(key, now)); return; }
@@ -94,13 +100,17 @@ public final class RaceAbilities {
                 if (record.resonance() >= 25) consumeEcho(player, record);
                 else echoVision(player);
             }
-            case NETHER_HEARTEDS -> lavaDrink(player, record, now);
+            case NETHER_HEARTEDS -> startLavaDrink(player, record, now);
             default -> player.sendSystemMessage(Component.translatable("jem.roles.utility.none"), true);
         }
         RolesNetwork.sendStatus(player, false);
     }
 
     private static void utilityRelease(ServerPlayer player, RaceRecord record) {
+        if (record.race() == RaceId.NETHER_HEARTEDS) {
+            if (player.isUsingItem() && player.getUseItem().is(Items.LAVA_BUCKET)) player.stopUsingItem();
+            return;
+        }
         if (record.race() != RaceId.VOID_WALKERS) return;
         Long started = VOID_CHARGE.remove(player.getUUID());
         long now = player.level().getGameTime();
@@ -115,7 +125,7 @@ public final class RaceAbilities {
     private static boolean lifeChorus(ServerPlayer player, int tier) {
         double radius = tier >= 2 ? 16.0D : 12.0D;
         for (LivingEntity target : player.serverLevel().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(radius), LivingEntity::isAlive)) {
-            if (target instanceof Animal) target.setHealth(target.getMaxHealth());
+            if (target instanceof Animal || target instanceof AbstractVillager || recruit(target)) target.setHealth(target.getMaxHealth());
             else if (target instanceof Player) target.heal(6.0F);
             else continue;
             if (tier >= 2) target.getActiveEffects().stream()
@@ -199,7 +209,9 @@ public final class RaceAbilities {
         if (primary == null) return false;
         Vec3 line = primary.position().subtract(player.position()).normalize();
         int fissures = tier == 1 ? 1 : 3;
-        for (int i = 0; i < fissures; i++) erupt(player, primary.position().add(line.scale(i * 2.5D)), tier);
+        long now = player.level().getGameTime();
+        for (int i = 0; i < fissures; i++) ERUPTIONS.add(new Eruption(player.serverLevel().dimension(),
+                primary.position().add(line.scale(i * 2.5D)), now + 8 + i * 3L, player.getUUID(), tier));
         if (tier >= 3) ZONES.add(new Zone(player.serverLevel().dimension(), primary.blockPosition(),
                 player.level().getGameTime() + 100, player.getUUID(), ZoneType.VOLCANIC));
         return true;
@@ -239,6 +251,19 @@ public final class RaceAbilities {
 
     public static void serverTick(MinecraftServer server) {
         long now = server.overworld().getGameTime();
+        ERUPTIONS.removeIf(eruption -> {
+            ServerLevel level = server.getLevel(eruption.dimension);
+            ServerPlayer owner = server.getPlayerList().getPlayer(eruption.owner);
+            if (level == null || owner == null || owner.serverLevel() != level) return true;
+            for (int layer = 0; layer < 7; layer++) {
+                double y = eruption.center.y + layer * 0.55D;
+                level.sendParticles(layer < 2 ? ParticleTypes.LAVA : ParticleTypes.FLAME,
+                        eruption.center.x, y, eruption.center.z, 4, 0.22D, 0.12D, 0.22D, 0.015D);
+            }
+            if (now < eruption.impactAt) return false;
+            erupt(owner, eruption.center, eruption.tier);
+            return true;
+        });
         ZONES.removeIf(zone -> {
             if (zone.expires <= now) return true;
             ServerLevel level = server.getLevel(zone.dimension);
@@ -273,20 +298,25 @@ public final class RaceAbilities {
 
     private static void echoVision(ServerPlayer player) {
         for (LivingEntity target : player.serverLevel().getEntitiesOfClass(LivingEntity.class,
-                player.getBoundingBox().inflate(32), entity -> entity != player && entity.isAlive()
-                        && entity.getDeltaMovement().lengthSqr() > 0.0004D))
+                player.getBoundingBox().inflate(32), entity -> entity != player && entity.isAlive()))
             target.addEffect(new MobEffectInstance(MobEffects.GLOWING, 80, 0, false, false));
         player.serverLevel().sendParticles(ParticleTypes.SCULK_SOUL, player.getX(), player.getY() + 1, player.getZ(), 32, 8, 3, 8, 0.02);
     }
 
-    private static void lavaDrink(ServerPlayer player, RaceRecord record, long now) {
+    private static void startLavaDrink(ServerPlayer player, RaceRecord record, long now) {
         if (!record.ready("lava_drink", now)) { cooldown(player, record.remaining("lava_drink", now)); return; }
-        var hit = player.level().clip(new ClipContext(player.getEyePosition(), player.getEyePosition().add(player.getLookAngle().scale(5)),
-                ClipContext.Block.COLLIDER, ClipContext.Fluid.SOURCE_ONLY, player));
-        if (hit.getType() != HitResult.Type.BLOCK || !player.level().getFluidState(hit.getBlockPos()).is(net.minecraft.tags.FluidTags.LAVA)) return;
-        player.heal(5.0F);
-        player.level().playSound(null, player.blockPosition(), net.minecraft.sounds.SoundEvents.FIRE_EXTINGUISH, net.minecraft.sounds.SoundSource.PLAYERS, 0.7F, 0.65F);
-        RaceService.mutate(player, value -> value.cooldown("lava_drink", now + RaceRules.LAVA_DRINK_COOLDOWN.get()));
+        InteractionHand hand = player.getMainHandItem().is(Items.LAVA_BUCKET) ? InteractionHand.MAIN_HAND
+                : player.getOffhandItem().is(Items.LAVA_BUCKET) ? InteractionHand.OFF_HAND : null;
+        if (hand == null) {
+            player.sendSystemMessage(Component.translatable("jem.roles.lava_drink_requires_bucket"), true);
+            return;
+        }
+        player.startUsingItem(hand);
+    }
+
+    private static boolean recruit(LivingEntity target) {
+        String namespace = net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(target.getType()).getNamespace();
+        return namespace.equals("recruits") || namespace.equals("workers");
     }
 
     private static LivingEntity target(ServerPlayer player, double range) {
@@ -316,6 +346,8 @@ public final class RaceAbilities {
     public static void logout(ServerPlayer player) { VOID_CHARGE.remove(player.getUUID()); }
 
     private enum ZoneType { GROVE, VOLCANIC }
+    private record Eruption(net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level> dimension, Vec3 center,
+                            long impactAt, UUID owner, int tier) {}
     private record Zone(net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level> dimension, BlockPos center,
                         long expires, UUID owner, ZoneType type) {}
 }

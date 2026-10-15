@@ -5,8 +5,10 @@ import com.siirio.jemroles.network.RaceStatusPacket;
 import com.siirio.jemroles.network.RaceActionPacket;
 import com.siirio.jemroles.network.RolesNetwork;
 import com.mojang.blaze3d.platform.InputConstants;
+import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.client.event.RenderGuiOverlayEvent;
@@ -17,6 +19,7 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = JemRoles.MOD_ID, value = Dist.CLIENT)
 public final class RoleClientState {
+    private static final ResourceLocation GUI_ICONS = new ResourceLocation("minecraft", "textures/gui/icons.png");
     private static RaceStatusPacket status;
     private static final KeyMapping SIGNATURE = new KeyMapping("key.jem_roles.signature", InputConstants.Type.KEYSYM,
             InputConstants.KEY_V, "key.categories.jem_roles");
@@ -52,8 +55,10 @@ public final class RoleClientState {
     public static void tick(TickEvent.ClientTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
         while (SIGNATURE.consumeClick()) RolesNetwork.action(RaceActionPacket.Action.SIGNATURE);
+        boolean clicked = false;
+        while (UTILITY.consumeClick()) clicked = true;
         boolean down = UTILITY.isDown();
-        if (down && !utilityHeld) RolesNetwork.action(RaceActionPacket.Action.UTILITY_PRESS);
+        if ((clicked || down) && !utilityHeld) RolesNetwork.action(RaceActionPacket.Action.UTILITY_PRESS);
         if (!down && utilityHeld) RolesNetwork.action(RaceActionPacket.Action.UTILITY_RELEASE);
         utilityHeld = down;
     }
@@ -70,9 +75,10 @@ public final class RoleClientState {
         int start = event.getWindow().getGuiScaledWidth() / 2 + 91;
         int y = event.getWindow().getGuiScaledHeight() - 49;
         for (int i = 0; i < 10; i++) {
-            int color = i < bubbles ? 0xFFFF8A24 : 0x557A3218;
-            event.getGuiGraphics().fill(start - i * 9, y, start - i * 9 + 7, y + 7, color);
-            event.getGuiGraphics().fill(start - i * 9 + 1, y + 1, start - i * 9 + 3, y + 3, 0xFFFFC06A);
+            if (i < bubbles) RenderSystem.setShaderColor(1.0F, 0.36F, 0.08F, 1.0F);
+            else RenderSystem.setShaderColor(0.38F, 0.16F, 0.08F, 0.45F);
+            event.getGuiGraphics().blit(GUI_ICONS, start - i * 9, y, 16, 18, 9, 9);
         }
+        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
     }
 }

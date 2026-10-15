@@ -6,6 +6,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.Biomes;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
@@ -45,6 +46,23 @@ public final class RaceEnvironment {
                     BlockPos candidate = new BlockPos(origin.getX() + x, y, origin.getZ() + z);
                     if (safe(player, level, candidate) && (!dry || level.getFluidState(candidate).isEmpty())) return Optional.of(candidate);
                 }
+            }
+        }
+        return Optional.empty();
+    }
+
+    /** Enderman-style water escape: probe the real surface height instead of only a narrow band around the pool Y. */
+    public static Optional<BlockPos> nearestDrySurface(ServerPlayer player, ServerLevel level, BlockPos origin, int radius) {
+        for (int r = 1; r <= radius; r++) {
+            int probes = Math.max(16, Math.min(64, r * 4));
+            for (int i = 0; i < probes; i++) {
+                double angle = Math.PI * 2.0D * i / probes;
+                int x = origin.getX() + (int)Math.round(Math.cos(angle) * r);
+                int z = origin.getZ() + (int)Math.round(Math.sin(angle) * r);
+                BlockPos column = new BlockPos(x, origin.getY(), z);
+                if (!level.hasChunkAt(column)) continue;
+                BlockPos candidate = level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, column);
+                if (safe(player, level, candidate)) return Optional.of(candidate.immutable());
             }
         }
         return Optional.empty();

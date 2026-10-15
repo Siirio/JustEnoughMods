@@ -9,13 +9,13 @@
   "conditions": ["dedicated_server_gameplay", "matching_client_and_server_mods"],
   "precedence": {"layer": "jem_runtime_ownership", "priority": 520, "overrides": []},
   "change": {
-    "summary": "Pufferfish's Skills owns profession progression state; JEMProfessions presents its complete 57-node graph in one radial screen and supplies audited gain signals and implemented effects. Iron's Spells receives the chosen native racial spell.",
+    "summary": "Pufferfish's Skills owns profession progression state; JEMProfessions presents its complete balanced 78-node graph in one radial screen and supplies audited gain signals and implemented effects. Iron's Spells receives the chosen native racial spell.",
     "modifiers": [
       {
         "property": "professions.progression_owner",
         "operation": "replace",
         "before": {"owner": "JEMProfessions", "ui": "custom JEM tree", "state": "JEM XP and toggles"},
-        "after": {"owner": "Pufferfish's Skills 0.19.2", "ui": "JEM unified radial presentation adapter", "state": "native category XP, levels, points and unlocked skills", "node_count": 57},
+        "after": {"owner": "Pufferfish's Skills 0.19.2", "ui": "JEM unified radial presentation adapter", "state": "native category XP, levels, points and unlocked skills", "node_count": 78},
         "notes": "Legacy JEM XP and enabled nodes migrate once; audit IDs, discovery caps and cooldown evidence remain in JEMProfessions. JEM presents but does not duplicate Pufferfish progression state."
       },
       {
@@ -82,6 +82,18 @@
         "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/tree/ProfessionCatalog.java",
         "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/irons/RacialSpells.java",
         "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/**"
+      ]
+    },
+    {
+      "date": "2026-10-15",
+      "commit": "SELF",
+      "action": "balance_all_radial_branches",
+      "summary": "Expanded the catalog from 57 to 78 nodes so every profession branch reaches tier III, and changed the presentation from selected-only rows to one zoomable, pannable snowflake where all ten professions and every parent-child branch remain visible around the player.",
+      "source_files": [
+        "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/client/ProfessionRadialScreen.java",
+        "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/tree/ProfessionCatalog.java",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/**",
+        "tools/generate_profession_skills.py"
       ]
     }
   ],

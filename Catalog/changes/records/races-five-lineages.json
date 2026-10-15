@@ -12,6 +12,9 @@
     {"type": "id", "registry": "blocks", "value": "minecraft:sculk"},
     {"type": "id", "registry": "blocks", "value": "minecraft:sculk_vein"},
     {"type": "id", "registry": "blocks", "value": "minecraft:oak_leaves"},
+    {"type": "id", "registry": "blocks", "value": "minecraft:water"},
+    {"type": "id", "registry": "blocks", "value": "minecraft:lava"},
+    {"type": "id", "registry": "items", "value": "minecraft:lava_bucket"},
     {"type": "id", "registry": "biomes", "value": "minecraft:lush_caves"}
   ],
   "exceptions": [],
@@ -62,11 +65,13 @@
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceApi.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceSnapshot.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RaceSelectionScreen.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RaceTraitDetailsScreen.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RoleClientState.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/economy/CoinTradeRaceBridge.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/loot/PiglinFortuneLoot.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/loot/RaceLoot.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/mixin/AvoidEntityGoalMixin.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/mixin/LavaBucketUseMixin.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RaceActionPacket.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RaceStatusPacket.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RolesNetwork.java",
@@ -82,7 +87,6 @@
       "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/en_us.json",
       "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/ru_ru.json",
       "Mods/JEMRoles/src/main/resources/data/forge/loot_modifiers/global_loot_modifiers.json",
-      "Mods/JEMRoles/src/main/resources/data/jem_roles/damage_type/lunge_burn.json",
       "Mods/JEMRoles/src/main/resources/data/jem_roles/loot_modifiers/piglin_fortune.json",
       "Mods/JEMRoles/src/main/resources/jem_roles.mixins.json",
       "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/JemProfessions.java",
@@ -133,6 +137,20 @@
         "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RolesNetwork.java",
         "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceService.java"
       ]
+    },
+    {
+      "date": "2026-10-15",
+      "commit": "SELF",
+      "action": "race_runtime_acceptance_corrections",
+      "summary": "Applied the reported race corrections: Nether Hearteds are fully lava-immune, swim in lava, drink a held lava bucket and telegraph eruptions with fast fire pillars; Ancestors gain an immediate invulnerable guardian below 40%, visible native trade prices and a 25-second multi-target heal; Void Walkers take half a heart and immediately find a full-clearance dry surface; Born in Bloom predicts leaf bridges and uses a 25-second root cooldown; Sculk sees stationary mobs, responds reliably to B, uses a 20-second signature cooldown and replaces explosion confusion with fire vulnerability.",
+      "source_files": [
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceTraitRuntime.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceAbilities.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceEnvironment.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RoleClientState.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RaceTraitDetailsScreen.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/mixin/LavaBucketUseMixin.java"
+      ]
     }
   ],
   "impacts": {
@@ -146,6 +164,7 @@
       "Legacy active time and free-switch state survive deterministic race migration; changing race resets only race-local mastery/resources.",
       "The installed Iron's 3.15.6 innate-wheel boundary was inspected; no scroll, spellbook or invented spell ID is introduced.",
       "Temporary path blocks persist expiry across unload/restart and drop no resources; short-lived zones and decoys clean themselves while loaded.",
+      "Race cards keep concise summaries; clicking a semantic trait icon opens the exact effect in a bounded modal instead of overloading the carousel.",
       "No automated tests or gameplay launch are created or run because project policy requires manual player acceptance."
     ],
     "unresolved": [

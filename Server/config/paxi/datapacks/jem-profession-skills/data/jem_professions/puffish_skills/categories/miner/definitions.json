@@ -10,6 +10,28 @@
     },
     "cost": 1
   },
+  "ore_memory": {
+    "title": "Память руды",
+    "description": "Второй уровень ветви поиска руды.",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:raw_gold"
+      }
+    },
+    "cost": 1
+  },
+  "deep_resonance": {
+    "title": "Глубинный резонанс",
+    "description": "Финальный уровень ветви поиска руды.",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:echo_shard"
+      }
+    },
+    "cost": 1
+  },
   "vein_miner": {
     "title": "Добыча жил",
     "description": "Shift-добыча разрушает до 8 связанных блоков той же руды.",
@@ -28,6 +50,17 @@
       "type": "item",
       "data": {
         "item": "minecraft:deepslate_diamond_ore"
+      }
+    },
+    "cost": 1
+  },
+  "bedrock_precision": {
+    "title": "Точность глубин",
+    "description": "Финальный уровень добычи жил.",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:netherite_pickaxe"
       }
     },
     "cost": 1

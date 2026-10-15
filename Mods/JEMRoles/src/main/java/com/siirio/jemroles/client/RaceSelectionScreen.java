@@ -124,9 +124,28 @@ public final class RaceSelectionScreen extends Screen {
 
         // Every compact icon explains itself on hover; full mechanics live in the clickable details panel.
         for (int i = 1; i <= 5; i++) if (inside(mouseX, mouseY, x + 9 + (i - 1) * 22, layout.top + 73, 16, 16))
-            g.renderTooltip(font, Component.translatable(base(race) + ".buff." + i), mouseX, mouseY);
+            g.renderComponentTooltip(font, List.of(Component.translatable(base(race) + ".buff." + i),
+                    Component.translatable(base(race) + ".buff.detail." + i)), mouseX, mouseY);
         for (int i = 1; i <= 2; i++) if (inside(mouseX, mouseY, x + 9 + (i - 1) * 22, layout.top + 104, 16, 16))
-            g.renderTooltip(font, Component.translatable(base(race) + ".debuff." + i), mouseX, mouseY);
+            g.renderComponentTooltip(font, List.of(Component.translatable(base(race) + ".debuff." + i),
+                    Component.translatable(base(race) + ".debuff.detail." + i)), mouseX, mouseY);
+    }
+
+    @Override public boolean mouseClicked(double mouseX, double mouseY, int button) {
+        Layout layout = layout();
+        for (int slot = 0; slot < VISIBLE; slot++) {
+            RaceId race = raceAt(slot);
+            int x = layout.left + slot * (layout.cardWidth + GAP);
+            for (int i = 1; i <= 5; i++) if (inside(mouseX, mouseY, x + 9 + (i - 1) * 22, layout.top + 73, 16, 16)) {
+                minecraft.setScreen(new RaceTraitDetailsScreen(this, race, true, i));
+                return true;
+            }
+            for (int i = 1; i <= 2; i++) if (inside(mouseX, mouseY, x + 9 + (i - 1) * 22, layout.top + 104, 16, 16)) {
+                minecraft.setScreen(new RaceTraitDetailsScreen(this, race, false, i));
+                return true;
+            }
+        }
+        return super.mouseClicked(mouseX, mouseY, button);
     }
 
     private Layout layout() {
@@ -158,7 +177,7 @@ public final class RaceSelectionScreen extends Screen {
         case ANCESTORS -> Items.SOUL_LANTERN; case VOID_WALKERS -> Items.ENDER_EYE; case BORN_IN_BLOOM -> Items.FLOWERING_AZALEA;
         case INFECTED_BY_SCULK -> Items.ECHO_SHARD; case NETHER_HEARTEDS -> Items.FIRE_CHARGE;
     }; }
-    private static net.minecraft.world.item.Item traitIcon(RaceId race, int index, boolean positive) {
+    static net.minecraft.world.item.Item traitIcon(RaceId race, int index, boolean positive) {
         if (!positive) return switch (race) {
             case ANCESTORS -> index == 1 ? Items.ELYTRA : Items.CROSSBOW;
             case VOID_WALKERS -> index == 1 ? Items.WATER_BUCKET : Items.ROTTEN_FLESH;

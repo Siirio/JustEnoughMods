@@ -18,120 +18,180 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
-/** One-screen profession atlas: player in the center, ten roots around it, selected branches outside. */
+/** One radial profession snowflake. Pufferfish remains the XP, point and unlock owner. */
 public final class ProfessionRadialScreen extends Screen {
+    private static final double ROOT_RADIUS = 78.0D;
+    private static final double TIER_ONE_RADIUS = 132.0D;
+    private static final double TIER_STEP = 58.0D;
     private final ProfessionStatusPacket status;
+    private final Map<ProfessionId, Point> rootPoints = new LinkedHashMap<>();
+    private final Map<NodeRef, Point> nodePoints = new LinkedHashMap<>();
     private ProfessionId selected = ProfessionId.ARCHITECT;
-    private final Map<ProfessionId, Box> roots = new LinkedHashMap<>();
-    private final Map<ProfessionNode, Box> nodes = new LinkedHashMap<>();
+    private double zoom;
+    private double panX;
+    private double panY;
+    private boolean dragging;
 
     public ProfessionRadialScreen(ProfessionStatusPacket status) {
         super(Component.translatable("jem.professions.screen.title"));
         this.status = status;
     }
 
-    @Override protected void init() { rebuildLayout(); }
+    @Override protected void init() {
+        buildGraph();
+        if (zoom == 0.0D) {
+            double fitX = (width - 48.0D) / 540.0D;
+            double fitY = (height - 104.0D) / 540.0D;
+            zoom = Math.max(0.56D, Math.min(1.0D, Math.min(fitX, fitY)));
+        }
+    }
 
-    private void rebuildLayout() {
-        roots.clear(); nodes.clear();
-        int cx = width / 2, cy = Math.max(112, height / 2 - 12);
-        double rx = Math.min(190, width * 0.27), ry = Math.min(92, height * 0.25);
+    private void buildGraph() {
+        rootPoints.clear();
+        nodePoints.clear();
         ProfessionId[] ids = ProfessionId.values();
         for (int i = 0; i < ids.length; i++) {
-            double angle = -Math.PI / 2 + i * Math.PI * 2 / ids.length;
-            roots.put(ids[i], new Box((int)(cx + Math.cos(angle) * rx) - 13, (int)(cy + Math.sin(angle) * ry) - 13, 26, 26));
-        }
-        List<String> branches = ProfessionCatalog.branches(selected);
-        int branchGap = Math.max(78, Math.min(118, (width - 64) / Math.max(1, branches.size())));
-        int total = branchGap * Math.max(0, branches.size() - 1);
-        int startX = width / 2 - total / 2;
-        int baseY = Math.min(height - 72, cy + 122);
-        for (int b = 0; b < branches.size(); b++) {
-            String branch = branches.get(b);
-            List<ProfessionNode> branchNodes = ProfessionCatalog.nodes(selected).stream().filter(n -> n.branch().equals(branch)).toList();
-            for (ProfessionNode node : branchNodes) {
-                int y = baseY + (node.rank() - 1) * 42;
-                if (y > height - 34) y = baseY - node.rank() * 42;
-                nodes.put(node, new Box(startX + b * branchGap - 12, y - 12, 24, 24));
+            ProfessionId profession = ids[i];
+            double axis = -Math.PI / 2.0D + i * Math.PI * 2.0D / ids.length;
+            rootPoints.put(profession, polar(axis, ROOT_RADIUS));
+            List<String> branches = ProfessionCatalog.branches(profession);
+            for (int branchIndex = 0; branchIndex < branches.size(); branchIndex++) {
+                String branch = branches.get(branchIndex);
+                double spread = (branchIndex - (branches.size() - 1) / 2.0D) * 0.12D;
+                double branchAngle = axis + spread;
+                for (ProfessionNode node : ProfessionCatalog.nodes(profession)) {
+                    if (!node.branch().equals(branch)) continue;
+                    double radius = TIER_ONE_RADIUS + (node.rank() - 1) * TIER_STEP;
+                    nodePoints.put(new NodeRef(profession, node), polar(branchAngle, radius));
+                }
             }
         }
     }
 
-    @Override public void render(GuiGraphics g, int mouseX, int mouseY, float partialTick) {
-        renderBackground(g);
-        int cx = width / 2, cy = Math.max(112, height / 2 - 12);
-        g.fill(12, 12, width - 12, height - 12, 0xE6151114);
-        g.fill(14, 14, width - 14, 16, 0xFFB1763E);
-        g.drawCenteredString(font, title, cx, 22, 0xFFFFE6BE);
-        g.drawCenteredString(font, Component.translatable("jem.professions.one_screen_hint"), cx, 35, 0xFFBCA98D);
+    @Override public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
+        renderBackground(graphics);
+        int centerX = width / 2 + (int)Math.round(panX);
+        int centerY = (height + 58) / 2 + (int)Math.round(panY);
+        graphics.fill(8, 8, width - 8, height - 8, 0xE9151211);
 
-        // Links are drawn before nodes so the hierarchy stays legible.
-        for (var entry : roots.entrySet()) line(g, cx, cy, entry.getValue().cx(), entry.getValue().cy(), entry.getKey() == selected ? 0xFFD7A24A : 0xFF675646);
-        Box selectedRoot = roots.get(selected);
-        for (ProfessionNode node : ProfessionCatalog.nodes(selected)) {
-            Box to = nodes.get(node);
-            Box from = node.parentId().isBlank() ? selectedRoot : nodes.get(ProfessionCatalog.node(selected, node.parentId()));
-            if (from != null && to != null) line(g, from.cx(), from.cy(), to.cx(), to.cy(), unlocked(node) ? 0xFFE6B64E : 0xFF605346);
+        Map<ProfessionId, Box> roots = projectRoots(centerX, centerY);
+        Map<NodeRef, Box> nodes = projectNodes(centerX, centerY);
+        for (var entry : roots.entrySet()) line(graphics, centerX, centerY, entry.getValue().cx(), entry.getValue().cy(),
+                entry.getKey() == selected ? 0xFFE9B44E : 0xFF655746);
+        for (var entry : nodes.entrySet()) {
+            NodeRef ref = entry.getKey();
+            Box from = ref.node.parentId().isBlank() ? roots.get(ref.profession)
+                    : nodes.get(new NodeRef(ref.profession, ProfessionCatalog.node(ref.profession, ref.node.parentId())));
+            if (from != null) line(graphics, from.cx(), from.cy(), entry.getValue().cx(), entry.getValue().cy(),
+                    unlocked(ref) ? 0xFFE6B64E : ref.profession == selected ? 0xFF8A704F : 0xFF51483F);
         }
 
-        // Center identity.
-        g.fill(cx - 22, cy - 22, cx + 22, cy + 22, 0xFF35271E);
-        frame(g, cx - 22, cy - 22, 44, 44, 0xFFE6B64E);
-        g.renderItem(new ItemStack(Items.PLAYER_HEAD), cx - 8, cy - 8);
-        g.drawCenteredString(font, minecraft.player == null ? Component.literal("Player") : minecraft.player.getDisplayName(), cx, cy + 28, 0xFFFFE6BE);
+        graphics.fill(centerX - 21, centerY - 21, centerX + 21, centerY + 21, 0xFF35271E);
+        frame(graphics, centerX - 21, centerY - 21, 42, 42, 0xFFE6B64E);
+        graphics.renderItem(new ItemStack(Items.PLAYER_HEAD), centerX - 8, centerY - 8);
 
         ProfessionId hoveredRoot = null;
         for (var entry : roots.entrySet()) {
-            ProfessionId id = entry.getKey(); Box box = entry.getValue(); boolean active = id == selected;
-            g.fill(box.x, box.y, box.x + box.w, box.y + box.h, active ? 0xFF5A3820 : 0xEE2B211B);
-            frame(g, box.x, box.y, box.w, box.h, active ? 0xFFFFC45A : 0xFF805A3C);
-            g.renderItem(new ItemStack(icon(id)), box.x + 5, box.y + 5);
-            if (box.contains(mouseX, mouseY)) hoveredRoot = id;
+            ProfessionId profession = entry.getKey(); Box box = entry.getValue(); boolean active = profession == selected;
+            graphics.fill(box.x, box.y, box.x + box.w, box.y + box.h, active ? 0xFF624021 : 0xF02A211C);
+            frame(graphics, box.x, box.y, box.w, box.h, active ? 0xFFFFC45A : 0xFF805A3C);
+            graphics.renderItem(new ItemStack(icon(profession)), box.x + 4, box.y + 4);
+            if (box.contains(mouseX, mouseY)) hoveredRoot = profession;
         }
 
-        ProfessionNode hoveredNode = null;
+        NodeRef hoveredNode = null;
         for (var entry : nodes.entrySet()) {
-            ProfessionNode node = entry.getKey(); Box box = entry.getValue();
-            boolean unlocked = unlocked(node), ready = status.levels()[selected.ordinal()] >= node.level() && parentUnlocked(node);
-            g.fill(box.x, box.y, box.x + box.w, box.y + box.h, unlocked ? 0xFF5B431E : ready ? 0xFF3C3024 : 0xFF211D1A);
-            frame(g, box.x, box.y, box.w, box.h, unlocked ? 0xFFFFD15C : ready ? 0xFFA47A45 : 0xFF554B42);
-            g.renderItem(new ItemStack(item(node.icon())), box.x + 4, box.y + 4);
-            if (box.contains(mouseX, mouseY)) hoveredNode = node;
+            NodeRef ref = entry.getKey(); Box box = entry.getValue();
+            boolean unlocked = unlocked(ref);
+            boolean ready = status.levels()[ref.profession.ordinal()] >= ref.node.level() && parentUnlocked(ref);
+            int fill = unlocked ? 0xFF5B431E : ready ? 0xFF3C3024 : 0xFF211D1A;
+            int border = unlocked ? 0xFFFFD15C : ready ? 0xFFA47A45 : 0xFF554B42;
+            if (ref.profession != selected) { fill = dim(fill); border = dim(border); }
+            graphics.fill(box.x, box.y, box.x + box.w, box.y + box.h, fill);
+            frame(graphics, box.x, box.y, box.w, box.h, border);
+            graphics.renderItem(new ItemStack(item(ref.node.icon())), box.x + 3, box.y + 3);
+            if (box.contains(mouseX, mouseY)) hoveredNode = ref;
         }
 
-        long xp = status.xp()[selected.ordinal()]; int level = status.levels()[selected.ordinal()], points = status.points()[selected.ordinal()];
-        g.drawCenteredString(font, Component.translatable(name(selected)).append("  §6L" + level + "  §7XP " + xp + "  §e◆ " + points), cx, 51, 0xFFFFE6BE);
-        super.render(g, mouseX, mouseY, partialTick);
+        graphics.fill(8, 8, width - 8, 59, 0xF11F1815);
+        graphics.fill(10, 57, width - 10, 59, 0xFFB1763E);
+        graphics.drawCenteredString(font, title, width / 2, 17, 0xFFFFE6BE);
+        long xp = status.xp()[selected.ordinal()];
+        int level = status.levels()[selected.ordinal()], points = status.points()[selected.ordinal()];
+        graphics.drawCenteredString(font, Component.translatable(name(selected)).append("  §6L" + level + "  §7XP " + xp + "  §e◆ " + points), width / 2, 32, 0xFFFFE6BE);
+        graphics.drawCenteredString(font, Component.translatable("jem.professions.radial_controls"), width / 2, 45, 0xFFAD9B83);
+
+        super.render(graphics, mouseX, mouseY, partialTick);
         if (hoveredRoot != null) {
             List<Component> tip = new ArrayList<>();
             tip.add(Component.translatable(name(hoveredRoot)).withStyle(net.minecraft.ChatFormatting.GOLD));
             tip.add(Component.translatable("jem.professions.xp." + hoveredRoot.name().toLowerCase(java.util.Locale.ROOT)));
-            g.renderComponentTooltip(font, tip, mouseX, mouseY);
+            graphics.renderComponentTooltip(font, tip, mouseX, mouseY);
         } else if (hoveredNode != null) {
             List<Component> tip = new ArrayList<>();
-            tip.add(Component.translatable("jem.professions.node." + hoveredNode.id()).withStyle(net.minecraft.ChatFormatting.GOLD));
-            tip.add(Component.translatable("jem.professions.branch." + hoveredNode.branch()));
-            tip.add(Component.translatable("jem.professions.unlock_level", hoveredNode.level()));
+            tip.add(Component.translatable("jem.professions.node." + hoveredNode.node.id()).withStyle(net.minecraft.ChatFormatting.GOLD));
+            tip.add(Component.translatable(name(hoveredNode.profession)));
+            tip.add(Component.translatable("jem.professions.branch." + hoveredNode.node.branch()));
+            tip.add(Component.translatable("jem.professions.unlock_level", hoveredNode.node.level()));
             if (unlocked(hoveredNode)) tip.add(Component.translatable("jem.professions.unlocked").withStyle(net.minecraft.ChatFormatting.GREEN));
-            g.renderComponentTooltip(font, tip, mouseX, mouseY);
+            graphics.renderComponentTooltip(font, tip, mouseX, mouseY);
         }
     }
 
     @Override public boolean mouseClicked(double mouseX, double mouseY, int button) {
-        for (var entry : roots.entrySet()) if (entry.getValue().contains(mouseX, mouseY)) {
-            selected = entry.getKey(); rebuildLayout(); return true;
+        int centerX = width / 2 + (int)Math.round(panX), centerY = (height + 58) / 2 + (int)Math.round(panY);
+        for (var entry : projectRoots(centerX, centerY).entrySet()) if (entry.getValue().contains(mouseX, mouseY)) {
+            selected = entry.getKey(); return true;
         }
-        for (var entry : nodes.entrySet()) if (entry.getValue().contains(mouseX, mouseY)) {
-            ProfessionNode node = entry.getKey();
-            if (!unlocked(node) && status.levels()[selected.ordinal()] >= node.level() && parentUnlocked(node)) ProfessionsNetwork.unlock(selected, node.id());
+        for (var entry : projectNodes(centerX, centerY).entrySet()) if (entry.getValue().contains(mouseX, mouseY)) {
+            NodeRef ref = entry.getKey(); selected = ref.profession;
+            if (!unlocked(ref) && status.levels()[ref.profession.ordinal()] >= ref.node.level() && parentUnlocked(ref))
+                ProfessionsNetwork.unlock(ref.profession, ref.node.id());
             return true;
         }
+        if (button == 0 || button == 2) { dragging = true; return true; }
         return super.mouseClicked(mouseX, mouseY, button);
     }
 
-    private boolean unlocked(ProfessionNode node) { return status.unlocked().contains(selected.name() + ":" + node.id()); }
-    private boolean parentUnlocked(ProfessionNode node) {
-        return node.parentId().isBlank() || status.unlocked().contains(selected.name() + ":" + node.parentId());
+    @Override public boolean mouseDragged(double mouseX, double mouseY, int button, double dragX, double dragY) {
+        if (dragging && (button == 0 || button == 2)) { panX += dragX; panY += dragY; return true; }
+        return super.mouseDragged(mouseX, mouseY, button, dragX, dragY);
+    }
+
+    @Override public boolean mouseReleased(double mouseX, double mouseY, int button) {
+        dragging = false;
+        return super.mouseReleased(mouseX, mouseY, button);
+    }
+
+    @Override public boolean mouseScrolled(double mouseX, double mouseY, double delta) {
+        if (delta == 0.0D) return false;
+        double old = zoom;
+        zoom = Math.max(0.50D, Math.min(1.45D, zoom * (delta > 0 ? 1.12D : 0.89D)));
+        double fixedX = width / 2.0D + panX, fixedY = (height + 58) / 2.0D + panY;
+        panX += (mouseX - fixedX) * (1.0D - zoom / old);
+        panY += (mouseY - fixedY) * (1.0D - zoom / old);
+        return true;
+    }
+
+    private Map<ProfessionId, Box> projectRoots(int centerX, int centerY) {
+        Map<ProfessionId, Box> result = new LinkedHashMap<>();
+        rootPoints.forEach((profession, point) -> result.put(profession, box(point, centerX, centerY, 24)));
+        return result;
+    }
+    private Map<NodeRef, Box> projectNodes(int centerX, int centerY) {
+        Map<NodeRef, Box> result = new LinkedHashMap<>();
+        nodePoints.forEach((ref, point) -> result.put(ref, box(point, centerX, centerY, 22)));
+        return result;
+    }
+    private Box box(Point point, int centerX, int centerY, int size) {
+        return new Box((int)Math.round(centerX + point.x * zoom) - size / 2, (int)Math.round(centerY + point.y * zoom) - size / 2, size, size);
+    }
+    private boolean unlocked(NodeRef ref) { return status.unlocked().contains(ref.profession.name() + ":" + ref.node.id()); }
+    private boolean parentUnlocked(NodeRef ref) { return ref.node.parentId().isBlank() || status.unlocked().contains(ref.profession.name() + ":" + ref.node.parentId()); }
+    private static Point polar(double angle, double radius) { return new Point(Math.cos(angle) * radius, Math.sin(angle) * radius); }
+    private static int dim(int color) {
+        int a = color >>> 24, r = color >> 16 & 255, g = color >> 8 & 255, b = color & 255;
+        return a << 24 | r * 2 / 3 << 16 | g * 2 / 3 << 8 | b * 2 / 3;
     }
     private static void frame(GuiGraphics g, int x, int y, int w, int h, int color) {
         g.fill(x, y, x + w, y + 1, color); g.fill(x, y + h - 1, x + w, y + h, color);
@@ -139,7 +199,10 @@ public final class ProfessionRadialScreen extends Screen {
     }
     private static void line(GuiGraphics g, int x1, int y1, int x2, int y2, int color) {
         int steps = Math.max(Math.abs(x2 - x1), Math.abs(y2 - y1));
-        for (int i = 0; i <= steps; i++) { int x = x1 + (x2 - x1) * i / Math.max(1, steps), y = y1 + (y2 - y1) * i / Math.max(1, steps); g.fill(x, y, x + 2, y + 2, color); }
+        for (int i = 0; i <= steps; i++) {
+            int x = x1 + (x2 - x1) * i / Math.max(1, steps), y = y1 + (y2 - y1) * i / Math.max(1, steps);
+            g.fill(x, y, x + 1, y + 1, color);
+        }
     }
     private static Item item(String id) { return BuiltInRegistries.ITEM.getOptional(new ResourceLocation(id)).orElse(Items.BOOK); }
     private static Item icon(ProfessionId id) { return switch (id) {
@@ -148,5 +211,9 @@ public final class ProfessionRadialScreen extends Screen {
         case MAYOR -> Items.BELL; case MAGE -> item("irons_spellbooks:iron_spell_book");
     }; }
     private static String name(ProfessionId id) { return "jem.professions.name." + id.name().toLowerCase(java.util.Locale.ROOT); }
-    private record Box(int x, int y, int w, int h) { int cx(){return x+w/2;} int cy(){return y+h/2;} boolean contains(double px,double py){return px>=x&&px<x+w&&py>=y&&py<y+h;} }
+    private record Point(double x, double y) {}
+    private record NodeRef(ProfessionId profession, ProfessionNode node) {}
+    private record Box(int x, int y, int w, int h) {
+        int cx(){return x+w/2;} int cy(){return y+h/2;} boolean contains(double px,double py){return px>=x&&px<x+w&&py>=y&&py<y+h;}
+    }
 }
