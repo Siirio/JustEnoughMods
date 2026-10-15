@@ -1,0 +1,102 @@
+{
+  "schema_version": 2,
+  "change_id": "server-only.immersive-aircraft-sail-recipe",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "immersive_aircraft:sail"
+    }
+  ],
+  "precedence": {
+    "layer": "server_kubejs",
+    "priority": 400,
+    "overrides": []
+  },
+  "change": {
+    "summary": "The dedicated server preserves Immersive Aircraft's native sail recipe and accepts the crafted item.",
+    "modifiers": [
+      {
+        "property": "recipe.immersive_aircraft:sail",
+        "operation": "replace",
+        "before": {
+          "available": false,
+          "reason": "The server KubeJS replacement list removed every recipe producing immersive_aircraft:sail."
+        },
+        "after": {
+          "available": true,
+          "type": "minecraft:crafting_shaped",
+          "pattern": [
+            "CCS",
+            "CCS",
+            "CCS"
+          ],
+          "ingredients": {
+            "C": "minecraft:white_carpet",
+            "S": "minecraft:string"
+          },
+          "result": "immersive_aircraft:sail"
+        },
+        "notes": "The server registers the exact native 3x3 recipe after its transport-output removals, so recipe availability does not depend on datapack ordering."
+      },
+      {
+        "property": "item_obliterator.blacklisted",
+        "operation": "set",
+        "before": true,
+        "after": false,
+        "notes": "The dedicated-server Item Obliterator policy must accept the crafted sail instead of deleting it from player inventory."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "MineRENT dedicated-server recipe policy",
+    "kind": "server_kubejs_and_config",
+    "source_files": [
+      "Server/kubejs/server_scripts/jem/recipe_replacements.js",
+      "Server/config/item_obliterator.json5"
+    ]
+  },
+  "rationale": {
+    "purpose": "Restore the sail component needed by the installed Immersive Aircraft progression without enabling the other intentionally disabled transport outputs.",
+    "decision_source": "User report and explicit server-only MineRENT update request on 2026-10-16"
+  },
+  "introduced": {
+    "date": "2026-10-16",
+    "commit": "SELF",
+    "action": "restore",
+    "summary": "Restored the exact native sail recipe and preserved the existing server-side inventory acceptance rule."
+  },
+  "history": [
+    {
+      "date": "2026-10-16",
+      "commit": "SELF",
+      "action": "restore_after_regression",
+      "summary": "Removed sail from the broad recipe-output suppression and explicitly registered its native shaped recipe after later synchronization had reintroduced the removal.",
+      "source_files": [
+        "Server/kubejs/server_scripts/jem/recipe_replacements.js",
+        "Server/config/item_obliterator.json5"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "crafting",
+      "immersive_aircraft_progression",
+      "server_recipe_sync",
+      "item_obliterator"
+    ],
+    "relations": [
+      "white_carpet+string->immersive_aircraft:sail",
+      "immersive_aircraft:sail->airship",
+      "immersive_aircraft:sail->gyrodyne",
+      "immersive_aircraft:sail->warship"
+    ],
+    "notes": [
+      "Existing clients already contain the unchanged item, model and recipe serializer, so Forge recipe synchronization is sufficient and no client artifact changes."
+    ],
+    "unresolved": [
+      "Player acceptance on MineRENT remains pending after deployment."
+    ]
+  }
+}

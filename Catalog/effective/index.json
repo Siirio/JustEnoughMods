@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "c7a8d5ba44ba100cbd90aaf547a12a768a159140211287514112ae5ad21d67c6",
+  "change_records_sha256": "82bdc6c06a198a8c3a96104fd2230bcb8ba9055209ab01848b3298e39ed5e2f3",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -225,6 +225,21 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 13
+    },
+    {
+      "change_id": "server-only.immersive-aircraft-sail-recipe",
+      "status": "active",
+      "summary": "The dedicated server preserves Immersive Aircraft's native sail recipe and accepts the crafted item.",
+      "record": "Catalog/changes/records/server-only-immersive-aircraft-sail-recipe.json",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "immersive_aircraft:sail"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 1
     },
     {
       "change_id": "settlements.native-guidance-build-import",
@@ -516,6 +531,8 @@
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/command/BossCommands.java": "9d9247f5b5d521c145a968cc0f1786f6dda7d9fba391ca34df4824bcb1c921f3",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/command/TierCommands.java": "065a2fb12fbec009307b4b447ef91e4ab8dca3a3aa258c59ed256c666a91982d",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/ArenaProtection.java": "834f9622b3f4ac70caa838ca31c32beacd3fc9f729098b6c36858d66ad3a9f7c",
+    "Server/config/item_obliterator.json5": "91d0d15d2a500269c29990db48b0d8f29a44d6f5ade1047979fc2b8d023d181e",
+    "Server/kubejs/server_scripts/jem/recipe_replacements.js": "ce74ae9c2867e1ee44c3332609ec03b09c3c4989bf1558771ac6aca6354ef957",
     "tools/generate_profession_skills.py": "9800359f334ff9887cac91885122de7734a0279c4a9d6b0d2be5c7b6c1c437e0"
   }
 }

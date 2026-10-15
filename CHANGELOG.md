@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-16 — Immersive Aircraft sail recipe restored server-side
+
+- User request and supplied release direction: restore crafting of the Immersive Aircraft sail needed for aircraft progression on MineRENT and publish only a dedicated-server update so friends keep their current clients.
+- `Bug / Server Sided / the installed Immersive Aircraft 1.5.0 JAR contains the native immersive_aircraft:sail recipe, but the current Server KubeJS replacement list again removed every recipe producing that exact item after a later server-content synchronization regressed the earlier repair / in testing`: removed only the sail from the broad transport-output suppression and explicitly registered its exact native 3x3 recipe of six white carpets and three strings after the removals. Every other intentionally disabled Immersive Aircraft output remains disabled.
+- Server-only boundary: the item, model, serializer and Forge recipe-sync contract already exist on current clients. The matching server Item Obliterator configuration continues to accept the crafted sail. `Client/ManagedPack`, stable profiles, friend packages and the immutable client release baseline remain untouched; player acceptance stays pending until the deployed recipe is used in game.
+- MineRENT deployment: at 2026-10-16 00:25 +05:00, uploaded `kubejs/server_scripts/jem/recipe_replacements.js` (`ce74ae9c2867e1ee44c3332609ec03b09c3c4989bf1558771ac6aca6354ef957`) and `config/item_obliterator.json5` (`91d0d15d2a500269c29990db48b0d8f29a44d6f5ade1047979fc2b8d023d181e`) to server `JustEnough` (`0618360f`), then restarted it. MineRENT reported `running`; KubeJS completed its server resource reload without KubeJS errors and Forge reached `Done (1.392s)` at 00:27:56 +05:00.
+
 ## 2026-10-15 — Radial profession snowflake and race runtime corrections
 
 - User request and supplied product direction: keep all ten professions but show every profession and skill at once as a circular parent→child snowflake around the player; equalize short branches to the longest branch; keep race cards concise with clickable exact descriptions; and apply the reported Nether Hearteds, Ancestors, Void Walkers, Born in Bloom and Sculk corrections. The user explicitly set Life Chorus, Born in Bloom vines and the Sculk main ability to 25, 25 and 20 seconds respectively.
