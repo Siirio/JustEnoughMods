@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-16 — Atlas Phase 2 evidence closure published
+
+- User request and supplied technical direction: use the Ultimate Skills Atlas, complete the approved Phase 2 evidence-closure work, and push the resulting JEM catalog without launching gameplay or claiming unavailable runtime evidence.
+- Engine result: Phase 2 adds typed bytecode evidence, canonical Forge registration resolution, equipment semantics, exact-version adapters for Iron's Spells 3.15.6, Curios 5.14.1, Epic Fight 20.14.17 and Cataclysm 3.31, acquisition relationships, strict runtime registry/ItemStack import, bounded combat traces, and RuntimeRegistry/EffectivePower projections. Exact Forge `47.4.10` now comes from the server launch path rather than a mod's minimum loader constraint; exact known artifact hashes safely identify mods whose metadata version is `${file.jarVersion}`.
+- Atlas publication: the fresh deep static audit under `Server/Catalog/Atlas` is `VALID` and records 35,268 subjects, 73,963 facts and 269,211 evidence records with zero unsupported adapters. It retains 7,272 explicit gaps: 5,328 `NOT_TESTED`, 1,848 `BLOCKED_MISSING_IMPLEMENTATION`, 95 `BLOCKED_INVALID_SOURCE`, and one `BLOCKED_MISSING_MOD_ID`. The pack-lock SHA-256 is `2e55cad0c2ace14f814ec5fb3c0ef540dbcb3108adc35ee23ab41cebd81285e8`.
+- Evidence boundary: verification remains `STATIC_ONLY` and the audit result remains honestly `PARTIAL`; no Forge server, gameplay client, world, EULA, stable profile, AutoModpack generation, MineRENT deployment or release baseline was started or changed. Old oversized Atlas caches were preserved locally rather than deleted and are not publication inputs.
+
 ## 2026-10-16 — Race VFX implementation plan completed
 
 - User approval: the user approved the written Race VFX and Nether runtime repair specification and requested implementation.
