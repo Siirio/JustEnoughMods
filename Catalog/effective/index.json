@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "6ab20ed4e18ad973dddf940f15065d444b3484ae85426bab3bc9f10e1b855573",
+  "change_records_sha256": "9430254537a7caef4877b8d280c8d069042d4618ddae88868a456042c7262e76",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -84,7 +84,7 @@
     {
       "change_id": "economy.native-trading-presentation",
       "status": "conditional",
-      "summary": "Original native opening/menu/screen/offers and resource-pack presentation with non-rendering secured Coin actions and Wallet credit; native Buyer with no chat; one paid-currency Human benefit",
+      "summary": "Original native opening/menu/screen/offers and resource-pack presentation with non-rendering secured Coin actions and Wallet credit; native Buyer with no chat; one authoritative 20% Ancestor purchase discount",
       "record": "Catalog/changes/records/economy-native-trading-presentation.json",
       "selectors": [
         {
@@ -150,6 +150,66 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 0
+    },
+    {
+      "change_id": "races.five-lineages",
+      "status": "active",
+      "summary": "Replace three minor cultural roles with five server-authoritative races, innate signatures and persistent three-tier race progression while keeping professions independent.",
+      "record": "Catalog/changes/records/races-five-lineages.json",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:villager"
+        },
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:wandering_trader"
+        },
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:piglin"
+        },
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:piglin_brute"
+        },
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:iron_golem"
+        },
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:enderman"
+        },
+        {
+          "type": "id",
+          "registry": "blocks",
+          "value": "minecraft:sculk"
+        },
+        {
+          "type": "id",
+          "registry": "blocks",
+          "value": "minecraft:sculk_vein"
+        },
+        {
+          "type": "id",
+          "registry": "blocks",
+          "value": "minecraft:oak_leaves"
+        },
+        {
+          "type": "id",
+          "registry": "biomes",
+          "value": "minecraft:lush_caves"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 10
     },
     {
       "change_id": "settlements.native-guidance-build-import",
@@ -247,7 +307,7 @@
     "Docs/power-system/NUMERIC_TABLES.md": "328838a5d28016b792c136f3e4642f3400c8785f2f9ddcdac4246a3ba53fb114",
     "Docs/power-system/README.md": "ca69c9b298c3c62c4e48f71c1d39b1f9152fcef62a3f7d02983968c75d9c03f1",
     "Docs/power-system/Weapons.md": "c63a055513709e21af477ec465fcb28941255999d571907d27c34100d534f0e7",
-    "Docs/smp-gui/README.md": "36f7d7156469ea7399d5495564531bd6dfd1777b405d8d9c98bd0a1fbfb1676e",
+    "Docs/smp-gui/README.md": "4a4f5364fa1959bc9a6ca3142c000b8c38c186777327cd9f668b3379ec4e3ce4",
     "Mods/JEMCompat/build.gradle": "7b79f9161e4116f9e45f5e7ecb230252158b1dd696a4b0a990cfe6b80e131e02",
     "Mods/JEMEconomy/build.gradle": "c16da45d3674ad2a5e02825eb17b85af28f46d44ff23dc562060efad95ae2d49",
     "Mods/JEMEconomy/settings.gradle": "87a947f8eab9e0ca4b873486f492128e0b77e0190ff6c60ba4a1d04568d26e28",
@@ -299,11 +359,37 @@
     "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json": "0c45a5165f05585533eccbd6628932cd1d151a1846b9a2200fd5bc8586c131b1",
     "Mods/JEMEconomy/src/main/resources/jem_economy.mixins.json": "83057610c769e1cf6e8dda02fe0ff6c812f079852e863989fa3eea4887e5c5a9",
     "Mods/JEMMenuSupport/embed.gradle": "135a77fc8c1e7afb696fba2db9ee57d164e5dbb517b447bf979fd39742b6e4ad",
-    "Mods/JEMRoles/build.gradle": "7ee741c5fd0c4227900e4da51250f4a3931046aa776a26971a4186b53d449613",
-    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/JemRoles.java": "d45d30b1e24ef95e990f3e59e82dfc1a1da41cf3d849e28230b8c50e7c8e240e",
-    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/economy/CoinTradeRaceBridge.java": "9ace443bfb5edefae96a949abfdd33570b7cf9602d73aa4df955523962079844",
-    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceTraitRuntime.java": "f5a07551eca378b9de63fdf17fff4347f22447012f1fe735c6a2878c2cbeefea",
-    "Mods/JEMRoles/src/main/resources/META-INF/mods.toml": "2e6a471cfa9468c67349708335e5e02f0a95bbba736640128cc3e46247b74b23",
+    "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/JemProfessions.java": "38db0bc525800d494956cd0d8d1be75048a31f33200947b4b0a3f94705ad16fd",
+    "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/api/ProfessionApi.java": "16bbedee6953c6bf685c3ce22e223a81f3f2c419de0136afe40c73cb1587b332",
+    "Mods/JEMRoles/build.gradle": "15fcd6cdde51cec071e73cfc00fdefb661b0b333cd129fd5181912685fcf9685",
+    "Mods/JEMRoles/settings.gradle": "04e25fec2a8d684663401d3ddc4a4936b7a513f7c174ba97ed330da411896d7b",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/JemRoles.java": "4bab1cdf510e5a4b5c5ed84efd6dc81f1d3eb302986401faed72abeab5d3fb08",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceApi.java": "7bafb84db9f153c226473327f15fce461ac7058493784ddd3a6fe77a0707db85",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceSnapshot.java": "8a422a0b22580989522dd998bee9117ff167230f80c461971ab5d793bdb19a12",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RaceSelectionScreen.java": "ec0705251f6002ff5f3bd01036a010da51db4faae428c636d70a9826b88d5ae0",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RoleClientState.java": "c0173e02ae90c16f3efb0039e7ae0baedb00def540e70b3c7a1d42c6afecf470",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/economy/CoinTradeRaceBridge.java": "3364aa25549b1edd93c788d29024a39327bd259c08b6b1d3d9118bcdeab9f621",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/loot/PiglinFortuneLoot.java": "626cb095816b9f62844e4be0382b07773437622dec9306a49b222afa57493773",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/loot/RaceLoot.java": "e40b8d8cd31be7d831f4555d7c64bcb54ec02aa36bcbfd1431a3fbfefdac27cb",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/mixin/AvoidEntityGoalMixin.java": "bbfcd96a5b3bd5e55b3ab331284bd0b868eab3b14ea97f14cf2cd870e208e041",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RaceActionPacket.java": "1530cb390cd3950e1c5192e0aa9f5aba1661ed485c2d5683a6ad3312e853ca24",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RaceStatusPacket.java": "a759e2c2e65ef168e3c599cc6013f8fc41463f3a9e673927fdb7793f82e63e09",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RolesNetwork.java": "bb11a2129ba1aefde7784527d6e9e16b19fcd9bac466e2a0a8b7e8317bee2dc9",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceId.java": "f758b8e370e8cff540ca84ab0b822a6964db27da08619458994dbcbecf7b6fe6",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRecord.java": "43c0eb3292ea920598e6d19846a1f2252f698eae75edda4ad269b113bd78b21d",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRules.java": "3a89dc91b8d21fb54819c6700dd96424e05c849fee31d98323151a4fda80e15c",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceService.java": "2913fe8bb21f8bbf9a9ea59eea3fc3d396605aa5a234fdce197cc414def94309",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceAbilities.java": "9f4b5f60cd0add7c8f1e18aa6d486b6f68a91f327038e0574be49c9b09f90ea0",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceEnvironment.java": "2013d030fb36f50acf447ae973ac1a182ee84c8d5f05cd6cb99d4500e3c4c2db",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceTraitRuntime.java": "4827b0c68bd63d112f05d4d817241352c7ab639af11567f02303388032213dee",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/TemporaryPathSavedData.java": "f1b37a80a1d138eef64294a0b14d7f57ac5c8120dff460ba29bbc7bf4431e19f",
+    "Mods/JEMRoles/src/main/resources/META-INF/mods.toml": "b3c37f65822d12e09ba7edaffc17af06b7446f8a7aaec59a6066f475907d50bd",
+    "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/en_us.json": "2c7674ee5d3ae46f063d13e5736d3b0cdfd458d3c868be7f1cb249b83888ede0",
+    "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/ru_ru.json": "da4e3a2f8a34dcce734e0c42b0e56686057e110e9f47191aa541421ef21d92df",
+    "Mods/JEMRoles/src/main/resources/data/forge/loot_modifiers/global_loot_modifiers.json": "23843003d453647cbd47a508f3eb836454dc899ed8ea112bcadd40505209f057",
+    "Mods/JEMRoles/src/main/resources/data/jem_roles/damage_type/lunge_burn.json": "585449650e19c4463932ae69871429f86a579d4037d72941c828de566ad2ed78",
+    "Mods/JEMRoles/src/main/resources/data/jem_roles/loot_modifiers/piglin_fortune.json": "904633681f1e8839a632c1d2b95ad71ce5127e0a7684ace52ff1938d3b7c20ab",
+    "Mods/JEMRoles/src/main/resources/jem_roles.mixins.json": "dd75a7110d18f13e12d2173895cf576865e7d3f550d49f68ffe2bdced7571180",
     "Mods/JEMServer/build.gradle": "03ec61cc737f55f319e03a3f67d6a62e89a0f3dcb7ad20e54fbe8372d16968d6",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/DeathHistory.java": "3db9cde1b59ae7bef00278fcd9e4287f8ccce693227a9ec61e726da1ab367616",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/JemServer.java": "772446314505e11819ec6f0e6d8f751234d81bf856af0a0967505d50a58aeabb",
@@ -312,7 +398,7 @@
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/XaeroLandmarks.java": "192612640435da38bad5821297ec4617509f698ddad1ccf5c44ea2d08296a9b0",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpIcons.java": "b75755e31d73d8bcf6c1a3dae3a8ad58fa901cd875bf1848d898b9078c246ac9",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java": "74f81465b2903682536f466fe04351954546fee8ff47a179620dc40f3c7bd97d",
-    "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpSidebar.java": "caa95a123aa2c4d1979ed7fe47a0a220e1c28936981a699ed2fd0df43354f6b3",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpSidebar.java": "498c993c7bbb652d1745e8d817ddfbb6f0358e8333bfba8c2dadd84b9dc0cf02",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/ui/JemMenuScreen.java": "655ee46a8a7b4ff6294b45025d07907fdb3b50636490a4487fda4c963d0e4b41",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapClient.java": "c604a6d433cba490652d3a0b2f906993c97173121b7107690ac817f0fb627940",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapLayerPreferences.java": "a5ec131f84203fa0379ae0db5162c7d0034d26dbab7c08fd9fde72225445eb23",
@@ -326,7 +412,8 @@
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Profiles.java": "1b9966f09f11c80ef7ed8882974901e15e312b2437e4a431076decebdd821b18",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpActionKind.java": "cb2962bb4c791cecfffd9dfeabac2c1efe32ddec7e1b54fb7a0551da15e46947",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpActions.java": "ace130cda337ebe65342fa343bd9b292569da16304bfe056042bdc9cb834871a",
-    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpNetwork.java": "e12f319ce4ee706eaf8018e8f698df9a4f57fcfc08bc31e08a665a9771e24eef",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpModuleOpen.java": "d6ddfa3aca3b9de6ce7f3dfe27c88aafa564b3aa834e5d030b4e13b1bab60bd2",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpNetwork.java": "49b0b346c05bfb24b6fdf063683f1422293cb4ab0baef980e7434e4a95572c7f",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpProtocol.java": "b20237062ada373210e000df3e63b8075e60736b1d0ebc899147b8597d0553a0",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpRuntime.java": "8fbf37d25ac64d153e210a8ba9de1046bc60c4fe786cc6257659e58ff14d4160",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpSubscriptions.java": "b28c233f499f57e4fad94b2949a4cd0e8bff579ad52ac5ff71a65e7271cadd1c",

@@ -3,11 +3,10 @@ package com.siirio.jemroles.race;
 import com.siirio.jemidentity.api.IdentityPolicy;
 import com.siirio.jemroles.api.RaceSnapshot;
 import java.util.Optional;
-import java.time.LocalDate;
-import java.time.ZoneOffset;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Consumer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.common.MinecraftForge;
 import com.siirio.jemroles.api.RaceChangedEvent;
@@ -50,20 +49,12 @@ public final class RaceService {
         return nonce;
     }
 
-    public static void clearNonce(ServerPlayer player) {
-        PENDING_NONCES.remove(player.getUUID());
+    public static UUID currentNonce(ServerPlayer player) {
+        return PENDING_NONCES.computeIfAbsent(player.getUUID(), ignored -> UUID.randomUUID());
     }
 
-    public static int reserveProfessionBonus(ServerPlayer player, int baseDelta) {
-        var principal = IdentityPolicy.resolve(player);
-        if (principal.isEmpty() || baseDelta <= 0) return 0;
-        RaceSavedData data = RaceSavedData.get(player.getServer());
-        RaceRecord record = data.find(principal.get().accountId()).orElse(null);
-        if (record == null || record.race() != RaceId.HUMAN) return 0;
-        int requested = Math.max(1, (int) Math.floor(baseDelta * 0.05D));
-        int granted = record.reserveProfessionBonus(LocalDate.now(ZoneOffset.UTC).toEpochDay(), requested);
-        if (granted > 0) data.changed();
-        return granted;
+    public static void clearNonce(ServerPlayer player) {
+        PENDING_NONCES.remove(player.getUUID());
     }
 
     public static Result administrativeSet(ServerPlayer player, RaceId next) {
@@ -85,5 +76,17 @@ public final class RaceService {
 
     public static Optional<RaceSnapshot> snapshot(ServerPlayer player) {
         return IdentityPolicy.resolve(player).flatMap(principal -> com.siirio.jemroles.api.RaceApi.get(player.getServer(), principal.accountId()));
+    }
+
+    public static Optional<RaceRecord> record(ServerPlayer player) {
+        return IdentityPolicy.resolve(player).flatMap(principal -> RaceSavedData.get(player.getServer()).find(principal.accountId()));
+    }
+
+    public static boolean mutate(ServerPlayer player, Consumer<RaceRecord> change) {
+        var record = record(player);
+        if (record.isEmpty()) return false;
+        change.accept(record.get());
+        RaceSavedData.get(player.getServer()).changed();
+        return true;
     }
 }

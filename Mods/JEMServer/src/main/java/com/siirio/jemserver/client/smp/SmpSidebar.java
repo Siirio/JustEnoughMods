@@ -47,14 +47,13 @@ public final class SmpSidebar {
     }
 
     public static boolean openExternal(String route) {
-        String command = switch (route) {
-            case "roles" -> "jem role";
-            case "professions" -> "jem professions";
+        var module = switch (route) {
+            case "roles" -> com.siirio.jemserver.smp.SmpModuleOpen.Module.ROLES;
+            case "professions" -> com.siirio.jemserver.smp.SmpModuleOpen.Module.PROFESSIONS;
             default -> null;
         };
-        var connection = Minecraft.getInstance().getConnection();
-        if (command == null || connection == null) return false;
-        connection.sendCommand(command);
+        if (module == null || Minecraft.getInstance().getConnection() == null) return false;
+        com.siirio.jemserver.smp.SmpNetwork.openModule(module);
         return true;
     }
 }

@@ -1,0 +1,156 @@
+{
+  "schema_version": 2,
+  "change_id": "races.five-lineages",
+  "status": "active",
+  "selectors": [
+    {"type": "id", "registry": "entities", "value": "minecraft:villager"},
+    {"type": "id", "registry": "entities", "value": "minecraft:wandering_trader"},
+    {"type": "id", "registry": "entities", "value": "minecraft:piglin"},
+    {"type": "id", "registry": "entities", "value": "minecraft:piglin_brute"},
+    {"type": "id", "registry": "entities", "value": "minecraft:iron_golem"},
+    {"type": "id", "registry": "entities", "value": "minecraft:enderman"},
+    {"type": "id", "registry": "blocks", "value": "minecraft:sculk"},
+    {"type": "id", "registry": "blocks", "value": "minecraft:sculk_vein"},
+    {"type": "id", "registry": "blocks", "value": "minecraft:oak_leaves"},
+    {"type": "id", "registry": "biomes", "value": "minecraft:lush_caves"}
+  ],
+  "exceptions": [],
+  "conditions": [
+    {"runtime": "authenticated player on dedicated SMP with matching JEM Races protocol 2 client"}
+  ],
+  "precedence": {
+    "layer": "gameplay",
+    "priority": 130,
+    "overrides": ["economy.native-trading-presentation"]
+  },
+  "change": {
+    "summary": "Replace three minor cultural roles with five server-authoritative races, innate signatures and persistent three-tier race progression while keeping professions independent.",
+    "modifiers": [
+      {
+        "property": "jem_roles.race_set",
+        "operation": "replace",
+        "before": {"value": ["HUMAN", "DWARF", "ELF"]},
+        "after": {"value": ["ANCESTORS", "VOID_WALKERS", "BORN_IN_BLOOM", "INFECTED_BY_SCULK", "NETHER_HEARTEDS"]}
+      },
+      {
+        "property": "jem_roles.progression",
+        "operation": "replace",
+        "before": {"value": "small passive traits plus profession and Iron's direct-hit bonuses"},
+        "after": {"value": "exactly five buffs and two debuffs per race, one innate signature and three persistent behavior-changing tiers independent from professions"}
+      },
+      {
+        "property": "jem_roles.entrypoints",
+        "operation": "replace",
+        "before": {"value": "direct role/profession commands and SMP chat-command forwarding"},
+        "after": {"value": "bounded SMP module packets opening JEM Races or native Pufferfish Skills"}
+      },
+      {
+        "property": "jem_professions.server_definitions",
+        "operation": "set",
+        "before": {"value": "canonical managed-client Paxi datapack absent from ordinary dedicated Server"},
+        "after": {"value": "same complete profession Paxi datapack present on managed client and dedicated Server"}
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMRoles/JEMProfessions/JEMServer",
+    "kind": "race_system_rework_and_native_skill_screen_repair",
+    "source_files": [
+      "Mods/JEMRoles/build.gradle",
+      "Mods/JEMRoles/settings.gradle",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/JemRoles.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceApi.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceSnapshot.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RaceSelectionScreen.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RoleClientState.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/economy/CoinTradeRaceBridge.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/loot/PiglinFortuneLoot.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/loot/RaceLoot.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/mixin/AvoidEntityGoalMixin.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RaceActionPacket.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RaceStatusPacket.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RolesNetwork.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceId.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRecord.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRules.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceService.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceAbilities.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceEnvironment.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceTraitRuntime.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/TemporaryPathSavedData.java",
+      "Mods/JEMRoles/src/main/resources/META-INF/mods.toml",
+      "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/en_us.json",
+      "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/ru_ru.json",
+      "Mods/JEMRoles/src/main/resources/data/forge/loot_modifiers/global_loot_modifiers.json",
+      "Mods/JEMRoles/src/main/resources/data/jem_roles/damage_type/lunge_burn.json",
+      "Mods/JEMRoles/src/main/resources/data/jem_roles/loot_modifiers/piglin_fortune.json",
+      "Mods/JEMRoles/src/main/resources/jem_roles.mixins.json",
+      "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/JemProfessions.java",
+      "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/api/ProfessionApi.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpSidebar.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpModuleOpen.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpNetwork.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Give each race a strong gameplay identity and reliable innate progression while preserving native professions, economy, boss boundaries and authenticated account ownership.",
+    "decision_source": "Direct user-supplied JEM Races complete rework specification and runtime report that the profession window was empty; implementation seams and deterministic legacy mapping chosen by Codex from current source and installed artifacts."
+  },
+  "introduced": {
+    "date": "2026-10-15",
+    "commit": "SELF",
+    "action": "five_race_rework",
+    "summary": "Implemented five races, innate signatures, persistent three-tier mastery, three-column UI, bounded SMP entrypoints and the missing dedicated-server profession datapack.",
+    "source_files": [
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceId.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceTraitRuntime.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceAbilities.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RaceSelectionScreen.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpModuleOpen.java"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-15",
+      "commit": "SELF",
+      "action": "remove_legacy_entrypoints_and_bridges",
+      "summary": "Removed direct role/profession commands, old profession race bonus, old Iron direct-hit bonus and the obsolete dwarf mining tag; SMP module packets and innate race casts are their explicit replacements.",
+      "source_files": [
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/command/RoleCommands.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/irons/IronsRaceBridge.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/professions/ProfessionRaceBridge.java",
+        "Mods/JEMRoles/src/main/resources/data/jem_roles/tags/blocks/dwarf_mining.json",
+        "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/command/ProfessionCommands.java"
+      ]
+    },
+    {
+      "date": "2026-10-15",
+      "commit": "SELF",
+      "action": "fix_selection_nonce_and_identity_resolution",
+      "summary": "Kept one nonce stable while the screen is open and resolved all runtime race checks through authenticated account identity instead of the player name or offline UUID.",
+      "source_files": [
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceApi.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RolesNetwork.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceService.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": ["identity", "races", "professions", "economy", "villagers", "animals", "piglins", "biomes", "sculk", "lava", "network", "SMP UI", "boss boundaries"],
+    "relations": [
+      "JEM Identity account -> race SavedData -> server validation -> synchronized client UI",
+      "SMP sidebar -> bounded module packet -> native owning screen",
+      "race signature use -> separate mastery -> behavior-changing tier"
+    ],
+    "notes": [
+      "Legacy active time and free-switch state survive deterministic race migration; changing race resets only race-local mastery/resources.",
+      "The installed Iron's 3.15.6 innate-wheel boundary was inspected; no scroll, spellbook or invented spell ID is introduced.",
+      "Temporary path blocks persist expiry across unload/restart and drop no resources; short-lived zones and decoys clean themselves while loaded.",
+      "No automated tests or gameplay launch are created or run because project policy requires manual player acceptance."
+    ],
+    "unresolved": [
+      "Player-rendered UI and multiplayer gameplay acceptance remain in testing.",
+      "Third-party merchants, barter systems, peaceful mobs or End creatures that do not reuse the verified native classes/events/tables require an explicit adapter or exact configured registry ID."
+    ]
+  }
+}

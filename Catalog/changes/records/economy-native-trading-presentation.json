@@ -26,16 +26,16 @@
     "overrides": []
   },
   "change": {
-    "summary": "Original native opening/menu/screen/offers and resource-pack presentation with non-rendering secured Coin actions and Wallet credit; native Buyer with no chat; one paid-currency Human benefit",
+    "summary": "Original native opening/menu/screen/offers and resource-pack presentation with non-rendering secured Coin actions and Wallet credit; native Buyer with no chat; one authoritative 20% Ancestor purchase discount",
     "modifiers": [
       {
         "property": "economy.native_trade.presentation",
         "operation": "replace",
         "before": {
-          "value": "Canceled native opening, custom18-slot immediate-click GUI; Buyer chat bulletin; Human emerald refund after Coin payment"
+          "value": "Canceled native opening, custom18-slot immediate-click GUI; Buyer chat bulletin; legacy Human emerald refund after Coin payment"
         },
         "after": {
-          "value": "Original native opening/menu/screen/offers and resource-pack styling; no JEM price/status/balance renderer; guarded quoted monetary result actions and Wallet credit; native Buyer with no chat; one paid-currency Human benefit"
+          "value": "Original native opening/menu/screen/offers and resource-pack styling; no JEM price/status/balance renderer; guarded quoted monetary result actions and Wallet credit; native Buyer with no chat; one server-side 20% Ancestor purchase discount applied exactly once"
         }
       }
     ]
@@ -221,7 +221,7 @@
     ],
     "notes": [
       "Native item barter preserves the original slot and selected-offer lifecycle; both orientations remain supported.",
-      "Wallet protocol2->3 requires matching Economy/Roles/Server client/server artifacts; none built or deployed.",
+      "JEM Races protocol 2 requires the exact matching Roles client/server artifact; Coin quotes remain server authoritative.",
       "Unknown/protected/NBT offers stay server-denied; no item policy, emerald rate, supply or cap was changed.",
       "Quote actions acknowledge revision/selection/nonce and original terms; source-only review addressed four important findings.",
       "Common monetary Mixins and command/listener registration are physically dedicated-only; client retains presentation/registry/network compatibility.",

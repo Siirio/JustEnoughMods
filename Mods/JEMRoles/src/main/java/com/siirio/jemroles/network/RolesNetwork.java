@@ -5,6 +5,7 @@ import com.siirio.jemroles.JemRoles;
 import com.siirio.jemroles.api.RaceApi;
 import com.siirio.jemroles.race.RaceId;
 import com.siirio.jemroles.race.RaceService;
+import com.siirio.jemroles.race.RaceRules;
 import java.util.UUID;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -19,7 +20,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class RolesNetwork {
-    private static final String VERSION = "1";
+    private static final String VERSION = "2";
     private static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder
             .named(new ResourceLocation(JemRoles.MOD_ID, "main"))
             .networkProtocolVersion(() -> VERSION)
@@ -41,7 +42,8 @@ public final class RolesNetwork {
                         } else if (result == RaceService.Result.UNAUTHENTICATED) {
                             player.sendSystemMessage(Component.translatable("jem.roles.identity_required"));
                         }
-                        sendStatus(player, true);
+                        sendStatus(player, result == RaceService.Result.CHANGE_LOCKED
+                                || result == RaceService.Result.UNAUTHENTICATED);
                     }
                     context.get().setPacketHandled(true);
                 }).add();
@@ -52,20 +54,31 @@ public final class RolesNetwork {
                             () -> () -> com.siirio.jemroles.client.RoleClientState.accept(packet));
                     context.get().setPacketHandled(true);
                 }).add();
+        CHANNEL.messageBuilder(RaceActionPacket.class, 2, NetworkDirection.PLAY_TO_SERVER)
+                .encoder(RaceActionPacket::encode).decoder(RaceActionPacket::decode)
+                .consumerMainThread((packet, context) -> {
+                    ServerPlayer player = context.get().getSender();
+                    if (player != null) com.siirio.jemroles.trait.RaceAbilities.handle(player, packet.action());
+                    context.get().setPacketHandled(true);
+                }).add();
     }
 
     public static void choose(RaceId race, UUID nonce) {
         CHANNEL.sendToServer(new RaceChoosePacket(race, nonce));
     }
 
+    public static void action(RaceActionPacket.Action action) { CHANNEL.sendToServer(new RaceActionPacket(action)); }
+
     public static void sendStatus(ServerPlayer player, boolean open) {
         var principal = IdentityPolicy.resolve(player);
-        UUID nonce = principal.isPresent() ? RaceService.issueNonce(player) : new UUID(0L, 0L);
+        UUID nonce = principal.isPresent() ? (open ? RaceService.issueNonce(player) : RaceService.currentNonce(player)) : new UUID(0L, 0L);
         var snapshot = principal.flatMap(value -> RaceApi.get(player.getServer(), value.accountId()));
         RaceStatusPacket packet = snapshot
                 .map(value -> new RaceStatusPacket(open, true, true, value.race(), value.activeTicks(),
-                        value.freeSwitchAvailable(), nonce))
-                .orElseGet(() -> new RaceStatusPacket(open, principal.isPresent(), false, RaceId.HUMAN, 0L, true, nonce));
+                        value.freeSwitchAvailable(), nonce, value.spellTier(), value.spellProgress(), value.resonance(),
+                        value.waterExposure(), value.lavaExposure(), RaceRules.LAVA_BREATH.get(), value.livingPath()))
+                .orElseGet(() -> new RaceStatusPacket(open, principal.isPresent(), false, RaceId.ANCESTORS,
+                        0L, true, nonce, 1, 0, 0, 0, 0, RaceRules.LAVA_BREATH.get(), false));
         if (CHANNEL.isRemotePresent(player.connection.connection)) {
             CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), packet);
         } else if (open) {

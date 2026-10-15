@@ -1,6 +1,5 @@
 package com.siirio.jemprofessions;
 
-import com.siirio.jemprofessions.command.ProfessionCommands;
 import com.siirio.jemprofessions.progress.ProfessionGameplay;
 import com.siirio.jemprofessions.network.ProfessionsNetwork;
 import net.minecraftforge.common.MinecraftForge;
@@ -13,7 +12,6 @@ public final class JemProfessions {
 
     public JemProfessions() {
         ProfessionsNetwork.register();
-        MinecraftForge.EVENT_BUS.register(ProfessionCommands.class);
         MinecraftForge.EVENT_BUS.register(ProfessionGameplay.class);
         if (ModList.get().isLoaded("irons_spellbooks")) {
             MinecraftForge.EVENT_BUS.register(com.siirio.jemprofessions.compat.irons.IronsProfessionAdapter.class);

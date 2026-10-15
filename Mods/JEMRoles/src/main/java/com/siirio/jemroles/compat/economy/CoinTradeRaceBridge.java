@@ -13,10 +13,10 @@ public final class CoinTradeRaceBridge {
     public static boolean coinPaid(ServerPlayer player) { return CoinTradeContext.active(player); }
     @SubscribeEvent public static void quote(CoinTradePriceEvent event) {
         var player = event.player();
-        if (RaceApi.effectiveRace(player.getServer(), player.getUUID()) == RaceId.HUMAN) {
+        if (RaceApi.hasRace(player, RaceId.ANCESTORS)) {
             long amount = event.copper();
-            // ceil(90%) without floating-point loss or multiplication overflow.
-            event.setCopper(Math.max(1L, amount - amount / 10L));
+            // Exact integer-currency 20% discount, applied once to the authoritative quote.
+            event.setCopper(Math.max(1L, amount - amount / 5L));
         }
     }
 }

@@ -2,11 +2,11 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "6ab20ed4e18ad973dddf940f15065d444b3484ae85426bab3bc9f10e1b855573",
+  "change_records_sha256": "9430254537a7caef4877b8d280c8d069042d4618ddae88868a456042c7262e76",
   "totals": {
     "watched": 3186,
-    "covered": 182,
-    "unresolved": 3004
+    "covered": 191,
+    "unresolved": 2995
   },
   "groups": {
     "Client/ManagedPack/config": {
@@ -2646,26 +2646,17 @@
     },
     "Mods/JEMRoles": {
       "watched": 23,
-      "covered": 4,
-      "unresolved": 19,
+      "covered": 13,
+      "unresolved": 10,
       "unresolved_paths": [
         "Mods/JEMRoles/gradle.properties",
-        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceApi.java",
         "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceChangedEvent.java",
         "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceChosenEvent.java",
-        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceSnapshot.java",
-        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RaceSelectionScreen.java",
-        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RoleClientState.java",
         "Mods/JEMRoles/src/main/java/com/siirio/jemroles/command/RoleCommands.java",
         "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/irons/IronsRaceBridge.java",
         "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/professions/ProfessionRaceBridge.java",
         "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RaceChoosePacket.java",
-        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RaceStatusPacket.java",
-        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RolesNetwork.java",
-        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceId.java",
-        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRecord.java",
         "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceSavedData.java",
-        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceService.java",
         "Mods/JEMRoles/src/main/resources/data/jem_roles/tags/blocks/dwarf_mining.json",
         "Mods/JEMRoles/src/main/resources/pack.mcmeta"
       ]

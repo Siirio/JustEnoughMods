@@ -14,6 +14,10 @@ public final class ProfessionApi {
     private ProfessionApi() {
     }
 
+    public static void openScreen(ServerPlayer player) {
+        if (IdentityPolicy.resolve(player).isPresent()) SkillsAPI.openScreen(player);
+    }
+
     public static ProfessionProgressResult credit(ServerPlayer player, ProfessionProgressRequest request) {
         var principal = IdentityPolicy.resolve(player);
         if (principal.isEmpty()) return new ProfessionProgressResult(ProfessionProgressResult.Status.UNAUTHENTICATED, 1, 1, 0L);

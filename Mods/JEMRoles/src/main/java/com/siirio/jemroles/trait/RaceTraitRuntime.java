@@ -1,169 +1,361 @@
 package com.siirio.jemroles.trait;
 
-import com.siirio.jemidentity.api.IdentityPolicy;
 import com.siirio.jemroles.api.RaceApi;
 import com.siirio.jemroles.race.RaceId;
-import com.siirio.jemroles.race.RaceSavedData;
+import com.siirio.jemroles.race.RaceRecord;
+import com.siirio.jemroles.race.RaceRules;
+import com.siirio.jemroles.race.RaceService;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.tags.TagKey;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageType;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.entity.projectile.ThrownTrident;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.animal.IronGolem;
+import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
+import net.minecraft.world.entity.monster.Enemy;
+import net.minecraft.world.entity.monster.EnderMan;
+import net.minecraft.world.entity.monster.piglin.AbstractPiglin;
+import net.minecraft.world.entity.npc.AbstractVillager;
+import net.minecraft.world.entity.projectile.ThrownEnderpearl;
+import net.minecraft.world.entity.raid.Raider;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.common.util.FakePlayer;
-import net.minecraftforge.event.entity.player.AttackEntityEvent;
+import net.minecraftforge.event.entity.ProjectileImpactEvent;
+import net.minecraftforge.event.entity.living.LivingChangeTargetEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.level.BlockEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.common.ForgeMod;
 
 public final class RaceTraitRuntime {
-    private static final UUID ELF_SPEED = UUID.fromString("0cc57d67-c799-45f9-8313-d0c56cb0be9e");
-    private static final UUID DWARF_KNOCKBACK = UUID.fromString("43b459d2-9746-48d6-acce-5fd66d10f50d");
-    private static final Map<UUID, Position> LAST_POSITION = new ConcurrentHashMap<>();
-    private static final Map<UUID, Integer> ACTION_TICK = new ConcurrentHashMap<>();
-    private static final Map<UUID, Integer> COUNTED_ACTION_TICK = new ConcurrentHashMap<>();
-    private static final Map<UUID, PendingDurability> PENDING_DURABILITY = new ConcurrentHashMap<>();
-    private static final TagKey<net.minecraft.world.level.block.Block> DWARF_MINING = TagKey.create(Registries.BLOCK,
-            new ResourceLocation("jem_roles", "dwarf_mining"));
+    private static final UUID UNSTABLE_HEALTH = UUID.fromString("65cc4bf4-fc6c-43be-9d9b-23b7bb8f51d6");
+    private static final UUID SCULK_HEALTH = UUID.fromString("5f85aeb5-778c-4a22-a108-cde26538ff58");
+    private static final UUID SCULK_ATTACK = UUID.fromString("0e3e3509-88db-437c-81dd-5b62c4124950");
+    private static final UUID BLOOM_BARREN = UUID.fromString("2e2f5209-0a0e-4ccb-aee4-7a92c93bf26b");
+    private static final UUID SCULK_SUN = UUID.fromString("593bd676-c3dd-4dd3-856c-734c380013fb");
+    private static final UUID NETHER_FROZEN = UUID.fromString("e17185a7-99e8-427b-9710-02973629d149");
+    private static final UUID WATER_STIFFNESS = UUID.fromString("25a887ba-2e0c-4b4f-9b3f-149137cbab7f");
+    private static final UUID WATER_FRACTURE = UUID.fromString("45cf0023-178e-427e-b5a7-29a25af02b14");
+    private static final UUID GRAVITY_DENIAL = UUID.fromString("2b29cf59-9d68-47bb-9367-c123d6b7bd67");
+    private static final ResourceKey<DamageType> LUNGE_BURN = ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation("jem_roles", "lunge_burn"));
+    private static final Map<UUID, Guardian> GUARDIANS = new ConcurrentHashMap<>();
 
-    private RaceTraitRuntime() {
-    }
+    private RaceTraitRuntime() {}
 
     @SubscribeEvent
-    public static void tick(TickEvent.PlayerTickEvent event) {
-        if (event.phase != TickEvent.Phase.END || !(event.player instanceof ServerPlayer player) || player.tickCount % 20 != 0) return;
-        RaceId race = RaceApi.effectiveRace(player.getServer(), player.getUUID());
-        updateModifiers(player, race);
-        applyDurabilityPrevention(player, race);
-        IdentityPolicy.resolve(player).ifPresent(principal -> {
-            Position current = new Position(player.getX(), player.getY(), player.getZ());
-            Position prior = LAST_POSITION.put(player.getUUID(), current);
-            int action = ACTION_TICK.getOrDefault(player.getUUID(), Integer.MIN_VALUE);
-            int counted = COUNTED_ACTION_TICK.getOrDefault(player.getUUID(), Integer.MIN_VALUE);
-            boolean moved = prior != null && prior.distanceSquared(current) > 0.0025D;
-            boolean acted = action > counted;
-            if ((moved || acted) && !player.isSpectator() && player.isAlive()) {
-                RaceSavedData data = RaceSavedData.get(player.getServer());
-                data.find(principal.accountId()).ifPresent(record -> { record.addActiveTicks(20L); data.changed(); });
-                if (acted) COUNTED_ACTION_TICK.put(player.getUUID(), action);
-            }
+    public static void playerTick(TickEvent.PlayerTickEvent event) {
+        if (event.phase != TickEvent.Phase.END || !(event.player instanceof ServerPlayer player)
+                || !player.server.isDedicatedServer()) return;
+        RaceService.record(player).ifPresent(record -> {
+            if (player.tickCount % 5 == 0 && record.race() == RaceId.BORN_IN_BLOOM && record.livingPath()) placePath(player);
+            if (player.tickCount % 20 != 0) return;
+            applyState(player, record);
+            if (!player.isSpectator() && player.isAlive()) RaceService.mutate(player, value -> value.addActiveTicks(20L));
+            com.siirio.jemroles.network.RolesNetwork.sendStatus(player, false);
         });
     }
 
     @SubscribeEvent
-    public static void logout(PlayerEvent.PlayerLoggedOutEvent event) {
-        LAST_POSITION.remove(event.getEntity().getUUID());
-        ACTION_TICK.remove(event.getEntity().getUUID());
-        COUNTED_ACTION_TICK.remove(event.getEntity().getUUID());
-        PENDING_DURABILITY.remove(event.getEntity().getUUID());
-    }
-
-    @SubscribeEvent public static void attack(AttackEntityEvent event) { markAction(event.getEntity()); }
-    @SubscribeEvent public static void interact(PlayerInteractEvent event) { markAction(event.getEntity()); }
-
-    @SubscribeEvent(priority = EventPriority.LOWEST)
-    public static void harvest(BlockEvent.BreakEvent event) {
-        if (!(event.getPlayer() instanceof ServerPlayer player) || player instanceof FakePlayer || event.isCanceled()) return;
-        if (RaceApi.effectiveRace(player.getServer(), player.getUUID()) != RaceId.DWARF) return;
-        ItemStack stack = player.getMainHandItem();
-        if (stack.isEmpty() || !stack.isDamageableItem() || !player.hasCorrectToolForDrops(event.getState())) return;
-        markAction(player);
-        PENDING_DURABILITY.put(player.getUUID(), new PendingDurability(stack, stack.getDamageValue()));
-    }
-
-    @SubscribeEvent
-    public static void breakSpeed(PlayerEvent.BreakSpeed event) {
-        if (!(event.getEntity() instanceof ServerPlayer player)) return;
-        if (RaceApi.effectiveRace(player.getServer(), player.getUUID()) != RaceId.DWARF) return;
-        if (player instanceof FakePlayer || !event.getState().is(DWARF_MINING) || !event.getState().is(BlockTags.MINEABLE_WITH_PICKAXE)
-                || !player.hasCorrectToolForDrops(event.getState())) return;
-        event.setNewSpeed(event.getOriginalSpeed() * 1.10F);
+    public static void serverTick(TickEvent.ServerTickEvent event) {
+        if (event.phase != TickEvent.Phase.END) return;
+        if (event.getServer().getTickCount() % 5 == 0) RaceAbilities.serverTick(event.getServer());
+        if (event.getServer().getTickCount() % 20 != 0) return;
+        TemporaryPathSavedData.get(event.getServer()).tick(event.getServer());
+        long now = event.getServer().overworld().getGameTime();
+        GUARDIANS.entrySet().removeIf(entry -> {
+            Guardian state = entry.getValue();
+            Entity entity = null;
+            for (ServerLevel level : event.getServer().getAllLevels()) {
+                entity = level.getEntity(state.entity());
+                if (entity != null) break;
+            }
+            if (!(entity instanceof IronGolem golem) || !golem.isAlive() || state.expires() <= now) {
+                if (entity != null) entity.discard();
+                return true;
+            }
+            var enemy = golem.level().getEntitiesOfClass(Mob.class, golem.getBoundingBox().inflate(16), mob -> mob instanceof Enemy)
+                    .stream().min(java.util.Comparator.comparingDouble(golem::distanceToSqr)).orElse(null);
+            if (enemy != null) golem.setTarget(enemy);
+            return false;
+        });
     }
 
     @SubscribeEvent
+    public static void livingTick(LivingEvent.LivingTickEvent event) {
+        if (!(event.getEntity() instanceof net.minecraft.world.entity.decoration.ArmorStand stand)) return;
+        long expiry = stand.getPersistentData().getLong("JemVoidEchoExpiry");
+        if (expiry > 0L && expiry <= stand.level().getGameTime()) stand.discard();
+    }
+
+    private static void applyState(ServerPlayer player, RaceRecord record) {
+        RaceId race = record.race();
+        ServerLevel level = player.serverLevel();
+        BlockPos pos = player.blockPosition();
+        remove(player, Attributes.MAX_HEALTH, UNSTABLE_HEALTH, SCULK_HEALTH, BLOOM_BARREN, SCULK_SUN, NETHER_FROZEN, WATER_FRACTURE);
+        remove(player, Attributes.ATTACK_DAMAGE, SCULK_ATTACK);
+        remove(player, Attributes.MOVEMENT_SPEED, WATER_STIFFNESS);
+        remove(player, ForgeMod.ENTITY_GRAVITY.get(), GRAVITY_DENIAL);
+        if (race == RaceId.VOID_WALKERS) {
+            add(player, Attributes.MAX_HEALTH, UNSTABLE_HEALTH, "JEM unstable body", -6.0D, AttributeModifier.Operation.ADDITION);
+            if (record.cooldown("gravity_active") > player.level().getGameTime())
+                add(player, ForgeMod.ENTITY_GRAVITY.get(), GRAVITY_DENIAL, "JEM gravity denial", -0.75D,
+                        AttributeModifier.Operation.MULTIPLY_TOTAL);
+            voidState(player, record);
+        } else if (race == RaceId.BORN_IN_BLOOM) {
+            boolean green = RaceEnvironment.green(level, pos);
+            if (!green) add(player, Attributes.MAX_HEALTH, BLOOM_BARREN, "JEM severed roots", -8.0D, AttributeModifier.Operation.ADDITION);
+            else if (RaceEnvironment.naturalDaylight(level, pos)) {
+                player.heal(0.5F);
+                player.getFoodData().setExhaustion(Math.max(0.0F, player.getFoodData().getExhaustionLevel() - 1.0F));
+            }
+        } else if (race == RaceId.INFECTED_BY_SCULK) {
+            if (RaceEnvironment.underground(level, pos)) {
+                add(player, Attributes.MAX_HEALTH, SCULK_HEALTH, "JEM subterranean health", 10.0D, AttributeModifier.Operation.ADDITION);
+                add(player, Attributes.ATTACK_DAMAGE, SCULK_ATTACK, "JEM subterranean attack", 0.15D, AttributeModifier.Operation.MULTIPLY_TOTAL);
+            }
+            if (RaceEnvironment.naturalDaylight(level, pos))
+                add(player, Attributes.MAX_HEALTH, SCULK_SUN, "JEM sunlight decay", -8.0D, AttributeModifier.Operation.ADDITION);
+        } else if (race == RaceId.NETHER_HEARTEDS) {
+            netherState(player, record);
+            if (level.getBiome(pos).value().coldEnoughToSnow(pos))
+                add(player, Attributes.MAX_HEALTH, NETHER_FROZEN, "JEM frozen core", -8.0D, AttributeModifier.Operation.ADDITION);
+        } else if (race == RaceId.ANCESTORS) {
+            if (player.getHealth() <= player.getMaxHealth() * 0.25F) guardian(player, record);
+            for (Raider raider : level.getEntitiesOfClass(Raider.class, player.getBoundingBox().inflate(48), Entity::isAlive)) {
+                if (raider.getTarget() == null || raider.distanceToSqr(player) < raider.distanceToSqr(raider.getTarget())) raider.setTarget(player);
+            }
+        }
+        if (player.getHealth() > player.getMaxHealth()) player.setHealth(player.getMaxHealth());
+    }
+
+    private static void voidState(ServerPlayer player, RaceRecord record) {
+        ServerLevel level = player.serverLevel();
+        if (RaceEnvironment.safe(player, level, player.blockPosition()) && !player.isInWater()) SafeStore.put(player, level, player.blockPosition());
+        if (player.getY() < level.getMinBuildHeight() + 1) {
+            BlockPos safe = SafeStore.get(player, level);
+            if (safe != null && RaceEnvironment.safe(player, level, safe))
+                player.teleportTo(level, safe.getX() + 0.5D, safe.getY(), safe.getZ() + 0.5D, player.getYRot(), player.getXRot());
+        }
+        if (player.isInWater() && !waterProtected(player)) {
+            if (record.waterExposure() == 0) {
+                BlockPos dry = SafeStore.get(player, level);
+                if (dry == null || !dry.closerToCenterThan(player.position(), 100.0D) || !RaceEnvironment.safe(player, level, dry))
+                    dry = RaceEnvironment.nearestSafe(player, level, player.blockPosition(), 100, true).orElse(null);
+                if (dry != null) player.teleportTo(level, dry.getX() + 0.5D, dry.getY(), dry.getZ() + 0.5D, player.getYRot(), player.getXRot());
+            }
+            RaceService.mutate(player, value -> value.waterExposure(value.waterExposure() + 20));
+            if (player.isInWater()) add(player, Attributes.MAX_HEALTH, WATER_FRACTURE, "JEM water fracture", -0.857142857D,
+                    AttributeModifier.Operation.MULTIPLY_TOTAL);
+        } else if (record.waterExposure() > 0) RaceService.mutate(player, value -> value.waterExposure(0));
+    }
+
+    private static boolean waterProtected(ServerPlayer player) {
+        if (player.isPassenger() || player.hasEffect(MobEffects.WATER_BREATHING) || player.hasEffect(MobEffects.CONDUIT_POWER)) return true;
+        return net.minecraft.world.item.enchantment.EnchantmentHelper.getEnchantmentLevel(net.minecraft.world.item.enchantment.Enchantments.FROST_WALKER, player) > 0
+                || net.minecraft.world.item.enchantment.EnchantmentHelper.getEnchantmentLevel(net.minecraft.world.item.enchantment.Enchantments.RESPIRATION, player) > 0;
+    }
+
+    private static void netherState(ServerPlayer player, RaceRecord record) {
+        boolean lava = player.isInLava();
+        if (lava) {
+            int exposure = record.lavaExposure() + 20;
+            RaceService.mutate(player, value -> value.lavaExposure(exposure));
+            if (exposure > RaceRules.LAVA_BREATH.get()) player.hurt(lungeBurn(player), 2.0F);
+            player.setDeltaMovement(player.getDeltaMovement().add(0, 0.04D, 0));
+        } else if (record.lavaExposure() > 0) RaceService.mutate(player, value -> value.lavaExposure(0));
+        int stiffness = player.isInWater() && !player.isPassenger() ? Math.min(140, record.waterExposure() + 20) : Math.max(0, record.waterExposure() - 10);
+        if (player.isInWater()) {
+            RaceService.mutate(player, value -> value.waterExposure(stiffness));
+            add(player, Attributes.MOVEMENT_SPEED, WATER_STIFFNESS, "JEM quenched heart", -0.70D * stiffness / 140.0D, AttributeModifier.Operation.MULTIPLY_TOTAL);
+        }
+    }
+
+    private static void guardian(ServerPlayer player, RaceRecord record) {
+        long now = player.level().getGameTime();
+        if (GUARDIANS.containsKey(player.getUUID()) || !record.ready("guardian", now)) return;
+        IronGolem golem = new IronGolem(net.minecraft.world.entity.EntityType.IRON_GOLEM, player.level());
+        golem.moveTo(player.getX(), player.getY(), player.getZ(), player.getYRot(), 0);
+        golem.setPlayerCreated(true);
+        golem.setCustomName(Component.translatable("jem.roles.guardian"));
+        golem.getPersistentData().putBoolean("JemAncestralGuardian", true);
+        if (player.level().addFreshEntity(golem)) {
+            GUARDIANS.put(player.getUUID(), new Guardian(golem.getUUID(), now + 600));
+            RaceService.mutate(player, value -> value.cooldown("guardian", now + RaceRules.GUARDIAN_COOLDOWN.get()));
+        }
+    }
+
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void hurt(LivingHurtEvent event) {
-        if (event.getEntity() instanceof ServerPlayer victim
-                && RaceApi.effectiveRace(victim.getServer(), victim.getUUID()) == RaceId.ELF
-                && event.getSource().is(net.minecraft.tags.DamageTypeTags.IS_FALL)) {
-            event.setAmount(event.getAmount() * 0.90F);
+        if (!(event.getEntity() instanceof ServerPlayer player)) return;
+        RaceId race = RaceApi.get(player).map(com.siirio.jemroles.api.RaceSnapshot::race).orElse(null);
+        if (race == null) return;
+        if (race == RaceId.BORN_IN_BLOOM && event.getSource().is(DamageTypeTags.IS_FIRE)) event.setAmount(event.getAmount() * 2.0F);
+        if (race == RaceId.NETHER_HEARTEDS && event.getSource().is(DamageTypeTags.IS_FIRE) && !event.getSource().is(LUNGE_BURN)) event.setCanceled(true);
+    }
+
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public static void death(LivingDeathEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player && RaceApi.hasRace(player, RaceId.BORN_IN_BLOOM)) {
+            RaceService.record(player).ifPresent(record -> {
+                long now = player.level().getGameTime();
+                if (RaceEnvironment.green(player.serverLevel(), player.blockPosition()) && record.ready("second_blossom", now)
+                        && player.getY() > player.serverLevel().getMinBuildHeight()) {
+                    event.setCanceled(true);
+                    player.setHealth(player.getMaxHealth() * 0.5F);
+                    player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 100, 4));
+                    RaceService.mutate(player, value -> value.cooldown("second_blossom", now + RaceRules.SECOND_BLOSSOM_COOLDOWN.get()));
+                }
+            });
         }
-        if (event.getSource().getEntity() instanceof ServerPlayer attacker
-                && !(event.getEntity() instanceof net.minecraft.world.entity.player.Player)
-                && event.getSource().getDirectEntity() instanceof AbstractArrow
-                && !(event.getSource().getDirectEntity() instanceof ThrownTrident)
-                && RaceApi.effectiveRace(attacker.getServer(), attacker.getUUID()) == RaceId.ELF
-                && !event.getSource().getDirectEntity().getPersistentData().getBoolean("JemRolesElfHitApplied")) {
-            event.getSource().getDirectEntity().getPersistentData().putBoolean("JemRolesElfHitApplied", true);
-            event.setAmount(event.getAmount() + 1.0F);
+        if (!(event.getSource().getEntity() instanceof ServerPlayer killer) || event.getEntity() instanceof ServerPlayer) return;
+        RaceService.record(killer).ifPresent(record -> {
+            if (record.race() == RaceId.INFECTED_BY_SCULK && event.getEntity() instanceof Enemy)
+                RaceService.mutate(killer, value -> value.resonance(value.resonance() + 10));
+            if (record.race() == RaceId.ANCESTORS && (event.getEntity() instanceof Animal || event.getEntity() instanceof AbstractVillager))
+                RaceService.mutate(killer, value -> value.cooldown("guardian", killer.level().getGameTime() + RaceRules.GUARDIAN_COOLDOWN.get()));
+        });
+    }
+
+    @SubscribeEvent
+    public static void experience(LivingExperienceDropEvent event) {
+        if (event.getEntity().getPersistentData().getBoolean("JemAncestralGuardian")) {
+            event.setDroppedExperience(0);
+            return;
         }
+        if (event.getAttackingPlayer() instanceof ServerPlayer player && RaceApi.hasRace(player, RaceId.INFECTED_BY_SCULK))
+            event.setDroppedExperience((int)Math.floor(event.getDroppedExperience() * 1.15D));
     }
 
     @SubscribeEvent
     public static void trade(net.minecraftforge.event.entity.player.TradeWithVillagerEvent event) {
-        if (!(event.getEntity() instanceof ServerPlayer player)) return;
+        if (!(event.getEntity() instanceof ServerPlayer player)
+                || !RaceApi.hasRace(player, RaceId.ANCESTORS)) return;
         if (net.minecraftforge.fml.ModList.get().isLoaded("jem_economy")
                 && com.siirio.jemroles.compat.economy.CoinTradeRaceBridge.coinPaid(player)) return;
-        if (RaceApi.effectiveRace(player.getServer(), player.getUUID()) != RaceId.HUMAN) return;
         var offer = event.getMerchantOffer();
-        ItemStack cost = offer.getCostA();
-        if (!cost.is(Items.EMERALD) || offer.getResult().is(Items.EMERALD)) return;
-        int discounted = Math.max(1, (int) Math.ceil(cost.getCount() * 0.90D));
-        int refund = cost.getCount() - discounted;
+        var cost = offer.getCostA();
+        if (!cost.is(net.minecraft.world.item.Items.EMERALD) || offer.getResult().is(net.minecraft.world.item.Items.EMERALD)) return;
+        int refund = cost.getCount() - Math.max(1, (int)Math.ceil(cost.getCount() * 0.80D));
         if (refund <= 0) return;
-        ItemStack emeralds = new ItemStack(Items.EMERALD, refund);
+        var emeralds = new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.EMERALD, refund);
         if (!player.getInventory().add(emeralds)) player.drop(emeralds, false);
     }
 
-    private static void markAction(net.minecraft.world.entity.player.Player player) {
-        if (player instanceof ServerPlayer) ACTION_TICK.put(player.getUUID(), player.tickCount);
+    @SubscribeEvent
+    public static void guardianDrops(net.minecraftforge.event.entity.living.LivingDropsEvent event) {
+        if (event.getEntity().getPersistentData().getBoolean("JemAncestralGuardian")) event.getDrops().clear();
     }
 
-    private static void applyDurabilityPrevention(ServerPlayer player, RaceId race) {
-        PendingDurability pending = PENDING_DURABILITY.remove(player.getUUID());
-        if (race != RaceId.DWARF || pending == null) return;
-        ItemStack current = player.getMainHandItem();
-        if (current == pending.stack && current.getDamageValue() > pending.damage && player.getRandom().nextFloat() < 0.10F) {
-            current.setDamageValue(Math.max(pending.damage, current.getDamageValue() - 1));
+    @SubscribeEvent
+    public static void explosion(net.minecraftforge.event.level.ExplosionEvent.Detonate event) {
+        for (Entity entity : event.getAffectedEntities()) {
+            if (!(entity instanceof ServerPlayer player) || !RaceApi.hasRace(player, RaceId.INFECTED_BY_SCULK)) continue;
+            RaceService.record(player).ifPresent(record -> {
+                long now = player.level().getGameTime();
+                if (!record.ready("overload", now)) return;
+                player.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 80, 0, false, true));
+                RaceService.mutate(player, value -> value.cooldown("overload", now + 200));
+            });
         }
     }
 
-    private static void updateModifiers(ServerPlayer player, RaceId race) {
-        var speed = player.getAttribute(Attributes.MOVEMENT_SPEED);
-        if (speed != null) {
-            speed.removeModifier(ELF_SPEED);
-            if (race == RaceId.ELF && player.onGround() && !player.isPassenger() && !player.isSwimming() && !player.isFallFlying()) {
-                speed.addTransientModifier(new AttributeModifier(ELF_SPEED, "JEM elf on-foot speed", 0.10D, AttributeModifier.Operation.MULTIPLY_TOTAL));
-            }
-        }
-        var knockback = player.getAttribute(Attributes.KNOCKBACK_RESISTANCE);
-        if (knockback != null) {
-            knockback.removeModifier(DWARF_KNOCKBACK);
-            if (race == RaceId.DWARF) {
-                knockback.addTransientModifier(new AttributeModifier(DWARF_KNOCKBACK, "JEM dwarf knockback resistance", 0.10D, AttributeModifier.Operation.ADDITION));
-            }
-        }
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public static void target(LivingChangeTargetEvent event) {
+        if (!(event.getNewTarget() instanceof ServerPlayer player)) return;
+        RaceId race = RaceApi.get(player).map(com.siirio.jemroles.api.RaceSnapshot::race).orElse(null);
+        if (race == null) return;
+        LivingEntity actor = event.getEntity();
+        if (race == RaceId.VOID_WALKERS && endKin(actor) && !endBoss(actor)) event.setNewTarget(null);
+        else if (race == RaceId.BORN_IN_BLOOM && RaceEnvironment.green(player.serverLevel(), player.blockPosition()) && !(actor instanceof EnderMan)) event.setNewTarget(null);
+        else if (race == RaceId.NETHER_HEARTEDS && actor instanceof AbstractPiglin) event.setNewTarget(null);
     }
 
-    private record Position(double x, double y, double z) {
-        double distanceSquared(Position other) {
-            double dx = x - other.x;
-            double dy = y - other.y;
-            double dz = z - other.z;
-            return dx * dx + dy * dy + dz * dz;
-        }
+    @SubscribeEvent
+    public static void projectile(ProjectileImpactEvent event) {
+        if (!(event.getProjectile() instanceof ThrownEnderpearl pearl) || !pearl.getPersistentData().getBoolean("JemVoidProjectile")
+                || !(pearl.getOwner() instanceof ServerPlayer player)) return;
+        event.setCanceled(true);
+        BlockPos impact = BlockPos.containing(event.getRayTraceResult().getLocation());
+        BlockPos safe = RaceEnvironment.nearestSafe(player, player.serverLevel(), impact, 5, true).orElse(null);
+        if (safe != null && RaceApi.hasRace(player, RaceId.VOID_WALKERS))
+            player.teleportTo(player.serverLevel(), safe.getX() + 0.5D, safe.getY(), safe.getZ() + 0.5D, player.getYRot(), player.getXRot());
+        pearl.discard();
     }
 
-    private record PendingDurability(ItemStack stack, int damage) {}
+    @SubscribeEvent
+    public static void breakBlock(BlockEvent.BreakEvent event) {
+        if (event.getLevel() instanceof ServerLevel level && event.getState().is(Blocks.OAK_LEAVES)
+                && TemporaryPathSavedData.get(level.getServer()).contains(level.dimension(), event.getPos())) event.setCanceled(true);
+    }
+
+    @SubscribeEvent
+    public static void logout(PlayerEvent.PlayerLoggedOutEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player) RaceAbilities.logout(player);
+    }
+
+    private static void placePath(ServerPlayer player) {
+        BlockPos below = player.blockPosition().below();
+        if (!player.level().getBlockState(below).isAir() || !player.level().getFluidState(below).isEmpty()) return;
+        player.level().setBlock(below, Blocks.OAK_LEAVES.defaultBlockState().setValue(net.minecraft.world.level.block.LeavesBlock.PERSISTENT, true), 3);
+        TemporaryPathSavedData.get(player.getServer()).add(player.level().dimension(), below, player.level().getGameTime() + 800);
+    }
+
+    private static DamageSource lungeBurn(ServerPlayer player) {
+        var holder = player.server.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(LUNGE_BURN);
+        return new DamageSource(holder, player);
+    }
+
+    private static void remove(ServerPlayer player, net.minecraft.world.entity.ai.attributes.Attribute attribute, UUID... ids) {
+        var instance = player.getAttribute(attribute);
+        if (instance != null) for (UUID id : ids) instance.removeModifier(id);
+    }
+
+    private static void add(ServerPlayer player, net.minecraft.world.entity.ai.attributes.Attribute attribute, UUID id, String name,
+                            double amount, AttributeModifier.Operation operation) {
+        var instance = player.getAttribute(attribute);
+        if (instance != null) instance.addTransientModifier(new AttributeModifier(id, name, amount, operation));
+    }
+
+    private static boolean endKin(LivingEntity entity) {
+        String id = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString();
+        return RaceRules.END_KIN_ENTITIES.get().contains(id);
+    }
+
+    private static boolean endBoss(LivingEntity entity) {
+        String id = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString();
+        return entity instanceof EnderDragon || RaceRules.END_BOSS_ENTITIES.get().contains(id);
+    }
+
+    private record Guardian(UUID entity, long expires) {}
+
+    private static final class SafeStore {
+        private static String key(ServerLevel level) { return "JemRaceSafe_" + level.dimension().location().toString().replace(':', '_'); }
+        static void put(ServerPlayer player, ServerLevel level, BlockPos pos) { player.getPersistentData().putLong(key(level), pos.asLong()); }
+        static BlockPos get(ServerPlayer player, ServerLevel level) {
+            String key = key(level);
+            return player.getPersistentData().contains(key) ? BlockPos.of(player.getPersistentData().getLong(key)) : null;
+        }
+    }
 }
