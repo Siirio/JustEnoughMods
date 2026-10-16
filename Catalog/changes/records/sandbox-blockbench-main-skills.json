@@ -1,0 +1,100 @@
+{
+  "schema_version": 2,
+  "change_id": "sandbox-blockbench-main-skills",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "jem_visual_sandbox"
+    }
+  ],
+  "conditions": [
+    {
+      "scope": "Explicit standalone jem sandbox only, integrated singleplayer owner; no dedicated server or canonical pack installation."
+    }
+  ],
+  "precedence": {
+    "layer": "client_presentation",
+    "priority": 11
+  },
+  "change": {
+    "summary": "Replace sandbox main-skill VFX with native Blockbench models, using V to execute source-derived race signatures with unlimited selection and no cooldowns.",
+    "modifiers": [
+      {
+        "property": "sandbox.main_skill_blockbench",
+        "operation": "add",
+        "before": "Standalone has demo galleries and F9 Bloom R3; no actual signature keybind or free server-owned race selection.",
+        "after": "F6 selects any race repeatedly, V executes tier-3 signatures on the integrated server and emits only Blockbench replacement models. Ancestors shield R7, Void R6, Bloom coffer R4, Sculk crawl R4, Nether R6. No selection lock/cooldown; target and safe-teleport prerequisites retained. Infernal damage synchronized to authored impacts at ticks4/10/16. All authored sources bundled."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Mods/JEMVisualSandboxR3",
+    "kind": "isolated_sandbox_main_skills",
+    "source_files": [
+      "Mods/JEMVisualSandboxR3/build.gradle",
+      "Mods/JEMVisualSandboxR3/prepare.py",
+      "Mods/JEMVisualSandboxR3/bake-workbench.mjs",
+      "Mods/JEMVisualSandboxR3/generate-skills.py",
+      "Mods/JEMVisualSandboxR3/snapshot-sources.py",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/BlockbenchWorkbench.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/WorkbenchMesh.java",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/coffer-0.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/coffer.mesh",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/nether-0.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/nether-1.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/nether-2.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/nether.mesh",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/provenance.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/sculk-0.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/sculk.mesh",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/shield-0.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/shield.mesh",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/void-0.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/void-1.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/void.mesh",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/en_us.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/ru_ru.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Use new Blockbench art as the actual main-skill output in the requested sandbox rather than an unrelated gallery.",
+    "decision_source": "User requested a sandbox mod with actual keybinds, repeatable race switching, no cooldowns and all Blockbench work, then explicitly corrected that these effects must replace old VFX as main skills. Codex chose a source-derived standalone adapter to canonical JEMRoles signature methods, server-owned selection/casts, native OBJ animation exports and a bundled editable archive."
+  },
+  "introduced": {
+    "date": "2026-10-17",
+    "commit": "SELF",
+    "action": "add",
+    "summary": "Sandbox-only replacement main-skill integration, all editable work archived."
+  },
+  "history": [
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "add",
+      "summary": "Sandbox-only replacement main-skill integration, all editable work archived."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "standalone sandbox",
+      "race selection",
+      "signature mechanics",
+      "main-skill VFX",
+      "client input"
+    ],
+    "relations": [],
+    "notes": [
+      "No production JEMRoles source or canonical Server/Client/ManagedPack artifact changes. Native AutoModpack publication unchanged.",
+      "The sandbox build extracts signature mechanics from canonical JEMRoles source; no independently maintained copy of production gameplay rules. Tier3, no account/selection/cooldown gates, and native-clip impact synchronization are explicit sandbox differences.",
+      "Existing F8 gallery remains historical evidence; the main V key never emits old particle VFX."
+    ],
+    "unresolved": [
+      "Game was not launched. Actual key press, hit results, teleport and visual acceptance remain unobserved.",
+      "This sandbox adapter does not install the full JEMRoles passives, utilities, account system or progression.",
+      "Authored pose samples are20Hz; world placement, interpolation, shaders and Minecraft rendering need manual runtime acceptance."
+    ]
+  }
+}

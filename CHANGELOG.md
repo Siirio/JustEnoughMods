@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-17 — Blockbench models replace sandbox main-skill VFX
+
+- User request: ship the Blockbench work in `jem sandbox`, allow repeatable race switching and no cooldowns. Explicit correction: these models replace old VFX as actual main skills, not merely gallery previews.
+- Implementation chosen by Codex: F6 free race selection and V signature cast; integrated-server validation and persisted sandbox-only selection. Extract canonical JEMRoles signature methods at build time, retaining healing, targeted rift ambush, roots/damage, connected-sculk teleport and Infernal damage. Sandbox uses tier3 with no account/choice/cooldown gates; Infernal gameplay impacts synchronize to native animation ticks4/10/16. Emit new Blockbench models instead of old VFX. Preserve standalone F8 history and F9 study without using them as the main skill path.
+- Ship shield R7, coffer R4, sculk crawl R4, Void/Nether R6 and additional Bloom R3. Native Blockbench OBJ pose exports preserve original painted UV materials; core materials remain luminous. Bundle53 editable authored models plus available ORA/layer textures, with rejected studies clearly archived. Preserve original tutorials/references. Record this integration correction as Taste Engine learning L003.
+- Validation: production jar/reobfJar and exact-base preservation/install checks; Atlas status recorded in the module handoff. No tests or game launch. Main-skill runtime behavior and visual acceptance remain unobserved; full JEMRoles passives/utilities/account progression are not included in this isolated adapter. Canonical Client/ManagedPack, ordinary Server artifacts, stable profiles, MineRENT and AutoModpack publication are unchanged.
+
 ## 2026-10-17 — Replace creamy Infernal colors with a magma palette
 
 - User direction: use more magma-like colors instead of creamy colors. Keep the previously requested whole-perimeter gradient and three successive strikes.

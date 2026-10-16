@@ -52,6 +52,15 @@ def compose(base):
                     output.writestr(copy.copy(entry), original.read(entry.filename))
             for name, data in sorted(additions.items()):
                 output.writestr(name, data)
+            sources = HERE.parent.parent / "Docs/races/assets/sandbox-workbench-sources"
+            archive = target.parent / "blockbench-editable-sources.zip"
+            if not (sources / "manifest.json").is_file():
+                raise FileNotFoundError("Snapshot the authored Blockbench sources before composing")
+            with zipfile.ZipFile(archive, "w", zipfile.ZIP_DEFLATED) as editable:
+                for source in sorted(sources.rglob("*")):
+                    if source.is_file():
+                        editable.write(source, source.relative_to(sources).as_posix())
+            output.write(archive, "assets/jem_visual_sandbox/sources.zip")
         with zipfile.ZipFile(target) as output:
             preserved = [n for n in original.namelist() if n not in collisions]
             if any(output.read(n) != original.read(n) for n in preserved):
@@ -84,7 +93,7 @@ def install(target, profile):
         "installedSha256": sha256(installed), "baseSha256": BASE_SHA256,
         "backup": str(backup / installed.name), "installedAt": datetime.datetime.now().astimezone().isoformat(),
         "sourceOwner": "Mods/JEMVisualSandboxR3", "gameLaunched": False,
-        "scope": "standalone visual sandbox only; no canonical pack or gameplay change"}
+        "scope": "standalone sandbox main skills only; canonical pack and production gameplay unchanged"}
     (backup / "installation.json").write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     (HERE / "build/installation.json").write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return record

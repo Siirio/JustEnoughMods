@@ -1,5 +1,64 @@
 # Bloom R3 — isolated sandbox extension
 
+## Current sandbox main skills — 2026-10-17
+
+The user corrected the initial gallery interpretation: Blockbench effects must
+replace old VFX on the actual main-skill key. This section supersedes the older
+R3-only installation record below.
+
+- **F6**: choose any of five races, repeatedly, including the same race. Selection
+  is stored by the integrated server in sandbox player data and acknowledged to UI.
+- **V**: execute the selected race signature, tier3, with no cooldown or account/
+  one-time choice gate. This is a remappable Minecraft keybinding.
+- Ancestors: canonical Life Chorus healing/absorption, shield R7.
+- Void: canonical targeted safe Rift Ambush teleport/attack, Void R6 at both ends.
+- Bloom: canonical roots/damage on nearby non-animal targets, coffer R4.
+- Sculk: canonical connected-sculk traversal with safe exit, crawl R4 along its path.
+- Nether: canonical Infernal damage/fire/knockback/zone with R6 three-impact model.
+  Sandbox impact times4/10/16 ticks match the authored .18/.50/.82s sequence.
+- Targeting and safe-arrival prerequisites remain. Void/Nether need a living target;
+  Bloom needs nearby targets; Sculk needs connected sculk and a safe distant exit.
+- **[ / ]**, **F10**: optional study selection/playback; F8 old galleries and F9 R3
+  are historical tools. V uses only the new Blockbench emission route.
+
+`generate-skills.py` extracts the actual signature helper methods and environment
+checks from canonical `Mods/JEMRoles` at build time. That source remains the only
+maintained gameplay owner; the generated adapter supplies sandbox selection,
+tier3, no cooldown and replacement emission. It does not install full JEMRoles
+passives, utility skills, account authentication or progression.
+
+`bake-workbench.mjs` uses both installed MCP servers: headless source inspection/
+opening, then desktop native animated OBJ export at20Hz. Original UVs and external
+painted texture bytes are retained. Core textures are fullbright; other material
+surfaces use world lighting. At most64 simultaneous model instances, no casting
+cooldown; expired instances and world state are cleared. Server validates solo
+owner and computes origins/targets; input packets contain no position/damage.
+
+`Docs/races/assets/sandbox-workbench-sources` snapshots53 authored .bbmodel files
+and available ORA, texture and layer sources (199 files). Rejected models remain
+labelled archival studies. `snapshot-sources.py` preserves originals and excludes
+original tutorials/reference artwork. `prepare.py` bundles this snapshot inside
+the JAR at `assets/jem_visual_sandbox/sources.zip` and also produces
+`build/distributions/blockbench-editable-sources.zip` beside the distributable.
+
+Rebuild: `python snapshot-sources.py`, `node bake-workbench.mjs` if authored assets
+changed, then the Java17 Gradle `jar` task (includes `reobfJar`) and `prepare.py`
+against the pinned original base. Preserve the original standalone base; all its
+classes/assets remain byte-identical except additive language-key merges.
+
+Installed SHA256: `e62e7764bde142e6981a636576482d129dfcc6f898921e8e31757c1a71b685a7`.
+Editable source/model hashes, native screenshots, generated-gameplay provenance
+and installation receipt: `Docs/races/assets/sandbox-workbench-evidence` and
+`src/main/resources/assets/jem_visual_sandbox/workbench/provenance.json`.
+
+Production jar/reobfJar succeeded; composition verified preservation and exact
+installed-file equality. No automated tests or game launch. Actual V/F6 input,
+teleport/damage results, shader compatibility and runtime art acceptance remain
+unobserved. Native Blockbench screenshots are editor evidence, not game footage.
+Canonical Client/ManagedPack, ordinary Server artifacts, stable profiles,
+MineRENT and AutoModpack publication are unchanged.
+
+
 Installed only in the explicitly requested TLauncher profile **jem sandbox**.
 Open a solo world, look at the top of a block within eight blocks, and press
 **F9**. The R3 candidate plays at that fixed point every three seconds. Press
@@ -71,3 +130,6 @@ base, not the already extended output. The base binary is not stored in Git.
 
 Connecting R3 for review is not user approval of its final appearance. The
 existing editor GIF is still editor evidence; Minecraft footage is pending.
+
+Atlas validation passed; all17 watched current-task paths are covered. The two
+pre-existing JEMRoles line-ending warnings remain outside this task.
