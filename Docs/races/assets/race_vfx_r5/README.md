@@ -1,5 +1,10 @@
 # Race VFX R5 — selected M-C geometry / T-A painting
 
+**Superseded composition study:** the user subsequently rejected applying the
+outward example to all races. Current independently composed candidates and
+Infernal1-2-3 timing/perimeter gradient are in [R6](../race_vfx_r6/README.md).
+The material/craft selections remain; the shared outward layout is historical.
+
 State: **SOURCE_EDITABLE / PRE-INSTALL CANDIDATES / USER APPROVAL PENDING**.
 Scope remains `jem sandbox` only. No runtime files, production ability logic,
 GUI classes, installed JARs, worlds or native AutoModpack generation changed.

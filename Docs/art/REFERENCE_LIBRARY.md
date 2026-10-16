@@ -21,6 +21,12 @@ At original delivery R3 was SOURCE_EDITABLE and pre-install. The user subsequent
 
 ## M-C / T-A calibration and R5
 
+Subsequent correction: [R6 pattern/source review](../races/assets/race_vfx_r6/README.md)
+supersedes applying the outward example to all races. It is Infernal-specific,
+with three successive strikes and bright upper side faces around the full
+perimeter grading downward. New shield/separation/branch/enclosure analogues
+are researched proposals, not approved general preferences.
+
 The21 supplied model references and giant-gnome benchmark are owned by
 `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/Models/Reference/`.
 The selected benchmark is M-C geometry plus T-A painting; all other complete

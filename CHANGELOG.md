@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-17 — Give each race a distinct VFX composition and refine Infernal timing
+
+- User correction: the outward cluster was one example, appropriate to Infernal Eruption here, and must not be applied to every race. Search several visual patterns and use different ones. Subsequent user directions require three successive Infernal strikes and a bright upper exterior fading darker toward the base around the whole perimeter, explicitly all side faces rather than only top caps.
+- Implementation decisions by Codex: research and inspect raised-shield, open-shulker, mangrove-root and spreading-sculk images; propose a forward interlocking shield fan, compressed horizontal split, branching ground crawl and inward woody bower for the other four races. Build real editable R6 cuboid models, UV materials, ORA sources and45 native20Hz frames per2.2s clip. Infernal strikes around0.18/0.50/0.82s; all four exterior side faces share a whole-column thermal gradient without resetting at cuboid joins. Correct the preview's front-camera convention so forward inlays are visible.
+- Persistent workflow correction: update the owning Taste Engine Pairs, request template and navigator; distinguish reusable angular construction/material craft from effect-specific composition, lighting and timing. New web examples are proposals, not inferred user taste. Full painting E remains rejected except for the previously scoped hat/boot lessons.
+- Delivery remains pre-install art review. No gameplay, GUI, Java, build, tests, game launch, JAR installation, ordinary Server/Client synchronization or native publication. Installed sandbox R3 and published AutoModpack generation18 remain unchanged.
+
 ## 2026-10-17 — Apply selected model C and painting A to race VFX candidates
 
 - User direction: select giant-gnome model C for angular rotated/resized cuboids and precise unequal horizontal/vertical layering, and painting A for intentional readable materials. Connect major masses, lean eruption heads outward, use lighter/selectively luminous tops and darker bases, add sparse attached growths, and give meaningful thin parts distinct materials. Full E remains rejected; only hat painting and biome-grounded mossy boots are scoped exceptions. Classify other full benchmark candidates as negative and create a reusable AI request template.

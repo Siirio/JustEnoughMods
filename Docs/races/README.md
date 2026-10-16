@@ -1,6 +1,12 @@
 # JEM Races
 
-Art review update,2026-10-17: [R5 race candidates](assets/race_vfx_r5/README.md)
+Art review update,2026-10-17: [R6 distinct-pattern candidates](assets/race_vfx_r6/README.md)
+supersede R5's repeated outward composition. Infernal now uses three successive
+strikes with a light upper perimeter on all four exterior sides grading to a
+dark base. Other proposals use forward shields, a split slit, a branching
+ground network and an inward bower. These remain pre-install candidates.
+
+Historical review: [R5 race candidates](assets/race_vfx_r5/README.md)
 apply the user's selected M-C angular construction and T-A painting. Five
 editable models, native UV materials, ORA sources and genuine Blockbench
 moving previews are ready **before installation**. Full E remains negative,
