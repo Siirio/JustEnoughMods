@@ -33,6 +33,7 @@ public final class MarketScreen extends Screen {
     private int exchangeCount = 10;
     private int left, top, panelWidth, panelHeight;
     private boolean categoriesOpen;
+    private int catalogScrollRows, maxCatalogScrollRows;
 
     MarketScreen(Screen parent, MarketCatalogSnapshot data) {
         super(Component.translatable("jem.economy.market.title"));
@@ -41,6 +42,7 @@ public final class MarketScreen extends Screen {
     }
 
     void accept(MarketCatalogSnapshot next) {
+        if (data.page() != next.page() || !data.search().equals(next.search()) || !data.category().equals(next.category())) catalogScrollRows = 0;
         data = next;
         if (search != null && !search.isFocused() && !search.getValue().equals(next.search())) search.setValue(next.search());
     }
@@ -95,22 +97,31 @@ public final class MarketScreen extends Screen {
         categoryButton(g, categoryX, top + 72, 90, data.category(), () -> categoriesOpen = !categoriesOpen);
         int contentTop = top + 96, bottom = top + panelHeight - 22;
         int columns = Math.max(2, Math.min(4, panelWidth / 102));
-        int gap = 4, cardWidth = (panelWidth - 16 - gap * (columns - 1)) / columns, cardHeight = 58;
+        int gap = 4, cardWidth = (panelWidth - 16 - gap * (columns - 1)) / columns, cardHeight = 70;
         List<MarketItemSnapshot> filtered = data.items().stream().filter(row -> search.getValue().isBlank()
                 || row.stack().getHoverName().getString().toLowerCase(Locale.ROOT).contains(search.getValue().toLowerCase(Locale.ROOT))
                 || row.id().toString().contains(search.getValue().toLowerCase(Locale.ROOT))).toList();
+        int visibleRows = Math.max(1, (bottom - contentTop + gap) / (cardHeight + gap));
+        maxCatalogScrollRows = Math.max(0, (filtered.size() + columns - 1) / columns - visibleRows);
+        catalogScrollRows = Math.max(0, Math.min(catalogScrollRows, maxCatalogScrollRows));
         for (int index = 0; index < filtered.size(); index++) {
-            int row = index / columns, column = index % columns, y = contentTop + row * (cardHeight + gap);
+            int row = index / columns - catalogScrollRows, column = index % columns, y = contentTop + row * (cardHeight + gap);
+            if (row < 0) continue;
             if (y + cardHeight > bottom) break;
             int x = left + 8 + column * (cardWidth + gap); MarketItemSnapshot item = filtered.get(index);
             g.fill(x, y, x + cardWidth, y + cardHeight, INNER); g.fill(x, y, x + cardWidth, y + 1, 0xFF805438);
             g.renderItem(item.stack(), x + 5, y + 5);
             g.drawString(font, font.plainSubstrByWidth(item.stack().getHoverName().getString(), cardWidth - 28), x + 25, y + 6, CREAM, false);
-            renderPrice(g, item.buyCopper(), x + 5, y + 24, cardWidth - 10);
+            g.drawString(font, "↓", x + 4, y + 24, MUTED, false);
+            CoinPriceRenderer.draw(g, font, item.sellCopper(), x + 14, y + 20, cardWidth - 19, MUTED);
+            g.drawString(font, "↑", x + 4, y + 39, CREAM, false);
+            CoinPriceRenderer.draw(g, font, item.buyCopper(), x + 14, y + 35, cardWidth - 19, CREAM);
+            if (mouseX >= x && mouseX < x + cardWidth && mouseY >= y + 20 && mouseY < y + 51)
+                g.renderTooltip(font, Component.translatable(mouseY < y + 35 ? "jem.economy.market.sell" : "jem.economy.market.buy"), mouseX, mouseY);
             int half = (cardWidth - 13) / 2;
-            button(g, x + 5, y + 40, half, 14, Component.translatable("jem.economy.market.buy"),
+            button(g, x + 5, y + 53, half, 14, Component.translatable("jem.economy.market.buy"),
                     () -> EconomyNetwork.marketAction(MarketActionPacket.Action.BUY, item.id(), 1, data.revision(), data.search(), data.category(), data.page()));
-            button(g, x + 8 + half, y + 40, half, 14, Component.translatable("jem.economy.market.sell"),
+            button(g, x + 8 + half, y + 53, half, 14, Component.translatable("jem.economy.market.sell"),
                     () -> EconomyNetwork.marketAction(MarketActionPacket.Action.SELL, item.id(), 1, data.revision(), data.search(), data.category(), data.page()));
         }
         button(g, left + 8, top + panelHeight - 19, 44, 14, Component.literal("<"), () -> queryPage(data.page() - 1));
@@ -170,17 +181,6 @@ public final class MarketScreen extends Screen {
         }
     }
 
-    private void renderPrice(GuiGraphics g, long price, int x, int y, int width) {
-        long remaining = price; int dx = x;
-        for (CoinDenomination denomination : CoinDenomination.descending()) {
-            long count = remaining / denomination.value(); remaining %= denomination.value();
-            if (count <= 0) continue;
-            g.renderItem(new ItemStack(EconomyItems.item(denomination)), dx, y - 3);
-            g.drawString(font, "×" + count, dx + 14, y + 2, MUTED, false); dx += 28 + font.width(Long.toString(count));
-            if (dx > x + width - 22) break;
-        }
-    }
-
     private void tab(GuiGraphics g, int x, int y, int w, Component label, boolean active, Runnable action) {
         g.fill(x, y, x + w, y + 18, active ? 0xFF70482F : 0xFF493226); if (active) g.fill(x, y + 16, x + w, y + 18, EDGE);
         g.drawCenteredString(font, label, x + w / 2, y + 5, active ? CREAM : MUTED); hits.add(new Hit(x, y, w, 18, action));
@@ -196,6 +196,13 @@ public final class MarketScreen extends Screen {
     @Override public boolean mouseClicked(double mouseX, double mouseY, int button) {
         if (button == 0) { var current = List.copyOf(hits); for (int i = current.size() - 1; i >= 0; i--) { Hit hit = current.get(i); if (hit.contains(mouseX, mouseY)) { hit.action.run(); return true; } } }
         return super.mouseClicked(mouseX, mouseY, button);
+    }
+    @Override public boolean mouseScrolled(double mouseX, double mouseY, double delta) {
+        if (!exchange && mouseY >= top + 96 && mouseY < top + panelHeight - 22) {
+            catalogScrollRows = Math.max(0, Math.min(maxCatalogScrollRows, catalogScrollRows - (int) Math.signum(delta)));
+            return true;
+        }
+        return super.mouseScrolled(mouseX, mouseY, delta);
     }
     @Override public void onClose() { Minecraft.getInstance().setScreen(parent); }
     private record Hit(int x, int y, int width, int height, Runnable action) { boolean contains(double mx, double my) { return mx >= x && mx < x + width && my >= y && my < y + height; } }

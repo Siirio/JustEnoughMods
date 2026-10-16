@@ -13,7 +13,7 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceLocation;
 
-public final class TownRecord {
+public final class TownRecord implements com.siirio.jemsettlements.payroll.PayrollBook {
     public static final int CURRENT_SCHEMA = 6;
     private final UUID id;
     private final UUID owner;
@@ -75,7 +75,7 @@ public final class TownRecord {
     public void taxPercent(int value) { if (value != 0 && value != 5 && value != 10 && value != 15) throw new IllegalArgumentException("Unsupported tax rate"); taxPercent = value; }
     public boolean addStorage(StorageLink link) { return storage.stream().noneMatch(value -> value.dimension().equals(link.dimension()) && value.position().equals(link.position())) && storage.size() < 64 && storage.add(link); }
     public boolean setStorageFeed(StorageLink link, boolean enabled) { for (int i = 0; i < storage.size(); i++) { StorageLink current = storage.get(i); if (current.dimension().equals(link.dimension()) && current.position().equals(link.position())) { storage.set(i, current.withFeedResidents(enabled)); return true; } } return false; }
-    public void initializePayroll(long gameTime) { if (payrollEpoch == 0L) { payrollEpoch = gameTime; nextPayrollGameTime = Math.addExact(gameTime, 168_000L); nextPayrollIndex = 0L; } }
+    public void initializePayroll(long gameTime) { if (nextPayrollGameTime == 0L) { payrollEpoch = gameTime; nextPayrollGameTime = Math.addExact(gameTime, 168_000L); nextPayrollIndex = 0L; } }
     public void schedule(PayrollPeriod period) { payroll.add(period); while (payroll.size() > 32 && payroll.get(0).paid()) payroll.remove(0); nextPayrollIndex = period.index() + 1L; nextPayrollGameTime = Math.addExact(period.dueGameTime(), 168_000L); }
     public void payrollMissed() { consecutiveMissedPayrolls = Math.min(8, consecutiveMissedPayrolls + 1); }
     public void payrollRecovered() { if (payroll.stream().allMatch(PayrollPeriod::paid)) consecutiveMissedPayrolls = 0; }

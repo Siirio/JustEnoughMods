@@ -1,0 +1,289 @@
+{
+  "schema_version": 2,
+  "change_id": "settlements.economy-hiring-weekly-payroll",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "entities",
+      "value": "recruits"
+    },
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "minecraft:bell"
+    },
+    {
+      "type": "namespace",
+      "registry": "items",
+      "value": "jem_economy"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Authenticated dedicated SMP for economy and shared-server gameplay; compatible client only renders server quotes",
+      "confidence": "source"
+    },
+    {
+      "runtime": "Native Recruits rank must be supported by RecruitRank, valid authenticated employer/group and actual hire ownership contract; unsupported entities are not enrolled by namespace alone",
+      "confidence": "source"
+    }
+  ],
+  "precedence": {
+    "layer": "jem_settlements",
+    "priority": 440,
+    "overrides": [
+      "settlements.update-1"
+    ]
+  },
+  "change": {
+    "summary": "Native Recruits charge actual Coin hiring and seven-day per-contract wages; persistent three-missed-period rebellion and paid atomic founding/area expansion reuse canonical owners.",
+    "modifiers": [
+      {
+        "property": "recruits:recruit.settlement_payroll_loyalty",
+        "operation": "replace",
+        "before": {
+          "value": "Town roster/global schedule and earlier missed-period bookkeeping; standalone employers lacked equivalent payroll ownership"
+        },
+        "after": {
+          "period_ticks": 168000,
+          "schedule": "Per-contract next payday from actual hire/adoption, monotonically advanced gameTime; frozen roster/amount/generation per period",
+          "payment": "Existing Economy town treasury or authenticated employer Wallet",
+          "misses": "Actual distinct unpaid-period identities; paying one removes only that miss",
+          "rebellion": "Three actual insufficient-funds periods; persists death/chunk/restart/disband; native defeat then paid rehire required",
+          "replay": "Stable transfer receipt plus saved contract generation; no double week charge"
+        }
+      },
+      {
+        "property": "economy.native_recruit_hire",
+        "operation": "replace",
+        "before": {
+          "value": "Native configured emerald cost/payment and client-supplied Noble terms"
+        },
+        "after": {
+          "value": "Exact installed native cap/Hired cancellation/group/faction behavior retained; server computes configurable rank/level hire Coin cost and performs existing Economy debit before native ownership/spawn; validates Noble list/stock/group/config; failed hire consumes no stock"
+        }
+      },
+      {
+        "property": "settlements.founding_cost",
+        "operation": "replace",
+        "before": {
+          "value": "Founding lacked current Coin charge"
+        },
+        "after": {
+          "default_copper": 300,
+          "source": "SettlementEconomyConfig",
+          "validation": "Name,bell,distance,overlap before payment; no town on failure"
+        }
+      },
+      {
+        "property": "jem_economy:coin.settlement_expansion",
+        "operation": "replace",
+        "before": {
+          "value": "Physical marginal-area rule existed; alternate legacy radius path could differ"
+        },
+        "after": {
+          "cost_copper_per_added_block": 1,
+          "payment": "Existing exact backed physical Coins",
+          "geometry": "Shared bounded rectangular union; no shrink/no-op debit; exact bounds/request receipt binding",
+          "deletion": "Outstanding payroll prevents deletion; remaining employment transfers to personal roster preserving payday"
+        }
+      },
+      {
+        "property": "settlements.coin_quote_protocol",
+        "operation": "replace",
+        "before": {
+          "version": 3
+        },
+        "after": {
+          "version": 4,
+          "value": "Server founding/hire/wage/Noble/workforce/treasury/expansion-rate projections; exact matching client/server JAR; native monetary cells render only"
+        }
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMEconomy/JEMSettlements/JEMServer",
+    "kind": "user_requested_complete_economy_overhaul",
+    "source_files": [
+      "Mods/JEMSettlements/build.gradle",
+      "Mods/JEMSettlements/settings.gradle",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/JemSettlements.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/HireQuoteClient.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/NobleQuoteClient.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/TownFoundingScreen.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitHiringService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitRebellionService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/NobleHiringMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/NobleQuoteMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/NobleTradeListEntryMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/NobleTradeScreenMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitCurrencyMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitHireScreenMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitHiringMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/HireQuotePacket.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/NobleQuotePacket.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/EmployerPayroll.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollBook.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollClock.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollPeriod.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/RecruitRank.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/SettlementEconomyConfig.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/SettlementSavedData.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TerritoryQuote.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownRecord.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/workforce/WorkforceRecord.java",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+      "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/recruits/RecruitProjection.java",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json",
+      "Client/ManagedPack/mods/jem-settlements-2.0.0.jar",
+      "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar"
+    ]
+  },
+  "rationale": {
+    "purpose": "Native Recruits charge actual Coin hiring and seven-day per-contract wages; persistent three-missed-period rebellion and paid atomic founding/area expansion reuse canonical owners.",
+    "decision_source": "Direct user complete economy overhaul brief 2026-10-16; Docs/economy/overhaul-implementation.md",
+    "user_requested": "Implement complete fair two-way Market/native professions, individual villagers, real exact Coin icons, native recruit hiring/seven-day wages/three missed weeks, paid settlements; preserve prior exclusions and native interfaces.",
+    "codex_choices": "Exact editable prices/caps, acquisition-based admitted sets, transaction keys, safe discount floors, per-contract payroll schedule and client adapters are implementation/balance choices documented in owning source and final economy report."
+  },
+  "introduced": {
+    "date": "2026-10-16",
+    "commit": "SELF",
+    "action": "complete_economy_overhaul",
+    "summary": "Native Recruits charge actual Coin hiring and seven-day per-contract wages; persistent three-missed-period rebellion and paid atomic founding/area expansion reuse canonical owners.",
+    "source_files": [
+      "Mods/JEMSettlements/build.gradle",
+      "Mods/JEMSettlements/settings.gradle",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/JemSettlements.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/HireQuoteClient.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/NobleQuoteClient.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/TownFoundingScreen.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitHiringService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitRebellionService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/NobleHiringMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/NobleQuoteMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/NobleTradeListEntryMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/NobleTradeScreenMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitCurrencyMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitHireScreenMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitHiringMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/HireQuotePacket.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/NobleQuotePacket.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/EmployerPayroll.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollBook.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollClock.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollPeriod.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/RecruitRank.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/SettlementEconomyConfig.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/SettlementSavedData.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TerritoryQuote.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownRecord.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/workforce/WorkforceRecord.java",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+      "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/recruits/RecruitProjection.java",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json",
+      "Client/ManagedPack/mods/jem-settlements-2.0.0.jar",
+      "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-16",
+      "commit": "SELF",
+      "action": "complete_economy_overhaul",
+      "summary": "Native Recruits charge actual Coin hiring and seven-day per-contract wages; persistent three-missed-period rebellion and paid atomic founding/area expansion reuse canonical owners.",
+      "source_files": [
+        "Mods/JEMSettlements/build.gradle",
+        "Mods/JEMSettlements/settings.gradle",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/JemSettlements.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/HireQuoteClient.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/NobleQuoteClient.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/TownFoundingScreen.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitHiringService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitRebellionService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/NobleHiringMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/NobleQuoteMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/NobleTradeListEntryMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/NobleTradeScreenMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitCurrencyMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitHireScreenMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitHiringMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/HireQuotePacket.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/NobleQuotePacket.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/EmployerPayroll.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollBook.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollClock.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollPeriod.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/RecruitRank.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/SettlementEconomyConfig.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/SettlementSavedData.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TerritoryQuote.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownRecord.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/workforce/WorkforceRecord.java",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+        "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/recruits/RecruitProjection.java",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json",
+        "Client/ManagedPack/mods/jem-settlements-2.0.0.jar",
+        "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "economy",
+      "settlements",
+      "recruits",
+      "payroll",
+      "native_combat",
+      "native_groups",
+      "territory",
+      "network",
+      "smp_ui"
+    ],
+    "relations": [
+      "Recruits retains combat/equipment/groups/caps; SettlementSavedData retains workforce/payroll/territory; Economy retains account/cash transfers.",
+      "Native hire alone admits employment; grandfathered previously hired troops pay no invented historical hire fee and begin a future seven-day period.",
+      "No wages tax recruits; real employer/town funds pay actual wages. Native disband stops future employment, not past rebellion identity.",
+      "Per-period unpaid identity survives out-of-order arrears payments and legacy-journal recovery; defeat and paid rehire start a new contract generation.",
+      "Protected expansion marginal-area price remains unchanged; editable rank/hiring/founding defaults are Codex balance choices, seven-day and three-miss semantics are user requirements."
+    ],
+    "notes": [
+      "Recruits retains combat/equipment/groups/caps; SettlementSavedData retains workforce/payroll/territory; Economy retains account/cash transfers.",
+      "Native hire alone admits employment; grandfathered previously hired troops pay no invented historical hire fee and begin a future seven-day period.",
+      "No wages tax recruits; real employer/town funds pay actual wages. Native disband stops future employment, not past rebellion identity.",
+      "Per-period unpaid identity survives out-of-order arrears payments and legacy-journal recovery; defeat and paid rehire start a new contract generation.",
+      "Protected expansion marginal-area price remains unchanged; editable rank/hiring/founding defaults are Codex balance choices, seven-day and three-miss semantics are user requirements."
+    ],
+    "unresolved": [
+      "Client visual acceptance, all native spawn/conversion variants and deliberate process-crash durability remain unresolved until independently observed; test/build evidence is not player approval."
+    ]
+  }
+}

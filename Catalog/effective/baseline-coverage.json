@@ -2,17 +2,17 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "a4a8d104fca5a9e07f545e6a1e93728cf5d5ee2a102804f43494eb2f5b2259d2",
+  "change_records_sha256": "ff4adf06aa0273d8758b6aeac0c08195cda4fb9e10708f58db23e419eb5f22f9",
   "totals": {
     "watched": 3224,
-    "covered": 254,
-    "unresolved": 2970
+    "covered": 261,
+    "unresolved": 2963
   },
   "groups": {
     "Client/ManagedPack/config": {
       "watched": 1418,
-      "covered": 53,
-      "unresolved": 1365,
+      "covered": 54,
+      "unresolved": 1364,
       "unresolved_paths": [
         "Client/ManagedPack/config/Barnyard Buddies Config.toml",
         "Client/ManagedPack/config/CoroUtil/General.toml",
@@ -1345,7 +1345,6 @@
         "Client/ManagedPack/config/tumbleweed-common.toml",
         "Client/ManagedPack/config/vanillabackport-client.toml",
         "Client/ManagedPack/config/vanillabackport-common.toml",
-        "Client/ManagedPack/config/vinery.toml",
         "Client/ManagedPack/config/visuality/config.toml",
         "Client/ManagedPack/config/visuality/particle_emitters/block_ambient.json",
         "Client/ManagedPack/config/visuality/particle_emitters/block_step.json",
@@ -1463,12 +1462,11 @@
     },
     "Mods/JEMCompat": {
       "watched": 67,
-      "covered": 1,
-      "unresolved": 66,
+      "covered": 3,
+      "unresolved": 64,
       "unresolved_paths": [
         "Mods/JEMCompat/gradle.properties",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/advancement/AdvancementAwards.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/AdvancementScreenEvents.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/CuratedItemTooltips.java",
@@ -1530,7 +1528,6 @@
         "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/not_weapons.json",
         "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/transport.json",
         "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/weapons.json",
-        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
         "Mods/JEMCompat/src/main/resources/pack.mcmeta"
       ]
     },
@@ -2917,12 +2914,10 @@
     },
     "Mods/JEMSettlements": {
       "watched": 48,
-      "covered": 19,
-      "unresolved": 29,
+      "covered": 23,
+      "unresolved": 25,
       "unresolved_paths": [
         "Mods/JEMSettlements/gradle.properties",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/JemSettlements.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/TownFoundingScreen.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/collection/MountCollectionService.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/collection/MountRoster.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/collection/PlayerMountCollectionSavedData.java",
@@ -2937,8 +2932,6 @@
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/TownFoundPacket.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/TownViewPacket.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/TreasuryActionPacket.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollPeriod.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/RecruitRank.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/AmenitySnapshot.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/simulation/ProductionObligation.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/simulation/SettlementSimulationState.java",

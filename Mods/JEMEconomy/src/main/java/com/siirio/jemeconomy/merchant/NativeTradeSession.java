@@ -111,6 +111,8 @@ public final class NativeTradeSession {
             if (!second.isEmpty()) return false;
             second = offer.getCostB();
         }
+        if (NativeItemPricing.usesWineAging(offer.getCostA()) && !NativeItemPricing.matchesGoods(offer.getCostA(), first)) return false;
+        if (NativeItemPricing.usesWineAging(offer.getCostB()) && !NativeItemPricing.matchesGoods(offer.getCostB(), second)) return false;
         return offer.satisfiedBy(first, second);
     }
     public void autoFill(int index) {
@@ -128,7 +130,10 @@ public final class NativeTradeSession {
             if (required.isEmpty()) continue;
             ItemStack moved = required.copy(); moved.setCount(0);
             for (ItemStack stack : player.getInventory().items) {
-                if (!ItemStack.isSameItemSameTags(stack, required)) continue;
+                if (!NativeItemPricing.matchesGoods(required, stack)) continue;
+                // Native wine aging is accepted, but each moved stack retains its actual vintage/NBT.
+                if (moved.isEmpty()) { moved = stack.copy(); moved.setCount(0); }
+                else if (!ItemStack.isSameItemSameTags(moved, stack)) continue;
                 int take = Math.min(stack.getCount(), required.getMaxStackSize() - moved.getCount());
                 moved.grow(take); stack.shrink(take);
                 if (moved.getCount() >= required.getMaxStackSize()) break;
@@ -149,6 +154,7 @@ public final class NativeTradeSession {
                     inputs.setSelectionHint(0); syncNativeOffers(); status = "jem.economy.trade.demand_changed";
                 }
             }
+            if (!buyer) ProfessionTradePools.extend(merchant);
             selected = Math.max(0, Math.min(selected, Math.max(0, merchant.getOffers().size() - 1)));
             updateResult();
             List<NativeTradeQuote> rows = new ArrayList<>();

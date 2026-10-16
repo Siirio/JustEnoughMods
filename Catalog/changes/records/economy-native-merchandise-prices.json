@@ -1,0 +1,118 @@
+{
+  "schema_version": 2,
+  "change_id": "economy.native-merchandise-prices",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "source_set",
+      "registry": "items",
+      "members_path": "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/native_item_prices.json",
+      "id_field": "item"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Authenticated dedicated SMP for economy and shared-server gameplay; compatible client only renders server quotes",
+      "confidence": "source"
+    }
+  ],
+  "precedence": {
+    "layer": "jem_economy_overhaul",
+    "priority": 420,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Exact native merchandise prices preserve native goods/NBT and enable guarded reciprocal Coin trade without broadening Market admission.",
+    "modifiers": [
+      {
+        "property": "economy.native_merchandise_policy",
+        "operation": "derive",
+        "before": {
+          "value": "Native Coin adapter used only reviewed Market policy; unsupported native goods lacked a priced two-way counterpart"
+        },
+        "after": {
+          "source_member_fields": [
+            "buy_copper",
+            "sell_copper",
+            "sell_units",
+            "daily_player_units",
+            "daily_global_units",
+            "notes"
+          ]
+        }
+      },
+      {
+        "property": "economy.native_trade.safe_price_math",
+        "operation": "derive",
+        "before": {
+          "value": "Native price adjustment without current bulk/demand closure contract"
+        },
+        "after": {
+          "value": "Canonical per-unit or exact bulk sale rounding; bounded demand/discount floor; no free/negative/overflow trade; actual native goods/NBT retained"
+        }
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMEconomy/JEMSettlements/JEMServer",
+    "kind": "user_requested_complete_economy_overhaul",
+    "source_files": [
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeItemPricing.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativePriceMath.java",
+      "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/native_item_prices.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Exact native merchandise prices preserve native goods/NBT and enable guarded reciprocal Coin trade without broadening Market admission.",
+    "decision_source": "Direct user complete economy overhaul brief 2026-10-16; Docs/economy/overhaul-implementation.md",
+    "user_requested": "Implement complete fair two-way Market/native professions, individual villagers, real exact Coin icons, native recruit hiring/seven-day wages/three missed weeks, paid settlements; preserve prior exclusions and native interfaces.",
+    "codex_choices": "Editable per-item quotes, bulk sell_units, safe floor/rounding and exact two-wine aging-field comparison are Codex choices; no emerald-to-copper fixed rate."
+  },
+  "introduced": {
+    "date": "2026-10-16",
+    "commit": "SELF",
+    "action": "complete_economy_overhaul",
+    "summary": "Exact native merchandise prices preserve native goods/NBT and enable guarded reciprocal Coin trade without broadening Market admission.",
+    "source_files": [
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeItemPricing.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativePriceMath.java",
+      "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/native_item_prices.json"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-16",
+      "commit": "SELF",
+      "action": "complete_economy_overhaul",
+      "summary": "Exact native merchandise prices preserve native goods/NBT and enable guarded reciprocal Coin trade without broadening Market admission.",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeItemPricing.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativePriceMath.java",
+        "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/native_item_prices.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "economy",
+      "native_merchants",
+      "recipes",
+      "enchantments",
+      "progression"
+    ],
+    "relations": [
+      "Market NONE remains distinct from exact specialist merchandise admission.",
+      "Finite merchant stock, native restocking/uses and existing account/global NPC payout budgets remain owners.",
+      "NBT/enchantment premiums and exact bounded Vinery aging normalization cannot create a cheaper valuable variant buyback loop."
+    ],
+    "notes": [
+      "Market NONE remains distinct from exact specialist merchandise admission.",
+      "Finite merchant stock, native restocking/uses and existing account/global NPC payout budgets remain owners.",
+      "NBT/enchantment premiums and exact bounded Vinery aging normalization cannot create a cheaper valuable variant buyback loop."
+    ],
+    "unresolved": [
+      "Runtime provider samples do not exhaust every randomized NBT or world-dependent treasure-map variant; rendered/player acceptance remains pending."
+    ]
+  }
+}

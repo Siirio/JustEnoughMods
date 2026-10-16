@@ -27,6 +27,8 @@ public final class MarketSavedData extends SavedData {
     private final Map<UUID, Long> accountPaid = new HashMap<>();
     private final Map<ResourceLocation, Integer> globalUnits = new HashMap<>();
     private final Map<UUID, Map<ResourceLocation, Integer>> accountUnits = new HashMap<>();
+    private final Map<ResourceLocation, Integer> purchasedUnits = new HashMap<>();
+    private final Map<UUID, Map<ResourceLocation, Integer>> accountPurchases = new HashMap<>();
     private final LinkedHashMap<String, Boolean> committed = new LinkedHashMap<>();
 
     public MarketSavedData() { seed = UUID.randomUUID().getMostSignificantBits(); }
@@ -62,6 +64,17 @@ public final class MarketSavedData extends SavedData {
         return new QuoteAllowance(accepted, Math.multiplyExact((long) accepted, unitPrice), reason);
     }
 
+    /** Whole native offer budget, including indivisible bulk prices such as sixteen bricks for one Coin. */
+    public synchronized QuoteAllowance allowanceExactTrade(MinecraftServer server, UUID account, ItemPolicy policy, int quantity, long payout) {
+        cycle(server);
+        if (account == null || !policy.sellable() || quantity <= 0 || payout <= 0) return new QuoteAllowance(0, 0L, "blocked");
+        long personal = accountRemaining(server, account), global = globalRemaining(server);
+        boolean fits = quantity <= accountItemRemaining(server, account, policy) && quantity <= globalItemRemaining(server, policy);
+        if (personal < payout || global < payout || !fits) return new QuoteAllowance(0, 0L,
+                !fits ? "item_cap" : personal < payout ? "account_daily_cap" : "global_daily_cap");
+        return new QuoteAllowance(quantity, payout, "ok");
+    }
+
     public synchronized boolean commit(MinecraftServer server, String operationKey, UUID account, Map<ResourceLocation, Integer> units, long payout) {
         cycle(server);
         if (committed.containsKey(operationKey)) return true;
@@ -89,17 +102,37 @@ public final class MarketSavedData extends SavedData {
         return Math.max(0, policy.dailyGlobalUnits() - globalUnits.getOrDefault(policy.item(), 0));
     }
     public synchronized long revision(MinecraftServer server) { cycle(server); return revision; }
+    /** Daily supplier stock is distinct from the NPC's budget and purchases from players. */
+    public synchronized int purchaseRemaining(MinecraftServer server, UUID account, ItemPolicy policy) {
+        cycle(server);
+        int personal = Math.max(0, policy.dailyPlayerUnits() - accountPurchases.getOrDefault(account, Map.of()).getOrDefault(policy.item(), 0));
+        int stock = Math.max(0, policy.dailyGlobalUnits() - purchasedUnits.getOrDefault(policy.item(), 0));
+        return Math.min(personal, stock);
+    }
+    public synchronized void recordPurchase(MinecraftServer server, UUID account, ItemPolicy policy, int quantity) {
+        if (quantity <= 0 || purchaseRemaining(server, account, policy) < quantity)
+            throw new IllegalStateException("Market supply changed during synchronous purchase");
+        purchasedUnits.merge(policy.item(), quantity, Math::addExact);
+        accountPurchases.computeIfAbsent(account, ignored -> new HashMap<>()).merge(policy.item(), quantity, Math::addExact);
+        revision++; setDirty();
+    }
     public synchronized int multiplier(MinecraftServer server, String group) {
         Demand demand = demand(server); return demand.primary().equals(group) ? 150 : demand.secondary().equals(group) ? 125 : 100;
     }
 
     private void begin(long cycle) {
-        activeCycle = cycle; globalPaid = 0L; accountPaid.clear(); globalUnits.clear(); accountUnits.clear(); revision++; setDirty();
+        activeCycle = cycle; globalPaid = 0L; accountPaid.clear(); globalUnits.clear(); accountUnits.clear();
+        purchasedUnits.clear(); accountPurchases.clear(); revision++; setDirty();
     }
     private static int mix(long value) { value ^= value >>> 33; value *= 0xff51afd7ed558ccdl; value ^= value >>> 33; return (int) (value ^ value >>> 32); }
 
     @Override public synchronized CompoundTag save(CompoundTag tag) {
         tag.putLong("Cycle", activeCycle); tag.putLong("Seed", seed); tag.putLong("GlobalPaid", globalPaid); tag.putLong("Revision", revision);
+        CompoundTag supply = new CompoundTag(); purchasedUnits.forEach((id, count) -> supply.putInt(id.toString(), count)); tag.put("PurchasedUnits", supply);
+        ListTag buyers = new ListTag(); accountPurchases.forEach((account, values) -> {
+            CompoundTag row = new CompoundTag(); row.putUUID("Account", account); CompoundTag counts = new CompoundTag();
+            values.forEach((id, count) -> counts.putInt(id.toString(), count)); row.put("Values", counts); buyers.add(row);
+        }); tag.put("AccountPurchases", buyers);
         CompoundTag paid = new CompoundTag(); accountPaid.forEach((id, value) -> paid.putLong(id.toString(), value)); tag.put("AccountPaid", paid);
         CompoundTag gu = new CompoundTag(); globalUnits.forEach((id, value) -> gu.putInt(id.toString(), value)); tag.put("GlobalUnits", gu);
         ListTag au = new ListTag(); accountUnits.forEach((account, rows) -> { CompoundTag row = new CompoundTag(); row.putUUID("Account", account); CompoundTag values = new CompoundTag(); rows.forEach((id, count) -> values.putInt(id.toString(), count)); row.put("Values", values); au.add(row); }); tag.put("AccountUnits", au);
@@ -112,6 +145,16 @@ public final class MarketSavedData extends SavedData {
         CompoundTag gu = tag.getCompound("GlobalUnits"); gu.getAllKeys().forEach(key -> { ResourceLocation id = ResourceLocation.tryParse(key); if (id != null) data.globalUnits.put(id, gu.getInt(key)); });
         ListTag au = tag.getList("AccountUnits", Tag.TAG_COMPOUND); for (int i = 0; i < au.size(); i++) { CompoundTag row = au.getCompound(i); if (!row.hasUUID("Account")) continue; Map<ResourceLocation, Integer> values = new HashMap<>(); CompoundTag raw = row.getCompound("Values"); raw.getAllKeys().forEach(key -> { ResourceLocation id = ResourceLocation.tryParse(key); if (id != null) values.put(id, raw.getInt(key)); }); data.accountUnits.put(row.getUUID("Account"), values); }
         ListTag done = tag.getList("Committed", Tag.TAG_COMPOUND); for (int i = 0; i < done.size(); i++) data.committed.put(done.getCompound(i).getString("Key"), Boolean.TRUE);
+        CompoundTag supply = tag.getCompound("PurchasedUnits"); supply.getAllKeys().forEach(key -> {
+            ResourceLocation id = ResourceLocation.tryParse(key); if (id != null) data.purchasedUnits.put(id, Math.max(0, supply.getInt(key)));
+        });
+        ListTag buyers = tag.getList("AccountPurchases", Tag.TAG_COMPOUND);
+        for (int i = 0; i < buyers.size(); i++) {
+            CompoundTag row = buyers.getCompound(i); if (!row.hasUUID("Account")) continue;
+            Map<ResourceLocation, Integer> counts = new HashMap<>(); CompoundTag values = row.getCompound("Values");
+            values.getAllKeys().forEach(key -> { ResourceLocation id = ResourceLocation.tryParse(key); if (id != null) counts.put(id, Math.max(0, values.getInt(key))); });
+            data.accountPurchases.put(row.getUUID("Account"), counts);
+        }
         return data;
     }
 

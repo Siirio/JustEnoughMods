@@ -23,6 +23,6 @@ public final class BuyerTradeOffers {
                             Integer.MAX_VALUE, 0, 0.0F));
                 });
         // Emerald is only the native monetary-leg descriptor, never the delivered payout.
-        buyer.overrideOffers(offers);
+        ((com.siirio.jemeconomy.mixin.AbstractVillagerOffersAccessor) buyer).jem$setOffers(offers);
     }
 }

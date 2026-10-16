@@ -42,7 +42,39 @@ def installedMod = { String pattern ->
     matches.first()
 }
 
+// Compile against the exact API already supplied by the installed Nightfall.
+// Extraction is build-only: no library is bundled or installed by this module.
+def mixinSquaredApi = layout.buildDirectory.file('compile-only/MixinSquared-0.2.0-beta.6.jar')
+def extractMixinSquaredApi = tasks.register('extractMixinSquaredApi') {
+    def nativeJar = installedMod('EpicFight*Nightfall-3.4.1*.jar')
+    inputs.file(nativeJar)
+    outputs.file(mixinSquaredApi)
+    doLast {
+        byte[] forgeBytes
+        new java.util.zip.ZipFile(nativeJar).withCloseable { archive ->
+            def entry = archive.getEntry('META-INF/jarjar/mixinsquared-forge-0.2.0-beta.6.jar')
+            if (entry == null) throw new GradleException('Installed Nightfall does not provide the audited MixinSquared 0.2.0-beta.6 API')
+            forgeBytes = archive.getInputStream(entry).withCloseable { it.readAllBytes() }
+        }
+        new java.util.zip.ZipInputStream(new ByteArrayInputStream(forgeBytes)).withCloseable { nested ->
+            def entry
+            boolean found = false
+            while ((entry = nested.nextEntry) != null) {
+                if (entry.name == 'META-INF/jars/MixinSquared-0.2.0-beta.6.jar') {
+                    def destination = mixinSquaredApi.get().asFile
+                    destination.parentFile.mkdirs()
+                    destination.bytes = nested.readAllBytes()
+                    found = true
+                    break
+                }
+            }
+            if (!found) throw new GradleException('Installed MixinSquared Forge JAR is missing the audited nested core API')
+        }
+    }
+}
+
 dependencies {
+    compileOnly files(mixinSquaredApi).builtBy(extractMixinSquaredApi)
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     compileOnly fg.deobf(files(installedMod('Jade-*.jar')))
     compileOnly fg.deobf(files(installedMod('jei-*.jar')))
@@ -131,6 +163,14 @@ tasks.register('installToModpack', Copy) {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
+    options.incremental = false
 }
 
 tasks.withType(Test).configureEach { enabled = false }
+
+// Explicit full-economy compatibility regression; does not start Minecraft.
+tasks.register('compatTradePolicyContractTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.siirio.jemcompat.compat.fabric.FabricTradeMixinPolicyTest'
+}

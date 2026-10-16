@@ -17,7 +17,7 @@ public final class RecruitRebellionService {
 
     public static void tick(MinecraftServer server) {
         SettlementSavedData data = SettlementSavedData.get(server);
-        for (var town : data.towns()) for (WorkforceRecord record : data.workforce(town.id())) {
+        for (WorkforceRecord record : data.workforce()) {
             if (record.type() != WorkforceType.RECRUIT || !record.living() || record.loyalty() == WorkforceRecord.Loyalty.LOYAL) continue;
             AbstractRecruitEntity recruit = null;
             for (var level : server.getAllLevels()) {
@@ -26,8 +26,8 @@ public final class RecruitRebellionService {
             }
             if (recruit == null) continue;
             if (record.loyalty() == WorkforceRecord.Loyalty.DEFEATED) {
-                if (record.ownerId().equals(recruit.getOwnerUUID()) && recruit.getIsOwned()) {
-                    recruit.setNoAi(false); recruit.setHealth(Math.max(1.0F, recruit.getHealth())); record.rehired(); data.changed();
+                if (recruit.getOwnerUUID() != null || recruit.getIsOwned()) {
+                    recruit.disband(null, false, true); recruit.setNoAi(true); data.changed();
                 } else {
                     recruit.setNoAi(true); recruit.setHealth(Math.max(1.0F, recruit.getHealth())); recruit.clearTarget(); recruit.getNavigation().stop();
                 }
@@ -45,7 +45,7 @@ public final class RecruitRebellionService {
 
     public static boolean interceptDefeat(LivingDamageEvent event) {
         if (!(event.getEntity() instanceof AbstractRecruitEntity recruit) || !(event.getSource().getEntity() instanceof ServerPlayer player)
-                || event.getAmount() < recruit.getHealth() || player.getServer() == null) return false;
+                || event.getAmount() < recruit.getHealth() || player.getServer() == null || !player.getServer().isDedicatedServer()) return false;
         SettlementSavedData data = SettlementSavedData.get(player.getServer());
         WorkforceRecord record = data.workforceEntity(recruit.getUUID()).orElse(null);
         if (record == null || record.loyalty() != WorkforceRecord.Loyalty.REBELLIOUS) return false;

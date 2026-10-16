@@ -1,0 +1,22 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.siirio.jemsettlements.mixin",
+  "plugin": "com.siirio.jemsettlements.mixin.SettlementMixinPlugin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "jem_settlements.refmap.json",
+  "mixins": [
+    "RecruitHiringMixin",
+    "RecruitCurrencyMixin",
+    "NobleHiringMixin",
+    "NobleQuoteMixin"
+  ],
+  "client": [
+    "RecruitHireScreenMixin",
+    "NobleTradeScreenMixin",
+    "NobleTradeListEntryMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

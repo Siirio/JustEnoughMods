@@ -4,49 +4,92 @@ import com.siirio.jemeconomy.api.EconomyApi;
 import com.siirio.jemeconomy.ledger.TransferResult;
 import com.siirio.jemsettlements.compat.recruits.RecruitReadinessAdapter;
 import com.siirio.jemsettlements.town.SettlementSavedData;
-import com.siirio.jemsettlements.town.TownRecord;
 import com.siirio.jemsettlements.workforce.WorkforceRecord;
 import com.siirio.jemsettlements.workforce.WorkforceType;
 import com.talhanation.recruits.entities.AbstractRecruitEntity;
 import java.util.Comparator;
 import java.util.List;
+import java.util.UUID;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.MinecraftServer;
 
 public final class PayrollService {
-    public static final long PERIOD_TICKS = 168_000L;
+    public static final long PERIOD_TICKS = PayrollClock.WEEK;
     private PayrollService() { }
     public static void tick(MinecraftServer server) {
-        SettlementSavedData data = SettlementSavedData.get(server); long now = server.overworld().getGameTime();
-        for (TownRecord town : data.towns()) {
-            for (WorkforceRecord record : data.workforce(town.id())) for (var level : server.getAllLevels()) {
+        if (!server.isDedicatedServer()) return;
+        SettlementSavedData data = SettlementSavedData.get(server);
+        long now = server.overworld().getGameTime();
+        for (var level : server.getAllLevels()) for (var entity : level.getAllEntities())
+            if (entity instanceof AbstractRecruitEntity recruit && recruit.isAlive())
+                com.siirio.jemsettlements.compat.recruits.RecruitHiringService.adoptExisting(server, recruit);
+        for (WorkforceRecord record : data.workforce()) {
+            for (var level : server.getAllLevels()) {
                 var entity = level.getEntity(record.entityId());
                 if (entity != null && entity.isAlive()) { record.verifyNativeEntityType(BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()), now); break; }
             }
-            List<WorkforceRecord> recruits = data.workforce(town.id()).stream().filter(value -> value.type() == WorkforceType.RECRUIT && value.coinWageEnabled() && value.settlementActive() && RecruitRank.of(value.nativeEntityType()) != RecruitRank.UNSUPPORTED).sorted(Comparator.comparing(WorkforceRecord::entityId)).toList();
-            if (recruits.isEmpty()) continue; town.initializePayroll(recruits.stream().mapToLong(WorkforceRecord::enlistedGameTime).filter(value -> value > 0L).min().orElse(now));
-            int created = 0; while (now >= town.nextPayrollGameTime() && created++ < 8) {
-                long index = town.nextPayrollIndex(); List<PayrollPeriod.Wage> roster = recruits.stream().map(value -> new PayrollPeriod.Wage(value.entityId(), value.nativeEntityType(), RecruitRank.of(value.nativeEntityType()).wage())).toList();
-                town.schedule(new PayrollPeriod(index, town.nextPayrollGameTime(), roster));
-            }
-            for (PayrollPeriod period : town.payroll()) if (!period.paid() && now >= period.dueGameTime()) settle(server, data, town, period);
+            if (record.type() == WorkforceType.RECRUIT && data.town(record.townId()).isEmpty()) data.employer(record.ownerId());
         }
+        for (var town : data.towns()) process(server, data, town.id(), town, false, now);
+        for (UUID owner : data.employers()) process(server, data, owner, data.employer(owner), true, now);
         data.changed();
     }
-    private static void settle(MinecraftServer server, SettlementSavedData data, TownRecord town, PayrollPeriod period) {
+
+    private static void process(MinecraftServer server, SettlementSavedData data, UUID account,
+                                PayrollBook book, boolean personal, long now) {
+        List<WorkforceRecord> recruits = data.workforce(account).stream()
+                .filter(value -> value.type() == WorkforceType.RECRUIT)
+                .sorted(Comparator.comparing(WorkforceRecord::entityId)).toList();
+        for (WorkforceRecord record : recruits) record.initializePenaltyPeriods(book.payroll().stream()
+                .filter(period -> !period.paid() && period.roster().stream().anyMatch(wage -> wage.soldierId().equals(record.entityId()) && wage.generation() == record.hireGeneration()))
+                .map(PayrollPeriod::index).toList());
+        for (WorkforceRecord record : recruits) if (record.nextWageGameTime() == 0L) {
+            long lastDue = book.payroll().stream().filter(period -> period.roster().stream().anyMatch(wage -> wage.soldierId().equals(record.entityId())))
+                    .mapToLong(PayrollPeriod::dueGameTime).max().orElse(record.enlistedGameTime());
+            record.migrateWageClock(lastDue);
+        }
+        for (PayrollPeriod period : book.payroll()) if (!period.paid()) settle(server, data, account, book, personal, period);
+        // Settle before the next week: three missed weeks stop future accrual,
+        // including when catching up after an unloaded/offline interval.
+        for (int batch = 0; batch < 8; batch++) {
+            long due = recruits.stream().filter(WorkforceRecord::settlementActive)
+                    .filter(value -> RecruitRank.of(value.nativeEntityType()) != RecruitRank.UNSUPPORTED)
+                    .mapToLong(WorkforceRecord::nextWageGameTime).filter(value -> PayrollClock.due(value, now)).min().orElse(Long.MAX_VALUE);
+            if (due == Long.MAX_VALUE) break;
+            List<WorkforceRecord> roster = recruits.stream().filter(WorkforceRecord::settlementActive)
+                    .filter(value -> RecruitRank.of(value.nativeEntityType()) != RecruitRank.UNSUPPORTED)
+                    .filter(value -> value.nextWageGameTime() == due).toList();
+            List<PayrollPeriod.Wage> wages = roster.stream().map(value -> new PayrollPeriod.Wage(value.entityId(), value.nativeEntityType(),
+                    RecruitRank.of(value.nativeEntityType()).wage(), value.hireGeneration())).toList();
+            PayrollPeriod period = new PayrollPeriod(book.nextPayrollIndex(), due, wages);
+            book.schedule(period); roster.forEach(value -> value.scheduleWage(due));
+            settle(server, data, account, book, personal, period);
+        }
+    }
+
+    private static void settle(MinecraftServer server, SettlementSavedData data, UUID account,
+                               PayrollBook book, boolean personal, PayrollPeriod period) {
         if (period.total() <= 0L) { period.paid(null); return; }
-        TransferResult result = EconomyApi.settleTownPayroll(server, town.id(), period.total(), period.index());
+        TransferResult result = personal ? EconomyApi.settleEmployerPayroll(server, account, period.total(), period.index())
+                : EconomyApi.settleTownPayroll(server, account, period.total(), period.index());
         if (result.status() == TransferResult.Status.COMMITTED || result.status() == TransferResult.Status.REPLAYED) {
-            period.paid(result.receiptId()); period.roster().forEach(wage -> data.workforceEntity(wage.soldierId()).ifPresent(value -> value.paid(period.index()))); town.payrollRecovered(); return;
+            period.paid(result.receiptId());
+            for (var wage : period.roster()) data.workforceEntity(wage.soldierId()).filter(value -> value.hireGeneration() == wage.generation())
+                    .ifPresent(value -> value.paid(period.index()));
+            book.payrollRecovered(); return;
         }
         if (result.status() != TransferResult.Status.INSUFFICIENT_FUNDS) return;
         boolean newlyMissed = false;
         for (PayrollPeriod.Wage wage : period.roster()) {
-            WorkforceRecord record = data.workforceEntity(wage.soldierId()).orElse(null); if (record == null || record.lastPenaltyPeriod() >= period.index()) continue;
+            WorkforceRecord record = data.workforceEntity(wage.soldierId()).orElse(null);
+            if (record == null || record.hireGeneration() != wage.generation() || record.lastPenaltyPeriod() >= period.index()) continue;
             record.penalized(period.index()); newlyMissed = true;
-            server.getAllLevels().forEach(level -> { var entity = level.getEntity(record.entityId()); if (entity instanceof AbstractRecruitEntity recruit && recruit.isAlive()) RecruitReadinessAdapter.applyPayrollPenalty(recruit, 10.0F); });
+            server.getAllLevels().forEach(level -> {
+                var entity = level.getEntity(record.entityId());
+                if (entity instanceof AbstractRecruitEntity recruit && recruit.isAlive()) RecruitReadinessAdapter.applyPayrollPenalty(recruit, 10.0F);
+            });
             if (record.missedPayrolls() >= 3) record.rebel();
         }
-        if (newlyMissed) town.payrollMissed();
+        if (newlyMissed) book.payrollMissed();
     }
 }

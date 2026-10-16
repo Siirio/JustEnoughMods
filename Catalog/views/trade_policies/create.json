@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "403744f8380e7d91d3ed2a30358e0fb6825398f8",
+  "snapshot_sha": "6297fc3865de93389cb41b3a7cc01296391f19a9",
   "generation": {
-    "generated_utc": "2026-10-15T19:50:57.409061+00:00",
+    "generated_utc": "2026-10-15T22:54:54.012988+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -2354,8 +2354,8 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
+      "trade_outcome": "BUY_AND_SELL",
+      "reason": "Copper/zinc alloy requires heated mixing; inputs and output count audited Evidence: loaded registry, installed tags/recipes/loot Two-output alloy buyback bounded by copper/zinc input acquisition cost even at 150 percent demand.",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -2363,14 +2363,14 @@
         "create:crafting/materials/brass_ingot_from_decompacting"
       ],
       "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
+      "buy_copper": 24,
+      "sell_copper": 4,
+      "daily_player_units": 16,
+      "daily_global_units": 256,
+      "demand_group": "mining",
+      "price_basis": "Copper/zinc alloy requires heated mixing; inputs and output count audited Evidence: loaded registry, installed tags/recipes/loot Two-output alloy buyback bounded by copper/zinc input acquisition cost even at 150 percent demand.",
+      "arbitrage_risk": "reviewed",
+      "review_status": "reviewed"
     },
     {
       "item_id": "create:brass_ladder",
@@ -36420,20 +36420,20 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
+      "trade_outcome": "BUY_AND_SELL",
+      "reason": "Milling/crushing wheat; probability/byproducts audited conservatively Evidence: loaded registry, installed tags/recipes/loot",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [],
       "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
+      "buy_copper": 6,
+      "sell_copper": 1,
+      "daily_player_units": 32,
+      "daily_global_units": 512,
+      "demand_group": "crops",
+      "price_basis": "Milling/crushing wheat; probability/byproducts audited conservatively Evidence: loaded registry, installed tags/recipes/loot",
+      "arbitrage_risk": "reviewed",
+      "review_status": "reviewed"
     },
     {
       "item_id": "create:whisk",
@@ -37453,8 +37453,8 @@
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
       "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
+      "trade_outcome": "BUY_AND_SELL",
+      "reason": "Ordinary Create mining/processing material; ore multiplier audited Evidence: loaded registry, installed tags/recipes/loot",
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
@@ -37468,14 +37468,14 @@
         "create:smelting/zinc_ingot_from_raw_ore"
       ],
       "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
+      "buy_copper": 16,
+      "sell_copper": 4,
+      "daily_player_units": 16,
+      "daily_global_units": 256,
+      "demand_group": "mining",
+      "price_basis": "Ordinary Create mining/processing material; ore multiplier audited Evidence: loaded registry, installed tags/recipes/loot",
+      "arbitrage_risk": "reviewed",
+      "review_status": "reviewed"
     },
     {
       "item_id": "create:zinc_nugget",

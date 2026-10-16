@@ -191,6 +191,7 @@ public final class EconomyApi {
         MarketSavedData market = MarketSavedData.get(player.getServer());
         List<com.siirio.jemeconomy.policy.ItemPolicy> policies = ItemPolicyRegistry.reviewed().stream()
                 .filter(com.siirio.jemeconomy.policy.ItemPolicy::sellable)
+                .filter(policy -> ForgeRegistries.ITEMS.containsKey(policy.item()))
                 .filter(policy -> selectedCategory.equals("all") || policy.marketCategory().name().equalsIgnoreCase(selectedCategory))
                 .filter(policy -> selectedSearch.isBlank() || policy.item().toString().toLowerCase(Locale.ROOT).contains(selectedSearch))
                 .sorted(Comparator.comparing(policy -> policy.item().toString())).toList();
@@ -207,7 +208,9 @@ public final class EconomyApi {
             int accountRemaining = market.accountItemRemaining(player.getServer(), principal.get().accountId(), policy);
             int globalRemaining = market.globalItemRemaining(player.getServer(), policy);
             return new MarketItemSnapshot(policy.item(), stack, policy.buyCopper(), sell, policy.marketCategory(),
-                    accountRemaining, globalRemaining, !stack.isEmpty(), !stack.isEmpty() && accountRemaining > 0 && globalRemaining > 0);
+                    accountRemaining, globalRemaining, !stack.isEmpty() && market.purchaseRemaining(player.getServer(), principal.get().accountId(), policy) > 0,
+                    !stack.isEmpty() && accountRemaining > 0 && globalRemaining > 0 && market.accountRemaining(player.getServer(), principal.get().accountId()) >= sell
+                            && market.globalRemaining(player.getServer()) >= sell && EconomySavedData.get(player.getServer()).balance(SystemAccount.NPC_MARKET.id()) >= sell);
         }).toList();
         MarketBulletin bulletin = marketBulletin(player);
         int[] physicalCounts = new int[5];
@@ -231,6 +234,8 @@ public final class EconomyApi {
         MarketSavedData market = MarketSavedData.get(buyer.getServer());
         if (market.revision(buyer.getServer()) != observedRevision)
             return new MarketPurchaseResult(MarketPurchaseStatus.STALE, 0L, 0);
+        if (market.purchaseRemaining(buyer.getServer(), principal.get().accountId(), policy) < quantity)
+            return new MarketPurchaseResult(MarketPurchaseStatus.UNAVAILABLE, 0L, 0);
         ItemStack delivery = new ItemStack(item, quantity);
         if (quantity > delivery.getMaxStackSize() || !canFit(buyer, delivery))
             return new MarketPurchaseResult(MarketPurchaseStatus.NO_SPACE, 0L, 0);
@@ -240,6 +245,11 @@ public final class EconomyApi {
         ensureStarter(buyer, principal.get().accountId());
         String key = "marketCatalogBuy:" + principal.get().accountId() + ":" + requestId;
         TransferResult transfer = EconomySavedData.get(buyer.getServer()).transfer(principal.get().accountId(), SystemAccount.NPC_MARKET.id(), total, key);
+        if (transfer.status() == TransferResult.Status.INSUFFICIENT_FUNDS) {
+            var cash = PhysicalCoinService.depositAll(buyer, UUID.nameUUIDFromBytes((key + ":cash").getBytes(java.nio.charset.StandardCharsets.UTF_8)));
+            if (cash.status() == PhysicalCoinService.Status.COMMITTED)
+                transfer = EconomySavedData.get(buyer.getServer()).transfer(principal.get().accountId(), SystemAccount.NPC_MARKET.id(), total, key);
+        }
         if (transfer.status() == TransferResult.Status.REPLAYED) return new MarketPurchaseResult(MarketPurchaseStatus.REPLAYED, total, quantity);
         if (transfer.status() == TransferResult.Status.INSUFFICIENT_FUNDS) return new MarketPurchaseResult(MarketPurchaseStatus.INSUFFICIENT_FUNDS, 0L, 0);
         if (transfer.status() != TransferResult.Status.COMMITTED) return new MarketPurchaseResult(MarketPurchaseStatus.UNAVAILABLE, 0L, 0);
@@ -249,6 +259,7 @@ public final class EconomyApi {
             return new MarketPurchaseResult(MarketPurchaseStatus.NO_SPACE, 0L, 0);
         }
         buyer.getInventory().setChanged();
+        market.recordPurchase(buyer.getServer(), principal.get().accountId(), policy, quantity);
         buyer.containerMenu.broadcastChanges();
         return new MarketPurchaseResult(MarketPurchaseStatus.COMMITTED, total, quantity);
     }
@@ -296,19 +307,35 @@ public final class EconomyApi {
     public static NpcSaleResult processNpcSaleFromContainer(ServerPlayer seller,
             net.minecraft.world.inventory.MerchantContainer inputs, ItemStack offered, int quantity,
             long expectedPayout, int sourceSlot, UUID requestId) {
+        return settleNpcContainerSale(seller, inputs, offered, quantity, expectedPayout, sourceSlot, requestId,
+                ItemPolicyRegistry.policy(offered).filter(policy -> policy.sellable()));
+    }
+
+    /** Trusted native merchandise may retain enchantments/NBT; never used by the global Market. */
+    public static NpcSaleResult processNativeNpcSaleFromContainer(ServerPlayer seller,
+            net.minecraft.world.inventory.MerchantContainer inputs, ItemStack offered, int quantity,
+            long expectedPayout, int sourceSlot, UUID requestId) {
+        return settleNpcContainerSale(seller, inputs, offered, quantity, expectedPayout, sourceSlot, requestId,
+                com.siirio.jemeconomy.merchant.NativeItemPricing.policy(offered));
+    }
+
+    private static NpcSaleResult settleNpcContainerSale(ServerPlayer seller,
+            net.minecraft.world.inventory.MerchantContainer inputs, ItemStack offered, int quantity,
+            long expectedPayout, int sourceSlot, UUID requestId,
+            java.util.Optional<com.siirio.jemeconomy.policy.ItemPolicy> optional) {
         if (!DedicatedSmp.active(seller) || requestId == null || quantity <= 0 || sourceSlot < 0 || sourceSlot > 1)
             return new NpcSaleResult(NpcSaleStatus.UNAVAILABLE, 0L, 0);
         var principal = IdentityPolicy.resolve(seller);
-        var optional = ItemPolicyRegistry.policy(offered).filter(policy -> policy.sellable());
         if (principal.isEmpty()) return new NpcSaleResult(NpcSaleStatus.UNAUTHENTICATED, 0L, 0);
         if (optional.isEmpty()) return new NpcSaleResult(NpcSaleStatus.NONE, 0L, 0);
         ItemStack actual = inputs.getItem(sourceSlot);
-        if (!ItemStack.isSameItemSameTags(actual, offered) || actual.getCount() < quantity)
+        if (!com.siirio.jemeconomy.merchant.NativeItemPricing.matchesGoods(offered, actual) || actual.getCount() < quantity)
             return new NpcSaleResult(NpcSaleStatus.INVENTORY_CHANGED, 0L, 0);
         var policy = optional.get();
         MarketSavedData market = MarketSavedData.get(seller.getServer());
-        long unit = Math.floorDiv(Math.multiplyExact(policy.sellCopper(), market.multiplier(seller.getServer(), policy.demandGroup())), 100L);
-        var allowed = market.allowance(seller.getServer(), principal.get().accountId(), policy, quantity, unit);
+        long payout = com.siirio.jemeconomy.merchant.NativeItemPricing.saleCopper(offered, quantity,
+                market.multiplier(seller.getServer(), policy.demandGroup()));
+        var allowed = market.allowanceExactTrade(seller.getServer(), principal.get().accountId(), policy, quantity, payout);
         if (allowed.units() != quantity || allowed.payout() != expectedPayout)
             return new NpcSaleResult(NpcSaleStatus.LIMIT_REACHED, 0L, 0);
         String key = "nativeSale:" + principal.get().accountId() + ":" + requestId;
@@ -342,6 +369,14 @@ public final class EconomyApi {
                 "payroll:" + townId + ":" + period);
     }
 
+    /** Same ledger and finite-money sink for recruits hired by an employer without a town. */
+    public static TransferResult settleEmployerPayroll(MinecraftServer server, UUID employerAccount, long amount, long period) {
+        if (server == null || !server.isDedicatedServer() || employerAccount == null || amount <= 0L || period < 0L)
+            return new TransferResult(TransferResult.Status.INVALID, null, 0L, 0L);
+        return EconomySavedData.get(server).transfer(employerAccount, SystemAccount.CENTRAL_RESERVE.id(), amount,
+                "employerPayroll:" + employerAccount + ":" + period);
+    }
+
     public static long townBalance(MinecraftServer server, UUID townId) {
         return server == null || !server.isDedicatedServer() || townId == null ? 0L : EconomySavedData.get(server).balance(townAccount(townId));
     }
@@ -367,7 +402,6 @@ public final class EconomyApi {
     public record MarketBulletin(String primaryGroup, String secondaryGroup, long ticksUntilUpdate, long accountRemaining, long globalRemaining) { }
 
     private static void ensureStarter(ServerPlayer player, UUID accountId) {
-        EconomySavedData.get(player.getServer()).transfer(SystemAccount.CENTRAL_RESERVE.id(), accountId, STARTER_GRANT,
-                "starterGrant:" + accountId);
+        EconomySavedData.get(player.getServer()).ensureStarter(accountId, STARTER_GRANT);
     }
 }

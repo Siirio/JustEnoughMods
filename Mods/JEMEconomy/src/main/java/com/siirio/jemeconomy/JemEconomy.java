@@ -28,6 +28,7 @@ public final class JemEconomy {
             MinecraftForge.EVENT_BUS.register(ItemPolicyRegistry.class);
             MinecraftForge.EVENT_BUS.register(MarketRuntime.class);
             MinecraftForge.EVENT_BUS.register(CoinMerchantRuntime.class);
+            MinecraftForge.EVENT_BUS.register(com.siirio.jemeconomy.audit.EconomyRuntimeExport.class);
         }
     }
 }

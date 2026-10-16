@@ -136,7 +136,7 @@ public final class EconomyNetwork {
                 case QUARANTINED -> "jem.economy.physical_quarantined";
                 default -> "jem.economy.invalid";
             };
-            player.sendSystemMessage(Component.translatable(key, result.value()), true);
+            player.sendSystemMessage(Component.translatable(key, com.siirio.jemeconomy.physical.CoinFormatter.format(result.value())), true);
         } else if (packet.action() == WalletActionPacket.Action.SEND) {
             if (packet.amount() <= 0 || packet.amount() > 1_000_000_000L) return;
             ServerPlayer recipient = player.getServer().getPlayerList().getPlayerByName(packet.recipient());
@@ -144,8 +144,8 @@ public final class EconomyNetwork {
             else {
                 var result = EconomyApi.send(player, recipient.getUUID(), packet.amount(), packet.requestId());
                 if (result.status() == com.siirio.jemeconomy.ledger.TransferResult.Status.COMMITTED) {
-                    player.sendSystemMessage(Component.translatable("jem.economy.sent", packet.amount(), recipient.getGameProfile().getName()), true);
-                    recipient.sendSystemMessage(Component.translatable("jem.economy.received", packet.amount(), player.getGameProfile().getName()), true);
+                    player.sendSystemMessage(Component.translatable("jem.economy.sent", com.siirio.jemeconomy.physical.CoinFormatter.format(packet.amount()), recipient.getGameProfile().getName()), true);
+                    recipient.sendSystemMessage(Component.translatable("jem.economy.received", com.siirio.jemeconomy.physical.CoinFormatter.format(packet.amount()), player.getGameProfile().getName()), true);
                 } else player.sendSystemMessage(Component.translatable(result.status() == com.siirio.jemeconomy.ledger.TransferResult.Status.INSUFFICIENT_FUNDS
                         ? "jem.economy.insufficient" : "jem.economy.invalid"), true);
             }
@@ -154,7 +154,7 @@ public final class EconomyNetwork {
             String key = result.status() == com.siirio.jemeconomy.physical.PhysicalCoinService.Status.COMMITTED
                     ? "jem.economy.wallet.deposit_ok" : result.status() == com.siirio.jemeconomy.physical.PhysicalCoinService.Status.NO_VALID_COINS
                     ? "jem.economy.no_valid_physical" : "jem.economy.invalid";
-            player.sendSystemMessage(Component.translatable(key, result.value()), true);
+            player.sendSystemMessage(Component.translatable(key, com.siirio.jemeconomy.physical.CoinFormatter.format(result.value())), true);
         }
         sendStatus(player, true);
     }

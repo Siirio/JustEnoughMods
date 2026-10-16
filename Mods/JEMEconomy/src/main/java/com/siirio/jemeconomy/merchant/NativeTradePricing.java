@@ -28,25 +28,24 @@ public final class NativeTradePricing {
         if (!monetary(offer)) return row(index, ITEM_BARTER, 0, !offer.isOutOfStock(), offer.isOutOfStock() ? "stock" : "ok");
         try {
             if (offer.getResult().is(Items.EMERALD) && !offer.getCostA().is(Items.EMERALD) && !offer.getCostB().is(Items.EMERALD)) {
-                var policy = ItemPolicyRegistry.policy(offer.getCostA()).filter(p -> p.sellable());
+                var policy = (buyer ? ItemPolicyRegistry.policy(offer.getCostA()) : NativeItemPricing.policy(offer.getCostA())).filter(p -> p.sellable());
                 if (policy.isEmpty()) return row(index, UNPRICED, 0, false, "unpriced");
                 var market = MarketSavedData.get(player.getServer());
                 var demand = market.demand(player.getServer());
                 var p = policy.get();
-                var amount = EconomyApi.quoteItem(player, offer.getCostA(), offer.getCostA().getCount());
-                long copper = amount.sellCopper();
+                long copper = NativeItemPricing.saleCopper(offer.getCostA(), offer.getCostA().getCount(),
+                        market.multiplier(player.getServer(), p.demandGroup()));
                 if (buyer && !p.demandGroup().equals(demand.primary()) && !p.demandGroup().equals(demand.secondary()))
                     return row(index, PLAYER_SELLS, copper, false, "demand");
                 var principal = IdentityPolicy.resolve(player).orElseThrow();
-                var allowance = market.allowance(player.getServer(), principal.accountId(), p, offer.getCostA().getCount(),
-                        copper / offer.getCostA().getCount());
+                var allowance = market.allowanceExactTrade(player.getServer(), principal.accountId(), p, offer.getCostA().getCount(), copper);
                 String reason = offer.isOutOfStock() ? "stock" : EconomySavedData.get(player.getServer()).frozen() ? "unavailable"
                         : allowance.units() != offer.getCostA().getCount() ? "limit"
                         : EconomySavedData.get(player.getServer()).balance(SystemAccount.NPC_MARKET.id()) < copper ? "reserve" : "ok";
                 return row(index, PLAYER_SELLS, copper, reason.equals("ok"), reason);
             }
             if (!offer.getResult().is(Items.EMERALD)) {
-                var policy = ItemPolicyRegistry.policy(offer.getResult()).filter(p -> p.buyable());
+                var policy = NativeItemPricing.policy(offer.getResult()).filter(p -> p.buyable());
                 if (policy.isEmpty()) return row(index, UNPRICED, 0, false, "unpriced");
                 long base = Math.multiplyExact(policy.get().buyCopper(), offer.getResult().getCount());
                 // Preserve the existing JEM native-demand adjustment, excluding nonmoney inputs.
@@ -55,11 +54,13 @@ public final class NativeTradePricing {
                 int current = (offer.getCostA().is(Items.EMERALD) ? offer.getCostA().getCount() : 0)
                         + (offer.getCostB().is(Items.EMERALD) ? offer.getCostB().getCount() : 0);
                 if (original <= 0 || current <= 0) return row(index, UNPRICED, 0, false, "unpriced");
-                long adjusted = Math.floorDiv(Math.addExact(Math.multiplyExact(base, current), original - 1L), original);
-                long floor = Math.floorDiv(Math.addExact(base, 3L), 4L);
+                long adjusted = NativePriceMath.demandAdjusted(base, original, current);
+                // Bound demand, reputation and racial discounts by the same safe merchandise floor.
+                long floor = NativePriceMath.minimumPurchaseBudget(base,
+                        NativeItemPricing.saleCopper(offer.getResult(), offer.getResult().getCount(), 150));
                 var event = new CoinTradePriceEvent(player, Math.max(floor, adjusted));
                 MinecraftForge.EVENT_BUS.post(event);
-                long copper = event.copper();
+                long copper = NativePriceMath.afterDiscount(floor, event.copper());
                 long funds = Math.addExact(EconomyApi.balance(player), EconomyApi.heldCash(player).value());
                 String reason = offer.isOutOfStock() ? "stock" : EconomySavedData.get(player.getServer()).frozen() ? "unavailable"
                         : funds < copper ? "funds" : "ok";

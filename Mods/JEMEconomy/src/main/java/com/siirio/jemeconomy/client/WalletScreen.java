@@ -45,8 +45,10 @@ public final class WalletScreen extends Screen {
         graphics.fill(x, y, x + 300, y + 238, 0xEF2C211B);
         graphics.fill(x, y, x + 300, y + 3, 0xFFC27A3B);
         graphics.drawCenteredString(font, title, width / 2, y + 10, 0xFFFFE6C2);
-        graphics.drawString(font, Component.translatable("jem.economy.wallet.digital", grouped(status.balance())), x + 16, y + 30, 0xFFFFD18A, false);
-        graphics.drawString(font, Component.translatable("jem.economy.wallet.cash", grouped(status.heldValue())), x + 16, y + 44, 0xFFD9C6A9, false);
+        graphics.drawString(font, Component.translatable("jem.economy.wallet.digital_label"), x + 16, y + 30, 0xFFFFD18A, false);
+        graphics.drawString(font, Component.translatable("jem.economy.wallet.cash_label"), x + 16, y + 44, 0xFFD9C6A9, false);
+        CoinPriceRenderer.draw(graphics, font, status.balance(), x + 146, y + 25, 138, 0xFFFFD18A);
+        CoinPriceRenderer.draw(graphics, font, status.heldValue(), x + 146, y + 41, 138, 0xFFD9C6A9);
         int[] counts = status.counts();
         for (CoinDenomination denomination : CoinDenomination.values()) {
             int index = denomination.ordinal(), iconX = x + 18 + index * 54;
@@ -56,7 +58,9 @@ public final class WalletScreen extends Screen {
         if (status.invalid() > 0) graphics.drawString(font, Component.translatable("jem.economy.wallet.invalid", status.invalid()), x + 16, y + 88, 0xFFFF7777, false);
         graphics.drawString(font, Component.translatable("jem.economy.wallet.demand", Component.translatable("jem.economy.demand." + status.primaryDemand()),
                 Component.translatable("jem.economy.demand." + status.secondaryDemand())), x + 16, y + 188, 0xFFFFD18A, false);
-        graphics.drawString(font, Component.translatable("jem.economy.wallet.market_limits", status.accountRemaining(), status.globalRemaining()), x + 16, y + 202, 0xFFD9C6A9, false);
+        graphics.drawString(font, Component.translatable("jem.economy.wallet.limits_label"), x + 16, y + 202, 0xFFD9C6A9, false);
+        CoinPriceRenderer.draw(graphics, font, status.accountRemaining(), x + 140, y + 198, 65, 0xFFD9C6A9);
+        CoinPriceRenderer.draw(graphics, font, status.globalRemaining(), x + 213, y + 198, 71, 0xFFD9C6A9);
         graphics.drawString(font, Component.translatable("jem.economy.wallet.market_update", status.ticksUntilUpdate()), x + 16, y + 216, 0xFFD9C6A9, false);
         super.render(graphics, mouseX, mouseY, partialTick);
     }

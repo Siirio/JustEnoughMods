@@ -26,6 +26,8 @@ public final class EconomySavedData extends SavedData {
 
     private final Map<UUID, Long> balances = new LinkedHashMap<>();
     private final LinkedHashMap<String, UUID> receipts = new LinkedHashMap<>();
+    private final Map<String, String> receiptTerms = new LinkedHashMap<>();
+    private final java.util.Set<UUID> starterRecipients = new java.util.HashSet<>();
     private final LinkedHashMap<UUID, CoinLot> lots = new LinkedHashMap<>();
     private final LinkedHashMap<UUID, PhysicalCoinOperation> physicalOperations = new LinkedHashMap<>();
     private boolean frozen;
@@ -48,6 +50,15 @@ public final class EconomySavedData extends SavedData {
 
     public synchronized boolean hasReceipt(String idempotencyKey) { return receipts.containsKey(idempotencyKey); }
 
+    /** Account-level lifetime fact, independent of bounded transaction history. */
+    public synchronized void ensureStarter(UUID accountId, long amount) {
+        if (accountId == null || starterRecipients.contains(accountId)) return;
+        var transfer = transfer(SystemAccount.CENTRAL_RESERVE.id(), accountId, amount, "starterGrant:" + accountId);
+        if (transfer.status() == TransferResult.Status.COMMITTED || transfer.status() == TransferResult.Status.REPLAYED) {
+            starterRecipients.add(accountId); setDirty();
+        }
+    }
+
     public synchronized long physicalOutstanding() {
         return balance(SystemAccount.PHYSICAL_OUTSTANDING.id());
     }
@@ -59,7 +70,12 @@ public final class EconomySavedData extends SavedData {
             return new TransferResult(TransferResult.Status.INVALID, null, balance(source), balance(destination));
         }
         UUID prior = receipts.get(idempotencyKey);
-        if (prior != null) return new TransferResult(TransferResult.Status.REPLAYED, prior, balance(source), balance(destination));
+        String terms = source + ":" + destination + ":" + amount;
+        if (prior != null) {
+            String original = receiptTerms.get(idempotencyKey);
+            return new TransferResult(original == null || original.equals(terms) ? TransferResult.Status.REPLAYED : TransferResult.Status.INVALID,
+                    prior, balance(source), balance(destination));
+        }
         long sourceBalance = balance(source);
         if (sourceBalance < amount) return new TransferResult(TransferResult.Status.INSUFFICIENT_FUNDS, null, sourceBalance, balance(destination));
         long destinationBalance;
@@ -69,6 +85,7 @@ public final class EconomySavedData extends SavedData {
         balances.put(destination, destinationBalance);
         UUID receipt = UUID.nameUUIDFromBytes(("jem:receipt:" + idempotencyKey).getBytes(StandardCharsets.UTF_8));
         receipts.put(idempotencyKey, receipt);
+        receiptTerms.put(idempotencyKey, terms);
         trimReceipts();
         if (!conservationValid()) frozen = true;
         setDirty();
@@ -234,10 +251,11 @@ public final class EconomySavedData extends SavedData {
             if (remaining <= 0) break;
             CoinLot lot = lots.get(candidate.lotId());
             if (lot == null || lot.denomination() != source || candidate.denomination() != source) continue;
-            int accepted = Math.min(Math.min(candidate.count(), lot.available()), remaining);
+            int alreadyAllocated = allocated.getOrDefault(lot.id(), 0);
+            int accepted = Math.min(Math.min(candidate.count(), Math.max(0, lot.available() - alreadyAllocated)), remaining);
             if (accepted <= 0) continue;
             selections.add(new DepositSelection(candidate.slot(), lot.id(), source, candidate.count(), accepted));
-            allocated.put(lot.id(), accepted);
+            allocated.put(lot.id(), alreadyAllocated + accepted);
             remaining -= accepted;
         }
         if (remaining != 0) return new ExchangeReservation(PhysicalStatus.INVALID, operationId, 0L, List.copyOf(selections), List.of());
@@ -302,6 +320,9 @@ public final class EconomySavedData extends SavedData {
         physicalOperations.values().forEach(operation -> operationTag.add(operation.save()));
         tag.put("Balances", balanceTag);
         tag.put("Receipts", receiptTag);
+        CompoundTag termsTag = new CompoundTag(); receiptTerms.forEach(termsTag::putString); tag.put("ReceiptTerms", termsTag);
+        ListTag starters = new ListTag(); starterRecipients.stream().sorted().forEach(id -> starters.add(net.minecraft.nbt.StringTag.valueOf(id.toString())));
+        tag.put("StarterRecipients", starters);
         tag.put("PhysicalLots", lotTag);
         tag.put("PhysicalOperations", operationTag);
         return tag;
@@ -317,6 +338,15 @@ public final class EconomySavedData extends SavedData {
         for (SystemAccount account : SystemAccount.values()) data.balances.putIfAbsent(account.id(), account.initialBalance());
         CompoundTag receiptTag = tag.getCompound("Receipts");
         for (String key : receiptTag.getAllKeys()) if (receiptTag.hasUUID(key)) data.receipts.put(key, receiptTag.getUUID(key));
+        CompoundTag termsTag = tag.getCompound("ReceiptTerms");
+        for (String key : termsTag.getAllKeys()) if (data.receipts.containsKey(key)) data.receiptTerms.put(key, termsTag.getString(key));
+        ListTag starters = tag.getList("StarterRecipients", Tag.TAG_STRING);
+        for (int i = 0; i < starters.size(); i++) {
+            try { data.starterRecipients.add(UUID.fromString(starters.getString(i))); } catch (IllegalArgumentException invalid) { throw new IllegalArgumentException("Invalid starter account", invalid); }
+        }
+        data.receipts.keySet().stream().filter(key -> key.startsWith("starterGrant:")).forEach(key -> {
+            try { data.starterRecipients.add(UUID.fromString(key.substring("starterGrant:".length()))); } catch (IllegalArgumentException ignored) { }
+        });
         ListTag lotTag = tag.getList("PhysicalLots", Tag.TAG_COMPOUND);
         for (int index = 0; index < lotTag.size(); index++) {
             CoinLot lot = CoinLot.load(lotTag.getCompound(index));
@@ -342,7 +372,9 @@ public final class EconomySavedData extends SavedData {
     }
 
     private void trimReceipts() {
-        while (receipts.size() > MAX_RECEIPTS) receipts.remove(receipts.keySet().iterator().next());
+        while (receipts.size() > MAX_RECEIPTS) {
+            String key = receipts.keySet().iterator().next(); receipts.remove(key); receiptTerms.remove(key);
+        }
     }
 
     private void trimPhysicalHistory() {

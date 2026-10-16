@@ -12,6 +12,12 @@ dependencies {
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 mixin { add sourceSets.main, 'jem_economy.refmap.json'; config 'jem_economy.mixins.json' }
-tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8'; options.release = 17 }
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8'; options.release = 17; options.incremental = false }
 tasks.withType(Test).configureEach { enabled = false }
+// Opt-in suite requested by the complete economy overhaul; ordinary builds do not run it.
+tasks.register('economyContractTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.siirio.jemeconomy.EconomyLedgerContractTest'
+}
 jar { archiveBaseName = 'jem-economy'; manifest { attributes 'MixinConfigs': 'jem_economy.mixins.json' }; finalizedBy 'reobfJar' }

@@ -11,6 +11,7 @@ public final class JemSettlements {
     public static final String MOD_ID = "jem_settlements";
 
     public JemSettlements() {
+        net.minecraftforge.fml.ModLoadingContext.get().registerConfig(net.minecraftforge.fml.config.ModConfig.Type.SERVER, com.siirio.jemsettlements.payroll.SettlementEconomyConfig.SPEC);
         SettlementNetwork.register();
         MinecraftForge.EVENT_BUS.register(SettlementCommands.class);
         MinecraftForge.EVENT_BUS.register(SettlementNetwork.class);

@@ -10,6 +10,7 @@ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
 public final class OptionalMixins implements IMixinConfigPlugin {
     private static final Map<String, List<String>> DEPENDENCIES = Map.ofEntries(
+            Map.entry("com.siirio.jemcompat.mixin.trading.FabricTypeAwareTradeMixin", List.of("fabric_object_builder_api_v1")),
             Map.entry("com.siirio.jemcompat.mixin.events.LuminousEventVictoryMixin", List.of("luminous_beasts")),
             Map.entry("com.siirio.jemcompat.mixin.guide.SpawnWithJourneyGuideProcedureMixin", List.of("spawn")),
             Map.entry("com.siirio.jemcompat.mixin.worldtier.EnhancedAiSpawningMixin", List.of("enhancedai", "jem_world_boss_tiers")),
@@ -25,6 +26,11 @@ public final class OptionalMixins implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
+        if (mixinClassName.equals("com.siirio.jemcompat.mixin.trading.FabricTypeAwareTradeMixin")) {
+            var file = FMLLoader.getLoadingModList().getModFileById("fabric_object_builder_api_v1");
+            return file != null && file.getMods().stream().anyMatch(mod -> mod.getModId().equals("fabric_object_builder_api_v1")
+                    && mod.getVersion().toString().equals("11.1.3+4bd998fa77"));
+        }
         return DEPENDENCIES.getOrDefault(mixinClassName, List.of()).stream()
                 .allMatch(mod -> FMLLoader.getLoadingModList().getModFileById(mod) != null);
     }

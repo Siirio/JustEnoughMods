@@ -12,8 +12,11 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+import os
 import re
 import subprocess
+import tempfile
+import time
 import tomllib
 import zipfile
 from collections import defaultdict
@@ -65,7 +68,26 @@ def read_json_bytes(raw: bytes) -> Any | None:
 
 def write_json(path: Path, value: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(value, ensure_ascii=False, indent=2, sort_keys=False) + "\n", encoding="utf-8")
+    payload = json.dumps(value, ensure_ascii=False, indent=2, sort_keys=False) + "\n"
+    descriptor, pending = tempfile.mkstemp(prefix=f".{path.name}.", suffix=".tmp", dir=path.parent)
+    try:
+        with os.fdopen(descriptor, "w", encoding="utf-8", newline="\n") as stream:
+            stream.write(payload)
+        deadline = time.monotonic() + 2.0
+        while True:
+            try:
+                os.replace(pending, path)
+                break
+            except PermissionError as failure:
+                # Windows readers can briefly deny replacement without delete
+                # sharing. The identical operation succeeds after their handle
+                # closes; permanent denials still fail this generation.
+                if getattr(failure, "winerror", None) not in {5, 32, 33} or time.monotonic() >= deadline:
+                    raise
+                time.sleep(0.05)
+    finally:
+        if os.path.exists(pending):
+            os.unlink(pending)
 
 
 def git(*args: str) -> str:
@@ -422,7 +444,7 @@ class Atlas:
         write_json(CATALOG / "manifest.json", self._manifest(generated))
         write_json(CATALOG / "coverage.json", self._coverage(views, generated))
         self.unresolved.extend([
-            {"type": "runtime_registry_boundary", "priority": "high", "reason": "No Minecraft/Forge runtime bootstrap was authorized; static evidence cannot prove dynamic registrations or absence."},
+            {"type": "runtime_registry_boundary", "priority": "high", "reason": "This generator consumes static artifacts; separate runtime captures are not imported into this snapshot and cannot prove dynamic registrations or absence here."},
             {"type": "dynamic_item_semantics", "priority": "high", "reason": "ItemStack-dependent max stack, food, attributes, capabilities, NBT variants and Java-only acquisition need a registry bootstrap or bytecode-specific overlay."},
             {"type": "entity_semantics", "priority": "high", "reason": "Living status, AI roles, attributes, tame/ride contracts and boss relationships are not inferred from display names."},
             {"type": "villager_resourcepacks", "priority": "medium", "reason": "Canonical Client/ManagedPack has no resourcepacks directory entries to audit; private active-profile packs are diagnostic-only and were not copied."},
@@ -487,7 +509,9 @@ class Atlas:
         rows = []
         for artifact in sorted(self.artifacts.values(), key=lambda a: a.path.name.lower()):
             rows.append({"filename": artifact.path.name, "sha256": artifact.digest, "sides": sorted(artifact.sides), "enabled": not all(side.endswith("_disabled") for side in artifact.sides), "mods": artifact.mods, "namespaces": sorted(artifact.namespaces), "source_path": str(artifact.path.relative_to(ROOT)) if artifact.path.is_relative_to(ROOT) else str(artifact.path), "nested_dependencies": []})
-        return {"schema_version": SCHEMA, "snapshot_sha": self.head, "generated_utc": generated, "minecraft": "1.20.1", "forge": "47.4.16", "java": "17", "pack_sources": ["Client/ManagedPack", "Server (read-only comparison)", "Mods source", "vanilla unpacked server archive"], "artifacts": rows}
+        launcher = (ROOT / "Server/run.bat").read_text(encoding="utf-8").replace("\\", "/")
+        forge_launch = re.search(r"forge/1\.20\.1-([^/\s]+)/win_args\.txt", launcher)
+        return {"schema_version": SCHEMA, "snapshot_sha": self.head, "generated_utc": generated, "minecraft": "1.20.1", "forge": forge_launch.group(1) if forge_launch else None, "java": "17", "pack_sources": ["Client/ManagedPack", "Server (read-only comparison)", "Mods source", "vanilla unpacked server archive"], "artifacts": rows}
 
     def _coverage(self, views: dict[str, Any], generated: str) -> dict[str, Any]:
         registries = {}

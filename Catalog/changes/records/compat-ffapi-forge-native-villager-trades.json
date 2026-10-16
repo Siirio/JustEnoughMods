@@ -1,0 +1,126 @@
+{
+  "schema_version": 2,
+  "change_id": "compat.ffapi-forge-native-villager-trades",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:villager"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "fabric_object_builder_api_v1 exactly11.1.3+4bd998fa77 with Forge47.4.10 audited layout; both physical sides",
+      "confidence": "source"
+    }
+  ],
+  "precedence": {
+    "layer": "native_compatibility",
+    "priority": 130,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Restore native Forge type-aware villager trade provider compatibility by canceling only the exact incompatible bundled FFAPI local-capture Mixin and retaining native missing/AIR-map guards.",
+    "modifiers": [
+      {
+        "property": "integration.ffapi.type_aware_native_trade_guard",
+        "operation": "replace",
+        "before": {
+          "value": "FFAPI11.1.3+4bd998fa77 captures ItemStack but Forge47.4.10 adds preceding Item local, so lazy native provider throws InjectionError"
+        },
+        "after": {
+          "value": "Installed MixinSquared public SPI cancels exact FFAPI mixin and exact target/version only; narrow noncapturing JEM guard rejects mapped AIR while Forge owns missing-type null handling"
+        }
+      },
+      {
+        "property": "integration.ffapi.physical_side_boundary",
+        "operation": "document",
+        "before": {
+          "value": "Bundled native trade incompatibility affects native provider on either physical side"
+        },
+        "after": {
+          "value": "Both-side vanilla compatibility guard only; no monetary mutation, no dedicated SMP common gameplay in integrated singleplayer; installed third-party JARs unchanged"
+        }
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCompat",
+    "kind": "user_requested_complete_economy_overhaul",
+    "source_files": [
+      "Mods/JEMCompat/build.gradle",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/fabric/FabricTradeMixinCanceller.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/fabric/FabricTradeMixinPolicy.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/trading/FabricTypeAwareTradeMixin.java",
+      "Mods/JEMCompat/src/main/resources/META-INF/services/com.bawnorton.mixinsquared.api.MixinCanceller",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+      "Client/ManagedPack/mods/jemcompat-3.7.0.jar"
+    ]
+  },
+  "rationale": {
+    "purpose": "Restore native Forge type-aware villager trade provider compatibility by canceling only the exact incompatible bundled FFAPI local-capture Mixin and retaining native missing/AIR-map guards.",
+    "decision_source": "Direct user complete economy overhaul brief 2026-10-16; Docs/economy/overhaul-implementation.md",
+    "user_requested": "User requested a working complete native villager economy and authorized fixing discovered integration faults; the exact FFAPI cancellation/guard is a Codex implementation choice.",
+    "codex_choices": "Evidence-first owner fix uses existing installed MixinSquared SPI plus a narrow AIR guard; preserve all valid native goods/quantity/NBT/uses/XP, no fallback suppression."
+  },
+  "introduced": {
+    "date": "2026-10-16",
+    "commit": "SELF",
+    "action": "complete_economy_overhaul",
+    "summary": "Restore native Forge type-aware villager trade provider compatibility by canceling only the exact incompatible bundled FFAPI local-capture Mixin and retaining native missing/AIR-map guards.",
+    "source_files": [
+      "Mods/JEMCompat/build.gradle",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/fabric/FabricTradeMixinCanceller.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/fabric/FabricTradeMixinPolicy.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/trading/FabricTypeAwareTradeMixin.java",
+      "Mods/JEMCompat/src/main/resources/META-INF/services/com.bawnorton.mixinsquared.api.MixinCanceller",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+      "Client/ManagedPack/mods/jemcompat-3.7.0.jar"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-16",
+      "commit": "SELF",
+      "action": "complete_economy_overhaul",
+      "summary": "Restore native Forge type-aware villager trade provider compatibility by canceling only the exact incompatible bundled FFAPI local-capture Mixin and retaining native missing/AIR-map guards.",
+      "source_files": [
+        "Mods/JEMCompat/build.gradle",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/fabric/FabricTradeMixinCanceller.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/fabric/FabricTradeMixinPolicy.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/trading/FabricTypeAwareTradeMixin.java",
+        "Mods/JEMCompat/src/main/resources/META-INF/services/com.bawnorton.mixinsquared.api.MixinCanceller",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+        "Client/ManagedPack/mods/jemcompat-3.7.0.jar"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "compatibility",
+      "native_villagers",
+      "forge",
+      "singleplayer",
+      "dedicated_server",
+      "mixin_loading"
+    ],
+    "relations": [
+      "Exact installed Forge47.4.10 and bundled object-builder11.1.3+4bd998fa77 evidence establishes local layout; other versions/targets/mixins are untouched.",
+      "Build-only installed nested MixinSquared extraction supplies compileOnly API; no new runtime library or third-party binary patch.",
+      "Bug / Both Sided / incompatible native local-capture callback / in testing; source correction does not claim player approval."
+    ],
+    "notes": [
+      "Exact installed Forge47.4.10 and bundled object-builder11.1.3+4bd998fa77 evidence establishes local layout; other versions/targets/mixins are untouched.",
+      "Build-only installed nested MixinSquared extraction supplies compileOnly API; no new runtime library or third-party binary patch.",
+      "Bug / Both Sided / incompatible native local-capture callback / in testing; source correction does not claim player approval."
+    ],
+    "unresolved": [
+      "Fresh actual provider export and applied production transformations require runtime evidence; player acceptance remains pending."
+    ]
+  }
+}

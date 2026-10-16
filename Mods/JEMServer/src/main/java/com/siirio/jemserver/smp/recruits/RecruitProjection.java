@@ -19,10 +19,18 @@ public final class RecruitProjection {
                 CompoundTag source = (CompoundTag) value; CompoundTag row = source.copy();
                 row.putUUID("id", source.getUUID("Id")); row.putString("name", source.getString("Name"));
                 row.putString("settlement", town.name()); row.putString("type", source.getString("NativeType"));
-                row.putBoolean("living", source.getBoolean("Living")); row.putLong("nextPayroll", town.nextPayrollGameTime());
+                row.putBoolean("living", source.getBoolean("Living")); row.putLong("nextPayroll", source.getLong("NextPayroll"));
                 if (settlement.contains("UnpaidPayroll")) row.putLong("outstandingPayroll", settlement.getLong("UnpaidPayroll"));
                 rows.add(row);
             }
+        }
+        CompoundTag personal = SettlementNetwork.personalRecruitView(viewer);
+        for (Tag value : personal.getList("Defense", Tag.TAG_COMPOUND)) {
+            CompoundTag source = (CompoundTag) value; CompoundTag row = source.copy();
+            row.putUUID("id", source.getUUID("Id")); row.putString("name", source.getString("Name"));
+            row.putString("settlement", ""); row.putString("type", source.getString("NativeType"));
+            row.putBoolean("living", source.getBoolean("Living")); row.putLong("nextPayroll", source.getLong("NextPayroll"));
+            row.putLong("outstandingPayroll", personal.getLong("UnpaidPayroll")); rows.add(row);
         }
         result.put("rows", rows); result.putInt("total", rows.size()); result.putInt("pageSize", 128);
         return result;

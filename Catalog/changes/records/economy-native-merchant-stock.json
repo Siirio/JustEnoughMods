@@ -22,7 +22,7 @@
     "overrides": []
   },
   "change": {
-    "summary": "Coin transactions delegate offer-use counting to native AbstractVillager.notifyTrade exactly once.",
+    "summary": "Native AbstractVillager owns persisted MerchantOffers and single use/XP notification; dedicated Buyer demand refresh assigns that real offers field rather than calling a no-op client hook.",
     "modifiers": [
       {
         "property": "economy.coin_trade.native_offer_use_increment",
@@ -35,19 +35,46 @@
           "value": 1
         },
         "notes": "Exact Forge47.4.10 AbstractVillager.notifyTrade owns use increment, XP callback and trade event. Broader subclasses still use their native implementation; no manual merchant enrollment or state owner is added."
+      },
+      {
+        "property": "economy.market_buyer.offer_refresh",
+        "operation": "replace",
+        "before": {
+          "value": "BuyerTradeOffers.refresh built current-demand offers then called AbstractVillager.overrideOffers(MerchantOffers), production m_6255_, which is literally a no-op; server retained its previous offers list",
+          "evidence": "Root final native runtime audit and exact installed AbstractVillager bytecode"
+        },
+        "after": {
+          "value": "Dedicated-only AbstractVillagerOffersAccessor sets canonical native offers field, production f_35261_, to freshly built Buyer demand offers; no parallel offer storage",
+          "owner": "AbstractVillager.offers",
+          "presentation": "Original native merchant window/list, guarded wallet-credit payout and no chat opening",
+          "status": "in testing"
+        },
+        "conditions": [
+          {
+            "runtime": "Common accessor is loaded only on physical DEDICATED_SERVER through JemEconomyMixinPlugin; client screens remain compatible, integrated singleplayer native behavior unchanged"
+          }
+        ],
+        "notes": "This corrects a real server-side refresh omission. Native notifyTrade remains sole use/XP event owner; setter neither delivers money nor adds a second stock counter."
       }
     ]
   },
   "cause": {
     "owner": "JEMEconomy",
-    "kind": "native_adapter_duplicate_mutation",
+    "kind": "native_offer_owner_and_stock_correction",
     "source_files": [
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSession.java"
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/audit/NativeMerchantContracts.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/BuyerTradeOffers.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSession.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/AbstractVillagerOffersAccessor.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/JemEconomyMixinPlugin.java",
+      "Mods/JEMEconomy/src/main/resources/jem_economy.mixins.json"
     ]
   },
   "rationale": {
     "purpose": "Preserve native merchant stock capacity without changing Coin payments, policy, delivery, XP callback or event count.",
-    "decision_source": "User explicitly authorized overnight local gameplay QA and verified fixes; Codex chose this one-line owner correction after actual sale use counter0->2 and independent native bytecode review."
+    "decision_source": "User explicitly authorized overnight local gameplay QA and verified fixes; Codex chose this one-line owner correction after actual sale use counter0->2 and independent native bytecode review. Current complete economy overhaul2026-10-16 authorizes fixing actual Buyer behavior; exact field accessor is a Codex implementation choice based on runtime/bytecode evidence.",
+    "user_requested": "Functional native Market Buyer/merchant economy preserving original GUI, demand controls, stock and server authority.",
+    "codex_choices": "Use a narrow accessor on native AbstractVillager.offers because its public overrideOffers implementation does nothing; physically dedicated gate and no separate offer state."
   },
   "introduced": {
     "date": "2026-10-14",
@@ -82,25 +109,46 @@
       "source_files": [
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSession.java"
       ]
+    },
+    {
+      "date": "2026-10-16",
+      "commit": "SELF",
+      "action": "repair_native_buyer_offer_owner",
+      "summary": "User requested functional two-way native economy; root runtime evidence exposed AbstractVillager.overrideOffers as literal no-op. Codex selected a narrow dedicated-only accessor for the actual native offers field; opt-in unsaved-NPC native audit helper uses the same owner. Earlier stock/XP history is retained unchanged.",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/BuyerTradeOffers.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/AbstractVillagerOffersAccessor.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/JemEconomyMixinPlugin.java",
+        "Mods/JEMEconomy/src/main/resources/jem_economy.mixins.json",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/audit/NativeMerchantContracts.java"
+      ]
     }
   ],
   "impacts": {
     "systems": [
       "economy",
-      "villagers",
-      "native_stock",
+      "market_buyer",
+      "market_demand",
       "merchant_xp",
-      "trade_events"
+      "native_offer_persistence",
+      "native_stock",
+      "singleplayer_boundary",
+      "trade_events",
+      "villagers"
     ],
     "relations": [
-      "NativeTradeSession -> AbstractVillager.notifyTrade -> native offer uses/XP/trade event"
+      "NativeTradeSession -> AbstractVillager.notifyTrade -> native offer uses/XP/trade event",
+      "BuyerTradeOffers.refresh -> dedicated AbstractVillagerOffersAccessor -> canonical AbstractVillager.offers -> native menu/persistence"
     ],
     "notes": [
       "Single native notifyTrade ownership is preserved in the new source path; no separate offer-use counter.",
-      "Human Coin callback source correction is recorded by economy.native-trading-presentation; not a runtime certification."
+      "Human Coin callback source correction is recorded by economy.native-trading-presentation; not a runtime certification.",
+      "Exact installed overrideOffers/m_6255_ does not assign server offers; a generated MerchantOffers value alone never proved Buyer refresh.",
+      "Accessor owns assignment only. Native offer serialization, restocking, scroll/UI, notifyTrade uses/XP and Economy settlement remain their existing owners.",
+      "Bug / Server Sided / AbstractVillager.overrideOffers literal no-op left Buyer server offers stale / in testing."
     ],
     "unresolved": [
-      "New native-session runtime and stock/XP acceptance remain pending; no build/game check performed."
+      "Fresh accessor/refmap and Buyer offer refresh/demand rollover require actual runtime observation after installing its new artifact; native player GUI acceptance remains pending."
     ]
   }
 }

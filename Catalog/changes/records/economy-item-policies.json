@@ -18,14 +18,25 @@
     "overrides": []
   },
   "change": {
-    "summary": "Reviewed ingredient and resource policies define the only system-market outcome and exact quote/cap fields; finished meals remain outside the universal Market.",
+    "summary": "Canonical commodity policies define exact two-way Market/Shipping admission, prices and caps; prepared meals remain Market NONE while independently reviewed native specialist merchandise uses its separate owner.",
     "modifiers": [
       {
         "property": "economy.trade_policy",
         "operation": "set",
-        "before": {"value": "NONE", "source": "JEM Economy fail-closed default"},
+        "before": {
+          "value": "NONE",
+          "source": "JEM Economy fail-closed default"
+        },
         "after": {
-          "source_member_fields": ["outcome", "sell_copper", "buy_copper", "daily_player_units", "daily_global_units", "demand_group", "notes"]
+          "source_member_fields": [
+            "outcome",
+            "sell_copper",
+            "buy_copper",
+            "daily_player_units",
+            "daily_global_units",
+            "demand_group",
+            "notes"
+          ]
         },
         "notes": "Selector member details are emitted by behavior queries so different per-item values stay in one canonical source set."
       }
@@ -35,13 +46,16 @@
     "owner": "JEMEconomy",
     "kind": "jem_datapack_policy",
     "source_files": [
-      "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java"
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicy.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java",
+      "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json"
     ]
   },
   "rationale": {
     "purpose": "Expose reviewed BUY_AND_SELL or NONE decisions while unknown and progression-protected items remain fail-closed.",
-    "decision_source": "Docs/DEVELOPMENT.md economy ownership and policy contract"
+    "decision_source": "Direct user complete economy overhaul brief 2026-10-16; preserve prior explicit EXCLUDE while user now requests suitable native specialist prepared-food offers.",
+    "user_requested": "Complete ordinary resource/agriculture/fish/animal market across installed mods without boss/progression rewards or random generic prices.",
+    "codex_choices": "Item-by-item source-backed prices/caps and conservative recipe-closure corrections in canonical item_policies.json and final balance report."
   },
   "introduced": {
     "date": "2026-10-13",
@@ -69,16 +83,39 @@
         "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json",
         "Docs/DEVELOPMENT.md"
       ]
+    },
+    {
+      "date": "2026-10-16",
+      "commit": "SELF",
+      "action": "complete_market_reconciliation",
+      "summary": "User requested extensive two-way fair Market; Codex reconciled runtime-confirmed registry, prior Drive decisions and actual acquisition/recipe output, preserving protected EXCLUDE and Market-NONE prepared meals.",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicy.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java",
+        "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json"
+      ]
     }
   ],
   "impacts": {
-    "systems": ["economy", "recipes", "progression", "settlements", "market_buyer"],
-    "relations": ["item->market_quotes", "ingredient->dependent_recipes", "item->daily_market_caps"],
-    "notes": [
-      "Cap classes are common crops 64/2048, raw food ingredients 32/512, processed intermediates 16/256, farmable drops and valuable minerals 16/128, and rare natural resources 2/32.",
-      "Prepared meals are explicit NONE policies and remain tradable only through separate player-owned shop mechanics.",
-      "The exact installed Brewery recipe converts one wheat into one dried wheat; both sell for two base copper, while either costs four to buy, so guaranteed NPC proceeds cannot exceed ingredient purchase cost even at the same demand multiplier."
+    "systems": [
+      "economy",
+      "recipes",
+      "progression",
+      "settlements",
+      "market_buyer"
     ],
-    "unresolved": ["Static Atlas evidence does not prove every runtime-only acquisition path; any future commodity without exact recipe or acquisition evidence remains fail-closed."]
+    "relations": [
+      "item->market_quotes",
+      "ingredient->dependent_recipes",
+      "item->daily_market_caps"
+    ],
+    "notes": [
+      "Canonical source_member_fields retain every exact price, quota and reason without per-item Atlas copies.",
+      "Prepared meals remain Market NONE; this does not prohibit the newly requested reviewed native specialist two-way channel. It is not permission to reopen prior explicit EXCLUDE goods.",
+      "Current source-backed recipe closure includes demand/discount bounds, cutting/bulk output, smelting and installed processing rather than relying on the historical one-recipe baseline."
+    ],
+    "unresolved": [
+      "Static Atlas evidence does not prove every runtime-only acquisition path; any future commodity without exact recipe or acquisition evidence remains fail-closed."
+    ]
   }
 }

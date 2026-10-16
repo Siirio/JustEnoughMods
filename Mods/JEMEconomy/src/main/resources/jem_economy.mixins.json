@@ -5,7 +5,16 @@
   "plugin": "com.siirio.jemeconomy.mixin.JemEconomyMixinPlugin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "jem_economy.refmap.json",
-  "mixins": ["MerchantMenuMixin", "MerchantContainerMixin"],
-  "client": ["MerchantScreenMixin", "NativeTradeClickMixin"],
-  "injectors": {"defaultRequire": 1}
+  "mixins": [
+    "MerchantMenuMixin",
+    "MerchantContainerMixin",
+    "AbstractVillagerOffersAccessor"
+  ],
+  "client": [
+    "MerchantScreenMixin",
+    "NativeTradeClickMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
 }

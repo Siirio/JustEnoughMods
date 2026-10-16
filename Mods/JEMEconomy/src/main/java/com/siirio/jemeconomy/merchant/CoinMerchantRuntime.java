@@ -16,5 +16,7 @@ public final class CoinMerchantRuntime {
         // Let the NPC open its real MerchantMenu and preserve its native interaction lifecycle.
         if (com.siirio.jemeconomy.market.MarketRuntime.isBuyer(merchant) && merchant.getTradingPlayer() == null)
             BuyerTradeOffers.refresh(merchant, player);
+        else if (!com.siirio.jemeconomy.market.MarketRuntime.isBuyer(merchant) && merchant.getTradingPlayer() == null)
+            ProfessionTradePools.extend(merchant);
     }
 }

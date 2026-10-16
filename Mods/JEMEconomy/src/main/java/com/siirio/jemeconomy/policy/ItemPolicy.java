@@ -10,8 +10,12 @@ public record ItemPolicy(int schema, ResourceLocation item, Outcome outcome, Lon
     public boolean buyable() { return sellable(); }
     public MarketCategory marketCategory() {
         String path = item.getPath();
-        if (path.equals("bone") || path.equals("string") || path.equals("gunpowder")) return MarketCategory.DROPS;
+        if (demandGroup.equals("drops") || path.equals("bone") || path.equals("string") || path.equals("gunpowder")) return MarketCategory.DROPS;
         if (demandGroup.equals("mining")) return MarketCategory.RESOURCES;
+        if (demandGroup.equals("forestry") && (path.endsWith("_log") || path.endsWith("_wood") || path.endsWith("_sapling"))) return MarketCategory.BLOCKS;
+        if (path.endsWith("_wool")) return MarketCategory.BLOCKS;
+        if (java.util.Set.of("leather", "rabbit_hide", "feather", "honeycomb", "buckskin", "hide").contains(path)) return MarketCategory.RESOURCES;
+        if (demandGroup.equals("handcrafts")) return MarketCategory.RESOURCES;
         return MarketCategory.FOOD;
     }
 }

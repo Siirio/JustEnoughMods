@@ -26,7 +26,7 @@
     "overrides": []
   },
   "change": {
-    "summary": "Original native opening/menu/screen/offers and resource-pack presentation with non-rendering secured Coin actions and Wallet credit; native Buyer with no chat; one authoritative 20% Ancestor purchase discount",
+    "summary": "Native merchant windows, goods, offers, slots and resource-pack layout retained; user-requested real Coin currency cells/selected exact price and shared compact monetary presentation render authoritative server quotes.",
     "modifiers": [
       {
         "property": "economy.native_trade.presentation",
@@ -35,7 +35,7 @@
           "value": "Canceled native opening, custom18-slot immediate-click GUI; Buyer chat bulletin; legacy Human emerald refund after Coin payment"
         },
         "after": {
-          "value": "Original native opening/menu/screen/offers and resource-pack styling; no JEM price/status/balance renderer; guarded quoted monetary result actions and Wallet credit; native Buyer with no chat; one server-side 20% Ancestor purchase discount applied exactly once"
+          "value": "Native opening/menu/screen/list/slots/scroll/resource-pack styling retained; real registered Coin currency cells, full selected exact amount and tooltip; guarded Wallet/backed-cash monetary settlement; native Buyer no chat; one authoritative bounded Ancestor discount"
         }
       }
     ]
@@ -44,20 +44,27 @@
     "owner": "JEMEconomy/JEMRoles",
     "kind": "native_interface_currency_adapter",
     "source_files": [
+      "Client/ManagedPack/mods/jem-economy-1.2.0.jar",
       "Mods/JEMEconomy/build.gradle",
       "Mods/JEMEconomy/settings.gradle",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/JemEconomy.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/CoinTradeContext.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/CoinTradePriceEvent.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/CoinAmounts.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/CoinPriceRenderer.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/EconomyClient.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/NativeTradeClient.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/NativeTradeScreenAccess.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/ShippingBoxScreen.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/WalletScreen.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/market/MarketRuntime.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/BuyerTradeOffers.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantRuntime.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeCoinResultSlot.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeMerchantAccess.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeCatalog.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeContainer.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradePricing.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeQuote.java",
@@ -71,7 +78,9 @@
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/NativeTradeActionPacket.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/NativeTradePacket.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/CoinFormatter.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/registry/EconomyMenus.java",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/font/coins.json",
       "Mods/JEMEconomy/src/main/resources/assets/jem_economy/lang/en_us.json",
       "Mods/JEMEconomy/src/main/resources/assets/jem_economy/lang/ru_ru.json",
       "Mods/JEMEconomy/src/main/resources/jem_economy.mixins.json",
@@ -84,7 +93,7 @@
   },
   "rationale": {
     "purpose": "Keep Minecraft and the selected resource pack as the merchant presentation owner while retaining authoritative Coin settlement.",
-    "decision_source": "Direct user runtime correction2026-10-14 that the visible merchant overhaul was JEM-owned and CoffeeGUI must remain; non-rendering adapter boundary chosen by Codex."
+    "decision_source": "User complete economy overhaul2026-10-16 explicitly requests actual Coin icons in every native row. This authorizes the smallest monetary-cell rendering extension over the previous Codex-chosen non-rendering boundary, not screen replacement."
   },
   "introduced": {
     "date": "2026-10-14",
@@ -202,6 +211,29 @@
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/CoinPriceRenderer.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/MerchantScreenMixin.java"
       ]
+    },
+    {
+      "date": "2026-10-16",
+      "commit": "SELF",
+      "action": "universal_real_coin_presentation",
+      "summary": "User requests actual Coin icons in native rows and all monetary views; Codex adds narrow monetary-cell hooks and shared exact renderer/font while preserving native GUI and server financial authority.",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/CoinAmounts.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/CoinPriceRenderer.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/ShippingBoxScreen.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/WalletScreen.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantRuntime.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeCatalog.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradePricing.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSession.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSettlement.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/MerchantScreenMixin.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/CoinFormatter.java",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/font/coins.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/lang/en_us.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/lang/ru_ru.json"
+      ]
     }
   ],
   "impacts": {
@@ -220,16 +252,14 @@
       "native producer -> server authoritative state -> synchronized client presentation"
     ],
     "notes": [
-      "Native item barter preserves the original slot and selected-offer lifecycle; both orientations remain supported.",
-      "JEM Races protocol 2 requires the exact matching Roles client/server artifact; Coin quotes remain server authoritative.",
-      "Unknown/protected/NBT offers stay server-denied; no item policy, emerald rate, supply or cap was changed.",
-      "Quote actions acknowledge revision/selection/nonce and original terms; source-only review addressed four important findings.",
-      "Common monetary Mixins and command/listener registration are physically dedicated-only; client retains presentation/registry/network compatibility.",
-      "Removed custom screen/menu/provider and CoinPriceRenderer paths remain in history, not current cause evidence.",
-      "CoffeeGUI remains the selected merchant texture owner; JEM's remaining MerchantScreen Mixin performs no rendering."
+      "Original native merchant geometry, list, slots, scrolling, restocking and resource-pack texture ownership remain.",
+      "Five Coin values1/10/100/1000/10000 decompose exactly without rounding; narrow native cells include selected full price and expanded tooltip.",
+      "Shared client-only CoinAmounts/CoinPriceRenderer and bitmap-font CoinFormatter use existing registered Coin models/face textures in Market BUY/SELL, wallet, shipping, shops, settlement/recruit views and Component messages.",
+      "All visible amounts project server quotes; synthetic wallet-credit presentation is never transferable backed cash; common economy gameplay remains physically dedicated-only.",
+      "Pre-existing removed custom-screen paths remain historical; new shared renderer is explicitly reintroduced by the current user brief."
     ],
     "unresolved": [
-      "Fresh artifacts load on the dedicated server; player gameplay and rendered acceptance remain pending."
+      "New client Mixins/font loading, native currency-cell readability at GUI scales and rendered/player acceptance require actual client observation; source/build checks do not establish visual acceptance."
     ]
   }
 }

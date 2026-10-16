@@ -29,10 +29,14 @@ public final class ShippingBoxScreen extends AbstractContainerScreen<ShippingBox
         graphics.drawString(font, title, titleLabelX, 5, 0x3C2415, false);
         graphics.drawString(font, Component.translatable("jem.economy.shipping.owner", menu.box().ownerName()), 8, 120, 0x3C2415, false);
         graphics.drawWordWrap(font, Component.translatable("jem.economy.shipping.status." + statusKey(menu.statusCode())), 180, 84, 70, 0xF7E2BE);
-        graphics.drawWordWrap(font, Component.translatable("jem.economy.shipping.pending", menu.previewPayout()), 180, 112, 70, 0xFFFFD18A);
+        graphics.drawString(font, Component.translatable("jem.economy.shipping.pending_label"), 180, 108, 0xFFFFD18A, false);
+        CoinPriceRenderer.draw(graphics, font, menu.previewPayout(), 180, 119, 70, 0xFFFFD18A);
         graphics.drawWordWrap(font, Component.translatable("jem.economy.shipping.demand", Component.translatable("jem.economy.demand." + menu.primaryDemand()), Component.translatable("jem.economy.demand." + menu.secondaryDemand())), 180, 138, 70, 0xF7E2BE);
-        graphics.drawWordWrap(font, Component.translatable("jem.economy.shipping.limits", menu.accountRemaining(), menu.globalRemaining()), 180, 178, 70, 0xF7E2BE);
-        graphics.drawWordWrap(font, Component.translatable("jem.economy.shipping.next", menu.ticksUntilUpdate()), 180, 216, 70, 0xF7E2BE);
+        graphics.drawString(font, Component.translatable("jem.economy.shipping.account_limit"), 180, 176, 0xF7E2BE, false);
+        CoinPriceRenderer.draw(graphics, font, menu.accountRemaining(), 180, 186, 70, 0xF7E2BE);
+        graphics.drawString(font, Component.translatable("jem.economy.shipping.global_limit"), 180, 199, 0xF7E2BE, false);
+        CoinPriceRenderer.draw(graphics, font, menu.globalRemaining(), 180, 209, 70, 0xF7E2BE);
+        graphics.drawWordWrap(font, Component.translatable("jem.economy.shipping.next", menu.ticksUntilUpdate()), 180, 229, 70, 0xF7E2BE);
         graphics.drawString(font, playerInventoryTitle, inventoryLabelX, inventoryLabelY, 0x3C2415, false);
     }
     private static String statusKey(int value) { return switch (value) { case 1 -> "preview"; case 2 -> "paid"; case 3 -> "empty"; case 4 -> "blocked_item"; case 5 -> "account_daily_cap"; case 6 -> "global_daily_cap"; case 7 -> "item_account_cap"; case 8 -> "item_global_cap"; case 9 -> "budget_too_small"; case 10 -> "payout_full"; case 11 -> "market_budget_exhausted"; case 12 -> "quarantined"; default -> "waiting"; }; }

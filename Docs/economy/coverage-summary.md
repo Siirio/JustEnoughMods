@@ -1,8 +1,8 @@
 # Economy registry coverage
 
-Generated from Atlas schema 1 at `2026-10-15T19:50:57.409061+00:00` for `403744f8380e7d91d3ed2a30358e0fb6825398f8`.
+Generated from Atlas schema 1 at `2026-10-15T22:54:54.012988+00:00` for `6297fc3865de93389cb41b3a7cc01296391f19a9`.
 
-Static evidence observed 17,060 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
+Static evidence observed 17,061 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
 
 | Mod | Registered | Reviewed | Unknown | BUY_AND_SELL | NONE |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -15,20 +15,20 @@ Static evidence observed 17,060 canonical item IDs. This is not a Forge runtime 
 | bakery | 84 | 3 | 81 | 0 | 84 |
 | barnyardbuddies | 59 | 0 | 59 | 0 | 59 |
 | bbb | 263 | 0 | 263 | 0 | 263 |
-| beachparty | 86 | 2 | 84 | 1 | 85 |
+| beachparty | 86 | 5 | 81 | 4 | 82 |
 | bellsandwhistles | 38 | 0 | 38 | 0 | 38 |
 | blastfromthepast | 133 | 0 | 133 | 0 | 133 |
 | block_factorys_bosses | 137 | 0 | 137 | 0 | 137 |
 | blueprint | 1 | 0 | 1 | 0 | 1 |
-| brewery | 72 | 3 | 69 | 3 | 69 |
+| brewery | 72 | 6 | 66 | 6 | 66 |
 | casualswing | 32 | 0 | 32 | 0 | 32 |
 | cataclysm | 386 | 0 | 386 | 0 | 386 |
 | chimes | 7 | 0 | 7 | 0 | 7 |
 | citadel | 5 | 0 | 5 | 0 | 5 |
-| cnc | 103 | 2 | 101 | 0 | 103 |
+| cnc | 103 | 7 | 96 | 5 | 98 |
 | companions | 81 | 0 | 81 | 0 | 81 |
 | copperagebackport | 8 | 0 | 8 | 0 | 8 |
-| create | 903 | 0 | 903 | 0 | 903 |
+| create | 903 | 3 | 900 | 3 | 900 |
 | create_train_parts | 16 | 0 | 16 | 0 | 16 |
 | createrailwaysnavigator | 10 | 0 | 10 | 0 | 10 |
 | creeperoverhaul | 17 | 0 | 17 | 0 | 17 |
@@ -44,7 +44,7 @@ Static evidence observed 17,060 canonical item IDs. This is not a Forge runtime 
 | epicfight | 49 | 0 | 49 | 0 | 49 |
 | exposure | 87 | 0 | 87 | 0 | 87 |
 | fairylights | 33 | 0 | 33 | 0 | 33 |
-| farm_and_charm | 112 | 0 | 112 | 0 | 112 |
+| farm_and_charm | 112 | 12 | 100 | 12 | 100 |
 | flashlightmod | 5 | 0 | 5 | 0 | 5 |
 | ftblibrary | 2 | 0 | 2 | 0 | 2 |
 | ftbquests | 25 | 0 | 25 | 0 | 25 |
@@ -53,7 +53,7 @@ Static evidence observed 17,060 canonical item IDs. This is not a Forge runtime 
 | gravestone | 2 | 0 | 2 | 0 | 2 |
 | guardvillagers | 4 | 0 | 4 | 0 | 4 |
 | handcrafted | 285 | 0 | 285 | 0 | 285 |
-| herbalbrews | 48 | 4 | 44 | 4 | 44 |
+| herbalbrews | 48 | 9 | 39 | 9 | 39 |
 | immersive_aircraft | 40 | 0 | 40 | 0 | 40 |
 | immersive_melodies | 22 | 0 | 22 | 0 | 22 |
 | immersive_weathering | 237 | 0 | 237 | 0 | 237 |
@@ -63,13 +63,13 @@ Static evidence observed 17,060 canonical item IDs. This is not a Forge runtime 
 | irons_lib | 4 | 0 | 4 | 0 | 4 |
 | irons_spellbooks | 412 | 0 | 412 | 0 | 412 |
 | jacksgravestones | 1 | 0 | 1 | 0 | 1 |
-| jem_economy | 8 | 0 | 8 | 0 | 8 |
+| jem_economy | 9 | 0 | 9 | 0 | 9 |
 | jem_pack_core | 5 | 0 | 5 | 0 | 5 |
 | jem_server | 4 | 0 | 4 | 0 | 4 |
 | jemcompat | 80 | 0 | 80 | 0 | 80 |
 | jemtwelveeyes | 1 | 0 | 1 | 0 | 1 |
 | kaleidoscope_compat | 218 | 0 | 218 | 0 | 218 |
-| kaleidoscope_cookery | 224 | 2 | 222 | 0 | 224 |
+| kaleidoscope_cookery | 224 | 9 | 215 | 7 | 217 |
 | kaleidoscope_doll | 705 | 0 | 705 | 0 | 705 |
 | kaleidoscope_end | 81 | 0 | 81 | 0 | 81 |
 | kaleidoscope_nether | 166 | 0 | 166 | 0 | 166 |
@@ -82,17 +82,17 @@ Static evidence observed 17,060 canonical item IDs. This is not a Forge runtime 
 | luminous_beasts | 183 | 0 | 183 | 0 | 183 |
 | luminous_nether | 205 | 0 | 205 | 0 | 205 |
 | luminoustag | 1 | 0 | 1 | 0 | 1 |
-| minecraft | 1689 | 32 | 1657 | 20 | 1669 |
+| minecraft | 1689 | 92 | 1597 | 80 | 1609 |
 | moa_decor_holidays | 151 | 0 | 151 | 0 | 151 |
 | moonlight | 1 | 0 | 1 | 0 | 1 |
 | moretotems | 7 | 0 | 7 | 0 | 7 |
-| natures_spirit | 717 | 1 | 716 | 1 | 716 |
+| natures_spirit | 717 | 58 | 659 | 58 | 659 |
 | naturescompass | 32 | 0 | 32 | 0 | 32 |
 | netherexp | 394 | 0 | 394 | 0 | 394 |
-| oceanicrealms | 43 | 2 | 41 | 1 | 42 |
+| oceanicrealms | 43 | 5 | 38 | 4 | 39 |
 | paraglider | 14 | 0 | 14 | 0 | 14 |
 | patchouli | 13 | 0 | 13 | 0 | 13 |
-| primal | 104 | 2 | 102 | 0 | 104 |
+| primal | 104 | 3 | 101 | 1 | 103 |
 | railways | 1930 | 0 | 1930 | 0 | 1930 |
 | recruits | 14 | 0 | 14 | 0 | 14 |
 | ribbits | 21 | 0 | 21 | 0 | 21 |
@@ -102,22 +102,22 @@ Static evidence observed 17,060 canonical item IDs. This is not a Forge runtime 
 | shutterup | 20 | 0 | 20 | 0 | 20 |
 | siegeweapons | 8 | 0 | 8 | 0 | 8 |
 | simplybows | 115 | 0 | 115 | 0 | 115 |
-| skarrier_mobs | 170 | 0 | 170 | 0 | 170 |
+| skarrier_mobs | 170 | 2 | 168 | 2 | 168 |
 | smallships | 66 | 0 | 66 | 0 | 66 |
-| snowyspirit | 73 | 0 | 73 | 0 | 73 |
+| snowyspirit | 73 | 2 | 71 | 2 | 71 |
 | somemoreblocks | 663 | 0 | 663 | 0 | 663 |
 | sootychimneys | 14 | 0 | 14 | 0 | 14 |
-| spawn | 311 | 0 | 311 | 0 | 311 |
+| spawn | 311 | 3 | 308 | 3 | 308 |
 | spider_overhaul | 20 | 0 | 20 | 0 | 20 |
 | spudaciousshops | 230 | 0 | 230 | 0 | 230 |
-| tide | 451 | 2 | 449 | 2 | 449 |
+| tide | 451 | 25 | 426 | 25 | 426 |
 | tinyinv | 2 | 0 | 2 | 0 | 2 |
 | toms_storage | 20 | 0 | 20 | 0 | 20 |
 | trials | 82 | 0 | 82 | 0 | 82 |
 | trotting_wagons | 5 | 0 | 5 | 0 | 5 |
-| unearthed_journey | 413 | 0 | 413 | 0 | 413 |
+| unearthed_journey | 413 | 5 | 408 | 5 | 408 |
 | vanillabackport | 96 | 0 | 96 | 0 | 96 |
-| vinery | 171 | 2 | 169 | 2 | 169 |
+| vinery | 171 | 15 | 156 | 15 | 156 |
 | whaleborne | 10 | 0 | 10 | 0 | 10 |
 | workers | 9 | 0 | 9 | 0 | 9 |
 | xtraarrows | 104 | 0 | 104 | 0 | 104 |

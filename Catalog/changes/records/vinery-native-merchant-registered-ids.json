@@ -1,0 +1,116 @@
+{
+  "schema_version": 2,
+  "change_id": "vinery.native-merchant-registered-ids",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "vinery:taiga_grape_seeds_red"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "vinery:taiga_grape_seeds_white"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "vinery:wandering_winemaker"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Authenticated dedicated SMP for economy and shared-server gameplay; compatible client only renders server quotes",
+      "confidence": "source"
+    }
+  ],
+  "precedence": {
+    "layer": "native_mod_configuration",
+    "priority": 150,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Correct two nonexistent Vinery seed references and remove the unregistered calendar from native merchant configuration.",
+    "modifiers": [
+      {
+        "property": "vinery.native_trade.registered_seed_ids",
+        "operation": "replace",
+        "before": {
+          "level4": "vinery:taiga_red_grape_seeds,vinery:taiga_white_grape_seeds"
+        },
+        "after": {
+          "level4": "vinery:taiga_grape_seeds_red,vinery:taiga_grape_seeds_white",
+          "other_terms": "Unchanged native price/quantity/uses/isSelling terms"
+        }
+      },
+      {
+        "property": "vinery.native_trade.unregistered_calendar",
+        "operation": "deny",
+        "before": {
+          "level5": "vinery:calendar|12|1|15|true"
+        },
+        "after": {
+          "level5": "Entry removed because exact runtime item registry has no vinery:calendar; wine_box/lilitu_wine retained"
+        }
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Vinery configuration",
+    "kind": "user_requested_complete_economy_overhaul",
+    "source_files": [
+      "Client/ManagedPack/config/vinery.toml",
+      "Server/config/vinery.toml"
+    ]
+  },
+  "rationale": {
+    "purpose": "Correct two nonexistent Vinery seed references and remove the unregistered calendar from native merchant configuration.",
+    "decision_source": "Direct user complete economy overhaul brief 2026-10-16; Docs/economy/overhaul-implementation.md",
+    "user_requested": "Preserve and integrate actual installed native special merchant offers without nonexistent items or invented registrations.",
+    "codex_choices": "Correct the two seed identifier spellings to exact loaded IDs and remove only unregistered calendar entry in clean managed config and local server config; retain every other native configured offer/term."
+  },
+  "introduced": {
+    "date": "2026-10-16",
+    "commit": "SELF",
+    "action": "complete_economy_overhaul",
+    "summary": "Correct two nonexistent Vinery seed references and remove the unregistered calendar from native merchant configuration.",
+    "source_files": [
+      "Client/ManagedPack/config/vinery.toml",
+      "Server/config/vinery.toml"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-16",
+      "commit": "SELF",
+      "action": "complete_economy_overhaul",
+      "summary": "Correct two nonexistent Vinery seed references and remove the unregistered calendar from native merchant configuration.",
+      "source_files": [
+        "Client/ManagedPack/config/vinery.toml",
+        "Server/config/vinery.toml"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "economy",
+      "vinery",
+      "native_merchants",
+      "registries",
+      "configuration"
+    ],
+    "relations": [
+      "Root's exact loaded registry established correct seed IDs and absent calendar; do not invent an Item or manufacture a blank trade.",
+      "Native Vinery merchant/provider owns selection, quantities and stock; JEM native quote admission remains separately source-backed."
+    ],
+    "notes": [
+      "Root's exact loaded registry established correct seed IDs and absent calendar; do not invent an Item or manufacture a blank trade.",
+      "Native Vinery merchant/provider owns selection, quantities and stock; JEM native quote admission remains separately source-backed."
+    ],
+    "unresolved": [
+      "Corrected config/provider and client GUI need fresh runtime observation; no player acceptance implied."
+    ]
+  }
+}

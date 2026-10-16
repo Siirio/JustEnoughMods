@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "items",
-  "snapshot_sha": "403744f8380e7d91d3ed2a30358e0fb6825398f8",
+  "snapshot_sha": "6297fc3865de93389cb41b3a7cc01296391f19a9",
   "generation": {
-    "generated_utc": "2026-10-15T19:50:57.409061+00:00",
+    "generated_utc": "2026-10-15T22:54:54.012988+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -21,7 +21,7 @@
       "mod_name": "JEM Economy",
       "mod_version": "1.2.0",
       "source_jar": "jem-economy-1.2.0.jar",
-      "source_sha256": "7fcf1f281ff49f4549d0969f36700959fe0262a8a67a2341dc99f6cbbebc7e62",
+      "source_sha256": "c3f5422d2a558d3f0ceaf5adaac2249e5bec9bd2816589b0653ecf65ca163789",
       "side_availability": [
         "client"
       ],
@@ -75,7 +75,7 @@
       "mod_name": "JEM Economy",
       "mod_version": "1.2.0",
       "source_jar": "jem-economy-1.2.0.jar",
-      "source_sha256": "7fcf1f281ff49f4549d0969f36700959fe0262a8a67a2341dc99f6cbbebc7e62",
+      "source_sha256": "c3f5422d2a558d3f0ceaf5adaac2249e5bec9bd2816589b0653ecf65ca163789",
       "side_availability": [
         "source"
       ],
@@ -125,7 +125,7 @@
       "mod_name": "JEM Economy",
       "mod_version": "1.2.0",
       "source_jar": "jem-economy-1.2.0.jar",
-      "source_sha256": "7fcf1f281ff49f4549d0969f36700959fe0262a8a67a2341dc99f6cbbebc7e62",
+      "source_sha256": "c3f5422d2a558d3f0ceaf5adaac2249e5bec9bd2816589b0653ecf65ca163789",
       "side_availability": [
         "client"
       ],
@@ -172,6 +172,56 @@
       "trade_policy_ref": "trade:jem_economy:arcane_coin"
     },
     {
+      "registry_id": "jem_economy:armorer",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "jem_economy",
+      "mod_name": "JEM Economy",
+      "mod_version": "1.2.0",
+      "source_jar": "jem-economy-1.2.0.jar",
+      "source_sha256": "c3f5422d2a558d3f0ceaf5adaac2249e5bec9bd2816589b0653ecf65ca163789",
+      "side_availability": [
+        "source"
+      ],
+      "observed_in": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/audit/NativeMerchantContracts.java"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": true,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "NativeMerchantContracts.java:Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/audit/NativeMerchantContracts.java"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:jem_economy:armorer"
+    },
+    {
       "registry_id": "jem_economy:coin_base",
       "registry_type": "item",
       "schema_version": 1,
@@ -179,7 +229,7 @@
       "mod_name": "JEM Economy",
       "mod_version": "1.2.0",
       "source_jar": "jem-economy-1.2.0.jar",
-      "source_sha256": "7fcf1f281ff49f4549d0969f36700959fe0262a8a67a2341dc99f6cbbebc7e62",
+      "source_sha256": "c3f5422d2a558d3f0ceaf5adaac2249e5bec9bd2816589b0653ecf65ca163789",
       "side_availability": [
         "client"
       ],
@@ -229,7 +279,7 @@
       "mod_name": "JEM Economy",
       "mod_version": "1.2.0",
       "source_jar": "jem-economy-1.2.0.jar",
-      "source_sha256": "7fcf1f281ff49f4549d0969f36700959fe0262a8a67a2341dc99f6cbbebc7e62",
+      "source_sha256": "c3f5422d2a558d3f0ceaf5adaac2249e5bec9bd2816589b0653ecf65ca163789",
       "side_availability": [
         "client"
       ],
@@ -283,7 +333,7 @@
       "mod_name": "JEM Economy",
       "mod_version": "1.2.0",
       "source_jar": "jem-economy-1.2.0.jar",
-      "source_sha256": "7fcf1f281ff49f4549d0969f36700959fe0262a8a67a2341dc99f6cbbebc7e62",
+      "source_sha256": "c3f5422d2a558d3f0ceaf5adaac2249e5bec9bd2816589b0653ecf65ca163789",
       "side_availability": [
         "client"
       ],
@@ -337,7 +387,7 @@
       "mod_name": "JEM Economy",
       "mod_version": "1.2.0",
       "source_jar": "jem-economy-1.2.0.jar",
-      "source_sha256": "7fcf1f281ff49f4549d0969f36700959fe0262a8a67a2341dc99f6cbbebc7e62",
+      "source_sha256": "c3f5422d2a558d3f0ceaf5adaac2249e5bec9bd2816589b0653ecf65ca163789",
       "side_availability": [
         "client"
       ],
@@ -395,7 +445,7 @@
       "mod_name": "JEM Economy",
       "mod_version": "1.2.0",
       "source_jar": "jem-economy-1.2.0.jar",
-      "source_sha256": "7fcf1f281ff49f4549d0969f36700959fe0262a8a67a2341dc99f6cbbebc7e62",
+      "source_sha256": "c3f5422d2a558d3f0ceaf5adaac2249e5bec9bd2816589b0653ecf65ca163789",
       "side_availability": [
         "client"
       ],

@@ -86,6 +86,16 @@ public final class SettlementRuntime {
     @SubscribeEvent public static void broken(BlockEvent.BreakEvent event) { if (event.getLevel() instanceof ServerLevel level) AmenityScanService.invalidate(level.getServer(), level.dimension(), event.getPos()); }
     @SubscribeEvent public static void finalizedSpawn(MobSpawnEvent.FinalizeSpawn event) { MountCollectionService.finalizedSpawn(event); }
     @SubscribeEvent public static void tamed(AnimalTameEvent event) { if (MountCollectionService.tame(event) && event.getTamer() instanceof ServerPlayer player) player.sendSystemMessage(Component.translatable("jem.settlements.mount.recorded"), true); }
+    @SubscribeEvent public static void dismissed(com.talhanation.recruits.RecruitEvent.Dismissed event) {
+        if (!(event.getRecruit().level() instanceof ServerLevel level) || !level.getServer().isDedicatedServer()) return;
+        var data = SettlementSavedData.get(level.getServer());
+        data.workforceEntity(event.getRecruit().getUUID()).ifPresent(record -> { record.dismissed(); data.changed(); });
+    }
+    @SubscribeEvent public static void opened(net.minecraftforge.event.entity.player.PlayerContainerEvent.Open event) {
+        if (event.getEntity() instanceof ServerPlayer player && DedicatedSmp.active(player)
+                && event.getContainer() instanceof com.talhanation.recruits.inventory.RecruitHireMenu menu)
+            SettlementNetwork.sendHireQuote(player, menu.getRecruitEntity());
+    }
     @SubscribeEvent public static void login(PlayerEvent.PlayerLoggedInEvent event) { if (event.getEntity() instanceof ServerPlayer player && DedicatedSmp.active(player)) SettlementNetwork.sendFoodPolicy(player); }
 
     public static void celebrateFounding(ServerLevel level, BlockPos bell) { if (level != null && bell != null) FOUNDING_WAVES.add(new FoundingWave(level.dimension(), bell.immutable(), 0)); }

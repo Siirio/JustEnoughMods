@@ -1,0 +1,118 @@
+{
+  "schema_version": 2,
+  "change_id": "economy.mincer-stone-duplication-guard",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "minecraft:stone"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "minecraft:cobblestone"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "!Platform.isClientEnvironment(), the exact supported KubeJS physical-side binding; integrated singleplayer skips the adapter. FMLEnvironment Java class loading is filtered by installed KubeJS.",
+      "confidence": "source"
+    }
+  ],
+  "precedence": {
+    "layer": "dedicated_recipe_adapter",
+    "priority": 425,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Dedicated-server-only mincer stone output becomes one cobblestone to close material amplification through native Create fan smelting without touching native merchant offer counts.",
+    "modifiers": [
+      {
+        "property": "recipes.farm_and_charm.mincer_cobblestone_output",
+        "operation": "replace",
+        "before": {
+          "recipe": "farm_and_charm:mincer/cobblestone",
+          "type": "farm_and_charm:mincer",
+          "input": "minecraft:stone",
+          "output": "minecraft:cobblestone",
+          "output_count": 2,
+          "recipe_type": "STONE"
+        },
+        "after": {
+          "recipe": "farm_and_charm:mincer/cobblestone",
+          "type": "farm_and_charm:mincer",
+          "input": "minecraft:stone",
+          "output": "minecraft:cobblestone",
+          "output_count": 1,
+          "recipe_type": "STONE",
+          "physical_side": "DEDICATED_SERVER"
+        },
+        "notes": "Create6.0.8 fan applies SMELTING without consuming fuel: stone->2 cobblestone->2 stone can repeat independent of coal/charcoal prices. Remove only the mincer material multiplier; do not change native villager original item counts or unrelated cooking recipes."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "KubeJS dedicated recipe adapter; Farm and Charm native mincer and Create native fan remain recipe/execution owners",
+    "kind": "evidence_backed_material_amplifier_correction",
+    "source_files": [
+      "Client/ManagedPack/kubejs/server_scripts/jem/economy_recipe_guards.js",
+      "Server/kubejs/server_scripts/jem/economy_recipe_guards.js"
+    ]
+  },
+  "rationale": {
+    "purpose": "Dedicated-server-only mincer stone output becomes one cobblestone to close material amplification through native Create fan smelting without touching native merchant offer counts.",
+    "decision_source": "Direct user complete economy overhaul2026-10-16 requires preventing repeatable purchase/processing/resale cycles; root inspected exact installed Create6.0.8 fan SMELTING behavior and Farm and Charm mincer recipe.",
+    "user_requested": "No repeatable machine/crafting chain should create unlimited Coins; retain unrelated native behavior.",
+    "codex_choices": "Fix the source material duplication instead of inventing fuel consumption or increasing coal/charcoal prices. Keep exact native recipe ID/category and all native trade original counts; physical dedicated guard preserves zero SMP gameplay in singleplayer."
+  },
+  "introduced": {
+    "date": "2026-10-16",
+    "commit": "SELF",
+    "action": "close_fuel_free_material_cycle",
+    "summary": "Dedicated-server-only mincer stone output becomes one cobblestone to close material amplification through native Create fan smelting without touching native merchant offer counts.",
+    "source_files": [
+      "Client/ManagedPack/kubejs/server_scripts/jem/economy_recipe_guards.js",
+      "Server/kubejs/server_scripts/jem/economy_recipe_guards.js"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-16",
+      "commit": "SELF",
+      "action": "close_fuel_free_material_cycle",
+      "summary": "Dedicated-server-only mincer stone output becomes one cobblestone to close material amplification through native Create fan smelting without touching native merchant offer counts.",
+      "source_files": [
+        "Client/ManagedPack/kubejs/server_scripts/jem/economy_recipe_guards.js",
+        "Server/kubejs/server_scripts/jem/economy_recipe_guards.js"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "economy",
+      "recipes",
+      "farm_and_charm",
+      "create",
+      "automation",
+      "fuel",
+      "charcoal",
+      "native_merchants",
+      "singleplayer"
+    ],
+    "relations": [
+      "minecraft:stone -> farm_and_charm:mincer/cobblestone -> minecraft:cobblestone -> native Create fan SMELTING -> minecraft:stone",
+      "Create free-fuel smelting -> coal/charcoal-independent closed-cycle bound",
+      "native trade original goods counts unchanged; price tables/discount closure remain independently owned"
+    ],
+    "notes": [
+      "Changes only output quantity2->1 in one native mincer recipe on physical dedicated server.",
+      "Charcoal/coal are indirect price-model inputs: a fan does not consume them, so charging assumed fuel cannot close this material amplifier.",
+      "All scalar NPC purchase/resale or demand corrections must assume the actual machine cost; this recipe correction does not claim every processing recipe is safe."
+    ],
+    "unresolved": [
+      "Fresh dedicated recipe export must confirm output1 after KubeJS reload/restart; integrated singleplayer guard and actual player machine behavior require separate runtime acceptance."
+    ]
+  }
+}

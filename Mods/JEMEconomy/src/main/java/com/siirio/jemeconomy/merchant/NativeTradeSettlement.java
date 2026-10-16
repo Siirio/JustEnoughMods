@@ -12,7 +12,7 @@ public final class NativeTradeSettlement {
     private NativeTradeSettlement() {}
     public static String commit(ServerPlayer player, MerchantContainer inputs, MerchantOffer offer, NativeTradeQuote quote, int inputOrder, UUID operation) {
         if (quote.direction() == NativeTradeQuote.Direction.PLAYER_SELLS) {
-            var result = EconomyApi.processNpcSaleFromContainer(player, inputs, offer.getCostA(),
+            var result = EconomyApi.processNativeNpcSaleFromContainer(player, inputs, offer.getCostA(),
                     offer.getCostA().getCount(), quote.copper(), inputOrder == 0 ? 0 : 1, operation);
             return switch (result.status()) {
                 case COMMITTED -> "";

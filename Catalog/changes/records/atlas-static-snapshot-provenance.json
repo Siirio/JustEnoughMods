@@ -1,0 +1,120 @@
+{
+  "schema_version": 2,
+  "change_id": "atlas.static-snapshot-provenance",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "*",
+      "value": "*"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [],
+  "precedence": {
+    "layer": "catalog_provenance",
+    "priority": 10,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Static Atlas snapshot reports Forge version from actual Server launcher and describes runtime-capture import boundaries accurately; no gameplay changes.",
+    "modifiers": [
+      {
+        "property": "catalog.static_snapshot.forge_version",
+        "operation": "derive",
+        "before": {
+          "value": "47.4.16",
+          "source": "Hardcoded manifest string, inconsistent with actual ordinary Server launcher"
+        },
+        "after": {
+          "source": "Server/run.bat Forge1.20.1 win_args.txt path",
+          "current_observed_value": "47.4.10",
+          "missing_match": null
+        },
+        "notes": "Actual launcher is provenance evidence, not an invented runtime-version claim."
+      },
+      {
+        "property": "catalog.static_snapshot.runtime_boundary",
+        "operation": "document",
+        "before": {
+          "value": "No runtime bootstrap was authorized"
+        },
+        "after": {
+          "value": "Generator consumes static artifacts; separate authorized runtime captures are not imported into this snapshot, so dynamic registrations/absence remain unproved here"
+        },
+        "notes": "Current task expressly authorizes runtime and produced separate captures. Static-generator coverage must describe what it imports, not deny authorization or conflate capture evidence with generated registry facts."
+      },
+      {
+        "property": "atlas.generated_json_publication",
+        "operation": "replace",
+        "before": {
+          "value": "direct truncating writes to visible derived JSON files"
+        },
+        "after": {
+          "value": "same-directory temporary complete UTF-8 JSON followed by atomic os.replace"
+        },
+        "notes": "Repeated Windows EINVAL on direct opening of different existing generated JSON paths reproduced under Python3.14 and bundled3.12. Atomic publication avoids exposing partial snapshots; failures still propagate. The external filesystem condition remains unproven."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM Atlas generator",
+    "kind": "catalog_metadata_provenance_correction",
+    "source_files": [
+      "Catalog/generator/build_atlas.py",
+      "Server/run.bat"
+    ]
+  },
+  "rationale": {
+    "purpose": "Keep static snapshot version/evidence boundary truthful after explicitly authorized economy runtime research.",
+    "decision_source": "User complete economy overhaul2026-10-16 explicitly authorizes local runtime; actual Server/run.bat uses Forge47.4.10.",
+    "user_requested": "Use actual installed source/server evidence and distinguish static from runtime verification.",
+    "codex_choices": "Derive manifest Forge version from launcher rather than a hardcoded value; reword source-description runtime boundary without importing unreviewed runtime facts or changing gameplay."
+  },
+  "introduced": {
+    "date": "2026-10-16",
+    "commit": "SELF",
+    "action": "correct_static_snapshot_provenance",
+    "summary": "Correct generator metadata only; root regenerates snapshot after final matching artifact sync."
+  },
+  "history": [
+    {
+      "date": "2026-10-16",
+      "commit": "SELF",
+      "action": "correct_static_snapshot_provenance",
+      "summary": "Hardcoded47.4.16 was inconsistent with run.bat47.4.10; replace with launcher derivation. Replace obsolete never-authorized statement with accurate runtime-capture-not-imported boundary.",
+      "source_files": [
+        "Catalog/generator/build_atlas.py",
+        "Server/run.bat"
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "commit": "SELF",
+      "action": "atomic_derived_json_publication",
+      "summary": "Replace direct truncating JSON writes after repeated Windows EINVAL; do not silently skip missing or failed output.",
+      "source_files": [
+        "Catalog/generator/build_atlas.py"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "atlas",
+      "snapshot_provenance",
+      "evidence_boundaries",
+      "reproducibility"
+    ],
+    "relations": [
+      "Server/run.bat -> Catalog/generator/build_atlas.py -> Catalog/manifest.json",
+      "Static artifact extraction remains separate from authorized runtime captures"
+    ],
+    "notes": [
+      "Metadata-only rule, no registry/recipe/entity/financial/gameplay semantics changed.",
+      "A launcher parse failure stays null; no historical version is guessed."
+    ],
+    "unresolved": [
+      "Final manifest must be regenerated from fresh final JARs; separate dynamic runtime evidence remains outside static snapshot until an explicit import owner exists."
+    ]
+  }
+}

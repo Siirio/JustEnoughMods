@@ -1,3 +1,34 @@
+# Current native economy contract — 2026-10-16
+
+The current implementation extends the native merchant contract as requested in
+the complete economy overhaul. The current coverage and remaining runtime evidence
+are recorded in [merchant coverage](merchant-coverage.md). Earlier implementation
+status below is historical and must not override this contract.
+
+Native offers remain authoritative and preserve all item counts, original NBT,
+progression, stock, demand and restock behavior. Global Market commodity policy is
+reused when applicable. Exact native-only merchandise prices now cover the
+previously unavailable vanilla equipment, enchanted books, maps, food and crafted
+goods without admitting them to the general Market. This explicitly resolves the
+older native-food exclusion conflict under the user's new preserve-all-native
+trades requirement. Unique boss/progression rewards remain protected.
+
+Every admitted monetary merchandise row has a reverse companion direction with
+exact goods/NBT/counts and zero extra XP. Thirteen original vanilla professions
+receive weighted, appropriate modded specialties gradually at levels 2–5. The NPC
+persists each generated selection and native offer stock; no reopening/restart or
+restock reroll exists. New profession registration is unnecessary.
+
+Purchase quotes use real merchandise prices plus enchantment acquisition premiums,
+not an emerald exchange rate. Discounts are bounded after racial events by both
+half the base material budget and maximum primary-demand buyback plus one Copper.
+Container buyback uses the same funded reserve, quota and ledger commit as ordinary
+Market sales, with an explicit trusted native-merchandise policy resolver.
+Server authority and native presentation remain unchanged. The separate display
+work uses the shared Coin renderer and the actual five registered Coin items.
+
+## Historical design evidence
+
 # Нативная торговля Coins и Закупщик
 
 Статус: схема и оба плана одобрены2026-10-14; реализация в исходниках выполнена

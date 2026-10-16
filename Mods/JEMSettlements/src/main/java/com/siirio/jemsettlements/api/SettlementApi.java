@@ -46,6 +46,14 @@ public final class SettlementApi {
         if (data.nameUsed(name) || data.anchorWithin(player.serverLevel().dimension().location(), bellPosition, 64)) return Result.CONFLICT;
         TownRecord town = new TownRecord(UUID.randomUUID(), principal.get().accountId(), name,
                 player.serverLevel().dimension().location(), bellPosition);
+        for (TownRecord other : data.towns()) if (other.dimension().equals(town.dimension())
+                && town.territoryMinX() <= other.territoryMaxX() + 16 && town.territoryMaxX() >= other.territoryMinX() - 16
+                && town.territoryMinZ() <= other.territoryMaxZ() + 16 && town.territoryMaxZ() >= other.territoryMinZ() - 16) return Result.CONFLICT;
+        var payment = com.siirio.jemeconomy.api.EconomyApi.depositToAccount(player,
+                com.siirio.jemeconomy.ledger.SystemAccount.OPERATIONS.id(), com.siirio.jemsettlements.payroll.SettlementEconomyConfig.founding(), town.id());
+        if (payment.status() == com.siirio.jemeconomy.ledger.TransferResult.Status.INSUFFICIENT_FUNDS) return Result.INSUFFICIENT_FUNDS;
+        if (payment.status() != com.siirio.jemeconomy.ledger.TransferResult.Status.COMMITTED
+                && payment.status() != com.siirio.jemeconomy.ledger.TransferResult.Status.REPLAYED) return Result.UNAVAILABLE;
         data.add(town);
         return Result.ACCEPTED;
     }
@@ -102,7 +110,14 @@ public final class SettlementApi {
             type = nativeType.get();
         }
         SettlementSavedData data = SettlementSavedData.get(player.getServer());
-        if (data.entityAssigned(entity.getUUID())) return Result.CONFLICT;
+        if (data.entityAssigned(entity.getUUID())) {
+            var existing = data.workforceEntity(entity.getUUID()).orElseThrow();
+            if (existing.type() != WorkforceType.RECRUIT || !existing.ownerId().equals(principal.get().accountId())
+                    || !existing.settlementActive() || data.town(existing.townId()).isPresent()) return Result.CONFLICT;
+            if (data.employer(existing.ownerId()).payroll().stream().anyMatch(period -> !period.paid()
+                    && period.roster().stream().anyMatch(wage -> wage.soldierId().equals(existing.entityId())))) return Result.CONFLICT;
+            existing.assignTown(town.get().id()); data.changed(); return Result.ACCEPTED;
+        }
         var nativeType = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType());
         data.add(new WorkforceRecord(entity.getUUID(), town.get().id(), principal.get().accountId(), type, namespace, nativeType, coinWageEnabled, player.serverLevel().getGameTime()));
         if (type == WorkforceType.RECRUIT) town.get().initializePayroll(player.serverLevel().getGameTime());
@@ -127,16 +142,15 @@ public final class SettlementApi {
     }
 
     public static Result setTerritoryRadius(ServerPlayer player, int radius) {
-        var principal = IdentityPolicy.resolve(player); var town = ownedTown(player);
-        if (principal.isEmpty() || town.isEmpty()) return Result.UNAUTHENTICATED;
-        if (!town.get().owner().equals(principal.get().accountId()) || radius < 32 || radius > 256) return Result.INVALID;
-        SettlementSavedData data = SettlementSavedData.get(player.getServer());
-        for (TownRecord other : data.towns()) if (!other.id().equals(town.get().id()) && other.dimension().equals(town.get().dimension())) {
-            int separation = radius + other.territoryRadius() + 16;
-            if (Math.abs(other.center().getX() - town.get().center().getX()) < separation
-                    && Math.abs(other.center().getZ() - town.get().center().getZ()) < separation) return Result.CONFLICT;
-        }
-        town.get().territoryRadius(radius); data.changed(); return Result.ACCEPTED;
+        if (!DedicatedSmp.active(player)) return Result.UNAVAILABLE;
+        var town = ownedTown(player);
+        if (town.isEmpty()) return Result.UNAUTHENTICATED;
+        if (radius < 32 || radius > 256) return Result.INVALID;
+        // Legacy command must pass through the same priced union as Xaero. Shrinking
+        // and reclaiming land is not a means of bypassing the area price.
+        return expandBounds(player, town.get(), town.get().center().getX() - radius,
+                town.get().center().getZ() - radius, town.get().center().getX() + radius,
+                town.get().center().getZ() + radius, UUID.randomUUID());
     }
 
     public static Result expandTerritory(ServerPlayer player, UUID townId, int targetX, int targetZ, UUID requestId) {
@@ -144,16 +158,25 @@ public final class SettlementApi {
         var town = ownedTown(player, townId);
         if (town.isEmpty()) return Result.UNAUTHENTICATED;
         if (town.get().expansionSeen(requestId)) return Result.REPLAYED;
-        int minX = Math.min(town.get().territoryMinX(), targetX), maxX = Math.max(town.get().territoryMaxX(), targetX);
-        int minZ = Math.min(town.get().territoryMinZ(), targetZ), maxZ = Math.max(town.get().territoryMaxZ(), targetZ);
+        return expandBounds(player, town.get(), targetX, targetZ, targetX, targetZ, requestId);
+    }
+
+    private static Result expandBounds(ServerPlayer player, TownRecord value, int proposedMinX, int proposedMinZ,
+                                       int proposedMaxX, int proposedMaxZ, UUID requestId) {
+        var town = Optional.of(value); UUID townId = value.id();
+        if ((long) proposedMinX < (long) value.center().getX() - 256 || (long) proposedMaxX > (long) value.center().getX() + 256
+                || (long) proposedMinZ < (long) value.center().getZ() - 256 || (long) proposedMaxZ > (long) value.center().getZ() + 256) return Result.CONFLICT;
+        var quote = com.siirio.jemsettlements.town.TerritoryQuote.union(value.territoryMinX(), value.territoryMinZ(), value.territoryMaxX(), value.territoryMaxZ(),
+                proposedMinX, proposedMinZ, proposedMaxX, proposedMaxZ);
+        int minX = quote.minX(), maxX = quote.maxX(), minZ = quote.minZ(), maxZ = quote.maxZ();
         if (minX < town.get().center().getX() - 256 || maxX > town.get().center().getX() + 256 || minZ < town.get().center().getZ() - 256 || maxZ > town.get().center().getZ() + 256) return Result.CONFLICT;
-        long area = (long) (maxX - minX + 1) * (maxZ - minZ + 1), added = area - town.get().territoryArea();
+        long added = quote.addedCopper();
         if (added <= 0L) return Result.INVALID;
         SettlementSavedData data = SettlementSavedData.get(player.getServer());
         for (TownRecord other : data.towns()) if (!other.id().equals(townId) && other.dimension().equals(town.get().dimension())) {
             if (minX <= other.territoryMaxX() + 16 && maxX >= other.territoryMinX() - 16 && minZ <= other.territoryMaxZ() + 16 && maxZ >= other.territoryMinZ() - 16) return Result.CONFLICT;
         }
-        var payment = com.siirio.jemeconomy.api.EconomyApi.spendPhysical(player, added, requestId, "settlementTerritorySpend");
+        var payment = com.siirio.jemeconomy.api.EconomyApi.spendPhysical(player, added, UUID.nameUUIDFromBytes(("territory:" + townId + ":" + requestId + ":" + minX + ":" + minZ + ":" + maxX + ":" + maxZ).getBytes(java.nio.charset.StandardCharsets.UTF_8)), "settlementTerritorySpend");
         if (payment == com.siirio.jemeconomy.physical.PhysicalCoinService.Status.NO_VALID_COINS
                 || payment == com.siirio.jemeconomy.physical.PhysicalCoinService.Status.INSUFFICIENT_FUNDS) return Result.INSUFFICIENT_FUNDS;
         if (payment != com.siirio.jemeconomy.physical.PhysicalCoinService.Status.COMMITTED
@@ -178,6 +201,7 @@ public final class SettlementApi {
         if (!DedicatedSmp.active(player) || requestId == null) return Result.INVALID;
         var town = ownedTown(player, townId);
         if (town.isEmpty()) return Result.UNAUTHENTICATED;
+        if (town.get().payroll().stream().anyMatch(period -> !period.paid())) return Result.CONFLICT;
         long balance = com.siirio.jemeconomy.api.EconomyApi.townBalance(player.getServer(), townId);
         boolean replayed = false;
         if (balance > 0L) {
@@ -199,7 +223,8 @@ public final class SettlementApi {
     }
 
     public static Result openRecruitBuyback(ServerPlayer player, UUID townId, UUID entityId) {
-        if (ownedTown(player, townId).isEmpty()) return Result.UNAUTHENTICATED;
+        var employer = IdentityPolicy.resolve(player);
+        if (employer.isEmpty() || (ownedTown(player, townId).isEmpty() && !employer.get().accountId().equals(townId))) return Result.UNAUTHENTICATED;
         var record = SettlementSavedData.get(player.getServer()).workforceEntity(entityId);
         if (record.isEmpty() || !record.get().townId().equals(townId) || !record.get().ownerId().equals(IdentityPolicy.resolve(player).map(value -> value.accountId()).orElse(null))) return Result.INVALID;
         return com.siirio.jemsettlements.compat.recruits.RecruitRebellionService.openBuyback(player, entityId) ? Result.ACCEPTED : Result.UNAVAILABLE;

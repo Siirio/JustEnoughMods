@@ -50,7 +50,7 @@ public final class ItemPolicyRegistry {
                     net.minecraft.util.profiling.ProfilerFiller profiler) {
                 return manager.getResource(RESOURCE).map(resource -> {
                     try (var reader = resource.openAsReader()) { return parse(com.google.gson.JsonParser.parseReader(reader).getAsJsonArray()); }
-                    catch (Exception ignored) { return loadBuiltIn(); }
+                    catch (Exception failure) { throw new IllegalStateException("Invalid economy policy resource " + RESOURCE, failure); }
                 }).orElseGet(ItemPolicyRegistry::loadBuiltIn);
             }
             @Override protected void apply(Map<ResourceLocation, ItemPolicy> next, net.minecraft.server.packs.resources.ResourceManager manager,
@@ -60,9 +60,9 @@ public final class ItemPolicyRegistry {
 
     private static Map<ResourceLocation, ItemPolicy> loadBuiltIn() {
         try (var stream = ItemPolicyRegistry.class.getResourceAsStream("/data/jem_economy/economy/item_policies.json")) {
-            if (stream == null) return Map.of();
+            if (stream == null) throw new IllegalStateException("Missing built-in economy policy resource");
             return parse(com.google.gson.JsonParser.parseReader(new InputStreamReader(stream, StandardCharsets.UTF_8)).getAsJsonArray());
-        } catch (Exception ignored) { return Map.of(); }
+        } catch (Exception failure) { throw new IllegalStateException("Cannot load built-in economy policies", failure); }
     }
 
     private static Map<ResourceLocation, ItemPolicy> parse(JsonArray array) {
@@ -70,11 +70,16 @@ public final class ItemPolicyRegistry {
         for (JsonElement element : array) {
             JsonObject row = element.getAsJsonObject();
             ResourceLocation id = ResourceLocation.tryParse(row.get("item").getAsString());
-            if (id == null) continue;
+            if (id == null) throw new IllegalArgumentException("Invalid policy item ID: " + row);
             String outcomeText = row.has("outcome") ? row.get("outcome").getAsString() : "NONE";
             ItemPolicy.Outcome outcome;
             try { outcome = ItemPolicy.Outcome.valueOf(outcomeText); } catch (IllegalArgumentException ignored) { outcome = ItemPolicy.Outcome.NONE; }
             Long sell = nullableLong(row, "sell_copper"), buy = nullableLong(row, "buy_copper");
+            if (outcome == ItemPolicy.Outcome.BUY_AND_SELL && (sell == null || buy == null || sell <= 0L || buy <= 0L
+                    || buy > 1_000_000_000L || sell > 1_000_000_000L || buy <= Math.floorDiv(Math.multiplyExact(sell, 150L), 100L)
+                    || integer(row, "daily_player_units") <= 0 || integer(row, "daily_global_units") <= 0))
+                throw new IllegalArgumentException("Unsafe two-way economy policy: " + id);
+            if (result.containsKey(id)) throw new IllegalArgumentException("Duplicate economy policy: " + id);
             result.put(id, new ItemPolicy(row.has("schema") ? row.get("schema").getAsInt() : 1, id, outcome, sell, buy,
                     integer(row, "daily_player_units"), integer(row, "daily_global_units"), string(row, "demand_group"), string(row, "notes")));
         }
