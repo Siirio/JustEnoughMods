@@ -13,8 +13,30 @@ User's supplied quality contract: [QUALITY_ENGINE_SOURCE.md](QUALITY_ENGINE_SOUR
 
 The newly pasted text mentions a negative screenshot, but its attachment contains only text. The actual R2 atlas above supplies the known negative evidence; no missing screenshot was fabricated.
 
-## Current candidate
+## Historical R3 candidate and later user approval
 
 [R3 design and choreography](../races/assets/bloom_r3_candidate/DESIGN.md), [moving native-editor preview](../races/assets/bloom_r3_candidate/verdant-grasp-r3.gif), [key poses](../races/assets/bloom_r3_candidate/keyposes-contact-sheet.png), [views](../races/assets/bloom_r3_candidate/angles-contact-sheet.png), [native materials at 1x / nearest 9x](../races/assets/bloom_r3_candidate/materials-nearest.png), [asset audit](../races/assets/bloom_r3_candidate/asset-audit.json).
 
-R3 is a reviewable candidate, not a positive reference or accepted implementation. SOURCE_EDITABLE and inspected outside Minecraft; no installation, gameplay capture or user approval. Previous R3a pose sheet/source remain under its `iterations/` directory for a meaningful comparison.
+At original delivery R3 was SOURCE_EDITABLE and pre-install. The user subsequently explicitly requested its connection to `jem sandbox`, then praised the installed result as awesome and requested this approach for other races. R3 is therefore a positive user reference for connected cuboid VFX and material discipline. It does not grant approval to later R4/R5 candidates or production combat integration. Previous R3a source remains under `iterations/` for comparison.
+
+## M-C / T-A calibration and R5
+
+The21 supplied model references and giant-gnome benchmark are owned by
+`C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/Models/Reference/`.
+The selected benchmark is M-C geometry plus T-A painting; all other complete
+variants live under separate model/painting `I_dont_like` folders. Full E is
+negative; its hat painting and mossy boots are regional lessons only, never
+approval of ornate coat, threads, embroidery or overall detail density.
+
+Current local reference paths supersede historical paths above:
+`Taste-Engine/Pairs/Minecraft/VFX/Reference/` and
+`Taste-Engine/Pairs/Minecraft/GUI/Reference/`. Their original labels and image
+bytes remain intact. The21 model originals remain reference-only and unchanged.
+
+[R5 native candidates](../races/assets/race_vfx_r5/README.md) apply the user's
+new directions: angular rotated/resized connected masses; fitted unequal
+horizontal/vertical layers; purposeful materials for thin functional parts;
+light tops/dark bases; outward eruption heads and sparse attached growths.
+They include real UV painting and editable source, not merely AI paint-overs.
+New VFX approval and Minecraft integration remain pending. The rejected,
+uninstalled R4 is negative evidence outside active JEM resource paths.

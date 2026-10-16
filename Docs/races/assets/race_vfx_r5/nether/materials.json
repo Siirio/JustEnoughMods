@@ -1,0 +1,22 @@
+{
+  "race": "nether",
+  "columns": [
+    "basalt crust",
+    "cooled iron-russet plate",
+    "molten cut surface"
+  ],
+  "rows": [
+    "upper cut/light plane",
+    "side plane",
+    "underside/root shade"
+  ],
+  "tile": 16,
+  "atlas": [
+    48,
+    48
+  ],
+  "density": "1 texel/model unit wherever integer face size permits;16 model units/block",
+  "source_sha256": "203dcd683752b2a9664c5cd8f07b39413198d46034a1f9a16815e96d5eac6b70",
+  "pipeline": "original imagegen flat painted sheet -> nearest native reduction ->7-color material palette -> explicit face-value layers -> native BB import",
+  "emission": "proposal mask only; native preview has no bloom or dynamic lighting"
+}

@@ -1,0 +1,924 @@
+{
+  "race": "nether",
+  "selectedGeometry": "M-C",
+  "selectedPainting": "T-A",
+  "nativeCubes": 35,
+  "quads": 210,
+  "materials": 3,
+  "parts": [
+    {
+      "name": "shared_magma_crust_knot",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -5,
+        -2,
+        -5
+      ],
+      "to": [
+        5,
+        4,
+        5
+      ],
+      "rotation": [
+        0,
+        11,
+        0
+      ],
+      "origin": [
+        0,
+        0,
+        0
+      ],
+      "parent": "cluster"
+    },
+    {
+      "name": "fractured_ground_crust",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -9,
+        -1,
+        -5
+      ],
+      "to": [
+        7,
+        1.8,
+        6
+      ],
+      "rotation": [
+        3,
+        -18,
+        -4
+      ],
+      "origin": [
+        0,
+        0,
+        0
+      ],
+      "parent": "cluster"
+    },
+    {
+      "name": "short_side_crust",
+      "material": "functional plate",
+      "topMaterial": 1,
+      "from": [
+        -6,
+        -1,
+        -8
+      ],
+      "to": [
+        5,
+        2.2,
+        6
+      ],
+      "rotation": [
+        -5,
+        23,
+        3
+      ],
+      "origin": [
+        0,
+        0,
+        0
+      ],
+      "parent": "cluster"
+    },
+    {
+      "name": "eruption_0_buried_heel",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -3,
+        -1,
+        1
+      ],
+      "to": [
+        3,
+        6,
+        9
+      ],
+      "rotation": [
+        7,
+        0,
+        -2
+      ],
+      "origin": [
+        0,
+        0,
+        3
+      ],
+      "parent": "eruption_0"
+    },
+    {
+      "name": "eruption_0_basalt_body",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -3,
+        2,
+        1
+      ],
+      "to": [
+        3,
+        14,
+        7
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        4,
+        4
+      ],
+      "parent": "eruption_0_lean"
+    },
+    {
+      "name": "eruption_0_horizontal_crust",
+      "material": "functional plate",
+      "topMaterial": 1,
+      "from": [
+        -4.5,
+        6,
+        3.6
+      ],
+      "to": [
+        0.9,
+        8,
+        8.1
+      ],
+      "rotation": [
+        7,
+        13,
+        -9
+      ],
+      "origin": [
+        -3,
+        7,
+        5
+      ],
+      "parent": "eruption_0_lean"
+    },
+    {
+      "name": "eruption_0_outward_head",
+      "material": "substrate",
+      "topMaterial": 2,
+      "from": [
+        -2.5,
+        11,
+        1.3
+      ],
+      "to": [
+        2.5,
+        20,
+        6.7
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        12,
+        4
+      ],
+      "parent": "eruption_0_head"
+    },
+    {
+      "name": "eruption_0_unequal_brow",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -3.4,
+        17.8,
+        1
+      ],
+      "to": [
+        0.7,
+        20.8,
+        4.2
+      ],
+      "rotation": [
+        -7,
+        -9,
+        6
+      ],
+      "origin": [
+        -3,
+        18,
+        2
+      ],
+      "parent": "eruption_0_head"
+    },
+    {
+      "name": "eruption_0_exposed_hot_seam",
+      "material": "core",
+      "topMaterial": 2,
+      "from": [
+        -0.6,
+        14.5,
+        0.94
+      ],
+      "to": [
+        1.1,
+        18.6,
+        1.35
+      ],
+      "rotation": [
+        0,
+        0,
+        -7
+      ],
+      "origin": [
+        0,
+        16,
+        1.2
+      ],
+      "parent": "eruption_0_head"
+    },
+    {
+      "name": "eruption_1_buried_heel",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -3.5,
+        -1,
+        1
+      ],
+      "to": [
+        3.5,
+        6,
+        9
+      ],
+      "rotation": [
+        7,
+        0,
+        -1
+      ],
+      "origin": [
+        0,
+        0,
+        3
+      ],
+      "parent": "eruption_1"
+    },
+    {
+      "name": "eruption_1_basalt_body",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -3.5,
+        2,
+        1
+      ],
+      "to": [
+        3.5,
+        14,
+        7
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        4,
+        4
+      ],
+      "parent": "eruption_1_lean"
+    },
+    {
+      "name": "eruption_1_horizontal_crust",
+      "material": "functional plate",
+      "topMaterial": 1,
+      "from": [
+        -5,
+        6,
+        3.6
+      ],
+      "to": [
+        0.9,
+        8,
+        8.1
+      ],
+      "rotation": [
+        7,
+        13,
+        -9
+      ],
+      "origin": [
+        -3.5,
+        7,
+        5
+      ],
+      "parent": "eruption_1_lean"
+    },
+    {
+      "name": "eruption_1_outward_head",
+      "material": "substrate",
+      "topMaterial": 2,
+      "from": [
+        -3,
+        11,
+        1.3
+      ],
+      "to": [
+        3,
+        27,
+        6.7
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        12,
+        4
+      ],
+      "parent": "eruption_1_head"
+    },
+    {
+      "name": "eruption_1_broken_shoulder",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -4.3,
+        10,
+        2
+      ],
+      "to": [
+        5.2,
+        15,
+        7.4
+      ],
+      "rotation": [
+        8,
+        17,
+        -13
+      ],
+      "origin": [
+        0,
+        12,
+        4
+      ],
+      "parent": "eruption_1_head"
+    },
+    {
+      "name": "eruption_1_unequal_brow",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -3.9,
+        24.8,
+        1
+      ],
+      "to": [
+        0.7,
+        27.8,
+        4.2
+      ],
+      "rotation": [
+        -7,
+        -9,
+        6
+      ],
+      "origin": [
+        -3.5,
+        25,
+        2
+      ],
+      "parent": "eruption_1_head"
+    },
+    {
+      "name": "eruption_1_attached_secondary_growth",
+      "material": "functional plate",
+      "topMaterial": 2,
+      "from": [
+        2.7,
+        9,
+        2
+      ],
+      "to": [
+        6,
+        13.4,
+        5.5
+      ],
+      "rotation": [
+        13,
+        8,
+        -24
+      ],
+      "origin": [
+        3.5,
+        10,
+        4
+      ],
+      "parent": "eruption_1_lean"
+    },
+    {
+      "name": "eruption_2_buried_heel",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -3,
+        -1,
+        1
+      ],
+      "to": [
+        3,
+        6,
+        9
+      ],
+      "rotation": [
+        7,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        0,
+        3
+      ],
+      "parent": "eruption_2"
+    },
+    {
+      "name": "eruption_2_basalt_body",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -3,
+        2,
+        1
+      ],
+      "to": [
+        3,
+        14,
+        7
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        4,
+        4
+      ],
+      "parent": "eruption_2_lean"
+    },
+    {
+      "name": "eruption_2_horizontal_crust",
+      "material": "functional plate",
+      "topMaterial": 1,
+      "from": [
+        -4.5,
+        6,
+        3.6
+      ],
+      "to": [
+        0.9,
+        8,
+        8.1
+      ],
+      "rotation": [
+        7,
+        13,
+        -9
+      ],
+      "origin": [
+        -3,
+        7,
+        5
+      ],
+      "parent": "eruption_2_lean"
+    },
+    {
+      "name": "eruption_2_outward_head",
+      "material": "substrate",
+      "topMaterial": 2,
+      "from": [
+        -2.5,
+        11,
+        1.3
+      ],
+      "to": [
+        2.5,
+        22,
+        6.7
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        12,
+        4
+      ],
+      "parent": "eruption_2_head"
+    },
+    {
+      "name": "eruption_2_unequal_brow",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -3.4,
+        19.8,
+        1
+      ],
+      "to": [
+        0.7,
+        22.8,
+        4.2
+      ],
+      "rotation": [
+        -7,
+        -9,
+        6
+      ],
+      "origin": [
+        -3,
+        20,
+        2
+      ],
+      "parent": "eruption_2_head"
+    },
+    {
+      "name": "eruption_3_buried_heel",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -2.5,
+        -1,
+        1
+      ],
+      "to": [
+        2.5,
+        6,
+        9
+      ],
+      "rotation": [
+        7,
+        0,
+        1
+      ],
+      "origin": [
+        0,
+        0,
+        3
+      ],
+      "parent": "eruption_3"
+    },
+    {
+      "name": "eruption_3_basalt_body",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -2.5,
+        2,
+        1
+      ],
+      "to": [
+        2.5,
+        14,
+        7
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        4,
+        4
+      ],
+      "parent": "eruption_3_lean"
+    },
+    {
+      "name": "eruption_3_horizontal_crust",
+      "material": "functional plate",
+      "topMaterial": 1,
+      "from": [
+        -4,
+        6,
+        3.6
+      ],
+      "to": [
+        0.9,
+        8,
+        8.1
+      ],
+      "rotation": [
+        7,
+        13,
+        -9
+      ],
+      "origin": [
+        -2.5,
+        7,
+        5
+      ],
+      "parent": "eruption_3_lean"
+    },
+    {
+      "name": "eruption_3_outward_head",
+      "material": "substrate",
+      "topMaterial": 2,
+      "from": [
+        -2,
+        11,
+        1.3
+      ],
+      "to": [
+        2,
+        17,
+        6.7
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        12,
+        4
+      ],
+      "parent": "eruption_3_head"
+    },
+    {
+      "name": "eruption_3_broken_shoulder",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -3.3,
+        10,
+        2
+      ],
+      "to": [
+        4.2,
+        15,
+        7.4
+      ],
+      "rotation": [
+        8,
+        17,
+        -13
+      ],
+      "origin": [
+        0,
+        12,
+        4
+      ],
+      "parent": "eruption_3_head"
+    },
+    {
+      "name": "eruption_3_unequal_brow",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -2.9,
+        14.8,
+        1
+      ],
+      "to": [
+        0.7,
+        17.8,
+        4.2
+      ],
+      "rotation": [
+        -7,
+        -9,
+        6
+      ],
+      "origin": [
+        -2.5,
+        15,
+        2
+      ],
+      "parent": "eruption_3_head"
+    },
+    {
+      "name": "eruption_3_exposed_hot_seam",
+      "material": "core",
+      "topMaterial": 2,
+      "from": [
+        -0.6,
+        11.5,
+        0.94
+      ],
+      "to": [
+        1.1,
+        15.6,
+        1.35
+      ],
+      "rotation": [
+        0,
+        0,
+        -7
+      ],
+      "origin": [
+        0,
+        13,
+        1.2
+      ],
+      "parent": "eruption_3_head"
+    },
+    {
+      "name": "eruption_4_buried_heel",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -3,
+        -1,
+        1
+      ],
+      "to": [
+        3,
+        6,
+        9
+      ],
+      "rotation": [
+        7,
+        0,
+        2
+      ],
+      "origin": [
+        0,
+        0,
+        3
+      ],
+      "parent": "eruption_4"
+    },
+    {
+      "name": "eruption_4_basalt_body",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -3,
+        2,
+        1
+      ],
+      "to": [
+        3,
+        14,
+        7
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        4,
+        4
+      ],
+      "parent": "eruption_4_lean"
+    },
+    {
+      "name": "eruption_4_horizontal_crust",
+      "material": "functional plate",
+      "topMaterial": 1,
+      "from": [
+        -4.5,
+        6,
+        3.6
+      ],
+      "to": [
+        0.9,
+        8,
+        8.1
+      ],
+      "rotation": [
+        7,
+        13,
+        -9
+      ],
+      "origin": [
+        -3,
+        7,
+        5
+      ],
+      "parent": "eruption_4_lean"
+    },
+    {
+      "name": "eruption_4_outward_head",
+      "material": "substrate",
+      "topMaterial": 2,
+      "from": [
+        -2.5,
+        11,
+        1.3
+      ],
+      "to": [
+        2.5,
+        24,
+        6.7
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        12,
+        4
+      ],
+      "parent": "eruption_4_head"
+    },
+    {
+      "name": "eruption_4_broken_shoulder",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -3.8,
+        10,
+        2
+      ],
+      "to": [
+        4.7,
+        15,
+        7.4
+      ],
+      "rotation": [
+        8,
+        17,
+        11
+      ],
+      "origin": [
+        0,
+        12,
+        4
+      ],
+      "parent": "eruption_4_head"
+    },
+    {
+      "name": "eruption_4_unequal_brow",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -3.4,
+        21.8,
+        1
+      ],
+      "to": [
+        0.7,
+        24.8,
+        4.2
+      ],
+      "rotation": [
+        -7,
+        -9,
+        6
+      ],
+      "origin": [
+        -3,
+        22,
+        2
+      ],
+      "parent": "eruption_4_head"
+    },
+    {
+      "name": "eruption_4_attached_secondary_growth",
+      "material": "functional plate",
+      "topMaterial": 2,
+      "from": [
+        2.2,
+        9,
+        2
+      ],
+      "to": [
+        5.5,
+        13.4,
+        5.5
+      ],
+      "rotation": [
+        13,
+        8,
+        -24
+      ],
+      "origin": [
+        3,
+        10,
+        4
+      ],
+      "parent": "eruption_4_lean"
+    }
+  ],
+  "sourceSha256": "55ead239242fe5f2508b4f0c7a099b5819ec35bf304e2d06c0ac9c0e50696d61",
+  "editor": "Blockbench5.2.2 native MCP",
+  "frames": "23 genuine10Hz editor captures; not runtime evidence",
+  "runtime": "not installed, no game launch"
+}

@@ -1,5 +1,14 @@
 # JEM Races
 
+Art review update,2026-10-17: [R5 race candidates](assets/race_vfx_r5/README.md)
+apply the user's selected M-C angular construction and T-A painting. Five
+editable models, native UV materials, ORA sources and genuine Blockbench
+moving previews are ready **before installation**. Full E remains negative,
+with hat/mossy-boot regional lessons only. Installed sandbox Bloom R3 remains
+unchanged; production abilities, ordinary Server/ManagedPack and published
+generation18 are unaffected. The earlier sandbox GUI/VFX runtime cleanup is
+still pending and is not claimed as part of this art-only delivery.
+
 JEM Races — dedicated-server-authoritative система из пяти рас. Раса и её мастерство принадлежат UUID подтверждённой `JEM Identity` сессии, а не произвольной строке из GUI. Любая раса совместима с любой профессией.
 
 После успешной регистрации или входа игрок без расы получает обязательный экран выбора: Esc его не закрывает, а сервер повторно открывает экран до подтверждения. Карточки остаются короткими; наведение на отдельные semantic icons объясняет бафф/дебафф, а кнопка способности открывает точные числа и развитие. После выбора соответствующее заклинание постоянно присутствует в штатном HUD и колесе Iron's Spells; его успешные применения развивают tier I→II→III.

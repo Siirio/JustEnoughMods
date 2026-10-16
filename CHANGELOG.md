@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-17 — Apply selected model C and painting A to race VFX candidates
+
+- User direction: select giant-gnome model C for angular rotated/resized cuboids and precise unequal horizontal/vertical layering, and painting A for intentional readable materials. Connect major masses, lean eruption heads outward, use lighter/selectively luminous tops and darker bases, add sparse attached growths, and give meaningful thin parts distinct materials. Full E remains rejected; only hat painting and biome-grounded mossy boots are scoped exceptions. Classify other full benchmark candidates as negative and create a reusable AI request template.
+- Implementation decisions by Codex: update the global Taste Engine exact Pairs, collection READMEs, navigator and texture handoff; preserve moved image/model bytes; remove rejected uninstalled R4 from active JEM source/resource paths into the engine's negative collection. Author five new R5 native cuboid models with functional UV material regions, an original generated flat production painting, native48×48 atlases, editable ORA face-value layers,2.2s clips and genuine editor views/GIFs. Revise excessive initial tilts, complete belt-like crust shelves and ambiguous hand/rift silhouettes after actual output inspection. The first file import blocked on the plugin's native file-access prompt; after the user cleared it, the author switched to direct pixel data URLs.
+- Delivery boundary: art candidates before installation, not approved production ability visuals. No Java/gameplay/GUI change, build, game launch, JAR installation, Client/ManagedPack or ordinary Server synchronization, stable mutation or AutoModpack publication. Existing sandbox R3 and native published generation18 remain unchanged. Prior sandbox GUI/VFX runtime cleanup is still pending. Native emissive editor materials do not establish Forge/shader compatibility or world-light emission.
+
 ## 2026-10-17 — Connect Bloom R3 to jem sandbox
 
 - User request: explicitly connect the shown R3 candidate to the `jem sandbox` client profile for in-game viewing. This authorizes sandbox installation, not final visual approval or a production race-ability replacement.

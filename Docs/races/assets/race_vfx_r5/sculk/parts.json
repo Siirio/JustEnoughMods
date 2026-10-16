@@ -1,0 +1,664 @@
+{
+  "race": "sculk",
+  "selectedGeometry": "M-C",
+  "selectedPainting": "T-A",
+  "nativeCubes": 25,
+  "quads": 150,
+  "materials": 3,
+  "parts": [
+    {
+      "name": "shared_earth_anchor",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -10,
+        -2,
+        -7
+      ],
+      "to": [
+        10,
+        2,
+        7
+      ],
+      "rotation": [
+        0,
+        8,
+        0
+      ],
+      "origin": [
+        0,
+        0,
+        0
+      ],
+      "parent": "cluster"
+    },
+    {
+      "name": "cross_ground_mass",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -7,
+        -1.6,
+        -10
+      ],
+      "to": [
+        7,
+        2.8,
+        10
+      ],
+      "rotation": [
+        0,
+        -11,
+        0
+      ],
+      "origin": [
+        0,
+        0,
+        0
+      ],
+      "parent": "cluster"
+    },
+    {
+      "name": "front_connected_vein",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -4,
+        -0.4,
+        6
+      ],
+      "to": [
+        4,
+        1.5,
+        18
+      ],
+      "rotation": [
+        0,
+        -7,
+        0
+      ],
+      "origin": [
+        0,
+        0,
+        8
+      ],
+      "parent": "cluster"
+    },
+    {
+      "name": "vein_colony",
+      "material": "core",
+      "topMaterial": 2,
+      "from": [
+        -1.7,
+        1.3,
+        8
+      ],
+      "to": [
+        1.7,
+        1.8,
+        14
+      ],
+      "rotation": [
+        0,
+        -7,
+        0
+      ],
+      "origin": [
+        0,
+        0,
+        8
+      ],
+      "parent": "cluster"
+    },
+    {
+      "name": "horn_0_connected_socket",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -3.8,
+        0,
+        3
+      ],
+      "to": [
+        3.8,
+        5,
+        9
+      ],
+      "rotation": [
+        0,
+        0,
+        -2
+      ],
+      "origin": [
+        0,
+        2,
+        5
+      ],
+      "parent": "horn_0"
+    },
+    {
+      "name": "horn_0_ivory_base",
+      "material": "functional plate",
+      "topMaterial": 1,
+      "from": [
+        -2.7,
+        2,
+        3.5
+      ],
+      "to": [
+        2.7,
+        11,
+        8.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        -2.7,
+        2,
+        3.5
+      ],
+      "parent": "horn_0_flare"
+    },
+    {
+      "name": "horn_0_skin_collar",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -3.2,
+        3,
+        3.1
+      ],
+      "to": [
+        3.4,
+        5.4,
+        9
+      ],
+      "rotation": [
+        6,
+        11,
+        -7
+      ],
+      "origin": [
+        0,
+        4,
+        6
+      ],
+      "parent": "horn_0_flare"
+    },
+    {
+      "name": "horn_0_outward_tip",
+      "material": "functional plate",
+      "topMaterial": 1,
+      "from": [
+        -1.6,
+        9,
+        4.5
+      ],
+      "to": [
+        1.6,
+        17,
+        7.5
+      ],
+      "rotation": [
+        13,
+        0,
+        8
+      ],
+      "origin": [
+        0,
+        10,
+        6
+      ],
+      "parent": "horn_0_flare"
+    },
+    {
+      "name": "horn_0_root_colony",
+      "material": "core",
+      "topMaterial": 2,
+      "from": [
+        -1.4,
+        4,
+        3.2
+      ],
+      "to": [
+        1.4,
+        7,
+        3.65
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        -1.4,
+        4,
+        3.2
+      ],
+      "parent": "horn_0_flare"
+    },
+    {
+      "name": "horn_1_connected_socket",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -3.8,
+        0,
+        3
+      ],
+      "to": [
+        3.8,
+        5,
+        9
+      ],
+      "rotation": [
+        0,
+        0,
+        -1
+      ],
+      "origin": [
+        0,
+        2,
+        5
+      ],
+      "parent": "horn_1"
+    },
+    {
+      "name": "horn_1_ivory_base",
+      "material": "functional plate",
+      "topMaterial": 1,
+      "from": [
+        -2.7,
+        2,
+        3.5
+      ],
+      "to": [
+        2.7,
+        11,
+        8.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        -2.7,
+        2,
+        3.5
+      ],
+      "parent": "horn_1_flare"
+    },
+    {
+      "name": "horn_1_skin_collar",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -3.2,
+        3,
+        3.1
+      ],
+      "to": [
+        3.4,
+        5.4,
+        9
+      ],
+      "rotation": [
+        6,
+        11,
+        -7
+      ],
+      "origin": [
+        0,
+        4,
+        6
+      ],
+      "parent": "horn_1_flare"
+    },
+    {
+      "name": "horn_1_outward_tip",
+      "material": "functional plate",
+      "topMaterial": 1,
+      "from": [
+        -1.6,
+        9,
+        4.5
+      ],
+      "to": [
+        1.6,
+        18,
+        7.5
+      ],
+      "rotation": [
+        13,
+        0,
+        -9
+      ],
+      "origin": [
+        0,
+        10,
+        6
+      ],
+      "parent": "horn_1_flare"
+    },
+    {
+      "name": "horn_1_root_colony",
+      "material": "core",
+      "topMaterial": 2,
+      "from": [
+        -1.4,
+        4,
+        3.2
+      ],
+      "to": [
+        1.4,
+        7,
+        3.65
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        -1.4,
+        4,
+        3.2
+      ],
+      "parent": "horn_1_flare"
+    },
+    {
+      "name": "horn_2_connected_socket",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -3.8,
+        0,
+        3
+      ],
+      "to": [
+        3.8,
+        5,
+        9
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        2,
+        5
+      ],
+      "parent": "horn_2"
+    },
+    {
+      "name": "horn_2_ivory_base",
+      "material": "functional plate",
+      "topMaterial": 1,
+      "from": [
+        -2.7,
+        2,
+        3.5
+      ],
+      "to": [
+        2.7,
+        11,
+        8.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        -2.7,
+        2,
+        3.5
+      ],
+      "parent": "horn_2_flare"
+    },
+    {
+      "name": "horn_2_skin_collar",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -3.2,
+        3,
+        3.1
+      ],
+      "to": [
+        3.4,
+        5.4,
+        9
+      ],
+      "rotation": [
+        6,
+        11,
+        -7
+      ],
+      "origin": [
+        0,
+        4,
+        6
+      ],
+      "parent": "horn_2_flare"
+    },
+    {
+      "name": "horn_2_outward_tip",
+      "material": "functional plate",
+      "topMaterial": 1,
+      "from": [
+        -1.6,
+        9,
+        4.5
+      ],
+      "to": [
+        1.6,
+        17,
+        7.5
+      ],
+      "rotation": [
+        13,
+        0,
+        8
+      ],
+      "origin": [
+        0,
+        10,
+        6
+      ],
+      "parent": "horn_2_flare"
+    },
+    {
+      "name": "horn_2_root_colony",
+      "material": "core",
+      "topMaterial": 2,
+      "from": [
+        -1.4,
+        4,
+        3.2
+      ],
+      "to": [
+        1.4,
+        7,
+        3.65
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        -1.4,
+        4,
+        3.2
+      ],
+      "parent": "horn_2_flare"
+    },
+    {
+      "name": "one_attached_horn_growth",
+      "material": "functional plate",
+      "topMaterial": 1,
+      "from": [
+        1.4,
+        8,
+        5
+      ],
+      "to": [
+        3.9,
+        11,
+        7.4
+      ],
+      "rotation": [
+        12,
+        0,
+        -25
+      ],
+      "origin": [
+        2,
+        8,
+        6
+      ],
+      "parent": "horn_2_flare"
+    },
+    {
+      "name": "horn_3_connected_socket",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -3.8,
+        0,
+        3
+      ],
+      "to": [
+        3.8,
+        5,
+        9
+      ],
+      "rotation": [
+        0,
+        0,
+        1
+      ],
+      "origin": [
+        0,
+        2,
+        5
+      ],
+      "parent": "horn_3"
+    },
+    {
+      "name": "horn_3_ivory_base",
+      "material": "functional plate",
+      "topMaterial": 1,
+      "from": [
+        -2.7,
+        2,
+        3.5
+      ],
+      "to": [
+        2.7,
+        11,
+        8.5
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        -2.7,
+        2,
+        3.5
+      ],
+      "parent": "horn_3_flare"
+    },
+    {
+      "name": "horn_3_skin_collar",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -3.2,
+        3,
+        3.1
+      ],
+      "to": [
+        3.4,
+        5.4,
+        9
+      ],
+      "rotation": [
+        6,
+        11,
+        -7
+      ],
+      "origin": [
+        0,
+        4,
+        6
+      ],
+      "parent": "horn_3_flare"
+    },
+    {
+      "name": "horn_3_outward_tip",
+      "material": "functional plate",
+      "topMaterial": 1,
+      "from": [
+        -1.6,
+        9,
+        4.5
+      ],
+      "to": [
+        1.6,
+        18,
+        7.5
+      ],
+      "rotation": [
+        13,
+        0,
+        -9
+      ],
+      "origin": [
+        0,
+        10,
+        6
+      ],
+      "parent": "horn_3_flare"
+    },
+    {
+      "name": "horn_3_root_colony",
+      "material": "core",
+      "topMaterial": 2,
+      "from": [
+        -1.4,
+        4,
+        3.2
+      ],
+      "to": [
+        1.4,
+        7,
+        3.65
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        -1.4,
+        4,
+        3.2
+      ],
+      "parent": "horn_3_flare"
+    }
+  ],
+  "sourceSha256": "dc79a41db542cae35d3a40ed9836b97a0a5b48acd4450d78fa607777c1ac6db1",
+  "editor": "Blockbench5.2.2 native MCP",
+  "frames": "23 genuine10Hz editor captures; not runtime evidence",
+  "runtime": "not installed, no game launch"
+}

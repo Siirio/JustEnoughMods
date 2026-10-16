@@ -1,0 +1,404 @@
+{
+  "race": "void",
+  "selectedGeometry": "M-C",
+  "selectedPainting": "T-A",
+  "nativeCubes": 15,
+  "quads": 90,
+  "materials": 3,
+  "parts": [
+    {
+      "name": "shared_earth_anchor",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -8,
+        -2,
+        -5.6
+      ],
+      "to": [
+        8,
+        2,
+        5.6
+      ],
+      "rotation": [
+        0,
+        8,
+        0
+      ],
+      "origin": [
+        0,
+        0,
+        0
+      ],
+      "parent": "cluster"
+    },
+    {
+      "name": "cross_ground_mass",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -5.6,
+        -1.6,
+        -8
+      ],
+      "to": [
+        5.6,
+        2.8,
+        8
+      ],
+      "rotation": [
+        0,
+        -11,
+        0
+      ],
+      "origin": [
+        0,
+        0,
+        0
+      ],
+      "parent": "cluster"
+    },
+    {
+      "name": "left_tear_root",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -6.5,
+        -1,
+        -2.9
+      ],
+      "to": [
+        0.5,
+        10,
+        3
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        -6.5,
+        -1,
+        -2.9
+      ],
+      "parent": "left_tear"
+    },
+    {
+      "name": "left_tear_upper_lip",
+      "material": "substrate",
+      "topMaterial": 1,
+      "from": [
+        -6.6,
+        8,
+        -2.3
+      ],
+      "to": [
+        0,
+        25,
+        2.4
+      ],
+      "rotation": [
+        5,
+        -9,
+        -10
+      ],
+      "origin": [
+        -3,
+        9,
+        0
+      ],
+      "parent": "left_tear"
+    },
+    {
+      "name": "left_tear_lateral_crystal_shelf",
+      "material": "functional plate",
+      "topMaterial": 1,
+      "from": [
+        -6.6,
+        7,
+        -2.6
+      ],
+      "to": [
+        -2.5,
+        9,
+        3.2
+      ],
+      "rotation": [
+        8,
+        -17,
+        -11
+      ],
+      "origin": [
+        -3,
+        8,
+        0
+      ],
+      "parent": "left_tear"
+    },
+    {
+      "name": "left_tear_attached_inner_tear",
+      "material": "core",
+      "topMaterial": 2,
+      "from": [
+        -1.4,
+        4,
+        -3
+      ],
+      "to": [
+        -0.19999999999999984,
+        11,
+        -2.5
+      ],
+      "rotation": [
+        0,
+        0,
+        -8
+      ],
+      "origin": [
+        -3,
+        6,
+        0
+      ],
+      "parent": "left_tear"
+    },
+    {
+      "name": "left_tear_jagged_inner_blade",
+      "material": "functional plate",
+      "topMaterial": 1,
+      "from": [
+        -5.8,
+        12,
+        -2.8
+      ],
+      "to": [
+        -0.20000000000000018,
+        16,
+        2.6
+      ],
+      "rotation": [
+        7,
+        0,
+        -22
+      ],
+      "origin": [
+        -3,
+        13,
+        0
+      ],
+      "parent": "left_tear"
+    },
+    {
+      "name": "left_tear_broken_outer_step",
+      "material": "substrate",
+      "topMaterial": 2,
+      "from": [
+        -7.6,
+        14,
+        -2
+      ],
+      "to": [
+        -2.4,
+        24,
+        2.2
+      ],
+      "rotation": [
+        7,
+        -6,
+        12
+      ],
+      "origin": [
+        -3,
+        15,
+        0
+      ],
+      "parent": "left_tear"
+    },
+    {
+      "name": "attached_crystal_offshoot",
+      "material": "functional plate",
+      "topMaterial": 2,
+      "from": [
+        -7.5,
+        12,
+        -1.9
+      ],
+      "to": [
+        -4.2,
+        16.5,
+        1.9
+      ],
+      "rotation": [
+        0,
+        -8,
+        24
+      ],
+      "origin": [
+        -5.3,
+        12,
+        0
+      ],
+      "parent": "left_tear"
+    },
+    {
+      "name": "right_tear_root",
+      "material": "substrate",
+      "topMaterial": 0,
+      "from": [
+        -0.5,
+        -1,
+        -2.9
+      ],
+      "to": [
+        6.5,
+        10,
+        3
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        -0.5,
+        -1,
+        -2.9
+      ],
+      "parent": "right_tear"
+    },
+    {
+      "name": "right_tear_upper_lip",
+      "material": "substrate",
+      "topMaterial": 1,
+      "from": [
+        -0.6000000000000001,
+        8,
+        -2.3
+      ],
+      "to": [
+        6,
+        20,
+        2.4
+      ],
+      "rotation": [
+        5,
+        9,
+        10
+      ],
+      "origin": [
+        3,
+        9,
+        0
+      ],
+      "parent": "right_tear"
+    },
+    {
+      "name": "right_tear_lateral_crystal_shelf",
+      "material": "functional plate",
+      "topMaterial": 1,
+      "from": [
+        -0.6000000000000001,
+        7,
+        -2.6
+      ],
+      "to": [
+        3.5,
+        9,
+        3.2
+      ],
+      "rotation": [
+        8,
+        17,
+        11
+      ],
+      "origin": [
+        3,
+        8,
+        0
+      ],
+      "parent": "right_tear"
+    },
+    {
+      "name": "right_tear_attached_inner_tear",
+      "material": "core",
+      "topMaterial": 2,
+      "from": [
+        0.19999999999999984,
+        4,
+        -3
+      ],
+      "to": [
+        1.4,
+        11,
+        -2.5
+      ],
+      "rotation": [
+        0,
+        0,
+        8
+      ],
+      "origin": [
+        3,
+        6,
+        0
+      ],
+      "parent": "right_tear"
+    },
+    {
+      "name": "right_tear_jagged_inner_blade",
+      "material": "functional plate",
+      "topMaterial": 1,
+      "from": [
+        0.20000000000000018,
+        12,
+        -2.8
+      ],
+      "to": [
+        5.8,
+        16,
+        2.6
+      ],
+      "rotation": [
+        7,
+        0,
+        22
+      ],
+      "origin": [
+        3,
+        13,
+        0
+      ],
+      "parent": "right_tear"
+    },
+    {
+      "name": "right_tear_broken_outer_step",
+      "material": "substrate",
+      "topMaterial": 2,
+      "from": [
+        2.4,
+        14,
+        -2
+      ],
+      "to": [
+        7.6,
+        19,
+        2.2
+      ],
+      "rotation": [
+        7,
+        6,
+        -12
+      ],
+      "origin": [
+        3,
+        15,
+        0
+      ],
+      "parent": "right_tear"
+    }
+  ],
+  "sourceSha256": "567bf2cb37be4d53d039fa3e9667e0249e47bcbcb2611cce29fd699591645f5e",
+  "editor": "Blockbench5.2.2 native MCP",
+  "frames": "23 genuine10Hz editor captures; not runtime evidence",
+  "runtime": "not installed, no game launch"
+}
