@@ -6,6 +6,10 @@
     {
       "type": "registry",
       "registry": "items"
+    },
+    {
+      "type": "registry",
+      "registry": "blocks"
     }
   ],
   "exceptions": [],
@@ -131,6 +135,16 @@
         "Mods/JEMEconomy/tools/author_building_supply.py",
         "Mods/JEMEconomy/tools/reconcile_economy.py",
         "Client/ManagedPack/mods/jem-economy-1.2.0.jar"
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "commit": "SELF",
+      "action": "link_block_item_projection",
+      "summary": "Attach the same authoritative trade rule to original block facts as well as item facts, including static block-only spawner records; no invented registry entries or runtime change.",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/TradeRestrictions.java",
+        "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/trade_restrictions.json"
       ]
     }
   ],

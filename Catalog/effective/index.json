@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "80e4cf07860940421cea1414c4d2cfa0bc05df38fa3ae8ab5737c6910eb18cf5",
+  "change_records_sha256": "40518646bdf78c8ca046b848c6341d3a3a56d5ed50fbdba49e83bdcee78ae558",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -98,10 +98,14 @@
         {
           "type": "registry",
           "registry": "items"
+        },
+        {
+          "type": "registry",
+          "registry": "blocks"
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17067
+      "potential_static_target_count": 29200
     },
     {
       "change_id": "economy.reviewed-item-policies",
