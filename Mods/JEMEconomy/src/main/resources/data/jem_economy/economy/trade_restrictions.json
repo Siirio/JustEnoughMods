@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "purpose": "User permanent NPC sale prohibition (2026-10-16). Built-in floor: datapacks cannot relax these restrictions. Player shops, gifts and barter between players are outside NPC scope.",
+  "all_npc_items": [
+    "alexscaves:cave_tablet",
+    "alexsmobs:transmutation_table",
+    "netherexp:shotgun_barrel",
+    "netherexp:brazier_chest",
+    "rottencreatures:treasure_chest",
+    "aquamirae:frozen_chest",
+    "minecraft:gilded_blackstone",
+    "minecraft:ancient_debris",
+    "spawn:sunstone",
+    "spawn:moonstone",
+    "minecraft:resin_clump",
+    "spawn:snail_shell",
+    "spawn:big_snail_shell",
+    "irons_spellbooks:alchemist_cauldron",
+    "irons_spellbooks:scroll_forge",
+    "irons_spellbooks:arcane_anvil",
+    "minecraft:spawner",
+    "trials:heavy_core",
+    "minecraft:sniffer_egg",
+    "deep_dark_regrowth:unbreakable_door_keyframe",
+    "deep_dark_regrowth:unbreakable_door",
+    "deep_dark_regrowth:unbreakable_door_update",
+    "deep_dark_extended:unbreakable_door_keyframe",
+    "deep_dark_extended:unbreakable_door",
+    "deep_dark_extended:unbreakable_door_update",
+    "skarrier_mobs:stone_golem_unfinished_1",
+    "skarrier_mobs:stone_golem_unfinished_2",
+    "skarrier_mobs:stone_golem_unfinished_3",
+    "minecraft:barrier",
+    "ftbquests:barrier",
+    "ftbquests:stage_barrier",
+    "alexscaves:nuclear_bomb",
+    "alexscaves:waste_drum",
+    "alexscaves:unrefined_waste",
+    "alexscaves:block_of_uranium",
+    "irons_spellbooks:trial_spawner",
+    "irons_spellbooks:vault",
+    "infinitybuttons:hoglin_mount_button",
+    "skarrier_mobs:tangled_wrong_deepslate_ore_diamond",
+    "skarrier_mobs:tangled_wrong_deepslate_ore_emerald",
+    "skarrier_mobs:tangled_wrong_deepslate_ore_gold",
+    "skarrier_mobs:tangled_wrong_deepslate_ore_invulnerite",
+    "skarrier_mobs:wrong_deepslate_ore_invulnerite"
+  ],
+  "all_npc_item_tags": [
+    "forge:ores"
+  ],
+  "all_npc_block_tags": [
+    "forge:ores"
+  ],
+  "all_npc_path_suffixes": [
+    "_trophy",
+    "_ore",
+    "_ores"
+  ],
+  "all_npc_path_prefixes": [
+    "trophy_"
+  ],
+  "market_only_namespaces": [
+    "create"
+  ],
+  "scope_notes": {
+    "ores": "Ore blocks only; ingots, gems and ordinary refined mineral blocks are not excluded by this selector.",
+    "trophies": "All registered trophy identities, including future matching items.",
+    "create": "Main Create namespace only. Existing appropriate native profession offers remain permitted.",
+    "aliases": "Deep Dark alternate IDs are retained deliberately as permanent guards; only present registries can supply offers."
+  }
+}

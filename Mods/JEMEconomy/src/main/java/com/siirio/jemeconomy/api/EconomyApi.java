@@ -167,7 +167,7 @@ public final class EconomyApi {
         var principal = IdentityPolicy.resolve(authenticatedActor);
         var policy = ItemPolicyRegistry.policy(stack);
         if (principal.isEmpty()) return new ItemQuote(QuoteStatus.UNAUTHENTICATED, 0L, 0L, 100, 0L);
-        if (policy.isEmpty() || !policy.get().sellable()) return new ItemQuote(QuoteStatus.NONE, 0L, 0L, 100, 0L);
+        if (com.siirio.jemeconomy.policy.TradeRestrictions.marketProhibited(stack) || policy.isEmpty() || !policy.get().sellable()) return new ItemQuote(QuoteStatus.NONE, 0L, 0L, 100, 0L);
         MarketSavedData market = MarketSavedData.get(authenticatedActor.getServer());
         int multiplier = market.multiplier(authenticatedActor.getServer(), policy.get().demandGroup());
         long sellUnit = Math.floorDiv(Math.multiplyExact(policy.get().sellCopper(), multiplier), 100L);
@@ -189,27 +189,25 @@ public final class EconomyApi {
         final String selectedSearch = search;
         final String selectedCategory = category;
         MarketSavedData market = MarketSavedData.get(player.getServer());
-        List<com.siirio.jemeconomy.policy.ItemPolicy> policies = ItemPolicyRegistry.reviewed().stream()
-                .filter(com.siirio.jemeconomy.policy.ItemPolicy::sellable)
-                .filter(policy -> ForgeRegistries.ITEMS.containsKey(policy.item()))
-                .filter(policy -> selectedCategory.equals("all") || policy.marketCategory().name().equalsIgnoreCase(selectedCategory))
-                .filter(policy -> selectedSearch.isBlank() || policy.item().toString().toLowerCase(Locale.ROOT).contains(selectedSearch))
-                .sorted(Comparator.comparing(policy -> policy.item().toString())).toList();
+        var listings = com.siirio.jemeconomy.policy.MarketSupply.listings(player.getServer()).stream()
+                .filter(row -> selectedCategory.equals("all") || row.policy().marketCategory().name().equalsIgnoreCase(selectedCategory))
+                .filter(row -> com.siirio.jemeconomy.policy.MarketSearch.matches(row, selectedSearch))
+                .sorted(Comparator.comparing(row -> row.id().toString())).toList();
         int pageSize = 16;
-        int pages = Math.max(1, (policies.size() + pageSize - 1) / pageSize);
+        int pages = Math.max(1, (listings.size() + pageSize - 1) / pageSize);
         int page = Math.max(0, Math.min(requestedPage, pages - 1));
-        int start = Math.min(policies.size(), page * pageSize);
-        int end = Math.min(policies.size(), start + pageSize);
-        List<MarketItemSnapshot> rows = policies.subList(start, end).stream().map(policy -> {
-            var item = ForgeRegistries.ITEMS.getValue(policy.item());
-            ItemStack stack = item == null ? ItemStack.EMPTY : new ItemStack(item);
+        int start = Math.min(listings.size(), page * pageSize);
+        int end = Math.min(listings.size(), start + pageSize);
+        List<MarketItemSnapshot> rows = listings.subList(start, end).stream().map(row -> {
+            var policy = row.policy();
+            ItemStack stack = row.stack();
             int multiplier = market.multiplier(player.getServer(), policy.demandGroup());
-            long sell = Math.floorDiv(Math.multiplyExact(policy.sellCopper(), multiplier), 100L);
-            int accountRemaining = market.accountItemRemaining(player.getServer(), principal.get().accountId(), policy);
-            int globalRemaining = market.globalItemRemaining(player.getServer(), policy);
-            return new MarketItemSnapshot(policy.item(), stack, policy.buyCopper(), sell, policy.marketCategory(),
+            long sell = policy.sellable() ? Math.floorDiv(Math.multiplyExact(policy.sellCopper(), multiplier), 100L) : 0L;
+            int accountRemaining = policy.sellable() ? market.accountItemRemaining(player.getServer(), principal.get().accountId(), policy) : 0;
+            int globalRemaining = policy.sellable() ? market.globalItemRemaining(player.getServer(), policy) : 0;
+            return new MarketItemSnapshot(row.id(), stack, policy.buyCopper(), sell, policy.marketCategory(),
                     accountRemaining, globalRemaining, !stack.isEmpty() && market.purchaseRemaining(player.getServer(), principal.get().accountId(), policy) > 0,
-                    !stack.isEmpty() && accountRemaining > 0 && globalRemaining > 0 && market.accountRemaining(player.getServer(), principal.get().accountId()) >= sell
+                    policy.sellable() && !stack.isEmpty() && accountRemaining > 0 && globalRemaining > 0 && market.accountRemaining(player.getServer(), principal.get().accountId()) >= sell
                             && market.globalRemaining(player.getServer()) >= sell && EconomySavedData.get(player.getServer()).balance(SystemAccount.NPC_MARKET.id()) >= sell);
         }).toList();
         MarketBulletin bulletin = marketBulletin(player);
@@ -226,17 +224,17 @@ public final class EconomyApi {
         if (!DedicatedSmp.active(buyer) || id == null || requestId == null || quantity <= 0 || quantity > 64)
             return new MarketPurchaseResult(MarketPurchaseStatus.INVALID, 0L, 0);
         var principal = IdentityPolicy.resolve(buyer);
-        var policy = ItemPolicyRegistry.policy(id);
-        var item = ForgeRegistries.ITEMS.getValue(id);
         if (principal.isEmpty()) return new MarketPurchaseResult(MarketPurchaseStatus.UNAUTHENTICATED, 0L, 0);
-        if (!policy.buyable() || item == null || item == net.minecraft.world.item.Items.AIR)
-            return new MarketPurchaseResult(MarketPurchaseStatus.NONE, 0L, 0);
+        var listing = com.siirio.jemeconomy.policy.MarketSupply.resolve(buyer.getServer(), id);
+        if (listing == null) return new MarketPurchaseResult(MarketPurchaseStatus.NONE, 0L, 0);
+        var policy = listing.policy();
         MarketSavedData market = MarketSavedData.get(buyer.getServer());
         if (market.revision(buyer.getServer()) != observedRevision)
             return new MarketPurchaseResult(MarketPurchaseStatus.STALE, 0L, 0);
         if (market.purchaseRemaining(buyer.getServer(), principal.get().accountId(), policy) < quantity)
             return new MarketPurchaseResult(MarketPurchaseStatus.UNAVAILABLE, 0L, 0);
-        ItemStack delivery = new ItemStack(item, quantity);
+        ItemStack delivery = listing.stack().copy();
+        delivery.setCount(quantity);
         if (quantity > delivery.getMaxStackSize() || !canFit(buyer, delivery))
             return new MarketPurchaseResult(MarketPurchaseStatus.NO_SPACE, 0L, 0);
         long total;
@@ -277,6 +275,7 @@ public final class EconomyApi {
     public static NpcSaleResult processNpcSale(ServerPlayer seller, ItemStack offered, int quantity, UUID requestId) {
         if (!DedicatedSmp.active(seller) || requestId == null || quantity <= 0) return new NpcSaleResult(NpcSaleStatus.UNAVAILABLE, 0L, 0);
         var principal = IdentityPolicy.resolve(seller); var optional = ItemPolicyRegistry.policy(offered);
+        if (com.siirio.jemeconomy.policy.TradeRestrictions.marketProhibited(offered)) return new NpcSaleResult(NpcSaleStatus.NONE, 0L, 0);
         if (principal.isEmpty()) return new NpcSaleResult(NpcSaleStatus.UNAUTHENTICATED, 0L, 0);
         if (optional.isEmpty() || !optional.get().sellable()) return new NpcSaleResult(NpcSaleStatus.NONE, 0L, 0);
         int held = 0;
@@ -308,7 +307,8 @@ public final class EconomyApi {
             net.minecraft.world.inventory.MerchantContainer inputs, ItemStack offered, int quantity,
             long expectedPayout, int sourceSlot, UUID requestId) {
         return settleNpcContainerSale(seller, inputs, offered, quantity, expectedPayout, sourceSlot, requestId,
-                ItemPolicyRegistry.policy(offered).filter(policy -> policy.sellable()));
+                ItemPolicyRegistry.policy(offered).filter(policy -> policy.sellable()
+                        && !com.siirio.jemeconomy.policy.TradeRestrictions.marketProhibited(offered)));
     }
 
     /** Trusted native merchandise may retain enchantments/NBT; never used by the global Market. */

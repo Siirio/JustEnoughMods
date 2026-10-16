@@ -38,6 +38,7 @@ public final class RaceService {
         if (record.race() == next) return Result.UNCHANGED;
         boolean testOverride = RaceRules.testRaceReselect();
         if (!testOverride && !record.freeSwitchAvailable()) return Result.CHANGE_LOCKED;
+        com.siirio.jemroles.trait.RaceAbilities.logout(player);
         record.change(next, !testOverride);
         data.changed();
         MinecraftForge.EVENT_BUS.post(new RaceChangedEvent(player, next));
@@ -69,6 +70,7 @@ public final class RaceService {
             return Result.CHOSEN;
         }
         if (record.race() == next) return Result.UNCHANGED;
+        com.siirio.jemroles.trait.RaceAbilities.logout(player);
         record.change(next, false);
         data.changed();
         MinecraftForge.EVENT_BUS.post(new RaceChangedEvent(player, next));

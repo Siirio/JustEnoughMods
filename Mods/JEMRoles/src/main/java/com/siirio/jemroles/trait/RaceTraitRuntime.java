@@ -274,6 +274,7 @@ public final class RaceTraitRuntime {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void death(LivingDeathEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player) RaceAbilities.logout(player);
         if (event.getEntity() instanceof ServerPlayer player && RaceApi.hasRace(player, RaceId.BORN_IN_BLOOM)) {
             RaceService.record(player).ifPresent(record -> {
                 long now = player.level().getGameTime();

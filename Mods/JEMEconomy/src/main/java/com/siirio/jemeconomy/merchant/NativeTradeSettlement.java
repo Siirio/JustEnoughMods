@@ -11,6 +11,7 @@ import net.minecraft.world.item.trading.MerchantOffer;
 public final class NativeTradeSettlement {
     private NativeTradeSettlement() {}
     public static String commit(ServerPlayer player, MerchantContainer inputs, MerchantOffer offer, NativeTradeQuote quote, int inputOrder, UUID operation) {
+        if (com.siirio.jemeconomy.policy.TradeRestrictions.offerProhibited(offer)) return "jem.economy.trade.prohibited";
         if (quote.direction() == NativeTradeQuote.Direction.PLAYER_SELLS) {
             var result = EconomyApi.processNativeNpcSaleFromContainer(player, inputs, offer.getCostA(),
                     offer.getCostA().getCount(), quote.copper(), inputOrder == 0 ? 0 : 1, operation);

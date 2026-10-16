@@ -98,9 +98,8 @@ public final class MarketScreen extends Screen {
         int contentTop = top + 96, bottom = top + panelHeight - 22;
         int columns = Math.max(2, Math.min(4, panelWidth / 102));
         int gap = 4, cardWidth = (panelWidth - 16 - gap * (columns - 1)) / columns, cardHeight = 70;
-        List<MarketItemSnapshot> filtered = data.items().stream().filter(row -> search.getValue().isBlank()
-                || row.stack().getHoverName().getString().toLowerCase(Locale.ROOT).contains(search.getValue().toLowerCase(Locale.ROOT))
-                || row.id().toString().contains(search.getValue().toLowerCase(Locale.ROOT))).toList();
+        // The server searches packaged native/overlay names and variant titles in both supported locales.
+        List<MarketItemSnapshot> filtered = data.items();
         int visibleRows = Math.max(1, (bottom - contentTop + gap) / (cardHeight + gap));
         maxCatalogScrollRows = Math.max(0, (filtered.size() + columns - 1) / columns - visibleRows);
         catalogScrollRows = Math.max(0, Math.min(catalogScrollRows, maxCatalogScrollRows));
@@ -111,23 +110,36 @@ public final class MarketScreen extends Screen {
             int x = left + 8 + column * (cardWidth + gap); MarketItemSnapshot item = filtered.get(index);
             g.fill(x, y, x + cardWidth, y + cardHeight, INNER); g.fill(x, y, x + cardWidth, y + 1, 0xFF805438);
             g.renderItem(item.stack(), x + 5, y + 5);
-            g.drawString(font, font.plainSubstrByWidth(item.stack().getHoverName().getString(), cardWidth - 28), x + 25, y + 6, CREAM, false);
+            g.drawString(font, font.plainSubstrByWidth(marketName(item.stack()).getString(), cardWidth - 28), x + 25, y + 6, CREAM, false);
             g.drawString(font, "↓", x + 4, y + 24, MUTED, false);
-            CoinPriceRenderer.draw(g, font, item.sellCopper(), x + 14, y + 20, cardWidth - 19, MUTED);
+            if (item.sellCopper() > 0) CoinPriceRenderer.draw(g, font, item.sellCopper(), x + 14, y + 20, cardWidth - 19, MUTED);
+            else g.drawString(font, font.plainSubstrByWidth(Component.translatable("jem.economy.market.no_buyback").getString(), cardWidth - 19), x + 14, y + 24, MUTED, false);
             g.drawString(font, "↑", x + 4, y + 39, CREAM, false);
             CoinPriceRenderer.draw(g, font, item.buyCopper(), x + 14, y + 35, cardWidth - 19, CREAM);
             if (mouseX >= x && mouseX < x + cardWidth && mouseY >= y + 20 && mouseY < y + 51)
                 g.renderTooltip(font, Component.translatable(mouseY < y + 35 ? "jem.economy.market.sell" : "jem.economy.market.buy"), mouseX, mouseY);
             int half = (cardWidth - 13) / 2;
-            button(g, x + 5, y + 53, half, 14, Component.translatable("jem.economy.market.buy"),
+            if (item.buyAvailable()) button(g, x + 5, y + 53, half, 14, Component.translatable("jem.economy.market.buy"),
                     () -> EconomyNetwork.marketAction(MarketActionPacket.Action.BUY, item.id(), 1, data.revision(), data.search(), data.category(), data.page()));
-            button(g, x + 8 + half, y + 53, half, 14, Component.translatable("jem.economy.market.sell"),
+            if (item.sellAvailable()) button(g, x + 8 + half, y + 53, half, 14, Component.translatable("jem.economy.market.sell"),
                     () -> EconomyNetwork.marketAction(MarketActionPacket.Action.SELL, item.id(), 1, data.revision(), data.search(), data.category(), data.page()));
         }
         button(g, left + 8, top + panelHeight - 19, 44, 14, Component.literal("<"), () -> queryPage(data.page() - 1));
         g.drawCenteredString(font, (data.page() + 1) + "/" + data.pages(), width / 2, top + panelHeight - 16, MUTED);
         button(g, left + panelWidth - 52, top + panelHeight - 19, 44, 14, Component.literal(">"), () -> queryPage(data.page() + 1));
         if (categoriesOpen) renderCategories(g, categoryX, top + 92);
+    }
+
+    private static Component marketName(ItemStack stack) {
+        var entityTag = stack.getTagElement("EntityTag");
+        if (stack.is(Items.PAINTING) && entityTag != null && entityTag.contains("variant")) {
+            var variant = net.minecraft.resources.ResourceLocation.tryParse(entityTag.getString("variant"));
+            if (variant != null) {
+                String key = "painting." + variant.getNamespace() + "." + variant.getPath() + ".title";
+                return net.minecraft.client.resources.language.I18n.exists(key) ? Component.translatable(key) : Component.literal(variant.toString());
+            }
+        }
+        return stack.getHoverName();
     }
 
     private void renderCategories(GuiGraphics g, int x, int y) {

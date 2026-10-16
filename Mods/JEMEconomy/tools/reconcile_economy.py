@@ -524,6 +524,8 @@ the recipe adapter through KubeJS's physical-client Platform binding.
         'Open `/smp` and its Market for the two Coin price rows. Native villagers and compatible special merchants keep their usual interaction and controls. Personal employers pay Wallet; assigned town recruits use the real treasury. Existing Wallet withdrawal supplies backed physical Coins for the protected exact-area expansion path.', '',
         'The opt-in dedicated JVM property `-Djem.economy.export=true` writes `Server/local/economy-audit/loaded-registry.json` and executes unsaved native-NBT contracts. Use it only for an authorized local verification run. `python Mods/JEMEconomy/tools/reconcile_economy.py --audit --export --runtime Server/local/economy-audit/loaded-registry.json` re-reads installed JAR recipes, audits the capture and regenerates these files. Drive classifications require the captured seven-tab design source; they are not item-registration proof.', '']
     (FINAL/'IMPLEMENTATION_REPORT.md').write_text('\n'.join(report), encoding='utf-8')
+    from author_building_supply import export_catalog_overrides
+    export_catalog_overrides(runtime)
     return summary
 
 

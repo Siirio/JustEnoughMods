@@ -54,7 +54,12 @@ public final class RoleClientState {
     @SubscribeEvent
     public static void tick(TickEvent.ClientTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
-        while (SIGNATURE.consumeClick()) RolesNetwork.action(RaceActionPacket.Action.SIGNATURE);
+        while (SIGNATURE.consumeClick()) {
+            // Iron's native selected-spell cast also defaults to V. One physical press has one owner.
+            boolean nativeCast = net.minecraftforge.fml.ModList.get().isLoaded("irons_spellbooks")
+                    && com.siirio.jemroles.compat.irons.client.RacialSpellKeys.sharesNativeCastKey(SIGNATURE);
+            if (!nativeCast) RolesNetwork.action(RaceActionPacket.Action.SIGNATURE);
+        }
         boolean clicked = false;
         while (UTILITY.consumeClick()) clicked = true;
         boolean down = UTILITY.isDown();

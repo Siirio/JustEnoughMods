@@ -34,7 +34,7 @@ public final class ItemPolicyRegistry {
         return policies.getOrDefault(id, new ItemPolicy(1, id, ItemPolicy.Outcome.NONE, null, null, 0, 0, "", "Unclassified; fail closed"));
     }
 
-    public static boolean acceptsShipping(ItemStack stack) { return policy(stack).map(ItemPolicy::sellable).orElse(false); }
+    public static boolean acceptsShipping(ItemStack stack) { return !TradeRestrictions.marketProhibited(stack) && policy(stack).map(ItemPolicy::sellable).orElse(false); }
     public static Collection<ItemPolicy> reviewed() { return java.util.List.copyOf(policies.values()); }
 
     public static boolean canonical(ItemStack stack) {
@@ -54,7 +54,7 @@ public final class ItemPolicyRegistry {
                 }).orElseGet(ItemPolicyRegistry::loadBuiltIn);
             }
             @Override protected void apply(Map<ResourceLocation, ItemPolicy> next, net.minecraft.server.packs.resources.ResourceManager manager,
-                    net.minecraft.util.profiling.ProfilerFiller profiler) { policies = Map.copyOf(next); }
+                    net.minecraft.util.profiling.ProfilerFiller profiler) { policies = Map.copyOf(next); MarketSupply.invalidate(); }
         });
     }
 

@@ -93,7 +93,7 @@ public final class EconomyNetwork {
     private static void handleMarket(ServerPlayer player, MarketActionPacket packet) {
         String error = "";
         var item = net.minecraftforge.registries.ForgeRegistries.ITEMS.getValue(packet.item());
-        if (packet.units() <= 0 || packet.units() > 64 || item == null) error = "jem.economy.market.invalid";
+        if (packet.units() <= 0 || packet.units() > 64 || packet.action() == MarketActionPacket.Action.SELL && item == null) error = "jem.economy.market.invalid";
         else if (com.siirio.jemeconomy.market.MarketSavedData.get(player.getServer()).revision(player.getServer()) != packet.revision())
             error = "jem.economy.market.stale";
         else if (packet.action() == MarketActionPacket.Action.BUY) {

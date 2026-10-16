@@ -24,6 +24,8 @@ public final class NativeTradePricing {
         return stack.is(Items.EMERALD) ? ItemStack.EMPTY : stack;
     }
     public static NativeTradeQuote quote(ServerPlayer player, MerchantOffer offer, int index, boolean buyer) {
+        if (com.siirio.jemeconomy.policy.TradeRestrictions.offerProhibited(offer)) return row(index, UNPRICED, 0, false, "prohibited");
+        if (buyer && com.siirio.jemeconomy.policy.TradeRestrictions.marketProhibited(offer.getCostA())) return row(index, UNPRICED, 0, false, "prohibited");
         if (IdentityPolicy.resolve(player).isEmpty()) return row(index, UNPRICED, 0, false, "identity");
         if (!monetary(offer)) return row(index, ITEM_BARTER, 0, !offer.isOutOfStock(), offer.isOutOfStock() ? "stock" : "ok");
         try {

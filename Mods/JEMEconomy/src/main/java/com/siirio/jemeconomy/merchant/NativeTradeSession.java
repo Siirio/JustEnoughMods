@@ -73,7 +73,7 @@ public final class NativeTradeSession {
         return offer == null ? new NativeTradeQuote(selected, NativeTradeQuote.Direction.UNPRICED, 0, false, "jem.economy.trade.stock")
                 : NativeTradePricing.quote(player, offer, selected, buyer);
     }
-    public boolean nativeBarter() { return offer() != null && !NativeTradePricing.monetary(offer()) && IdentityPolicy.resolve(player).isPresent(); }
+    public boolean nativeBarter() { return offer() != null && !com.siirio.jemeconomy.policy.TradeRestrictions.offerProhibited(offer()) && !NativeTradePricing.monetary(offer()) && IdentityPolicy.resolve(player).isPresent(); }
     public boolean updateResult() {
         if (closed) return false;
         if (nativeResult != null) menu.slots.set(2, nativeBarter() ? nativeResult : guardedResult);

@@ -1,3 +1,13 @@
+<!-- BEGIN BUILDING SUPPLY -->
+The 2026-10-16 building-supply change supersedes the older catalog totals and two-way-only coverage below.
+`MARKET.csv` contains retained two-way commodities after public-market restrictions.
+`BUILDING_PURCHASE_PRICES.csv` contains acquisition budgets, **not a live availability list**: only the
+shared JEMCompat classifier/material selectors admit items, then permanent restrictions win.
+Newly admitted purchases have no new NPC buyback. `TRADE_RESTRICTIONS.csv` exports the single canonical
+restriction resource. The capture and any older recipe audit predate this change; no new gameplay,
+arbitrage, visual or automated-test acceptance is claimed. See ../market-building-supply.md.
+<!-- END BUILDING SUPPLY -->
+
 # Economy implementation report
 
 The user requested and authorized implementation, balance decisions, builds and automated verification.

@@ -19,7 +19,7 @@ public final class BuyerTradeOffers {
                 && (policy.demandGroup().equals(demand.primary()) || policy.demandGroup().equals(demand.secondary())))
                 .sorted(java.util.Comparator.comparing(policy -> policy.item().toString())).forEach(policy -> {
                     var item = ForgeRegistries.ITEMS.getValue(policy.item());
-                    if (item != null) offers.add(new MerchantOffer(new ItemStack(item), new ItemStack(Items.EMERALD),
+                    if (item != null && !com.siirio.jemeconomy.policy.TradeRestrictions.marketProhibited(new ItemStack(item))) offers.add(new MerchantOffer(new ItemStack(item), new ItemStack(Items.EMERALD),
                             Integer.MAX_VALUE, 0, 0.0F));
                 });
         // Emerald is only the native monetary-leg descriptor, never the delivered payout.

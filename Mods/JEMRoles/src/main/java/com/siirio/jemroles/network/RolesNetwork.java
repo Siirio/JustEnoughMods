@@ -81,6 +81,7 @@ public final class RolesNetwork {
     }
 
     public static void sendStatus(ServerPlayer player, boolean open) {
+        com.siirio.jemroles.trait.RaceAbilities.syncSignatureCooldown(player);
         var principal = IdentityPolicy.resolve(player);
         UUID nonce = principal.isPresent() ? (open ? RaceService.issueNonce(player) : RaceService.currentNonce(player)) : new UUID(0L, 0L);
         var snapshot = principal.flatMap(value -> RaceApi.get(player.getServer(), value.accountId()));

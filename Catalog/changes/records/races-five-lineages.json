@@ -3,28 +3,84 @@
   "change_id": "races.five-lineages",
   "status": "active",
   "selectors": [
-    {"type": "id", "registry": "entities", "value": "minecraft:villager"},
-    {"type": "id", "registry": "entities", "value": "minecraft:wandering_trader"},
-    {"type": "id", "registry": "entities", "value": "minecraft:piglin"},
-    {"type": "id", "registry": "entities", "value": "minecraft:piglin_brute"},
-    {"type": "id", "registry": "entities", "value": "minecraft:iron_golem"},
-    {"type": "id", "registry": "entities", "value": "minecraft:enderman"},
-    {"type": "id", "registry": "blocks", "value": "minecraft:sculk"},
-    {"type": "id", "registry": "blocks", "value": "minecraft:sculk_vein"},
-    {"type": "id", "registry": "blocks", "value": "minecraft:oak_leaves"},
-    {"type": "id", "registry": "blocks", "value": "minecraft:water"},
-    {"type": "id", "registry": "blocks", "value": "minecraft:lava"},
-    {"type": "id", "registry": "items", "value": "minecraft:lava_bucket"},
-    {"type": "id", "registry": "biomes", "value": "minecraft:lush_caves"}
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:villager"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:wandering_trader"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:piglin"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:piglin_brute"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:iron_golem"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:enderman"
+    },
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "minecraft:sculk"
+    },
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "minecraft:sculk_vein"
+    },
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "minecraft:oak_leaves"
+    },
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "minecraft:water"
+    },
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "minecraft:lava"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "minecraft:lava_bucket"
+    },
+    {
+      "type": "id",
+      "registry": "biomes",
+      "value": "minecraft:lush_caves"
+    }
   ],
   "exceptions": [],
   "conditions": [
-    {"runtime": "authenticated player on dedicated SMP with matching JEM Races protocol 3 client"}
+    {
+      "runtime": "authenticated player on dedicated SMP with matching JEM Races protocol 3 client"
+    }
   ],
   "precedence": {
     "layer": "gameplay",
     "priority": 130,
-    "overrides": ["economy.native-trading-presentation"]
+    "overrides": [
+      "economy.native-trading-presentation"
+    ]
   },
   "change": {
     "summary": "Replace three minor cultural roles with five server-authoritative races, innate signatures and persistent three-tier race progression while keeping professions independent.",
@@ -32,44 +88,92 @@
       {
         "property": "jem_roles.race_set",
         "operation": "replace",
-        "before": {"value": ["HUMAN", "DWARF", "ELF"]},
-        "after": {"value": ["ANCESTORS", "VOID_WALKERS", "BORN_IN_BLOOM", "INFECTED_BY_SCULK", "NETHER_HEARTEDS"]}
+        "before": {
+          "value": [
+            "HUMAN",
+            "DWARF",
+            "ELF"
+          ]
+        },
+        "after": {
+          "value": [
+            "ANCESTORS",
+            "VOID_WALKERS",
+            "BORN_IN_BLOOM",
+            "INFECTED_BY_SCULK",
+            "NETHER_HEARTEDS"
+          ]
+        }
       },
       {
         "property": "jem_roles.progression",
         "operation": "replace",
-        "before": {"value": "small passive traits plus profession and Iron's direct-hit bonuses"},
-        "after": {"value": "exactly five buffs and two debuffs per race, one innate signature and three persistent behavior-changing tiers independent from professions"}
+        "before": {
+          "value": "small passive traits plus profession and Iron's direct-hit bonuses"
+        },
+        "after": {
+          "value": "exactly five buffs and two debuffs per race, one innate signature and three persistent behavior-changing tiers independent from professions"
+        }
       },
       {
         "property": "jem_roles.entrypoints",
         "operation": "replace",
-        "before": {"value": "direct role/profession commands and SMP chat-command forwarding"},
-        "after": {"value": "bounded SMP module packets opening JEM Races or native Pufferfish Skills"}
+        "before": {
+          "value": "direct role/profession commands and SMP chat-command forwarding"
+        },
+        "after": {
+          "value": "bounded SMP module packets opening JEM Races or native Pufferfish Skills"
+        }
       },
       {
         "property": "jem_professions.server_definitions",
         "operation": "set",
-        "before": {"value": "canonical managed-client Paxi datapack absent from ordinary dedicated Server"},
-        "after": {"value": "same complete profession Paxi datapack present on managed client and dedicated Server"}
+        "before": {
+          "value": "canonical managed-client Paxi datapack absent from ordinary dedicated Server"
+        },
+        "after": {
+          "value": "same complete profession Paxi datapack present on managed client and dedicated Server"
+        }
       },
       {
         "property": "jem_roles.protected_target_acquisition",
         "operation": "replace",
-        "before": {"value": "protected Piglin, End-kin and green-biome acquisition replaced the Forge target with null"},
-        "after": {"value": "protected acquisition cancels LivingChangeTargetEvent and never supplies a null target to Brain behavior"}
+        "before": {
+          "value": "protected Piglin, End-kin and green-biome acquisition replaced the Forge target with null"
+        },
+        "after": {
+          "value": "protected acquisition cancels LivingChangeTargetEvent and never supplies a null target to Brain behavior"
+        }
       },
       {
         "property": "jem_roles.nether_fire_immunity",
         "operation": "replace",
-        "before": {"value": "tagged fire damage canceled at LivingHurtEvent after client-visible hurt feedback could begin"},
-        "after": {"value": "tagged fire attacks canceled at highest-priority LivingAttackEvent with the later hurt guard retained and residual fire cleared"}
+        "before": {
+          "value": "tagged fire damage canceled at LivingHurtEvent after client-visible hurt feedback could begin"
+        },
+        "after": {
+          "value": "tagged fire attacks canceled at highest-priority LivingAttackEvent with the later hurt guard retained and residual fire cleared"
+        }
       },
       {
         "property": "jem_roles.visual_event_transport",
         "operation": "set",
-        "before": {"value": "server-spawned generic Heart, Portal, Sculk Soul, Happy Villager and Flame bursts"},
-        "after": {"value": "bounded protocol-3 accepted-transition events drive client-only Lodestone particles and depth-tested world geometry with LOW/MEDIUM/HIGH/ULTRA decorative budgets"}
+        "before": {
+          "value": "server-spawned generic Heart, Portal, Sculk Soul, Happy Villager and Flame bursts"
+        },
+        "after": {
+          "value": "bounded protocol-3 accepted-transition events drive client-only Lodestone particles and depth-tested world geometry with LOW/MEDIUM/HIGH/ULTRA decorative budgets"
+        }
+      },
+      {
+        "property": "jem_roles.activation_validation",
+        "operation": "replace",
+        "before": {
+          "value": "Direct V and native spell V could both dispatch; native completion ignored failed signature and used independent cooldown defaults; utility charge visual could precede readiness."
+        },
+        "after": {
+          "value": "One key owner, server preflight and boolean effect commit; native successful lifecycle only after committed ability; HUD projects RaceRecord remaining ticks; localized failure and no premature utility charge or teleport effects."
+        }
       }
     ]
   },
@@ -77,6 +181,9 @@
     "owner": "JEMRoles/JEMProfessions/JEMServer",
     "kind": "race_system_rework_and_native_skill_screen_repair",
     "source_files": [
+      "Client/ManagedPack/mods/jem-roles-2.0.0.jar",
+      "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/JemProfessions.java",
+      "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/api/ProfessionApi.java",
       "Mods/JEMRoles/build.gradle",
       "Mods/JEMRoles/settings.gradle",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/JemRoles.java",
@@ -92,6 +199,10 @@
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/vfx/RaceVfxRenderer.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/vfx/RaceVfxShaderState.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/economy/CoinTradeRaceBridge.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/irons/RacialSpell.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/irons/RacialSpellBridge.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/irons/RacialSpells.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/irons/client/RacialSpellKeys.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/loot/PiglinFortuneLoot.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/loot/RaceLoot.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/mixin/AvoidEntityGoalMixin.java",
@@ -117,8 +228,6 @@
       "Mods/JEMRoles/src/main/resources/data/forge/loot_modifiers/global_loot_modifiers.json",
       "Mods/JEMRoles/src/main/resources/data/jem_roles/loot_modifiers/piglin_fortune.json",
       "Mods/JEMRoles/src/main/resources/jem_roles.mixins.json",
-      "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/JemProfessions.java",
-      "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/api/ProfessionApi.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpSidebar.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpModuleOpen.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpNetwork.java"
@@ -194,10 +303,49 @@
         "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/vfx/RaceVfxRenderer.java",
         "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/vfx/RaceVfxParticles.java"
       ]
+    },
+    {
+      "date": "2026-10-16",
+      "commit": "SELF",
+      "action": "fix_activation_and_cooldown_ownership",
+      "summary": "User requested no triggers or false cooldown on invalid ability inputs, including utilities and profession audit. Actual defects were duplicate V dispatch and native castSpell lifecycle continuing after no effect. Professions active owner audit found no corresponding adapter failure.",
+      "source_files": [
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RoleClientState.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/irons/RacialSpell.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/irons/RacialSpellBridge.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/irons/RacialSpells.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/irons/client/RacialSpellKeys.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RolesNetwork.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceService.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceAbilities.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceTraitRuntime.java",
+        "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/en_us.json",
+        "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/ru_ru.json",
+        "Client/ManagedPack/mods/jem-roles-2.0.0.jar"
+      ]
     }
   ],
   "impacts": {
-    "systems": ["identity", "races", "professions", "economy", "villagers", "animals", "piglins", "biomes", "sculk", "lava", "network", "visual effects", "Lodestone", "SMP UI", "boss boundaries"],
+    "systems": [
+      "Lodestone",
+      "SMP UI",
+      "activation_validation",
+      "animals",
+      "biomes",
+      "boss boundaries",
+      "economy",
+      "identity",
+      "key_ownership",
+      "lava",
+      "native_spell_cooldowns",
+      "network",
+      "piglins",
+      "professions",
+      "races",
+      "sculk",
+      "villagers",
+      "visual effects"
+    ],
     "relations": [
       "JEM Identity account -> race SavedData -> server validation -> synchronized client UI",
       "SMP sidebar -> bounded module packet -> native owning screen",

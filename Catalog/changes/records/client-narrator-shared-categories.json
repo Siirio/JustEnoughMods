@@ -1,0 +1,105 @@
+{
+  "schema_version": 2,
+  "change_id": "compat.narrator-and-shared-categories",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "items"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Dedicated SMP for NPC economy and abilities; narrator shortcut is client input only"
+    }
+  ],
+  "precedence": {
+    "layer": "jem_gameplay",
+    "priority": 1000,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Disable narrator Ctrl+B shortcut and share the existing item category owner between client catalog and authoritative market admission.",
+    "modifiers": [
+      {
+        "property": "jemcompat.input_and_catalog",
+        "operation": "replace",
+        "before": {
+          "value": "Narrator Ctrl+B remained active; classification was client-only."
+        },
+        "after": {
+          "narrator_hotkey": false,
+          "category_owner": "com.siirio.jemcompat.catalog.JemCatalogCategories",
+          "cooking_catalysts": "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/jei/cooking_catalysts.json",
+          "client_context": "JEI cooking catalyst predicate and native wearer context are preserved."
+        }
+      }
+    ]
+  },
+  "cause": {
+    "owner": "client-narrator-shared-categories",
+    "kind": "approved_user_change",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/CuriosEquipment.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiCatalog.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/NarratorHotkeyMixin.java",
+      "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/jei/cooking_catalysts.json",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+      "Client/ManagedPack/mods/jemcompat-3.7.0.jar"
+    ]
+  },
+  "rationale": {
+    "purpose": "Disable narrator Ctrl+B shortcut and share the existing item category owner between client catalog and authoritative market admission.",
+    "decision_source": "User Russian ability/market brief and approved chat plan, followed by do this all on 2026-10-16",
+    "user_requested": "Prevent failed ability triggers and false cooldowns; remove narrator keyboard shortcut; expand building purchases with permanent NPC restrictions and public Create-only exclusion.",
+    "codex_choices": "Only the narrator guard inside keyPress changes; B utility and menu settings survive. Common classifier preserves precedence and native equipment/Curios side semantics. Cooking catalyst data includes exact installed native stations. Removed client CuriosEquipment is moved to common package."
+  },
+  "introduced": {
+    "date": "2026-10-16",
+    "commit": "SELF",
+    "action": "implement_approved_plan",
+    "summary": "Disable narrator Ctrl+B shortcut and share the existing item category owner between client catalog and authoritative market admission.",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/CuriosEquipment.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiCatalog.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/NarratorHotkeyMixin.java",
+      "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/jei/cooking_catalysts.json",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-16",
+      "commit": "SELF",
+      "action": "implement_approved_plan",
+      "summary": "Disable narrator Ctrl+B shortcut and share the existing item category owner between client catalog and authoritative market admission.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/CuriosEquipment.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiCatalog.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/NarratorHotkeyMixin.java",
+        "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/jei/cooking_catalysts.json",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+        "Client/ManagedPack/mods/jemcompat-3.7.0.jar",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuriosEquipment.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "client_input",
+      "races",
+      "accessibility",
+      "JEI",
+      "market_categories"
+    ],
+    "relations": "Only the narrator guard inside keyPress changes; B utility and menu settings survive. Common classifier preserves precedence and native equipment/Curios side semantics. Cooking catalyst data includes exact installed native stations. Removed client CuriosEquipment is moved to common package.",
+    "notes": "Only the narrator guard inside keyPress changes; B utility and menu settings survive. Common classifier preserves precedence and native equipment/Curios side semantics. Cooking catalyst data includes exact installed native stations. Removed client CuriosEquipment is moved to common package.",
+    "unresolved": [
+      "Player acceptance is pending; no automated tests or gameplay QA authorized."
+    ]
+  }
+}

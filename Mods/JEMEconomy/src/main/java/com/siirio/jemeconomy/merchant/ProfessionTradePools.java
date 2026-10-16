@@ -24,6 +24,7 @@ public final class ProfessionTradePools {
 
     public static void extend(AbstractVillager merchant) {
         var offers = merchant.getOffers();
+        offers.removeIf(com.siirio.jemeconomy.policy.TradeRestrictions::offerProhibited);
         if (merchant instanceof Villager villager) {
             var profession = ForgeRegistries.VILLAGER_PROFESSIONS.getKey(villager.getVillagerData().getProfession());
             CompoundTag saved = merchant.getPersistentData().getCompound(KEY);
@@ -33,7 +34,9 @@ public final class ProfessionTradePools {
                 List<Entry> candidates = new ArrayList<>();
                 for (Entry entry : ENTRIES) {
                     if (entry.profession().equals(profession) && entry.level() == level
-                            && ForgeRegistries.ITEMS.containsKey(entry.item()) && !hasItem(offers, entry.item())) candidates.add(entry);
+                            && ForgeRegistries.ITEMS.containsKey(entry.item())
+                            && !com.siirio.jemeconomy.policy.TradeRestrictions.npcProhibited(new ItemStack(ForgeRegistries.ITEMS.getValue(entry.item())))
+                            && !hasItem(offers, entry.item())) candidates.add(entry);
                 }
                 if (candidates.isEmpty()) { saved.putString(selectionKey, "none"); continue; }
                 int total = candidates.stream().mapToInt(Entry::weight).sum();
@@ -63,6 +66,7 @@ public final class ProfessionTradePools {
                     : new MerchantOffer(goods.copy(), new ItemStack(Items.EMERALD), nativeOffer.getMaxUses(), 0, 0.05F));
         }
         offers.addAll(companions);
+        offers.removeIf(com.siirio.jemeconomy.policy.TradeRestrictions::offerProhibited);
     }
     private static boolean hasItem(List<MerchantOffer> offers, ResourceLocation id) {
         return offers.stream().anyMatch(offer -> id.equals(ForgeRegistries.ITEMS.getKey(offer.getResult().getItem()))

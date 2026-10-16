@@ -1,5 +1,9 @@
 # Current native economy contract — 2026-10-16
 
+The later user-approved [building supply and permanent restrictions](market-building-supply.md)
+overrides NPC sale eligibility and public-market admission in the older contract below.
+Native presentation, lifecycle and funded settlement remain unchanged.
+
 The current implementation extends the native merchant contract as requested in
 the complete economy overhaul. The current coverage and remaining runtime evidence
 are recorded in [merchant coverage](merchant-coverage.md). Earlier implementation

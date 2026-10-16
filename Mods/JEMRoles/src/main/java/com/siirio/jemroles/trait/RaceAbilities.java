@@ -63,34 +63,91 @@ public final class RaceAbilities {
     }
 
     /** Iron's Spells entry point; uses the same authoritative cooldown, tier and effect path as the V key. */
-    public static void castSignature(ServerPlayer player) {
-        if (!player.server.isDedicatedServer() || !player.isAlive() || player.isSpectator()) return;
-        RaceService.record(player).ifPresent(record -> signature(player, record));
+    public static boolean castSignature(ServerPlayer player) {
+        if (!player.server.isDedicatedServer() || !player.isAlive() || player.isSpectator()) return false;
+        return RaceService.record(player).map(record -> signature(player, record)).orElse(false);
     }
 
-    private static void signature(ServerPlayer player, RaceRecord record) {
-        String key = "signature";
-        long now = player.level().getGameTime();
-        int cooldown = switch (record.race()) {
+    public static int signatureCooldown(RaceId race) {
+        return switch (race) {
             case ANCESTORS -> RaceRules.LIFE_CHORUS_COOLDOWN.get();
             case VOID_WALKERS -> RaceRules.RIFT_AMBUSH_COOLDOWN.get();
             case BORN_IN_BLOOM -> RaceRules.VERDANT_DOMINION_COOLDOWN.get();
             case INFECTED_BY_SCULK -> RaceRules.SCULK_VEINS_COOLDOWN.get();
-            default -> 1_200;
+            case NETHER_HEARTEDS -> 1_200;
         };
-        if (!record.ready(key, now)) { cooldown(player, record.remaining(key, now)); return; }
+    }
+
+    /** Read-only native spell preflight; the effect path repeats validation when it actually executes. */
+    public static boolean canCastSignature(ServerPlayer player) {
+        if (!player.server.isDedicatedServer() || !player.isAlive() || player.isSpectator()) return false;
+        return RaceService.record(player).map(record -> {
+            long now = player.level().getGameTime();
+            if (!record.ready("signature", now)) {
+                cooldown(player, record.remaining("signature", now));
+                return false;
+            }
+            return prepareSignature(player, record) != null;
+        }).orElse(false);
+    }
+
+    private static boolean signature(ServerPlayer player, RaceRecord record) {
+        String key = "signature";
+        long now = player.level().getGameTime();
+        if (!record.ready(key, now)) {
+            cooldown(player, record.remaining(key, now));
+            syncSignatureCooldown(player);
+            return false;
+        }
+        SignaturePlan plan = prepareSignature(player, record);
+        if (plan == null) { syncSignatureCooldown(player); return false; }
         boolean success = switch (record.race()) {
             case ANCESTORS -> lifeChorus(player, record.spellTier());
-            case VOID_WALKERS -> riftAmbush(player, record.spellTier());
+            case VOID_WALKERS -> riftAmbush(player, record.spellTier(), plan.target(), plan.destination());
             case BORN_IN_BLOOM -> verdantDominion(player, record.spellTier());
-            case INFECTED_BY_SCULK -> sculkVeins(player, record.spellTier());
-            case NETHER_HEARTEDS -> infernalEruption(player, record.spellTier());
+            case INFECTED_BY_SCULK -> sculkVeins(player, record.spellTier(), plan);
+            case NETHER_HEARTEDS -> infernalEruption(player, record.spellTier(), plan.target());
         };
-        if (!success) return;
-        record.cooldown(key, now + cooldown);
+        if (!success) { syncSignatureCooldown(player); return false; }
+        record.cooldown(key, now + signatureCooldown(record.race()));
         record.recordSignatureUse();
         RaceService.mutate(player, ignored -> {});
         RolesNetwork.sendStatus(player, false);
+        return true;
+    }
+
+    public static void syncSignatureCooldown(ServerPlayer player) {
+        if (player.server.isDedicatedServer() && net.minecraftforge.fml.ModList.get().isLoaded("irons_spellbooks"))
+            com.siirio.jemroles.compat.irons.RacialSpellBridge.syncCooldown(player);
+    }
+
+    private static SignaturePlan prepareSignature(ServerPlayer player, RaceRecord record) {
+        if (record.race() == RaceId.VOID_WALKERS || record.race() == RaceId.NETHER_HEARTEDS) {
+            double range = record.race() == RaceId.VOID_WALKERS && record.spellTier() >= 2 ? 32.0D : 24.0D;
+            LivingEntity target = target(player, range);
+            if (target == null) {
+                fail(player, target(player, 64.0D) == null ? "target_required" : "target_too_far");
+                return null;
+            }
+            if (record.race() == RaceId.VOID_WALKERS) {
+                if (target instanceof Player && !player.server.isPvpAllowed()) { fail(player, "pvp_disabled"); return null; }
+                Vec3 behind = target.position().subtract(target.getLookAngle().normalize().scale(1.8D));
+                BlockPos safe = RaceEnvironment.nearestSafe(player, player.serverLevel(), BlockPos.containing(behind), 3, true).orElse(null);
+                if (safe == null) { fail(player, "no_safe_destination"); return null; }
+                return new SignaturePlan(target, safe, null, List.of());
+            }
+            return new SignaturePlan(target, null, null, List.of());
+        }
+        if (record.race() == RaceId.INFECTED_BY_SCULK) return prepareSculk(player, record.spellTier());
+        if (record.race() == RaceId.BORN_IN_BLOOM) {
+            double radius = record.spellTier() == 1 ? 6 : record.spellTier() == 2 ? 8 : 10;
+            if (player.serverLevel().getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(radius),
+                    e -> e != player && e.isAlive() && !(e instanceof Animal)).isEmpty()) {
+                fail(player, "no_nearby_targets");
+                return null;
+            }
+        }
+        return new SignaturePlan(null, null, null, List.of());
     }
 
     private static void utilityPress(ServerPlayer player, RaceRecord record) {
@@ -99,7 +156,8 @@ public final class RaceAbilities {
             case VOID_WALKERS -> {
                 if (player.isShiftKeyDown()) gravityDenial(player, record, now);
                 else {
-                    VOID_CHARGE.put(player.getUUID(), now);
+                    if (!record.ready("void_projectile", now)) { cooldown(player, record.remaining("void_projectile", now)); return; }
+                    if (VOID_CHARGE.putIfAbsent(player.getUUID(), now) != null) return;
                     emit(player, RaceVfxId.VOID_PROJECTILE_CHARGE, player.position().add(0.0D, 1.25D, 0.0D),
                             player.position().add(player.getLookAngle().scale(2.0D)).add(0.0D, 1.25D, 0.0D),
                             player.getId(), -1, new int[0], List.of(), record.spellTier(), 30);
@@ -124,11 +182,13 @@ public final class RaceAbilities {
         if (record.race() != RaceId.VOID_WALKERS) return;
         Long started = VOID_CHARGE.remove(player.getUUID());
         long now = player.level().getGameTime();
-        if (started == null || now - started < 10 || !record.ready("void_projectile", now)) return;
+        if (started == null) return;
+        if (!record.ready("void_projectile", now)) { cooldown(player, record.remaining("void_projectile", now)); return; }
+        if (now - started < 10) { fail(player, "charge_incomplete"); return; }
         ThrownEnderpearl pearl = new ThrownEnderpearl(player.level(), player);
         pearl.getPersistentData().putBoolean("JemVoidProjectile", true);
         pearl.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 0.25F);
-        if (!player.level().addFreshEntity(pearl)) return;
+        if (!player.level().addFreshEntity(pearl)) { fail(player, "projectile_failed"); return; }
         emit(player, RaceVfxId.VOID_PROJECTILE_RELEASE, player.position().add(0.0D, 1.25D, 0.0D),
                 player.position().add(player.getLookAngle().scale(10.0D)).add(0.0D, 1.25D, 0.0D),
                 player.getId(), pearl.getId(), new int[0], List.of(), record.spellTier(), 36);
@@ -153,18 +213,13 @@ public final class RaceAbilities {
         return true;
     }
 
-    private static boolean riftAmbush(ServerPlayer player, int tier) {
-        LivingEntity target = target(player, tier >= 2 ? 32.0D : 24.0D);
-        if (target == null || target instanceof Player && !player.server.isPvpAllowed()) return false;
-        Vec3 behind = target.position().subtract(target.getLookAngle().normalize().scale(1.8D));
-        BlockPos safe = RaceEnvironment.nearestSafe(player, player.serverLevel(), BlockPos.containing(behind), 3, true).orElse(null);
-        if (safe == null) return false;
+    private static boolean riftAmbush(ServerPlayer player, int tier, LivingEntity target, BlockPos safe) {
         Vec3 departure = player.position();
         Vec3 arrival = Vec3.atBottomCenterOf(safe);
+        if (!teleport(player, arrival, target.getYRot())) return false;
         emit(player, RaceVfxId.RIFT_DEPART, departure, arrival, player.getId(), target.getId(),
                 new int[0], List.of(), tier, 18);
-        if (tier >= 2) spawnVoidEcho(player);
-        player.teleportTo(player.serverLevel(), safe.getX() + 0.5D, safe.getY(), safe.getZ() + 0.5D, target.getYRot(), player.getXRot());
+        if (tier >= 2) spawnVoidEcho(player, departure);
         emit(player, RaceVfxId.RIFT_ARRIVE, arrival, departure, player.getId(), target.getId(),
                 new int[0], List.of(), tier, 24);
         player.attack(target);
@@ -198,10 +253,10 @@ public final class RaceAbilities {
         return hit > 0;
     }
 
-    private static boolean sculkVeins(ServerPlayer player, int tier) {
+    private static SignaturePlan prepareSculk(ServerPlayer player, int tier) {
         ServerLevel level = player.serverLevel();
         BlockPos start = nearestSculk(level, player.blockPosition(), 3);
-        if (start == null) return false;
+        if (start == null) { fail(player, "sculk_required"); return null; }
         int range = tier == 1 ? 32 : tier == 2 ? 48 : 64;
         ArrayDeque<BlockPos> queue = new ArrayDeque<>();
         Set<BlockPos> visited = new HashSet<>();
@@ -227,17 +282,22 @@ public final class RaceAbilities {
             }
         }
         BlockPos destination = RaceEnvironment.nearestSafe(player, level, best.above(), 3, true).orElse(null);
-        if (destination == null || destination.closerToCenterThan(player.position(), 4.0D)) return false;
-        List<Vec3> path = samplePath(start, best, parent);
-        emit(player, RaceVfxId.SCULK_VEINS, Vec3.atCenterOf(start), Vec3.atBottomCenterOf(destination),
-                player.getId(), -1, new int[0], path, tier, 40);
-        player.teleportTo(level, destination.getX() + 0.5D, destination.getY(), destination.getZ() + 0.5D, player.getYRot(), player.getXRot());
+        if (destination == null || destination.closerToCenterThan(player.position(), 4.0D)) {
+            fail(player, "sculk_exit_required");
+            return null;
+        }
+        return new SignaturePlan(null, destination, start, samplePath(start, best, parent));
+    }
+
+    private static boolean sculkVeins(ServerPlayer player, int tier, SignaturePlan plan) {
+        Vec3 destination = Vec3.atBottomCenterOf(plan.destination());
+        if (!teleport(player, destination, player.getYRot())) return false;
+        emit(player, RaceVfxId.SCULK_VEINS, Vec3.atCenterOf(plan.start()), destination,
+                player.getId(), -1, new int[0], plan.path(), tier, 40);
         return true;
     }
 
-    private static boolean infernalEruption(ServerPlayer player, int tier) {
-        LivingEntity primary = target(player, 24.0D);
-        if (primary == null) return false;
+    private static boolean infernalEruption(ServerPlayer player, int tier, LivingEntity primary) {
         Vec3 line = primary.position().subtract(player.position()).normalize();
         int fissures = tier == 1 ? 1 : 3;
         long now = player.level().getGameTime();
@@ -273,9 +333,9 @@ public final class RaceAbilities {
         }
     }
 
-    private static void spawnVoidEcho(ServerPlayer player) {
+    private static void spawnVoidEcho(ServerPlayer player, Vec3 departure) {
         ArmorStand echo = new ArmorStand(EntityType.ARMOR_STAND, player.serverLevel());
-        echo.moveTo(player.getX(), player.getY(), player.getZ(), player.getYRot(), player.getXRot());
+        echo.moveTo(departure.x, departure.y, departure.z, player.getYRot(), player.getXRot());
         echo.setInvisible(true);
         echo.setInvulnerable(true);
         echo.setNoGravity(true);
@@ -341,12 +401,14 @@ public final class RaceAbilities {
             target.addEffect(new MobEffectInstance(MobEffects.GLOWING, 80, 0, false, false));
             if (revealed.size() < 8) revealed.add(target.getId());
         }
+        if (revealed.isEmpty()) { fail(player, "no_nearby_entities"); return; }
         emit(player, RaceVfxId.ECHO_VISION, player.position(), player.position(), player.getId(), -1,
                 revealed.stream().mapToInt(Integer::intValue).toArray(), List.of(), 1, 36);
     }
 
     private static void startLavaDrink(ServerPlayer player, RaceRecord record, long now) {
         if (!record.ready("lava_drink", now)) { cooldown(player, record.remaining("lava_drink", now)); return; }
+        if (player.isUsingItem()) { fail(player, "already_using_item"); return; }
         InteractionHand hand = player.getMainHandItem().is(Items.LAVA_BUCKET) ? InteractionHand.MAIN_HAND
                 : player.getOffhandItem().is(Items.LAVA_BUCKET) ? InteractionHand.OFF_HAND : null;
         if (hand == null) {
@@ -366,9 +428,12 @@ public final class RaceAbilities {
 
     private static LivingEntity target(ServerPlayer player, double range) {
         Vec3 from = player.getEyePosition(), look = player.getViewVector(1.0F), to = from.add(look.scale(range));
+        HitResult obstruction = player.level().clip(new ClipContext(from, to, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, player));
+        if (obstruction.getType() != HitResult.Type.MISS) to = obstruction.getLocation();
+        Vec3 end = to;
         AABB box = player.getBoundingBox().expandTowards(look.scale(range)).inflate(1.0D);
         return player.level().getEntitiesOfClass(LivingEntity.class, box, e -> e != player && e.isAlive()).stream()
-                .filter(e -> e.getBoundingBox().inflate(0.5D).clip(from, to).isPresent())
+                .filter(e -> e.getBoundingBox().inflate(0.5D).clip(from, end).isPresent())
                 .min(Comparator.comparingDouble(player::distanceToSqr)).orElse(null);
     }
 
@@ -417,9 +482,26 @@ public final class RaceAbilities {
         player.sendSystemMessage(Component.translatable("jem.roles.cooldown", Math.max(1L, (ticks + 19) / 20)), true);
     }
 
+    private static void fail(ServerPlayer player, String reason) {
+        player.sendSystemMessage(Component.translatable("jem.roles.ability." + reason), true);
+    }
+
+    private static boolean teleport(ServerPlayer player, Vec3 destination, float yaw) {
+        // This overload returns the result of the existing hosted-arena teleport gate.
+        // A gate may redirect instead of deny, so only the actual requested arrival commits the ability.
+        boolean moved = player.teleportTo(player.serverLevel(), destination.x, destination.y, destination.z,
+                Set.of(), yaw, player.getXRot());
+        if (!moved || player.position().distanceToSqr(destination) > 0.0001D) {
+            fail(player, "teleport_blocked");
+            return false;
+        }
+        return true;
+    }
+
     public static void logout(ServerPlayer player) { VOID_CHARGE.remove(player.getUUID()); }
 
     private enum ZoneType { GROVE, VOLCANIC }
+    private record SignaturePlan(LivingEntity target, BlockPos destination, BlockPos start, List<Vec3> path) {}
     private record Eruption(net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level> dimension, Vec3 center,
                             long impactAt, UUID owner, int tier) {}
     private record Zone(net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level> dimension, BlockPos center,
