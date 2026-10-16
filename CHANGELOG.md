@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-17 — Escalating three-hit fiery slash in existing sandbox
+
+- User request: create three distinct pixel slash assets and animations, repeat as three hits with forward drag, show real moving output, audit against I_like and update the existing sandbox mod JAR. Later user correction explicitly rejected internal slash-shaped cuts and three equal-power variants; the combo must escalate visually.
+- Implementation choices by Codex: replace sandbox Nether V main skill with integrated-server-owned rising hook→return sweep→descending cleave; starts0/10/22, impacts4/14/27, four/four/five collision-checked0.42 horizontal pulls. Keep former tier-3 10 fire damage /6 seconds burning; directional melee replaces target-required stationary eruption/zone only in this isolated sandbox. Other races and production JEMRoles unchanged.
+- New external pixel source: five-layer native Aseprite timelines, three independent96px RGBA strips,10/12/16 cels; carriers2.4/3.6/5.0 blocks. R5 continuous flame bodies remove destructive interior cut masks; increasing mass, wake, impact crown and release convey escalation. R1–R4 revisions, contact sheets, genuine exported-cel GIF/MP4 and harsh review retained under `Docs/races/assets/fiery-slash`; R4 is USER_REJECTED, R5 remains a candidate.
+- Fresh Java17 jar/reobfJar passed, exact pinned-base composition preserved original entries, and existing `jem sandbox/mods/jem-visual-sandbox-1.0.0.jar` replaced after the user closed the game. Installed SHA256 `61f23f8315a637adab8ae605b66f0c2d8f77efd8ec3df87356610ddbfb64dc8b`; packaged classes and all three textures match source output. Editable sources are bundled. No automated tests or game launch; actual motion distance, hits, camera/shader fit and user art acceptance remain unobserved.
+- Bug / Client / interior erosion masks made fire look cut into panels; equal carrier size and lifetime made peer variants instead of visual progression / in testing: R5 repaints continuous fire masses and separately escalates per-hit art, size and duration. Resolution pending user acceptance.
+- Atlas compact rebuild, coverage audit and catalog validation passed; the full scan retains only the two pre-existing unrelated JEMRoles line-ending warnings. Atlas impact/history and active Taste Engine learning updated. Ordinary local Server and Client/ManagedPack unchanged; no stable-profile/MineRENT deployment or release-baseline promotion. Native AutoModpack generation18 remains outside this sandbox handoff.
+
 ## 2026-10-17 — Blockbench models replace sandbox main-skill VFX
 
 - User request: ship the Blockbench work in `jem sandbox`, allow repeatable race switching and no cooldowns. Explicit correction: these models replace old VFX as actual main skills, not merely gallery previews.

@@ -2,7 +2,7 @@
 
 Gameplay algorithms remain owned by JEMRoles, not a second hand-maintained copy.
 Sandbox-only differences: tier 3, unlimited selection, no cooldown/account gates,
-new Blockbench emission, and Infernal impacts synchronized to the authored clip.
+new authored emission, and the explicit Nether fiery-slash replacement.
 """
 from pathlib import Path
 import hashlib
@@ -64,10 +64,7 @@ public final class SandboxSkills {
             case 2 -> { if (!verdantDominion(player, tier)) fail(player, "no_nearby_targets"); }
             case 3 -> { SignaturePlan plan = prepareSculk(player, tier); if (plan != null) sculkVeins(player, tier, plan); }
             case 4 -> {
-                LivingEntity target = target(player, 24);
-                if (target == null) { fail(player, "target_required"); return; }
-                infernalEruption(player, tier, target);
-                SandboxNetwork.visual(player, 4, target.position(), -player.getYRot());
+                FierySlash.cast(player);
             }
             default -> throw new IllegalArgumentException("Unknown sandbox race");
         }
@@ -102,5 +99,5 @@ records = source[source.index('    private enum ZoneType'):source.rfind('}')]
 (OUT / 'SandboxSkills.java').write_text('package com.siirio.jemvisualsandbox.workbench;\n' + imports + '\n' + head + body + '\n' + records + '}\n', encoding='utf-8')
 environment = (OWNER / 'RaceEnvironment.java').read_text(encoding='utf-8').replace('package com.siirio.jemroles.trait;', 'package com.siirio.jemvisualsandbox.workbench;').replace('RaceEnvironment', 'SandboxEnvironment')
 (OUT / 'SandboxEnvironment.java').write_text('// Generated from JEMRoles canonical environment source.\n' + environment, encoding='utf-8')
-receipt = {'owner':'Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait', 'methods':methods, 'raceAbilitiesSha256':hashlib.sha256((OWNER/'RaceAbilities.java').read_bytes()).hexdigest(), 'sandboxOverrides':['tier 3','unlimited selection','no cooldown','Blockbench replaces particle emission','Infernal 4/10/16 tick impact synchronization']}
+receipt = {'owner':'Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait', 'methods':methods, 'raceAbilitiesSha256':hashlib.sha256((OWNER/'RaceAbilities.java').read_bytes()).hexdigest(), 'sandboxOverrides':['tier 3','unlimited selection','no cooldown','Blockbench replaces particle emission','Nether replaced by sandbox FierySlash: three hits, forward pulls, 4/14/27 impacts']}
 (HERE / 'build/generated-skills.json').write_text(json.dumps(receipt, indent=2)+'\n')

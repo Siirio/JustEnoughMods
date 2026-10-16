@@ -35,7 +35,7 @@ public final class BlockbenchWorkbench {
         new Asset("void", "Void / R6 study", 2),
         new Asset("bloom", "Bloom / coffer R4 (grasp R3 study)", 3),
         new Asset("sculk", "Sculk / crawl R4", 1),
-        new Asset("nether", "Nether / R6 study", 3),
+        new Asset("nether", "Nether / three fiery slashes", 3),
         new Asset("coffer", "Bloom / coffer R4", 1)
     };
     private static KeyMapping key(String name, int code) {
@@ -98,7 +98,7 @@ public final class BlockbenchWorkbench {
         label(client, asset.name() + " / editor study");
     }
     @SubscribeEvent public static void logout(ClientPlayerNetworkEvent.LoggingOut event) { clear(); }
-    private static void clear() { origin = null; previewLevel = null; mesh = null; INSTANCES.clear(); CACHE.clear(); }
+    private static void clear() { origin = null; previewLevel = null; mesh = null; INSTANCES.clear(); CACHE.clear(); FlameSlashRenderer.clear(); }
     private static void add(WorkbenchMesh model, Vec3 position, float rotation) {
         Minecraft client = Minecraft.getInstance();
         if (INSTANCES.size() >= 64) INSTANCES.remove(0);
@@ -108,6 +108,7 @@ public final class BlockbenchWorkbench {
         Minecraft client = Minecraft.getInstance();
         if (!client.hasSingleplayerServer() || client.level == null || packet.race() < 0 || packet.race() >= 5) return;
         if (packet.action() == 0) { selectedRace = packet.race(); return; }
+        if (packet.action() >= 2 && packet.action() <= 4 && packet.race() == 4) { FlameSlashRenderer.receive(packet); return; }
         // Main-skill route: server-owned origins, not crosshair gallery placement.
         Asset asset = packet.race() == 2 ? ASSETS[5] : ASSETS[packet.race()];
         try {
@@ -145,6 +146,7 @@ public final class BlockbenchWorkbench {
     @SubscribeEvent
     public static void render(RenderLevelStageEvent event) {
         if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_TRANSLUCENT_BLOCKS) return;
+        FlameSlashRenderer.render(event);
         for (Instance instance : java.util.List.copyOf(INSTANCES)) renderInstance(event,instance);
     }
     private static void renderInstance(RenderLevelStageEvent event, Instance instance) {

@@ -57,4 +57,8 @@ public final class SandboxNetwork {
     public static void visual(ServerPlayer player,int race,Vec3 origin,float yaw) {
         CHANNEL.send(PacketDistributor.PLAYER.with(() -> player),new Visual(1,race,origin,yaw));
     }
+    public static void slash(ServerPlayer player, int hit, Vec3 origin, float yaw) {
+        if (hit < 0 || hit > 2) throw new IllegalArgumentException("Invalid fiery slash hit");
+        CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new Visual(2 + hit,4,origin,yaw));
+    }
 }

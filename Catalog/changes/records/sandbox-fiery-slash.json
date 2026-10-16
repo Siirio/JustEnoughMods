@@ -1,0 +1,93 @@
+{
+  "schema_version": 2,
+  "change_id": "sandbox-fiery-slash",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "jem_visual_sandbox"
+    }
+  ],
+  "conditions": [
+    {
+      "scope": "Explicit standalone jem sandbox integrated owner only; Nether selection; excludes dedicated server and canonical pack."
+    }
+  ],
+  "precedence": {
+    "layer": "sandbox_gameplay_and_presentation",
+    "priority": 12,
+    "overrides": [
+      "sandbox-blockbench-main-skills"
+    ]
+  },
+  "change": {
+    "summary": "Replace sandbox Nether eruption with three authored fiery slash hits and collision-checked forward pulls.",
+    "modifiers": [
+      {
+        "property": "sandbox.nether_main_skill",
+        "operation": "replace",
+        "before": "Target-required stationary tier-3 eruption with R6 model and impacts4/10/16 plus volcanic zone.",
+        "after": "V casts three escalating continuous-fire pixel cuts with10/12/16 cels and2.4/3.6/5.0-block carriers; starts0/10/22 impacts4/14/27, collision-checked forward pulls; no target prerequisite; retain10 fire damage and6 seconds burning; replaces zone/vertical launch with directional melee. Other races unchanged."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Mods/JEMVisualSandboxR3",
+    "kind": "explicit_sandbox_ability_replacement",
+    "source_files": [
+      "Mods/JEMVisualSandboxR3/generate-skills.py",
+      "Mods/JEMVisualSandboxR3/prepare.py",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/FierySlash.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/FlameSlashRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/BlockbenchWorkbench.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/fire_slash/rising_hook.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/fire_slash/return_sweep.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/fire_slash/descending_cleave.png"
+    ]
+  },
+  "rationale": {
+    "purpose": "Deliver the user-requested three distinct animated pixel attacks and forward motion as a real existing sandbox main skill.",
+    "decision_source": "User explicitly requested three slashes, three different assets, forward drag, real moving output and installation in existing sandbox JAR. Codex chose timing0/10/20, impacts4/14/24, horizontal velocity0.42, collision/support checks, preserving predecessor tier-3 damage/fire, external layered Aseprite authoring, four art revisions and cutout sprite carriers. Later user correction explicitly rejected internal slash-shaped cuts and equal-power variants. R5 removes destructive interior masks and escalates body size, flame mass, wake complexity, impact crown and release duration. Damage remains unchanged."
+  },
+  "introduced": {
+    "date": "2026-10-17",
+    "commit": "SELF",
+    "action": "add",
+    "summary": "Sandbox-only fiery three-slash replacement."
+  },
+  "history": [
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "add",
+      "summary": "Replace Nether main skill with new authored three-hit pixel animation and server-owned forward pulls."
+    },
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "revise",
+      "summary": "User rejected R4 internal cuts and same-power variants; R5 paints continuous masses and escalates per-hit art, size and lifetime."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "sandbox input",
+      "integrated-server damage",
+      "player movement",
+      "pixel VFX",
+      "sandbox artifact composition"
+    ],
+    "relations": [],
+    "notes": [
+      "No production JEMRoles, ordinary Server, Client/ManagedPack or AutoModpack change.",
+      "No real registry ID was invented; namespace selector scopes an isolated sandbox behavior.",
+      "Other races preserve existing signature owner; one active Nether combo, no post-combo cooldown."
+    ],
+    "unresolved": [
+      "No game launch: real movement distance, collision, hit results, camera/shader fit and user art acceptance remain unobserved.",
+      "Working-tree scan already had two unrelated JEMRoles source warnings before this prompt."
+    ]
+  }
+}

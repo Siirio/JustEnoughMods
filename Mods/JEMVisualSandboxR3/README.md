@@ -14,9 +14,10 @@ R3-only installation record below.
 - Void: canonical targeted safe Rift Ambush teleport/attack, Void R6 at both ends.
 - Bloom: canonical roots/damage on nearby non-animal targets, coffer R4.
 - Sculk: canonical connected-sculk traversal with safe exit, crawl R4 along its path.
-- Nether: canonical Infernal damage/fire/knockback/zone with R6 three-impact model.
-  Sandbox impact times4/10/16 ticks match the authored .18/.50/.82s sequence.
-- Targeting and safe-arrival prerequisites remain. Void/Nether need a living target;
+- Nether: three-hit fiery slash R5 replaces the stationary eruption in this sandbox.
+  Three distinct96px animated assets; impacts4/14/27 ticks, forward collision-checked pulls.
+  See `Docs/races/assets/fiery-slash/BRIEF.md` and `REVIEW.md`.
+- Targeting and safe-arrival prerequisites remain for the other races. Void needs a living target;
   Bloom needs nearby targets; Sculk needs connected sculk and a safe distant exit.
 - **[ / ]**, **F10**: optional study selection/playback; F8 old galleries and F9 R3
   are historical tools. V uses only the new Blockbench emission route.
@@ -133,3 +134,15 @@ existing editor GIF is still editor evidence; Minecraft footage is pending.
 
 Atlas validation passed; all17 watched current-task paths are covered. The two
 pre-existing JEMRoles line-ending warnings remain outside this task.
+
+
+## Current fiery slash handoff — 2026-10-17
+
+F6 Nether + V now executes three distinct authored pixel cuts and forward pulls,
+not the old R6 eruption. Other races are preserved. See the canonical
+`Docs/races/assets/fiery-slash/BRIEF.md` for timing, gameplay, assets and scope,
+and REVIEW.md for five art iterations and explicit remaining limitations.
+The source archive also includes fiery-slash editable timelines and revisions.
+Runtime acceptance remains unobserved; animation preview is exported cels only.
+Earlier installed hashes below are historical; the latest installation receipt
+is `Docs/races/assets/fiery-slash/installation.json`.

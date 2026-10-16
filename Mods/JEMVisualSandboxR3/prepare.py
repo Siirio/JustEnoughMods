@@ -60,6 +60,10 @@ def compose(base):
                 for source in sorted(sources.rglob("*")):
                     if source.is_file():
                         editable.write(source, source.relative_to(sources).as_posix())
+                slash_sources = HERE.parent.parent / "Docs/races/assets/fiery-slash"
+                for source in sorted(slash_sources.rglob("*")):
+                    if source.is_file() and "__pycache__" not in source.parts and source.name != "installation.json":
+                        editable.write(source, "fiery-slash/" + source.relative_to(slash_sources).as_posix())
             output.write(archive, "assets/jem_visual_sandbox/sources.zip")
         with zipfile.ZipFile(target) as output:
             preserved = [n for n in original.namelist() if n not in collisions]
