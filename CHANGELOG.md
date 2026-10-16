@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-17 — Reject Bloom R2 and require references before art
+
+- User correction: R2 images were rejected as ugly, odd and incompatible with vanilla Minecraft. Before drawing future assets, always search the web for close visual analogues, inspect the actual images and evaluate fit with vanilla pixel scale, palette, silhouette, materials and world presentation. This is the user's art-direction rule, not an implementation preference chosen by Codex.
+- Blockbench texture authoring remains authorized, but R2 is USER_REJECTED. Source, atlas and recipe are archived only as negative evidence under `Docs/races/assets/rejected/born-in-bloom-r2/`. Removed its production renderer and atlas; restored original owning source and exact prior JAR SHA256 `6dece3f51bc87b27097b4f00dc9434507bf308dd047902228c47c6ac7d849f4d` from native published generation18 to ManagedPack, ordinary Server and build output.
+- Stopped the ordinary server cleanly. R2 was staged but never published. Restored host staging: manifest SHA1 `b479c75beb82aec9b80e3be94568033a3045a804` matches published generation18. Stable profiles, MineRENT and immutable release baseline remain unchanged. No client launch, gameplay test or visual acceptance occurred.
+
 ## 2026-10-16 — Ability validation, narrator shortcut and building market
 
 - User request and approval: implement the previously reviewed plan; disable the narrator B shortcut; reject invalid activations with a specific explanation and no false cooldown across racial primary/utility abilities; inspect professions; make wood, wool, glass, paintings and Building/Create-redstone contents purchasable; keep a permanent Git-owned NPC prohibition list and restrict base Create to suitable villagers. The approved ore boundary covers ore blocks, not ingots or gems.

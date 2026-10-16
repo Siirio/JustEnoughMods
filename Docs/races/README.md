@@ -78,3 +78,9 @@ Client только показывает экран, HUD и отправляет
 Обе расовые телепортации используют возвращающий результат overload `ServerPlayer.teleportTo` и тем самым существующий `BossTeleportSafety` gate. Успех требует фактического прибытия в запрошенную точку: запрет или перенаправление не допускают последующий удар/приманку и не расходуют cooldown. Копии политики границ в JEMRoles нет.
 
 Проверка владельцев профессий: их единственное явное активное действие `ore_sense` — самостоятельное сканирование Shift+ПКМ киркой; отрицательный ответ «руды рядом нет» является завершённым результатом сканирования и сохраняет прежние 900 ticks. `IronsProfessionAdapter` начисляет прогресс за сторонние `irons_spellbooks:*` заклинания и не вызывает JEM-способности. Их progression, пассивные эффекты и самостоятельные native spells этой правкой не меняются. Игровая приёмка исправленного ввода остаётся `in testing` до пользовательской проверки.
+
+## Visual direction correction — 2026-10-17
+
+The user rejected the Born in Bloom MCP-painted R2 images as ugly, odd and incompatible with vanilla Minecraft. R2 is archived solely as negative evidence in `assets/rejected/born-in-bloom-r2/`; its renderer and atlas are absent from production, and published generation18 remains active. The Blockbench texture ban remains lifted.
+
+Before drawing a replacement, always search for close web image references and inspect their actual appearance. Compare the candidate's pixel density, palette, plant/root silhouette, material and world-scale presentation to vanilla Minecraft1.20.1. The canonical workflow and exact taste correction are in the global Taste Engine skill and race-VFX pair. Official azalea, rooted-dirt/hanging-root and mangrove screenshots were inspected; they are proposed anchors, not an approved new spell. No replacement art is accepted or installed.
