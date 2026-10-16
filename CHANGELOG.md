@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-17 — One Bloom R3 candidate before installation
+
+- User request and supplied artistic direction: follow the pasted Pixel Art & Animation Quality Engine, use real relevant web/user references, preserve vanilla-compatible readability and pixel discipline, and show one quality candidate before any game installation. The supplied text is preserved byte-for-byte in `Docs/art/QUALITY_ENGINE_SOURCE.md`; reference evidence/classifications are recorded in `Docs/art/REFERENCE_LIBRARY.md`.
+- Implementation decisions by Codex: choose Verdant Dominion as the single demonstration, author five articulated angular wooden roots, stepped leaf masses and two restrained buds through Blockbench MCP, original16×16 materials, and a coherent2.2s/44tick once-only animation. Preserve source, previous iteration, actual native-editor views/frames, contact sheets, GIF and the requested image/animation asset audit. Revise plank-like leaves and the visible-underground preview artifact after inspection.
+- Evidence boundary: SOURCE_EDITABLE and inspected outside Minecraft; no user approval, game footage or claim of final in-game fit. No gameplay Java, renderer integration, build, game/client/server launch, ManagedPack/Server synchronization or AutoModpack publication. The existing published generation18 remains active.
+
 ## 2026-10-17 — Reject Bloom R2 and require references before art
 
 - User correction: R2 images were rejected as ugly, odd and incompatible with vanilla Minecraft. Before drawing future assets, always search the web for close visual analogues, inspect the actual images and evaluate fit with vanilla pixel scale, palette, silhouette, materials and world presentation. This is the user's art-direction rule, not an implementation preference chosen by Codex.

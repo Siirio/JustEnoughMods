@@ -84,3 +84,7 @@ Client только показывает экран, HUD и отправляет
 The user rejected the Born in Bloom MCP-painted R2 images as ugly, odd and incompatible with vanilla Minecraft. R2 is archived solely as negative evidence in `assets/rejected/born-in-bloom-r2/`; its renderer and atlas are absent from production, and published generation18 remains active. The Blockbench texture ban remains lifted.
 
 Before drawing a replacement, always search for close web image references and inspect their actual appearance. Compare the candidate's pixel density, palette, plant/root silhouette, material and world-scale presentation to vanilla Minecraft1.20.1. The canonical workflow and exact taste correction are in the global Taste Engine skill and race-VFX pair. Official azalea, rooted-dirt/hanging-root and mangrove screenshots were inspected; they are proposed anchors, not an approved new spell. No replacement art is accepted or installed.
+
+## Born in Bloom R3 — pre-install review
+
+The user's supplied Pixel Art & Animation Quality Engine is retained under `Docs/art/QUALITY_ENGINE_SOURCE.md`; actual references and classifications are in `Docs/art/REFERENCE_LIBRARY.md`. One new Verdant Dominion candidate is authored and visually inspected through Blockbench MCP: `assets/bloom_r3_candidate/`. It includes editable source, original native materials, a coherent44-tick rig animation, actual editor contact sheets and a moving preview. This is a design candidate awaiting user review; no game asset installation or client/server artifact changed.
