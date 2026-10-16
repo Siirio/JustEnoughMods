@@ -1,5 +1,11 @@
 # R6 — different spatial patterns per ability
 
+Latest Infernal palette correction: cream/beige is explicitly rejected. The
+whole exterior now uses saturated lava yellow-orange, orange-red, ember red
+and charcoal, including the hot cut surfaces. The three-strike choreography
+and four-side upper-to-base mapping are unchanged. The earlier pale palette
+is retained only as negative reference evidence in the Taste Engine.
+
 State: **SOURCE_EDITABLE / PRE-INSTALL CANDIDATES / USER APPROVAL PENDING**.
 Sandbox-only art work. No JAR, game, GUI, gameplay, ordinary Server,
 Client/ManagedPack or AutoModpack generation changed.

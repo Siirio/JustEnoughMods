@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-17 — Replace creamy Infernal colors with a magma palette
+
+- User direction: use more magma-like colors instead of creamy colors. Keep the previously requested whole-perimeter gradient and three successive strikes.
+- Implementation decisions by Codex: replace the pale exterior heat ramp with saturated yellow-orange, orange-red and ember tones grading to charcoal; remove pale cream from molten cut surfaces too. Preserve the original painted clusters, geometry, UV-height mapping and timing; regenerate the editable atlas/ORA, native Blockbench source, opposite-side captures and moving/comparison previews. Revisit the basalt/lava visual reference and search magma-block analogues; no reference pixels are copied. Record the rejected pale palette as scoped negative evidence in the owning Taste Engine collection and update its taste/template guidance.
+- Pre-install candidate only: no build, tests, game launch, installed JAR, gameplay/GUI change, Server/Client synchronization or AutoModpack publication. Sandbox R3 and published generation18 remain unchanged.
+
 ## 2026-10-17 — Give each race a distinct VFX composition and refine Infernal timing
 
 - User correction: the outward cluster was one example, appropriate to Infernal Eruption here, and must not be applied to every race. Search several visual patterns and use different ones. Subsequent user directions require three successive Infernal strikes and a bright upper exterior fading darker toward the base around the whole perimeter, explicitly all side faces rather than only top caps.

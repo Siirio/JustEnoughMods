@@ -27,6 +27,11 @@ with three successive strikes and bright upper side faces around the full
 perimeter grading downward. New shield/separation/branch/enclosure analogues
 are researched proposals, not approved general preferences.
 
+Infernal color refinement: the user rejected creamy/beige heat colors and
+requested a more magma-like palette. Current outer sides and molten cuts use
+saturated orange/red with charcoal bases. The pale R6 palette remains scoped
+negative evidence under the Taste Engine VFX `I_dont_like/Infernal-creamy-r6`.
+
 The21 supplied model references and giant-gnome benchmark are owned by
 `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/Models/Reference/`.
 The selected benchmark is M-C geometry plus T-A painting; all other complete

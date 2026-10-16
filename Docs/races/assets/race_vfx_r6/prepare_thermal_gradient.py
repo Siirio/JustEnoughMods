@@ -12,6 +12,14 @@ import json
 r=Path(__file__).resolve().parent
 source=Image.open(r.parent/'race_vfx_r5/nether/materials.png').convert('RGBA')
 base=source.copy();layer=Image.new('RGBA',(48,48));out=base.copy()
+# Keep the already painted magma clusters, but remove pale cream from the
+# molten cap as well as the full exterior. Hottest colors stay saturated.
+for y in range(16):
+ for x in range(32,48):
+  red,green,blue,alpha=out.getpixel((x,y))
+  if red>150:
+   color=(red,min(green,190),min(blue,32),alpha)
+   out.putpixel((x,y),color);layer.putpixel((x,y),color)
 for col in range(3):
  tile=source.crop((col*16,16,col*16+16,32))
  for y in range(16):
@@ -26,8 +34,8 @@ for col in range(3):
     # Heat wraps all FOUR exterior sides, not only the top-facing cap.
     # The same painted cluster value selects an intentional coarse heat ramp.
     value=max(rgb)
-    heat=(255,min(255,220+value*.4-y/15*70),min(230,110+value*.9-y/15*65))
-    mix=lerp([.96,.80,.30,.04,0])
+    heat=(min(255,195+value*.9-y/15*80),max(8,min(190,35+value*1.6-y/15*60)),max(2,min(26,3+value*.18)))
+    mix=lerp([.98,.90,.72,.28,0])
     color=tuple(round(color[c]*(1-mix)+heat[c]*mix) for c in range(3))
    color=tuple(color)+(255,)
    out.putpixel((col*16+x,16+y),color);layer.putpixel((col*16+x,16+y),color)
@@ -39,5 +47,5 @@ with ZipFile(r/'nether/materials.ora','w',ZIP_STORED)as z:
  z.writestr('mimetype','image/openraster')
  z.writestr('stack.xml','<image version="0.0.3" w="48" h="48"><stack><layer name="Whole-pillar perimeter thermal gradient at native pixel rows" src="data/thermal.png" opacity="1" visibility="visible" composite-op="svg:src-over"/><layer name="Original painted material clusters and face values" src="data/base.png" opacity="1" visibility="visible" composite-op="svg:src-over"/></stack></image>')
  z.writestr('data/base.png',png(base));z.writestr('data/thermal.png',png(layer));z.writestr('mergedimage.png',png(out))
-p=r/'nether/materials.json';d=json.loads(p.read_text(encoding='utf-8'));d['height_gradient']='ALL FOUR exterior side faces: hot cream/orange upper perimeter, warm middle, dark charcoal lower perimeter; side v16..32 follows WHOLE pillar y/h, not a cap or per-cuboid reset';p.write_text(json.dumps(d,indent=2)+'\n',encoding='utf-8')
+p=r/'nether/materials.json';d=json.loads(p.read_text(encoding='utf-8'));d['height_gradient']='ALL FOUR exterior side faces: saturated magma orange/yellow-orange upper perimeter, orange-red and ember middle, dark charcoal base; NO cream/beige; side v16..32 follows WHOLE pillar y/h, not a cap or per-cuboid reset';p.write_text(json.dumps(d,indent=2)+'\n',encoding='utf-8')
 print('Nether: exterior crust now uses a whole-height native-pixel thermal gradient.')

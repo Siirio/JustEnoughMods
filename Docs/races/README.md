@@ -3,7 +3,8 @@
 Art review update,2026-10-17: [R6 distinct-pattern candidates](assets/race_vfx_r6/README.md)
 supersede R5's repeated outward composition. Infernal now uses three successive
 strikes with a light upper perimeter on all four exterior sides grading to a
-dark base. Other proposals use forward shields, a split slit, a branching
+dark base. Infernal colors are now saturated magma orange/red/charcoal;
+the former creamy palette is rejected. Other proposals use forward shields, a split slit, a branching
 ground network and an inward bower. These remain pre-install candidates.
 
 Historical review: [R5 race candidates](assets/race_vfx_r5/README.md)
