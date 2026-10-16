@@ -34,4 +34,16 @@ Requested automatic asset inspection: all four PNGs16×16, four colors per origi
 
 Native offscreen-view disposal reported `onContextMenu is not defined` in the pinned MCP plugin; the source, textures and all captures were saved before that optional cleanup failure. No game state was touched.
 
-The visual hypothesis is woody volume plus compact foliage at vanilla-like texel density. It remains a proposed design, and these editor renders cannot prove that the result fits real vanilla terrain at combat distance. No production renderer, packet, JAR, ManagedPack, Server or generation changed.
+The visual hypothesis is woody volume plus compact foliage at vanilla-like texel density. It remains a proposed design, and these editor renders cannot prove that the result fits real vanilla terrain at combat distance. At candidate delivery no production renderer, packet, JAR, ManagedPack, Server or generation changed.
+
+## Authorized sandbox connection — 2026-10-17
+
+The user subsequently explicitly requested “Подключить R3 в jem sandbox”.
+`Mods/JEMVisualSandboxR3` now owns the isolated runtime connection and its
+reproducible native OBJ bake. F9 toggles the candidate at a selected ground
+point in a solo world, with a three-second replay interval. Runtime geometry
+comes from the exact source above; the editor stage is excluded. This is a
+standalone sandbox extension, not an integration into canonical race combat.
+Its production JAR was built and installed with an original-JAR backup; see
+the module README for provenance and installation details. No Minecraft launch
+or actual in-game inspection occurred. Final visual approval remains pending.

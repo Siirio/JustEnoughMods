@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "40518646bdf78c8ca046b848c6341d3a3a56d5ed50fbdba49e83bdcee78ae558",
+  "change_records_sha256": "a2ebca6a768f91f3fdfc429c354a1e20f6dcc857368b313897183bd56449cff1",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -356,6 +356,21 @@
       "potential_static_target_count": 13
     },
     {
+      "change_id": "sandbox-bloom-r3-preview",
+      "status": "conditional",
+      "summary": "Connect the exact Bloom R3 Blockbench candidate to the isolated visual sandbox for manual in-game review.",
+      "record": "Catalog/changes/records/sandbox-bloom-r3-preview.json",
+      "selectors": [
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "jem_visual_sandbox"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 0
+    },
+    {
       "change_id": "server-only.immersive-aircraft-sail-recipe",
       "status": "active",
       "summary": "The dedicated server preserves Immersive Aircraft's native sail recipe and accepts the crafted item.",
@@ -703,8 +718,8 @@
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/vfx/RaceVfxController.java": "830a7e4ddd597c3d6c1a0e7c6dfed9f4cc0f78bb6bc091964551bbcb3baa493b",
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/vfx/RaceVfxInstance.java": "c2444c768086b92d532cba5d0d3fec1f006e6b8f3bfd3c0ef56c8f3c8ce411fb",
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/vfx/RaceVfxPalettes.java": "b7766df6f1f79b3a36f95c31da4bb08812dbac2a40822d7728f578af7895e3f4",
-    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/vfx/RaceVfxParticles.java": "11820f55a5516567224214a24f046befb7f8d1a90236c0306073b24028d7ad8e",
-    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/vfx/RaceVfxRenderer.java": "117296b4e918e0cbf30dfb0bf8953c02a237627fc6ab49f69e84f5eb6d03be32",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/vfx/RaceVfxParticles.java": "3ebd17c3fb1c77c8816c03bcc145ca1482036f4cd44bb4b96da0405e738278fc",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/vfx/RaceVfxRenderer.java": "74b90bee93ce9239c41f3bda8f3f4d5ee81e8d58d14da717f21cd288d335aed8",
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/vfx/RaceVfxShaderState.java": "0045476e56094f123f4d226bcbf1f5fef6f8ad674edfe7270363080a65024ba3",
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/economy/CoinTradeRaceBridge.java": "3364aa25549b1edd93c788d29024a39327bd259c08b6b1d3d9118bcdeab9f621",
     "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/irons/RacialSpell.java": "98b72e7d624a2afb3ecf72b42c4949c4ba026c17abec0023417d68636fbab759",
@@ -822,6 +837,19 @@
     "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/food_values.json": "6afcd8db2aefa388f07f30939a9c69724da65e3bc38a8b3f6508e7b0af7c615d",
     "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json": "ff3974762a20b1218d899f6d77ed76c56cd58d49c4156f95ffe996228aea280c",
     "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/client/CampaignMapClient.java": "adec11232ba62576cd56e6f902c7a6af5ce8ab40b00531a21a4bb0e395ce749b",
+    "Mods/JEMVisualSandboxR3/bake.mjs": "e335fa9f88418ec9f79dd5b18215819c59ef9d981010e53d92314334d3f1aa69",
+    "Mods/JEMVisualSandboxR3/build.gradle": "228b0166d4c3b30062bf5dab3aecda4908da7ca72b06d44dbab1b84333ec7556",
+    "Mods/JEMVisualSandboxR3/prepare.py": "122a1253caeb22dd8edcd35489300a355a95ba9578368fc208556b8d83459fb8",
+    "Mods/JEMVisualSandboxR3/settings.gradle": "a718636cf484796f99fc3458bedec807488f52b62b2a424023b249411e974b97",
+    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/r3/BloomR3Mesh.java": "a440471e18847ba6216b005c55e827754b153bbca185040e4c888743b3ab5d52",
+    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/r3/BloomR3Preview.java": "c1eca7512b189539c5f64829060b242a335e326adf45e3402fde8ddf5638e275",
+    "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/en_us.json": "e6f5b079a98e794c13f945f50ff834787c0045206b5f665a01c48f4a005f7c74",
+    "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/ru_ru.json": "00c20060e23d9edc238c446820cd4c70c2c2ec6f863117637ba0fc5d6e43cecf",
+    "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/r3/bark.png": "726eaaf218ed7469191092de0dd868573b576fb9e1bee0c2f20d7965e10ecd23",
+    "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/r3/bud.png": "bbe4b95330059aa0b63f1e3c3eb8608d85caaa7aba6e070fd714218b168a9cd5",
+    "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/r3/foliage.png": "93cf055b5c07155f03c7ca6fa919bb9c81df2d46635216a0f8957b7453f73e33",
+    "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/r3/provenance.json": "a1ea8c34e5306ad6a0b8024a8de7efdb48ade84623529525263c8944890f8514",
+    "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/r3/verdant_grasp.mesh": "261a76d286eeed8981d7ef81ab3bdd0200d4c057836bd2c382905c50d76e271f",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java": "c61a7005a954859d0be5bb6206ecac5a01db656734481d38fac8991225e6e3ae",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/OrdinaryHostileScaler.java": "729980767df8c532c8463e4699a39ba6821053c9829995237ec56855009abeaf",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/command/BossCommands.java": "9d9247f5b5d521c145a968cc0f1786f6dda7d9fba391ca34df4824bcb1c921f3",

@@ -50,6 +50,7 @@ Changelog описывает только запрошенные player-visible 
 | `JEMPackCore` | Pack-specific data, resources и integration policy без чужой gameplay state |
 | `JEMIdentity` | Stable verified principal: integrated owner, online profile, or unlocked Server Login connection; never an offline username |
 | `JEMRoles` | Player race selection, racial traits and optional native-mod race adapters |
+| `JEMVisualSandboxR3` | Additive Bloom R3 presentation for the explicitly selected standalone `jem sandbox` profile; native Blockbench bake and source-owned client preview, no gameplay authority or canonical pack distribution |
 | `Pufferfish's Skills` | Canonical profession category experience, levels, points and unlocked skill state |
 | `JEMProfessions` | Unified radial presentation of the Pufferfish-owned state, bounded audited profession gain signals, legacy migration and gameplay adapters; never a second progression ledger |
 | `JEMEconomy` | Fixed Coin supply, Wallet balances, five backed physical denominations, issuance/redemption lots, escrow accounts and idempotent funded transfers |

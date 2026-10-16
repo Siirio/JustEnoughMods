@@ -1,0 +1,85 @@
+{
+  "schema_version": 2,
+  "change_id": "sandbox-bloom-r3-preview",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "jem_visual_sandbox"
+    }
+  ],
+  "conditions": [
+    {
+      "scope": "Explicitly selected standalone jem sandbox profile and integrated solo world only; never canonical Client/ManagedPack or shared-server gameplay."
+    }
+  ],
+  "precedence": {
+    "layer": "client_presentation",
+    "priority": 10
+  },
+  "change": {
+    "summary": "Connect the exact Bloom R3 Blockbench candidate to the isolated visual sandbox for manual in-game review.",
+    "modifiers": [
+      {
+        "property": "sandbox.bloom_r3_preview",
+        "operation": "add",
+        "before": "R3 exists only as editable Blockbench source and native-editor captures.",
+        "after": "F9 toggles a fixed ground-anchored 2.2 second R3 animation, repeated every 3 seconds in a solo sandbox world. Native OBJ baked poses, original 16px textures, real world lighting/depth; no preview stage, packets or gameplay effects."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Mods/JEMVisualSandboxR3",
+    "kind": "isolated_client_presentation",
+    "source_files": [
+      "Mods/JEMVisualSandboxR3/bake.mjs",
+      "Mods/JEMVisualSandboxR3/build.gradle",
+      "Mods/JEMVisualSandboxR3/prepare.py",
+      "Mods/JEMVisualSandboxR3/settings.gradle",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/r3/BloomR3Mesh.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/r3/BloomR3Preview.java",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/en_us.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/ru_ru.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/r3/bark.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/r3/bud.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/r3/foliage.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/r3/provenance.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/r3/verdant_grasp.mesh"
+    ]
+  },
+  "rationale": {
+    "purpose": "Let the user inspect the already shown R3 candidate in the explicitly selected sandbox before any production approval.",
+    "decision_source": "User: Подключить R3 в jem sandbox. Codex chose additive Forge event subscribers and native posed OBJ export to preserve the existing sandbox galleries and exact candidate geometry."
+  },
+  "introduced": {
+    "date": "2026-10-17",
+    "commit": "SELF",
+    "action": "add",
+    "summary": "Build and install a sandbox-only R3 extension, preserving the exact original standalone JAR in a local backup."
+  },
+  "history": [
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "add",
+      "summary": "R3 sandbox connection authorized; no production visual approval or gameplay change."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "standalone visual sandbox",
+      "client input",
+      "world-space rendering"
+    ],
+    "relations": [],
+    "notes": [
+      "Namespace selector is deliberately outside canonical pack registries: this record documents isolated presentation, not new registered gameplay objects.",
+      "Original base JAR SHA256 65bc16ee2881c354f6fe069ba49a509b1ab784168ced66689da3f14a401dd66a is preserved as a pinned build input. Its existing classes are not rebuilt or treated as gameplay truth.",
+      "Canonical JEMRoles source and Client/ManagedPack/Server JARs remain unchanged; native AutoModpack generation18 remains published."
+    ],
+    "unresolved": [
+      "Actual Minecraft visual acceptance, occlusion at combat distance and shader compatibility remain unobserved: no game launch was requested."
+    ]
+  }
+}

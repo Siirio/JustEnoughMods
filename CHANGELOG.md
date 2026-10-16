@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-17 — Connect Bloom R3 to jem sandbox
+
+- User request: explicitly connect the shown R3 candidate to the `jem sandbox` client profile for in-game viewing. This authorizes sandbox installation, not final visual approval or a production race-ability replacement.
+- Implementation decisions by Codex: export 45 exact posed meshes through native Blockbench OBJ, exclude the editor stage, and add a solo-only F9 ground preview with native textured depth/light rendering and a three-second replay interval. Keep existing F8 galleries by composing an additive source-owned extension with the pinned original standalone JAR; preserve all original classes/assets and merge only new language keys.
+- Built/reobfuscated and installed only the standalone sandbox JAR, retaining the original in `visual-backups/bloom-r3-20261017-012624`. No game launch, automated tests or runtime aesthetic acceptance. Canonical JEMRoles, Client/ManagedPack, ordinary Server, stable profiles and MineRENT remain unchanged; native published AutoModpack generation18 is not republished for this isolated profile.
+
 ## 2026-10-17 — One Bloom R3 candidate before installation
 
 - User request and supplied artistic direction: follow the pasted Pixel Art & Animation Quality Engine, use real relevant web/user references, preserve vanilla-compatible readability and pixel discipline, and show one quality candidate before any game installation. The supplied text is preserved byte-for-byte in `Docs/art/QUALITY_ENGINE_SOURCE.md`; reference evidence/classifications are recorded in `Docs/art/REFERENCE_LIBRARY.md`.
