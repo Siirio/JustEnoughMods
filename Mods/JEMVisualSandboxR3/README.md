@@ -1,6 +1,34 @@
 # Bloom R3 — isolated sandbox extension
 
-## Current sandbox main skills — 2026-10-17
+## Current elemental handoff — 2026-10-17
+
+This section supersedes historical bindings and installed hashes below.
+F6 selects a race; V casts its main skill. Nether V now sends five supported
+earth eruptions outward, using three authored magma models. The liked R5 fire
+combo moves unchanged to **И / physical B**. Void uses a delayed diagonal tear
+filled by the actual vanilla End portal shader before targeted safe teleport;
+Sculk uses animated pixel tissue along its canonical traversal. Neither active
+route loads its previous Blockbench variant.
+
+Bloom instead wraps each rooted entity with brown, base-heavy tapered roots
+and pointed green leaves. Two branches have separate wrapping tracks, with
+segment growth, opposite curls, leaf unfolding and staggered release. Runtime
+follows each target and scales to its current bounding box. Nether stone tops
+are orange and bases near-black, with a continuous side-face thermal ramp.
+
+Owning brief, actual native moving previews, critique and latest installation
+receipt: `Docs/races/assets/elemental-vfx`. Source archive includes its native
+models, external layered materials and pixel timelines. Sandbox packet protocol2
+adds target/model identity; the exact composed JAR supplies both integrated sides.
+The new sandbox timelines own their explicit overrides; canonical helper
+extraction retains the other signature behavior. Dedicated-server and ordinary
+production gameplay remain outside this standalone extension.
+
+Only production jar/reobfJar is built. No tests, game launch or runtime visual
+acceptance. Ordinary Server, Client/ManagedPack, stable profiles, release baseline,
+MineRENT and published native AutoModpack generation18 remain unchanged.
+
+## Historical sandbox main skills — 2026-10-17
 
 The user corrected the initial gallery interpretation: Blockbench effects must
 replace old VFX on the actual main-skill key. This section supersedes the older

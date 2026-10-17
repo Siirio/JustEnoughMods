@@ -18,7 +18,7 @@ import net.minecraftforge.network.simple.SimpleChannel;
 @Mod.EventBusSubscriber(modid="jem_visual_sandbox", bus=Mod.EventBusSubscriber.Bus.MOD)
 public final class SandboxNetwork {
     private static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
-            new ResourceLocation("jem_visual_sandbox", "skills"), () -> "1", "1"::equals, "1"::equals);
+            new ResourceLocation("jem_visual_sandbox", "skills"), () -> "2", "2"::equals, "2"::equals);
     public record Input(int action, int race) {
         static Input decode(FriendlyByteBuf buffer) { return new Input(buffer.readVarInt(), buffer.readVarInt()); }
         void encode(FriendlyByteBuf buffer) { buffer.writeVarInt(action); buffer.writeVarInt(race); }
@@ -31,14 +31,16 @@ public final class SandboxNetwork {
                     player.getPersistentData().putInt("JemSandboxRace", race);
                     CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new Visual(0, race, Vec3.ZERO, 0));
                 } else if (action == 1) SandboxSkills.cast(player, player.getPersistentData().getInt("JemSandboxRace"));
+                else if (action == 3 && player.getPersistentData().getInt("JemSandboxRace") == 4) FierySlash.cast(player);
                 else if (action == 2) CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new Visual(0, player.getPersistentData().getInt("JemSandboxRace"), Vec3.ZERO, 0));
             });
             context.setPacketHandled(true);
         }
     }
-    public record Visual(int action, int race, Vec3 origin, float yaw) {
-        static Visual decode(FriendlyByteBuf b) { return new Visual(b.readVarInt(),b.readVarInt(),new Vec3(b.readDouble(),b.readDouble(),b.readDouble()),b.readFloat()); }
-        void encode(FriendlyByteBuf b) { b.writeVarInt(action);b.writeVarInt(race);b.writeDouble(origin.x);b.writeDouble(origin.y);b.writeDouble(origin.z);b.writeFloat(yaw); }
+    public record Visual(int action, int race, Vec3 origin, float yaw, int subject) {
+        public Visual(int action,int race,Vec3 origin,float yaw) { this(action,race,origin,yaw,-1); }
+        static Visual decode(FriendlyByteBuf b) { return new Visual(b.readVarInt(),b.readVarInt(),new Vec3(b.readDouble(),b.readDouble(),b.readDouble()),b.readFloat(),b.readVarInt()); }
+        void encode(FriendlyByteBuf b) { b.writeVarInt(action);b.writeVarInt(race);b.writeDouble(origin.x);b.writeDouble(origin.y);b.writeDouble(origin.z);b.writeFloat(yaw);b.writeVarInt(subject); }
         void handle(Supplier<NetworkEvent.Context> supplier) {
             var context=supplier.get();
             context.enqueueWork(() -> BlockbenchWorkbench.receive(this));
@@ -54,6 +56,13 @@ public final class SandboxNetwork {
     public static void select(int race) { CHANNEL.sendToServer(new Input(0,race)); }
     public static void sync() { CHANNEL.sendToServer(new Input(2,0)); }
     public static void cast() { CHANNEL.sendToServer(new Input(1,0)); }
+    public static void secondary() { CHANNEL.sendToServer(new Input(3,0)); }
+    public static void effect(ServerPlayer player,int action,int race,Vec3 origin,float yaw,int subject) {
+        CHANNEL.send(PacketDistributor.PLAYER.with(() -> player),new Visual(action,race,origin,yaw,subject));
+    }
+    public static void vine(ServerPlayer player, net.minecraft.world.entity.LivingEntity target) {
+        effect(player,10,2,target.position(),0,target.getId());
+    }
     public static void visual(ServerPlayer player,int race,Vec3 origin,float yaw) {
         CHANNEL.send(PacketDistributor.PLAYER.with(() -> player),new Visual(1,race,origin,yaw));
     }

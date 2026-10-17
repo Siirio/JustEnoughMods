@@ -41,6 +41,7 @@ body = body.replace('int delay = 8 + i * 3;', 'int delay = new int[]{4, 10, 16}[
 packet_source = (OWNER.parent / 'network/RaceVfxPacket.java').read_text(encoding='utf-8')
 path_limit = re.search(r'MAX_PATH_POINTS\s*=\s*(\d+)', packet_source).group(1)
 body = body.replace('RaceVfxPacket.MAX_PATH_POINTS', path_limit).replace('RaceEnvironment.', 'SandboxEnvironment.')
+body = body.replace('target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 90, 4));', 'target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 90, 4));\n        SandboxNetwork.vine(player, target);')
 head = '''
 /** Generated from canonical signature source. Never edit generated output. */
 @net.minecraftforge.fml.common.Mod.EventBusSubscriber(modid="jem_visual_sandbox")
@@ -54,17 +55,12 @@ public final class SandboxSkills {
         switch (race) {
             case 0 -> lifeChorus(player, tier);
             case 1 -> {
-                LivingEntity target = target(player, 32);
-                if (target == null) { fail(player, "target_required"); return; }
-                Vec3 behind = target.position().subtract(target.getLookAngle().normalize().scale(1.8D));
-                BlockPos safe = SandboxEnvironment.nearestSafe(player, player.serverLevel(), BlockPos.containing(behind), 3, true).orElse(null);
-                if (safe == null) { fail(player, "no_safe_destination"); return; }
-                riftAmbush(player, tier, target, safe);
+                ElementalAbilities.rift(player);
             }
             case 2 -> { if (!verdantDominion(player, tier)) fail(player, "no_nearby_targets"); }
             case 3 -> { SignaturePlan plan = prepareSculk(player, tier); if (plan != null) sculkVeins(player, tier, plan); }
             case 4 -> {
-                FierySlash.cast(player);
+                ElementalAbilities.eruption(player);
             }
             default -> throw new IllegalArgumentException("Unknown sandbox race");
         }
@@ -72,14 +68,22 @@ public final class SandboxSkills {
     private static void emit(ServerPlayer player, RaceVfxId id, Vec3 origin, Vec3 target, int sourceId, int targetId, int[] related, List<Vec3> path, int tier, int duration) {
         switch (id) {
             case LIFE_CHORUS -> SandboxNetwork.visual(player, 0, origin, -player.getYRot());
-            case RIFT_DEPART, RIFT_ARRIVE -> SandboxNetwork.visual(player, 1, origin, -player.getYRot());
-            case VERDANT_DOMINION -> SandboxNetwork.visual(player, 2, origin, -player.getYRot());
+            case RIFT_DEPART, RIFT_ARRIVE, VERDANT_DOMINION -> { } // Rift timeline / per-entity vine binding own these visuals.
             case SCULK_VEINS -> {
                 int limit = Math.min(8, path.size());
-                for (int i = 0; i < limit; i++) SandboxNetwork.visual(player, 3, path.get(i * (path.size()-1) / Math.max(1,limit-1)).add(0,.52,0), -player.getYRot());
+                for (int i = 0; i < limit; i++) SandboxNetwork.effect(player,7,3,path.get(i * (path.size()-1) / Math.max(1,limit-1)).add(0,.02,0),player.getYRot(),-1);
             }
-            default -> { } // Infernal is one authored three-impact clip; old VFX are replaced.
+            default -> { } // Nether's new eruption timeline owns its presentation.
         }
+    }
+    public static LivingEntity riftTarget(ServerPlayer player) { return target(player,32); }
+    public static boolean commitRift(ServerPlayer player, UUID id) {
+        var entity=player.serverLevel().getEntity(id);
+        if (!(entity instanceof LivingEntity target) || !target.isAlive() || player.distanceToSqr(target)>32*32) { fail(player,"target_required");return false; }
+        Vec3 behind=target.position().subtract(target.getLookAngle().normalize().scale(1.8));
+        BlockPos safe=SandboxEnvironment.nearestSafe(player,player.serverLevel(),BlockPos.containing(behind),3,true).orElse(null);
+        if(safe==null) { fail(player,"no_safe_destination");return false; }
+        return riftAmbush(player,3,target,safe);
     }
     @net.minecraftforge.eventbus.api.SubscribeEvent
     public static void tick(net.minecraftforge.event.TickEvent.ServerTickEvent event) {
@@ -99,5 +103,5 @@ records = source[source.index('    private enum ZoneType'):source.rfind('}')]
 (OUT / 'SandboxSkills.java').write_text('package com.siirio.jemvisualsandbox.workbench;\n' + imports + '\n' + head + body + '\n' + records + '}\n', encoding='utf-8')
 environment = (OWNER / 'RaceEnvironment.java').read_text(encoding='utf-8').replace('package com.siirio.jemroles.trait;', 'package com.siirio.jemvisualsandbox.workbench;').replace('RaceEnvironment', 'SandboxEnvironment')
 (OUT / 'SandboxEnvironment.java').write_text('// Generated from JEMRoles canonical environment source.\n' + environment, encoding='utf-8')
-receipt = {'owner':'Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait', 'methods':methods, 'raceAbilitiesSha256':hashlib.sha256((OWNER/'RaceAbilities.java').read_bytes()).hexdigest(), 'sandboxOverrides':['tier 3','unlimited selection','no cooldown','Blockbench replaces particle emission','Nether replaced by sandbox FierySlash: three hits, forward pulls, 4/14/27 impacts']}
+receipt = {'owner':'Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait', 'methods':methods, 'raceAbilitiesSha256':hashlib.sha256((OWNER/'RaceAbilities.java').read_bytes()).hexdigest(), 'sandboxOverrides':['tier 3','unlimited selection','no cooldown','Void: native End portal tear, revalidated teleport at tick14','Bloom: per-target adaptive brown Blockbench roots and pointed green leaves','Sculk: authored pixel VFX on canonical path','Nether V: five progressing eruptions using three authored models','Nether B (Russian И): approved FierySlash with unchanged assets, timing and pulls']}
 (HERE / 'build/generated-skills.json').write_text(json.dumps(receipt, indent=2)+'\n')

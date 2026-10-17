@@ -1,0 +1,133 @@
+{
+  "schema_version": 2,
+  "change_id": "sandbox-elemental-main-skills",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "jem_visual_sandbox"
+    }
+  ],
+  "conditions": [
+    {
+      "scope": "Explicit standalone jem sandbox integrated owner only; excludes canonical pack and dedicated server."
+    }
+  ],
+  "precedence": {
+    "layer": "sandbox_gameplay_and_presentation",
+    "priority": 13,
+    "overrides": [
+      "sandbox-fiery-slash",
+      "sandbox-blockbench-main-skills"
+    ]
+  },
+  "change": {
+    "summary": "New sandbox elemental choreography, adaptive woody root wraps and preserved fire slashes on B.",
+    "modifiers": [
+      {
+        "property": "sandbox.nether_main_skill",
+        "operation": "replace",
+        "before": "V: approved R5 three-hit fiery slash.",
+        "after": "V: five supported eruptions along fixed cast direction at ticks0/4/8/12/16, impacts five ticks later, three native magma models;10 fire damage,6s fire,.7 upward push. \u0418/B: unchanged R5 slash assets/timing/pulls."
+      },
+      {
+        "property": "sandbox.void_main_skill",
+        "operation": "replace",
+        "before": "Immediate canonical targeted safe teleport, old Void cuboid variants.",
+        "after": "Four-tick horizontal pause, pixel-authored tapered diagonal tear with actual vanilla End portal shader; safe target/destination revalidated and canonical teleport/attack at tick14, then close. No active old Void model route."
+      },
+      {
+        "property": "sandbox.bloom_main_skill",
+        "operation": "replace",
+        "before": "Canonical root damage/slow with coffer visual.",
+        "after": "Preserve root damage/slow; each affected target receives a90-tick dynamically AABB-scaled brown base-heavy Blockbench wrap, pointed green leaves, independent segment-by-segment branch curl/growth/settle/unfold/release tracks."
+      },
+      {
+        "property": "sandbox.sculk_main_skill",
+        "operation": "replace",
+        "before": "Canonical connected-sculk traversal with crawl cuboid.",
+        "after": "Preserve traversal/safe exit; authored dark substrate and broken cyan pixel veins propagate along eight path samples. No active old crawl-model route."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Mods/JEMVisualSandboxR3",
+    "kind": "explicit_standalone_ability_and_art_replacement",
+    "source_files": [
+      "Mods/JEMVisualSandboxR3/README.md",
+      "Mods/JEMVisualSandboxR3/author-elemental-models.mjs",
+      "Mods/JEMVisualSandboxR3/bake-workbench.mjs",
+      "Mods/JEMVisualSandboxR3/generate-skills.py",
+      "Mods/JEMVisualSandboxR3/prepare.py",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/BlockbenchWorkbench.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalAbilities.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/elemental/rift-mask.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/elemental/rift.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/elemental/sculk.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/en_us.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/ru_ru.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/entity_vines-0.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/entity_vines-1.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/entity_vines.mesh",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/eruption0-0.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/eruption0-1.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/eruption0.mesh",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/eruption1-0.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/eruption1-1.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/eruption1.mesh",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/eruption2-0.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/eruption2-1.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/eruption2.mesh",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/provenance.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Implement requested elemental attacks and concrete art revisions in the existing sandbox, preserving the liked fire combo.",
+    "decision_source": "User requests \u0418 fire combo binding, outward earth eruptions, actual End portal diagonal tear, VFX-only Void/Sculk; later correction requires adaptive Blockbench Bloom roots, brown thick lower roots, green pointed leaves, exact existing model+UV Pairs, independent animation for each branch and orange-to-dark magma stones. Codex chooses tick14 teleport, five wave placements, 90-tick model hold, native shader aperture runs, source-owned native OBJ bake and external layered material/cel painting."
+  },
+  "introduced": {
+    "date": "2026-10-17",
+    "commit": "SELF",
+    "action": "add",
+    "summary": "Sandbox-only elemental replacement."
+  },
+  "history": [
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "add",
+      "summary": "Route actual main skills to new elemental choreography and move approved slashes to B."
+    },
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "revise",
+      "summary": "Apply user Bloom corrections: adaptive brown tapered roots, pointed green leaves, independent wrapping tracks; repaint Nether stones orange-to-near-black."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "sandbox input/network protocol2",
+      "integrated-server targeting/teleport/damage",
+      "adaptive entity-bound art",
+      "native End portal rendering",
+      "Blockbench source/export",
+      "sandbox artifact composition"
+    ],
+    "relations": [],
+    "notes": [
+      "Only the standalone jem sandbox JAR is installed; ordinary Server, canonical Client/ManagedPack, stable profiles and published AutoModpack generation18 are unchanged.",
+      "Source of truth remains canonical race helpers plus explicit sandbox overrides.",
+      "Approved fiery slash resources and gameplay class remain byte-identical.",
+      "Magma upper material is fullbright with a painted dark base; no world-light source."
+    ],
+    "unresolved": [
+      "No gameplay launch or automated tests; camera/shader compatibility, uneven terrain, real target fit and runtime action feel remain unobserved.",
+      "New effects are candidates, not user-approved art.",
+      "Two pre-existing unrelated JEMRoles line-ending coverage warnings remain."
+    ]
+  }
+}
