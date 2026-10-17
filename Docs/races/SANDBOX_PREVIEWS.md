@@ -1,5 +1,14 @@
 # Sandbox overrides and animated ability previews
 
+## Current four-stage follow-up —2026-10-17
+
+Current behavior is owned by README.md and RacePowerStages: Base/1/2/3 for every V/B, immediate stage description with no Details tab, real utility growth, Nether direct damage0.85 and cumulative Sculk knockback/Darkness/temporary radius16territory. Source profile separation, detached previews and the closed-profile installer remain required. The initial implementation evidence below is historical where superseded (three tiers and the former Sculk slow are no longer current). No new art, game launch, automated tests or player acceptance is claimed.
+
+Implementation boundaries: server-owned original-ground snapshots and per-cast UUID/expiry prevent recasts from reviving old unloaded ground. Native ChargeCursor update is narrowly stopped on/adjacent to temporary tiles, based on actual47.4.10 bytecode showing SculkBlock can grow sensors/shriekers above charged sculk. Dimension/eye size follows a validated server flag and a client-only PlayerRenderer scale tail; preview scale remains detached. Damage×1.15 applies only while the Sculk owner is inside its unexpired domain, not as an always-on race modifier. Narrow growth/scale hooks and channel5 require matching artifacts if later deployed; this prompt installs sandbox only.
+
+Bug / Client and Server / mastery started at1 and the preview had a separate Details state, so default and first tier were identical and stage browsing did not immediately expose mechanics / in testing. Mechanism: authoritative0..3 stage mapping, one bound preview-stage/description selection and shared runtime constants. No runtime approval yet.
+
+
 Approved implementation brief: 2026-10-17, JEM Races — Sandbox Testing & Animated Ability Previews. This file records the current task implementation/verification; Docs/races/README.md remains the behavior owner.
 
 ## Delivery contract

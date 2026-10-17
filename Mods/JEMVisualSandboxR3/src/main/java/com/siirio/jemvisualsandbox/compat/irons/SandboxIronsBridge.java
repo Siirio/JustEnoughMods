@@ -69,7 +69,7 @@ public final class SandboxIronsBridge {
     }
 
     public static void add(SpellSelectionManager.SpellSelectionEvent event, int race, int tier) {
-        event.addSelectionOption(new SpellData(spell(race), Math.max(1, Math.min(3, tier))), SLOT, 0);
+        event.addSelectionOption(new SpellData(spell(race), com.siirio.jemvisualsandbox.workbench.RacePowerStages.clamp(tier)+1), SLOT, 0);
     }
 
     /** Native cooldowns are presentation only, including developer-mode bypass. */

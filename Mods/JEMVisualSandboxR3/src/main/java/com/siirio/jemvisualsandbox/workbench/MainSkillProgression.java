@@ -6,7 +6,7 @@ import net.minecraft.server.level.ServerPlayer;
 @net.minecraftforge.fml.common.Mod.EventBusSubscriber(modid="jem_visual_sandbox")
 public final class MainSkillProgression {
     private MainSkillProgression() {}
-    public static int level(ServerPlayer p,int race) { return race==2?RaceExperience.bloomUpgrade(p):RaceExperience.tier(p); }
+    public static int level(ServerPlayer p,int race) { return RacePowerStages.clamp(race==2?RaceExperience.bloomUpgrade(p):RaceExperience.tier(p)); }
     static void unlockNext(ServerPlayer p,int requested) {
         RaceExperience.upgrade(p,requested);
     }

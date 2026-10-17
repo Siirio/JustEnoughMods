@@ -21,8 +21,10 @@ public final class FierySlash {
         final net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level> dimension;
         final Vec3 direction;
         final long start;
+        final int stage;
         Combo(ServerPlayer player, Vec3 direction) {
             dimension = player.serverLevel().dimension();
+            stage = RaceExperience.tier(player);
             this.direction = direction;
             start = player.level().getGameTime();
         }
@@ -62,7 +64,7 @@ public final class FierySlash {
             if (age == 10 || age == 22) beginHit(player, combo, hit);
             int impact = hit == 2 ? 5 : 4;
             if (phase < impact) pull(player, combo.direction);
-            if (phase == impact) strike(player, combo.direction);
+            if (phase == impact) strike(player, combo.direction, combo.stage);
             return false;
         });
     }
@@ -87,16 +89,16 @@ public final class FierySlash {
         player.connection.send(new ClientboundSetEntityMotionPacket(player));
     }
 
-    private static void strike(ServerPlayer player, Vec3 forward) {
+    private static void strike(ServerPlayer player, Vec3 forward, int stage) {
         Vec3 center = player.position().add(forward.scale(1.65)).add(0, 0.9, 0);
         var area = new net.minecraft.world.phys.AABB(center, center).inflate(1.8, 1.5, 1.8);
         for (LivingEntity target : player.serverLevel().getEntitiesOfClass(LivingEntity.class, area,
                 entity -> entity != player && entity.isAlive())) {
             Vec3 offset = target.position().subtract(player.position());
             if (offset.dot(forward) < 0 || !player.hasLineOfSight(target)) continue;
-            // Retain the former tier-3 eruption's 10 damage / 6 seconds of fire.
-            target.hurt(player.damageSources().onFire(), 10.0F);
-            target.setSecondsOnFire(6);
+            // Snapshot the accepted combo stage across all three impacts.
+            target.hurt(player.damageSources().onFire(), RacePowerStages.slashDamage(stage));
+            target.setSecondsOnFire(RacePowerStages.fireSeconds(stage));
             target.push(forward.x * 0.18, 0.12, forward.z * 0.18);
         }
         Vec3 velocity = player.getDeltaMovement();

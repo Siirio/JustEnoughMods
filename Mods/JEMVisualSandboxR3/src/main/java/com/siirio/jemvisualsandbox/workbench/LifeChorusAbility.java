@@ -37,7 +37,7 @@ public final class LifeChorusAbility {
         if(!RaceExperience.canAct(p) || ACTIVE.containsKey(p.getUUID()))return false;
         ACTIVE.put(p.getUUID(),new Chorus(p.serverLevel().dimension(),p.position(),p.level().getGameTime(),new HashSet<>(),RaceExperience.tier(p)));
         startOutwardWave(p,7);
-        SandboxNetwork.effect(p,30,0,p.position(),0,p.getId());
+        SandboxNetwork.effect(p,30,0,p.position(),RacePowerStages.chorusRadius(RaceExperience.tier(p)),p.getId());
         return true;
     }
     static void guardianEntry(ServerPlayer p){
@@ -75,7 +75,7 @@ public final class LifeChorusAbility {
             int age=(int)(p.level().getGameTime()-c.start);if(age<0 || age>=118)return true;
             if(age==7)p.level().playSound(null,p.blockPosition(),net.minecraft.sounds.SoundEvents.AMETHYST_BLOCK_CHIME,net.minecraft.sounds.SoundSource.PLAYERS,.6F,1.15F);
             if(age>=7 && age<=18) {
-                double radius=(c.tier>=2?WAVE_RADIUS:12)*Math.min(1,(age-6)/(double)WAVE_TICKS);
+                double radius=RacePowerStages.chorusRadius(c.tier)*Math.min(1,(age-6)/(double)WAVE_TICKS);
                 for(LivingEntity target:p.serverLevel().getEntitiesOfClass(LivingEntity.class,p.getBoundingBox().move(c.origin.subtract(p.position())).inflate(radius,16,radius),v->v.isAlive() && (v==p.getVehicle() || friendly(v) && !(v instanceof Mob m && hostile(p,m))))) {
                     if(target.position().subtract(c.origin).multiply(1,0,1).lengthSqr()>radius*radius || !c.answered.add(target.getUUID()))continue;
                     if(target instanceof Player)target.heal(6);else target.setHealth(target.getMaxHealth());

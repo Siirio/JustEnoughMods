@@ -35,7 +35,7 @@ public final class RaceExperience {
     public static boolean developerMode(ServerPlayer p){return RaceDevelopment.enabled(p);}
     public static int race(ServerPlayer p){return selected(p)?data(p).getInt("Race"):-1;}
     public static int tier(ServerPlayer p){return RaceDevelopment.tier(p,Math.max(0,race(p)),tierFor(uses(p,Math.max(0,race(p)))));}
-    private static int tierFor(int uses){return uses>=30?3:uses>=10?2:1;}
+    private static int tierFor(int uses){return uses>=30?3:uses>=20?2:uses>=10?1:0;}
     private static int uses(ServerPlayer p,int race){return Math.max(0,Math.min(30,data(p).getInt("Uses"+race)));}
     static CompoundTag data(ServerPlayer p){return Store.get(p.server).record(p);}
     static void dirty(ServerPlayer p){Store.get(p.server).setDirty();}
@@ -47,7 +47,7 @@ public final class RaceExperience {
         data(p).putLong(cooldownKey(p,key),p.server.overworld().getGameTime()+Math.max(0,ticks));dirty(p);
     }
     public static int signatureCooldown(int race){return switch(race){case 0->SandboxRaceRules.LIFE_CHORUS_COOLDOWN.get();case 1->SandboxRaceRules.RIFT_AMBUSH_COOLDOWN.get();case 2->SandboxRaceRules.VERDANT_DOMINION_COOLDOWN.get();case 3->SandboxRaceRules.SCULK_VEINS_COOLDOWN.get();case 4->1200;default->0;};}
-    public static int bloomUpgrade(ServerPlayer p){return RaceDevelopment.bloomUpgrade(p,Math.max(0,Math.min(3,data(p).getInt("BloomUpgrade"))));}
+    public static int bloomUpgrade(ServerPlayer p){return Math.min(tier(p),RaceDevelopment.bloomUpgrade(p,RacePowerStages.clamp(data(p).getInt("BloomUpgrade"))));}
     public static void upgrade(ServerPlayer p,int next){
         if(!allowed(p)||race(p)!=2||next!=bloomUpgrade(p)+1||next>tier(p)||next>3)return;
         RaceDevelopment.storeBloomUpgrade(p,next);dirty(p);
@@ -97,6 +97,11 @@ public final class RaceExperience {
     static void finishSignature(ServerPlayer p){
         if(!allowed(p)||!selected(p))return;
         cooldown(p,"signature",signatureCooldown(race(p)));
+        finishUtility(p);
+    }
+    /** Award only after a real utility result, never input, preview or charge windup. */
+    static void finishUtility(ServerPlayer p){
+        if(!allowed(p)||!selected(p))return;
         data(p).putInt("Uses"+race(p),Math.min(30,uses(p,race(p))+1));dirty(p);
         snapshot(p);
     }

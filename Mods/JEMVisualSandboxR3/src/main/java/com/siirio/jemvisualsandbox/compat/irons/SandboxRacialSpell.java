@@ -25,7 +25,7 @@ public final class SandboxRacialSpell extends AbstractSpell {
         id = new ResourceLocation("jem_visual_sandbox", path);
         this.race = race;
         config = new DefaultConfig().setMinRarity(SpellRarity.COMMON).setSchoolResource(school)
-                .setMaxLevel(3).setCooldownSeconds((race==0||race==2?500:race==3?400:1200) / 20.0)
+                .setMaxLevel(4).setCooldownSeconds((race==0||race==2?500:race==3?400:1200) / 20.0)
                 .setAllowCrafting(false).build();
         baseManaCost = 0;
         manaCostPerLevel = 0;

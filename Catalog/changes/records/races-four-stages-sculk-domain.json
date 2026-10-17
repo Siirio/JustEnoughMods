@@ -1,0 +1,154 @@
+{
+  "schema_version": 2,
+  "change_id": "races.four-stages-sculk-domain",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "jem_visual_sandbox"
+    },
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "minecraft:sculk"
+    },
+    {
+      "type": "id",
+      "registry": "effects",
+      "value": "minecraft:darkness"
+    }
+  ],
+  "conditions": [
+    {
+      "scope": "source-owned standalone integrated-world owner; both build profiles; native dedicated JEMRoles unaffected",
+      "temporary_ground_only": "Sculk modifications are limited to recorded per-cast terrain, not natural sculk."
+    }
+  ],
+  "precedence": {
+    "layer": "jem",
+    "priority": 160
+  },
+  "change": {
+    "summary": "Distinct Base/1/2/3 V/B progression, bound F6 descriptions, Nether direct damage0.85 and cumulative Sculk confusion/temporary territory.",
+    "modifiers": [
+      {
+        "property": "races.stages",
+        "operation": "replace",
+        "before": "Initial tier1;10uses→2,30→3; B mostly stage-invariant; separate Details tab.",
+        "after": "Base0,10/20/30actual V/B successes unlock1/2/3; saved counters retained; immediate bound descriptions, utility growth and preview variants."
+      },
+      {
+        "property": "races.nether.power_damage",
+        "operation": "multiply",
+        "before": "V tier1/2/3=6/8/10HP; B10HP fixed.",
+        "after": "Both powers stage0/1/2/3=(4+2stage)×0.85=3.4/5.1/6.8/8.5HP; fire1/2/4/6s; three B hits preserved."
+      },
+      {
+        "property": "races.sculk.signature",
+        "operation": "replace",
+        "before": "12HP radius8 wave; oldtier2knockback,3slow40ticks.",
+        "after": "Base12HP radius8;1knockback;2Darkness100ticks other mobs/players plus actual mob confusion/missed direct attacks;3temporarysculk radius16for200ticks, owner inside size/attack1.15, safe restoration."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Mods/JEMVisualSandboxR3",
+    "kind": "source-owned standalone integrated-server gameplay and detached UI",
+    "source_files": [
+      "Mods/JEMVisualSandboxR3/generate-skills.py",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/AbilityPreviewRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxIronsBridge.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxRacialSpell.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/AbilityPreviewPresentation.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalAbilities.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/FierySlash.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusAbility.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/MainSkillProgression.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceExperience.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SonicWaveAbility.java",
+      "Mods/JEMVisualSandboxR3/src/main/resources/jem_sandbox.mixins.json",
+      "Mods/JEMVisualSandboxR3/src/sandbox/java/com/siirio/jemvisualsandbox/workbench/RaceDevelopment.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RacePowerStages.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SculkDomain.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/SculkScaleClient.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/mixin/SculkPlayerScaleMixin.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/mixin/TemporarySculkGrowthMixin.java",
+      "Mods/JEMVisualSandboxR3/install-sandbox.py"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make every inspected upgrade and B stage meaningful while implementing requested Sculk identity and Nether reduction.",
+    "decision_source": "User exact stage/UI/Sculk/15% direction; Codex thresholds/durations/utility values/safe persistence implementation."
+  },
+  "introduced": {
+    "date": "2026-10-17",
+    "commit": "SELF"
+  },
+  "history": [
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "implement_four_stages_and_temporary_sculk",
+      "summary": "User-directed mechanics; no runtime acceptance. Production cheat boundary/dedicated owners preserved.",
+      "source_files": [
+        "Mods/JEMVisualSandboxR3/generate-skills.py",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/AbilityPreviewRenderer.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxIronsBridge.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxRacialSpell.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/AbilityPreviewPresentation.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalAbilities.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/FierySlash.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusAbility.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusRenderer.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/MainSkillProgression.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceExperience.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SonicWaveAbility.java",
+        "Mods/JEMVisualSandboxR3/src/main/resources/jem_sandbox.mixins.json",
+        "Mods/JEMVisualSandboxR3/src/sandbox/java/com/siirio/jemvisualsandbox/workbench/RaceDevelopment.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RacePowerStages.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SculkDomain.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/SculkScaleClient.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/mixin/SculkPlayerScaleMixin.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/mixin/TemporarySculkGrowthMixin.java",
+        "Mods/JEMVisualSandboxR3/install-sandbox.py"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "races",
+      "mastery",
+      "V/B",
+      "GUI",
+      "AI",
+      "PvP vision",
+      "temporary terrain",
+      "saved block recovery",
+      "player dimensions",
+      "damage",
+      "network5",
+      "optional Iron projection"
+    ],
+    "relations": [
+      "actual cast→saved success→stage→same runtime/description/preview values",
+      "wave→Darkness/confusion→territory→inside-only size and attack→expiry/restore",
+      "server scale decision→channel5→client dimensions/native model scale"
+    ],
+    "notes": [
+      "Existing native costs/collision and normal production cooldown/choice gates preserved.",
+      "No canonical pack/server/stable/MineRENT mutation. Sandbox-only closed-profile installation.",
+      "Only source/build evidence; no gameplay or visual approval."
+    ],
+    "unresolved": [
+      "Actual in-game AI/size/render/collision/restart recovery not launched; pending player review."
+    ]
+  }
+}

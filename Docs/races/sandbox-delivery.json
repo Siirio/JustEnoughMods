@@ -1,51 +1,33 @@
 {
-  "profile": "C:\\Users\\user\\AppData\\Roaming\\.minecraft\\versions\\jem sandbox",
   "installed": "C:\\Users\\user\\AppData\\Roaming\\.minecraft\\versions\\jem sandbox\\mods\\jem-races-1.1.0-sandbox.jar",
-  "sha256": "22bd3f6d90b2d3e30758f1c0063c3b569230604efade021abdbef0e57cb3f598",
-  "installedAt": "2026-10-17T17:03:30.727064+05:00",
-  "sourceOwner": "Mods/JEMVisualSandboxR3",
+  "sha256": "37511d6e1cd0d5bd0b4a592533c9e7cd201a3ae6ad9e59b5ce83886c73a1c396",
+  "backup": "C:\\Users\\user\\AppData\\Roaming\\.minecraft\\versions\\jem sandbox\\visual-backups\\races-closed-install-20261017-174531-922639",
+  "profileClosedAtInstall": true,
+  "atomicReplacement": true,
+  "installedAt": "2026-10-17T17:45:32.505681+05:00",
   "artifacts": [
     {
       "profile": "SANDBOX",
       "artifact": "Mods/JEMVisualSandboxR3/build/sandbox-profile/libs/jem-races-1.1.0-sandbox.jar",
-      "sha256": "22bd3f6d90b2d3e30758f1c0063c3b569230604efade021abdbef0e57cb3f598",
-      "previewClassesPresent": true,
-      "developerCommandsPresent": false,
-      "refmapPresent": true
+      "sha256": "37511d6e1cd0d5bd0b4a592533c9e7cd201a3ae6ad9e59b5ce83886c73a1c396",
+      "requiredMixinsAndRefmapPresent": true
     },
     {
       "profile": "PRODUCTION",
       "artifact": "Mods/JEMVisualSandboxR3/build/production-profile/libs/jem-races-1.1.0.jar",
-      "sha256": "82b4997f66c29cc039f62c5e2dd6578b6b5a7ec6688dc0f65f0c85082fc64d62",
-      "previewClassesPresent": true,
-      "developerCommandsPresent": false,
-      "refmapPresent": true
+      "sha256": "07193f12cae3b1a0504e35ce3e6b88794b06e59d5447f4712d3b1145ed34a7cf",
+      "requiredMixinsAndRefmapPresent": true
     }
   ],
-  "previous": [
-    {
-      "file": "C:\\Users\\user\\AppData\\Roaming\\.minecraft\\versions\\jem sandbox\\mods\\jem-races-1.1.0-sandbox.jar",
-      "sha256": "22bd3f6d90b2d3e30758f1c0063c3b569230604efade021abdbef0e57cb3f598"
-    }
-  ],
-  "backup": "C:/Users/user/AppData/Roaming/.minecraft/versions/jem sandbox/visual-backups/races-closed-install-20261017-170307-958755",
+  "request": "Distinct Base/1/2/3 V/B, immediate F6 descriptions, Nether damage0.85, Sculk knockback/Darkness/temporary territory",
+  "sourceOwner": "Mods/JEMVisualSandboxR3",
   "gameLaunchedByCodex": false,
-  "gameAlreadyRunningAtInstallation": false,
-  "restartRequired": true,
-  "automatedGameplayTestsRun": false,
+  "testsRun": false,
   "productionBuild": {
     "task": "sandboxJar productionJar -x test -x check",
     "result": "BUILD SUCCESSFUL",
-    "log": "Server/local/races-preview-final-build.log"
+    "log": "Server/local/races-stages-build.log"
   },
-  "artifactInspection": {
-    "manifestProfilesCorrect": true,
-    "previewClassesInBoth": true,
-    "developerCommandsInEither": false,
-    "productionAuthority": "javap confirms no sandbox state mutation/input constants; false/no-op implementation",
-    "sandboxAuthority": "separate actual development implementation"
-  },
-  "entry": "F6; V/B select preview slots; Details; arrows inspect stages; Switch Race; DEV tier/reset",
   "canonicalServer": "unchanged",
   "managedClient": "unchanged",
   "stableProfile": "untouched",
@@ -53,14 +35,16 @@
   "autoModpack": {
     "action": "none; sandbox-only artifact install",
     "lastObservedGeneration": 20,
-    "lastObservedPublished": true
+    "lastObservedPublished": true,
+    "lastObservedManifestSha1": "ba33232d4a87a800429a2272c2afbff959c800cc"
   },
+  "entry": "F6; V/B; wheel over miniature/stage or arrows selects Base/1/2/3 and immediately shows description; DEV changes actual stage",
   "acceptance": {
-    "gameplay": "manual verification required; no game launched or cast triggered by Codex",
-    "visuals": "native model/VFX implementation compiled; framing, readability and render-mod compatibility unverified",
-    "productionDeployment": "not deployed; choose PRODUCTION artifact before MineRENT"
+    "source": "focused review found issues repaired; no remaining confirmed P1/P2",
+    "gameplay": "not launched; actual AI, clearance, restoration, render/mixin application and readability need player review",
+    "productionDeployment": "not deployed; production artifact contains normal progression changes but no sandbox cheats; matching channel5 required where installed"
   },
-  "request": "Sandbox no cooldown/unlimited race switching, separate development progression controls, permanent animated V/B progression previews.",
+  "developmentAuthority": "Compiled production bytecode has no sandbox tier/Bloom/input keys; normal gates false/no-op. Sandbox retains actual isolated implementation.",
   "atlas": {
     "deliverySnapshotValidation": {
       "valid": true,
@@ -74,21 +58,9 @@
         "items": 17064,
         "structures": 520
       },
-      "change_records": 33,
+      "change_records": 34,
       "effective_index": "Catalog/effective/index.json"
     },
     "deliverySnapshotScope": "Canonical Atlas generation/validation for exact indexed records/sources plus installed ignored artifact evidence; unrelated worktree changes preserved"
-  },
-  "installation": {
-    "method": "Mods/JEMVisualSandboxR3/install-sandbox.py",
-    "profileClosedAtInstall": true,
-    "atomicReplacement": true,
-    "zipIntegrityAndDeferredClassesChecked": true
-  },
-  "userReportedCrash": {
-    "report": "crash-2026-10-17_17.01.47-client.txt",
-    "cause": "Earlier live JAR overwrite invalidated deferred class loading; complete artifact reinstalled with profile closed",
-    "status": "in testing; user restart acceptance pending",
-    "earlierUnsafeInstallAt": "2026-10-17T17:01:32+05:00"
   }
 }

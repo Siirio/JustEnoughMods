@@ -1,6 +1,7 @@
 package com.siirio.jemvisualsandbox.client.races;
 
 import com.siirio.jemvisualsandbox.workbench.RaceExperience;
+import com.siirio.jemvisualsandbox.workbench.RacePowerStages;
 import com.siirio.jemvisualsandbox.workbench.SandboxNetwork;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,9 +28,8 @@ public final class RaceExperienceScreen extends Screen {
     private int scroll;
     private int contentHeight;
     private boolean progression;
-    private boolean abilityDetails;
     private int previewSlot;
-    private int previewTier = 1;
+    private int previewTier;
     private int previewBloom;
     private final AbilityPreviewRenderer abilityPreview = new AbilityPreviewRenderer();
     private Button previewLevel;
@@ -57,6 +57,7 @@ public final class RaceExperienceScreen extends Screen {
         this.race = Mth.clamp(status.race(), 0, 4);
         this.previewTier = tier();
         this.previewBloom = status.bloomUpgrade();
+        if(race==2) this.previewTier=this.previewBloom;
     }
 
     @Override protected void init() {
@@ -81,14 +82,12 @@ public final class RaceExperienceScreen extends Screen {
         confirm = addRenderableWidget(new QuietButton(panelLeft() + 12, bottom, panelWidth() - 24, 22,
                 Component.translatable("jem.roles.select"), b -> confirm()));
         int previewWidth = panelWidth() - 24;
-        int slotWidth = Math.max(22, previewWidth / 5);
+        int slotWidth = previewWidth / 2;
         addRenderableWidget(new QuietButton(panelLeft()+12, 75, slotWidth, 18, Component.literal("V"), b -> selectPreview(0)));
         addRenderableWidget(new QuietButton(panelLeft()+12+slotWidth, 75, slotWidth, 18, Component.literal("B / И"), b -> selectPreview(1)));
-        addRenderableWidget(new QuietButton(panelLeft()+12+slotWidth*2, 75, Math.max(28,previewWidth-slotWidth*2), 18,
-                text(abilityDetails ? "Назад" : "Подробнее", abilityDetails ? "Back" : "Details"), b -> {abilityDetails=!abilityDetails;scroll=0;rebuildWidgets();}));
         previewLevel=null;
-        if(height>=216) {
-        int controlsY=previewBottom()+2;
+        {
+        int controlsY=height>=216?previewBottom()+2:96;
         addRenderableWidget(new QuietButton(panelLeft()+12,controlsY,22,18,Component.literal("‹"),b->changePreviewTier(-1)));
         previewLevel=addRenderableWidget(new QuietButton(panelLeft()+36,controlsY,previewWidth-48,18,
                 Component.literal(""),b->changePreviewTier(1)));
@@ -97,7 +96,7 @@ public final class RaceExperienceScreen extends Screen {
         if (status.developerMode()) {
             int half=Math.max(44,(stage-28)/2);
             developerTier=addRenderableWidget(new QuietButton(12,height-28,half,20,
-                    Component.literal(""),b->SandboxNetwork.developerTier(tier()%3+1)));
+                    Component.literal(""),b->SandboxNetwork.developerTier((tier()+1)%4)));
             resetProgress=addRenderableWidget(new QuietButton(16+half,height-28,half,20,
                     text("DEV · сброс", "DEV · reset"),b->SandboxNetwork.developerReset()));
         }
@@ -139,7 +138,7 @@ public final class RaceExperienceScreen extends Screen {
     private void switchRace(int direction) {
         if (requested >= 0 || entryAt != 0) return;
         race = Math.floorMod(race + direction, RACES.length);
-        previewTier = tier(); previewBloom = race==2?status.bloomUpgrade():0; abilityPreview.reset();
+        previewTier = tier(); previewBloom = race==2?status.bloomUpgrade():0; if(race==2&&previewSlot==0)previewTier=previewBloom; abilityPreview.reset();
         turnDirection = direction;
         switchedAt = System.nanoTime();
         scroll = 0;
@@ -162,7 +161,8 @@ public final class RaceExperienceScreen extends Screen {
             developerTier.setMessage(text("DEV · уровень " + tier(), "DEV · tier " + tier()));
         }
         if (resetProgress != null) resetProgress.active = !busy && status.selected() && status.race() == race;
-        if (previewLevel != null) previewLevel.setMessage(Component.literal((previewSlot==0?"V":"B")+" · "+(race==2&&previewSlot==0?text("Корни ","Roots ").getString()+previewBloom:"I".repeat(previewTier)))
+        if (previewLevel != null) previewLevel.setMessage(Component.literal((previewSlot==0?"V":"B")+" · ")
+                .append(stageName(previewTier))
                 .append(text(previewUnlocked()?" · открыт":" · закрыт",previewUnlocked()?" · unlocked":" · locked")));
         for (int i = 0; i < bloomUnlocks.size(); i++) {
             int nextTier = i + 1;
@@ -220,10 +220,12 @@ public final class RaceExperienceScreen extends Screen {
                 race,previewSlot,previewTier,previewBloom,partialTick);
         else g.drawCenteredString(font,text("Нет совместимого VFX-предпросмотра", "No compatible VFX preview"),previewX+previewW/2,previewY+12,0xBFBFBF);
         }
-        int top = height>=216?previewBottom()+25:98, bottom = Math.max(top+1,height - 41);
+        int top = height>=216?previewBottom()+25:119, bottom = Math.max(top+1,height - 41);
         g.enableScissor(left + 9, top, right + 3, bottom);
-        List<Line> lines = abilityDetails ? abilityLines() : progression ? progressionLines() : originLines();
-        if(height<216)lines.add(0,new Line(text("Уменьши масштаб GUI для 3D-просмотра", "Reduce GUI scale to show the 3D preview"),0xD8BD8D));
+        List<Line> lines = abilityLines();
+        lines.add(Line.gap());
+        lines.addAll(progression ? progressionLines() : originLines());
+        if(height<216)lines.add(new Line(text("Уменьши масштаб GUI для 3D-просмотра", "Reduce GUI scale to show the 3D preview"),0xD8BD8D));
         int y = top - scroll;
         for (Line line : lines) {
             if (line.text() == null) { y += 7; continue; }
@@ -290,6 +292,7 @@ public final class RaceExperienceScreen extends Screen {
                 "All five strengths and two weaknesses are listed under Origin."), 0xBEBEBE));
         lines.add(Line.gap());
         lines.add(new Line(text("РАЗВИТИЕ", "PROGRESSION"), ACCENTS[race]));
+        lines.add(new Line(text("База · исходное умение без улучшений", "Base · initial ability without upgrades"), 0xD4EAC5));
         for (int i = 1; i <= 3; i++) lines.add(new Line(Component.literal(i <= tier() ? "◆ " : "◇ ")
                 .append(tr("tier.short." + i)), i <= tier() ? 0xD4EAC5 : 0x767676));
         lines.add(new Line(Component.translatable("jem.roles.progress", progress(), 30), 0xDEDEDE));
@@ -317,37 +320,76 @@ public final class RaceExperienceScreen extends Screen {
     }
 
     private int previewBottom() { return 96 + Mth.clamp((height-144)/2, 30, 102); }
-    private void selectPreview(int slot) { previewSlot=slot;abilityPreview.reset();scroll=0;rebuildWidgets(); }
+    private void selectPreview(int slot) {
+        previewSlot=slot;
+        if(race==2&&slot==0) previewTier=previewBloom;
+        abilityPreview.reset();scroll=0;rebuildWidgets();
+    }
     private void changePreviewTier(int direction) {
-        if(race==2&&previewSlot==0) { previewBloom=Math.floorMod(previewBloom+direction,4);previewTier=Math.max(1,previewBloom); }
-        else previewTier=Math.floorMod(previewTier-1+direction,3)+1;
+        previewTier=Math.floorMod(previewTier+direction,4);
+        if(race==2&&previewSlot==0) previewBloom=previewTier;
         abilityPreview.reset();scroll=0;updateButtons();
     }
-    private boolean previewUnlocked(){return race==2&&previewSlot==0?previewBloom<=status.bloomUpgrade():previewTier<=tier();}
+    private boolean previewUnlocked(){
+        return status.selected() && status.race()==race &&
+                (race==2&&previewSlot==0?previewTier<=status.bloomUpgrade():previewTier<=tier());
+    }
+    private Component stageName(int stage) {
+        return stage==0?text("База", "Base"):text("Уровень "+stage,"Level "+stage);
+    }
+    private static String number(double value) { return String.format(java.util.Locale.ROOT,"%.1f",value); }
     private List<Line> abilityLines() {
         List<Line> lines=new ArrayList<>();
-        lines.add(new Line(abilityName(),ACCENTS[race]));
-        lines.add(new Line(text("Только визуальный просмотр · мир не изменяется", "Visual inspection only · world unchanged"),0xA5A5A5));
-        lines.add(new Line(text(previewUnlocked()?"Открыто":"Закрыто · доступен просмотр",previewUnlocked()?"Unlocked":"Locked · inspection available"),previewUnlocked()?0xB5DBA4:0xC0A081));
-        if(previewSlot==0) {
+        lines.add(new Line(abilityName().copy().append(" · ").append(stageName(previewTier)),ACCENTS[race]));
+        if(!minecraft.hasSingleplayerServer()) {
             lines.add(new Line(tr("spell.detail"),0xDEDEDE));
-            String ru="",en="";
-            switch(race) {
-                case 0 -> {ru="Радиус "+(previewTier>=2?16:12)+" блоков; игрокам +6 HP; щиты −25% урона, 5 с";en="Radius "+(previewTier>=2?16:12)+" blocks; players +6 HP; wards −25% damage, 5s";
-                    if(previewTier>=2){ru+="; очищение";en+="; cleanse";} if(previewTier>=3){ru+="; поглощение при полном здоровье";en+="; absorption at full health";}}
-                case 1 -> {ru="Разлом: дальность "+(previewTier>=2?32:24)+" блока; настоящий удар ближнего боя";en="Rift: "+(previewTier>=2?32:24)+" block reach; actual melee strike";if(previewTier>=3){ru+="; замедление рядом с прибытием";en+="; slow around arrival";}}
-                case 2 -> {ru="Базовое попадание: 6 HP; корни: "+previewBloom+"/3";en="Initial hit: 6 HP; roots: "+previewBloom+"/3";if(previewBloom>=1){ru+="; блокировка действий";en+="; action lock";}if(previewBloom>=2){ru+="; сжатие 3 HP/с";en+="; constriction 3 HP/s";}if(previewBloom>=3){ru+="; яд";en+="; poison";}}
-                case 3 -> {ru="12 HP; радиус 8 блоков; один удар по цели";en="12 HP; 8 block radius; one hit per target";if(previewTier>=2){ru+="; отбрасывание";en+="; knockback";}if(previewTier>=3){ru+="; замедление 2 с";en+="; 2s slow";}}
-                case 4 -> {ru="Пять извержений; "+(4+2*previewTier)+" HP, огонь "+(2*previewTier)+" с";en="Five eruptions; "+(4+2*previewTier)+" HP, "+(2*previewTier)+"s fire";}
-            }
-            lines.add(new Line(text(ru,en),0xE5E5E5));
-        } else {
-            String[] ru={"Автоматический страж при здоровье ниже 40%; B не является атакой. V — Хор жизни.","Удерживай B 10 тиков: жемчуг с настоящей траекторией. Shift+B — отрицание гравитации на 5 с.","B включает и выключает временный Лиственный мост. Уровень не меняет его внешний вид.","B: при 25 резонанса — лечение +6 HP и поглощение; иначе Эхо-зрение. Это не удар по криперу.","B: настоящая цепочка трёх огненных рассечений. Уровень не добавляет новых ударов."};
-            String[] en={"Automatic guardian below 40% health; B is not an attack. V is Life Chorus.","Hold B for 10 ticks: pearl with its real trajectory. Shift+B denies gravity for 5 seconds.","B toggles the temporary Leaf Bridge. Tier does not change its appearance.","B: with 25 resonance, heal +6 HP and absorption; otherwise Echo Vision. This does not hit the Creeper.","B: the actual three fiery slashes. Tier adds no new combo hits."};
-            lines.add(new Line(text(ru[race],en[race]),0xDEDEDE));
-            lines.add(new Line(text("I–III используют ту же визуальную форму, если эффект не меняется.","I–III retain the same visual form when the effect does not change."),0xA5A5A5));
+            lines.add(new Line(text("Подключённый сервер использует собственное описание и правила расы. Этапы sandbox не изменяют этот контракт.",
+                    "The connected server owns its race descriptions and rules. Sandbox stages do not alter that contract."),0xBEBEBE));
+            return lines;
         }
-        if(minecraft.hasSingleplayerServer()) lines.add(new Line(text("Базовая перезарядка V: "+RaceExperience.signatureCooldown(race)/20+" с; sandbox-переопределение не меняет определение.","Base V cooldown: "+RaceExperience.signatureCooldown(race)/20+"s; sandbox override preserves the definition."),0xA5A5A5));
+        lines.add(new Line(text(previewUnlocked()?"Открыто":"Закрыто · доступен только просмотр",previewUnlocked()?"Unlocked":"Locked · inspection only"),previewUnlocked()?0xB5DBA4:0xC0A081));
+        String ru="", en="";
+        if(previewSlot==0) switch(race) {
+            case 0 -> {
+                ru="Радиус "+RacePowerStages.chorusRadius(previewTier)+" блоков; игрокам +6 HP; мирные животные и ездовой питомец полностью исцеляются. Щиты: −25% входящего урона на 5 с.";
+                en="Radius "+RacePowerStages.chorusRadius(previewTier)+" blocks; players +6 HP; peaceful animals and mount fully heal. Wards: −25% incoming damage for 5s.";
+                if(previewTier>=2){ru+=" Очищение отрицательных эффектов.";en+=" Cleanses harmful effects.";}
+                if(previewTier>=3){ru+=" При полном здоровье — поглощение.";en+=" At full health, grants absorption.";}
+            }
+            case 1 -> {
+                ru="Дальность разлома "+RacePowerStages.riftRange(previewTier)+" блока; телепортация и настоящий удар ближнего боя.";
+                en="Rift reach "+RacePowerStages.riftRange(previewTier)+" blocks; teleport and an actual melee strike.";
+                if(previewTier>=2){ru+=" Замедление у места прибытия: "+RacePowerStages.riftSlowTicks(previewTier)/20+" с, радиус "+RacePowerStages.riftSlowRadius(previewTier)+" блоков.";en+=" Arrival slow: "+RacePowerStages.riftSlowTicks(previewTier)/20+"s, radius "+RacePowerStages.riftSlowRadius(previewTier)+" blocks.";}
+            }
+            case 2 -> {
+                ru="Первое попадание: 6 HP; базовые корни ещё не блокируют действия.";en="Initial hit: 6 HP; base roots do not yet lock actions.";
+                if(previewTier>=1){ru+=" Блокировка действий.";en+=" Action lock.";}
+                if(previewTier>=2){ru+=" Сжатие: 3 HP/с.";en+=" Constriction: 3 HP/s.";}
+                if(previewTier>=3){ru+=" Яд.";en+=" Poison.";}
+            }
+            case 3 -> {
+                ru="12 HP; радиус 8 блоков; один удар по цели.";en="12 HP; 8-block radius; one hit per target.";
+                if(previewTier>=1){ru+=" Отбрасывание.";en+=" Knockback.";}
+                if(previewTier>=2){ru+=" Тьма на 5 с для игроков и мобов; дезориентация мобов без неуязвимости и заморозки.";en+=" Darkness for 5s for players and mobs; mob disorientation without invulnerability or freezing.";}
+                if(previewTier>=3){ru+=" Временный скалк: радиус 16, 10 с. Пока владелец внутри: размер и атака ×1,15.";en+=" Temporary sculk: radius 16, 10s. While owner stays inside: size and attack ×1.15.";}
+            }
+            case 4 -> {
+                ru="Пять извержений на каждом этапе. Урон одного: "+number(RacePowerStages.eruptionDamage(previewTier))+" HP; огонь "+RacePowerStages.fireSeconds(previewTier)+" с.";
+                en="Five eruptions at every stage. Damage per eruption: "+number(RacePowerStages.eruptionDamage(previewTier))+" HP; fire "+RacePowerStages.fireSeconds(previewTier)+"s.";
+            }
+        } else switch(race) {
+            case 0 -> {ru="Автоматический страж появляется при здоровье ниже 40%; срок жизни "+RacePowerStages.guardianTicks(previewTier)/20+" с. B не является атакой.";en="Automatic guardian appears below 40% health; lifetime "+RacePowerStages.guardianTicks(previewTier)/20+"s. B is not an attack.";}
+            case 1 -> {ru="Удерживай B 10 тиков: жемчуг с настоящей траекторией. Shift+B: отрицание гравитации на "+RacePowerStages.gravityTicks(previewTier)/20+" с.";en="Hold B for 10 ticks: pearl with its real trajectory. Shift+B: gravity denial for "+RacePowerStages.gravityTicks(previewTier)/20+"s.";}
+            case 2 -> {ru="B включает/выключает временный лиственный мост: "+RacePowerStages.bridgeTicks(previewTier)/20+" с, "+RacePowerStages.bridgeForward(previewTier)+" блоков вперёд.";en="B toggles a temporary leaf bridge: "+RacePowerStages.bridgeTicks(previewTier)/20+"s, "+RacePowerStages.bridgeForward(previewTier)+" blocks forward.";}
+            case 3 -> {ru="Без 25 резонанса: эхо-зрение в радиусе "+RacePowerStages.echoRadius(previewTier)+" блоков. При 25 резонанса: восстановление +"+RacePowerStages.recoveryHeal(previewTier)+" HP и поглощение на "+RacePowerStages.absorptionTicks(previewTier)/20+" с. Это разные контекстные действия.";en="Below 25 resonance: echo vision within "+RacePowerStages.echoRadius(previewTier)+" blocks. At 25 resonance: recover +"+RacePowerStages.recoveryHeal(previewTier)+" HP and absorption for "+RacePowerStages.absorptionTicks(previewTier)/20+"s. These are distinct contextual actions.";}
+            case 4 -> {ru="Всегда три последовательных огненных рассечения. Урон каждого: "+number(RacePowerStages.slashDamage(previewTier))+" HP; огонь "+RacePowerStages.fireSeconds(previewTier)+" с.";en="Always three successive fiery slashes. Each deals "+number(RacePowerStages.slashDamage(previewTier))+" HP; fire "+RacePowerStages.fireSeconds(previewTier)+"s.";}
+        }
+        lines.add(new Line(text(ru,en),0xE5E5E5));
+        lines.add(new Line(text("Просмотр не открывает умение и не меняет мир. Колесо над миниатюрой или уровнем меняет этап.",
+                "Inspection grants no abilities and changes no world. Scroll over the miniature or level to change stage."),0xA5A5A5));
+
+        if(previewSlot==1)lines.add(new Line(text("Длительные состояния показаны в сокращённом времени; реальная длительность указана выше.","Long states use compressed preview time; actual duration is shown above."),0xA5A5A5));
+        lines.add(new Line(text("Перезарядка V: "+RaceExperience.signatureCooldown(race)/20+" с; DEV отключает ожидание, сохраняя определение умения.","V cooldown: "+RaceExperience.signatureCooldown(race)/20+"s; DEV bypasses waiting while preserving the ability definition."),0xA5A5A5));
         return lines;
     }
     private Component abilityName(){
@@ -363,27 +405,33 @@ public final class RaceExperienceScreen extends Screen {
                 : Component.literal(String.format(java.util.Locale.ROOT, "%.1f s", remaining / 20.0)));
     }
 
-    private int tier() { return Mth.clamp(status.tiers()[race], 1, 3); }
+    private int tier() { return RacePowerStages.clamp(status.tiers()[race]); }
     private int progress() { return Math.max(0, status.progress()[race]); }
     private Component tr(String suffix) {
         if(!minecraft.hasSingleplayerServer())return Component.translatable("jem.roles.race."+RACES[race]+"."+suffix);
+        if(suffix.equals("mastery.detail"))return text("Успешные V и B развивают одну расу: база — 0; уровень I — 10, II — 20, III — 30 применений.",
+                "Successful V and B uses share race progression: Base at 0; level I at 10, II at 20, III at 30 uses.");
         if(race==0&&suffix.equals("spell.detail"))return text("Золотой фронт восстанавливает игрокам 3 сердца, полностью исцеляет мирных животных и текущего ездового питомца. Четыре щита уменьшают входящий урон на 25% на 5 секунд. Перезарядка: 25 секунд.","A golden front restores 3 hearts to players and fully heals peaceful animals and your living mount. Four wards reduce incoming damage by 25% for 5 seconds. Cooldown: 25 seconds.");
+        if(race==0&&suffix.equals("tier.short.1"))return text("I · радиус Хора 16 блоков", "I · Chorus radius 16 blocks");
+        if(race==0&&suffix.equals("tier.short.2"))return text("II · очищение", "II · cleanse");
+        if(race==0&&suffix.equals("tier.short.3"))return text("III · поглощение при полном здоровье", "III · absorption at full health");
         // Explicit sandbox contracts differ from production only in these authored abilities.
         if (race == 3) {
             if (suffix.equals("spell.short") || suffix.equals("buff.2")) return text("Звуковая волна [V]", "Sonic Wave [V]");
             if (suffix.equals("spell.detail") || suffix.equals("buff.detail.2")) return text(
                     "Расходящаяся звуковая волна поражает враждебных существ в радиусе 8 блоков: 12 урона, один раз по каждой цели.",
                     "An expanding sonic wave strikes hostile creatures within 8 blocks: 12 damage, once per target.");
-            if (suffix.equals("tier.short.1"))return text("I · 12 урона, радиус 8", "I · 12 damage, radius 8");
-            if (suffix.equals("tier.short.2"))return text("II · давление отбрасывает врагов", "II · pressure knocks enemies back");
-            if (suffix.equals("tier.short.3"))return text("III · эхо замедляет на 2 секунды", "III · echo slows for 2 seconds");
-            if (suffix.equals("mastery.detail")) return text("Успешные применения: 10 открывают II уровень, 30 — III.",
-                    "Successful uses: 10 unlock tier II, 30 unlock tier III.");
+            if (suffix.equals("tier.short.1"))return text("I · отбрасывание", "I · knockback");
+            if (suffix.equals("tier.short.2"))return text("II · тьма и дезориентация", "II · darkness and disorientation");
+            if (suffix.equals("tier.short.3"))return text("III · временный скалк и усиление внутри", "III · temporary sculk and empowerment inside");
+
         }
         if (race == 4 && suffix.equals("buff.3")) return text("Огненные рассечения [B]", "Fiery slashes [B]");
         if(race==4&&suffix.equals("spell.detail"))return text("Пять извержений идут вперёд по поверхности; перезарядка V — 60 секунд. B — сохранённая цепочка трёх рассечений.","Five eruptions advance along the surface; V cooldown is 60 seconds. B uses the preserved three-slash combo.");
-        if(race==4&&suffix.startsWith("tier.short.")){int t=suffix.charAt(suffix.length()-1)-'0';return text("Уровень "+t+": "+(4+2*t)+" урона, огонь "+(2*t)+" с", "Tier "+t+": "+(4+2*t)+" damage, "+(2*t)+"s fire");}
-        if(race==1&&suffix.equals("tier.short.2"))return text("II · дальность разлома 32 блока", "II · rift reach 32 blocks");
+        if(race==4&&suffix.startsWith("tier.short.")){int t=suffix.charAt(suffix.length()-1)-'0';return text("Уровень "+t+": "+number(RacePowerStages.eruptionDamage(t))+" урона, огонь "+RacePowerStages.fireSeconds(t)+" с", "Tier "+t+": "+number(RacePowerStages.eruptionDamage(t))+" damage, "+RacePowerStages.fireSeconds(t)+"s fire");}
+        if(race==1&&suffix.equals("tier.short.1"))return text("I · дальность разлома 32 блока", "I · rift reach 32 blocks");
+        if(race==1&&suffix.equals("tier.short.2"))return text("II · замедление 2 с, радиус 4", "II · slow 2s, radius 4");
+        if(race==1&&suffix.equals("tier.short.3"))return text("III · замедление 3 с, радиус 8", "III · slow 3s, radius 8");
         if (race == 4 && suffix.equals("buff.detail.3")) return text("B выполняет три последовательных огненных рассечения с рывками вперёд.",
                 "B performs three successive fiery slashes with forward pulls.");
         if (race == 2) {
@@ -405,7 +453,8 @@ public final class RaceExperienceScreen extends Screen {
 
     @Override public boolean mouseScrolled(double x, double y, double delta) {
         if (entryAt != 0 || requested >= 0) return true;
-        if (x >= panelLeft()) scroll = Math.max(0, scroll - (int) (delta * 30));
+        if (x >= panelLeft()+12 && x < width-12 && y>=96 && y<(height>=216?previewBottom()+20:114)) changePreviewTier(delta < 0 ? 1 : -1);
+        else if (x >= panelLeft()) scroll = Math.max(0, scroll - (int) (delta * 30));
         else switchRace(delta < 0 ? 1 : -1);
         return true;
     }

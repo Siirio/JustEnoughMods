@@ -18,9 +18,9 @@ import net.minecraftforge.network.simple.SimpleChannel;
 @Mod.EventBusSubscriber(modid="jem_visual_sandbox", bus=Mod.EventBusSubscriber.Bus.MOD)
 public final class SandboxNetwork {
     private static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
-            new ResourceLocation("jem_visual_sandbox", "skills"), () -> "4",
-            v -> "4".equals(v) || NetworkRegistry.ABSENT.equals(v) || NetworkRegistry.ACCEPTVANILLA.equals(v),
-            v -> "4".equals(v) || NetworkRegistry.ABSENT.equals(v) || NetworkRegistry.ACCEPTVANILLA.equals(v));
+            new ResourceLocation("jem_visual_sandbox", "skills"), () -> "5",
+            v -> "5".equals(v) || NetworkRegistry.ABSENT.equals(v) || NetworkRegistry.ACCEPTVANILLA.equals(v),
+            v -> "5".equals(v) || NetworkRegistry.ABSENT.equals(v) || NetworkRegistry.ACCEPTVANILLA.equals(v));
     public record Input(int action, int race) {
         static Input decode(FriendlyByteBuf buffer) { return new Input(buffer.readVarInt(), buffer.readVarInt()); }
         void encode(FriendlyByteBuf buffer) { buffer.writeVarInt(action); buffer.writeVarInt(race); }
@@ -46,7 +46,7 @@ public final class SandboxNetwork {
         static Status decode(FriendlyByteBuf b){
             int race=b.readVarInt();boolean selected=b.readBoolean();int[] tiers=new int[5],progress=new int[5];
             if(race< -1 || race>4)throw new IllegalArgumentException("Invalid race snapshot");
-            for(int i=0;i<5;i++){tiers[i]=b.readVarInt();progress[i]=b.readVarInt();if(tiers[i]<1||tiers[i]>3||progress[i]<0||progress[i]>30)throw new IllegalArgumentException("Invalid mastery snapshot");}
+            for(int i=0;i<5;i++){tiers[i]=b.readVarInt();progress[i]=b.readVarInt();if(tiers[i]<0||tiers[i]>3||progress[i]<0||progress[i]>30)throw new IllegalArgumentException("Invalid mastery snapshot");}
             long signature=b.readVarLong(),secondary=b.readVarLong();boolean developer=b.readBoolean();int bloom=b.readVarInt();
             if(signature<0||secondary<0||bloom<0||bloom>3)throw new IllegalArgumentException("Invalid cooldown snapshot");
             return new Status(new RaceExperience.Status(race,selected,tiers,progress,signature,secondary,developer,bloom));
@@ -79,12 +79,20 @@ public final class SandboxNetwork {
             context.setPacketHandled(true);
         }
     }
+    public record SculkScale(int entityId,boolean enlarged) {
+        static SculkScale decode(FriendlyByteBuf b){return new SculkScale(b.readVarInt(),b.readBoolean());}
+        void encode(FriendlyByteBuf b){b.writeVarInt(entityId);b.writeBoolean(enlarged);}
+        void handle(Supplier<NetworkEvent.Context> supplier){
+            var context=supplier.get();context.enqueueWork(()->com.siirio.jemvisualsandbox.client.races.SculkScaleClient.receive(this));context.setPacketHandled(true);
+        }
+    }
     @SubscribeEvent public static void setup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
             CHANNEL.messageBuilder(Input.class,0,NetworkDirection.PLAY_TO_SERVER).encoder(Input::encode).decoder(Input::decode).consumerMainThread(Input::handle).add();
             CHANNEL.messageBuilder(Visual.class,1,NetworkDirection.PLAY_TO_CLIENT).encoder(Visual::encode).decoder(Visual::decode).consumerMainThread(Visual::handle).add();
             CHANNEL.messageBuilder(Path.class,2,NetworkDirection.PLAY_TO_CLIENT).encoder(Path::encode).decoder(Path::decode).consumerMainThread(Path::handle).add();
             CHANNEL.messageBuilder(Status.class,3,NetworkDirection.PLAY_TO_CLIENT).encoder(Status::encode).decoder(Status::decode).consumerMainThread(Status::handle).add();
+            CHANNEL.messageBuilder(SculkScale.class,4,NetworkDirection.PLAY_TO_CLIENT).encoder(SculkScale::encode).decoder(SculkScale::decode).consumerMainThread(SculkScale::handle).add();
         });
     }
     public static void select(int race) { CHANNEL.sendToServer(new Input(0,race)); }
@@ -98,6 +106,9 @@ public final class SandboxNetwork {
     public static boolean supported(net.minecraft.network.Connection connection){return CHANNEL.isRemotePresent(connection);}
     static void sendStatus(ServerPlayer p,RaceExperience.Status value){
         if(CHANNEL.isRemotePresent(p.connection.connection))CHANNEL.send(PacketDistributor.PLAYER.with(()->p),new Status(value));
+    }
+    static void sculkScale(ServerPlayer p,boolean enlarged){
+        if(CHANNEL.isRemotePresent(p.connection.connection))CHANNEL.send(PacketDistributor.PLAYER.with(()->p),new SculkScale(p.getId(),enlarged));
     }
     public static void status(ServerPlayer p) {
         RaceExperience.snapshot(p);

@@ -13,7 +13,7 @@ import net.minecraftforge.client.event.RenderLevelStageEvent;
 
 /** Golden healing front, outward R7 shields and one connected guardian dome. */
 final class LifeChorusRenderer {
-    private record Scene(ClientLevel level,long start,int kind,int subject,Vec3 origin) {}
+    private record Scene(ClientLevel level,long start,int kind,int subject,Vec3 origin,float radius) {}
     private static final List<Scene> ACTIVE=new ArrayList<>();
     private static WorkbenchMesh shield;
     private static float centerX,centerY,centerZ,shieldScale;
@@ -22,7 +22,7 @@ final class LifeChorusRenderer {
     static void receive(SandboxNetwork.Visual p){
         var c=Minecraft.getInstance();if(c.level==null)return;
         if(ACTIVE.size()>=96)ACTIVE.remove(0);
-        ACTIVE.add(new Scene(c.level,c.level.getGameTime()+(p.action()==31?(int)p.yaw():0),p.action(),p.subject(),p.origin()));
+        ACTIVE.add(new Scene(c.level,c.level.getGameTime()+(p.action()==31?(int)p.yaw():0),p.action(),p.subject(),p.origin(),p.action()==30?Mth.clamp(p.yaw(),12,16):16));
     }
     static void render(RenderLevelStageEvent event){
         var c=Minecraft.getInstance();if(c.level==null || !c.hasSingleplayerServer()){clear();return;}
@@ -33,20 +33,24 @@ final class LifeChorusRenderer {
             var target=c.level.getEntity(s.subject);
             if(target==null || !target.isAlive())continue;
             Vec3 pos=target.getPosition(event.getPartialTick());
-            draw(VisualRenderContext.world(event),s.kind,s.origin,pos,target.getBbHeight(),age);
+            draw(VisualRenderContext.world(event),s.kind,s.origin,pos,target.getBbHeight(),age,s.radius);
         }
     }
     static void draw(VisualRenderContext context,int kind,Vec3 origin,Vec3 pos,float subjectHeight,float age) {
+        draw(context,kind,origin,pos,subjectHeight,age,16);
+    }
+    /** Detached previews supply stage reach; existing live callers retain their native radius. */
+    static void draw(VisualRenderContext context,int kind,Vec3 origin,Vec3 pos,float subjectHeight,float age,float chorusRadius) {
         if(age<0)return;
             if(kind==30){
                 if(age<14)goldSprite(context,pos.add(0,1.1,0),"gold_swirl",Math.min(15,(int)(age*16/14)),2.5F,1);
                 if(age>=7 && age<19){
-                    groundArt(context,origin,(float)(16*(age-6)/12),"gold_front",Math.min(10,4+(int)(age-7)/2),1);
+                    groundArt(context,origin,(float)(chorusRadius*(age-6)/12),"gold_front",Math.min(10,4+(int)(age-7)/2),1);
                 }
                 if(age>=19 && age<31){
-                    groundArt(context,origin,16,"gold_front",Math.min(15,10+(int)(age-19)/2),(31-age)/12);
+                    groundArt(context,origin,chorusRadius,"gold_front",Math.min(15,10+(int)(age-19)/2),(31-age)/12);
                 }
-                if(age>=12 && age<27)groundArt(context,origin,(float)(16*(age-11)/15),"gold_front",10,.2F*(27-age)/15);
+                if(age>=12 && age<27)groundArt(context,origin,(float)(chorusRadius*(age-11)/15),"gold_front",10,.2F*(27-age)/15);
                 if(age>=18 && age<118){
                     float alpha=Math.min(1,(age-18)/4)*Math.min(1,(118-age)/10);
                     for(int i=0;i<4;i++){

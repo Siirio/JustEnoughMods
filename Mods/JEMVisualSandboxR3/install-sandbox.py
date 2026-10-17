@@ -35,8 +35,11 @@ def main():
         assert archive.testzip() is None, 'Corrupt artifact'
         assert 'JEM-Race-Profile: SANDBOX' in archive.read('META-INF/MANIFEST.MF').decode()
         for name in ['WorkbenchMesh', 'RaceOwnedEffects', 'RaceOwnedEffects$Grant',
-                     'AbilityPreviewPresentation', 'RaceDevelopment', 'VisualRenderContext']:
+                     'AbilityPreviewPresentation', 'RaceDevelopment', 'VisualRenderContext', 'RacePowerStages', 'SculkDomain']:
             assert f'com/siirio/jemvisualsandbox/workbench/{name}.class' in archive.namelist(), name
+    with zipfile.ZipFile(source) as archive:
+        for name in ['SculkPlayerScaleMixin', 'TemporarySculkGrowthMixin']:
+            assert f'com/siirio/jemvisualsandbox/mixin/{name}.class' in archive.namelist(), name
     mods = profile / 'mods'
     previous = []
     for path in mods.glob('*.jar'):

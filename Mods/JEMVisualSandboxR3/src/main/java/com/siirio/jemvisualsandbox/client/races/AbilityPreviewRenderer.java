@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexSorting;
 import com.siirio.jemvisualsandbox.workbench.AbilityPreviewPresentation;
+import com.siirio.jemvisualsandbox.workbench.RacePowerStages;
 import com.siirio.jemvisualsandbox.workbench.VisualRenderContext;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -86,12 +87,13 @@ public final class AbilityPreviewRenderer {
         }
         previousFrame = now;
         float ticks = (float)(elapsed * 20), age = ticks - 6;
-        Vec3 position = presentation.playerPosition(race, slot, age);
+        Vec3 position = presentation.playerPosition(race, slot, tier, age);
         int poseTick = (int)ticks;
         if (poseTick != lastPoseTick) {
             int deltaTicks = lastPoseTick < 0 || poseTick < lastPoseTick ? 1 : poseTick - lastPoseTick;
             float stride = (float)Math.min(1, position.subtract(lastPosePosition).horizontalDistance() * 4 / deltaTicks);
             actor.walkAnimation.update(stride, .4F);
+            target.walkAnimation.update(race==1&&slot==0&&age>=14&&age<74?(tier>=3?.075F:tier>=2?.135F:.36F):0,.4F);
             lastPoseTick = poseTick; lastPosePosition = position;
         }
         float attack = age >= -6 && age < 0 ? (age + 6) / 6 : 0;
@@ -111,8 +113,19 @@ public final class AbilityPreviewRenderer {
         Vec3 targetPosition = AbilityPreviewPresentation.TARGET;
         if (slot == 0 && race == 0 && age >= 12)
             targetPosition = targetPosition.add(Math.min(1.1, (age - 12) * .12) * (1 - smooth((age - 55) / 30)), 0, 0);
-        if (race == 3 && slot == 0 && tier >= 2 && age >= 15)
+        if (race == 3 && slot == 0 && tier >= 1 && age >= 15)
             targetPosition = targetPosition.add(.6 * smooth((age - 15) / 6) * (1 - smooth((age - 45) / 24)), 0, 0);
+
+        if(race==1 && slot==0 && age>=14 && age<74) {
+            float pace=tier>=3?.025F:tier>=2?.045F:.12F;
+            targetPosition=targetPosition.add(0,0,Math.sin((age-14)*pace)*.55);
+        }
+        // Detached pose feedback represents mob disorientation, never target immunity.
+        if(race==3 && slot==0 && tier>=2 && age>=15 && age<78) {
+            target.yHeadRot=90+(float)Math.sin(age*.55)*32;
+        }
+        // Fire duration and strength belong to the server; only the dummy's flag is drawn here.
+        target.setSharedFlagOnFire(race==4 && hit>=0 && hit<RacePowerStages.fireSeconds(tier)*20);
 
         graphics.flush();
         double sx = client.getWindow().getWidth() / (double)graphics.guiWidth();
@@ -166,14 +179,26 @@ public final class AbilityPreviewRenderer {
             dispatcher.overrideCameraOrientation(new Quaternionf().setFromNormalized(new Matrix3f(view)).conjugate());
             PoseStack poses = new PoseStack();
             poses.last().pose().set(view); poses.last().normal().set(new Matrix3f(view));
+            boolean domain=AbilityPreviewPresentation.sculkDomainActive(race,slot,tier,age);
+            if(domain) {
+                // Native blocks on a fixed detached patch: no setBlock, world queue or terrain mutation.
+                for(int dx=-2;dx<=2;dx++)for(int dz=-2;dz<=2;dz++) {
+                    if(dx*dx+dz*dz>5)continue;
+                    poses.pushPose();poses.translate(position.x+dx-.5,-1,position.z+dz-.5);
+                    client.getBlockRenderer().renderSingleBlock(Blocks.SCULK.defaultBlockState(),poses,buffers,15728880,OverlayTexture.NO_OVERLAY);
+                    poses.popPose();
+                }
+                poses.pushPose();poses.translate(position.x,position.y,position.z);poses.scale(1.15F,1.15F,1.15F);poses.translate(-position.x,-position.y,-position.z);
+            }
             drawEntity(actor, position, poses, partialTick);
+            if(domain)poses.popPose();
             drawEntity(target, targetPosition, poses, partialTick);
-            if (race == 0 && slot == 1 && age >= 0 && age < 64)
+            if (race == 0 && slot == 1 && age >= 0 && age < 32+RacePowerStages.guardianTicks(tier)/25F)
                 drawEntity(guardian, AbilityPreviewPresentation.PLAYER.add(1.5, 0, -1), poses, partialTick);
             if (race == 1 && slot == 1 && age >= 0 && age < AbilityPreviewPresentation.PEARL_FLIGHT_TICKS)
                 drawEntity(pearl, AbilityPreviewPresentation.pearlPosition(age), poses, partialTick);
             if (race == 2 && slot == 1 && age >= 0 && age < 80) {
-                for (int i = -1; i < 5; i++) for (int z = -1; z <= 1; z++) {
+                for (int i = -1; i <= RacePowerStages.bridgeForward(tier); i++) for (int z = -1; z <= 1; z++) {
                     if (age < Math.max(0, i) * 4) continue;
                     poses.pushPose(); poses.translate(-3.5 + i, -1, z - .5);
                     client.getBlockRenderer().renderSingleBlock(Blocks.OAK_LEAVES.defaultBlockState(), poses, buffers, 15728880, OverlayTexture.NO_OVERLAY);
@@ -204,7 +229,41 @@ public final class AbilityPreviewRenderer {
             if (oldBlend) RenderSystem.enableBlend(); else RenderSystem.disableBlend();
             if (oldCull) RenderSystem.enableCull(); else RenderSystem.disableCull();
         }
+        // These captions state the conditional beat; they do not claim a second cast or a world effect.
+        String caption=caption(race,slot,tier,age);
+        if(!caption.isEmpty())graphics.drawString(client.font,
+                client.font.plainSubstrByWidth(caption,Math.max(1,width-8)),x+4,y+4,0xD6D6D6,false);
     }
+
+    private static String caption(int race,int slot,int tier,float age) {
+        boolean ru=Minecraft.getInstance().options.languageCode.startsWith("ru");
+        if(age<0)return ru?"Подготовка":"Preparing";
+        if(slot==0) return switch(race) {
+            case 0 -> age<13?(ru?"Исцеление · радиус ":"Healing · radius ")+RacePowerStages.chorusRadius(tier)
+                    :tier>=3?(ru?"Полное HP → поглощение":"Full HP → absorption")
+                    :tier>=2?(ru?"Очищение отрицательных эффектов":"Cleansing harmful effects"):(ru?"Щиты · −25% урона · 5 с":"Wards · −25% damage · 5s");
+            case 1 -> tier>=2&&age>=14?(ru?"Замедление ":"Slow ")+RacePowerStages.riftSlowTicks(tier)/20+(ru?" с · радиус ":"s · radius ")+RacePowerStages.riftSlowRadius(tier)
+                    :(ru?"Дальность ":"Reach ")+RacePowerStages.riftRange(tier);
+            case 2 -> tier>=3?(ru?"Блокировка · сжатие · яд":"Action lock · constriction · poison")
+                    :tier>=2?(ru?"Блокировка · сжатие 3 HP/с":"Action lock · constriction 3 HP/s")
+                    :tier>=1?(ru?"Блокировка действий":"Action lock"):(ru?"Базовое попадание · 6 HP":"Initial hit · 6 HP");
+            case 3 -> AbilityPreviewPresentation.sculkDomainActive(race,slot,tier,age)?(ru?"Внутри скалка: размер / атака ×1,15":"Inside sculk: size / attack ×1.15")
+                    :tier>=2&&age>=15?(ru?"Тьма · дезориентация":"Darkness · disorientation")
+                    :tier>=1&&age>=15?(ru?"Отбрасывание":"Knockback"):(ru?"12 HP · радиус 8":"12 HP · radius 8");
+            case 4 -> (ru?"5 извержений · ":"5 eruptions · ")+decimal(RacePowerStages.eruptionDamage(tier))+" HP · "+RacePowerStages.fireSeconds(tier)+(ru?" с огня":"s fire");
+            default -> "";
+        };
+        return switch(race) {
+            case 0 -> (ru?"HP < 40% · страж ":"HP < 40% · guardian ")+RacePowerStages.guardianTicks(tier)/20+(ru?" с":"s");
+            case 1 -> age<24?(ru?"B · заряженный жемчуг":"B · charged pearl"):("Shift+B · "+RacePowerStages.gravityTicks(tier)/20+(ru?" с без гравитации":"s gravity denial"));
+            case 2 -> (ru?"Мост ":"Bridge ")+RacePowerStages.bridgeForward(tier)+(ru?" вперёд · ":" forward · ")+RacePowerStages.bridgeTicks(tier)/20+(ru?" с":"s");
+            case 3 -> age<40?(ru?"Резонанс <25 · эхо ":"Resonance <25 · echo ")+RacePowerStages.echoRadius(tier)
+                    :(ru?"Резонанс ≥25 · +":"Resonance ≥25 · +")+RacePowerStages.recoveryHeal(tier)+" HP · "+RacePowerStages.absorptionTicks(tier)/20+(ru?" с":"s");
+            case 4 -> (ru?"3 рассечения · ":"3 slashes · ")+decimal(RacePowerStages.slashDamage(tier))+" HP · "+RacePowerStages.fireSeconds(tier)+(ru?" с огня":"s fire");
+            default -> "";
+        };
+    }
+    private static String decimal(double value){return String.format(java.util.Locale.ROOT,"%.1f",value);}
 
     private static void face(LivingEntity entity, float yaw) {
         entity.yBodyRot = entity.yBodyRotO = yaw; entity.yHeadRot = entity.yHeadRotO = yaw;

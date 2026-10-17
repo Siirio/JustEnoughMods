@@ -1,7 +1,7 @@
 """Build a standalone sandbox adapter from canonical JEMRoles signature methods.
 
 Gameplay algorithms remain owned by JEMRoles, not a second hand-maintained copy.
-Sandbox-only differences: tier 3, unlimited selection, no cooldown/account gates,
+Sandbox-only differences: four earned stages, build-selected development hooks,
 new authored emission and explicit source-owned standalone ability overrides.
 """
 from pathlib import Path
@@ -46,6 +46,13 @@ body = body.replace('RaceVfxPacket.MAX_PATH_POINTS', path_limit).replace('RaceEn
 body = body.replace('target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 90, 4));', 'target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 90, 4));\n        SandboxHostileControl.bind(player, target);')
 body = body.replace('if (tier >= 2) spawnVoidEcho(player, departure);', 'SandboxHostileControl.refreshTargets(player);')
 body = body.replace('private static void echoVision(', 'public static void echoVision(')
+body = body.replace('if (tier >= 3) for (LivingEntity nearby : player.serverLevel().getEntitiesOfClass(LivingEntity.class, target.getBoundingBox().inflate(4), e -> e != player && e != target))',
+                    'if (RacePowerStages.riftSlowTicks(tier) > 0) for (LivingEntity nearby : player.serverLevel().getEntitiesOfClass(LivingEntity.class, target.getBoundingBox().inflate(RacePowerStages.riftSlowRadius(tier)), e -> e != player && e != target))')
+body = body.replace('nearby.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 40, 2));',
+                    'nearby.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, RacePowerStages.riftSlowTicks(tier), 2));')
+# Echo's scan and the utility preflight use the same canonical stage radius.
+body = body.replace(method('echoVision').replace('private static void echoVision(', 'public static void echoVision('),
+                    method('echoVision').replace('private static void echoVision(', 'public static void echoVision(').replace('inflate(32)', 'inflate(RacePowerStages.echoRadius(RaceExperience.tier(player)))'))
 head = '''
 /** Generated from canonical signature source. Never edit generated output. */
 @net.minecraftforge.fml.common.Mod.EventBusSubscriber(modid="jem_visual_sandbox")
@@ -69,10 +76,10 @@ public final class SandboxSkills {
         ZONES.removeIf(zone -> zone.owner.equals(player.getUUID()));
         ERUPTIONS.removeIf(eruption -> eruption.owner.equals(player.getUUID()));
     }
-    public static LivingEntity riftTarget(ServerPlayer player) { return target(player,RaceExperience.tier(player)>=2?32:24); }
+    public static LivingEntity riftTarget(ServerPlayer player) { return target(player,RacePowerStages.riftRange(RaceExperience.tier(player))); }
     public static boolean commitRift(ServerPlayer player, UUID id) {
         var entity=player.serverLevel().getEntity(id);
-        if (!(entity instanceof LivingEntity target) || !target.isAlive() || player.distanceToSqr(target)>Math.pow(RaceExperience.tier(player)>=2?32:24,2)) { fail(player,"target_required");return false; }
+        if (!(entity instanceof LivingEntity target) || !target.isAlive() || player.distanceToSqr(target)>Math.pow(RacePowerStages.riftRange(RaceExperience.tier(player)),2)) { fail(player,"target_required");return false; }
         Vec3 behind=target.position().subtract(target.getLookAngle().normalize().scale(1.8));
         BlockPos safe=SandboxEnvironment.nearestSafe(player,player.serverLevel(),BlockPos.containing(behind),3,true).orElse(null);
         if(safe==null) { fail(player,"no_safe_destination");return false; }
@@ -96,7 +103,7 @@ records = source[source.index('    private enum ZoneType'):source.rfind('}')]
 (OUT / 'SandboxSkills.java').write_text('package com.siirio.jemvisualsandbox.workbench;\n' + imports + '\n' + head + body + '\n' + records + '}\n', encoding='utf-8')
 environment = (OWNER / 'RaceEnvironment.java').read_text(encoding='utf-8').replace('package com.siirio.jemroles.trait;', 'package com.siirio.jemvisualsandbox.workbench;').replace('RaceEnvironment', 'SandboxEnvironment')
 (OUT / 'SandboxEnvironment.java').write_text('// Generated from JEMRoles canonical environment source.\n' + environment, encoding='utf-8')
-receipt = {'owner':'Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait', 'methods':methods, 'raceAbilitiesSha256':hashlib.sha256((OWNER/'RaceAbilities.java').read_bytes()).hexdigest(), 'sandboxOverrides':['server-owned mastery 0/10/30 uses','normal persisted cooldowns','build-selected SANDBOX integrated-owner cooldown/selection hooks; PRODUCTION sealed hooks','Void: native End portal tear and tick14 safe teleport; remove old decoy redirection and refresh real target','Bloom: base6 damage once; upgrades1=90tick action lock,2=3 damage/second,3=Poison once; chunky roots retained','Sculk: radial sonic wave8 damage once per hostile; no traversal; utility retained','Nether V: independently resolved +/-10Y eruptions, continuous ground scar and fire-wall VFX','Nether B (Russian И): approved FierySlash with unchanged assets, timing and pulls']}
+receipt = {'owner':'Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait', 'methods':methods, 'raceAbilitiesSha256':hashlib.sha256((OWNER/'RaceAbilities.java').read_bytes()).hexdigest(), 'sandboxOverrides':['server-owned stages Base/1/2/3 at 0/10/20/30 successful signature or utility uses','normal persisted cooldowns','build-selected SANDBOX integrated-owner cooldown/selection hooks; PRODUCTION sealed hooks','Void: native End portal tear and tick14 safe teleport; remove old decoy redirection and refresh real target','Bloom: base6 damage once; upgrades1=90tick action lock,2=3 damage/second,3=Poison once; chunky roots retained','Sculk: radial8block sonic wave12damage; stage1knockback,2darkness100ticks plus mobdisorientation,3temporary radius16domain200ticks with owner size/attack1.15 inside; stage-scaled utility','Nether V: independently resolved +/-10Y eruptions, continuous ground scar and fire-wall VFX','Nether V/B stage damage 3.4/5.1/6.8/8.5, fire 1/2/4/6 seconds; B retains three cuts, timing, pulls and collision']}
 (BUILD / 'generated-skills.json').write_text(json.dumps(receipt, indent=2)+'\n')
 
 path_source = (OWNER / 'TemporaryPathSavedData.java').read_text(encoding='utf-8').replace('package com.siirio.jemroles.trait;', 'package com.siirio.jemvisualsandbox.workbench;').replace('TemporaryPathSavedData','SandboxPathData').replace('jem_race_paths','jem_sandbox_paths')

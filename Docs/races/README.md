@@ -5,7 +5,7 @@
 The source-owned standalone installation is `Mods/JEMVisualSandboxR3`; its mod ID
 remains `jem_visual_sandbox` to preserve existing sandbox data and resources.
 `JemRacesSandbox` is now the real source entrypoint. The obsolete binary-backed
-race gallery is not composed into the JAR. The production artifact is
+race gallery is not composed into the JAR. The sandbox artifact is
 explicit `sandboxJar` output `build/sandbox-profile/libs/jem-races-1.1.0-sandbox.jar`, installed only in the existing
 `jem sandbox` profile. The `productionJar` output is `build/production-profile/libs/jem-races-1.1.0.jar`; ordinary `jar` defaults to production. The previous sandbox JAR is backed up outside `mods`.
 
@@ -38,32 +38,24 @@ are restored when the screen ends or is removed.
 
 `RaceExperience.Store` owns one UUID record per integrated world, saved as
 `jem_races_standalone`. It preserves the selected race, active time, per-race
-successful signature uses, Bloom upgrades and per-race expiry-based cooldowns.
+successful signature/utility uses, Bloom upgrades and per-race expiry-based cooldowns.
 Death does not copy transient entity state into a second progression owner.
 Existing explicit sandbox selections and previously unlocked Bloom stages
 migrate once; new normal saves never auto-unlock everything.
 
-All five races start at tier I;10 successful signatures unlock tier II,30 unlock
-III, matching the established production mastery thresholds. Invalid targets,
-blocked casts and rejected Rift arrival do not grant mastery or a fresh cooldown.
-The tier at cast time is retained for delayed effects. Normal selection retains
-the established one free change before30minutes of active time; developer
-selection is a separate temporary override. This sandbox keeps per-race mastery
-so ordinary browsing/developer switches cannot erase earned progress.
+All five races now have four distinct stages: Base (0),1,2,3. Successful real V/B results share each race's saved mastery counter:10 uses unlock1,20 unlock2,30 unlock3. Failed casts, charging, empty path toggles and preview browsing grant nothing. Existing earned counters remain saved; the new thresholds intentionally replace the previous1/2/3 mapping. A delayed cast retains its captured stage. Normal production choice/cooldown rules remain; SANDBOX retains unlimited switching and zero expiry.
 
-| Race | Signature progression | Utility / preserved identity |
+| Race | V: Base →1 →2 →3 | B / contextual progression |
 | --- | --- | --- |
-| Ancestors | Life Chorus:12-block healing at I;16-block radius and harmful-effect cleanse at II; full-health absorption boon at III. All tiers retain5-second25% caster damage reduction and four large outward-facing shields. | Automatic invulnerable guardian below40%health, normal guardian cooldown and oath; golden healing responses include the ridden living mount. No floor runes. |
-| Void Walkers | Rift Ambush:24-block targeted melee ambush;32-block reach at II; nearby slowdown at III. The previously rejected decoy is not restored. | Hold B at least10ticks for a real pearl; Shift+B gives100ticks of gravity denial. Water/void safety and End-kin neutrality retain their owners. |
-| Born in Bloom | The approved6-damage root bind stays. Sequential I action lock, II3damage/second constriction, III poison are manually activated from progression once the corresponding mastery tier is reached. | B toggles the unchanged temporary Leaf Bridge generator, with a15-second activation cooldown. Second Blossom/environmental passives preserved. |
-| Infected by Sculk | Sonic Wave is the approved replacement of sandbox traversal:8-block radius,12HP (previous8HP plus the requested4HP), one hit per enemy. II adds pressure knockback;III adds a2-second slow. | Echo Vision and25-resonance heal/absorption remain. Underground strength/health, daylight/fire weaknesses, XP and resonance retain their canonical formulas. |
-| Nether Hearteds | Five authored outward eruptions retain their shape/timing:6/8/10damage with2/4/6seconds fire at tiers I/II/III. | The liked three-hit B fiery-slash combo remains unchanged; lava immunity/swimming/drinking, piglin neutrality, cold and water weakness are preserved. |
+| Ancestors |12-block healing →16-block radius →cleansing →full-health absorption. All retain6HP player healing, full peaceful-animal/mount healing and25% caster ward for5s. | Automatic guardian below40% health lasts30/40/50/60s; B remains contextual, not an invented attack. |
+| Void Walkers |24-block rift →32-block reach →2s slow within4blocks →3s slow within8blocks. Actual melee strike and safe arrival retained. | Pearl charge remains10ticks with real collision; Shift+B gravity lasts5/6/7/8s. |
+| Born in Bloom |6HP base hit and visual roots →action lock →3HP/s constriction →poison. Unlocks remain sequential and cannot exceed mastery stage. Base does not immobilize. | Leaf Bridge lifetime40/50/60/70s and forward reach2/3/4/5blocks;15s normal activation cooldown retained. |
+| Infected by Sculk |12HP hostile-only wave, radius8 →knockback →5s Darkness on all nearby other mobs/players plus confused mob aim →10s temporary sculk territory radius16. Owner inside gets size and attack×1.15. | Echo range32/40/48/56; at25resonance instead restore6/7/8/9HP and grant absorption20/25/30/35s. Real cost remains25. |
+| Nether Hearteds |Five eruptions at every stage; damage3.4/5.1/6.8/8.5HP each, fire1/2/4/6s. | Three authored slashes keep timing, pull and collision; each uses the same stage damage/fire. Lava and environmental passives retain their owners. |
 
-The user requested all-race progression and preservation of established powers.
-The Sonic II/III control effects and Nether tier scaling are Codex implementation
-choices adapting existing normal tier progression to the newer approved sandbox
-skills. They are not previously user-approved mechanics. Current UI displays these
-actual standalone values rather than the old traversal/decoy descriptions.
+The user explicitly requested four stages, B development,15% lower Nether power damage, and Sculk knockback/darkness/territory. Codex chose the exact new Base values, shared10/20/30 V/B thresholds, utility scaling,5s Darkness and10s territory. Nether levels1–3 keep their previous6/8/10 direct-damage basis multiplied by0.85; Base adds4×0.85. Native ongoing fire damage remains native. These are implementation choices, not prior user-approved balance values.
+
+Sculk uses native Darkness and lets mob health, effects and movement continue. Confused mobs forget targets, look/wander/swing toward random directions and cannot land their own immediate hits; player Darkness affects vision without disabling player controls. Wave damage still targets hostile mobs only. The domain changes only exposed loaded solid ground without inventories, fluids or unbreakables. Original block states are saved; restoration survives unloaded chunks/restarts, with distinct per-cast IDs,4096 pending tiles per dimension and128 inspected changes per tick. Piston/break/explosion and native catalyst propagation cannot farm temporary ground. No chunks are force-loaded. Exit, expiry, death, logout or race change removes the boost; enlargement waits for body clearance. Unrelated later block edits are not overwritten. Real gameplay, save recovery and rendering remain unverified by a game launch.
 
 Default signature cooldowns come from the canonical `JEMRoles` rules where
 applicable:25s Ancestors/Bloom,60s Void/Nether,20s Sculk. The standalone common
@@ -77,9 +69,9 @@ The SANDBOX build automatically enables zero cooldowns and unlimited race switch
 
 The PRODUCTION build compiles a sealed no-op `RaceDevelopment` alternative. It contains no developer command or authoritative development action handler; `/jemrace developer` was removed. Normal selection retains its one free change before30minutes and normal cooldowns. Sandbox-only `DevelopmentTier*`/`DevelopmentBloomUpgrade` saved fields are ignored by production. No client-editable option, hidden packet or gamerule can enable unrestricted production switching. Do not install the `-sandbox` artifact on MineRENT; use the explicit production artifact. This task does not deploy either to the canonical pack or dedicated host.
 
-F6 provides a **Switch Race** confirmation when browsing a different race in sandbox. Successful selection clears old race-owned timelines, passives, effects and modifiers before applying the new race; snapshots refresh HUD/key/presentation state. Normal per-race earned progress survives swaps. **DEV tier** cycles the selected race's actual testing tier I–III; **DEV reset** returns only its development overrides to tierI/Bloom base without deleting earned mastery.
+F6 provides a **Switch Race** confirmation when browsing a different race in sandbox. Successful selection clears old race-owned timelines, passives, effects and modifiers before applying the new race; snapshots refresh HUD/key/presentation state. Normal per-race earned progress survives swaps. **DEV tier** cycles the selected race's actual testing Base/1/2/3; **DEV reset** returns only its development overrides to Base0/Bloom base without deleting earned mastery.
 
-The compact black 3D viewport is shared by origin, progression and ability details. V/B buttons select the real signature or utility; arrows inspect tiersI–III and Bloom base0/upgradesI–III, including locked stages, without granting progression. **Details** shows actual characteristics, changes and status. Current-player skin and a detached vanilla Creeper are rendered through native entity renderers. Ancestors B is explicitly automatic guardian rather than a fabricated B attack; Void B shows pearl/gravity variants, Sculk B shows echo/healing variants. Existing VFX draw routines accept a detached presentation context; preview scenes do not enqueue gameplay effects, cast spells, damage entities, send action packets or insert entities into a world. Their clock/resources stop with the screen.
+The compact black 3D viewport is shared by origin, progression and ability details. V/B buttons select the real signature or utility; arrows or wheel inspect Base/1/2/3 for both V and B, including locked stages, without granting progression. The selected stage immediately shows its actual characteristics, changes and status below the animation. Current-player skin and a detached vanilla Creeper are rendered through native entity renderers. Ancestors B is explicitly automatic guardian rather than a fabricated B attack; Void B shows pearl/gravity variants, Sculk B shows echo/healing variants. Existing VFX draw routines accept a detached presentation context; preview scenes do not enqueue gameplay effects, cast spells, damage entities, send action packets or insert entities into a world. Their clock/resources stop with the screen.
 
 The standalone preview contract applies to the standalone abilities. A native dedicated JEMRoles connection keeps its native descriptions and reports preview unavailable where that different ability contract cannot be represented faithfully; it is never shown a misleading standalone Sonic/eruption simulation. Both build profiles retain the standalone animated preview feature.
 
@@ -143,3 +135,5 @@ accounts across nicknames nor copies server identity state.
   Their old plans/receipts do not override this current source contract.
 
 Sandbox installation: close `jem sandbox`, then run `python Mods/JEMVisualSandboxR3/install-sandbox.py` from the repository root. This guarded installer refuses a running profile and replaces the complete verified JAR atomically. Never copy over a loaded mod JAR.
+
+F6 stage arrows or scrolling over the miniature/stage selector immediately update the description below it. There is no separate Description tab. Scrolling the text panel still scrolls text. Inspection never grants a stage; DEV changes the actual sandbox stage. Optional Iron native spell levels1–4 project these four stages without owning progression. The sandbox network contract is now5; no MineRENT/managed-pack deployment is performed.

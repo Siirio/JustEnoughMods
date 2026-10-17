@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-17 — Four-stage race progression and Sculk territory
+
+- User request: distinct Base/1/2/3 for all races, descriptions immediately follow F6 stage scrolling with no separate Description tab, real B development,15% lower Nether power damage and cumulative Sculk knockback, Darkness and temporary territory with15% size/attack.
+- Codex choices: shared saved V/B success progression0/10/20/30; one canonical RacePowerStages value source; utility duration/range/heal scaling; Nether Base3.4 and levels1–3at5.1/6.8/8.5 directHP, preserving prior6/8/10 basis×0.85; fire1/2/4/6s remains native damage. No invented extra B combo hits or guardian attack key.
+- Sculk:12HP wave radius8; stage1knockback,2Darkness5s to other mobs/players with wandering/missed mob attacks,3temporary native sculk radius16for10s. Owner inside has size/eye height×1.15 with clearance and attack damage×1.15; normal underground passive stays distinct. Original floors persist for restoration; cast IDs/expiry,128-entry rotation,4096tile cap, no chunk loading, no inventory/unbreakable replacement, no temporary-block farming or catalyst propagation.
+- Bug / Both Sided / tier mapping began at1 and separate Details state hid changes during level browsing / in testing. Resolution: authoritative Base0 and common four-stage selection/description, including B and native Iron projection1–4. Existing earned Uses survive; Bloom saved unlocks remain and effective upgrade cannot exceed selected stage.
+- SANDBOX retains zero cooldown/unlimited selection; PRODUCTION retains sealed cheat gates and normal restrictions. Both retain the new real progression/preview mechanics. Dedicated JEMRoles, Client/ManagedPack, ordinary Server, stable profiles and MineRENT are unchanged; native AutoModpack generation20 stays published.
+- Production builds/artifact installation and source review recorded in Docs/races/sandbox-delivery.json. No automated tests, gameplay launch or visual acceptance; actual AI, size/collision, restoration and UI readability await player review. Closed-profile atomic installation prevents the previous live-JAR overwrite crash.
+
 ## 2026-10-17 — Sandbox race overrides and animated ability previews
 
 - User request: remove cooldowns and race-switch limits for sandbox testing, preserve normal costs/collisions and production definitions, expose testing progression controls, and add permanent native3D player/Creeper V/B previews for every real tier. B includes Russian physical И. No invented progression or hostile hit for healing/defense.

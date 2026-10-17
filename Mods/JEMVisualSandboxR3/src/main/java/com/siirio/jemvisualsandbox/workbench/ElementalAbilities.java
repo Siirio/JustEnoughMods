@@ -86,7 +86,7 @@ public final class ElementalAbilities {
                 if(index<5) {
                     Vec3 spot=w.spots.get(index);
                     if(spot!=null)for(LivingEntity target:p.serverLevel().getEntitiesOfClass(LivingEntity.class,new AABB(spot,spot).inflate(1.8,2.5,1.8),e->e!=p&&e.isAlive())) {
-                        int tier=w.tier;target.hurt(p.damageSources().onFire(),4+2*tier);target.setSecondsOnFire(2*tier);target.push(0,.7,0);
+                        int tier=w.tier;target.hurt(p.damageSources().onFire(),RacePowerStages.eruptionDamage(tier));target.setSecondsOnFire(RacePowerStages.fireSeconds(tier));target.push(0,.7,0);
                     }
                 }
             }
