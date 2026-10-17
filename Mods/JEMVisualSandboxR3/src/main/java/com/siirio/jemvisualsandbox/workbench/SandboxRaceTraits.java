@@ -61,7 +61,11 @@ public final class SandboxRaceTraits {
         if (race != 0) restoreMerchantDiscount(p);
         if (race == 1 && p.isAlive() && !p.isSpectator()) voidState(p);
         if (race == 4 && p.isAlive() && !p.isSpectator()) lavaMovement(p);
-        if (p.tickCount % 20 != 0) return;
+        if (p.tickCount % 20 == 0) refresh(p);
+    }
+    static void refresh(ServerPlayer p) {
+        if(!owner(p))return;
+        int race=RaceExperience.selected(p)?RaceExperience.race(p):-1;
         clearAttributes(p);
         if (!p.isAlive() || p.isSpectator()) return;
         ServerLevel level = p.serverLevel(); BlockPos pos = p.blockPosition();
@@ -137,7 +141,7 @@ public final class SandboxRaceTraits {
         if (e.getEntity() instanceof ServerPlayer p && hasRace(p, 2) && SandboxEnvironment.green(p.serverLevel(), p.blockPosition())
                 && p.getY() > p.serverLevel().getMinBuildHeight() && RaceExperience.ready(p, "second_blossom")) {
             e.setCanceled(true); p.setHealth(p.getMaxHealth() * .5F);
-            p.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 100, 4));
+            RaceOwnedEffects.grant(p,new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 100, 4));
             RaceExperience.cooldown(p, "second_blossom", 24000);
         }
         if (e.getSource().getEntity() instanceof ServerPlayer p && hasRace(p, 0)
@@ -175,6 +179,7 @@ public final class SandboxRaceTraits {
     public static void clear(ServerPlayer p) {
         if (!owner(p)) return;
         restoreMerchantDiscount(p); clearAttributes(p);
+        if(p.isSwimming()&&!p.isInWater())p.setSwimming(false);
         p.getPersistentData().remove("JemSandboxWaterExposure"); p.getPersistentData().remove("JemSandboxWaterContact");
     }
     private static void restoreMerchantDiscount(ServerPlayer p) {

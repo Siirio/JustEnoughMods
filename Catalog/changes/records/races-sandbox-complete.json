@@ -91,7 +91,6 @@
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/MainSkillProgression.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ProductionRaceBridge.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ProjectileEstimation.java",
-      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceCommands.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceExperience.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxHostileControl.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
@@ -241,6 +240,15 @@
         "Mods/JEMVisualSandboxR3/src/main/resources/data/jem_visual_sandbox/loot_modifiers/piglin_fortune.json",
         "Mods/JEMVisualSandboxR3/src/main/resources/jem_sandbox.mixins.json",
         "Mods/JEMVisualSandboxR3/src/main/resources/pack.mcmeta"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "retire_developer_opt_in_command",
+      "summary": "Current user brief requires compile-time sandbox/production authority instead of a production-reachable manual developer opt-in. RaceCommands source is deleted; retain its old contract/path in history only. Current development source alternatives are owned by races.sandbox-preview-profiles.",
+      "source_files": [
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceCommands.java"
       ]
     }
   ],

@@ -70,7 +70,7 @@ public final class SandboxUtilities {
             }
             case 3 -> {
                 int resonance=p.getPersistentData().getInt("JemSandboxResonance");
-                if(resonance>=25) { p.getPersistentData().putInt("JemSandboxResonance",resonance-25);p.heal(6);p.addEffect(new MobEffectInstance(MobEffects.ABSORPTION,400,1));cue(p,25); }
+                if(resonance>=25) { p.getPersistentData().putInt("JemSandboxResonance",resonance-25);p.heal(6);RaceOwnedEffects.grant(p,new MobEffectInstance(MobEffects.ABSORPTION,400,1));cue(p,25); }
                 else if(RaceExperience.requireReady(p,"echo")) {
                     if(p.serverLevel().getEntitiesOfClass(net.minecraft.world.entity.LivingEntity.class,p.getBoundingBox().inflate(32),e->e!=p&&e.isAlive()).isEmpty()){p.displayClientMessage(Component.literal("No living creatures nearby"),true);return;}
                     SandboxSkills.echoVision(p);RaceExperience.cooldown(p,"echo",160);
@@ -89,8 +89,13 @@ public final class SandboxUtilities {
     }
     public static void selectionChanged(ServerPlayer p) {
         var state=p.getPersistentData();
-        if(state.hasUUID("JemSandboxGuardian")&&p.serverLevel().getEntity(state.getUUID("JemSandboxGuardian")) instanceof IronGolem guardian)guardian.discard();
+        if(state.hasUUID("JemSandboxGuardian"))for(var level:p.server.getAllLevels())
+            if(level.getEntity(state.getUUID("JemSandboxGuardian")) instanceof IronGolem guardian)guardian.discard();
         state.remove("JemSandboxGuardian");state.remove("JemSandboxGuardianTriggered");
+        for(var level:p.server.getAllLevels())for(var entity:level.getAllEntities())
+            if(entity instanceof ThrownEnderpearl pearl&&pearl.getOwner()==p&&pearl.getPersistentData().getBoolean("JemSandboxVoidProjectile"))pearl.discard();
+        RaceOwnedEffects.clear(p);
+        p.getPersistentData().remove("JemSandboxResonance");
         CHARGES.remove(p.getUUID());if(p.getPersistentData().getBoolean("JemSandboxDrinking"))p.stopUsingItem();p.getPersistentData().remove("JemSandboxDrinking");p.getPersistentData().remove("JemSandboxLivingPath");p.getPersistentData().remove("JemSandboxGravity");
         var gravity=p.getAttribute(ForgeMod.ENTITY_GRAVITY.get());if(gravity!=null)gravity.removeModifier(GRAVITY);
     }
@@ -153,7 +158,7 @@ public final class SandboxUtilities {
         RaceExperience.cooldown(p,"guardian",SandboxRaceRules.GUARDIAN_COOLDOWN.get());
         LifeChorusAbility.guardianEntry(p);
         tag.putUUID("JemSandboxGuardian",golem.getUUID());tag.putBoolean("JemSandboxGuardianTriggered",true);
-        p.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,30,4));
+        RaceOwnedEffects.grant(p,new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,30,4));
         Mob threat=p.serverLevel().getEntitiesOfClass(Mob.class,p.getBoundingBox().inflate(16),m->m instanceof Enemy && m.isAlive()).stream().min(java.util.Comparator.comparingDouble(p::distanceToSqr)).orElse(null);
         Vec3 direction=threat==null?p.getLookAngle().multiply(1,0,1).normalize():threat.position().subtract(p.position()).multiply(1,0,1).normalize();
         float yaw=(float)Math.toDegrees(Math.atan2(direction.x,direction.z));

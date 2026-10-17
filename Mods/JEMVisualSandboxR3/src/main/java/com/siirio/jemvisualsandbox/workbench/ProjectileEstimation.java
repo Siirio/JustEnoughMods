@@ -70,11 +70,16 @@ public final class ProjectileEstimation {
             }
             // Native throwable drag samples its CURRENT box before moving to next.
             double drag = touchesWater(level, probe.getBoundingBox()) ? WATER_DRAG : AIR_DRAG;
-            velocity = velocity.scale(drag).add(0, -GRAVITY, 0);
+            velocity = drag == AIR_DRAG ? airVelocityAfterTick(velocity) : velocity.scale(drag).add(0, -GRAVITY, 0);
             point = next;
             points.add(point);
         }
         return new Prediction(points, null, false);
+    }
+
+    /** Native dry-air throwable step, also used by the GUI's detached demonstration. */
+    public static Vec3 airVelocityAfterTick(Vec3 velocity) {
+        return velocity.scale(AIR_DRAG).add(0, -GRAVITY, 0);
     }
 
     private static boolean touchesWater(Level level, AABB box) {

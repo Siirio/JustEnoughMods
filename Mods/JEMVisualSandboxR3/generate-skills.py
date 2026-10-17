@@ -8,10 +8,12 @@ from pathlib import Path
 import hashlib
 import json
 import re
+import sys
 
 HERE = Path(__file__).resolve().parent
 OWNER = HERE.parent / 'JEMRoles/src/main/java/com/siirio/jemroles/trait'
-OUT = HERE / 'build/generated/sandbox/com/siirio/jemvisualsandbox/workbench'
+BUILD = Path(sys.argv[1]) if len(sys.argv) > 1 else HERE / 'build'
+OUT = BUILD / 'generated/sandbox/com/siirio/jemvisualsandbox/workbench'
 OUT.mkdir(parents=True, exist_ok=True)
 source = (OWNER / 'RaceAbilities.java').read_text(encoding='utf-8')
 
@@ -63,6 +65,10 @@ public final class SandboxSkills {
             default -> { } // Nether's new eruption timeline owns its presentation.
         }
     }
+    public static void selectionChanged(ServerPlayer player) {
+        ZONES.removeIf(zone -> zone.owner.equals(player.getUUID()));
+        ERUPTIONS.removeIf(eruption -> eruption.owner.equals(player.getUUID()));
+    }
     public static LivingEntity riftTarget(ServerPlayer player) { return target(player,RaceExperience.tier(player)>=2?32:24); }
     public static boolean commitRift(ServerPlayer player, UUID id) {
         var entity=player.serverLevel().getEntity(id);
@@ -90,8 +96,8 @@ records = source[source.index('    private enum ZoneType'):source.rfind('}')]
 (OUT / 'SandboxSkills.java').write_text('package com.siirio.jemvisualsandbox.workbench;\n' + imports + '\n' + head + body + '\n' + records + '}\n', encoding='utf-8')
 environment = (OWNER / 'RaceEnvironment.java').read_text(encoding='utf-8').replace('package com.siirio.jemroles.trait;', 'package com.siirio.jemvisualsandbox.workbench;').replace('RaceEnvironment', 'SandboxEnvironment')
 (OUT / 'SandboxEnvironment.java').write_text('// Generated from JEMRoles canonical environment source.\n' + environment, encoding='utf-8')
-receipt = {'owner':'Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait', 'methods':methods, 'raceAbilitiesSha256':hashlib.sha256((OWNER/'RaceAbilities.java').read_bytes()).hexdigest(), 'sandboxOverrides':['server-owned mastery 0/10/30 uses','normal persisted cooldowns','explicit isolated developer mode','Void: native End portal tear and tick14 safe teleport; remove old decoy redirection and refresh real target','Bloom: base6 damage once; upgrades1=90tick action lock,2=3 damage/second,3=Poison once; chunky roots retained','Sculk: radial sonic wave8 damage once per hostile; no traversal; utility retained','Nether V: independently resolved +/-10Y eruptions, continuous ground scar and fire-wall VFX','Nether B (Russian И): approved FierySlash with unchanged assets, timing and pulls']}
-(HERE / 'build/generated-skills.json').write_text(json.dumps(receipt, indent=2)+'\n')
+receipt = {'owner':'Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait', 'methods':methods, 'raceAbilitiesSha256':hashlib.sha256((OWNER/'RaceAbilities.java').read_bytes()).hexdigest(), 'sandboxOverrides':['server-owned mastery 0/10/30 uses','normal persisted cooldowns','build-selected SANDBOX integrated-owner cooldown/selection hooks; PRODUCTION sealed hooks','Void: native End portal tear and tick14 safe teleport; remove old decoy redirection and refresh real target','Bloom: base6 damage once; upgrades1=90tick action lock,2=3 damage/second,3=Poison once; chunky roots retained','Sculk: radial sonic wave8 damage once per hostile; no traversal; utility retained','Nether V: independently resolved +/-10Y eruptions, continuous ground scar and fire-wall VFX','Nether B (Russian И): approved FierySlash with unchanged assets, timing and pulls']}
+(BUILD / 'generated-skills.json').write_text(json.dumps(receipt, indent=2)+'\n')
 
 path_source = (OWNER / 'TemporaryPathSavedData.java').read_text(encoding='utf-8').replace('package com.siirio.jemroles.trait;', 'package com.siirio.jemvisualsandbox.workbench;').replace('TemporaryPathSavedData','SandboxPathData').replace('jem_race_paths','jem_sandbox_paths')
 (OUT / 'SandboxPathData.java').write_text(path_source,encoding='utf-8')

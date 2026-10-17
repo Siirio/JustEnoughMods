@@ -22,14 +22,12 @@ final class FlameSlashRenderer {
         final long tick;
         final Vec3 origin, casterStart;
         final float yaw;
-        final ResourceLocation texture;
         final int hit;
         Vec3 anchor;
         Slash(Minecraft client, SandboxNetwork.Visual packet) {
             world = client.level; tick = world.getGameTime(); origin = packet.origin(); anchor = origin;
             casterStart = client.player.position(); yaw = packet.yaw();
             hit = packet.action() - 2;
-            texture = new ResourceLocation("jem_visual_sandbox", "fire_slash/" + FILES[hit] + ".png");
         }
     }
     private FlameSlashRenderer() {}
@@ -46,24 +44,32 @@ final class FlameSlashRenderer {
         if (client.player == null || !client.hasSingleplayerServer()) { clear(); return; }
         for (Slash slash : ACTIVE) {
             float age = (float) (slash.world.getGameTime() - slash.tick) + event.getPartialTick();
-            int frame = Math.min(FRAMES[slash.hit]-1, Math.max(0, (int) age));
             if (age < (slash.hit == 2 ? 5 : 4)) slash.anchor = slash.origin.add(client.player.position().subtract(slash.casterStart));
-            Vec3 camera = event.getCamera().getPosition();
-            PoseStack poses = event.getPoseStack();
+            draw(VisualRenderContext.world(event), slash.anchor, slash.yaw, slash.hit, age);
+
+        }
+    }
+    static void draw(VisualRenderContext context, Vec3 origin, float yaw, int hit, float age) {
+        if (age < 0 || age >= FRAMES[hit]) return;
+        Minecraft client = Minecraft.getInstance();
+        int frame = Math.min(FRAMES[hit] - 1, (int) age);
+        ResourceLocation texture = new ResourceLocation("jem_visual_sandbox", "fire_slash/" + FILES[hit] + ".png");
+            Vec3 camera = context.getCamera().getPosition();
+            PoseStack poses = context.getPoseStack();
             poses.pushPose();
-            poses.translate(slash.anchor.x - camera.x, slash.anchor.y - camera.y + WIDTHS[slash.hit] / 2 + 0.05, slash.anchor.z - camera.z);
-            poses.mulPose(com.mojang.math.Axis.YP.rotationDegrees(-slash.yaw));
+            poses.translate(origin.x - camera.x, origin.y - camera.y + WIDTHS[hit] / 2 + 0.05, origin.z - camera.z);
+            poses.mulPose(com.mojang.math.Axis.YP.rotationDegrees(-yaw));
             // Two close crossed planes keep the slash visible obliquely. Their
             // entire silhouette/detail/animation comes from distinct RGBA cels.
             for (int plane = 0; plane < 2; plane++) {
                 poses.pushPose();
                 if (plane == 1) poses.mulPose(com.mojang.math.Axis.YP.rotationDegrees(24));
-                var type = RenderType.entityCutoutNoCull(slash.texture);
+                var type = RenderType.entityCutoutNoCull(texture);
                 var buffers = client.renderBuffers().bufferSource();
                 var out = buffers.getBuffer(type);
                 var pose = poses.last();
-                float top = frame / (float)FRAMES[slash.hit], bottom = (frame + 1) / (float)FRAMES[slash.hit];
-                float half = WIDTHS[slash.hit] / 2;
+                float top = frame / (float)FRAMES[hit], bottom = (frame + 1) / (float)FRAMES[hit];
+                float half = WIDTHS[hit] / 2;
                 float[][] vertices = {{-half,-half,0,bottom},{half,-half,1,bottom},{half,half,1,top},{-half,half,0,top}};
                 for (float[] vertex : vertices) out.vertex(pose.pose(),vertex[0],vertex[1],0)
                         .color(255,255,255,255).uv(vertex[2],vertex[3]).overlayCoords(OverlayTexture.NO_OVERLAY)
@@ -72,6 +78,5 @@ final class FlameSlashRenderer {
                 poses.popPose();
             }
             poses.popPose();
-        }
     }
 }

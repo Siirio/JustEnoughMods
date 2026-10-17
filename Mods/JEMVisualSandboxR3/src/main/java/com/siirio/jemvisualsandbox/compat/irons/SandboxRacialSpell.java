@@ -46,7 +46,7 @@ public final class SandboxRacialSpell extends AbstractSpell {
         if (!(entity instanceof ServerPlayer player)) return super.canBeCastedBy(level, source, data, entity);
         if (!ownsSpell(player)) return new CastResult(CastResult.Type.FAILURE);
         SandboxIronsBridge.sync(player);
-        long remaining = RaceExperience.developerMode(player) ? 0 : RaceExperience.remaining(player, "signature");
+        long remaining = RaceExperience.remaining(player, "signature");
         if (remaining > 0) return new CastResult(CastResult.Type.FAILURE,
                 Component.translatable("jem.sandbox.cooldown", (remaining + 19) / 20));
         return super.canBeCastedBy(level, source, data, entity);

@@ -6,15 +6,11 @@ The source-owned standalone installation is `Mods/JEMVisualSandboxR3`; its mod I
 remains `jem_visual_sandbox` to preserve existing sandbox data and resources.
 `JemRacesSandbox` is now the real source entrypoint. The obsolete binary-backed
 race gallery is not composed into the JAR. The production artifact is
-`build/distributions/jem-races-1.1.0.jar`, installed only in the existing
-`jem sandbox` profile. The previous sandbox JAR is backed up outside `mods`.
+explicit `sandboxJar` output `build/sandbox-profile/libs/jem-races-1.1.0-sandbox.jar`, installed only in the existing
+`jem sandbox` profile. The `productionJar` output is `build/production-profile/libs/jem-races-1.1.0.jar`; ordinary `jar` defaults to production. The previous sandbox JAR is backed up outside `mods`.
 
 This iteration changes no ordinary `Server`, `Client/ManagedPack`, stable
-profile or release baseline. No tests, check tasks, Atlas audit/validation,
-Minecraft launch or automated visual inspection are authorized. Production
-compilation/reobfuscation packages the requested installation; it is not player
-acceptance. Final in-engine visuals, persistence across actual launches and
-multiplayer execution remain unverified under that explicit restriction.
+profile or release baseline. Production compilation/reobfuscation packages the requested installation; it is not player acceptance. For the current sandbox-preview follow-up, static Atlas bookkeeping and artifact separation are checked under project delivery rules; no automated gameplay suite or Minecraft launch is performed. Final in-engine visuals, persistence across actual launches and multiplayer execution remain unverified.
 
 ## Controls and first choice
 
@@ -73,17 +69,21 @@ Default signature cooldowns come from the canonical `JEMRoles` rules where
 applicable:25s Ancestors/Bloom,60s Void/Nether,20s Sculk. The standalone common
 config is `jem-races-common.toml`; the generated default-rule class comes from
 `JEMRoles/race/RaceRules.java`. Leaf Bridge is explicitly300ticks. Utilities
-retain native cooldown defaults; explicit developer mode bypasses their expiry.
+retain native cooldown defaults; the SANDBOX build bypasses their expiry.
 
-## Separate developer mode
+## Build-scoped sandbox controls and ability previews
 
-`/jemrace developer on` enables temporary max-tier/no-cooldown controls for the
-integrated-world owner. F6 can choose any race. `/jemrace developer tier 1|2|3`
-changes the effective tier, and `/jemrace developer bloom 0|1|2|3` exposes the
-approved Bloom stages independently. `/jemrace developer off` restores the
-ordinary saved race/mastery/cooldowns. Developer mode is not persisted, never
-writes ordinary mastery and cannot be enabled by a remote multiplayer client.
-F9/F10 and bracket art studies are developer-only; they are not the main skills.
+The SANDBOX build automatically enables zero cooldowns and unlimited race switching for the integrated-world owner. Normal resource costs, valid-target checks, collision, active-cast lifecycle and effect timing remain intact. Cooldown definitions remain unchanged; all expiry reads/writes, including native Iron HUD projection, use the authoritative override. Dedicated guests and remote clients cannot enable it.
+
+The PRODUCTION build compiles a sealed no-op `RaceDevelopment` alternative. It contains no developer command or authoritative development action handler; `/jemrace developer` was removed. Normal selection retains its one free change before30minutes and normal cooldowns. Sandbox-only `DevelopmentTier*`/`DevelopmentBloomUpgrade` saved fields are ignored by production. No client-editable option, hidden packet or gamerule can enable unrestricted production switching. Do not install the `-sandbox` artifact on MineRENT; use the explicit production artifact. This task does not deploy either to the canonical pack or dedicated host.
+
+F6 provides a **Switch Race** confirmation when browsing a different race in sandbox. Successful selection clears old race-owned timelines, passives, effects and modifiers before applying the new race; snapshots refresh HUD/key/presentation state. Normal per-race earned progress survives swaps. **DEV tier** cycles the selected race's actual testing tier I–III; **DEV reset** returns only its development overrides to tierI/Bloom base without deleting earned mastery.
+
+The compact black 3D viewport is shared by origin, progression and ability details. V/B buttons select the real signature or utility; arrows inspect tiersI–III and Bloom base0/upgradesI–III, including locked stages, without granting progression. **Details** shows actual characteristics, changes and status. Current-player skin and a detached vanilla Creeper are rendered through native entity renderers. Ancestors B is explicitly automatic guardian rather than a fabricated B attack; Void B shows pearl/gravity variants, Sculk B shows echo/healing variants. Existing VFX draw routines accept a detached presentation context; preview scenes do not enqueue gameplay effects, cast spells, damage entities, send action packets or insert entities into a world. Their clock/resources stop with the screen.
+
+The standalone preview contract applies to the standalone abilities. A native dedicated JEMRoles connection keeps its native descriptions and reports preview unavailable where that different ability contract cannot be represented faithfully; it is never shown a misleading standalone Sonic/eruption simulation. Both build profiles retain the standalone animated preview feature.
+
+Actual repeated casts, switching/passive restoration, every GUI scale and final model/VFX appearance still require in-game verification. Production compilation and artifact inspection are reported separately in `sandbox-delivery.json`; no gameplay launch or new automated suite was performed. Task evidence/contract: [SANDBOX_PREVIEWS.md](SANDBOX_PREVIEWS.md).
 
 ## Visual and projectile ownership
 
@@ -141,3 +141,5 @@ accounts across nicknames nor copies server identity state.
   `assets/fiery-slash`: authored effect sources and historical review evidence.
 - Prior sphere, mosaic plaques, tails and Bloom R2 remain rejected history.
   Their old plans/receipts do not override this current source contract.
+
+Sandbox installation: close `jem sandbox`, then run `python Mods/JEMVisualSandboxR3/install-sandbox.py` from the repository root. This guarded installer refuses a running profile and replaces the complete verified JAR atomically. Never copy over a loaded mod JAR.

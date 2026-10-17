@@ -104,5 +104,6 @@ public final class FierySlash {
         player.connection.send(new ClientboundSetEntityMotionPacket(player));
     }
 
+    static void selectionChanged(ServerPlayer p){if(ACTIVE.remove(p.getUUID())!=null){p.setDeltaMovement(0,p.getDeltaMovement().y,0);p.connection.send(new ClientboundSetEntityMotionPacket(p));}}
     @SubscribeEvent public static void stopped(ServerStoppedEvent event) { ACTIVE.clear(); }
 }

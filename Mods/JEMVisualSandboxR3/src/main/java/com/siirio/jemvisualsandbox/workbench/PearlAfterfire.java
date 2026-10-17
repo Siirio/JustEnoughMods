@@ -60,9 +60,6 @@ public final class PearlAfterfire {
     static void render(RenderLevelStageEvent event){
         var client=Minecraft.getInstance();
         if(client.level==null || level!=client.level)return;
-        var type=RenderType.entityTranslucent(TEXTURE);
-        var buffers=client.renderBuffers().bufferSource();var out=buffers.getBuffer(type);
-        var pose=event.getPoseStack().last();Vec3 camera=event.getCamera().getPosition();
         double now=level.getGameTime()+event.getPartialTick();
         for(var entry:TRAILS.entrySet()){
             Trail trail=entry.getValue();if(trail.points.size()<2)continue;
@@ -70,9 +67,18 @@ public final class PearlAfterfire {
             Vec3 head=alive?pearl.getPosition(event.getPartialTick()):trail.points.get(0);
             float alpha=alive?1:(float)Math.max(0,1-(now-trail.lastSeen)/6);
             int frame=(int)((now-trail.born)/2)%8;
+            draw(VisualRenderContext.world(event),trail.points,head,frame,alpha);
+        }
+    }
+    static void draw(VisualRenderContext context,List<Vec3> points,Vec3 head,int frame,float alpha) {
+        if(points.size()<2 || alpha<=0)return;
+        var client=Minecraft.getInstance();
+        var type=RenderType.entityTranslucent(TEXTURE);
+        var buffers=client.renderBuffers().bufferSource();var out=buffers.getBuffer(type);
+        var pose=context.getPoseStack().last();Vec3 camera=context.getCamera().getPosition();
             Vec3 previous=head,previousSide=null;double distance=0;
-            for(int i=1;i<trail.points.size() && distance<2.6;i++){
-                Vec3 next=trail.points.get(i),delta=next.subtract(previous);
+            for(int i=1;i<points.size() && distance<2.6;i++){
+                Vec3 next=points.get(i),delta=next.subtract(previous);
                 double length=delta.length();if(length<.0001)continue;
                 if(distance+length>2.6){next=previous.add(delta.scale((2.6-distance)/length));length=2.6-distance;delta=next.subtract(previous);}
                 Vec3 side=delta.normalize().cross(camera.subtract(previous.add(next).scale(.5))).normalize();
@@ -88,7 +94,7 @@ public final class PearlAfterfire {
                 }
                 distance+=length;previous=next;previousSide=side;
             }
-        }
         buffers.endBatch(type);
     }
+
 }

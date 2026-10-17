@@ -186,23 +186,26 @@ public final class BlockbenchWorkbench {
             double tick=seconds*20;
             if(instance.ticks()==90)seconds=(tick<16?tick:tick<78?16:16+(tick-78)*8/12)/20;
         }
+        float sx=1,sy=1,sz=1;
+        if(subject!=null){var box=subject.getBoundingBox();sx=(float)(box.getXsize()+.16);sy=(float)(box.getYsize()/2);sz=(float)(box.getZsize()+.16);}
+        drawMesh(VisualRenderContext.world(event),mesh,origin,yaw,seconds,sx,sy,sz,LevelRenderer.getLightColor(client.level,BlockPos.containing(origin).above()));
+    }
+    static void drawMesh(VisualRenderContext context,WorkbenchMesh mesh,Vec3 origin,float yaw,double seconds,float scaleX,float scaleY,float scaleZ,int packedLight) {
+        Minecraft client=Minecraft.getInstance();
         if (seconds >= (mesh.poses.length - 1) * mesh.step) return;
         float sample = (float)(seconds / mesh.step);
         int first = Mth.clamp((int)sample, 0, mesh.poses.length - 2);
         float blend = sample - first;
         float[] before = mesh.poses[first];
         float[] after = mesh.poses[first + 1];
-        Vec3 camera = event.getCamera().getPosition();
-        PoseStack poses = event.getPoseStack();
+        Vec3 camera = context.getCamera().getPosition();
+        PoseStack poses = context.getPoseStack();
         poses.pushPose();
         poses.translate(origin.x - camera.x, origin.y - camera.y, origin.z - camera.z);
         poses.mulPose(com.mojang.math.Axis.YP.rotationDegrees(yaw));
-        if(subject!=null) {
-            var box=subject.getBoundingBox();
-            poses.scale((float)(box.getXsize()+.16),(float)(box.getYsize()/2),(float)(box.getZsize()+.16));
-        }
+        poses.scale(scaleX,scaleY,scaleZ);
         PoseStack.Pose pose = poses.last();
-        int light = LevelRenderer.getLightColor(client.level, BlockPos.containing(origin).above());
+        int light = packedLight;
         var buffers = client.renderBuffers().bufferSource();
         for (int material = 0; material < mesh.textures.length; material++) {
             RenderType type = RenderType.entityCutoutNoCull(mesh.textures[material]);

@@ -81,7 +81,10 @@ public final class LifeChorusAbility {
                     if(target instanceof Player)target.heal(6);else target.setHealth(target.getMaxHealth());
                     if(c.tier>=2)target.getActiveEffects().stream().filter(v->v.getEffect().getCategory()==MobEffectCategory.HARMFUL).map(MobEffectInstance::getEffect).toList().forEach(target::removeEffect);
                     // Retain the preceding canonical Life Chorus full-health ally boon.
-                    if(c.tier>=3 && target.getHealth()>=target.getMaxHealth())target.addEffect(new MobEffectInstance(MobEffects.ABSORPTION,600,1));
+                    if(c.tier>=3 && target.getHealth()>=target.getMaxHealth()){
+                        var boon=new MobEffectInstance(MobEffects.ABSORPTION,600,1);
+                        if(target==p)RaceOwnedEffects.grant(p,boon);else target.addEffect(boon);
+                    }
                     SandboxNetwork.effect(p,31,0,target.position(),Math.max(0,13-age),target.getId());
                 }
             }
@@ -94,5 +97,6 @@ public final class LifeChorusAbility {
         long age=p.level().getGameTime()-c.start;
         if(age>=18 && age<118)e.setAmount(e.getAmount()*.75F);
     }
+    static void selectionChanged(ServerPlayer p){ACTIVE.remove(p.getUUID());WAVES.removeIf(w->w.owner.equals(p.getUUID()));}
     @SubscribeEvent public static void stopped(ServerStoppedEvent e) { ACTIVE.clear();WAVES.clear(); }
 }

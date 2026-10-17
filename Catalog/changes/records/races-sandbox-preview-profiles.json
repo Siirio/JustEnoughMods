@@ -1,0 +1,166 @@
+{
+  "schema_version": 2,
+  "change_id": "races.sandbox-preview-profiles",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "jem_visual_sandbox"
+    }
+  ],
+  "conditions": [
+    {
+      "scope": "standalone race GUI both build profiles; development authority only SANDBOX integrated owner",
+      "production": "sealed source alternative; dedicated JEMRoles remains native authority"
+    }
+  ],
+  "precedence": {
+    "layer": "jem",
+    "priority": 150
+  },
+  "change": {
+    "summary": "Build-scoped no-cooldown/unlimited race testing and permanent read-only native3D V/B ability progression previews.",
+    "modifiers": [
+      {
+        "property": "races.development.authority",
+        "operation": "replace",
+        "before": "Manual developer opt-in map; normal FreeSwitchUsed/ActiveTicks selection lock and cooldown gates still ran in installed sandbox unless separately enabled.",
+        "after": {
+          "sandbox": "automatic integrated-owner no-cooldown/unlimited selection; separate persisted DevelopmentTier and DevelopmentBloomUpgrade overrides; native resource/target/collision and active-timeline rules retained",
+          "production": "default/explicit PRODUCTION source alternative has no enabled development handler/state mutation or commands; normal cooldowns/selection rules; native dedicated authority unaffected"
+        }
+      },
+      {
+        "property": "races.selection.cleanup",
+        "operation": "extend",
+        "before": "Partial attribute/utility reset; some active effect timelines and enhanced existing self buffs could survive a change.",
+        "after": "Cancel owned timelines, tracked projectiles/guardian across levels, root squeeze, charges/gravity and race self-buff contribution; restore prior external effect where known, remove exact attribute IDs and immediately refresh new passives. Preserve earned per-race mastery."
+      },
+      {
+        "property": "races.gui.ability_preview",
+        "operation": "add",
+        "before": "Full-body skin cinematic and text progression only.",
+        "after": "Detached current-skin RemotePlayer, vanilla Creeper/golem/pearl;5second clipped3quarter scene;actual shared VFX draw entrypoints;V/B and three real tiers plus Bloom0..3 inspection independent from grants;no world insertion,tick,damage,cast,packets or gameplay saves. Contextual nonoffensive powers remain nonoffensive."
+      },
+      {
+        "property": "races.sandbox.installation",
+        "operation": "replace",
+        "before": "Copy over a potentially loaded mod JAR; user reported deferred class-load crash after live overwrite.",
+        "after": "Require closed sandbox Java profile, verify complete ZIP/class presence, backup and atomically replace. User crash-free acceptance pending."
+      }
+    ]
+  },
+  "cause": {
+    "source_files": [
+      "Mods/JEMVisualSandboxR3/build.gradle",
+      "Mods/JEMVisualSandboxR3/generate-skills.py",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/AbilityPreviewRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxRacialSpell.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/AbilityPreviewPresentation.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/BlockbenchWorkbench.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalAbilities.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/FierySlash.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/FlameSlashRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/GuardianDomeRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusAbility.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/PearlAfterfire.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ProjectileEstimation.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceExperience.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceOwnedEffects.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxHostileControl.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceTraits.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SonicWaveAbility.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SonicWaveRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SurfaceVfx.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/UtilityVfx.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/VisualRenderContext.java",
+      "Mods/JEMVisualSandboxR3/src/production/java/com/siirio/jemvisualsandbox/workbench/RaceDevelopment.java",
+      "Mods/JEMVisualSandboxR3/src/sandbox/java/com/siirio/jemvisualsandbox/workbench/RaceDevelopment.java",
+      "Mods/JEMVisualSandboxR3/install-sandbox.py"
+    ],
+    "resources": []
+  },
+  "rationale": {
+    "user_request": "Enable rapid sandbox testing with zero cooldowns/unlimited swapping and real player/Creeper V/B previews for every actual progression; remove development cheats from MineRENT production but retain previews.",
+    "implementation_choice": "Two compile-time source alternatives with isolated build outputs; inert production dispatch; extract existing presentation entrypoints to a detached render context; tier browsing separate from authoritative DEV controls."
+  },
+  "introduced": {
+    "date": "2026-10-17",
+    "commit": "SELF"
+  },
+  "history": [
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "implement_sandbox_profiles_and_detached_previews",
+      "summary": "Apply user brief in standalone sandbox source; preserve canonical JEMRoles/managed Client/Server/stable distribution. Removed old RaceCommands developer opt-in. Native exact visual/game acceptance remains pending.",
+      "source_files": [
+        "Mods/JEMVisualSandboxR3/build.gradle",
+        "Mods/JEMVisualSandboxR3/generate-skills.py",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/AbilityPreviewRenderer.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxRacialSpell.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/AbilityPreviewPresentation.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/BlockbenchWorkbench.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalAbilities.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalRenderer.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/FierySlash.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/FlameSlashRenderer.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/GuardianDomeRenderer.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusAbility.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusRenderer.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/PearlAfterfire.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ProjectileEstimation.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceExperience.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceOwnedEffects.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxHostileControl.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceTraits.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SonicWaveAbility.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SonicWaveRenderer.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SurfaceVfx.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/UtilityVfx.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/VisualRenderContext.java",
+        "Mods/JEMVisualSandboxR3/src/production/java/com/siirio/jemvisualsandbox/workbench/RaceDevelopment.java",
+        "Mods/JEMVisualSandboxR3/src/sandbox/java/com/siirio/jemvisualsandbox/workbench/RaceDevelopment.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceCommands.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "races",
+      "sandbox",
+      "selection",
+      "cooldowns",
+      "progression",
+      "network",
+      "GUI",
+      "VFX",
+      "optional Iron Spells",
+      "build profiles"
+    ],
+    "relations": [
+      "Build profile->RaceDevelopment source alternative->integrated owner authorization",
+      "Snapshot->F6 Switch Race/DEV controls->server cleanup/new race->HUD",
+      "Read-only tier selection->detached models/shared VFX draw->bounded GUI viewport"
+    ],
+    "notes": [
+      "Original production cooldown values/costs preserved. No canonical gameplay mod source/JAR or live host deployment.",
+      "Source/build evidence is separate from gameplay and visual acceptance. Preview native-dedicated contract differences are honestly unavailable rather than substituted.",
+      "Sandbox fields do not grant development tiers in production; actual earned progression retains its canonical owner.",
+      "Both profile production builds/reobfuscation succeeded; manifest/profile bytecode inspection confirms previews in both and inert production development dispatch.",
+      "Exact sandbox artifact installed; previous mod backed up; running user client requires restart. Codex did not launch or drive gameplay."
+    ],
+    "unresolved": [
+      "Repeated gameplay casts/passive restoration/render mods/all GUI scales require manual in-game verification; no gameplay client launched."
+    ]
+  }
+}

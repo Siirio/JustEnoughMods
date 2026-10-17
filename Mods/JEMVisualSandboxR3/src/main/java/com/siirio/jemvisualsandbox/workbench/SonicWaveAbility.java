@@ -44,5 +44,6 @@ public final class SonicWaveAbility {
             return false;
         });
     }
+    static void selectionChanged(ServerPlayer p){ACTIVE.remove(p.getUUID());}
     @SubscribeEvent public static void stopped(ServerStoppedEvent e) { ACTIVE.clear(); }
 }

@@ -93,5 +93,6 @@ public final class ElementalAbilities {
             return false;
         });
     }
+    static void selectionChanged(ServerPlayer p){RIFTS.remove(p.getUUID());WAVES.remove(p.getUUID());}
     @SubscribeEvent public static void stopped(ServerStoppedEvent event) { RIFTS.clear();WAVES.clear(); }
 }

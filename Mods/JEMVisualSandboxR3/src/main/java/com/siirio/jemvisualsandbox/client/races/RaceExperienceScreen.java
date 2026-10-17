@@ -27,6 +27,13 @@ public final class RaceExperienceScreen extends Screen {
     private int scroll;
     private int contentHeight;
     private boolean progression;
+    private boolean abilityDetails;
+    private int previewSlot;
+    private int previewTier = 1;
+    private int previewBloom;
+    private final AbilityPreviewRenderer abilityPreview = new AbilityPreviewRenderer();
+    private Button previewLevel;
+    private Button resetProgress;
     private boolean hiddenHud;
     private boolean hudCaptured;
     private long switchedAt = System.nanoTime();
@@ -48,11 +55,14 @@ public final class RaceExperienceScreen extends Screen {
         this.mandatory = mandatory;
         this.progression = progression;
         this.race = Mth.clamp(status.race(), 0, 4);
+        this.previewTier = tier();
+        this.previewBloom = status.bloomUpgrade();
     }
 
     @Override protected void init() {
         bloomUnlocks.clear();
         developerTier = null;
+        resetProgress = null;
         if (!hudCaptured) {
             hiddenHud = minecraft.options.hideGui;
             hudCaptured = true;
@@ -70,8 +80,27 @@ public final class RaceExperienceScreen extends Screen {
                 }));
         confirm = addRenderableWidget(new QuietButton(panelLeft() + 12, bottom, panelWidth() - 24, 22,
                 Component.translatable("jem.roles.select"), b -> confirm()));
-        if (status.developerMode()) developerTier = addRenderableWidget(new QuietButton(12, height - 28, Math.max(90, stage - 24), 20,
-                text("DEV · следующий уровень", "DEV · next tier"), b -> SandboxNetwork.developerTier(Math.min(3, tier() + 1))));
+        int previewWidth = panelWidth() - 24;
+        int slotWidth = Math.max(22, previewWidth / 5);
+        addRenderableWidget(new QuietButton(panelLeft()+12, 75, slotWidth, 18, Component.literal("V"), b -> selectPreview(0)));
+        addRenderableWidget(new QuietButton(panelLeft()+12+slotWidth, 75, slotWidth, 18, Component.literal("B / И"), b -> selectPreview(1)));
+        addRenderableWidget(new QuietButton(panelLeft()+12+slotWidth*2, 75, Math.max(28,previewWidth-slotWidth*2), 18,
+                text(abilityDetails ? "Назад" : "Подробнее", abilityDetails ? "Back" : "Details"), b -> {abilityDetails=!abilityDetails;scroll=0;rebuildWidgets();}));
+        previewLevel=null;
+        if(height>=216) {
+        int controlsY=previewBottom()+2;
+        addRenderableWidget(new QuietButton(panelLeft()+12,controlsY,22,18,Component.literal("‹"),b->changePreviewTier(-1)));
+        previewLevel=addRenderableWidget(new QuietButton(panelLeft()+36,controlsY,previewWidth-48,18,
+                Component.literal(""),b->changePreviewTier(1)));
+        addRenderableWidget(new QuietButton(width-36,controlsY,22,18,Component.literal("›"),b->changePreviewTier(1)));
+        }
+        if (status.developerMode()) {
+            int half=Math.max(44,(stage-28)/2);
+            developerTier=addRenderableWidget(new QuietButton(12,height-28,half,20,
+                    Component.literal(""),b->SandboxNetwork.developerTier(tier()%3+1)));
+            resetProgress=addRenderableWidget(new QuietButton(16+half,height-28,half,20,
+                    text("DEV · сброс", "DEV · reset"),b->SandboxNetwork.developerReset()));
+        }
         if (progression && race == 2 && status.selected() && status.race() == 2) {
             int cell = Math.max(24, (stage - 24) / 3);
             for (int i = 1; i <= 3; i++) {
@@ -110,6 +139,7 @@ public final class RaceExperienceScreen extends Screen {
     private void switchRace(int direction) {
         if (requested >= 0 || entryAt != 0) return;
         race = Math.floorMod(race + direction, RACES.length);
+        previewTier = tier(); previewBloom = race==2?status.bloomUpgrade():0; abilityPreview.reset();
         turnDirection = direction;
         switchedAt = System.nanoTime();
         scroll = 0;
@@ -125,8 +155,15 @@ public final class RaceExperienceScreen extends Screen {
         confirm.setMessage(requested >= 0 ? text("Сервер подтверждает…", "Waiting for server…")
                 : rejected ? text("Не подтверждено · повторить", "Not confirmed · retry")
                 : status.selected() && status.race() == race ? text("Вернуться в мир", "Enter world")
+                : status.developerMode() && status.selected() ? text("Сменить расу", "Switch Race")
                 : Component.translatable("jem.roles.select"));
-        if (developerTier != null) developerTier.active = !busy && status.selected() && status.race() == race && tier() < 3;
+        if (developerTier != null) {
+            developerTier.active = !busy && status.selected() && status.race() == race;
+            developerTier.setMessage(text("DEV · уровень " + tier(), "DEV · tier " + tier()));
+        }
+        if (resetProgress != null) resetProgress.active = !busy && status.selected() && status.race() == race;
+        if (previewLevel != null) previewLevel.setMessage(Component.literal((previewSlot==0?"V":"B")+" · "+(race==2&&previewSlot==0?text("Корни ","Roots ").getString()+previewBloom:"I".repeat(previewTier)))
+                .append(text(previewUnlocked()?" · открыт":" · закрыт",previewUnlocked()?" · unlocked":" · locked")));
         for (int i = 0; i < bloomUnlocks.size(); i++) {
             int nextTier = i + 1;
             Button unlock = bloomUnlocks.get(i);
@@ -169,11 +206,24 @@ public final class RaceExperienceScreen extends Screen {
         g.fill(left, 49, left + 1, height - 42, 0xFF282828);
 
         String[] icons={"life_chorus","rift_ambush","verdant_dominion","sculk_veins","infernal_eruption"};
-        g.blit(new net.minecraft.resources.ResourceLocation("jem_visual_sandbox","textures/gui/spells/"+icons[race]+".png"),left+12,52,0,0,16,16,16,16);
-        g.drawString(font,tr("spell.short"),left+34,56,accent,false);
-        int top = 75, bottom = height - 41;
+        if(previewSlot==0) g.blit(new net.minecraft.resources.ResourceLocation("jem_visual_sandbox","textures/gui/spells/"+icons[race]+".png"),left+12,52,0,0,16,16,16,16);
+        else {
+            net.minecraft.world.item.Item[] utilityIcons={net.minecraft.world.item.Items.IRON_GOLEM_SPAWN_EGG,net.minecraft.world.item.Items.ENDER_PEARL,
+                    net.minecraft.world.item.Items.OAK_LEAVES,net.minecraft.world.item.Items.ECHO_SHARD,net.minecraft.world.item.Items.BLAZE_POWDER};
+            g.renderItem(new net.minecraft.world.item.ItemStack(utilityIcons[race]),left+12,52);
+        }
+        g.drawString(font,font.plainSubstrByWidth(abilityName().getString(),Math.max(24,right-left-38)),left+34,56,accent,false);
+        int previewX=left+12, previewY=96, previewW=panelWidth()-24;
+        if(height>=216) {
+        g.fill(previewX,previewY,previewX+previewW,previewBottom(),0xFF08090C);
+        if (minecraft.hasSingleplayerServer()) abilityPreview.render(g,previewX,previewY,previewW,previewBottom()-previewY,
+                race,previewSlot,previewTier,previewBloom,partialTick);
+        else g.drawCenteredString(font,text("Нет совместимого VFX-предпросмотра", "No compatible VFX preview"),previewX+previewW/2,previewY+12,0xBFBFBF);
+        }
+        int top = height>=216?previewBottom()+25:98, bottom = Math.max(top+1,height - 41);
         g.enableScissor(left + 9, top, right + 3, bottom);
-        List<Line> lines = progression ? progressionLines() : originLines();
+        List<Line> lines = abilityDetails ? abilityLines() : progression ? progressionLines() : originLines();
+        if(height<216)lines.add(0,new Line(text("Уменьши масштаб GUI для 3D-просмотра", "Reduce GUI scale to show the 3D preview"),0xD8BD8D));
         int y = top - scroll;
         for (Line line : lines) {
             if (line.text() == null) { y += 7; continue; }
@@ -260,10 +310,51 @@ public final class RaceExperienceScreen extends Screen {
         } else lines.add(new Line(text("Предпросмотр: эта раса сейчас не выбрана.", "Preview: this race is not currently selected."), 0xA5A5A5));
         if (status.developerMode()) {
             lines.add(Line.gap());
-            lines.add(new Line(text("DEV включён явно. Кнопка уровня отправляет запрос серверу.",
-                    "DEV explicitly enabled. The tier button requests a server change."), 0xE2BD88));
+            lines.add(new Line(text("SANDBOX · без перезарядки; смена расы без лимита. DEV меняет фактический уровень; стрелки под анимацией — только просмотр.",
+                    "SANDBOX · no cooldowns; unlimited race switching. DEV changes the real tier; preview arrows only inspect it."), 0xE2BD88));
         }
         return lines;
+    }
+
+    private int previewBottom() { return 96 + Mth.clamp((height-144)/2, 30, 102); }
+    private void selectPreview(int slot) { previewSlot=slot;abilityPreview.reset();scroll=0;rebuildWidgets(); }
+    private void changePreviewTier(int direction) {
+        if(race==2&&previewSlot==0) { previewBloom=Math.floorMod(previewBloom+direction,4);previewTier=Math.max(1,previewBloom); }
+        else previewTier=Math.floorMod(previewTier-1+direction,3)+1;
+        abilityPreview.reset();scroll=0;updateButtons();
+    }
+    private boolean previewUnlocked(){return race==2&&previewSlot==0?previewBloom<=status.bloomUpgrade():previewTier<=tier();}
+    private List<Line> abilityLines() {
+        List<Line> lines=new ArrayList<>();
+        lines.add(new Line(abilityName(),ACCENTS[race]));
+        lines.add(new Line(text("Только визуальный просмотр · мир не изменяется", "Visual inspection only · world unchanged"),0xA5A5A5));
+        lines.add(new Line(text(previewUnlocked()?"Открыто":"Закрыто · доступен просмотр",previewUnlocked()?"Unlocked":"Locked · inspection available"),previewUnlocked()?0xB5DBA4:0xC0A081));
+        if(previewSlot==0) {
+            lines.add(new Line(tr("spell.detail"),0xDEDEDE));
+            String ru="",en="";
+            switch(race) {
+                case 0 -> {ru="Радиус "+(previewTier>=2?16:12)+" блоков; игрокам +6 HP; щиты −25% урона, 5 с";en="Radius "+(previewTier>=2?16:12)+" blocks; players +6 HP; wards −25% damage, 5s";
+                    if(previewTier>=2){ru+="; очищение";en+="; cleanse";} if(previewTier>=3){ru+="; поглощение при полном здоровье";en+="; absorption at full health";}}
+                case 1 -> {ru="Разлом: дальность "+(previewTier>=2?32:24)+" блока; настоящий удар ближнего боя";en="Rift: "+(previewTier>=2?32:24)+" block reach; actual melee strike";if(previewTier>=3){ru+="; замедление рядом с прибытием";en+="; slow around arrival";}}
+                case 2 -> {ru="Базовое попадание: 6 HP; корни: "+previewBloom+"/3";en="Initial hit: 6 HP; roots: "+previewBloom+"/3";if(previewBloom>=1){ru+="; блокировка действий";en+="; action lock";}if(previewBloom>=2){ru+="; сжатие 3 HP/с";en+="; constriction 3 HP/s";}if(previewBloom>=3){ru+="; яд";en+="; poison";}}
+                case 3 -> {ru="12 HP; радиус 8 блоков; один удар по цели";en="12 HP; 8 block radius; one hit per target";if(previewTier>=2){ru+="; отбрасывание";en+="; knockback";}if(previewTier>=3){ru+="; замедление 2 с";en+="; 2s slow";}}
+                case 4 -> {ru="Пять извержений; "+(4+2*previewTier)+" HP, огонь "+(2*previewTier)+" с";en="Five eruptions; "+(4+2*previewTier)+" HP, "+(2*previewTier)+"s fire";}
+            }
+            lines.add(new Line(text(ru,en),0xE5E5E5));
+        } else {
+            String[] ru={"Автоматический страж при здоровье ниже 40%; B не является атакой. V — Хор жизни.","Удерживай B 10 тиков: жемчуг с настоящей траекторией. Shift+B — отрицание гравитации на 5 с.","B включает и выключает временный Лиственный мост. Уровень не меняет его внешний вид.","B: при 25 резонанса — лечение +6 HP и поглощение; иначе Эхо-зрение. Это не удар по криперу.","B: настоящая цепочка трёх огненных рассечений. Уровень не добавляет новых ударов."};
+            String[] en={"Automatic guardian below 40% health; B is not an attack. V is Life Chorus.","Hold B for 10 ticks: pearl with its real trajectory. Shift+B denies gravity for 5 seconds.","B toggles the temporary Leaf Bridge. Tier does not change its appearance.","B: with 25 resonance, heal +6 HP and absorption; otherwise Echo Vision. This does not hit the Creeper.","B: the actual three fiery slashes. Tier adds no new combo hits."};
+            lines.add(new Line(text(ru[race],en[race]),0xDEDEDE));
+            lines.add(new Line(text("I–III используют ту же визуальную форму, если эффект не меняется.","I–III retain the same visual form when the effect does not change."),0xA5A5A5));
+        }
+        if(minecraft.hasSingleplayerServer()) lines.add(new Line(text("Базовая перезарядка V: "+RaceExperience.signatureCooldown(race)/20+" с; sandbox-переопределение не меняет определение.","Base V cooldown: "+RaceExperience.signatureCooldown(race)/20+"s; sandbox override preserves the definition."),0xA5A5A5));
+        return lines;
+    }
+    private Component abilityName(){
+        if(previewSlot==0)return Component.literal("V · ").append(tr("spell.short"));
+        String[] ru={"Автоматический страж", "Жемчуг / гравитация", "Лиственный мост", "Эхо / восстановление", "Огненные рассечения"};
+        String[] en={"Automatic guardian", "Pearl / gravity", "Leaf Bridge", "Echo / recovery", "Fiery slashes"};
+        return Component.literal("B · ").append(text(ru[race],en[race]));
     }
 
     private Component cooldown(String key, long ticks) {
@@ -321,6 +412,8 @@ public final class RaceExperienceScreen extends Screen {
 
     @Override public boolean keyPressed(int key, int scanCode, int modifiers) {
         if (entryAt != 0 || requested >= 0) return true;
+        if (key == GLFW.GLFW_KEY_V) { selectPreview(0); return true; }
+        if (key == GLFW.GLFW_KEY_B) { selectPreview(1); return true; }
         if (key == GLFW.GLFW_KEY_LEFT) { switchRace(-1); return true; }
         if (key == GLFW.GLFW_KEY_RIGHT) { switchRace(1); return true; }
         if (key == GLFW.GLFW_KEY_PAGE_DOWN) { scroll += 80; return true; }
@@ -333,6 +426,7 @@ public final class RaceExperienceScreen extends Screen {
     @Override public void onClose() { if (shouldCloseOnEsc()) super.onClose(); }
     @Override public boolean isPauseScreen() { return false; }
     @Override public void removed() {
+        abilityPreview.dispose();
         if (hudCaptured) minecraft.options.hideGui = hiddenHud;
         if (minecraft.player != null && minecraft.level != null) SandboxNetwork.cinematic(false);
         net.minecraft.client.KeyMapping.releaseAll();

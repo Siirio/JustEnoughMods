@@ -41,8 +41,13 @@ final class SonicWaveRenderer {
     }
 
     static void render(RenderLevelStageEvent event, Vec3 origin, float age) {
+        var client=Minecraft.getInstance();
+        if(client.level==null || !client.hasSingleplayerServer())return;
+        render(VisualRenderContext.world(event),origin,age);
+    }
+    static void render(VisualRenderContext event, Vec3 origin, float age) {
         var client = Minecraft.getInstance();
-        if (client.level == null || !client.hasSingleplayerServer() || age < 0 || age >= 27) return;
+        if (age < 0 || age >= 27) return;
         var poses = event.getPoseStack();
         Vec3 camera = event.getCamera().getPosition();
         poses.pushPose();
@@ -81,24 +86,28 @@ final class SonicWaveRenderer {
         if (client.level == null || !client.hasSingleplayerServer()) { clear(); return; }
         HITS.removeIf(hit -> hit.level != client.level || client.level.getGameTime() - hit.start >= 6);
         if (HITS.isEmpty()) return;
-        var poses = event.getPoseStack();
-        Vec3 camera = event.getCamera().getPosition();
-        var buffers = client.renderBuffers().bufferSource();
-        var out = buffers.getBuffer(Material.TYPE);
         for (Hit hit : HITS) {
             float age = client.level.getGameTime() - hit.start + event.getPartialTick();
             if (age < 0 || age >= 6) continue;
+            drawImpact(VisualRenderContext.world(event),hit.center,age,hit.seed);
+        }
+    }
+
+    static void drawImpact(VisualRenderContext context,Vec3 center,float age,int seed) {
+        if(age<0 || age>=6)return;
+        var poses=context.getPoseStack();Vec3 camera=context.getCamera().getPosition();
+        var buffers=Minecraft.getInstance().renderBuffers().bufferSource();
+        var out=buffers.getBuffer(Material.TYPE);
             poses.pushPose();
             try {
-                poses.translate(hit.center.x - camera.x, hit.center.y - camera.y, hit.center.z - camera.z);
+                poses.translate(center.x - camera.x, center.y - camera.y, center.z - camera.z);
                 float fade = 1 - age / 6;
                 front(out, poses.last(), .24F + age * .07F, 0, .32F, .9F * fade,
-                        Math.min(23, 7 + (int) age), hit.seed * .31F);
+                        Math.min(23, 7 + (int) age), seed * .31F);
                 fragments(out, poses.last(), .25F + age * .045F, age, fade, 9 + (int) age, 3);
             } finally {
                 poses.popPose();
             }
-        }
         buffers.endBatch(Material.TYPE);
     }
 

@@ -63,7 +63,8 @@ final class GuardianDomeRenderer {
             return new Dome(vertices,faces);
         }
     }
-    static void render(RenderLevelStageEvent event,Vec3 origin,float age){
+    static void render(RenderLevelStageEvent event,Vec3 origin,float age){ render(VisualRenderContext.world(event),origin,age); }
+    static void render(VisualRenderContext event,Vec3 origin,float age){
         if(age<0 || age>=30 || failed)return;
         if(dome==null)try{dome=load();}catch(IOException | RuntimeException ex){
             failed=true;com.mojang.logging.LogUtils.getLogger().error("Guardian dome requires the connected native model",ex);return;

@@ -55,11 +55,17 @@ final class ElementalRenderer {
         if(c.level==null || !c.hasSingleplayerServer()){clear();return;}
         for(Effect e:ACTIVE) {
             int age=(int)(c.level.getGameTime()-e.start)-e.delay;if(age<0)continue;
-            int frame=age+(e.action==9?14:0);if(frame>=24)continue;
-            boolean rift=e.action!=7;
-            var poses=event.getPoseStack();poses.pushPose();Vec3 camera=event.getCamera().getPosition();
-            poses.translate(e.origin.x-camera.x,e.origin.y-camera.y+(rift?2.5:.045),e.origin.z-camera.z);
-            poses.mulPose(com.mojang.math.Axis.YP.rotationDegrees(-e.yaw));
+            draw(VisualRenderContext.world(event),e.origin,e.yaw,e.action,age);
+        }
+    }
+    static void draw(VisualRenderContext context,Vec3 origin,float yaw,int action,float age) {
+        if(age<0 || age>=(action==9?10:24))return;
+        Minecraft c=Minecraft.getInstance();
+            int frame=(int)age+(action==9?14:0);if(frame>=24)return;
+            boolean rift=action!=7;
+            var poses=context.getPoseStack();poses.pushPose();Vec3 camera=context.getCamera().getPosition();
+            poses.translate(origin.x-camera.x,origin.y-camera.y+(rift?2.5:.045),origin.z-camera.z);
+            poses.mulPose(com.mojang.math.Axis.YP.rotationDegrees(-yaw));
             if(!rift)poses.mulPose(com.mojang.math.Axis.XP.rotationDegrees(-90));
             var buffers=c.renderBuffers().bufferSource();var pose=poses.last();
             if(rift) {
@@ -75,6 +81,5 @@ final class ElementalRenderer {
             var type=RenderType.entityCutoutNoCull(file(rift?"rift":"sculk"));var out=buffers.getBuffer(type);float half=rift?2.5F:1.1F;
             for(float[] v:new float[][]{{-half,-half,0,1},{half,-half,1,1},{half,half,1,0},{-half,half,0,0}})out.vertex(pose.pose(),v[0],v[1],.004F).color(255,255,255,255).uv(v[2],(frame+v[3])/24F).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(15728880).normal(pose.normal(),0,0,1).endVertex();
             buffers.endBatch(type);poses.popPose();
-        }
     }
 }

@@ -28,7 +28,7 @@ public final class SandboxHostileControl {
         SandboxNetwork.effect(owner,upgrade==0?34:10,2,target.position(),0,target.getId());
         if(upgrade==0)return;
         if(!(target instanceof Mob mob) || !(mob instanceof Enemy || mob.isAggressive() || mob.getTarget() instanceof net.minecraft.world.entity.player.Player))return;
-        var tag=mob.getPersistentData();tag.putLong(UNTIL,owner.server.overworld().getGameTime()+90);
+        var tag=mob.getPersistentData();tag.putUUID("JemSandboxRootOwner",owner.getUUID());tag.putLong(UNTIL,owner.server.overworld().getGameTime()+90);
         tag.putDouble("JemRootX",mob.getX());tag.putDouble("JemRootY",mob.getY());tag.putDouble("JemRootZ",mob.getZ());
         mob.getNavigation().stop();mob.stopUsingItem();mob.setDeltaMovement(Vec3.ZERO);
         if(upgrade>=2)SQUEEZES.put(mob.getUUID(),new Squeeze(owner.getUUID(),mob.getUUID(),owner.serverLevel().dimension(),owner.server.overworld().getGameTime()));
@@ -54,6 +54,15 @@ public final class SandboxHostileControl {
             if(age>0 && age%20==0)mob.hurt(owner.damageSources().magic(),3);
             return false;
         });
+    }
+    static void selectionChanged(ServerPlayer owner){
+        SQUEEZES.values().removeIf(s->s.owner.equals(owner.getUUID()));
+        for(var level:owner.server.getAllLevels())for(var entity:level.getAllEntities()){
+            var tag=entity.getPersistentData();
+            if(tag.hasUUID("JemSandboxRootOwner")&&tag.getUUID("JemSandboxRootOwner").equals(owner.getUUID())){
+                tag.remove(UNTIL);tag.remove("JemSandboxRootOwner");tag.remove("JemRootX");tag.remove("JemRootY");tag.remove("JemRootZ");
+            }
+        }
     }
     @SubscribeEvent public static void stopped(net.minecraftforge.event.server.ServerStoppedEvent e) { SQUEEZES.clear(); }
     public static boolean rooted(Entity entity) {

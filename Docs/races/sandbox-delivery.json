@@ -1,49 +1,94 @@
 {
   "profile": "C:\\Users\\user\\AppData\\Roaming\\.minecraft\\versions\\jem sandbox",
-  "installed": "C:\\Users\\user\\AppData\\Roaming\\.minecraft\\versions\\jem sandbox\\mods\\jem-races-1.1.0.jar",
-  "previous": [
+  "installed": "C:\\Users\\user\\AppData\\Roaming\\.minecraft\\versions\\jem sandbox\\mods\\jem-races-1.1.0-sandbox.jar",
+  "sha256": "22bd3f6d90b2d3e30758f1c0063c3b569230604efade021abdbef0e57cb3f598",
+  "installedAt": "2026-10-17T17:03:30.727064+05:00",
+  "sourceOwner": "Mods/JEMVisualSandboxR3",
+  "artifacts": [
     {
-      "file": "C:\\Users\\user\\AppData\\Roaming\\.minecraft\\versions\\jem sandbox\\mods\\jem-races-1.1.0.jar",
-      "sha256": "1bf1644dea393a9653ab09c0704a44c3b34b1cd761443be1b29c22e24e061617"
+      "profile": "SANDBOX",
+      "artifact": "Mods/JEMVisualSandboxR3/build/sandbox-profile/libs/jem-races-1.1.0-sandbox.jar",
+      "sha256": "22bd3f6d90b2d3e30758f1c0063c3b569230604efade021abdbef0e57cb3f598",
+      "previewClassesPresent": true,
+      "developerCommandsPresent": false,
+      "refmapPresent": true
+    },
+    {
+      "profile": "PRODUCTION",
+      "artifact": "Mods/JEMVisualSandboxR3/build/production-profile/libs/jem-races-1.1.0.jar",
+      "sha256": "82b4997f66c29cc039f62c5e2dd6578b6b5a7ec6688dc0f65f0c85082fc64d62",
+      "previewClassesPresent": true,
+      "developerCommandsPresent": false,
+      "refmapPresent": true
     }
   ],
-  "backup": "C:\\Users\\user\\AppData\\Roaming\\.minecraft\\versions\\jem sandbox\\visual-backups\\races-complete-20261017-154448",
-  "sha256": "3051ea3878663a323d07935c709d4db3cd12656fa6d1e3558cfe12f1bd0cb9b9",
-  "installedAt": "2026-10-17T15:44:48.631538+05:00",
-  "sourceOwner": "Mods/JEMVisualSandboxR3",
-  "gameLaunched": false,
-  "testsRun": false,
-  "checksRun": false,
-  "scope": "Standalone JEM Races sandbox only; no canonical pack or dedicated server installation",
-  "request": "Complete five-race selection, cinematic GUI, progression, powers, optional Iron presentation; install only in sandbox. No tests or checks.",
+  "previous": [
+    {
+      "file": "C:\\Users\\user\\AppData\\Roaming\\.minecraft\\versions\\jem sandbox\\mods\\jem-races-1.1.0-sandbox.jar",
+      "sha256": "22bd3f6d90b2d3e30758f1c0063c3b569230604efade021abdbef0e57cb3f598"
+    }
+  ],
+  "backup": "C:/Users/user/AppData/Roaming/.minecraft/versions/jem sandbox/visual-backups/races-closed-install-20261017-170307-958755",
+  "gameLaunchedByCodex": false,
+  "gameAlreadyRunningAtInstallation": false,
+  "restartRequired": true,
+  "automatedGameplayTestsRun": false,
   "productionBuild": {
-    "task": "jar, reobfJar",
-    "excludedTasks": [
-      "test",
-      "check"
-    ],
-    "result": "successful",
-    "log": "Mods/JEMVisualSandboxR3/build/production-build.log"
+    "task": "sandboxJar productionJar -x test -x check",
+    "result": "BUILD SUCCESSFUL",
+    "log": "Server/local/races-preview-final-build.log"
   },
-  "canonicalServer": "unchanged by this task; sandbox-only artifact",
-  "managedClient": "unchanged by this task",
+  "artifactInspection": {
+    "manifestProfilesCorrect": true,
+    "previewClassesInBoth": true,
+    "developerCommandsInEither": false,
+    "productionAuthority": "javap confirms no sandbox state mutation/input constants; false/no-op implementation",
+    "sandboxAuthority": "separate actual development implementation"
+  },
+  "entry": "F6; V/B select preview slots; Details; arrows inspect stages; Switch Race; DEV tier/reset",
+  "canonicalServer": "unchanged",
+  "managedClient": "unchanged",
   "stableProfile": "untouched",
   "releaseBaseline": "not promoted",
   "autoModpack": {
-    "action": "none; no managed artifact changed",
+    "action": "none; sandbox-only artifact install",
     "lastObservedGeneration": 20,
-    "lastObservedPublished": true,
-    "lastObservedManifestSha1": "ba33232d4a87a800429a2272c2afbff959c800cc"
+    "lastObservedPublished": true
   },
   "acceptance": {
-    "gameplay": "not run; user prohibition",
-    "GUI": "implementation present; not game-verified",
-    "VFX": "implementation present; new Sonic/one-shot runtime appearance not game-verified",
-    "multiplayer": "native authority bridge implemented; execution not verified",
-    "optionalIrons": "guarded adapter compiled; launch not verified",
-    "atlas": "semantic record updated; audit/validation not run"
+    "gameplay": "manual verification required; no game launched or cast triggered by Codex",
+    "visuals": "native model/VFX implementation compiled; framing, readability and render-mod compatibility unverified",
+    "productionDeployment": "not deployed; choose PRODUCTION artifact before MineRENT"
   },
-  "historyCommit": "SELF",
-  "initialPrePromptBackup": "C:/Users/user/AppData/Roaming/.minecraft/versions/jem sandbox/visual-backups/races-complete-20261017-154045/jem-visual-sandbox-1.0.0.jar",
-  "initialPrePromptSha256": "a00816fecc17c79ead2c524002042e0f708601648f4272a1f2d998b5f40c66c1"
+  "request": "Sandbox no cooldown/unlimited race switching, separate development progression controls, permanent animated V/B progression previews.",
+  "atlas": {
+    "deliverySnapshotValidation": {
+      "valid": true,
+      "canonical_counts": {
+        "biomes": 264,
+        "blocks": 12133,
+        "creative_tabs": 55,
+        "effects": 436,
+        "enchantments": 218,
+        "entities": 1593,
+        "items": 17064,
+        "structures": 520
+      },
+      "change_records": 33,
+      "effective_index": "Catalog/effective/index.json"
+    },
+    "deliverySnapshotScope": "Canonical Atlas generation/validation for exact indexed records/sources plus installed ignored artifact evidence; unrelated worktree changes preserved"
+  },
+  "installation": {
+    "method": "Mods/JEMVisualSandboxR3/install-sandbox.py",
+    "profileClosedAtInstall": true,
+    "atomicReplacement": true,
+    "zipIntegrityAndDeferredClassesChecked": true
+  },
+  "userReportedCrash": {
+    "report": "crash-2026-10-17_17.01.47-client.txt",
+    "cause": "Earlier live JAR overwrite invalidated deferred class loading; complete artifact reinstalled with profile closed",
+    "status": "in testing; user restart acceptance pending",
+    "earlierUnsafeInstallAt": "2026-10-17T17:01:32+05:00"
+  }
 }

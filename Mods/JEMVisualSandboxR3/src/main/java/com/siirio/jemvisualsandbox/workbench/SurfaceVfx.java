@@ -26,21 +26,27 @@ final class SurfaceVfx {
         var c=Minecraft.getInstance();if(c.level==null || !c.hasSingleplayerServer()){clear();return;}
         ACTIVE.removeIf(t->t.level!=c.level || c.level.getGameTime()-t.start>=48);
         for(Trail t:ACTIVE) {
-            double age=c.level.getGameTime()-t.start+event.getPartialTick();int frame=Math.min(23,(int)(age/2));
-            int count=t.points.size()-1,visible=Math.min(count,Math.max(1,(int)Math.ceil(count*(age+1)/17)));
-            var poses=event.getPoseStack();poses.pushPose();Vec3 camera=event.getCamera().getPosition();poses.translate(-camera.x,-camera.y,-camera.z);
+            draw(VisualRenderContext.world(event),t.points,t.kind,c.level.getGameTime()-t.start+event.getPartialTick());
+        }
+    }
+    static void draw(VisualRenderContext context,List<Vec3> points,int kind,double age) {
+        if(age<0 || age>=48 || points.size()<2)return;
+        var c=Minecraft.getInstance();
+        int frame=Math.min(23,(int)(age/2));
+            int count=points.size()-1,visible=Math.min(count,Math.max(1,(int)Math.ceil(count*(age+1)/17)));
+            var poses=context.getPoseStack();poses.pushPose();Vec3 camera=context.getCamera().getPosition();poses.translate(-camera.x,-camera.y,-camera.z);
             var buffers=c.renderBuffers().bufferSource();
-            var type=RenderType.entityCutoutNoCull(new ResourceLocation("jem_visual_sandbox","elemental/"+(t.kind==0?"ground_fissure":"sculk")+".png"));
+            var type=RenderType.entityCutoutNoCull(new ResourceLocation("jem_visual_sandbox","elemental/"+(kind==0?"ground_fissure":"sculk")+".png"));
             var out=buffers.getBuffer(type);
             for(int i=0;i<visible;i++) {
-                Vec3 a=t.points.get(i),b=t.points.get(i+1),side=side(a,b).scale(t.kind==0?.85:.6);
+                Vec3 a=points.get(i),b=points.get(i+1),side=side(a,b).scale(kind==0?.85:.6);
                 quad(out,poses.last(),a.add(side),b.add(side),b.subtract(side),a.subtract(side),i/(float)count,(i+1)/(float)count,frame,false);
             }
             buffers.endBatch(type);
-            if(t.kind==0) {
+            if(kind==0) {
                 type=RenderType.entityCutoutNoCull(new ResourceLocation("jem_visual_sandbox","elemental/fire_wall.png"));out=buffers.getBuffer(type);
                 for(int i=0;i<visible;i++) {
-                    Vec3 a=t.points.get(i),b=t.points.get(i+1),side=side(a,b).scale(.9);
+                    Vec3 a=points.get(i),b=points.get(i+1),side=side(a,b).scale(.9);
                     for(int sign:new int[]{-1,1}) {
                         Vec3 left=a.add(side.scale(sign)),right=b.add(side.scale(sign));
                         quad(out,poses.last(),left,right,right.add(0,1.8,0),left.add(0,1.8,0),i/(float)count,(i+1)/(float)count,frame,true);
@@ -49,7 +55,6 @@ final class SurfaceVfx {
                 buffers.endBatch(type);
             }
             poses.popPose();
-        }
     }
     private static Vec3 side(Vec3 a,Vec3 b) { Vec3 d=b.subtract(a).multiply(1,0,1).normalize();return new Vec3(-d.z,0,d.x); }
     private static void quad(VertexConsumer out,com.mojang.blaze3d.vertex.PoseStack.Pose pose,Vec3 a,Vec3 b,Vec3 c,Vec3 d,float from,float to,int frame,boolean wall) {

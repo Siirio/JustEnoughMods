@@ -37,8 +37,7 @@ public final class SandboxNetwork {
                 else if (action == 2) status(player);
                 else if (action == 5) RaceExperience.upgrade(player,race);
                 else if (action == 6) RaceExperience.cinematic(player,race==1);
-                else if (action == 7) RaceExperience.developer(player,race==1);
-                else if (action == 8) RaceExperience.developerTier(player,race);
+                else RaceDevelopment.handle(player,action,race);
             });
             context.setPacketHandled(true);
         }
@@ -92,8 +91,10 @@ public final class SandboxNetwork {
     public static void sync() { CHANNEL.sendToServer(new Input(2,0)); }
     public static void upgrade(int next) { CHANNEL.sendToServer(new Input(5,next)); }
     public static void cinematic(boolean enabled){CHANNEL.sendToServer(new Input(6,enabled?1:0));}
-    public static void developer(boolean enabled){CHANNEL.sendToServer(new Input(7,enabled?1:0));}
-    public static void developerTier(int tier){CHANNEL.sendToServer(new Input(8,tier));}
+    public static void developer(boolean enabled){RaceDevelopment.request(7,enabled?1:0);}
+    public static void developerTier(int tier){RaceDevelopment.request(8,tier);}
+    public static void developerReset(){RaceDevelopment.request(9,0);}
+    static void developmentInput(int action,int value){CHANNEL.sendToServer(new Input(action,value));}
     public static boolean supported(net.minecraft.network.Connection connection){return CHANNEL.isRemotePresent(connection);}
     static void sendStatus(ServerPlayer p,RaceExperience.Status value){
         if(CHANNEL.isRemotePresent(p.connection.connection))CHANNEL.send(PacketDistributor.PLAYER.with(()->p),new Status(value));

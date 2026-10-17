@@ -6,7 +6,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
@@ -34,15 +33,20 @@ final class LifeChorusRenderer {
             var target=c.level.getEntity(s.subject);
             if(target==null || !target.isAlive())continue;
             Vec3 pos=target.getPosition(event.getPartialTick());
-            if(s.kind==30){
-                if(age<14)goldSprite(event,pos.add(0,1.1,0),"gold_swirl",Math.min(15,(int)(age*16/14)),2.5F,1);
+            draw(VisualRenderContext.world(event),s.kind,s.origin,pos,target.getBbHeight(),age);
+        }
+    }
+    static void draw(VisualRenderContext context,int kind,Vec3 origin,Vec3 pos,float subjectHeight,float age) {
+        if(age<0)return;
+            if(kind==30){
+                if(age<14)goldSprite(context,pos.add(0,1.1,0),"gold_swirl",Math.min(15,(int)(age*16/14)),2.5F,1);
                 if(age>=7 && age<19){
-                    groundArt(event,s.origin,(float)(16*(age-6)/12),"gold_front",Math.min(10,4+(int)(age-7)/2),1);
+                    groundArt(context,origin,(float)(16*(age-6)/12),"gold_front",Math.min(10,4+(int)(age-7)/2),1);
                 }
                 if(age>=19 && age<31){
-                    groundArt(event,s.origin,16,"gold_front",Math.min(15,10+(int)(age-19)/2),(31-age)/12);
+                    groundArt(context,origin,16,"gold_front",Math.min(15,10+(int)(age-19)/2),(31-age)/12);
                 }
-                if(age>=12 && age<27)groundArt(event,s.origin,(float)(16*(age-11)/15),"gold_front",10,.2F*(27-age)/15);
+                if(age>=12 && age<27)groundArt(context,origin,(float)(16*(age-11)/15),"gold_front",10,.2F*(27-age)/15);
                 if(age>=18 && age<118){
                     float alpha=Math.min(1,(age-18)/4)*Math.min(1,(118-age)/10);
                     for(int i=0;i<4;i++){
@@ -50,29 +54,28 @@ final class LifeChorusRenderer {
                         Vec3 place=pos.add(Math.cos(a)*1.45,1.05+Math.sin(a*2)*.05,Math.sin(a)*1.45);
                         // R7 front points inward at the former radial yaw.
                         // User correction: present the painted face to threats.
-                        miniShield(event,place,(float)(-Math.toDegrees(a)+270),alpha);
+                        miniShield(context,place,(float)(-Math.toDegrees(a)+270),alpha);
                     }
                 }
                 if(age>=118)for(int i=0;i<4;i++){
                     double a=Math.toRadians(i*90+180);double drift=(age-118)*.025;
-                    goldSprite(event,pos.add(Math.cos(a)*(1.45+drift),1.05+drift,Math.sin(a)*(1.45+drift)),"gold_motes",Math.min(15,11+(int)(age-118)/3),.85F,(130-age)/12);
+                    goldSprite(context,pos.add(Math.cos(a)*(1.45+drift),1.05+drift,Math.sin(a)*(1.45+drift)),"gold_motes",Math.min(15,11+(int)(age-118)/3),.85F,(130-age)/12);
                 }
-            }else if(s.kind==35){
-                if(age<30)GuardianDomeRenderer.render(event,pos,age);
-                if(age<LifeChorusAbility.WAVE_TICKS)groundArt(event,s.origin,(float)(LifeChorusAbility.WAVE_RADIUS*(age+1)/LifeChorusAbility.WAVE_TICKS),"gold_front",Math.min(10,4+(int)age/2),1);
-                else if(age<20)groundArt(event,s.origin,(float)LifeChorusAbility.WAVE_RADIUS,"gold_front",Math.min(15,11+(int)(age-12)/2),(20-age)/8);
-            }else if(s.kind==31 || s.kind==27){
+            }else if(kind==35){
+                if(age<30)GuardianDomeRenderer.render(context,pos,age);
+                if(age<LifeChorusAbility.WAVE_TICKS)groundArt(context,origin,(float)(LifeChorusAbility.WAVE_RADIUS*(age+1)/LifeChorusAbility.WAVE_TICKS),"gold_front",Math.min(10,4+(int)age/2),1);
+                else if(age<20)groundArt(context,origin,(float)LifeChorusAbility.WAVE_RADIUS,"gold_front",Math.min(15,11+(int)(age-12)/2),(20-age)/8);
+            }else if(kind==31 || kind==27){
                 
                 if(age<24){
-                    float height=(float)target.getBbHeight(),size=Mth.clamp(height*.85F,.8F,2.6F);
-                    goldSprite(event,pos.add(0,height*.58,0),"gold_motes",Math.min(15,(int)(age*16/24)),size,Math.min(1,(24-age)/5));
+                    float height=(float)subjectHeight,size=Mth.clamp(height*.85F,.8F,2.6F);
+                    goldSprite(context,pos.add(0,height*.58,0),"gold_motes",Math.min(15,(int)(age*16/24)),size,Math.min(1,(24-age)/5));
                 }
-            }else if(s.kind==32){
-                SonicWaveRenderer.render(event,s.origin,age);
+            }else if(kind==32){
+                SonicWaveRenderer.render(context,origin,age);
             }
-        }
     }
-    private static void goldSprite(RenderLevelStageEvent e,Vec3 origin,String file,int frame,float size,float alpha){
+    private static void goldSprite(VisualRenderContext e,Vec3 origin,String file,int frame,float size,float alpha){
         if(frame<0 || frame>=16 || alpha<=0)return;
         var c=Minecraft.getInstance();var poses=e.getPoseStack();poses.pushPose();Vec3 cam=e.getCamera().getPosition();
         poses.translate(origin.x-cam.x,origin.y-cam.y,origin.z-cam.z);poses.mulPose(c.getEntityRenderDispatcher().cameraOrientation());
@@ -82,24 +85,18 @@ final class LifeChorusRenderer {
         for(float[] v:new float[][]{{-.75F,-.5F,0,1},{.75F,-.5F,1,1},{.75F,.5F,1,0},{-.75F,.5F,0,0}})out.vertex(p.pose(),v[0]*size,v[1]*size,0).color(255,255,255,(int)(255*alpha)).uv(v[2],(frame+v[3])/16F).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(15728880).normal(p.normal(),0,0,1).endVertex();
         buffers.endBatch(type);poses.popPose();
     }
-    private static void groundArt(RenderLevelStageEvent e,Vec3 origin,float radius,String file,int frame,float alpha){
+    private static void groundArt(VisualRenderContext e,Vec3 origin,float radius,String file,int frame,float alpha){
         var c=Minecraft.getInstance();Vec3 cam=e.getCamera().getPosition();var p=e.getPoseStack().last();
         var type=RenderType.entityTranslucent(new ResourceLocation("jem_visual_sandbox","life_chorus/"+file+".png"));var buffers=c.renderBuffers().bufferSource();var out=buffers.getBuffer(type);
         // Drape the original ornate artwork over exposed collision tops rather
         // than replacing it with a calculated ring. Missing floors stay empty.
         for(int z=0;z<16;z++)for(int x=0;x<16;x++){
             float u=x/16F,v=z/16F,du=1/16F;
-            double y=surface(origin.add((u+du/2-.5)*radius*3.2,0,(v+du/2-.5)*radius*2.2));if(!Double.isFinite(y))continue;
+            double y=e.surface(origin.add((u+du/2-.5)*radius*3.2,0,(v+du/2-.5)*radius*2.2));if(!Double.isFinite(y))continue;
             for(float[] q:new float[][]{{u,v},{u+du,v},{u+du,v+du},{u,v+du}})out.vertex(p.pose(),(float)(origin.x+(q[0]-.5)*radius*3.2-cam.x),(float)(y-cam.y),(float)(origin.z+(q[1]-.5)*radius*2.2-cam.z)).color(255,255,255,(int)(255*alpha)).uv(q[0],(frame+q[1])/16F).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(15728880).normal(p.normal(),0,1,0).endVertex();
         }buffers.endBatch(type);
     }
-    private static double surface(Vec3 point){
-        var level=Minecraft.getInstance().level;BlockPos base=BlockPos.containing(point);
-        for(int dy=3;dy>=-4;dy--){var at=base.offset(0,dy,0);var shape=level.getBlockState(at).getCollisionShape(level,at);
-            if(!shape.isEmpty())return at.getY()+shape.max(net.minecraft.core.Direction.Axis.Y)+.045;
-        }return Double.NaN;
-    }
-    private static void band(RenderLevelStageEvent e,Vec3 origin,double radius,String file,int frame,float alpha){
+    private static void band(VisualRenderContext e,Vec3 origin,double radius,String file,int frame,float alpha){
         if(radius<=0 || alpha<=0)return;radius=Math.min(16,radius);frame=Math.min(21,Math.max(0,frame));
         var c=Minecraft.getInstance();var poses=e.getPoseStack();Vec3 cam=e.getCamera().getPosition();
         var type=RenderType.entityTranslucent(new ResourceLocation("jem_visual_sandbox","life_chorus/"+file+".png"));var buffers=c.renderBuffers().bufferSource();var out=buffers.getBuffer(type);var p=poses.last();
@@ -107,13 +104,13 @@ final class LifeChorusRenderer {
         // missing floor leaves a gap rather than burying the effect in a block.
         for(int i=0;i<64;i++){
             double a=i*Math.PI/32,b=(i+1)*Math.PI/32,inner=Math.max(0,radius-1.4),outer=radius+.8;
-            Vec3 mid=origin.add(Math.cos((a+b)/2)*radius,0,Math.sin((a+b)/2)*radius);double y=surface(mid);if(!Double.isFinite(y))continue;
+            Vec3 mid=origin.add(Math.cos((a+b)/2)*radius,0,Math.sin((a+b)/2)*radius);double y=e.surface(mid);if(!Double.isFinite(y))continue;
             double u0=(i%2)*.5,u1=u0+.5;
             double[][] v={{Math.cos(a)*inner,Math.sin(a)*inner,u0,0},{Math.cos(b)*inner,Math.sin(b)*inner,u1,0},{Math.cos(b)*outer,Math.sin(b)*outer,u1,1},{Math.cos(a)*outer,Math.sin(a)*outer,u0,1}};
             for(double[] q:v)out.vertex(p.pose(),(float)(origin.x+q[0]-cam.x),(float)(y-cam.y),(float)(origin.z+q[1]-cam.z)).color(255,255,255,(int)(alpha*255)).uv((float)q[2],(float)((frame+q[3])/24)).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(15728880).normal(p.normal(),0,1,0).endVertex();
         }buffers.endBatch(type);
     }
-    private static void miniShield(RenderLevelStageEvent e,Vec3 origin,float yaw,float alpha){
+    private static void miniShield(VisualRenderContext e,Vec3 origin,float yaw,float alpha){
         if(shieldFailed || alpha<=0)return;
         if(shield==null)try{
             shield=WorkbenchMesh.load("shield",1);float[] frame=shield.poses[10];float[] min={Float.MAX_VALUE,Float.MAX_VALUE,Float.MAX_VALUE},max={-Float.MAX_VALUE,-Float.MAX_VALUE,-Float.MAX_VALUE};
