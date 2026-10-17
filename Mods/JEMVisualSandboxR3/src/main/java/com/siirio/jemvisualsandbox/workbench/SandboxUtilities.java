@@ -30,6 +30,7 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.server.ServerStoppedEvent;
+import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -165,6 +166,10 @@ public final class SandboxUtilities {
         if(e.getEntity() instanceof ServerPlayer p && !p.server.isDedicatedServer())selectionChanged(p);
     }
     @SubscribeEvent public static void drops(LivingDropsEvent e) { if(e.getEntity().getPersistentData().contains("JemSandboxGuardianExpiry"))e.getDrops().clear(); }
+    @SubscribeEvent public static void pathBreak(BlockEvent.BreakEvent e) {
+        if(e.getLevel() instanceof net.minecraft.server.level.ServerLevel level && !level.getServer().isDedicatedServer()
+                && e.getState().is(Blocks.OAK_LEAVES) && SandboxPathData.get(level.getServer()).contains(level.dimension(),e.getPos()))e.setCanceled(true);
+    }
     @SubscribeEvent public static void xp(LivingExperienceDropEvent e) { if(e.getEntity().getPersistentData().contains("JemSandboxGuardianExpiry"))e.setDroppedExperience(0); }
     @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent e) { if(e.getEntity() instanceof ServerPlayer p && !p.server.isDedicatedServer())selectionChanged(p); }
     @SubscribeEvent public static void dimension(PlayerEvent.PlayerChangedDimensionEvent e) { if(e.getEntity() instanceof ServerPlayer p && !p.server.isDedicatedServer())selectionChanged(p); }

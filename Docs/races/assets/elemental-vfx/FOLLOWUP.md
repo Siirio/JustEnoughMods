@@ -79,6 +79,9 @@ dimension/death/logout/selection cleanup, native temporary-path storage and lava
 item-use animation are wired; no invented GUI-only demonstration. Packet protocol3
 adds bounded128-point server-authored paths. Release cancels when UI focus is lost.
 Changing races does not prematurely erase already accepted root VFX.
+Native temporary-path break protection is also retained: tracked leaves cannot
+be harvested/replaced before expiry, avoiding removal of a later player leaf at
+the same position by the old800-tick expiry entry.
 
 ## Art audit and evidence
 
