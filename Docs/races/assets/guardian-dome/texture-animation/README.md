@@ -31,6 +31,8 @@ See the precise persistent contract in root `AGENTS.logic-locks.md`.
 - `one-shot/contact-sheet.png`, `one-shot.gif`: actual exported texture sequence.
 - `one-shot/native-frames/*.png`, `native-one-shot.gif`: 36 actual Blockbench
   timeline captures on the mapped model, not a replacement CPU model rendering.
+  Capture waits120ms after each timeline seek for the texture/UV update to reach
+  the render; immediate captures after reopening produced empty stale frames.
 
 Open the candidate, choose **Animate**, select `guardian_appear_once`, return
 the timeline to0 and press Space. The timeline drives the texture frames and
