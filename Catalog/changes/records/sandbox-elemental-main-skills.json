@@ -23,37 +23,37 @@
     ]
   },
   "change": {
-    "summary": "Sandbox elemental attacks with angular chunky-root hostile control, visible terrain VFX, passive guardian and complete B utilities.",
+    "summary": "Standalone golden Life Chorus with shared player-origin repulsion for V and guardian entry; sequential Bloom, sonic Sculk, native lava drinking and purple Void estimate.",
     "modifiers": [
       {
         "property": "sandbox.nether_main_skill",
         "operation": "replace",
         "before": "V: approved R5 three-hit fiery slash.",
-        "after": "V: five independently resolved nearest exposed floors within +/-10Y of cast height; skip only unsupported placements, retain cached model/hit positions. Authored continuous ground fissure and continuous fire-wall UVs alongside three magma models. B fire combo preserved; sneak+B32-tick lava drink consumes bucket and heals5."
+        "after": "V: five independently exposed floors +/-10Y, continuous fissure/fire flanks and three magma models. Approved B fire combo unchanged. Ordinary right-click lava bucket:32-tick native DRINK, empty bucket and heal5; sneak-right-click retains pouring. No drinking B combo."
       },
       {
         "property": "sandbox.void_main_skill",
         "operation": "replace",
         "before": "Immediate canonical targeted safe teleport, old Void cuboid variants.",
-        "after": "Native tapered End portal tear and tick14 safe targeted teleport; omit invisible departure decoy that redirected mobs to old coordinates, refresh existing pursuers to actual player. B hold>=10ticks launches safe-arrival pearl; sneak+B grants100ticks75% gravity reduction."
+        "after": "Native tapered End portal tear and tick14 safe teleport, pursuer refresh without stale decoy. B hold>=10ticks launches safe-arrival pearl; read-only purple ballistic impact/distance estimate replaces face-obscuring charge orb. Sneak+B100ticks75% gravity reduction retained."
       },
       {
         "property": "sandbox.bloom_main_skill",
         "operation": "replace",
         "before": "Canonical root damage/slow with coffer visual.",
-        "after": "Canonical damage plus90-tick complete hostile action pause using narrow server tick injection and attack/projectile/teleport/explosion guards; native base health/fire/potion/hurt cooldown clocks continue. Two independently wrapping12-bend angular branches with chunkier lower brown sections and green leaves, AABB adaptation. B toggles native temporary800-tick leaf footholds."
+        "after": "Base6 raw damage once per hostile Mob in10-block AABB and brief adaptive woody wrap; no action lock. Three sequential F6 sandbox unlocks: I90tick full hostile action pause with native health/fire/status clocks; II3 raw magic damage at20/40/60/80 ticks; III Poison I once at start90ticks. Saved NBT and copied on respawn. Chunky angular brown lower roots, green leaves and independent branch tracks retained. B temporary leaf path unchanged."
       },
       {
         "property": "sandbox.sculk_main_skill",
         "operation": "replace",
         "before": "Canonical connected-sculk traversal with crawl cuboid.",
-        "after": "Canonical connected traversal/safe exit; surface path resolves exposed collision tops plus0.04Y instead of buried block centers. B reveal32blocks/80ticks or consume25resonance to heal6 and400ticks Absorption II; hostile kill adds10 resonance, cap100."
+        "after": "V no traversal: horizontal8-block sonic wave at ticks7..18, each hostile mob hit once8 damage, vertical +/-3. Painted cyan pressure cels and native Warden sonic sound. No sculk-floor prerequisite. Existing B reveal/resonance consumption retained."
       },
       {
         "property": "sandbox.ancestors_guardian",
         "operation": "replace",
         "before": "Shield presentation emitted on manual V Life Chorus; automatic low-health trait absent.",
-        "after": "V retains Life Chorus with distinct gold cels. Below40% health emits shield facing threat with180degree correction and server-owned origin,30ticks Resistance V and one player-created invulnerable native Iron Golem lasting600ticks/no loot or XP. Threshold rearms after recovery; no duplicate living guardian."
+        "after": "V:16-block healing front with original golden rune/swirl/mote cels and per-recipient responses; preserve healing/cleanse/full-health absorption and4 outward actual R7 shields with amount*.75 protection for100ticks. Shared player-origin repulsion reaches16blocks/12ticks and knocks each hostile once with native strength.9, no new damage; V starts it at tick7. Successful below40% native golem entry triggers the SAME wave at PLAYER immediately, not golem-centered or recurring. Existing30tick Resistance V and600tick golem retained. Gold storyboard supersedes botanical candidate; old orange bars remain archived USER_REJECTED."
       }
     ]
   },
@@ -61,6 +61,7 @@
     "owner": "Mods/JEMVisualSandboxR3",
     "kind": "explicit_standalone_ability_and_art_replacement",
     "source_files": [
+      "Docs/races/VFX_REFERENCE_BRIEFS.md",
       "Mods/JEMVisualSandboxR3/README.md",
       "Mods/JEMVisualSandboxR3/author-elemental-models.mjs",
       "Mods/JEMVisualSandboxR3/bake-workbench.mjs",
@@ -69,17 +70,22 @@
       "Mods/JEMVisualSandboxR3/prepare.py",
       "Mods/JEMVisualSandboxR3/settings.gradle",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/mixin/RootedHostileTickMixin.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/mixin/SandboxLavaDrinkMixin.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/mixin/SandboxLavaUseMixin.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/BlockbenchWorkbench.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalAbilities.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusAbility.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/MainSkillProgression.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxHostileControl.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SonicWaveAbility.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SurfacePlacement.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SurfaceVfx.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/UtilityVfx.java",
-      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/elemental/chorus.png",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/VoidDistancePreview.java",
       "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/elemental/echo_absorb.png",
       "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/elemental/echo_scan.png",
       "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/elemental/fire_wall.png",
@@ -93,6 +99,16 @@
       "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/elemental/void_orb.png",
       "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/en_us.json",
       "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/ru_ru.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/life_chorus/answer.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/life_chorus/awakening.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/life_chorus/crumble.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/life_chorus/gold_front.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/life_chorus/gold_motes.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/life_chorus/gold_rune.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/life_chorus/gold_swirl.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/life_chorus/landing.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/life_chorus/life_band.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/life_chorus/sonic_band.png",
       "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/entity_vines-0.png",
       "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/entity_vines-1.png",
       "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/entity_vines.mesh",
@@ -111,7 +127,7 @@
   },
   "rationale": {
     "purpose": "Implement requested elemental attacks and concrete art revisions in the existing sandbox, preserving the liked fire combo.",
-    "decision_source": "User requests \u0418 fire combo binding, outward earth eruptions, actual End portal diagonal tear, VFX-only Void/Sculk; later correction requires adaptive Blockbench Bloom roots, brown thick lower roots, green pointed leaves, exact existing model+UV Pairs, independent animation for each branch and orange-to-dark magma stones. Codex chooses tick14 teleport, five wave placements, 90-tick model hold, native shader aperture runs, source-owned native OBJ bake and external layered material/cel painting. Later user explicitly requests full hostile suppression, +/-10Y eruption support with connected ground/fire VFX, visible Sculk surfaces, below40% guardian shield/resistance/golem with180degree facing correction, removal of stale-position Void targeting and all missing B utilities. Latest root steering says no further smoothing, make lower pieces chunkier. Codex chooses narrow mapped whole-action-tick pause plus native baseTick clocks/event guards, preserves old behavior outside sandbox and uses canonical local utility contracts, safe golem clearance and normal-native temporary path persistence."
+    "decision_source": "User requests И fire combo binding, outward earth eruptions, actual End portal diagonal tear, VFX-only Void/Sculk; later correction requires adaptive Blockbench Bloom roots, brown thick lower roots, green pointed leaves, exact existing model+UV Pairs, independent animation for each branch and orange-to-dark magma stones. Codex chooses tick14 teleport, five wave placements, 90-tick model hold, native shader aperture runs, source-owned native OBJ bake and external layered material/cel painting. Later user explicitly requests full hostile suppression, +/-10Y eruption support with connected ground/fire VFX, visible Sculk surfaces, below40% guardian shield/resistance/golem with180degree facing correction, removal of stale-position Void targeting and all missing B utilities. Latest root steering says no further smoothing, make lower pieces chunkier. Codex chooses narrow mapped whole-action-tick pause plus native baseTick clocks/event guards, preserves old behavior outside sandbox and uses canonical local utility contracts, safe golem clearance and normal-native temporary path persistence. Latest user direction replaces Life Chorus orange stripes with natural healing/individual responses/four existing mini shields and real25% reduction; ordinary lava drinking, radial4-heart sonic V, purple teleport distance; three sequential upgrades with Bloom base3hearts then1.5hearts/second at upgradeII, full lock atI, poison once atIII. Codex chooses free ordered sandbox unlock controls, NBT respawn retention,16-block healing front preserving former healing/boons,8-block sonic radius,90tick root duration and bounded client estimate. Other race upgrades are proposals only. User supplies golden Chorus storyboard as inspiration, asks Codex to finish it independently, and requests reusable skill/prompts describing all powers. Then explicitly requests one knockback on golem entry, clarifies outward from player and also V, and asks shared code for both events. Codex chooses common16-block/12-tick/native.9 knockback wave, using V healing delay7 and immediate successful guardian trigger; per-wave UUID de-duplication, native knockback resistance, no new damage. Original built-in image_gen production sheets retain native384x256 cels and integer rune-pivot alignment, no reference crops or pixelation filter."
   },
   "introduced": {
     "date": "2026-10-17",
@@ -143,6 +159,33 @@
       "commit": "SELF",
       "action": "revise",
       "summary": "Retain canonical temporary-path break protection so expiry cannot remove player replacement leaves and temporary blocks cannot be harvested."
+    },
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "revise",
+      "summary": "Implement nature-directed Life Chorus/exact25% protection, revised sequential Bloom6initial/3persecond upgrades, radial8damage Sculk, ordinary lava item use and purple Void distance hint; archive rejected chorus.",
+      "source_files": [
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/elemental/chorus.png"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "revise",
+      "summary": "User corrects miniature shield facing: rotate orbiting R7 faces180degrees outward; keep matching preview and final sandbox artifact."
+    },
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "revise",
+      "summary": "Apply user golden Chorus reference with native editable original rune/swirl/mote cels; create reusable VFX reference brief skill and13 source-backed power prompts. Reuse one outward wave implementation from PLAYER for V and successful guardian entry, hitting each hostile once."
+    },
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "revise",
+      "summary": "Agent rejects oversized filled-rune expansion; retain local hero rune and author separate open-center engraved gold_front for the shared outward wave. User specifies identical reusable player-origin wave for V and successful guardian entry."
     }
   ],
   "impacts": {
@@ -158,7 +201,14 @@
       "terrain surface placement",
       "passive guardian lifecycle",
       "hold/release utilities and temporary saved paths",
-      "Mixin config/refmap composition"
+      "Mixin config/refmap composition",
+      "ordered sandbox unlock persistence/respawn",
+      "per-recipient healing events",
+      "exact timed damage reduction",
+      "native lava bucket use interception",
+      "read-only ballistic distance estimate",
+      "shared player-origin repulsion wave and one-hit set",
+      "reference-grounded native golden sprite timeline imports"
     ],
     "relations": [],
     "notes": [
@@ -166,12 +216,14 @@
       "Source of truth remains canonical race helpers plus explicit sandbox overrides.",
       "Approved fiery slash resources and gameplay class remain byte-identical.",
       "Magma upper material is fullbright with a painted dark base; no world-light source.",
-      "Active Mixin config/refmap added to composed base manifest; immutable original classes/assets unchanged. Dedicated-server behavior remains disabled."
+      "Active Mixin config/refmap added to composed base manifest; immutable original classes/assets unchanged. Dedicated-server behavior remains disabled.",
+      "No XP/unlock costs invented; other race progression is proposal only. Existing elemental-vfx/FOLLOWUP superseded by life-chorus/BRIEF for revised routes."
     ],
     "unresolved": [
       "No game launch or automated tests: AI/mod interactions, cliff fitting, shield facing, target fit and complete utility action feel remain unobserved.",
       "Root shape revised after rejection; new candidate is not user-approved.",
-      "Two pre-existing JEMRoles line-ending coverage warnings remain outside scope."
+      "Two pre-existing JEMRoles line-ending coverage warnings remain outside scope.",
+      "Golden rune/swirl/motes and shared entry/V repulsion are not game-verified; native knockback resistance and concurrent root anchoring remain native."
     ]
   }
 }

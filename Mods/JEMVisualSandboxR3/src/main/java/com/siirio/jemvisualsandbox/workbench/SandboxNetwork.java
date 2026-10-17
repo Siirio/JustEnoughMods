@@ -30,11 +30,12 @@ public final class SandboxNetwork {
                 if (action == 0 && race >= 0 && race < 5) {
                     SandboxUtilities.selectionChanged(player);
                     player.getPersistentData().putInt("JemSandboxRace", race);
-                    CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new Visual(0, race, Vec3.ZERO, 0));
+                    status(player);
                 } else if (action == 1) SandboxSkills.cast(player, player.getPersistentData().getInt("JemSandboxRace"));
                 else if (action == 3) SandboxUtilities.press(player);
                 else if (action == 4) SandboxUtilities.release(player);
-                else if (action == 2) CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new Visual(0, player.getPersistentData().getInt("JemSandboxRace"), Vec3.ZERO, 0));
+                else if (action == 2) status(player);
+                else if (action == 5) MainSkillProgression.unlockNext(player,race);
             });
             context.setPacketHandled(true);
         }
@@ -67,6 +68,10 @@ public final class SandboxNetwork {
     }
     public static void select(int race) { CHANNEL.sendToServer(new Input(0,race)); }
     public static void sync() { CHANNEL.sendToServer(new Input(2,0)); }
+    public static void upgrade(int next) { CHANNEL.sendToServer(new Input(5,next)); }
+    public static void status(ServerPlayer p) {
+        int race=p.getPersistentData().getInt("JemSandboxRace");effect(p,0,race,Vec3.ZERO,0,MainSkillProgression.level(p,race));
+    }
     public static void cast() { CHANNEL.sendToServer(new Input(1,0)); }
     public static void secondary() { CHANNEL.sendToServer(new Input(3,0)); }
     public static void secondaryRelease() { CHANNEL.sendToServer(new Input(4,0)); }

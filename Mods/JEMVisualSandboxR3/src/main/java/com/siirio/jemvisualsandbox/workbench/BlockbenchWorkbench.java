@@ -34,7 +34,7 @@ public final class BlockbenchWorkbench {
         new Asset("shield", "Ancestors / Life Chorus + guardian", 1),
         new Asset("void", "Void / native End tear", 1),
         new Asset("entity_vines", "Bloom / adaptive root bind", 2),
-        new Asset("sculk", "Sculk / spreading VFX", 1),
+        new Asset("sculk", "Sculk / circular sonic wave", 1),
         new Asset("eruption0", "Nether / earth eruptions (B: fiery slashes)", 2),
         new Asset("eruption1", "Eruption / fractured basalt", 2),
         new Asset("eruption2", "Eruption / molten crown", 2)
@@ -48,9 +48,9 @@ public final class BlockbenchWorkbench {
     private static final KeyMapping NEXT = key("art_next", GLFW.GLFW_KEY_RIGHT_BRACKET);
     private static final KeyMapping PREVIOUS = key("art_previous", GLFW.GLFW_KEY_LEFT_BRACKET);
     private static final KeyMapping ART = key("art_play", GLFW.GLFW_KEY_F10);
-    private static int selectedRace, selectedArt;
+    private static int selectedRace, selectedArt, selectedUpgrade;
     private static boolean secondaryDown;
-    private record Instance(WorkbenchMesh mesh, Vec3 origin, ClientLevel level, long startTick, float yaw, int targetId) {}
+    private record Instance(WorkbenchMesh mesh, Vec3 origin, ClientLevel level, long startTick, float yaw, int targetId, int ticks) {}
     private static final java.util.List<Instance> INSTANCES = new java.util.ArrayList<>();
     private static final java.util.Map<String, WorkbenchMesh> CACHE = new java.util.HashMap<>();
     private static ClientLevel clientWorld;
@@ -75,7 +75,7 @@ public final class BlockbenchWorkbench {
             if (client.level != null && client.hasSingleplayerServer()) SandboxNetwork.sync();
         }
         if (!client.hasSingleplayerServer()) clear();
-        INSTANCES.removeIf(instance -> instance.level() != client.level || client.level == null || client.level.getGameTime() - instance.startTick() >= (instance.targetId()>=0?90:instance.mesh().poses.length-1));
+        INSTANCES.removeIf(instance -> instance.level() != client.level || client.level == null || client.level.getGameTime() - instance.startTick() >= instance.ticks());
 
         boolean allowed = client.player != null && client.level != null && client.screen == null && client.hasSingleplayerServer();
         while (RACES.consumeClick()) if (allowed) client.setScreen(new RaceMenu());
@@ -107,25 +107,31 @@ public final class BlockbenchWorkbench {
         label(client, asset.name() + " / editor study");
     }
     @SubscribeEvent public static void logout(ClientPlayerNetworkEvent.LoggingOut event) { clear(); }
-    private static void clear() { origin = null; previewLevel = null; mesh = null; INSTANCES.clear(); CACHE.clear(); FlameSlashRenderer.clear(); ElementalRenderer.clear(); SurfaceVfx.clear(); UtilityVfx.clear(); }
+    private static void clear() { origin = null; previewLevel = null; mesh = null; INSTANCES.clear(); CACHE.clear(); FlameSlashRenderer.clear(); ElementalRenderer.clear(); SurfaceVfx.clear(); UtilityVfx.clear(); LifeChorusRenderer.clear(); VoidDistancePreview.clear(); }
     private static void add(WorkbenchMesh model, Vec3 position, float rotation) {
         Minecraft client = Minecraft.getInstance();
         if (INSTANCES.size() >= 64) INSTANCES.remove(0);
-        INSTANCES.add(new Instance(model, position.add(0,.025,0), client.level, client.level.getGameTime(), rotation,-1));
+        INSTANCES.add(new Instance(model, position.add(0,.025,0), client.level, client.level.getGameTime(), rotation,-1,model.poses.length-1));
     }
     public static void receive(SandboxNetwork.Visual packet) {
         Minecraft client = Minecraft.getInstance();
         if (!client.hasSingleplayerServer() || client.level == null || packet.race() < 0 || packet.race() >= 5) return;
-        if (packet.action() == 0) { selectedRace = packet.race(); return; }
+        if (packet.action() == 0) {
+            selectedRace = packet.race(); selectedUpgrade=packet.subject();
+            if(client.player!=null)client.player.getPersistentData().putInt("JemSandboxRace",selectedRace);
+            if(client.screen instanceof RaceMenu menu)menu.refresh();return;
+        }
+        if(packet.action()==27 || packet.action()==35 || packet.action()>=30 && packet.action()<=32){LifeChorusRenderer.receive(packet);return;}
+        if(packet.action()==20 || packet.action()==21)return;
         if(packet.action()>=20 && packet.action()<=29) { UtilityVfx.receive(packet);return; }
         if (packet.action() >= 2 && packet.action() <= 4 && packet.race() == 4) { FlameSlashRenderer.receive(packet); return; }
         if(packet.action()==5 || packet.action()==7 || packet.action()==9) { ElementalRenderer.receive(packet);return; }
-        if(packet.action()==8 || packet.action()==10) {
-            String id=packet.action()==10?"entity_vines":"eruption"+Math.floorMod(packet.subject(),3);
+        if(packet.action()==8 || packet.action()==10 || packet.action()==34) {
+            String id=packet.action()!=8?"entity_vines":"eruption"+Math.floorMod(packet.subject(),3);
             try {
                 WorkbenchMesh model=CACHE.get(id);if(model==null){model=WorkbenchMesh.load(id,2);CACHE.put(id,model);}
                 if(INSTANCES.size()>=64)INSTANCES.remove(0);
-                INSTANCES.add(new Instance(model,packet.origin(),client.level,client.level.getGameTime(),packet.yaw(),packet.action()==10?packet.subject():-1));
+                INSTANCES.add(new Instance(model,packet.origin(),client.level,client.level.getGameTime(),packet.yaw(),packet.action()!=8?packet.subject():-1,packet.action()==10?90:model.poses.length-1));
             } catch(IOException error){LogUtils.getLogger().error("Cannot load elemental model "+id,error);label(client,"Elemental model failed to load; see log");}
             return;
         }
@@ -141,9 +147,12 @@ public final class BlockbenchWorkbench {
         } catch (IOException error) { LogUtils.getLogger().error("Cannot load main-skill Blockbench asset",error); label(client,"Main skill model failed to load; see log"); }
     }
 
+    private static boolean clientReadyForAim(){var c=Minecraft.getInstance();return c.player!=null && !c.player.isShiftKeyDown() && c.screen==null;}
+    @SubscribeEvent public static void hud(net.minecraftforge.client.event.RenderGuiEvent.Post event){VoidDistancePreview.hud(event);}
     private static void label(Minecraft client, String text) { client.player.displayClientMessage(Component.literal(text), true); }
     private static final class RaceMenu extends net.minecraft.client.gui.screens.Screen {
         RaceMenu() { super(Component.literal("Sandbox races / main skills")); }
+        void refresh(){rebuildWidgets();}
         @Override protected void init() {
             for (int i = 0; i < 5; i++) {
                 final int index = i;
@@ -151,14 +160,22 @@ public final class BlockbenchWorkbench {
                     SandboxNetwork.select(index);
                     label(minecraft, "Selected " + ASSETS[index].name() + " / main skill: " + CAST.getTranslatedKeyMessage().getString());
                     onClose();
-                }).bounds(width / 2 - 140, height / 2 - 70 + i * 26, 280, 22).build());
+                }).bounds(width / 2 - 140, height / 2 - 110 + i * 24, 280, 22).build());
+            }
+            if(selectedRace==2){
+                String[] names={"I: запрет действий", "II: удушение 1.5 сердца/сек", "III: яд при захвате"};
+                for(int i=1;i<=3;i++){
+                    final int next=i;
+                    var button=net.minecraft.client.gui.components.Button.builder(Component.literal((selectedUpgrade>=i?"✓ ":"")+names[i-1]),b->SandboxNetwork.upgrade(next)).bounds(width/2-140,height/2+14+(i-1)*24,280,22).build();
+                    button.active=i==selectedUpgrade+1;addRenderableWidget(button);
+                }
             }
         }
         @Override public boolean isPauseScreen() { return false; }
         @Override public void render(net.minecraft.client.gui.GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
             renderBackground(graphics);
-            graphics.drawCenteredString(font, title, width / 2, height / 2 - 102, 0xffdd88);
-            graphics.drawCenteredString(font, "V: main skill / B (И): utility / Shift+B: alternate", width / 2, height / 2 + 68, 0xffffff);
+            graphics.drawCenteredString(font, title, width / 2, height / 2 - 138, 0xffdd88);
+            graphics.drawCenteredString(font, "V: main skill / B (И): utility / Shift+B: alternate", width / 2, height / 2 + 96, 0xffffff);
             super.render(graphics, mouseX, mouseY, partialTick);
         }
     }
@@ -168,7 +185,8 @@ public final class BlockbenchWorkbench {
         if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_TRANSLUCENT_BLOCKS) return;
         FlameSlashRenderer.render(event);
         ElementalRenderer.render(event);
-        SurfaceVfx.render(event);UtilityVfx.render(event);
+        SurfaceVfx.render(event);UtilityVfx.render(event);LifeChorusRenderer.render(event);
+        VoidDistancePreview.render(event,selectedRace==1 && secondaryDown && clientReadyForAim());
         for (Instance instance : java.util.List.copyOf(INSTANCES)) renderInstance(event,instance);
     }
     private static void renderInstance(RenderLevelStageEvent event, Instance instance) {
@@ -185,7 +203,7 @@ public final class BlockbenchWorkbench {
             if(subject==null || !subject.isAlive())return;
             origin=subject.getPosition(event.getPartialTick());
             double tick=seconds*20;
-            seconds=(tick<16?tick:tick<78?16:16+(tick-78)*8/12)/20;
+            if(instance.ticks()==90)seconds=(tick<16?tick:tick<78?16:16+(tick-78)*8/12)/20;
         }
         if (seconds >= (mesh.poses.length - 1) * mesh.step) return;
         float sample = (float)(seconds / mesh.step);

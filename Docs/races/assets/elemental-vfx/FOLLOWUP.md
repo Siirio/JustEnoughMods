@@ -1,3 +1,5 @@
+> Later Life Chorus/progression/sonic/lava/aim revision: [current BRIEF](../life-chorus/BRIEF.md). Orange chorus archived as USER_REJECTED; bindings and base root lock below are historical.
+
 # Sandbox combat and art correction — 2026-10-17
 
 User direction supersedes the initial handoff: the roots looked like straight

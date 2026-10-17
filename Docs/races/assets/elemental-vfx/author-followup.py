@@ -61,12 +61,10 @@ def cel(name,f):
     elif name=='lava_drink':
         for i,(x,y) in enumerate([(31,75),(47,69),(65,74),(38,51)]):
             rise=(f*2+i*3)%26;poly(layers[1],[(x-3,y-rise+5),(x-4,y-rise),(x,y-rise-7),(x+4,y-rise),(x+2,y-rise+5)],'#cb3e0c');poly(layers[3],[(x-1,y-rise+2),(x,y-rise-4),(x+2,y-rise)],'#ffad28')
-    else: # chorus / guardian forming: gold wing-like material, not the shield itself.
-        for i,(x,y) in enumerate([(21,75),(42,82),(67,74),(79,58)]):
-            lift=f+i*2;poly(layers[1],[(x,y-lift),(x-5,y-lift-13),(x-1,y-lift-24),(x+5,y-lift-16),(x+9,y-lift-3)],'#a97629');poly(layers[3],[(x,y-lift-4),(x-1,y-lift-17),(x+3,y-lift-13),(x+5,y-lift-4)],'#f2cf74')
+    else:raise ValueError('Unknown utility; rejected chorus must not be regenerated')
     return layers
 def main():
-    names=['ground_fissure','fire_wall','void_orb','gravity','path_leaf','echo_scan','echo_absorb','lava_drink','chorus'];records=[]
+    names=['ground_fissure','fire_wall','void_orb','gravity','path_leaf','echo_scan','echo_absorb','lava_drink'];records=[]
     board=Image.new('RGB',(6*192,len(names)*215),(20,25,34));draw=ImageDraw.Draw(board)
     for row,name in enumerate(names):
         cels=[cel(name,f) for f in range(24)];art.common.aseprite(ROOT/(name+'.aseprite'),cels);strip=Image.new('RGBA',(96,2304));frames=[]
@@ -77,5 +75,5 @@ def main():
             im=art.common.composite(cels[f]).resize((192,192),Image.Resampling.NEAREST);board.paste(im,(col*192,row*215+18),im);draw.text((col*192+4,row*215+2),name+' '+str(f),fill='white')
         records.append({'id':name,'frames':24,'source':name+'.aseprite','sha256':hashlib.sha256((OUT/(name+'.png')).read_bytes()).hexdigest()})
     board.save(ROOT/'followup-contact.png');(ROOT/'followup-assets.json').write_text(json.dumps(records,indent=2)+'\n',encoding='utf-8')
-    print('Authored nine external layered flipbooks and moving previews.')
+    print('Authored eight external layered flipbooks and moving previews.')
 if __name__=='__main__':main()

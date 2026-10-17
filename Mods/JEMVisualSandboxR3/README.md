@@ -1,6 +1,31 @@
 # Bloom R3 — isolated sandbox extension
 
-## Current elemental handoff — 2026-10-17
+## Current Life Chorus/progression handoff — 2026-10-17
+
+Current visual direction: user-supplied golden Chorus storyboard; new rune/swirl/mote
+production sheets and native editable cels replace the intermediate leaf study.
+One shared player-origin outward knockback wave is triggered by golem entry and V,
+never emitted from the golem itself. Full power descriptions and copyable AI prompts:
+`Docs/races/VFX_REFERENCE_BRIEFS.md`. Global skill: `jem-vfx-reference-briefs`.
+
+Current owner: `Docs/races/assets/life-chorus/BRIEF.md`, with moving asset/native-mesh
+playback and honest review. Ancestors V now has a healing front with per-recipient
+gold responses and four real R7 shields/25% damage reduction for5s. Rejected orange
+bars are archived and removed from the active recipe/export. Bloom defaults to6
+initial damage only; F6 unlocks I complete action lock, II3 damage each second,
+III poison once. These are sequential and saved across respawn. Sculk V becomes
+an8-damage sonic circle, no traversal. Void И gets purple distance/impact estimation;
+no charge orb at the face. Nether drinks lava with ordinary right-click/native
+DRINK animation/empty bucket (sneak-right-click pours), not Shift+B. The liked fire
+combo and chunky angular roots retain their existing authored sources.
+
+Only this standalone sandbox artifact is delivered. No game launch or tests.
+Ordinary Server and native AutoModpack generation18 stay unchanged. Latest receipt:
+`Docs/races/assets/life-chorus/installation.json`. Other racial upgrades are suggestions
+in PROGRESSION.md and are not enabled. This section supersedes historical behavior
+and receipt links below.
+
+## Historical elemental handoff — 2026-10-17
 
 Latest correction: `Docs/races/assets/elemental-vfx/FOLLOWUP.md` owns current
 behavior and bindings. Roots now have chunky lower angular bends and a timed full

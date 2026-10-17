@@ -20,14 +20,38 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid="jem_visual_sandbox")
 public final class SandboxHostileControl {
     private static final String UNTIL="JemSandboxRootUntil";
+    private record Squeeze(java.util.UUID owner,java.util.UUID target,net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level> dimension,long start) {}
+    private static final java.util.Map<java.util.UUID,Squeeze> SQUEEZES=new java.util.HashMap<>();
     private SandboxHostileControl() {}
     public static void bind(ServerPlayer owner, LivingEntity target) {
-        SandboxNetwork.vine(owner,target);
+        int upgrade=MainSkillProgression.level(owner,2);
+        SandboxNetwork.effect(owner,upgrade==0?34:10,2,target.position(),0,target.getId());
+        if(upgrade==0)return;
         if(!(target instanceof Mob mob) || !(mob instanceof Enemy || mob.isAggressive() || mob.getTarget() instanceof net.minecraft.world.entity.player.Player))return;
         var tag=mob.getPersistentData();tag.putLong(UNTIL,owner.server.overworld().getGameTime()+90);
         tag.putDouble("JemRootX",mob.getX());tag.putDouble("JemRootY",mob.getY());tag.putDouble("JemRootZ",mob.getZ());
         mob.getNavigation().stop();mob.stopUsingItem();mob.setDeltaMovement(Vec3.ZERO);
+        if(upgrade>=2)SQUEEZES.put(mob.getUUID(),new Squeeze(owner.getUUID(),mob.getUUID(),owner.serverLevel().dimension(),owner.server.overworld().getGameTime()));
+        if(upgrade>=3)mob.addEffect(new net.minecraft.world.effect.MobEffectInstance(net.minecraft.world.effect.MobEffects.POISON,90,0));
     }
+    public static void cast(ServerPlayer owner) {
+        if(owner.server.isDedicatedServer() || !owner.server.isSingleplayerOwner(owner.getGameProfile()) || !owner.isAlive() || owner.isSpectator())return;
+        for(Mob mob:owner.serverLevel().getEntitiesOfClass(Mob.class,owner.getBoundingBox().inflate(10),m->m.isAlive() && (m instanceof Enemy || m.getTarget()==owner))) {
+            mob.hurt(owner.damageSources().playerAttack(owner),6);if(mob.isAlive())bind(owner,mob);
+        }
+    }
+    @SubscribeEvent public static void squeeze(net.minecraftforge.event.TickEvent.ServerTickEvent e) {
+        if(e.phase!=net.minecraftforge.event.TickEvent.Phase.END || e.getServer().isDedicatedServer())return;
+        long now=e.getServer().overworld().getGameTime();
+        SQUEEZES.entrySet().removeIf(entry->{
+            Squeeze s=entry.getValue();var level=e.getServer().getLevel(s.dimension);ServerPlayer owner=e.getServer().getPlayerList().getPlayer(s.owner);
+            var target=level==null?null:level.getEntity(s.target);long age=now-s.start;
+            if(owner==null || !(target instanceof LivingEntity mob) || !mob.isAlive() || age<0 || age>=90 || !rooted(mob))return true;
+            if(age>0 && age%20==0)mob.hurt(owner.damageSources().magic(),3);
+            return false;
+        });
+    }
+    @SubscribeEvent public static void stopped(net.minecraftforge.event.server.ServerStoppedEvent e) { SQUEEZES.clear(); }
     public static boolean rooted(Entity entity) {
         if(entity==null || entity.level().isClientSide || entity.getServer()==null || entity.getServer().isDedicatedServer() || !entity.isAlive())return false;
         var tag=entity.getPersistentData();long until=tag.getLong(UNTIL);

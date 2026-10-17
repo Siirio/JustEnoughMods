@@ -28,7 +28,7 @@ final class UtilityVfx {
             Vec3 origin=subject==null?e.origin:subject.getPosition(event.getPartialTick());
             if(e.action==21 && subject!=null)origin=origin.add(subject.getLookAngle().scale(.8));
             int age=(int)(c.level.getGameTime()-e.start),frame=e.action==28?age%16:age;
-            String file=switch(e.action){case 20,27->"chorus";case 21,28,29->"void_orb";case 22->"gravity";case 23->"path_leaf";case 24->"echo_scan";case 25->"echo_absorb";case 26->"lava_drink";default->throw new IllegalArgumentException("Unknown utility VFX");};
+            String file=switch(e.action){case 21,28,29->"void_orb";case 22->"gravity";case 23->"path_leaf";case 24->"echo_scan";case 25->"echo_absorb";case 26->"lava_drink";default->throw new IllegalArgumentException("Unknown utility VFX");};
             boolean ground=e.action==23;float size=e.action==24?5:e.action==28?.65F:ground?1.1F:2.6F;
             var poses=event.getPoseStack();poses.pushPose();Vec3 camera=event.getCamera().getPosition();
             poses.translate(origin.x-camera.x,origin.y-camera.y+(ground?.02:e.action==28?0:1.0),origin.z-camera.z);

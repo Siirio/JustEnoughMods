@@ -55,12 +55,12 @@ public final class SandboxSkills {
         if (player.server.isDedicatedServer() || !player.server.isSingleplayerOwner(player.getGameProfile()) || !player.isAlive() || player.isSpectator()) return;
         int tier = 3;
         switch (race) {
-            case 0 -> lifeChorus(player, tier);
+            case 0 -> LifeChorusAbility.cast(player);
             case 1 -> {
                 ElementalAbilities.rift(player);
             }
-            case 2 -> { if (!verdantDominion(player, tier)) fail(player, "no_nearby_targets"); }
-            case 3 -> { SignaturePlan plan = prepareSculk(player, tier); if (plan != null) sculkVeins(player, tier, plan); }
+            case 2 -> SandboxHostileControl.cast(player);
+            case 3 -> SonicWaveAbility.cast(player);
             case 4 -> {
                 ElementalAbilities.eruption(player);
             }
@@ -105,7 +105,7 @@ records = source[source.index('    private enum ZoneType'):source.rfind('}')]
 (OUT / 'SandboxSkills.java').write_text('package com.siirio.jemvisualsandbox.workbench;\n' + imports + '\n' + head + body + '\n' + records + '}\n', encoding='utf-8')
 environment = (OWNER / 'RaceEnvironment.java').read_text(encoding='utf-8').replace('package com.siirio.jemroles.trait;', 'package com.siirio.jemvisualsandbox.workbench;').replace('RaceEnvironment', 'SandboxEnvironment')
 (OUT / 'SandboxEnvironment.java').write_text('// Generated from JEMRoles canonical environment source.\n' + environment, encoding='utf-8')
-receipt = {'owner':'Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait', 'methods':methods, 'raceAbilitiesSha256':hashlib.sha256((OWNER/'RaceAbilities.java').read_bytes()).hexdigest(), 'sandboxOverrides':['tier 3','unlimited selection','no cooldown','Void: native End portal tear and tick14 safe teleport; remove old decoy redirection and refresh real target','Bloom: angular chunky lower roots, independent wraps, full hostile action pause90ticks; native health/fire/effect clocks continue','Sculk: collision-top surface VFX on canonical path; utility reveal/echo consumption','Nether V: independently resolved +/-10Y eruptions, continuous ground scar and fire-wall VFX','Nether B (Russian И): approved FierySlash with unchanged assets, timing and pulls']}
+receipt = {'owner':'Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait', 'methods':methods, 'raceAbilitiesSha256':hashlib.sha256((OWNER/'RaceAbilities.java').read_bytes()).hexdigest(), 'sandboxOverrides':['tier 3','unlimited selection','no cooldown','Void: native End portal tear and tick14 safe teleport; remove old decoy redirection and refresh real target','Bloom: base6 damage once; upgrades1=90tick action lock,2=3 damage/second,3=Poison once; chunky roots retained','Sculk: radial sonic wave8 damage once per hostile; no traversal; utility retained','Nether V: independently resolved +/-10Y eruptions, continuous ground scar and fire-wall VFX','Nether B (Russian И): approved FierySlash with unchanged assets, timing and pulls']}
 (HERE / 'build/generated-skills.json').write_text(json.dumps(receipt, indent=2)+'\n')
 
 path_source = (OWNER / 'TemporaryPathSavedData.java').read_text(encoding='utf-8').replace('package com.siirio.jemroles.trait;', 'package com.siirio.jemvisualsandbox.workbench;').replace('TemporaryPathSavedData','SandboxPathData').replace('jem_race_paths','jem_sandbox_paths')
