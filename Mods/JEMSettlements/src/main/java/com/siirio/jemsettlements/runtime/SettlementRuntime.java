@@ -173,8 +173,6 @@ public final class SettlementRuntime {
                 }
             }
         }
-        if (net.minecraftforge.fml.ModList.get().isLoaded("recruits"))
-            com.siirio.jemsettlements.compat.recruits.RecruitNeedsService.feed(data, now);
         data.changed();
     }
     private static ServerLevel dataLevel(SettlementSavedData ignored, TownRecord town) {

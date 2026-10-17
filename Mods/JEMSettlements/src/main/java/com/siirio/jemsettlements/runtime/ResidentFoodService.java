@@ -22,7 +22,12 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 /** One food selection and extraction policy for residents and native recruit needs. */
 public final class ResidentFoodService {
     private ResidentFoodService() { }
-    public record Food(ItemStack stack, Supplier<ItemStack> extract, BlockPos storage, int priority, double distance) { }
+    public record Food(ItemStack stack, Supplier<ItemStack> extract, BlockPos storage, int priority, double distance,
+                       net.minecraft.world.level.pathfinder.Path path) {
+        public Food(ItemStack stack, Supplier<ItemStack> extract, BlockPos storage, int priority, double distance) {
+            this(stack, extract, storage, priority, distance, null);
+        }
+    }
     public static boolean eligible(Mob mob, ResidentMood needs, ItemStack stack, long now, Predicate<ItemStack> nativeRule) {
         var id = BuiltInRegistries.ITEM.getKey(stack.getItem());
         var value = FoodValueRegistry.classify(stack, mob);
@@ -62,13 +67,16 @@ public final class ResidentFoodService {
             var capability = SharedStorageService.handler(level, link); if (capability.isEmpty()) continue;
             double distance = mob.distanceToSqr(link.position().getX() + .5, link.position().getY() + .5, link.position().getZ() + .5);
             if (!allowTravel && distance > 6.25) continue;
-            if (distance > 6.25) { var path = mob.getNavigation().createPath(link.position(), 2); if (path == null || !path.canReach()) continue; }
+            // Recruits returns a pending AsyncPath: canReach() is false until its worker finishes.
+            // Retain that exact path and let native navigation complete it; extraction still requires physical reach.
+            var path = distance > 6.25 ? mob.getNavigation().createPath(link.position(), 2) : null;
+            if (distance > 6.25 && (path == null || mob instanceof Villager && !path.canReach())) continue;
             var handler = capability.get(); int checked = Math.min(budget, handler.getSlots()); budget -= checked;
             for (int slot = 0; slot < checked; slot++) {
                 ItemStack simulated = handler.extractItem(slot, 1, true);
                 if (!eligible(mob, needs, simulated, now, nativeRule)) continue;
                 int selectedSlot = slot;
-                choices.add(new Food(simulated, () -> handler.extractItem(selectedSlot, 1, false), link.position(), priority(needs, simulated, mob), distance));
+                choices.add(new Food(simulated, () -> handler.extractItem(selectedSlot, 1, false), link.position(), priority(needs, simulated, mob), distance, path));
             }
         }
         choices.sort(Comparator.comparingInt(Food::priority).thenComparingDouble(Food::distance));
@@ -81,7 +89,7 @@ public final class ResidentFoodService {
             if (mob instanceof Villager villager) {
                 villager.getBrain().setMemory(MemoryModuleType.WALK_TARGET, new net.minecraft.world.entity.ai.memory.WalkTarget(selected.storage(), .65F, 2));
                 villager.getBrain().setMemory(MemoryModuleType.LOOK_TARGET, new net.minecraft.world.entity.ai.behavior.BlockPosTracker(selected.storage()));
-            } else mob.getNavigation().moveTo(selected.storage().getX() + .5, selected.storage().getY(), selected.storage().getZ() + .5, .65);
+            } else return mob.getNavigation().moveTo(selected.path(), .65);
             return true;
         }
         if (!eligible(mob, needs, selected.stack(), now, nativeRule)) return false;

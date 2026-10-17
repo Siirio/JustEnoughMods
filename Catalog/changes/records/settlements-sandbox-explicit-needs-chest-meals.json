@@ -41,6 +41,12 @@
         "operation": "add",
         "before": "No actionable per-chest inventory GUI/all-registered-NPC meal order; permanent combat feed skip; native starvation setting could disable damage.",
         "after": "Five-tab compact roster/chest GUI; read-only owner-linked54slot pages,8192byte item metadata limit; real120sec meal orders for registered hungry NPCs, explicit craving below100; bounded32tick critical combat meal at<10satiety each100ticks; native clock and single zero-hunger starvation damage. Protocol9 only sandbox."
+      },
+      {
+        "property": "settlements.sandbox_recruit_meal_navigation",
+        "operation": "replace",
+        "before": "Immediate canReach rejection discards pending native AsyncPath; periodic serving runs outside MOVE/LOOK arbitration; combat target unconditionally blocks selected-chest orders.",
+        "after": "Retain the returned native path and hand that same path to navigation, without blocking on async completion. Meal goal reserves MOVE/LOOK for spontaneous eligible food or an explicit selected-chest order; explicit orders permit serving during combat and release item use. Availability checks are bounded to once/20ticks and8192storage slots; real extraction still requires distance<=2.5blocks. Native hunger/morale clocks, critical-meal limits, harmful-food rules and bell enrollment remain."
       }
     ]
   },
@@ -136,6 +142,18 @@
         "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
         "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json"
       ]
+    },
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "fix sandbox recruit meal execution",
+      "summary": "Fix premature async reachability rejection and recruit meal movement ownership; explicit chest orders no longer silently wait for combat target to disappear.",
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitMealOrderGoal.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitNeedsService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/ResidentFoodService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java"
+      ]
     }
   ],
   "impacts": {
@@ -153,7 +171,8 @@
     ],
     "notes": [
       "No canonical runtime JARs or release baseline promoted.",
-      "Deleted source paths are history only: "
+      "Deleted source paths are history only: ",
+      "Read-only sandbox evidence: two explicitly enrolled new recruits had no serving history; loaded linked chest held31cooked mutton. Native1.15.2 AsyncPath.canReach returnsfalse before COMPLETED; world UseAsyncPathfinding=true. No world/config modification or runtime launch."
     ],
     "unresolved": [
       "Player/runtime/visual acceptance pending; no tests or game launches."

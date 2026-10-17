@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-17 — Repair recruit eating and selected-chest commands in sandbox
+
+- User reports recruits still do not eat or react to Everyone eat from this chest; retains jem sandbox-only delivery.
+- Bug / Server / JEM ResidentFoodService treated native Recruits1.15.2 asynchronous paths as completed paths and discarded them because canReach is false while pending; spontaneous feeding also issued navigation outside native movement arbitration, and both meal admission and serving rejected any combat target even after an explicit chest order / in testing. Codex retains and submits the exact native path, routes spontaneous and ordered meals through the recruit MOVE/LOOK goal, and allows explicit chest orders to interrupt ordinary combat/item use.
+- Read-only evidence from the user's closed sandbox save: newly enrolled Bowman and Shieldman both had empty serving history; Shieldman had about42satiety, and a linked chest held31cooked mutton. Native hunger and async pathfinding were enabled. No save edits or invented enrollment recovery. Existing bell requirement, native hunger/morale clocks, unsafe-food threshold, critical-combat cadence, food limits and physical one-item extraction remain.
+- Required full Settlements production artifact built/reobfuscated and installed only in the closed jem sandbox profile with backup/hash receipt in Docs/settlements/standalone/sandbox-recruit-meal-delivery.json. Ordinary Server, ManagedPack, native generation26 and baseline stay unchanged. No automated tests, game launches or player acceptance claimed. Atlas source history/effective index updated; source and documentation delivered on the current branch.
+
 ## 2026-10-17 — Sandbox-only settlements, chest meals, leaf decay and profession tree
 
 - User scope: work/install only in jem sandbox. Remove Map/Food/Recruits tabs; put recruits in Residents filter, show native names, require bell registration for JEM needs, allow critical combat eating/real starvation, add physical Chests inspection and Everyone eat. User reselects the prior wooden-panel/icon/compact reference and additionally requires optional Villager Names names.

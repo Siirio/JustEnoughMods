@@ -33,18 +33,25 @@ public final class RecruitNeedsService {
         var needs = SettlementSavedData.get(recruit.getServer()).workforceEntity(recruit.getUUID()).orElseThrow().foodHistory();
         needs.nativeNeeds(recruit.getMorale(), recruit.getHunger()); needs.refreshCraving();
         long now = recruit.getServer().overworld().getGameTime();
-        for (int slot = 0; slot < recruit.getInventory().getContainerSize(); slot++)
+        var record = SettlementSavedData.get(recruit.getServer()).workforceEntity(recruit.getUUID()).orElseThrow();
+        var town = SettlementSavedData.get(recruit.getServer()).town(record.townId()).orElseThrow();
+        return foodAvailable(recruit, needs, town, now, true, null);
+    }
+    private static boolean foodAvailable(AbstractRecruitEntity recruit, com.siirio.jemsettlements.resident.ResidentMood needs,
+                                         com.siirio.jemsettlements.town.TownRecord town, long now, boolean immediate,
+                                         net.minecraft.core.BlockPos orderedChest) {
+        if (orderedChest == null) for (int slot = 0; slot < recruit.getInventory().getContainerSize(); slot++)
             if (ResidentFoodService.eligible(recruit, needs, recruit.getInventory().getItem(slot), now, stack -> allowedFood(recruit, stack))) return true;
         ServerLevel level = (ServerLevel) recruit.level();
-        if (level.getGameRules().getBoolean(net.minecraft.world.level.GameRules.RULE_MOBGRIEFING)
+        if (orderedChest == null && level.getGameRules().getBoolean(net.minecraft.world.level.GameRules.RULE_MOBGRIEFING)
                 && !level.getEntitiesOfClass(net.minecraft.world.entity.item.ItemEntity.class, recruit.getBoundingBox().inflate(3),
                         item -> item.isAlive() && item.getOwner() == null && !item.hasPickUpDelay()
                                 && ResidentFoodService.eligible(recruit, needs, item.getItem(), now, stack -> allowedFood(recruit, stack))).isEmpty()) return true;
-        var record = SettlementSavedData.get(recruit.getServer()).workforceEntity(recruit.getUUID()).orElseThrow();
-        var town = SettlementSavedData.get(recruit.getServer()).town(record.townId()).orElseThrow(); int budget = 8192;
-        for (var link : town.storage()) {
+        int budget = 8192;
+        if (town != null) for (var link : town.storage()) {
             if (budget <= 0) break;
-            if (recruit.distanceToSqr(link.position().getX() + .5D, link.position().getY() + .5D, link.position().getZ() + .5D) > 6.25D) continue;
+            if (orderedChest != null && !link.contains(orderedChest)) continue;
+            if (immediate && recruit.distanceToSqr(link.position().getX() + .5D, link.position().getY() + .5D, link.position().getZ() + .5D) > 6.25D) continue;
             var physical = com.siirio.jemsettlements.runtime.SharedStorageService.handler(level, link); if (physical.isEmpty()) continue;
             var handler = physical.get(); int checked = Math.min(budget, handler.getSlots()); budget -= checked;
             for (int slot = 0; slot < checked; slot++)
@@ -57,30 +64,23 @@ public final class RecruitNeedsService {
         var record = data.workforceEntity(recruit.getUUID()).orElse(null);
         return record != null && managed(recruit) && feedOne(data, record, recruit, recruit.getServer().overworld().getGameTime(), true);
     }
-    public static void feed(SettlementSavedData data, long now) {
-        var server = net.minecraftforge.server.ServerLifecycleHooks.getCurrentServer();
-        if (server == null || !com.talhanation.recruits.config.RecruitsServerConfig.RecruitsUpdateHungerAndMorale.get()) return;
-        for (WorkforceRecord record : data.workforce()) {
-            if (record.type() != WorkforceType.RECRUIT || !record.settlementActive() || !record.needsEnrolled()) continue;
-            for (var level : server.getAllLevels()) if (level.getEntity(record.entityId()) instanceof AbstractRecruitEntity recruit
-                    && recruit.isAlive() && managed(recruit)) { feedOne(data, record, recruit, now, false); break; }
-        }
-    }
-    public static boolean orderedMeal(AbstractRecruitEntity recruit) {
+    public static boolean meal(AbstractRecruitEntity recruit) {
         if (!managed(recruit)) return false;
         var data = SettlementSavedData.get(recruit.getServer());
         return feedOne(data, data.workforceEntity(recruit.getUUID()).orElseThrow(), recruit, recruit.getServer().overworld().getGameTime(), false);
     }
-    public static boolean hasMealOrder(AbstractRecruitEntity recruit) {
-        if (!managed(recruit) || recruit.getTarget() != null || recruit.isSleeping() || recruit.isNoAi()
+    public static boolean hasMealTask(AbstractRecruitEntity recruit) {
+        if (!managed(recruit) || recruit.isSleeping() || recruit.isNoAi()
                 || !com.talhanation.recruits.config.RecruitsServerConfig.RecruitsUpdateHungerAndMorale.get()) return false;
         var data = SettlementSavedData.get(recruit.getServer()); var record = data.workforceEntity(recruit.getUUID()).orElseThrow();
-        var needs = record.foodHistory(); needs.nativeNeeds(recruit.getMorale(), recruit.getHunger());
-        var town = data.town(record.townId()).orElseThrow(); long now = recruit.getServer().overworld().getGameTime();
-        TownMealService.prepare((ServerLevel) recruit.level(), town, recruit, needs, now);
-        return needs.satiety() < 100 && TownMealService.target((ServerLevel) recruit.level(), town, recruit, now) != null;
+        long now = recruit.getServer().overworld().getGameTime();
+        var town = prepareMeal(data, record, recruit, now, false); var needs = record.foodHistory();
+        var orderedChest = TownMealService.target((ServerLevel) recruit.level(), town, recruit, now);
+        return needs.craving() && needs.satiety() < 100 && (orderedChest != null || recruit.getTarget() == null)
+                && foodAvailable(recruit, needs, town, now, false, orderedChest);
     }
-    private static boolean feedOne(SettlementSavedData data, WorkforceRecord record, AbstractRecruitEntity recruit, long now, boolean critical) {
+    private static com.siirio.jemsettlements.town.TownRecord prepareMeal(SettlementSavedData data, WorkforceRecord record,
+                                                                 AbstractRecruitEntity recruit, long now, boolean critical) {
         var needs = record.foodHistory();
         needs.nativeNeeds(recruit.getMorale(), recruit.getHunger());
         var dishes = com.siirio.jemsettlements.happiness.AvailableDishService.moddedDishes(recruit.getServer());
@@ -92,7 +92,13 @@ public final class RecruitNeedsService {
             var candidates = dishes.stream().filter(needs::canRequest).toList();
             if (!candidates.isEmpty()) needs.requestedDish(candidates.get(Math.floorMod(record.entityId().hashCode() * 31 + Long.hashCode(now / 24000), candidates.size())));
         }
-        if (!needs.craving() || !critical && (recruit.getTarget() != null || recruit.hurtTime > 0)
+        return town;
+    }
+    private static boolean feedOne(SettlementSavedData data, WorkforceRecord record, AbstractRecruitEntity recruit, long now, boolean critical) {
+        var town = prepareMeal(data, record, recruit, now, critical); var needs = record.foodHistory();
+        boolean ordered = !critical && TownMealService.target((ServerLevel) recruit.level(), town, recruit, now) != null;
+        if (ordered) recruit.stopUsingItem();
+        if (!needs.craving() || !critical && !ordered && (recruit.getTarget() != null || recruit.hurtTime > 0)
                 || recruit.isSleeping() || recruit.isUsingItem() || recruit.isNoAi()) return false;
         java.util.function.Predicate<ItemStack> nativeRule = stack -> allowedFood(recruit, stack);
         var inventory = recruit.getInventory(); var food = new ArrayList<ResidentFoodService.Food>();
