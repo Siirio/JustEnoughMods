@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-17 — Install current Settlements fixes in jem sandbox
+
+- User request: update the jem sandbox profile with the completed Settlements recovery/readability release.
+- Delivery only: atomically replace its standalone jem-settlements-2.1.0.jar with the exact current Client/ManagedPack artifact after checking that the client is closed; preserve the prior JAR under Server/local. Source/installed SHA-256 match the existing production delivery record.
+- Codex records the sandbox target, timestamp, previous/current hashes and backup in Docs/settlements/standalone/readability-recovery-delivery.json. No source behavior, dependency, world, configuration, managed generation or release baseline changed; no build, tests or game launch. Local Server remains synchronized and native AutoModpack generation26 remains published.
+
 ## 2026-10-17 — Fed resident recovery and readable compact recruit interface
 
 - User requests: gradual health recovery after eating; happiness decreases by fill instead of a moving star, red/low on the left; white Recruit text, days instead of ticks, less right whitespace. Supplied style extraction: arrangement, reused icons, useful visual controls, wood/metal/vegetation.
