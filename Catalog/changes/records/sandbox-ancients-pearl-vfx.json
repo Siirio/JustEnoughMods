@@ -1,0 +1,91 @@
+{
+  "schema_version": 2,
+  "change_id": "sandbox-ancients-pearl-vfx",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "jem_visual_sandbox"
+    }
+  ],
+  "conditions": [
+    {
+      "scope": "Standalone sandbox cosmetic rendering only; no canonical pack or dedicated-server gameplay change."
+    }
+  ],
+  "precedence": {
+    "layer": "sandbox_presentation",
+    "priority": 14,
+    "overrides": [
+      "sandbox-elemental-main-skills"
+    ]
+  },
+  "change": {
+    "summary": "Reference-directed pearl afterfire and Ancients presentation without decorative ground runes.",
+    "modifiers": [
+      {
+        "property": "sandbox.void_projectile_presentation",
+        "operation": "replace",
+        "before": "Camera-facing void_orb sprite on projectile and impact.",
+        "after": "Native pearl plus authored violet afterfire ribbon over actual bounded position history; separate eight-tick impact breakup. Physics, input, prediction and arrival unchanged."
+      },
+      {
+        "property": "sandbox.ancestors_presentation",
+        "operation": "replace",
+        "before": "Local gold runes, .48-block orbiting R7 shields, guardian wave without a shell.",
+        "after": "No decorative rune draws; existing healing front and actual recipient motes; four .95-block outward R7 shields at radius1.45; continuous filled golden sphere on successful guardian entry for30 ticks. Existing healing,100-tick25% reduction and passive Resistance unchanged."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Mods/JEMVisualSandboxR3",
+    "kind": "client_presentation",
+    "source_files": [
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/PearlAfterfire.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/UtilityVfx.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/ancients_pearl/pearl_afterfire.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/ancients_pearl/pearl_breakup.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/ancients_pearl/guardian_sphere.png",
+      "Mods/JEMVisualSandboxR3/prepare.py"
+    ]
+  },
+  "rationale": {
+    "purpose": "Match the selected image3 afterfire and remake Ancients VFX from image4 while preserving gameplay.",
+    "decision_source": "User selects pearl afterfire; explicitly confirms shields, pulse and dome without floor rune. Codex chooses native pixel art, motion bounds, shell opacity and larger existing model scale. Broader pasted overhaul remains context."
+  },
+  "introduced": {
+    "date": "2026-10-17",
+    "commit": "SELF",
+    "action": "add",
+    "summary": "Prepare source-editable standalone cosmetic revision; no profile mutation or gameplay launch."
+  },
+  "history": [
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "add",
+      "summary": "Authored three layered timelines, actual-history pearl trail, larger shields, continuous golden sphere after explicit rejection of curling tails and no decorative floor rune."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "sandbox client rendering",
+      "actual projectile entity history",
+      "Life Chorus presentation",
+      "guardian entry presentation",
+      "editable source archive"
+    ],
+    "relations": [],
+    "notes": [
+      "No packet, dependency, damage, healing, cooldown, progression, projectile physics or dedicated-server change.",
+      "Production artifact prepared outside launcher profiles. Ordinary Server and canonical Client generation18 remain unchanged."
+    ],
+    "unresolved": [
+      "Minecraft first/third-person, shader, terrain, curved-flight and visual acceptance unobserved.",
+      "Sphere is continuous with translucent body and bright rim; existing R7 shield remains kite-shaped rather than circular.",
+      "Pre-existing unrelated JEMRoles VFX coverage warnings remain outside this task."
+    ]
+  }
+}

@@ -1,5 +1,18 @@
 # Bloom R3 — isolated sandbox extension
 
+## Latest Ancients / pearl VFX — 2026-10-17
+
+Image3 upper-right pearl afterfire now follows bounded actual entity history;
+separate impact breakup retains the native pearl and server arrival. Ancients
+uses larger outward R7 shields and a brief continuous golden guardian sphere. Decorative
+floor rune draws are removed; healing front, recipient responses and gameplay
+remain. User explicitly confirms shields/pulse/dome without a floor rune.
+Owner: `Docs/races/assets/ancients-pearl/BRIEF.md`; exact prepared-artifact receipt:
+`Docs/races/assets/ancients-pearl/delivery.json`. Five-layer native Aseprite files
+and actual mesh/material playback included. Not user-approved art or game footage.
+No profile installation or game launch; ordinary Server and managed generation18
+remain unchanged. Historical receipts below describe earlier installed versions.
+
 ## Current Life Chorus/progression handoff — 2026-10-17
 
 Current visual direction: user-supplied golden Chorus storyboard; new rune/swirl/mote

@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "0f44d9222616dcab607785da7190d016d873fa3aa5d3a3e45414fe5eab2c3b98",
+  "change_records_sha256": "7606c2112ee5c2da803a092b3cf78c1e64b59001d919c12ee0c7be2c34f2d068",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -356,6 +356,21 @@
       "potential_static_target_count": 13
     },
     {
+      "change_id": "sandbox-ancients-pearl-vfx",
+      "status": "conditional",
+      "summary": "Reference-directed pearl afterfire and Ancients presentation without decorative ground runes.",
+      "record": "Catalog/changes/records/sandbox-ancients-pearl-vfx.json",
+      "selectors": [
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "jem_visual_sandbox"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 0
+    },
+    {
       "change_id": "sandbox-blockbench-main-skills",
       "status": "conditional",
       "summary": "Replace sandbox main-skill VFX with native Blockbench models, using V to execute source-derived race signatures with unlimited selection and no cooldowns.",
@@ -664,7 +679,7 @@
     "Docs/power-system/NUMERIC_TABLES.md": "328838a5d28016b792c136f3e4642f3400c8785f2f9ddcdac4246a3ba53fb114",
     "Docs/power-system/README.md": "ca69c9b298c3c62c4e48f71c1d39b1f9152fcef62a3f7d02983968c75d9c03f1",
     "Docs/power-system/Weapons.md": "c63a055513709e21af477ec465fcb28941255999d571907d27c34100d534f0e7",
-    "Docs/races/VFX_REFERENCE_BRIEFS.md": "eabfb6e0f9e6ffcd8f547ddc13fe76fe9271444719471693b58e5359e778498c",
+    "Docs/races/VFX_REFERENCE_BRIEFS.md": "793643ad2a2dc7172817ffd2d5901900935ffd12ebdc456a6fc39720818255a4",
     "Docs/smp-gui/README.md": "700af31333fc81e64913936da0b18b2e8b0f9a9313732589f1c2014cd4d54027",
     "Mods/JEMCompat/build.gradle": "c65b9a798f7bd3c6880cbd76f474535c0a9d81cad7b8392555bc887c2a47529e",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java": "abbf3a64067955e8b4da34c72d0ea39e87177215253db288db5dbabeec7e5c84",
@@ -883,13 +898,13 @@
     "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/food_values.json": "6afcd8db2aefa388f07f30939a9c69724da65e3bc38a8b3f6508e7b0af7c615d",
     "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json": "ff3974762a20b1218d899f6d77ed76c56cd58d49c4156f95ffe996228aea280c",
     "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/client/CampaignMapClient.java": "adec11232ba62576cd56e6f902c7a6af5ce8ab40b00531a21a4bb0e395ce749b",
-    "Mods/JEMVisualSandboxR3/README.md": "45f0c45d22d302fc5d05ece05bb70c85fd71e5fe550abed5e808aad77bf13043",
+    "Mods/JEMVisualSandboxR3/README.md": "2d52b86a6aa5861959721e31c2f3c239380f39220ae5a508f7f4dc11dc2e052b",
     "Mods/JEMVisualSandboxR3/author-elemental-models.mjs": "74b7ec5c74429b5623d728a17452894a84c82256f4c63d572008979bb6fda5e8",
     "Mods/JEMVisualSandboxR3/bake-workbench.mjs": "06dcafb708a42c325fe01fb80bd661cab1a94cbc4efe58d8c1ed16eb28b90ead",
     "Mods/JEMVisualSandboxR3/bake.mjs": "e335fa9f88418ec9f79dd5b18215819c59ef9d981010e53d92314334d3f1aa69",
     "Mods/JEMVisualSandboxR3/build.gradle": "2464e40557e9202026d7509976114d0d5d093e7cffbb46e4cde862098dd12eb2",
     "Mods/JEMVisualSandboxR3/generate-skills.py": "b0b601a380eec813197b5f0785c06ebce82b8fe48f15e76dfdcf7c376b7268f8",
-    "Mods/JEMVisualSandboxR3/prepare.py": "12b2d270d6fa60a8f61f9627d3678926811f70a7dcc814ef1337b90c3c444618",
+    "Mods/JEMVisualSandboxR3/prepare.py": "657c50b14d53f8b94e14591c1e9e4a8b6895eac3ce37e4b8ffb1cf1df8e8d7f1",
     "Mods/JEMVisualSandboxR3/settings.gradle": "f4f7ff9183af10c06ad8294f978a2dc75637309e0c762719c063b7fe44f5cf33",
     "Mods/JEMVisualSandboxR3/snapshot-sources.py": "1e6d80eef0e3fd7cd3f6ac3519a469c9e96396112ca692eb14d91394c92eb4f1",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/mixin/RootedHostileTickMixin.java": "4c803141ceab7b115901e53b5d8593628b751527392b6578acc4bcdfcb9d0f14",
@@ -903,17 +918,21 @@
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/FierySlash.java": "c2713f9f72371c0d739614677b60ade4f1d7a7c31b491f1cdd51b450ad568576",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/FlameSlashRenderer.java": "29d95e7bfffd5350f3a39a89454f94933cb15299128129d17bf70ee9f04ed18c",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusAbility.java": "2ff27f3419841f68a2de3465159657bc9ffb4786cb18f5ca1006cc026867feb6",
-    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusRenderer.java": "0eb51553e2a0b0dcc5642c6df8b2b978b93c3ddd2db477990d55b754a7bf19e6",
+    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusRenderer.java": "6f30c3979b6ab64b119d54eb22566369912886fde0ba6c05cf298cd5c040dd11",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/MainSkillProgression.java": "a4d275042e7d798d85e97ff56d8c51c30082e1ffea118cc0e08f6966dc158079",
+    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/PearlAfterfire.java": "6457e688644a89a001a5d0e8448d63f900415fcee889cc964a0fe028053185a6",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxHostileControl.java": "e55d3fad1ec7329c7b10ce1c996b1b98e683b30403ba7d4b39af945c5709c65e",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java": "4179674c411636da513c7925f969c0aa6f44bc821ed1e4b91923232d50e424af",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java": "256c1da1a336b2625cc9f5e8a4931af1b051da5d0492e1996a158e4313009f97",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SonicWaveAbility.java": "5e0057034f3bb4e33832396bbf7ba87d313dea74f339840788b304013e042694",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SurfacePlacement.java": "4a39e8346c42ac92e1036d3b73ac35d5e25307764adf5a9bf8991078f8adb37f",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SurfaceVfx.java": "10f387858536c1f8d6d58953c0107d46c4b4709a701d5c34aecff824d1fc811d",
-    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/UtilityVfx.java": "7c519bcdb27fe84afc2695a3994c0e83554f6344e743eea78ba95baecdc36c3e",
+    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/UtilityVfx.java": "4f6bde8cf63155a0d7df81598590005b5ca62c6e97a1efb593e9d409c96ea188",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/VoidDistancePreview.java": "75b79c4eb20adbd4612d139e751d28648366285a35c253a572f860397bb337be",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/WorkbenchMesh.java": "6e2d0365e97ab6ac385a067eda942e350550126c73b9b11283803a577520864f",
+    "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/ancients_pearl/guardian_sphere.png": "9cbfa1d9a4d37882280bf76aeff2011a0349d094c3498ff381f66556c2545fe8",
+    "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/ancients_pearl/pearl_afterfire.png": "b5a37532a733b8fcee0f2c2f1cdec3bc76f3fa8bb39792fb3e49de897b42f7d3",
+    "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/ancients_pearl/pearl_breakup.png": "d2715fc2a36308801d8ae8d43c23fc858f66cecc2e9cd9f392b6047b0d0e3caf",
     "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/elemental/echo_absorb.png": "9b239218b19a93e17df3dad5dc7dbd864424a23d5828999d294352e130c72b4f",
     "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/elemental/echo_scan.png": "7b2fbffc5ba7ebad88ec5bb9872d3e925c701c795d3d6cb979b0acdb493ebe86",
     "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/elemental/fire_wall.png": "0cd7f5264b836974050e8140bc5c411841339c311b16a8ab677436e832765fea",

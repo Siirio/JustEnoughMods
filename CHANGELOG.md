@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-17 — Pearl afterfire and Ancients VFX revision
+
+- User direction: select image3 upper-right pearl afterfire; remake Ancients. User explicitly confirms golden shields, healing pulse and dome without floor runes, then rejects the first curling-tail dome and requires a continuous solid sphere. Pasted overhaul instructions remain reference context; no UI, standalone architecture or balance changes are included.
+- Codex implementation choices: three external five-layer native pixel timelines; actual-history bounded violet ribbon with native teal pearl and separate impact breakup. Four existing outward R7 shields grow from .48 to .95 blocks; remove decorative rune draws, retain healing front/recipient motes. Revised guardian sphere has equal-axis radius1.45, faint fully filled gold surface and brighter view-dependent rim during the existing30-tick emergency window. User-rejected tails preserved only as negative evidence, removed from active exports. Correct orthonormal CPU preview avoids stretching a sphere into an egg.
+- Gameplay preserved: native projectile physics/safe arrival, healing/cleanse/absorption, knockback,100-tick25% Chorus protection, passive Resistance, progression and cooldowns. No new protocol or dependency.
+- Compact Atlas rebuild, coverage audit and validation passed. Full scan retains only the two pre-existing unrelated JEMRoles VFX warnings; no canonical artifact drift.
+- Production jar/reobfJar passed with tests/check excluded. Editable sources, exact exports and neutral-stage moving previews are in Docs/races/assets/ancients-pearl. These are not game footage or user-approved art. Exact prepared JAR/hash: delivery.json. No game, automated tests or launcher-profile mutation.
+- Ordinary local Server and Client/ManagedPack unchanged; native AutoModpack remains published generation18. No MineRENT/stable/baseline changes. Source/docs/Atlas delivered on current main; final commit reported separately.
+
+
 ## 2026-10-17 — Golden Chorus reference briefs and shared outward wave
 
 - User direction: use the supplied gold Chorus storyboard as inspiration; finish Chorus independently. Give copyable AI inspiration/reference prompts describing every power and make that a skill. Four shields must face outward. Subsequent clarification: successful golem entry and V trigger the same reusable knockback wave from the player, never from the golem and never a repeating aura.

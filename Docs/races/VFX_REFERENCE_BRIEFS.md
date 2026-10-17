@@ -281,3 +281,11 @@ Minecraft scene is concept evidence, not proof of a running mod.
 
 Further race upgrades remain [proposals](assets/life-chorus/PROGRESSION.md), not
 requirements an image AI should silently add to these current abilities.
+# Latest Ancients / pearl visual correction — 2026-10-17
+
+User confirms image4 shields, healing pulse and dome, with **no floor rune**, and
+selects image3 upper-right flying-pearl afterfire. Current production brief and
+evidence: [ancients-pearl](assets/ancients-pearl/BRIEF.md). This supersedes older
+Chorus floor-rune and miniature-shield art instructions below; ability mechanics,
+recipient eligibility, protection timing and projectile physics are preserved.
+

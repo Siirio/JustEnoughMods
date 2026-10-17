@@ -1,5 +1,12 @@
 # Life Chorus — current golden reference production
 
+Superseded presentation, 2026-10-17: the user explicitly confirms shields, pulse
+and dome with no floor rune. Current [Ancients/pearl brief](../ancients-pearl/BRIEF.md)
+removes all decorative rune draws, enlarges the existing outward shields and adds
+a brief continuous guardian sphere. Gameplay and existing healing front remain as below.
+Earlier installation receipt describes the previous installed sandbox, not the
+new prepared artifact.
+
 2026-10-17. Standalone **jem sandbox** only. This supersedes the intermediate
 botanical Chorus study and earlier elemental-vfx/FOLLOWUP for revised abilities.
 Current mechanics/prompt catalogue: ../../VFX_REFERENCE_BRIEFS.md.

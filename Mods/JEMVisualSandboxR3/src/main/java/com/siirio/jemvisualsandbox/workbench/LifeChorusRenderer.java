@@ -12,7 +12,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
 
-/** Authored golden rune/swirl/motes, outward R7 shields and sculk pressure cels. */
+/** Golden healing front, larger outward R7 shields and a continuous guardian sphere. */
 final class LifeChorusRenderer {
     private record Scene(ClientLevel level,long start,int kind,int subject,Vec3 origin) {}
     private static final List<Scene> ACTIVE=new ArrayList<>();
@@ -35,22 +35,18 @@ final class LifeChorusRenderer {
             Vec3 pos=target.getPosition(event.getPartialTick());
             if(s.kind==30){
                 if(age<14)goldSprite(event,pos.add(0,1.1,0),"gold_swirl",Math.min(15,(int)(age*16/14)),2.5F,1);
-                if(age<7)rune(event,s.origin,1.4F,Math.min(7,(int)age),.8F);
                 if(age>=7 && age<19){
-                    rune(event,s.origin,1.4F+(age-7)*.15F,Math.min(10,4+(int)(age-7)/2),.75F);
                     groundArt(event,s.origin,(float)(16*(age-6)/12),"gold_front",Math.min(10,4+(int)(age-7)/2),1);
                 }
                 if(age>=19 && age<31){
-                    rune(event,s.origin,3.2F,Math.min(15,10+(int)(age-19)/2),(31-age)/16);
                     groundArt(event,s.origin,16,"gold_front",Math.min(15,10+(int)(age-19)/2),(31-age)/12);
                 }
                 if(age>=12 && age<27)groundArt(event,s.origin,(float)(16*(age-11)/15),"gold_front",10,.2F*(27-age)/15);
                 if(age>=18 && age<118){
                     float alpha=Math.min(1,(age-18)/4)*Math.min(1,(118-age)/10);
-                    rune(event,pos,1.25F,7+(int)(age/5)%3,alpha*.34F);
                     for(int i=0;i<4;i++){
                         double a=Math.toRadians(i*90+(age-18)*1.8);
-                        Vec3 place=pos.add(Math.cos(a)*1.06,.88+Math.sin(a*2)*.05,Math.sin(a)*1.06);
+                        Vec3 place=pos.add(Math.cos(a)*1.45,1.05+Math.sin(a*2)*.05,Math.sin(a)*1.45);
                         // R7 front points inward at the former radial yaw.
                         // User correction: present the painted face to threats.
                         miniShield(event,place,(float)(-Math.toDegrees(a)+270),alpha);
@@ -58,9 +54,10 @@ final class LifeChorusRenderer {
                 }
                 if(age>=118)for(int i=0;i<4;i++){
                     double a=Math.toRadians(i*90+180);double drift=(age-118)*.025;
-                    goldSprite(event,pos.add(Math.cos(a)*(1.06+drift),.88+drift,Math.sin(a)*(1.06+drift)),"gold_motes",Math.min(15,11+(int)(age-118)/3),.65F,(130-age)/12);
+                    goldSprite(event,pos.add(Math.cos(a)*(1.45+drift),1.05+drift,Math.sin(a)*(1.45+drift)),"gold_motes",Math.min(15,11+(int)(age-118)/3),.85F,(130-age)/12);
                 }
             }else if(s.kind==35){
+                if(age<30)guardianShell(event,pos,age);
                 if(age<LifeChorusAbility.WAVE_TICKS)groundArt(event,s.origin,(float)(LifeChorusAbility.WAVE_RADIUS*(age+1)/LifeChorusAbility.WAVE_TICKS),"gold_front",Math.min(10,4+(int)age/2),1);
                 else if(age<20)groundArt(event,s.origin,(float)LifeChorusAbility.WAVE_RADIUS,"gold_front",Math.min(15,11+(int)(age-12)/2),(20-age)/8);
             }else if(s.kind==31 || s.kind==27){
@@ -85,7 +82,31 @@ final class LifeChorusRenderer {
         for(float[] v:new float[][]{{-.75F,-.5F,0,1},{.75F,-.5F,1,1},{.75F,.5F,1,0},{-.75F,.5F,0,0}})out.vertex(p.pose(),v[0]*size,v[1]*size,0).color(255,255,255,(int)(255*alpha)).uv(v[2],(frame+v[3])/16F).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(15728880).normal(p.normal(),0,0,1).endVertex();
         buffers.endBatch(type);poses.popPose();
     }
-    private static void rune(RenderLevelStageEvent e,Vec3 origin,float radius,int frame,float alpha){groundArt(e,origin,radius,"gold_rune",frame,alpha);}
+    private static void guardianShell(RenderLevelStageEvent e,Vec3 origin,float age){
+        var c=Minecraft.getInstance();var p=e.getPoseStack().last();Vec3 cam=e.getCamera().getPosition();
+        var type=RenderType.entityTranslucent(new ResourceLocation("jem_visual_sandbox","ancients_pearl/guardian_sphere.png"));
+        var buffers=c.renderBuffers().bufferSource();var out=buffers.getBuffer(type);
+        float envelope=Math.min(1,age/3)*Math.min(1,(30-age)/10);
+        Vec3 center=origin.add(0,1.35,0);
+        int frame=(int)(age/2)%8;
+        // User rejected separated curling tails: the entire sphere is filled.
+        // A soft body and brighter silhouette keep it visibly solid without
+        // turning the local first-person camera into an opaque yellow screen.
+        double radius=1.45*(.88+.12*Math.min(1,age/4));
+        boolean inside=cam.distanceToSqr(center)<radius*radius;
+        for(int y=0;y<16;y++)for(int x=0;x<32;x++){
+            double[][] corners={{x/32D,y/16D},{(x+1)/32D,y/16D},{(x+1)/32D,(y+1)/16D},{x/32D,(y+1)/16D}};
+            for(double[] q:corners){
+                double longitude=q[0]*Math.PI*2+age*.018,latitude=(q[1]-.5)*Math.PI;
+                double nx=Math.cos(longitude)*Math.cos(latitude),ny=Math.sin(latitude),nz=Math.sin(longitude)*Math.cos(latitude);
+                Vec3 normal=new Vec3(nx,ny,nz),point=center.add(normal.scale(radius));
+                double edge=1-Math.abs(normal.dot(cam.subtract(point).normalize()));
+                int alpha=(int)(255*envelope*(inside?.07:.12+.58*edge*edge));
+                out.vertex(p.pose(),(float)(point.x-cam.x),(float)(point.y-cam.y),(float)(point.z-cam.z)).color(255,255,255,alpha).uv((float)q[0],(float)((frame+1-q[1])/8)).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(15728880).normal(p.normal(),(float)nx,(float)ny,(float)nz).endVertex();
+            }
+        }
+        buffers.endBatch(type);
+    }
     private static void groundArt(RenderLevelStageEvent e,Vec3 origin,float radius,String file,int frame,float alpha){
         var c=Minecraft.getInstance();Vec3 cam=e.getCamera().getPosition();var p=e.getPoseStack().last();
         var type=RenderType.entityTranslucent(new ResourceLocation("jem_visual_sandbox","life_chorus/"+file+".png"));var buffers=c.renderBuffers().bufferSource();var out=buffers.getBuffer(type);
@@ -122,7 +143,7 @@ final class LifeChorusRenderer {
         if(shield==null)try{
             shield=WorkbenchMesh.load("shield",1);float[] frame=shield.poses[10];float[] min={Float.MAX_VALUE,Float.MAX_VALUE,Float.MAX_VALUE},max={-Float.MAX_VALUE,-Float.MAX_VALUE,-Float.MAX_VALUE};
             for(int i=0;i<frame.length;i++){int axis=i%3;min[axis]=Math.min(min[axis],frame[i]);max[axis]=Math.max(max[axis],frame[i]);}
-            centerX=(min[0]+max[0])/2;centerY=(min[1]+max[1])/2;centerZ=(min[2]+max[2])/2;shieldScale=.48F/(max[1]-min[1]);
+            centerX=(min[0]+max[0])/2;centerY=(min[1]+max[1])/2;centerZ=(min[2]+max[2])/2;shieldScale=.95F/(max[1]-min[1]);
         }catch(java.io.IOException ex){shieldFailed=true;com.mojang.logging.LogUtils.getLogger().error("Life Chorus requires authored R7 shield",ex);return;}
         var c=Minecraft.getInstance();var poses=e.getPoseStack();poses.pushPose();Vec3 cam=e.getCamera().getPosition();poses.translate(origin.x-cam.x,origin.y-cam.y,origin.z-cam.z);poses.mulPose(com.mojang.math.Axis.YP.rotationDegrees(yaw));poses.scale(shieldScale,shieldScale,shieldScale);poses.translate(-centerX,-centerY,-centerZ);var p=poses.last();float[] frame=shield.poses[10];
         var type=RenderType.entityTranslucent(shield.textures[0]);var buffers=c.renderBuffers().bufferSource();var out=buffers.getBuffer(type);

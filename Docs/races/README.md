@@ -1,5 +1,13 @@
 # JEM Races
 
+Latest sandbox VFX revision, 2026-10-17:
+[pearl afterfire and Ancients](assets/ancients-pearl/BRIEF.md). User confirms large
+golden shields, healing pulse and protective dome **without floor runes**.
+Three editable pixel timelines, bounded actual-flight trail and larger existing
+R7 shields are prepared as a standalone artifact; no launcher profile is modified.
+See [review and limitations](assets/ancients-pearl/REVIEW.md). This supersedes the
+earlier golden Chorus rune/small-shield presentation only; gameplay is preserved.
+
 Art review update,2026-10-17: [R6 distinct-pattern candidates](assets/race_vfx_r6/README.md)
 supersede R5's repeated outward composition. Infernal now uses three successive
 strikes with a light upper perimeter on all four exterior sides grading to a
