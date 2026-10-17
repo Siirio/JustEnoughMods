@@ -46,5 +46,36 @@
     "status": "in testing",
     "clientLaunched": false,
     "testsRun": false
+  },
+  "clientRecovery": {
+    "date": "2026-10-18",
+    "reportedCrash": "crash-2026-10-18_01.31.36-client.txt",
+    "beforeContentToken": "b0fccb2225fbc69fdfa948b511f0e934b6b3ccd9",
+    "cause": "Preload deliberately refuses server-only JAR mutations without review, then loads the unchanged active projection. Generation29 was published/downloaded but the client remained on conflicting generation27.",
+    "mechanism": "Existing native ModpackUpdater preparation and reviewed UpdateAttempt commit, constrained to the already-authorized local JEM JAR bytes; four native operations changed the two JARs and both manifest projections. No raw-copy, trust-rule change, invented transaction or active-state editing.",
+    "installed": {
+      "activeToken": "0f57e379bc657b2f0f5978c6683ae84a566d3ab9",
+      "headToken": "0f57e379bc657b2f0f5978c6683ae84a566d3ab9",
+      "artifacts": [
+        {
+          "file": "jem-races-1.1.0.jar",
+          "installedSha256": "4aec19910eee75bb9fd705ee41c2c537bdd8e70afc526f6e6b84943ea5267268",
+          "sourceSha256": "4aec19910eee75bb9fd705ee41c2c537bdd8e70afc526f6e6b84943ea5267268",
+          "narratorClasses": [
+            "com/siirio/jemvisualsandbox/mixin/RaceNarratorHotkeyMixin.class"
+          ]
+        },
+        {
+          "file": "jemcompat-3.7.0.jar",
+          "installedSha256": "7be13373472c6093ff148f25c9178b8a2cad35ddc24d281ca867afa3c3a707c4",
+          "sourceSha256": "7be13373472c6093ff148f25c9178b8a2cad35ddc24d281ca867afa3c3a707c4",
+          "narratorClasses": []
+        }
+      ]
+    },
+    "pendingTransaction": false,
+    "clientLaunched": false,
+    "testsRun": false,
+    "acceptance": "in testing; user startup confirmation pending"
   }
 }

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-18 — Recover the corrected native test jem generation
+
+- User report: test jem crashed again. Bug / Client Sided / native launch apply refused unreviewed locally built JAR replacements, kept generation27, and loaded its duplicate narrator redirects despite generation29 already being published and downloaded / in testing. Exact resolution mechanism: prepare and commit the already-authorized generation29 through native ModpackUpdater/UpdateAttempt, checking each JAR mutation against canonical local source bytes.
+- Evidence chain: the 01:31:36 crash is the same Races/Compat Redirect collision; the 01:30:29 preload warning explicitly left the live pack unchanged; active-state still named b0fccb2 (generation27) while its mirrored head named 0f57e37 (generation29). The previous delivery report verified server publication without confirming client installation.
+- Native recovery applied four planned operations: two projection JAR replacements and manifest updates in the projection/game directory. The active token now matches head29, both installed SHA-256 values match ManagedPack, and the installed Compat JAR contains no narrator class. No raw copies, hand-edited state, trust-gate changes, tests or client launches. Local server/publication29, stable profiles and release baseline are unchanged. Player startup confirmation remains pending.
+
 ## 2026-10-18 — Races owns narrator suppression; remove duplicate Compat hook
 
 - User report: test jem crashed after the race migration. User technical direction: Races must handle narrator suppression; remove it from Compat. Prior no-tests/no-client-launch scope remains.

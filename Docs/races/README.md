@@ -1,5 +1,9 @@
 # JEM Races
 
+## Native installation recovery — 2026-10-18
+
+The second test jem crash still loaded generation27: native preload had downloaded generation29 but refused its locally built JAR replacements without review. Publication and download did not install the correction. The already-authorized exact local artifacts were applied through the existing native planner and UpdateAttempt commit, preserving native file ownership and the preload trust rule. The installed active token now equals the generation29 head, and installed Races/Compat SHA-256 values match ManagedPack; Compat contains no narrator Mixin and Races owns the sole hook. No client was launched or tests run. User startup confirmation remains pending; the complete receipt is `server-test-migration.json`.
+
 ## Startup crash correction — 2026-10-18
 
 The user assigns Ctrl+B narrator suppression exclusively to Races. The duplicate `JEMCompat` narrator Mixin class and configuration entry are removed; the original required Races hook remains unchanged. This removes the explicit Redirect collision that aborted test jem initialization. Physical B/И input and explicit narrator settings retain their behavior. Fresh matching production Races/Compat artifacts and native generation are delivered locally; player startup acceptance remains pending. No tests or client launch were performed.
