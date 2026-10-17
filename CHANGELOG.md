@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-17 — Install standalone Settlements in sandbox
+
+- User request: load Settlements into sandbox. Installed the exact full2.1.0 production JAR in the existing `jem sandbox` profile; embedded CurrencyCore/Identity supply the standalone prerequisites. Existing Races mod, worlds and profile files preserved.
+- Codex choice: reuse the already compiled/reobfuscated artifact whose hash matches the previous delivery, rather than rebuild unchanged source. Workers/Recruits/full Economy are absent and were not added. Actual entry is `/settlements`; custom control-family art remains unapproved/unintegrated.
+- Installation SHA256 and nested hashes recorded in `Docs/settlements/standalone/sandbox-delivery.json`; no game launch/tests, canonical Server/ManagedPack update, native publication, stable-profile change or release-baseline promotion. Existing published generation20 remains the canonical pack state.
+
 ## 2026-10-17 — Standalone race selection, mastery and complete sandbox handoff
 
 - User requests the full five-race experience, cinematic selection based on the supplied black-void/live-skin storyboard, real progression and powers, optional Iron's Spells and installation into the existing sandbox. User explicitly prohibits tests and checks; storyboard text is visual guidance, not proof of screenshots or a separate request to generate mock gameplay evidence.
