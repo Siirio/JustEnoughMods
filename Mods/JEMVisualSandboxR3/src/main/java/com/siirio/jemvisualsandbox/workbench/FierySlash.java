@@ -29,8 +29,8 @@ public final class FierySlash {
     }
     private FierySlash() {}
 
-    public static void cast(ServerPlayer player) {
-        if (!allowed(player) || player.isPassenger() || ACTIVE.containsKey(player.getUUID())) return;
+    public static boolean cast(ServerPlayer player) {
+        if (!allowed(player) || player.isPassenger() || ACTIVE.containsKey(player.getUUID())) return false;
         Vec3 forward = player.getLookAngle().multiply(1, 0, 1);
         // Straight up/down aiming retains the player's horizontal facing.
         if (forward.lengthSqr() < 0.0001) {
@@ -40,11 +40,11 @@ public final class FierySlash {
         Combo combo = new Combo(player, forward.normalize());
         ACTIVE.put(player.getUUID(), combo);
         beginHit(player, combo, 0);
+        return true;
     }
 
     private static boolean allowed(ServerPlayer player) {
-        return !player.server.isDedicatedServer() && player.server.isSingleplayerOwner(player.getGameProfile())
-                && player.isAlive() && !player.isSpectator();
+        return RaceExperience.canAct(player)&&RaceExperience.race(player)==4;
     }
 
     @SubscribeEvent public static void tick(TickEvent.ServerTickEvent event) {

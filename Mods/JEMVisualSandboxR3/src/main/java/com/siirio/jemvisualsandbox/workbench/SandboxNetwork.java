@@ -18,7 +18,9 @@ import net.minecraftforge.network.simple.SimpleChannel;
 @Mod.EventBusSubscriber(modid="jem_visual_sandbox", bus=Mod.EventBusSubscriber.Bus.MOD)
 public final class SandboxNetwork {
     private static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
-            new ResourceLocation("jem_visual_sandbox", "skills"), () -> "3", "3"::equals, "3"::equals);
+            new ResourceLocation("jem_visual_sandbox", "skills"), () -> "4",
+            v -> "4".equals(v) || NetworkRegistry.ABSENT.equals(v) || NetworkRegistry.ACCEPTVANILLA.equals(v),
+            v -> "4".equals(v) || NetworkRegistry.ABSENT.equals(v) || NetworkRegistry.ACCEPTVANILLA.equals(v));
     public record Input(int action, int race) {
         static Input decode(FriendlyByteBuf buffer) { return new Input(buffer.readVarInt(), buffer.readVarInt()); }
         void encode(FriendlyByteBuf buffer) { buffer.writeVarInt(action); buffer.writeVarInt(race); }
@@ -26,19 +28,38 @@ public final class SandboxNetwork {
             var context = supplier.get();
             context.enqueueWork(() -> {
                 ServerPlayer player = context.getSender();
-                if (player == null || player.server.isDedicatedServer() || !player.server.isSingleplayerOwner(player.getGameProfile())) return;
+                if (player == null || !RaceExperience.allowed(player) && !ProductionRaceBridge.available(player)) return;
                 if (action == 0 && race >= 0 && race < 5) {
-                    SandboxUtilities.selectionChanged(player);
-                    player.getPersistentData().putInt("JemSandboxRace", race);
-                    status(player);
-                } else if (action == 1) SandboxSkills.cast(player, player.getPersistentData().getInt("JemSandboxRace"));
-                else if (action == 3) SandboxUtilities.press(player);
-                else if (action == 4) SandboxUtilities.release(player);
+                    RaceExperience.choose(player,race);
+                } else if (action == 1) RaceExperience.cast(player);
+                else if (action == 3) RaceExperience.utility(player,true);
+                else if (action == 4) RaceExperience.utility(player,false);
                 else if (action == 2) status(player);
-                else if (action == 5) MainSkillProgression.unlockNext(player,race);
+                else if (action == 5) RaceExperience.upgrade(player,race);
+                else if (action == 6) RaceExperience.cinematic(player,race==1);
+                else if (action == 7) RaceExperience.developer(player,race==1);
+                else if (action == 8) RaceExperience.developerTier(player,race);
             });
             context.setPacketHandled(true);
         }
+    }
+    public record Status(RaceExperience.Status value) {
+        static Status decode(FriendlyByteBuf b){
+            int race=b.readVarInt();boolean selected=b.readBoolean();int[] tiers=new int[5],progress=new int[5];
+            if(race< -1 || race>4)throw new IllegalArgumentException("Invalid race snapshot");
+            for(int i=0;i<5;i++){tiers[i]=b.readVarInt();progress[i]=b.readVarInt();if(tiers[i]<1||tiers[i]>3||progress[i]<0||progress[i]>30)throw new IllegalArgumentException("Invalid mastery snapshot");}
+            long signature=b.readVarLong(),secondary=b.readVarLong();boolean developer=b.readBoolean();int bloom=b.readVarInt();
+            if(signature<0||secondary<0||bloom<0||bloom>3)throw new IllegalArgumentException("Invalid cooldown snapshot");
+            return new Status(new RaceExperience.Status(race,selected,tiers,progress,signature,secondary,developer,bloom));
+        }
+        void encode(FriendlyByteBuf b){b.writeVarInt(value.race());b.writeBoolean(value.selected());for(int i=0;i<5;i++){b.writeVarInt(value.tiers()[i]);b.writeVarInt(value.progress()[i]);}b.writeVarLong(value.signatureRemaining());b.writeVarLong(value.secondaryRemaining());b.writeBoolean(value.developerMode());b.writeVarInt(value.bloomUpgrade());}
+        void handle(Supplier<NetworkEvent.Context> supplier){var c=supplier.get();c.enqueueWork(()->{
+            net.minecraftforge.fml.DistExecutor.unsafeRunWhenOn(net.minecraftforge.api.distmarker.Dist.CLIENT,()->()->{
+                com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.receive(value);
+                com.siirio.jemvisualsandbox.client.races.OptionalRacePresentation.accept(value);
+                BlockbenchWorkbench.acceptRace(value);
+            });
+        });c.setPacketHandled(true);}
     }
     public record Path(int kind, java.util.List<Vec3> points) {
         public Path { points=java.util.List.copyOf(points);if(points.size()>128)throw new IllegalArgumentException("Path too long"); }
@@ -64,13 +85,21 @@ public final class SandboxNetwork {
             CHANNEL.messageBuilder(Input.class,0,NetworkDirection.PLAY_TO_SERVER).encoder(Input::encode).decoder(Input::decode).consumerMainThread(Input::handle).add();
             CHANNEL.messageBuilder(Visual.class,1,NetworkDirection.PLAY_TO_CLIENT).encoder(Visual::encode).decoder(Visual::decode).consumerMainThread(Visual::handle).add();
             CHANNEL.messageBuilder(Path.class,2,NetworkDirection.PLAY_TO_CLIENT).encoder(Path::encode).decoder(Path::decode).consumerMainThread(Path::handle).add();
+            CHANNEL.messageBuilder(Status.class,3,NetworkDirection.PLAY_TO_CLIENT).encoder(Status::encode).decoder(Status::decode).consumerMainThread(Status::handle).add();
         });
     }
     public static void select(int race) { CHANNEL.sendToServer(new Input(0,race)); }
     public static void sync() { CHANNEL.sendToServer(new Input(2,0)); }
     public static void upgrade(int next) { CHANNEL.sendToServer(new Input(5,next)); }
+    public static void cinematic(boolean enabled){CHANNEL.sendToServer(new Input(6,enabled?1:0));}
+    public static void developer(boolean enabled){CHANNEL.sendToServer(new Input(7,enabled?1:0));}
+    public static void developerTier(int tier){CHANNEL.sendToServer(new Input(8,tier));}
+    public static boolean supported(net.minecraft.network.Connection connection){return CHANNEL.isRemotePresent(connection);}
+    static void sendStatus(ServerPlayer p,RaceExperience.Status value){
+        if(CHANNEL.isRemotePresent(p.connection.connection))CHANNEL.send(PacketDistributor.PLAYER.with(()->p),new Status(value));
+    }
     public static void status(ServerPlayer p) {
-        int race=p.getPersistentData().getInt("JemSandboxRace");effect(p,0,race,Vec3.ZERO,0,MainSkillProgression.level(p,race));
+        RaceExperience.snapshot(p);
     }
     public static void cast() { CHANNEL.sendToServer(new Input(1,0)); }
     public static void secondary() { CHANNEL.sendToServer(new Input(3,0)); }

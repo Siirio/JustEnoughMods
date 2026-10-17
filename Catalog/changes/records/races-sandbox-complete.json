@@ -1,0 +1,278 @@
+{
+  "schema_version": 2,
+  "change_id": "races-sandbox-complete",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "jem_visual_sandbox"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime_profile": "jem sandbox",
+      "authority": "integrated_server_owner",
+      "dedicated_native_authority": "JEMRoles via optional bridge"
+    }
+  ],
+  "precedence": {
+    "layer": "jem",
+    "priority": 120
+  },
+  "change": {
+    "summary": "Source-owned standalone race experience with acknowledged cinematic origin selection, saved mastery/cooldowns, all five passive families, optional native Iron projection and approved VFX.",
+    "modifiers": [
+      {
+        "property": "race.standalone.progression",
+        "operation": "replace",
+        "before": "fixed tier3; only Bloom manual upgrades; no ordinary cooldown gates",
+        "after": {
+          "tiers": "successful casts 0/10/30",
+          "save": "world SavedData UUID records",
+          "bloom": "sequential I/II/III gated by mastery; preserve existing unlocked stages",
+          "developer": "explicit temporary overrides; normal record never mutated"
+        }
+      },
+      {
+        "property": "race.sonic_wave.damage_hp",
+        "operation": "add",
+        "before": 8,
+        "after": 12,
+        "notes": "User explicitly requires +4HP, not a total of4HP."
+      },
+      {
+        "property": "race.leaf_bridge.cooldown_ticks",
+        "operation": "set",
+        "before": 0,
+        "after": 300
+      },
+      {
+        "property": "race.void_projectile.inaccuracy",
+        "operation": "set",
+        "before": 0.25,
+        "after": 0,
+        "notes": "Codex implementation choice for deterministic shared live prediction/actual launch. Speed1.5, gravity0.03, air drag0.99, water drag0.8 and native collision remain; safe arrival is server-owned."
+      },
+      {
+        "property": "race.sandbox.signature.tier_effects",
+        "operation": "derive",
+        "before": "all hardcoded maximum, unrelated to saved progression",
+        "after": "Ancestors12/16 radius, tierII cleanse, tierIII absorption; Void24/32 reach and tierIII slow; Bloom preserves approved action-lock/constriction/poison ordering; Sonic baseline12 damage, tierII push/tierIII2s slow; Nether6/8/10 damage and2/4/6s fire with five authored eruptions.",
+        "notes": "Canonical progression thresholds reused. Sonic tierII/III and Nether tier scaling are explicitly Codex implementation choices; existing sandbox-approved ability identity remains."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Mods/JEMVisualSandboxR3",
+    "kind": "standalone_feature_completion",
+    "source_files": [
+      "Mods/JEMVisualSandboxR3/README.md",
+      "Mods/JEMVisualSandboxR3/build.gradle",
+      "Mods/JEMVisualSandboxR3/generate-skills.py",
+      "Mods/JEMVisualSandboxR3/prepare.py",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/JemRacesSandbox.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/OptionalRacePresentation.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceAbilityHud.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceClient.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceStageRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxIronsBridge.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxRacialSpell.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/client/SandboxIronsClient.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/mixin/SandboxAnimalFearMixin.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/r3/BloomR3Preview.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/BlockbenchWorkbench.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalAbilities.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/FierySlash.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/GuardianDomeRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusAbility.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/MainSkillProgression.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ProductionRaceBridge.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ProjectileEstimation.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceCommands.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceExperience.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxHostileControl.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxOptionalIrons.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceLoot.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceTraits.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SonicWaveAbility.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SonicWaveRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/VoidDistancePreview.java",
+      "Mods/JEMVisualSandboxR3/src/main/resources/META-INF/mods.toml",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_roles/lang/en_us.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_roles/lang/ru_ru.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/guardian_dome/gold-wave-one-shot.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/guardian_dome/gold-wave-one-shot.png.mcmeta",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/en_us.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/ru_ru.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/infernal_eruption.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/life_chorus.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/rift_ambush.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/sculk_veins.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/verdant_dominion.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/data/forge/loot_modifiers/global_loot_modifiers.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/data/jem_visual_sandbox/loot_modifiers/piglin_fortune.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/jem_sandbox.mixins.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/pack.mcmeta"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make the existing sandbox an independently playable race mod rather than maximum-tier preview controls.",
+    "decision_source": "Explicit current user request and full supplied brief; preserve approved current race VFX and original trait sources."
+  },
+  "introduced": {
+    "date": "2026-10-17",
+    "commit": "SELF",
+    "action": "finish_standalone_race_experience",
+    "summary": "User requests complete standalone selection, progression and all race powers installed only in jem sandbox; tests and checks prohibited.",
+    "source_files": [
+      "Mods/JEMVisualSandboxR3/README.md",
+      "Mods/JEMVisualSandboxR3/build.gradle",
+      "Mods/JEMVisualSandboxR3/generate-skills.py",
+      "Mods/JEMVisualSandboxR3/prepare.py",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/JemRacesSandbox.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/OptionalRacePresentation.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceAbilityHud.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceClient.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceStageRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxIronsBridge.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxRacialSpell.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/client/SandboxIronsClient.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/mixin/SandboxAnimalFearMixin.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/r3/BloomR3Preview.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/BlockbenchWorkbench.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalAbilities.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/FierySlash.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/GuardianDomeRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusAbility.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/MainSkillProgression.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ProductionRaceBridge.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ProjectileEstimation.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceCommands.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceExperience.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxHostileControl.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxOptionalIrons.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceLoot.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceTraits.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SonicWaveAbility.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SonicWaveRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/VoidDistancePreview.java",
+      "Mods/JEMVisualSandboxR3/src/main/resources/META-INF/mods.toml",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_roles/lang/en_us.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_roles/lang/ru_ru.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/guardian_dome/gold-wave-one-shot.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/guardian_dome/gold-wave-one-shot.png.mcmeta",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/en_us.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/ru_ru.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/infernal_eruption.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/life_chorus.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/rift_ambush.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/sculk_veins.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/verdant_dominion.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/data/forge/loot_modifiers/global_loot_modifiers.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/data/jem_visual_sandbox/loot_modifiers/piglin_fortune.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/jem_sandbox.mixins.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/pack.mcmeta"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "finish_standalone_race_experience",
+      "summary": "User requests complete standalone selection, progression and all race powers installed only in jem sandbox; tests and checks prohibited.",
+      "source_files": [
+        "Mods/JEMVisualSandboxR3/README.md",
+        "Mods/JEMVisualSandboxR3/build.gradle",
+        "Mods/JEMVisualSandboxR3/generate-skills.py",
+        "Mods/JEMVisualSandboxR3/prepare.py",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/JemRacesSandbox.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/OptionalRacePresentation.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceAbilityHud.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceClient.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceStageRenderer.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxIronsBridge.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxRacialSpell.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/client/SandboxIronsClient.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/mixin/SandboxAnimalFearMixin.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/r3/BloomR3Preview.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/BlockbenchWorkbench.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalAbilities.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/FierySlash.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/GuardianDomeRenderer.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusAbility.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusRenderer.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/MainSkillProgression.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ProductionRaceBridge.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ProjectileEstimation.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceCommands.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceExperience.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxHostileControl.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxOptionalIrons.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceLoot.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceTraits.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SonicWaveAbility.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SonicWaveRenderer.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/VoidDistancePreview.java",
+        "Mods/JEMVisualSandboxR3/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_roles/lang/en_us.json",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_roles/lang/ru_ru.json",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/guardian_dome/gold-wave-one-shot.png",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/guardian_dome/gold-wave-one-shot.png.mcmeta",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/en_us.json",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/ru_ru.json",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/infernal_eruption.png",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/life_chorus.png",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/rift_ambush.png",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/sculk_veins.png",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/verdant_dominion.png",
+        "Mods/JEMVisualSandboxR3/src/main/resources/data/forge/loot_modifiers/global_loot_modifiers.json",
+        "Mods/JEMVisualSandboxR3/src/main/resources/data/jem_visual_sandbox/loot_modifiers/piglin_fortune.json",
+        "Mods/JEMVisualSandboxR3/src/main/resources/jem_sandbox.mixins.json",
+        "Mods/JEMVisualSandboxR3/src/main/resources/pack.mcmeta"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "races",
+      "selection",
+      "progression",
+      "cooldowns",
+      "singleplayer",
+      "native merchant presentation",
+      "loot",
+      "optional Iron Spells",
+      "network",
+      "VFX"
+    ],
+    "relations": [
+      "authoritative SavedData -> bounded snapshot -> cinematic GUI / HUD",
+      "accepted signature -> persistent cooldown and mastery -> tier-specific effect",
+      "native dedicated JEMRoles -> optional adapter -> read-only common presentation",
+      "actual projectile launch -> shared bounded collision solver -> surface marker"
+    ],
+    "notes": [
+      "No ordinary Client/ManagedPack, Server or immutable baseline change. Installation target only jem sandbox.",
+      "Native merchant offers remain native; only reversible emerald special-price delta is applied.",
+      "No always-max normal tiers or developer grants into ordinary mastery.",
+      "New source-owned entrypoint replaces old binary gallery instead of composing obsolete key/UI classes."
+    ],
+    "unresolved": [
+      "User prohibits tests, check tasks, automated Atlas audits/validation and gameplay launches; runtime visual acceptance and multiplayer execution remain unverified.",
+      "Existing dedicated JEMRoles mechanics remain canonical; standalone-specific Sonic/eruption/upgrade choices are not silently installed on the live server.",
+      "Derived Atlas rebuild/validation deferred under explicit no-check instruction; this record preserves same-task semantic history."
+    ]
+  }
+}

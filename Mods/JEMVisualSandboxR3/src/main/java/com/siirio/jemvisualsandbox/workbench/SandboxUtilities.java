@@ -41,13 +41,13 @@ public final class SandboxUtilities {
     private record Charge(long start,net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level> dimension) {}
     private static final Map<UUID,Charge> CHARGES=new HashMap<>();
     private SandboxUtilities() {}
-    private static boolean allowed(ServerPlayer p) { return !p.server.isDedicatedServer() && p.server.isSingleplayerOwner(p.getGameProfile()) && p.isAlive() && !p.isSpectator(); }
+    private static boolean allowed(ServerPlayer p) { return RaceExperience.allowed(p) && RaceExperience.selected(p) && p.isAlive() && !p.isSpectator(); }
     private static int race(ServerPlayer p) { return p.getPersistentData().getInt("JemSandboxRace"); }
     private static void cue(ServerPlayer p,int action) { SandboxNetwork.effect(p,action,race(p),p.position(),p.getYRot(),p.getId()); }
     public static boolean tryLavaDrink(net.minecraft.world.entity.player.Player player,InteractionHand hand) {
         var server=net.minecraftforge.server.ServerLifecycleHooks.getCurrentServer();
         if(server==null || server.isDedicatedServer() || player.isShiftKeyDown() || !player.getItemInHand(hand).is(Items.LAVA_BUCKET) || player.getPersistentData().getInt("JemSandboxRace")!=4)return false;
-        if(player instanceof ServerPlayer p && !allowed(p))return false;
+        if(player instanceof ServerPlayer p && (!RaceExperience.canAct(p)||!RaceExperience.requireReady(p,"lava_drink")||p.isUsingItem()))return false;
         player.startUsingItem(hand);player.getPersistentData().putBoolean("JemSandboxDrinking",true);return true;
     }
     public static void press(ServerPlayer p) {
@@ -56,32 +56,41 @@ public final class SandboxUtilities {
             case 0 -> p.displayClientMessage(Component.literal("Guardian activates below 40% health; V: Life Chorus"),true);
             case 1 -> {
                 if(p.isShiftKeyDown()) {
+                    if(!RaceExperience.requireReady(p,"gravity"))return;
                     var gravity=p.getAttribute(ForgeMod.ENTITY_GRAVITY.get());
                     if(gravity!=null) { gravity.removeModifier(GRAVITY);gravity.addTransientModifier(new AttributeModifier(GRAVITY,"Sandbox gravity denial",-.75,AttributeModifier.Operation.MULTIPLY_TOTAL)); }
                     p.getPersistentData().putLong("JemSandboxGravity",p.server.overworld().getGameTime()+100);cue(p,22);
-                } else CHARGES.putIfAbsent(p.getUUID(),new Charge(p.level().getGameTime(),p.serverLevel().dimension()));
+                    RaceExperience.cooldown(p,"gravity",SandboxRaceRules.GRAVITY_COOLDOWN.get());
+                } else if(RaceExperience.requireReady(p,"void_projectile"))CHARGES.putIfAbsent(p.getUUID(),new Charge(p.level().getGameTime(),p.serverLevel().dimension()));
             }
             case 2 -> {
-                boolean on=!p.getPersistentData().getBoolean("JemSandboxLivingPath");p.getPersistentData().putBoolean("JemSandboxLivingPath",on);
+                boolean on=!p.getPersistentData().getBoolean("JemSandboxLivingPath");if(on&&!RaceExperience.requireReady(p,"leaf_bridge"))return;
+                p.getPersistentData().putBoolean("JemSandboxLivingPath",on);if(on)RaceExperience.cooldown(p,"leaf_bridge",300);
                 p.displayClientMessage(Component.literal("Living Path: "+(on?"ON":"OFF")),true);if(on)cue(p,23);
             }
             case 3 -> {
                 int resonance=p.getPersistentData().getInt("JemSandboxResonance");
                 if(resonance>=25) { p.getPersistentData().putInt("JemSandboxResonance",resonance-25);p.heal(6);p.addEffect(new MobEffectInstance(MobEffects.ABSORPTION,400,1));cue(p,25); }
-                else SandboxSkills.echoVision(p);
+                else if(RaceExperience.requireReady(p,"echo")) {
+                    if(p.serverLevel().getEntitiesOfClass(net.minecraft.world.entity.LivingEntity.class,p.getBoundingBox().inflate(32),e->e!=p&&e.isAlive()).isEmpty()){p.displayClientMessage(Component.literal("No living creatures nearby"),true);return;}
+                    SandboxSkills.echoVision(p);RaceExperience.cooldown(p,"echo",160);
+                }
             }
-            case 4 -> FierySlash.cast(p);
+            case 4 -> {if(RaceExperience.requireReady(p,"fire_slash")&&FierySlash.cast(p))RaceExperience.cooldown(p,"fire_slash",1200);}
             default -> { }
         }
     }
     public static void release(ServerPlayer p) {
         Charge charge=CHARGES.remove(p.getUUID());
-        if(charge==null || !allowed(p) || race(p)!=1 || charge.dimension!=p.serverLevel().dimension())return;
+        if(charge==null || !RaceExperience.canAct(p) || race(p)!=1 || charge.dimension!=p.serverLevel().dimension() || !RaceExperience.requireReady(p,"void_projectile"))return;
         if(p.level().getGameTime()-charge.start<10) { p.displayClientMessage(Component.literal("Hold И/B for at least half a second"),true);return; }
-        ThrownEnderpearl pearl=new ThrownEnderpearl(p.level(),p);pearl.getPersistentData().putBoolean("JemSandboxVoidProjectile",true);pearl.shootFromRotation(p,p.getXRot(),p.getYRot(),0,1.5F,.25F);
-        if(p.level().addFreshEntity(pearl))SandboxNetwork.effect(p,28,1,pearl.position(),p.getYRot(),pearl.getId());
+        ThrownEnderpearl pearl=new ThrownEnderpearl(p.level(),p);pearl.getPersistentData().putBoolean("JemSandboxVoidProjectile",true);ProjectileEstimation.launch(pearl,p);
+        if(p.level().addFreshEntity(pearl)){RaceExperience.cooldown(p,"void_projectile",SandboxRaceRules.VOID_PROJECTILE_COOLDOWN.get());SandboxNetwork.effect(p,28,1,pearl.position(),p.getYRot(),pearl.getId());}
     }
     public static void selectionChanged(ServerPlayer p) {
+        var state=p.getPersistentData();
+        if(state.hasUUID("JemSandboxGuardian")&&p.serverLevel().getEntity(state.getUUID("JemSandboxGuardian")) instanceof IronGolem guardian)guardian.discard();
+        state.remove("JemSandboxGuardian");state.remove("JemSandboxGuardianTriggered");
         CHARGES.remove(p.getUUID());if(p.getPersistentData().getBoolean("JemSandboxDrinking"))p.stopUsingItem();p.getPersistentData().remove("JemSandboxDrinking");p.getPersistentData().remove("JemSandboxLivingPath");p.getPersistentData().remove("JemSandboxGravity");
         var gravity=p.getAttribute(ForgeMod.ENTITY_GRAVITY.get());if(gravity!=null)gravity.removeModifier(GRAVITY);
     }
@@ -91,7 +100,7 @@ public final class SandboxUtilities {
         if(p.getPersistentData().getLong("JemSandboxGravity")<=now) { var gravity=p.getAttribute(ForgeMod.ENTITY_GRAVITY.get());if(gravity!=null)gravity.removeModifier(GRAVITY); }
         else if(p.tickCount%20==0)cue(p,22);
         Charge charge=CHARGES.get(p.getUUID());
-        if(charge!=null && (race(p)!=1 || charge.dimension!=p.serverLevel().dimension()))CHARGES.remove(p.getUUID());
+        if(charge!=null && (race(p)!=1 || !RaceExperience.canAct(p) || charge.dimension!=p.serverLevel().dimension()))CHARGES.remove(p.getUUID());
         if(race(p)==2 && p.getPersistentData().getBoolean("JemSandboxLivingPath") && p.tickCount%4==0)livingPath(p);
         if(race(p)==0) {
             if(p.getHealth()>=p.getMaxHealth()*.4F)p.getPersistentData().remove("JemSandboxGuardianTriggered");
@@ -122,6 +131,7 @@ public final class SandboxUtilities {
         }
     }
     private static void guardian(ServerPlayer p) {
+        if(!RaceExperience.ready(p,"guardian"))return;
         var tag=p.getPersistentData();
         if(tag.hasUUID("JemSandboxGuardian") && p.serverLevel().getEntity(tag.getUUID("JemSandboxGuardian")) instanceof IronGolem g && g.isAlive())return;
         IronGolem golem=new IronGolem(EntityType.IRON_GOLEM,p.level());
@@ -140,6 +150,7 @@ public final class SandboxUtilities {
         golem.getPersistentData().putLong("JemSandboxGuardianExpiry",p.server.overworld().getGameTime()+600);
         golem.getPersistentData().putUUID("JemSandboxGuardianOwner",p.getUUID());
         if(!p.level().addFreshEntity(golem))return;
+        RaceExperience.cooldown(p,"guardian",SandboxRaceRules.GUARDIAN_COOLDOWN.get());
         LifeChorusAbility.guardianEntry(p);
         tag.putUUID("JemSandboxGuardian",golem.getUUID());tag.putBoolean("JemSandboxGuardianTriggered",true);
         p.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,30,4));
@@ -156,7 +167,9 @@ public final class SandboxUtilities {
     }
     @SubscribeEvent public static void lava(LivingEntityUseItemEvent.Finish e) {
         if(!(e.getEntity() instanceof ServerPlayer p) || !allowed(p) || race(p)!=4 || !p.getPersistentData().getBoolean("JemSandboxDrinking") || !e.getItem().is(Items.LAVA_BUCKET))return;
+        if(!RaceExperience.ready(p,"lava_drink")){p.getPersistentData().remove("JemSandboxDrinking");return;}
         p.getPersistentData().remove("JemSandboxDrinking");e.setResultStack(new ItemStack(Items.BUCKET));p.heal(5);
+        RaceExperience.cooldown(p,"lava_drink",SandboxRaceRules.LAVA_DRINK_COOLDOWN.get());RaceExperience.snapshot(p);
         p.level().playSound(null,p.blockPosition(),net.minecraft.sounds.SoundEvents.GENERIC_DRINK,net.minecraft.sounds.SoundSource.PLAYERS,.8F,.8F);
     }
     @SubscribeEvent public static void death(LivingDeathEvent e) {

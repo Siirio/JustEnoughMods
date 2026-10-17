@@ -51,22 +51,7 @@ public final class SandboxSkills {
     private static final CopyOnWriteArrayList<Zone> ZONES = new CopyOnWriteArrayList<>();
     private static final CopyOnWriteArrayList<Eruption> ERUPTIONS = new CopyOnWriteArrayList<>();
     private enum RaceVfxId { LIFE_CHORUS, RIFT_DEPART, RIFT_ARRIVE, VERDANT_DOMINION, SCULK_VEINS, INFERNAL_TELEGRAPH, INFERNAL_IMPACT, VOLCANIC_ZONE, ECHO_VISION }
-    public static void cast(ServerPlayer player, int race) {
-        if (player.server.isDedicatedServer() || !player.server.isSingleplayerOwner(player.getGameProfile()) || !player.isAlive() || player.isSpectator()) return;
-        int tier = 3;
-        switch (race) {
-            case 0 -> LifeChorusAbility.cast(player);
-            case 1 -> {
-                ElementalAbilities.rift(player);
-            }
-            case 2 -> SandboxHostileControl.cast(player);
-            case 3 -> SonicWaveAbility.cast(player);
-            case 4 -> {
-                ElementalAbilities.eruption(player);
-            }
-            default -> throw new IllegalArgumentException("Unknown sandbox race");
-        }
-    }
+    public static void cast(ServerPlayer player, int race) { RaceExperience.cast(player); }
     private static void emit(ServerPlayer player, RaceVfxId id, Vec3 origin, Vec3 target, int sourceId, int targetId, int[] related, List<Vec3> path, int tier, int duration) {
         switch (id) {
             case LIFE_CHORUS -> SandboxNetwork.effect(player,20,0,origin,0,player.getId());
@@ -78,14 +63,14 @@ public final class SandboxSkills {
             default -> { } // Nether's new eruption timeline owns its presentation.
         }
     }
-    public static LivingEntity riftTarget(ServerPlayer player) { return target(player,32); }
+    public static LivingEntity riftTarget(ServerPlayer player) { return target(player,RaceExperience.tier(player)>=2?32:24); }
     public static boolean commitRift(ServerPlayer player, UUID id) {
         var entity=player.serverLevel().getEntity(id);
-        if (!(entity instanceof LivingEntity target) || !target.isAlive() || player.distanceToSqr(target)>32*32) { fail(player,"target_required");return false; }
+        if (!(entity instanceof LivingEntity target) || !target.isAlive() || player.distanceToSqr(target)>Math.pow(RaceExperience.tier(player)>=2?32:24,2)) { fail(player,"target_required");return false; }
         Vec3 behind=target.position().subtract(target.getLookAngle().normalize().scale(1.8));
         BlockPos safe=SandboxEnvironment.nearestSafe(player,player.serverLevel(),BlockPos.containing(behind),3,true).orElse(null);
         if(safe==null) { fail(player,"no_safe_destination");return false; }
-        return riftAmbush(player,3,target,safe);
+        return riftAmbush(player,RaceExperience.tier(player),target,safe);
     }
     @net.minecraftforge.eventbus.api.SubscribeEvent
     public static void tick(net.minecraftforge.event.TickEvent.ServerTickEvent event) {
@@ -105,8 +90,11 @@ records = source[source.index('    private enum ZoneType'):source.rfind('}')]
 (OUT / 'SandboxSkills.java').write_text('package com.siirio.jemvisualsandbox.workbench;\n' + imports + '\n' + head + body + '\n' + records + '}\n', encoding='utf-8')
 environment = (OWNER / 'RaceEnvironment.java').read_text(encoding='utf-8').replace('package com.siirio.jemroles.trait;', 'package com.siirio.jemvisualsandbox.workbench;').replace('RaceEnvironment', 'SandboxEnvironment')
 (OUT / 'SandboxEnvironment.java').write_text('// Generated from JEMRoles canonical environment source.\n' + environment, encoding='utf-8')
-receipt = {'owner':'Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait', 'methods':methods, 'raceAbilitiesSha256':hashlib.sha256((OWNER/'RaceAbilities.java').read_bytes()).hexdigest(), 'sandboxOverrides':['tier 3','unlimited selection','no cooldown','Void: native End portal tear and tick14 safe teleport; remove old decoy redirection and refresh real target','Bloom: base6 damage once; upgrades1=90tick action lock,2=3 damage/second,3=Poison once; chunky roots retained','Sculk: radial sonic wave8 damage once per hostile; no traversal; utility retained','Nether V: independently resolved +/-10Y eruptions, continuous ground scar and fire-wall VFX','Nether B (Russian И): approved FierySlash with unchanged assets, timing and pulls']}
+receipt = {'owner':'Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait', 'methods':methods, 'raceAbilitiesSha256':hashlib.sha256((OWNER/'RaceAbilities.java').read_bytes()).hexdigest(), 'sandboxOverrides':['server-owned mastery 0/10/30 uses','normal persisted cooldowns','explicit isolated developer mode','Void: native End portal tear and tick14 safe teleport; remove old decoy redirection and refresh real target','Bloom: base6 damage once; upgrades1=90tick action lock,2=3 damage/second,3=Poison once; chunky roots retained','Sculk: radial sonic wave8 damage once per hostile; no traversal; utility retained','Nether V: independently resolved +/-10Y eruptions, continuous ground scar and fire-wall VFX','Nether B (Russian И): approved FierySlash with unchanged assets, timing and pulls']}
 (HERE / 'build/generated-skills.json').write_text(json.dumps(receipt, indent=2)+'\n')
 
 path_source = (OWNER / 'TemporaryPathSavedData.java').read_text(encoding='utf-8').replace('package com.siirio.jemroles.trait;', 'package com.siirio.jemvisualsandbox.workbench;').replace('TemporaryPathSavedData','SandboxPathData').replace('jem_race_paths','jem_sandbox_paths')
 (OUT / 'SandboxPathData.java').write_text(path_source,encoding='utf-8')
+
+rules_source = (OWNER.parent / 'race/RaceRules.java').read_text(encoding='utf-8').replace('package com.siirio.jemroles.race;', 'package com.siirio.jemvisualsandbox.workbench;').replace('RaceRules', 'SandboxRaceRules')
+(OUT / 'SandboxRaceRules.java').write_text('// Generated canonical default cooldown/config contract.\n' + rules_source, encoding='utf-8')

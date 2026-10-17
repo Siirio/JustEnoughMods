@@ -49,6 +49,7 @@ public final class BlockbenchWorkbench {
     private static final KeyMapping PREVIOUS = key("art_previous", GLFW.GLFW_KEY_LEFT_BRACKET);
     private static final KeyMapping ART = key("art_play", GLFW.GLFW_KEY_F10);
     private static int selectedRace, selectedArt, selectedUpgrade;
+    private static RaceExperience.Status raceStatus;
     private static boolean secondaryDown;
     private record Instance(WorkbenchMesh mesh, Vec3 origin, ClientLevel level, long startTick, float yaw, int targetId, int ticks) {}
     private static final java.util.List<Instance> INSTANCES = new java.util.ArrayList<>();
@@ -71,23 +72,31 @@ public final class BlockbenchWorkbench {
         if (event.phase != TickEvent.Phase.END) return;
         Minecraft client = Minecraft.getInstance();
         if (clientWorld != client.level) {
-            clear(); clientWorld = client.level;
+            clear(); raceStatus=null;clientWorld = client.level;
             if (client.level != null && client.hasSingleplayerServer()) SandboxNetwork.sync();
         }
         if (!client.hasSingleplayerServer()) clear();
         INSTANCES.removeIf(instance -> instance.level() != client.level || client.level == null || client.level.getGameTime() - instance.startTick() >= instance.ticks());
 
-        boolean allowed = client.player != null && client.level != null && client.screen == null && client.hasSingleplayerServer();
-        while (RACES.consumeClick()) if (allowed) client.setScreen(new RaceMenu());
-        while (NEXT.consumeClick()) if (allowed) { selectedArt = (selectedArt + 1) % ASSETS.length; label(client, ASSETS[selectedArt].name()); }
-        while (PREVIOUS.consumeClick()) if (allowed) { selectedArt = (selectedArt + ASSETS.length - 1) % ASSETS.length; label(client, ASSETS[selectedArt].name()); }
-        while (CAST.consumeClick()) if (allowed) SandboxNetwork.cast();
+        boolean connected=client.getConnection()!=null&&SandboxNetwork.supported(client.getConnection().getConnection());
+        com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.tick();
+        if(connected&&client.player!=null&&client.player.tickCount%40==0&&raceStatus==null)SandboxNetwork.sync();
+        boolean allowed = client.player != null && client.level != null && client.screen == null && connected;
+        while (RACES.consumeClick()) {
+            if (allowed)com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.openProgression();
+            else if(client.player!=null&&!connected)label(client,"This server does not provide the JEM Races gameplay protocol");
+        }
+        boolean developer=allowed&&raceStatus!=null&&raceStatus.developerMode();
+        while (NEXT.consumeClick()) if (developer) { selectedArt = (selectedArt + 1) % ASSETS.length; label(client, ASSETS[selectedArt].name()); }
+        while (PREVIOUS.consumeClick()) if (developer) { selectedArt = (selectedArt + ASSETS.length - 1) % ASSETS.length; label(client, ASSETS[selectedArt].name()); }
+        boolean nativeDedicated=!client.hasSingleplayerServer()&&net.minecraftforge.fml.ModList.get().isLoaded("jem_roles");
+        while (CAST.consumeClick()) if (allowed&&!nativeDedicated&&!com.siirio.jemvisualsandbox.client.races.OptionalRacePresentation.nativeKey(CAST)) SandboxNetwork.cast();
         boolean pressed=false;
-        while (SECONDARY.consumeClick()) if (allowed) { SandboxNetwork.secondary();pressed=true; }
+        while (SECONDARY.consumeClick()) if (allowed&&!nativeDedicated) { SandboxNetwork.secondary();pressed=true; }
         boolean down=allowed && SECONDARY.isDown();
-        if((secondaryDown || pressed) && !down)SandboxNetwork.secondaryRelease();
+        if((secondaryDown || pressed) && !down){if(!nativeDedicated)SandboxNetwork.secondaryRelease();VoidDistancePreview.clear();}
         secondaryDown=down;
-        while (ART.consumeClick()) if (allowed) play(client, selectedArt);
+        while (ART.consumeClick()) if (developer) play(client, selectedArt);
     }
     private static void play(Minecraft client, int index) {
         var hit = client.player.pick(12.0D, 0.0F, false);
@@ -106,7 +115,8 @@ public final class BlockbenchWorkbench {
         add(mesh, origin, yaw);
         label(client, asset.name() + " / editor study");
     }
-    @SubscribeEvent public static void logout(ClientPlayerNetworkEvent.LoggingOut event) { clear(); }
+    @SubscribeEvent public static void logout(ClientPlayerNetworkEvent.LoggingOut event) { clear();raceStatus=null; }
+    public static void acceptRace(RaceExperience.Status status){raceStatus=status;selectedRace=status.race();selectedUpgrade=status.bloomUpgrade();var p=Minecraft.getInstance().player;if(p!=null)p.getPersistentData().putInt("JemSandboxRace",status.selected()?status.race():-1);}
     private static void clear() { origin = null; previewLevel = null; mesh = null; INSTANCES.clear(); CACHE.clear(); FlameSlashRenderer.clear(); ElementalRenderer.clear(); SurfaceVfx.clear(); UtilityVfx.clear(); LifeChorusRenderer.clear(); VoidDistancePreview.clear(); }
     private static void add(WorkbenchMesh model, Vec3 position, float rotation) {
         Minecraft client = Minecraft.getInstance();
@@ -119,8 +129,9 @@ public final class BlockbenchWorkbench {
         if (packet.action() == 0) {
             selectedRace = packet.race(); selectedUpgrade=packet.subject();
             if(client.player!=null)client.player.getPersistentData().putInt("JemSandboxRace",selectedRace);
-            if(client.screen instanceof RaceMenu menu)menu.refresh();return;
+            return;
         }
+        if(packet.action()==36){SonicWaveRenderer.impact(packet);return;}
         if(packet.action()==27 || packet.action()==35 || packet.action()>=30 && packet.action()<=32){LifeChorusRenderer.receive(packet);return;}
         if(packet.action()==20 || packet.action()==21)return;
         if(packet.action()>=20 && packet.action()<=29) { UtilityVfx.receive(packet);return; }
@@ -148,38 +159,8 @@ public final class BlockbenchWorkbench {
     }
 
     private static boolean clientReadyForAim(){var c=Minecraft.getInstance();return c.player!=null && !c.player.isShiftKeyDown() && c.screen==null;}
-    @SubscribeEvent public static void hud(net.minecraftforge.client.event.RenderGuiEvent.Post event){VoidDistancePreview.hud(event);}
+    @SubscribeEvent public static void hud(net.minecraftforge.client.event.RenderGuiEvent.Post event){VoidDistancePreview.hud(event);com.siirio.jemvisualsandbox.client.races.RaceAbilityHud.render(event);}
     private static void label(Minecraft client, String text) { client.player.displayClientMessage(Component.literal(text), true); }
-    private static final class RaceMenu extends net.minecraft.client.gui.screens.Screen {
-        RaceMenu() { super(Component.literal("Sandbox races / main skills")); }
-        void refresh(){rebuildWidgets();}
-        @Override protected void init() {
-            for (int i = 0; i < 5; i++) {
-                final int index = i;
-                addRenderableWidget(net.minecraft.client.gui.components.Button.builder(Component.literal((i == selectedRace ? "> " : "") + ASSETS[i].name()), button -> {
-                    SandboxNetwork.select(index);
-                    label(minecraft, "Selected " + ASSETS[index].name() + " / main skill: " + CAST.getTranslatedKeyMessage().getString());
-                    onClose();
-                }).bounds(width / 2 - 140, height / 2 - 110 + i * 24, 280, 22).build());
-            }
-            if(selectedRace==2){
-                String[] names={"I: запрет действий", "II: удушение 1.5 сердца/сек", "III: яд при захвате"};
-                for(int i=1;i<=3;i++){
-                    final int next=i;
-                    var button=net.minecraft.client.gui.components.Button.builder(Component.literal((selectedUpgrade>=i?"✓ ":"")+names[i-1]),b->SandboxNetwork.upgrade(next)).bounds(width/2-140,height/2+14+(i-1)*24,280,22).build();
-                    button.active=i==selectedUpgrade+1;addRenderableWidget(button);
-                }
-            }
-        }
-        @Override public boolean isPauseScreen() { return false; }
-        @Override public void render(net.minecraft.client.gui.GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
-            renderBackground(graphics);
-            graphics.drawCenteredString(font, title, width / 2, height / 2 - 138, 0xffdd88);
-            graphics.drawCenteredString(font, "V: main skill / B (И): utility / Shift+B: alternate", width / 2, height / 2 + 96, 0xffffff);
-            super.render(graphics, mouseX, mouseY, partialTick);
-        }
-    }
-
     @SubscribeEvent
     public static void render(RenderLevelStageEvent event) {
         if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_TRANSLUCENT_BLOCKS) return;

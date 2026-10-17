@@ -34,11 +34,15 @@ public final class SandboxHostileControl {
         if(upgrade>=2)SQUEEZES.put(mob.getUUID(),new Squeeze(owner.getUUID(),mob.getUUID(),owner.serverLevel().dimension(),owner.server.overworld().getGameTime()));
         if(upgrade>=3)mob.addEffect(new net.minecraft.world.effect.MobEffectInstance(net.minecraft.world.effect.MobEffects.POISON,90,0));
     }
-    public static void cast(ServerPlayer owner) {
-        if(owner.server.isDedicatedServer() || !owner.server.isSingleplayerOwner(owner.getGameProfile()) || !owner.isAlive() || owner.isSpectator())return;
+    public static boolean cast(ServerPlayer owner) {
+        if(!RaceExperience.canAct(owner))return false;
+        int count=0;
         for(Mob mob:owner.serverLevel().getEntitiesOfClass(Mob.class,owner.getBoundingBox().inflate(10),m->m.isAlive() && (m instanceof Enemy || m.getTarget()==owner))) {
+            count++;
             mob.hurt(owner.damageSources().playerAttack(owner),6);if(mob.isAlive())bind(owner,mob);
         }
+        if(count==0)owner.displayClientMessage(net.minecraft.network.chat.Component.translatable("jem.roles.action.target_required"),true);
+        return count>0;
     }
     @SubscribeEvent public static void squeeze(net.minecraftforge.event.TickEvent.ServerTickEvent e) {
         if(e.phase!=net.minecraftforge.event.TickEvent.Phase.END || e.getServer().isDedicatedServer())return;

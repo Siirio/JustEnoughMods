@@ -50,6 +50,8 @@ public final class BloomR3Preview {
         Minecraft client = Minecraft.getInstance();
         if (client.level != previewLevel || !client.hasSingleplayerServer()) clear();
         while (PREVIEW.consumeClick()) {
+            var status=com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.status();
+            if(status==null || !status.developerMode())continue;
             if (client.player == null || client.level == null || client.screen != null
                     || !client.hasSingleplayerServer()) continue;
             if (origin != null) {

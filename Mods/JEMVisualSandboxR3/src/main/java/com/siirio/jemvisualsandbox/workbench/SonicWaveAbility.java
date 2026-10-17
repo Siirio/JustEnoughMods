@@ -17,13 +17,14 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid="jem_visual_sandbox")
 public final class SonicWaveAbility {
-    private record Wave(net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level> dimension,Vec3 origin,long start,Set<UUID> hit) {}
+    private record Wave(net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level> dimension,Vec3 origin,long start,Set<UUID> hit,int tier) {}
     private static final Map<UUID,Wave> ACTIVE=new HashMap<>();
     private SonicWaveAbility() {}
-    public static void cast(ServerPlayer p) {
-        if(p.server.isDedicatedServer() || !p.server.isSingleplayerOwner(p.getGameProfile()) || !p.isAlive() || p.isSpectator() || ACTIVE.containsKey(p.getUUID()))return;
-        ACTIVE.put(p.getUUID(),new Wave(p.serverLevel().dimension(),p.position(),p.level().getGameTime(),new HashSet<>()));SandboxNetwork.effect(p,32,3,p.position(),0,p.getId());
+    public static boolean cast(ServerPlayer p) {
+        if(!RaceExperience.canAct(p) || ACTIVE.containsKey(p.getUUID()))return false;
+        ACTIVE.put(p.getUUID(),new Wave(p.serverLevel().dimension(),p.position(),p.level().getGameTime(),new HashSet<>(),RaceExperience.tier(p)));SandboxNetwork.effect(p,32,3,p.position(),0,p.getId());
         p.level().playSound(null,p.blockPosition(),net.minecraft.sounds.SoundEvents.WARDEN_SONIC_BOOM,net.minecraft.sounds.SoundSource.PLAYERS,.65F,1.15F);
+        return true;
     }
     @SubscribeEvent public static void tick(TickEvent.ServerTickEvent e) {
         if(e.phase!=TickEvent.Phase.END || e.getServer().isDedicatedServer())return;
@@ -34,7 +35,11 @@ public final class SonicWaveAbility {
             if(age>=7) {
                 double radius=8*Math.min(1,(age-6)/12.0);
                 for(Mob mob:p.serverLevel().getEntitiesOfClass(Mob.class,new AABB(w.origin,w.origin).inflate(radius,3,radius),m->m.isAlive() && (m instanceof Enemy || m.getTarget()==p)))
-                    if(mob.position().subtract(w.origin).multiply(1,0,1).lengthSqr()<=radius*radius && w.hit.add(mob.getUUID()))mob.hurt(p.damageSources().sonicBoom(p),8);
+                    if(mob.position().subtract(w.origin).multiply(1,0,1).lengthSqr()<=radius*radius && w.hit.add(mob.getUUID())){
+                        if(mob.hurt(p.damageSources().sonicBoom(p),12))SandboxNetwork.effect(p,36,3,mob.position(),0,mob.getId());
+                        if(w.tier>=2){Vec3 away=mob.position().subtract(w.origin).normalize();mob.push(away.x*.35,.12,away.z*.35);}
+                        if(w.tier>=3)mob.addEffect(new net.minecraft.world.effect.MobEffectInstance(net.minecraft.world.effect.MobEffects.MOVEMENT_SLOWDOWN,40,0));
+                    }
             }
             return false;
         });

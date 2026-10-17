@@ -17,7 +17,8 @@ import net.minecraftforge.client.event.RenderLevelStageEvent;
 /** One connected native Blockbench shell, shared positions and smooth normals. */
 final class GuardianDomeRenderer {
     private static final ResourceLocation MODEL=new ResourceLocation("jem_visual_sandbox","guardian_dome/model.json");
-    private static final ResourceLocation TEXTURE=new ResourceLocation("jem_visual_sandbox","guardian_dome/gold-wave.png");
+    private static final ResourceLocation TEXTURE=new ResourceLocation("jem_visual_sandbox","guardian_dome/gold-wave-one-shot.png");
+    private static final int TEXTURE_FRAMES=36,TEXTURE_FPS=24,FRAME_HEIGHT=64;
     private record Face(int layer,int[] indices,float[][] uv,float[][] normals) {}
     private record Dome(float[][] vertices,Face[] faces) {}
     private static Dome dome;
@@ -68,6 +69,9 @@ final class GuardianDomeRenderer {
             failed=true;com.mojang.logging.LogUtils.getLogger().error("Guardian dome requires the connected native model",ex);return;
         }
         float alpha=Math.min(1,age/4)*Math.min(1,(30-age)/8);
+        // Incoming age includes the partial tick. Each activation owns its
+        // one-shot clock; hold the final cel instead of looping a texture ticker.
+        int frame=Math.min((int)Math.floor(age/20F*TEXTURE_FPS),TEXTURE_FRAMES-1);
         float scale=age<4?.92F+.08F*age/4:age<22?1:1+.06F*(age-22)/8;
         Vec3 camera=event.getCamera().getPosition();
         boolean inside=camera.y>=origin.y+.1 && camera.distanceToSqr(origin.add(0,.1,0))<2.2*2.2*scale*scale;
@@ -84,7 +88,8 @@ final class GuardianDomeRenderer {
             for(int corner:order){
                 float[] p=dome.vertices[face.indices[corner]],uv=face.uv[corner],n=face.normals[corner];
                 out.vertex(pose.pose(),p[0],p[1],p[2]).color(255,255,255,(int)(255*alpha))
-                        .uv(uv[0],uv[1]).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(15728880)
+                        .uv(uv[0],(frame+Math.max(.5F/FRAME_HEIGHT,Math.min(1-.5F/FRAME_HEIGHT,uv[1])))/TEXTURE_FRAMES)
+                        .overlayCoords(OverlayTexture.NO_OVERLAY).uv2(15728880)
                         .normal(pose.normal(),n[0],n[1],n[2]).endVertex();
             }
         }
@@ -93,8 +98,8 @@ final class GuardianDomeRenderer {
     private static final int[] TRIANGLE={0,1,2},QUAD={0,1,2,0,2,3};
     private static final class Material extends RenderType {
         private static final RenderType TYPE=create("jem_guardian_connected_dome",DefaultVertexFormat.NEW_ENTITY,VertexFormat.Mode.TRIANGLES,MEDIUM_BUFFER_SIZE,false,false,
-                CompositeState.builder().setShaderState(RENDERTYPE_ENTITY_TRANSLUCENT_SHADER)
-                        .setTextureState(new TextureStateShard(TEXTURE,false,false)).setTransparencyState(ADDITIVE_TRANSPARENCY)
+                CompositeState.builder().setShaderState(RENDERTYPE_ENTITY_TRANSLUCENT_EMISSIVE_SHADER)
+                        .setTextureState(new TextureStateShard(TEXTURE,false,false)).setTransparencyState(TRANSLUCENT_TRANSPARENCY)
                         .setLightmapState(LIGHTMAP).setOverlayState(OVERLAY).setCullState(CULL)
                         .setDepthTestState(LEQUAL_DEPTH_TEST).setWriteMaskState(COLOR_WRITE).createCompositeState(false));
         private Material(String name,VertexFormat format,VertexFormat.Mode mode,int size,boolean crumbling,boolean sorted,Runnable setup,Runnable clear){

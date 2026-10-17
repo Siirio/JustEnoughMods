@@ -26,18 +26,19 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid="jem_visual_sandbox")
 public final class LifeChorusAbility {
-    private record Chorus(net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level> dimension,Vec3 origin,long start,Set<UUID> answered) {}
+    private record Chorus(net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level> dimension,Vec3 origin,long start,Set<UUID> answered,int tier) {}
     private record OutwardWave(UUID owner,net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level> dimension,Vec3 origin,long start,Set<UUID> repelled) {}
     private static final Map<UUID,Chorus> ACTIVE=new HashMap<>();
     static final int WAVE_TICKS=12;
     static final double WAVE_RADIUS=16;
     private static final java.util.List<OutwardWave> WAVES=new java.util.ArrayList<>();
     private LifeChorusAbility() {}
-    public static void cast(ServerPlayer p) {
-        if(p.server.isDedicatedServer() || !p.server.isSingleplayerOwner(p.getGameProfile()) || !p.isAlive() || p.isSpectator() || ACTIVE.containsKey(p.getUUID()))return;
-        ACTIVE.put(p.getUUID(),new Chorus(p.serverLevel().dimension(),p.position(),p.level().getGameTime(),new HashSet<>()));
+    public static boolean cast(ServerPlayer p) {
+        if(!RaceExperience.canAct(p) || ACTIVE.containsKey(p.getUUID()))return false;
+        ACTIVE.put(p.getUUID(),new Chorus(p.serverLevel().dimension(),p.position(),p.level().getGameTime(),new HashSet<>(),RaceExperience.tier(p)));
         startOutwardWave(p,7);
         SandboxNetwork.effect(p,30,0,p.position(),0,p.getId());
+        return true;
     }
     static void guardianEntry(ServerPlayer p){
         if(p.server.isDedicatedServer() || !p.server.isSingleplayerOwner(p.getGameProfile()))return;
@@ -74,13 +75,13 @@ public final class LifeChorusAbility {
             int age=(int)(p.level().getGameTime()-c.start);if(age<0 || age>=118)return true;
             if(age==7)p.level().playSound(null,p.blockPosition(),net.minecraft.sounds.SoundEvents.AMETHYST_BLOCK_CHIME,net.minecraft.sounds.SoundSource.PLAYERS,.6F,1.15F);
             if(age>=7 && age<=18) {
-                double radius=WAVE_RADIUS*Math.min(1,(age-6)/(double)WAVE_TICKS);
-                for(LivingEntity target:p.serverLevel().getEntitiesOfClass(LivingEntity.class,p.getBoundingBox().move(c.origin.subtract(p.position())).inflate(radius,16,radius),v->v.isAlive() && friendly(v) && !(v instanceof Mob m && hostile(p,m)))) {
+                double radius=(c.tier>=2?WAVE_RADIUS:12)*Math.min(1,(age-6)/(double)WAVE_TICKS);
+                for(LivingEntity target:p.serverLevel().getEntitiesOfClass(LivingEntity.class,p.getBoundingBox().move(c.origin.subtract(p.position())).inflate(radius,16,radius),v->v.isAlive() && (v==p.getVehicle() || friendly(v) && !(v instanceof Mob m && hostile(p,m))))) {
                     if(target.position().subtract(c.origin).multiply(1,0,1).lengthSqr()>radius*radius || !c.answered.add(target.getUUID()))continue;
                     if(target instanceof Player)target.heal(6);else target.setHealth(target.getMaxHealth());
-                    target.getActiveEffects().stream().filter(v->v.getEffect().getCategory()==MobEffectCategory.HARMFUL).map(MobEffectInstance::getEffect).toList().forEach(target::removeEffect);
+                    if(c.tier>=2)target.getActiveEffects().stream().filter(v->v.getEffect().getCategory()==MobEffectCategory.HARMFUL).map(MobEffectInstance::getEffect).toList().forEach(target::removeEffect);
                     // Retain the preceding canonical Life Chorus full-health ally boon.
-                    if(target.getHealth()>=target.getMaxHealth())target.addEffect(new MobEffectInstance(MobEffects.ABSORPTION,600,1));
+                    if(c.tier>=3 && target.getHealth()>=target.getMaxHealth())target.addEffect(new MobEffectInstance(MobEffects.ABSORPTION,600,1));
                     SandboxNetwork.effect(p,31,0,target.position(),Math.max(0,13-age),target.getId());
                 }
             }

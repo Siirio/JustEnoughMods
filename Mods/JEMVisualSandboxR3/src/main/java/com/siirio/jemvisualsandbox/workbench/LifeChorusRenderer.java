@@ -19,7 +19,7 @@ final class LifeChorusRenderer {
     private static WorkbenchMesh shield;
     private static float centerX,centerY,centerZ,shieldScale;
     private static boolean shieldFailed;
-    static void clear(){ACTIVE.clear();shield=null;shieldFailed=false;GuardianDomeRenderer.clear();}
+    static void clear(){ACTIVE.clear();shield=null;shieldFailed=false;GuardianDomeRenderer.clear();SonicWaveRenderer.clear();}
     static void receive(SandboxNetwork.Visual p){
         var c=Minecraft.getInstance();if(c.level==null)return;
         if(ACTIVE.size()>=96)ACTIVE.remove(0);
@@ -27,6 +27,7 @@ final class LifeChorusRenderer {
     }
     static void render(RenderLevelStageEvent event){
         var c=Minecraft.getInstance();if(c.level==null || !c.hasSingleplayerServer()){clear();return;}
+        SonicWaveRenderer.renderImpacts(event);
         ACTIVE.removeIf(s->s.level!=c.level || c.level.getGameTime()-s.start>=(s.kind==30?130:32));
         for(Scene s:ACTIVE){
             float age=c.level.getGameTime()-s.start+event.getPartialTick();if(age<0)continue;
@@ -67,8 +68,7 @@ final class LifeChorusRenderer {
                     goldSprite(event,pos.add(0,height*.58,0),"gold_motes",Math.min(15,(int)(age*16/24)),size,Math.min(1,(24-age)/5));
                 }
             }else if(s.kind==32){
-                if(age>=7 && age<19)band(event,s.origin,8*(age-6)/12,"sonic_band",(int)age-7,1);
-                if(age>=10 && age<26)band(event,s.origin,8*(age-9)/16,"sonic_band",(int)age-4,.45F*(26-age)/16);
+                SonicWaveRenderer.render(event,s.origin,age);
             }
         }
     }

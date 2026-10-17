@@ -1,123 +1,143 @@
 # JEM Races
 
-Latest guardian dome steering,2026-10-17: the overlapping plate grid is USER_REJECTED. Current owner is Docs/races/assets/guardian-dome/PLAN.md: one connected native mesh, shared vertices, whole-surface pixel UVs, smooth normals and additive rendering. This supersedes the separate cuboid mosaic described below. Gameplay remains unchanged.
+## Current standalone delivery — 2026-10-17
 
+The source-owned standalone installation is `Mods/JEMVisualSandboxR3`; its mod ID
+remains `jem_visual_sandbox` to preserve existing sandbox data and resources.
+`JemRacesSandbox` is now the real source entrypoint. The obsolete binary-backed
+race gallery is not composed into the JAR. The production artifact is
+`build/distributions/jem-races-1.1.0.jar`, installed only in the existing
+`jem sandbox` profile. The previous sandbox JAR is backed up outside `mods`.
 
-Последняя правка купола,2026-10-17: гладкая сфера USER_REJECTED. Её заменяет
-[кубоидная мозаика Ancestors](assets/guardian-mosaic/PLAN.md):41 отдельная
-гравированная пластина,12 искр, нативный Blockbench-клип и cutout-render.
-План/исходник/код и [фактический редакторский результат](assets/guardian-mosaic/REVIEW.md).
-Предыдущие sphere/tail изображения — отрицательная история, не текущая версия.
+This iteration changes no ordinary `Server`, `Client/ManagedPack`, stable
+profile or release baseline. No tests, check tasks, Atlas audit/validation,
+Minecraft launch or automated visual inspection are authorized. Production
+compilation/reobfuscation packages the requested installation; it is not player
+acceptance. Final in-engine visuals, persistence across actual launches and
+multiplayer execution remain unverified under that explicit restriction.
 
-Latest sandbox VFX revision, 2026-10-17:
-[pearl afterfire and Ancients](assets/ancients-pearl/BRIEF.md). User confirms large
-golden shields, healing pulse and protective dome **without floor runes**.
-Three editable pixel timelines, bounded actual-flight trail and larger existing
-R7 shields are prepared as a standalone artifact; no launcher profile is modified.
-See [review and limitations](assets/ancients-pearl/REVIEW.md). This supersedes the
-earlier golden Chorus rune/small-shield presentation only; gameplay is preserved.
+## Controls and first choice
 
-Art review update,2026-10-17: [R6 distinct-pattern candidates](assets/race_vfx_r6/README.md)
-supersede R5's repeated outward composition. Infernal now uses three successive
-strikes with a light upper perimeter on all four exterior sides grading to a
-dark base. Infernal colors are now saturated magma orange/red/charcoal;
-the former creamy palette is rejected. Other proposals use forward shields, a split slit, a branching
-ground network and an inward bower. These remain pre-install candidates.
+A new integrated-world player receives an authoritative unselected snapshot and
+the mandatory origin screen. The actual player skin is rendered in a pitch-black
+perspective stage. Minimal arrows browse five origins, the right panel scrolls
+five real advantages/two drawbacks and ability/progression details, and original
+race icons identify the signature. `P` changes the information tab. Selection
+waits for a server acknowledgement before the panel disappears and the render
+camera orbits behind the same skin and dollies into eye position. World reveal
+occurs only at the end. The world player stays in place; server scene ownership
+freezes movement/interaction and protects first-choice entry. HUD and key state
+are restored when the screen ends or is removed.
 
-Historical review: [R5 race candidates](assets/race_vfx_r5/README.md)
-apply the user's selected M-C angular construction and T-A painting. Five
-editable models, native UV materials, ORA sources and genuine Blockbench
-moving previews are ready **before installation**. Full E remains negative,
-with hat/mossy-boot regional lessons only. Installed sandbox Bloom R3 remains
-unchanged; production abilities, ordinary Server/ManagedPack and published
-generation18 are unaffected. The earlier sandbox GUI/VFX runtime cleanup is
-still pending and is not claimed as part of this art-only delivery.
+- `F6`: origin, abilities and progression. Saved choices do not reopen on login.
+- `V`: signature; `B` (Russian physical `И`): utility; `Shift+B`: Void gravity.
+- Nether lava drinking uses the normal held-bucket use animation; sneak-use pours.
+- With optional compatible Iron's Spells3.15.6: one native HUD/wheel/cast owner;
+  colliding V is delegated, Tab cycles native options unless a native wheel key
+  already owns Tab. Remapped distinct JEM V may invoke the signature directly.
+- Ordinary vanilla/unrelated servers receive no fake local race gameplay. F6
+  explains when the matching JEM gameplay channel is absent.
 
-JEM Races — dedicated-server-authoritative система из пяти рас. Раса и её мастерство принадлежат UUID подтверждённой `JEM Identity` сессии, а не произвольной строке из GUI. Любая раса совместима с любой профессией.
+## Progression and authority
 
-После успешной регистрации или входа игрок без расы получает обязательный экран выбора: Esc его не закрывает, а сервер повторно открывает экран до подтверждения. Карточки остаются короткими; наведение на отдельные semantic icons объясняет бафф/дебафф, а кнопка способности открывает точные числа и развитие. После выбора соответствующее заклинание постоянно присутствует в штатном HUD и колесе Iron's Spells; его успешные применения развивают tier I→II→III.
+`RaceExperience.Store` owns one UUID record per integrated world, saved as
+`jem_races_standalone`. It preserves the selected race, active time, per-race
+successful signature uses, Bloom upgrades and per-race expiry-based cooldowns.
+Death does not copy transient entity state into a second progression owner.
+Existing explicit sandbox selections and previously unlocked Bloom stages
+migrate once; new normal saves never auto-unlock everything.
 
-На текущем offline-mode сервере ServerLogin подтверждает пароль конкретного Minecraft-профиля, после чего `JEM Identity` использует его name-derived UUID. Поэтому два клиента с буквально одинаковым ником `Sirio_o` не являются двумя отдельными аккаунтами: им нужен один и тот же пароль, они получают один UUID/прогресс и не могут одновременно занять одну игровую идентичность. Один человек с никами `Sirio_o` и `Sirio_2` получает два UUID, две регистрации и два независимых прогресса. Объединение нескольких ников в один человеческий аккаунт сейчас не реализовано; для этого нужен отдельный безопасный link/unlink flow, а не чтение паролей ServerLogin.
+All five races start at tier I;10 successful signatures unlock tier II,30 unlock
+III, matching the established production mastery thresholds. Invalid targets,
+blocked casts and rejected Rift arrival do not grant mastery or a fresh cooldown.
+The tier at cast time is retained for delayed effects. Normal selection retains
+the established one free change before30minutes of active time; developer
+selection is a separate temporary override. This sandbox keeps per-race mastery
+so ordinary browsing/developer switches cannot erase earned progress.
 
-## Как открыть и управлять
+| Race | Signature progression | Utility / preserved identity |
+| --- | --- | --- |
+| Ancestors | Life Chorus:12-block healing at I;16-block radius and harmful-effect cleanse at II; full-health absorption boon at III. All tiers retain5-second25% caster damage reduction and four large outward-facing shields. | Automatic invulnerable guardian below40%health, normal guardian cooldown and oath; golden healing responses include the ridden living mount. No floor runes. |
+| Void Walkers | Rift Ambush:24-block targeted melee ambush;32-block reach at II; nearby slowdown at III. The previously rejected decoy is not restored. | Hold B at least10ticks for a real pearl; Shift+B gives100ticks of gravity denial. Water/void safety and End-kin neutrality retain their owners. |
+| Born in Bloom | The approved6-damage root bind stays. Sequential I action lock, II3damage/second constriction, III poison are manually activated from progression once the corresponding mastery tier is reached. | B toggles the unchanged temporary Leaf Bridge generator, with a15-second activation cooldown. Second Blossom/environmental passives preserved. |
+| Infected by Sculk | Sonic Wave is the approved replacement of sandbox traversal:8-block radius,12HP (previous8HP plus the requested4HP), one hit per enemy. II adds pressure knockback;III adds a2-second slow. | Echo Vision and25-resonance heal/absorption remain. Underground strength/health, daylight/fire weaknesses, XP and resonance retain their canonical formulas. |
+| Nether Hearteds | Five authored outward eruptions retain their shape/timing:6/8/10damage with2/4/6seconds fire at tiers I/II/III. | The liked three-hit B fiery-slash combo remains unchanged; lava immunity/swimming/drinking, piglin neutrality, cold and water weakness are preserved. |
 
-- Первый подтверждённый вход без выбранной расы автоматически открывает выбор.
-- После выбора: `/smp` → `Расы`. Прямые `/jem role` и `/jemrole` удалены.
-- По умолчанию `V` применяет выбранное в штатном колесе Iron's Spells умение, включая выбранную сигнатуру расы; `B` выполняет контекстную способность. Если JEM-сигнатура и native cast назначены на одну клавишу, нажатие обрабатывает только Iron's Spells: другая выбранная способность не вызывает одновременно расовую. Отдельно переназначенная JEM-клавиша применяет непосредственно сигнатуру; без Iron's Spells V сохраняет прямое применение сигнатуры. Для Странника Пустоты удержание `B` заряжает снаряд, а `Shift+B` включает Отрицание гравитации. У Рождённого в цветении `B` переключает Живую тропу.
-- Обе игровые клавиши переназначаются в стандартных настройках Minecraft.
-- Нажатие проверяется сервером до запуска способности. Для Засады разлома и Адского извержения нужна живая сущность на линии взгляда без перекрывающего блока; отсутствие цели, превышение дальности, отключённый PvP для Засады, отсутствие безопасного выхода или ограничение перемещения объясняются локализованной строкой. Неудача не запускает новый cooldown, мастерство, удар, приманку или успешный VFX. Площадные и собственные способности не требуют наведения на сущность: Власти зелени нужны подходящие существа рядом, Скалковым жилам — связный скалк и безопасный выход.
-- V и штатное колесо Iron's Spells используют один сохранённый серверный cooldown `signature`. Штатный HUD получает его фактический остаток через native `PlayerCooldowns`; отдельный native cooldown после неудачи не создаётся. При входе, смене расы и обычной синхронизации старый ложный индикатор удаляется, а настоящий оставшийся cooldown восстанавливается. Нажатие до готовности сообщает оставшиеся секунды.
-- Снаряд Пустоты проверяет cooldown до зарядного VFX и повторно при отпускании B. Заряд менее 10 ticks сообщает о недозаряде без снаряда и без cooldown; успешное создание снаряда запускает прежний cooldown. Питьё лавы проверяет ведро, готовность и занятость предметом до начала удержания. Эхо-зрение без живых существ рядом сообщает об отсутствии существ без пустого VFX. Отрицание гравитации сохраняет собственный серверный cooldown; переключение Живой тропы не получает нового ограничения.
-- Экран использует трёхкарточную карусель с затемнёнными соседними карточками по краям; остальные расы доступны стрелками или колесом. Короткая карточка показывает semantic icons, а нажатие по значку открывает небольшое подробное окно с точным эффектом.
+The user requested all-race progression and preservation of established powers.
+The Sonic II/III control effects and Nether tier scaling are Codex implementation
+choices adapting existing normal tier progression to the newer approved sandbox
+skills. They are not previously user-approved mechanics. Current UI displays these
+actual standalone values rather than the old traversal/decoy descriptions.
 
-## Расы
+Default signature cooldowns come from the canonical `JEMRoles` rules where
+applicable:25s Ancestors/Bloom,60s Void/Nether,20s Sculk. The standalone common
+config is `jem-races-common.toml`; the generated default-rule class comes from
+`JEMRoles/race/RaceRules.java`. Leaf Bridge is explicitly300ticks. Utilities
+retain native cooldown defaults; explicit developer mode bypasses their expiry.
 
-| Раса | Пять усилений | Два недостатка | Сигнатура и дерево |
-|---|---|---|---|
-| Предки | неуязвимый Страж при 40% здоровья; мирные животные не убегают; видимая скидка 20%; +30% выхода бартера; Хор жизни | Нарушенная клятва; приоритет для разбойников | Хор жизни, 25 с: лечение себя, игроков, рекрутов, жителей и животных → увеличенная область и снятие отрицательных эффектов → поглощение при избыточном лечении |
-| Странники Пустоты | безопасное возвращение из Пустоты; родство с существами Энда; заряжаемый снаряд; Засада разлома; Отрицание гравитации | контакт с водой наносит 0,5 сердца и мгновенно переносит на сухую площадку; −3 сердца | Засада разлома: удар → дальность и временная приманка → дезориентация обычных врагов |
-| Рождённые в цветении | Власть зелени; упреждающая Живая тропа; лесные враги игнорируют; фотосинтез; Второе цветение | двойной огненный урон; −4 сердца вне зелёной среды | Власть зелени, 25 с: корни → распространение между целями → временная живая роща |
-| Заражённые скалком | Эхо-зрение всех живых существ сквозь стены; Скалковые жилы; Поглощение эха; подземное усиление; +15% XP | −4 сердца на прямом солнце; +25% урона от огня | Скалковые жилы, 20 с: связный путь 32 → 48 блоков → выбор взглядом среди выходов до 64 блоков |
-| Сердца Незера | настоящее плавание в лаве; полный иммунитет к лаве и огню; питьё лавы с удержанием B; Адское извержение; дружелюбие пиглинов | нарастающая водная скованность; −4 сердца на морозе | Адское извержение: быстрые столбы огня обозначают разлом → цепь разломов → временная вулканическая зона |
+## Separate developer mode
 
-Успешные применения сигнатуры повышают отдельное расовое мастерство: уровень 2 открывается после 10, уровень 3 — после 30 применений. Прогресс, cooldown, резонанс и переключатель Живой тропы сохраняются в `jem_roles` SavedData. Смена расы сбрасывает только расовую ветку; профессии не затрагиваются.
+`/jemrace developer on` enables temporary max-tier/no-cooldown controls for the
+integrated-world owner. F6 can choose any race. `/jemrace developer tier 1|2|3`
+changes the effective tier, and `/jemrace developer bloom 0|1|2|3` exposes the
+approved Bloom stages independently. `/jemrace developer off` restores the
+ordinary saved race/mastery/cooldowns. Developer mode is not persisted, never
+writes ordinary mastery and cannot be enabled by a remote multiplayer client.
+F9/F10 and bracket art studies are developer-only; they are not the main skills.
 
-## Визуальные эффекты рас
+## Visual and projectile ownership
 
-VFX запускается только после принятого сервером игрового события и передаётся клиенту протоколом `jem_roles` 3. Отдельных `/jem vfx preview`, clear или debug-команд нет: визуал не может подменить серверную проверку способности. Каждый эффект имеет фазу подготовки, читаемую активацию/удар и короткое затухание; камера не трясётся.
+The exact approved smooth guardian interpolation is locked in root
+`AGENTS.logic-locks.md`; immutable evidence is in
+`assets/guardian-dome/texture-animation/approved-loop`. The complete one-shot
+strip now drives `GuardianDomeRenderer` at24FPS using a clamped frame index,
+emissive straight alpha and the unchanged connected mesh. It reaches the crown
+and holds instead of reversing halfway. The30-tick guardian lifecycle remains.
 
-- Предки: бирюзово-золотые защитные дуги, нити исцеления и растворение Стража без ложных целей.
-- Странники Пустоты: фиолетовые швы разлома, направленные следы снаряда и раздельные точки ухода/прибытия.
-- Рождённые в цветении: зелёно-золотые корни, волна Второго цветения и след реально поставленных блоков Живой тропы.
-- Заражённые скалком: тёмно-бирюзовый связный путь, уровни резонанса и контур Эхо-зрения без постоянного визуального шума.
-- Сердца Незера: янтарно-белая телеграфия Адского извержения, быстрые столбы удара, пар от воды и движение в лаве без имитации получения урона.
+Sonic Wave now has a thick elevated closed pressure cross-section, compressed
+anticipation, sharp radial release, offset trailing volumes and bounded cuboid
+fragments. Actual accepted damage alone emits target-impact flashes. It no longer
+uses the former flat floor band as its main presentation. Pearl afterfire, large
+R7 shields, healing pulse, chunky root models and the approved fiery combo retain
+their authored assets. Renderer success is not visual acceptance.
 
-Клиентский preset `LOW`/`MEDIUM`/`HIGH`/`ULTRA` ограничивает декоративные частицы, длину следов и дальность. Критические телеграфы сохраняются при любом preset; одновременно живёт не более 128 временных VFX. Визуальная и shader-приёмка остаётся `in testing` до отдельно разрешённого запуска клиента.
+`ProjectileEstimation` shares actual pearl launch coordinates/velocity with the
+bounded native-collision predictor. For deterministic agreement, this iteration
+intentionally removes the former0.25random launch spread; speed1.5, native0.03
+gravity,0.99air drag,0.8water drag, inherited motion and native swept collision
+remain. This is a Codex technical choice supporting the user's accuracy request.
+The marker lies on the actual contact face, with invalid/body-clearance feedback;
+server arrival safety may independently choose a safe nearby position and is not
+misrepresented as the exact impact point. Releasing, changing race/world or
+opening UI clears the preview. No decorative Bezier prediction is used.
 
-Старые записи мигрируют детерминированно: `HUMAN` → Предки, `DWARF` → Заражённые скалком, `ELF` → Рождённые в цветении. Существующие active ticks и право первой бесплатной смены сохраняются.
+## Dedicated compatibility and optional integrations
 
-## Профессии и дерево навыков
+Dedicated production race gameplay remains owned by `JEMRoles`, its confirmed
+`JEM Identity` account and `RaceSavedData`; it is not moved to client memory.
+When the standalone channel is also installed on a compatible JEMRoles server,
+`ProductionRaceBridge` delegates authentication, normal selection, casts,
+utilities, mastery and cooldown snapshots to those exact native owners. The UI
+uses native descriptions there rather than pretending sandbox-specific Sonic or
+eruption overrides changed the live server. No dedicated source/artifact or
+existing server balance is replaced in this sandbox installation.
 
-`/smp` → `Профессии` выполняет server-validated открытие единого радиального атласа JEM: игрок находится в центре, десять профессий образуют внутреннее кольцо, а все их parent-child ветви одновременно расходятся наружу. Выбранный сектор подсвечивается; колесо масштабирует, перетаскивание двигает атлас. Команды `/jem professions` и `/jemprof` удалены. Канонический datapack `Client/ManagedPack/config/paxi/datapacks/jem-profession-skills` должен одновременно присутствовать в `Server/config/paxi/datapacks`; без серверной копии Pufferfish загружает ноль категорий и прогресса.
+Optional Iron's classes load only through the guarded compat entrypoint; no Iron,
+Identity or Lodestone runtime dependency is required for standalone gameplay.
+The Iron adapter presents the common race state via native innate spells/HUD and
+mirrors the authoritative cooldown. Invalid casts never enter the successful
+native lifecycle. Its startup/runtime compatibility has not been launched here.
 
-JEM рисует только presentation adapter и стабильную симметричную геометрию 78 узлов: каждая ветвь доведена до трёх tiers. Категории, XP, уровни, очки и разблокировки по-прежнему принадлежат Pufferfish's Skills; JEMProfessions не хранит второй progression ledger, а принимает подтверждённые сигналы прогресса и применяет эффекты реально открытых узлов. Наведение на корень профессии показывает точные действия, начисляющие её XP.
+Production SMP entry remains `/smp` → Races. Offline-mode identity is profile UUID
+owned by the authenticated native account; this standalone work neither joins
+accounts across nicknames nor copies server identity state.
 
-## Интеграции и границы
+## Sources and history
 
-| Система | Проверено или переиспользовано | Реализация JEM | Ограничение |
-|---|---|---|---|
-| JEM Identity | `IdentityPolicy`, UUID игровой сессии и ServerLogin lock-state | до разблокировки выбор, прогресс и действия запрещены; после неё владельцем записи становится UUID профиля | На online-mode это Mojang UUID; на текущем offline-mode UUID выводится из ника. Одинаковый ник не создаёт две личности, разные ники не объединяются автоматически |
-| Iron's Spells 3.15.6 | `SpellRegistry` и публичный `SpellSelectionEvent.addSelectionOption` | пять JEM spell IDs используют те же server-authoritative сигнатуры, собственные иконки, cooldown и текущий tier расы | Расовое заклинание добавляется в native HUD/колесо без физического предмета и не попадает в loot/crafting |
-| JEM Economy | `CoinTradePriceEvent` и `CoinTradeContext` | ровно одна скидка 20% в authoritative quote | Неизвестная сторонняя экономика требует явного adapter вместо определения по имени |
-| Vanilla merchants | native offers, `MerchantMenu` и slots | временный `specialPriceDiff` показывает цену 80% прямо в штатном окне и восстанавливается после закрытия | Не меняет продажу игроком предметов торговцу |
-| Piglin barter | global loot modifier для `gameplay/piglin_bartering` | независимое 30% дублирование уже выпавшего stack сохраняет распределение | Сторонняя система, не использующая этот loot table, требует отдельного modifier/adapter |
-| Animals and mounts | `Animal` и native `AvoidEntityGoal` | узкий Mixin отключает страх перед Предком | Нестандартное мирное существо вне `Animal` требует явного compatibility hook |
-| End kin and bosses | точные entity IDs из server config | дружелюбие только для allowlist; boss denylist имеет приоритет | Неизвестные modded IDs администратор добавляет в `jem-races-server.toml` после проверки |
-| Biomes | vanilla biome tags, Lush Caves и climate settings | единая классификация зелёной среды | Экзотический биом с нетипичным климатом требует tag/config расширения |
-| Boss/event boundaries | существующие `ServerPlayerTeleportMixin` и `BossTeleportSafety` | все same-dimension racial teleports проходят общий серверный gate | Отдельной копии boundary policy в JEM Races нет |
-| Temporary path | server SavedData с dimension, block position и expiry | блоки живут ровно 800 ticks и удаляются после повторной загрузки chunk | Активный путь использует oak leaves как существующий семантический block, без нового registry object |
-| Profession UI | Pufferfish's Skills API и Paxi | SMP packet открывает единый JEM radial screen поверх Pufferfish state; сервер получает тот же datapack из 78 узлов | Игровая приёмка после публикации остаётся ручной по правилам проекта |
-
-## Серверная конфигурация
-
-`jem-races-server.toml` владеет cooldown и длительностями Стража, Хора жизни (25 с), Засады, снаряда, Отрицания гравитации, Власти зелени (25 с), Скалковых жил (20 с), Второго цветения и питья лавы. Там же находятся точные списки существ Энда и исключённых боссов; расширения требуют реального registry ID.
-
-## Авторитет и производительность
-
-Client только показывает экран, HUD и отправляет ограниченные действия. Server проверяет identity, выбранную расу, nonce, cooldown, цель и безопасное место. Атрибуты используют стабильные UUID. Поиск сухого места сначала использует последнюю подтверждённую платформу, затем ограниченные радиальные пробы; связный скалк ограничен 2048 позициями. Временные сущности и зоны имеют серверный expiry, а Живая тропа переживает выгрузку чанка и перезапуск.
-
-В Iron's Spells 3.15.6 именно `AbstractSpell.castSpell`, а не `onCast`, безусловно продолжает успешный lifecycle и добавляет native cooldown после вызова `onCast`. JEM выполняет сигнатуру и проверяет её результат до входа в этот lifecycle; успешное завершение сохраняет штатные события и пакеты, а native добавление cooldown отключено в пользу проекции `RaceRecord`. Числа Iron's Spells не являются вторым балансом: Хор жизни 500 ticks, Засада 1200, Власть зелени 500, Скалковые жилы 400 берутся из действующей расовой конфигурации, Извержение сохраняет 1200 ticks.
-
-Обе расовые телепортации используют возвращающий результат overload `ServerPlayer.teleportTo` и тем самым существующий `BossTeleportSafety` gate. Успех требует фактического прибытия в запрошенную точку: запрет или перенаправление не допускают последующий удар/приманку и не расходуют cooldown. Копии политики границ в JEMRoles нет.
-
-Проверка владельцев профессий: их единственное явное активное действие `ore_sense` — самостоятельное сканирование Shift+ПКМ киркой; отрицательный ответ «руды рядом нет» является завершённым результатом сканирования и сохраняет прежние 900 ticks. `IronsProfessionAdapter` начисляет прогресс за сторонние `irons_spellbooks:*` заклинания и не вызывает JEM-способности. Их progression, пассивные эффекты и самостоятельные native spells этой правкой не меняются. Игровая приёмка исправленного ввода остаётся `in testing` до пользовательской проверки.
-
-## Visual direction correction — 2026-10-17
-
-The user rejected the Born in Bloom MCP-painted R2 images as ugly, odd and incompatible with vanilla Minecraft. R2 is archived solely as negative evidence in `assets/rejected/born-in-bloom-r2/`; its renderer and atlas are absent from production, and published generation18 remains active. The Blockbench texture ban remains lifted.
-
-Before drawing a replacement, always search for close web image references and inspect their actual appearance. Compare the candidate's pixel density, palette, plant/root silhouette, material and world-scale presentation to vanilla Minecraft1.20.1. The canonical workflow and exact taste correction are in the global Taste Engine skill and race-VFX pair. Official azalea, rooted-dirt/hanging-root and mangrove screenshots were inspected; they are proposed anchors, not an approved new spell. No replacement art is accepted or installed.
-
-## Born in Bloom R3 — pre-install review
-
-The user's supplied Pixel Art & Animation Quality Engine is retained under `Docs/art/QUALITY_ENGINE_SOURCE.md`; actual references and classifications are in `Docs/art/REFERENCE_LIBRARY.md`. One new Verdant Dominion candidate is authored and visually inspected through Blockbench MCP: `assets/bloom_r3_candidate/`. It includes editable source, original native materials, a coherent44-tick rig animation, actual editor contact sheets and a moving preview. This is a design candidate awaiting user review; no game asset installation or client/server artifact changed.
+- `Mods/JEMRoles`: canonical production traits, identity-bound ledger and defaults.
+- `Mods/JEMVisualSandboxR3`: standalone owner, optional native adapters, GUI and VFX.
+- `assets/guardian-dome/texture-animation`: approved interpolation and one-shot art.
+- `assets/ancients-pearl`, `assets/life-chorus`, `assets/elemental-vfx`,
+  `assets/fiery-slash`: authored effect sources and historical review evidence.
+- Prior sphere, mosaic plaques, tails and Bloom R2 remain rejected history.
+  Their old plans/receipts do not override this current source contract.

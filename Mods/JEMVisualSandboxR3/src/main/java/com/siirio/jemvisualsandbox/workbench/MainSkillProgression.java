@@ -6,11 +6,9 @@ import net.minecraft.server.level.ServerPlayer;
 @net.minecraftforge.fml.common.Mod.EventBusSubscriber(modid="jem_visual_sandbox")
 public final class MainSkillProgression {
     private MainSkillProgression() {}
-    public static int level(ServerPlayer p,int race) { return Math.max(0,Math.min(3,p.getPersistentData().getInt("JemSandboxMainUpgrade"+race))); }
+    public static int level(ServerPlayer p,int race) { return race==2?RaceExperience.bloomUpgrade(p):RaceExperience.tier(p); }
     static void unlockNext(ServerPlayer p,int requested) {
-        int race=p.getPersistentData().getInt("JemSandboxRace");
-        if(p.server.isDedicatedServer() || !p.server.isSingleplayerOwner(p.getGameProfile()) || !p.isAlive() || race!=2 || requested!=level(p,race)+1 || requested>3)return;
-        p.getPersistentData().putInt("JemSandboxMainUpgrade"+race,requested);SandboxNetwork.status(p);
+        RaceExperience.upgrade(p,requested);
     }
     @net.minecraftforge.eventbus.api.SubscribeEvent
     public static void clone(net.minecraftforge.event.entity.player.PlayerEvent.Clone e){
