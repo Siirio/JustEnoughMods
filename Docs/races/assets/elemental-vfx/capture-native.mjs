@@ -24,6 +24,6 @@ try {
   const image=shot.content.find(v=>v.type==='image');if(!image)throw Error('No native frame');
   await fs.writeFile(path.join(here,'native-frames',String(i).padStart(2,'0')+'.png'),Buffer.from(image.data,'base64'));
  }
- await call('animation_timeline',{action:'set_time',animation_id:'bind_and_release',time:.5});
+ await call('animation_timeline',{action:'set_time',animation_id:'bind_and_release',time:.8});
  console.log('25 actual Blockbench viewport frames saved. Editor evidence only.');
 } finally {await c.close();}

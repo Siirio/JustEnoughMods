@@ -1,5 +1,10 @@
 # Sandbox elemental attacks — 2026-10-17
 
+**Latest behavior:** [FOLLOWUP.md](<FOLLOWUP.md>) supersedes the first handoff
+below: chunky angular lower roots and hostile action lock, independent ±10Y
+eruptions plus connected ground/fire VFX, collision-top Sculk, passive low-health
+guardian/shield, corrected Void pursuit and restored И/B utility controls.
+
 User direction: preserve the liked escalating fire slashes on Russian **И**
 (physical English **B**). Nether **V** becomes successive earth eruptions moving
 outward from the player, with several authored Blockbench assets. Replace the

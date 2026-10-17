@@ -34,6 +34,9 @@ def compose(base):
     target.parent.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(base) as original, zipfile.ZipFile(overlay) as fresh:
         additions = {n: fresh.read(n) for n in fresh.namelist() if not n.endswith("/") and n != "META-INF/MANIFEST.MF"}
+        refmap = json.loads(additions["jem_sandbox.refmap.json"])
+        if not refmap.get("mappings", {}).get("com/siirio/jemvisualsandbox/mixin/RootedHostileTickMixin"):
+            raise ValueError("Required rooted-hostile Mixin mapping missing")
         if not any(n.startswith("com/siirio/jemvisualsandbox/r3/") for n in additions):
             raise ValueError("R3 classes missing from overlay")
         collisions = set(original.namelist()) & set(additions)
@@ -46,6 +49,12 @@ def compose(base):
             if old.keys() & new.keys():
                 raise ValueError("Extension must not replace existing translations")
             additions[name] = (json.dumps(old | new, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
+        # The preserved base has only Manifest-Version. Register the new narrow
+        # Mixins explicitly; an overlay's discarded manifest cannot activate them.
+        manifest = original.read("META-INF/MANIFEST.MF").decode("utf-8").replace("\r", "").strip()
+        if manifest != "Manifest-Version: 1.0":
+            raise ValueError("Unexpected base manifest; review additive Mixin registration")
+        additions["META-INF/MANIFEST.MF"] = b"Manifest-Version: 1.0\r\nMixinConfigs: jem_sandbox.mixins.json\r\n\r\n"
         with zipfile.ZipFile(target, "w", zipfile.ZIP_DEFLATED) as output:
             for entry in original.infolist():
                 if entry.filename not in additions:
@@ -70,7 +79,7 @@ def compose(base):
                         editable.write(source, "elemental-vfx/" + source.relative_to(elemental_sources).as_posix())
             output.write(archive, "assets/jem_visual_sandbox/sources.zip")
         with zipfile.ZipFile(target) as output:
-            preserved = [n for n in original.namelist() if n not in collisions]
+            preserved = [n for n in original.namelist() if n not in collisions and n != "META-INF/MANIFEST.MF"]
             if any(output.read(n) != original.read(n) for n in preserved):
                 raise ValueError("Original sandbox content changed during composition")
     return target

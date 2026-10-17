@@ -2,6 +2,19 @@
 
 ## Current elemental handoff — 2026-10-17
 
+Latest correction: `Docs/races/assets/elemental-vfx/FOLLOWUP.md` owns current
+behavior and bindings. Roots now have chunky lower angular bends and a timed full
+hostile action lock; native health/status clocks continue. Each eruption resolves
+±10Y independently, with a continuous ground cut and fire flanks. Sculk draws on
+collision tops. Ancestors' threat-facing shield/30-tick Resistance/600-tick golem
+activate below40% health; V retains Life Chorus. Void no longer creates the stale
+departure decoy. Other races' B utilities and hold/release are restored; Nether
+keeps B fire slashes and uses Shift+B for native lava drinking. Protocol3 carries
+bounded surface paths. The composed base manifest now adds the narrow sandbox
+Mixin config with a required reobfuscated refmap; base classes/assets stay intact.
+No gameplay launch or automated test; current source and native-preview evidence
+do not establish runtime or user visual acceptance.
+
 This section supersedes historical bindings and installed hashes below.
 F6 selects a race; V casts its main skill. Nether V now sends five supported
 earth eruptions outward, using three authored magma models. The liked R5 fire

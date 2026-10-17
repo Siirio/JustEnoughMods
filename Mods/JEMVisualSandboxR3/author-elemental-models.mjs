@@ -45,22 +45,24 @@ try {
  await call('bbmodel_create',{file,format:'free',name:'entity_vines',box_uv:false,resolution:{width:32,height:32},overwrite:true});
  const ops=[{op:'add_texture',name:'root',source:'data:image/png;base64,'+(await fs.readFile(path.join(art,'root.png'))).toString('base64'),width:32,height:32},{op:'add_texture',name:'leaf',source:'data:image/png;base64,'+(await fs.readFile(path.join(art,'leaf.png'))).toString('base64'),width:32,height:32},{op:'add_group',name:'wrap',origin:[0,0,0]}];
  // Unequal climbing paths over a unit body; the runtime scales to the real box.
- const paths=[[[0,2,-8],[-8,5,-7],[-8,9,6],[0,12,8],[8,15,7],[8,18,-5],[0,21,-8]],[[7,1,8],[8,6,-5],[1,10,-8],[-8,14,-5],[-8,19,7],[0,23,8],[8,29,4]]];
+ // Short overlapping chords follow deliberately unequal rounded climbing paths.
+ const controls=[[[0,0,-10],[-5,1,-9],[-8.5,3,-5],[-9,5,1],[-7.5,7,6],[0,10,9],[7,13,7],[9,16,0],[7,19,-7],[0,22,-9],[-7,25,-7],[-8.5,28,0],[-5,30,7]],[[7,0,8],[9,2,3],[8.5,4,-3],[4,6,-8],[-3,9,-9],[-8,12,-5],[-9,15,2],[-5,18,8],[2,21,9],[8,24,5],[9,27,-2],[5,29,-8],[-2,31,-9]]];
+ const paths=controls; // Keep angular bends; do not subdivide into smoother tubing.
  const tracks=[];
  for(let p=0;p<paths.length;p++){
   const group='climbing_vine_'+p;ops.push({op:'add_group',name:group,origin:[0,0,0],parent:'wrap'});
   for(let i=0;i<paths[p].length-1;i++){
    const a=paths[p][i],b=paths[p][i+1],mid=a.map((v,k)=>(v+b[k])/2),dx=b[0]-a[0],dy=b[1]-a[1],dz=b[2]-a[2],len=Math.hypot(dx,dy,dz);
-   const thickness=1.3-i*.16;
-   const bone='wrapping_tip_'+p+'_'+i,start=p*.09+i*.06,finish=start+.09;
+   const thickness=2.1-(i/(paths[p].length-2))*1.65;
+   const bone='wrapping_tip_'+p+'_'+i,start=p*.08+i*.05,finish=start+.05;
    ops.push({op:'add_group',name:bone,parent:group,origin:a,rotation:[Math.atan2(dz,Math.hypot(dx,dy))*180/Math.PI,0,-Math.atan2(dx,dy)*180/Math.PI]});
-   ops.push({op:'add_cube',name:'brown_tapered_root_'+p+'_'+i,from:[a[0]-thickness,a[1],a[2]-thickness],to:[a[0]+thickness,a[1]+len,a[2]+thickness],origin:a,parent:bone,faces:faces('root')});
+   ops.push({op:'add_cube',name:'brown_tapered_root_'+p+'_'+i,from:[a[0]-thickness,a[1],a[2]-thickness],to:[a[0]+thickness,a[1]+len+.22,a[2]+thickness],origin:a,parent:bone,faces:faces('root')});
    tracks.push({bone,start,finish,leaf:false,branch:p,segment:i});
-   if(i%2===0){
+   if(i%2===1){
     const leafBone='leaf_unfold_'+p+'_'+i;
     ops.push({op:'add_group',name:leafBone,parent:group,origin:b});
     ops.push({op:'add_cube',name:'pointed_green_leaf_'+p+'_'+i,from:[b[0]-.8,b[1],b[2]-.15],to:[b[0]+3.5,b[1]+5,b[2]+.15],origin:b,rotation:[p?25:-20,45,i%3*20-25],parent:leafBone,faces:Object.fromEntries(['north','south','east','west','up','down'].map(f=>[f,{uv:[0,0,32,32],texture:['north','south'].includes(f)?'leaf':null}]))});
-    tracks.push({bone:leafBone,start:finish,finish:finish+.08,leaf:true,branch:p,segment:i});
+    tracks.push({bone:leafBone,start:finish,finish:finish+.065,leaf:true,branch:p,segment:i});
    }
   }
  }
@@ -68,12 +70,12 @@ try {
  // Each branch grows around the body from segment to segment, with independent
  // timing, curl/settle and leaf unfolding. Never scale the whole coil as one prop.
  for(const t of tracks){
-  const tiny=[.0001,.0001,.0001],release=1-t.segment*.025-t.branch*.015;
+  const tiny=[.0001,.0001,.0001],release=1.05-t.segment*.004-t.branch*.015;
   for(const [time,value] of [[0,tiny],...(t.start>0?[[t.start,tiny]]:[]),[t.finish,[1,1,1]],[release,[1,1,1]],[release+.16,tiny],[1.2,tiny]])ops.push({op:'set_keyframe',animation:'bind_and_release',bone:t.bone,channel:'scale',time,value,interpolation:'linear'});
-  const curl=(t.branch?-1:1)*(t.leaf?42:12+t.segment*2);
+  const curl=(t.branch?-1:1)*(t.leaf?42:18+Math.min(10,t.segment*.5));
   for(const [time,value] of [[0,[0,0,curl]],[t.finish,[0,0,0]],[release,[0,0,0]],[1.2,[0,0,-curl/2]]])ops.push({op:'set_keyframe',animation:'bind_and_release',bone:t.bone,channel:'rotation',time,value,interpolation:'linear'});
  }
- await call('bbmodel_edit',{file,operations:ops});entries.push(['entity_vines',file]);
+ for(let offset=0;offset<ops.length;offset+=300)await call('bbmodel_edit',{file,operations:ops.slice(offset,offset+300)});entries.push(['entity_vines',file]);
  }
  await fs.writeFile(path.join(art,'model-entries.json'),JSON.stringify(entries,null,2)+'\n');
  console.log(JSON.stringify({models:entries.map(e=>e[0]),source:'MCP headless geometry, UVs and native keyframes; external ORA textures'},null,2));

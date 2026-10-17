@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.siirio.jemvisualsandbox.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "jem_sandbox.refmap.json",
+  "mixins": ["RootedHostileTickMixin", "SandboxLavaUseMixin"],
+  "injectors": { "defaultRequire": 1 }
+}

@@ -1,5 +1,11 @@
 # Reference comparison and revision record
 
+Latest revision and actual remaining criticism: [FOLLOWUP.md](<FOLLOWUP.md>).
+The user rejected the first straight-stick root silhouette. Later explicit
+direction keeps angular bends and strengthens the lower chunks rather than
+making smoother tubing. Current native evidence and exports supersede the
+84-quad initial wrap; the revised model has168 quads and distinct branch tracks.
+
 ## References and taste scope
 
 Exact Pairs: Minecraft-cuboid-entity-models, Minecraft-pixel-uv-and-tiling,

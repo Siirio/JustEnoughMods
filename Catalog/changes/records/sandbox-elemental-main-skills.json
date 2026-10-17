@@ -23,31 +23,37 @@
     ]
   },
   "change": {
-    "summary": "New sandbox elemental choreography, adaptive woody root wraps and preserved fire slashes on B.",
+    "summary": "Sandbox elemental attacks with angular chunky-root hostile control, visible terrain VFX, passive guardian and complete B utilities.",
     "modifiers": [
       {
         "property": "sandbox.nether_main_skill",
         "operation": "replace",
         "before": "V: approved R5 three-hit fiery slash.",
-        "after": "V: five supported eruptions along fixed cast direction at ticks0/4/8/12/16, impacts five ticks later, three native magma models;10 fire damage,6s fire,.7 upward push. \u0418/B: unchanged R5 slash assets/timing/pulls."
+        "after": "V: five independently resolved nearest exposed floors within +/-10Y of cast height; skip only unsupported placements, retain cached model/hit positions. Authored continuous ground fissure and continuous fire-wall UVs alongside three magma models. B fire combo preserved; sneak+B32-tick lava drink consumes bucket and heals5."
       },
       {
         "property": "sandbox.void_main_skill",
         "operation": "replace",
         "before": "Immediate canonical targeted safe teleport, old Void cuboid variants.",
-        "after": "Four-tick horizontal pause, pixel-authored tapered diagonal tear with actual vanilla End portal shader; safe target/destination revalidated and canonical teleport/attack at tick14, then close. No active old Void model route."
+        "after": "Native tapered End portal tear and tick14 safe targeted teleport; omit invisible departure decoy that redirected mobs to old coordinates, refresh existing pursuers to actual player. B hold>=10ticks launches safe-arrival pearl; sneak+B grants100ticks75% gravity reduction."
       },
       {
         "property": "sandbox.bloom_main_skill",
         "operation": "replace",
         "before": "Canonical root damage/slow with coffer visual.",
-        "after": "Preserve root damage/slow; each affected target receives a90-tick dynamically AABB-scaled brown base-heavy Blockbench wrap, pointed green leaves, independent segment-by-segment branch curl/growth/settle/unfold/release tracks."
+        "after": "Canonical damage plus90-tick complete hostile action pause using narrow server tick injection and attack/projectile/teleport/explosion guards; native base health/fire/potion/hurt cooldown clocks continue. Two independently wrapping12-bend angular branches with chunkier lower brown sections and green leaves, AABB adaptation. B toggles native temporary800-tick leaf footholds."
       },
       {
         "property": "sandbox.sculk_main_skill",
         "operation": "replace",
         "before": "Canonical connected-sculk traversal with crawl cuboid.",
-        "after": "Preserve traversal/safe exit; authored dark substrate and broken cyan pixel veins propagate along eight path samples. No active old crawl-model route."
+        "after": "Canonical connected traversal/safe exit; surface path resolves exposed collision tops plus0.04Y instead of buried block centers. B reveal32blocks/80ticks or consume25resonance to heal6 and400ticks Absorption II; hostile kill adds10 resonance, cap100."
+      },
+      {
+        "property": "sandbox.ancestors_guardian",
+        "operation": "replace",
+        "before": "Shield presentation emitted on manual V Life Chorus; automatic low-health trait absent.",
+        "after": "V retains Life Chorus with distinct gold cels. Below40% health emits shield facing threat with180degree correction and server-owned origin,30ticks Resistance V and one player-created invulnerable native Iron Golem lasting600ticks/no loot or XP. Threshold rearms after recovery; no duplicate living guardian."
       }
     ]
   },
@@ -58,15 +64,33 @@
       "Mods/JEMVisualSandboxR3/README.md",
       "Mods/JEMVisualSandboxR3/author-elemental-models.mjs",
       "Mods/JEMVisualSandboxR3/bake-workbench.mjs",
+      "Mods/JEMVisualSandboxR3/build.gradle",
       "Mods/JEMVisualSandboxR3/generate-skills.py",
       "Mods/JEMVisualSandboxR3/prepare.py",
+      "Mods/JEMVisualSandboxR3/settings.gradle",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/mixin/RootedHostileTickMixin.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/mixin/SandboxLavaUseMixin.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/BlockbenchWorkbench.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalAbilities.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxHostileControl.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SurfacePlacement.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SurfaceVfx.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/UtilityVfx.java",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/elemental/chorus.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/elemental/echo_absorb.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/elemental/echo_scan.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/elemental/fire_wall.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/elemental/gravity.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/elemental/ground_fissure.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/elemental/lava_drink.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/elemental/path_leaf.png",
       "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/elemental/rift-mask.png",
       "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/elemental/rift.png",
       "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/elemental/sculk.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/elemental/void_orb.png",
       "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/en_us.json",
       "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/ru_ru.json",
       "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/entity_vines-0.png",
@@ -81,12 +105,13 @@
       "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/eruption2-0.png",
       "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/eruption2-1.png",
       "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/eruption2.mesh",
-      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/provenance.json"
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/provenance.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/jem_sandbox.mixins.json"
     ]
   },
   "rationale": {
     "purpose": "Implement requested elemental attacks and concrete art revisions in the existing sandbox, preserving the liked fire combo.",
-    "decision_source": "User requests \u0418 fire combo binding, outward earth eruptions, actual End portal diagonal tear, VFX-only Void/Sculk; later correction requires adaptive Blockbench Bloom roots, brown thick lower roots, green pointed leaves, exact existing model+UV Pairs, independent animation for each branch and orange-to-dark magma stones. Codex chooses tick14 teleport, five wave placements, 90-tick model hold, native shader aperture runs, source-owned native OBJ bake and external layered material/cel painting."
+    "decision_source": "User requests \u0418 fire combo binding, outward earth eruptions, actual End portal diagonal tear, VFX-only Void/Sculk; later correction requires adaptive Blockbench Bloom roots, brown thick lower roots, green pointed leaves, exact existing model+UV Pairs, independent animation for each branch and orange-to-dark magma stones. Codex chooses tick14 teleport, five wave placements, 90-tick model hold, native shader aperture runs, source-owned native OBJ bake and external layered material/cel painting. Later user explicitly requests full hostile suppression, +/-10Y eruption support with connected ground/fire VFX, visible Sculk surfaces, below40% guardian shield/resistance/golem with180degree facing correction, removal of stale-position Void targeting and all missing B utilities. Latest root steering says no further smoothing, make lower pieces chunkier. Codex chooses narrow mapped whole-action-tick pause plus native baseTick clocks/event guards, preserves old behavior outside sandbox and uses canonical local utility contracts, safe golem clearance and normal-native temporary path persistence."
   },
   "introduced": {
     "date": "2026-10-17",
@@ -106,6 +131,12 @@
       "commit": "SELF",
       "action": "revise",
       "summary": "Apply user Bloom corrections: adaptive brown tapered roots, pointed green leaves, independent wrapping tracks; repaint Nether stones orange-to-near-black."
+    },
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "revise",
+      "summary": "User rejects straight roots, then explicitly retains angular bends with chunkier lower pieces; add full hostile control, correct +/-10Y terrain and Sculk surfaces, threshold guardian facing/resistance, remove Void decoy bug and restore source-backed B utilities."
     }
   ],
   "impacts": {
@@ -115,19 +146,26 @@
       "adaptive entity-bound art",
       "native End portal rendering",
       "Blockbench source/export",
-      "sandbox artifact composition"
+      "sandbox artifact composition",
+      "hostile AI/spells/fuses",
+      "native health/status clock preservation",
+      "terrain surface placement",
+      "passive guardian lifecycle",
+      "hold/release utilities and temporary saved paths",
+      "Mixin config/refmap composition"
     ],
     "relations": [],
     "notes": [
       "Only the standalone jem sandbox JAR is installed; ordinary Server, canonical Client/ManagedPack, stable profiles and published AutoModpack generation18 are unchanged.",
       "Source of truth remains canonical race helpers plus explicit sandbox overrides.",
       "Approved fiery slash resources and gameplay class remain byte-identical.",
-      "Magma upper material is fullbright with a painted dark base; no world-light source."
+      "Magma upper material is fullbright with a painted dark base; no world-light source.",
+      "Active Mixin config/refmap added to composed base manifest; immutable original classes/assets unchanged. Dedicated-server behavior remains disabled."
     ],
     "unresolved": [
-      "No gameplay launch or automated tests; camera/shader compatibility, uneven terrain, real target fit and runtime action feel remain unobserved.",
-      "New effects are candidates, not user-approved art.",
-      "Two pre-existing unrelated JEMRoles line-ending coverage warnings remain."
+      "No game launch or automated tests: AI/mod interactions, cliff fitting, shield facing, target fit and complete utility action feel remain unobserved.",
+      "Root shape revised after rejection; new candidate is not user-approved.",
+      "Two pre-existing JEMRoles line-ending coverage warnings remain outside scope."
     ]
   }
 }

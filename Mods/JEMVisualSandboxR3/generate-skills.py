@@ -2,7 +2,7 @@
 
 Gameplay algorithms remain owned by JEMRoles, not a second hand-maintained copy.
 Sandbox-only differences: tier 3, unlimited selection, no cooldown/account gates,
-new authored emission, and the explicit Nether fiery-slash replacement.
+new authored emission and explicit source-owned standalone ability overrides.
 """
 from pathlib import Path
 import hashlib
@@ -31,7 +31,7 @@ def method(name):
 
 
 methods = ['lifeChorus', 'riftAmbush', 'verdantDominion', 'prepareSculk', 'sculkVeins',
-           'infernalEruption', 'root', 'erupt', 'spawnVoidEcho', 'serverTick', 'recruit',
+           'infernalEruption', 'root', 'erupt', 'echoVision', 'serverTick', 'recruit',
            'target', 'nearestSculk', 'sculk', 'samplePath', 'fail', 'teleport']
 imports = '\n'.join(line for line in source.splitlines() if line.startswith('import ') and not line.startswith('import com.siirio.'))
 body = '\n\n'.join(method(name) for name in methods)
@@ -41,14 +41,16 @@ body = body.replace('int delay = 8 + i * 3;', 'int delay = new int[]{4, 10, 16}[
 packet_source = (OWNER.parent / 'network/RaceVfxPacket.java').read_text(encoding='utf-8')
 path_limit = re.search(r'MAX_PATH_POINTS\s*=\s*(\d+)', packet_source).group(1)
 body = body.replace('RaceVfxPacket.MAX_PATH_POINTS', path_limit).replace('RaceEnvironment.', 'SandboxEnvironment.')
-body = body.replace('target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 90, 4));', 'target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 90, 4));\n        SandboxNetwork.vine(player, target);')
+body = body.replace('target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 90, 4));', 'target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 90, 4));\n        SandboxHostileControl.bind(player, target);')
+body = body.replace('if (tier >= 2) spawnVoidEcho(player, departure);', 'SandboxHostileControl.refreshTargets(player);')
+body = body.replace('private static void echoVision(', 'public static void echoVision(')
 head = '''
 /** Generated from canonical signature source. Never edit generated output. */
 @net.minecraftforge.fml.common.Mod.EventBusSubscriber(modid="jem_visual_sandbox")
 public final class SandboxSkills {
     private static final CopyOnWriteArrayList<Zone> ZONES = new CopyOnWriteArrayList<>();
     private static final CopyOnWriteArrayList<Eruption> ERUPTIONS = new CopyOnWriteArrayList<>();
-    private enum RaceVfxId { LIFE_CHORUS, RIFT_DEPART, RIFT_ARRIVE, VERDANT_DOMINION, SCULK_VEINS, INFERNAL_TELEGRAPH, INFERNAL_IMPACT, VOLCANIC_ZONE }
+    private enum RaceVfxId { LIFE_CHORUS, RIFT_DEPART, RIFT_ARRIVE, VERDANT_DOMINION, SCULK_VEINS, INFERNAL_TELEGRAPH, INFERNAL_IMPACT, VOLCANIC_ZONE, ECHO_VISION }
     public static void cast(ServerPlayer player, int race) {
         if (player.server.isDedicatedServer() || !player.server.isSingleplayerOwner(player.getGameProfile()) || !player.isAlive() || player.isSpectator()) return;
         int tier = 3;
@@ -67,11 +69,11 @@ public final class SandboxSkills {
     }
     private static void emit(ServerPlayer player, RaceVfxId id, Vec3 origin, Vec3 target, int sourceId, int targetId, int[] related, List<Vec3> path, int tier, int duration) {
         switch (id) {
-            case LIFE_CHORUS -> SandboxNetwork.visual(player, 0, origin, -player.getYRot());
+            case LIFE_CHORUS -> SandboxNetwork.effect(player,20,0,origin,0,player.getId());
+            case ECHO_VISION -> SandboxNetwork.effect(player,24,3,origin,0,player.getId());
             case RIFT_DEPART, RIFT_ARRIVE, VERDANT_DOMINION -> { } // Rift timeline / per-entity vine binding own these visuals.
             case SCULK_VEINS -> {
-                int limit = Math.min(8, path.size());
-                for (int i = 0; i < limit; i++) SandboxNetwork.effect(player,7,3,path.get(i * (path.size()-1) / Math.max(1,limit-1)).add(0,.02,0),player.getYRot(),-1);
+                SandboxNetwork.path(player,1,SurfacePlacement.sculkPath(player,path));
             }
             default -> { } // Nether's new eruption timeline owns its presentation.
         }
@@ -103,5 +105,8 @@ records = source[source.index('    private enum ZoneType'):source.rfind('}')]
 (OUT / 'SandboxSkills.java').write_text('package com.siirio.jemvisualsandbox.workbench;\n' + imports + '\n' + head + body + '\n' + records + '}\n', encoding='utf-8')
 environment = (OWNER / 'RaceEnvironment.java').read_text(encoding='utf-8').replace('package com.siirio.jemroles.trait;', 'package com.siirio.jemvisualsandbox.workbench;').replace('RaceEnvironment', 'SandboxEnvironment')
 (OUT / 'SandboxEnvironment.java').write_text('// Generated from JEMRoles canonical environment source.\n' + environment, encoding='utf-8')
-receipt = {'owner':'Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait', 'methods':methods, 'raceAbilitiesSha256':hashlib.sha256((OWNER/'RaceAbilities.java').read_bytes()).hexdigest(), 'sandboxOverrides':['tier 3','unlimited selection','no cooldown','Void: native End portal tear, revalidated teleport at tick14','Bloom: per-target adaptive brown Blockbench roots and pointed green leaves','Sculk: authored pixel VFX on canonical path','Nether V: five progressing eruptions using three authored models','Nether B (Russian И): approved FierySlash with unchanged assets, timing and pulls']}
+receipt = {'owner':'Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait', 'methods':methods, 'raceAbilitiesSha256':hashlib.sha256((OWNER/'RaceAbilities.java').read_bytes()).hexdigest(), 'sandboxOverrides':['tier 3','unlimited selection','no cooldown','Void: native End portal tear and tick14 safe teleport; remove old decoy redirection and refresh real target','Bloom: angular chunky lower roots, independent wraps, full hostile action pause90ticks; native health/fire/effect clocks continue','Sculk: collision-top surface VFX on canonical path; utility reveal/echo consumption','Nether V: independently resolved +/-10Y eruptions, continuous ground scar and fire-wall VFX','Nether B (Russian И): approved FierySlash with unchanged assets, timing and pulls']}
 (HERE / 'build/generated-skills.json').write_text(json.dumps(receipt, indent=2)+'\n')
+
+path_source = (OWNER / 'TemporaryPathSavedData.java').read_text(encoding='utf-8').replace('package com.siirio.jemroles.trait;', 'package com.siirio.jemvisualsandbox.workbench;').replace('TemporaryPathSavedData','SandboxPathData').replace('jem_race_paths','jem_sandbox_paths')
+(OUT / 'SandboxPathData.java').write_text(path_source,encoding='utf-8')
