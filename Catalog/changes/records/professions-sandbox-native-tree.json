@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "change_id": "professions.sandbox-native-tree",
-  "status": "conditional",
+  "status": "removed",
   "selectors": [
     {
       "type": "id",
@@ -11,9 +11,7 @@
   ],
   "conditions": [
     {
-      "delivery": "Matching jem sandbox artifacts and jem_professions_sandbox marker only. Ordinary Client/Server/stable and baseline unchanged.",
-      "authority": "Integrated logical server: real authenticated players may use effects; only world owner may freely claim/unclaim. Dedicated servers reject sandbox operations.",
-      "progression": "Puffish Skills 0.19.2 owns live XP, level, points and unlocks. Native financial and town owners remain canonical."
+      "delivery": "Removed entirely from jem sandbox on2026-10-18 after user rejection. Historical implementation only; no current sandbox marker/native profession artifact. Ordinary modpack unchanged."
     }
   ],
   "precedence": {
@@ -24,7 +22,7 @@
     ]
   },
   "change": {
-    "summary": "professions.sandbox-native-tree",
+    "summary": "Rejected sandbox migration removed; historical effects no longer apply in jem sandbox.",
     "modifiers": [
       {
         "property": "professions.sandbox_progression",
@@ -315,6 +313,18 @@
         "Mods/JEMProfessions/src/sandbox/resources/jem_professions_sandbox.mixins.json",
         "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/core/CoreFishing.java"
       ]
+    },
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "remove rejected sandbox profession migration",
+      "summary": "User explicitly chooses complete profession removal, including old partial version. Archive12JARs (profession, Puffish, TinyInv, Economy, eight migration dependencies), restore exact pre-migration Settlements9de62c10 with recruit meal fix, preserve worlds/configs and original modpack. Runtime-only rollback; retain source history.",
+      "source_files": [
+        "Docs/professions/README.md",
+        "Docs/professions/sandbox-delivery.json",
+        "Docs/professions/sandbox-rollback.json",
+        "Docs/DEVELOPMENT.md"
+      ]
     }
   ],
   "impacts": {
@@ -347,10 +357,11 @@
       "Commerce XP persists only pending native-owner recovery checkpoints, never a second live XP ledger.",
       "Native fishing loot is changed at its actual loot seam; normal unlock checks native points plus catalog level/parent; exact owner-only server scope bypasses those for free sandbox claims.",
       "Retired sandbox-availability.json and older moved source paths are history only.",
-      "Taxed native purchases retain the native window/offers/stock/callbacks but deliver recoverably into actual inventory; nonempty cursor or side slots reject before charge."
+      "Taxed native purchases retain the native window/offers/stock/callbacks but deliver recoverably into actual inventory; nonempty cursor or side slots reject before charge.",
+      "2026-10-18 user rejection: all sandbox profession versions removed; prior78-node implementation retained as source history, not a current sandbox installation. See sandbox-rollback.json."
     ],
     "unresolved": [
-      "Player/runtime/visual acceptance pending; no tests or game launches."
+      "No game launched for rollback; user acceptance of restored sandbox runtime remains unverified."
     ]
   }
 }

@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "71b8de556593aac9b4a3fb2d594577e9889a1c57aa90d978c526eecc08ae340a",
+  "change_records_sha256": "ab6f7c72fa2cdc4e0df0a461e37c3ad81097327ad88c26bca73d5a5aaa510549",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -297,8 +297,8 @@
     },
     {
       "change_id": "professions.sandbox-native-tree",
-      "status": "conditional",
-      "summary": "professions.sandbox-native-tree",
+      "status": "removed",
+      "summary": "Rejected sandbox migration removed; historical effects no longer apply in jem sandbox.",
       "record": "Catalog/changes/records/professions-sandbox-native-tree.json",
       "selectors": [
         {

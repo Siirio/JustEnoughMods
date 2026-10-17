@@ -1,8 +1,14 @@
 # Profession progression
 
-## Full sandbox migration — approved implementation contract, 2026-10-17
+## Current sandbox state — rolled back, 2026-10-18
 
-Status: user approved the complete contract on 2026-10-17. All78 skill adapters and native XP signals are implemented and source-reviewed; required artifacts compiled. Exact sandbox installation and hashes are recorded in [sandbox-delivery.json](sandbox-delivery.json). Gameplay and visual acceptance remain in testing; no game was launched.
+The user rejected the standalone migration as too closely tied to the full modpack and explicitly chose **remove professions entirely**, including the older partial version. JEMProfessions, Puffish Skills and TinyInv are absent from `jem sandbox`. JEM Economy and the eight external JARs added for the78-skill migration are also absent. Standalone Settlements is restored to its exact pre-migration artifact, retaining the recruit food navigation/chest-meal fix. Races, Recruits and the other pre-existing sandbox mods remain.
+
+Current runtime receipt: [sandbox-rollback.json](sandbox-rollback.json). Prior delivery records and the implementation contract below are historical, not the installed sandbox state or successful player acceptance. Sources remain in Git; this request rolls back the sandbox runtime only. The original modpack, ordinary Server, ManagedPack, stable profiles and release baseline remain unchanged. Worlds and saved progress are preserved; dormant configurations/data were not deleted. No build, test or game launch was performed for the rollback.
+
+## Historical rejected sandbox migration contract — 2026-10-17
+
+Status: implementation rejected and removed from sandbox on 2026-10-18 at the user’s request. The prior design approval and implementation history below do not establish successful migration or current runtime acceptance.
 
 Source diagnosis: professions is already a standalone mod, not part of Races. The sandbox screen selects one profession through a left rail; its details renderer does not show the profession XP instruction. The 78-node presentation catalog contains many entries with generic rank text. `sandbox-availability.json` admits only eight nodes because most promised gameplay adapters do not exist; the packager deliberately makes unsupported nodes unaffordable. Thus importing the data or removing the gate cannot create the missing effects. The owning correction is to implement each effect and native gain signal, bind descriptions to their real contract, then admit those nodes and replace the sandbox presentation. This is a source-backed cause chain, not a claim that gameplay was launched or that every one of the eight existing effects was manually verified.
 

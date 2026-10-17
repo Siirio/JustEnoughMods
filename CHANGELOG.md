@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-18 — Remove rejected profession migration from sandbox
+
+- User rejects the migration as unsuccessful and too closely coupled to the full modpack, then explicitly chooses complete profession removal rather than restoring the earlier partial version.
+- Sandbox rollback: archive JEMProfessions, Puffish Skills, TinyInv, JEM Economy and the eight external migration JARs; restore exact pre-migration standalone Settlements9de62c10 with the recruit food/chest-meal fix. Nine pre-existing sandbox JARs remain. Dependency metadata inspection found no missing mandatory physical-client dependencies in the remaining set, including nested owners.
+- Codex preserves worlds, saved progression, dormant configs, source/Git history, Races and unrelated work. The prior contract and delivery are labelled rejected/rolled back; the sandbox Atlas rule is removed. Current receipt: Docs/professions/sandbox-rollback.json. Ordinary Server, ManagedPack, stable profiles, native generation26 and release baseline unchanged. No build, automated test or game launch.
+- Initial process preflight missed the running javaw.exe sandbox client; Windows blocked the Settlements replacement after the other JARs were archived. User closed the game; Codex checked both java/javaw and completed the exact replacement. No worlds or saves were edited.
+
 ## 2026-10-17 — Repair profession sandbox class loading
 
 - User supplied the Forge startup failure after installing the profession migration; scope remains jem sandbox only.

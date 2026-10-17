@@ -129,7 +129,7 @@
   "testsRun": false,
   "gameLaunched": false,
   "sourceReview": "Core/native/civic/UI source and installed-bytecode reviews; identified blockers corrected and reviewed again. No remaining findings in reviewed paths.",
-  "acceptance": "in testing; user gameplay and visual acceptance pending",
+  "acceptance": "rejected by user: migration remains too coupled to full modpack; sandbox installation removed",
   "backupDirectory": "C:\\MyProjects\\Minecraft\\JustEnoughMods\\Server\\local\\sandbox-professions-20261017-233755",
   "atlas": {
     "scope": "Exact staged task snapshot through canonical Atlas rebuild/audit/scan/validation, preserving unrelated dirty Catalog files in place.",
@@ -168,5 +168,7 @@
       },
       "acceptance": "in testing; user restart confirmation pending; no game launched by Codex"
     }
-  ]
+  ],
+  "status": "rolled_back",
+  "currentInstallation": "Removed entirely from jem sandbox on 2026-10-18; sandbox-rollback.json is the current runtime receipt."
 }
