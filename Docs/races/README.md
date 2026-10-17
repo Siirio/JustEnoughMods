@@ -49,7 +49,7 @@ All five races now have four distinct stages: Base (0),1,2,3. Successful real V/
 | --- | --- | --- |
 | Ancestors |12-block healing →16-block radius →cleansing →full-health absorption. All retain6HP player healing, full peaceful-animal/mount healing and25% caster ward for5s. | Automatic guardian below40% health lasts30/40/50/60s; B remains contextual, not an invented attack. |
 | Void Walkers |24-block rift →32-block reach →2s slow within4blocks →3s slow within8blocks. Actual melee strike and safe arrival retained. | Pearl charge remains10ticks with real collision; Shift+B gravity lasts5/6/7/8s. |
-| Born in Bloom |6HP base hit and visual roots →action lock →3HP/s constriction →poison. Unlocks remain sequential and cannot exceed mastery stage. Base does not immobilize. | Leaf Bridge lifetime40/50/60/70s and forward reach2/3/4/5blocks;15s normal activation cooldown retained. |
+| Born in Bloom |5.4HP initial hit with3s movement grip at Base (attacks still allowed) →full action lock →2.7HP/s constriction →after-release1HP/s poison for4.5s. Unlocks remain sequential and cannot exceed mastery stage. | Leaf Bridge lifetime40/50/60/70s and forward reach2/3/4/5blocks;15s normal activation cooldown retained. |
 | Infected by Sculk |12HP hostile-only wave, radius8 →knockback →5s Darkness on all nearby other mobs/players plus confused mob aim →10s temporary sculk territory radius16. Owner inside gets size and attack×1.15. | Echo range32/40/48/56; at25resonance instead restore6/7/8/9HP and grant absorption20/25/30/35s. Real cost remains25. |
 | Nether Hearteds |Five eruptions at every stage; damage3.4/5.1/6.8/8.5HP each, fire1/2/4/6s. | Three authored slashes keep timing, pull and collision; each uses the same stage damage/fire. Lava and environmental passives retain their owners. |
 
@@ -137,3 +137,11 @@ accounts across nicknames nor copies server identity state.
 Sandbox installation: close `jem sandbox`, then run `python Mods/JEMVisualSandboxR3/install-sandbox.py` from the repository root. This guarded installer refuses a running profile and replaces the complete verified JAR atomically. Never copy over a loaded mod JAR.
 
 F6 stage arrows or scrolling over the miniature/stage selector immediately update the description below it. There is no separate Description tab. Scrolling the text panel still scrolls text. Inspection never grants a stage; DEV changes the actual sandbox stage. Optional Iron native spell levels1–4 project these four stages without owning progression. The sandbox network contract is now5; no MineRENT/managed-pack deployment is performed.
+
+## B narrator and Bloom follow-up —2026-10-17
+
+The Races client Mixin disables only the native Ctrl+B narrator toggle, verified against1.20.1 KeyboardHandler bytecode; the physical B/И event still reaches normal key mappings/screens and explicit narrator settings remain accessible.
+
+Bloom main-attack damage is10% lower: initial5.4HP and stage2constriction2.7HP/s. Grip and authored vines now last60ticks at every stage. Base pins movement after normal AI ticks and permits attacks; stage1+ uses the existing full action pause. Stage3 begins a90tick poison phase only after release, with four1HP ticks at+20/+40/+60/+80; a shared custom clock bypasses native POISON application immunity and avoids native double ticks. Damage must still be accepted by the native hurt pipeline and reduce health; full invulnerability, cancelled hits, fully absorbed hits and boss phase rejection are respected. Accepted health loss is normalized to1HP and capped nonlethal at1HP. Stage3 preview loop is8seconds to show grip, release and poison. No runtime claim is made for every installed custom boss.
+
+User follow-up: Sculk B recovery requires at least25resonance, consumes the entire current pool and resets it to0 on its single recovery activation. It cannot heal again until resonance is earned again; echo vision remains a separate low-resonance contextual action.

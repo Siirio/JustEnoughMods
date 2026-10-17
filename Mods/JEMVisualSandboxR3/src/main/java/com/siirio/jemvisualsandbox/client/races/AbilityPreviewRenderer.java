@@ -83,7 +83,7 @@ public final class AbilityPreviewRenderer {
         if (previousFrame != 0) {
             // A hidden screen advances no timeline; resume from the last visible frame.
             double gap = (now - previousFrame) / 1_000_000_000.0;
-            if (gap < .25) elapsed = (elapsed + gap) % 5;
+            if (gap < .25) elapsed = (elapsed + gap) % (race==2 && slot==0 && bloomStage>=3?8:5);
         }
         previousFrame = now;
         float ticks = (float)(elapsed * 20), age = ticks - 6;
@@ -105,6 +105,11 @@ public final class AbilityPreviewRenderer {
         actor.tickCount = target.tickCount = (int)ticks;
         face(actor, race == 1 && slot == 0 && age >= 14 && age < 64 ? 90 : -90);
         face(target, 90);
+        // Base grip pins movement while attack motion continues; stage I locks it.
+        boolean bloomGrip=race==2 && slot==0 && age>=0 && age<com.siirio.jemvisualsandbox.workbench.BloomMechanics.GRIP_TICKS;
+        target.attackAnim=target.oAttackAnim=bloomGrip && bloomStage==0?(age%20)/20:0;
+        target.swingingArm=net.minecraft.world.InteractionHand.MAIN_HAND;
+        if(bloomGrip && bloomStage>=1)target.tickCount=0;
         face(guardian, -90);
         float hit = presentation.hitAge(race, slot, bloomStage, age);
         target.hurtTime = hit >= 0 && hit < 6 ? 5 : 0;

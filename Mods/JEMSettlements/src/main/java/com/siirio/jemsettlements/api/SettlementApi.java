@@ -7,7 +7,6 @@ import com.siirio.jemsettlements.town.TownRecord;
 import com.siirio.jemsettlements.workforce.WorkforceRecord;
 import com.siirio.jemsettlements.workforce.WorkforceType;
 import com.siirio.jemsettlements.compat.recruits.RecruitsAdapter;
-import com.siirio.jemsettlements.compat.workers.WorkersAdapter;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.UUID;
@@ -54,7 +53,7 @@ public final class SettlementApi {
         for (TownRecord other : data.towns()) if (other.dimension().equals(town.dimension())
                 && town.territoryMinX() <= other.territoryMaxX() + 16 && town.territoryMaxX() >= other.territoryMinX() - 16
                 && town.territoryMinZ() <= other.territoryMaxZ() + 16 && town.territoryMaxZ() >= other.territoryMinZ() - 16) return Result.CONFLICT;
-        var payment = com.siirio.jemeconomy.api.EconomyApi.depositToAccount(player,
+        var payment = com.siirio.jemsettlements.currency.SettlementCurrency.depositToAccount(player,
                 com.siirio.jemeconomy.ledger.SystemAccount.OPERATIONS.id(), com.siirio.jemsettlements.payroll.SettlementEconomyConfig.founding(), town.id());
         if (payment.status() == com.siirio.jemeconomy.ledger.TransferResult.Status.INSUFFICIENT_FUNDS) return Result.INSUFFICIENT_FUNDS;
         if (payment.status() != com.siirio.jemeconomy.ledger.TransferResult.Status.COMMITTED
@@ -117,16 +116,11 @@ public final class SettlementApi {
         if (entity.level() != player.level() || !town.get().dimension().equals(player.serverLevel().dimension().location())
                 || player.distanceToSqr(entity) > 256.0D || !town.get().contains(entity.blockPosition())) return Result.INVALID;
         String namespace = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).getNamespace().toLowerCase(Locale.ROOT);
-        if (!namespace.equals("workers") && !namespace.equals("recruits")) return Result.INVALID;
+        if (!namespace.equals("recruits")) return Result.INVALID;
         if (namespace.equals("recruits")) {
             if (!net.minecraftforge.fml.ModList.get().isLoaded("recruits") || !RecruitsAdapter.ownedBy(entity, principal.get())) return Result.INVALID;
             type = WorkforceType.RECRUIT;
             coinWageEnabled = true;
-        } else {
-            if (!net.minecraftforge.fml.ModList.get().isLoaded("workers")) return Result.UNAVAILABLE;
-            var nativeType = WorkersAdapter.typeOwnedBy(entity, principal.get());
-            if (nativeType.isEmpty()) return Result.INVALID;
-            type = nativeType.get();
         }
         SettlementSavedData data = SettlementSavedData.get(player.getServer());
         if (data.entityAssigned(entity.getUUID())) {
@@ -204,7 +198,7 @@ public final class SettlementApi {
         for (TownRecord other : data.towns()) if (!other.id().equals(townId) && other.dimension().equals(town.get().dimension())) {
             if (minX <= other.territoryMaxX() + 16 && maxX >= other.territoryMinX() - 16 && minZ <= other.territoryMaxZ() + 16 && maxZ >= other.territoryMinZ() - 16) return Result.CONFLICT;
         }
-        var payment = com.siirio.jemeconomy.api.EconomyApi.depositToAccount(player,
+        var payment = com.siirio.jemsettlements.currency.SettlementCurrency.depositToAccount(player,
                 com.siirio.jemeconomy.ledger.SystemAccount.OPERATIONS.id(), added,
                 UUID.nameUUIDFromBytes(("territory:" + townId + ":" + requestId + ":" + minX + ":" + minZ + ":" + maxX + ":" + maxZ).getBytes(java.nio.charset.StandardCharsets.UTF_8)));
         if (payment.status() == com.siirio.jemeconomy.ledger.TransferResult.Status.INSUFFICIENT_FUNDS) return Result.INSUFFICIENT_FUNDS;
@@ -231,13 +225,14 @@ public final class SettlementApi {
         var town = ownedTown(player, townId);
         if (town.isEmpty()) return Result.UNAUTHENTICATED;
         var deletionData = SettlementSavedData.get(player.getServer());
-        if (town.get().payroll().stream().anyMatch(period -> !period.paid())
+        if (!com.siirio.jemsettlements.currency.SettlementCurrency.canDelete(player, townId)
+                || town.get().payroll().stream().anyMatch(period -> !period.paid())
                 || deletionData.residents(townId).stream().anyMatch(resident -> resident.living() && resident.mood() < 10)) return Result.CONFLICT;
-        long balance = com.siirio.jemeconomy.api.EconomyApi.townBalance(player.getServer(), townId);
+        long balance = com.siirio.jemsettlements.currency.SettlementCurrency.townBalance(player.getServer(), townId);
         boolean replayed = false;
         if (balance > 0L) {
-            var refund = com.siirio.jemeconomy.api.EconomyApi.withdrawFromAccount(player,
-                    com.siirio.jemeconomy.api.EconomyApi.townAccount(townId), balance, requestId);
+            var refund = com.siirio.jemsettlements.currency.SettlementCurrency.withdrawFromAccount(player,
+                    com.siirio.jemsettlements.currency.SettlementCurrency.townAccount(townId), balance, requestId);
             if (refund.status() == com.siirio.jemeconomy.ledger.TransferResult.Status.INSUFFICIENT_FUNDS) return Result.CONFLICT;
             if (refund.status() != com.siirio.jemeconomy.ledger.TransferResult.Status.COMMITTED
                     && refund.status() != com.siirio.jemeconomy.ledger.TransferResult.Status.REPLAYED) return Result.UNAVAILABLE;
@@ -270,16 +265,14 @@ public final class SettlementApi {
         var entity = player.serverLevel().getEntity(entityId);
         if (entity == null || !entity.isAlive() || player.distanceToSqr(entity) > 256.0D) return Result.UNAVAILABLE;
         UUID owner = SettlementAuthority.principal(player).orElseThrow();
-        if (record.get().nativeModId().equals("workers") && net.minecraftforge.fml.ModList.get().isLoaded("workers"))
-            return WorkersAdapter.openManagement(player, entity, owner) ? Result.ACCEPTED : Result.INVALID;
         if (record.get().nativeModId().equals("recruits") && net.minecraftforge.fml.ModList.get().isLoaded("recruits"))
             return com.siirio.jemsettlements.compat.recruits.RecruitRuntime.openManagement(player, entity, owner) ? Result.ACCEPTED : Result.INVALID;
         return Result.UNAVAILABLE;
     }
 
     public static long treasuryBalance(ServerPlayer player, TownRecord town) {
-        return com.siirio.jemeconomy.api.EconomyApi.accountBalance(player,
-                com.siirio.jemeconomy.api.EconomyApi.townAccount(town.id()));
+        return com.siirio.jemsettlements.currency.SettlementCurrency.accountBalance(player,
+                com.siirio.jemsettlements.currency.SettlementCurrency.townAccount(town.id()));
     }
 
     public static Result treasury(ServerPlayer player, boolean deposit, long amount, UUID requestId) {
@@ -293,10 +286,10 @@ public final class SettlementApi {
         var town = ownedTown(player, townId);
         if (principal.isEmpty()) return Result.UNAUTHENTICATED;
         if (town.isEmpty() || !town.get().owner().equals(principal.get())) return Result.UNAVAILABLE;
-        UUID account = com.siirio.jemeconomy.api.EconomyApi.townAccount(town.get().id());
+        UUID account = com.siirio.jemsettlements.currency.SettlementCurrency.townAccount(town.get().id());
         var transfer = deposit
-                ? com.siirio.jemeconomy.api.EconomyApi.depositToAccount(player, account, amount, requestId)
-                : com.siirio.jemeconomy.api.EconomyApi.withdrawFromAccount(player, account, amount, requestId);
+                ? com.siirio.jemsettlements.currency.SettlementCurrency.depositToAccount(player, account, amount, requestId)
+                : com.siirio.jemsettlements.currency.SettlementCurrency.withdrawFromAccount(player, account, amount, requestId);
         return switch (transfer.status()) {
             case COMMITTED -> Result.ACCEPTED;
             case REPLAYED -> Result.REPLAYED;

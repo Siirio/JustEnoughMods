@@ -22,8 +22,8 @@ import net.minecraft.world.item.Items;
 
 /** Standalone native presentation. Each operation names a town and waits for its server ACK. */
 public class SettlementScreen extends Screen {
-    private static final String[] SECTIONS={"map","residents","happiness","food","workers","recruits","treasury","settings"};
-    private static final String[] CHAPTERS={"founding","territory","feeding","housing","food_satisfaction","safety","jobs","community","decoration","assign_work","chest_delivery","payroll","rebellion","treasury","tax"};
+    private static final String[] SECTIONS={"map","residents","happiness","food","recruits","treasury","settings"};
+    private static final String[] CHAPTERS={"founding","territory","feeding","housing","food_satisfaction","safety","jobs","community","decoration","chest_delivery","payroll","rebellion","treasury","tax"};
     private static final int INK=0xffe4dfca, MUTED=0xffb9bdaf;
     private CompoundTag envelope, town=new CompoundTag(), detail;
     private String section="map", mode="loading", search="", filter="all", sort="name", notice="";
@@ -191,9 +191,9 @@ public class SettlementScreen extends Screen {
         button(tr("center"),cx,bottom-46,Math.max(48,cw/3),()->map.center(BlockPos.of(town.getLong("Center"))),false);
         button(tr("player"),cx+cw/3+2,bottom-46,Math.max(48,cw/3-2),()->{if(minecraft.player!=null&&minecraft.level!=null&&minecraft.level.dimension().location().toString().equals(town.getString("Dimension")))map.center(minecraft.player.blockPosition());},false);
         Button expand=button(tr("expand"),cx+cw*2/3+2,bottom-46,cw/3-2,()->{
-            if (!map.quoted()) return;long added=map.added(town);CompoundTag payload=map.payload(town);ask(tr("expand_confirm",added,map.cost(town)/CoinDenomination.GOLD.value()),()->request("expand",payload));
-        },true);expand.active=map.quoted()&&map.invalidReason(town).isEmpty()&&!SettlementClientState.pending();expand.setTooltip(Tooltip.create(tr(!map.invalidReason(town).isEmpty()?"map_invalid."+map.invalidReason(town):map.quoted()?"gold_unit":"select_neighbor")));
-        drawLine(map.quoted()?tr("quote",map.added(town),map.cost(town)/CoinDenomination.GOLD.value()):tr("map_help"),cx,bottom-60,MUTED);
+            if (!map.quoted()) return;long added=map.added(town);CompoundTag payload=map.payload(town);ask(tr(coinCurrency()?"expand_confirm":"emerald_expand_confirm",added,territoryPrice()),()->request("expand",payload));
+        },true);expand.active=map.quoted()&&map.invalidReason(town).isEmpty()&&!SettlementClientState.pending();expand.setTooltip(Tooltip.create(tr(!map.invalidReason(town).isEmpty()?"map_invalid."+map.invalidReason(town):map.quoted()?(coinCurrency()?"gold_unit":"emerald_unit"):"select_neighbor")));
+        drawLine(map.quoted()?tr(coinCurrency()?"quote":"emerald_quote",map.added(town),territoryPrice()):tr("map_help"),cx,bottom-60,MUTED);
     }
     private void residentRows() {
         search(cy);button(filterLabel(),cx,cy+24,cw,()->{filter=nextResidentFilter();scroll=0;rebuild();},false);
@@ -285,17 +285,17 @@ public class SettlementScreen extends Screen {
         else drawWrapped(tr("native_work"),cx,bottom-42,cw,MUTED);
     }
     private void treasury() {
-        drawLine(tr("balance"),cx,cy,INK);drawings.add(()->coins(town.getLong("Treasury"),cx,cy+12,cw));drawLine(tr("spendable",town.getLong("Spendable")),cx,cy+32,MUTED);
-        Button coin=button(item("jem_economy:"+denomination.id()).getHoverName(),cx,cy+46,Math.max(88,cw/2),()->{denomination=CoinDenomination.values()[(denomination.ordinal()+1)%CoinDenomination.values().length];rebuild();},false);coin.setTooltip(Tooltip.create(tr("coin_cycle")));
+        drawLine(tr("balance"),cx,cy,INK);drawings.add(()->coins(town.getLong("Treasury"),cx,cy+12,cw));drawLine(tr("spendable",SettlementPriceRenderer.format(town.getLong("Spendable"),coinCurrency())),cx,cy+32,MUTED);
+        Button coin=button(currencyItem().getHoverName(),cx,cy+46,Math.max(88,cw/2),()->{denomination=CoinDenomination.values()[(denomination.ordinal()+1)%CoinDenomination.values().length];rebuild();},false);coin.active=coinCurrency();coin.setTooltip(Tooltip.create(tr(coinCurrency()?"coin_cycle":"emerald_unit_name")));
         amountBox=edit(cx+cw/2+4,cy+46,cw/2-4,amount,"amount",16);amountBox.setFilter(value->value.matches("[0-9]*"));amountBox.setResponder(value->amount=value);
         int by=cy+70;button(tr("deposit"),cx,by,cw/2-2,()->transfer("deposit"),true);button(tr("withdraw"),cx+cw/2+2,by,cw/2-2,()->transfer("withdraw"),true);
         listTop=by+24;listBottom=bottom-24;
-        for(CompoundTag row:tags(town,"Transactions")) rows.add(new Row(tr(row.getBoolean("Incoming")?"transaction.incoming":"transaction.outgoing"),tr("copper_amount",row.getLong("Amount")),new ItemStack(Items.PAPER),row,null));listWidgets();refreshFooter();
+        for(CompoundTag row:tags(town,"Transactions")) rows.add(new Row(tr(row.getBoolean("Incoming")?"transaction.incoming":"transaction.outgoing"),SettlementPriceRenderer.format(row.getLong("Amount"),coinCurrency()),new ItemStack(Items.PAPER),row,null));listWidgets();refreshFooter();
     }
     private void transfer(String action) {
         try {
-            long total=Math.multiplyExact(Long.parseLong(amountBox.getValue()),denomination.value());if(total<=0){notice="jem.settlements.reason.invalid";return;}
-            CompoundTag payload=new CompoundTag();payload.putLong("Amount",total);ask(tr(action+"_confirm",amountBox.getValue(),item("jem_economy:"+denomination.id()).getHoverName()),()->request(action,payload));
+            long total=Math.multiplyExact(Long.parseLong(amountBox.getValue()),coinCurrency()?denomination.value():1L);if(total<=0){notice="jem.settlements.reason.invalid";return;}
+            CompoundTag payload=new CompoundTag();payload.putLong("Amount",total);ask(tr(action+"_confirm",amountBox.getValue(),currencyItem().getHoverName()),()->request(action,payload));
         } catch(NumberFormatException|ArithmeticException invalid) {notice="jem.settlements.reason.invalid";}
     }
     private void settings() {
@@ -311,7 +311,7 @@ public class SettlementScreen extends Screen {
         button(Component.literal("<"),cx+64,cy,22,()->{chapter=Math.floorMod(chapter-1,CHAPTERS.length);scroll=0;rebuild();},false);
         button(Component.literal(">"),cx+90,cy,22,()->{chapter=(chapter+1)%CHAPTERS.length;scroll=0;rebuild();},false);drawLine(tr("chapter",chapter+1,CHAPTERS.length),cx+120,cy+6,MUTED);
         listTop=cy+28;listBottom=bottom-24;
-        List<net.minecraft.util.FormattedCharSequence> lines=font.split(Component.translatable("jem.settlements.guide."+CHAPTERS[chapter]),cw-8);
+        List<net.minecraft.util.FormattedCharSequence> lines=font.split(Component.translatable("jem.settlements.guide."+CHAPTERS[chapter]+(!coinCurrency() && (CHAPTERS[chapter].equals("territory") || CHAPTERS[chapter].equals("treasury"))?"_emerald":"")),cw-8);
         int visible=Math.max(1,(listBottom-listTop)/12),limit=Math.max(0,lines.size()-visible);scroll=Math.min(scroll,limit);int start=scroll;
         drawings.add(()->{graphics.fill(cx-2,listTop-3,cx+cw+2,listBottom,0xffd7cba6);for(int i=start;i<Math.min(lines.size(),start+visible);i++)graphics.drawString(font,lines.get(i),cx+4,listTop+(i-start)*12,0xff352c20,false);});
         button(tr("previous"),cx,bottom-20,cw/2-2,()->{scroll=Math.max(0,scroll-visible);rebuild();},false).active=scroll>0;
@@ -343,7 +343,11 @@ public class SettlementScreen extends Screen {
         if(!label.getString().isEmpty())g.drawString(font,label.copy().append(" "+value+"/100"),x,y,INK,false);
         int by=y+(label.getString().isEmpty()?0:11);g.fill(x,by,x+w,by+7,0xff20271f);g.fill(x+1,by+1,x+1+(w-2)*value/100,by+6,color);
     }
+    private boolean coinCurrency() { return envelope.getBoolean("CoinCurrency"); }
+    private long territoryPrice() { return coinCurrency()?map.cost(town)/CoinDenomination.GOLD.value():map.cost(town); }
+    private ItemStack currencyItem() { return coinCurrency()?item("jem_economy:"+denomination.id()):new ItemStack(Items.EMERALD); }
     private void coins(long copper,int x,int y,int maxWidth) {
+        if (!coinCurrency()) { SettlementPriceRenderer.draw(graphics,font,copper,x,y,maxWidth,INK,false); return; }
         int dx=x,dy=y;
         for(CoinDenomination coin:CoinDenomination.descending()) {
             long count=copper/coin.value();copper%=coin.value();if(count==0&&coin!=CoinDenomination.COPPER)continue;

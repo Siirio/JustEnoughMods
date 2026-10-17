@@ -12,6 +12,10 @@ public final class CurrencyAuthority {
         return server != null && (server.isDedicatedServer() || ModList.get().isLoaded("jem_settlements"));
     }
 
+    public static boolean merchantActive(ServerPlayer player) {
+        return active(player) && ModList.get().isLoaded("jem_economy");
+    }
+
     public static boolean active(ServerPlayer player) {
         return player != null && active(player.getServer());
     }

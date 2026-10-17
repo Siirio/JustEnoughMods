@@ -32,6 +32,7 @@ public final class TownRecord implements com.siirio.jemsettlements.payroll.Payro
     private long nextPayrollGameTime;
     private long nextPayrollIndex;
     private int consecutiveMissedPayrolls;
+    private int emeraldMissedPayrolls;
     private TownTier tier = TownTier.CAMP;
     private TownSpecialization primarySpecialization = TownSpecialization.NONE;
     private TownSpecialization secondarySpecialization = TownSpecialization.NONE;
@@ -50,7 +51,7 @@ public final class TownRecord implements com.siirio.jemsettlements.payroll.Payro
     public BlockPos center() { return center; } public Set<UUID> members() { return Set.copyOf(members); } public List<StorageLink> storage() { return List.copyOf(storage); }
     public int happiness() { return happiness; } public int taxPercent() { return taxPercent; } public long lastHappinessDay() { return lastHappinessDay; }
     public long payrollEpoch() { return payrollEpoch; } public long nextPayrollGameTime() { return nextPayrollGameTime; } public long nextPayrollIndex() { return nextPayrollIndex; }
-    public int consecutiveMissedPayrolls() { return consecutiveMissedPayrolls; } public List<PayrollPeriod> payroll() { return List.copyOf(payroll); }
+    public int consecutiveMissedPayrolls() { return com.siirio.jemsettlements.currency.SettlementCurrency.coins() ? consecutiveMissedPayrolls : emeraldMissedPayrolls; } public List<PayrollPeriod> payroll() { return List.copyOf(payroll); }
     public SettlementSimulationState simulation() { return simulation; } public TownTier tier() { return tier; }
     public TownSpecialization primarySpecialization() { return primarySpecialization; } public TownSpecialization secondarySpecialization() { return secondarySpecialization; }
     public long lastSpecializationEvaluation() { return lastSpecializationEvaluation; }
@@ -78,8 +79,15 @@ public final class TownRecord implements com.siirio.jemsettlements.payroll.Payro
     public boolean setStorageFeed(StorageLink link, boolean enabled) { for (int i = 0; i < storage.size(); i++) { StorageLink current = storage.get(i); if (current.dimension().equals(link.dimension()) && current.position().equals(link.position())) { storage.set(i, current.withFeedResidents(enabled)); return true; } } return false; }
     public void initializePayroll(long gameTime) { if (nextPayrollGameTime == 0L) { payrollEpoch = gameTime; nextPayrollGameTime = Math.addExact(gameTime, 168_000L); nextPayrollIndex = 0L; } }
     public void schedule(PayrollPeriod period) { payroll.add(period); while (payroll.size() > 32 && payroll.get(0).paid()) payroll.remove(0); nextPayrollIndex = period.index() + 1L; nextPayrollGameTime = Math.addExact(period.dueGameTime(), 168_000L); }
-    public void payrollMissed() { consecutiveMissedPayrolls = Math.min(8, consecutiveMissedPayrolls + 1); }
-    public void payrollRecovered() { if (payroll.stream().allMatch(PayrollPeriod::paid)) consecutiveMissedPayrolls = 0; }
+    public void payrollMissed() {
+        if (com.siirio.jemsettlements.currency.SettlementCurrency.coins()) consecutiveMissedPayrolls = Math.min(8, consecutiveMissedPayrolls + 1);
+        else emeraldMissedPayrolls = Math.min(8, emeraldMissedPayrolls + 1);
+    }
+    public void payrollRecovered() {
+        if (payroll.stream().filter(PayrollPeriod::currentCurrency).allMatch(PayrollPeriod::paid)) {
+            if (com.siirio.jemsettlements.currency.SettlementCurrency.coins()) consecutiveMissedPayrolls = 0; else emeraldMissedPayrolls = 0;
+        }
+    }
     public void upgrade(TownTier value) { if (value.ordinal() > tier.ordinal()) tier = value; }
     public void specializations(TownSpecialization primary, TownSpecialization secondary, long gameTime) { primarySpecialization = primary; secondarySpecialization = secondary; lastSpecializationEvaluation = gameTime; }
     private static int clamp(int value) { return Math.max(0, Math.min(100, value)); }
@@ -87,7 +95,7 @@ public final class TownRecord implements com.siirio.jemsettlements.payroll.Payro
     CompoundTag save() {
         CompoundTag tag = new CompoundTag(); tag.putInt("Schema", CURRENT_SCHEMA); tag.putUUID("Id", id); tag.putUUID("Owner", owner); tag.putString("Name", name);
         tag.putString("Dimension", dimension.toString()); tag.putLong("Center", center.asLong()); tag.putInt("Happiness", happiness); tag.putInt("Tax", taxPercent); tag.putLong("LastHappinessDay", lastHappinessDay);
-        tag.putLong("PayrollEpoch", payrollEpoch); tag.putLong("NextPayrollGameTime", nextPayrollGameTime); tag.putLong("NextPayrollIndex", nextPayrollIndex); tag.putInt("ConsecutiveMissedPayrolls", consecutiveMissedPayrolls);
+        tag.putLong("PayrollEpoch", payrollEpoch); tag.putLong("NextPayrollGameTime", nextPayrollGameTime); tag.putLong("NextPayrollIndex", nextPayrollIndex); tag.putInt("ConsecutiveMissedPayrolls", consecutiveMissedPayrolls); tag.putInt("EmeraldMissedPayrolls", emeraldMissedPayrolls);
         tag.putString("Tier", tier.name()); tag.putString("PrimarySpecialization", primarySpecialization.name()); tag.putString("SecondarySpecialization", secondarySpecialization.name()); tag.putLong("LastSpecializationEvaluation", lastSpecializationEvaluation);
         tag.putInt("HousingScore", housingScore); tag.putInt("FoodScore", foodScore); tag.putInt("SafetyScore", safetyScore); tag.putInt("JobsScore", jobsScore); tag.putInt("CommunityScore", communityScore); tag.putInt("DecorationScore", decorationScore);
         tag.putInt("TerritoryRadius", territoryRadius); tag.putInt("TerritoryMinX", territoryMinX); tag.putInt("TerritoryMaxX", territoryMaxX); tag.putInt("TerritoryMinZ", territoryMinZ); tag.putInt("TerritoryMaxZ", territoryMaxZ);
@@ -101,7 +109,7 @@ public final class TownRecord implements com.siirio.jemsettlements.payroll.Payro
         town.happiness(tag.contains("Happiness") ? tag.getInt("Happiness") : 50); town.taxPercent(tag.getInt("Tax")); town.lastHappinessDay(tag.contains("LastHappinessDay") ? tag.getLong("LastHappinessDay") : Long.MIN_VALUE);
         ListTag members = tag.contains("Members") ? tag.getList("Members", Tag.TAG_COMPOUND) : tag.getList("Residents", Tag.TAG_COMPOUND); for (int i = 0; i < members.size(); i++) if (members.getCompound(i).hasUUID("Id")) town.members.add(members.getCompound(i).getUUID("Id"));
         ListTag stores = tag.getList("Storage", Tag.TAG_COMPOUND); for (int i = 0; i < stores.size() && town.storage.size() < 64; i++) town.storage.add(StorageLink.load(stores.getCompound(i)));
-        town.payrollEpoch = tag.getLong("PayrollEpoch"); town.nextPayrollGameTime = tag.getLong("NextPayrollGameTime"); town.nextPayrollIndex = tag.getLong("NextPayrollIndex"); town.consecutiveMissedPayrolls = tag.getInt("ConsecutiveMissedPayrolls");
+        town.payrollEpoch = tag.getLong("PayrollEpoch"); town.nextPayrollGameTime = tag.getLong("NextPayrollGameTime"); town.nextPayrollIndex = tag.getLong("NextPayrollIndex"); town.consecutiveMissedPayrolls = tag.getInt("ConsecutiveMissedPayrolls"); town.emeraldMissedPayrolls = tag.getInt("EmeraldMissedPayrolls");
         try { town.tier = TownTier.valueOf(tag.getString("Tier")); } catch (IllegalArgumentException ignored) { }
         try { town.primarySpecialization = TownSpecialization.valueOf(tag.getString("PrimarySpecialization")); } catch (IllegalArgumentException ignored) { }
         try { town.secondarySpecialization = TownSpecialization.valueOf(tag.getString("SecondarySpecialization")); } catch (IllegalArgumentException ignored) { }

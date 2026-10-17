@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "cdd50f58ee16dbb847d7a8748a5c8e1b4835ca63",
+  "snapshot_sha": "1d21365a332c255e2db3d6d2adc8a9f7612802f7",
   "generation": {
-    "generated_utc": "2026-10-16T09:54:49.049109+00:00",
+    "generated_utc": "2026-10-17T13:48:02.089094+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -38,6 +38,44 @@
         "jemcompat-3.7.0.jar:assets/jemcompat/lang/en_us.json",
         "jemcompat-3.7.0.jar:assets/jemcompat/lang/ru_ru.json",
         "jemcompat-3.7.0.jar:assets/jemcompat/models/item/aircraft_fuel.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "jemcompat:boss_locator_",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "jemcompat",
+      "mod_name": "JustEnoughMods Compatibility",
+      "mod_version": "3.7.0",
+      "source_jar": "jemcompat-3.7.0.jar",
+      "source_sha256": "5dc888a1e4bb4a8600c719e07ef61645b4c2d19601f28bcf3fff792ddf285cee",
+      "side_availability": [
+        "source"
+      ],
+      "observed_in": [
+        "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemcompat/discovery/CampaignItems.java"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "CampaignItems.java:Mods/JEMTwelveEyes/src/main/java/com/siirio/jemcompat/discovery/CampaignItems.java"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2790,120 +2828,6 @@
       "source_provenance": [
         "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
         "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:create",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "5dc888a1e4bb4a8600c719e07ef61645b4c2d19601f28bcf3fff792ddf285cee",
-      "side_availability": [
-        "source"
-      ],
-      "observed_in": [
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "JemCatalogCategories.java:Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:handcrafted",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "5dc888a1e4bb4a8600c719e07ef61645b4c2d19601f28bcf3fff792ddf285cee",
-      "side_availability": [
-        "source"
-      ],
-      "observed_in": [
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "JemCatalogCategories.java:Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:moa_decor_holidays",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "5dc888a1e4bb4a8600c719e07ef61645b4c2d19601f28bcf3fff792ddf285cee",
-      "side_availability": [
-        "source"
-      ],
-      "observed_in": [
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "JemCatalogCategories.java:Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",

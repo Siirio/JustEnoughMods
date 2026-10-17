@@ -1,6 +1,6 @@
 package com.siirio.jemsettlements.mixin;
 
-import com.siirio.jemeconomy.client.CoinPriceRenderer;
+import com.siirio.jemsettlements.client.SettlementPriceRenderer;
 import com.siirio.jemsettlements.client.NobleQuoteClient;
 import com.talhanation.recruits.world.RecruitsHireTrade;
 import net.minecraft.client.Minecraft;
@@ -25,7 +25,7 @@ public abstract class NobleTradeListEntryMixin {
         jem$priceX = x; jem$priceY = y;
         var quote = NobleQuoteClient.current(trade.resourceLocation);
         if (quote == null) g.renderFakeItem(stack, x, y);
-        else CoinPriceRenderer.draw(g, Minecraft.getInstance().font, quote.cost(), x, y, 22, 0xFFFFFFFF);
+        else SettlementPriceRenderer.draw(g, Minecraft.getInstance().font, quote.cost(), x, y, 22, 0xFFFFFFFF, quote.coins());
     }
     @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphics;renderItemDecorations(Lnet/minecraft/client/gui/Font;Lnet/minecraft/world/item/ItemStack;II)V"))
     private void jem$count(GuiGraphics g, Font font, ItemStack stack, int x, int y) {

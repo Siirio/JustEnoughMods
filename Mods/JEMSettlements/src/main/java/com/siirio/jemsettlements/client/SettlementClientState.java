@@ -51,10 +51,12 @@ public final class SettlementClientState {
         SettlementNetwork.acceptSession(packet.view());
         if (packet.view().contains("Notice")) { SettlementNotices.accept(packet.view()); return; }
         if(packet.view().getBoolean("Heartbeat") || packet.view().getString("Action").equals("heartbeat"))return;
-        view = packet.view().copy();
-        boolean acknowledged = pending != null && view.hasUUID("Request") && pending.equals(view.getUUID("Request")) && !view.getString("Result").equals("OUTCOME_UNKNOWN") && !view.getString("Result").equals("RETRY");
+        CompoundTag incoming = packet.view();
+        if (!incoming.getBoolean("MapOnly")) view = incoming.copy();
+        boolean acknowledged = pending != null && incoming.hasUUID("Request") && pending.equals(incoming.getUUID("Request")) && !incoming.getString("Result").equals("OUTCOME_UNKNOWN") && !incoming.getString("Result").equals("RETRY");
         String completed = acknowledged ? pendingAction : "";
         if (acknowledged) { pending = null; pendingAction = null; pendingPayload=null; pendingTown=null; }
+        if (incoming.getBoolean("MapOnly")) { com.siirio.jemsettlements.compat.xaero.SettlementMapClient.accept(incoming); return; }
         Minecraft client = Minecraft.getInstance();
         if (client.screen instanceof SettlementScreen screen) screen.accept(view, completed);
         else if (packet.open() && (!view.contains("Request") || awaitingOpen)) {
@@ -77,6 +79,7 @@ public final class SettlementClientState {
     @SubscribeEvent public static void logout(ClientPlayerNetworkEvent.LoggingOut event) {
         SettlementNetwork.clearClientSession();
         SettlementNotices.clear();
+        com.siirio.jemsettlements.compat.xaero.SettlementMapClient.clear();
         view = new CompoundTag(); pending = null; pendingAction = null; pendingTown=null; pendingPayload=null; foodPolicySynced = false; awaitingOpen = false;
         FoodValueRegistry.applySynced(java.util.Map.of());
     }

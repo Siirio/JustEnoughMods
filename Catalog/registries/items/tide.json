@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "items",
-  "snapshot_sha": "cdd50f58ee16dbb847d7a8748a5c8e1b4835ca63",
+  "snapshot_sha": "1d21365a332c255e2db3d6d2adc8a9f7612802f7",
   "generation": {
-    "generated_utc": "2026-10-16T09:54:49.049109+00:00",
+    "generated_utc": "2026-10-17T13:48:02.089094+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -1148,10 +1148,7 @@
       "display_name_ru_ru": "Стол для оснастки",
       "java_registry_class": null,
       "implementation_class": null,
-      "tags": [
-        "minecraft:blocks/mineable/axe",
-        "visualworkbench:blocks/unaltered_workbenches"
-      ],
+      "tags": [],
       "is_registered": null,
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
@@ -9332,9 +9329,7 @@
       "display_name_ru_ru": "Витрина для рыбы",
       "java_registry_class": null,
       "implementation_class": null,
-      "tags": [
-        "minecraft:blocks/mineable/axe"
-      ],
+      "tags": [],
       "is_registered": null,
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
@@ -9897,256 +9892,6 @@
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:tide:fish_sword"
-    },
-    {
-      "registry_id": "tide:fishing_bobber",
-      "registry_type": "item",
-      "schema_version": 1,
-      "mod_id": "tide",
-      "mod_name": "Tide",
-      "mod_version": "2.1.1",
-      "source_jar": "tide-forge-1.20.1-2.1.1-hotfix.jar",
-      "source_sha256": "cac8ec3ee8772686ac8d3c35b86869399cede9ce1cc194cea925dc8d3b498a22",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/tide/models/item/fishing_bobber.json"
-      ],
-      "display_name_en_us": "Fishing Bobber",
-      "display_name_ru_ru": "Поплавок",
-      "java_registry_class": null,
-      "implementation_class": null,
-      "tags": [],
-      "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
-      "source_provenance": [
-        "tide-forge-1.20.1-2.1.1-hotfix.jar:assets/tide/models/item/fishing_bobber.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "variant_model": {
-        "kind": "registry_id",
-        "stack_dependent": null,
-        "reason": "Static artifact cannot prove all ItemStack variants"
-      },
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "categories": [],
-      "max_stack_size": null,
-      "durability": null,
-      "is_damageable": null,
-      "rarity": null,
-      "fire_resistant": null,
-      "equipment_slots": [],
-      "enchantability": null,
-      "crafting_remainder": null,
-      "repair_ingredients": [],
-      "block_item_id": null,
-      "acquisition_routes": [],
-      "uses": [],
-      "safe_canonical_stack": null,
-      "trade_policy_ref": "trade:tide:fishing_bobber"
-    },
-    {
-      "registry_id": "tide:fishing_bobber_fruit",
-      "registry_type": "item",
-      "schema_version": 1,
-      "mod_id": "tide",
-      "mod_name": "Tide",
-      "mod_version": "2.1.1",
-      "source_jar": "tide-forge-1.20.1-2.1.1-hotfix.jar",
-      "source_sha256": "cac8ec3ee8772686ac8d3c35b86869399cede9ce1cc194cea925dc8d3b498a22",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/tide/models/item/fishing_bobber_fruit.json"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "java_registry_class": null,
-      "implementation_class": null,
-      "tags": [],
-      "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
-      "source_provenance": [
-        "tide-forge-1.20.1-2.1.1-hotfix.jar:assets/tide/models/item/fishing_bobber_fruit.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "variant_model": {
-        "kind": "registry_id",
-        "stack_dependent": null,
-        "reason": "Static artifact cannot prove all ItemStack variants"
-      },
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "categories": [],
-      "max_stack_size": null,
-      "durability": null,
-      "is_damageable": null,
-      "rarity": null,
-      "fire_resistant": null,
-      "equipment_slots": [],
-      "enchantability": null,
-      "crafting_remainder": null,
-      "repair_ingredients": [],
-      "block_item_id": null,
-      "acquisition_routes": [],
-      "uses": [],
-      "safe_canonical_stack": null,
-      "trade_policy_ref": "trade:tide:fishing_bobber_fruit"
-    },
-    {
-      "registry_id": "tide:fishing_bobber_growth",
-      "registry_type": "item",
-      "schema_version": 1,
-      "mod_id": "tide",
-      "mod_name": "Tide",
-      "mod_version": "2.1.1",
-      "source_jar": "tide-forge-1.20.1-2.1.1-hotfix.jar",
-      "source_sha256": "cac8ec3ee8772686ac8d3c35b86869399cede9ce1cc194cea925dc8d3b498a22",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/tide/models/item/fishing_bobber_growth.json"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "java_registry_class": null,
-      "implementation_class": null,
-      "tags": [],
-      "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
-      "source_provenance": [
-        "tide-forge-1.20.1-2.1.1-hotfix.jar:assets/tide/models/item/fishing_bobber_growth.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "variant_model": {
-        "kind": "registry_id",
-        "stack_dependent": null,
-        "reason": "Static artifact cannot prove all ItemStack variants"
-      },
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "categories": [],
-      "max_stack_size": null,
-      "durability": null,
-      "is_damageable": null,
-      "rarity": null,
-      "fire_resistant": null,
-      "equipment_slots": [],
-      "enchantability": null,
-      "crafting_remainder": null,
-      "repair_ingredients": [],
-      "block_item_id": null,
-      "acquisition_routes": [],
-      "uses": [],
-      "safe_canonical_stack": null,
-      "trade_policy_ref": "trade:tide:fishing_bobber_growth"
-    },
-    {
-      "registry_id": "tide:fishing_bobber_pearl",
-      "registry_type": "item",
-      "schema_version": 1,
-      "mod_id": "tide",
-      "mod_name": "Tide",
-      "mod_version": "2.1.1",
-      "source_jar": "tide-forge-1.20.1-2.1.1-hotfix.jar",
-      "source_sha256": "cac8ec3ee8772686ac8d3c35b86869399cede9ce1cc194cea925dc8d3b498a22",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/tide/models/item/fishing_bobber_pearl.json"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "java_registry_class": null,
-      "implementation_class": null,
-      "tags": [],
-      "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
-      "source_provenance": [
-        "tide-forge-1.20.1-2.1.1-hotfix.jar:assets/tide/models/item/fishing_bobber_pearl.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "variant_model": {
-        "kind": "registry_id",
-        "stack_dependent": null,
-        "reason": "Static artifact cannot prove all ItemStack variants"
-      },
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "categories": [],
-      "max_stack_size": null,
-      "durability": null,
-      "is_damageable": null,
-      "rarity": null,
-      "fire_resistant": null,
-      "equipment_slots": [],
-      "enchantability": null,
-      "crafting_remainder": null,
-      "repair_ingredients": [],
-      "block_item_id": null,
-      "acquisition_routes": [],
-      "uses": [],
-      "safe_canonical_stack": null,
-      "trade_policy_ref": "trade:tide:fishing_bobber_pearl"
-    },
-    {
-      "registry_id": "tide:fishing_bobber_shard",
-      "registry_type": "item",
-      "schema_version": 1,
-      "mod_id": "tide",
-      "mod_name": "Tide",
-      "mod_version": "2.1.1",
-      "source_jar": "tide-forge-1.20.1-2.1.1-hotfix.jar",
-      "source_sha256": "cac8ec3ee8772686ac8d3c35b86869399cede9ce1cc194cea925dc8d3b498a22",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/tide/models/item/fishing_bobber_shard.json"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "java_registry_class": null,
-      "implementation_class": null,
-      "tags": [],
-      "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
-      "source_provenance": [
-        "tide-forge-1.20.1-2.1.1-hotfix.jar:assets/tide/models/item/fishing_bobber_shard.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "variant_model": {
-        "kind": "registry_id",
-        "stack_dependent": null,
-        "reason": "Static artifact cannot prove all ItemStack variants"
-      },
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "categories": [],
-      "max_stack_size": null,
-      "durability": null,
-      "is_damageable": null,
-      "rarity": null,
-      "fire_resistant": null,
-      "equipment_slots": [],
-      "enchantability": null,
-      "crafting_remainder": null,
-      "repair_ingredients": [],
-      "block_item_id": null,
-      "acquisition_routes": [],
-      "uses": [],
-      "safe_canonical_stack": null,
-      "trade_policy_ref": "trade:tide:fishing_bobber_shard"
     },
     {
       "registry_id": "tide:fishing_hook",
@@ -14295,7 +14040,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "tide:blocks/informational",
         "tide:items/informational"
       ],
       "is_registered": null,
@@ -16690,8 +16434,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "minecraft:blocks/mineable/pickaxe",
-        "minecraft:blocks/needs_diamond_tool",
         "tide:items/crates"
       ],
       "is_registered": null,
@@ -18362,7 +18104,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "minecraft:blocks/mineable/pickaxe",
         "tide:items/crates"
       ],
       "is_registered": null,
@@ -23930,8 +23671,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "minecraft:blocks/mineable/pickaxe",
-        "tide:blocks/informational",
         "tide:items/informational"
       ],
       "is_registered": null,
@@ -24788,7 +24527,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "minecraft:blocks/mineable/axe",
         "tide:items/crates"
       ],
       "is_registered": null,

@@ -1,6 +1,6 @@
 package com.siirio.jemsettlements.mixin;
 
-import com.siirio.jemeconomy.client.CoinPriceRenderer;
+import com.siirio.jemsettlements.client.SettlementPriceRenderer;
 import com.siirio.jemsettlements.client.HireQuoteClient;
 import com.talhanation.recruits.client.gui.RecruitHireScreen;
 import com.talhanation.recruits.entities.AbstractRecruitEntity;
@@ -28,7 +28,7 @@ public abstract class RecruitHireScreenMixin extends AbstractContainerScreen<Rec
     private void jem$hirePrice(GuiGraphics g, ItemStack stack, int x, int y) {
         var quote = HireQuoteClient.quote(recruit.getId());
         if (quote == null) g.renderFakeItem(stack, x, y);
-        else CoinPriceRenderer.draw(g, font, quote.cost(), x, y, 16, 0xFFFFFFFF);
+        else SettlementPriceRenderer.draw(g, font, quote.cost(), x, y, 16, 0xFFFFFFFF, quote.coins());
     }
     @Redirect(method = "renderLabels", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphics;renderItemDecorations(Lnet/minecraft/client/gui/Font;Lnet/minecraft/world/item/ItemStack;II)V"))
     private void jem$hireCount(GuiGraphics g, Font textFont, ItemStack stack, int x, int y) {
@@ -39,8 +39,8 @@ public abstract class RecruitHireScreenMixin extends AbstractContainerScreen<Rec
         var quote = HireQuoteClient.quote(recruit.getId());
         if (quote == null) return;
         g.drawString(font, Component.translatable("jem.settlements.hire.cost"), 7, 75, 0xFF404040, false);
-        CoinPriceRenderer.draw(g, font, quote.cost(), 72, 71, 94, 0xFF404040);
+        SettlementPriceRenderer.draw(g, font, quote.cost(), 72, 71, 94, 0xFF404040, quote.coins());
         g.drawString(font, Component.translatable("jem.settlements.hire.wage"), 7, 88, 0xFF404040, false);
-        CoinPriceRenderer.draw(g, font, quote.wage(), 72, 84, 94, 0xFF404040);
+        SettlementPriceRenderer.draw(g, font, quote.wage(), 72, 84, 94, 0xFF404040, quote.coins());
     }
 }

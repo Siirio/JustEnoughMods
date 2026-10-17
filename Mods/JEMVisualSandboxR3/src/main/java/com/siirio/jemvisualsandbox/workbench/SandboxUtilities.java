@@ -71,7 +71,7 @@ public final class SandboxUtilities {
             }
             case 3 -> {
                 int resonance=p.getPersistentData().getInt("JemSandboxResonance");
-                if(resonance>=25) { p.getPersistentData().putInt("JemSandboxResonance",resonance-25);p.heal(RacePowerStages.recoveryHeal(RaceExperience.tier(p)));RaceOwnedEffects.grant(p,new MobEffectInstance(MobEffects.ABSORPTION,RacePowerStages.absorptionTicks(RaceExperience.tier(p)),1));cue(p,25);RaceExperience.finishUtility(p); }
+                if(resonance>=25) { p.getPersistentData().putInt("JemSandboxResonance",0);p.heal(RacePowerStages.recoveryHeal(RaceExperience.tier(p)));RaceOwnedEffects.grant(p,new MobEffectInstance(MobEffects.ABSORPTION,RacePowerStages.absorptionTicks(RaceExperience.tier(p)),1));cue(p,25);RaceExperience.finishUtility(p); }
                 else if(RaceExperience.requireReady(p,"echo")) {
                     if(p.serverLevel().getEntitiesOfClass(net.minecraft.world.entity.LivingEntity.class,p.getBoundingBox().inflate(RacePowerStages.echoRadius(RaceExperience.tier(p))),e->e!=p&&e.isAlive()).isEmpty()){p.displayClientMessage(Component.literal("No living creatures nearby"),true);return;}
                     SandboxSkills.echoVision(p);RaceExperience.cooldown(p,"echo",160);RaceExperience.finishUtility(p);

@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "biomes",
-  "snapshot_sha": "cdd50f58ee16dbb847d7a8748a5c8e1b4835ca63",
+  "snapshot_sha": "1d21365a332c255e2db3d6d2adc8a9f7612802f7",
   "generation": {
-    "generated_utc": "2026-10-16T09:54:49.049109+00:00",
+    "generated_utc": "2026-10-17T13:48:02.089094+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -36,6 +36,8 @@
       "implementation_class": null,
       "tags": [
         "beachparty:worldgen/biome/hot_biome",
+        "c:worldgen/biome/in_overworld",
+        "c:worldgen/biome/mesa",
         "companions:biomes/golden_allay_spawn_biomes",
         "forge:worldgen/biome/with_default_monster_spawns",
         "immersive_weathering:worldgen/biome/has_lakebed",
@@ -89,6 +91,7 @@
       "implementation_class": null,
       "tags": [
         "block_factorys_bosses:worldgen/biome/dragon_tower",
+        "c:worldgen/biome/in_overworld",
         "forge:worldgen/biome/with_default_monster_spawns",
         "minecraft:worldgen/biome/has_structure/jungle_temple",
         "minecraft:worldgen/biome/increased_fire_burnout",
@@ -143,6 +146,7 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/in_nether",
         "minecraft:worldgen/biome/is_nether",
         "minecraft:worldgen/biome/snow_golem_melts",
         "netherexp:worldgen/biome/particles/has_white_ash"
@@ -188,6 +192,7 @@
       "tags": [
         "beachparty:worldgen/biome/beach",
         "beachparty:worldgen/biome/hot_biome",
+        "c:worldgen/biome/in_overworld",
         "forge:worldgen/biome/with_default_monster_spawns",
         "immersive_weathering:worldgen/biome/has_dune_grass",
         "minecraft:worldgen/biome/is_beach",
@@ -237,6 +242,10 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/birch_forest",
+        "c:worldgen/biome/climate_temperate",
+        "c:worldgen/biome/in_overworld",
+        "c:worldgen/biome/tree_deciduous",
         "forge:worldgen/biome/with_default_monster_spawns",
         "immersive_weathering:worldgen/biome/has_ivy",
         "legendary_monsters:worldgen/biome/has_structure/collapsed_kingdom_biomes",
@@ -298,6 +307,8 @@
       "implementation_class": null,
       "tags": [
         "alexsmobs:worldgen/biome/spawns_murmurs_ignore_height",
+        "c:worldgen/biome/floral",
+        "c:worldgen/biome/in_overworld",
         "endermanoverhaul:worldgen/biome/flower_fields_spawns",
         "forge:worldgen/biome/with_default_monster_spawns",
         "legendary_monsters:worldgen/biome/has_structure/abandoned_crypt_biomes",
@@ -350,7 +361,9 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/in_overworld",
         "c:worldgen/biome/is_shallow_ocean",
+        "c:worldgen/biome/shallow_ocean",
         "forge:worldgen/biome/with_default_monster_spawns",
         "minecraft:worldgen/biome/has_structure/ocean_ruin_cold",
         "minecraft:worldgen/biome/is_ocean",
@@ -413,6 +426,8 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/in_nether",
+        "c:worldgen/biome/nether_forests",
         "cataclysm:worldgen/biome/has_structure/soul_black_smith_biomes",
         "endermanoverhaul:worldgen/biome/crimson_forest_spawns",
         "minecraft:worldgen/biome/has_structure/bastion_remnant",
@@ -465,6 +480,9 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/climate_temperate",
+        "c:worldgen/biome/in_overworld",
+        "c:worldgen/biome/tree_deciduous",
         "creeperoverhaul:worldgen/biome/is_darkforest",
         "forge:worldgen/biome/with_default_monster_spawns",
         "immersive_weathering:worldgen/biome/has_ivy",
@@ -526,6 +544,8 @@
       "implementation_class": null,
       "tags": [
         "block_factorys_bosses:worldgen/biome/kraken_ship",
+        "c:worldgen/biome/deep_ocean",
+        "c:worldgen/biome/in_overworld",
         "cataclysm:worldgen/biome/deeplings_spawn",
         "cataclysm:worldgen/biome/has_structure/sunken_city_biomes",
         "forge:worldgen/biome/with_default_monster_spawns",
@@ -592,6 +612,8 @@
       "implementation_class": null,
       "tags": [
         "alexsmobs:worldgen/biome/skreechers_can_spawn_wardens",
+        "c:worldgen/biome/caves",
+        "c:worldgen/biome/in_overworld",
         "forge:worldgen/biome/without_default_monster_spawns",
         "minecraft:worldgen/biome/has_structure/ancient_city",
         "minecraft:worldgen/biome/is_overworld",
@@ -644,6 +666,9 @@
       "tags": [
         "alexscaves:worldgen/biome/trench_ignores_stone_in",
         "aquamirae:worldgen/biome/ice_maze",
+        "c:worldgen/biome/aquatic_icy",
+        "c:worldgen/biome/deep_ocean",
+        "c:worldgen/biome/in_overworld",
         "cataclysm:worldgen/biome/deeplings_spawn",
         "cataclysm:worldgen/biome/has_structure/sunken_city_biomes",
         "forge:worldgen/biome/with_default_monster_spawns",
@@ -708,6 +733,8 @@
       "implementation_class": null,
       "tags": [
         "block_factorys_bosses:worldgen/biome/kraken_ship",
+        "c:worldgen/biome/deep_ocean",
+        "c:worldgen/biome/in_overworld",
         "cataclysm:worldgen/biome/deeplings_spawn",
         "cataclysm:worldgen/biome/has_structure/sunken_city_biomes",
         "creeperoverhaul:worldgen/biome/where_creepers_spawn",
@@ -772,6 +799,8 @@
       "implementation_class": null,
       "tags": [
         "block_factorys_bosses:worldgen/biome/kraken_ship",
+        "c:worldgen/biome/deep_ocean",
+        "c:worldgen/biome/in_overworld",
         "cataclysm:worldgen/biome/deeplings_spawn",
         "cataclysm:worldgen/biome/has_structure/sunken_city_biomes",
         "forge:worldgen/biome/with_default_monster_spawns",
@@ -834,6 +863,8 @@
         "beachparty:worldgen/biome/hot_biome",
         "betterdeserttemples:worldgen/biome/has_structure/better_desert_temple",
         "block_factorys_bosses:worldgen/biome/sandworm_nest",
+        "c:worldgen/biome/desert",
+        "c:worldgen/biome/in_overworld",
         "c:worldgen/biome/is_desert",
         "cataclysm:worldgen/biome/has_structure/cursed_pyramid_biomes",
         "cataclysm:worldgen/biome/koboleton_spawn",
@@ -858,7 +889,6 @@
         "minecraft:worldgen/biome/spawns_warm_variant_farm_animals",
         "minecraft:worldgen/biome/spawns_warm_variant_frogs",
         "minecraft:worldgen/biome/stronghold_biased_to",
-        "minecraft:worldgen/flat_level_generator_preset/visible",
         "mtr:worldgen/biome/has_structure/desert_biomes",
         "mvs:worldgen/biome/is_desert",
         "mvs:worldgen/biome/is_on_land_overworld",
@@ -914,6 +944,8 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/caves",
+        "c:worldgen/biome/in_overworld",
         "creeperoverhaul:worldgen/biome/is_cave",
         "creeperoverhaul:worldgen/biome/where_creepers_spawn",
         "endermanoverhaul:worldgen/biome/cave_spawns",
@@ -967,6 +999,7 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/in_the_end",
         "forge:worldgen/biome/is_outer_end",
         "minecraft:worldgen/biome/is_end"
       ],
@@ -1009,6 +1042,7 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/in_the_end",
         "cataclysm:worldgen/biome/has_structure/ruined_citadel_biomes",
         "forge:worldgen/biome/is_outer_end",
         "legendary_monsters:worldgen/biome/has_structure/ancient_tower_remains_biomes",
@@ -1058,6 +1092,7 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/in_the_end",
         "cataclysm:worldgen/biome/has_structure/ruined_citadel_biomes",
         "forge:worldgen/biome/is_outer_end",
         "legendary_monsters:worldgen/biome/has_structure/ancient_tower_remains_biomes",
@@ -1108,6 +1143,8 @@
       "implementation_class": null,
       "tags": [
         "beachparty:worldgen/biome/hot_biome",
+        "c:worldgen/biome/in_overworld",
+        "c:worldgen/biome/mesa",
         "forge:worldgen/biome/with_default_monster_spawns",
         "immersive_weathering:worldgen/biome/has_lakebed",
         "immersive_weathering:worldgen/biome/hot",
@@ -1159,6 +1196,9 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/flower_forests",
+        "c:worldgen/biome/in_overworld",
+        "c:worldgen/biome/tree_deciduous",
         "endermanoverhaul:worldgen/biome/flower_fields_spawns",
         "forge:worldgen/biome/with_default_monster_spawns",
         "immersive_weathering:worldgen/biome/has_ivy",
@@ -1218,7 +1258,10 @@
       "implementation_class": null,
       "tags": [
         "bakery:worldgen/biome/has_structure/bakery",
+        "c:worldgen/biome/climate_temperate",
         "c:worldgen/biome/has_wolf/woods",
+        "c:worldgen/biome/in_overworld",
+        "c:worldgen/biome/tree_deciduous",
         "forge:worldgen/biome/with_default_monster_spawns",
         "immersive_weathering:worldgen/biome/has_ivy",
         "legendary_monsters:worldgen/biome/has_structure/collapsed_kingdom_biomes",
@@ -1279,7 +1322,10 @@
       "implementation_class": null,
       "tags": [
         "alexscaves:worldgen/biome/trench_ignores_stone_in",
+        "c:worldgen/biome/aquatic_icy",
+        "c:worldgen/biome/in_overworld",
         "c:worldgen/biome/is_shallow_ocean",
+        "c:worldgen/biome/shallow_ocean",
         "forge:worldgen/biome/with_default_monster_spawns",
         "immersive_weathering:worldgen/biome/icy",
         "irons_spellbooks:worldgen/biome/has_structure/impaled_icebreaker",
@@ -1346,8 +1392,11 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/icy",
+        "c:worldgen/biome/in_overworld",
         "c:worldgen/biome/is_icy",
         "c:worldgen/biome/is_snowy",
+        "c:worldgen/biome/mountain_peak",
         "forge:worldgen/biome/with_default_monster_spawns",
         "immersive_weathering:worldgen/biome/has_permafrost",
         "immersive_weathering:worldgen/biome/icy",
@@ -1409,6 +1458,8 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/aquatic_icy",
+        "c:worldgen/biome/in_overworld",
         "forge:worldgen/biome/with_default_monster_spawns",
         "immersive_weathering:worldgen/biome/icy",
         "minecraft:worldgen/biome/is_overworld",
@@ -1463,8 +1514,11 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/climate_cold",
         "c:worldgen/biome/has_wolf/snowy",
+        "c:worldgen/biome/in_overworld",
         "c:worldgen/biome/is_snowy",
+        "c:worldgen/biome/tree_coniferous",
         "forge:worldgen/biome/with_default_monster_spawns",
         "immersive_weathering:worldgen/biome/has_permafrost",
         "irons_spellbooks:worldgen/biome/has_structure/mountain_tower",
@@ -1528,6 +1582,8 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/icy",
+        "c:worldgen/biome/in_overworld",
         "c:worldgen/biome/is_icy",
         "c:worldgen/biome/is_snowy",
         "endermanoverhaul:worldgen/biome/ice_spikes_spawns",
@@ -1601,7 +1657,10 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/climate_cold",
+        "c:worldgen/biome/in_overworld",
         "c:worldgen/biome/is_snowy",
+        "c:worldgen/biome/mountain_peak",
         "forge:worldgen/biome/with_default_monster_spawns",
         "immersive_weathering:worldgen/biome/icy",
         "legendary_monsters:worldgen/biome/has_structure/abandoned_crypt_biomes",
@@ -1662,6 +1721,7 @@
       "implementation_class": null,
       "tags": [
         "block_factorys_bosses:worldgen/biome/dragon_tower",
+        "c:worldgen/biome/in_overworld",
         "forge:worldgen/biome/with_default_monster_spawns",
         "immersive_weathering:worldgen/biome/wet",
         "legendary_monsters:worldgen/biome/has_structure/mossy_temple_biomes",
@@ -1721,7 +1781,9 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/in_overworld",
         "c:worldgen/biome/is_shallow_ocean",
+        "c:worldgen/biome/shallow_ocean",
         "creeperoverhaul:worldgen/biome/where_creepers_spawn",
         "forge:worldgen/biome/with_default_monster_spawns",
         "minecraft:worldgen/biome/has_structure/ocean_ruin_warm",
@@ -1784,6 +1846,10 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/caves",
+        "c:worldgen/biome/climate_wet",
+        "c:worldgen/biome/in_overworld",
+        "c:worldgen/biome/vegetation_sparse",
         "cataclysm:worldgen/biome/amethyst_crab_spawn",
         "creeperoverhaul:worldgen/biome/is_cave",
         "creeperoverhaul:worldgen/biome/where_creepers_spawn",
@@ -1845,7 +1911,9 @@
       "tags": [
         "alexsmobs:worldgen/biome/spawns_white_mantis_shrimp",
         "block_factorys_bosses:worldgen/biome/dragon_tower",
+        "c:worldgen/biome/in_overworld",
         "c:worldgen/biome/is_swamp",
+        "c:worldgen/biome/swamp",
         "farm_and_charm:worldgen/biome/spawns_wild_flowers",
         "forge:worldgen/biome/with_default_monster_spawns",
         "immersive_weathering:worldgen/biome/has_silt",
@@ -1918,6 +1986,9 @@
       "tags": [
         "bakery:worldgen/biome/has_structure/bakery",
         "bakery:worldgen/biome/spawns_strawberries",
+        "c:worldgen/biome/climate_temperate",
+        "c:worldgen/biome/floral",
+        "c:worldgen/biome/in_overworld",
         "endermanoverhaul:worldgen/biome/flower_fields_spawns",
         "farm_and_charm:worldgen/biome/spawns_wild_crops",
         "farm_and_charm:worldgen/biome/spawns_wild_oat",
@@ -1985,7 +2056,9 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/in_overworld",
         "c:worldgen/biome/is_mushroom",
+        "c:worldgen/biome/mushroom",
         "creeperoverhaul:worldgen/biome/is_mushroom",
         "creeperoverhaul:worldgen/biome/where_creepers_spawn",
         "forge:worldgen/biome/without_default_monster_spawns",
@@ -2048,6 +2121,7 @@
       "implementation_class": null,
       "tags": [
         "block_factorys_bosses:worldgen/biome/underworld_arena",
+        "c:worldgen/biome/in_nether",
         "cataclysm:worldgen/biome/has_structure/burning_arena_biomes",
         "cataclysm:worldgen/biome/has_structure/soul_black_smith_biomes",
         "endermanoverhaul:worldgen/biome/nether_wastes_spawns",
@@ -2104,7 +2178,9 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/in_overworld",
         "c:worldgen/biome/is_shallow_ocean",
+        "c:worldgen/biome/shallow_ocean",
         "forge:worldgen/biome/with_default_monster_spawns",
         "minecraft:worldgen/biome/has_structure/ocean_ruin_cold",
         "minecraft:worldgen/biome/is_ocean",
@@ -2162,6 +2238,10 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/birch_forest",
+        "c:worldgen/biome/climate_temperate",
+        "c:worldgen/biome/in_overworld",
+        "c:worldgen/biome/tree_deciduous",
         "forge:worldgen/biome/with_default_monster_spawns",
         "immersive_weathering:worldgen/biome/has_ivy",
         "legendary_monsters:worldgen/biome/has_structure/collapsed_kingdom_biomes",
@@ -2224,7 +2304,9 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/climate_cold",
         "c:worldgen/biome/has_wolf/black",
+        "c:worldgen/biome/in_overworld",
         "forge:worldgen/biome/with_default_monster_spawns",
         "minecraft:worldgen/biome/has_structure/trail_ruins",
         "minecraft:worldgen/biome/is_overworld",
@@ -2280,7 +2362,9 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/climate_cold",
         "c:worldgen/biome/has_wolf/chestnut",
+        "c:worldgen/biome/in_overworld",
         "forge:worldgen/biome/with_default_monster_spawns",
         "legendary_monsters:worldgen/biome/has_structure/ancient_stronghold_biomes",
         "minecraft:worldgen/biome/has_structure/trail_ruins",
@@ -2392,6 +2476,9 @@
         "bakery:worldgen/biome/has_structure/oat_field",
         "bakery:worldgen/biome/spawns_strawberries",
         "block_factorys_bosses:worldgen/biome/dragon_tower",
+        "c:worldgen/biome/climate_temperate",
+        "c:worldgen/biome/in_overworld",
+        "c:worldgen/biome/plains",
         "companions:biomes/golden_allay_spawn_biomes",
         "farm_and_charm:worldgen/biome/spawns_wild_barley",
         "farm_and_charm:worldgen/biome/spawns_wild_crops",
@@ -2464,6 +2551,7 @@
       "implementation_class": null,
       "tags": [
         "bakery:worldgen/biome/spawns_strawberries",
+        "c:worldgen/biome/in_overworld",
         "farm_and_charm:worldgen/biome/spawns_wild_barley",
         "farm_and_charm:worldgen/biome/spawns_wild_crops",
         "farm_and_charm:worldgen/biome/spawns_wild_emmer",
@@ -2513,6 +2601,8 @@
       "implementation_class": null,
       "tags": [
         "block_factorys_bosses:worldgen/biome/dragon_tower",
+        "c:worldgen/biome/in_overworld",
+        "c:worldgen/biome/savanna",
         "companions:biomes/golden_allay_spawn_biomes",
         "forge:worldgen/biome/with_default_monster_spawns",
         "immersive_weathering:worldgen/biome/has_dune_grass",
@@ -2575,6 +2665,8 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/in_overworld",
+        "c:worldgen/biome/savanna",
         "forge:worldgen/biome/with_default_monster_spawns",
         "immersive_weathering:worldgen/biome/has_dune_grass",
         "immersive_weathering:worldgen/biome/hot",
@@ -2631,6 +2723,7 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/in_the_end",
         "forge:worldgen/biome/is_outer_end",
         "legendary_monsters:worldgen/biome/has_structure/space_station_biomes",
         "minecraft:worldgen/biome/is_end"
@@ -2675,7 +2768,9 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/in_overworld",
         "c:worldgen/biome/is_snowy",
+        "c:worldgen/biome/snowy",
         "forge:worldgen/biome/with_default_monster_spawns",
         "minecraft:worldgen/biome/is_beach",
         "minecraft:worldgen/biome/is_overworld",
@@ -2731,7 +2826,11 @@
       "implementation_class": null,
       "tags": [
         "block_factorys_bosses:worldgen/biome/yeti_hideout",
+        "c:worldgen/biome/climate_cold",
+        "c:worldgen/biome/in_overworld",
         "c:worldgen/biome/is_snowy",
+        "c:worldgen/biome/snowy",
+        "c:worldgen/biome/snowy_plains",
         "cataclysm:worldgen/biome/has_structure/frosted_prison_biomes",
         "forge:worldgen/biome/is_icy",
         "forge:worldgen/biome/with_default_monster_spawns",
@@ -2805,7 +2904,10 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/in_overworld",
         "c:worldgen/biome/is_snowy",
+        "c:worldgen/biome/mountain_slope",
+        "c:worldgen/biome/snowy",
         "forge:worldgen/biome/with_default_monster_spawns",
         "immersive_weathering:worldgen/biome/has_permafrost",
         "immersive_weathering:worldgen/biome/icy",
@@ -2867,8 +2969,11 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/climate_cold",
         "c:worldgen/biome/has_wolf/ashen",
+        "c:worldgen/biome/in_overworld",
         "c:worldgen/biome/is_snowy",
+        "c:worldgen/biome/snowy",
         "forge:worldgen/biome/with_default_monster_spawns",
         "immersive_weathering:worldgen/biome/has_permafrost",
         "immersive_weathering:worldgen/biome/icy",
@@ -2938,6 +3043,7 @@
       "tags": [
         "alexsmobs:worldgen/biome/spawns_soul_gusters",
         "block_factorys_bosses:worldgen/biome/underworld_arena",
+        "c:worldgen/biome/in_nether",
         "cataclysm:worldgen/biome/has_structure/soul_black_smith_biomes",
         "endermanoverhaul:worldgen/biome/soulsand_valley_spawns",
         "legendary_monsters:worldgen/biome/has_structure/skeletosaurus_nest_biomes",
@@ -2994,6 +3100,7 @@
       "implementation_class": null,
       "tags": [
         "block_factorys_bosses:worldgen/biome/dragon_tower",
+        "c:worldgen/biome/in_overworld",
         "forge:worldgen/biome/with_default_monster_spawns",
         "immersive_weathering:worldgen/biome/wet",
         "legendary_monsters:worldgen/biome/has_structure/mossy_temple_biomes",
@@ -3047,6 +3154,9 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/climate_hot",
+        "c:worldgen/biome/in_overworld",
+        "c:worldgen/biome/mountain_peak",
         "creeperoverhaul:worldgen/biome/where_creepers_spawn",
         "forge:worldgen/biome/with_default_monster_spawns",
         "legendary_monsters:worldgen/biome/has_structure/abandoned_crypt_biomes",
@@ -3100,6 +3210,10 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/beach",
+        "c:worldgen/biome/climate_temperate",
+        "c:worldgen/biome/in_overworld",
+        "c:worldgen/biome/stony_shores",
         "forge:worldgen/biome/with_default_monster_spawns",
         "irons_spellbooks:worldgen/biome/has_structure/catacombs",
         "minecraft:worldgen/biome/has_structure/mineshaft",
@@ -3205,6 +3319,11 @@
         "bakery:worldgen/biome/has_structure/oat_field",
         "bakery:worldgen/biome/spawns_strawberries",
         "block_factorys_bosses:worldgen/biome/dragon_tower",
+        "c:worldgen/biome/climate_temperate",
+        "c:worldgen/biome/floral",
+        "c:worldgen/biome/in_overworld",
+        "c:worldgen/biome/plains",
+        "c:worldgen/biome/vegetation_dense",
         "companions:biomes/golden_allay_spawn_biomes",
         "endermanoverhaul:worldgen/biome/flower_fields_spawns",
         "farm_and_charm:worldgen/biome/spawns_wild_barley",
@@ -3273,7 +3392,10 @@
       "implementation_class": null,
       "tags": [
         "block_factorys_bosses:worldgen/biome/dragon_tower",
+        "c:worldgen/biome/climate_temperate",
+        "c:worldgen/biome/in_overworld",
         "c:worldgen/biome/is_swamp",
+        "c:worldgen/biome/swamp",
         "farm_and_charm:worldgen/biome/spawns_wild_crops",
         "farm_and_charm:worldgen/biome/spawns_wild_flowers",
         "forge:worldgen/biome/with_default_monster_spawns",
@@ -3347,6 +3469,8 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/climate_cold",
+        "c:worldgen/biome/in_overworld",
         "forge:worldgen/biome/with_default_monster_spawns",
         "legendary_monsters:worldgen/biome/has_structure/ancient_stronghold_biomes",
         "minecraft:worldgen/biome/has_structure/pillager_outpost",
@@ -3402,6 +3526,7 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/in_the_end",
         "minecraft:worldgen/biome/is_end"
       ],
       "is_registered": null,
@@ -3444,8 +3569,8 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/void",
         "minecraft:worldgen/biome/without_wandering_trader_spawns",
-        "minecraft:worldgen/flat_level_generator_preset/visible",
         "sereneseasons:worldgen/biome/blacklisted_biomes",
         "tide:worldgen/biome/the_void"
       ],
@@ -3488,7 +3613,9 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/in_overworld",
         "c:worldgen/biome/is_shallow_ocean",
+        "c:worldgen/biome/shallow_ocean",
         "cataclysm:worldgen/biome/has_structure/acropolis_biomes",
         "creeperoverhaul:worldgen/biome/where_creepers_spawn",
         "endermanoverhaul:worldgen/biome/coral_spawns",
@@ -3560,6 +3687,8 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/in_nether",
+        "c:worldgen/biome/nether_forests",
         "cataclysm:worldgen/biome/has_structure/soul_black_smith_biomes",
         "endermanoverhaul:worldgen/biome/warped_forest_spawns",
         "minecraft:worldgen/biome/has_structure/bastion_remnant",
@@ -3612,6 +3741,10 @@
       "implementation_class": null,
       "tags": [
         "block_factorys_bosses:worldgen/biome/dragon_tower",
+        "c:worldgen/biome/climate_temperate",
+        "c:worldgen/biome/in_overworld",
+        "c:worldgen/biome/tree_deciduous",
+        "c:worldgen/biome/windswept",
         "forge:worldgen/biome/with_default_monster_spawns",
         "immersive_weathering:worldgen/biome/has_ivy",
         "minecraft:worldgen/biome/is_hill",
@@ -3665,6 +3798,9 @@
       "implementation_class": null,
       "tags": [
         "block_factorys_bosses:worldgen/biome/dragon_tower",
+        "c:worldgen/biome/extreme_hills",
+        "c:worldgen/biome/in_overworld",
+        "c:worldgen/biome/windswept",
         "forge:worldgen/biome/with_default_monster_spawns",
         "minecraft:worldgen/biome/is_hill",
         "minecraft:worldgen/biome/is_overworld",
@@ -3713,6 +3849,9 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/extreme_hills",
+        "c:worldgen/biome/in_overworld",
+        "c:worldgen/biome/windswept",
         "endermanoverhaul:worldgen/biome/windswept_hills_spawns",
         "forge:worldgen/biome/with_default_monster_spawns",
         "minecraft:worldgen/biome/is_hill",
@@ -3761,6 +3900,9 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/in_overworld",
+        "c:worldgen/biome/savanna",
+        "c:worldgen/biome/windswept",
         "forge:worldgen/biome/with_default_monster_spawns",
         "immersive_weathering:worldgen/biome/hot",
         "irons_spellbooks:worldgen/biome/has_structure/catacombs",
@@ -3816,6 +3958,8 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:worldgen/biome/in_overworld",
+        "c:worldgen/biome/mesa",
         "forge:worldgen/biome/with_default_monster_spawns",
         "immersive_weathering:worldgen/biome/has_lakebed",
         "immersive_weathering:worldgen/biome/hot",

@@ -1,7 +1,7 @@
 package com.siirio.jemsettlements.payroll;
 
 import com.siirio.jemsettlements.runtime.SettlementAuthority;
-import com.siirio.jemeconomy.api.EconomyApi;
+import com.siirio.jemsettlements.currency.SettlementCurrency;
 import com.siirio.jemeconomy.ledger.TransferResult;
 import com.siirio.jemsettlements.compat.recruits.RecruitReadinessAdapter;
 import com.siirio.jemsettlements.town.SettlementSavedData;
@@ -39,7 +39,7 @@ public final class PayrollService {
                 .filter(value -> value.type() == WorkforceType.RECRUIT)
                 .sorted(Comparator.comparing(WorkforceRecord::entityId)).toList();
         for (WorkforceRecord record : recruits) record.initializePenaltyPeriods(book.payroll().stream()
-                .filter(period -> !period.paid() && period.roster().stream().anyMatch(wage -> wage.soldierId().equals(record.entityId()) && wage.generation() == record.hireGeneration()))
+                .filter(period -> period.currentCurrency() && !period.paid() && period.roster().stream().anyMatch(wage -> wage.soldierId().equals(record.entityId()) && wage.generation() == record.hireGeneration()))
                 .map(PayrollPeriod::index).toList());
         for (WorkforceRecord record : recruits) if (record.nextWageGameTime() == 0L) {
             long lastDue = book.payroll().stream().filter(period -> period.roster().stream().anyMatch(wage -> wage.soldierId().equals(record.entityId())))
@@ -67,9 +67,10 @@ public final class PayrollService {
 
     private static void settle(MinecraftServer server, SettlementSavedData data, UUID account,
                                PayrollBook book, boolean personal, PayrollPeriod period) {
+        if (!period.currentCurrency()) return;
         if (period.total() <= 0L) { period.paid(null); return; }
-        TransferResult result = personal ? EconomyApi.settleEmployerPayroll(server, account, period.total(), period.index())
-                : EconomyApi.settleTownPayroll(server, account, period.total(), period.index());
+        TransferResult result = personal ? SettlementCurrency.settleEmployerPayroll(server, account, period.total(), period.index())
+                : SettlementCurrency.settleTownPayroll(server, account, period.total(), period.index());
         if (result.status() == TransferResult.Status.COMMITTED || result.status() == TransferResult.Status.REPLAYED) {
             period.paid(result.receiptId());
             for (var wage : period.roster()) data.workforceEntity(wage.soldierId()).filter(value -> value.hireGeneration() == wage.generation())
@@ -79,6 +80,7 @@ public final class PayrollService {
         if (result.status() != TransferResult.Status.INSUFFICIENT_FUNDS) return;
         boolean newlyMissed = false;
         for (PayrollPeriod.Wage wage : period.roster()) {
+            if (RecruitRank.of(wage.nativeType()) == RecruitRank.UNSUPPORTED) continue;
             WorkforceRecord record = data.workforceEntity(wage.soldierId()).orElse(null);
             if (record == null || record.hireGeneration() != wage.generation() || record.lastPenaltyPeriod() >= period.index()) continue;
             record.penalized(period.index()); newlyMissed = true;

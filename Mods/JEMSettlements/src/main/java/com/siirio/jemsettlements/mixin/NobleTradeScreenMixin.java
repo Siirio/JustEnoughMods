@@ -1,6 +1,6 @@
 package com.siirio.jemsettlements.mixin;
 
-import com.siirio.jemeconomy.client.CoinPriceRenderer;
+import com.siirio.jemsettlements.client.SettlementPriceRenderer;
 import com.siirio.jemsettlements.client.NobleQuoteClient;
 import com.talhanation.recruits.client.gui.NobleTradeScreen;
 import com.talhanation.recruits.client.gui.RecruitsScreenBase;
@@ -32,7 +32,7 @@ public abstract class NobleTradeScreenMixin extends Screen implements NobleQuote
     @Inject(method = "renderForeground", at = @At("TAIL"), remap = false)
     private void jem$wage(GuiGraphics g, int mouseX, int mouseY, float partialTick, CallbackInfo ci) {
         var priceHover = NobleQuoteClient.takePriceHover();
-        if (priceHover != null) CoinPriceRenderer.tooltip(g, font, priceHover.cost(), mouseX, mouseY, width, height);
+        if (priceHover != null) SettlementPriceRenderer.tooltip(g, font, priceHover.cost(), mouseX, mouseY, width, height, priceHover.coins());
         if (selection == null) return;
         var quote = NobleQuoteClient.quote(villagerNoble.getId(), selection.resourceLocation);
         if (quote == null) return;
@@ -40,6 +40,6 @@ public abstract class NobleTradeScreenMixin extends Screen implements NobleQuote
         int x = nativeScreen.getGuiLeft() + 97, y = nativeScreen.getGuiTop() + 53;
         if (mouseX >= x && mouseX < x + 75 && mouseY >= y && mouseY < y + 20)
             g.renderTooltip(font, Component.translatable("jem.settlements.hire.wage").append(": ")
-                    .append(com.siirio.jemeconomy.physical.CoinFormatter.format(quote.wage())), mouseX, mouseY);
+                    .append(SettlementPriceRenderer.format(quote.wage(), quote.coins())), mouseX, mouseY);
     }
 }

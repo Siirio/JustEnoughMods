@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "cdd50f58ee16dbb847d7a8748a5c8e1b4835ca63",
+  "snapshot_sha": "1d21365a332c255e2db3d6d2adc8a9f7612802f7",
   "tags": {
     "accessories:item/belt": [
       "minecraft:lantern",
@@ -3021,7 +3021,9 @@
     ],
     "c:blocks/chests": [
       "#c:chests/wooden",
-      "minecraft:ender_chest"
+      "minecraft:chest",
+      "minecraft:ender_chest",
+      "minecraft:trapped_chest"
     ],
     "c:blocks/chests/wooden": [
       "minecraft:chest",
@@ -3346,6 +3348,26 @@
       "minecraft:yellow_wall_banner",
       "minecraft:yellow_wool"
     ],
+    "c:blocks/glass_blocks": [
+      "minecraft:black_stained_glass",
+      "minecraft:blue_stained_glass",
+      "minecraft:brown_stained_glass",
+      "minecraft:cyan_stained_glass",
+      "minecraft:glass",
+      "minecraft:gray_stained_glass",
+      "minecraft:green_stained_glass",
+      "minecraft:light_blue_stained_glass",
+      "minecraft:light_gray_stained_glass",
+      "minecraft:lime_stained_glass",
+      "minecraft:magenta_stained_glass",
+      "minecraft:orange_stained_glass",
+      "minecraft:pink_stained_glass",
+      "minecraft:purple_stained_glass",
+      "minecraft:red_stained_glass",
+      "minecraft:tinted_glass",
+      "minecraft:white_stained_glass",
+      "minecraft:yellow_stained_glass"
+    ],
     "c:blocks/glass_blocks/cheap": [
       "minecraft:black_stained_glass",
       "minecraft:blue_stained_glass",
@@ -3376,6 +3398,7 @@
       "minecraft:blue_stained_glass_pane",
       "minecraft:brown_stained_glass_pane",
       "minecraft:cyan_stained_glass_pane",
+      "minecraft:glass_pane",
       "minecraft:gray_stained_glass_pane",
       "minecraft:green_stained_glass_pane",
       "minecraft:light_blue_stained_glass_pane",
@@ -3448,6 +3471,24 @@
     ],
     "c:blocks/player_workstations/furnaces": [
       "minecraft:furnace"
+    ],
+    "c:blocks/quartz_ores": [
+      "minecraft:nether_quartz_ore"
+    ],
+    "c:blocks/red_sandstone_blocks": [
+      "minecraft:chiseled_red_sandstone",
+      "minecraft:cut_red_sandstone",
+      "minecraft:red_sandstone",
+      "minecraft:smooth_red_sandstone"
+    ],
+    "c:blocks/red_sandstone_slabs": [
+      "minecraft:cut_red_sandstone_slab",
+      "minecraft:red_sandstone_slab",
+      "minecraft:smooth_red_sandstone_slab"
+    ],
+    "c:blocks/red_sandstone_stairs": [
+      "minecraft:red_sandstone_stairs",
+      "minecraft:smooth_red_sandstone_stairs"
     ],
     "c:blocks/relocation_not_supported": [
       "railways:track_acacia",
@@ -3529,6 +3570,25 @@
     "c:blocks/sandstone/uncolored_stairs": [
       "minecraft:sandstone_stairs",
       "minecraft:smooth_sandstone_stairs"
+    ],
+    "c:blocks/shulker_boxes": [
+      "minecraft:black_shulker_box",
+      "minecraft:blue_shulker_box",
+      "minecraft:brown_shulker_box",
+      "minecraft:cyan_shulker_box",
+      "minecraft:gray_shulker_box",
+      "minecraft:green_shulker_box",
+      "minecraft:light_blue_shulker_box",
+      "minecraft:light_gray_shulker_box",
+      "minecraft:lime_shulker_box",
+      "minecraft:magenta_shulker_box",
+      "minecraft:orange_shulker_box",
+      "minecraft:pink_shulker_box",
+      "minecraft:purple_shulker_box",
+      "minecraft:red_shulker_box",
+      "minecraft:shulker_box",
+      "minecraft:white_shulker_box",
+      "minecraft:yellow_shulker_box"
     ],
     "c:blocks/skulls": [
       "minecraft:creeper_head",
@@ -3628,6 +3688,21 @@
       "#natures_spirit:stripped_wood",
       "minecraft:stripped_pale_oak_wood"
     ],
+    "c:blocks/uncolored_sandstone_blocks": [
+      "minecraft:chiseled_sandstone",
+      "minecraft:cut_sandstone",
+      "minecraft:sandstone",
+      "minecraft:smooth_sandstone"
+    ],
+    "c:blocks/uncolored_sandstone_slabs": [
+      "minecraft:cut_sandstone_slab",
+      "minecraft:sandstone_slab",
+      "minecraft:smooth_sandstone_slab"
+    ],
+    "c:blocks/uncolored_sandstone_stairs": [
+      "minecraft:sandstone_stairs",
+      "minecraft:smooth_sandstone_stairs"
+    ],
     "c:blocks/villager_job_sites": [
       "minecraft:barrel",
       "minecraft:blast_furnace",
@@ -3645,6 +3720,52 @@
       "minecraft:smoker",
       "minecraft:stonecutter",
       "minecraft:water_cauldron"
+    ],
+    "c:blocks/wooden_barrels": [
+      "minecraft:barrel"
+    ],
+    "c:enchantment/entity_defense_enhancement": [
+      "minecraft:blast_protection",
+      "minecraft:feather_falling",
+      "minecraft:fire_protection",
+      "minecraft:projectile_protection",
+      "minecraft:protection",
+      "minecraft:respiration"
+    ],
+    "c:enchantment/entity_movement_enhancement": [
+      "minecraft:depth_strider",
+      "minecraft:soul_speed",
+      "minecraft:swift_sneak"
+    ],
+    "c:enchantment/fortune": [
+      "minecraft:fortune"
+    ],
+    "c:enchantment/looting": [
+      "minecraft:looting"
+    ],
+    "c:enchantment/weapon_damage_enhancement": [
+      "minecraft:bane_of_arthropods",
+      "minecraft:impaling",
+      "minecraft:power",
+      "minecraft:sharpness",
+      "minecraft:smite"
+    ],
+    "c:entity_types/boats": [
+      "minecraft:boat",
+      "minecraft:chest_boat"
+    ],
+    "c:entity_types/bosses": [
+      "minecraft:ender_dragon",
+      "minecraft:wither"
+    ],
+    "c:entity_types/minecarts": [
+      "minecraft:chest_minecart",
+      "minecraft:command_block_minecart",
+      "minecraft:furnace_minecart",
+      "minecraft:hopper_minecart",
+      "minecraft:minecart",
+      "minecraft:spawner_minecart",
+      "minecraft:tnt_minecart"
     ],
     "c:item/glass": [
       "dustydecorations:cerulean_seaglass",
@@ -3683,17 +3804,35 @@
       "dustydecorations:rope",
       "minecraft:lead"
     ],
+    "c:items/axes": [
+      "minecraft:diamond_axe",
+      "minecraft:golden_axe",
+      "minecraft:iron_axe",
+      "minecraft:netherite_axe",
+      "minecraft:stone_axe",
+      "minecraft:wooden_axe"
+    ],
     "c:items/barrels": [
       "#c:barrels/wooden"
     ],
     "c:items/barrels/wooden": [
       "minecraft:barrel"
     ],
+    "c:items/black_dyes": [
+      "minecraft:black_dye"
+    ],
+    "c:items/blue_dyes": [
+      "minecraft:blue_dye"
+    ],
     "c:items/bones": [
       "minecraft:bone"
     ],
     "c:items/bookshelves": [
       "minecraft:bookshelf"
+    ],
+    "c:items/bows": [
+      "minecraft:bow",
+      "minecraft:crossbow"
     ],
     "c:items/bread": [
       "bakery:baguette",
@@ -3710,6 +3849,9 @@
     ],
     "c:items/bricks/normal": [
       "minecraft:brick"
+    ],
+    "c:items/brown_dyes": [
+      "minecraft:brown_dye"
     ],
     "c:items/buckets": [
       "#c:buckets/empty",
@@ -3766,7 +3908,9 @@
     ],
     "c:items/chests": [
       "#c:chests/wooden",
-      "minecraft:ender_chest"
+      "minecraft:chest",
+      "minecraft:ender_chest",
+      "minecraft:trapped_chest"
     ],
     "c:items/chests/wooden": [
       "minecraft:chest",
@@ -3923,6 +4067,9 @@
       "farm_and_charm:chicken_wrapped_in_bacon",
       "minecraft:cooked_porkchop"
     ],
+    "c:items/copper_ingots": [
+      "minecraft:copper_ingot"
+    ],
     "c:items/copper_nuggets": [
       "minecraft:copper_nugget"
     ],
@@ -3987,8 +4134,18 @@
     "c:items/crops/wheat": [
       "minecraft:wheat"
     ],
+    "c:items/cyan_dyes": [
+      "minecraft:cyan_dye"
+    ],
+    "c:items/diamonds": [
+      "minecraft:diamond"
+    ],
     "c:items/dough": [
       "farm_and_charm:dough"
+    ],
+    "c:items/dusts": [
+      "minecraft:glowstone_dust",
+      "minecraft:redstone"
     ],
     "c:items/dusts/glowstone": [
       "minecraft:glowstone_dust"
@@ -4339,8 +4496,22 @@
       "#minecraft:eggs",
       "minecraft:egg"
     ],
+    "c:items/emeralds": [
+      "minecraft:emerald"
+    ],
+    "c:items/empty_buckets": [
+      "minecraft:bucket"
+    ],
     "c:items/ender_pearls": [
       "minecraft:ender_pearl"
+    ],
+    "c:items/entity_water_buckets": [
+      "minecraft:axolotl_bucket",
+      "minecraft:cod_bucket",
+      "minecraft:pufferfish_bucket",
+      "minecraft:salmon_bucket",
+      "minecraft:tadpole_bucket",
+      "minecraft:tropical_fish_bucket"
     ],
     "c:items/fertilizers": [
       "minecraft:bone_meal"
@@ -4349,11 +4520,47 @@
       "farm_and_charm:flour"
     ],
     "c:items/foods": [
+      "minecraft:apple",
       "minecraft:baked_potato",
+      "minecraft:beef",
+      "minecraft:beetroot",
+      "minecraft:beetroot_soup",
+      "minecraft:bread",
+      "minecraft:carrot",
+      "minecraft:chicken",
+      "minecraft:chorus_fruit",
+      "minecraft:cod",
+      "minecraft:cooked_beef",
+      "minecraft:cooked_chicken",
+      "minecraft:cooked_cod",
+      "minecraft:cooked_mutton",
+      "minecraft:cooked_porkchop",
+      "minecraft:cooked_rabbit",
+      "minecraft:cooked_salmon",
+      "minecraft:cookie",
       "minecraft:dried_kelp",
+      "minecraft:enchanted_golden_apple",
+      "minecraft:glow_berries",
+      "minecraft:golden_apple",
+      "minecraft:golden_carrot",
       "minecraft:honey_bottle",
+      "minecraft:melon_slice",
+      "minecraft:mushroom_stew",
+      "minecraft:mutton",
       "minecraft:ominous_bottle",
-      "minecraft:pumpkin_pie"
+      "minecraft:poisonous_potato",
+      "minecraft:porkchop",
+      "minecraft:potato",
+      "minecraft:pufferfish",
+      "minecraft:pumpkin_pie",
+      "minecraft:rabbit",
+      "minecraft:rabbit_stew",
+      "minecraft:rotten_flesh",
+      "minecraft:salmon",
+      "minecraft:spider_eye",
+      "minecraft:suspicious_stew",
+      "minecraft:sweet_berries",
+      "minecraft:tropical_fish"
     ],
     "c:items/foods/berries": [
       "minecraft:glow_berries",
@@ -4479,6 +4686,12 @@
       "minecraft:golden_carrot",
       "minecraft:potato"
     ],
+    "c:items/gems": [
+      "minecraft:amethyst_shard",
+      "minecraft:diamond",
+      "minecraft:emerald",
+      "minecraft:lapis_lazuli"
+    ],
     "c:items/gems/amethyst": [
       "minecraft:amethyst_shard"
     ],
@@ -4508,6 +4721,26 @@
       "dustydecorations:scarlett_seaglass",
       "dustydecorations:taupe_seaglass",
       "dustydecorations:teal_seaglass"
+    ],
+    "c:items/glass_blocks": [
+      "minecraft:black_stained_glass",
+      "minecraft:blue_stained_glass",
+      "minecraft:brown_stained_glass",
+      "minecraft:cyan_stained_glass",
+      "minecraft:glass",
+      "minecraft:gray_stained_glass",
+      "minecraft:green_stained_glass",
+      "minecraft:light_blue_stained_glass",
+      "minecraft:light_gray_stained_glass",
+      "minecraft:lime_stained_glass",
+      "minecraft:magenta_stained_glass",
+      "minecraft:orange_stained_glass",
+      "minecraft:pink_stained_glass",
+      "minecraft:purple_stained_glass",
+      "minecraft:red_stained_glass",
+      "minecraft:tinted_glass",
+      "minecraft:white_stained_glass",
+      "minecraft:yellow_stained_glass"
     ],
     "c:items/glass_blocks/cheap": [
       "minecraft:black_stained_glass",
@@ -4558,6 +4791,7 @@
       "minecraft:blue_stained_glass_pane",
       "minecraft:brown_stained_glass_pane",
       "minecraft:cyan_stained_glass_pane",
+      "minecraft:glass_pane",
       "minecraft:gray_stained_glass_pane",
       "minecraft:green_stained_glass_pane",
       "minecraft:light_blue_stained_glass_pane",
@@ -4610,6 +4844,9 @@
       "minecraft:white_glazed_terracotta",
       "minecraft:yellow_glazed_terracotta"
     ],
+    "c:items/gold_ingots": [
+      "minecraft:gold_ingot"
+    ],
     "c:items/grains": [
       "#c:grains/barleys",
       "#c:grains/corn",
@@ -4641,6 +4878,26 @@
       "vinery:taiga_grapes_white",
       "vinery:white_grape"
     ],
+    "c:items/gray_dyes": [
+      "minecraft:gray_dye"
+    ],
+    "c:items/green_dyes": [
+      "minecraft:green_dye"
+    ],
+    "c:items/hoes": [
+      "minecraft:diamond_hoe",
+      "minecraft:golden_hoe",
+      "minecraft:iron_hoe",
+      "minecraft:netherite_hoe",
+      "minecraft:stone_hoe",
+      "minecraft:wooden_hoe"
+    ],
+    "c:items/ingots": [
+      "minecraft:copper_ingot",
+      "minecraft:gold_ingot",
+      "minecraft:iron_ingot",
+      "minecraft:netherite_ingot"
+    ],
     "c:items/ingots/copper": [
       "minecraft:copper_ingot"
     ],
@@ -4653,6 +4910,9 @@
     "c:items/ingots/netherite": [
       "minecraft:netherite_ingot"
     ],
+    "c:items/iron_ingots": [
+      "minecraft:iron_ingot"
+    ],
     "c:items/jams": [
       "bakery:apple_jam",
       "bakery:chocolate_jam",
@@ -4660,10 +4920,31 @@
       "bakery:strawberry_jam",
       "bakery:sweetberry_jam"
     ],
+    "c:items/lapis": [
+      "minecraft:lapis_lazuli"
+    ],
+    "c:items/lava_buckets": [
+      "minecraft:lava_bucket"
+    ],
     "c:items/leathers": [
       "minecraft:leather"
     ],
+    "c:items/light_blue_dyes": [
+      "minecraft:light_blue_dye"
+    ],
+    "c:items/light_gray_dyes": [
+      "minecraft:light_gray_dye"
+    ],
+    "c:items/lime_dyes": [
+      "minecraft:lime_dye"
+    ],
+    "c:items/magenta_dyes": [
+      "minecraft:magenta_dye"
+    ],
     "c:items/milk": [
+      "minecraft:milk_bucket"
+    ],
+    "c:items/milk_buckets": [
       "minecraft:milk_bucket"
     ],
     "c:items/mushrooms": [
@@ -4694,6 +4975,13 @@
       "minecraft:music_disc_wait",
       "minecraft:music_disc_ward"
     ],
+    "c:items/netherite_ingots": [
+      "minecraft:netherite_ingot"
+    ],
+    "c:items/nuggets": [
+      "minecraft:gold_nugget",
+      "minecraft:iron_nugget"
+    ],
     "c:items/nuggets/gold": [
       "minecraft:gold_nugget"
     ],
@@ -4702,6 +4990,9 @@
     ],
     "c:items/obsidians": [
       "minecraft:obsidian"
+    ],
+    "c:items/orange_dyes": [
+      "minecraft:orange_dye"
     ],
     "c:items/ores/netherite_scrap": [
       "minecraft:ancient_debris"
@@ -4721,6 +5012,17 @@
     "c:items/pasta": [
       "farm_and_charm:raw_pasta"
     ],
+    "c:items/pickaxes": [
+      "minecraft:diamond_pickaxe",
+      "minecraft:golden_pickaxe",
+      "minecraft:iron_pickaxe",
+      "minecraft:netherite_pickaxe",
+      "minecraft:stone_pickaxe",
+      "minecraft:wooden_pickaxe"
+    ],
+    "c:items/pink_dyes": [
+      "minecraft:pink_dye"
+    ],
     "c:items/player_workstations/crafting_tables": [
       "minecraft:crafting_table"
     ],
@@ -4731,6 +5033,15 @@
       "minecraft:lingering_potion",
       "minecraft:potion",
       "minecraft:splash_potion"
+    ],
+    "c:items/purple_dyes": [
+      "minecraft:purple_dye"
+    ],
+    "c:items/quartz": [
+      "minecraft:quartz"
+    ],
+    "c:items/quartz_ores": [
+      "minecraft:nether_quartz_ore"
     ],
     "c:items/raw_bacon": [
       "farm_and_charm:bacon"
@@ -4752,11 +5063,29 @@
       "farm_and_charm:chicken_parts",
       "minecraft:chicken"
     ],
+    "c:items/raw_copper_blocks": [
+      "minecraft:raw_copper_block"
+    ],
+    "c:items/raw_copper_ores": [
+      "minecraft:raw_copper"
+    ],
     "c:items/raw_fishes": [
       "minecraft:cod",
       "minecraft:pufferfish",
       "minecraft:salmon",
       "minecraft:tropical_fish"
+    ],
+    "c:items/raw_gold_blocks": [
+      "minecraft:raw_gold_block"
+    ],
+    "c:items/raw_gold_ores": [
+      "minecraft:raw_gold"
+    ],
+    "c:items/raw_iron_blocks": [
+      "minecraft:raw_iron_block"
+    ],
+    "c:items/raw_iron_ores": [
+      "minecraft:raw_iron"
     ],
     "c:items/raw_materials/copper": [
       "minecraft:raw_copper"
@@ -4774,6 +5103,27 @@
     "c:items/raw_pork": [
       "farm_and_charm:bacon",
       "minecraft:porkchop"
+    ],
+    "c:items/red_dyes": [
+      "minecraft:red_dye"
+    ],
+    "c:items/red_sandstone_blocks": [
+      "minecraft:chiseled_red_sandstone",
+      "minecraft:cut_red_sandstone",
+      "minecraft:red_sandstone",
+      "minecraft:smooth_red_sandstone"
+    ],
+    "c:items/red_sandstone_slabs": [
+      "minecraft:cut_red_sandstone_slab",
+      "minecraft:red_sandstone_slab",
+      "minecraft:smooth_red_sandstone_slab"
+    ],
+    "c:items/red_sandstone_stairs": [
+      "minecraft:red_sandstone_stairs",
+      "minecraft:smooth_red_sandstone_stairs"
+    ],
+    "c:items/redstone_dusts": [
+      "minecraft:redstone"
     ],
     "c:items/rods/blaze": [
       "minecraft:blaze_rod"
@@ -4855,6 +5205,20 @@
     "c:items/seeds/wheat": [
       "minecraft:wheat_seeds"
     ],
+    "c:items/shears": [
+      "minecraft:shears"
+    ],
+    "c:items/shields": [
+      "minecraft:shield"
+    ],
+    "c:items/shovels": [
+      "minecraft:diamond_shovel",
+      "minecraft:golden_shovel",
+      "minecraft:iron_shovel",
+      "minecraft:netherite_shovel",
+      "minecraft:stone_shovel",
+      "minecraft:wooden_shovel"
+    ],
     "c:items/shulker_boxes": [
       "minecraft:black_shulker_box",
       "minecraft:blue_shulker_box",
@@ -4879,6 +5243,9 @@
     ],
     "c:items/slimeballs": [
       "minecraft:slime_ball"
+    ],
+    "c:items/spears": [
+      "minecraft:trident"
     ],
     "c:items/stones": [
       "minecraft:andesite",
@@ -4977,6 +5344,14 @@
       "beachparty:stripped_palm_wood",
       "minecraft:stripped_pale_oak_wood",
       "vinery:stripped_dark_cherry_wood"
+    ],
+    "c:items/swords": [
+      "minecraft:diamond_sword",
+      "minecraft:golden_sword",
+      "minecraft:iron_sword",
+      "minecraft:netherite_sword",
+      "minecraft:stone_sword",
+      "minecraft:wooden_sword"
     ],
     "c:items/tomato_soups": [
       "farm_and_charm:simple_tomato_soup"
@@ -5087,6 +5462,21 @@
     "c:items/tools/spears": [
       "minecraft:trident"
     ],
+    "c:items/uncolored_sandstone_blocks": [
+      "minecraft:chiseled_sandstone",
+      "minecraft:cut_sandstone",
+      "minecraft:sandstone",
+      "minecraft:smooth_sandstone"
+    ],
+    "c:items/uncolored_sandstone_slabs": [
+      "minecraft:cut_sandstone_slab",
+      "minecraft:sandstone_slab",
+      "minecraft:smooth_sandstone_slab"
+    ],
+    "c:items/uncolored_sandstone_stairs": [
+      "minecraft:sandstone_stairs",
+      "minecraft:smooth_sandstone_stairs"
+    ],
     "c:items/vegetables": [
       "farm_and_charm:corn",
       "farm_and_charm:lettuce",
@@ -5118,11 +5508,25 @@
     "c:items/wheat": [
       "minecraft:wheat"
     ],
+    "c:items/white_dyes": [
+      "minecraft:white_dye"
+    ],
+    "c:items/wooden_barrels": [
+      "minecraft:barrel"
+    ],
     "c:items/workbench": [
       "minecraft:crafting_table"
     ],
+    "c:items/yellow_dyes": [
+      "minecraft:yellow_dye"
+    ],
     "c:worldgen/biome/aquatic": [
       "terralith:warm_river"
+    ],
+    "c:worldgen/biome/aquatic_icy": [
+      "minecraft:deep_frozen_ocean",
+      "minecraft:frozen_ocean",
+      "minecraft:frozen_river"
     ],
     "c:worldgen/biome/badlands": [
       "terralith:ancient_sands",
@@ -5133,10 +5537,18 @@
       "terralith:white_mesa"
     ],
     "c:worldgen/biome/beach": [
+      "minecraft:stony_shore",
       "terralith:frozen_cliffs",
       "terralith:gravel_beach"
     ],
+    "c:worldgen/biome/birch_forest": [
+      "minecraft:birch_forest",
+      "minecraft:old_growth_birch_forest"
+    ],
     "c:worldgen/biome/caves": [
+      "minecraft:deep_dark",
+      "minecraft:dripstone_caves",
+      "minecraft:lush_caves",
       "minecraft:sulfur_caves",
       "terralith:cave/andesite_caves",
       "terralith:cave/crystal_caves",
@@ -5154,6 +5566,13 @@
       "terralith:cave/underground_jungle"
     ],
     "c:worldgen/biome/climate_cold": [
+      "minecraft:grove",
+      "minecraft:jagged_peaks",
+      "minecraft:old_growth_pine_taiga",
+      "minecraft:old_growth_spruce_taiga",
+      "minecraft:snowy_plains",
+      "minecraft:snowy_taiga",
+      "minecraft:taiga",
       "terralith:alpha_islands_winter",
       "terralith:alpine_grove",
       "terralith:alpine_highlands",
@@ -5215,6 +5634,7 @@
       "terralith:white_mesa"
     ],
     "c:worldgen/biome/climate_hot": [
+      "minecraft:stony_peaks",
       "terralith:amethyst_canyon",
       "terralith:amethyst_rainforest",
       "terralith:ancient_sands",
@@ -5252,6 +5672,16 @@
       "terralith:white_mesa"
     ],
     "c:worldgen/biome/climate_temperate": [
+      "minecraft:birch_forest",
+      "minecraft:dark_forest",
+      "minecraft:forest",
+      "minecraft:meadow",
+      "minecraft:old_growth_birch_forest",
+      "minecraft:plains",
+      "minecraft:stony_shore",
+      "minecraft:sunflower_plains",
+      "minecraft:swamp",
+      "minecraft:windswept_forest",
       "terralith:alpha_islands",
       "terralith:blooming_plateau",
       "terralith:blooming_valley",
@@ -5277,6 +5707,7 @@
       "terralith:yosemite_lowlands"
     ],
     "c:worldgen/biome/climate_wet": [
+      "minecraft:lush_caves",
       "terralith:amethyst_canyon",
       "terralith:amethyst_rainforest",
       "terralith:blooming_valley",
@@ -5301,7 +5732,14 @@
       "terralith:ashen_savanna",
       "terralith:gravel_desert"
     ],
+    "c:worldgen/biome/deep_ocean": [
+      "minecraft:deep_cold_ocean",
+      "minecraft:deep_frozen_ocean",
+      "minecraft:deep_lukewarm_ocean",
+      "minecraft:deep_ocean"
+    ],
     "c:worldgen/biome/desert": [
+      "minecraft:desert",
       "terralith:desert_canyon",
       "terralith:desert_oasis",
       "terralith:desert_spires",
@@ -5312,6 +5750,8 @@
       "nullscape:shadowlands"
     ],
     "c:worldgen/biome/extreme_hills": [
+      "minecraft:windswept_gravelly_hills",
+      "minecraft:windswept_hills",
       "terralith:blooming_plateau",
       "terralith:lush_valley",
       "terralith:shield",
@@ -5323,11 +5763,15 @@
       "terralith:yosemite_cliffs"
     ],
     "c:worldgen/biome/floral": [
+      "minecraft:cherry_grove",
+      "minecraft:meadow",
+      "minecraft:sunflower_plains",
       "terralith:blooming_plateau",
       "terralith:blooming_valley",
       "terralith:orchid_swamp"
     ],
     "c:worldgen/biome/flower_forests": [
+      "minecraft:flower_forest",
       "terralith:cloud_forest",
       "terralith:lavender_forest",
       "terralith:lavender_valley",
@@ -5390,9 +5834,80 @@
       "minecraft:forest"
     ],
     "c:worldgen/biome/icy": [
+      "minecraft:frozen_peaks",
+      "minecraft:ice_spikes",
       "terralith:frozen_cliffs",
       "terralith:glacial_chasm",
       "terralith:skylands_winter"
+    ],
+    "c:worldgen/biome/in_nether": [
+      "minecraft:basalt_deltas",
+      "minecraft:crimson_forest",
+      "minecraft:nether_wastes",
+      "minecraft:soul_sand_valley",
+      "minecraft:warped_forest"
+    ],
+    "c:worldgen/biome/in_overworld": [
+      "minecraft:badlands",
+      "minecraft:bamboo_jungle",
+      "minecraft:beach",
+      "minecraft:birch_forest",
+      "minecraft:cherry_grove",
+      "minecraft:cold_ocean",
+      "minecraft:dark_forest",
+      "minecraft:deep_cold_ocean",
+      "minecraft:deep_dark",
+      "minecraft:deep_frozen_ocean",
+      "minecraft:deep_lukewarm_ocean",
+      "minecraft:deep_ocean",
+      "minecraft:desert",
+      "minecraft:dripstone_caves",
+      "minecraft:eroded_badlands",
+      "minecraft:flower_forest",
+      "minecraft:forest",
+      "minecraft:frozen_ocean",
+      "minecraft:frozen_peaks",
+      "minecraft:frozen_river",
+      "minecraft:grove",
+      "minecraft:ice_spikes",
+      "minecraft:jagged_peaks",
+      "minecraft:jungle",
+      "minecraft:lukewarm_ocean",
+      "minecraft:lush_caves",
+      "minecraft:mangrove_swamp",
+      "minecraft:meadow",
+      "minecraft:mushroom_fields",
+      "minecraft:ocean",
+      "minecraft:old_growth_birch_forest",
+      "minecraft:old_growth_pine_taiga",
+      "minecraft:old_growth_spruce_taiga",
+      "minecraft:plains",
+      "minecraft:river",
+      "minecraft:savanna",
+      "minecraft:savanna_plateau",
+      "minecraft:snowy_beach",
+      "minecraft:snowy_plains",
+      "minecraft:snowy_slopes",
+      "minecraft:snowy_taiga",
+      "minecraft:sparse_jungle",
+      "minecraft:stony_peaks",
+      "minecraft:stony_shore",
+      "minecraft:sunflower_plains",
+      "minecraft:swamp",
+      "minecraft:taiga",
+      "minecraft:warm_ocean",
+      "minecraft:windswept_forest",
+      "minecraft:windswept_gravelly_hills",
+      "minecraft:windswept_hills",
+      "minecraft:windswept_savanna",
+      "minecraft:wooded_badlands"
+    ],
+    "c:worldgen/biome/in_the_end": [
+      "minecraft:end_barrens",
+      "minecraft:end_highlands",
+      "minecraft:end_midlands",
+      "minecraft:small_end_islands",
+      "minecraft:the_end"
     ],
     "c:worldgen/biome/is_badlands": [
       "#minecraft:is_badlands"
@@ -5507,6 +6022,9 @@
       "terralith:tropical_jungle"
     ],
     "c:worldgen/biome/mesa": [
+      "minecraft:badlands",
+      "minecraft:eroded_badlands",
+      "minecraft:wooded_badlands",
       "terralith:ancient_sands",
       "terralith:bryce_canyon",
       "terralith:painted_mountains",
@@ -5526,6 +6044,9 @@
       "terralith:temperate_highlands"
     ],
     "c:worldgen/biome/mountain_peak": [
+      "minecraft:frozen_peaks",
+      "minecraft:jagged_peaks",
+      "minecraft:stony_peaks",
       "terralith:emerald_peaks",
       "terralith:fractured_savanna",
       "terralith:frozen_cliffs",
@@ -5535,6 +6056,7 @@
       "terralith:warped_mesa"
     ],
     "c:worldgen/biome/mountain_slope": [
+      "minecraft:snowy_slopes",
       "terralith:alpine_grove",
       "terralith:amethyst_canyon",
       "terralith:ashen_savanna",
@@ -5554,19 +6076,29 @@
       "terralith:stony_spires"
     ],
     "c:worldgen/biome/mushroom": [
+      "minecraft:mushroom_fields",
       "terralith:cave/fungal_caves",
       "terralith:mirage_isles"
+    ],
+    "c:worldgen/biome/nether_forests": [
+      "minecraft:crimson_forest",
+      "minecraft:warped_forest"
     ],
     "c:worldgen/biome/no_default_monsters": [
       "terralith:mirage_isles"
     ],
     "c:worldgen/biome/plains": [
+      "minecraft:plains",
+      "minecraft:sunflower_plains",
       "terralith:highlands"
     ],
     "c:worldgen/biome/river": [
       "terralith:warm_river"
     ],
     "c:worldgen/biome/savanna": [
+      "minecraft:savanna",
+      "minecraft:savanna_plateau",
+      "minecraft:windswept_savanna",
       "terralith:arid_highlands",
       "terralith:ashen_savanna",
       "terralith:brushland",
@@ -5576,7 +6108,18 @@
       "terralith:savanna_slopes",
       "terralith:shrubland"
     ],
+    "c:worldgen/biome/shallow_ocean": [
+      "minecraft:cold_ocean",
+      "minecraft:frozen_ocean",
+      "minecraft:lukewarm_ocean",
+      "minecraft:ocean",
+      "minecraft:warm_ocean"
+    ],
     "c:worldgen/biome/snowy": [
+      "minecraft:snowy_beach",
+      "minecraft:snowy_plains",
+      "minecraft:snowy_slopes",
+      "minecraft:snowy_taiga",
       "terralith:alpha_islands_winter",
       "terralith:alpine_grove",
       "terralith:cold_shrubland",
@@ -5595,16 +6138,20 @@
       "terralith:wintry_lowlands"
     ],
     "c:worldgen/biome/snowy_plains": [
+      "minecraft:snowy_plains",
       "terralith:gravel_desert",
       "terralith:rocky_shrubland"
     ],
     "c:worldgen/biome/stony_shores": [
+      "minecraft:stony_shore",
       "terralith:amethyst_canyon",
       "terralith:basalt_cliffs",
       "terralith:granite_cliffs",
       "terralith:gravel_beach"
     ],
     "c:worldgen/biome/swamp": [
+      "minecraft:mangrove_swamp",
+      "minecraft:swamp",
       "terralith:ice_marsh",
       "terralith:orchid_swamp"
     ],
@@ -5625,6 +6172,7 @@
       "terralith:wintry_lowlands"
     ],
     "c:worldgen/biome/tree_coniferous": [
+      "minecraft:grove",
       "terralith:alpine_grove",
       "terralith:alpine_highlands",
       "terralith:bryce_canyon",
@@ -5644,6 +6192,12 @@
       "terralith:wintry_lowlands"
     ],
     "c:worldgen/biome/tree_deciduous": [
+      "minecraft:birch_forest",
+      "minecraft:dark_forest",
+      "minecraft:flower_forest",
+      "minecraft:forest",
+      "minecraft:old_growth_birch_forest",
+      "minecraft:windswept_forest",
       "terralith:alpha_islands",
       "terralith:alpha_islands_winter",
       "terralith:alpine_highlands",
@@ -5678,6 +6232,7 @@
       "terralith:savanna_slopes"
     ],
     "c:worldgen/biome/vegetation_dense": [
+      "minecraft:sunflower_plains",
       "terralith:jungle_mountains",
       "terralith:lush_valley",
       "terralith:skylands_winter",
@@ -5686,6 +6241,7 @@
       "terralith:wintry_lowlands"
     ],
     "c:worldgen/biome/vegetation_sparse": [
+      "minecraft:lush_caves",
       "terralith:alpine_grove",
       "terralith:arid_highlands",
       "terralith:brushland",
@@ -5701,6 +6257,9 @@
       "terralith:windswept_spires",
       "terralith:yosemite_cliffs"
     ],
+    "c:worldgen/biome/void": [
+      "minecraft:the_void"
+    ],
     "c:worldgen/biome/wasteland": [
       "terralith:ashen_savanna",
       "terralith:basalt_cliffs",
@@ -5711,6 +6270,12 @@
       "terralith:volcanic_crater",
       "terralith:volcanic_peaks",
       "terralith:yellowstone"
+    ],
+    "c:worldgen/biome/windswept": [
+      "minecraft:windswept_forest",
+      "minecraft:windswept_gravelly_hills",
+      "minecraft:windswept_hills",
+      "minecraft:windswept_savanna"
     ],
     "candlelight:items/red_effect": [
       "#vinery:red_wine"
@@ -9495,6 +10060,9 @@
     "curios:items/waist": [
       "cataclysm:belt_of_beginner",
       "cataclysm:belt_of_monstrosity"
+    ],
+    "diagonalblocks:blocks/never_blocks_diagonal_connections": [
+      "minecraft:snow"
     ],
     "diet:items/fruits": [
       "beachparty:coconut_open",
@@ -16336,6 +16904,43 @@
       "minecraft:gold_ingot",
       "minecraft:gold_nugget",
       "minecraft:nether_star"
+    ],
+    "jem_settlements:items/cooking/end_ingredients": [
+      "minecraft:chorus_fruit",
+      "minecraft:dragon_breath",
+      "minecraft:popped_chorus_fruit"
+    ],
+    "jem_settlements:items/cooking/nether_ingredients": [
+      "minecraft:blaze_powder",
+      "minecraft:blaze_rod",
+      "minecraft:crimson_fungus",
+      "minecraft:ghast_tear",
+      "minecraft:glowstone_dust",
+      "minecraft:magma_cream",
+      "minecraft:nether_wart",
+      "minecraft:quartz",
+      "minecraft:warped_fungus"
+    ],
+    "jem_settlements:items/cooking/world_ingredients": [
+      "minecraft:apple",
+      "minecraft:beetroot",
+      "minecraft:beetroot_seeds",
+      "minecraft:brown_mushroom",
+      "minecraft:carrot",
+      "minecraft:cocoa_beans",
+      "minecraft:egg",
+      "minecraft:glow_berries",
+      "minecraft:honey_bottle",
+      "minecraft:melon",
+      "minecraft:melon_slice",
+      "minecraft:milk_bucket",
+      "minecraft:potato",
+      "minecraft:pumpkin",
+      "minecraft:red_mushroom",
+      "minecraft:sugar_cane",
+      "minecraft:sweet_berries",
+      "minecraft:wheat",
+      "minecraft:wheat_seeds"
     ],
     "jem_twelve_eyes:worldgen/structure/post_end/ender_guardian": [
       "cataclysm:ruined_citadel"
@@ -48698,43 +49303,6 @@
     ],
     "zipline:items/attachment": [
       "#minecraft:pickaxes"
-    ],
-    "jem_settlements:items/cooking/end_ingredients": [
-      "minecraft:chorus_fruit",
-      "minecraft:dragon_breath",
-      "minecraft:popped_chorus_fruit"
-    ],
-    "jem_settlements:items/cooking/nether_ingredients": [
-      "minecraft:blaze_powder",
-      "minecraft:blaze_rod",
-      "minecraft:crimson_fungus",
-      "minecraft:ghast_tear",
-      "minecraft:glowstone_dust",
-      "minecraft:magma_cream",
-      "minecraft:nether_wart",
-      "minecraft:quartz",
-      "minecraft:warped_fungus"
-    ],
-    "jem_settlements:items/cooking/world_ingredients": [
-      "minecraft:apple",
-      "minecraft:beetroot",
-      "minecraft:beetroot_seeds",
-      "minecraft:brown_mushroom",
-      "minecraft:carrot",
-      "minecraft:cocoa_beans",
-      "minecraft:egg",
-      "minecraft:glow_berries",
-      "minecraft:honey_bottle",
-      "minecraft:melon",
-      "minecraft:melon_slice",
-      "minecraft:milk_bucket",
-      "minecraft:potato",
-      "minecraft:pumpkin",
-      "minecraft:red_mushroom",
-      "minecraft:sugar_cane",
-      "minecraft:sweet_berries",
-      "minecraft:wheat",
-      "minecraft:wheat_seeds"
     ]
   }
 }

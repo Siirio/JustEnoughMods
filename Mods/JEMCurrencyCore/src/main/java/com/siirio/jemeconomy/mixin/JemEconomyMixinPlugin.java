@@ -13,7 +13,7 @@ public final class JemEconomyMixinPlugin implements IMixinConfigPlugin {
     @Override public void onLoad(String mixinPackage) {}
     @Override public String getRefMapperConfig() { return null; }
     @Override public boolean shouldApplyMixin(String target, String mixin) {
-        return true;
+        return net.minecraftforge.fml.loading.FMLLoader.getLoadingModList().getModFileById("jem_economy") != null;
     }
     @Override public void acceptTargets(Set<String> mine, Set<String> others) {}
     @Override public List<String> getMixins() { return null; }

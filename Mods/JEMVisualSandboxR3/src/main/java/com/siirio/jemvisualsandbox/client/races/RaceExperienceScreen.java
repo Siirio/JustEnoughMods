@@ -2,6 +2,7 @@ package com.siirio.jemvisualsandbox.client.races;
 
 import com.siirio.jemvisualsandbox.workbench.RaceExperience;
 import com.siirio.jemvisualsandbox.workbench.RacePowerStages;
+import com.siirio.jemvisualsandbox.workbench.BloomMechanics;
 import com.siirio.jemvisualsandbox.workbench.SandboxNetwork;
 import java.util.ArrayList;
 import java.util.List;
@@ -300,8 +301,8 @@ public final class RaceExperienceScreen extends Screen {
         if (race == 2) {
             lines.add(Line.gap());
             lines.add(new Line(text("УЛУЧШЕНИЯ КОРНЕЙ", "ROOT UPGRADES"), ACCENTS[race]));
-            lines.add(new Line(text("I · блокировка действий; II · 3 урона/сек.; III · яд.",
-                    "I · action lock; II · 3 damage/sec; III · poison."), 0xDEDEDE));
+            lines.add(new Line(text("I · блокировка действий; II · 2,7 урона/сек.; III · яд после захвата.",
+                    "I · action lock; II · 2.7 damage/sec; III · poison after release."), 0xDEDEDE));
             lines.add(new Line(text("Открыты: " + status.bloomUpgrade() + "/3. Кнопки I–III открывают следующий доступный этап без пропусков.",
                     "Unlocked: " + status.bloomUpgrade() + "/3. Buttons I–III unlock the next available stage in order."), 0xB2B2B2));
         }
@@ -362,10 +363,10 @@ public final class RaceExperienceScreen extends Screen {
                 if(previewTier>=2){ru+=" Замедление у места прибытия: "+RacePowerStages.riftSlowTicks(previewTier)/20+" с, радиус "+RacePowerStages.riftSlowRadius(previewTier)+" блоков.";en+=" Arrival slow: "+RacePowerStages.riftSlowTicks(previewTier)/20+"s, radius "+RacePowerStages.riftSlowRadius(previewTier)+" blocks.";}
             }
             case 2 -> {
-                ru="Первое попадание: 6 HP; базовые корни ещё не блокируют действия.";en="Initial hit: 6 HP; base roots do not yet lock actions.";
+                ru="Первое попадание: "+number(BloomMechanics.INITIAL_DAMAGE)+" HP. Захват на "+BloomMechanics.GRIP_TICKS/20+" с: цель стоит на месте, но в базе может атаковать.";en="Initial hit: "+number(BloomMechanics.INITIAL_DAMAGE)+" HP. "+BloomMechanics.GRIP_TICKS/20+"-second grip: holds the target in place; base targets can still attack.";
                 if(previewTier>=1){ru+=" Блокировка действий.";en+=" Action lock.";}
-                if(previewTier>=2){ru+=" Сжатие: 3 HP/с.";en+=" Constriction: 3 HP/s.";}
-                if(previewTier>=3){ru+=" Яд.";en+=" Poison.";}
+                if(previewTier>=2){ru+=" Сжатие: "+number(BloomMechanics.SQUEEZE_DAMAGE)+" HP/с.";en+=" Constriction: "+number(BloomMechanics.SQUEEZE_DAMAGE)+" HP/s.";}
+                if(previewTier>=3){ru+=" После освобождения: яд 1 HP/с на 4,5 с, включая невосприимчивых к обычному яду мобов; оставляет 1 HP.";en+=" After release: poison 1 HP/s for 4.5s, including normally poison-immune mobs; leaves 1 HP.";}
             }
             case 3 -> {
                 ru="12 HP; радиус 8 блоков; один удар по цели.";en="12 HP; 8-block radius; one hit per target.";
@@ -381,7 +382,7 @@ public final class RaceExperienceScreen extends Screen {
             case 0 -> {ru="Автоматический страж появляется при здоровье ниже 40%; срок жизни "+RacePowerStages.guardianTicks(previewTier)/20+" с. B не является атакой.";en="Automatic guardian appears below 40% health; lifetime "+RacePowerStages.guardianTicks(previewTier)/20+"s. B is not an attack.";}
             case 1 -> {ru="Удерживай B 10 тиков: жемчуг с настоящей траекторией. Shift+B: отрицание гравитации на "+RacePowerStages.gravityTicks(previewTier)/20+" с.";en="Hold B for 10 ticks: pearl with its real trajectory. Shift+B: gravity denial for "+RacePowerStages.gravityTicks(previewTier)/20+"s.";}
             case 2 -> {ru="B включает/выключает временный лиственный мост: "+RacePowerStages.bridgeTicks(previewTier)/20+" с, "+RacePowerStages.bridgeForward(previewTier)+" блоков вперёд.";en="B toggles a temporary leaf bridge: "+RacePowerStages.bridgeTicks(previewTier)/20+"s, "+RacePowerStages.bridgeForward(previewTier)+" blocks forward.";}
-            case 3 -> {ru="Без 25 резонанса: эхо-зрение в радиусе "+RacePowerStages.echoRadius(previewTier)+" блоков. При 25 резонанса: восстановление +"+RacePowerStages.recoveryHeal(previewTier)+" HP и поглощение на "+RacePowerStages.absorptionTicks(previewTier)/20+" с. Это разные контекстные действия.";en="Below 25 resonance: echo vision within "+RacePowerStages.echoRadius(previewTier)+" blocks. At 25 resonance: recover +"+RacePowerStages.recoveryHeal(previewTier)+" HP and absorption for "+RacePowerStages.absorptionTicks(previewTier)/20+"s. These are distinct contextual actions.";}
+            case 3 -> {ru="Без 25 резонанса: эхо-зрение в радиусе "+RacePowerStages.echoRadius(previewTier)+" блоков. При 25 резонанса: восстановление +"+RacePowerStages.recoveryHeal(previewTier)+" HP; весь резонанс сбрасывается в 0; поглощение на "+RacePowerStages.absorptionTicks(previewTier)/20+" с. Это разные контекстные действия.";en="Below 25 resonance: echo vision within "+RacePowerStages.echoRadius(previewTier)+" blocks. At 25 resonance: recover +"+RacePowerStages.recoveryHeal(previewTier)+" HP; all resonance resets to 0; absorption for "+RacePowerStages.absorptionTicks(previewTier)/20+"s. These are distinct contextual actions.";}
             case 4 -> {ru="Всегда три последовательных огненных рассечения. Урон каждого: "+number(RacePowerStages.slashDamage(previewTier))+" HP; огонь "+RacePowerStages.fireSeconds(previewTier)+" с.";en="Always three successive fiery slashes. Each deals "+number(RacePowerStages.slashDamage(previewTier))+" HP; fire "+RacePowerStages.fireSeconds(previewTier)+"s.";}
         }
         lines.add(new Line(text(ru,en),0xE5E5E5));
@@ -435,11 +436,11 @@ public final class RaceExperienceScreen extends Screen {
         if (race == 4 && suffix.equals("buff.detail.3")) return text("B выполняет три последовательных огненных рассечения с рывками вперёд.",
                 "B performs three successive fiery slashes with forward pulls.");
         if (race == 2) {
-            if (suffix.equals("spell.detail") || suffix.equals("buff.detail.1")) return text("Корни захватывают врагов рядом. Базовое попадание: 6 урона. Доступные улучшения открываются последовательно во вкладке развития.",
-                    "Roots bind nearby enemies. Initial hit: 6 damage. Available upgrades unlock in order in progression.");
+            if (suffix.equals("spell.detail") || suffix.equals("buff.detail.1")) return text("Корни удерживают врагов рядом на месте "+BloomMechanics.GRIP_TICKS/20+" с. Первое попадание: "+number(BloomMechanics.INITIAL_DAMAGE)+" HP. В базе цель может атаковать; I блокирует действия, II добавляет сжатие, III — яд после освобождения.",
+                    "Roots hold nearby enemies in place for "+BloomMechanics.GRIP_TICKS/20+"s. Initial hit: "+number(BloomMechanics.INITIAL_DAMAGE)+" HP. Base targets can attack; I locks actions, II adds constriction, III adds poison after release.");
             if (suffix.equals("tier.short.1")) return text("I · доступна блокировка действий", "I · action lock available");
-            if (suffix.equals("tier.short.2")) return text("II · доступен урон 3/сек.", "II · 3 damage/sec available");
-            if (suffix.equals("tier.short.3")) return text("III · доступен яд", "III · poison available");
+            if (suffix.equals("tier.short.2")) return text("II · сжатие "+number(BloomMechanics.SQUEEZE_DAMAGE)+" HP/с", "II · constriction "+number(BloomMechanics.SQUEEZE_DAMAGE)+" HP/s");
+            if (suffix.equals("tier.short.3")) return text("III · яд после освобождения", "III · poison after release");
         }
         return Component.translatable("jem.roles.race." + RACES[race] + "." + suffix);
     }

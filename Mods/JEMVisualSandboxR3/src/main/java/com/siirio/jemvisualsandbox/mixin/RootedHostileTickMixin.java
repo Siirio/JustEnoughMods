@@ -15,4 +15,8 @@ public abstract class RootedHostileTickMixin {
     private void sandbox$rootedHostile(Entity entity, CallbackInfo callback) {
         if(SandboxHostileControl.pause(entity)) callback.cancel();
     }
+    @Inject(method="tickNonPassenger",at=@At("TAIL"))
+    private void sandbox$pinHostile(Entity entity, CallbackInfo callback) {
+        SandboxHostileControl.pin(entity);
+    }
 }

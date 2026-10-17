@@ -12,13 +12,13 @@ import net.minecraftforge.fml.common.Mod;
 /** Authenticated server projection; never computes or authorizes a hire. */
 @Mod.EventBusSubscriber(modid = JemSettlements.MOD_ID, value = Dist.CLIENT)
 public final class HireQuoteClient {
-    public record Quote(int entityId, long cost, long wage) { }
+    public record Quote(int entityId, long cost, long wage, boolean coins) { }
     private static Quote quote;
     private HireQuoteClient() { }
-    public static void accept(int entityId, long cost, long wage) {
+    public static void accept(int entityId, long cost, long wage, boolean coins) {
         var player = Minecraft.getInstance().player;
         if (cost < 0 || wage < 0 || player == null || !ModList.get().isLoaded("recruits") || !NativeHire.matches(player, entityId)) return;
-        quote = new Quote(entityId, cost, wage);
+        quote = new Quote(entityId, cost, wage, coins);
     }
     public static Quote quote(int entityId) { return quote != null && quote.entityId() == entityId ? quote : null; }
     @SubscribeEvent public static void logout(ClientPlayerNetworkEvent.LoggingOut event) { quote = null; }

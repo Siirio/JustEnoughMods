@@ -1,13 +1,13 @@
 # Economy registry coverage
 
-Generated from Atlas schema 1 at `2026-10-16T09:54:49.049109+00:00` for `cdd50f58ee16dbb847d7a8748a5c8e1b4835ca63`.
+Generated from Atlas schema 1 at `2026-10-17T13:48:02.089094+00:00` for `1d21365a332c255e2db3d6d2adc8a9f7612802f7`.
 
-Static evidence observed 17,061 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
+Static evidence observed 17,029 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
 
 | Mod | Registered | Reviewed | Unknown | BUY_AND_SELL | NONE |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | alexscaves | 610 | 0 | 610 | 0 | 610 |
-| alexsmobs | 322 | 3 | 319 | 2 | 320 |
+| alexsmobs | 321 | 3 | 318 | 2 | 319 |
 | animal_feeding_trough | 1 | 0 | 1 | 0 | 1 |
 | aquamirae | 88 | 2 | 86 | 1 | 87 |
 | backpacked | 12 | 0 | 12 | 0 | 12 |
@@ -61,13 +61,12 @@ Static evidence observed 17,061 canonical item IDs. This is not a Forge runtime 
 | infinitybuttons | 372 | 0 | 372 | 0 | 372 |
 | invincible | 3 | 0 | 3 | 0 | 3 |
 | irons_lib | 4 | 0 | 4 | 0 | 4 |
-| irons_spellbooks | 412 | 0 | 412 | 0 | 412 |
+| irons_spellbooks | 410 | 0 | 410 | 0 | 410 |
 | jacksgravestones | 1 | 0 | 1 | 0 | 1 |
-| jem_economy | 9 | 0 | 9 | 0 | 9 |
-| jem_pack_core | 5 | 0 | 5 | 0 | 5 |
-| jem_server | 4 | 0 | 4 | 0 | 4 |
-| jemcompat | 80 | 0 | 80 | 0 | 80 |
-| jemtwelveeyes | 1 | 0 | 1 | 0 | 1 |
+| jem_currency_core | 5 | 0 | 5 | 0 | 5 |
+| jem_economy | 1 | 0 | 1 | 0 | 1 |
+| jem_pack_core | 4 | 0 | 4 | 0 | 4 |
+| jemcompat | 78 | 0 | 78 | 0 | 78 |
 | kaleidoscope_compat | 218 | 0 | 218 | 0 | 218 |
 | kaleidoscope_cookery | 224 | 9 | 215 | 7 | 217 |
 | kaleidoscope_doll | 705 | 0 | 705 | 0 | 705 |
@@ -76,7 +75,7 @@ Static evidence observed 17,061 canonical item IDs. This is not a Forge runtime 
 | kiwi | 7 | 0 | 7 | 0 | 7 |
 | knightlib | 6 | 0 | 6 | 0 | 6 |
 | kubejs | 1 | 0 | 1 | 0 | 1 |
-| legendary_monsters | 380 | 0 | 380 | 0 | 380 |
+| legendary_monsters | 379 | 0 | 379 | 0 | 379 |
 | libraryferret | 15 | 0 | 15 | 0 | 15 |
 | litematicatool | 4 | 0 | 4 | 0 | 4 |
 | luminous_beasts | 183 | 0 | 183 | 0 | 183 |
@@ -93,7 +92,7 @@ Static evidence observed 17,061 canonical item IDs. This is not a Forge runtime 
 | paraglider | 14 | 0 | 14 | 0 | 14 |
 | patchouli | 13 | 0 | 13 | 0 | 13 |
 | primal | 104 | 3 | 101 | 1 | 103 |
-| railways | 1930 | 0 | 1930 | 0 | 1930 |
+| railways | 1928 | 0 | 1928 | 0 | 1928 |
 | recruits | 14 | 0 | 14 | 0 | 14 |
 | ribbits | 21 | 0 | 21 | 0 | 21 |
 | rottencreatures | 30 | 0 | 30 | 0 | 30 |
@@ -109,8 +108,8 @@ Static evidence observed 17,061 canonical item IDs. This is not a Forge runtime 
 | sootychimneys | 14 | 0 | 14 | 0 | 14 |
 | spawn | 311 | 3 | 308 | 3 | 308 |
 | spider_overhaul | 20 | 0 | 20 | 0 | 20 |
-| spudaciousshops | 230 | 0 | 230 | 0 | 230 |
-| tide | 451 | 25 | 426 | 25 | 426 |
+| spudaciousshops | 229 | 0 | 229 | 0 | 229 |
+| tide | 446 | 25 | 421 | 25 | 421 |
 | tinyinv | 2 | 0 | 2 | 0 | 2 |
 | toms_storage | 20 | 0 | 20 | 0 | 20 |
 | trials | 82 | 0 | 82 | 0 | 82 |
@@ -119,5 +118,4 @@ Static evidence observed 17,061 canonical item IDs. This is not a Forge runtime 
 | vanillabackport | 96 | 0 | 96 | 0 | 96 |
 | vinery | 171 | 15 | 156 | 15 | 156 |
 | whaleborne | 10 | 0 | 10 | 0 | 10 |
-| workers | 9 | 0 | 9 | 0 | 9 |
 | xtraarrows | 104 | 0 | 104 | 0 | 104 |

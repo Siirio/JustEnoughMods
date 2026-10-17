@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "entities",
-  "snapshot_sha": "cdd50f58ee16dbb847d7a8748a5c8e1b4835ca63",
+  "snapshot_sha": "1d21365a332c255e2db3d6d2adc8a9f7612802f7",
   "generation": {
-    "generated_utc": "2026-10-16T09:54:49.049109+00:00",
+    "generated_utc": "2026-10-17T13:48:02.089094+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -200,11 +200,7 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "minecraft:damage_type/is_projectile",
-        "minecraft:damage_type/sulfur_cube_with_block_immune_to",
-        "minecraft:entity_types/arrows",
-        "minecraft:items/arrows",
-        "netherexp:damage_type/can_disrupt_underground_ecto_slabs"
+        "minecraft:entity_types/arrows"
       ],
       "is_registered": null,
       "survival_obtainable": null,
@@ -474,6 +470,7 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:entity_types/boats",
         "enhancedai:entity_types/mobs/vehicle_anti_cheese/valid_vehicles"
       ],
       "is_registered": null,
@@ -677,6 +674,7 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
+        "c:entity_types/boats",
         "enhancedai:entity_types/mobs/vehicle_anti_cheese/valid_vehicles"
       ],
       "is_registered": null,
@@ -717,7 +715,7 @@
       "implementation_class": null,
       "tags": [
         "alexscaves:entity_types/ferromagnetic_entities",
-        "alexscaves:items/ferromagnetic_items"
+        "c:entity_types/minecarts"
       ],
       "is_registered": null,
       "survival_obtainable": null,
@@ -756,18 +754,9 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "alexscaves:items/raw_meats",
         "alexsmobs:entity_types/caiman_targets",
         "alexsmobs:entity_types/passive_land_animals",
         "alexsmobs:entity_types/snow_leopard_targets",
-        "alexsmobs:items/anaconda_foodstuffs",
-        "alexsmobs:items/maned_wolf_breedables",
-        "barnyardbuddies:item/workpet_foods",
-        "barnyardbuddies:items/workpet_foods",
-        "c:items/foods/food_poisoning",
-        "c:items/foods/raw_meat",
-        "c:items/foods/raw_meats",
-        "c:items/raw_chicken",
         "enhancedai:entity_types/all_mobs",
         "enhancedai:entity_types/animal/can_ignore_food_temptation",
         "enhancedai:entity_types/animal/can_panic",
@@ -779,22 +768,16 @@
         "enhancedai:entity_types/mobs/targeting/better_hurt_by",
         "enhancedai:entity_types/mobs/targeting/better_nearby_targeting",
         "enhancedai:entity_types/mobs/targeting/follow_range_override",
-        "forge:item/foods/raw_meat",
-        "forge:items/foods/raw_meat",
-        "forge:items/raw_chicken",
         "insanelib:entity_types/fix_follow_range",
         "irons_spellbooks:entity_types/always_heal",
         "minecraft:entity_types/dismounts_underwater",
         "minecraft:entity_types/fall_damage_immune",
         "minecraft:entity_types/followable_friendly_mobs",
-        "minecraft:item/meat",
-        "minecraft:items/meat",
         "primal:entity_types/bear_huntable",
         "primal:entity_types/crocodile_huntable",
         "primal:entity_types/eagle_huntable",
         "primal:entity_types/lion_huntable",
         "primal:entity_types/snake_huntable",
-        "primal:items/crocodile_breed_food",
         "spawn:entity_types/bluefish_frenzy_target"
       ],
       "is_registered": null,
@@ -834,14 +817,8 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "alexscaves:items/raw_meats",
         "alexsmobs:entity_types/caiman_targets",
         "alexsmobs:entity_types/giant_squid_targets",
-        "alexsmobs:items/alligator_snapping_turtle_breedables",
-        "alexsmobs:items/seagull_breedables",
-        "c:items/foods/raw_fish",
-        "c:items/foods/raw_fishes",
-        "c:items/raw_fishes",
         "cataclysm:entity_types/baby_leviathan_target",
         "cataclysm:entity_types/leviathan_target",
         "enhancedai:entity_types/all_mobs",
@@ -851,27 +828,16 @@
         "enhancedai:entity_types/mobs/targeting/better_nearby_targeting",
         "enhancedai:entity_types/mobs/targeting/follow_range_override",
         "forge:entity_types/fishes",
-        "forge:items/raw_fishes",
-        "forge:items/raw_fishes/cod",
         "immersive_aircraft:entity_types/water_animals",
         "immersive_weathering:entity_types/light_freeze_immune",
         "insanelib:entity_types/fix_follow_range",
         "kaleidoscope_cookery:entity_types/rice_growth_booster",
         "minecraft:entity_types/axolotl_hunt_targets",
         "minecraft:entity_types/freeze_immune_entity_types",
-        "minecraft:items/fishes",
         "natures_spirit:entity_types/impermeable_to_azolla",
         "primal:entity_types/crocodile_never_attack",
         "primal:entity_types/eagle_huntable",
-        "spawn:entity_types/bluefish_frenzy_target",
-        "spawn:items/angers_bluefish",
-        "spawn:items/booby_feeds",
-        "spawn:items/coastal_crab_feeds",
-        "spawn:items/custom_urchin_head_position",
-        "spawn:items/seal_feeds",
-        "spawn:items/tuna_feeds",
-        "tide:items/cat_food",
-        "tide:items/vanilla_fish"
+        "spawn:entity_types/bluefish_frenzy_target"
       ],
       "is_registered": null,
       "survival_obtainable": null,
@@ -911,7 +877,7 @@
       "implementation_class": null,
       "tags": [
         "alexscaves:entity_types/ferromagnetic_entities",
-        "alexscaves:items/ferromagnetic_items"
+        "c:entity_types/minecarts"
       ],
       "is_registered": null,
       "survival_obtainable": null,
@@ -1115,7 +1081,6 @@
         "enhancedai:entity_types/witch/allied_monsters/eligible_targets",
         "insanelib:entity_types/fix_follow_range",
         "jem_world_boss_tiers:entity_types/zeus_favorites",
-        "minecraft:banner_pattern/pattern_item/creeper",
         "primal:entity_types/never_attack",
         "true_ending:entity_types/main_night_mobs"
       ],
@@ -1431,12 +1396,7 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "bakery:items/eggs",
-        "balm:items/eggs",
-        "c:items/eggs",
-        "forge:items/eggs",
         "minecraft:entity_types/impact_projectiles",
-        "minecraft:items/eggs",
         "netherexp:entity_types/soul_glass_passable"
       ],
       "is_registered": null,
@@ -1575,6 +1535,7 @@
       "implementation_class": null,
       "tags": [
         "alexsmobs:entity_types/void_portal_ignores",
+        "c:entity_types/bosses",
         "cataclysm:entity_types/ignis_cant_poke",
         "cataclysm:entity_types/trap_block_not_detected",
         "endermanoverhaul:entity_types/cant_be_teleported",
@@ -1627,8 +1588,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "c:items/ender_pearls",
-        "irons_spellbooks:items/ender_focus",
         "nullscape:entity_types/not_teleportable"
       ],
       "is_registered": null,
@@ -1975,10 +1934,7 @@
       "display_name_ru_ru": null,
       "java_registry_class": null,
       "implementation_class": null,
-      "tags": [
-        "minecraft:damage_type/damages_helmet",
-        "minecraft:damage_type/sulfur_cube_with_block_immune_to"
-      ],
+      "tags": [],
       "is_registered": null,
       "survival_obtainable": null,
       "survival_source_evidence": [],
@@ -2053,8 +2009,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "minecraft:damage_type/is_fire",
-        "minecraft:damage_type/is_projectile",
         "minecraft:entity_types/impact_projectiles",
         "netherexp:entity_types/soul_glass_passable"
       ],
@@ -2279,7 +2233,7 @@
       "implementation_class": null,
       "tags": [
         "alexscaves:entity_types/ferromagnetic_entities",
-        "alexscaves:items/ferromagnetic_items"
+        "c:entity_types/minecarts"
       ],
       "is_registered": null,
       "survival_obtainable": null,
@@ -2713,8 +2667,7 @@
       "implementation_class": null,
       "tags": [
         "alexscaves:entity_types/ferromagnetic_entities",
-        "alexscaves:items/ferromagnetic_items",
-        "spawn:items/catches_octopus"
+        "c:entity_types/minecarts"
       ],
       "is_registered": null,
       "survival_obtainable": null,
@@ -3212,10 +3165,7 @@
       "display_name_ru_ru": null,
       "java_registry_class": null,
       "implementation_class": null,
-      "tags": [
-        "minecraft:damage_type/is_lightning",
-        "minecraft:damage_type/no_knockback"
-      ],
+      "tags": [],
       "is_registered": null,
       "survival_obtainable": null,
       "survival_source_evidence": [],
@@ -3446,9 +3396,8 @@
       "implementation_class": null,
       "tags": [
         "alexscaves:entity_types/ferromagnetic_entities",
-        "alexscaves:items/ferromagnetic_items",
-        "enhancedai:entity_types/mobs/vehicle_anti_cheese/valid_vehicles",
-        "spawn:items/catches_octopus"
+        "c:entity_types/minecarts",
+        "enhancedai:entity_types/mobs/vehicle_anti_cheese/valid_vehicles"
       ],
       "is_registered": null,
       "survival_obtainable": null,
@@ -3685,9 +3634,7 @@
       "display_name_ru_ru": "Лодка из бледного дуба",
       "java_registry_class": null,
       "implementation_class": null,
-      "tags": [
-        "minecraft:items/boats"
-      ],
+      "tags": [],
       "is_registered": null,
       "survival_obtainable": null,
       "survival_source_evidence": [],
@@ -3725,9 +3672,7 @@
       "display_name_ru_ru": "Грузовая лодка из бледного дуба",
       "java_registry_class": null,
       "implementation_class": null,
-      "tags": [
-        "minecraft:items/chest_boats"
-      ],
+      "tags": [],
       "is_registered": null,
       "survival_obtainable": null,
       "survival_source_evidence": [],
@@ -3996,7 +3941,6 @@
         "enhancedai:entity_types/mobs/vehicle_anti_cheese/prevent_riding",
         "insanelib:entity_types/fix_follow_range",
         "kaleidoscope_cookery:entity_types/pig_oil_source",
-        "minecraft:banner_pattern/pattern_item/piglin",
         "minecraft:entity_types/monsters_that_spawn_on_peaceful",
         "netherexp:entity_types/ecto_slab_pounce_damages",
         "primal:entity_types/crocodile_huntable"
@@ -4254,12 +4198,7 @@
       "display_name_ru_ru": null,
       "java_registry_class": null,
       "implementation_class": null,
-      "tags": [
-        "c:items/potions",
-        "create:items/deployable_drink",
-        "create:items/upright_on_belt",
-        "herbalbrews:items/small_water_fill"
-      ],
+      "tags": [],
       "is_registered": null,
       "survival_obtainable": null,
       "survival_source_evidence": [],
@@ -4297,12 +4236,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "alexscaves:items/raw_meats",
-        "alexsmobs:items/mimic_octopus_pufferfish_items",
-        "c:items/foods/food_poisoning",
-        "c:items/foods/raw_fish",
-        "c:items/foods/raw_fishes",
-        "c:items/raw_fishes",
         "enhancedai:entity_types/all_mobs",
         "enhancedai:entity_types/mobs/can_run_from_explosions",
         "enhancedai:entity_types/mobs/targeting/apply_xray",
@@ -4310,14 +4243,11 @@
         "enhancedai:entity_types/mobs/targeting/better_nearby_targeting",
         "enhancedai:entity_types/mobs/targeting/follow_range_override",
         "forge:entity_types/fishes",
-        "forge:items/raw_fishes",
         "immersive_aircraft:entity_types/water_animals",
         "insanelib:entity_types/fix_follow_range",
         "kaleidoscope_cookery:entity_types/rice_growth_booster",
         "minecraft:entity_types/axolotl_hunt_targets",
-        "minecraft:items/fishes",
-        "natures_spirit:entity_types/impermeable_to_azolla",
-        "tide:items/vanilla_fish"
+        "natures_spirit:entity_types/impermeable_to_azolla"
       ],
       "is_registered": null,
       "survival_obtainable": null,
@@ -4356,16 +4286,10 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "alexscaves:items/raw_meats",
         "alexsmobs:entity_types/bald_eagle_targets",
         "alexsmobs:entity_types/caiman_targets",
         "alexsmobs:entity_types/passive_land_animals",
         "alexsmobs:entity_types/snow_leopard_targets",
-        "alexsmobs:items/maned_wolf_breedables",
-        "barnyardbuddies:item/workpet_foods",
-        "barnyardbuddies:items/workpet_foods",
-        "c:items/foods/raw_meat",
-        "c:items/foods/raw_meats",
         "domesticationinnovation:entity_types/petstore_cage_0",
         "enhancedai:entity_types/all_mobs",
         "enhancedai:entity_types/animal/can_ignore_food_temptation",
@@ -4378,14 +4302,10 @@
         "enhancedai:entity_types/mobs/targeting/better_hurt_by",
         "enhancedai:entity_types/mobs/targeting/better_nearby_targeting",
         "enhancedai:entity_types/mobs/targeting/follow_range_override",
-        "forge:item/foods/raw_meat",
-        "forge:items/foods/raw_meat",
         "immersive_weathering:entity_types/light_freeze_immune",
         "insanelib:entity_types/fix_follow_range",
         "minecraft:entity_types/followable_friendly_mobs",
         "minecraft:entity_types/powder_snow_walkable_mobs",
-        "minecraft:item/meat",
-        "minecraft:items/meat",
         "natures_spirit:entity_types/cant_succulent_slowed",
         "primal:entity_types/bear_huntable",
         "primal:entity_types/crocodile_huntable",
@@ -4481,15 +4401,9 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "alexscaves:items/raw_meats",
         "alexsmobs:entity_types/bald_eagle_targets",
         "alexsmobs:entity_types/caiman_targets",
         "alexsmobs:entity_types/giant_squid_targets",
-        "alexsmobs:items/grizzly_breedables",
-        "alexsmobs:items/grizzly_tameables",
-        "c:items/foods/raw_fish",
-        "c:items/foods/raw_fishes",
-        "c:items/raw_fishes",
         "cataclysm:entity_types/baby_leviathan_target",
         "cataclysm:entity_types/leviathan_target",
         "enhancedai:entity_types/all_mobs",
@@ -4499,25 +4413,17 @@
         "enhancedai:entity_types/mobs/targeting/better_nearby_targeting",
         "enhancedai:entity_types/mobs/targeting/follow_range_override",
         "forge:entity_types/fishes",
-        "forge:items/raw_fishes",
-        "forge:items/raw_fishes/salmon",
         "immersive_aircraft:entity_types/water_animals",
         "immersive_weathering:entity_types/light_freeze_immune",
         "insanelib:entity_types/fix_follow_range",
         "kaleidoscope_cookery:entity_types/rice_growth_booster",
         "minecraft:entity_types/axolotl_hunt_targets",
         "minecraft:entity_types/freeze_immune_entity_types",
-        "minecraft:items/fishes",
         "natures_spirit:entity_types/impermeable_to_azolla",
         "primal:entity_types/bear_huntable",
         "primal:entity_types/crocodile_never_attack",
         "primal:entity_types/eagle_huntable",
-        "spawn:entity_types/bluefish_frenzy_target",
-        "spawn:items/angers_bluefish",
-        "spawn:items/seal_feeds",
-        "spawn:items/tuna_feeds",
-        "tide:items/cat_food",
-        "tide:items/vanilla_fish"
+        "spawn:entity_types/bluefish_frenzy_target"
       ],
       "is_registered": null,
       "survival_obtainable": null,
@@ -4780,7 +4686,6 @@
         "jem_server:entity_types/blood_moon/ranged/low_weight",
         "jem_server:entity_types/raid_allies/wither",
         "minecraft:entity_types/skeletons",
-        "minecraft:painting_variant/placeable",
         "trials:entity_types/armorable",
         "true_ending:entity_types/main_night_mobs"
       ],
@@ -5078,9 +4983,7 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "jemcompat:items/freezing_impact_items",
         "minecraft:entity_types/impact_projectiles",
-        "minecraft:items/happy_ghast_food",
         "netherexp:entity_types/soul_glass_passable"
       ],
       "is_registered": null,
@@ -5120,7 +5023,8 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "alexscaves:entity_types/ferromagnetic_entities"
+        "alexscaves:entity_types/ferromagnetic_entities",
+        "c:entity_types/minecarts"
       ],
       "is_registered": null,
       "survival_obtainable": null,
@@ -5159,8 +5063,7 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "minecraft:entity_types/arrows",
-        "minecraft:items/arrows"
+        "minecraft:entity_types/arrows"
       ],
       "is_registered": null,
       "survival_obtainable": null,
@@ -5635,10 +5538,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "alexscaves:blocks/remote_detonator_activates",
-        "minecraft:blocks/enderman_holdable",
-        "minecraft:items/sulfur_cube_archetype/explosive",
-        "primal:items/crocodile_explosive",
         "true_ending:entity_types/tnt"
       ],
       "is_registered": null,
@@ -5679,8 +5578,7 @@
       "implementation_class": null,
       "tags": [
         "alexscaves:entity_types/ferromagnetic_entities",
-        "alexscaves:items/ferromagnetic_items",
-        "primal:items/crocodile_explosive",
+        "c:entity_types/minecarts",
         "true_ending:entity_types/tnt"
       ],
       "is_registered": null,
@@ -5770,17 +5668,8 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "c:items/tools/melee_weapon",
-        "c:items/tools/ranged_weapon",
-        "c:items/tools/ranged_weapons",
-        "c:items/tools/spear",
-        "c:items/tools/spears",
         "cataclysm:entity_types/dimensional_lift_immune",
-        "minecraft:damage_type/is_projectile",
-        "minecraft:damage_type/sulfur_cube_with_block_immune_to",
         "minecraft:entity_types/impact_projectiles",
-        "minecraft:items/tools",
-        "netherexp:damage_type/can_disrupt_underground_ecto_slabs",
         "netherexp:entity_types/soul_glass_passable"
       ],
       "is_registered": null,
@@ -5820,15 +5709,9 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "alexscaves:items/raw_meats",
         "alexsmobs:entity_types/caiman_targets",
         "alexsmobs:entity_types/giant_squid_targets",
         "alexsmobs:entity_types/mantis_shrimp_targets",
-        "alexsmobs:items/mantis_shrimp_tameables",
-        "alexsmobs:items/mimic_octopus_breedables",
-        "c:items/foods/raw_fish",
-        "c:items/foods/raw_fishes",
-        "c:items/raw_fishes",
         "cataclysm:entity_types/baby_leviathan_target",
         "cataclysm:entity_types/leviathan_target",
         "enhancedai:entity_types/all_mobs",
@@ -5838,19 +5721,13 @@
         "enhancedai:entity_types/mobs/targeting/better_nearby_targeting",
         "enhancedai:entity_types/mobs/targeting/follow_range_override",
         "forge:entity_types/fishes",
-        "forge:items/raw_fishes",
         "immersive_aircraft:entity_types/water_animals",
         "insanelib:entity_types/fix_follow_range",
         "kaleidoscope_cookery:entity_types/rice_growth_booster",
         "minecraft:entity_types/axolotl_hunt_targets",
-        "minecraft:items/fishes",
         "natures_spirit:entity_types/impermeable_to_azolla",
         "primal:entity_types/crocodile_never_attack",
-        "spawn:entity_types/bluefish_frenzy_target",
-        "spawn:items/angers_bluefish",
-        "spawn:items/sunfish_feeds",
-        "spawn:items/tuna_feeds",
-        "tide:items/vanilla_fish"
+        "spawn:entity_types/bluefish_frenzy_target"
       ],
       "is_registered": null,
       "survival_obtainable": null,
@@ -8358,22 +8235,14 @@
       "tags": [
         "alexsmobs:entity_types/ignores_kimono",
         "alexsmobs:entity_types/sunbird_scorch_targets",
-        "cataclysm:damage_type/bypasses_hurt_time",
+        "c:entity_types/bosses",
         "cataclysm:entity_types/ignis_cant_poke",
-        "cataclysm:mob_effect/effective_for_bosses",
-        "dummmmmmy:damage_type/is_wither",
         "endermanoverhaul:entity_types/cant_be_teleported",
         "exposure:entity_types/ignores_camera",
         "immersive_weathering:entity_types/light_freeze_immune",
-        "irons_spellbooks:damage_type/bypass_evasion",
-        "irons_spellbooks:damage_type/long_cast_ignore",
         "jem_world_boss_tiers:entity_types/boss_frenzy_excluded",
-        "kaleidoscope_cookery:damage_type/satiated_shield_weakness",
-        "minecraft:damage_type/bypasses_armor",
-        "minecraft:damage_type/no_knockback",
         "minecraft:entity_types/fall_damage_immune",
         "minecraft:entity_types/freeze_immune_entity_types",
-        "minecraft:painting_variant/placeable",
         "netherexp:entity_types/ignores_treacherous_candle",
         "netherexp:entity_types/stampede_cannot_run_over",
         "nullscape:entity_types/not_teleportable",
@@ -8476,9 +8345,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "dummmmmmy:damage_type/is_wither",
-        "kaleidoscope_cookery:damage_type/satiated_shield_weakness",
-        "minecraft:damage_type/is_projectile",
         "minecraft:entity_types/impact_projectiles",
         "netherexp:entity_types/phantasm_hull_protects_blacklist",
         "netherexp:entity_types/soul_glass_passable"

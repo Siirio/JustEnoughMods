@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = JemSettlements.MOD_ID, value = Dist.CLIENT)
 public final class NobleQuoteClient {
-    public record Quote(long cost, long wage) { }
+    public record Quote(long cost, long wage, boolean coins) { }
     private static int nobleId = -1;
     private static Quote hoveredPrice;
     private static long spendable, receivedAt;
@@ -28,7 +28,7 @@ public final class NobleQuoteClient {
         Map<ResourceLocation, Quote> next = new HashMap<>();
         for (Tag value : view.getList("Quotes", Tag.TAG_COMPOUND)) {
             var row = (CompoundTag) value; var id = ResourceLocation.tryParse(row.getString("Id"));
-            if (id != null && row.getLong("Cost") > 0 && row.getLong("Wage") >= 0) next.put(id, new Quote(row.getLong("Cost"), row.getLong("Wage")));
+            if (id != null && row.getLong("Cost") > 0 && row.getLong("Wage") >= 0) next.put(id, new Quote(row.getLong("Cost"), row.getLong("Wage"), view.getBoolean("CoinCurrency")));
         }
         nobleId = view.getInt("NobleId"); spendable = view.getLong("Spendable"); quotes = Map.copyOf(next); receivedAt = level.getGameTime();
     }

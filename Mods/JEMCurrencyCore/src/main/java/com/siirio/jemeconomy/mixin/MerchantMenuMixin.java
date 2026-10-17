@@ -36,7 +36,7 @@ public abstract class MerchantMenuMixin extends AbstractContainerMenu implements
     @Inject(method = "<init>(ILnet/minecraft/world/entity/player/Inventory;Lnet/minecraft/world/item/trading/Merchant;)V", at = @At("TAIL"))
     private void jem$attach(int id, Inventory inventory, Merchant merchant, CallbackInfo callback) {
         if (!(inventory.player instanceof ServerPlayer player) || !(merchant instanceof AbstractVillager villager)
-                || !CurrencyAuthority.active(player)) return;
+                || !CurrencyAuthority.merchantActive(player)) return;
         jem$session = new NativeTradeSession((MerchantMenu) (Object) this, tradeContainer, villager, player);
         ((NativeTradeContainer) tradeContainer).jem$bind(jem$session);
         Slot guardedResult = new com.siirio.jemeconomy.merchant.NativeCoinResultSlot(tradeContainer);

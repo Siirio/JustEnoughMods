@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "items",
-  "snapshot_sha": "cdd50f58ee16dbb847d7a8748a5c8e1b4835ca63",
+  "snapshot_sha": "1d21365a332c255e2db3d6d2adc8a9f7612802f7",
   "generation": {
-    "generated_utc": "2026-10-16T09:54:49.049109+00:00",
+    "generated_utc": "2026-10-17T13:48:02.089094+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -479,9 +479,7 @@
       "display_name_ru_ru": "Блок банановой склизи",
       "java_registry_class": null,
       "implementation_class": null,
-      "tags": [
-        "minecraft:blocks/mineable/shovel"
-      ],
+      "tags": [],
       "is_registered": null,
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
@@ -1363,7 +1361,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "alexsmobs:entity_types/giant_squid_targets",
         "minecraft:items/fishes"
       ],
       "is_registered": null,
@@ -1910,8 +1907,7 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "alexsmobs:items/animal_dictionary_ingredient",
-        "minecraft:blocks/mineable/pickaxe"
+        "alexsmobs:items/animal_dictionary_ingredient"
       ],
       "is_registered": null,
       "survival_obtainable": null,
@@ -2960,9 +2956,7 @@
       "display_name_ru_ru": "Кристаллизованная банановая склизь",
       "java_registry_class": null,
       "implementation_class": null,
-      "tags": [
-        "minecraft:blocks/mineable/pickaxe"
-      ],
+      "tags": [],
       "is_registered": null,
       "survival_obtainable": null,
       "acquisition_class": "unresolved",
@@ -5030,12 +5024,6 @@
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [
-        "alexsmobs:entity_types/anaconda_targets",
-        "alexsmobs:entity_types/bald_eagle_targets",
-        "alexsmobs:entity_types/caiman_targets",
-        "alexsmobs:entity_types/giant_squid_targets",
-        "alexsmobs:entity_types/mantis_shrimp_targets",
-        "domesticationinnovation:entity_types/petstore_fishtank",
         "minecraft:items/fishes"
       ],
       "is_registered": null,
@@ -5815,9 +5803,7 @@
       "display_name_ru_ru": "Генератор вихрей",
       "java_registry_class": null,
       "implementation_class": null,
-      "tags": [
-        "minecraft:blocks/mineable/pickaxe"
-      ],
+      "tags": [],
       "is_registered": null,
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
@@ -6088,9 +6074,7 @@
       "display_name_ru_ru": "Кормушка для колибри",
       "java_registry_class": null,
       "implementation_class": null,
-      "tags": [
-        "minecraft:blocks/mineable/pickaxe"
-      ],
+      "tags": [],
       "is_registered": null,
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
@@ -6585,9 +6569,7 @@
       "display_name_ru_ru": "Туннель муравейника",
       "java_registry_class": null,
       "implementation_class": null,
-      "tags": [
-        "minecraft:blocks/mineable/shovel"
-      ],
+      "tags": [],
       "is_registered": null,
       "survival_obtainable": null,
       "acquisition_class": "unresolved",
@@ -6694,9 +6676,7 @@
       "display_name_ru_ru": "Муравейник",
       "java_registry_class": null,
       "implementation_class": null,
-      "tags": [
-        "minecraft:blocks/mineable/shovel"
-      ],
+      "tags": [],
       "is_registered": null,
       "survival_obtainable": null,
       "acquisition_class": "unresolved",
@@ -8769,9 +8749,7 @@
       "display_name_ru_ru": "Радужное стекло",
       "java_registry_class": null,
       "implementation_class": null,
-      "tags": [
-        "minecraft:blocks/mineable/pickaxe"
-      ],
+      "tags": [],
       "is_registered": null,
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
@@ -9428,9 +9406,7 @@
       "display_name_ru_ru": "Скалк-всплеск",
       "java_registry_class": null,
       "implementation_class": null,
-      "tags": [
-        "minecraft:blocks/mineable/hoe"
-      ],
+      "tags": [],
       "is_registered": null,
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
@@ -15961,56 +15937,6 @@
       "trade_policy_ref": "trade:alexsmobs:stink_ray_hand"
     },
     {
-      "registry_id": "alexsmobs:stink_ray_hand_base",
-      "registry_type": "item",
-      "schema_version": 1,
-      "mod_id": "alexsmobs",
-      "mod_name": "Alex's Mobs",
-      "mod_version": "1.22.9",
-      "source_jar": "alexsmobs-1.22.9.jar",
-      "source_sha256": "16bc5bcc19db9029c24f951346ec71098e6f5b0afef96e61894a2e9407aad37c",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/alexsmobs/models/item/stink_ray_hand_base.json"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "java_registry_class": null,
-      "implementation_class": null,
-      "tags": [],
-      "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
-      "source_provenance": [
-        "alexsmobs-1.22.9.jar:assets/alexsmobs/models/item/stink_ray_hand_base.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "variant_model": {
-        "kind": "registry_id",
-        "stack_dependent": null,
-        "reason": "Static artifact cannot prove all ItemStack variants"
-      },
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "categories": [],
-      "max_stack_size": null,
-      "durability": null,
-      "is_damageable": null,
-      "rarity": null,
-      "fire_resistant": null,
-      "equipment_slots": [],
-      "enchantability": null,
-      "crafting_remainder": null,
-      "repair_ingredients": [],
-      "block_item_id": null,
-      "acquisition_routes": [],
-      "uses": [],
-      "safe_canonical_stack": null,
-      "trade_policy_ref": "trade:alexsmobs:stink_ray_hand_base"
-    },
-    {
       "registry_id": "alexsmobs:stink_ray_inventory",
       "registry_type": "item",
       "schema_version": 1,
@@ -16320,9 +16246,7 @@
       "display_name_ru_ru": "Страддлитовый блок",
       "java_registry_class": null,
       "implementation_class": null,
-      "tags": [
-        "minecraft:blocks/mineable/pickaxe"
-      ],
+      "tags": [],
       "is_registered": null,
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
@@ -16921,9 +16845,7 @@
       "display_name_ru_ru": "Трансмутационный стол",
       "java_registry_class": null,
       "implementation_class": null,
-      "tags": [
-        "minecraft:blocks/mineable/pickaxe"
-      ],
+      "tags": [],
       "is_registered": null,
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
@@ -17355,9 +17277,7 @@
       "display_name_ru_ru": "Клюв червя пустоты",
       "java_registry_class": null,
       "implementation_class": null,
-      "tags": [
-        "minecraft:blocks/mineable/pickaxe"
-      ],
+      "tags": [],
       "is_registered": null,
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",

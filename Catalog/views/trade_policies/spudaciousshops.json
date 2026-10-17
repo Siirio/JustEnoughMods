@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "cdd50f58ee16dbb847d7a8748a5c8e1b4835ca63",
+  "snapshot_sha": "1d21365a332c255e2db3d6d2adc8a9f7612802f7",
   "generation": {
-    "generated_utc": "2026-10-16T09:54:49.049109+00:00",
+    "generated_utc": "2026-10-17T13:48:02.089094+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -5696,44 +5696,6 @@
       "independent_ordinary_routes": [
         "spuds_shops:shop_dark_oak_yellow"
       ],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "spudaciousshops:shop_item",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "spudaciousshops",
-      "mod_name": "Spud's Shops",
-      "mod_version": "1.10.2-forge-1.20.1",
-      "source_jar": "spudaciousshops-1.10.2-forge-1.20.1.jar",
-      "source_sha256": "0e908264095b8f7673c72d0a56ddcb19d2e839184c1cdb5741a4076e5cc99bf8",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/spudaciousshops/models/item/shop_item.json"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "spudaciousshops-1.10.2-forge-1.20.1.jar:assets/spudaciousshops/models/item/shop_item.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,

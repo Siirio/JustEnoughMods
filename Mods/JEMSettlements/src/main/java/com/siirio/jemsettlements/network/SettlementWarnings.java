@@ -29,7 +29,7 @@ public final class SettlementWarnings {
             if (player == null) continue;
             Set<String> active = new HashSet<>();
             if (data.residents(town.id()).stream().anyMatch(r -> r.living() && r.mood() < 10)) active.add("critical");
-            if (town.payroll().stream().anyMatch(p -> !p.paid())) active.add("payroll");
+            if (town.payroll().stream().anyMatch(p -> p.currentCurrency() && !p.paid())) active.add("payroll");
             if (data.workforce(town.id()).stream().anyMatch(r -> r.loyalty() == com.siirio.jemsettlements.workforce.WorkforceRecord.Loyalty.REBELLIOUS)) active.add("rebellion");
             if (town.simulation().production().stream().anyMatch(p -> p.status() == com.siirio.jemsettlements.simulation.ProductionObligation.Status.OUTPUT_FULL)) active.add("storage");
             Set<String> previous = CONDITIONS.put(town.id(), active);

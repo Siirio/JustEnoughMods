@@ -4,15 +4,27 @@ version = '2.1.0'
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 minecraft { mappings channel: 'official', version: '1.20.1' }
 repositories { flatDir { dirs '../../Server/mods' } }
+def xaeroWorldMap = file('../../Client/ManagedPack/mods/xaeroworldmap-forge-1.20.1-1.46.0.jar')
+def xaeroLib = layout.buildDirectory.file('xaero-lib/xaerolib-forge-1.20.1-1.7.3.jar')
+tasks.register('extractXaeroLib', Copy) {
+    from(zipTree(xaeroWorldMap)) {
+        include 'META-INF/jarjar/xaerolib-forge-1.20.1-1.7.3.jar'
+        eachFile { path = name }
+        includeEmptyDirs = false
+    }
+    into layout.buildDirectory.dir('xaero-lib')
+}
+tasks.named('compileJava').configure { dependsOn 'extractXaeroLib' }
 
 dependencies {
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
+    compileOnly files(xaeroWorldMap)
+    compileOnly files(xaeroLib)
     compileOnly files('../JEMIdentity/build/classes/java/main')
     compileOnly files('../JEMCurrencyCore/build/classes/java/main')
     compileOnly fg.deobf(files('../../Server/mods/Jade-1.20.1-Forge-11.13.3.jar'))
     compileOnly fg.deobf('local:recruits:1.20.1-1.15.2')
-    compileOnly fg.deobf(files('../../Server/mods/workers-1.20.1-2.0.3.jar'))
 }
 mixin { add sourceSets.main, 'jem_settlements.refmap.json'; config 'jem_settlements.mixins.json' }
 

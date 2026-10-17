@@ -73,7 +73,9 @@ public final class AbilityPreviewPresentation {
 
         if (slot == 0 && race == 2) {
 
-            float impact = bloomStage >= 2 && age >= 20 && age < 80 ? 20 * (int)(age / 20) : 0;
+            float impact = bloomStage >= 2 && age >= 20 && age < BloomMechanics.GRIP_TICKS ? 20 * (int)(age / 20) : 0;
+            if(bloomStage>=3 && age>=BloomMechanics.GRIP_TICKS+20 && age<BloomMechanics.GRIP_TICKS+BloomMechanics.POISON_TICKS)
+                impact=BloomMechanics.GRIP_TICKS+20*(int)((age-BloomMechanics.GRIP_TICKS)/20);
 
             return age - impact;
 
@@ -123,17 +125,9 @@ public final class AbilityPreviewPresentation {
 
                 case 2 -> {
 
-                    // The live target-fitted entity_vines mesh has one shared visual.
-
-                    // Stage0 releases normally; stages1–3 hold through tick78/90.
-
-                    double tick = age;
-
-                    if (bloomStage > 0) tick = age < 16 ? age : age < 78 ? 16 : 16 + (age - 78) * 8 / 12;
-
-                    if (bloomStage == 0 || age < 90)
-
-                        mesh(context, "entity_vines", 2, TARGET, 0, tick, .76F, .85F, .76F);
+                    // All stages share the live three-second grip and release poses.
+                    if(age<BloomMechanics.GRIP_TICKS+12)
+                        mesh(context, "entity_vines", 2, TARGET, 0, BloomMechanics.rootPoseTick(age), .76F, .85F, .76F);
 
                 }
 

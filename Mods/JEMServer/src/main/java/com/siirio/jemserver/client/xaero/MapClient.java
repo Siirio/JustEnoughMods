@@ -5,7 +5,6 @@ import com.siirio.jemserver.map.RegionGeometry;
 import java.util.List;
 import java.util.UUID;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
@@ -20,11 +19,6 @@ public final class MapClient {
     private static List<Layer> eventLayers = List.of();
     private static List<MapNetwork.ProjectArea> projects = List.of();
     private static List<Layer> projectLayers = List.of();
-    private static List<MapNetwork.SettlementArea> settlements = List.of();
-    private static List<Layer> settlementLayers = List.of();
-    public record SettlementDraft(UUID id, ResourceLocation dimension, int targetX, int targetZ, int minX, int minZ, int maxX, int maxZ, long cost) {}
-    private static SettlementDraft settlementDraft;
-    private static boolean draggingSettlement;
     private static boolean connected;
     private static final int BORDER_ALPHA = 0xFF000000;
     private static final int MAP_REFRESH_TICKS = 40;
@@ -38,9 +32,6 @@ public final class MapClient {
     }
     public static void accept(MapNetwork.Snapshot snapshot) {
         deaths = List.copyOf(snapshot.deaths()); acceptEvents(snapshot.events()); acceptProjects(snapshot.projects());
-        settlements = List.copyOf(snapshot.settlements());
-        settlementLayers = settlements.stream().map(town -> new Layer(town.dimension(), town.owned() ? com.siirio.jemserver.client.ui.JemPalette.PEACH : com.siirio.jemserver.client.ui.JemPalette.COPPER, town.owned() ? 0x42 : 0x2C,
-                RegionGeometry.union(List.of(new RegionGeometry.Rectangle(town.minX(), town.minZ(), town.maxX() + 1, town.maxZ() + 1))))).toList();
         connected = true;
     }
     private static void acceptProjects(List<MapNetwork.ProjectArea> areas) {
@@ -70,28 +61,7 @@ public final class MapClient {
     }
     public static boolean connected() { return connected; }
     @SubscribeEvent
-    public static void logout(ClientPlayerNetworkEvent.LoggingOut event) { deaths = List.of(); events = List.of(); eventLayers = List.of(); projects = List.of(); projectLayers = List.of(); settlements = List.of(); settlementLayers = List.of(); settlementDraft = null; draggingSettlement = false; connected = false; ProjectRegionClient.cancel(); }
-    public static boolean beginSettlementDrag(ResourceLocation dimension, int x, int z) {
-        var town = settlement(dimension, x, z, true); if (town == null) return false;
-        draggingSettlement = true; updateSettlementDrag(dimension, x, z); return true;
-    }
-    public static void updateSettlementDrag(ResourceLocation dimension, int x, int z) {
-        if (!draggingSettlement || settlementDraft == null && settlement(dimension, x, z, true) == null) return;
-        var town = settlementDraft == null ? settlement(dimension, x, z, true) : settlements.stream().filter(value -> value.id().equals(settlementDraft.id())).findFirst().orElse(null);
-        if (town == null || !town.dimension().equals(dimension)) return;
-        int tx = Math.max(town.center().getX() - 256, Math.min(town.center().getX() + 256, x));
-        int tz = Math.max(town.center().getZ() - 256, Math.min(town.center().getZ() + 256, z));
-        int minX = Math.min(town.minX(), tx), maxX = Math.max(town.maxX(), tx), minZ = Math.min(town.minZ(), tz), maxZ = Math.max(town.maxZ(), tz);
-        long cost = (long) (maxX - minX + 1) * (maxZ - minZ + 1) - town.area();
-        settlementDraft = new SettlementDraft(town.id(), dimension, tx, tz, minX, minZ, maxX, maxZ, Math.multiplyExact(100L, Math.max(0L, cost)));
-    }
-    public static boolean finishSettlementDrag() { boolean result = draggingSettlement && settlementDraft != null && settlementDraft.cost() > 0L; draggingSettlement = false; return result; }
-    public static SettlementDraft pendingSettlement(ResourceLocation dimension, int x, int z) { return settlementDraft != null && settlementDraft.dimension().equals(dimension) && settlementDraft.targetX() == x && settlementDraft.targetZ() == z ? settlementDraft : null; }
-    public static void clearSettlementPreview() { settlementDraft = null; draggingSettlement = false; }
-    public static MapNetwork.SettlementArea settlement(ResourceLocation dimension, int x, int z, boolean ownedOnly) {
-        return settlements.stream().filter(town -> (!ownedOnly || town.owned()) && town.dimension().equals(dimension)
-                && x >= town.minX() && x <= town.maxX() && z >= town.minZ() && z <= town.maxZ()).findFirst().orElse(null);
-    }
+    public static void logout(ClientPlayerNetworkEvent.LoggingOut event) { deaths = List.of(); events = List.of(); eventLayers = List.of(); projects = List.of(); projectLayers = List.of(); connected = false; ProjectRegionClient.cancel(); }
     public static UUID death(ResourceLocation dimension, int x, int y, int z) {
         return deaths.stream().filter(death -> death.dimension().equals(dimension) && death.position().getX() == x && death.position().getY() == y && death.position().getZ() == z).map(MapNetwork.Death::id).findFirst().orElse(null);
     }
@@ -110,48 +80,4 @@ public final class MapClient {
         return projects.stream().filter(project -> project.dimension().equals(dimension) && project.rectangles().stream().anyMatch(rectangle ->
                 x >= rectangle.minX() && x < rectangle.maxX() && z >= rectangle.minZ() && z < rectangle.maxZ())).findFirst().orElse(null);
     }
-    public static void render(GuiGraphics graphics, ResourceLocation dimension, double cameraX, double cameraZ, double scale, int width, int height,
-                              int hoverX, int hoverZ, int mouseX, int mouseY) {
-        if (!connected) return;
-        renderLayers(graphics, dimension, cameraX, cameraZ, scale, width, height, settlementLayers);
-        if (draggingSettlement) updateSettlementDrag(dimension, hoverX, hoverZ);
-        if (settlementDraft != null && settlementDraft.dimension().equals(dimension)) {
-            var draft = settlementDraft;
-            var layer = new Layer(draft.dimension(), com.siirio.jemserver.client.ui.JemPalette.GREEN, 0x56,
-                    RegionGeometry.union(List.of(new RegionGeometry.Rectangle(draft.minX(), draft.minZ(), draft.maxX() + 1, draft.maxZ() + 1))));
-            renderLayers(graphics, dimension, cameraX, cameraZ, scale, width, height, List.of(layer));
-        }
-        var font = Minecraft.getInstance().font;
-        var settlement = settlement(dimension, hoverX, hoverZ, false);
-        net.minecraft.network.chat.Component label = settlement == null ? null : net.minecraft.network.chat.Component.literal(settlement.name());
-        if (label != null && mouseX >= 0 && mouseX < width && mouseY >= 0 && mouseY < height) {
-            var fitted = font.substrByWidth(label, Math.max(1, width - 8));
-            int x = Math.max(4, Math.min(width - font.width(fitted) - 4, mouseX + 8));
-            int y = Math.max(4, Math.min(height - font.lineHeight - 4, mouseY + 12));
-            graphics.drawString(font, fitted.getString(), x, y, com.siirio.jemserver.client.ui.JemPalette.CREAM, true);
-        }
-    }
-    private static void renderLayers(GuiGraphics graphics, ResourceLocation dimension, double cameraX, double cameraZ, double scale, int width, int height, List<Layer> source) {
-        for (var layer : source) {
-            if (!layer.dimension().equals(dimension)) continue;
-            int color = layer.color() & 0xFFFFFF;
-            if (layer.fillAlpha() > 0) for (var fill : layer.mesh().fills()) {
-                int x1 = (int) Math.floor(width / 2.0 + (fill.minX() - cameraX) * scale);
-                int z1 = (int) Math.floor(height / 2.0 + (fill.minZ() - cameraZ) * scale);
-                int x2 = (int) Math.ceil(width / 2.0 + (fill.maxX() - cameraX) * scale);
-                int z2 = (int) Math.ceil(height / 2.0 + (fill.maxZ() - cameraZ) * scale);
-                if (x2 > 0 && z2 > 0 && x1 < width && z1 < height)
-                    graphics.fill(Math.max(0, x1), Math.max(0, z1), Math.min(width, x2), Math.min(height, z2), layer.fillAlpha() << 24 | color);
-            }
-            for (var edge : layer.mesh().edges()) {
-                int x1 = (int) Math.floor(width / 2.0 + (edge.x1() - cameraX) * scale);
-                int z1 = (int) Math.floor(height / 2.0 + (edge.z1() - cameraZ) * scale);
-                int x2 = (int) Math.floor(width / 2.0 + (edge.x2() - cameraX) * scale);
-                int z2 = (int) Math.floor(height / 2.0 + (edge.z2() - cameraZ) * scale);
-                if (x2 >= 0 && z2 >= 0 && x1 <= width && z1 <= height)
-                    graphics.fill(Math.max(0, x1), Math.max(0, z1), Math.min(width, x2 + 1), Math.min(height, z2 + 1), BORDER_ALPHA | color);
-            }
-        }
-    }
 }
-

@@ -142,7 +142,7 @@ public final class BlockbenchWorkbench {
             try {
                 WorkbenchMesh model=CACHE.get(id);if(model==null){model=WorkbenchMesh.load(id,2);CACHE.put(id,model);}
                 if(INSTANCES.size()>=64)INSTANCES.remove(0);
-                INSTANCES.add(new Instance(model,packet.origin(),client.level,client.level.getGameTime(),packet.yaw(),packet.action()!=8?packet.subject():-1,packet.action()==10?90:model.poses.length-1));
+                INSTANCES.add(new Instance(model,packet.origin(),client.level,client.level.getGameTime(),packet.yaw(),packet.action()!=8?packet.subject():-1,packet.action()!=8?BloomMechanics.GRIP_TICKS+12:model.poses.length-1));
             } catch(IOException error){LogUtils.getLogger().error("Cannot load elemental model "+id,error);label(client,"Elemental model failed to load; see log");}
             return;
         }
@@ -184,7 +184,7 @@ public final class BlockbenchWorkbench {
             if(subject==null || !subject.isAlive())return;
             origin=subject.getPosition(event.getPartialTick());
             double tick=seconds*20;
-            if(instance.ticks()==90)seconds=(tick<16?tick:tick<78?16:16+(tick-78)*8/12)/20;
+            if(instance.ticks()==BloomMechanics.GRIP_TICKS+12)seconds=BloomMechanics.rootPoseTick(tick)/20;
         }
         float sx=1,sy=1,sz=1;
         if(subject!=null){var box=subject.getBoundingBox();sx=(float)(box.getXsize()+.16);sy=(float)(box.getYsize()/2);sz=(float)(box.getZsize()+.16);}

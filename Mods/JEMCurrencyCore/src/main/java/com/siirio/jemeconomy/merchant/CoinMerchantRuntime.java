@@ -12,7 +12,7 @@ public final class CoinMerchantRuntime {
     @SubscribeEvent
     public static void interact(PlayerInteractEvent.EntityInteract event) {
         if (!(event.getEntity() instanceof ServerPlayer player) || !(event.getTarget() instanceof AbstractVillager merchant)
-                || !CurrencyAuthority.active(player) || event.getHand() != net.minecraft.world.InteractionHand.MAIN_HAND) return;
+                || !CurrencyAuthority.merchantActive(player) || event.getHand() != net.minecraft.world.InteractionHand.MAIN_HAND) return;
         // Let the NPC open its real MerchantMenu and preserve its native interaction lifecycle.
         if (com.siirio.jemcurrency.NativeMerchantTags.isBuyer(merchant) && merchant.getTradingPlayer() == null)
             BuyerTradeOffers.refresh(merchant, player);

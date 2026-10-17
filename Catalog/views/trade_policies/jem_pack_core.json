@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "cdd50f58ee16dbb847d7a8748a5c8e1b4835ca63",
+  "snapshot_sha": "1d21365a332c255e2db3d6d2adc8a9f7612802f7",
   "generation": {
-    "generated_utc": "2026-10-16T09:54:49.049109+00:00",
+    "generated_utc": "2026-10-17T13:48:02.089094+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -13,44 +13,6 @@
     "version": "${file.jarVersion}"
   },
   "records": [
-    {
-      "item_id": "jem_pack_core:armchair",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jem_pack_core",
-      "mod_name": "JEM Pack Core",
-      "mod_version": "${file.jarVersion}",
-      "source_jar": "jem-pack-core-2.0.0-dev.jar",
-      "source_sha256": "b405c0bc63ab1ffe53e6d63f07bd45309d8048b6127ac75953d288ca8e038b93",
-      "side_availability": [
-        "source"
-      ],
-      "observed_in": [
-        "Mods/JEMPackCore/src/main/java/com/justenoughmods/achievementguide/integration/ForgeGameplayEvents.java"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "ForgeGameplayEvents.java:Mods/JEMPackCore/src/main/java/com/justenoughmods/achievementguide/integration/ForgeGameplayEvents.java"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
     {
       "item_id": "jem_pack_core:mystery_locator",
       "registry_type": "item_view",

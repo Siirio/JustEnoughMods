@@ -19,11 +19,26 @@ public final class WorkforceRecord {
     private boolean coinWageEnabled;
     private boolean living = true;
     private long lastSeenGameTime;
-    private long lastPaidPeriod = -1L;
-    private long lastPenaltyPeriod = -1L;
-    private int missedPayrolls;
-    private final java.util.Set<Long> unpaidPenaltyPeriods = new java.util.LinkedHashSet<>();
-    private boolean penaltyPeriodsKnown = true;
+    private final PayrollStatus coinPayroll = new PayrollStatus();
+    private final PayrollStatus emeraldPayroll = new PayrollStatus();
+    private PayrollStatus payrollStatus() { return com.siirio.jemsettlements.currency.SettlementCurrency.coins() ? coinPayroll : emeraldPayroll; }
+    private static final class PayrollStatus {
+        long lastPaidPeriod = -1L, lastPenaltyPeriod = -1L;
+        int missedPayrolls;
+        final java.util.Set<Long> unpaidPenaltyPeriods = new java.util.LinkedHashSet<>();
+        boolean penaltyPeriodsKnown = true;
+        void reset() { lastPaidPeriod = -1L; lastPenaltyPeriod = -1L; missedPayrolls = 0; unpaidPenaltyPeriods.clear(); penaltyPeriodsKnown = true; }
+        CompoundTag save() {
+            CompoundTag tag = new CompoundTag(); tag.putLong("LastPaidPeriod", lastPaidPeriod); tag.putLong("LastPenaltyPeriod", lastPenaltyPeriod); tag.putInt("MissedPayrolls", missedPayrolls);
+            if (penaltyPeriodsKnown) tag.putLongArray("UnpaidPenaltyPeriods", unpaidPenaltyPeriods.stream().mapToLong(Long::longValue).toArray()); return tag;
+        }
+        void load(CompoundTag tag) {
+            lastPaidPeriod = tag.contains("LastPaidPeriod") ? tag.getLong("LastPaidPeriod") : -1L;
+            lastPenaltyPeriod = tag.contains("LastPenaltyPeriod") ? tag.getLong("LastPenaltyPeriod") : -1L;
+            missedPayrolls = Math.max(0, Math.min(3, tag.getInt("MissedPayrolls"))); penaltyPeriodsKnown = tag.contains("UnpaidPenaltyPeriods");
+            unpaidPenaltyPeriods.clear(); for (long period : tag.getLongArray("UnpaidPenaltyPeriods")) unpaidPenaltyPeriods.add(period);
+        }
+    }
     private Loyalty loyalty = Loyalty.LOYAL;
     private UUID lastWorkAreaId;
     private long lastWorkEvidenceGameTime = Long.MIN_VALUE;
@@ -42,7 +57,7 @@ public final class WorkforceRecord {
     }
     public UUID entityId() { return entityId; }
     public UUID townId() { return townId; }
-    public void assignTown(UUID value) { townId = java.util.Objects.requireNonNull(value); hireGeneration++; lastPaidPeriod = -1L; lastPenaltyPeriod = -1L; unpaidPenaltyPeriods.clear(); penaltyPeriodsKnown = true; }
+    public void assignTown(UUID value) { townId = java.util.Objects.requireNonNull(value); hireGeneration++; coinPayroll.reset(); emeraldPayroll.reset(); }
     public long nextWageGameTime() { return nextWageGameTime; }
     public long hireGeneration() { return hireGeneration; }
     public void scheduleWage(long due) { nextWageGameTime = com.siirio.jemsettlements.payroll.PayrollClock.nextDue(due); }
@@ -53,34 +68,37 @@ public final class WorkforceRecord {
     public WorkforceType type() { return type; }
     public String nativeModId() { return nativeModId; }
     public ResourceLocation nativeEntityType() { return nativeEntityType; }
-    public boolean coinWageEnabled() { return coinWageEnabled; }
+    /** Removed Workers assignments remain readable history, never active payroll. */
+    public boolean coinWageEnabled() { return nativeModId.equals("recruits") && type == WorkforceType.RECRUIT && coinWageEnabled; }
     public boolean living() { return living; }
     public long enlistedGameTime() { return enlistedGameTime; }
     public long lastSeenGameTime() { return lastSeenGameTime; }
-    public long lastPaidPeriod() { return lastPaidPeriod; }
-    public long lastPenaltyPeriod() { return lastPenaltyPeriod; }
-    public int missedPayrolls() { return missedPayrolls; }
+    public long lastPaidPeriod() { return payrollStatus().lastPaidPeriod; }
+    public long lastPenaltyPeriod() { return payrollStatus().lastPenaltyPeriod; }
+    public int missedPayrolls() { return payrollStatus().missedPayrolls; }
     public Loyalty loyalty() { return loyalty; }
-    public boolean settlementActive() { return living && loyalty == Loyalty.LOYAL && (type != WorkforceType.RECRUIT || coinWageEnabled); }
+    public boolean settlementActive() { return living && loyalty == Loyalty.LOYAL && coinWageEnabled(); }
     public UUID lastWorkAreaId() { return lastWorkAreaId; }
     public long lastWorkEvidenceGameTime() { return lastWorkEvidenceGameTime; }
     public void seen(long gameTime) { living = true; lastSeenGameTime = Math.max(lastSeenGameTime, gameTime); }
     public void verifyNativeEntityType(ResourceLocation value, long gameTime) { if (value != null && value.getNamespace().equals(nativeModId)) nativeEntityType = value; seen(gameTime); }
     public void markDead() { living = false; }
     public void paid(long period) {
-        lastPaidPeriod = Math.max(lastPaidPeriod, period);
-        if (unpaidPenaltyPeriods.remove(period) && loyalty == Loyalty.LOYAL) missedPayrolls = Math.min(3, unpaidPenaltyPeriods.size());
+        var state = payrollStatus(); state.lastPaidPeriod = Math.max(state.lastPaidPeriod, period);
+        if (state.unpaidPenaltyPeriods.remove(period) && loyalty == Loyalty.LOYAL) state.missedPayrolls = Math.min(3, state.unpaidPenaltyPeriods.size());
     }
     public void initializePenaltyPeriods(java.util.Collection<Long> periods) {
-        if (penaltyPeriodsKnown) return;
-        for (long period : periods) if (period <= lastPenaltyPeriod) unpaidPenaltyPeriods.add(period);
-        if (loyalty == Loyalty.LOYAL) missedPayrolls = Math.min(3, unpaidPenaltyPeriods.size());
-        penaltyPeriodsKnown = true;
+        var state = payrollStatus(); if (state.penaltyPeriodsKnown) return;
+        for (long period : periods) if (period <= state.lastPenaltyPeriod) state.unpaidPenaltyPeriods.add(period);
+        if (loyalty == Loyalty.LOYAL) state.missedPayrolls = Math.min(3, state.unpaidPenaltyPeriods.size()); state.penaltyPeriodsKnown = true;
     }
-    public void penalized(long period) { if (period <= lastPenaltyPeriod) return; lastPenaltyPeriod = period; if (loyalty == Loyalty.LOYAL) { unpaidPenaltyPeriods.add(period); missedPayrolls = Math.min(3, unpaidPenaltyPeriods.size()); } }
+    public void penalized(long period) {
+        var state = payrollStatus(); if (period <= state.lastPenaltyPeriod) return; state.lastPenaltyPeriod = period;
+        if (loyalty == Loyalty.LOYAL) { state.unpaidPenaltyPeriods.add(period); state.missedPayrolls = Math.min(3, state.unpaidPenaltyPeriods.size()); }
+    }
     public void rebel() { if (loyalty == Loyalty.LOYAL) loyalty = Loyalty.REBELLIOUS; }
     public void defeated() { if (loyalty == Loyalty.REBELLIOUS) loyalty = Loyalty.DEFEATED; }
-    public void rehired(long now) { loyalty = Loyalty.LOYAL; coinWageEnabled = true; missedPayrolls = 0; living = true; hireGeneration++; lastPaidPeriod = -1L; lastPenaltyPeriod = -1L; unpaidPenaltyPeriods.clear(); penaltyPeriodsKnown = true; nextWageGameTime = com.siirio.jemsettlements.payroll.PayrollClock.firstDue(now); }
+    public void rehired(long now) { loyalty = Loyalty.LOYAL; coinWageEnabled = true; living = true; hireGeneration++; coinPayroll.reset(); emeraldPayroll.reset(); nextWageGameTime = com.siirio.jemsettlements.payroll.PayrollClock.firstDue(now); }
     public void observeWorkArea(UUID workAreaId, long gameTime) {
         if (workAreaId == null) return;
         lastWorkAreaId = workAreaId;
@@ -92,8 +110,9 @@ public final class WorkforceRecord {
         CompoundTag tag = new CompoundTag(); tag.putUUID("Entity", entityId); tag.putUUID("Town", townId); tag.putUUID("Owner", ownerId);
         tag.putString("Type", type.name()); tag.putString("NativeMod", nativeModId); tag.putString("NativeEntityType", nativeEntityType.toString());
         tag.putBoolean("CoinWage", coinWageEnabled); tag.putBoolean("Living", living); tag.putLong("EnlistedGameTime", enlistedGameTime);
-        tag.putLong("LastSeenGameTime", lastSeenGameTime); tag.putLong("LastPaidPeriod", lastPaidPeriod); tag.putLong("LastPenaltyPeriod", lastPenaltyPeriod);
-        tag.putLong("NextWageGameTime", nextWageGameTime); tag.putLong("HireGeneration", hireGeneration); tag.putInt("MissedPayrolls", missedPayrolls); if (penaltyPeriodsKnown) tag.putLongArray("UnpaidPenaltyPeriods", unpaidPenaltyPeriods.stream().mapToLong(Long::longValue).toArray()); tag.putString("Loyalty", loyalty.name());
+        tag.putLong("LastSeenGameTime", lastSeenGameTime);
+        tag.put("CoinPayroll", coinPayroll.save()); tag.put("EmeraldPayroll", emeraldPayroll.save());
+        tag.putLong("NextWageGameTime", nextWageGameTime); tag.putLong("HireGeneration", hireGeneration); tag.putString("Loyalty", loyalty.name());
         if (lastWorkAreaId != null) tag.putUUID("LastWorkArea", lastWorkAreaId);
         tag.putLong("LastWorkEvidenceGameTime", lastWorkEvidenceGameTime); return tag;
     }
@@ -107,11 +126,9 @@ public final class WorkforceRecord {
         record.nextWageGameTime = tag.contains("NextWageGameTime") ? tag.getLong("NextWageGameTime") : 0L;
         record.hireGeneration = tag.getLong("HireGeneration");
         record.living = !tag.contains("Living") || tag.getBoolean("Living"); record.lastSeenGameTime = tag.getLong("LastSeenGameTime");
-        record.lastPaidPeriod = tag.contains("LastPaidPeriod") ? tag.getLong("LastPaidPeriod") : -1L;
-        record.lastPenaltyPeriod = tag.contains("LastPenaltyPeriod") ? tag.getLong("LastPenaltyPeriod") : -1L;
-        record.penaltyPeriodsKnown = tag.contains("UnpaidPenaltyPeriods");
-        for (long period : tag.getLongArray("UnpaidPenaltyPeriods")) record.unpaidPenaltyPeriods.add(period);
-        record.missedPayrolls = Math.max(0, Math.min(3, tag.getInt("MissedPayrolls")));
+        // Untagged historical penalty state belongs exclusively to Coins.
+        record.coinPayroll.load(tag.contains("CoinPayroll") ? tag.getCompound("CoinPayroll") : tag);
+        if (tag.contains("EmeraldPayroll")) record.emeraldPayroll.load(tag.getCompound("EmeraldPayroll"));
         try { record.loyalty = Loyalty.valueOf(tag.getString("Loyalty")); } catch (IllegalArgumentException ignored) { }
         record.lastWorkAreaId = tag.hasUUID("LastWorkArea") ? tag.getUUID("LastWorkArea") : null;
         record.lastWorkEvidenceGameTime = tag.contains("LastWorkEvidenceGameTime") ? tag.getLong("LastWorkEvidenceGameTime") : Long.MIN_VALUE; return record;

@@ -58,7 +58,7 @@ public final class NativeTradeSession {
         menu.slots.set(2, guardedResult);
     }
     public boolean valid() {
-        return !closed && CurrencyAuthority.active(player) && player.isAlive() && merchant.isAlive()
+        return !closed && CurrencyAuthority.merchantActive(player) && player.isAlive() && merchant.isAlive()
                 && merchant.getTradingPlayer() == player && (preview || player.distanceToSqr(merchant) < 64.0D);
     }
     public boolean select(int index) {

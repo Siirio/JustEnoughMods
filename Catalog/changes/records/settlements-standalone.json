@@ -103,10 +103,11 @@
           "runtime": "Native funded Coin merchants restricted to dedicated full Economy"
         },
         "after": {
-          "runtime": "Existing native offers, slots, restock, goods/NBT, reviewed quotes and finite funded NPC account usable by integrated Settlements",
+          "runtime": "Coin merchant conversion, reviewed Coin quotes and finite funded NPC transfers require actual jem_economy presence, including integrated Settlements; bundled jem_currency_core alone never enables this Economy behavior",
           "starting_grants": "No integrated or standalone new starter grant; historical full-Economy dedicated starter behavior retained",
           "market_boundary": "No Shipping Box spawning, Buyer spawning, full market catalog or unrelated SMP registration from standalone Core",
-          "quotes": "Unknown/unreviewed merchandise fails closed; no emerald fallback or invented money"
+          "quotes": "With actual jem_economy, unknown/unreviewed merchandise fails closed; without it, native emerald trade terms remain authoritative. No invented money",
+          "economy_absent": "Native vanilla emerald offers, goods/NBT, slots and restock remain native; Settlements uses physical emerald inventory and isolated EmeraldTreasury, without Coin quote interception"
         }
       },
       {
@@ -122,13 +123,14 @@
         "after": {
           "standalone": "Settlements bundles shared Core and Identity; native vanilla residents and real storage supported",
           "optional": [
-            "workers",
             "recruits",
             "jade",
-            "xaero presentation"
+            "xaero presentation",
+            "actual jem_economy Coin mode"
           ],
           "absence": "Capability unavailable; no substitute NPC/jobs/combat AI",
-          "presence": "Guarded native class loading, original management/hire/ownership semantics retained"
+          "presence": "Guarded native Recruits/Jade/Xaero class loading and native ownership/management/hire semantics; actual jem_economy alone selects Coin mode",
+          "retired": "Workers is historical only: no current dependency, adapter, distribution JAR or default config; saved legacy worker rows remain inactive and pending goods quarantined"
         }
       },
       {
@@ -144,8 +146,15 @@
           "geometry": "Inclusive rectangular union; whole marginal strip preview and total cost; initial97x97, center-relative limits256 and16 separation retained",
           "payment": "Shared depositToAccount from verified player wallet with validated backed physical deposit when needed; operations sink; bounds/request bound to receipt",
           "stale": "Expected saved bounds checked before mutation",
-          "zero_or_shrink": "No debit and no expansion"
-        }
+          "zero_or_shrink": "No debit and no expansion",
+          "currency_boundary": "These Coin denomination/payment terms apply only with actual jem_economy; absent Economy uses the independent configured emerald expansion price through SettlementCurrency and EmeraldTreasury, with no Coin conversion"
+        },
+        "conditions": [
+          {
+            "required_mod": "jem_economy",
+            "presence": "actual installed full Economy; bundled CurrencyCore alone is insufficient"
+          }
+        ]
       },
       {
         "property": "minecraft:bell.settlement_interaction",
@@ -155,7 +164,7 @@
         },
         "after": {
           "entry": "Standalone server-owned directory or selected town view through native client screen",
-          "founding": "Server validates bell/name/location and existing configured founding default300 copper; no new GUI fee",
+          "founding": "Server validates bell/name/location and configured founding default300 in the selected currency (Coin copper units only with actual jem_economy, otherwise physical emeralds); no new GUI fee",
           "ordinary_right_click": "Native bell behavior retained"
         }
       },
@@ -184,7 +193,7 @@
         "after": {
           "runtime": "Standalone bounded resident simulation and food-day accounting",
           "removal": "Explicit owner/entity/town validation; dead registrations removed; hostility and outstanding obligations are not erased through deletion",
-          "workers_recruits": "Native roster/adoption/ownership only when matching mod present",
+          "workers_recruits": "Native Recruits roster/adoption/ownership only when compatible Recruits is present; historical Workers registrations remain inactive and never simulate replacement jobs",
           "identity": "Existing saved town/resident/entity UUIDs retained"
         }
       },
@@ -242,8 +251,9 @@
         },
         "after": {
           "runtime": "Same native recruit payroll available to Settlements logical servers only with Recruits",
-          "preserved": "Seven-day per-contract schedule, frozen period terms, native ownership and three actual missed-period rebellion; treasury/personal source same ledger",
-          "absence": "No payroll fabrication without native Recruits"
+          "preserved": "Seven-day per-contract schedule, frozen period terms, native ownership and three actual missed-period rebellion; treasury/personal funding uses the same currently selected currency ledger",
+          "absence": "No payroll fabrication without native Recruits",
+          "currency_isolation": "Actual jem_economy selects existing Coin ledger, otherwise isolated emerald treasury/inventory funding. Each saved payroll period retains its currency discriminator and only current-currency periods settle; old Coin funds, debts and periods are not migrated or reinterpreted as emeralds"
         }
       },
       {
@@ -418,7 +428,6 @@
       "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitHiringService.java",
       "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitRebellionService.java",
       "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitRuntime.java",
-      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/workers/WorkersAdapter.java",
       "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AvailableDishService.java",
       "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/DishProgression.java",
       "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/FoodValueRegistry.java",
@@ -768,6 +777,29 @@
       "commit": "SELF",
       "action": "install_standalone_sandbox",
       "summary": "User requested sandbox installation. Copy the exact full Settlements2.1.0 artifact with embedded Core/Identity into the existing jem sandbox profile; preserve its Races mod, worlds and all unrelated files. Workers/Recruits/full Economy are absent and not added. No game launch, new build, canonical pack/server mutation or release promotion. See Docs/settlements/standalone/sandbox-delivery.json for exact artifact evidence."
+    },
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "retire_workers_integration",
+      "summary": "User permanently removes Villager Workers; original integration remains historical only, no runtime dependency/adapters.",
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/workers/WorkersAdapter.java"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "refresh_effective_currency_and_retirement_semantics",
+      "summary": "After requested emerald default and Workers retirement, qualify active Coin merchants/expansion by actual jem_economy presence, preserve vanilla emerald offers when absent, retire Workers from active integrations, and describe currency-isolated payroll without migrating historical Coin funds or obligations. Original before values and prior history remain unchanged.",
+      "source_files": [
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemcurrency/CurrencyAuthority.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/currency/SettlementCurrency.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/currency/EmeraldTreasury.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollPeriod.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/workforce/WorkforceRecord.java"
+      ]
     }
   ],
   "impacts": {
@@ -789,13 +821,14 @@
       "atlas_inventory"
     ],
     "relations": [
-      "Settlements/Economy->shared Jar-in-Jar Core->one legacy jem_economy SavedData",
-      "Native merchant offer->approved Coin quote->funded NPC transfer->wallet->town founding/expansion/treasury",
-      "SettlementAuthority->explicit owned town UUID->request journal->shared financial receipt->snapshot acknowledgment",
+      "Settlements/Economy->shared Jar-in-Jar Core retains original Coin registrations and legacy jem_economy SavedData; only actual jem_economy enables Coin settlement/merchant mode",
+      "Actual jem_economy->native merchant approved Coin quote->funded NPC transfer->wallet; absent Economy->native emerald offers and physical emerald inventory->isolated EmeraldTreasury",
+      "SettlementAuthority->explicit owned town UUID->request journal->chosen-currency durable financial receipt->snapshot acknowledgment",
       "Native FoodProperties/recipes/dimension visits->available dish catalogue->actual loaded linked inventory->resident mood/satiety",
-      "Optional native Workers/Recruits->guarded adapter->real roster/manage/payroll/rebellion",
-      "EconomySavedData.receiptHistory->bounded transaction view->native GUI",
-      "SmpNetwork/MapClient->standalone settlement action/quote projection"
+      "Optional native Recruits->guarded adapter->real roster/manage/payroll/rebellion; Workers integration is retired and legacy records inactive",
+      "Current-currency payroll period->chosen-currency treasury/personal funds; historical Coin obligations remain isolated without migration",
+      "EconomySavedData.receiptHistory in Coin mode or EmeraldTreasury retained receipts in emerald mode->native GUI",
+      "Optional native Xaero->Settlements adapter->server-authorized settlement action/quote projection; SMP navigation delegates to Settlements"
     ],
     "notes": [
       "No new item registry IDs or duplicate wallet. Core mod ID is new runtime ownership; all five original jem_economy item IDs remain.",
