@@ -15,7 +15,8 @@ import net.minecraft.resources.ResourceLocation;
 
 public final class TownRecord implements com.siirio.jemsettlements.payroll.PayrollBook {
     public static final int INITIAL_RADIUS = 48;
-    public static final int CURRENT_SCHEMA = 6;
+    public static final int CURRENT_SCHEMA = 7;
+    private int nextStorageNumber = 1;
     private final UUID id;
     private final UUID owner;
     private String name;
@@ -75,7 +76,8 @@ public final class TownRecord implements com.siirio.jemsettlements.payroll.Payro
     public void happiness(int value) { happiness = clamp(value); }
     public void happinessEvidence(int housing, int food, int safety, int jobs, int community, int decoration) { housingScore = clamp(housing); foodScore = clamp(food); safetyScore = clamp(safety); jobsScore = clamp(jobs); communityScore = clamp(community); decorationScore = Math.max(0, Math.min(20, decoration)); }
     public void taxPercent(int value) { if (value != 0 && value != 5 && value != 10 && value != 15) throw new IllegalArgumentException("Unsupported tax rate"); taxPercent = value; }
-    public boolean addStorage(StorageLink link) { return storage.stream().noneMatch(value -> value.dimension().equals(link.dimension()) && value.position().equals(link.position())) && storage.size() < 64 && storage.add(link); }
+    public boolean addStorage(StorageLink link) { return storage.stream().noneMatch(value -> value.dimension().equals(link.dimension()) && value.position().equals(link.position())) && storage.size() < 64 && storage.add(link.numbered(nextStorageNumber++)); }
+    public void replaceStorage(java.util.List<StorageLink> links) { storage.clear(); storage.addAll(links); }
     public boolean setStorageFeed(StorageLink link, boolean enabled) { for (int i = 0; i < storage.size(); i++) { StorageLink current = storage.get(i); if (current.dimension().equals(link.dimension()) && current.position().equals(link.position())) { storage.set(i, current.withFeedResidents(enabled)); return true; } } return false; }
     public void initializePayroll(long gameTime) { if (nextPayrollGameTime == 0L) { payrollEpoch = gameTime; nextPayrollGameTime = Math.addExact(gameTime, 168_000L); nextPayrollIndex = 0L; } }
     public void schedule(PayrollPeriod period) { payroll.add(period); while (payroll.size() > 32 && payroll.get(0).paid()) payroll.remove(0); nextPayrollIndex = period.index() + 1L; nextPayrollGameTime = Math.addExact(period.dueGameTime(), 168_000L); }
@@ -101,7 +103,7 @@ public final class TownRecord implements com.siirio.jemsettlements.payroll.Payro
         tag.putInt("TerritoryRadius", territoryRadius); tag.putInt("TerritoryMinX", territoryMinX); tag.putInt("TerritoryMaxX", territoryMaxX); tag.putInt("TerritoryMinZ", territoryMinZ); tag.putInt("TerritoryMaxZ", territoryMaxZ);
         ListTag receiptTags = new ListTag(); expansionReceipts.forEach(value -> { CompoundTag row = new CompoundTag(); row.putUUID("Id", value); receiptTags.add(row); }); tag.put("ExpansionReceipts", receiptTags);
         ListTag memberTags = new ListTag(); members.forEach(value -> { CompoundTag row = new CompoundTag(); row.putUUID("Id", value); memberTags.add(row); }); tag.put("Members", memberTags);
-        ListTag storageTags = new ListTag(); storage.forEach(value -> storageTags.add(value.save())); tag.put("Storage", storageTags);
+        ListTag storageTags = new ListTag(); storage.forEach(value -> storageTags.add(value.save())); tag.put("Storage", storageTags); tag.putInt("NextStorageNumber", nextStorageNumber);
         ListTag payrollTags = new ListTag(); payroll.forEach(value -> payrollTags.add(value.save())); tag.put("Payroll", payrollTags); tag.put("Simulation", simulation.save()); return tag;
     }
     static TownRecord load(CompoundTag tag) {
@@ -109,6 +111,8 @@ public final class TownRecord implements com.siirio.jemsettlements.payroll.Payro
         town.happiness(tag.contains("Happiness") ? tag.getInt("Happiness") : 50); town.taxPercent(tag.getInt("Tax")); town.lastHappinessDay(tag.contains("LastHappinessDay") ? tag.getLong("LastHappinessDay") : Long.MIN_VALUE);
         ListTag members = tag.contains("Members") ? tag.getList("Members", Tag.TAG_COMPOUND) : tag.getList("Residents", Tag.TAG_COMPOUND); for (int i = 0; i < members.size(); i++) if (members.getCompound(i).hasUUID("Id")) town.members.add(members.getCompound(i).getUUID("Id"));
         ListTag stores = tag.getList("Storage", Tag.TAG_COMPOUND); for (int i = 0; i < stores.size() && town.storage.size() < 64; i++) town.storage.add(StorageLink.load(stores.getCompound(i)));
+        town.nextStorageNumber = Math.max(1, tag.getInt("NextStorageNumber"));
+        for (int i=0;i<town.storage.size();i++) { StorageLink link=town.storage.get(i); if(link.number()<=0) { link=link.numbered(town.nextStorageNumber++); town.storage.set(i,link); } town.nextStorageNumber=Math.max(town.nextStorageNumber,link.number()+1); }
         town.payrollEpoch = tag.getLong("PayrollEpoch"); town.nextPayrollGameTime = tag.getLong("NextPayrollGameTime"); town.nextPayrollIndex = tag.getLong("NextPayrollIndex"); town.consecutiveMissedPayrolls = tag.getInt("ConsecutiveMissedPayrolls"); town.emeraldMissedPayrolls = tag.getInt("EmeraldMissedPayrolls");
         try { town.tier = TownTier.valueOf(tag.getString("Tier")); } catch (IllegalArgumentException ignored) { }
         try { town.primarySpecialization = TownSpecialization.valueOf(tag.getString("PrimarySpecialization")); } catch (IllegalArgumentException ignored) { }

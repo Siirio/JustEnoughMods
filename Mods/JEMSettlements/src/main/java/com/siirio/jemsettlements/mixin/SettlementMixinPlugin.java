@@ -14,7 +14,7 @@ public final class SettlementMixinPlugin implements IMixinConfigPlugin {
     @Override public boolean shouldApplyMixin(String target, String mixin) {
         if (mixin.contains(".xaero.")) return FMLEnvironment.dist == Dist.CLIENT
                 && net.minecraftforge.fml.loading.FMLLoader.getLoadingModList().getModFileById("xaeroworldmap") != null;
-        if (mixin.endsWith(".PlayerSaveAccess")) return true;
+        if (mixin.endsWith(".PlayerSaveAccess") || mixin.endsWith(".SharedChestLidMixin")) return true;
         if (net.minecraftforge.fml.loading.FMLLoader.getLoadingModList().getModFileById("recruits") == null) return false;
         return true;
     }

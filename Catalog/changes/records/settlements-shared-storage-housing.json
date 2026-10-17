@@ -1,0 +1,169 @@
+{
+  "schema_version": 2,
+  "change_id": "settlements.shared-chests-food-housing-inspector",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "minecraft:chest"
+    },
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "minecraft:trapped_chest"
+    },
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "minecraft:barrel"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:villager"
+    },
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "minecraft:red_bed"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "jem_settlements"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime": "Settlements logical server, registered living residents and owner-marked loaded storage; no forced chunk loading. Housing read requires owned town; native client render only.",
+      "limits": "64 stores/town,8192 slots/resident pass,3179 housing cells,32-block label visibility; native hunger/serving limits retained."
+    }
+  ],
+  "precedence": {
+    "layer": "jem",
+    "priority": 190
+  },
+  "change": {
+    "summary": "Bell-marked shared food stores, durable double-chest identity, native lid/sound and actual bed-region 3D inspector.",
+    "modifiers": [
+      {
+        "property": "settlements.food_access",
+        "operation": "replace",
+        "before": "Bell links default FeedResidents=false; direct navigation can lose to native brain and missing food abandons craving.",
+        "after": "All bell-marked stores feed registered residents, including migrated links. Prefer reachable requested dish then other edible food; native brain WALK_TARGET/LOOK_TARGET, hunger/32tick serving/10daily portions retained. Explicit storage opt-in works with mobGriefing=false; loose item pickup still obeys native rule. Sleeping/hurt/threatened residents do not leave safety to feed."
+      },
+      {
+        "property": "settlements.storage_identity",
+        "operation": "replace",
+        "before": "One coordinate per link; breaking linked half strands its remaining inventory; no world label or chest opening.",
+        "after": "Persist stable monotonic town-local chest number and both halves; loaded-only reconciliation coalesces double links and retains survivor/name. Native block lid event plus one paired sound/open/close game event; player opener counts remain authoritative. Public nearby labels expire on disconnect/distance, no world text entities."
+      },
+      {
+        "property": "settlements.housing_inspector",
+        "operation": "add",
+        "before": "My home only centres 2D map.",
+        "after": "Server-owned actual bed-centred17x11x17 snapshot with native block states, shared AmenityEvidence scoring, real category/light/duplicate/cap explanations. Native block renderer supports orbit/zoom/cutaway/exploded levels and clearly labelled illustrative example. No roof/door/furniture requirements invented; missing bound bed red, structures green, amenities blue. No client housing authority."
+      },
+      {
+        "property": "settlements.jade_profession",
+        "operation": "replace",
+        "before": "Settlements adds JemProfession server field and extra tooltip profession line beside native Jade profession.",
+        "after": "Settlements no longer sends or renders profession; native Jade remains the sole profession display owner. Other resident mood/food/town fields preserved."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Mods/JEMSettlements",
+    "kind": "Source-owned food/storage/amenity authority and detached client rendering",
+    "source_files": [
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/HousingInspector.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/StorageLabels.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AmenityEvidence.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AmenityScanService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/HousingInspection.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SharedChestLidMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementActions.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementViewDetails.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/StorageLabelsPacket.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SharedStorageService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/StorageLink.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownRecord.java",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+      "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/jade/SettlementJadePlugin.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make marked food accessible and visible while explaining the actual current housing rules.",
+    "decision_source": "User shared chest/label/split/opening/requested-food/isometric inspector direction; Codex stable numbering,1second lid timing and exact existing bed-region projection."
+  },
+  "introduced": {
+    "date": "2026-10-17",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "Current prompt source and exact artifact delivery."
+  },
+  "history": [
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "fix_food_storage_and_add_inspector",
+      "summary": "Native hunger/scoring/native trade and Xaero contracts retained; runtime acceptance pending.",
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/HousingInspector.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/StorageLabels.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AmenityEvidence.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AmenityScanService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/HousingInspection.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SharedChestLidMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementActions.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementViewDetails.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/StorageLabelsPacket.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SharedStorageService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/StorageLink.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownRecord.java",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+        "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/jade/SettlementJadePlugin.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "resident hunger",
+      "storage inventory",
+      "double chest lifecycle",
+      "brain pathfinding",
+      "native chest lid/sound",
+      "housing",
+      "amenity scoring",
+      "GUI",
+      "network7",
+      "client publication"
+    ],
+    "relations": [
+      "bell opt-in → shared logical store → desired reachable food → physical extraction → native lid/eating cues",
+      "bed memory → exact shared scoring region → bounded server snapshot → detached native 3D render"
+    ],
+    "notes": [
+      "No new housing recognition requirements, production workers, virtual food, personal map data or replacement native trade GUI.",
+      "No tests/gameplay clients launched; builds and ordinary publication only."
+    ],
+    "unresolved": [
+      "Player acceptance of chest pathing/opening and 3D framing/cutaway/hover pending."
+    ]
+  }
+}

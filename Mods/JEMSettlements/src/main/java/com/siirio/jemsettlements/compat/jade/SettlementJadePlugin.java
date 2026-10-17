@@ -32,8 +32,6 @@ public final class SettlementJadePlugin implements IWailaPlugin {
                     .ifPresent(town -> tag.putString("JemSettlementName", town.name()));
             tag.putInt("JemHappiness", resident.get().mood());
             tag.putInt("JemSatiety", resident.get().satiety()); tag.putBoolean("JemCraving", resident.get().craving());
-            tag.putString("JemProfession", net.minecraft.core.registries.BuiltInRegistries.VILLAGER_PROFESSION
-                    .getKey(villager.getVillagerData().getProfession()).toString());
             resident.get().requestedDish().ifPresent(value -> tag.putString("JemRequestedDish", value.toString()));
             resident.get().repeatedDish().ifPresent(value -> tag.putString("JemRepeatedDish", value.toString()));
         }
@@ -47,9 +45,6 @@ public final class SettlementJadePlugin implements IWailaPlugin {
             tooltip.add(elements.progress(tag.getInt("JemSatiety") / 100.0F, Component.translatable("jade.jem_settlements.satiety_bar"),
                     elements.progressStyle().color(0xFFB75046, 0xFF789B65).textColor(0xFFFFFFFF), snownee.jade.api.ui.BoxStyle.DEFAULT, true));
             if (tag.getBoolean("JemCraving")) tooltip.add(Component.translatable("jade.jem_settlements.craving"));
-            ResourceLocation profession = ResourceLocation.tryParse(tag.getString("JemProfession"));
-            if (profession != null) tooltip.add(Component.translatable("jade.jem_settlements.profession",
-                    Component.translatable("entity.minecraft.villager." + profession.getPath())));
             ResourceLocation request = ResourceLocation.tryParse(tag.getString("JemRequestedDish"));
             if (request != null && net.minecraft.core.registries.BuiltInRegistries.ITEM.containsKey(request)) {
                 ItemStack stack = new ItemStack(net.minecraft.core.registries.BuiltInRegistries.ITEM.get(request));

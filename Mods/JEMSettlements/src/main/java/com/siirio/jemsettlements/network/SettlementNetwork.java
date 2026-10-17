@@ -24,7 +24,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class SettlementNetwork {
-    private static final String VERSION = "6";
+    private static final String VERSION = "7";
     private static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(JemSettlements.MOD_ID, "town"))
             .networkProtocolVersion(() -> VERSION).clientAcceptedVersions(value -> VERSION.equals(value) || NetworkRegistry.ABSENT.equals(value) || NetworkRegistry.ACCEPTVANILLA.equals(value)).serverAcceptedVersions(value -> VERSION.equals(value) || NetworkRegistry.ABSENT.equals(value) || NetworkRegistry.ACCEPTVANILLA.equals(value)).simpleChannel();
     private SettlementNetwork() {}
@@ -41,7 +41,9 @@ public final class SettlementNetwork {
     public static void acceptSession(CompoundTag view) { ClientConnection.accept(view); }
     public static void clearClientSession() { ClientConnection.clear(); }
     public static java.util.UUID newRequestId() { return ClientConnection.request(); }
+    public static void sendStorageLabels(ServerPlayer player,CompoundTag view) { if(CHANNEL.isRemotePresent(player.connection.connection)) CHANNEL.send(PacketDistributor.PLAYER.with(()->player),new StorageLabelsPacket(view)); }
     public static void register() {
+        CHANNEL.messageBuilder(StorageLabelsPacket.class,7,NetworkDirection.PLAY_TO_CLIENT).encoder(StorageLabelsPacket::encode).decoder(StorageLabelsPacket::decode).consumerMainThread((packet,context)->{ DistExecutor.unsafeRunWhenOn(Dist.CLIENT,()->()->com.siirio.jemsettlements.client.StorageLabels.accept(packet.view()));context.get().setPacketHandled(true);}).add();
         CHANNEL.messageBuilder(SettlementActionPacket.class, 6, NetworkDirection.PLAY_TO_SERVER)
                 .encoder(SettlementActionPacket::encode).decoder(SettlementActionPacket::decode).consumerMainThread((packet, context) -> {
                     var player = context.get().getSender();

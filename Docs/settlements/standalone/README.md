@@ -62,3 +62,17 @@ Xaero World Map1.46.0 and Minimap26.4.2 are installed into sandbox with native e
 Workers JAR/config are removed from ManagedPack/local Server inputs; old assignments stay inactive history and unmaterialized production obligations are quarantined. Real loaded vanilla professions plus recruit guards satisfy the existing job-diversity thresholds. Existing worlds are not directly edited. Stable profiles and MineRENT deployment remain untouched until an explicit release.
 
 No automated tests or gameplay client launch were performed. Production compilation and exact artifact/publication receipts are recorded separately; native map/AI/payment/player acceptance remains pending.
+
+## Shared food storage and actual housing inspector —2026-10-17
+
+User direction: every bell-marked container feeds all registered residents automatically. The saved logical store has a stable town-local number (`Сундук 1` / `Chest 1`), shared by both native chest halves. Existing links migrate to shared food access; a loaded surviving half retains the number after its partner breaks. Repeated bell marking does not duplicate stores; unavailable chunks are not forced. Normal player inventory permissions and native trade ownership are unchanged.
+
+Food selects a reachable requested dish first, then another edible item. Native hunger, per-item daily portions and serving interval stay in force; asleep, threatened or recently hurt villagers do not walk out to eat. Food in owner-authorized marked stores works even with mobGriefing disabled; loose item pickup still obeys that gamerule. Missing food no longer abandons the request for the remainder of a hunger day. Successful physical extraction opens a native chest lid for20ticks, emits paired opening/closing sound and container events, and preserves real player opener counts. Other inventory blocks keep their native visuals.
+
+Resident details → My home opens a detached native-block 3D inspector: LMB drag rotates; wheel zooms; Cutaway hides near upper structural walls; Layers separates horizontal levels; My home/Example switches between real snapshot and an explicitly illustrative scene. Hover explains bound bed, exact amenity category, emitted lighting, duplicate state and category caps. Refresh requests a new authorized server snapshot. No chunks are loaded just to draw it.
+
+The existing rule is a bound bed with a17×11×17 amenity search area, not a structural room detector. Green shows blocks in this real area, blue shows recognized amenities and red marks a missing bound bed. No roof, door, table or decoration is newly required. Shared AmenityEvidence is the sole scorer for background scans and inspection:2points/category,+1 per additional distinct block state up to category cap; home cap12. Current snapshot evidence and previously saved mood evidence are shown separately; unloaded regions are explicitly unknown. Native trades and Xaero controls remain protected. Protocol7 requires the matching Settlements client/server artifact.
+
+The supplied isometric cutaway/exploded-view references guide inspection controls and separation, not copied art. This implementation renders actual native block models; successful compilation does not establish visual approval. Gameplay client/visual acceptance remains pending.
+
+Jade profession is native-only: Settlements supplies town, mood, hunger and food wishes, with no duplicate profession field/line (user correction2026-10-17).

@@ -96,8 +96,9 @@ public final class SettlementApi {
         var blockEntity = player.serverLevel().getBlockEntity(position);
         if (blockEntity == null || !blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).isPresent()) return Result.INVALID;
         SettlementSavedData data = SettlementSavedData.get(player.getServer());
-        StorageLink link = new StorageLink(player.serverLevel().dimension().location(), position.immutable());
-        for (TownRecord other : data.towns()) if (!other.id().equals(town.get().id()) && other.storage().stream().anyMatch(value -> value.dimension().equals(link.dimension()) && value.position().equals(link.position()))) return Result.CONFLICT;
+        StorageLink link = new StorageLink(player.serverLevel().dimension().location(), position.immutable()).at(position.immutable(), com.siirio.jemsettlements.runtime.SharedStorageService.partner(player.serverLevel(), position));
+        for (TownRecord other : data.towns()) if (!other.id().equals(town.get().id()) && other.storage().stream().anyMatch(value -> value.dimension().equals(link.dimension()) && (value.contains(link.position()) || link.second()!=null && value.contains(link.second())))) return Result.CONFLICT;
+        if (town.get().storage().stream().anyMatch(value -> value.contains(link.position()) || link.second()!=null && value.contains(link.second()))) return Result.CONFLICT;
         if (!town.get().addStorage(link)) return Result.CONFLICT;
         data.changed();
         return Result.ACCEPTED;
@@ -160,7 +161,7 @@ public final class SettlementApi {
         if (!SettlementAuthority.active(player) || position == null) return Result.INVALID;
         var town = ownedTown(player, townId); if (town.isEmpty()) return Result.UNAUTHENTICATED;
         StorageLink link = new StorageLink(player.serverLevel().dimension().location(), position);
-        if (!town.get().setStorageFeed(link, enabled)) return Result.INVALID; SettlementSavedData.get(player.getServer()).changed(); return Result.ACCEPTED;
+        if (!town.get().setStorageFeed(link, true)) return Result.INVALID; SettlementSavedData.get(player.getServer()).changed(); return Result.ACCEPTED;
     }
 
     public static Result setTerritoryRadius(ServerPlayer player, int radius) {

@@ -48,6 +48,7 @@ public final class SettlementRuntime {
     private static final java.util.List<FoundingWave> FOUNDING_WAVES = new java.util.ArrayList<>();
     private SettlementRuntime() { }
 
+    @SubscribeEvent public static void stopped(net.minecraftforge.event.server.ServerStoppedEvent event) { SharedStorageService.clear(); }
     @SubscribeEvent public static void reload(AddReloadListenerEvent event) { event.addListener(new FoodValueRegistry()); event.addListener(new AmenityRegistry()); }
 
     @SubscribeEvent
@@ -112,6 +113,7 @@ public final class SettlementRuntime {
     public static void serverTick(TickEvent.ServerTickEvent event) {
         if (event.phase != TickEvent.Phase.END || !SettlementAuthority.active(event.getServer())) return;
         tickFoundingWaves(event.getServer());
+        SharedStorageService.tick(event.getServer());
         AmenityScanService.tick(event.getServer());
         if (event.getServer().getTickCount() % 10 == 0) {
             SettlementSavedData data = SettlementSavedData.get(event.getServer());
@@ -158,13 +160,13 @@ public final class SettlementRuntime {
                     var requestable = availableDishes.stream().filter(resident::canRequest).toList();
                     if (!requestable.isEmpty()) resident.requestedDish(requestable.get(Math.floorMod(resident.villagerId().hashCode() * 31 + Long.hashCode(day), requestable.size())));
                 }
-                if (!resident.craving() || !level.getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING)) continue;
-                if (consumeDrop(level, villager, resident, now)) continue;
+                if (!resident.craving() || villager.isSleeping() || villager.hurtTime>0 || villager.getBrain().hasMemoryValue(MemoryModuleType.NEAREST_HOSTILE)) continue;
                 boolean available = approachAndConsumeStorage(level, town, villager, resident, now);
+                if (!available && level.getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING) && consumeDrop(level, villager, resident, now)) continue;
                 if (!available) {
                     if (resident.satiety() < 10 && Math.floorMod(now + resident.villagerId().hashCode(), 200L) < 20L)
                         villager.hurt(level.damageSources().starve(), 1.0F);
-                    else resident.abandonCraving();
+                    // Keep the request alive so newly supplied food is noticed without another hunger day.
                 }
             }
         }
@@ -179,10 +181,17 @@ public final class SettlementRuntime {
     }
     private static boolean approachAndConsumeStorage(ServerLevel level, TownRecord town, Villager villager, ResidentMood resident, long now) {
         StorageFood selected = null;
+        int slotBudget=8192;
         for (var link : town.storage()) {
-            if (!link.feedResidents() || !link.dimension().equals(level.dimension().location()) || !level.hasChunkAt(link.position())) continue;
+            if(slotBudget<=0)break;
+            if (!link.dimension().equals(level.dimension().location()) || !level.hasChunkAt(link.position())) continue;
             var blockEntity = level.getBlockEntity(link.position()); if (blockEntity == null) continue; var optional = blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).resolve(); if (optional.isEmpty()) continue; var handler = optional.get();
-            for (int slot = 0; slot < handler.getSlots(); slot++) {
+            var state=level.getBlockState(link.position());
+            if(state.getBlock() instanceof net.minecraft.world.level.block.ChestBlock chest && net.minecraft.world.level.block.ChestBlock.getContainer(chest,state,level,link.position(),false)==null)continue;
+            double reach=villager.distanceToSqr(link.position().getX()+.5,link.position().getY()+.5,link.position().getZ()+.5);
+            if(reach>6.25D){var path=villager.getNavigation().createPath(link.position(),2);if(path==null||!path.canReach())continue;}
+            int checked=Math.min(slotBudget,handler.getSlots());slotBudget-=checked;
+            for (int slot = 0; slot < checked; slot++) {
                 ItemStack simulated = handler.extractItem(slot, 1, true); var id = BuiltInRegistries.ITEM.getKey(simulated.getItem());
                 if (simulated.isEmpty() || id == null || FoodValueRegistry.classify(simulated, villager).isEmpty() || !resident.canEat(now, id)) continue;
                 boolean requested = resident.requestedDish().map(id::equals).orElse(false);
@@ -195,11 +204,16 @@ public final class SettlementRuntime {
         if (selected == null) return false;
         double distance = villager.distanceToSqr(selected.position().getX() + .5D, selected.position().getY() + .5D, selected.position().getZ() + .5D);
         if (distance > 6.25D) {
-            villager.getNavigation().moveTo(selected.position().getX() + .5D, selected.position().getY(), selected.position().getZ() + .5D, 0.65D);
+            if (!villager.isSleeping() && villager.hurtTime == 0 && !villager.getBrain().hasMemoryValue(MemoryModuleType.NEAREST_HOSTILE)) {
+                villager.getBrain().setMemory(MemoryModuleType.WALK_TARGET, new net.minecraft.world.entity.ai.memory.WalkTarget(selected.position(),0.65F,2));
+                villager.getBrain().setMemory(MemoryModuleType.LOOK_TARGET, new net.minecraft.world.entity.ai.behavior.BlockPosTracker(selected.position()));
+            }
             return true;
         }
         StorageFood food = selected;
-        return accept(level, villager, resident, food.stack(), now, () -> food.handler().extractItem(food.slot(), 1, false));
+        boolean ate=accept(level, villager, resident, food.stack(), now, () -> food.handler().extractItem(food.slot(), 1, false));
+        if(ate) SharedStorageService.open(level,food.position(),now);
+        return ate;
     }
     private record StorageFood(BlockPos position, net.minecraftforge.items.IItemHandler handler, int slot, ItemStack stack, boolean requested) {}
     private static boolean accept(ServerLevel level, Villager villager, ResidentMood resident, ItemStack stack, long now, java.util.function.Supplier<ItemStack> consume) {

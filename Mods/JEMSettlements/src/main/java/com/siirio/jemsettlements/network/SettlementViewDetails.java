@@ -76,7 +76,7 @@ final class SettlementViewDetails {
         ListTag storage = new ListTag();
         for (var link : town.storage()) {
             CompoundTag row = new CompoundTag(); row.putLong("Position", link.position().asLong()); row.putString("Dimension", link.dimension().toString());
-            row.putBoolean("FeedResidents", link.feedResidents()); row.putBoolean("ProductionInput", link.productionInput()); row.putBoolean("ProductionOutput", link.productionOutput());
+            row.putInt("Number",link.number()); if(link.second()!=null)row.putLong("Second",link.second().asLong()); row.putBoolean("FeedResidents", true); row.putBoolean("ProductionInput", link.productionInput()); row.putBoolean("ProductionOutput", link.productionOutput());
             ServerLevel storageLevel = player.getServer().getLevel(ResourceKey.create(Registries.DIMENSION, link.dimension()));
             row.putBoolean("Loaded", storageLevel != null && storageLevel.hasChunkAt(link.position()) && storageLevel.getBlockEntity(link.position()) != null);
             storage.add(row);

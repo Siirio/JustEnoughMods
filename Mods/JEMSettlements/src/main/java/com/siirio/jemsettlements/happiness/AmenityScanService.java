@@ -17,7 +17,8 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.LightLayer;
 
 public final class AmenityScanService {
-    private static final int WIDTH = 17, HEIGHT = 11, TOTAL = WIDTH * WIDTH * HEIGHT;
+    public static final int WIDTH = 17, HEIGHT = 11;
+    private static final int TOTAL = WIDTH * WIDTH * HEIGHT;
     private static final ArrayDeque<Cursor> QUEUE = new ArrayDeque<>();
     private static final Set<String> QUEUED = new LinkedHashSet<>();
     private AmenityScanService() { }
@@ -46,7 +47,7 @@ public final class AmenityScanService {
 
     private static final class Cursor {
         private final ResidentMood resident; private final GlobalPos site; private final boolean home; private int index; private boolean unloaded;
-        private final Map<String, Set<String>> distinct = new LinkedHashMap<>(); private final Map<String, Integer> caps = new HashMap<>();
+        private final AmenityEvidence evidence = new AmenityEvidence();
         Cursor(ResidentMood resident, GlobalPos site, boolean home) { this.resident = resident; this.site = site; this.home = home; }
         String key() { return resident.villagerId() + ":" + (home ? "home" : "work"); }
         boolean step(MinecraftServer server, int budget) {
@@ -54,18 +55,13 @@ public final class AmenityScanService {
             for (int checked = 0; checked < budget && index < TOTAL; checked++, index++) {
                 int horizontal = index % (WIDTH * WIDTH), y = index / (WIDTH * WIDTH) - 5, x = horizontal % WIDTH - 8, z = horizontal / WIDTH - 8;
                 BlockPos pos = site.pos().offset(x, y, z); if (!level.hasChunkAt(pos)) { unloaded = true; continue; }
-                var state = level.getBlockState(pos); AmenityRegistry.get(state.getBlock()).ifPresent(value -> {
-                    if (value.requiresLight() && (state.getLightEmission(level, pos) <= 0 || level.getBrightness(LightLayer.BLOCK, pos) <= 0)) return;
-                    distinct.computeIfAbsent(value.category(), ignored -> new LinkedHashSet<>()).add(net.minecraftforge.registries.ForgeRegistries.BLOCKS.getKey(state.getBlock()) + "#" + state.getValues()); caps.merge(value.category(), value.cap(), Math::max);
-                });
+                evidence.observe(level,pos,level.getBlockState(pos));
             }
             return index >= TOTAL && finish(level.getGameTime(), unloaded);
         }
         private boolean finish(long gameTime, boolean stale) {
             if (stale) { AmenitySnapshot prior = home ? resident.homeAmenities() : resident.workAmenities(); AmenitySnapshot snapshot = new AmenitySnapshot(prior.points(), prior.categories(), prior.verifiedGameTime(), true); if (home) resident.homeAmenities(snapshot); else resident.workAmenities(snapshot); return true; }
-            int points = 0; Set<String> categories = new LinkedHashSet<>();
-            for (var entry : distinct.entrySet()) { int count = Math.min(caps.getOrDefault(entry.getKey(), 3), entry.getValue().size()); if (count > 0) { categories.add(entry.getKey()); points += 2 + Math.max(0, count - 1); } }
-            int cap = home ? 12 : 8; AmenitySnapshot snapshot = new AmenitySnapshot(Math.min(cap, points), categories, gameTime, false);
+            int cap = home ? 12 : 8; AmenitySnapshot snapshot = new AmenitySnapshot(evidence.points(cap), evidence.categories(), gameTime, false);
             if (home) resident.homeAmenities(snapshot); else resident.workAmenities(snapshot); return true;
         }
     }

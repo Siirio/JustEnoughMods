@@ -21,7 +21,7 @@ public final class SettlementActions {
     private static final Map<UUID, Subscription> VIEWERS = new HashMap<>();
     private static int viewerCursor;
     private static final Map<UUID, Long> LAST_REQUEST = new HashMap<>();
-    private static final java.util.Set<String> READS = java.util.Set.of("open", "select", "refresh", "close", "guide", "heartbeat", "mapopen");
+    private static final java.util.Set<String> READS = java.util.Set.of("open", "select", "refresh", "close", "guide", "heartbeat", "mapopen", "housing");
     private SettlementActions() { }
 
     public static void handle(ServerPlayer player, SettlementActionPacket packet) {
@@ -51,6 +51,11 @@ public final class SettlementActions {
             else if (packet.action().equals("select")) { subscription.map = false; select(player, packet.townId(), false); }
             else if (!subscription.map) select(player, packet.townId(), false);
             CompoundTag response = envelope(player, subscription); response.putUUID("Request", packet.requestId()); response.putString("Result", "ACCEPTED");
+            if(packet.action().equals("housing")) {
+                var owned=SettlementApi.ownedTown(player,packet.townId());
+                if(owned.isPresent() && packet.payload().hasUUID("Entity")) SettlementSavedData.get(player.getServer()).resident(packet.payload().getUUID("Entity"))
+                    .filter(resident->resident.townId().equals(owned.get().id())&&resident.living()).ifPresent(resident->response.put("Housing",com.siirio.jemsettlements.happiness.HousingInspection.capture(player.getServer(),resident)));
+            }
             SettlementNetwork.send(player, new TownViewPacket(false, response));
             return;
         }
