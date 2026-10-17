@@ -156,7 +156,10 @@ public final class SettlementApi {
         int cap = switch (town.get().tier()) { case CAMP, VILLAGE -> 24; case TOWN -> 48; case CITY, CITADEL -> 96; };
         if (data.residents(town.get().id()).stream().filter(ResidentMood::living).count() >= cap) return Result.CONFLICT;
         var home = villager.getBrain().getMemory(MemoryModuleType.HOME).orElse(null); var work = villager.getBrain().getMemory(MemoryModuleType.JOB_SITE).orElse(null);
-        ResidentMood resident = new ResidentMood(villager.getUUID(), town.get().id(), home, work); resident.observeName(villager); resident.markAmenitiesDirty(player.serverLevel().getGameTime()); data.add(resident); return Result.ACCEPTED;
+        ResidentMood resident = new ResidentMood(villager.getUUID(), town.get().id(), home, work); resident.observeName(villager); resident.markAmenitiesDirty(player.serverLevel().getGameTime()); data.add(resident);
+        if (com.siirio.jemsettlements.sandbox.SandboxCivicRuntime.active(player.getServer()))
+            com.siirio.jemsettlements.sandbox.SandboxCivicRuntime.enrollment(player,town.get().id(),villager.getUUID());
+        return Result.ACCEPTED;
     }
 
     public static Result setFoodStorage(ServerPlayer player, BlockPos position, boolean enabled) {
@@ -234,6 +237,8 @@ public final class SettlementApi {
         if (!com.siirio.jemsettlements.currency.SettlementCurrency.canDelete(player, townId)
                 || town.get().payroll().stream().anyMatch(period -> !period.paid())
                 || deletionData.residents(townId).stream().anyMatch(resident -> resident.living() && resident.mood() < 10)) return Result.CONFLICT;
+        if(com.siirio.jemsettlements.sandbox.SandboxCivicRuntime.active(player.getServer())
+                &&!com.siirio.jemsettlements.sandbox.SandboxCivicRuntime.beforeDelete(player,townId))return Result.UNAVAILABLE;
         long balance = com.siirio.jemsettlements.currency.SettlementCurrency.townBalance(player.getServer(), townId);
         boolean replayed = false;
         if (balance > 0L) {
@@ -245,6 +250,7 @@ public final class SettlementApi {
             replayed = refund.status() == com.siirio.jemeconomy.ledger.TransferResult.Status.REPLAYED;
         }
         SettlementSavedData.get(player.getServer()).removeTown(townId);
+        if(com.siirio.jemsettlements.sandbox.SandboxCivicRuntime.active(player.getServer()))com.siirio.jemsettlements.sandbox.SandboxCivicRuntime.afterDelete(player);
         return replayed ? Result.REPLAYED : Result.ACCEPTED;
     }
 

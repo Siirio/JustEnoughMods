@@ -117,6 +117,45 @@ public final class EconomySavedData extends SavedData {
                 : new TransferResult(TransferResult.Status.COMMITTED, receipt, sourceBalance - amount, destinationBalance);
     }
 
+    /** Both legs share one saved-data mutation. No listener or disk save sees half a tax split. */
+    public synchronized TransferResult splitTransfer(UUID source, UUID first, long firstAmount, UUID second, long secondAmount, String key) {
+        if (secondAmount == 0) return transfer(source, first, firstAmount, key + ":market");
+        if (frozen || source == null || first == null || second == null || source.equals(first) || source.equals(second) || first.equals(second)
+                || firstAmount <= 0 || secondAmount <= 0 || key == null || key.length() > 145)
+            return new TransferResult(TransferResult.Status.INVALID, null, balance(source), balance(first));
+        if (hasReceipt(key + ":market") || hasReceipt(key + ":tax")) {
+            if (!hasReceipt(key + ":market") || !hasReceipt(key + ":tax")) return new TransferResult(TransferResult.Status.UNAVAILABLE, null, balance(source), balance(first));
+            String marketTerms = source + ":" + first + ":" + firstAmount;
+            String taxTerms = source + ":" + second + ":" + secondAmount;
+            return new TransferResult(marketTerms.equals(receiptTerms.get(key + ":market")) && taxTerms.equals(receiptTerms.get(key + ":tax"))
+                    ? TransferResult.Status.REPLAYED : TransferResult.Status.INVALID, receipts.get(key + ":market"), balance(source), balance(first));
+        }
+        long total;
+        try { total = Math.addExact(firstAmount, secondAmount); Math.addExact(balance(first), firstAmount); Math.addExact(balance(second), secondAmount); }
+        catch (ArithmeticException overflow) { return new TransferResult(TransferResult.Status.INVALID, null, balance(source), balance(first)); }
+        if (balance(source) < total) return new TransferResult(TransferResult.Status.INSUFFICIENT_FUNDS, null, balance(source), balance(first));
+        TransferResult market = transfer(source, first, firstAmount, key + ":market");
+        TransferResult tax = transfer(source, second, secondAmount, key + ":tax");
+        return tax.status() == TransferResult.Status.COMMITTED ? market : tax;
+    }
+
+    /** Reverse a captured two-leg payment without exposing a half-refund to persistence. */
+    public synchronized TransferResult mergeTransfer(UUID first,long firstAmount,UUID second,long secondAmount,UUID destination,String key) {
+        if(secondAmount==0)return transfer(first,destination,firstAmount,key+":market");
+        if(frozen||first==null||second==null||destination==null||first.equals(second)||destination.equals(first)||destination.equals(second)
+                ||firstAmount<=0||secondAmount<=0||key==null||key.length()>145)return new TransferResult(TransferResult.Status.INVALID,null,balance(first),balance(destination));
+        boolean marketDone=hasReceipt(key+":market"),taxDone=hasReceipt(key+":tax");
+        if(marketDone||taxDone){
+            if(!marketDone||!taxDone)return new TransferResult(TransferResult.Status.UNAVAILABLE,null,balance(first),balance(destination));
+            String firstTerms=first+":"+destination+":"+firstAmount,secondTerms=second+":"+destination+":"+secondAmount;
+            return new TransferResult(firstTerms.equals(receiptTerms.get(key+":market"))&&secondTerms.equals(receiptTerms.get(key+":tax"))?TransferResult.Status.REPLAYED:TransferResult.Status.INVALID,receipts.get(key+":market"),balance(first),balance(destination));
+        }
+        try{Math.addExact(balance(destination),Math.addExact(firstAmount,secondAmount));}catch(ArithmeticException overflow){return new TransferResult(TransferResult.Status.INVALID,null,balance(first),balance(destination));}
+        if(balance(first)<firstAmount||balance(second)<secondAmount)return new TransferResult(TransferResult.Status.INSUFFICIENT_FUNDS,null,balance(first),balance(destination));
+        TransferResult market=transfer(first,destination,firstAmount,key+":market");TransferResult tax=transfer(second,destination,secondAmount,key+":tax");
+        return tax.status()==TransferResult.Status.COMMITTED?market:tax;
+    }
+
     public synchronized WithdrawLedgerResult prepareWithdraw(UUID accountId, long amount, UUID operationId) {
         if (frozen || accountId == null || operationId == null || amount <= 0L || amount > 1_000_000_000L) {
             return new WithdrawLedgerResult(PhysicalStatus.INVALID, operationId, 0L, List.of());

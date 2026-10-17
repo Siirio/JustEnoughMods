@@ -1,0 +1,27 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.siirio.jemprofessions.sandbox",
+  "plugin": "com.siirio.jemprofessions.sandbox.SandboxMixinPlugin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "jem_professions_sandbox.refmap.json",
+  "mixins": [
+    "SkillAdmissionMixin",
+    "core.mixin.ServerPlayerGameModeMixin",
+    "core.mixin.FishingHookMixin",
+    "core.mixin.FishingLootPoolMixin",
+    "core.mixin.PlayerRationMixin",
+    "core.mixin.CropGrowthMixin",
+    "core.mixin.SheepShearMixin",
+    "core.mixin.PlayerTeleportMixin",
+    "core.mixin.LootItemAccessor",
+    "core.mixin.BoatThrustMixin",
+    "core.mixin.OreProvenanceMixin",
+    "nativecompat.mixin.EpicDodgeMixin",
+    "nativecompat.mixin.EpicParryingMixin",
+    "nativecompat.mixin.ReviveProgressMixin",
+    "nativecompat.mixin.ReviveCompletionMixin",
+    "nativecompat.mixin.IronCastMixin"
+  ],
+  "injectors": { "defaultRequire": 1 }
+}

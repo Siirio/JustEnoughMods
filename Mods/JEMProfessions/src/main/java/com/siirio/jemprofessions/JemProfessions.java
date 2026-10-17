@@ -12,9 +12,6 @@ public final class JemProfessions {
 
     public JemProfessions() {
         ProfessionsNetwork.register();
-        MinecraftForge.EVENT_BUS.register(ProfessionGameplay.class);
-        if (ModList.get().isLoaded("irons_spellbooks")) {
-            MinecraftForge.EVENT_BUS.register(com.siirio.jemprofessions.compat.irons.IronsProfessionAdapter.class);
-        }
+        ProfessionProfile.initialize();
     }
 }

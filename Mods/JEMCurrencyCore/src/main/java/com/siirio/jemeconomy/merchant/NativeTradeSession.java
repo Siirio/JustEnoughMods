@@ -223,13 +223,15 @@ public final class NativeTradeSession {
             // One server-generated operation, synchronously funded before any native output leaves.
             UUID operation = UUID.nameUUIDFromBytes((sessionId + ":" + sequence++).getBytes(java.nio.charset.StandardCharsets.UTF_8));
             int order = inputOrder(offer);
-            String failure = NativeTradeSettlement.commit(player, inputs, offer, quote, order, operation);
+            String failure = NativeTradeSettlement.commit(player, inputs, offer, quote, order, operation, merchant);
             if (!failure.isEmpty()) { if (!committed) status = failure; break; }
             for (int slot = 0; slot < 2; slot++) {
                 var expected = NativeTradePricing.input(offer, slot);
                 if (!expected.isEmpty()) inputs.getItem(order == 0 ? slot : 1 - slot).shrink(expected.getCount());
             }
-            if (!sale) deliver(delivery, type, button);
+            boolean durableDelivery=!sale&&com.siirio.jemeconomy.sandbox.SandboxCommerce.active(player.getServer())
+                    &&com.siirio.jemeconomy.sandbox.SandboxCommerce.nativePurchaseDelivery(player,operation);
+            if (!sale&&!durableDelivery) deliver(delivery, type, button);
             merchant.setTradingPlayer(player);
             try (var context = CoinTradeContext.enter(player)) { merchant.notifyTrade(offer); }
             merchant.overrideXp(merchant.getVillagerXp() + offer.getXp());
@@ -237,8 +239,12 @@ public final class NativeTradeSession {
             if (!sale) delivery.onCraftedBy(player.level(), player, delivery.getCount());
             player.level().playSound(null, merchant.getX(), merchant.getY(), merchant.getZ(), merchant.getNotifyTradeSound(),
                     net.minecraft.sounds.SoundSource.NEUTRAL, 1.0F, 1.0F);
-            committed = true; status = "jem.economy.trade.complete";
+            committed = true; status = durableDelivery?(com.siirio.jemeconomy.sandbox.SandboxCommerce.nativePurchaseDelivered(player,operation)
+                    ?"jem.economy.trade.inventory_complete":"jem.economy.trade.inventory_pending"):"jem.economy.trade.complete";
             player.getInventory().setChanged();
+            if (sale && com.siirio.jemeconomy.sandbox.SandboxCommerce.active(player.getServer()))
+                net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new com.siirio.jemeconomy.sandbox.CommerceCommittedEvent(player,
+                        com.siirio.jemeconomy.ledger.SystemAccount.NPC_MARKET.id(), operation));
         }
         updateResult(); syncNativeOffers(); lastSnapshot = null; refresh(); menu.broadcastChanges();
     }

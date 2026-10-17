@@ -41,6 +41,15 @@ public final class ProfessionRecord {
         daily.put(key, new DailyCounter(day, counter.amount + grant));
         return grant;
     }
+    public int dailyAmount(String key, long day) {
+        DailyCounter counter = daily.get(key);
+        return counter != null && counter.day == day ? counter.amount : 0;
+    }
+    public void recoverDaily(String key, long day, int amount) {
+        DailyCounter counter = daily.get(key);
+        if (counter == null || counter.day < day) daily.put(key, new DailyCounter(day, amount));
+        else if (counter.day == day && counter.amount < amount) daily.put(key, new DailyCounter(day, amount));
+    }
 
     public boolean reserveAudit(UUID auditId) {
         if (auditId == null || !audits.add(auditId)) return false;
@@ -48,6 +57,8 @@ public final class ProfessionRecord {
         while (auditOrder.size() > MAX_AUDITS) audits.remove(auditOrder.removeFirst());
         return true;
     }
+
+    public boolean hasAudit(UUID auditId) { return audits.contains(auditId); }
 
     public boolean markPuffishMigrated(ProfessionId id) { return puffishMigrations.add(id); }
 

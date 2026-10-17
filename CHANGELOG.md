@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-17 — Implement full professions in jem sandbox
+
+- User requests a fully functional separate profession mod, the supplied radial composition without overlapping icons/sidebar, short clear Russian effect/XP instructions and free individual claim/unclaim. User explicitly approved the complete78-effect contract and chose preserving Create, magic, commerce and town features with their required systems.
+- Bug / Both Sided / only eight sandbox effects had owners, while most of the78catalog entries were presentation promises and the sidebar omitted concrete XP guidance / in testing. Implemented all ten profession effect/XP families in the separate JEMProfessions sandbox artifact; Puffish remains the sole live XP/level/points/unlock owner, and native economy/town modules own their state.
+- Codex implementation: spaced radial frames/links with zoom/pan, per-skill RU/EN effect/use/XP text, real parameter forms and action-key selection, owner-only free native unlock/remove with dedicated per-node point sources. Native ordinary unlocks enforce level/parent/points/dependencies; free claims have an exact trusted server scope and do not grant XP.
+- Native integration includes real Create schematics/machines/cargo, Epic Fight stamina/defence, Iron spell/mana/school effects, PlayerRevive progress, vanilla construction/farming/fishing/mining/exploration, funded shop/auction/work orders and town policies. Sandbox marker gates the new integrations. No Races dependency or duplicate progression ledger.
+- Bug / Server / copied fishing-event drops, bounded provenance eviction, native forced-unlock admission, schematic server-only storage and cross-file transaction saves could produce inert or lost/replayed outcomes / in testing. Corrected actual loot seam, persistent provenance, narrow admission scope, native client schematic acknowledgement and durable item/payment/XP checkpoints. Town deletion releases purpose funds and retains queued native guard restoration. Taxed villager purchases use recoverable real-inventory delivery and reject occupied cursor/side slots before charge; native window/offer/stock/callbacks remain, untaxed delivery unchanged.
+- Required artifacts compiled/reobfuscated with tests excluded; source reviews and archive/dependency/hash inspection completed. Fresh exact outputs and native dependencies installed only into the closed jem sandbox profile with backups; see Docs/professions/sandbox-delivery.json. Ordinary Server, ManagedPack, stable profiles, native generation26 and release baseline unchanged. No automated tests, lint, static analysis or gameplay launch; runtime/visual/player acceptance remains pending.
+
 ## 2026-10-17 — Repair recruit eating and selected-chest commands in sandbox
 
 - User reports recruits still do not eat or react to Everyone eat from this chest; retains jem sandbox-only delivery.

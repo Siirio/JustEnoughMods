@@ -17,7 +17,7 @@ import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.api.distmarker.Dist;
 
 public final class ProfessionsNetwork {
-    private static final String VERSION = "4";
+    private static final String VERSION = com.siirio.jemprofessions.ProfessionProfile.networkVersion();
     private static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(JemProfessions.MOD_ID, "main"))
             .networkProtocolVersion(() -> VERSION).clientAcceptedVersions(VERSION::equals).serverAcceptedVersions(VERSION::equals).simpleChannel();
     private ProfessionsNetwork() {}
@@ -51,6 +51,7 @@ public final class ProfessionsNetwork {
                     }
                     context.get().setPacketHandled(true);
                 }).add();
+        com.siirio.jemprofessions.ProfessionProfile.registerPackets(CHANNEL);
     }
 
     public static void selectArchitectSlot(int logicalSlot) { CHANNEL.sendToServer(new ArchitectHotbarSlotPacket(logicalSlot)); }

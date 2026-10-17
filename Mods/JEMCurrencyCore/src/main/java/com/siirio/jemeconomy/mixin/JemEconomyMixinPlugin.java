@@ -13,6 +13,9 @@ public final class JemEconomyMixinPlugin implements IMixinConfigPlugin {
     @Override public void onLoad(String mixinPackage) {}
     @Override public String getRefMapperConfig() { return null; }
     @Override public boolean shouldApplyMixin(String target, String mixin) {
+        if (mixin.endsWith("CommercePlayerSaveAccess") || mixin.endsWith("CommerceServerStorageAccess"))
+            return net.minecraftforge.fml.loading.FMLLoader.getLoadingModList().getModFileById("jem_economy") != null
+                    && net.minecraftforge.fml.loading.FMLLoader.getLoadingModList().getModFileById("jem_professions_sandbox") != null;
         return net.minecraftforge.fml.loading.FMLLoader.getLoadingModList().getModFileById("jem_economy") != null;
     }
     @Override public void acceptTargets(Set<String> mine, Set<String> others) {}

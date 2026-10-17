@@ -11,6 +11,9 @@ final class ProfessionUnlockAuthority {
     private ProfessionUnlockAuthority() { }
     static void unlock(ServerPlayer player,ProfessionId profession,String node) {
         if(player.server.isDedicatedServer()||!SandboxProfessionPolicy.available(node))return;
+        var definition=com.siirio.jemprofessions.tree.ProfessionCatalog.node(profession,node);
+        if(definition==null||ProfessionApi.level(player,profession)<definition.level()
+                ||!definition.parentId().isBlank()&&!ProfessionApi.enabled(player,profession,definition.parentId()))return;
         ProfessionApi.category(profession).ifPresent(category->{
             if(category.getPointsLeft(player)<=0)return;
             category.getSkill(node).filter(skill->skill.getState(player)==Skill.State.AFFORDABLE)

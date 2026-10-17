@@ -23,7 +23,7 @@ public final class ProfessionClientState {
 
     public static void accept(ProfessionStatusPacket packet) {
         status = packet;
-        if (packet.open()) net.minecraft.client.Minecraft.getInstance().setScreen(new ProfessionRadialScreen(packet));
+        ProfessionPresentation.accept(packet);
     }
 
     @Mod.EventBusSubscriber(modid = JemProfessions.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)

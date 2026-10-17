@@ -9,7 +9,7 @@ import java.nio.charset.StandardCharsets;
 public final class SandboxProfessionPolicy {
     private static final JsonObject SUPPORTED;
     static {
-        try (var stream=SandboxProfessionPolicy.class.getResourceAsStream("/assets/jem_professions/sandbox-availability.json")) {
+        try (var stream=SandboxProfessionPolicy.class.getResourceAsStream("/assets/jem_professions/sandbox-skills.json")) {
             if(stream==null) throw new IllegalStateException("Sandbox profession availability is missing");
             SUPPORTED=JsonParser.parseReader(new InputStreamReader(stream,StandardCharsets.UTF_8)).getAsJsonObject();
         } catch(java.io.IOException failure) { throw new ExceptionInInitializerError(failure); }
@@ -17,7 +17,9 @@ public final class SandboxProfessionPolicy {
     private SandboxProfessionPolicy() { }
     public static boolean available(String node) {
         if(!SUPPORTED.has(node))return false;
-        String dependency=SUPPORTED.get(node).getAsString();
-        return dependency.isBlank()||net.minecraftforge.fml.ModList.get().isLoaded(dependency);
+        for (var dependency : SUPPORTED.getAsJsonObject(node).getAsJsonArray("required_mods"))
+            if (!net.minecraftforge.fml.ModList.get().isLoaded(dependency.getAsString())) return false;
+        return true;
     }
+    public static JsonObject description(String node) { return SUPPORTED.getAsJsonObject(node); }
 }
