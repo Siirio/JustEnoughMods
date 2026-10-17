@@ -209,5 +209,5 @@
 интеграционных проверок: `Docs/economy/settlement-implementation-notes.md`.
 ## Standalone redesign status
 
-The 2026-10-17 standalone design and source audit are in [standalone/README.md](standalone/README.md). They are proposals awaiting design approval, not changes to the behavior documented above. The user clarified that Workers/Recruits gameplay remains available only with those optional mods installed. The new design explicitly requests Gold-per-added-block expansion and standalone Settlements authority; neither has been implemented by this documentation checkpoint.
+The 2026-10-17 approved implementation and evidence are in [standalone/README.md](standalone/README.md). Settlements2.1.0 adds its own integrated/dedicated GUI and authority; expansion now costs1 Gold per newly added block of the same rectangular union and uses the canonical Wallet/backed physical-cash path. Safe vanilla food is supported alongside modded food. Workers/Recruits remain optional and require their respective mods. Earlier Copper prices and dedicated-only entry descriptions above are historical; all other established mechanics remain owned by their canonical services. In-game visual acceptance and custom authored artwork remain pending.
 

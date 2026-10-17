@@ -1,8 +1,8 @@
 # Settlements standalone design
 
-Status: **design for approval; implementation not started**. Audit date: 2026-10-17.
+Status: **approved and implemented in source; production artifacts built; runtime and visual acceptance tracked in TEST_MATRIX.md**. Approval and implementation date: 2026-10-17.
 
-This directory owns the new standalone GUI contract. Existing shipped behavior remains described by `../settlements-update-1.md` and `../../economy/settlement-implementation-notes.md` until implemented changes explicitly supersede it. Source comments and historical test reports are not acceptance evidence.
+This directory owns the standalone GUI contract and delivery evidence. Settlements2.1.0 supersedes the dedicated-only entry and Copper expansion behavior in `../settlements-update-1.md` and `../../economy/settlement-implementation-notes.md`. Source comments and historical test reports are not acceptance evidence.
 
 ## User decisions
 
@@ -22,7 +22,7 @@ This directory owns the new standalone GUI contract. Existing shipped behavior r
 | [ART_BRIEFS.md](ART_BRIEFS.md) | Exact PNG contracts, editable sources, states, placement and art gates |
 | [TEST_MATRIX.md](TEST_MATRIX.md) | Actual evidence and pending acceptance; no fabricated passes |
 
-## Proposed implementation choices by Codex
+## Implementation choices by Codex
 
 1. Keep `Mods/JEMSettlements` as the owning module. Replace its reflection-based SMP entry with its own screens and typed, bounded network projections. JEMServer becomes an optional navigation consumer of those screens, never their implementation owner.
 2. Add a local Settlements authority boundary, not a global change to `DedicatedSmp`. Use player UUID in a standalone world; use authenticated `IdentityPolicy` when that integration is installed. Preserve saved owner/town/entity UUIDs.
@@ -35,6 +35,16 @@ This directory owns the new standalone GUI contract. Existing shipped behavior r
 
 ## Approval and completion boundaries
 
-These documents are a concrete design checkpoint, not a completed mod. Financial extraction and the standalone earning adapter must be completed before implementation claims. GUI assets must remain replaceable without changing action logic. No source, installed JAR, saved world, stable profile or release baseline changes belong to this documentation checkpoint.
+The user approved this contract and full implementation on2026-10-17. Production source now lives in `Mods/JEMSettlements` and `Mods/JEMCurrencyCore`; migrated full Economy1.3.0 shares the same currency implementation. The full `jem-settlements-2.1.0.jar` contains CurrencyCore and Identity dependencies. Do not install its `-slim` artifact by itself. Workers, Recruits, Jade, Xaero, full Economy, Compat and Server are not standalone prerequisites.
 
-The project-size design approval boundary comes from `superpowers:brainstorming/SKILL.md`. After approval, produce the implementation plan in this owning directory, then implement each complete source/network/persistence/UI chain with matching Atlas and distribution changes. Tests and launches remain subject to the user's current activity permissions; the acceptance matrix is not itself authorization to run them.
+Native Minecraft buttons/items and programmatic pixel surfaces currently render the GUI. The separate control-family candidate is produced but unapproved; remaining custom artwork briefs remain unproduced; in-game visual review and clean-instance singleplayer acceptance have not been claimed. No automated tests, visual fixtures or gameplay clients were created/launched. Ordinary dedicated-server startup is permitted solely for installing these artifacts and native pack publication. Stable profiles, MineRENT and immutable release baseline remain outside this update.
+
+## Recovery limits
+
+Mutations persist a bound intent before execution and save backing data before a terminal result. Known results replay without a new charge. Server sessions stamp new request IDs; completed retired-session entries may be bounded safely, while unknown old IDs cannot become new financial operations. Interrupted intents remain explicitly uncertain and block automatic resubmission with a new operation ID. They require operator reconciliation against actual ledger receipts, town state and inventory; there is no claim of atomic commits across arbitrary third-party item handlers and separate player/chunk/SavedData files. Physical production quarantines ambiguous partial delivery rather than retrying or refunding all inputs after a partial output.
+
+## Manual entry
+
+Install the full standalone JAR in a supported Forge1.20.1 instance. Use `/settlements`, configure the Settlements key, or place a bell. With several towns, choose one in the selector. Shift+configured key while looking at a registered NPC focuses its details after authorized selection. Shift+bell interactions retain physical storage/resident registration; ordinary villager trading remains native. `/settlements help` opens the guide. Optional worker/recruit Manage opens the owning mod's actual menu when the real NPC is loaded and within reach.
+
+Control-family review candidate: [native1x sheet](../assets/review/control-family-r1/dark-native1x.png), [nearest4x sheet](../assets/review/control-family-r1/light-nearest4x.png), [editable source/manifest](../assets/source/control-family-r1/README.md). Eight original exports cover panel, four button states, tabs and two bars. The offline reference sheet is art-only, has no gameplay transport or world mutation, and is not an in-game screenshot. `CANDIDATE_NOT_APPROVED / SOURCE_EDITABLE / WAITING_FOR_REAL_GAME_CAPTURE`; no JAR/resource integration.

@@ -1,9 +1,8 @@
 plugins {
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
-    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
 }
 group = 'com.siirio.jemeconomy'
-version = '1.2.0'
+version = '1.3.0'
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 minecraft { mappings channel: 'official', version: '1.20.1' }
 dependencies {
@@ -11,7 +10,7 @@ dependencies {
     compileOnly files('../JEMIdentity/build/classes/java/main')
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
-mixin { add sourceSets.main, 'jem_economy.refmap.json'; config 'jem_economy.mixins.json' }
+
 tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8'; options.release = 17; options.incremental = false }
 tasks.withType(Test).configureEach { enabled = false }
 // Opt-in suite requested by the complete economy overhaul; ordinary builds do not run it.
@@ -20,4 +19,5 @@ tasks.register('economyContractTest', JavaExec) {
     classpath = sourceSets.test.runtimeClasspath
     mainClass = 'com.siirio.jemeconomy.EconomyLedgerContractTest'
 }
-jar { archiveBaseName = 'jem-economy'; manifest { attributes 'MixinConfigs': 'jem_economy.mixins.json' }; finalizedBy 'reobfJar' }
+jar { archiveBaseName = 'jem-economy'; finalizedBy 'reobfJar' }
+apply from: '../JEMCurrencyCore/embed.gradle'

@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import csv
 import hashlib
+import io
 import json
 import os
 import re
@@ -48,6 +49,18 @@ LANG_PREFIXES = {
     "item": "items", "block": "blocks", "entity": "entities",
     "effect": "effects", "enchantment": "enchantments", "biome": "biomes",
     "itemGroup": "creative_tabs",
+}
+# Tag resource directories carry registry identity independently of the member ID.
+# Both singular and plural forms below are present in the installed artifact evidence.
+TAG_REGISTRY_DIRS = {
+    "items": ("items/", "item/"),
+    "blocks": ("blocks/", "block/"),
+    "entities": ("entity_types/", "entity_type/"),
+    "fluids": ("fluids/",),
+    "effects": ("mob_effect/", "mob_effects/"),
+    "enchantments": ("enchantment/",),
+    "biomes": ("worldgen/biome/", "biomes/"),
+    "structures": ("worldgen/structure/",),
 }
 
 
@@ -121,6 +134,11 @@ class Artifact:
     digest: str = ""
     mods: list[dict[str, Any]] = field(default_factory=list)
     namespaces: set[str] = field(default_factory=set)
+    payload: bytes | None = None
+    nested_dependencies: list[dict[str, Any]] = field(default_factory=list)
+
+    def open(self) -> zipfile.ZipFile:
+        return zipfile.ZipFile(io.BytesIO(self.payload) if self.payload is not None else self.path)
 
     @property
     def source_name(self) -> str:
@@ -143,6 +161,7 @@ class Atlas:
         self.unresolved: list[dict[str, Any]] = []
         self.food_policies: dict[str, dict[str, Any]] = {}
         self.trade_policies: dict[str, dict[str, Any]] = {}
+        self._nested_by_digest: dict[str, Artifact] = {}
 
     def inventory(self) -> None:
         paths: dict[Path, set[str]] = defaultdict(set)
@@ -156,13 +175,57 @@ class Atlas:
             artifact = Artifact(path=path, sides=sides, digest=sha256(path))
             self._read_metadata(artifact)
             self.artifacts[str(path)] = artifact
-            for mod in artifact.mods:
-                current = self.owners.get(mod["id"])
-                owner = {**mod, "source_jar": path.name, "sha256": artifact.digest}
-                if current and current.get("sha256") != artifact.digest:
-                    self.unresolved.append({"type": "duplicate_mod_id", "mod_id": mod["id"], "artifacts": [current.get("source_jar"), path.name]})
-                else:
-                    self.owners[mod["id"]] = owner
+            self._nested_by_digest.setdefault(artifact.digest, artifact)
+            self._register_owners(artifact)
+        # Read declared Forge Jar-in-Jar dependencies, including dependencies of dependencies.
+        # Identical embedded bytes are one inspected artifact even with multiple consumers/sides.
+        for artifact in list(self.artifacts.values()):
+            self._inventory_nested(artifact, 0, set())
+
+    def _register_owners(self, artifact: Artifact) -> None:
+        for mod in artifact.mods:
+            current = self.owners.get(mod["id"])
+            owner = {**mod, "source_jar": artifact.source_name, "sha256": artifact.digest}
+            if current and current.get("sha256") != artifact.digest:
+                self.unresolved.append({"type": "duplicate_mod_id", "mod_id": mod["id"], "artifacts": [current.get("source_jar"), artifact.source_name]})
+            else:
+                self.owners[mod["id"]] = owner
+
+    def _inventory_nested(self, artifact: Artifact, depth: int, ancestors: set[str]) -> None:
+        if depth >= 16 or artifact.digest in ancestors:
+            self.unresolved.append({"type": "nested_dependency_limit", "artifact": artifact.source_name})
+            return
+        try:
+            with artifact.open() as jar:
+                if "META-INF/jarjar/metadata.json" not in jar.namelist():
+                    return
+                metadata = json.loads(jar.read("META-INF/jarjar/metadata.json"))
+                if not isinstance(metadata, dict) or not isinstance(metadata.get("jars", []), list):
+                    raise ValueError("Invalid Jar-in-Jar metadata root")
+                for dependency in metadata.get("jars", []):
+                    if not isinstance(dependency, dict):
+                        raise ValueError("Invalid Jar-in-Jar dependency")
+                    name = dependency.get("path", "")
+                    if not isinstance(name, str) or not name.endswith(".jar") or name not in jar.namelist():
+                        self.unresolved.append({"type": "nested_dependency_missing", "artifact": artifact.source_name, "path": name})
+                        continue
+                    raw = jar.read(name)
+                    digest = hashlib.sha256(raw).hexdigest()
+                    nested = self._nested_by_digest.get(digest)
+                    if nested is None:
+                        nested = Artifact(Path(Path(name).name), set(artifact.sides), digest, payload=raw)
+                        self._nested_by_digest[digest] = nested
+                        self._read_metadata(nested)
+                        self.artifacts[f"nested:{digest}"] = nested
+                        self._register_owners(nested)
+                    else:
+                        nested.sides.update(artifact.sides)
+                    relation = {"path": name, "sha256": digest, "identifier": dependency.get("identifier", {}), "version": dependency.get("version", {}), "artifact": nested}
+                    if not any(row["path"] == name and row["sha256"] == digest for row in artifact.nested_dependencies):
+                        artifact.nested_dependencies.append(relation)
+                    self._inventory_nested(nested, depth + 1, ancestors | {artifact.digest})
+        except (zipfile.BadZipFile, KeyError, ValueError, TypeError) as exc:
+            self.unresolved.append({"type": "nested_dependency_metadata", "artifact": artifact.source_name, "reason": type(exc).__name__})
 
     def _read_metadata(self, artifact: Artifact) -> None:
         if artifact.path == VANILLA.resolve():
@@ -170,7 +233,10 @@ class Atlas:
             artifact.namespaces.add("minecraft")
             return
         try:
-            with zipfile.ZipFile(artifact.path) as jar:
+            with artifact.open() as jar:
+                artifact.namespaces.update({n.split("/", 2)[1] for n in jar.namelist() if n.startswith(("assets/", "data/")) and n.count("/") >= 2})
+                if artifact.payload is not None and "META-INF/mods.toml" not in jar.namelist():
+                    return  # Declared non-mod libraries have no invented mod identity.
                 raw = jar.read("META-INF/mods.toml")
                 data = tomllib.loads(raw.decode("utf-8-sig"))
                 for row in data.get("mods", []):
@@ -194,7 +260,7 @@ class Atlas:
             if any(side.endswith("_disabled") for side in artifact.sides) and not ({"client", "server"} & artifact.sides):
                 continue
             try:
-                with zipfile.ZipFile(artifact.path) as jar:
+                with artifact.open() as jar:
                     names = sorted(jar.namelist())
                     for name in names:
                         if name.endswith("/"):
@@ -206,6 +272,10 @@ class Atlas:
         self._load_overlays()
 
     def _owner_for(self, artifact: Artifact, namespace: str) -> dict[str, Any]:
+        if namespace == "jem_economy" and any(mod["id"] == "jem_currency_core" for mod in artifact.mods):
+            if "source" in artifact.sides:
+                return self.owners["jem_currency_core"]
+            return {**next(mod for mod in artifact.mods if mod["id"] == "jem_currency_core"), "source_jar": artifact.source_name, "sha256": artifact.digest}
         if namespace in self.owners:
             return self.owners[namespace]
         if len(artifact.mods) == 1:
@@ -244,6 +314,11 @@ class Atlas:
             "unresolved_reason": "Runtime registration and dynamic properties not observed",
         })
         row["observed_in"] = sorted(set(row["observed_in"]) | {evidence})
+        # A shared translation file may mention another mod's items. Concrete model,
+        # blockstate or source registration evidence supplies that object's owner.
+        if "/models/" in evidence or "/blockstates/" in evidence or ("src/main" in evidence and not row.get("source_sha256")):
+            row.update({"mod_id": owner["id"], "mod_name": owner["name"], "mod_version": owner["version"],
+                        "source_jar": owner.get("source_jar"), "source_sha256": owner.get("sha256")})
         row["source_provenance"] = sorted(set(row["source_provenance"]) | {f"{artifact.source_name}:{evidence}"})
         self.evidence[(registry, registry_id)].add(evidence)
 
@@ -251,7 +326,20 @@ class Atlas:
         parts = name.split("/")
         if len(parts) >= 4 and parts[0] == "assets" and parts[2] == "models" and parts[3] == "item" and name.endswith(".json"):
             item_id = f"{parts[1]}:{'/'.join(parts[4:])[:-5]}"
-            self._observe("items", item_id, artifact, name)
+            model = read_json_bytes(jar.read(name))
+            # A root model with unresolved texture parameters is an authored parent
+            # template, not evidence that an item with the model's filename exists.
+            # An actual source registration or recipe can independently prove its ID.
+            unbound = set()
+            if isinstance(model, dict) and not model.get("parent"):
+                references = set(re.findall(r'"#([a-z0-9_]+)"', json.dumps(model)))
+                unbound = references - set(model.get("textures", {}))
+            if unbound:
+                self.unresolved.append({"type": "parameterized_item_model", "artifact": artifact.source_name,
+                                        "model": name, "unbound_texture_parameters": sorted(unbound),
+                                        "reason": "Parent template alone cannot prove an item registration"})
+            else:
+                self._observe("items", item_id, artifact, name)
         if len(parts) >= 4 and parts[0] == "assets" and parts[2] == "blockstates" and name.endswith(".json"):
             block_id = f"{parts[1]}:{'/'.join(parts[3:])[:-5]}"
             self._observe("blocks", block_id, artifact, name)
@@ -327,7 +415,7 @@ class Atlas:
         }
 
     def _scan_sources(self) -> None:
-        pattern = re.compile(r"(?:register|create|of)\(\s*\"([a-z0-9_./-]+)\"")
+        pattern = re.compile(r'\bregister\s*\(\s*"([a-z0-9_./-]+)"')
         for module in sorted((ROOT / "Mods").iterdir()):
             source = module / "src" / "main"
             if not source.exists():
@@ -343,10 +431,16 @@ class Atlas:
                     pass
             owner = self.owners.get(mod_id, {"id": mod_id, "name": module.name, "version": "source", "source_jar": None, "sha256": None})
             self.owners.setdefault(mod_id, owner)
-            for java in (source / "java").rglob("*.java") if (source / "java").exists() else []:
-                text = java.read_text(encoding="utf-8", errors="ignore")
+            java_sources = {java: java.read_text(encoding="utf-8", errors="ignore")
+                            for java in (source / "java").rglob("*.java")} if (source / "java").exists() else {}
+            constants = {f"{java.stem}.{match.group(1)}": match.group(2)
+                         for java, text in java_sources.items()
+                         for match in re.finditer(r'\bstatic\s+final\s+String\s+(\w+)\s*=\s*"([a-z0-9_.-]+)"', text)}
+            for java, text in java_sources.items():
                 registry = None
                 upper = text.upper()
+                if not re.search(r'\bDeferredRegister\s*\.\s*create\s*\(', text):
+                    continue  # Registry lookups and Set.of(...) strings never register objects.
                 if "DEFERREDREGISTER<ITEM" in upper or "FORGEREGISTRIES.ITEMS" in upper:
                     registry = "items"
                 elif "DEFERREDREGISTER<BLOCK" in upper or "FORGEREGISTRIES.BLOCKS" in upper:
@@ -355,16 +449,27 @@ class Atlas:
                     registry = "entities"
                 if not registry:
                     continue
-                pseudo = Artifact(java, {"source"}, "", [owner], {mod_id})
+                namespace = mod_id
+                declared = re.search(r'DeferredRegister\.create\([^,]+,\s*("[a-z0-9_.-]+"|[\w.]+)\s*\)', text)
+                if declared:
+                    token = declared.group(1)
+                    namespace = token.strip('"') if token.startswith('"') else constants.get(token, mod_id)
+                pseudo = Artifact(java, {"source"}, "", [owner], {namespace})
                 for match in pattern.finditer(text):
-                    self._observe(registry, f"{mod_id}:{match.group(1)}", pseudo, str(java.relative_to(ROOT)).replace("\\", "/"))
+                    self._observe(registry, f"{namespace}:{match.group(1)}", pseudo, str(java.relative_to(ROOT)).replace("\\", "/"))
+                dynamic = re.findall(r'\b\w+\.register\s*\(\s*([^"\s][^,;\n]*),', text)
+                if dynamic:
+                    self.unresolved.append({"type": "dynamic_source_registration", "registry": registry,
+                                            "artifact": owner.get("source_jar"), "source": str(java.relative_to(ROOT)).replace("\\", "/"),
+                                            "expressions": sorted(set(value.strip() for value in dynamic)),
+                                            "reason": "Nonliteral registration IDs require their enum/helper/runtime evidence; source strings are not promoted as IDs"})
 
     def _load_overlays(self) -> None:
         for path in (ROOT / "Mods" / "JEMSettlements" / "src" / "main" / "resources" / "data" / "jem_settlements" / "happiness").glob("food_values.json"):
             raw = json.loads(path.read_text(encoding="utf-8"))
             for row in raw:
                 self.food_policies[row["item"]] = row
-        policy_path = ROOT / "Mods" / "JEMEconomy" / "src" / "main" / "resources" / "data" / "jem_economy" / "economy" / "item_policies.json"
+        policy_path = ROOT / "Mods" / "JEMCurrencyCore" / "src" / "main" / "resources" / "data" / "jem_economy" / "economy" / "item_policies.json"
         if policy_path.exists():
             for row in json.loads(policy_path.read_text(encoding="utf-8")):
                 self.trade_policies[row["item"]] = row
@@ -373,7 +478,9 @@ class Atlas:
                 translations = self.translations.get(registry_id, {})
                 row["display_name_en_us"] = next(iter(translations.get("en_us", {}).values()), None)
                 row["display_name_ru_ru"] = next(iter(translations.get("ru_ru", {}).values()), None)
-                row["tags"] = sorted(tag for tag, values in self.tags.items() if registry_id in values)
+                row["tags"] = sorted(tag for tag, values in self.tags.items()
+                                     if registry_id in values and any(tag.partition(":")[2].startswith(prefix)
+                                                                     for prefix in TAG_REGISTRY_DIRS.get(registry, ())))
                 if row["observed_in"]:
                     row["is_registered"] = True if any("src/main" in x for x in row["observed_in"]) else None
                 if registry == "items":
@@ -506,9 +613,18 @@ class Atlas:
         return {"schema_version": SCHEMA, "registry_type": registry, "snapshot_sha": self.head, "generation": {"generated_utc": generated, "generator": "Catalog/generator/build_atlas.py", "method": "offline_static_evidence"}, "mod": {"id": mod_id, "name": owner.get("name", mod_id), "version": owner.get("version", "unresolved")}, key: sorted(rows, key=lambda row: row.get("registry_id") or row.get("item_id") or row.get("entity_id") or row.get("recipe_id") or "")}
 
     def _manifest(self, generated: str) -> dict[str, Any]:
+        def nested_rows(artifact: Artifact, ancestors: set[str]) -> list[dict[str, Any]]:
+            if artifact.digest in ancestors:
+                return []
+            return [{"path": row["path"], "sha256": row["sha256"], "identifier": row["identifier"], "version": row["version"],
+                     "mods": row["artifact"].mods, "namespaces": sorted(row["artifact"].namespaces),
+                     "sides": sorted(row["artifact"].sides), "nested_dependencies": nested_rows(row["artifact"], ancestors | {artifact.digest})}
+                    for row in sorted(artifact.nested_dependencies, key=lambda value: value["path"])]
         rows = []
         for artifact in sorted(self.artifacts.values(), key=lambda a: a.path.name.lower()):
-            rows.append({"filename": artifact.path.name, "sha256": artifact.digest, "sides": sorted(artifact.sides), "enabled": not all(side.endswith("_disabled") for side in artifact.sides), "mods": artifact.mods, "namespaces": sorted(artifact.namespaces), "source_path": str(artifact.path.relative_to(ROOT)) if artifact.path.is_relative_to(ROOT) else str(artifact.path), "nested_dependencies": []})
+            if artifact.payload is not None:
+                continue  # Nested evidence lives below the real enclosing file's manifest row.
+            rows.append({"filename": artifact.path.name, "sha256": artifact.digest, "sides": sorted(artifact.sides), "enabled": not all(side.endswith("_disabled") for side in artifact.sides), "mods": artifact.mods, "namespaces": sorted(artifact.namespaces), "source_path": str(artifact.path.relative_to(ROOT)) if artifact.path.is_relative_to(ROOT) else str(artifact.path), "nested_dependencies": nested_rows(artifact, set())})
         launcher = (ROOT / "Server/run.bat").read_text(encoding="utf-8").replace("\\", "/")
         forge_launch = re.search(r"forge/1\.20\.1-([^/\s]+)/win_args\.txt", launcher)
         return {"schema_version": SCHEMA, "snapshot_sha": self.head, "generated_utc": generated, "minecraft": "1.20.1", "forge": forge_launch.group(1) if forge_launch else None, "java": "17", "pack_sources": ["Client/ManagedPack", "Server (read-only comparison)", "Mods source", "vanilla unpacked server archive"], "artifacts": rows}

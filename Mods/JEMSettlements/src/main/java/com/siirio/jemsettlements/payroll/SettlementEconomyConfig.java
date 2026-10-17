@@ -11,7 +11,7 @@ public final class SettlementEconomyConfig {
     private static final EnumMap<RecruitRank, ForgeConfigSpec.LongValue> WAGE = new EnumMap<>(RecruitRank.class);
     static {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
-        FOUNDING = builder.comment("Found a 97 by 97 settlement; later expansion is 1 copper per newly added block.")
+        FOUNDING = builder.comment("Found a 97 by 97 settlement; later expansion is 1 Gold Coin (100 copper units) per newly added block.")
                 .defineInRange("foundingCopper", 300L, 1L, 1_000_000L);
         for (RecruitRank rank : RecruitRank.values()) if (rank != RecruitRank.UNSUPPORTED) {
             builder.push(rank.name().toLowerCase(java.util.Locale.ROOT));

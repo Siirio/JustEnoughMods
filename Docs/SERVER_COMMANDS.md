@@ -29,10 +29,12 @@
 - `jem professions` — inspect all ten profession levels and XP.
 - Кошелёк внутри `/smp` — баланс, перевод онлайн-игроку, внесение/снятие и точный обмен пяти физических номиналов.
 - `jem town` / `jem town create <name>` — inspect or found a non-claim town.
+- `settlements` — open standalone settlement creation, unique settlement, or multi-settlement selector on integrated or compatible dedicated server. The configurable Settlements key opens the same interface.
+- `settlements help` — open the localized interactive settlement guide.
 - `jem town linkstorage` — link the physically targeted item-handler container to the owned town.
 - `jem town workforce <entity>` — register a genuine owned Recruits/Workers NPC in the single Workforce ledger.
 - `jem town feedstorage on|off` — while looking at an already linked physical container, explicitly allow or stop one-item resident feeding from it.
-- `jem town territory radius <32..256>` — change the owned town's soft, non-claim guidance boundary; overlapping town bounds are rejected.
+- Поселения → Карта — предварительный просмотр точного прямоугольного расширения;1Gold за каждый новый блок, оплата через единый Wallet/backed Coin ledger. Это мягкая граница поселения, не защита земель.
 - `jem town mounts` — show the authenticated player's private lifetime/living mount counts and audited eligible-type progress; no town is required.
 - `home` — return to the last valid vanilla bed or charged respawn anchor after server identity, combat, cooldown, active-event and safe-arrival validation.
 - Рынок внутри `/smp` — системная покупка и продажа проверенных ингредиентов/ресурсов с реальными котировками и дневными лимитами; готовые блюда исключены.

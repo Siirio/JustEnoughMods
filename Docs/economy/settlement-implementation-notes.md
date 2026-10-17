@@ -135,3 +135,9 @@ otherwise add/remove entities only after successful native handleRecruiting.
 Root subsequently confirmed the corrected recruits dependency produced native
 client method mappings (`renderLabels -> m_280003_`, noble entry
 `render -> m_6311_`) and all 27 updated settlement contract assertions passed.
+## Standalone update — 2026-10-17
+
+The approved Settlements2.1.0 implementation is documented in [standalone Settlements](../settlements/standalone/README.md). It supersedes the historical dedicated-only/Copper expansion statements above: the same rectangle now costs1Gold (100Copper ledger units) per newly added block, funded by the canonical Wallet/backed cash route. CurrencyCore owns the unchanged Coin IDs/save/accounts/receipts and native earning, embedded once through Forge Jar-in-Jar; full Economy1.3.0 delegates. Founding/default300Copper, native roles, seven-day payroll, debt/rebellion, six-day catch-up and physical-output ownership remain unchanged. Workers/Recruits still require those optional mods.
+
+Compilation is separate from runtime acceptance. The first ordinary-server activation exposed Java module split packages between Core and full Economy; full-only client/market/audit classes were moved into `.full.*` rather than duplicating packages or disabling module checks. Ambiguous interrupted inventory/financial operations remain quarantined for operator reconciliation; no cross-file atomicity claim is made. Current delivery evidence lives in the standalone TEST_MATRIX.
+

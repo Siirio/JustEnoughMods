@@ -1,6 +1,18 @@
 # Feature audit
 
-Status: source audit only, 2026-10-17. No runtime claims. Paths below are repository-relative. `S` abbreviates `Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/`.
+Status: original before-change source audit plus implementation record, 2026-10-17. No in-game acceptance claims. Paths below are repository-relative. `S` abbreviates `Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/`.
+
+## Implemented after approval
+
+- `JEMCurrencyCore` now owns the existing Coin registrations, saved ledger, physical provenance, wallet/native merchant network and earning adapter. Full Economy delegates and retains shipping/full market functionality; Jar-in-Jar embeds the same shared artifacts.
+- `SettlementAuthority` supports integrated and authenticated dedicated servers without changing global SMP authority. Optional NPC events/methods remain guarded compat code; NativeManagement opens verified installed native APIs.
+- `SettlementActions`, `SettlementRequests` and `SettlementViewDetails` implement explicit selected IDs, paginated owner/food views, persistent operation terms/results, physical stock, actual receipts, storage/resident/workforce data and acknowledged actions.
+- `SettlementScreen`, `SettlementMap` and client state implement all eight sections, selector/creation/details/confirmations, true territory fill and Gold-priced exact unions, separate bars, searches/filters/sorts, native portraits, RU/EN guide, optional capabilities and same-intent reconciliation. Production code never uses preview balances or artificial residents.
+- Vanilla safe food uses native classification alongside modded food, harmful policy stays negative, and standalone demands use persisted actual dimension visits plus recipe-ingredient reachability. Existing fatigue/payroll/rebellion/catch-up limits remain owned by existing services.
+- `SettlementWarnings` observes bounded real persisted conditions, sends notices only on new critical/payroll/rebellion/full-storage transitions, suppresses reconnect warning floods and preserves warnings in their management screens.
+- An editable control-family candidate is produced; the remaining custom PNG artwork and in-game visual acceptance remain outstanding. Unknown crash outcomes are quarantined for operator reconciliation; interrupted cross-file inventory transactions are not declared proven atomic.
+
+The matrix below records the **before** state and rationale for these changes; it must not be read as evidence that the old source remains installed.
 
 ## Coverage matrix
 
@@ -55,4 +67,6 @@ Five current coin values are copper1/silver10/gold100/aether1000/arcane10000 (`M
 5. Durable money/claim/delivery audit; approved art control-family candidate; exact exports; replace temporary GUI materials.
 6. Authorized compilation, local installation, native pack publication and permitted acceptance work; finish Atlas/docs/changelog and push full state.
 
-Every stage must label source existence separately from compile, runtime and user acceptance. This checkpoint implements none of stages2–6. No Atlas gameplay record is added for a documentation-only proposal.
+Every stage labels source existence separately from compilation, runtime and user acceptance. This implementation adds `Catalog/changes/records/settlements-standalone.json`; delivery evidence and remaining acceptance live in TEST_MATRIX.md.
+
+Control-family review candidate: [native1x sheet](../assets/review/control-family-r1/dark-native1x.png), [nearest4x sheet](../assets/review/control-family-r1/light-nearest4x.png), [editable source/manifest](../assets/source/control-family-r1/README.md). Eight original exports cover panel, four button states, tabs and two bars. The offline reference sheet is art-only, has no gameplay transport or world mutation, and is not an in-game screenshot. `CANDIDATE_NOT_APPROVED / SOURCE_EDITABLE / WAITING_FOR_REAL_GAME_CAPTURE`; no JAR/resource integration.

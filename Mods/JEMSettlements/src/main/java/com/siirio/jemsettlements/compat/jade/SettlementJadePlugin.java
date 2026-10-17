@@ -28,6 +28,8 @@ public final class SettlementJadePlugin implements IWailaPlugin {
             var resident = com.siirio.jemsettlements.town.SettlementSavedData.get(villager.getServer()).resident(villager.getUUID());
             if (resident.isEmpty()) return;
             tag.putBoolean("JemResident", true);
+            com.siirio.jemsettlements.town.SettlementSavedData.get(villager.getServer()).town(resident.get().townId())
+                    .ifPresent(town -> tag.putString("JemSettlementName", town.name()));
             tag.putInt("JemHappiness", resident.get().mood());
             tag.putInt("JemSatiety", resident.get().satiety()); tag.putBoolean("JemCraving", resident.get().craving());
             tag.putString("JemProfession", net.minecraft.core.registries.BuiltInRegistries.VILLAGER_PROFESSION
@@ -38,6 +40,7 @@ public final class SettlementJadePlugin implements IWailaPlugin {
         @Override public void appendTooltip(ITooltip tooltip, EntityAccessor accessor, IPluginConfig config) {
             CompoundTag tag = accessor.getServerData();
             if (!tag.getBoolean("JemResident")) return;
+            if (tag.contains("JemSettlementName")) tooltip.add(Component.translatable("jade.jem_settlements.settlement", tag.getString("JemSettlementName")));
             var elements = tooltip.getElementHelper();
             tooltip.add(elements.progress(tag.getInt("JemHappiness") / 100.0F, Component.translatable("jade.jem_settlements.happiness_bar"),
                     elements.progressStyle().color(0xFFB75046, 0xFF789B65).textColor(0xFFFFFFFF), snownee.jade.api.ui.BoxStyle.DEFAULT, true));

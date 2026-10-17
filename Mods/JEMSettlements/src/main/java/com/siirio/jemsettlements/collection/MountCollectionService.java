@@ -1,6 +1,6 @@
 package com.siirio.jemsettlements.collection;
 
-import com.siirio.jemidentity.api.IdentityPolicy;
+import com.siirio.jemsettlements.runtime.SettlementAuthority;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
@@ -18,7 +18,7 @@ public final class MountCollectionService {
         if (!(event.getTamer() instanceof ServerPlayer player) || player.isCreative() || event.getAnimal().getPersistentData().getBoolean(INELIGIBLE)) return false;
         Entity entity = event.getAnimal(); var id = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()); if (!MountRoster.contains(id)) return false;
         if (!(entity instanceof TamableAnimal) && !(entity instanceof AbstractHorse)) return false;
-        var principal = IdentityPolicy.resolve(player);
-        return principal.isPresent() && PlayerMountCollectionSavedData.get(player.getServer()).record(principal.get().accountId(), entity.getUUID(), id);
+        var principal = SettlementAuthority.principal(player);
+        return principal.isPresent() && PlayerMountCollectionSavedData.get(player.getServer()).record(principal.get(), entity.getUUID(), id);
     }
 }

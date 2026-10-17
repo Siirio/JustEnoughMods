@@ -1,309 +1,27 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "cdd50f58ee16dbb847d7a8748a5c8e1b4835ca63",
+  "snapshot_sha": "fc54a9825a805b49364602e1a2b8647f88e45714",
   "generation": {
-    "generated_utc": "2026-10-16T09:54:49.049109+00:00",
+    "generated_utc": "2026-10-17T10:22:09.318365+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
   "mod": {
     "id": "jem_economy",
     "name": "JEM Economy",
-    "version": "1.2.0"
+    "version": "1.3.0"
   },
   "records": [
-    {
-      "item_id": "jem_economy:aether_coin",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jem_economy",
-      "mod_name": "JEM Economy",
-      "mod_version": "1.2.0",
-      "source_jar": "jem-economy-1.2.0.jar",
-      "source_sha256": "e6aa82650f1f3d10f43099c37708a5e45804e8973d383f0b8651a816015a5a72",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jem_economy/lang/en_us.json",
-        "assets/jem_economy/lang/ru_ru.json",
-        "assets/jem_economy/models/item/aether_coin.json"
-      ],
-      "display_name_en_us": "Aether Coin",
-      "display_name_ru_ru": "Эфирная монета",
-      "source_provenance": [
-        "jem-economy-1.2.0.jar:assets/jem_economy/lang/en_us.json",
-        "jem-economy-1.2.0.jar:assets/jem_economy/lang/ru_ru.json",
-        "jem-economy-1.2.0.jar:assets/jem_economy/models/item/aether_coin.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jem_economy:all",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jem_economy",
-      "mod_name": "JEM Economy",
-      "mod_version": "1.2.0",
-      "source_jar": "jem-economy-1.2.0.jar",
-      "source_sha256": "e6aa82650f1f3d10f43099c37708a5e45804e8973d383f0b8651a816015a5a72",
-      "side_availability": [
-        "source"
-      ],
-      "observed_in": [
-        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "EconomyApi.java:Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jem_economy:arcane_coin",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jem_economy",
-      "mod_name": "JEM Economy",
-      "mod_version": "1.2.0",
-      "source_jar": "jem-economy-1.2.0.jar",
-      "source_sha256": "e6aa82650f1f3d10f43099c37708a5e45804e8973d383f0b8651a816015a5a72",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jem_economy/lang/en_us.json",
-        "assets/jem_economy/lang/ru_ru.json",
-        "assets/jem_economy/models/item/arcane_coin.json"
-      ],
-      "display_name_en_us": "Arcane Coin",
-      "display_name_ru_ru": "Арканная монета",
-      "source_provenance": [
-        "jem-economy-1.2.0.jar:assets/jem_economy/lang/en_us.json",
-        "jem-economy-1.2.0.jar:assets/jem_economy/lang/ru_ru.json",
-        "jem-economy-1.2.0.jar:assets/jem_economy/models/item/arcane_coin.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jem_economy:armorer",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jem_economy",
-      "mod_name": "JEM Economy",
-      "mod_version": "1.2.0",
-      "source_jar": "jem-economy-1.2.0.jar",
-      "source_sha256": "e6aa82650f1f3d10f43099c37708a5e45804e8973d383f0b8651a816015a5a72",
-      "side_availability": [
-        "source"
-      ],
-      "observed_in": [
-        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/audit/NativeMerchantContracts.java"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "NativeMerchantContracts.java:Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/audit/NativeMerchantContracts.java"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jem_economy:coin_base",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jem_economy",
-      "mod_name": "JEM Economy",
-      "mod_version": "1.2.0",
-      "source_jar": "jem-economy-1.2.0.jar",
-      "source_sha256": "e6aa82650f1f3d10f43099c37708a5e45804e8973d383f0b8651a816015a5a72",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jem_economy/models/item/coin_base.json"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "jem-economy-1.2.0.jar:assets/jem_economy/models/item/coin_base.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jem_economy:copper_coin",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jem_economy",
-      "mod_name": "JEM Economy",
-      "mod_version": "1.2.0",
-      "source_jar": "jem-economy-1.2.0.jar",
-      "source_sha256": "e6aa82650f1f3d10f43099c37708a5e45804e8973d383f0b8651a816015a5a72",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jem_economy/lang/en_us.json",
-        "assets/jem_economy/lang/ru_ru.json",
-        "assets/jem_economy/models/item/copper_coin.json"
-      ],
-      "display_name_en_us": "Copper Coin",
-      "display_name_ru_ru": "Медная монета",
-      "source_provenance": [
-        "jem-economy-1.2.0.jar:assets/jem_economy/lang/en_us.json",
-        "jem-economy-1.2.0.jar:assets/jem_economy/lang/ru_ru.json",
-        "jem-economy-1.2.0.jar:assets/jem_economy/models/item/copper_coin.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jem_economy:gold_coin",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jem_economy",
-      "mod_name": "JEM Economy",
-      "mod_version": "1.2.0",
-      "source_jar": "jem-economy-1.2.0.jar",
-      "source_sha256": "e6aa82650f1f3d10f43099c37708a5e45804e8973d383f0b8651a816015a5a72",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jem_economy/lang/en_us.json",
-        "assets/jem_economy/lang/ru_ru.json",
-        "assets/jem_economy/models/item/gold_coin.json"
-      ],
-      "display_name_en_us": "Gold Coin",
-      "display_name_ru_ru": "Золотая монета",
-      "source_provenance": [
-        "jem-economy-1.2.0.jar:assets/jem_economy/lang/en_us.json",
-        "jem-economy-1.2.0.jar:assets/jem_economy/lang/ru_ru.json",
-        "jem-economy-1.2.0.jar:assets/jem_economy/models/item/gold_coin.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
     {
       "item_id": "jem_economy:shipping_box",
       "registry_type": "item_view",
       "schema_version": 1,
       "mod_id": "jem_economy",
       "mod_name": "JEM Economy",
-      "mod_version": "1.2.0",
-      "source_jar": "jem-economy-1.2.0.jar",
-      "source_sha256": "e6aa82650f1f3d10f43099c37708a5e45804e8973d383f0b8651a816015a5a72",
+      "mod_version": "1.3.0",
+      "source_jar": "jem-economy-1.3.0.jar",
+      "source_sha256": "9369b394272b7a3677f22e7033bd87b8d64a5e11ede0abfba4a5a78a32f9fbe3",
       "side_availability": [
         "client"
       ],
@@ -316,8 +34,8 @@
       "display_name_ru_ru": "Ящик отправки",
       "source_provenance": [
         "EconomyItems.java:Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/registry/EconomyItems.java",
-        "jem-economy-1.2.0.jar:assets/jem_economy/models/item/shipping_box.json",
-        "jem-economy-1.2.0.jar:data/jem_economy/recipes/shipping_box.json"
+        "jem-economy-1.3.0.jar:assets/jem_economy/models/item/shipping_box.json",
+        "jem-economy-1.3.0.jar:data/jem_economy/recipes/shipping_box.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -329,48 +47,6 @@
       "independent_ordinary_routes": [
         "jem_economy:shipping_box"
       ],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jem_economy:silver_coin",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jem_economy",
-      "mod_name": "JEM Economy",
-      "mod_version": "1.2.0",
-      "source_jar": "jem-economy-1.2.0.jar",
-      "source_sha256": "e6aa82650f1f3d10f43099c37708a5e45804e8973d383f0b8651a816015a5a72",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jem_economy/lang/en_us.json",
-        "assets/jem_economy/lang/ru_ru.json",
-        "assets/jem_economy/models/item/silver_coin.json"
-      ],
-      "display_name_en_us": "Silver Coin",
-      "display_name_ru_ru": "Серебряная монета",
-      "source_provenance": [
-        "jem-economy-1.2.0.jar:assets/jem_economy/lang/en_us.json",
-        "jem-economy-1.2.0.jar:assets/jem_economy/lang/ru_ru.json",
-        "jem-economy-1.2.0.jar:assets/jem_economy/models/item/silver_coin.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,

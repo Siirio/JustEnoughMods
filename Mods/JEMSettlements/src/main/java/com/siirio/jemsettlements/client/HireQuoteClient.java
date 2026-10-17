@@ -1,7 +1,7 @@
 package com.siirio.jemsettlements.client;
 
 import com.siirio.jemsettlements.JemSettlements;
-import com.talhanation.recruits.inventory.RecruitHireMenu;
+import net.minecraftforge.fml.ModList;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
@@ -17,14 +17,17 @@ public final class HireQuoteClient {
     private HireQuoteClient() { }
     public static void accept(int entityId, long cost, long wage) {
         var player = Minecraft.getInstance().player;
-        if (cost < 0 || wage < 0 || player == null || !(player.containerMenu instanceof RecruitHireMenu menu)
-                || menu.getRecruitEntity().getId() != entityId) return;
+        if (cost < 0 || wage < 0 || player == null || !ModList.get().isLoaded("recruits") || !NativeHire.matches(player, entityId)) return;
         quote = new Quote(entityId, cost, wage);
     }
     public static Quote quote(int entityId) { return quote != null && quote.entityId() == entityId ? quote : null; }
     @SubscribeEvent public static void logout(ClientPlayerNetworkEvent.LoggingOut event) { quote = null; }
     @SubscribeEvent public static void tick(TickEvent.ClientTickEvent event) {
         var player = Minecraft.getInstance().player;
-        if (event.phase == TickEvent.Phase.END && (player == null || !(player.containerMenu instanceof RecruitHireMenu))) quote = null;
+        if (event.phase == TickEvent.Phase.END && (player == null || !ModList.get().isLoaded("recruits") || !NativeHire.isOpen(player))) quote = null;
+    }
+    private static final class NativeHire {
+        static boolean matches(net.minecraft.world.entity.player.Player player, int id) { return player.containerMenu instanceof com.talhanation.recruits.inventory.RecruitHireMenu menu && menu.getRecruitEntity().getId() == id; }
+        static boolean isOpen(net.minecraft.world.entity.player.Player player) { return player.containerMenu instanceof com.talhanation.recruits.inventory.RecruitHireMenu; }
     }
 }

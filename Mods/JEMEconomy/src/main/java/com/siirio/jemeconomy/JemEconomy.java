@@ -1,6 +1,6 @@
 package com.siirio.jemeconomy;
 
-import com.siirio.jemeconomy.market.MarketRuntime;
+import com.siirio.jemeconomy.full.market.MarketRuntime;
 import com.siirio.jemeconomy.merchant.CoinMerchantRuntime;
 import com.siirio.jemeconomy.policy.ItemPolicyRegistry;
 import com.siirio.jemeconomy.registry.EconomyBlockEntities;
@@ -22,13 +22,13 @@ public final class JemEconomy {
         EconomyItems.ITEMS.register(modBus);
         EconomyBlockEntities.BLOCK_ENTITIES.register(modBus);
         EconomyMenus.MENUS.register(modBus);
-        EconomyNetwork.register();
+
         if (net.minecraftforge.fml.loading.FMLEnvironment.dist == net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER) {
-            MinecraftForge.EVENT_BUS.register(EconomyNetwork.class);
-            MinecraftForge.EVENT_BUS.register(ItemPolicyRegistry.class);
+
+
             MinecraftForge.EVENT_BUS.register(MarketRuntime.class);
-            MinecraftForge.EVENT_BUS.register(CoinMerchantRuntime.class);
-            MinecraftForge.EVENT_BUS.register(com.siirio.jemeconomy.audit.EconomyRuntimeExport.class);
+
+            MinecraftForge.EVENT_BUS.register(com.siirio.jemeconomy.full.audit.EconomyRuntimeExport.class);
         }
     }
 }

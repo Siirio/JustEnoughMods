@@ -2,11 +2,11 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "f0123b1e40719f6a9eaebfd5d16eeb96df1553921ccc91ce74dfa4c3ecec49dc",
+  "change_records_sha256": "d0d0e4d394af9443fc9a4628440b151fa606fc72df395fb103279b985c772fa3",
   "totals": {
-    "watched": 3355,
-    "covered": 394,
-    "unresolved": 2961
+    "watched": 3379,
+    "covered": 441,
+    "unresolved": 2938
   },
   "groups": {
     "Client/ManagedPack/config": {
@@ -1529,6 +1529,12 @@
         "Mods/JEMCompat/src/main/resources/pack.mcmeta"
       ]
     },
+    "Mods/JEMCurrencyCore": {
+      "watched": 94,
+      "covered": 94,
+      "unresolved": 0,
+      "unresolved_paths": []
+    },
     "Mods/JEMDrillLifecycle": {
       "watched": 26,
       "covered": 0,
@@ -1563,38 +1569,17 @@
       ]
     },
     "Mods/JEMEconomy": {
-      "watched": 111,
-      "covered": 80,
-      "unresolved": 31,
+      "watched": 25,
+      "covered": 15,
+      "unresolved": 10,
       "unresolved_paths": [
         "Mods/JEMEconomy/gradle.properties",
         "Mods/JEMEconomy/src/main/resources/assets/jem_economy/blockstates/shipping_box.json",
         "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/block/shipping_box.json",
-        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/item/aether_coin.json",
-        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/item/arcane_coin.json",
-        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/item/coin_base.json",
-        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/item/copper_coin.json",
-        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/item/gold_coin.json",
         "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/item/shipping_box.json",
-        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/item/silver_coin.json",
         "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/block/shipping_box_front.png",
         "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/block/shipping_box_side.png",
         "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/block/shipping_box_top.png",
-        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/aether_coin_back.png",
-        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/aether_coin_front.png",
-        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/aether_coin_rim.png",
-        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/arcane_coin_back.png",
-        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/arcane_coin_front.png",
-        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/arcane_coin_rim.png",
-        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/copper_coin_back.png",
-        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/copper_coin_front.png",
-        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/copper_coin_rim.png",
-        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/gold_coin_back.png",
-        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/gold_coin_front.png",
-        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/gold_coin_rim.png",
-        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/silver_coin_back.png",
-        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/silver_coin_front.png",
-        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/silver_coin_rim.png",
         "Mods/JEMEconomy/src/main/resources/data/jem_economy/recipes/shipping_box.json",
         "Mods/JEMEconomy/src/main/resources/data/minecraft/tags/blocks/mineable/axe.json",
         "Mods/JEMEconomy/src/main/resources/pack.mcmeta"
@@ -2911,19 +2896,17 @@
       ]
     },
     "Mods/JEMSettlements": {
-      "watched": 67,
-      "covered": 42,
-      "unresolved": 25,
+      "watched": 83,
+      "covered": 60,
+      "unresolved": 23,
       "unresolved_paths": [
         "Mods/JEMSettlements/gradle.properties",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/collection/MountCollectionService.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/collection/MountRoster.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/collection/PlayerMountCollectionSavedData.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitReadinessAdapter.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitsAdapter.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/workers/WorkerStorageAdapter.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/workers/WorkerWorkEvidence.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/workers/WorkersAdapter.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AmenityRegistry.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AmenityScanService.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/HappinessService.java",

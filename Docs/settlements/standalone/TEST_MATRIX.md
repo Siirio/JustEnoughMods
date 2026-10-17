@@ -2,6 +2,24 @@
 
 Audit checkpoint: 2026-10-17. This is an evidence ledger and acceptance specification, **not an executable test suite, fixture or runtime scenario**. No gameplay tests, builds, launchers, static-analysis tools or development-preview fixtures were created or run in this checkpoint. The master prompt's verification goals are recorded below; reconcile exact execution permissions before implementation-stage runs. Never infer a pass from a source comment, historical report, compile success or artist export.
 
+## Implementation evidence — approved continuation
+
+The paragraph above describes the initial design checkpoint. In the approved implementation continuation, production-only builds were authorized by the standing project rules and performed with `-x test -x check`:
+
+| Activity | Actual evidence and limit |
+| --- | --- |
+| CurrencyCore compilation/reobfuscation | `jar/reobfJar` succeeded; shared artifact SHA256 is recorded inside delivery.json |
+| Migrated full Economy | `jarJar/reobfJarJar` succeeded; exact final full artifact and embedded dependency hashes in delivery.json |
+| Settlements2.1.0 | `jarJar/reobfJarJar` succeeded; native GUI/common code compile and production refmap packaged |
+| JEMServer adapter | `jarJar/reobfJarJar` succeeded; native SMP entry and Xaero Gold quote updated |
+| Actual ordinary dedicated startup | First launch failed before world loading on JPMS split package. Corrected full-only Economy namespaces; final ordinary local server reached `Done (3.327s)!` at2026-10-17 15:13:00 local time. Confirms full-pack loading, not clean standalone/integrated gameplay or screen behavior |
+| Runtime synchronization | Exact fresh full Economy/Settlements/Server bytes match ordinary Server and Client/ManagedPack; no active AutoModpack gameDir/raw-copy installation |
+| Native publication | Initial `/jempack preview`: +2/~2/-2; initial publish at15:03:09. After the final Jade tooltip change, native preview +0/~2/-0 and PUBLISHED at15:14:53; journal20 has matching staged/published SHA1 `ba33232d4a87a800429a2272c2afbff959c800cc`. Exact artifacts in delivery.json |
+| Independent source reviews | Corrected read-ACK pending deadlock, old session/transient rejection semantics, bounded journal retirement, worker dimension, native channel typo and known no-effect menu failure classification |
+| Not performed | Automated tests, QA scenarios/fixtures, disposable server, gameplay client, stable-profile launch/mutation, MineRENT release, clean standalone/integrated acceptance, runtime visual review or art approval |
+
+All acceptance rows below remain unaccepted unless explicitly supported above. A loaded ordinary server does not establish interrupted-operation safety, optional-mod absence, entity AI behavior or visual quality.
+
 ## Evidence obtained in this checkpoint
 
 | Evidence | Result |
@@ -16,7 +34,7 @@ Audit checkpoint: 2026-10-17. This is an evidence ledger and acceptance specific
 
 ## Pending acceptance
 
-All rows below are **NOT RUN / NOT ACCEPTED**. They define evidence needed, not invented results.
+Rows below define the complete acceptance goals. Only the explicit implementation-evidence table above establishes performed activities; the remaining gameplay and visual goals are NOT RUN / NOT ACCEPTED.
 
 | Area | Required evidence / acceptance |
 | --- | --- |
@@ -49,3 +67,5 @@ All rows below are **NOT RUN / NOT ACCEPTED**. They define evidence needed, not 
 | Final distribution | Fresh required source artifacts synchronized to ordinary Server/ManagedPack; native preview/publish; matching manifest hashes and published=true; no stable/MineRENT/baseline mutation without release authorization |
 
 Developer visual preview remains future work. It must be isolated from gameplay saved data and production mutation channels, gated as a developer facility, and explicitly authorized before creation under current project rules. A design wireframe is not an in-game preview.
+
+Control-family review candidate: [native1x sheet](../assets/review/control-family-r1/dark-native1x.png), [nearest4x sheet](../assets/review/control-family-r1/light-nearest4x.png), [editable source/manifest](../assets/source/control-family-r1/README.md). Eight original exports cover panel, four button states, tabs and two bars. The offline reference sheet is art-only, has no gameplay transport or world mutation, and is not an in-game screenshot. `CANDIDATE_NOT_APPROVED / SOURCE_EDITABLE / WAITING_FOR_REAL_GAME_CAPTURE`; no JAR/resource integration.

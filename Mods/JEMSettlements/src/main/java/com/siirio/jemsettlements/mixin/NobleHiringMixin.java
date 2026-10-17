@@ -1,6 +1,6 @@
 package com.siirio.jemsettlements.mixin;
 
-import com.siirio.jemidentity.api.DedicatedSmp;
+import com.siirio.jemsettlements.runtime.SettlementAuthority;
 import com.siirio.jemsettlements.payroll.RecruitRank;
 import com.talhanation.recruits.config.RecruitsServerConfig;
 import com.talhanation.recruits.entities.VillagerNobleEntity;
@@ -27,7 +27,7 @@ public abstract class NobleHiringMixin {
     @Inject(method = "executeServerSide", at = @At("HEAD"), cancellable = true)
     private void jem$validateQuote(NetworkEvent.Context context, CallbackInfo ci) {
         var player = context.getSender();
-        if (player == null || !DedicatedSmp.active(player)) return;
+        if (player == null || !SettlementAuthority.active(player)) return;
         var entity = player.serverLevel().getEntity(nobleUUID);
         if (!(entity instanceof VillagerNobleEntity noble) || !noble.isAlive() || player.distanceToSqr(noble) > 1024D) { ci.cancel(); return; }
         if (closing) return;
@@ -36,7 +36,7 @@ public abstract class NobleHiringMixin {
         // Reject stale/forged/missing groups before creating or hiring anything.
         if (group == null || !player.getUUID().equals(group.getPlayerUUID())) { ci.cancel(); return; }
         com.siirio.jemsettlements.compat.recruits.RecruitHiringService.beginNoble();
-        var principal = com.siirio.jemidentity.api.IdentityPolicy.resolve(player);
+        var principal = com.siirio.jemsettlements.runtime.SettlementAuthority.principal(player);
         if (principal.isEmpty()) { ci.cancel(); return; }
         needsVillager = RecruitsServerConfig.NobleVillagerNeedsVillagers.get();
         if (resource == null || RecruitRank.of(resource) == RecruitRank.UNSUPPORTED
@@ -45,7 +45,7 @@ public abstract class NobleHiringMixin {
     @Inject(method = "executeServerSide", at = @At("RETURN"))
     private void jem$refreshQuote(NetworkEvent.Context context, CallbackInfo ci) {
         var player = context.getSender();
-        if (player != null && DedicatedSmp.active(player) && !closing
+        if (player != null && SettlementAuthority.active(player) && !closing
                 && player.serverLevel().getEntity(nobleUUID) instanceof VillagerNobleEntity noble)
             com.siirio.jemsettlements.network.SettlementNetwork.sendNobleQuote(player, noble);
     }

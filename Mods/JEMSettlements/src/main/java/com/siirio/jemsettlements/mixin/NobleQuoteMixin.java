@@ -1,6 +1,6 @@
 package com.siirio.jemsettlements.mixin;
 
-import com.siirio.jemidentity.api.DedicatedSmp;
+import com.siirio.jemsettlements.runtime.SettlementAuthority;
 import com.siirio.jemsettlements.network.SettlementNetwork;
 import com.talhanation.recruits.entities.VillagerNobleEntity;
 import net.minecraft.server.level.ServerPlayer;
@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class NobleQuoteMixin {
     @Inject(method = "openTradeGUI", at = @At("TAIL"))
     private void jem$quotes(Player player, CallbackInfo ci) {
-        if (player instanceof ServerPlayer serverPlayer && DedicatedSmp.active(serverPlayer))
+        if (player instanceof ServerPlayer serverPlayer && SettlementAuthority.active(serverPlayer))
             SettlementNetwork.sendNobleQuote(serverPlayer, (VillagerNobleEntity) (Object) this);
     }
 }

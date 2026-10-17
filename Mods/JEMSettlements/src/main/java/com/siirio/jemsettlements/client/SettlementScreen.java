@@ -1,0 +1,409 @@
+package com.siirio.jemsettlements.client;
+
+import com.siirio.jemsettlements.network.SettlementNetwork;
+import com.siirio.jemeconomy.physical.CoinDenomination;
+import com.siirio.jemcurrency.CurrencyItems;
+import java.util.*;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.EditBox;
+import net.minecraft.client.gui.components.Tooltip;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.inventory.InventoryScreen;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+
+/** Standalone native presentation. Each operation names a town and waits for its server ACK. */
+public class SettlementScreen extends Screen {
+    private static final String[] SECTIONS={"map","residents","happiness","food","workers","recruits","treasury","settings"};
+    private static final String[] CHAPTERS={"founding","territory","feeding","housing","food_satisfaction","safety","jobs","community","decoration","assign_work","chest_delivery","payroll","rebellion","treasury","tax"};
+    private static final int INK=0xffe4dfca, MUTED=0xffb9bdaf;
+    private CompoundTag envelope, town=new CompoundTag(), detail;
+    private String section="map", mode="loading", search="", filter="all", sort="name", notice="";
+    private String guideReturn="map", guideMode="town";
+    private int chapter, scroll, left, top, panelW, panelH, cx, cy, cw, bottom, listTop, listBottom;
+    private boolean compact, information, foodDetails;
+    private UUID desiredEntity;
+    private EditBox searchBox, nameBox, amountBox;
+    private String editedName="", amount="1";
+    private CoinDenomination denomination=CoinDenomination.COPPER;
+    private final SettlementMap map=new SettlementMap();
+    private final List<Row> rows=new ArrayList<>();
+    private final List<Runnable> drawings=new ArrayList<>();
+    private Runnable confirm;
+    private Component confirmText;
+    private String confirmMode;
+    private GuiGraphics graphics;
+    private record Row(Component name,Component subtitle,ItemStack icon,CompoundTag data,Runnable action) { }
+    public SettlementScreen() { this(SettlementClientState.view()); }
+    public SettlementScreen(CompoundTag view) { super(tr("title")); envelope=view.copy(); initial(); }
+    public static void open() { SettlementClientState.open(); }
+    public static void openGuide() { SettlementClientState.openGuide(); }
+    private static Component tr(String key,Object... args) { return Component.translatable("jem.settlements.gui."+key,args); }
+    private void initial() {
+        if (!SettlementNetwork.supported()) { mode="unsupported"; return; }
+        if (envelope.getBoolean("Guide")) { mode="guide"; return; }
+        if (envelope.getBoolean("Founding")) { mode="create"; return; }
+        var directory=envelope.getList("Directory",Tag.TAG_COMPOUND);
+        if (envelope.contains("Selected",Tag.TAG_COMPOUND)) { town=envelope.getCompound("Selected").copy(); mode="town"; }
+        else if (envelope.contains("Directory")) mode=directory.isEmpty()?"create":"selector";
+    }
+    public void focusEntity(UUID id){desiredEntity=id;focusDesired();}
+    private void focusDesired(){if(desiredEntity==null || !mode.equals("town"))return; for(String key:new String[]{"Residents","WorkforceRows","Defense"})for(CompoundTag row:tags(town,key))if(row.hasUUID("Id")&&desiredEntity.equals(row.getUUID("Id"))){detail=row;section=key.equals("Residents")?"residents":key.equals("Defense")?"recruits":"workers";desiredEntity=null;scroll=0;return;}}
+    public void accept(CompoundTag view,String completed) {
+        UUID previous=town.hasUUID("Id")?town.getUUID("Id"):null;
+        envelope=view.copy();
+        town=view.contains("Selected",Tag.TAG_COMPOUND)?view.getCompound("Selected").copy():new CompoundTag();
+        if (view.contains("Reason")) notice=view.getString("Reason");
+        boolean accepted=view.getString("Result").equals("ACCEPTED") || view.getString("Result").equals("REPLAYED");
+        if (completed.equals("create") && accepted || completed.equals("select") && !town.isEmpty()) { mode="town"; detail=null; section="map"; map.clearQuote(); }
+        else if (completed.equals("delete") && accepted) { mode="selector"; detail=null; map.clearQuote(); }
+        else if (mode.equals("loading")) {
+            int total=view.contains("DirectoryTotal")?view.getInt("DirectoryTotal"):view.getList("Directory",Tag.TAG_COMPOUND).size();
+            if (view.getBoolean("Guide")) mode="guide";
+            else if (view.getBoolean("Founding") || total==0) mode="create";
+            else if (total==1 && !town.isEmpty()) mode="town";
+            else mode="selector";
+        }
+        if (view.getBoolean("Founding")) mode="create";
+        if (previous!=null && town.hasUUID("Id") && !previous.equals(town.getUUID("Id"))) map.center(BlockPos.of(town.getLong("Center")));
+        if (detail!=null && detail.hasUUID("Id")) {
+            UUID id=detail.getUUID("Id"); CompoundTag refreshed=null;
+            for (String key:new String[]{"Residents","WorkforceRows","Defense"}) for (CompoundTag row:tags(town,key)) if (row.hasUUID("Id") && id.equals(row.getUUID("Id"))) refreshed=row;
+            detail=refreshed;
+        }
+        if (completed.equals("expand") && accepted) map.clearQuote();
+        focusDesired();
+        if (minecraft!=null) rebuild();
+    }
+    public void guide() { guideReturn=section; guideMode=mode; mode="guide"; scroll=0; if (minecraft!=null) rebuild(); }
+    @Override protected void init() { rebuild(); }
+    private void rebuild() {
+        String focus=getFocused()==searchBox&&searchBox!=null?"search":getFocused()==nameBox&&nameBox!=null?"name":getFocused()==amountBox&&amountBox!=null?"amount":"";
+        int cursor=focus.equals("search")?searchBox.getCursorPosition():focus.equals("name")?nameBox.getCursorPosition():focus.equals("amount")?amountBox.getCursorPosition():0;
+        rebuildContent();
+        if(confirm==null){EditBox restored=focus.equals("search")?searchBox:focus.equals("name")?nameBox:focus.equals("amount")?amountBox:null;if(restored!=null){setInitialFocus(restored);restored.setCursorPosition(cursor);}}
+    }
+    private void rebuildContent() {
+        if (searchBox!=null) search=searchBox.getValue();
+        if (nameBox!=null) editedName=nameBox.getValue();
+        if (amountBox!=null) amount=amountBox.getValue();
+        searchBox=null; nameBox=null; amountBox=null; clearWidgets(); drawings.clear(); rows.clear(); map.release();
+        panelW=Math.min(352,width-16); panelH=Math.min(240,height-16); left=(width-panelW)/2; top=(height-panelH)/2;
+        compact=width<368 || height<256; cx=left+(compact?8:100); cy=top+(compact?62:36); cw=panelW-(compact?16:108); bottom=top+panelH-24;
+        if (panelW<228 || panelH<180) {mode="scale";button(tr("close"),left+8,bottom-20,panelW-16,this::onClose,false);return;}
+        button(Component.literal("x"),left+panelW-28,top+8,20,this::onClose,false);
+        if (!mode.equals("unsupported") && !mode.equals("loading")) {
+            if(!mode.equals("guide"))button(Component.literal("?"),left+panelW-52,top+8,20,this::guide,false);
+            if (mode.equals("town") && envelope.getInt("DirectoryTotal")>1 && !SettlementClientState.pending()) button(tr("switch"),left+panelW-112,top+8,56,()->{mode="selector";scroll=0;detail=null;rebuild();},false);
+        }
+        if(SettlementClientState.pending())button(tr("reconcile"),left+panelW-136,top+8,80,SettlementClientState::reconcileNow,false);
+        if (confirm!=null) { confirmationWidgets(); return; }
+        if (mode.equals("loading") || mode.equals("unsupported")) return;
+        if (mode.equals("selector")) { selector(); return; }
+        if (mode.equals("create")) { creation(); return; }
+        if (mode.equals("guide")) { guideWidgets(); return; }
+        if (town.isEmpty()) { mode="selector"; selector(); return; }
+        navigation();
+        if (detail!=null) { residentDetail(); return; }
+        switch(section) {
+            case "map" -> mapWidgets();
+            case "residents" -> residentRows();
+            case "happiness" -> happinessRows();
+            case "food" -> foodRows();
+            case "workers","recruits" -> workforceRows();
+            case "treasury" -> treasury();
+            case "settings" -> settings();
+            default -> { }
+        }
+    }
+    private Button button(Component label,int x,int y,int w,Runnable action,boolean mutation) {
+        Button widget=Button.builder(label,b->action.run()).bounds(x,y,Math.max(20,w),20).build();
+        widget.active=!mutation || !SettlementClientState.pending();
+        if (!widget.active) widget.setTooltip(Tooltip.create(tr("pending")));
+        addRenderableWidget(widget); return widget;
+    }
+    private void navigation() {
+        if (compact) {
+            int index=Arrays.asList(SECTIONS).indexOf(section);
+            button(tr("section."+section),left+8,top+34,panelW-16,()->{section=SECTIONS[(index+1)%SECTIONS.length];detail=null;scroll=0;search="";rebuild();},false);
+        } else for (int i=0;i<SECTIONS.length;i++) {
+            String key=SECTIONS[i]; Button tab=button(tr("section."+key),left+8,top+36+i*23,88,()->{section=key;detail=null;scroll=0;search="";filter="all";rebuild();},false);
+            if (section.equals(key)) tab.setMessage(Component.literal("> ").append(tr("section."+key)));
+        }
+    }
+    private EditBox edit(int x,int y,int w,String value,String hint,int max) {
+        EditBox box=new EditBox(font,x,y,w,20,tr(hint)); box.setMaxLength(max);box.setHint(tr(hint));box.setValue(value);addRenderableWidget(box);return box;
+    }
+    private void search(int y) {
+        searchBox=edit(cx,y,Math.max(80,cw-88),search,"search",64);
+        searchBox.setResponder(value->{search=value;scroll=0;});
+        button(tr("apply"),cx+cw-84,y,40,()->{scroll=0;rebuild();},false);
+        button(tr("sort."+sort),cx+cw-40,y,40,()->{sort=next(sort,section.equals("residents")?new String[]{"name","profession","hunger","happiness"}:new String[]{"name","value"});scroll=0;rebuild();},false);
+    }
+    private void request(String action,CompoundTag payload) {
+        UUID id=town.hasUUID("Id")?town.getUUID("Id"):null;
+        if (SettlementClientState.action(action,id,payload)) rebuild();
+    }
+    private void readDirectory(int offset) {CompoundTag payload=new CompoundTag();payload.putInt("Offset",Math.max(0,offset));request("open",payload);}
+    private void selector() {
+        cx=left+8;cw=panelW-16;cy=top+36;search(cy);listTop=cy+24;listBottom=bottom-48;
+        List<CompoundTag> list=tags(envelope,"Directory");list.sort(Comparator.comparing(r->r.getString(sort.equals("name")?"Name":"Dimension"),String.CASE_INSENSITIVE_ORDER));
+        for (CompoundTag row:list) if (matches(row.getString("Name")+" "+row.getString("Dimension"))) rows.add(new Row(Component.literal(row.getString("Name")),tr("town_row",dimension(row.getString("Dimension")),row.getInt("Residents"),row.getInt("Happiness")),new ItemStack(Items.BELL),row,()->{
+            if (SettlementClientState.action("select",row.getUUID("Id"),new CompoundTag())) { mode="loading";rebuild(); }
+        }));
+        listWidgets();int offset=envelope.getInt("DirectoryOffset"),total=envelope.getInt("DirectoryTotal");
+        button(Component.literal("<"),cx,bottom-44,22,()->readDirectory(offset-64),true).active=offset>0 && !SettlementClientState.pending();
+        button(Component.literal(">"),cx+26,bottom-44,22,()->readDirectory(offset+64),true).active=offset+64<total && !SettlementClientState.pending();
+        button(tr("create"),cx+cw-100,bottom-44,100,()->{mode="create";editedName="";rebuild();},false);drawLine(tr("directory_count",total),cx+54,bottom-38,MUTED);
+    }
+    private void creation() {
+        cx=left+8;cw=panelW-16;cy=top+40;nameBox=edit(cx,cy,cw,editedName,"name",32);
+        drawWrapped(tr("found_instruction"),cx,cy+28,cw-92,MUTED);
+        drawWrapped(tr("location",dimension(envelope.getString("FoundingDimension")),envelope.contains("Bell")?position(envelope.getLong("Bell")):tr("bell_required")),cx,cy+64,cw-92,MUTED);
+        drawLine(tr("cost"),cx,cy+100,MUTED);
+        drawings.add(()->coins(envelope.getLong("FoundingCost"),cx+48,cy+96,cw-140));
+        drawings.add(()->{
+            int px=cx+cw-84,py=cy+28;graphics.fill(px,py,px+84,py+78,0xffc8b88b);
+            graphics.fill(px+12,py+7,px+72,py+67,0x806d9562);graphics.renderOutline(px+12,py+7,60,60,0xff314e2e);
+            graphics.renderItem(new ItemStack(Items.BELL),px+34,py+27);
+            int side=envelope.getInt("InitialRadius")*2+1;graphics.drawCenteredString(font,side+" x "+side,px+42,py+68,0xff292824);
+        });
+        Button create=button(tr("create"),cx,bottom-44,Math.max(80,cw/2-2),()->{
+            CompoundTag payload=new CompoundTag();payload.putString("Name",nameBox.getValue().strip());payload.putLong("Bell",envelope.getLong("Bell"));request("create",payload);
+        },true);
+        create.active=!SettlementClientState.pending() && envelope.contains("Bell") && editedName.strip().length()>=3;
+        if (!envelope.contains("Bell")) create.setTooltip(Tooltip.create(tr("bell_required")));
+        nameBox.setResponder(value->{editedName=value;create.active=!SettlementClientState.pending()&&envelope.contains("Bell")&&value.strip().length()>=3;});
+        button(tr("back"),cx+cw/2+2,bottom-44,cw/2-2,()->{mode="selector";rebuild();},false);
+    }
+    private void mapWidgets() {
+        drawLine(tr("section.map"),cx,cy,INK);int my=cy+16,mh=bottom-my-66;map.bounds(cx,my,cw,Math.max(40,mh));
+        
+        button(Component.literal("-"),cx+cw-44,my+2,20,()->map.zoom(-1),false);button(Component.literal("+"),cx+cw-22,my+2,20,()->map.zoom(1),false);
+        button(tr("center"),cx,bottom-46,Math.max(48,cw/3),()->map.center(BlockPos.of(town.getLong("Center"))),false);
+        button(tr("player"),cx+cw/3+2,bottom-46,Math.max(48,cw/3-2),()->{if(minecraft.player!=null&&minecraft.level!=null&&minecraft.level.dimension().location().toString().equals(town.getString("Dimension")))map.center(minecraft.player.blockPosition());},false);
+        Button expand=button(tr("expand"),cx+cw*2/3+2,bottom-46,cw/3-2,()->{
+            if (!map.quoted()) return;long added=map.added(town);CompoundTag payload=map.payload(town);ask(tr("expand_confirm",added,map.cost(town)/CoinDenomination.GOLD.value()),()->request("expand",payload));
+        },true);expand.active=map.quoted()&&map.invalidReason(town).isEmpty()&&!SettlementClientState.pending();expand.setTooltip(Tooltip.create(tr(!map.invalidReason(town).isEmpty()?"map_invalid."+map.invalidReason(town):map.quoted()?"gold_unit":"select_neighbor")));
+        drawLine(map.quoted()?tr("quote",map.added(town),map.cost(town)/CoinDenomination.GOLD.value()):tr("map_help"),cx,bottom-60,MUTED);
+    }
+    private void residentRows() {
+        search(cy);button(filterLabel(),cx,cy+24,cw,()->{filter=nextResidentFilter();scroll=0;rebuild();},false);
+        listTop=cy+48;listBottom=bottom-24;
+        List<CompoundTag> residents=tags(town,"Residents");residents.sort(switch(sort){case "profession"->Comparator.comparing(r->profession(r).getString(),String.CASE_INSENSITIVE_ORDER);case "hunger"->Comparator.comparingInt(r->r.getInt("Satiety"));case "happiness"->Comparator.comparingInt(r->r.getInt("Mood"));default->Comparator.comparing(r->r.getString("Name"),String.CASE_INSENSITIVE_ORDER);});
+        for (CompoundTag row:residents) {
+            if (!matches(row.getString("Name")+" "+profession(row).getString())) continue;
+            if(filter.startsWith("profession:")&&!row.getString("Profession").equals(filter.substring(11)) || filter.startsWith("role:")&&!row.getString("Role").equals(filter.substring(5)))continue;
+            if (filter.equals("hungry")&&!row.getBoolean("Craving") || filter.equals("unhappy")&&(!town.contains("UnhappyThreshold") || row.getInt("Mood")>=town.getInt("UnhappyThreshold")) || filter.equals("working")&&!row.getBoolean("Work")) continue;
+            rows.add(new Row(Component.literal(row.getString("Name")),profession(row).copy().append(" | ").append(tr("resident_values",row.getInt("Mood"),row.getInt("Satiety"))),new ItemStack(Items.BELL),row,()->{foodDetails=false;detail=row;scroll=0;rebuild();}));
+        }
+        listWidgets();refreshFooter();
+    }
+    private void happinessRows() {
+        drawLine(tr("happiness_total",town.getInt("Happiness")),cx,cy,INK);listTop=cy+18;listBottom=bottom-24;
+        for (String category:new String[]{"housing","food","safety","jobs","community","decoration"}) {
+            String field=category.substring(0,1).toUpperCase(Locale.ROOT)+category.substring(1);
+            rows.add(new Row(tr("category."+category),Component.literal(Integer.toString(town.getInt(field))),new ItemStack(switch(category){case "housing"->Items.RED_BED;case "food"->Items.BREAD;case "safety"->Items.SHIELD;case "jobs"->Items.IRON_PICKAXE;case "community"->Items.BELL;default->Items.FLOWER_POT;}),new CompoundTag(),()->{chapter=Arrays.asList(CHAPTERS).indexOf(category.equals("food")?"food_satisfaction":category);guide();}));
+        }
+        rows.add(new Row(tr("tax",town.getInt("Tax")),tr("tax_deduction"),new ItemStack(Items.PAPER),new CompoundTag(),()->{chapter=14;guide();}));listWidgets();refreshFooter();
+    }
+    private void residentDetail() {
+        button(tr("back"),cx,cy,60,()->{detail=null;scroll=0;rebuild();},false);
+        int py=cy+26,portraitWidth=compact?48:64;boolean resident=detail.contains("Mood");
+        if(resident)button(tr(foodDetails?"needs":"food_history"),cx+64,cy,cw-64,()->{foodDetails=!foodDetails;scroll=0;rebuild();},false);
+        if(resident&&foodDetails){listTop=py;listBottom=bottom-24;for(CompoundTag row:servings(detail))rows.add(new Row(item(row.getString("Item")).getHoverName(),tr("served_today",row.getInt("Count")),item(row.getString("Item")),row,null));listWidgets();return;}
+        var entity=minecraft.level!=null && detail.contains("EntityId")?minecraft.level.getEntity(detail.getInt("EntityId")):null;
+        boolean actualEntity=entity instanceof LivingEntity&&detail.hasUUID("Id")&&entity.getUUID().equals(detail.getUUID("Id"));
+        if (actualEntity && entity instanceof LivingEntity living) drawings.add(()->InventoryScreen.renderEntityInInventoryFollowsMouse(graphics,cx+portraitWidth/2,py+83,36,0,0,living));
+        else {drawings.add(()->graphics.renderItem(new ItemStack(resident?Items.BELL:section.equals("recruits")?Items.SHIELD:Items.IRON_PICKAXE),cx+portraitWidth/2-8,py+16));drawWrapped(tr("unloaded"),cx,py+38,portraitWidth,MUTED);}
+        int tx=cx+portraitWidth+6,tw=cw-portraitWidth-6;
+        if(resident) {
+            drawWrapped(profession(detail),tx,py,tw,INK);
+            drawings.add(()->bar(graphics,tx,py+24,tw,detail.getInt("Mood"),tr("happiness")));drawings.add(()->bar(graphics,tx,py+48,tw,detail.getInt("Satiety"),tr("satiety")));
+            drawWrapped(detail.contains("RequestedDish")?tr("requested",item(detail.getString("RequestedDish")).getHoverName()):tr("no_request"),tx,py+72,tw,MUTED);
+        } else if(section.equals("workers")) {
+            drawWrapped(Component.translatable("jem.settlements.worker."+detail.getString("Type").toLowerCase(Locale.ROOT)),tx,py,tw,INK);
+            drawWrapped(tr("native_work_detail"),tx,py+28,tw,MUTED);
+            if(detail.contains("Position"))drawWrapped(tr("coordinates",position(detail.getLong("Position"))),tx,py+72,tw,MUTED);
+        } else {
+            drawWrapped(Component.translatable("jem.settlements.gui.loyalty."+detail.getString("Loyalty").toLowerCase(Locale.ROOT)),tx,py,tw,INK);
+            drawWrapped(tr("missed",detail.getInt("MissedPayrolls")),tx,py+20,tw,MUTED);
+            drawWrapped(tr("due_in",Math.max(0,detail.getLong("NextPayroll")-envelope.getLong("GameTime"))),tx,py+42,tw,MUTED);
+            drawLine(tr("wage"),tx,py+66,MUTED);drawings.add(()->coins(detail.getLong("Wage"),tx,py+78,tw));
+        }
+        listTop=py+104;listBottom=bottom-48;
+        for (CompoundTag row:servings(detail)) rows.add(new Row(item(row.getString("Item")).getHoverName(),tr("served_today",row.getInt("Count")),item(row.getString("Item")),row,null));listWidgets();
+        if(resident) {
+            button(tr("feed"),cx,bottom-44,cw/3-2,()->{detail=null;section="food";scroll=0;rebuild();},false);
+            Button home=button(tr("home"),cx+cw/3,bottom-44,cw/3-2,()->{if(detail.contains("HomePos")){map.center(BlockPos.of(detail.getLong("HomePos")));detail=null;section="map";rebuild();}},false);home.active=detail.contains("HomePos");
+            button(tr("remove"),cx+cw*2/3,bottom-44,cw/3,()->{CompoundTag payload=new CompoundTag();payload.putUUID("Entity",detail.getUUID("Id"));ask(tr("remove_confirm",detail.getString("Name")),()->request("remove",payload));},true);
+        } else {
+            Button manage=button(tr("manage_native"),cx,bottom-44,cw*2/3-2,()->{CompoundTag payload=new CompoundTag();payload.putUUID("Entity",detail.getUUID("Id"));request("manage",payload);},true);
+            manage.active=actualEntity&&!SettlementClientState.pending();manage.setTooltip(Tooltip.create(tr("manage_reach")));
+            Button locate=button(tr("locate"),cx+cw*2/3,bottom-44,cw/3,()->{map.center(BlockPos.of(detail.getLong("Position")));detail=null;section="map";rebuild();},false);
+            locate.active=detail.contains("Position")&&detail.getString("Dimension").equals(town.getString("Dimension"));
+        }
+    }
+    private static List<CompoundTag> servings(CompoundTag resident) {return tags(resident,"FoodCounts");}
+    private void foodRows() {
+        search(cy);button(filterLabel(),cx,cy+24,cw,()->{filter=next(filter,new String[]{"all","stock","requested","safe"});scroll=0;rebuild();},false);listTop=cy+48;listBottom=bottom-48;
+        for (CompoundTag row:tags(town,"Storage")) rows.add(new Row(tr("storage_at",position(row.getLong("Position"))),tr(row.getBoolean("Loaded")?"storage_loaded":"storage_unknown"),new ItemStack(Items.CHEST),row,()->{
+            CompoundTag payload=new CompoundTag();payload.putLong("Position",row.getLong("Position"));payload.putBoolean("Enabled",!row.getBoolean("FeedResidents"));ask(tr(row.getBoolean("FeedResidents")?"storage_disable":"storage_enable"),()->request("foodstorage",payload));
+        }));
+        List<CompoundTag> foods=tags(town,"FoodCatalogue");foods.sort(Comparator.comparing(r->item(r.getString("Item")).getHoverName().getString(),String.CASE_INSENSITIVE_ORDER));
+        for(CompoundTag row:foods) {
+            ItemStack food=item(row.getString("Item"));if(!matches(food.getHoverName().getString()))continue;
+            if(filter.equals("stock")&&(!row.getBoolean("StockKnown")||row.getLong("Count")<=0)||filter.equals("requested")&&!(row.getBoolean("Requested")||row.getInt("Demand")>0)||filter.equals("safe")&&(!row.getBoolean("Classified")||row.getInt("Mood")<0))continue;
+            rows.add(new Row(food.getHoverName(),tr("food_values",row.getBoolean("Classified")?signed(row.getInt("Mood")):tr("unknown").getString(),row.getBoolean("Classified")?signed(row.getInt("Satiety")):tr("unknown").getString(),row.getBoolean("StockKnown")?Long.toString(row.getLong("Count")):tr("unknown").getString()),food,row,()->info(row.getBoolean("Classified")?tr("food_detail",food.getHoverName(),signed(row.getInt("Mood")),signed(row.getInt("Satiety"))):tr("food_unknown"))));
+        }
+        listWidgets();
+        int offset=town.getInt("FoodOffset"),total=town.getInt("FoodTotal");
+        button(Component.literal("<"),cx,bottom-44,24,()->foodPage(offset-64),true).active=offset>0&&!SettlementClientState.pending();
+        button(Component.literal(">"),cx+28,bottom-44,24,()->foodPage(offset+64),true).active=offset+64<total&&!SettlementClientState.pending();
+        drawLine(tr("food_total",total),cx+58,bottom-38,MUTED);refreshFooter();
+    }
+    private void foodPage(int offset) {CompoundTag payload=new CompoundTag();payload.putInt("FoodOffset",Math.max(0,offset));request("refresh",payload);}
+    private void workforceRows() {
+        boolean recruit=section.equals("recruits"),available=envelope.getBoolean(recruit?"RecruitsAvailable":"WorkersAvailable");
+        if(!available) {drawWrapped(tr(recruit?"recruits_absent":"workers_absent"),cx,cy+20,cw,MUTED);return;}
+        search(cy);listTop=cy+24;listBottom=bottom-48;
+        for(CompoundTag row:tags(town,recruit?"Defense":"WorkforceRows")) {
+            if(!recruit&&row.getString("Type").equals("RECRUIT"))continue;if(!matches(row.getString("Name")))continue;
+            Component role=recruit?tr("recruit_state",Component.translatable("jem.settlements.gui.loyalty."+row.getString("Loyalty").toLowerCase(Locale.ROOT)),row.getInt("MissedPayrolls")):Component.translatable("jem.settlements.worker."+row.getString("Type").toLowerCase(Locale.ROOT));
+            rows.add(new Row(Component.literal(row.getString("Name")),role,new ItemStack(recruit?Items.SHIELD:Items.IRON_PICKAXE),row,()->{detail=row;scroll=0;rebuild();}));
+        }
+        listWidgets();
+        if(recruit) button(tr("pay_due"),cx,bottom-44,cw,()->ask(tr("payroll_confirm"),()->request("payroll",new CompoundTag())),true).active=town.getLong("UnpaidPayroll")>0&&!SettlementClientState.pending();
+        else drawWrapped(tr("native_work"),cx,bottom-42,cw,MUTED);
+    }
+    private void treasury() {
+        drawLine(tr("balance"),cx,cy,INK);drawings.add(()->coins(town.getLong("Treasury"),cx,cy+12,cw));drawLine(tr("spendable",town.getLong("Spendable")),cx,cy+32,MUTED);
+        Button coin=button(item("jem_economy:"+denomination.id()).getHoverName(),cx,cy+46,Math.max(88,cw/2),()->{denomination=CoinDenomination.values()[(denomination.ordinal()+1)%CoinDenomination.values().length];rebuild();},false);coin.setTooltip(Tooltip.create(tr("coin_cycle")));
+        amountBox=edit(cx+cw/2+4,cy+46,cw/2-4,amount,"amount",16);amountBox.setFilter(value->value.matches("[0-9]*"));amountBox.setResponder(value->amount=value);
+        int by=cy+70;button(tr("deposit"),cx,by,cw/2-2,()->transfer("deposit"),true);button(tr("withdraw"),cx+cw/2+2,by,cw/2-2,()->transfer("withdraw"),true);
+        listTop=by+24;listBottom=bottom-24;
+        for(CompoundTag row:tags(town,"Transactions")) rows.add(new Row(tr(row.getBoolean("Incoming")?"transaction.incoming":"transaction.outgoing"),tr("copper_amount",row.getLong("Amount")),new ItemStack(Items.PAPER),row,null));listWidgets();refreshFooter();
+    }
+    private void transfer(String action) {
+        try {
+            long total=Math.multiplyExact(Long.parseLong(amountBox.getValue()),denomination.value());if(total<=0){notice="jem.settlements.reason.invalid";return;}
+            CompoundTag payload=new CompoundTag();payload.putLong("Amount",total);ask(tr(action+"_confirm",amountBox.getValue(),item("jem_economy:"+denomination.id()).getHoverName()),()->request(action,payload));
+        } catch(NumberFormatException|ArithmeticException invalid) {notice="jem.settlements.reason.invalid";}
+    }
+    private void settings() {
+        nameBox=edit(cx,cy,cw,editedName.isEmpty()?town.getString("Name"):editedName,"name",32);
+        button(tr("save_name"),cx,cy+24,cw,()->{CompoundTag payload=new CompoundTag();payload.putString("Name",nameBox.getValue().strip());request("rename",payload);},true);
+        drawWrapped(tr("location",dimension(town.getString("Dimension")),position(town.getLong("Center"))),cx,cy+52,cw,MUTED);
+        drawWrapped(tr("bounds",town.getInt("TerritoryMinX"),town.getInt("TerritoryMinZ"),town.getInt("TerritoryMaxX"),town.getInt("TerritoryMaxZ")),cx,cy+80,cw,MUTED);
+        drawLine(tr("tax",town.getInt("Tax")),cx,cy+108,MUTED);button(tr("delete"),cx,bottom-44,cw,()->ask(tr("delete_confirm",town.getString("Name")),()->request("delete",new CompoundTag())),true);
+    }
+    private void guideWidgets() {
+        cx=left+8;cw=panelW-16;cy=top+36;
+        button(tr("back"),cx,cy,60,()->{mode=guideMode;section=guideReturn;scroll=0;rebuild();},false);
+        button(Component.literal("<"),cx+64,cy,22,()->{chapter=Math.floorMod(chapter-1,CHAPTERS.length);scroll=0;rebuild();},false);
+        button(Component.literal(">"),cx+90,cy,22,()->{chapter=(chapter+1)%CHAPTERS.length;scroll=0;rebuild();},false);drawLine(tr("chapter",chapter+1,CHAPTERS.length),cx+120,cy+6,MUTED);
+        listTop=cy+28;listBottom=bottom-24;
+        List<net.minecraft.util.FormattedCharSequence> lines=font.split(Component.translatable("jem.settlements.guide."+CHAPTERS[chapter]),cw-8);
+        int visible=Math.max(1,(listBottom-listTop)/12),limit=Math.max(0,lines.size()-visible);scroll=Math.min(scroll,limit);int start=scroll;
+        drawings.add(()->{graphics.fill(cx-2,listTop-3,cx+cw+2,listBottom,0xffd7cba6);for(int i=start;i<Math.min(lines.size(),start+visible);i++)graphics.drawString(font,lines.get(i),cx+4,listTop+(i-start)*12,0xff352c20,false);});
+        button(tr("previous"),cx,bottom-20,cw/2-2,()->{scroll=Math.max(0,scroll-visible);rebuild();},false).active=scroll>0;
+        button(tr("next"),cx+cw/2+2,bottom-20,cw/2-2,()->{scroll=Math.min(limit,scroll+visible);rebuild();},false).active=scroll<limit;
+    }
+    private void info(Component message){information=true;confirmMode=mode;confirmText=message;confirm=()->{};map.release();rebuild();}
+    private void ask(Component message,Runnable action) {information=false;confirmMode=mode;confirmText=message;confirm=action;map.release();rebuild();}
+    private void confirmationWidgets() {
+        int dx=left+Math.max(8,(panelW-224)/2),dw=Math.min(224,panelW-16);
+        int lines=font.split(confirmText,dw-16).size(),dy=top+Math.max(34,(panelH-(lines*12+44))/2);drawWrapped(confirmText,dx+8,dy+8,dw-16,INK);
+        Button cancel=button(tr(information?"close":"cancel"),dx,Math.min(bottom-24,dy+lines*12+20),dw/2-2,()->{confirm=null;mode=confirmMode;rebuild();},false);
+        if(!information)button(tr("confirm"),dx+dw/2+2,Math.min(bottom-24,dy+lines*12+20),dw/2-2,()->{Runnable action=confirm;confirm=null;mode=confirmMode;action.run();rebuild();},true);setInitialFocus(cancel);
+    }
+    private void refreshFooter() {if(SettlementClientState.pending())button(tr("reconcile"),cx,bottom-20,cw,SettlementClientState::reconcileNow,false);else button(tr("refresh"),cx,bottom-20,cw,()->request("refresh",new CompoundTag()),true);}
+    private void listWidgets() {
+        int count=Math.max(0,(listBottom-listTop)/32);scroll=Math.min(Math.max(0,scroll),Math.max(0,rows.size()-Math.max(1,count)));
+        if(rows.isEmpty()){if(listBottom-listTop>=20)drawWrapped(tr("empty"),cx,listTop+8,cw,MUTED);return;}
+        for(int i=scroll;i<Math.min(rows.size(),scroll+count);i++) {
+            Row row=rows.get(i);int y=listTop+(i-scroll)*32;
+            if(row.action()!=null) {
+                Button open=button(row.name(),cx+20,y,cw-20,()->row.action().run(),false);open.setTooltip(Tooltip.create(row.name().copy().append("\n").append(row.subtitle())));
+            } else drawLine(row.name(),cx+22,y+3,INK);
+            drawings.add(()->{graphics.renderItem(row.icon(),cx+2,y+2);if(!row.data().contains("Mood")||!row.data().contains("Satiety")||!row.data().hasUUID("Id"))graphics.drawString(font,clip(row.subtitle(),cw-4),cx+2,y+22,MUTED,false);else {bar(graphics,cx+22,y+22,(cw-26)/2,row.data().getInt("Mood"),Component.empty());bar(graphics,cx+24+(cw-26)/2,y+22,(cw-26)/2,row.data().getInt("Satiety"),Component.empty());}});
+        }
+        if(count>0&&rows.size()>count){int track=Math.max(1,listBottom-listTop),handle=Math.max(8,track*count/rows.size()),pos=(track-handle)*scroll/Math.max(1,rows.size()-count);drawings.add(()->graphics.fill(cx+cw-2,listTop+pos,cx+cw,listTop+pos+handle,0xffc2c5b3));}
+    }
+    private void bar(GuiGraphics g,int x,int y,int w,int value,Component label) {
+        value=Math.max(0,Math.min(100,value));int color=value<10?0xffbc5148:value<35?0xffca8950:value<65?0xffcbb557:0xff739c5b;
+        if(!label.getString().isEmpty())g.drawString(font,label.copy().append(" "+value+"/100"),x,y,INK,false);
+        int by=y+(label.getString().isEmpty()?0:11);g.fill(x,by,x+w,by+7,0xff20271f);g.fill(x+1,by+1,x+1+(w-2)*value/100,by+6,color);
+    }
+    private void coins(long copper,int x,int y,int maxWidth) {
+        int dx=x,dy=y;
+        for(CoinDenomination coin:CoinDenomination.descending()) {
+            long count=copper/coin.value();copper%=coin.value();if(count==0&&coin!=CoinDenomination.COPPER)continue;
+            int w=18+font.width(Long.toString(count));if(dx>x&&dx+w>x+maxWidth){dx=x;dy+=18;}
+            graphics.renderItem(new ItemStack(CurrencyItems.item(coin)),dx,dy);graphics.drawString(font,Long.toString(count),dx+16,dy+4,INK,false);dx+=w;
+        }
+    }
+    private Component clip(Component text,int width){return Component.literal(font.plainSubstrByWidth(text.getString(),width));}
+    private void drawLine(Component text,int x,int y,int color) {drawings.add(()->graphics.drawString(font,clip(text,Math.max(20,left+panelW-8-x)),x,y,color,false));}
+    private void drawWrapped(Component text,int x,int y,int w,int color) {drawings.add(()->graphics.drawWordWrap(font,text,x,y,w,color));}
+    private Component filterLabel(){if(filter.startsWith("profession:")){CompoundTag row=new CompoundTag();row.putString("Profession",filter.substring(11));return profession(row);}if(filter.startsWith("role:"))return Component.translatable("jem.settlements.worker."+filter.substring(5).toLowerCase(Locale.ROOT));return tr("filter."+filter);}
+    private String nextResidentFilter(){List<String> options=new ArrayList<>(List.of("all","hungry","unhappy","working"));for(CompoundTag row:tags(town,"Residents")){if(!row.getString("Profession").isEmpty()&&!options.contains("profession:"+row.getString("Profession")))options.add("profession:"+row.getString("Profession"));if(!row.getString("Role").isEmpty()&&!options.contains("role:"+row.getString("Role")))options.add("role:"+row.getString("Role"));}return options.get((options.indexOf(filter)+1)%options.size());}
+    private boolean matches(String value){return value.toLowerCase(Locale.ROOT).contains(search.toLowerCase(Locale.ROOT));}
+    private static String next(String value,String[] values){return values[(Arrays.asList(values).indexOf(value)+1)%values.length];}
+    private static String signed(int value){return value>0?"+"+value:Integer.toString(value);}
+    private static String position(long packed){BlockPos pos=BlockPos.of(packed);return pos.getX()+", "+pos.getY()+", "+pos.getZ();}
+    private static Component dimension(String id){ResourceLocation key=ResourceLocation.tryParse(id);if(key==null)return tr("unknown");if(key.getNamespace().equals("minecraft")&&List.of("overworld","the_nether","the_end").contains(key.getPath()))return tr("dimension."+key.getPath());String translation="dimension."+key.getNamespace()+"."+key.getPath();return net.minecraft.client.resources.language.I18n.exists(translation)?Component.translatable(translation):Component.literal(key.getPath().replace('_',' '));}
+    private static Component profession(CompoundTag row){ResourceLocation id=ResourceLocation.tryParse(row.getString("Profession"));return id==null?tr("unknown_role"):Component.translatable("entity."+id.getNamespace()+".villager."+id.getPath());}
+    private static ItemStack item(String value){ResourceLocation id=ResourceLocation.tryParse(value);return id!=null&&BuiltInRegistries.ITEM.containsKey(id)?new ItemStack(BuiltInRegistries.ITEM.get(id)):ItemStack.EMPTY;}
+    private static List<CompoundTag> tags(CompoundTag tag,String key){List<CompoundTag> result=new ArrayList<>();for(Tag row:tag.getList(key,Tag.TAG_COMPOUND))result.add(((CompoundTag)row).copy());return result;}
+    @Override public boolean isPauseScreen(){return false;}
+    private int refreshTicks;
+    @Override public void tick(){
+        if(minecraft.level==null||minecraft.player==null){onClose();return;}
+        SettlementClientState.reconcile();
+        if(++refreshTicks>=100){refreshTicks=0;if(SettlementNetwork.supported()){
+            UUID id=town.hasUUID("Id")?town.getUUID("Id"):null;
+            SettlementNetwork.action("heartbeat",id,new CompoundTag(),UUID.randomUUID());
+        }}
+    }
+    @Override public void onClose(){map.release();SettlementClientState.closed();minecraft.setScreen(null);}
+    @Override public void removed(){map.release();SettlementClientState.closed();}
+    @Override public boolean keyPressed(int key,int scan,int modifiers){
+        if(key==256){map.release();if(confirm!=null){confirm=null;mode=confirmMode;rebuild();return true;}if(detail!=null){detail=null;rebuild();return true;}if(mode.equals("guide")){mode=guideMode;section=guideReturn;rebuild();return true;}}
+        return super.keyPressed(key,scan,modifiers);
+    }
+    @Override public boolean mouseClicked(double x,double y,int button){
+        if(super.mouseClicked(x,y,button))return true;
+        if(confirm==null&&mode.equals("town")&&section.equals("map")&&detail==null&&map.click(x,y,button,town)){if(button==0)rebuild();return true;}
+        return false;
+    }
+    @Override public boolean mouseDragged(double x,double y,int button,double dx,double dy){return confirm==null&&section.equals("map")&&map.drag(x,y,dx,dy)||super.mouseDragged(x,y,button,dx,dy);}
+    @Override public boolean mouseReleased(double x,double y,int button){map.release();return super.mouseReleased(x,y,button);}
+    @Override public boolean mouseScrolled(double x,double y,double delta){
+        if(confirm!=null)return false;
+        if(mode.equals("town")&&section.equals("map")&&detail==null&&map.contains(x,y)){map.zoom(delta,x,y);return true;}
+        if(x>=cx&&x<cx+cw&&y>=listTop&&y<listBottom){scroll=Math.max(0,scroll+(delta>0?-1:1));rebuild();return true;}
+        return super.mouseScrolled(x,y,delta);
+    }
+    @Override public void render(GuiGraphics g,int mouseX,int mouseY,float partialTick){
+        graphics=g;renderBackground(g);
+        g.fill(left,top,left+panelW,top+panelH,0xff30372f);g.fill(left+1,top+1,left+panelW-1,top+panelH-1,0xff777e68);g.fill(left+3,top+3,left+panelW-3,top+panelH-3,0xff30372f);
+        g.drawString(font,mode.equals("town")?clip(Component.literal(detail==null?town.getString("Name"):detail.getString("Name")),Math.max(40,panelW-128)):title,left+9,top+13,INK,false);
+        if(mode.equals("loading")||mode.equals("unsupported")||mode.equals("scale"))g.drawWordWrap(font,tr(mode),left+12,top+50,Math.max(20,panelW-24),INK);
+        if(mode.equals("town")&&section.equals("map")&&detail==null&&confirm==null)map.render(g,town,town,minecraft);
+        super.render(g,mouseX,mouseY,partialTick);for(Runnable draw:drawings)draw.run();
+        if(!notice.isBlank())g.drawString(font,clip(Component.translatable(notice),panelW-16),left+8,top+panelH-12,0xffe6bd75,false);
+        if(envelope.getInt("UncertainActions")>0&&!SettlementClientState.pending())g.drawString(font,clip(tr("unresolved"),panelW-16),left+8,top+panelH-12,0xffedcc84,false);
+        if(SettlementClientState.pending())g.drawString(font,clip(tr(SettlementClientState.outcomeUnknown()?"outcome_unknown":"pending"),panelW-16),left+8,top+panelH-12,0xffedcc84,false);
+        if(mode.equals("town")&&section.equals("food")&&confirm==null&&mouseX>=cx&&mouseX<cx+cw&&mouseY>=listTop&&mouseY<listBottom){int index=scroll+(mouseY-listTop)/32;if(index<rows.size()&&!rows.get(index).icon().isEmpty())g.renderTooltip(font,rows.get(index).icon(),mouseX,mouseY);}
+        graphics=null;
+    }
+}

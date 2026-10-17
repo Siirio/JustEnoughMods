@@ -146,7 +146,7 @@
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/recruits/RecruitProjection.java",
       "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json",
       "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json",
-      "Client/ManagedPack/mods/jem-settlements-2.0.0.jar",
+      "Client/ManagedPack/mods/jem-settlements-2.1.0.jar",
       "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar"
     ]
   },
@@ -253,6 +253,15 @@
         "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json",
         "Client/ManagedPack/mods/jem-settlements-2.0.0.jar",
         "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "relocate_current_artifact_and_selector_evidence",
+      "summary": "Current installed artifact and exact source-set evidence references follow migrated Economy1.3.0/Settlements2.1.0 and the sole Core resource owner. Selector membership, prices, saved balances and prior historical evidence are unchanged.",
+      "source_files": [
+        "Client/ManagedPack/mods/jem-settlements-2.0.0.jar"
       ]
     }
   ],

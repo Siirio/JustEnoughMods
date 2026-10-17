@@ -11,11 +11,11 @@ import net.minecraftforge.registries.RegistryObject;
 
 public final class EconomyItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, JemEconomy.MOD_ID);
-    public static final RegistryObject<Item> COPPER_COIN = register(CoinDenomination.COPPER);
-    public static final RegistryObject<Item> SILVER_COIN = register(CoinDenomination.SILVER);
-    public static final RegistryObject<Item> GOLD_COIN = register(CoinDenomination.GOLD);
-    public static final RegistryObject<Item> AETHER_COIN = register(CoinDenomination.AETHER);
-    public static final RegistryObject<Item> ARCANE_COIN = register(CoinDenomination.ARCANE);
+    public static final RegistryObject<Item> COPPER_COIN = com.siirio.jemcurrency.CurrencyItems.COPPER_COIN;
+    public static final RegistryObject<Item> SILVER_COIN = com.siirio.jemcurrency.CurrencyItems.SILVER_COIN;
+    public static final RegistryObject<Item> GOLD_COIN = com.siirio.jemcurrency.CurrencyItems.GOLD_COIN;
+    public static final RegistryObject<Item> AETHER_COIN = com.siirio.jemcurrency.CurrencyItems.AETHER_COIN;
+    public static final RegistryObject<Item> ARCANE_COIN = com.siirio.jemcurrency.CurrencyItems.ARCANE_COIN;
     public static final RegistryObject<Item> SHIPPING_BOX = ITEMS.register("shipping_box",
             () -> new com.siirio.jemeconomy.shipping.ShippingBoxItem(EconomyBlocks.SHIPPING_BOX.get(), new Item.Properties()));
 
@@ -32,7 +32,4 @@ public final class EconomyItems {
         };
     }
 
-    private static RegistryObject<Item> register(CoinDenomination denomination) {
-        return ITEMS.register(denomination.id(), () -> new PhysicalCoinItem(denomination));
-    }
 }

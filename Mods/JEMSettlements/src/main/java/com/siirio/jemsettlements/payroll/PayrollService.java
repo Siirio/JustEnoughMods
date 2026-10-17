@@ -1,12 +1,12 @@
 package com.siirio.jemsettlements.payroll;
 
+import com.siirio.jemsettlements.runtime.SettlementAuthority;
 import com.siirio.jemeconomy.api.EconomyApi;
 import com.siirio.jemeconomy.ledger.TransferResult;
 import com.siirio.jemsettlements.compat.recruits.RecruitReadinessAdapter;
 import com.siirio.jemsettlements.town.SettlementSavedData;
 import com.siirio.jemsettlements.workforce.WorkforceRecord;
 import com.siirio.jemsettlements.workforce.WorkforceType;
-import com.talhanation.recruits.entities.AbstractRecruitEntity;
 import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
@@ -17,12 +17,10 @@ public final class PayrollService {
     public static final long PERIOD_TICKS = PayrollClock.WEEK;
     private PayrollService() { }
     public static void tick(MinecraftServer server) {
-        if (!server.isDedicatedServer()) return;
+        if (!com.siirio.jemsettlements.runtime.SettlementAuthority.active(server)) return;
         SettlementSavedData data = SettlementSavedData.get(server);
         long now = server.overworld().getGameTime();
-        for (var level : server.getAllLevels()) for (var entity : level.getAllEntities())
-            if (entity instanceof AbstractRecruitEntity recruit && recruit.isAlive())
-                com.siirio.jemsettlements.compat.recruits.RecruitHiringService.adoptExisting(server, recruit);
+        if (net.minecraftforge.fml.ModList.get().isLoaded("recruits")) com.siirio.jemsettlements.compat.recruits.RecruitRuntime.adopt(server);
         for (WorkforceRecord record : data.workforce()) {
             for (var level : server.getAllLevels()) {
                 var entity = level.getEntity(record.entityId());
@@ -86,7 +84,7 @@ public final class PayrollService {
             record.penalized(period.index()); newlyMissed = true;
             server.getAllLevels().forEach(level -> {
                 var entity = level.getEntity(record.entityId());
-                if (entity instanceof AbstractRecruitEntity recruit && recruit.isAlive()) RecruitReadinessAdapter.applyPayrollPenalty(recruit, 10.0F);
+                if (entity != null && net.minecraftforge.fml.ModList.get().isLoaded("recruits")) com.siirio.jemsettlements.compat.recruits.RecruitRuntime.penalize(entity);
             });
             if (record.missedPayrolls() >= 3) record.rebel();
         }

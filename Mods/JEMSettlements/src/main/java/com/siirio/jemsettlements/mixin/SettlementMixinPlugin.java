@@ -13,7 +13,7 @@ public final class SettlementMixinPlugin implements IMixinConfigPlugin {
     @Override public String getRefMapperConfig() { return null; }
     @Override public boolean shouldApplyMixin(String target, String mixin) {
         if (net.minecraftforge.fml.loading.FMLLoader.getLoadingModList().getModFileById("recruits") == null) return false;
-        return mixin.endsWith(".RecruitHireScreenMixin") || mixin.endsWith(".NobleTradeScreenMixin") || mixin.endsWith(".NobleTradeListEntryMixin") || FMLEnvironment.dist == Dist.DEDICATED_SERVER;
+        return true;
     }
     @Override public void acceptTargets(Set<String> mine, Set<String> others) { }
     @Override public List<String> getMixins() { return null; }

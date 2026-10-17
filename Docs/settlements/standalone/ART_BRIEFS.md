@@ -1,6 +1,6 @@
 # Artwork production briefs
 
-Status: **production contracts only; no generated or accepted production sprites**. Artwork starts after UI/data contracts and one control-family candidate review. Use the placement wireframe and coordinates in `GUI_SPEC.md` as the mockup for each group; it is not runtime evidence.
+Status: **production contracts plus one editable control-family candidate; no accepted custom production sprites**. The implemented screens use actual native Minecraft buttons, items and programmatic pixel surfaces. Those are replaceable native presentation, not completed custom illustrated artwork. Artwork starts after one control-family candidate review. Use the placement wireframe and coordinates in `GUI_SPEC.md` as the mockup for each group; it is not runtime evidence.
 
 ## Active direction and sources
 
@@ -87,3 +87,5 @@ Placement: centered within112×144 book content, image96×64 at top with text be
 ## Handoff and acceptance
 
 Every group supplies layered source, exact PNGs, manifest with size/slice/anchor/state/usage, native1× sheet and nearest4× sheet on bright/dark backgrounds. First inspect one control family and one real populated screen before generating the rest. Runtime review must include small GUI scale, long Russian, focus/disabled states and actual data. Any temporary material is labelled candidate and kept replaceable; no unfinished art declared approved. No art assets were generated during this design checkpoint.
+
+Control-family review candidate: [native1x sheet](../assets/review/control-family-r1/dark-native1x.png), [nearest4x sheet](../assets/review/control-family-r1/light-nearest4x.png), [editable source/manifest](../assets/source/control-family-r1/README.md). Eight original exports cover panel, four button states, tabs and two bars. The offline reference sheet is art-only, has no gameplay transport or world mutation, and is not an in-game screenshot. `CANDIDATE_NOT_APPROVED / SOURCE_EDITABLE / WAITING_FOR_REAL_GAME_CAPTURE`; no JAR/resource integration.

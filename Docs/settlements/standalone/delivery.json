@@ -1,0 +1,108 @@
+{
+  "date": "2026-10-17",
+  "artifacts": [
+    {
+      "module": "JEMSettlements",
+      "artifact": "Mods/JEMSettlements/build/libs/jem-settlements-2.1.0.jar",
+      "sha256": "a8812905195ef467c034e3ad887948def4dd6bfa4081f7febc8cad222234d2cf",
+      "Server": true,
+      "Client/ManagedPack": true,
+      "embedded": {
+        "META-INF/jarjar/jem-currency-core-1.0.0.jar": "8bf727d3f816bd923ec379f2bc82538452cb6271d71c8f3d2b87f2c584f35ede",
+        "META-INF/jarjar/jem-identity-1.0.0.jar": "062680dbc83a02fe28a455625d459a2c37b92cbe9c025589b4d06f5247d5feac"
+      }
+    },
+    {
+      "module": "JEMEconomy",
+      "artifact": "Mods/JEMEconomy/build/libs/jem-economy-1.3.0.jar",
+      "sha256": "9369b394272b7a3677f22e7033bd87b8d64a5e11ede0abfba4a5a78a32f9fbe3",
+      "Server": true,
+      "Client/ManagedPack": true,
+      "embedded": {
+        "META-INF/jarjar/jem-currency-core-1.0.0.jar": "8bf727d3f816bd923ec379f2bc82538452cb6271d71c8f3d2b87f2c584f35ede",
+        "META-INF/jarjar/jem-identity-1.0.0.jar": "062680dbc83a02fe28a455625d459a2c37b92cbe9c025589b4d06f5247d5feac"
+      }
+    },
+    {
+      "module": "JEMServer",
+      "artifact": "Mods/JEMServer/build/libs/jem-server-2.0.0-dev.jar",
+      "sha256": "0f260ada7236a35c87f6bd43ff9ec76e591b7c05b018b4c4ac7d45fb31549111",
+      "Server": true,
+      "Client/ManagedPack": true,
+      "embedded": {
+        "META-INF/jarjar/jem-menu-support-1.0.0.jar": "f49a992312608501042e91b2ed400b38f53b817bd22b36a0b7ffc7caeb1fd602"
+      }
+    }
+  ],
+  "acceptance": "production compiled, ordinary dedicated loaded; no client gameplay/visual acceptance",
+  "packSyncPublication": {
+    "published": true,
+    "journalSequence": 20,
+    "publishedManifestSha1": "ba33232d4a87a800429a2272c2afbff959c800cc",
+    "stagedManifestSha1": "ba33232d4a87a800429a2272c2afbff959c800cc",
+    "nativePreview": "+0 ~2 -0",
+    "nativePublish": "PUBLISHED 2026-10-17 15:14:53 Asia/Yekaterinburg"
+  },
+  "localServer": {
+    "loaded": true,
+    "doneAt": "2026-10-17 15:13:00 Asia/Yekaterinburg",
+    "purpose": "ordinary artifact installation and native pack publication, no gameplay QA",
+    "stopRequested": true,
+    "stoppedAt": "2026-10-17 15:17:48 Asia/Yekaterinburg"
+  },
+  "atlas": {
+    "validation": {
+      "valid": true,
+      "canonical_counts": {
+        "biomes": 264,
+        "blocks": 12134,
+        "creative_tabs": 55,
+        "effects": 436,
+        "enchantments": 218,
+        "entities": 1593,
+        "items": 17049,
+        "structures": 520
+      },
+      "change_records": 32,
+      "effective_index": "Catalog/effective/index.json",
+      "meaning": "Working snapshot only; unrelated unstaged record updates are not delivery-snapshot evidence"
+    },
+    "newCurrencyRegistrations": 5,
+    "currencyCoreSourceAudit": {
+      "watched": 94,
+      "covered": 94,
+      "unresolved": 0
+    },
+    "taskUncoveredPaths": [],
+    "unrelatedUncovered": {
+      "JEMRoles": 2,
+      "JEMVisualSandbox": 6
+    },
+    "installedArtifactDrift": false,
+    "fullRegenerationRequired": false,
+    "scope": "Static installed evidence; inherited stale unrelated partitions retained, not runtime registry enumeration",
+    "deliverySnapshotValidation": {
+      "valid": true,
+      "canonical_counts": {
+        "biomes": 264,
+        "blocks": 12133,
+        "creative_tabs": 55,
+        "effects": 436,
+        "enchantments": 218,
+        "entities": 1593,
+        "items": 17064,
+        "structures": 520
+      },
+      "change_records": 31,
+      "effective_index": "Catalog/effective/index.json"
+    },
+    "deliverySnapshotScope": "Canonical Atlas generator/validator reading exact indexed sources/records plus actual ignored installed-JAR evidence; unrelated worktree records/source edits excluded, no worktree hidden or replaced"
+  },
+  "artCandidate": {
+    "source": "Docs/settlements/assets/source/control-family-r1/control-family-r1.ora",
+    "preview": "Docs/settlements/assets/review/control-family-r1/dark-native1x.png",
+    "status": "CANDIDATE_NOT_APPROVED",
+    "runtimeGate": "WAITING_FOR_REAL_GAME_CAPTURE",
+    "integrated": false
+  }
+}

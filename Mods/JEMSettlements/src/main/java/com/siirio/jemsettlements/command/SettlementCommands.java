@@ -2,8 +2,7 @@ package com.siirio.jemsettlements.command;
 
 import com.mojang.brigadier.arguments.StringArgumentType;
 import net.minecraft.commands.arguments.EntityArgument;
-import com.siirio.jemidentity.api.DedicatedSmp;
-import com.siirio.jemidentity.api.IdentityPolicy;
+import com.siirio.jemsettlements.runtime.SettlementAuthority;
 import com.siirio.jemsettlements.api.SettlementApi;
 import com.siirio.jemsettlements.town.SettlementSavedData;
 import net.minecraft.commands.Commands;
@@ -19,7 +18,6 @@ public final class SettlementCommands {
 
     @SubscribeEvent
     public static void register(RegisterCommandsEvent event) {
-        if (!DedicatedSmp.accepts(event)) return;
         event.getDispatcher().register(Commands.literal("jem")
                 .then(Commands.literal("town")
                         .executes(context -> status(context.getSource().getPlayerOrException()))
@@ -36,6 +34,7 @@ public final class SettlementCommands {
                                         .executes(context -> workforce(context.getSource().getPlayerOrException(), EntityArgument.getEntity(context, "entity")))))
                         .then(Commands.literal("mounts").executes(context -> mounts(context.getSource().getPlayerOrException())))));
         event.getDispatcher().register(Commands.literal("settlements")
+                .executes(context -> { SettlementNetwork.sendOwned(context.getSource().getPlayerOrException(), true); return 1; })
                 .then(Commands.literal("help").executes(context -> help(context.getSource().getPlayerOrException()))));
     }
 
@@ -51,16 +50,6 @@ public final class SettlementCommands {
     }
 
     private static int status(ServerPlayer player) {
-        var principal = IdentityPolicy.resolve(player);
-        if (principal.isEmpty()) {
-            player.sendSystemMessage(Component.translatable("jem.settlements.identity_required"));
-            return 0;
-        }
-        var town = SettlementApi.ownedTown(player);
-        if (town.isEmpty()) {
-            player.sendSystemMessage(Component.translatable("jem.settlements.none"));
-            return 0;
-        }
         SettlementNetwork.sendOwned(player, true);
         return 1;
     }
@@ -87,8 +76,8 @@ public final class SettlementCommands {
     }
 
     private static int mounts(ServerPlayer player) {
-        var principal = IdentityPolicy.resolve(player); if (principal.isEmpty()) { player.sendSystemMessage(Component.translatable("jem.settlements.identity_required")); return 0; }
-        var record = com.siirio.jemsettlements.collection.PlayerMountCollectionSavedData.get(player.getServer()).record(principal.get().accountId());
+        var principal = SettlementAuthority.principal(player); if (principal.isEmpty()) { player.sendSystemMessage(Component.translatable("jem.settlements.identity_required")); return 0; }
+        var record = com.siirio.jemsettlements.collection.PlayerMountCollectionSavedData.get(player.getServer()).record(principal.get());
         player.sendSystemMessage(Component.translatable("jem.settlements.mount.summary", record.individualCount(), record.livingCount(), record.typeCount(), com.siirio.jemsettlements.collection.MountRoster.eligible().size()));
         return 1;
     }

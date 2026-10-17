@@ -36,4 +36,10 @@ public final class WorkersAdapter {
         }
         return Optional.of(new WorkerWorkEvidence(worker.getUUID(), worker.getCurrentWorkArea().getUUID(), worker.level().getGameTime()));
     }
+    /** Workers 2.0.3 inherits native openGUI(Player), implemented by each role. */
+    public static boolean openManagement(net.minecraft.server.level.ServerPlayer player, Entity entity, UUID account) {
+        if (!(entity instanceof AbstractWorkerEntity worker) || typeOwnedBy(entity, account).isEmpty()) return false;
+        worker.openGUI(player); return true;
+    }
+
 }

@@ -85,6 +85,7 @@ recipe consequences for the requested item.
 The generator reads the exact JARs in `Client/ManagedPack/mods` and `Server/mods`,
 the vanilla unpacked server archive, JEM source registrations, recipes, loot, tags,
 language files, blockstates, models and worldgen JSON. It does **not** launch Forge.
+Declared Forge Jar-in-Jar dependencies are recursively inventoried/scanned with their actual content hashes, deduplicated by digest across consumers and listed under each outer artifact's `nested_dependencies`. This covers shared CurrencyCore/Identity without pretending their classes/resources belong to the outer Economy/Settlements artifact. Canonical IDs keep their original namespace even when their runtime owner differs; query paths use the owning partition.
 Therefore `coverage.json` claims complete coverage only for IDs observed in those
 static sources. Dynamic registrations, Java-only FoodProperties, ItemStack/NBT
 variants, capabilities and entity AI are recorded in `unresolved.json`; null means

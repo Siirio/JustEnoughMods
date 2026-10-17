@@ -15,6 +15,9 @@ public final class JemSettlements {
         SettlementNetwork.register();
         MinecraftForge.EVENT_BUS.register(SettlementCommands.class);
         MinecraftForge.EVENT_BUS.register(SettlementNetwork.class);
+        MinecraftForge.EVENT_BUS.register(com.siirio.jemsettlements.network.SettlementActions.class);
+        MinecraftForge.EVENT_BUS.register(com.siirio.jemsettlements.network.SettlementWarnings.class);
         MinecraftForge.EVENT_BUS.register(SettlementRuntime.class);
+        if (net.minecraftforge.fml.ModList.get().isLoaded("recruits")) MinecraftForge.EVENT_BUS.register(com.siirio.jemsettlements.compat.recruits.RecruitRuntime.class);
     }
 }

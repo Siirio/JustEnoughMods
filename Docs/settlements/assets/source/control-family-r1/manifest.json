@@ -1,0 +1,226 @@
+{
+  "candidate": "settlements-control-family-r1",
+  "status": "CANDIDATE_NOT_APPROVED",
+  "evidenceState": "SOURCE_EDITABLE",
+  "runtimeGate": "WAITING_FOR_REAL_GAME_CAPTURE",
+  "integrated": false,
+  "source": "control-family-r1.ora",
+  "canvas": [
+    112,
+    112
+  ],
+  "layers": [
+    "01_surfaces",
+    "02_edge_undercuts",
+    "03_bevel_planes",
+    "04_fixed_corners",
+    "05_state_accents"
+  ],
+  "sprites": {
+    "settlement_panel": {
+      "path": "exports/settlement_panel.png",
+      "size": [
+        16,
+        16
+      ],
+      "sourceRect": [
+        0,
+        0,
+        16,
+        16
+      ],
+      "slice": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "sha256": "7856ee58406cbf938921fe52671b619864e05e92a938561b2247a0e9ca87de61"
+    },
+    "settlement_button": {
+      "path": "exports/settlement_button.png",
+      "size": [
+        16,
+        20
+      ],
+      "sourceRect": [
+        24,
+        0,
+        16,
+        20
+      ],
+      "slice": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "sha256": "aabb114522035c4ab0b9e2cead803e384b5a159dcaa2c836eb8ab7914d509f35"
+    },
+    "settlement_button_hover": {
+      "path": "exports/settlement_button_hover.png",
+      "size": [
+        16,
+        20
+      ],
+      "sourceRect": [
+        44,
+        0,
+        16,
+        20
+      ],
+      "slice": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "sha256": "afa742406f720a15334533aa6420aa1afe27c75135521bd2ce9b87934992f4db"
+    },
+    "settlement_button_pressed": {
+      "path": "exports/settlement_button_pressed.png",
+      "size": [
+        16,
+        20
+      ],
+      "sourceRect": [
+        64,
+        0,
+        16,
+        20
+      ],
+      "slice": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "sha256": "9bba61a27145aff0c18535fee74cb8edbe6c23c921f05aba6b6151e6473302bd"
+    },
+    "settlement_button_disabled": {
+      "path": "exports/settlement_button_disabled.png",
+      "size": [
+        16,
+        20
+      ],
+      "sourceRect": [
+        84,
+        0,
+        16,
+        20
+      ],
+      "slice": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "sha256": "9db896d3afb0a48821bc23a09c41efae1eb2b7cdf2cccc24e8b19b4566b4cd9a"
+    },
+    "settlement_tabs": {
+      "path": "exports/settlement_tabs.png",
+      "size": [
+        16,
+        80
+      ],
+      "sourceRect": [
+        0,
+        24,
+        16,
+        80
+      ],
+      "slice": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "sha256": "7f23041024d70083c5661384f5ded74bf91175e19388d471fc6e40af0506087f",
+      "cells": [
+        {
+          "name": "default",
+          "rect": [
+            0,
+            0,
+            16,
+            20
+          ]
+        },
+        {
+          "name": "hover",
+          "rect": [
+            0,
+            20,
+            16,
+            20
+          ]
+        },
+        {
+          "name": "selected",
+          "rect": [
+            0,
+            40,
+            16,
+            20
+          ]
+        },
+        {
+          "name": "disabled",
+          "rect": [
+            0,
+            60,
+            16,
+            20
+          ]
+        }
+      ]
+    },
+    "status_track": {
+      "path": "exports/status_track.png",
+      "size": [
+        16,
+        8
+      ],
+      "sourceRect": [
+        24,
+        28,
+        16,
+        8
+      ],
+      "slice": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "sha256": "689391766ebf729dc7431651a6558c8f1c52dbfd97d515954a3618ad2e3d798e"
+    },
+    "status_fill": {
+      "path": "exports/status_fill.png",
+      "size": [
+        1,
+        4
+      ],
+      "sourceRect": [
+        44,
+        28,
+        1,
+        4
+      ],
+      "slice": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sha256": "b7bacbe7b0e0eddd6b60829747fb3b75c2e3196d8a0b1897c299bcb9f9816d36"
+    }
+  },
+  "exportProcedure": "python export_family.py --review-font-jar <Minecraft 1.20.1 client.jar>",
+  "fontUse": "Installed vanilla bitmap font rendered only into labelled review sheets; font atlas not retained or exported. Sprites contain no text.",
+  "provenance": "Original hand-specified pixel clusters by Codex for this candidate; no reference pixels cropped/copied. Existing user-labelled references inspected as material/construction guidance.",
+  "license": "New original candidate files belong to this project; no third-party asset license is asserted. Vanilla fonts remain Mojang property and appear only as rendered review labels.",
+  "alpha": "Sprite pixels are binary 0/255; transparent outer corners, no antialiasing.",
+  "scaling": "3px fixed corners and tiled center/edges; track2px fixed end caps; fill mask1x4 tinted by renderer.",
+  "focus": "Focus outline is programmatic, not included in sprite. Text and pressed1px offset remain runtime-owned."
+}

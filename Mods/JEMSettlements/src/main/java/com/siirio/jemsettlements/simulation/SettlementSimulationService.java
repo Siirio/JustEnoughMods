@@ -52,7 +52,7 @@ public final class SettlementSimulationService {
                 var entity = level.getEntity(worker.entityId());
                 if (entity == null || !entity.isAlive()) continue;
                 worker.seen(level.getGameTime());
-                if (worker.nativeModId().equals("workers")) WorkersAdapter.currentEvidence(entity)
+                if (worker.nativeModId().equals("workers") && net.minecraftforge.fml.ModList.get().isLoaded("workers")) WorkersAdapter.currentEvidence(entity)
                         .ifPresent(evidence -> worker.observeWorkArea(evidence.workAreaId(), evidence.observedGameTime()));
                 break;
             }
@@ -82,7 +82,7 @@ public final class SettlementSimulationService {
     private static void deliverPending(ServerLevel level, TownRecord town) {
         int[] slotBudget = {64}; int outputBudget = 128;
         for (ProductionObligation obligation : town.simulation().production()) {
-            if (obligation.delivered() || outputBudget <= 0 || slotBudget[0] <= 0) continue;
+            if (obligation.delivered() || obligation.status() == ProductionObligation.Status.QUARANTINED || outputBudget <= 0 || slotBudget[0] <= 0) continue;
             if (obligation.outputCount() > outputBudget) continue;
             List<StorageHandle> available = handles(level, town, slotBudget);
             List<StorageHandle> inputs = available.stream().filter(StorageHandle::productionInput).toList();
@@ -94,15 +94,28 @@ public final class SettlementSimulationService {
             if (!canExtract(inputs, inputItem, obligation.inputCount())) { obligation.blocked(ProductionObligation.Status.NEEDS_INPUTS, "need_" + obligation.inputCount() + "_" + obligation.inputItem()); continue; }
             ItemStack output = new ItemStack(outputItem, obligation.outputCount());
             if (capacity(outputs, output) < obligation.outputCount()) { obligation.blocked(ProductionObligation.Status.OUTPUT_FULL, "output_full"); continue; }
+            // SavedData and arbitrary mod capabilities have no shared transaction.
+            // Persist an in-flight quarantine before touching inventory: a crash must
+            // never silently replay a debit or mint a second output batch.
+            obligation.blocked(ProductionObligation.Status.QUARANTINED, "inventory_commit_in_flight");
+            SettlementSavedData.get(level.getServer()).changed();
+            level.getServer().overworld().getDataStorage().save();
             if (!extract(inputs, inputItem, obligation.inputCount())) { obligation.blocked(ProductionObligation.Status.QUARANTINED, "input_changed_during_commit"); continue; }
             ItemStack remainder = insert(outputs, output);
             if (!remainder.isEmpty()) {
-                ItemStack rollback = insert(inputs, new ItemStack(inputItem, obligation.inputCount()));
-                obligation.blocked(ProductionObligation.Status.QUARANTINED, rollback.isEmpty() ? "output_changed_inputs_restored" : "ambiguous_inventory_mutation");
+                // A partial output is already physical. Returning all inputs would
+                // create both crop and seed value. Keep the exact undelivered count
+                // for operator reconciliation instead of retrying or refunding.
+                obligation.blocked(ProductionObligation.Status.QUARANTINED, "partial_output_remaining=" + remainder.getCount());
+                SettlementSavedData.get(level.getServer()).changed();
+                level.getServer().overworld().getDataStorage().save();
                 continue;
             }
             StorageHandle destination = outputs.get(0);
-            obligation.delivered(destination.dimension(), destination.position()); outputBudget -= obligation.outputCount();
+            obligation.delivered(destination.dimension(), destination.position());
+            SettlementSavedData.get(level.getServer()).changed();
+            level.getServer().overworld().getDataStorage().save();
+            outputBudget -= obligation.outputCount();
         }
     }
 

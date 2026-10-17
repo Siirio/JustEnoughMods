@@ -45,24 +45,24 @@
     "kind": "cross_module_interface_consolidation",
     "source_files": [
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/JemEconomy.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/MarketCatalogSnapshot.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/MarketItemSnapshot.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/MarketClientState.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/WalletClientState.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/WalletScreen.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/CoinExchangePacket.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/MarketActionPacket.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/MarketCatalogPacket.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/MarketQueryPacket.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/WalletActionPacket.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinOperation.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinService.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicy.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/MarketCatalogSnapshot.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/MarketItemSnapshot.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketClientState.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/WalletClientState.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/WalletScreen.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/CoinExchangePacket.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/MarketActionPacket.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/MarketCatalogPacket.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/MarketQueryPacket.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/WalletActionPacket.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinOperation.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinService.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/ItemPolicy.java",
       "Mods/JEMServer/build.gradle",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/DeathHistory.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/JemServer.java",
@@ -186,6 +186,32 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpSubscriptions.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpTable.java"
       ]
+    },
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "relocate_currency_source_owner",
+      "summary": "Standalone Settlements extracts the existing currency/native merchant implementation and resources into shared JEMCurrencyCore. Current source references now identify the sole existing owner; original Economy paths remain historical evidence. No balance, supply, Coin ID, legacy save identity or price change is caused by this source relocation.",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/MarketCatalogSnapshot.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/MarketItemSnapshot.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/MarketClientState.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/WalletClientState.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/WalletScreen.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/CoinExchangePacket.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/MarketActionPacket.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/MarketCatalogPacket.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/MarketQueryPacket.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/WalletActionPacket.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinOperation.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinService.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicy.java"
+      ]
     }
   ],
   "impacts": {
@@ -210,9 +236,9 @@
     "notes": [
       "Market prices, demand and quotas remain owned by JEMEconomy; client screens send typed requests and do not mutate ledgers directly.",
       "Owner-only home coordinates and death history never enter another player's profile projection.",
-      "Settlement and recruit views contain no mutation action kind; native management remains unchanged."
-      ,"Read-only home, settlements and recruits are valid view routes but remain absent from the mutable SmpAction table."
-      ,"Home may invoke Xaero's own open-map control but JEM does not construct or focus GuiMap."
+      "Settlement and recruit views contain no mutation action kind; native management remains unchanged.",
+      "Read-only home, settlements and recruits are valid view routes but remain absent from the mutable SmpAction table.",
+      "Home may invoke Xaero's own open-map control but JEM does not construct or focus GuiMap."
     ],
     "unresolved": [
       "Fresh artifacts load on the dedicated server and /smp is registered; client packet/open behavior, screen layout and player gameplay acceptance remain pending."

@@ -20,7 +20,12 @@ public final class SmpNetwork {
         CHANNEL.messageBuilder(SmpQuery.class, 0, NetworkDirection.PLAY_TO_SERVER)
                 .encoder(SmpQuery::encode).decoder(SmpQuery::decode).consumerMainThread((packet, context) -> {
                     var player = context.get().getSender();
-                    if (player != null && SmpEnvironment.active(player)) SmpSubscriptions.query(player, packet);
+                    if (player != null && SmpEnvironment.active(player)) {
+                        if (packet.tab().equals("settlements")) {
+                            if (packet.selected() == null) com.siirio.jemsettlements.network.SettlementNetwork.sendOwned(player, true);
+                            else com.siirio.jemsettlements.network.SettlementNetwork.sendSelected(player, packet.selected(), true);
+                        } else SmpSubscriptions.query(player, packet);
+                    }
                     context.get().setPacketHandled(true);
                 }).add();
         CHANNEL.messageBuilder(SmpAction.class, 1, NetworkDirection.PLAY_TO_SERVER)
@@ -65,7 +70,13 @@ public final class SmpNetwork {
     public static void openModule(SmpModuleOpen.Module module) { CHANNEL.sendToServer(new SmpModuleOpen(module)); }
     public static void settlement(SettlementUiAction action) { CHANNEL.sendToServer(action); }
     public static void open(ServerPlayer player, String tab, UUID selected) { open(player, new SmpQuery(tab, "", "", 0, selected)); }
-    public static void open(ServerPlayer player, SmpQuery query) { if (SmpEnvironment.active(player)) SmpSubscriptions.open(player, query); }
+    public static void open(ServerPlayer player, SmpQuery query) {
+        if (!SmpEnvironment.active(player)) return;
+        if (query.tab().equals("settlements")) {
+            if (query.selected() == null) com.siirio.jemsettlements.network.SettlementNetwork.sendOwned(player, true);
+            else com.siirio.jemsettlements.network.SettlementNetwork.sendSelected(player, query.selected(), true);
+        } else SmpSubscriptions.open(player, query);
+    }
     public static void close(ServerPlayer player) { SmpSubscriptions.close(player); }
     public static void logout(ServerPlayer player) { close(player); SmpRequests.logout(player); }
     public static void clear() { SmpSubscriptions.clear(); SmpRequests.clear(); }

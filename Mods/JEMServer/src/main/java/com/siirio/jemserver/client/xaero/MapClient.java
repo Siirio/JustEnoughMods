@@ -83,7 +83,7 @@ public final class MapClient {
         int tz = Math.max(town.center().getZ() - 256, Math.min(town.center().getZ() + 256, z));
         int minX = Math.min(town.minX(), tx), maxX = Math.max(town.maxX(), tx), minZ = Math.min(town.minZ(), tz), maxZ = Math.max(town.maxZ(), tz);
         long cost = (long) (maxX - minX + 1) * (maxZ - minZ + 1) - town.area();
-        settlementDraft = new SettlementDraft(town.id(), dimension, tx, tz, minX, minZ, maxX, maxZ, Math.max(0L, cost));
+        settlementDraft = new SettlementDraft(town.id(), dimension, tx, tz, minX, minZ, maxX, maxZ, Math.multiplyExact(100L, Math.max(0L, cost)));
     }
     public static boolean finishSettlementDrag() { boolean result = draggingSettlement && settlementDraft != null && settlementDraft.cost() > 0L; draggingSettlement = false; return result; }
     public static SettlementDraft pendingSettlement(ResourceLocation dimension, int x, int z) { return settlementDraft != null && settlementDraft.dimension().equals(dimension) && settlementDraft.targetX() == x && settlementDraft.targetZ() == z ? settlementDraft : null; }

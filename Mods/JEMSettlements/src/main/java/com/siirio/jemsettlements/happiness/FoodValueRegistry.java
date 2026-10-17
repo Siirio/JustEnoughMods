@@ -40,8 +40,7 @@ public final class FoodValueRegistry extends SimpleJsonResourceReloadListener {
         ResourceLocation id = ForgeRegistries.ITEMS.getKey(stack.getItem()); if (id == null) return Optional.empty();
         Value reviewed = values.get(id);
         boolean harmful = food.getEffects().stream().anyMatch(effect -> effect.getFirst().getEffect().getCategory() == net.minecraft.world.effect.MobEffectCategory.HARMFUL && effect.getSecond() > 0.0F);
-        if (harmful) return Optional.of(new Value(reviewed == null ? (food.getNutrition() <= 2 ? -8 : -6) : reviewed.mood(), reviewed == null || reviewed.satiety() >= 0 ? -12 : reviewed.satiety(), id.toString(), "unsafe"));
-        if (id.getNamespace().equals("minecraft")) return Optional.empty();
+        if (harmful) return Optional.of(new Value(reviewed == null ? (food.getNutrition() <= 2 ? -8 : -6) : Math.min(-1, reviewed.mood()), reviewed == null || reviewed.satiety() >= 0 ? -12 : reviewed.satiety(), id.toString(), "unsafe"));
         if (reviewed != null) return Optional.of(new Value(reviewed.mood(), reviewed.satiety(), id.toString(), "modded_dish"));
         int mood = food.getNutrition() >= 8 ? 5 : food.getNutrition() >= 6 ? 3 : food.getNutrition() >= 3 ? 2 : 1;
         return Optional.of(new Value(mood, 0, id.toString(), "modded_dish"));

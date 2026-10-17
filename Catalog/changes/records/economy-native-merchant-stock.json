@@ -62,12 +62,12 @@
     "owner": "JEMEconomy",
     "kind": "native_offer_owner_and_stock_correction",
     "source_files": [
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/audit/NativeMerchantContracts.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/BuyerTradeOffers.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSession.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/AbstractVillagerOffersAccessor.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/JemEconomyMixinPlugin.java",
-      "Mods/JEMEconomy/src/main/resources/jem_economy.mixins.json"
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/audit/NativeMerchantContracts.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/BuyerTradeOffers.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSession.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/mixin/AbstractVillagerOffersAccessor.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/mixin/JemEconomyMixinPlugin.java",
+      "Mods/JEMCurrencyCore/src/main/resources/jem_currency_core.mixins.json"
     ]
   },
   "rationale": {
@@ -120,6 +120,28 @@
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/AbstractVillagerOffersAccessor.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/JemEconomyMixinPlugin.java",
         "Mods/JEMEconomy/src/main/resources/jem_economy.mixins.json",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/audit/NativeMerchantContracts.java"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "relocate_currency_source_owner",
+      "summary": "Standalone Settlements extracts the existing currency/native merchant implementation and resources into shared JEMCurrencyCore. Current source references now identify the sole existing owner; original Economy paths remain historical evidence. No balance, supply, Coin ID, legacy save identity or price change is caused by this source relocation.",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/BuyerTradeOffers.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSession.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/AbstractVillagerOffersAccessor.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/JemEconomyMixinPlugin.java",
+        "Mods/JEMEconomy/src/main/resources/jem_economy.mixins.json"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "separate_full_economy_packages",
+      "summary": "Ordinary server boot exposed JPMS split packages between Economy and Core before world loading. Full-only client/market/audit implementations move into com.siirio.jemeconomy.full; shared currency API packages, balances, registry IDs and saved state remain unchanged. Exact previous paths are retained as historical evidence.",
+      "source_files": [
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/audit/NativeMerchantContracts.java"
       ]
     }

@@ -14,6 +14,7 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceLocation;
 
 public final class TownRecord implements com.siirio.jemsettlements.payroll.PayrollBook {
+    public static final int INITIAL_RADIUS = 48;
     public static final int CURRENT_SCHEMA = 6;
     private final UUID id;
     private final UUID owner;
@@ -36,7 +37,7 @@ public final class TownRecord implements com.siirio.jemsettlements.payroll.Payro
     private TownSpecialization secondarySpecialization = TownSpecialization.NONE;
     private long lastSpecializationEvaluation;
     private int housingScore = 50, foodScore = 50, safetyScore = 0, jobsScore = 25, communityScore = 40, decorationScore;
-    private int territoryRadius = 48;
+    private int territoryRadius = INITIAL_RADIUS;
     private int territoryMinX, territoryMaxX, territoryMinZ, territoryMaxZ;
     private final Set<UUID> expansionReceipts = new LinkedHashSet<>();
 

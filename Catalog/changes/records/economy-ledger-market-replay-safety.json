@@ -81,15 +81,15 @@
     "owner": "JEMEconomy/JEMSettlements/JEMServer",
     "kind": "user_requested_complete_economy_overhaul",
     "source_files": [
-      "Client/ManagedPack/mods/jem-economy-1.2.0.jar",
+      "Client/ManagedPack/mods/jem-economy-1.3.0.jar",
       "Mods/JEMEconomy/build.gradle",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/JemEconomy.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/audit/EconomyRuntimeExport.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/audit/NativeMerchantContracts.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java"
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/audit/EconomyRuntimeExport.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/audit/NativeMerchantContracts.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java"
     ]
   },
   "rationale": {
@@ -130,6 +130,37 @@
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "relocate_currency_source_owner",
+      "summary": "Standalone Settlements extracts the existing currency/native merchant implementation and resources into shared JEMCurrencyCore. Current source references now identify the sole existing owner; original Economy paths remain historical evidence. No balance, supply, Coin ID, legacy save identity or price change is caused by this source relocation.",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "separate_full_economy_packages",
+      "summary": "Ordinary server boot exposed JPMS split packages between Economy and Core before world loading. Full-only client/market/audit implementations move into com.siirio.jemeconomy.full; shared currency API packages, balances, registry IDs and saved state remain unchanged. Exact previous paths are retained as historical evidence.",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/audit/EconomyRuntimeExport.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/audit/NativeMerchantContracts.java"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "relocate_current_artifact_and_selector_evidence",
+      "summary": "Current installed artifact and exact source-set evidence references follow migrated Economy1.3.0/Settlements2.1.0 and the sole Core resource owner. Selector membership, prices, saved balances and prior historical evidence are unchanged.",
+      "source_files": [
+        "Client/ManagedPack/mods/jem-economy-1.2.0.jar"
       ]
     }
   ],

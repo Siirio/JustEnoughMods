@@ -1,6 +1,6 @@
 package com.siirio.jemsettlements.compat.recruits;
 
-import com.siirio.jemidentity.api.IdentityPolicy;
+import com.siirio.jemsettlements.runtime.SettlementAuthority;
 import com.siirio.jemsettlements.town.SettlementSavedData;
 import com.siirio.jemsettlements.workforce.WorkforceRecord;
 import com.siirio.jemsettlements.workforce.WorkforceType;
@@ -45,12 +45,12 @@ public final class RecruitRebellionService {
 
     public static boolean interceptDefeat(LivingDamageEvent event) {
         if (!(event.getEntity() instanceof AbstractRecruitEntity recruit) || !(event.getSource().getEntity() instanceof ServerPlayer player)
-                || event.getAmount() < recruit.getHealth() || player.getServer() == null || !player.getServer().isDedicatedServer()) return false;
+                || event.getAmount() < recruit.getHealth() || player.getServer() == null || !SettlementAuthority.active(player)) return false;
         SettlementSavedData data = SettlementSavedData.get(player.getServer());
         WorkforceRecord record = data.workforceEntity(recruit.getUUID()).orElse(null);
         if (record == null || record.loyalty() != WorkforceRecord.Loyalty.REBELLIOUS) return false;
-        var principal = IdentityPolicy.resolve(player);
-        if (principal.isEmpty() || !record.ownerId().equals(principal.get().accountId())) return false;
+        var principal = SettlementAuthority.principal(player);
+        if (principal.isEmpty() || !record.ownerId().equals(principal.get())) return false;
         event.setAmount(0.0F); recruit.setHealth(1.0F); recruit.clearTarget(); recruit.getNavigation().stop(); recruit.setNoAi(true);
         record.defeated(); data.changed();
         player.sendSystemMessage(Component.translatable("jem.settlements.recruit.defeated"), true);
@@ -60,8 +60,8 @@ public final class RecruitRebellionService {
     public static boolean interceptInteraction(ServerPlayer player, AbstractRecruitEntity recruit) {
         WorkforceRecord record = SettlementSavedData.get(player.getServer()).workforceEntity(recruit.getUUID()).orElse(null);
         if (record == null || record.loyalty() == WorkforceRecord.Loyalty.LOYAL) return false;
-        var principal = IdentityPolicy.resolve(player);
-        if (record.loyalty() == WorkforceRecord.Loyalty.DEFEATED && principal.isPresent() && record.ownerId().equals(principal.get().accountId())) {
+        var principal = SettlementAuthority.principal(player);
+        if (record.loyalty() == WorkforceRecord.Loyalty.DEFEATED && principal.isPresent() && record.ownerId().equals(principal.get())) {
             recruit.openHireGUI(player);
         } else player.sendSystemMessage(Component.translatable("jem.settlements.recruit.hostile"), true);
         return true;
@@ -82,8 +82,8 @@ public final class RecruitRebellionService {
 
     private static ServerPlayer owner(MinecraftServer server, UUID accountId) {
         for (ServerPlayer player : server.getPlayerList().getPlayers()) {
-            var principal = IdentityPolicy.resolve(player);
-            if (principal.isPresent() && principal.get().accountId().equals(accountId)) return player;
+            var principal = SettlementAuthority.principal(player);
+            if (principal.isPresent() && principal.get().equals(accountId)) return player;
         }
         return null;
     }

@@ -1,6 +1,12 @@
 # GUI state and action contract
 
-Status: proposed; protocol and classes below do not yet exist. Same client flow for integrated and dedicated logical servers. No client-local simulation of success.
+Status: implemented state flow, with the concrete transport adaptation below. Same client flow for integrated and dedicated logical servers. No client-local simulation of success.
+
+Implemented wire format is town-channel protocol5: `SettlementActionPacket(action,townId?,requestId,payload)` and `TownViewPacket(open,view)`. The sessionless `open` intent combines Hello/directory, returning a server-issued `Session`; subsequent intents bind it. `Directory` is paginated64, `Selected` carries authoritative data and FoodCatalogue pages64. A session-only heartbeat every100ticks extends the240tick lease in every GUI mode without replacing view/edit state. Present incompatible channel versions are rejected during connection, absent endpoints show the local Unsupported screen. Currency wallet protocol4 follows the same absent-endpoint policy.
+
+Change observation is bounded to four subscribed players per20ticks with round-robin fairness. Snapshot equality suppresses unchanged sends; physical-stock observation is bounded8192slots. Current implementation sends changed bounded projections rather than field-level delta packets; per-field wire deltas remain an optimization, not a second simulation. Request results include matching `Request`, `Result`, `Reason` and `Action`. `RETRY` and `OUTCOME_UNKNOWN` are nonterminal; only the original intent is reconciled. Completed session rotates after512operations; retired completed journal entries can be pruned at65536 total. Ambiguous intents are retained, with per-account admission bounded32 unknown records.
+
+The envelope descriptions later in this document remain the conceptual contract; no distinct HelloRequest/ViewDelta classes or expectedRevision financial quote protocol are claimed. Current expansion binds all four expected old bounds and exact target; server recomputes price and validates ownership, adjacency, bounds, overlap and funds. Native Xaero drag retains its established server-authorized priced union through the shared API.
 
 ## Entry and navigation
 

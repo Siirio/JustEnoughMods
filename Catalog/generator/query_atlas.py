@@ -18,7 +18,7 @@ def find_id(value: str) -> list[dict]:
         if value in rows:
             matches.append({
                 "registry": registry,
-                "path": f"Catalog/registries/{registry}/{value.partition(':')[0]}.json",
+                "path": f"Catalog/registries/{registry}/{rows[value].get('mod_id', value.partition(':')[0])}.json",
                 "record": rows[value],
             })
     return matches

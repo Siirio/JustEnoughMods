@@ -1,6 +1,6 @@
 # GUI specification
 
-Status: design contract, not implemented UI. `GUI_STATE_MACHINE.md` owns request/reply and lifecycle behavior. `ART_BRIEFS.md` owns sprite pixels. All dimensions below are **logical GUI pixels**, not framebuffer pixels; all labels are translatable Minecraft text.
+Status: approved contract implemented by `Mods/JEMSettlements/.../client/SettlementScreen.java`, `SettlementMap.java` and server projections/actions. Native controls/items currently supply materials/icons; control-family ART_BRIEFS candidate sprites are exported but not integrated or approved. `GUI_STATE_MACHINE.md` owns request/reply and lifecycle behavior. All dimensions below are **logical GUI pixels**, not framebuffer pixels; all labels are translatable Minecraft text. Runtime visual acceptance is pending.
 
 ## Layout and shared components
 
@@ -93,3 +93,5 @@ String keys under `jem.settlements.gui.*`, `jem.settlements.reason.*`, `jem.sett
 | Optional recruits absent | Для рекрутов нужен мод Recruits. | Recruits requires the Recruits mod. |
 
 No debug registry IDs/packet/null jargon in ordinary text. Advanced diagnostics may record exact IDs in logs. Guide values are bound to canonical rules, not independently copied balance constants.
+
+Control-family review candidate: [native1x sheet](../assets/review/control-family-r1/dark-native1x.png), [nearest4x sheet](../assets/review/control-family-r1/light-nearest4x.png), [editable source/manifest](../assets/source/control-family-r1/README.md). Eight original exports cover panel, four button states, tabs and two bars. The offline reference sheet is art-only, has no gameplay transport or world mutation, and is not an in-game screenshot. `CANDIDATE_NOT_APPROVED / SOURCE_EDITABLE / WAITING_FOR_REAL_GAME_CAPTURE`; no JAR/resource integration.

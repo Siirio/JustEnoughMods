@@ -1,0 +1,807 @@
+{
+  "schema_version": 2,
+  "change_id": "settlements.standalone",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "minecraft:bell"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:villager"
+    },
+    {
+      "type": "namespace",
+      "registry": "entities",
+      "value": "workers"
+    },
+    {
+      "type": "namespace",
+      "registry": "entities",
+      "value": "recruits"
+    },
+    {
+      "type": "namespace",
+      "registry": "items",
+      "value": "jem_economy"
+    },
+    {
+      "type": "namespace",
+      "registry": "items",
+      "value": "minecraft"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Forge1.20.1 Java17 with Settlements2.1.0 and its bundled shared Core/Identity; optional native mod adapters require their actual installed compatible mods",
+      "confidence": "source"
+    },
+    {
+      "runtime": "Only server-authorized physical state and real inventories; GUI snapshot is not authority",
+      "confidence": "source"
+    },
+    {
+      "runtime": "Existing unrelated SMP remains dedicated-only; offline dedicated identity remains authenticated through original IdentityPolicy",
+      "confidence": "source"
+    }
+  ],
+  "precedence": {
+    "layer": "jem_settlements",
+    "priority": 460,
+    "overrides": [
+      "settlements.update-1",
+      "settlements.economy-hiring-weekly-payroll"
+    ]
+  },
+  "change": {
+    "summary": "Implement approved independently installable Settlements, shared finite Coin authority, native funded earning, optional Workers/Recruits, real-state standalone GUI, vanilla food and Gold-priced expansion.",
+    "modifiers": [
+      {
+        "property": "settlements.runtime_authority",
+        "operation": "replace",
+        "before": {
+          "runtime": "Dedicated-only shared SMP; SMP GUI entry dependency"
+        },
+        "after": {
+          "runtime": "Integrated logical server and authenticated dedicated logical server",
+          "integrated_account": "Player UUID",
+          "dedicated_account": "Existing IdentityPolicy online principal or unlocked ServerLogin; unverifiable fails closed",
+          "boundary": "Only Settlements and shared currency/native earning; global DedicatedSmp unchanged"
+        }
+      },
+      {
+        "property": "economy.currency_owner",
+        "operation": "replace",
+        "before": {
+          "runtime_owner": "jem_economy JEMEconomy source, classes and registrations"
+        },
+        "after": {
+          "runtime_owner": "jem_currency_core 1.0.0 shared Jar-in-Jar runtime mod",
+          "item_ids": [
+            "jem_economy:copper_coin",
+            "jem_economy:silver_coin",
+            "jem_economy:gold_coin",
+            "jem_economy:aether_coin",
+            "jem_economy:arcane_coin"
+          ],
+          "new_item_ids": [],
+          "save_name": "jem_economy",
+          "account_derivation": "UUID.nameUUIDFromBytes UTF-8 jem:town:<UUID>",
+          "preserved": "One fixed supply; existing balances, schema, lots, provenance, physical outstanding, escrow, receipts and exact price resources",
+          "abi": "Moved com.siirio.jemeconomy API/ledger/physical/native merchant package names; EconomyItems facade aliases shared coin registrations",
+          "compatibility": "Old Economy rejected below1.3.0; both consumers bundle same Maven Core/Identity coordinates and bounded ranges"
+        }
+      },
+      {
+        "property": "economy.standalone_earning",
+        "operation": "replace",
+        "before": {
+          "runtime": "Native funded Coin merchants restricted to dedicated full Economy"
+        },
+        "after": {
+          "runtime": "Existing native offers, slots, restock, goods/NBT, reviewed quotes and finite funded NPC account usable by integrated Settlements",
+          "starting_grants": "No integrated or standalone new starter grant; historical full-Economy dedicated starter behavior retained",
+          "market_boundary": "No Shipping Box spawning, Buyer spawning, full market catalog or unrelated SMP registration from standalone Core",
+          "quotes": "Unknown/unreviewed merchandise fails closed; no emerald fallback or invented money"
+        }
+      },
+      {
+        "property": "settlements.optional_native_integration",
+        "operation": "replace",
+        "before": {
+          "required_mods": [
+            "workers",
+            "recruits",
+            "jem_economy"
+          ]
+        },
+        "after": {
+          "standalone": "Settlements bundles shared Core and Identity; native vanilla residents and real storage supported",
+          "optional": [
+            "workers",
+            "recruits",
+            "jade",
+            "xaero presentation"
+          ],
+          "absence": "Capability unavailable; no substitute NPC/jobs/combat AI",
+          "presence": "Guarded native class loading, original management/hire/ownership semantics retained"
+        }
+      },
+      {
+        "property": "jem_economy:coin.settlement_expansion",
+        "operation": "replace",
+        "before": {
+          "cost_copper_per_added_block": 1,
+          "payment": "Backed physical Coins"
+        },
+        "after": {
+          "cost_copper_per_added_block": 100,
+          "denomination": "One canonical Gold Coin value per newly added block",
+          "geometry": "Inclusive rectangular union; whole marginal strip preview and total cost; initial97x97, center-relative limits256 and16 separation retained",
+          "payment": "Shared depositToAccount from verified player wallet with validated backed physical deposit when needed; operations sink; bounds/request bound to receipt",
+          "stale": "Expected saved bounds checked before mutation",
+          "zero_or_shrink": "No debit and no expansion"
+        }
+      },
+      {
+        "property": "minecraft:bell.settlement_interaction",
+        "operation": "replace",
+        "before": {
+          "shift_right_click": "Open SMP settlements path"
+        },
+        "after": {
+          "entry": "Standalone server-owned directory or selected town view through native client screen",
+          "founding": "Server validates bell/name/location and existing configured founding default300 copper; no new GUI fee",
+          "ordinary_right_click": "Native bell behavior retained"
+        }
+      },
+      {
+        "property": "minecraft:villager.settlement_food",
+        "operation": "replace",
+        "before": {
+          "positive_vanilla_food": "Ignored in prior update",
+          "progression_owner": "Optional SMP cooking integration"
+        },
+        "after": {
+          "positive_vanilla_food": "Accepted using actual native FoodProperties",
+          "harmful": "Actual harmful effects classify unsafe; negative mood/satiety retained",
+          "monotony": "Per-exact-item daily serving cap retained",
+          "progression": "Settlement-owned visited-dimension SavedData and recipe ingredient tags, without JEMServer class dependency",
+          "demand": "Actual edible catalogue and server-validated availability; no virtual inventory",
+          "storage": "Only linked physical loaded inventory; extract actual accepted stack"
+        }
+      },
+      {
+        "property": "settlements.resident_lifecycle",
+        "operation": "replace",
+        "before": {
+          "runtime": "Prior dedicated-only resident loops"
+        },
+        "after": {
+          "runtime": "Standalone bounded resident simulation and food-day accounting",
+          "removal": "Explicit owner/entity/town validation; dead registrations removed; hostility and outstanding obligations are not erased through deletion",
+          "workers_recruits": "Native roster/adoption/ownership only when matching mod present",
+          "identity": "Existing saved town/resident/entity UUIDs retained"
+        }
+      },
+      {
+        "property": "settlements.gui_actions",
+        "operation": "replace",
+        "before": {
+          "owner": "SMP reflection/projections and old founding screen"
+        },
+        "after": {
+          "owner": "Settlements native screens and widgets bound to immutable server snapshots",
+          "selection": "Explicit owned UUID and paged directory; single-town selection convenience only",
+          "actions": [
+            "open",
+            "select",
+            "refresh",
+            "close",
+            "guide",
+            "create",
+            "rename",
+            "delete",
+            "remove",
+            "expand",
+            "deposit",
+            "withdraw",
+            "payroll",
+            "foodstorage",
+            "linkstorage",
+            "manage",
+            "buyback"
+          ],
+          "data": "Actual resident roster, loaded entity position, linked physical storage rows, food catalogue, payroll and real retained committed treasury receipts",
+          "presentation": "Native Minecraft proportions, compact sizing, map rectangular union preview; candidate UI awaits player acceptance",
+          "integration": "SMP navigation delegates to Settlements; Xaero remains optional native controls/presentation"
+        }
+      },
+      {
+        "property": "settlements.action_transport",
+        "operation": "replace",
+        "before": {
+          "request_handling": "Prior separate action packets and unbound selection"
+        },
+        "after": {
+          "authority": "Bounded4KiB typed action intent;24-character action; explicit town/request UUID; server-computed prices/results",
+          "replay": "Saved actor/request intent journal, session-linked request identity, payload conflict rejection, durable admission before mutation and committed result acknowledgment",
+          "in_flight_unknown": "Previously admitted request without committed result remains OUTCOME_UNKNOWN; no automatic new debit/retry",
+          "sessions": "Expiry, coalesced bounded views, disconnect cleanup and unsupported-endpoint state"
+        }
+      },
+      {
+        "property": "settlements.payroll",
+        "operation": "replace",
+        "before": {
+          "runtime": "Dedicated-only native recruit payroll"
+        },
+        "after": {
+          "runtime": "Same native recruit payroll available to Settlements logical servers only with Recruits",
+          "preserved": "Seven-day per-contract schedule, frozen period terms, native ownership and three actual missed-period rebellion; treasury/personal source same ledger",
+          "absence": "No payroll fabrication without native Recruits"
+        }
+      },
+      {
+        "property": "economy.receipt_projection",
+        "operation": "replace",
+        "before": {
+          "read_api": "No bounded account history projection"
+        },
+        "after": {
+          "read_api": "EconomySavedData.receiptHistory(UUID,int) immutable newest retained committed account receipts max64",
+          "source": "Existing receipts and receiptTerms source/destination/amount; no fabricated timestamp or success row"
+        }
+      },
+      {
+        "property": "economy.optional_currency_channel",
+        "operation": "replace",
+        "before": {
+          "version": "Protocol4 required present on both peers"
+        },
+        "after": {
+          "version": "Present protocol4 must match; absent Forge/vanilla endpoint accepted",
+          "send_guards": "Client actions require remote currency endpoint; server snapshots require remote presence",
+          "unsupported": "No fabricated balance or fallback transaction"
+        }
+      },
+      {
+        "property": "atlas.embedded_currency_evidence",
+        "operation": "replace",
+        "before": {
+          "inventory": "Top-level installed jars only; nested_dependencies empty"
+        },
+        "after": {
+          "inventory": "Recursively inspect declared Forge Jar-in-Jar metadata, child bytes/hash/mod metadata/resources",
+          "deduplication": "Identical dependency SHA inspected once across consumers; aggregate sides; preserve real outer-file manifest rows and nested dependency tree",
+          "namespace": "Core retains original jem_economy registry namespace; source DeferredRegister namespace constants resolved",
+          "source_policy": "Trade policy source follows moved Core owner"
+        }
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCurrencyCore/JEMEconomy/JEMSettlements; JEMServer optional navigation consumer",
+    "kind": "user_approved_standalone_implementation",
+    "source_files": [
+      "Catalog/generator/build_atlas.py",
+      "Catalog/generator/query_atlas.py",
+      "Mods/JEMCurrencyCore/build.gradle",
+      "Mods/JEMCurrencyCore/embed.gradle",
+      "Mods/JEMCurrencyCore/gradle.properties",
+      "Mods/JEMCurrencyCore/settings.gradle",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemcurrency/CurrencyAuthority.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemcurrency/CurrencyItems.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemcurrency/JemCurrencyCore.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemcurrency/NativeMerchantTags.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/CoinTradeContext.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/CoinTradePriceEvent.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/MarketCatalogSnapshot.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/MarketItemSnapshot.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CoinAmounts.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CoinPriceRenderer.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CurrencyClientConnection.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketClientState.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/NativeTradeClient.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/NativeTradeScreenAccess.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/WalletClientState.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/WalletScreen.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/SystemAccount.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/TransferResult.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/BuyerTradeOffers.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantRuntime.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeCoinResultSlot.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeItemPricing.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeMerchantAccess.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativePriceMath.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeCatalog.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeContainer.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeTradePricing.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeQuote.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSession.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSettlement.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/ProfessionTradePools.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/mixin/AbstractVillagerOffersAccessor.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/mixin/JemEconomyMixinPlugin.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/mixin/MerchantContainerMixin.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/mixin/MerchantMenuMixin.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/mixin/MerchantScreenMixin.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/mixin/NativeTradeClickMixin.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/CoinExchangePacket.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/MarketActionPacket.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/MarketCatalogPacket.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/MarketQueryPacket.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/NativeTradeActionPacket.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/NativeTradePacket.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/WalletActionPacket.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/WalletStatusPacket.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/physical/CoinDenomination.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/physical/CoinFormatter.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/physical/CoinLot.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/physical/CoinProvenance.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinItem.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinOperation.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinService.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/ItemPolicy.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/MarketSearch.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/MarketSupply.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/TradeRestrictions.java",
+      "Mods/JEMCurrencyCore/src/main/resources/META-INF/mods.toml",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/font/coins.json",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/en_us.json",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/ru_ru.json",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/models/item/aether_coin.json",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/models/item/arcane_coin.json",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/models/item/coin_base.json",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/models/item/copper_coin.json",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/models/item/gold_coin.json",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/models/item/silver_coin.json",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/aether_coin_back.png",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/aether_coin_front.png",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/aether_coin_rim.png",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/arcane_coin_back.png",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/arcane_coin_front.png",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/arcane_coin_rim.png",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/copper_coin_back.png",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/copper_coin_front.png",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/copper_coin_rim.png",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/gold_coin_back.png",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/gold_coin_front.png",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/gold_coin_rim.png",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/silver_coin_back.png",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/silver_coin_front.png",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/silver_coin_rim.png",
+      "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/building_purchase_prices.json",
+      "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/item_policies.json",
+      "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/market_search_terms.json",
+      "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/native_item_prices.json",
+      "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/profession_pools.json",
+      "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/trade_restrictions.json",
+      "Mods/JEMCurrencyCore/src/main/resources/jem_currency_core.mixins.json",
+      "Mods/JEMCurrencyCore/src/main/resources/pack.mcmeta",
+      "Mods/JEMEconomy/build.gradle",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/JemEconomy.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/audit/EconomyRuntimeExport.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/audit/NativeMerchantContracts.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/EconomyClient.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/market/MarketRuntime.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/registry/EconomyItems.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlockEntity.java",
+      "Mods/JEMEconomy/src/main/resources/META-INF/mods.toml",
+      "Mods/JEMRoles/build.gradle",
+      "Mods/JEMServer/build.gradle",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapClient.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpNetwork.java",
+      "Mods/JEMSettlements/build.gradle",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/JemSettlements.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/HireQuoteClient.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementClientState.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementMap.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementNotices.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/TownFoundingScreen.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/collection/MountCollectionService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/command/SettlementCommands.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/jade/SettlementJadePlugin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitHiringService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitRebellionService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitRuntime.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/workers/WorkersAdapter.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AvailableDishService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/DishProgression.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/FoodValueRegistry.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/NobleHiringMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/NobleQuoteMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitCurrencyMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitHiringMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/ClientConnection.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/RecruitQuoteNetwork.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementActionPacket.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementActions.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementRequests.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementViewDetails.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementWarnings.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/SettlementEconomyConfig.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementAuthority.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/simulation/SettlementSimulationService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TerritoryQuote.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownRecord.java",
+      "Mods/JEMSettlements/src/main/resources/META-INF/mods.toml",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+      "Mods/JEMSettlements/src/main/resources/data/jem_settlements/tags/items/cooking/end_ingredients.json",
+      "Mods/JEMSettlements/src/main/resources/data/jem_settlements/tags/items/cooking/nether_ingredients.json",
+      "Mods/JEMSettlements/src/main/resources/data/jem_settlements/tags/items/cooking/world_ingredients.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make approved Settlements work without the full SMP modpack while preserving existing identity, physical inventory, finite currency, native merchant and native NPC ownership contracts.",
+    "decision_source": "User approved the standalone design and immediate full implementation on2026-10-17, explicitly making Workers/Recruits optional. Docs/settlements/standalone/README.md and IMPLEMENTATION_PLAN.md own the accepted implementation scope.",
+    "user_decisions": [
+      "Independent Forge1.20.1 installation and integrated-server Settlements",
+      "Optional native Workers/Recruits only; no built-in substitutes",
+      "Native compact GUI with real state; no Overview/web dashboard",
+      "One Gold value per added block; vanilla edible items work",
+      "Existing gameplay and authenticated finite economy preserved"
+    ],
+    "codex_implementation_choices": [
+      "Extract original ABI package closure into one shared runtime Core instead of duplicating classes/state",
+      "Jar-in-Jar identical Maven identities and bounded ranges with migrated Economy compatibility floor",
+      "Use existing shared wallet/backed cash deposit path for exact Gold-valued area charge",
+      "Persist explicit-ID request/session journal and quarantine uncertain mutation outcomes",
+      "Separate optional Recruits protocol/handlers and Settlement-owned dish progression from full SMP",
+      "Expose retained existing receipt terms without invented transaction timestamps"
+    ]
+  },
+  "introduced": {
+    "date": "2026-10-17",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "User-approved standalone Settlements implementation; source and production builds are not runtime/player acceptance."
+  },
+  "history": [
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "extract_runtime_owner",
+      "summary": "Moved the complete original currency/ledger/native transaction source and resource closure from Economy into Core. Deleted original paths are historical relocation evidence only; current cause lists point to existing new owners. Currency IDs/save identity/prices remain unchanged.",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/CoinTradeContext.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/CoinTradePriceEvent.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/MarketCatalogSnapshot.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/MarketItemSnapshot.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/CoinAmounts.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/CoinPriceRenderer.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/MarketClientState.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/NativeTradeClient.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/NativeTradeScreenAccess.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/WalletClientState.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/WalletScreen.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/ledger/SystemAccount.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/ledger/TransferResult.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/BuyerTradeOffers.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantRuntime.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeCoinResultSlot.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeItemPricing.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeMerchantAccess.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativePriceMath.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeCatalog.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeContainer.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradePricing.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeQuote.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSession.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSettlement.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/ProfessionTradePools.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/AbstractVillagerOffersAccessor.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/JemEconomyMixinPlugin.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/MerchantContainerMixin.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/MerchantMenuMixin.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/MerchantScreenMixin.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/NativeTradeClickMixin.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/CoinExchangePacket.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/MarketActionPacket.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/MarketCatalogPacket.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/MarketQueryPacket.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/NativeTradeActionPacket.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/NativeTradePacket.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/WalletActionPacket.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/WalletStatusPacket.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/CoinDenomination.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/CoinFormatter.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/CoinLot.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/CoinProvenance.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinItem.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinOperation.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinService.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicy.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/MarketSearch.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/MarketSupply.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/TradeRestrictions.java",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/font/coins.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/lang/en_us.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/lang/ru_ru.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/item/aether_coin.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/item/arcane_coin.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/item/coin_base.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/item/copper_coin.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/item/gold_coin.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/item/silver_coin.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/aether_coin_back.png",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/aether_coin_front.png",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/aether_coin_rim.png",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/arcane_coin_back.png",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/arcane_coin_front.png",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/arcane_coin_rim.png",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/copper_coin_back.png",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/copper_coin_front.png",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/copper_coin_rim.png",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/gold_coin_back.png",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/gold_coin_front.png",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/gold_coin_rim.png",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/silver_coin_back.png",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/silver_coin_front.png",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/silver_coin_rim.png",
+        "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/building_purchase_prices.json",
+        "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json",
+        "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/market_search_terms.json",
+        "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/native_item_prices.json",
+        "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/profession_pools.json",
+        "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/trade_restrictions.json",
+        "Mods/JEMEconomy/src/main/resources/jem_economy.mixins.json"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "implement_standalone",
+      "summary": "Added logical-server authority, optional adapters, real-state GUI/actions, Gold-priced inclusive expansion and vanilla food. Current source files are enumerated in cause; acceptance remains pending.",
+      "source_files": [
+        "Catalog/generator/build_atlas.py",
+        "Mods/JEMCurrencyCore/build.gradle",
+        "Mods/JEMCurrencyCore/embed.gradle",
+        "Mods/JEMCurrencyCore/gradle.properties",
+        "Mods/JEMCurrencyCore/settings.gradle",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemcurrency/CurrencyAuthority.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemcurrency/CurrencyItems.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemcurrency/JemCurrencyCore.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemcurrency/NativeMerchantTags.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/CoinTradeContext.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/CoinTradePriceEvent.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/MarketCatalogSnapshot.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/MarketItemSnapshot.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CoinAmounts.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CoinPriceRenderer.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CurrencyClientConnection.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketClientState.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/NativeTradeClient.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/NativeTradeScreenAccess.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/WalletClientState.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/WalletScreen.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/SystemAccount.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/TransferResult.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/BuyerTradeOffers.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantRuntime.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeCoinResultSlot.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeItemPricing.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeMerchantAccess.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativePriceMath.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeCatalog.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeContainer.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeTradePricing.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeQuote.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSession.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSettlement.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/ProfessionTradePools.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/mixin/AbstractVillagerOffersAccessor.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/mixin/JemEconomyMixinPlugin.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/mixin/MerchantContainerMixin.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/mixin/MerchantMenuMixin.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/mixin/MerchantScreenMixin.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/mixin/NativeTradeClickMixin.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/CoinExchangePacket.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/MarketActionPacket.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/MarketCatalogPacket.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/MarketQueryPacket.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/NativeTradeActionPacket.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/NativeTradePacket.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/WalletActionPacket.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/WalletStatusPacket.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/physical/CoinDenomination.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/physical/CoinFormatter.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/physical/CoinLot.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/physical/CoinProvenance.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinItem.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinOperation.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinService.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/ItemPolicy.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/MarketSearch.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/MarketSupply.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/TradeRestrictions.java",
+        "Mods/JEMCurrencyCore/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/font/coins.json",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/en_us.json",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/ru_ru.json",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/models/item/aether_coin.json",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/models/item/arcane_coin.json",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/models/item/coin_base.json",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/models/item/copper_coin.json",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/models/item/gold_coin.json",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/models/item/silver_coin.json",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/aether_coin_back.png",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/aether_coin_front.png",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/aether_coin_rim.png",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/arcane_coin_back.png",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/arcane_coin_front.png",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/arcane_coin_rim.png",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/copper_coin_back.png",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/copper_coin_front.png",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/copper_coin_rim.png",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/gold_coin_back.png",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/gold_coin_front.png",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/gold_coin_rim.png",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/silver_coin_back.png",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/silver_coin_front.png",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/silver_coin_rim.png",
+        "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/building_purchase_prices.json",
+        "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/item_policies.json",
+        "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/market_search_terms.json",
+        "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/native_item_prices.json",
+        "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/profession_pools.json",
+        "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/trade_restrictions.json",
+        "Mods/JEMCurrencyCore/src/main/resources/jem_currency_core.mixins.json",
+        "Mods/JEMCurrencyCore/src/main/resources/pack.mcmeta",
+        "Mods/JEMEconomy/build.gradle",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/JemEconomy.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/registry/EconomyItems.java",
+        "Mods/JEMEconomy/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMRoles/build.gradle",
+        "Mods/JEMServer/build.gradle",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapClient.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpNetwork.java",
+        "Mods/JEMSettlements/build.gradle",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/JemSettlements.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/HireQuoteClient.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementClientState.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementMap.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/TownFoundingScreen.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/collection/MountCollectionService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/command/SettlementCommands.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitHiringService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitRebellionService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitRuntime.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/workers/WorkersAdapter.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AvailableDishService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/DishProgression.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/FoodValueRegistry.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/NobleHiringMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/NobleQuoteMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitCurrencyMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitHiringMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/ClientConnection.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/RecruitQuoteNetwork.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementActionPacket.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementActions.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementRequests.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementViewDetails.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementAuthority.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/simulation/SettlementSimulationService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TerritoryQuote.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownRecord.java",
+        "Mods/JEMSettlements/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+        "Mods/JEMSettlements/src/main/resources/data/jem_settlements/tags/items/cooking/end_ingredients.json",
+        "Mods/JEMSettlements/src/main/resources/data/jem_settlements/tags/items/cooking/nether_ingredients.json",
+        "Mods/JEMSettlements/src/main/resources/data/jem_settlements/tags/items/cooking/world_ingredients.json"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "extend_nested_evidence_and_optional_channel",
+      "summary": "Added recursive declared Jar-in-Jar static inventory/resource scanning and actual nested hashes; currency channel accepts absent endpoints while rejecting present mismatches and guards client sends. Atlas generation remains root-owned and has not been run by this worker.",
+      "source_files": [
+        "Catalog/generator/build_atlas.py",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CurrencyClientConnection.java"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "fix_module_package_ownership",
+      "summary": "Root-captured ordinary dedicated-server boot failed in JPMS module resolution before world loading. Source inventory found exactly client and market packages shared by Core/Economy. Relocated full-only EconomyClient, ShippingBoxScreen, MarketRuntime and audit utilities into full subpackages and updated actual entry/shipping callers. No module export workaround and no duplicate shared currency implementation.",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/EconomyClient.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/ShippingBoxScreen.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/market/MarketRuntime.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/audit/EconomyRuntimeExport.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/audit/NativeMerchantContracts.java"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "correct_static_discovery_evidence",
+      "summary": "Inspect actual registration owners and parameterized parent models rather than promoting lookup strings/templates; scope cooking-item tag enrichment to the item registry so same-named blocks/entities gain no item tags. Keep dynamic registration gaps explicit and preserve unrelated catalog partitions.",
+      "source_files": [
+        "Catalog/generator/build_atlas.py",
+        "Catalog/generator/query_atlas.py"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "currency",
+      "merchant_trading",
+      "settlements",
+      "food_progression",
+      "physical_storage",
+      "payroll",
+      "workers",
+      "recruits",
+      "gui",
+      "network",
+      "identity",
+      "packaging",
+      "xaero_optional",
+      "smp_navigation",
+      "atlas_inventory"
+    ],
+    "relations": [
+      "Settlements/Economy->shared Jar-in-Jar Core->one legacy jem_economy SavedData",
+      "Native merchant offer->approved Coin quote->funded NPC transfer->wallet->town founding/expansion/treasury",
+      "SettlementAuthority->explicit owned town UUID->request journal->shared financial receipt->snapshot acknowledgment",
+      "Native FoodProperties/recipes/dimension visits->available dish catalogue->actual loaded linked inventory->resident mood/satiety",
+      "Optional native Workers/Recruits->guarded adapter->real roster/manage/payroll/rebellion",
+      "EconomySavedData.receiptHistory->bounded transaction view->native GUI",
+      "SmpNetwork/MapClient->standalone settlement action/quote projection"
+    ],
+    "notes": [
+      "No new item registry IDs or duplicate wallet. Core mod ID is new runtime ownership; all five original jem_economy item IDs remain.",
+      "No MineRENT deployment, stable-profile edit or release baseline promotion belongs to this change.",
+      "Build success establishes production compilation/reobfuscation only, not Forge loading, financial crash durability, visual quality or user gameplay acceptance.",
+      "Deleted relocated source/resource paths remain exclusively in history, never current cause.",
+      "Atlas recursive nested inventory, literal registration evidence, model-template exclusion and registry-kind scoped tag enrichment belong to the same source consequence chain; full static generation and compact validation were performed without game launches.",
+      "Root ordinary server reached Done after split-package correction; initial native generation19 and final generation20 published with matching staged/published manifests. This establishes full-pack bootstrap/host publication only, not integrated gameplay or player/visual acceptance."
+    ],
+    "unresolved": [
+      "No gameplay launch, automated tests or player acceptance performed; optional integrations and GUI interactions require user acceptance.",
+      "A process crash between physical inventory persistence and SavedData writes is not a cross-file atomic transaction; admitted incomplete operation remains outcome unknown/quarantined rather than automatically retried or granted imaginary money. Exact crash behavior remains unobserved."
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 package com.siirio.jemsettlements.mixin;
 
-import com.siirio.jemidentity.api.DedicatedSmp;
+import com.siirio.jemsettlements.runtime.SettlementAuthority;
 import com.talhanation.recruits.CommandEvents;
 import com.talhanation.recruits.FactionEvents;
 import com.talhanation.recruits.entities.AbstractRecruitEntity;
@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class RecruitCurrencyMixin {
     @Inject(method = "handleRecruiting", at = @At("HEAD"), cancellable = true)
     private static void jem$coinHire(Player player, RecruitsGroup group, AbstractRecruitEntity recruit, boolean dialogue, CallbackInfoReturnable<Boolean> cir) {
-        if (!(player instanceof ServerPlayer serverPlayer) || !DedicatedSmp.active(serverPlayer)) return;
+        if (!(player instanceof ServerPlayer serverPlayer) || !SettlementAuthority.active(serverPlayer)) return;
         if (group != null && !player.getUUID().equals(group.getPlayerUUID())) { cir.setReturnValue(false); return; }
         boolean hired = recruit.hire(player, group, dialogue);
         // Preserve the native successful-hire faction bookkeeping after omitting

@@ -1,0 +1,23 @@
+// Shared runtime dependencies: never compile the same currency source into two mods.
+jarJar.enable()
+repositories { flatDir { dirs '../JEMCurrencyCore/build/libs', '../JEMIdentity/build/libs' } }
+dependencies {
+    compileOnly files('../JEMCurrencyCore/build/classes/java/main')
+    compileOnly files('../JEMIdentity/build/classes/java/main')
+    jarJar('com.siirio.jemcurrency:jem-currency-core:1.0.0') {
+        jarJar.ranged(it, '[1.0.0,2.0.0)')
+        transitive = false
+    }
+    jarJar('com.siirio.jemidentity:jem-identity:1.0.0') {
+        jarJar.ranged(it, '[1.0.0,2.0.0)')
+        transitive = false
+    }
+}
+tasks.named('jar', Jar).configure { archiveClassifier = 'slim' }
+tasks.named('jarJar').configure {
+    archiveBaseName = tasks.named('jar', Jar).get().archiveBaseName
+    archiveClassifier = ''
+    dependsOn tasks.named('jar')
+    from({ zipTree(tasks.named('jar', Jar).get().archiveFile.get().asFile) }) { include '**/*.refmap.json' }
+    finalizedBy 'reobfJarJar'
+}
