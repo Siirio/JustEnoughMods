@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-17 — Reference market storefront
+
+- User requests: integrate the generated reference UI on the local test server, with a live mouse-following librarian and one category dropdown; preserve the remaining reference composition.
+- Codex implementation: generated plate retained with its supplied reference and one-layer OpenRaster source; uniformly scaled storefront, real4×3goods, live localized labels/Coins/quotes, dimmed availability, search, page controls and preserved physical exchange via the title sign.
+- Codex query changes:12server rows per page; Plants filters admitted goods using the existing shared JEMCompat NATURE classifier. No new packet enum, balance, buyback eligibility, price, native merchant layout or ledger authority.
+- Production artifact/local Server/native publication evidence: Docs/smp-gui/assets/market-2026-10-17/delivery.json. No tests, linters, gameplay client launch or visual approval; WAITING_FOR_REAL_GAME_CAPTURE. Stable profile, MineRENT and release baseline untouched.
+
 ## 2026-10-17 — Native recruit needs, spherical housing cutaway and hire interface
 
 - User requests: implement supplied House Viewer/Recruit GUI contract and visual references; Jade need rails like reference05; recruits need hunger/happiness/shared food; badfood gives at most+1satiety with negative mood and is eaten only below10satiety; dropped food also participates.

@@ -1,0 +1,54 @@
+{
+  "core_sha256": "6c6dc1f6bcbec76cf71ad90c02cc4a73c07b18842c3f46c51287e98de19b1d9b",
+  "art_sha256": "a46664558df56d8d940b9994bd9e94cc1b6b01786dd60ebd0c6fec56cdcc7bb2",
+  "artifacts": [
+    {
+      "file": "jem-economy-1.3.0.jar",
+      "sha256": "4f84748de28eef5b0b6c053f8c29bee8084531fc7aac7035bcb8d7270eb87c4f",
+      "only_changed_container_entry": "META-INF/jarjar/jem-currency-core-1.0.0.jar"
+    },
+    {
+      "file": "jem-settlements-2.1.0.jar",
+      "sha256": "c74d7eeac9c373fd2ad664a4995e1f628e1b3da0d8b289da8602660ff2da91b0",
+      "only_changed_container_entry": "META-INF/jarjar/jem-currency-core-1.0.0.jar"
+    }
+  ],
+  "packaging": "Production CurrencyCore jar/reobfJar and Economy jarJar/reobfJarJar succeeded. Native embedded dependency refreshed from exact reobfuscated Core JAR in both containers; every other entry retained byte-identical to built Economy/current distributed Settlements. Unrelated Settlements source is not compiled or overwritten.",
+  "runtime_visual_state": "WAITING_FOR_REAL_GAME_CAPTURE",
+  "local_server_synced": true,
+  "published": true,
+  "atlas": {
+    "full_static_generation_completed": true,
+    "promotion": "Only task-owned source SHA metadata and embedded-artifact rows promoted; unrelated original/derived dirty partitions preserved. Final magnifier-only revision updates identical-registration artifact provenance.",
+    "canonical_validation": true,
+    "task_uncovered_paths": [],
+    "preexisting_uncovered_count": 6,
+    "preexisting_artifact_drift": [
+      "removed workers JAR",
+      "changed jem-server JAR"
+    ]
+  },
+  "packaging_integrity": "Exact artwork and embedded Core hashes checked in both full containers; server/client bytes match.",
+  "publication": {
+    "published": true,
+    "journalSequence": 25,
+    "publishedManifestSha1": "58f94edbb6426f4c87fadb6f1238a257faef4abb",
+    "stagedManifestSha1": "58f94edbb6426f4c87fadb6f1238a257faef4abb"
+  },
+  "local_server_started": true,
+  "local_delivery_time": "2026-10-17T20:58:52.198306+05:00",
+  "timezone": "Asia/Yekaterinburg",
+  "preview": {
+    "added": 0,
+    "changed": [
+      "main/jem-pack/manifest.json",
+      "main/mods/jem-economy-1.3.0.jar",
+      "main/mods/jem-settlements-2.1.0.jar"
+    ],
+    "removed": 0
+  },
+  "atlas_representative_queries": {
+    "minecraft:oak_sapling": "passed, no conflicts",
+    "jem_economy:copper_coin": "passed, no conflicts"
+  }
+}

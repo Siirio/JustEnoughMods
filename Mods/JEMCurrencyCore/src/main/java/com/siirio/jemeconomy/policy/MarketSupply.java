@@ -22,9 +22,34 @@ public final class MarketSupply {
     public record Listing(ResourceLocation id, ItemStack stack, ItemPolicy policy) { }
     private static final Map<ResourceLocation, Long> PRICES = loadPrices();
     private static final String PAINTING_PREFIX = "painting/";
-    private static final class BuildingCatalog { private static final Method METHOD = catalogMethod(); }
+    private static final class BuildingCatalog {
+        private static final Method METHOD = catalogMethod();
+        private static final Method CLASSIFY = classificationMethod();
+    }
     private static final Map<MinecraftServer, List<Listing>> CACHE = new java.util.WeakHashMap<>();
     private MarketSupply() { }
+
+    /** Presentation filter over admitted stock; never admits goods or changes buyback policy. */
+    public static boolean matchesCategory(Listing listing, String category) {
+        if (category.equals("all")) return true;
+        if (!category.equals("plants")) return listing.policy().marketCategory().name().equalsIgnoreCase(category);
+        try {
+            Object kind = BuildingCatalog.CLASSIFY.invoke(null, listing.stack(), null,
+                    (java.util.function.Predicate<ItemStack>) stack -> false);
+            return ((Enum<?>) kind).name().equals("NATURE");
+        } catch (ReflectiveOperationException failure) {
+            throw new IllegalStateException("Shared JEM nature catalog unavailable", failure);
+        }
+    }
+
+    private static Method classificationMethod() {
+        try {
+            return Class.forName("com.siirio.jemcompat.catalog.JemCatalogCategories").getMethod("classify",
+                    ItemStack.class, net.minecraft.world.entity.LivingEntity.class, java.util.function.Predicate.class);
+        } catch (ReflectiveOperationException failure) {
+            throw new IllegalStateException("JEMCompat shared catalog is required for nature filtering", failure);
+        }
+    }
 
     public static synchronized void invalidate() { CACHE.clear(); }
 

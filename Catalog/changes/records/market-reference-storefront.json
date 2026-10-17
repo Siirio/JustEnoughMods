@@ -1,0 +1,110 @@
+{
+  "schema_version": 2,
+  "change_id": "smp.market-reference-storefront",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "category",
+      "registry": "*",
+      "value": "smp_market_profile_consolidation"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Market remains dedicated-SMP authoritative; only its client view changes."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_runtime_ownership",
+    "priority": 515,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Reference storefront art, preview-only mouse-following librarian and one functional category dropdown.",
+    "modifiers": [
+      {
+        "property": "smp.market.presentation",
+        "operation": "replace",
+        "before": {
+          "screen": "compact flat panels, small generic villager,16 listings per page",
+          "plants_filter": false
+        },
+        "after": {
+          "screen": "generated reference plate, uniformly scaled836x471canvas,4x3real cards, live librarian, one dropdown",
+          "plants_filter": "existing shared JEMCompat NATURE classification over already admitted stock",
+          "page_size": 12,
+          "buy_sell_exchange_authority": "unchanged CurrencyCore server owner"
+        }
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCurrencyCore MarketScreen / EconomyApi / MarketSupply",
+    "kind": "client_storefront_and_server_query_presentation",
+    "source_files": [
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/MarketSupply.java",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/en_us.json",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/ru_ru.json",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/gui/market/storefront.png"
+    ]
+  },
+  "rationale": {
+    "purpose": "Integrate the exact user-selected visual direction with real mouse-following entity and usable categories without changing economy rules.",
+    "decision_source": "User supplied reference, explicitly requested generated artwork, then explicitly requested local server GUI integration."
+  },
+  "introduced": {
+    "date": "2026-10-17",
+    "commit": "SELF",
+    "action": "reference_storefront",
+    "summary": "User requests integration of the generated reference plate, live librarian and one category dropdown on the local server. Codex binds all content to existing authoritative snapshots, uses twelve rows per server page and queries shared NATURE classification without changing packet enums or trade eligibility.",
+    "source_files": [
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/MarketSupply.java",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/en_us.json",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/ru_ru.json",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/gui/market/storefront.png"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "reference_storefront",
+      "summary": "User requests integration of the generated reference plate, live librarian and one category dropdown on the local server. Codex binds all content to existing authoritative snapshots, uses twelve rows per server page and queries shared NATURE classification without changing packet enums or trade eligibility.",
+      "source_files": [
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/MarketSupply.java",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/en_us.json",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/ru_ru.json",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/gui/market/storefront.png"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "market_gui",
+      "catalog_pagination",
+      "shared_item_classification",
+      "automodpack"
+    ],
+    "relations": [
+      "server_catalog->client_cards",
+      "shared_nature_category->market_filter",
+      "currency_core->embedded_distribution"
+    ],
+    "notes": [
+      "Native MerchantScreen and Xaero are unchanged.",
+      "Prices, stock, buyback admission, ledger, revision and physical exchange remain server-owned.",
+      "The existing category enum and wire layout remain unchanged. Plants is an additional string query filter.",
+      "Generated bitmap is explicitly user-authorized; ORA retains its original raster plate as one named layer."
+    ],
+    "unresolved": [
+      "WAITING_FOR_REAL_GAME_CAPTURE: production packaging/publication do not establish visual acceptance."
+    ]
+  }
+}

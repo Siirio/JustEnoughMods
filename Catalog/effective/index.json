@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "2898dbcd5f994fa0132be95758e76efcaa6e501c5922bbd35f518dc320598d88",
+  "change_records_sha256": "0b1cbe776eb341cd2122c14fc6af94e59ccd7021187938016c45d294cab6ff27",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -229,6 +229,21 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 143
+    },
+    {
+      "change_id": "smp.market-reference-storefront",
+      "status": "active",
+      "summary": "Reference storefront art, preview-only mouse-following librarian and one functional category dropdown.",
+      "record": "Catalog/changes/records/market-reference-storefront.json",
+      "selectors": [
+        {
+          "type": "category",
+          "registry": "*",
+          "value": "smp_market_profile_consolidation"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 0
     },
     {
       "change_id": "menu-support.full-distribution-refmap",
@@ -932,14 +947,14 @@
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemcurrency/NativeMerchantTags.java": "bc4b427c3e04b8c31da187e8a91bd16e9cd638b341219eb4870caf7af0c10802",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/CoinTradeContext.java": "f915fd2f3de331c62ec9bcf550ce38fb992d2fd2407db6c8fb9ec65fbfcd69b4",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/CoinTradePriceEvent.java": "bdddd673945f7d03d927bf400c8b1ffce049ead391ab60b80380dddea26bf894",
-    "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java": "b5ff6bbe6edf85f82674c380961f4f4149ad13ffa55ea29655d9089cd79390c2",
+    "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java": "a8de5b139b82b789d0e6177ca40a5a96c00293ab39060da54bb1e91f300bbeb6",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/MarketCatalogSnapshot.java": "bfb1fb0fe7be195e70906842713ba720a54c90de5700b389166a16706b2c5ccb",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/MarketItemSnapshot.java": "e9af92552953f1d02b300cd09e49fd3060de9fd0367232fa60300dbd305e2d75",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CoinAmounts.java": "a023aa4a2ed4fb6ef29843d65503e08ea4f895c4df2a9f2301b3f07429021a03",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CoinPriceRenderer.java": "41539aea9215f81780c6ae6909ddf223d32179c8ef52705c0107e16df3db44ce",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CurrencyClientConnection.java": "ef7b29c0af5f64babdf48a5acf61a9aa2ed626de7d1ff979a85714371d951592",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketClientState.java": "0d89f0a59b088391a964e934446613d0dc2dc327c1f4db8a5c8b35a02f027d05",
-    "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java": "c255fff8f57734e8a46577e23c2aeb027e24ffb8f0df9ac517a40823ee3ea08b",
+    "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java": "ea5fb1b6b542ebb344fa6442ba9af61bf27e4b2677162940ea6deed6228423b0",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/NativeTradeClient.java": "e63e8363d757adb46bea76d5632093aeef20780d15ca164656680b47cd22794e",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/NativeTradeScreenAccess.java": "860f45d42f004d0d6a2062f2c8e19965a30629fcca7a57bde62cddd6c09d3bea",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/WalletClientState.java": "8b9c8299d45f5552a0f6ee1c963988507d2fa14108016e1b20c48fa80e5b569d",
@@ -986,12 +1001,12 @@
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/ItemPolicy.java": "108113ee5088b23249e6de9d2f1a5e84dd1b096546d5185164c1a71a1eaec849",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java": "41b508474c168768c96f7d1654250b327b3f6bc921a3ba1dfcba31a10c71c067",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/MarketSearch.java": "bf5d686223905b5fee7e94c12d8c71f2cef87c3c1b4be2c54f7dd30eb4cbfe81",
-    "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/MarketSupply.java": "67613ab4ab4cf879b6e7be9e5075a59b9a1198e99153ecf68ea9981057f474dd",
+    "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/MarketSupply.java": "d452f251546910ee9c9aa3ac40f7b0915f32b67948de7f1643b83d985a0f396c",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/TradeRestrictions.java": "b3b9ce481a8007a3b052c69dbc4828a7647ce4797792d1f1b131bcdc605022e5",
     "Mods/JEMCurrencyCore/src/main/resources/META-INF/mods.toml": "5d3f778da30de9eb9a7071f5c2ac4b2f74b28de8a25906bb4f6d7686f956439f",
     "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/font/coins.json": "128ecb7ff1fa5b07a180d7c426cd04834e6165617222e5ede847e73b22c92024",
-    "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/en_us.json": "cb29f95720039b3767c76ed88b65f5b4dcea14d88989f367b6704a4c252c4bd2",
-    "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/ru_ru.json": "c4750fe0a3101b62fe040f2027c87a546c28b3d02e738516d4e6bf064856a4c7",
+    "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/en_us.json": "a5f3f13ed38d4f24b840fa9d2f51047c22a9099b124bd6075cbdc4e6b1c98a78",
+    "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/ru_ru.json": "7bb49998110514f9b686c4c73b28a1fe21dc117b51175ba4031948ca50b577ec",
     "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/models/item/aether_coin.json": "234f54c7ae5a05bf19244443c7139394946a9906c07e7e935b44f4afdc007af7",
     "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/models/item/arcane_coin.json": "dee8ba3d002a563a692c3559091071900cd1e98c19b1e450e82b8015db7507a5",
     "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/models/item/coin_base.json": "3ca679f39952f82709ed9bdd2709fab18d2675e841e5d2a2740788c629c84554",
@@ -1359,6 +1374,7 @@
     "Server/kubejs/server_scripts/jem/economy_recipe_guards.js": "57d6f9452266c4b52c4317a752313a144e038505d2dcc8d0fb69fef24d2b5e6a",
     "Server/kubejs/server_scripts/jem/recipe_replacements.js": "ce74ae9c2867e1ee44c3332609ec03b09c3c4989bf1558771ac6aca6354ef957",
     "Server/run.bat": "40551b4f9e500b9468989b390078724d8ad4a66220b007cdd43dc9bb831f82be",
-    "tools/generate_profession_skills.py": "9800359f334ff9887cac91885122de7734a0279c4a9d6b0d2be5c7b6c1c437e0"
+    "tools/generate_profession_skills.py": "9800359f334ff9887cac91885122de7734a0279c4a9d6b0d2be5c7b6c1c437e0",
+    "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/gui/market/storefront.png": "a46664558df56d8d940b9994bd9e94cc1b6b01786dd60ebd0c6fec56cdcc7bb2"
   }
 }

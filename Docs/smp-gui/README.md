@@ -99,3 +99,9 @@ the native map at an authorized private location. Server access checks, personal
 points and world-space event walls retain their owners.
 [Concrete integration design](../economy/native-trading-design.md).
 
+
+## Market reference storefront —2026-10-17
+
+The user-selected storefront uses the generated physical wood/iron/red-cloth artwork from `assets/market-2026-10-17`. Its live librarian preview follows the mouse and is not added to the world. One dropdown contains All goods, Blocks, Food, Plants, Resources and Drops; Plants queries the existing shared JEMCompat NATURE classifier over already admitted goods. The server returns12rows per page for the4×3grid. Buy/sell, exact Coin prices, stock, revision validation, search, paging and physical exchange retain the same authority. Hover Sell shows its actual Coin quote; unavailable actions are dimmed. The integrated title sign switches storefront/exchange; Back and Escape return to the parent.
+
+Background anchors and source/export provenance: [asset contract](assets/market-2026-10-17/README.md). The whole canvas keeps its proportions; text/hit regions and preview scissor follow the same scale. No client gameplay launch or visual acceptance is claimed; real game capture remains pending.

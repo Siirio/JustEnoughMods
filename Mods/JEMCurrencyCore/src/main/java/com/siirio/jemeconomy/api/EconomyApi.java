@@ -185,15 +185,15 @@ public final class EconomyApi {
         String search = rawSearch == null ? "" : rawSearch.strip().toLowerCase(Locale.ROOT);
         if (search.length() > 64) search = search.substring(0, 64);
         String category = rawCategory == null ? "all" : rawCategory.toLowerCase(Locale.ROOT);
-        if (!java.util.Set.of("all", "food", "resources", "blocks", "drops").contains(category)) category = "all";
+        if (!java.util.Set.of("all", "food", "plants", "resources", "blocks", "drops").contains(category)) category = "all";
         final String selectedSearch = search;
         final String selectedCategory = category;
         MarketSavedData market = MarketSavedData.get(player.getServer());
         var listings = com.siirio.jemeconomy.policy.MarketSupply.listings(player.getServer()).stream()
-                .filter(row -> selectedCategory.equals("all") || row.policy().marketCategory().name().equalsIgnoreCase(selectedCategory))
+                .filter(row -> com.siirio.jemeconomy.policy.MarketSupply.matchesCategory(row, selectedCategory))
                 .filter(row -> com.siirio.jemeconomy.policy.MarketSearch.matches(row, selectedSearch))
                 .sorted(Comparator.comparing(row -> row.id().toString())).toList();
-        int pageSize = 16;
+        int pageSize = 12;
         int pages = Math.max(1, (listings.size() + pageSize - 1) / pageSize);
         int page = Math.max(0, Math.min(requestedPage, pages - 1));
         int start = Math.min(listings.size(), page * pageSize);

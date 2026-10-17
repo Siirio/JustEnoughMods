@@ -8,32 +8,37 @@ import com.siirio.jemeconomy.physical.CoinDenomination;
 import com.siirio.jemcurrency.CurrencyItems;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.npc.Villager;
+import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
+/** Reference-aligned storefront. The server remains the sole catalog and transaction authority. */
 public final class MarketScreen extends Screen {
-    private static final int PANEL = 0xF52B2019, INNER = 0xF0382A20, EDGE = 0xFFC17A3C, CREAM = 0xFFFFE7C2, MUTED = 0xFFD0B99A;
-    private static final String[] CATEGORIES = {"all", "food", "resources", "blocks", "drops"};
+    private static final ResourceLocation ART = new ResourceLocation("jem_economy", "textures/gui/market/storefront.png");
+    private static final int ART_WIDTH = 1671, ART_HEIGHT = 941, CANVAS_WIDTH = 836, CANVAS_HEIGHT = 471;
+    private static final int CREAM = 0xFFFFE7C2, MUTED = 0xFFD0B99A, EDGE = 0xFFC17A3C;
+    private static final String[] CATEGORIES = {"all", "blocks", "food", "plants", "resources", "drops"};
     private final Screen parent;
     private final List<Hit> hits = new ArrayList<>();
     private MarketCatalogSnapshot data;
     private EditBox search;
-    private LivingEntity merchant;
-    private boolean exchange;
+    private Villager merchant;
+    private boolean exchange, categoriesOpen;
     private CoinDenomination source = CoinDenomination.COPPER, target = CoinDenomination.SILVER;
     private int exchangeCount = 10;
-    private int left, top, panelWidth, panelHeight;
-    private boolean categoriesOpen;
-    private int catalogScrollRows, maxCatalogScrollRows;
+    private float uiScale, originX, originY;
+    private ItemStack hoveredItem = ItemStack.EMPTY;
+    private Component hoveredText;
+    private long hoveredPrice = -1;
 
     MarketScreen(Screen parent, MarketCatalogSnapshot data) {
         super(Component.translatable("jem.economy.market.title"));
@@ -42,94 +47,194 @@ public final class MarketScreen extends Screen {
     }
 
     void accept(MarketCatalogSnapshot next) {
-        if (data.page() != next.page() || !data.search().equals(next.search()) || !data.category().equals(next.category())) catalogScrollRows = 0;
         data = next;
         if (search != null && !search.isFocused() && !search.getValue().equals(next.search())) search.setValue(next.search());
     }
 
     @Override protected void init() {
-        panelWidth = Math.min(430, width - 16); panelHeight = Math.min(280, height - 16);
-        left = (width - panelWidth) / 2; top = (height - panelHeight) / 2;
-        search = new EditBox(font, left + 8, top + 72, Math.max(80, panelWidth - 112), 18, Component.translatable("jem.economy.market.search"));
-        search.setValue(data.search()); search.setMaxLength(64); search.setHint(Component.translatable("jem.economy.market.search"));
+        String draft = search == null ? data.search() : search.getValue();
+        uiScale = Math.min((width - 8f) / CANVAS_WIDTH, (height - 8f) / CANVAS_HEIGHT);
+        originX = (width - CANVAS_WIDTH * uiScale) / 2f;
+        originY = (height - CANVAS_HEIGHT * uiScale) / 2f;
+        search = new EditBox(font, 270, 101, 158, 16, Component.translatable("jem.economy.market.search"));
+        search.setBordered(false);
+        search.setTextColor(CREAM);
+        search.setValue(draft);
+        search.setMaxLength(64);
+        search.setHint(Component.translatable("jem.economy.market.search"));
         search.setResponder(value -> { if (!exchange) EconomyNetwork.marketQuery(value, data.category(), 0, false); });
-        addRenderableWidget(search);
+        addWidget(search);
         if (minecraft != null && minecraft.level != null) {
-            try { merchant = EntityType.VILLAGER.create(minecraft.level); if (merchant != null) merchant.setSilent(true); }
-            catch (RuntimeException ignored) { merchant = null; }
+            merchant = EntityType.VILLAGER.create(minecraft.level);
+            if (merchant != null) {
+                merchant.setVillagerData(merchant.getVillagerData().setProfession(VillagerProfession.LIBRARIAN).setLevel(5));
+                merchant.setSilent(true);
+                merchant.setNoAi(true);
+            }
         }
     }
 
     @Override public boolean isPauseScreen() { return false; }
 
     @Override public void render(GuiGraphics g, int mouseX, int mouseY, float partialTick) {
-        renderBackground(g); hits.clear();
-        g.fill(left, top, left + panelWidth, top + panelHeight, PANEL);
-        g.fill(left, top, left + panelWidth, top + 3, EDGE);
-        renderHeader(g, mouseX, mouseY);
-        search.visible = !exchange;
-        if (exchange) renderExchange(g, mouseX, mouseY); else renderCatalog(g, mouseX, mouseY);
-        if (!data.errorKey().isBlank()) g.drawCenteredString(font, Component.translatable(data.errorKey()), width / 2, top + panelHeight - 12, 0xFFFF7777);
-        super.render(g, mouseX, mouseY, partialTick);
+        renderBackground(g);
+        hits.clear(); hoveredItem = ItemStack.EMPTY; hoveredText = null; hoveredPrice = -1;
+        int mx = (int) localX(mouseX), my = (int) localY(mouseY);
+        g.pose().pushPose();
+        g.pose().translate(originX, originY, 0);
+        g.pose().scale(uiScale, uiScale, 1);
+        g.blit(ART, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT, 0, 0, ART_WIDTH, ART_HEIGHT, ART_WIDTH, ART_HEIGHT);
+        renderMerchant(g, mx, my);
+        renderHeader(g, mx, my);
+        search.visible = !exchange; search.active = !exchange;
+        if (exchange) renderExchange(g, mx, my);
+        else {
+            renderCatalog(g, mx, my);
+            search.render(g, mx, my, partialTick);
+            if (categoriesOpen) renderCategories(g, mx, my);
+        }
+        if (!data.errorKey().isBlank()) {
+            g.fill(245, 387, 786, 398, 0xE0201510);
+            g.drawCenteredString(font, Component.translatable(data.errorKey()), 516, 389, 0xFFFF9999);
+        }
+        g.flush();
+        g.pose().popPose();
+        if (!hoveredItem.isEmpty()) g.renderTooltip(font, hoveredItem, mouseX, mouseY);
+        else if (hoveredPrice >= 0) CoinPriceRenderer.tooltip(g, font, hoveredPrice, mouseX, mouseY, width, height);
+        else if (hoveredText != null) g.renderTooltip(font, hoveredText, mouseX, mouseY);
     }
 
-    private void renderHeader(GuiGraphics g, int mouseX, int mouseY) {
-        g.fill(left + 7, top + 8, left + panelWidth - 7, top + 66, INNER);
+    private void renderMerchant(GuiGraphics g, int mx, int my) {
         if (merchant != null) {
-            g.flush(); g.enableScissor(left + 10, top + 10, left + 72, top + 64);
-            try { InventoryScreen.renderEntityInInventoryFollowsMouse(g, left + 41, top + 82, 34, left + 41 - mouseX, top + 36 - mouseY, merchant); g.flush(); }
-            catch (RuntimeException ignored) { merchant = null; }
-            finally { g.disableScissor(); }
+            g.flush();
+            g.enableScissor(screenX(65), screenY(69), screenX(220), screenY(255));
+            try {
+                InventoryScreen.renderEntityInInventoryFollowsMouse(g, 142, 310, 120,
+                        (142 - mx) * .35f, (159 - my) * .35f, merchant);
+                g.flush();
+            } finally { g.disableScissor(); }
         }
-        tab(g, left + 78, top + 15, 72, Component.translatable("jem.economy.market.storefront"), !exchange, () -> exchange = false);
-        tab(g, left + 153, top + 15, 88, Component.translatable("jem.economy.market.exchange"), exchange, () -> exchange = true);
-        int x = left + panelWidth - 174;
+        g.drawString(font, tr("merchant"), 58, 270, 0xFF302015, false);
+        wrapped(g, tr("merchant_quote"), 58, 288, 151, 0xFF664329);
+        wrapped(g, (exchange ? Component.translatable("jem.economy.exchange.physical_only") : tr("merchant_about")), 58, 328, 150, 0xFF664329);
+        button(g, 160, 379, 49, 16, Component.translatable("gui.back"), this::onClose);
+    }
+
+    private void renderHeader(GuiGraphics g, int mx, int my) {
+        g.pose().pushPose();
+        g.pose().translate(271, 43, 0); g.pose().scale(1.85f, 1.85f, 1);
+        g.drawString(font, font.plainSubstrByWidth(title.getString(), 114), 0, 0, CREAM, true);
+        g.pose().popPose();
         long remaining = data.walletBalance();
+        int x = 505;
         for (CoinDenomination denomination : CoinDenomination.descending()) {
             long count = remaining / denomination.value(); remaining %= denomination.value();
-            g.renderItem(new ItemStack(CurrencyItems.item(denomination)), x, top + 39);
-            g.drawString(font, "×" + count, x + 16, top + 44, CREAM, false); x += 34;
+            g.renderItem(new ItemStack(CurrencyItems.item(denomination)), x, 47);
+            fitted(g, Component.literal("×" + count), x + 18, 52, 34, CREAM);
+            if (inside(mx, my, x, 45, 53, 25)) hoveredText = denominationName(denomination);
+            x += 53;
         }
+        // Exchange remains reachable through the integrated sign, without another category toolbar.
+        Component alternate = Component.translatable(exchange ? "jem.economy.market.storefront" : "jem.economy.market.exchange");
+        fitted(g, alternate, 369, 69, 114, exchange ? CREAM : MUTED);
+        hits.add(new Hit(269, 35, 217, 45, () -> {
+            exchange = !exchange; categoriesOpen = false; search.setFocused(false); setFocused(null);
+        }));
     }
 
-    private void renderCatalog(GuiGraphics g, int mouseX, int mouseY) {
-        int categoryX = left + panelWidth - 98;
-        categoryButton(g, categoryX, top + 72, 90, data.category(), () -> categoriesOpen = !categoriesOpen);
-        int contentTop = top + 96, bottom = top + panelHeight - 22;
-        int columns = Math.max(2, Math.min(4, panelWidth / 102));
-        int gap = 4, cardWidth = (panelWidth - 16 - gap * (columns - 1)) / columns, cardHeight = 70;
-        // The server searches packaged native/overlay names and variant titles in both supported locales.
-        List<MarketItemSnapshot> filtered = data.items();
-        int visibleRows = Math.max(1, (bottom - contentTop + gap) / (cardHeight + gap));
-        maxCatalogScrollRows = Math.max(0, (filtered.size() + columns - 1) / columns - visibleRows);
-        catalogScrollRows = Math.max(0, Math.min(catalogScrollRows, maxCatalogScrollRows));
-        for (int index = 0; index < filtered.size(); index++) {
-            int row = index / columns - catalogScrollRows, column = index % columns, y = contentTop + row * (cardHeight + gap);
-            if (row < 0) continue;
-            if (y + cardHeight > bottom) break;
-            int x = left + 8 + column * (cardWidth + gap); MarketItemSnapshot item = filtered.get(index);
-            g.fill(x, y, x + cardWidth, y + cardHeight, INNER); g.fill(x, y, x + cardWidth, y + 1, 0xFF805438);
-            g.renderItem(item.stack(), x + 5, y + 5);
-            g.drawString(font, font.plainSubstrByWidth(marketName(item.stack()).getString(), cardWidth - 28), x + 25, y + 6, CREAM, false);
-            g.drawString(font, "↓", x + 4, y + 24, MUTED, false);
-            if (item.sellCopper() > 0) CoinPriceRenderer.draw(g, font, item.sellCopper(), x + 14, y + 20, cardWidth - 19, MUTED);
-            else g.drawString(font, font.plainSubstrByWidth(Component.translatable("jem.economy.market.no_buyback").getString(), cardWidth - 19), x + 14, y + 24, MUTED, false);
-            g.drawString(font, "↑", x + 4, y + 39, CREAM, false);
-            CoinPriceRenderer.draw(g, font, item.buyCopper(), x + 14, y + 35, cardWidth - 19, CREAM);
-            if (mouseX >= x && mouseX < x + cardWidth && mouseY >= y + 20 && mouseY < y + 51)
-                g.renderTooltip(font, Component.translatable(mouseY < y + 35 ? "jem.economy.market.sell" : "jem.economy.market.buy"), mouseX, mouseY);
-            int half = (cardWidth - 13) / 2;
-            if (item.buyAvailable()) button(g, x + 5, y + 53, half, 14, Component.translatable("jem.economy.market.buy"),
-                    () -> EconomyNetwork.marketAction(MarketActionPacket.Action.BUY, item.id(), 1, data.revision(), data.search(), data.category(), data.page()));
-            if (item.sellAvailable()) button(g, x + 8 + half, y + 53, half, 14, Component.translatable("jem.economy.market.sell"),
-                    () -> EconomyNetwork.marketAction(MarketActionPacket.Action.SELL, item.id(), 1, data.revision(), data.search(), data.category(), data.page()));
+    private void renderCatalog(GuiGraphics g, int mx, int my) {
+        // Reference magnifier, drawn at the same pixel scale as the live text.
+        int glass = 0xFFB6B6AE;
+        g.fill(253, 102, 259, 103, glass); g.fill(253, 109, 259, 110, glass);
+        g.fill(251, 104, 252, 108, glass); g.fill(260, 104, 261, 108, glass);
+        g.fill(252, 103, 254, 104, glass); g.fill(258, 103, 260, 104, glass);
+        g.fill(252, 108, 254, 109, glass); g.fill(258, 108, 260, 110, glass);
+        g.fill(260, 110, 262, 112, glass); g.fill(262, 112, 264, 114, glass);
+        g.renderItem(categoryIcon(data.category()), 452, 101);
+        g.drawString(font, categoryName(data.category()), 475, 105, CREAM, false);
+        hits.add(new Hit(444, 95, 335, 28, () -> categoriesOpen = !categoriesOpen));
+        for (int index = 0; index < 12; index++) {
+            int x = 245 + index % 4 * 137, y = 134 + index / 4 * 86;
+            if (index >= data.items().size()) {
+                g.fill(x + 4, y + 53, x + 127, y + 76, 0xAC201A14);
+                continue;
+            }
+            MarketItemSnapshot item = data.items().get(index);
+            ItemStack stack = item.stack();
+            g.pose().pushPose(); g.pose().translate(x + 8, y + 12, 0); g.pose().scale(1.75f, 1.75f, 1);
+            g.renderItem(stack, 0, 0); g.pose().popPose();
+            g.renderItemDecorations(font, stack, x + 17, y + 23);
+            List<net.minecraft.util.FormattedCharSequence> lines = font.split(marketName(stack), 79);
+            for (int line = 0; line < Math.min(2, lines.size()); line++) g.drawString(font, lines.get(line), x + 49, y + 9 + line * 10, CREAM, false);
+            CoinPriceRenderer.draw(g, font, item.buyCopper(), x + 49, y + 31, 77, CREAM);
+            if (inside(mx, my, x + 4, y + 4, 123, 48) && !categoriesOpen) hoveredItem = stack;
+            artButton(g, x + 4, y + 53, 59, 21, tr("buy"), item.buyAvailable(), mx, my,
+                    () -> transact(MarketActionPacket.Action.BUY, item));
+            artButton(g, x + 67, y + 53, 59, 21, tr("sell"), item.sellAvailable(), mx, my,
+                    () -> transact(MarketActionPacket.Action.SELL, item));
+            if (!categoriesOpen && inside(mx, my, x + 67, y + 53, 59, 21)) {
+                if (item.sellCopper() > 0) hoveredPrice = item.sellCopper();
+                else hoveredText = tr("no_buyback");
+            }
         }
-        button(g, left + 8, top + panelHeight - 19, 44, 14, Component.literal("<"), () -> queryPage(data.page() - 1));
-        g.drawCenteredString(font, (data.page() + 1) + "/" + data.pages(), width / 2, top + panelHeight - 16, MUTED);
-        button(g, left + panelWidth - 52, top + panelHeight - 19, 44, 14, Component.literal(">"), () -> queryPage(data.page() + 1));
-        if (categoriesOpen) renderCategories(g, categoryX, top + 92);
+        artButton(g, 424, 403, 44, 21, Component.literal("‹"), data.page() > 0, mx, my, () -> queryPage(data.page() - 1));
+        g.drawCenteredString(font, (data.page() + 1) + " / " + data.pages(), 506, 411, CREAM);
+        artButton(g, 544, 403, 43, 21, Component.literal("›"), data.page() + 1 < data.pages(), mx, my, () -> queryPage(data.page() + 1));
     }
 
+    private void renderCategories(GuiGraphics g, int mx, int my) {
+        hoveredItem = ItemStack.EMPTY; hoveredText = null; hoveredPrice = -1;
+        g.pose().pushPose(); g.pose().translate(0, 0, 350);
+        for (int i = 0; i < CATEGORIES.length; i++) {
+            String category = CATEGORIES[i]; int y = 125 + i * 23;
+            boolean selected = category.equals(data.category());
+            g.fill(444, y, 779, y + 23, selected || inside(mx, my, 444, y, 335, 23) ? 0xFF70482F : 0xFF35251C);
+            g.fill(444, y, 779, y + 1, EDGE);
+            g.renderItem(categoryIcon(category), 452, y + 3);
+            g.drawString(font, categoryName(category), 475, y + 8, CREAM, false);
+            hits.add(new Hit(444, y, 335, 23, () -> {
+                categoriesOpen = false; EconomyNetwork.marketQuery(search.getValue(), category, 0, false);
+            }));
+        }
+        g.pose().popPose();
+    }
+
+    private void transact(MarketActionPacket.Action action, MarketItemSnapshot item) {
+        EconomyNetwork.marketAction(action, item.id(), 1, data.revision(), data.search(), data.category(), data.page());
+    }
+
+    private void artButton(GuiGraphics g, int x, int y, int w, int h, Component label, boolean enabled, int mx, int my, Runnable action) {
+        if (!enabled) g.fill(x, y, x + w, y + h, 0x99201812);
+        else if (!categoriesOpen && inside(mx, my, x, y, w, h)) g.fill(x, y, x + w, y + h, 0x30FFEDBD);
+        g.drawCenteredString(font, label, x + w / 2, y + 6, enabled ? CREAM : 0xFF9C9080);
+        if (enabled) hits.add(new Hit(x, y, w, h, action));
+    }
+
+    private void button(GuiGraphics g, int x, int y, int w, int h, Component label, Runnable action) {
+        g.fill(x, y, x + w, y + h, 0xFF4A3327); g.fill(x, y, x + w, y + 1, EDGE);
+        g.drawCenteredString(font, label, x + w / 2, y + (h - 8) / 2, CREAM);
+        hits.add(new Hit(x, y, w, h, action));
+    }
+
+    private void fitted(GuiGraphics g, Component label, int x, int y, int w, int color) {
+        float scale = Math.min(1f, w / (float) Math.max(1, font.width(label)));
+        g.pose().pushPose(); g.pose().translate(x, y, 0); g.pose().scale(scale, scale, 1);
+        g.drawString(font, label, 0, 0, color, false); g.pose().popPose();
+    }
+
+    private void wrapped(GuiGraphics g, Component label, int x, int y, int w, int color) {
+        for (var line : font.split(label, w)) { g.drawString(font, line, x, y, color, false); y += 11; }
+    }
+
+    private static Component tr(String key) { return Component.translatable("jem.economy.market." + key); }
+    private static Component categoryName(String category) { return tr("category." + category); }
+    private static ItemStack categoryIcon(String category) {
+        return new ItemStack(switch (category) {
+            case "food" -> Items.BREAD; case "plants" -> Items.OAK_SAPLING;
+            case "resources" -> Items.IRON_INGOT; case "blocks" -> Items.BRICKS;
+            case "drops" -> Items.ROTTEN_FLESH; default -> Items.CHEST;
+        });
+    }
     private static Component marketName(ItemStack stack) {
         var entityTag = stack.getTagElement("EntityTag");
         if (stack.is(Items.PAINTING) && entityTag != null && entityTag.contains("variant")) {
@@ -142,34 +247,10 @@ public final class MarketScreen extends Screen {
         return stack.getHoverName();
     }
 
-    private void renderCategories(GuiGraphics g, int x, int y) {
-        g.pose().pushPose(); g.pose().translate(0, 0, 300);
-        for (int i = 0; i < CATEGORIES.length; i++) {
-            String category = CATEGORIES[i]; int cy = y + i * 20;
-            g.fill(x, cy, x + 90, cy + 20, category.equals(data.category()) ? 0xFF70482F : 0xFF3B2A21);
-            g.fill(x, cy, x + 90, cy + 1, EDGE);
-            g.renderItem(categoryIcon(category), x + 3, cy + 2);
-            g.drawString(font, font.plainSubstrByWidth(Component.translatable("jem.economy.market.category." + category).getString(), 65), x + 22, cy + 6, CREAM, false);
-            hits.add(new Hit(x, cy, 90, 20, () -> { categoriesOpen = false; EconomyNetwork.marketQuery(search.getValue(), category, 0, false); }));
-        }
-        g.pose().popPose();
-    }
-
-    private void categoryButton(GuiGraphics g, int x, int y, int w, String category, Runnable action) {
-        g.fill(x, y, x + w, y + 18, categoriesOpen ? 0xFF70482F : 0xFF4A3327); g.fill(x, y, x + w, y + 1, EDGE);
-        g.renderItem(categoryIcon(category), x + 3, y + 1);
-        g.drawString(font, font.plainSubstrByWidth(Component.translatable("jem.economy.market.category." + category).getString(), w - 34), x + 22, y + 5, CREAM, false);
-        g.drawString(font, categoriesOpen ? "▲" : "▼", x + w - 11, y + 5, EDGE, false);
-        hits.add(new Hit(x, y, w, 18, action));
-    }
-
-    private static ItemStack categoryIcon(String category) {
-        return new ItemStack(switch (category) { case "food" -> Items.BREAD; case "resources" -> Items.IRON_INGOT; case "blocks" -> Items.BRICKS; case "drops" -> Items.ROTTEN_FLESH; default -> Items.CHEST; });
-    }
-
     private void renderExchange(GuiGraphics g, int mouseX, int mouseY) {
         search.visible = false;
-        int cx = width / 2, y = top + 92;
+        int cx = 516, y = 166;
+        g.fill(244, 132, 788, 387, 0xF02C2019);
         g.drawCenteredString(font, Component.translatable("jem.economy.exchange.physical_only"), cx, y, MUTED);
         button(g, cx - 142, y + 22, 92, 20, denominationName(source), () -> source = next(source));
         button(g, cx + 50, y + 22, 92, 20, denominationName(target), () -> target = next(target));
@@ -188,34 +269,61 @@ public final class MarketScreen extends Screen {
                 () -> EconomyNetwork.exchange(source, exchangeCount, target, data.search(), data.category(), data.page()));
         int[] held = data.physicalCounts(); int hx = cx - 84;
         for (CoinDenomination denomination : CoinDenomination.values()) {
-            g.renderItem(new ItemStack(CurrencyItems.item(denomination)), hx, top + panelHeight - 42);
-            g.drawString(font, "×" + held[denomination.ordinal()], hx + 16, top + panelHeight - 37, MUTED, false); hx += 36;
+            g.renderItem(new ItemStack(CurrencyItems.item(denomination)), hx, 350);
+            g.drawString(font, "×" + held[denomination.ordinal()], hx + 16, 355, MUTED, false); hx += 36;
         }
     }
 
-    private void tab(GuiGraphics g, int x, int y, int w, Component label, boolean active, Runnable action) {
-        g.fill(x, y, x + w, y + 18, active ? 0xFF70482F : 0xFF493226); if (active) g.fill(x, y + 16, x + w, y + 18, EDGE);
-        g.drawCenteredString(font, label, x + w / 2, y + 5, active ? CREAM : MUTED); hits.add(new Hit(x, y, w, 18, action));
+
+    private void queryPage(int page) {
+        if (page >= 0 && page < data.pages()) EconomyNetwork.marketQuery(search.getValue(), data.category(), page, false);
     }
-    private void button(GuiGraphics g, int x, int y, int w, int h, Component label, Runnable action) {
-        g.fill(x, y, x + w, y + h, 0xFF4A3327); g.fill(x, y, x + w, y + 1, 0xFF8B5A38);
-        g.drawCenteredString(font, font.plainSubstrByWidth(label.getString(), w - 4), x + w / 2, y + Math.max(2, (h - 8) / 2), CREAM); hits.add(new Hit(x, y, w, h, action));
+    private static CoinDenomination next(CoinDenomination value) {
+        CoinDenomination[] values = CoinDenomination.values(); return values[(value.ordinal() + 1) % values.length];
     }
-    private void queryPage(int page) { if (page >= 0 && page < data.pages()) EconomyNetwork.marketQuery(search.getValue(), data.category(), page, false); }
-    private static CoinDenomination next(CoinDenomination value) { CoinDenomination[] values = CoinDenomination.values(); return values[(value.ordinal() + 1) % values.length]; }
     private static Component denominationName(CoinDenomination value) { return Component.translatable("item.jem_economy." + value.id()); }
+    private double localX(double x) { return (x - originX) / uiScale; }
+    private double localY(double y) { return (y - originY) / uiScale; }
+    private int screenX(int x) { return Math.round(originX + x * uiScale); }
+    private int screenY(int y) { return Math.round(originY + y * uiScale); }
+    private static boolean inside(double mx, double my, int x, int y, int w, int h) { return mx >= x && mx < x + w && my >= y && my < y + h; }
 
     @Override public boolean mouseClicked(double mouseX, double mouseY, int button) {
-        if (button == 0) { var current = List.copyOf(hits); for (int i = current.size() - 1; i >= 0; i--) { Hit hit = current.get(i); if (hit.contains(mouseX, mouseY)) { hit.action.run(); return true; } } }
-        return super.mouseClicked(mouseX, mouseY, button);
-    }
-    @Override public boolean mouseScrolled(double mouseX, double mouseY, double delta) {
-        if (!exchange && mouseY >= top + 96 && mouseY < top + panelHeight - 22) {
-            catalogScrollRows = Math.max(0, Math.min(maxCatalogScrollRows, catalogScrollRows - (int) Math.signum(delta)));
+        double mx = localX(mouseX), my = localY(mouseY);
+        if (categoriesOpen) {
+            if (button == 0 && inside(mx, my, 444, 125, 335, CATEGORIES.length * 23)) {
+                int index = (int) (my - 125) / 23;
+                categoriesOpen = false;
+                EconomyNetwork.marketQuery(search.getValue(), CATEGORIES[index], 0, false);
+            } else categoriesOpen = false;
             return true;
         }
-        return super.mouseScrolled(mouseX, mouseY, delta);
+        if (button == 0) {
+            var current = List.copyOf(hits);
+            for (int i = current.size() - 1; i >= 0; i--) {
+                Hit hit = current.get(i);
+                if (hit.contains(mx, my)) { hit.action.run(); return true; }
+            }
+        }
+        return super.mouseClicked(mx, my, button);
+    }
+    @Override public boolean mouseDragged(double x, double y, int button, double dx, double dy) {
+        return super.mouseDragged(localX(x), localY(y), button, dx / uiScale, dy / uiScale);
+    }
+    @Override public boolean mouseReleased(double x, double y, int button) { return super.mouseReleased(localX(x), localY(y), button); }
+    @Override public boolean mouseScrolled(double x, double y, double delta) {
+        if (categoriesOpen) return true;
+        if (!exchange && delta != 0 && inside(localX(x), localY(y), 244, 133, 545, 253)) {
+            queryPage(data.page() - (int) Math.signum(delta)); return true;
+        }
+        return false;
+    }
+    @Override public boolean keyPressed(int key, int scanCode, int modifiers) {
+        if (key == 256 && categoriesOpen) { categoriesOpen = false; return true; }
+        return super.keyPressed(key, scanCode, modifiers);
     }
     @Override public void onClose() { Minecraft.getInstance().setScreen(parent); }
-    private record Hit(int x, int y, int width, int height, Runnable action) { boolean contains(double mx, double my) { return mx >= x && mx < x + width && my >= y && my < y + height; } }
+    private record Hit(int x, int y, int width, int height, Runnable action) {
+        boolean contains(double mx, double my) { return inside(mx, my, x, y, width, height); }
+    }
 }
