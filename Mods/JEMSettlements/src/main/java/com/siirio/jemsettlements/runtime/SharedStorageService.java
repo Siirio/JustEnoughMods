@@ -72,5 +72,18 @@ public final class SharedStorageService {
                 com.siirio.jemsettlements.network.SettlementNetwork.sendStorageLabels(player,labels);
         }
     }
+    /** Resolve only the linked physical inventory, including a fully loaded native double chest. */
+    public static java.util.Optional<net.minecraftforge.items.IItemHandler> handler(ServerLevel level, StorageLink link) {
+        if (level == null || !level.dimension().location().equals(link.dimension()) || !level.hasChunkAt(link.position())
+                || link.second() != null && !level.hasChunkAt(link.second())) return java.util.Optional.empty();
+        var state = level.getBlockState(link.position());
+        if (state.getBlock() instanceof ChestBlock chest) {
+            if (state.getValue(ChestBlock.TYPE) != ChestType.SINGLE && partner(level, link.position()) == null) return java.util.Optional.empty();
+            if (ChestBlock.getContainer(chest, state, level, link.position(), false) == null) return java.util.Optional.empty();
+        }
+        var entity = level.getBlockEntity(link.position());
+        return entity == null ? java.util.Optional.empty() : entity.getCapability(ForgeCapabilities.ITEM_HANDLER).resolve();
+    }
     public static void clear() {OPEN.clear();}
+
 }

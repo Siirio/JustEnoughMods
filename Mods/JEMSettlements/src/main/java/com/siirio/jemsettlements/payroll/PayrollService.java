@@ -24,7 +24,7 @@ public final class PayrollService {
         for (WorkforceRecord record : data.workforce()) {
             for (var level : server.getAllLevels()) {
                 var entity = level.getEntity(record.entityId());
-                if (entity != null && entity.isAlive()) { record.verifyNativeEntityType(BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()), now); break; }
+                if (entity != null && entity.isAlive()) { record.observeName(entity); record.verifyNativeEntityType(BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()), now); break; }
             }
             if (record.type() == WorkforceType.RECRUIT && data.town(record.townId()).isEmpty()) data.employer(record.ownerId());
         }

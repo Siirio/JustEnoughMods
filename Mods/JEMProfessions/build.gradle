@@ -3,6 +3,26 @@ group = 'com.siirio.jemprofessions'
 version = '1.0.0'
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 minecraft { mappings channel: 'official', version: '1.20.1' }
+
+// Sandbox packaging reuses the real profession owner, with a separate screen and entry point.
+def professionProfile = providers.gradleProperty('professionProfile').getOrElse('production')
+if (!(professionProfile in ['sandbox', 'production'])) throw new GradleException('professionProfile must be sandbox or production')
+if (providers.gradleProperty('professionProfileOutput').isPresent()) {
+    layout.buildDirectory = file(providers.gradleProperty('professionProfileOutput').get())
+}
+sourceSets.main.java.srcDir "src/${professionProfile}/java"
+sourceSets.main.resources.srcDir "src/${professionProfile}/resources"
+if (professionProfile == 'sandbox') {
+    def sandboxData = layout.buildDirectory.dir('generated/sandbox-resources')
+    sourceSets.main.resources.srcDir sandboxData
+    tasks.register('prepareSandboxData', Exec) {
+        commandLine 'python', 'prepare-sandbox-data.py', sandboxData.get().asFile.absolutePath
+        inputs.dir '../../Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data'
+        inputs.files 'prepare-sandbox-data.py', 'src/sandbox/resources/assets/jem_professions/sandbox-icons.json', 'src/sandbox/resources/assets/jem_professions/sandbox-availability.json'
+        outputs.dir sandboxData
+    }
+    tasks.named('processResources') { dependsOn 'prepareSandboxData' }
+}
 dependencies {
     minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
     compileOnly files('../JEMIdentity/build/classes/java/main')
@@ -11,4 +31,18 @@ dependencies {
 }
 tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8'; options.release = 17 }
 tasks.withType(Test).configureEach { enabled = false }
-jar { archiveBaseName = 'jem-professions'; finalizedBy 'reobfJar' }
+jar {
+    archiveBaseName = 'jem-professions'
+    if (professionProfile == 'sandbox') archiveClassifier = 'sandbox'
+    manifest { attributes 'JEM-Profession-Profile': professionProfile.toUpperCase(java.util.Locale.ROOT) }
+    finalizedBy 'reobfJar'
+}
+tasks.register('sandboxJar', GradleBuild) {
+    buildName = 'jem-professions-sandbox'
+    dir = projectDir
+    tasks = ['jar']
+    startParameter.projectProperties = gradle.startParameter.projectProperties + [
+        professionProfile: 'sandbox',
+        professionProfileOutput: new File(projectDir, 'build/sandbox-profile').absolutePath
+    ]
+}

@@ -1,0 +1,135 @@
+{
+  "schema_version": 2,
+  "change_id": "professions.sandbox-native-tree",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "category",
+      "registry": "*",
+      "value": "profession_progression"
+    }
+  ],
+  "conditions": [
+    {
+      "delivery": "Only matching jem sandbox artifacts installed. Ordinary Client/Server artifacts remain unchanged.",
+      "authority": "Integrated logical server owns outcomes; clients render native bounded snapshots."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_sandbox",
+    "priority": 530,
+    "overrides": [
+      "professions.native-skills-and-spell-combat"
+    ]
+  },
+  "change": {
+    "summary": "professions.sandbox-native-tree",
+    "modifiers": [
+      {
+        "property": "professions.sandbox_progression",
+        "operation": "add",
+        "before": "Sandbox lacks JEMProfessions and native graph data; production has existing78node catalog and partially implemented effects.",
+        "after": "Separate sandbox artifact embeds canonical data and native progression with semantic icon substitutions; F7/integrated command, connected UI, seven core effects plus TinyInv hotbar; unsupported effects explicitly unavailable and server admission uses actual affordability/points. Default production source behavior retained."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMProfessions + native Puffish",
+    "kind": "Source-owned sandbox delivery",
+    "source_files": [
+      "Mods/JEMProfessions/build.gradle",
+      "Mods/JEMProfessions/prepare-sandbox-data.py",
+      "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/network/ProfessionsNetwork.java",
+      "Mods/JEMProfessions/src/production/java/com/siirio/jemprofessions/client/ProfessionRadialScreen.java",
+      "Mods/JEMProfessions/src/production/java/com/siirio/jemprofessions/network/ProfessionUnlockAuthority.java",
+      "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/client/ProfessionMaterials.java",
+      "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/client/ProfessionRadialScreen.java",
+      "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/client/SandboxProfessionKeys.java",
+      "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/client/SandboxProfessionPresentation.java",
+      "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/network/ProfessionUnlockAuthority.java",
+      "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/SandboxProfessionAccess.java",
+      "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/SandboxProfessionPolicy.java",
+      "Mods/JEMProfessions/src/sandbox/resources/assets/jem_professions/sandbox-availability.json",
+      "Mods/JEMProfessions/src/sandbox/resources/assets/jem_professions/sandbox-icons.json",
+      "Mods/JEMProfessions/src/sandbox/resources/assets/jem_professions_sandbox/lang/en_us.json",
+      "Mods/JEMProfessions/src/sandbox/resources/assets/jem_professions_sandbox/lang/ru_ru.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Apply explicit user sandbox scope and mechanics/UI corrections without promoting production runtimes.",
+    "decision_source": "User requests documented in CHANGELOG and owning Docs; rates/lifetimes/tab scope/name priority specified by user; transient queue budgets, UI layout and sandbox availability policy chosen by Codex."
+  },
+  "introduced": {
+    "date": "2026-10-17",
+    "commit": "SELF",
+    "action": "sandbox-only implementation",
+    "summary": "professions.sandbox-native-tree",
+    "source_files": [
+      "Mods/JEMProfessions/build.gradle",
+      "Mods/JEMProfessions/prepare-sandbox-data.py",
+      "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/client/ProfessionRadialScreen.java",
+      "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/network/ProfessionsNetwork.java",
+      "Mods/JEMProfessions/src/production/java/com/siirio/jemprofessions/client/ProfessionRadialScreen.java",
+      "Mods/JEMProfessions/src/production/java/com/siirio/jemprofessions/network/ProfessionUnlockAuthority.java",
+      "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/client/ProfessionMaterials.java",
+      "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/client/ProfessionRadialScreen.java",
+      "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/client/SandboxProfessionKeys.java",
+      "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/client/SandboxProfessionPresentation.java",
+      "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/network/ProfessionUnlockAuthority.java",
+      "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/SandboxProfessionAccess.java",
+      "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/SandboxProfessionPolicy.java",
+      "Mods/JEMProfessions/src/sandbox/resources/assets/jem_professions/sandbox-availability.json",
+      "Mods/JEMProfessions/src/sandbox/resources/assets/jem_professions/sandbox-icons.json",
+      "Mods/JEMProfessions/src/sandbox/resources/assets/jem_professions_sandbox/lang/en_us.json",
+      "Mods/JEMProfessions/src/sandbox/resources/assets/jem_professions_sandbox/lang/ru_ru.json"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "sandbox-only implementation",
+      "summary": "professions.sandbox-native-tree",
+      "source_files": [
+        "Mods/JEMProfessions/build.gradle",
+        "Mods/JEMProfessions/prepare-sandbox-data.py",
+        "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/client/ProfessionRadialScreen.java",
+        "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/network/ProfessionsNetwork.java",
+        "Mods/JEMProfessions/src/production/java/com/siirio/jemprofessions/client/ProfessionRadialScreen.java",
+        "Mods/JEMProfessions/src/production/java/com/siirio/jemprofessions/network/ProfessionUnlockAuthority.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/client/ProfessionMaterials.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/client/ProfessionRadialScreen.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/client/SandboxProfessionKeys.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/client/SandboxProfessionPresentation.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/network/ProfessionUnlockAuthority.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/SandboxProfessionAccess.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/SandboxProfessionPolicy.java",
+        "Mods/JEMProfessions/src/sandbox/resources/assets/jem_professions/sandbox-availability.json",
+        "Mods/JEMProfessions/src/sandbox/resources/assets/jem_professions/sandbox-icons.json",
+        "Mods/JEMProfessions/src/sandbox/resources/assets/jem_professions_sandbox/lang/en_us.json",
+        "Mods/JEMProfessions/src/sandbox/resources/assets/jem_professions_sandbox/lang/ru_ru.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "sandbox gameplay",
+      "NPC needs",
+      "inventory",
+      "GUI",
+      "progression",
+      "persistence",
+      "optional integrations"
+    ],
+    "relations": [
+      "canonical state -> bounded projection -> real server-authorized action -> native result"
+    ],
+    "notes": [
+      "No canonical runtime JARs or release baseline promoted.",
+      "Deleted source paths are history only: Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/client/ProfessionRadialScreen.java"
+    ],
+    "unresolved": [
+      "Player/runtime/visual acceptance pending; no tests or game launches."
+    ]
+  }
+}

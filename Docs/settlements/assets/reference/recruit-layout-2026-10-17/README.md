@@ -10,3 +10,8 @@ User also requests gradual health recovery after eating and a happiness fill tha
 Production reuses Minecraft spruce-plank/vine sprites and shared pixel metal corners. Reference art is not used as production texture. Source implementation is not visual acceptance; no client/gameplay launch occurred.
 
 Active pair: C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/GUI/Forge-1.20.1-jem-smp-screens.
+
+
+## Follow-up calibration — 2026-10-17
+
+User rejects the implemented Settlements/skill-tree GUI and explicitly reselects this reference for more cohesive wooden panels, recognizable reused icons and compact composition. This does not approve the previous code-rendered frame or future candidates. The new settlement composition uses one recessed shell, five icon tabs and whole NPC row cards; profession sandbox uses connected selected branches and a fixed detail surface. Runtime appearance remains pending manual user review.

@@ -197,6 +197,7 @@ public final class RaceExperienceScreen extends Screen {
 
         int left = panelLeft(), right = width - 16;
         int accent = ACCENTS[race];
+        if(progression) RacePanelMaterials.board(g,left+5,7,panelWidth()-12,height-14,false);
         g.drawCenteredString(font,text("ВЫБЕРИ СВОЁ ПРОИСХОЖДЕНИЕ", "CHOOSE YOUR ORIGIN"),panelLeft()/2,20,0xD9D6CE);
         g.drawString(font, String.format("%02d / 05", race + 1), 20, 35, accent, false);
         int nameY = Math.max(56, height - 81);
@@ -204,7 +205,8 @@ public final class RaceExperienceScreen extends Screen {
         List<FormattedCharSequence> name = font.split(tr("name"), nameWidth);
         for (int i = 0; i < name.size(); i++) g.drawCenteredString(font, name.get(i), left / 2, nameY + i * 11, accent);
         if (height > 260) g.drawCenteredString(font, tr("lore"), left / 2, nameY + name.size() * 11 + 5, 0xA9A9A9);
-        g.fill(left, 49, left + 1, height - 42, 0xFF282828);
+        if(progression) g.fill(left+12,45,width-19,46,0xFF59472F);
+        else g.fill(left,49,left+1,height-42,0xFF282828);
 
         String[] icons={"life_chorus","rift_ambush","verdant_dominion","sculk_veins","infernal_eruption"};
         if(previewSlot==0) g.blit(new net.minecraft.resources.ResourceLocation("jem_visual_sandbox","textures/gui/spells/"+icons[race]+".png"),left+12,52,0,0,16,16,16,16);
@@ -485,7 +487,7 @@ public final class RaceExperienceScreen extends Screen {
     private record Line(Component text, int color) { static Line gap() { return new Line(null, 0); } }
 
     /** Text-only focus/hover states keep the stage free of default grey button plates. */
-    private static final class QuietButton extends Button {
+    private final class QuietButton extends Button {
         QuietButton(int x, int y, int width, int height, Component label, OnPress action) {
             super(x, y, width, height, label, action, DEFAULT_NARRATION);
         }

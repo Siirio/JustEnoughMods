@@ -1,6 +1,10 @@
 # JEM Races
 
-## Current standalone delivery — 2026-10-17
+## Current sandbox follow-up — 2026-10-17
+
+User requests leaf decay10seconds at stage0 and+5seconds each later stage:200+100×stage ticks,10/15/20/25seconds. Forward reach and activation cooldown remain unchanged. Only the sandbox JAR is rebuilt/installed; ordinary Client/Server and release baseline are not promoted. Cohesive wood material applies to progression information; the protected black origin selection and quiet origin controls remain. Existing source-owned profession progression is now available in the same sandbox through F7 or `/professions`; see [professions](../professions/README.md). Installation receipts: [sandbox-only delivery](../settlements/standalone/sandbox-only-iteration-delivery.json). No game launch, tests or visual acceptance claimed.
+
+## Earlier standalone delivery — 2026-10-17
 
 The source-owned standalone installation is `Mods/JEMVisualSandboxR3`; its mod ID
 remains `jem_visual_sandbox` to preserve existing sandbox data and resources.
@@ -49,7 +53,7 @@ All five races now have four distinct stages: Base (0),1,2,3. Successful real V/
 | --- | --- | --- |
 | Ancestors |12-block healing →16-block radius →cleansing →full-health absorption. All retain6HP player healing, full peaceful-animal/mount healing and25% caster ward for5s. | Automatic guardian below40% health lasts30/40/50/60s; B remains contextual, not an invented attack. |
 | Void Walkers |24-block rift →32-block reach →2s slow within4blocks →3s slow within8blocks. Actual melee strike and safe arrival retained. | Pearl charge remains10ticks with real collision; Shift+B gravity lasts5/6/7/8s. |
-| Born in Bloom |5.4HP initial hit with3s movement grip at Base (attacks still allowed) →full action lock →2.7HP/s constriction →after-release1HP/s poison for4.5s. Unlocks remain sequential and cannot exceed mastery stage. | Leaf Bridge lifetime40/50/60/70s and forward reach2/3/4/5blocks;15s normal activation cooldown retained. |
+| Born in Bloom |5.4HP initial hit with3s movement grip at Base (attacks still allowed) →full action lock →2.7HP/s constriction →after-release1HP/s poison for4.5s. Unlocks remain sequential and cannot exceed mastery stage. | Leaf Bridge lifetime10/15/20/25s and forward reach2/3/4/5blocks;15s normal activation cooldown retained. |
 | Infected by Sculk |12HP hostile-only wave, radius8 →knockback →5s Darkness on all nearby other mobs/players plus confused mob aim →10s temporary sculk territory radius16. Owner inside gets size and attack×1.15. | Echo range32/40/48/56; at25resonance instead restore6/7/8/9HP and grant absorption20/25/30/35s. Real cost remains25. |
 | Nether Hearteds |Five eruptions at every stage; damage3.4/5.1/6.8/8.5HP each, fire1/2/4/6s. | Three authored slashes keep timing, pull and collision; each uses the same stage damage/fire. Lava and environmental passives retain their owners. |
 

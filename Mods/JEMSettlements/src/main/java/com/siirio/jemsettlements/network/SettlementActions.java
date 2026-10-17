@@ -21,7 +21,7 @@ public final class SettlementActions {
     private static final Map<UUID, Subscription> VIEWERS = new HashMap<>();
     private static int viewerCursor;
     private static final Map<UUID, Long> LAST_REQUEST = new HashMap<>();
-    private static final java.util.Set<String> READS = java.util.Set.of("open", "select", "refresh", "close", "guide", "heartbeat", "mapopen", "housing");
+    private static final java.util.Set<String> READS = java.util.Set.of("open", "select", "refresh", "close", "guide", "heartbeat", "mapopen", "housing", "storage");
     private SettlementActions() { }
 
     public static void handle(ServerPlayer player, SettlementActionPacket packet) {
@@ -46,6 +46,17 @@ public final class SettlementActions {
             Subscription subscription = VIEWERS.computeIfAbsent(player.getUUID(), id -> new Subscription());
             subscription.offset = Math.max(0, packet.payload().getInt("Offset")); subscription.foodOffset = Math.max(0, packet.payload().getInt("FoodOffset"));
             subscription.expires = now + 240L;
+            if (packet.action().equals("storage")) {
+                if (SettlementApi.ownedTown(player, packet.townId()).isEmpty() || !packet.payload().contains("Position")) {
+                    acknowledge(player, packet, SettlementApi.Result.UNAUTHENTICATED, packet.townId()); return;
+                }
+                BlockPos requestedStorage = BlockPos.of(packet.payload().getLong("Position"));
+                if (SettlementApi.ownedTown(player, packet.townId()).orElseThrow().storage().stream().noneMatch(link -> link.contains(requestedStorage))) {
+                    acknowledge(player, packet, SettlementApi.Result.INVALID, packet.townId()); return;
+                }
+                subscription.storage = requestedStorage;
+                subscription.slotOffset = Math.max(0, packet.payload().getInt("SlotOffset"));
+            } else if (packet.action().equals("select") || packet.action().equals("open")) subscription.storage = null;
             if (packet.action().equals("mapopen")) { subscription.map = true; }
             else if (packet.action().equals("open")) { subscription.map = false; subscription.town = null; open(player, false); }
             else if (packet.action().equals("select")) { subscription.map = false; select(player, packet.townId(), false); }
@@ -116,6 +127,7 @@ public final class SettlementActions {
             case "expand", "mapexpand" -> expand(player, packet, town.get());
             case "foodstorage" -> SettlementApi.setFoodStorage(player, id, BlockPos.of(data.getLong("Position")), data.getBoolean("Enabled"));
             case "linkstorage" -> SettlementApi.linkPhysicalStorage(player, id, BlockPos.of(data.getLong("Position")));
+            case "feedall" -> data.contains("Position") ? com.siirio.jemsettlements.runtime.TownMealService.request(player, town.get(), BlockPos.of(data.getLong("Position"))) : SettlementApi.Result.INVALID;
             case "manage" -> data.hasUUID("Entity") ? SettlementApi.openNativeManagement(player, id, data.getUUID("Entity")) : SettlementApi.Result.INVALID;
             case "buyback" -> data.hasUUID("Entity") && net.minecraftforge.fml.ModList.get().isLoaded("recruits")
                     ? SettlementApi.openRecruitBuyback(player, id, data.getUUID("Entity")) : SettlementApi.Result.UNAVAILABLE;
@@ -195,6 +207,7 @@ public final class SettlementActions {
         view.putUUID("Session", sub.session); view.put("Directory", directory); view.putInt("DirectoryOffset", offset); view.putInt("DirectoryTotal", towns.size());
         if (sub.town != null) SettlementApi.ownedTown(player, sub.town).ifPresentOrElse(t -> {
             CompoundTag selected = SettlementNetwork.buildView(player, t); SettlementViewDetails.foodPage(player, t, selected, sub.foodOffset);
+            if (sub.storage != null) selected.put("SelectedStorage", SettlementViewDetails.storagePage(player, t, sub.storage, sub.slotOffset));
             view.put("Selected", selected);
         }, () -> { sub.town = null; view.putBoolean("Deleted", true); });
         view.putLong("GameTime", player.getServer().overworld().getGameTime());
@@ -246,5 +259,5 @@ public final class SettlementActions {
         if (event.getPlayer() != null) SettlementNetwork.sendFoodPolicy(event.getPlayer());
         else event.getPlayerList().getPlayers().forEach(SettlementNetwork::sendFoodPolicy);
     }
-    private static final class Subscription { UUID session = UUID.randomUUID(); UUID town; int completed; int offset; int foodOffset; boolean map; long expires; CompoundTag last; }
+    private static final class Subscription { UUID session = UUID.randomUUID(); UUID town; int completed; int offset; int foodOffset; BlockPos storage; int slotOffset; boolean map; long expires; CompoundTag last; }
 }

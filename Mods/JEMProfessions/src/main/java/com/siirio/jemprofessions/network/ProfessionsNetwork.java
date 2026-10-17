@@ -45,7 +45,7 @@ public final class ProfessionsNetwork {
                         var node = ProfessionCatalog.node(packet.profession(), packet.node());
                         if (node != null && ProfessionApi.level(player, packet.profession()) >= node.level()) {
                             boolean parent = node.parentId().isBlank() || ProfessionApi.enabled(player, packet.profession(), node.parentId());
-                            if (parent) ProfessionApi.category(packet.profession()).flatMap(value -> value.getSkill(node.id())).ifPresent(skill -> skill.unlock(player));
+                            if (parent) ProfessionUnlockAuthority.unlock(player, packet.profession(), node.id());
                         }
                         sendStatus(player, true);
                     }

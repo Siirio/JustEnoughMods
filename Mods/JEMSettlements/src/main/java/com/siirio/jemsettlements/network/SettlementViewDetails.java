@@ -28,6 +28,14 @@ final class SettlementViewDetails {
     private SettlementViewDetails() { }
     static void invalidate() { foodItems = null; }
 
+    static void foodCounts(CompoundTag row,com.siirio.jemsettlements.resident.ResidentMood history,long now){
+        CompoundTag saved=history.save();ListTag counts=new ListTag();
+        if(saved.getLong("ServingDay")==Math.floorDiv(now,24000L)){
+            CompoundTag portions=saved.getCompound("ServingsToday");
+            for(String id:portions.getAllKeys()){CompoundTag meal=new CompoundTag();meal.putString("Item",id);meal.putInt("Count",portions.getInt(id));counts.add(meal);}
+        }
+        row.put("FoodCounts",counts);
+    }
     static void enrich(ServerPlayer player, TownRecord town, CompoundTag view) {
         var data = SettlementSavedData.get(player.getServer());
         ServerLevel level = player.getServer().getLevel(ResourceKey.create(Registries.DIMENSION, town.dimension()));
@@ -45,12 +53,7 @@ final class SettlementViewDetails {
                 CompoundTag saved = resident.save();
                 row.put("ServingsToday", saved.getCompound("ServingsToday").copy()); row.putLong("ServingDay", saved.getLong("ServingDay"));
                 row.put("RecentFoods", saved.getList("RecentFoods", Tag.TAG_COMPOUND).copy());
-                ListTag counts = new ListTag();
-                if (saved.getLong("ServingDay") == Math.floorDiv(player.getServer().overworld().getGameTime(), 24000L)) {
-                    CompoundTag portions = saved.getCompound("ServingsToday");
-                    for (String itemId : portions.getAllKeys()) { CompoundTag meal = new CompoundTag(); meal.putString("Item", itemId); meal.putInt("Count", portions.getInt(itemId)); counts.add(meal); }
-                }
-                row.put("FoodCounts", counts);
+                foodCounts(row,resident,player.getServer().overworld().getGameTime());
                 row.putBoolean("Hostile", resident.mood() < 10);
                 resident.home().ifPresent(home -> { row.putLong("HomePos", home.pos().asLong()); row.putString("HomeDimension", home.dimension().location().toString()); });
                 resident.workplace().ifPresent(work -> { row.putLong("WorkPos", work.pos().asLong()); row.putString("WorkDimension", work.dimension().location().toString()); });
@@ -97,6 +100,36 @@ final class SettlementViewDetails {
         view.put("Territories", territories); view.put("PublicTerritories", territories.copy());
     }
 
+    /** At most one owner-authorized page; no chunk tickets, extraction or menu clicks. */
+    static CompoundTag storagePage(ServerPlayer player, TownRecord town, BlockPos requested, int requestedOffset) {
+        CompoundTag page = new CompoundTag();
+        if (com.siirio.jemsettlements.api.SettlementApi.ownedTown(player, town.id()).isEmpty()) return page;
+        page.putLong("Position", requested.asLong());
+        page.putString("Dimension", town.dimension().toString()); page.put("Slots", new ListTag());
+        var link = town.storage().stream().filter(value -> value.dimension().equals(town.dimension()) && value.contains(requested)).findFirst().orElse(null);
+        if (link == null) return page;
+        page.putLong("Position", link.position().asLong()); page.putInt("Number", link.number());
+        page.putInt("MealOrders", com.siirio.jemsettlements.runtime.TownMealService.count(town.id(), link.position(), player.getServer().overworld().getGameTime()));
+        ServerLevel level = player.getServer().getLevel(ResourceKey.create(Registries.DIMENSION, link.dimension()));
+        page.putBoolean("Loaded", level != null && level.hasChunkAt(link.position()) && (link.second() == null || level.hasChunkAt(link.second())));
+        var physical = com.siirio.jemsettlements.runtime.SharedStorageService.handler(level, link);
+        if (physical.isEmpty()) return page;
+        var handler = physical.get(); int total = handler.getSlots();
+        int offset = Math.min(Math.max(0, requestedOffset), Math.max(0, total - 1));
+        page.putBoolean("InventoryKnown", true); page.putInt("SlotsTotal", total); page.putInt("SlotOffset", offset);
+        ListTag slots = new ListTag();
+        for (int slot = offset; slot < total && slot < offset + 54; slot++) {
+            ItemStack stack = handler.getStackInSlot(slot); CompoundTag row = new CompoundTag(); row.putInt("Slot", slot);
+            CompoundTag saved = stack.save(new CompoundTag());
+            if (saved.sizeInBytes() > 8192) {
+                row.putBoolean("NbtOmitted", true); page.putBoolean("InventoryTruncated", true);
+                saved = new ItemStack(stack.getItem(), stack.getCount()).save(new CompoundTag());
+            }
+            row.put("Stack", saved); slots.add(row);
+        }
+        page.put("Slots", slots); return page;
+    }
+
     static void foodPage(ServerPlayer player, TownRecord town, CompoundTag view, int requestedOffset) {
         if (foodItems == null) foodItems = BuiltInRegistries.ITEM.stream().filter(item -> {
             try { return item.getFoodProperties(new ItemStack(item), null) != null; } catch (RuntimeException contextual) { return false; }
@@ -109,7 +142,7 @@ final class SettlementViewDetails {
         for (var link : town.storage()) {
             ServerLevel storageLevel = player.getServer().getLevel(ResourceKey.create(Registries.DIMENSION, link.dimension()));
             if (storageLevel == null || !storageLevel.hasChunkAt(link.position())) { known = false; continue; }
-            var block = storageLevel.getBlockEntity(link.position()); var handler = block == null ? java.util.Optional.<net.minecraftforge.items.IItemHandler>empty() : block.getCapability(ForgeCapabilities.ITEM_HANDLER).resolve();
+            var handler = com.siirio.jemsettlements.runtime.SharedStorageService.handler(storageLevel, link);
             if (handler.isEmpty()) { known = false; continue; }
             int slots = Math.min(budget, handler.get().getSlots()); if (slots < handler.get().getSlots()) known = false; budget -= slots;
             for (int slot = 0; slot < slots; slot++) { ItemStack stack = handler.get().getStackInSlot(slot); if (!stack.isEmpty()) counts.merge(BuiltInRegistries.ITEM.getKey(stack.getItem()).toString(), (long) stack.getCount(), Long::sum); }

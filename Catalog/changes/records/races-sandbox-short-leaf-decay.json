@@ -1,0 +1,94 @@
+{
+  "schema_version": 2,
+  "change_id": "races.sandbox-short-leaf-decay",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "tag",
+      "registry": "blocks",
+      "value": "minecraft:leaves"
+    }
+  ],
+  "conditions": [
+    {
+      "delivery": "Only matching jem sandbox artifacts installed. Ordinary Client/Server artifacts remain unchanged.",
+      "authority": "Integrated logical server owns outcomes; clients render native bounded snapshots."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_sandbox",
+    "priority": 170,
+    "overrides": [
+      "races.four-stages-sculk-domain"
+    ]
+  },
+  "change": {
+    "summary": "races.sandbox-short-leaf-decay",
+    "modifiers": [
+      {
+        "property": "races.leaf_bridge.lifetime",
+        "operation": "replace",
+        "before": "800+200*stage ticks:40/50/60/70seconds.",
+        "after": "200+100*stage ticks:10/15/20/25seconds at0/1/2/3. Existing path restoration, range and activation cooldown unchanged; progression material UI only, black origin stage retained."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM Races",
+    "kind": "Source-owned sandbox delivery",
+    "source_files": [
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RacePanelMaterials.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RacePowerStages.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Apply explicit user sandbox scope and mechanics/UI corrections without promoting production runtimes.",
+    "decision_source": "User requests documented in CHANGELOG and owning Docs; rates/lifetimes/tab scope/name priority specified by user; transient queue budgets, UI layout and sandbox availability policy chosen by Codex."
+  },
+  "introduced": {
+    "date": "2026-10-17",
+    "commit": "SELF",
+    "action": "sandbox-only implementation",
+    "summary": "races.sandbox-short-leaf-decay",
+    "source_files": [
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RacePanelMaterials.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RacePowerStages.java"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "sandbox-only implementation",
+      "summary": "races.sandbox-short-leaf-decay",
+      "source_files": [
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RacePanelMaterials.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RacePowerStages.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "sandbox gameplay",
+      "NPC needs",
+      "inventory",
+      "GUI",
+      "progression",
+      "persistence",
+      "optional integrations"
+    ],
+    "relations": [
+      "canonical state -> bounded projection -> real server-authorized action -> native result"
+    ],
+    "notes": [
+      "No canonical runtime JARs or release baseline promoted.",
+      "Deleted source paths are history only: "
+    ],
+    "unresolved": [
+      "Player/runtime/visual acceptance pending; no tests or game launches."
+    ]
+  }
+}

@@ -127,13 +127,18 @@ public final class SettlementApi {
         if (data.entityAssigned(entity.getUUID())) {
             var existing = data.workforceEntity(entity.getUUID()).orElseThrow();
             if (existing.type() != WorkforceType.RECRUIT || !existing.ownerId().equals(principal.get())
-                    || !existing.settlementActive() || data.town(existing.townId()).isPresent()) return Result.CONFLICT;
+                    || !existing.settlementActive()) return Result.CONFLICT;
+            if (existing.townId().equals(townId)) {
+                existing.enrollNeeds(); existing.observeName(entity); data.changed(); return Result.ACCEPTED;
+            }
+            if (data.town(existing.townId()).isPresent()) return Result.CONFLICT;
             if (data.employer(existing.ownerId()).payroll().stream().anyMatch(period -> !period.paid()
                     && period.roster().stream().anyMatch(wage -> wage.soldierId().equals(existing.entityId())))) return Result.CONFLICT;
-            existing.assignTown(town.get().id()); data.changed(); return Result.ACCEPTED;
+            existing.assignTown(town.get().id()); existing.enrollNeeds(); existing.observeName(entity); data.changed(); return Result.ACCEPTED;
         }
         var nativeType = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType());
-        data.add(new WorkforceRecord(entity.getUUID(), town.get().id(), principal.get(), type, namespace, nativeType, coinWageEnabled, player.serverLevel().getGameTime()));
+        WorkforceRecord registered = new WorkforceRecord(entity.getUUID(), town.get().id(), principal.get(), type, namespace, nativeType, coinWageEnabled, player.serverLevel().getGameTime());
+        registered.enrollNeeds(); registered.observeName(entity); data.add(registered);
         if (type == WorkforceType.RECRUIT) town.get().initializePayroll(player.serverLevel().getGameTime());
         return Result.ACCEPTED;
     }
@@ -151,7 +156,7 @@ public final class SettlementApi {
         int cap = switch (town.get().tier()) { case CAMP, VILLAGE -> 24; case TOWN -> 48; case CITY, CITADEL -> 96; };
         if (data.residents(town.get().id()).stream().filter(ResidentMood::living).count() >= cap) return Result.CONFLICT;
         var home = villager.getBrain().getMemory(MemoryModuleType.HOME).orElse(null); var work = villager.getBrain().getMemory(MemoryModuleType.JOB_SITE).orElse(null);
-        ResidentMood resident = new ResidentMood(villager.getUUID(), town.get().id(), home, work); resident.markAmenitiesDirty(player.serverLevel().getGameTime()); data.add(resident); return Result.ACCEPTED;
+        ResidentMood resident = new ResidentMood(villager.getUUID(), town.get().id(), home, work); resident.observeName(villager); resident.markAmenitiesDirty(player.serverLevel().getGameTime()); data.add(resident); return Result.ACCEPTED;
     }
 
     public static Result setFoodStorage(ServerPlayer player, BlockPos position, boolean enabled) {

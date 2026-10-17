@@ -48,7 +48,7 @@ public final class SettlementRuntime {
     private static final java.util.List<FoundingWave> FOUNDING_WAVES = new java.util.ArrayList<>();
     private SettlementRuntime() { }
 
-    @SubscribeEvent public static void stopped(net.minecraftforge.event.server.ServerStoppedEvent event) { SharedStorageService.clear(); }
+    @SubscribeEvent public static void stopped(net.minecraftforge.event.server.ServerStoppedEvent event) { SharedStorageService.clear(); TownMealService.clear(); }
     @SubscribeEvent public static void reload(AddReloadListenerEvent event) { event.addListener(new FoodValueRegistry()); event.addListener(new AmenityRegistry()); }
 
     @SubscribeEvent
@@ -153,9 +153,9 @@ public final class SettlementRuntime {
             var availableDishes = com.siirio.jemsettlements.happiness.AvailableDishService.moddedDishes(level.getServer());
             for (ResidentMood resident : data.residents(town.id())) {
                 var entity = level.getEntity(resident.villagerId()); if (!(entity instanceof Villager villager) || !villager.isAlive()) continue;
-                resident.seen(villager.getBrain().getMemory(MemoryModuleType.HOME).orElse(null), villager.getBrain().getMemory(MemoryModuleType.JOB_SITE).orElse(null)); resident.dailyUpdate(day);
+                resident.observeName(villager); resident.seen(villager.getBrain().getMemory(MemoryModuleType.HOME).orElse(null), villager.getBrain().getMemory(MemoryModuleType.JOB_SITE).orElse(null)); resident.dailyUpdate(day);
                 resident.retainRequestedDishes(availableDishes);
-                resident.refreshCraving();
+                resident.refreshCraving(); TownMealService.prepare(level, town, villager, resident, now);
                 if (resident.regenerate(level.getGameRules().getBoolean(GameRules.RULE_NATURAL_REGENERATION)
                         && villager.getHealth() < villager.getMaxHealth())) villager.heal(1.0F);
                 if (resident.craving() && resident.requestedDish().isEmpty() && !availableDishes.isEmpty()) {

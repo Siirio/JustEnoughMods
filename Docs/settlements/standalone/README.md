@@ -1,5 +1,18 @@
 # Settlements standalone design
 
+## Current sandbox-only revision — 2026-10-17
+
+User now restricts delivery to `jem sandbox`. Ordinary Server, Client/ManagedPack, native generation26, stable profile and release baseline stay unchanged. The source below supersedes earlier GUI/enrollment notes only when this fresh sandbox artifact is installed; prior deployment receipts remain history.
+
+Navigation is Residents, Happiness, Chests, Treasury, Settings. Map/Food/Recruits tabs are removed; Recruits is a Residents filter. Existing native Xaero territory integration remains separate. NPC names use actual native custom/translatable components and their last observed persisted name, never UUID abbreviations. Villager Names is optional and not newly installed: its existing CustomName is respected, as are name tags, without JEM generating another name. [Upstream1.20.1 naming owner](https://github.com/Serilum/Villager-Names/blob/1.20.1/Common/src/main/java/com/serilum/villagernames/events/VillagerEvent.java).
+
+JEM recruit needs require explicit bell registration in an owned town. Hiring and automatic payroll adoption do not enroll needs. Legacy records lack reliable enrollment provenance, so they load unenrolled and need one explicit bell registration; native employment/payroll survive. Jade hides JEM needs on unenrolled recruits. Loaded enrolled recruits use native needs; unloaded needs are unknown rather than zero. Critical hunger below10 permits a32tick native-goal meal pause, throttled100ticks, using actual carried/immediately reachable food. Native hunger clock/damage remain owners; JEM extends only the upstream disabled-starvation branch for registered recruits, at0hunger with0.25damage, avoiding a duplicate native hit.
+
+Chests lists linked physical stores and reads one selected inventory page (max54slots, arbitrary nonnegative offset). The server validates owner/link/dimension and loaded halves of a double chest, without forcing chunks. Large per-stack NBT is explicitly omitted beyond8192bytes; item/count remain visible and the hover names that limit. The command Everyone eat queues all registered living town residents and explicitly enrolled recruits at the selected chest. Full NPCs waste no food; not-full NPCs receive a real meal request regardless of spontaneous craving threshold. Real pathing, one-item extraction, harmful-food policy, serving cooldown and daily limits remain. Orders are transient120seconds, superseded per NPC and cleared at stop; authoritative MealOrders reports pending work. Fighting recruits resume a normal chest order when idle and can eat critical nearby food during battle.
+
+Town wire protocol9 is installed only in sandbox; ordinary deployed protocol8 remains unchanged. No client/test/server launch accompanies this delivery. [Exact sandbox installation](sandbox-only-iteration-delivery.json).
+
+
 Status: **approved and implemented in source; production artifacts built; runtime and visual acceptance tracked in TEST_MATRIX.md**. Approval and implementation date: 2026-10-17.
 
 This directory owns the standalone GUI contract and delivery evidence. Settlements2.1.0 supersedes the dedicated-only entry and Copper expansion behavior in `../settlements-update-1.md` and `../../economy/settlement-implementation-notes.md`. Source comments and historical test reports are not acceptance evidence.

@@ -10,6 +10,7 @@ final class RecruitJadeData {
     private RecruitJadeData() { }
     static boolean append(CompoundTag tag, Entity entity) {
         if (!(entity instanceof AbstractRecruitEntity recruit)) return false;
+        if (!com.siirio.jemsettlements.compat.recruits.RecruitNeedsService.managed(recruit)) return true;
         tag.putBoolean("JemResident", true);
         tag.putInt("JemHappiness", Math.max(0, Math.min(100, Math.round(recruit.getMorale()))));
         tag.putInt("JemSatiety", Math.max(0, Math.min(100, (int) Math.floor(recruit.getHunger()))));

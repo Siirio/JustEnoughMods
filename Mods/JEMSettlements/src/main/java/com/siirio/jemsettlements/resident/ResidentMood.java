@@ -34,6 +34,14 @@ public final class ResidentMood {
     private AmenitySnapshot workAmenities = AmenitySnapshot.empty();
     private long amenityDirtySince;
     private boolean living = true;
+    private String displayName;
+    private String profession = "minecraft:none";
+    public String displayName() { return displayName; }
+    public String profession() { return profession; }
+    public void observeName(net.minecraft.world.entity.npc.Villager villager) {
+        displayName = net.minecraft.network.chat.Component.Serializer.toJson(villager.getCustomName()!=null?villager.getCustomName():villager.getName());
+        profession = net.minecraft.core.registries.BuiltInRegistries.VILLAGER_PROFESSION.getKey(villager.getVillagerData().getProfession()).toString();
+    }
     private ResourceLocation requestedDish;
     private ResourceLocation lastDish;
     private boolean repeatedDish;
@@ -92,6 +100,7 @@ public final class ResidentMood {
         return living && craving && satiety < 100 && servingsToday.getOrDefault(food.toString(), 0) < 10
                 && (lastServingGameTime == Long.MIN_VALUE || gameTime - lastServingGameTime >= 32L);
     }
+    public void requestMeal() { if (living && satiety < 100) craving = true; }
     public void refreshCraving() { if (!craving && satiety < 100 && (satiety < 10 || satiety <= cravingThreshold)) craving = true; }
     public void abandonCraving() {
         if (satiety < 10) return;
@@ -138,6 +147,8 @@ public final class ResidentMood {
 
     public CompoundTag save() {
         CompoundTag tag = new CompoundTag(); tag.putUUID("Villager", villagerId); tag.putUUID("Town", townId); savePos(tag, "Home", home); savePos(tag, "Work", workplace);
+        if (displayName != null) tag.putString("DisplayName", displayName);
+        tag.putString("Profession", profession);
         tag.putInt("Mood", mood); tag.putInt("Satiety", satiety); tag.putLong("LastServing", lastServingGameTime); tag.putLong("LastDailyUpdate", lastDailyUpdate); tag.putBoolean("Living", living);
         tag.putInt("RegenerationTicks", regenerationTicks);
         tag.putLong("ServingDay", servingDay); CompoundTag servings = new CompoundTag(); servingsToday.forEach(servings::putInt); tag.put("ServingsToday", servings);
@@ -152,6 +163,8 @@ public final class ResidentMood {
         ResidentMood resident = new ResidentMood(tag.getUUID("Villager"), tag.getUUID("Town"), loadPos(tag, "Home"), loadPos(tag, "Work"));
         resident.mood = tag.contains("Mood") ? clamp(tag.getInt("Mood")) : 50; resident.satiety = tag.contains("Satiety") ? clamp(tag.getInt("Satiety")) : 50;
         resident.lastServingGameTime = tag.contains("LastServing") ? tag.getLong("LastServing") : Long.MIN_VALUE; resident.lastDailyUpdate = tag.contains("LastDailyUpdate") ? tag.getLong("LastDailyUpdate") : Long.MIN_VALUE;
+        resident.displayName = tag.contains("DisplayName") ? tag.getString("DisplayName") : null;
+        if (tag.contains("Profession")) resident.profession = tag.getString("Profession");
         resident.regenerationTicks = Math.max(0, Math.min(79, tag.getInt("RegenerationTicks")));
         resident.servingDay = tag.contains("ServingDay") ? tag.getLong("ServingDay") : Long.MIN_VALUE;
         CompoundTag servings = tag.getCompound("ServingsToday"); servings.getAllKeys().forEach(key -> resident.servingsToday.put(key, Math.max(0, servings.getInt(key))));

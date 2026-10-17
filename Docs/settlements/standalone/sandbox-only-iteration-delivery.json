@@ -1,0 +1,80 @@
+{
+  "installedAt": "2026-10-17T22:12:10.989374+05:00",
+  "profile": "C:\\Users\\user\\AppData\\Roaming\\.minecraft\\versions\\jem sandbox",
+  "scope": "jem sandbox only",
+  "sourceCommit": "SELF",
+  "rows": [
+    {
+      "source": "Mods/JEMSettlements/build/libs/jem-settlements-2.1.0.jar",
+      "target": "C:\\Users\\user\\AppData\\Roaming\\.minecraft\\versions\\jem sandbox\\mods\\jem-settlements-2.1.0.jar",
+      "sha256": "a3f0d7c3154ab3ed714ff66501fc60993f52962659a0f493b0bb8af9c2d88ace",
+      "previousSha256": "dd04ac1664b8666e263948712daa1b78aaddc8573dd4595423dae86f53406cec"
+    },
+    {
+      "source": "Mods/JEMVisualSandboxR3/build/sandbox-profile/libs/jem-races-1.1.0-sandbox.jar",
+      "target": "C:\\Users\\user\\AppData\\Roaming\\.minecraft\\versions\\jem sandbox\\mods\\jem-races-1.1.0-sandbox.jar",
+      "sha256": "13e2d3660f0a2e9eee8d3d5da182d7509563689b46a947614c242de22f8d0d9d",
+      "previousSha256": "dc1fa11983f68639e2d40e9c8fab1e838da629b4e4a5b1504126523de3f6e6f1"
+    },
+    {
+      "source": "Mods/JEMProfessions/build/sandbox-profile/libs/jem-professions-1.0.0-sandbox.jar",
+      "target": "C:\\Users\\user\\AppData\\Roaming\\.minecraft\\versions\\jem sandbox\\mods\\jem-professions-1.0.0-sandbox.jar",
+      "sha256": "59d592266991d897860669778ef4ed076897d8f158b599d354d0d959c11ee617",
+      "previousSha256": null
+    },
+    {
+      "source": "Client/ManagedPack/mods/puffish_skills-0.19.2-1.20-forge.jar",
+      "target": "C:\\Users\\user\\AppData\\Roaming\\.minecraft\\versions\\jem sandbox\\mods\\puffish_skills-0.19.2-1.20-forge.jar",
+      "sha256": "b5df0b2d3561486076bdfa9318cf143d05b3eab0ccb93a009b396eee1312ca8d",
+      "previousSha256": null
+    },
+    {
+      "source": "Client/ManagedPack/mods/tinyinv-1.20.1-1.1.0.1.jar",
+      "target": "C:\\Users\\user\\AppData\\Roaming\\.minecraft\\versions\\jem sandbox\\mods\\tinyinv-1.20.1-1.1.0.1.jar",
+      "sha256": "c014733c81d6363ed078208a29ca5a12c4d924f8b770cfe0c842597c28c2f0ba",
+      "previousSha256": null
+    },
+    {
+      "source": "Client/ManagedPack/defaultconfigs/tinyinv-server.toml",
+      "target": "C:\\Users\\user\\AppData\\Roaming\\.minecraft\\versions\\jem sandbox\\defaultconfigs\\tinyinv-server.toml",
+      "sha256": "e8389736d1ccc300c90370dd9862f1686285a4f1ab11714021318251f20805b7",
+      "previousSha256": null
+    }
+  ],
+  "backup": "C:\\MyProjects\\Minecraft\\JustEnoughMods\\Server\\local\\sandbox-settlements-professions-20261017-221210",
+  "protectedDistributionHashes": {
+    "Client\\ManagedPack\\mods\\jem-settlements-2.1.0.jar": "dd04ac1664b8666e263948712daa1b78aaddc8573dd4595423dae86f53406cec",
+    "Server\\mods\\jem-settlements-2.1.0.jar": "dd04ac1664b8666e263948712daa1b78aaddc8573dd4595423dae86f53406cec",
+    "Client\\ManagedPack\\mods\\jem-professions-1.0.0.jar": "d8db5aea065a8a9b450bff1a91aa9bc8444a63968f01ffb31cfb284576022419",
+    "Server\\mods\\jem-professions-1.0.0.jar": "d8db5aea065a8a9b450bff1a91aa9bc8444a63968f01ffb31cfb284576022419",
+    "Client\\ManagedPack\\jem-pack\\manifest.json": "14a6d36ef99dfa0cd22d76b5f235c07968772648635f1233b767d6119266f32a",
+    "tools\\state\\release-baseline.json": "0b19db2b5719e0a4ddade8eb434fc2fc4d2e6efa80f861f8aa2eef60b89a4ca0"
+  },
+  "ordinaryServer": "unchanged; prior deployed Settlements protocol8 retained",
+  "managedClient": "unchanged",
+  "nativeAutoModpack": "unchanged; existing published generation26",
+  "gameplayClientLaunched": false,
+  "testsRun": false,
+  "builds": [
+    "JEMSettlements jarJar reobfJarJar:success",
+    "JEMVisualSandboxR3 sandboxJar:success",
+    "JEMProfessions sandboxJar:success"
+  ],
+  "acceptance": "in testing; no in-game visual or gameplay acceptance",
+  "legacyNeedsMigration": "Old ambiguous recruit employment records require explicit bell registration; native employment/payroll remains.",
+  "professionEntry": "F7 or /professions in integrated sandbox",
+  "professionAvailability": "Seven existing core effects plus TinyInv Architect hotbar; unsupported effects explicitly unavailable.",
+  "atlas": {
+    "valid": true,
+    "recordDigest": "069e1bcf77bcc67e2178abbdfbcda56f4a334d9dea4a7790615698cae7097ad3",
+    "changeRecords": 42,
+    "uncoveredTaskPaths": [],
+    "canonicalArtifactDrift": {
+      "added": [],
+      "removed": [],
+      "changed": [],
+      "unresolved": []
+    },
+    "scope": "Exact staged source tree; unrelated worktree edits excluded."
+  }
+}

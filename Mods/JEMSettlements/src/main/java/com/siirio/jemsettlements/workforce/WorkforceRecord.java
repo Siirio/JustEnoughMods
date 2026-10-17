@@ -18,6 +18,12 @@ public final class WorkforceRecord {
     private long hireGeneration;
     private boolean coinWageEnabled;
     private boolean living = true;
+    private boolean needsEnrolled;
+    private String displayName;
+    public boolean needsEnrolled() { return needsEnrolled; }
+    public void enrollNeeds() { needsEnrolled = true; }
+    public String displayName() { return displayName; }
+    public void observeName(net.minecraft.world.entity.Entity entity) { displayName = net.minecraft.network.chat.Component.Serializer.toJson(entity.getName()); }
     private long lastSeenGameTime;
     private final PayrollStatus coinPayroll = new PayrollStatus();
     private final PayrollStatus emeraldPayroll = new PayrollStatus();
@@ -62,13 +68,13 @@ public final class WorkforceRecord {
     }
     public UUID entityId() { return entityId; }
     public UUID townId() { return townId; }
-    public void assignTown(UUID value) { townId = java.util.Objects.requireNonNull(value); hireGeneration++; coinPayroll.reset(); emeraldPayroll.reset(); }
+    public void assignTown(UUID value) { townId = java.util.Objects.requireNonNull(value); needsEnrolled = false; hireGeneration++; coinPayroll.reset(); emeraldPayroll.reset(); }
     public long nextWageGameTime() { return nextWageGameTime; }
     public long hireGeneration() { return hireGeneration; }
     public void scheduleWage(long due) { nextWageGameTime = com.siirio.jemsettlements.payroll.PayrollClock.nextDue(due); }
     public void migrateWageClock(long latestDue) { nextWageGameTime = Math.max(com.siirio.jemsettlements.payroll.PayrollClock.firstDue(enlistedGameTime), com.siirio.jemsettlements.payroll.PayrollClock.nextDue(latestDue)); }
     public UUID ownerId() { return ownerId; }
-    public void employer(UUID value) { ownerId = java.util.Objects.requireNonNull(value); }
+    public void employer(UUID value) { ownerId = java.util.Objects.requireNonNull(value); needsEnrolled = false; }
     public void dismissed() { coinWageEnabled = false; }
     public WorkforceType type() { return type; }
     public String nativeModId() { return nativeModId; }
@@ -114,6 +120,8 @@ public final class WorkforceRecord {
     public CompoundTag save() {
         CompoundTag tag = new CompoundTag(); tag.putUUID("Entity", entityId); tag.putUUID("Town", townId); tag.putUUID("Owner", ownerId);
         tag.putString("Type", type.name()); tag.putString("NativeMod", nativeModId); tag.putString("NativeEntityType", nativeEntityType.toString());
+        tag.putBoolean("NeedsEnrolled", needsEnrolled);
+        if (displayName != null) tag.putString("DisplayName", displayName);
         tag.putBoolean("CoinWage", coinWageEnabled); tag.putBoolean("Living", living); tag.putLong("EnlistedGameTime", enlistedGameTime);
         tag.putLong("LastSeenGameTime", lastSeenGameTime);
         tag.put("CoinPayroll", coinPayroll.save()); tag.put("EmeraldPayroll", emeraldPayroll.save());
@@ -136,6 +144,8 @@ public final class WorkforceRecord {
                 WorkforceType.valueOf(tag.getString("Type")), nativeMod, nativeType, coinWage, tag.contains("EnlistedGameTime") ? tag.getLong("EnlistedGameTime") : 0L);
         record.nextWageGameTime = tag.contains("NextWageGameTime") ? tag.getLong("NextWageGameTime") : 0L;
         record.hireGeneration = tag.getLong("HireGeneration");
+        record.needsEnrolled = tag.getBoolean("NeedsEnrolled");
+        record.displayName = tag.contains("DisplayName") ? tag.getString("DisplayName") : null;
         record.living = !tag.contains("Living") || tag.getBoolean("Living"); record.lastSeenGameTime = tag.getLong("LastSeenGameTime");
         // Untagged historical penalty state belongs exclusively to Coins.
         record.coinPayroll.load(tag.contains("CoinPayroll") ? tag.getCompound("CoinPayroll") : tag);

@@ -24,7 +24,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class SettlementNetwork {
-    private static final String VERSION = "8";
+    private static final String VERSION = "9";
     private static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(JemSettlements.MOD_ID, "town"))
             .networkProtocolVersion(() -> VERSION).clientAcceptedVersions(value -> VERSION.equals(value) || NetworkRegistry.ABSENT.equals(value) || NetworkRegistry.ACCEPTVANILLA.equals(value)).serverAcceptedVersions(value -> VERSION.equals(value) || NetworkRegistry.ABSENT.equals(value) || NetworkRegistry.ACCEPTVANILLA.equals(value)).simpleChannel();
     private SettlementNetwork() {}
@@ -110,13 +110,13 @@ public final class SettlementNetwork {
         for (var record : data.workforce(owner)) {
             if (record.type() != com.siirio.jemsettlements.workforce.WorkforceType.RECRUIT) continue;
             CompoundTag row = new CompoundTag(); row.putUUID("Id", record.entityId()); row.putString("NativeType", record.nativeEntityType().toString());
-            row.putString("Name", record.entityId().toString().substring(0, 8)); row.putBoolean("Living", record.living());
+            SettlementNames.project(row, null, record.displayName(), SettlementNames.entityKey(record.nativeEntityType())); row.putBoolean("Living", record.living());
             row.putString("Loyalty", record.loyalty().name()); row.putInt("MissedPayrolls", record.missedPayrolls());
             row.putLong("Wage", com.siirio.jemsettlements.payroll.RecruitRank.of(record.nativeEntityType()).wage());
             row.putLong("HireCost", com.siirio.jemsettlements.payroll.RecruitRank.of(record.nativeEntityType()).hiringCost());
             row.putLong("NextPayroll", record.nextWageGameTime()); row.putBoolean("Ready", record.settlementActive());
             for (ServerLevel level : player.getServer().getAllLevels()) { var entity = level.getEntity(record.entityId());
-                if (entity != null) { row.putString("Name", entity.getDisplayName().getString()); break; } }
+                if (entity != null) { SettlementNames.project(row, entity, record.displayName(), SettlementNames.entityKey(record.nativeEntityType())); break; } }
             rows.add(row);
         }
         view.put("Defense", rows); view.putLong("UnpaidPayroll", data.employer(owner).payroll().stream().filter(period -> period.currentCurrency() && !period.paid()).mapToLong(com.siirio.jemsettlements.payroll.PayrollPeriod::total).sum());
@@ -187,7 +187,8 @@ public final class SettlementNetwork {
             row.putBoolean("AmenitiesStale", resident.homeAmenities().stale() || resident.workAmenities().stale());
             var residentLevel = player.getServer().getLevel(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION, town.dimension()));
             var entity = residentLevel == null ? null : residentLevel.getEntity(resident.villagerId());
-            row.putString("Name", entity == null ? resident.villagerId().toString().substring(0, 8) : entity.getDisplayName().getString());
+            SettlementNames.project(row, entity, resident.displayName(), "entity.minecraft.villager");
+            row.putString("Profession", resident.profession());
             if (entity instanceof net.minecraft.world.entity.npc.Villager villager) row.putString("Profession", net.minecraft.core.registries.BuiltInRegistries.VILLAGER_PROFESSION.getKey(villager.getVillagerData().getProfession()).toString());
             resident.requestedDish().ifPresent(value -> row.putString("RequestedDish", value.toString())); residents.add(row);
         }
@@ -196,16 +197,30 @@ public final class SettlementNetwork {
         for (var record : data.workforce(town.id())) {
             CompoundTag row = new CompoundTag(); row.putUUID("Id", record.entityId()); row.putString("Type", record.type().name()); row.putBoolean("Living", record.living());
             row.putLong("Wage", com.siirio.jemsettlements.payroll.RecruitRank.of(record.nativeEntityType()).wage()); row.putLong("HireCost", com.siirio.jemsettlements.payroll.RecruitRank.of(record.nativeEntityType()).hiringCost()); row.putLong("NextPayroll", record.nextWageGameTime()); row.putString("Loyalty", record.loyalty().name()); row.putInt("MissedPayrolls", record.missedPayrolls());
-            String name = record.entityId().toString().substring(0, 8);
-            for (ServerLevel candidate : player.getServer().getAllLevels()) { var entity = candidate.getEntity(record.entityId()); if (entity != null) { name = entity.getDisplayName().getString(); break; } }
-            row.putString("Name", name); workforceRows.add(row);
+            SettlementNames.project(row, null, record.displayName(), SettlementNames.entityKey(record.nativeEntityType()));
+            row.putString("NativeType", record.nativeEntityType().toString()); row.putBoolean("NeedsEnrolled", record.needsEnrolled());
+            for (ServerLevel candidate : player.getServer().getAllLevels()) { var entity = candidate.getEntity(record.entityId()); if (entity != null) { SettlementNames.project(row, entity, record.displayName(), SettlementNames.entityKey(record.nativeEntityType())); break; } }
+            workforceRows.add(row);
         }
         view.put("WorkforceRows", workforceRows);
         ListTag defense = new ListTag(); long projected = 0L;
         for (var record : data.workforce(town.id())) if (record.type() == com.siirio.jemsettlements.workforce.WorkforceType.RECRUIT) {
             long wage = com.siirio.jemsettlements.payroll.RecruitRank.of(record.nativeEntityType()).wage(); if (record.settlementActive()) projected += wage; CompoundTag row = new CompoundTag(); row.putUUID("Id", record.entityId()); row.putString("NativeType", record.nativeEntityType().toString()); row.putLong("Wage", wage); row.putLong("HireCost", com.siirio.jemsettlements.payroll.RecruitRank.of(record.nativeEntityType()).hiringCost()); row.putLong("NextPayroll", record.nextWageGameTime()); row.putString("Loyalty", record.loyalty().name()); row.putInt("MissedPayrolls", record.missedPayrolls()); row.putLong("LastPaidPeriod", record.lastPaidPeriod()); row.putBoolean("Living", record.living()); row.putBoolean("Ready", record.settlementActive() && town.consecutiveMissedPayrolls() < 2);
-            for (ServerLevel candidate : player.getServer().getAllLevels()) { var entity = candidate.getEntity(record.entityId()); if (entity == null || !net.minecraftforge.fml.ModList.get().isLoaded("recruits")) continue; var readiness = com.siirio.jemsettlements.compat.recruits.RecruitReadinessAdapter.read(entity); if (readiness.isPresent()) { row.putFloat("Morale", readiness.get().morale()); row.putFloat("Hunger", readiness.get().hunger()); row.putBoolean("Ready", row.getBoolean("Ready") && readiness.get().combatReady()); row.putString("Name", entity.getDisplayName().getString()); break; } }
-            if (!row.contains("Name")) row.putString("Name", record.entityId().toString().substring(0, 8)); defense.add(row);
+            for (ServerLevel candidate : player.getServer().getAllLevels()) { var entity = candidate.getEntity(record.entityId()); if (entity == null || !net.minecraftforge.fml.ModList.get().isLoaded("recruits")) continue; var readiness = com.siirio.jemsettlements.compat.recruits.RecruitReadinessAdapter.read(entity); if (readiness.isPresent()) { row.putFloat("Morale", readiness.get().morale()); row.putFloat("Hunger", readiness.get().hunger()); row.putBoolean("Ready", row.getBoolean("Ready") && readiness.get().combatReady()); SettlementNames.project(row, entity, record.displayName(), SettlementNames.entityKey(record.nativeEntityType())); break; } }
+            if (!row.contains("Name")) SettlementNames.project(row, null, record.displayName(), SettlementNames.entityKey(record.nativeEntityType()));
+            row.putString("Type", "RECRUIT"); row.putString("Kind", "RECRUIT"); row.putBoolean("NeedsEnrolled", record.needsEnrolled());
+            if (record.needsEnrolled()) {
+                var history = record.foodHistory();
+                SettlementViewDetails.foodCounts(row,history,player.getServer().overworld().getGameTime());
+                if (row.contains("Morale")) {
+                    row.putBoolean("NeedsKnown", true); row.putInt("Mood", Math.max(0, Math.min(100, Math.round(row.getFloat("Morale")))));
+                    row.putInt("Satiety", Math.max(0, Math.min(100, (int) Math.floor(row.getFloat("Hunger")))));
+                    row.putBoolean("Craving", history.craving());
+                    history.requestedDish().ifPresent(value -> row.putString("RequestedDish", value.toString()));
+                    history.repeatedDish().ifPresent(value -> row.putString("RepeatedDish", value.toString()));
+                }
+                defense.add(row);
+            }
         }
         view.put("Defense", defense); view.putLong("ProjectedPayroll", projected); view.putLong("NextPayroll", data.workforce(town.id()).stream().filter(com.siirio.jemsettlements.workforce.WorkforceRecord::settlementActive).mapToLong(com.siirio.jemsettlements.workforce.WorkforceRecord::nextWageGameTime).filter(value -> value > 0L).min().orElse(0L)); view.putInt("MissedPayrolls", town.consecutiveMissedPayrolls());
         long unpaid = town.payroll().stream().filter(period -> period.currentCurrency() && !period.paid()).mapToLong(com.siirio.jemsettlements.payroll.PayrollPeriod::total).sum(); view.putLong("UnpaidPayroll", unpaid); view.putLong("PayrollShortfall", Math.max(0L, unpaid - com.siirio.jemsettlements.currency.SettlementCurrency.townBalance(player.getServer(), town.id())));
@@ -213,8 +228,7 @@ public final class SettlementNetwork {
         for (var link : town.storage()) {
             ServerLevel level = player.getServer().getLevel(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION, link.dimension()));
             if (level == null || !level.hasChunkAt(link.position())) continue;
-            var blockEntity = level.getBlockEntity(link.position()); if (blockEntity == null) continue;
-            var optional = blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).resolve(); if (optional.isEmpty()) continue;
+            var optional = com.siirio.jemsettlements.runtime.SharedStorageService.handler(level, link); if (optional.isEmpty()) continue;
             loaded++;
             var handler = optional.get();
             for (int slot = 0; slot < handler.getSlots() && inventoryBudget-- > 0; slot++) {

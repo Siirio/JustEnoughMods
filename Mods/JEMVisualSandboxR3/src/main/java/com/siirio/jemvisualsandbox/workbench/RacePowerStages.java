@@ -13,7 +13,7 @@ public final class RacePowerStages {
     public static int fireSeconds(int stage) { return clamp(stage)==0?1:2*clamp(stage); }
     public static int guardianTicks(int stage) { return 600+200*clamp(stage); }
     public static int gravityTicks(int stage) { return 100+20*clamp(stage); }
-    public static int bridgeTicks(int stage) { return 800+200*clamp(stage); }
+    public static int bridgeTicks(int stage) { return 200+100*clamp(stage); }
     public static int bridgeForward(int stage) { return 2+clamp(stage); }
     public static int echoRadius(int stage) { return 32+8*clamp(stage); }
     public static int recoveryHeal(int stage) { return 6+clamp(stage); }

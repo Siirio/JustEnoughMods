@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-17 — Sandbox-only settlements, chest meals, leaf decay and profession tree
+
+- User scope: work/install only in jem sandbox. Remove Map/Food/Recruits tabs; put recruits in Residents filter, show native names, require bell registration for JEM needs, allow critical combat eating/real starvation, add physical Chests inspection and Everyone eat. User reselects the prior wooden-panel/icon/compact reference and additionally requires optional Villager Names names.
+- Bug / Both Sided / native names were reduced to UUID fallback and Jade/native needs were shown independently of bell enrollment, while hiring/payroll auto-adoption was treated as settlement membership / in testing. Native custom/localized components and persisted observed names now render; explicit NeedsEnrolled state is separate, legacy ambiguous records require bell registration, employment/payroll survive. Optional Villager Names CustomName is respected without a second naming generator or new dependency.
+- Bug / Server / managed feeding permanently skipped combat targets and upstream starvation defaults could suppress death / in testing. Native goal arbitration now grants bounded critical meals with actual reachable food; native hunger clock remains, registered zero-hunger damage extends only the upstream disabled branch. Native meal/history/food limits stay authoritative.
+- User requested Chests view and all-NPC meal command; Codex chooses loaded-only54slot pages with8192byte/item NBT budget, truthful omitted-data tooltip, owner/link checks and transient120sec physical approach/meal orders. No teleport, forced chunk load, fake inventory or client-side result. Backend protocol9 is sandbox-only.
+- User requests leaf decay10seconds at0,+5each stage; formula200+100×stage yields10/15/20/25seconds. Other range/cooldown/progression and the black origin screen remain.
+- User requests existing test-server profession tree in sandbox; Codex packages canonical Puffish data/owner with sandbox-only F7 and /professions, connected compact wood/icon UI, native icon substitutions for absent integrations and explicit unsupported-effect gating. Seven implemented core effects plus TinyInv Architect hotbar work through existing owners; no claim that all78described nodes have standalone effects. A discovered privileged native unlock path is constrained only in the sandbox profile by native affordability/points and availability admission.
+- Required production artifacts compiled/reobfuscated and installed only in the closed jem sandbox profile, with backups and matching SHA-256. Ordinary Server, ManagedPack, native generation26, stable profiles and release baseline untouched. No tests/linters/game launch or runtime/visual approval. Delivery: Docs/settlements/standalone/sandbox-only-iteration-delivery.json; source/impact records and canonical documentation updated in the same task.
+
 ## 2026-10-17 — Install current Settlements fixes in jem sandbox
 
 - User request: update the jem sandbox profile with the completed Settlements recovery/readability release.

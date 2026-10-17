@@ -15,6 +15,21 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(value = AbstractRecruitEntity.class, remap = false)
 public abstract class RecruitHiringMixin {
+    @Inject(method = "registerGoals", at = @At("TAIL"), remap = true)
+    private void jem$criticalMealGoal(CallbackInfo ci) {
+        ((MobGoalsAccess) (Object) this).jem$getGoalSelector().addGoal(0, new com.siirio.jemsettlements.compat.recruits.CriticalRecruitMealGoal((AbstractRecruitEntity) (Object) this));
+        ((MobGoalsAccess) (Object) this).jem$getGoalSelector().addGoal(1, new com.siirio.jemsettlements.compat.recruits.RecruitMealOrderGoal((AbstractRecruitEntity) (Object) this));
+    }
+
+    @Inject(method = "updateHunger", at = @At("TAIL"))
+    private void jem$registeredStarvation(CallbackInfo ci) {
+        var recruit = (AbstractRecruitEntity) (Object) this;
+        // Native updateHunger owns the clock and the ordinary damage; extend only its disabled-starvation branch.
+        if (com.siirio.jemsettlements.compat.recruits.RecruitNeedsService.managed(recruit) && recruit.getHunger() <= 0F
+                && !com.talhanation.recruits.config.RecruitsServerConfig.RecruitsStarving.get())
+            recruit.hurt(recruit.damageSources().starve(), .25F);
+    }
+
     @Inject(method = "hire", at = @At("HEAD"), cancellable = true)
     private void jem$validate(Player player, RecruitsGroup group, boolean dialogue, CallbackInfoReturnable<Boolean> cir) {
         if (player instanceof ServerPlayer serverPlayer && SettlementAuthority.active(serverPlayer)

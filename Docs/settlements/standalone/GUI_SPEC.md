@@ -120,3 +120,12 @@ Codex implementation: hire frame252×223 logical pixels (previous300×223); nati
 Jade happiness fills left-to-right from red/low through yellow to green/high and shrinks when its synchronized value decreases. Remove moving star, retain smile/actualpercent. Payroll countdown displays one decimal game day (24000ticks), recurring period remains7game days.
 
 No runtime visual acceptance is claimed. Native GUI scaling, Cyrillic labels and actual item interactions await user review. No tests, linters or gameplay clients launched.
+
+
+## Current sandbox navigation/layout — 2026-10-17
+
+Explicit user direction replaces Map/Food/Recruits tabs with Residents/Happiness/Chests/Treasury/Settings; Recruits and Villagers are roster filters. Default384×264logical window,100px icon sidebar and coherent36px wood-framed NPC cards, recessed content, white names and semantic happiness/food rails replace the prior wallpaper-like shell. Native name components preserve localized roles, custom names and optional Villager Names names. Unknown unloaded recruit needs never render0percent. Recruit filter retains due-payroll action and native management; ordinary villagers retain House Viewer.
+
+Selected chest: Back/title, coordinates or actual queued-meal count, passive native18pxslot grid, pagination and Everyone eat button. UI page capacity shrinks with viewport and never exceeds54; server accepts arbitrary offset. No inventory take/move/copy action exists. A too-small viewport shows scale guidance rather than overlapping slots. Read-only storage selection and actual feedall requests retain existing session/acknowledgement/replay handling. No client-side success simulation.
+
+User reaffirms the supplied second reference for cohesive wooden panels, semantic icons and compact arrangement, while rejecting the previous implemented GUI. This source candidate is not visual acceptance; no game capture was taken.

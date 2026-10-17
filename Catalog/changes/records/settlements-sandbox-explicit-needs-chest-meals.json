@@ -1,0 +1,162 @@
+{
+  "schema_version": 2,
+  "change_id": "settlements.sandbox-explicit-needs-chest-meals",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:villager"
+    },
+    {
+      "type": "namespace",
+      "registry": "entities",
+      "value": "recruits"
+    }
+  ],
+  "conditions": [
+    {
+      "delivery": "Only matching jem sandbox artifacts installed. Ordinary Client/Server artifacts remain unchanged.",
+      "authority": "Integrated logical server owns outcomes; clients render native bounded snapshots."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_sandbox",
+    "priority": 210,
+    "overrides": [
+      "settlements.recruit-needs-camera-cutaway-hire-gui"
+    ]
+  },
+  "change": {
+    "summary": "settlements.sandbox-explicit-needs-chest-meals",
+    "modifiers": [
+      {
+        "property": "settlements.sandbox_needs_enrollment",
+        "operation": "replace",
+        "before": "Native Jade bars for all recruits; hire/adoption workforce records implicitly enable needs.",
+        "after": "Explicit bell flag, false for legacy ambiguous records; valid owned town/native ownership required; hiring/payroll retained. Actual CustomName/localized names from optional Villager Names preserved; no UUID text."
+      },
+      {
+        "property": "settlements.sandbox_chests_meals",
+        "operation": "add",
+        "before": "No actionable per-chest inventory GUI/all-registered-NPC meal order; permanent combat feed skip; native starvation setting could disable damage.",
+        "after": "Five-tab compact roster/chest GUI; read-only owner-linked54slot pages,8192byte item metadata limit; real120sec meal orders for registered hungry NPCs, explicit craving below100; bounded32tick critical combat meal at<10satiety each100ticks; native clock and single zero-hunger starvation damage. Protocol9 only sandbox."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMSettlements",
+    "kind": "Source-owned sandbox delivery",
+    "source_files": [
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/jade/RecruitJadeData.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/CriticalRecruitMealGoal.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitMealOrderGoal.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitNeedsService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/MobGoalsAccess.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitHiringMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementActions.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNames.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementViewDetails.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/ResidentMood.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/ResidentFoodService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SharedStorageService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/TownMealService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/workforce/WorkforceRecord.java",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+      "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Apply explicit user sandbox scope and mechanics/UI corrections without promoting production runtimes.",
+    "decision_source": "User requests documented in CHANGELOG and owning Docs; rates/lifetimes/tab scope/name priority specified by user; transient queue budgets, UI layout and sandbox availability policy chosen by Codex."
+  },
+  "introduced": {
+    "date": "2026-10-17",
+    "commit": "SELF",
+    "action": "sandbox-only implementation",
+    "summary": "settlements.sandbox-explicit-needs-chest-meals",
+    "source_files": [
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/jade/RecruitJadeData.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/CriticalRecruitMealGoal.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitMealOrderGoal.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitNeedsService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/MobGoalsAccess.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitHiringMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementActions.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNames.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementViewDetails.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/ResidentMood.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/ResidentFoodService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SharedStorageService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/TownMealService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/workforce/WorkforceRecord.java",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+      "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "sandbox-only implementation",
+      "summary": "settlements.sandbox-explicit-needs-chest-meals",
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/jade/RecruitJadeData.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/CriticalRecruitMealGoal.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitMealOrderGoal.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitNeedsService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/MobGoalsAccess.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitHiringMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementActions.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNames.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementViewDetails.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/ResidentMood.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/ResidentFoodService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SharedStorageService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/TownMealService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/workforce/WorkforceRecord.java",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+        "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "sandbox gameplay",
+      "NPC needs",
+      "inventory",
+      "GUI",
+      "progression",
+      "persistence",
+      "optional integrations"
+    ],
+    "relations": [
+      "canonical state -> bounded projection -> real server-authorized action -> native result"
+    ],
+    "notes": [
+      "No canonical runtime JARs or release baseline promoted.",
+      "Deleted source paths are history only: "
+    ],
+    "unresolved": [
+      "Player/runtime/visual acceptance pending; no tests or game launches."
+    ]
+  }
+}

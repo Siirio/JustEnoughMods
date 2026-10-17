@@ -37,8 +37,15 @@ public final class ResidentFoodService {
                                Predicate<ItemStack> nativeRule, java.util.List<Food> inventory,
                                java.util.function.ToIntFunction<ItemStack> nativeNutrition,
                                java.util.function.Consumer<ItemStack> nativeAccepted) {
-        var choices = new ArrayList<Food>(inventory);
-        if (level.getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING)) {
+        return feed(level, town, mob, needs, now, nativeRule, inventory, nativeNutrition, nativeAccepted, true);
+    }
+    public static boolean feed(ServerLevel level, TownRecord town, Mob mob, ResidentMood needs, long now,
+                               Predicate<ItemStack> nativeRule, java.util.List<Food> inventory,
+                               java.util.function.ToIntFunction<ItemStack> nativeNutrition,
+                               java.util.function.Consumer<ItemStack> nativeAccepted, boolean allowTravel) {
+        BlockPos orderedChest = allowTravel ? TownMealService.target(level, town, mob, now) : null;
+        var choices = new ArrayList<Food>(orderedChest == null ? inventory : java.util.List.of());
+        if (orderedChest == null && level.getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING)) {
             for (ItemEntity item : level.getEntitiesOfClass(ItemEntity.class, mob.getBoundingBox().inflate(3),
                     value -> value.isAlive() && value.getOwner() == null && !value.hasPickUpDelay())) {
                 ItemStack stack = item.getItem();
@@ -50,13 +57,11 @@ public final class ResidentFoodService {
         int budget = 8192;
         if (town != null) for (var link : town.storage()) {
             if (budget <= 0) break;
+            if (orderedChest != null && !link.contains(orderedChest)) continue;
             if (!link.dimension().equals(level.dimension().location()) || !level.hasChunkAt(link.position())) continue;
-            var block = level.getBlockEntity(link.position()); if (block == null) continue;
-            var capability = block.getCapability(ForgeCapabilities.ITEM_HANDLER).resolve(); if (capability.isEmpty()) continue;
-            var state = level.getBlockState(link.position());
-            if (state.getBlock() instanceof net.minecraft.world.level.block.ChestBlock chest
-                    && net.minecraft.world.level.block.ChestBlock.getContainer(chest, state, level, link.position(), false) == null) continue;
+            var capability = SharedStorageService.handler(level, link); if (capability.isEmpty()) continue;
             double distance = mob.distanceToSqr(link.position().getX() + .5, link.position().getY() + .5, link.position().getZ() + .5);
+            if (!allowTravel && distance > 6.25) continue;
             if (distance > 6.25) { var path = mob.getNavigation().createPath(link.position(), 2); if (path == null || !path.canReach()) continue; }
             var handler = capability.get(); int checked = Math.min(budget, handler.getSlots()); budget -= checked;
             for (int slot = 0; slot < checked; slot++) {

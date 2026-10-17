@@ -2,7 +2,7 @@
 
 Status: implemented state flow, with the concrete transport adaptation below. Same client flow for integrated and dedicated logical servers. No client-local simulation of success.
 
-Implemented wire format is town-channel protocol5: `SettlementActionPacket(action,townId?,requestId,payload)` and `TownViewPacket(open,view)`. The sessionless `open` intent combines Hello/directory, returning a server-issued `Session`; subsequent intents bind it. `Directory` is paginated64, `Selected` carries authoritative data and FoodCatalogue pages64. A session-only heartbeat every100ticks extends the240tick lease in every GUI mode without replacing view/edit state. Present incompatible channel versions are rejected during connection, absent endpoints show the local Unsupported screen. Currency wallet protocol4 follows the same absent-endpoint policy.
+Implemented wire format is town-channel protocol9: `SettlementActionPacket(action,townId?,requestId,payload)` and `TownViewPacket(open,view)`. The sessionless `open` intent combines Hello/directory, returning a server-issued `Session`; subsequent intents bind it. `Directory` is paginated64, `Selected` carries authoritative data and FoodCatalogue pages64. A session-only heartbeat every100ticks extends the240tick lease in every GUI mode without replacing view/edit state. Present incompatible channel versions are rejected during connection, absent endpoints show the local Unsupported screen. Currency wallet protocol4 follows the same absent-endpoint policy.
 
 Change observation is bounded to four subscribed players per20ticks with round-robin fairness. Snapshot equality suppresses unchanged sends; physical-stock observation is bounded8192slots. Current implementation sends changed bounded projections rather than field-level delta packets; per-field wire deltas remain an optimization, not a second simulation. Request results include matching `Request`, `Result`, `Reason` and `Action`. `RETRY` and `OUTCOME_UNKNOWN` are nonterminal; only the original intent is reconciled. Completed session rotates after512operations; retired completed journal entries can be pruned at65536 total. Ambiguous intents are retained, with per-account admission bounded32 unknown records.
 
@@ -16,15 +16,15 @@ stateDiagram-v2
     Handshake --> Unsupported: absent/incompatible capability
     Handshake --> Loading: protocol accepted
     Loading --> Creation: zero owned
-    Loading --> Map: one owned
+    Loading --> Residents: one owned
     Loading --> Selector: multiple owned
     Selector --> LoadingTown: select ID
-    LoadingTown --> Map: authorized snapshot
+    LoadingTown --> Residents: authorized snapshot
     LoadingTown --> Selector: deleted/ownership changed
     Creation --> Pending: submit valid bell/name
-    Pending --> Map: creation ACK + created ID
+    Pending --> Residents: creation ACK + created ID
     Pending --> Creation: rejection + current quote
-    Map --> Section: navigation
+    Residents --> Section: navigation
     Section --> Selector: switcher
     Section --> Confirmation: destructive intent
     Confirmation --> Section: cancel
