@@ -40,7 +40,7 @@ public final class SonicWaveAbility {
         return true;
     }
     @SubscribeEvent public static void tick(TickEvent.ServerTickEvent event) {
-        if(event.phase!=TickEvent.Phase.END||event.getServer().isDedicatedServer())return;
+        if(event.phase!=TickEvent.Phase.END||!RaceExperience.serverActive(event.getServer()))return;
         CONFUSED.entrySet().removeIf(entry->{
             Confusion confusion=entry.getValue();var level=event.getServer().getLevel(confusion.dimension);
             return level==null||level.getGameTime()>=confusion.until||!(level.getEntity(entry.getKey()) instanceof Mob mob)||!mob.isAlive();
@@ -71,7 +71,7 @@ public final class SonicWaveAbility {
         });
     }
     private static boolean confused(Mob mob){
-        if(mob.level().isClientSide||mob.getServer()==null||mob.getServer().isDedicatedServer())return false;
+        if(mob.level().isClientSide||mob.getServer()==null||!RaceExperience.serverActive(mob.getServer()))return false;
         Confusion confusion=CONFUSED.get(mob.getUUID());
         return confusion!=null&&confusion.dimension==mob.level().dimension()&&confusion.until>mob.level().getGameTime()
                 &&mob.hasEffect(MobEffects.DARKNESS);

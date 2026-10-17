@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-18 — Final Races and Settlements migration to the local test server
+
+- User request: promote the final sandbox Races/Settlements quickly into the local server/test jem, remove the crossed counter, DEV buttons and preview/DEV explanation text for every race, run no tests, and start the server for the user to join.
+- Codex implementation: retain existing identity-bound JEMRoles saves and selection contracts, store final mechanics in the same RaceRecord, and let the final ability/UI module own casts, passives, native spell projection and previews. Legacy runtime/key/loot owners yield when that module is present. Production keeps ordinary cooldowns and excludes sandbox development authority.
+- Fresh production Races, matching Roles and full Settlements JarJar are synchronized to local Server and Client/ManagedPack, with native AutoModpack staging/publication for test jem. Stable profiles, MineRENT and the immutable release baseline stay unchanged. No automated tests or client/gameplay launches; user acceptance is pending.
+
 ## 2026-10-18 — Remove rejected profession migration from sandbox
 
 - User rejects the migration as unsuccessful and too closely coupled to the full modpack, then explicitly chooses complete profession removal rather than restoring the earlier partial version.

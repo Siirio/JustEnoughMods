@@ -63,7 +63,7 @@ public final class SculkDomain {
     }
 
     public static boolean touchesTemporary(net.minecraft.world.level.LevelAccessor world,BlockPos position){
-        if(!(world instanceof ServerLevel level)||level.getServer().isDedicatedServer())return false;
+        if(!(world instanceof ServerLevel level)||!RaceExperience.serverActive(level.getServer()))return false;
         var tiles=Store.get(level).tiles;
         Tile tile=tiles.get(position.asLong());if(tile!=null&&tile.placed)return true;
         for(var direction:net.minecraft.core.Direction.values()){
@@ -99,7 +99,7 @@ public final class SculkDomain {
     }
 
     @SubscribeEvent public static void tick(TickEvent.ServerTickEvent event){
-        if(event.phase!=TickEvent.Phase.END||event.getServer().isDedicatedServer())return;
+        if(event.phase!=TickEvent.Phase.END||!RaceExperience.serverActive(event.getServer()))return;
         ACTIVE.entrySet().removeIf(entry->{
             Domain domain=entry.getValue();ServerPlayer owner=event.getServer().getPlayerList().getPlayer(entry.getKey());
             return owner==null||!owner.isAlive()||RaceExperience.race(owner)!=3
@@ -110,32 +110,32 @@ public final class SculkDomain {
     }
 
     @SubscribeEvent public static void damage(LivingHurtEvent event){
-        if(event.getSource().getEntity() instanceof ServerPlayer player&&!player.server.isDedicatedServer()&&empowered(player))
+        if(event.getSource().getEntity() instanceof ServerPlayer player&&RaceExperience.serverActive(player.server)&&empowered(player))
             event.setAmount(event.getAmount()*1.15F);
     }
 
     @SubscribeEvent public static void size(EntityEvent.Size event){
         if(event.getEntity() instanceof Player player&&player.getPersistentData().getBoolean(SCALE_KEY)
-                &&(player.level().isClientSide||player.getServer()!=null&&!player.getServer().isDedicatedServer())){
+                &&(player.level().isClientSide||player.getServer()!=null&&RaceExperience.serverActive(player.getServer()))){
             event.setNewSize(event.getNewSize().scale(1.15F));
             event.setNewEyeHeight(event.getNewEyeHeight()*1.15F);
         }
     }
 
     @SubscribeEvent public static void breaking(BlockEvent.BreakEvent event){
-        if(event.getLevel() instanceof ServerLevel level&&!level.getServer().isDedicatedServer()
+        if(event.getLevel() instanceof ServerLevel level&&RaceExperience.serverActive(level.getServer())
                 &&Store.get(level).tiles.containsKey(event.getPos().asLong()))event.setCanceled(true);
     }
 
     @SubscribeEvent public static void explosion(ExplosionEvent.Detonate event){
-        if(event.getLevel() instanceof ServerLevel level&&!level.getServer().isDedicatedServer()){
+        if(event.getLevel() instanceof ServerLevel level&&RaceExperience.serverActive(level.getServer())){
             var tiles=Store.get(level).tiles;
             event.getAffectedBlocks().removeIf(pos->tiles.containsKey(pos.asLong()));
         }
     }
 
     @SubscribeEvent public static void piston(PistonEvent.Pre event){
-        if(!(event.getLevel() instanceof ServerLevel level)||level.getServer().isDedicatedServer())return;
+        if(!(event.getLevel() instanceof ServerLevel level)||!RaceExperience.serverActive(level.getServer()))return;
         var helper=event.getStructureHelper();if(helper==null||!helper.resolve())return;
         var tiles=Store.get(level).tiles;
         if(helper.getToPush().stream().anyMatch(pos->tiles.containsKey(pos.asLong()))

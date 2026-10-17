@@ -43,7 +43,7 @@ public final class SandboxIronsBridge {
     }
 
     public static boolean owns(ServerPlayer player) {
-        return !player.server.isDedicatedServer() && player.server.isSingleplayerOwner(player.getGameProfile());
+        return RaceExperience.allowed(player);
     }
 
     public static AbstractSpell spell(int race) {

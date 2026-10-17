@@ -41,7 +41,7 @@ final class FlameSlashRenderer {
     static void render(RenderLevelStageEvent event) {
         Minecraft client = Minecraft.getInstance();
         ACTIVE.removeIf(slash -> slash.world != client.level || client.level == null || client.level.getGameTime() - slash.tick >= FRAMES[slash.hit]);
-        if (client.player == null || !client.hasSingleplayerServer()) { clear(); return; }
+        if (client.player == null || !(com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.supported())) { clear(); return; }
         for (Slash slash : ACTIVE) {
             float age = (float) (slash.world.getGameTime() - slash.tick) + event.getPartialTick();
             if (age < (slash.hit == 2 ? 5 : 4)) slash.anchor = slash.origin.add(client.player.position().subtract(slash.casterStart));

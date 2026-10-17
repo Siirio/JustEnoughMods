@@ -73,9 +73,9 @@ public final class BlockbenchWorkbench {
         Minecraft client = Minecraft.getInstance();
         if (clientWorld != client.level) {
             clear(); raceStatus=null;clientWorld = client.level;
-            if (client.level != null && client.hasSingleplayerServer()) SandboxNetwork.sync();
+            if (client.level != null && (com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.supported())) SandboxNetwork.sync();
         }
-        if (!client.hasSingleplayerServer()) clear();
+        if (!(com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.supported())) clear();
         INSTANCES.removeIf(instance -> instance.level() != client.level || client.level == null || client.level.getGameTime() - instance.startTick() >= instance.ticks());
 
         boolean connected=client.getConnection()!=null&&SandboxNetwork.supported(client.getConnection().getConnection());
@@ -89,7 +89,7 @@ public final class BlockbenchWorkbench {
         boolean developer=allowed&&raceStatus!=null&&raceStatus.developerMode();
         while (NEXT.consumeClick()) if (developer) { selectedArt = (selectedArt + 1) % ASSETS.length; label(client, ASSETS[selectedArt].name()); }
         while (PREVIOUS.consumeClick()) if (developer) { selectedArt = (selectedArt + ASSETS.length - 1) % ASSETS.length; label(client, ASSETS[selectedArt].name()); }
-        boolean nativeDedicated=!client.hasSingleplayerServer()&&net.minecraftforge.fml.ModList.get().isLoaded("jem_roles");
+        boolean nativeDedicated=false;
         while (CAST.consumeClick()) if (allowed&&!nativeDedicated&&!com.siirio.jemvisualsandbox.client.races.OptionalRacePresentation.nativeKey(CAST)) SandboxNetwork.cast();
         boolean pressed=false;
         while (SECONDARY.consumeClick()) if (allowed&&!nativeDedicated) { SandboxNetwork.secondary();pressed=true; }
@@ -125,7 +125,7 @@ public final class BlockbenchWorkbench {
     }
     public static void receive(SandboxNetwork.Visual packet) {
         Minecraft client = Minecraft.getInstance();
-        if (!client.hasSingleplayerServer() || client.level == null || packet.race() < 0 || packet.race() >= 5) return;
+        if (!(com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.supported()) || client.level == null || packet.race() < 0 || packet.race() >= 5) return;
         if (packet.action() == 0) {
             selectedRace = packet.race(); selectedUpgrade=packet.subject();
             if(client.player!=null)client.player.getPersistentData().putInt("JemSandboxRace",selectedRace);
@@ -172,7 +172,7 @@ public final class BlockbenchWorkbench {
     }
     private static void renderInstance(RenderLevelStageEvent event, Instance instance) {
         Minecraft client = Minecraft.getInstance();
-        if (client.level != instance.level() || !client.hasSingleplayerServer()) return;
+        if (client.level != instance.level() || !(com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.supported())) return;
         WorkbenchMesh mesh = instance.mesh();
         Vec3 origin = instance.origin();
         long startTick = instance.startTick();

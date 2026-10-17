@@ -81,6 +81,11 @@ public final class RolesNetwork {
     }
 
     public static void sendStatus(ServerPlayer player, boolean open) {
+        if (net.minecraftforge.fml.ModList.get().isLoaded("jem_visual_sandbox")) {
+            try { Class.forName("com.siirio.jemvisualsandbox.workbench.RaceExperience").getMethod(open?"openScreen":"snapshot", ServerPlayer.class).invoke(null, player); }
+            catch (ReflectiveOperationException failure) { throw new IllegalStateException("Final race snapshot", failure); }
+            return;
+        }
         com.siirio.jemroles.trait.RaceAbilities.syncSignatureCooldown(player);
         var principal = IdentityPolicy.resolve(player);
         UUID nonce = principal.isPresent() ? (open ? RaceService.issueNonce(player) : RaceService.currentNonce(player)) : new UUID(0L, 0L);

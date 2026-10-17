@@ -33,7 +33,7 @@ public final class PearlAfterfire {
     static void clear(){TRAILS.clear();level=null;}
     static void receive(SandboxNetwork.Visual packet){
         var client=Minecraft.getInstance();
-        if(client.level==null || !client.hasSingleplayerServer() || packet.subject()<0)return;
+        if(client.level==null || !(com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.supported()) || packet.subject()<0)return;
         if(level!=client.level){clear();level=client.level;}
         if(TRAILS.size()>=16)TRAILS.remove(TRAILS.keySet().iterator().next());
         TRAILS.put(packet.subject(),new Trail(level.getGameTime(),packet.origin()));
@@ -41,7 +41,7 @@ public final class PearlAfterfire {
     @SubscribeEvent public static void tick(TickEvent.ClientTickEvent event){
         if(event.phase!=TickEvent.Phase.END)return;
         var client=Minecraft.getInstance();
-        if(client.level==null || level!=client.level || !client.hasSingleplayerServer()){clear();return;}
+        if(client.level==null || level!=client.level || !(com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.supported())){clear();return;}
         long now=level.getGameTime();
         TRAILS.entrySet().removeIf(entry->{
             Trail trail=entry.getValue();var pearl=level.getEntity(entry.getKey());

@@ -1,5 +1,13 @@
 # Settlements standalone design
 
+## Final sandbox promotion — 2026-10-18
+
+The user approved the final Races and Settlements for the local dedicated server and `test jem` via native AutoModpack. Matching fresh production Races1.1.0, Roles2.0.0 and full Settlements2.1.0 artifacts now form the local managed generation. MineRENT, stable profiles and the immutable release baseline are unchanged.
+
+Races uses the final authored ability pipeline and previews on dedicated connections. Existing authenticated JEMRoles account records remain the sole save owner: final per-race mastery/cooldown data lives in their Mechanics compound, initialized from existing selection/progress/cooldowns. Legacy gameplay/key/loot owners yield while final Races is installed. Production has normal cooldowns and no developer authority. Origin count, DEV tier/reset controls and the crossed preview/DEV cooldown explanations are removed from the shared screen for every origin. Settlements promotes the existing final protocol9 source, without redesigning its town simulation.
+
+Only necessary production compilation/reobfuscation and ordinary server installation/publication were performed. No tests, client launch or gameplay/visual acceptance is claimed. Artifact and publication receipt: `Docs/races/server-test-migration.json`.
+
 ## Current sandbox-only revision — 2026-10-17
 
 User now restricts delivery to `jem sandbox`. Ordinary Server, Client/ManagedPack, native generation26, stable profile and release baseline stay unchanged. The source below supersedes earlier GUI/enrollment notes only when this fresh sandbox artifact is installed; prior deployment receipts remain history.

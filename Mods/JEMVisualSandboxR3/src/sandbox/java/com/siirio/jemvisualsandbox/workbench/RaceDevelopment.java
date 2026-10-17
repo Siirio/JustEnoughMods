@@ -5,6 +5,7 @@ import net.minecraft.server.level.ServerPlayer;
 /** Compiled only into SANDBOX. Never accepts dedicated-server or guest authority. */
 final class RaceDevelopment {
     private RaceDevelopment() {}
+    static boolean integrated(){return true;}
     static boolean enabled(ServerPlayer p){return RaceExperience.allowed(p);}
     static boolean cooldownsDisabled(ServerPlayer p){return enabled(p);}
     static boolean unlimitedSelection(ServerPlayer p){return enabled(p);}

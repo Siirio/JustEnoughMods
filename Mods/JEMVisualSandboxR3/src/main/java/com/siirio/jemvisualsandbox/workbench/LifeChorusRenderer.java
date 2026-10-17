@@ -25,7 +25,7 @@ final class LifeChorusRenderer {
         ACTIVE.add(new Scene(c.level,c.level.getGameTime()+(p.action()==31?(int)p.yaw():0),p.action(),p.subject(),p.origin(),p.action()==30?Mth.clamp(p.yaw(),12,16):16));
     }
     static void render(RenderLevelStageEvent event){
-        var c=Minecraft.getInstance();if(c.level==null || !c.hasSingleplayerServer()){clear();return;}
+        var c=Minecraft.getInstance();if(c.level==null || !(com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.supported())){clear();return;}
         SonicWaveRenderer.renderImpacts(event);
         ACTIVE.removeIf(s->s.level!=c.level || c.level.getGameTime()-s.start>=(s.kind==30?130:32));
         for(Scene s:ACTIVE){

@@ -45,7 +45,7 @@ public final class SandboxHostileControl {
         return count>0;
     }
     @SubscribeEvent public static void tick(net.minecraftforge.event.TickEvent.ServerTickEvent e) {
-        if(e.phase!=net.minecraftforge.event.TickEvent.Phase.END || e.getServer().isDedicatedServer())return;
+        if(e.phase!=net.minecraftforge.event.TickEvent.Phase.END || !RaceExperience.serverActive(e.getServer()))return;
         long now=e.getServer().overworld().getGameTime();
         GRIPS.entrySet().removeIf(entry->{
             Grip grip=entry.getValue();var level=e.getServer().getLevel(grip.dimension);ServerPlayer owner=e.getServer().getPlayerList().getPlayer(grip.owner);
@@ -100,7 +100,7 @@ public final class SandboxHostileControl {
     }
     @SubscribeEvent public static void stopped(net.minecraftforge.event.server.ServerStoppedEvent e) { GRIPS.clear(); }
     public static boolean rooted(Entity entity) {
-        if(entity==null || entity.level().isClientSide || entity.getServer()==null || entity.getServer().isDedicatedServer() || !entity.isAlive())return false;
+        if(entity==null || entity.level().isClientSide || entity.getServer()==null || !RaceExperience.serverActive(entity.getServer()) || !entity.isAlive())return false;
         var tag=entity.getPersistentData();long until=tag.getLong(UNTIL);
         if(until<=0)return false;
         Grip grip=GRIPS.get(entity.getUUID());

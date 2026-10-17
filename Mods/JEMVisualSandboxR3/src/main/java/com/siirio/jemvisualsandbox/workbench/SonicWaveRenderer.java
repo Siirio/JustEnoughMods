@@ -33,7 +33,7 @@ final class SonicWaveRenderer {
     /** Called only for the server's successful-damage visual packet. */
     static void impact(SandboxNetwork.Visual packet) {
         var client = Minecraft.getInstance();
-        if (packet.action() != 36 || client.level == null || !client.hasSingleplayerServer()) return;
+        if (packet.action() != 36 || client.level == null || !(com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.supported())) return;
         var target = client.level.getEntity(packet.subject());
         double height = target == null ? .9 : Math.min(1.8, target.getBbHeight() * .55);
         if (HITS.size() >= MAX_IMPACTS) HITS.remove(0);
@@ -42,7 +42,7 @@ final class SonicWaveRenderer {
 
     static void render(RenderLevelStageEvent event, Vec3 origin, float age) {
         var client=Minecraft.getInstance();
-        if(client.level==null || !client.hasSingleplayerServer())return;
+        if(client.level==null || !(com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.supported()))return;
         render(VisualRenderContext.world(event),origin,age);
     }
     static void render(VisualRenderContext event, Vec3 origin, float age) {
@@ -83,7 +83,7 @@ final class SonicWaveRenderer {
 
     static void renderImpacts(RenderLevelStageEvent event) {
         var client = Minecraft.getInstance();
-        if (client.level == null || !client.hasSingleplayerServer()) { clear(); return; }
+        if (client.level == null || !(com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.supported())) { clear(); return; }
         HITS.removeIf(hit -> hit.level != client.level || client.level.getGameTime() - hit.start >= 6);
         if (HITS.isEmpty()) return;
         for (Hit hit : HITS) {

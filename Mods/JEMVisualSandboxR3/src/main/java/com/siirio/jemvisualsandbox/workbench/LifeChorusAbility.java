@@ -41,7 +41,7 @@ public final class LifeChorusAbility {
         return true;
     }
     static void guardianEntry(ServerPlayer p){
-        if(p.server.isDedicatedServer() || !p.server.isSingleplayerOwner(p.getGameProfile()))return;
+        if(!RaceExperience.allowed(p))return;
         startOutwardWave(p,0);
         SandboxNetwork.effect(p,35,0,p.position(),0,p.getId());
     }
@@ -62,7 +62,7 @@ public final class LifeChorusAbility {
         String namespace=net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(e.getType()).getNamespace();return namespace.equals("recruits") || namespace.equals("workers");
     }
     @SubscribeEvent public static void tick(TickEvent.ServerTickEvent e) {
-        if(e.phase!=TickEvent.Phase.END || e.getServer().isDedicatedServer())return;
+        if(e.phase!=TickEvent.Phase.END || !RaceExperience.serverActive(e.getServer()))return;
         WAVES.removeIf(w->{
             ServerPlayer p=e.getServer().getPlayerList().getPlayer(w.owner);
             if(p==null || !p.isAlive() || p.isSpectator() || p.serverLevel().dimension()!=w.dimension)return true;
@@ -92,7 +92,7 @@ public final class LifeChorusAbility {
         });
     }
     @SubscribeEvent(priority=EventPriority.LOW) public static void protect(LivingHurtEvent e) {
-        if(!(e.getEntity() instanceof ServerPlayer p) || p.server.isDedicatedServer())return;
+        if(!(e.getEntity() instanceof ServerPlayer p) || !RaceExperience.serverActive(p.server))return;
         Chorus c=ACTIVE.get(p.getUUID());if(c==null || c.dimension!=p.serverLevel().dimension())return;
         long age=p.level().getGameTime()-c.start;
         if(age>=18 && age<118)e.setAmount(e.getAmount()*.75F);

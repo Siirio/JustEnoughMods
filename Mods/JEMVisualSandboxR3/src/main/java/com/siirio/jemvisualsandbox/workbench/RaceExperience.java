@@ -30,15 +30,16 @@ public final class RaceExperience {
     private record Scene(net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level> dimension,Vec3 anchor,long expires) {}
     private static final Map<UUID,Scene> SCENES=new HashMap<>();
     private RaceExperience() {}
-    public static boolean allowed(ServerPlayer p){return !p.server.isDedicatedServer() && p.server.isSingleplayerOwner(p.getGameProfile());}
+    public static boolean allowed(ServerPlayer p){return p!=null && (p.server.isDedicatedServer()?ProductionRaceBridge.authenticated(p):RaceDevelopment.integrated() && p.server.isSingleplayerOwner(p.getGameProfile()));}
+    public static boolean serverActive(MinecraftServer server){return server!=null && (server.isDedicatedServer() || RaceDevelopment.integrated());}
     public static boolean selected(ServerPlayer p){return allowed(p) && data(p).getBoolean("Selected");}
     public static boolean developerMode(ServerPlayer p){return RaceDevelopment.enabled(p);}
     public static int race(ServerPlayer p){return selected(p)?data(p).getInt("Race"):-1;}
     public static int tier(ServerPlayer p){return RaceDevelopment.tier(p,Math.max(0,race(p)),tierFor(uses(p,Math.max(0,race(p)))));}
     private static int tierFor(int uses){return uses>=30?3:uses>=20?2:uses>=10?1:0;}
     private static int uses(ServerPlayer p,int race){return Math.max(0,Math.min(30,data(p).getInt("Uses"+race)));}
-    static CompoundTag data(ServerPlayer p){return Store.get(p.server).record(p);}
-    static void dirty(ServerPlayer p){Store.get(p.server).setDirty();}
+    static CompoundTag data(ServerPlayer p){return p.server.isDedicatedServer()?ProductionRaceBridge.data(p):Store.get(p.server).record(p);}
+    static void dirty(ServerPlayer p){if(p.server.isDedicatedServer())ProductionRaceBridge.dirty(p);else Store.get(p.server).setDirty();}
     private static String cooldownKey(ServerPlayer p,String key){return "Cooldown"+Math.max(0,race(p))+"_"+key;}
     public static long remaining(ServerPlayer p,String key){return RaceDevelopment.cooldownsDisabled(p)?0:Math.max(0,data(p).getLong(cooldownKey(p,key))-p.server.overworld().getGameTime());}
     public static boolean ready(ServerPlayer p,String key){return remaining(p,key)==0;}
@@ -55,7 +56,7 @@ public final class RaceExperience {
     }
     public static void choose(ServerPlayer p,int next){
         if(next<0||next>4)return;
-        if(ProductionRaceBridge.available(p)){ProductionRaceBridge.choose(p,next);completeSelectionScene(p);snapshot(p);return;}
+        if(p.server.isDedicatedServer()){if(!allowed(p))return;selectionChanged(p);ProductionRaceBridge.choose(p,next);completeSelectionScene(p);mirror(p);SandboxRaceTraits.refresh(p);snapshot(p);return;}
         if(!allowed(p)||!p.isAlive()||p.isSpectator())return;
         var tag=data(p);
         if(selected(p)&&race(p)==next){completeSelectionScene(p);snapshot(p);return;}
@@ -75,12 +76,11 @@ public final class RaceExperience {
     }
     private static void completeSelectionScene(ServerPlayer p){
         Scene scene=SCENES.get(p.getUUID());
-        boolean confirmed=allowed(p)?selected(p):ProductionRaceBridge.available(p)&&ProductionRaceBridge.status(p)!=null&&ProductionRaceBridge.status(p).selected();
+        boolean confirmed=selected(p);
         if(scene!=null&&confirmed)SCENES.put(p.getUUID(),new Scene(scene.dimension,scene.anchor,p.server.overworld().getGameTime()+100));
     }
     private static void mirror(ServerPlayer p){p.getPersistentData().putInt("JemSandboxRace",race(p));}
     public static boolean cast(ServerPlayer p){
-        if(ProductionRaceBridge.available(p)){boolean result=ProductionRaceBridge.cast(p);snapshot(p);return result;}
         if(!canAct(p)||!requireReady(p,"signature"))return false;
         boolean success=switch(race(p)){
             case 0->LifeChorusAbility.cast(p);
@@ -111,16 +111,11 @@ public final class RaceExperience {
     }
     public static boolean canAct(ServerPlayer p){return allowed(p)&&selected(p)&&p.isAlive()&&!p.isSpectator()&&!locked(p);}
     public static void utility(ServerPlayer p,boolean pressed){
-        if(ProductionRaceBridge.available(p)){ProductionRaceBridge.utility(p,pressed);snapshot(p);return;}
         if(!canAct(p))return;if(pressed)SandboxUtilities.press(p);else SandboxUtilities.release(p);snapshot(p);
     }
     public static void cinematic(ServerPlayer p,boolean enabled){
-        if(!allowed(p)&&!ProductionRaceBridge.available(p))return;
+        if(!allowed(p))return;
         if(enabled){
-            if(ProductionRaceBridge.available(p)){
-                Status nativeStatus=ProductionRaceBridge.status(p);
-                if(nativeStatus==null||nativeStatus.selected())return;
-            }
             SCENES.putIfAbsent(p.getUUID(),new Scene(p.serverLevel().dimension(),p.position(),p.server.overworld().getGameTime()+600));
         }
         else SCENES.remove(p.getUUID());
@@ -130,27 +125,26 @@ public final class RaceExperience {
     }
     private static boolean selectionPending(ServerPlayer p){
         if(allowed(p))return !selected(p);
-        if(ProductionRaceBridge.available(p)){Status status=ProductionRaceBridge.status(p);return status!=null&&!status.selected();}
         return false;
     }
+    public static void openScreen(ServerPlayer p){if(allowed(p)){snapshot(p);SandboxNetwork.open(p);}}
     public static void snapshot(ServerPlayer p){
-        if(ProductionRaceBridge.available(p)){Status nativeStatus=ProductionRaceBridge.status(p);if(nativeStatus!=null)SandboxNetwork.sendStatus(p,nativeStatus);return;}
         if(!allowed(p))return;
         int[] tiers=new int[5],progress=new int[5];for(int i=0;i<5;i++){progress[i]=uses(p,i);tiers[i]=RaceDevelopment.tier(p,i,tierFor(progress[i]));}
         String secondary=switch(race(p)){case 1->p.isShiftKeyDown()?"gravity":"void_projectile";case 2->"leaf_bridge";case 3->"echo";case 4->"fire_slash";default->"guardian";};
         SandboxNetwork.sendStatus(p,new Status(Math.max(0,race(p)),selected(p),tiers,progress,remaining(p,"signature"),remaining(p,secondary),developerMode(p),bloomUpgrade(p)));
         SandboxOptionalIrons.sync(p);
     }
-    @SubscribeEvent public static void login(PlayerEvent.PlayerLoggedInEvent e){if(e.getEntity() instanceof ServerPlayer p&&(allowed(p)||ProductionRaceBridge.available(p))){mirrorIfLocal(p);snapshot(p);}}
+    @SubscribeEvent public static void login(PlayerEvent.PlayerLoggedInEvent e){if(e.getEntity() instanceof ServerPlayer p&&(allowed(p))){mirrorIfLocal(p);snapshot(p);}}
     private static void mirrorIfLocal(ServerPlayer p){if(allowed(p))mirror(p);}
     @SubscribeEvent public static void respawn(PlayerEvent.PlayerRespawnEvent e){if(e.getEntity() instanceof ServerPlayer p){mirrorIfLocal(p);snapshot(p);}}
     @SubscribeEvent public static void changedDimension(PlayerEvent.PlayerChangedDimensionEvent e){if(e.getEntity() instanceof ServerPlayer p){SCENES.remove(p.getUUID());if(allowed(p))selectionChanged(p);mirrorIfLocal(p);snapshot(p);}}
     @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent e){if(e.getEntity() instanceof ServerPlayer p){SCENES.remove(p.getUUID());if(allowed(p))selectionChanged(p);}}
     @SubscribeEvent public static void tick(TickEvent.PlayerTickEvent e){
-        if(e.phase!=TickEvent.Phase.END||!(e.player instanceof ServerPlayer p)||(!allowed(p)&&!ProductionRaceBridge.available(p)))return;
+        if(e.phase!=TickEvent.Phase.END||!(e.player instanceof ServerPlayer p)||(!allowed(p)))return;
         if(allowed(p)){
             mirror(p);
-            if(selected(p)&&!developerMode(p)&&p.tickCount%20==0){data(p).putLong("ActiveTicks",data(p).getLong("ActiveTicks")+20);dirty(p);}
+            if(selected(p)&&!developerMode(p)&&p.tickCount%20==0){if(p.server.isDedicatedServer())ProductionRaceBridge.tick(p);else {data(p).putLong("ActiveTicks",data(p).getLong("ActiveTicks")+20);dirty(p);}}
         }
         Scene scene=SCENES.get(p.getUUID());
         if(scene!=null){

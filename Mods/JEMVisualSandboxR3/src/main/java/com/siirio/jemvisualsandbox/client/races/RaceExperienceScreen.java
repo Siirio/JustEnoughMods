@@ -94,19 +94,12 @@ public final class RaceExperienceScreen extends Screen {
                 Component.literal(""),b->changePreviewTier(1)));
         addRenderableWidget(new QuietButton(width-36,controlsY,22,18,Component.literal("›"),b->changePreviewTier(1)));
         }
-        if (status.developerMode()) {
-            int half=Math.max(44,(stage-28)/2);
-            developerTier=addRenderableWidget(new QuietButton(12,height-28,half,20,
-                    Component.literal(""),b->SandboxNetwork.developerTier((tier()+1)%4)));
-            resetProgress=addRenderableWidget(new QuietButton(16+half,height-28,half,20,
-                    text("DEV · сброс", "DEV · reset"),b->SandboxNetwork.developerReset()));
-        }
         if (progression && race == 2 && status.selected() && status.race() == 2) {
             int cell = Math.max(24, (stage - 24) / 3);
             for (int i = 1; i <= 3; i++) {
                 final int unlock = i;
                 bloomUnlocks.add(addRenderableWidget(new QuietButton(12 + (i - 1) * cell,
-                        height - (status.developerMode() ? 51 : 28), cell - 2, 20,
+                        height - 28, cell - 2, 20,
                         Component.literal(new String[]{"I", "II", "III"}[i - 1]), b -> SandboxNetwork.upgrade(unlock))));
             }
         }
@@ -199,7 +192,6 @@ public final class RaceExperienceScreen extends Screen {
         int accent = ACCENTS[race];
         if(progression) RacePanelMaterials.board(g,left+5,7,panelWidth()-12,height-14,false);
         g.drawCenteredString(font,text("ВЫБЕРИ СВОЁ ПРОИСХОЖДЕНИЕ", "CHOOSE YOUR ORIGIN"),panelLeft()/2,20,0xD9D6CE);
-        g.drawString(font, String.format("%02d / 05", race + 1), 20, 35, accent, false);
         int nameY = Math.max(56, height - 81);
         int nameWidth = Math.max(70, left - 40);
         List<FormattedCharSequence> name = font.split(tr("name"), nameWidth);
@@ -219,9 +211,8 @@ public final class RaceExperienceScreen extends Screen {
         int previewX=left+12, previewY=96, previewW=panelWidth()-24;
         if(height>=216) {
         g.fill(previewX,previewY,previewX+previewW,previewBottom(),0xFF08090C);
-        if (minecraft.hasSingleplayerServer()) abilityPreview.render(g,previewX,previewY,previewW,previewBottom()-previewY,
+        abilityPreview.render(g,previewX,previewY,previewW,previewBottom()-previewY,
                 race,previewSlot,previewTier,previewBloom,partialTick);
-        else g.drawCenteredString(font,text("Нет совместимого VFX-предпросмотра", "No compatible VFX preview"),previewX+previewW/2,previewY+12,0xBFBFBF);
         }
         int top = height>=216?previewBottom()+25:119, bottom = Math.max(top+1,height - 41);
         g.enableScissor(left + 9, top, right + 3, bottom);
@@ -314,11 +305,6 @@ public final class RaceExperienceScreen extends Screen {
             lines.add(new Line(cooldown("V", status.signatureRemaining()), 0xDEDEDE));
             lines.add(new Line(cooldown("B", status.secondaryRemaining()), 0xDEDEDE));
         } else lines.add(new Line(text("Предпросмотр: эта раса сейчас не выбрана.", "Preview: this race is not currently selected."), 0xA5A5A5));
-        if (status.developerMode()) {
-            lines.add(Line.gap());
-            lines.add(new Line(text("SANDBOX · без перезарядки; смена расы без лимита. DEV меняет фактический уровень; стрелки под анимацией — только просмотр.",
-                    "SANDBOX · no cooldowns; unlimited race switching. DEV changes the real tier; preview arrows only inspect it."), 0xE2BD88));
-        }
         return lines;
     }
 
@@ -344,12 +330,6 @@ public final class RaceExperienceScreen extends Screen {
     private List<Line> abilityLines() {
         List<Line> lines=new ArrayList<>();
         lines.add(new Line(abilityName().copy().append(" · ").append(stageName(previewTier)),ACCENTS[race]));
-        if(!minecraft.hasSingleplayerServer()) {
-            lines.add(new Line(tr("spell.detail"),0xDEDEDE));
-            lines.add(new Line(text("Подключённый сервер использует собственное описание и правила расы. Этапы sandbox не изменяют этот контракт.",
-                    "The connected server owns its race descriptions and rules. Sandbox stages do not alter that contract."),0xBEBEBE));
-            return lines;
-        }
         lines.add(new Line(text(previewUnlocked()?"Открыто":"Закрыто · доступен только просмотр",previewUnlocked()?"Unlocked":"Locked · inspection only"),previewUnlocked()?0xB5DBA4:0xC0A081));
         String ru="", en="";
         if(previewSlot==0) switch(race) {
@@ -388,11 +368,8 @@ public final class RaceExperienceScreen extends Screen {
             case 4 -> {ru="Всегда три последовательных огненных рассечения. Урон каждого: "+number(RacePowerStages.slashDamage(previewTier))+" HP; огонь "+RacePowerStages.fireSeconds(previewTier)+" с.";en="Always three successive fiery slashes. Each deals "+number(RacePowerStages.slashDamage(previewTier))+" HP; fire "+RacePowerStages.fireSeconds(previewTier)+"s.";}
         }
         lines.add(new Line(text(ru,en),0xE5E5E5));
-        lines.add(new Line(text("Просмотр не открывает умение и не меняет мир. Колесо над миниатюрой или уровнем меняет этап.",
-                "Inspection grants no abilities and changes no world. Scroll over the miniature or level to change stage."),0xA5A5A5));
 
         if(previewSlot==1)lines.add(new Line(text("Длительные состояния показаны в сокращённом времени; реальная длительность указана выше.","Long states use compressed preview time; actual duration is shown above."),0xA5A5A5));
-        lines.add(new Line(text("Перезарядка V: "+RaceExperience.signatureCooldown(race)/20+" с; DEV отключает ожидание, сохраняя определение умения.","V cooldown: "+RaceExperience.signatureCooldown(race)/20+"s; DEV bypasses waiting while preserving the ability definition."),0xA5A5A5));
         return lines;
     }
     private Component abilityName(){
@@ -411,7 +388,6 @@ public final class RaceExperienceScreen extends Screen {
     private int tier() { return RacePowerStages.clamp(status.tiers()[race]); }
     private int progress() { return Math.max(0, status.progress()[race]); }
     private Component tr(String suffix) {
-        if(!minecraft.hasSingleplayerServer())return Component.translatable("jem.roles.race."+RACES[race]+"."+suffix);
         if(suffix.equals("mastery.detail"))return text("Успешные V и B развивают одну расу: база — 0; уровень I — 10, II — 20, III — 30 применений.",
                 "Successful V and B uses share race progression: Base at 0; level I at 10, II at 20, III at 30 uses.");
         if(race==0&&suffix.equals("spell.detail"))return text("Золотой фронт восстанавливает игрокам 3 сердца, полностью исцеляет мирных животных и текущего ездового питомца. Четыре щита уменьшают входящий урон на 25% на 5 секунд. Перезарядка: 25 секунд.","A golden front restores 3 hearts to players and fully heals peaceful animals and your living mount. Four wards reduce incoming damage by 25% for 5 seconds. Cooldown: 25 seconds.");

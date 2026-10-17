@@ -21,11 +21,11 @@ public final class JemRoles {
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT,
                 com.siirio.jemroles.vfx.RaceVfxClientConfig.SPEC, "jem-races-vfx-client.toml");
         RolesNetwork.register();
-        MinecraftForge.EVENT_BUS.register(RaceTraitRuntime.class);
+        if (!ModList.get().isLoaded("jem_visual_sandbox")) MinecraftForge.EVENT_BUS.register(RaceTraitRuntime.class);
         MinecraftForge.EVENT_BUS.register(RolesNetwork.class);
         if (ModList.get().isLoaded("irons_spellbooks")) {
             com.siirio.jemroles.compat.irons.RacialSpells.register(modBus);
-            MinecraftForge.EVENT_BUS.register(com.siirio.jemroles.compat.irons.RacialSpellBridge.class);
+            if (!ModList.get().isLoaded("jem_visual_sandbox")) MinecraftForge.EVENT_BUS.register(com.siirio.jemroles.compat.irons.RacialSpellBridge.class);
         }
         if (ModList.get().isLoaded("jem_economy")) {
             MinecraftForge.EVENT_BUS.register(com.siirio.jemroles.compat.economy.CoinTradeRaceBridge.class);

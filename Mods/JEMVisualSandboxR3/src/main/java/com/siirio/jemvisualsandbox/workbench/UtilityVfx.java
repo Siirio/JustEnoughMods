@@ -17,12 +17,12 @@ final class UtilityVfx {
     private UtilityVfx() {}
     static void clear(){ACTIVE.clear();PearlAfterfire.clear();}
     static void receive(SandboxNetwork.Visual packet) {
-        var c=Minecraft.getInstance();if(c.level==null || !c.hasSingleplayerServer())return;
+        var c=Minecraft.getInstance();if(c.level==null || !(com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.supported()))return;
         if(packet.action()==28){PearlAfterfire.receive(packet);return;}
         if(ACTIVE.size()==48)ACTIVE.remove(0);ACTIVE.add(new Effect(c.level,c.level.getGameTime(),packet.action(),packet.subject(),packet.origin()));
     }
     static void render(RenderLevelStageEvent event) {
-        var c=Minecraft.getInstance();if(c.level==null || !c.hasSingleplayerServer()){clear();return;}
+        var c=Minecraft.getInstance();if(c.level==null || !(com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.supported())){clear();return;}
         PearlAfterfire.render(event);
         ACTIVE.removeIf(e->e.level!=c.level || c.level.getGameTime()-e.start>= (e.action==28?100:24));
         for(Effect e:ACTIVE) {

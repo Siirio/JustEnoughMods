@@ -18,9 +18,9 @@ import net.minecraftforge.network.simple.SimpleChannel;
 @Mod.EventBusSubscriber(modid="jem_visual_sandbox", bus=Mod.EventBusSubscriber.Bus.MOD)
 public final class SandboxNetwork {
     private static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
-            new ResourceLocation("jem_visual_sandbox", "skills"), () -> "5",
-            v -> "5".equals(v) || NetworkRegistry.ABSENT.equals(v) || NetworkRegistry.ACCEPTVANILLA.equals(v),
-            v -> "5".equals(v) || NetworkRegistry.ABSENT.equals(v) || NetworkRegistry.ACCEPTVANILLA.equals(v));
+            new ResourceLocation("jem_visual_sandbox", "skills"), () -> "6",
+            v -> "6".equals(v) || NetworkRegistry.ABSENT.equals(v) || NetworkRegistry.ACCEPTVANILLA.equals(v),
+            v -> "6".equals(v) || NetworkRegistry.ABSENT.equals(v) || NetworkRegistry.ACCEPTVANILLA.equals(v));
     public record Input(int action, int race) {
         static Input decode(FriendlyByteBuf buffer) { return new Input(buffer.readVarInt(), buffer.readVarInt()); }
         void encode(FriendlyByteBuf buffer) { buffer.writeVarInt(action); buffer.writeVarInt(race); }
@@ -28,7 +28,7 @@ public final class SandboxNetwork {
             var context = supplier.get();
             context.enqueueWork(() -> {
                 ServerPlayer player = context.getSender();
-                if (player == null || !RaceExperience.allowed(player) && !ProductionRaceBridge.available(player)) return;
+                if (player == null || !RaceExperience.allowed(player)) return;
                 if (action == 0 && race >= 0 && race < 5) {
                     RaceExperience.choose(player,race);
                 } else if (action == 1) RaceExperience.cast(player);
@@ -86,8 +86,13 @@ public final class SandboxNetwork {
             var context=supplier.get();context.enqueueWork(()->com.siirio.jemvisualsandbox.client.races.SculkScaleClient.receive(this));context.setPacketHandled(true);
         }
     }
+    public record Open() {
+        void handle(Supplier<NetworkEvent.Context> supplier){var c=supplier.get();c.enqueueWork(()->com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.openSelection(false));c.setPacketHandled(true);}
+    }
+    public static void open(ServerPlayer p){if(CHANNEL.isRemotePresent(p.connection.connection))CHANNEL.send(PacketDistributor.PLAYER.with(()->p),new Open());}
     @SubscribeEvent public static void setup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
+            CHANNEL.messageBuilder(Open.class,5,NetworkDirection.PLAY_TO_CLIENT).encoder((p,b)->{}).decoder(b->new Open()).consumerMainThread(Open::handle).add();
             CHANNEL.messageBuilder(Input.class,0,NetworkDirection.PLAY_TO_SERVER).encoder(Input::encode).decoder(Input::decode).consumerMainThread(Input::handle).add();
             CHANNEL.messageBuilder(Visual.class,1,NetworkDirection.PLAY_TO_CLIENT).encoder(Visual::encode).decoder(Visual::decode).consumerMainThread(Visual::handle).add();
             CHANNEL.messageBuilder(Path.class,2,NetworkDirection.PLAY_TO_CLIENT).encoder(Path::encode).decoder(Path::decode).consumerMainThread(Path::handle).add();
@@ -120,16 +125,17 @@ public final class SandboxNetwork {
         if(points.size()>1)CHANNEL.send(PacketDistributor.PLAYER.with(()->player),new Path(kind,points));
     }
     public static void effect(ServerPlayer player,int action,int race,Vec3 origin,float yaw,int subject) {
-        CHANNEL.send(PacketDistributor.PLAYER.with(() -> player),new Visual(action,race,origin,yaw,subject));
+        for(ServerPlayer viewer:player.serverLevel().players())if(viewer.distanceToSqr(player)<96*96 && CHANNEL.isRemotePresent(viewer.connection.connection))
+            CHANNEL.send(PacketDistributor.PLAYER.with(()->viewer),new Visual(action,race,origin,yaw,subject));
     }
     public static void vine(ServerPlayer player, net.minecraft.world.entity.LivingEntity target) {
         effect(player,10,2,target.position(),0,target.getId());
     }
     public static void visual(ServerPlayer player,int race,Vec3 origin,float yaw) {
-        CHANNEL.send(PacketDistributor.PLAYER.with(() -> player),new Visual(1,race,origin,yaw));
+        effect(player,1,race,origin,yaw,-1);
     }
     public static void slash(ServerPlayer player, int hit, Vec3 origin, float yaw) {
         if (hit < 0 || hit > 2) throw new IllegalArgumentException("Invalid fiery slash hit");
-        CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new Visual(2 + hit,4,origin,yaw));
+        effect(player,2+hit,4,origin,yaw,-1);
     }
 }

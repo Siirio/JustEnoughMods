@@ -54,6 +54,12 @@ public final class RaceAbilities {
     private RaceAbilities() {}
 
     public static void handle(ServerPlayer player, RaceActionPacket.Action action) {
+        if (net.minecraftforge.fml.ModList.get().isLoaded("jem_visual_sandbox")) {
+            if(action==RaceActionPacket.Action.SIGNATURE)castSignature(player);
+            else try {Class.forName("com.siirio.jemvisualsandbox.workbench.RaceExperience").getMethod("utility",ServerPlayer.class,boolean.class).invoke(null,player,action==RaceActionPacket.Action.UTILITY_PRESS);}
+            catch(ReflectiveOperationException failure){throw new IllegalStateException("Final race utility",failure);}
+            return;
+        }
         if (!player.server.isDedicatedServer() || !player.isAlive() || player.isSpectator()) return;
         RaceService.record(player).ifPresent(record -> {
             if (action == RaceActionPacket.Action.SIGNATURE) signature(player, record);
@@ -64,6 +70,10 @@ public final class RaceAbilities {
 
     /** Iron's Spells entry point; uses the same authoritative cooldown, tier and effect path as the V key. */
     public static boolean castSignature(ServerPlayer player) {
+        if (net.minecraftforge.fml.ModList.get().isLoaded("jem_visual_sandbox")) {
+            try {return (Boolean)Class.forName("com.siirio.jemvisualsandbox.workbench.RaceExperience").getMethod("cast",ServerPlayer.class).invoke(null,player);}
+            catch(ReflectiveOperationException failure){throw new IllegalStateException("Final race cast",failure);}
+        }
         if (!player.server.isDedicatedServer() || !player.isAlive() || player.isSpectator()) return false;
         return RaceService.record(player).map(record -> signature(player, record)).orElse(false);
     }

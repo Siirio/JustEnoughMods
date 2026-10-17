@@ -29,7 +29,7 @@ final class VoidDistancePreview {
     static void render(RenderLevelStageEvent event, boolean enabled) {
         var client = Minecraft.getInstance();
         if (!enabled || client.player == null || client.level == null || client.screen != null
-                || !client.hasSingleplayerServer() || !client.player.isAlive()) { clear(); return; }
+                || !(com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.supported()) || !client.player.isAlive()) { clear(); return; }
         if (probe == null || probe.level() != client.level || probe.getOwner() != client.player)
             probe = new ThrownEnderpearl(client.level, client.player);
         Vec3 start = ProjectileEstimation.initialPosition(client.player);

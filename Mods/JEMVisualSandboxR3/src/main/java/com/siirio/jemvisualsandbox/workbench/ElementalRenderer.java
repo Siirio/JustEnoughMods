@@ -52,7 +52,7 @@ final class ElementalRenderer {
     static void render(RenderLevelStageEvent event) {
         Minecraft c=Minecraft.getInstance();
         ACTIVE.removeIf(e->c.level!=e.level || c.level==null || c.level.getGameTime()-e.start-e.delay >= (e.action==9?10:24));
-        if(c.level==null || !c.hasSingleplayerServer()){clear();return;}
+        if(c.level==null || !(com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.supported())){clear();return;}
         for(Effect e:ACTIVE) {
             int age=(int)(c.level.getGameTime()-e.start)-e.delay;if(age<0)continue;
             draw(VisualRenderContext.world(event),e.origin,e.yaw,e.action,age);

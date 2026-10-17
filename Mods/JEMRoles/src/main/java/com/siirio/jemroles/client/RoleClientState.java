@@ -30,6 +30,7 @@ public final class RoleClientState {
     private RoleClientState() {}
 
     public static void accept(RaceStatusPacket packet) {
+        if (net.minecraftforge.fml.ModList.get().isLoaded("jem_visual_sandbox")) return;
         boolean firstSelection = status != null && !status.selected() && packet.selected();
         status = packet;
         if (packet.selected() && net.minecraftforge.fml.ModList.get().isLoaded("irons_spellbooks")) {
@@ -46,6 +47,7 @@ public final class RoleClientState {
         private ModBus() {}
         @SubscribeEvent
         public static void keys(RegisterKeyMappingsEvent event) {
+            if (net.minecraftforge.fml.ModList.get().isLoaded("jem_visual_sandbox")) return;
             event.register(SIGNATURE);
             event.register(UTILITY);
         }

@@ -1,0 +1,179 @@
+{
+  "schema_version": 2,
+  "change_id": "final-races-settlements-server-migration",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "jem_visual_sandbox"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "jem_roles"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "jem_settlements"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime": "ordinary local dedicated Server and matching managed clients",
+      "release": "MineRENT and immutable client release baseline unchanged"
+    }
+  ],
+  "precedence": {
+    "layer": "jem",
+    "priority": 180
+  },
+  "change": {
+    "summary": "Promote final sandbox Races and Settlements to the ordinary local server and native managed client generation; remove crossed race UI elements for all five origins.",
+    "modifiers": [
+      {
+        "property": "race.dedicated.mechanics_owner",
+        "operation": "replace",
+        "before": "Legacy JEMRoles abilities; final authored abilities restricted to integrated sandbox",
+        "after": "Final RaceExperience ability pipeline; authenticated account selection and persisted Mechanics NBT remain inside existing JEMRoles RaceRecord. Normal cooldowns; four stages at 0/10/20/30 uses; no production developer authority."
+      },
+      {
+        "property": "race.selection.presentation",
+        "operation": "replace",
+        "before": "Origin counter, DEV tier/reset buttons and explanatory preview/DEV cooldown text",
+        "after": "Removed from the common screen for every origin; final authored previews are available on the matching dedicated connection."
+      },
+      {
+        "property": "settlements.local.distribution",
+        "operation": "replace",
+        "before": "Ordinary local artifact predates final sandbox protocol9 meal/chest/navigation changes",
+        "after": "Fresh current source-built Settlements2.1.0 full JarJar on Server and ManagedPack; source gameplay and saved towns preserved."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMRoles persistence; JEMVisualSandboxR3 final mechanics/presentation; JEMSettlements towns",
+    "kind": "authorized_final_sandbox_migration",
+    "source_files": [
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/JemRoles.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RoleClientState.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/loot/PiglinFortuneLoot.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RolesNetwork.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRecord.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceAbilities.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/OptionalRacePresentation.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceClient.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/SculkScaleClient.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxIronsBridge.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/client/SandboxIronsClient.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/r3/BloomR3Preview.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/BlockbenchWorkbench.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalAbilities.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/FierySlash.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/FlameSlashRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusAbility.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/MainSkillProgression.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/PearlAfterfire.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ProductionRaceBridge.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceExperience.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxHostileControl.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceLoot.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceTraits.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SculkDomain.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SonicWaveAbility.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SonicWaveRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SurfaceVfx.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/UtilityVfx.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/VoidDistancePreview.java",
+      "Mods/JEMVisualSandboxR3/src/production/java/com/siirio/jemvisualsandbox/workbench/RaceDevelopment.java",
+      "Mods/JEMVisualSandboxR3/src/sandbox/java/com/siirio/jemvisualsandbox/workbench/RaceDevelopment.java",
+      "Mods/JEMSettlements/build.gradle",
+      "Docs/races/server-test-migration.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Promote final sandbox Races and Settlements to the ordinary local server and native managed client generation; remove crossed race UI elements for all five origins.",
+    "decision_source": "User explicitly declares Races/Settlements final, requests fast safe server-test migration without tests, removes crossed UI across every race, and asks to start the server for joining. Codex selected the native-save adapter and production artifact boundary."
+  },
+  "introduced": {
+    "date": "2026-10-18",
+    "commit": "SELF",
+    "action": "migrate",
+    "summary": "Promote final sandbox Races and Settlements to the ordinary local server and native managed client generation; remove crossed race UI elements for all five origins."
+  },
+  "history": [
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "migrate",
+      "summary": "Promote final sandbox Races and Settlements to the ordinary local server and native managed client generation; remove crossed race UI elements for all five origins.",
+      "source_files": [
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/JemRoles.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RoleClientState.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/loot/PiglinFortuneLoot.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RolesNetwork.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRecord.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceAbilities.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/OptionalRacePresentation.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceClient.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/SculkScaleClient.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxIronsBridge.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/client/SandboxIronsClient.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/r3/BloomR3Preview.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/BlockbenchWorkbench.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalAbilities.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalRenderer.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/FierySlash.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/FlameSlashRenderer.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusAbility.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusRenderer.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/MainSkillProgression.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/PearlAfterfire.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ProductionRaceBridge.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceExperience.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxHostileControl.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceLoot.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceTraits.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SculkDomain.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SonicWaveAbility.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SonicWaveRenderer.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SurfaceVfx.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/UtilityVfx.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/VoidDistancePreview.java",
+        "Mods/JEMVisualSandboxR3/src/production/java/com/siirio/jemvisualsandbox/workbench/RaceDevelopment.java",
+        "Mods/JEMVisualSandboxR3/src/sandbox/java/com/siirio/jemvisualsandbox/workbench/RaceDevelopment.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "identity-bound race selection and saves",
+      "racial passives and abilities",
+      "native Iron spells",
+      "client key/HUD/VFX",
+      "Settlements protocol9",
+      "AutoModpack publication"
+    ],
+    "relations": [
+      "Existing identity account -> RaceRecord -> final mechanics adapter -> synchronized client presentation",
+      "ManagedPack -> staged host -> native preview/publication -> test jem installation"
+    ],
+    "notes": [
+      "Legacy Roles gameplay/key/loot owners yield when the final Races module is installed; existing registry IDs and API remain.",
+      "Production Races uses dedicated authority; integrated developer scope remains confined to sandbox profile.",
+      "No tests or client/gameplay launch; production build and ordinary server installation only."
+    ],
+    "unresolved": [
+      "User multiplayer gameplay/visual acceptance is pending; no automated test claim."
+    ]
+  }
+}

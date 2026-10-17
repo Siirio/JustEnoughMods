@@ -36,7 +36,7 @@ public final class SandboxIronsClient {
 
     public static boolean shouldUseNativeCast() {
         var client = Minecraft.getInstance();
-        return selected && client.player != null && client.hasSingleplayerServer();
+        return selected && client.player != null && (com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.supported());
     }
 
     public static boolean usesNativeKey(KeyMapping mapping) {
@@ -52,7 +52,7 @@ public final class SandboxIronsClient {
 
     public static void refresh(boolean select) {
         var client = Minecraft.getInstance();
-        if (client.player == null || !client.hasSingleplayerServer()) return;
+        if (client.player == null || !(com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.supported())) return;
         ClientMagicData.updateSpellSelectionManager();
         if (!select || !selected) return;
         var manager = ClientMagicData.getSpellSelectionManager();

@@ -29,7 +29,7 @@ public final class SandboxRaceLoot {
         public Fortune(LootItemCondition[] conditions) { super(conditions); }
         @Override protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> loot, LootContext context) {
             if (!(context.getParamOrNull(LootContextParams.THIS_ENTITY) instanceof AbstractPiglin piglin)
-                    || piglin.getServer() == null || piglin.getServer().isDedicatedServer()) return loot;
+                    || piglin.getServer() == null || !RaceExperience.serverActive(piglin.getServer())) return loot;
             ServerPlayer ancestor = piglin.level().getEntitiesOfClass(ServerPlayer.class, piglin.getBoundingBox().inflate(16),
                             p -> SandboxRaceTraits.hasRace(p, 0))
                     .stream().min(java.util.Comparator.comparingDouble(piglin::distanceToSqr)).orElse(null);

@@ -15,6 +15,7 @@ public final class RaceExperienceClient {
     private static boolean pendingMandatory;
 
     private RaceExperienceClient() {}
+    public static boolean supported(){var c=Minecraft.getInstance();return c.getConnection()!=null && SandboxNetwork.supported(c.getConnection().getConnection());}
 
     public static void receive(RaceExperience.Status value) {
         Minecraft client = Minecraft.getInstance();

@@ -23,7 +23,7 @@ public final class ElementalAbilities {
     private static final Map<UUID,Wave> WAVES = new HashMap<>();
     private ElementalAbilities() {}
     private static boolean allowed(ServerPlayer p) {
-        return !p.server.isDedicatedServer() && p.server.isSingleplayerOwner(p.getGameProfile()) && p.isAlive() && !p.isSpectator();
+        return RaceExperience.allowed(p) && p.isAlive() && !p.isSpectator();
     }
     private static Vec3 forward(ServerPlayer p) {
         double angle = Math.toRadians(p.getYRot());
@@ -60,7 +60,7 @@ public final class ElementalAbilities {
     @SubscribeEvent public static void tick(TickEvent.ServerTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
         var server = net.minecraftforge.server.ServerLifecycleHooks.getCurrentServer();
-        if (server == null || server.isDedicatedServer()) return;
+        if (server == null || !RaceExperience.serverActive(server)) return;
         RIFTS.entrySet().removeIf(entry -> {
             ServerPlayer p=server.getPlayerList().getPlayer(entry.getKey()); Rift r=entry.getValue();
             if(p==null || !allowed(p) || RaceExperience.race(p)!=1 || p.serverLevel().dimension()!=r.dimension) return true;

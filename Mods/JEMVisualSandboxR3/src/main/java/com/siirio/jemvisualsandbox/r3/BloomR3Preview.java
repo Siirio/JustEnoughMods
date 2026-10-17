@@ -48,12 +48,12 @@ public final class BloomR3Preview {
     public static void tick(TickEvent.ClientTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
         Minecraft client = Minecraft.getInstance();
-        if (client.level != previewLevel || !client.hasSingleplayerServer()) clear();
+        if (client.level != previewLevel || !(com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.supported())) clear();
         while (PREVIEW.consumeClick()) {
             var status=com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.status();
             if(status==null || !status.developerMode())continue;
             if (client.player == null || client.level == null || client.screen != null
-                    || !client.hasSingleplayerServer()) continue;
+                    || !(com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.supported())) continue;
             if (origin != null) {
                 clear();
                 message(client, "message.jem_visual_sandbox.r3_stopped");
@@ -95,7 +95,7 @@ public final class BloomR3Preview {
     public static void render(RenderLevelStageEvent event) {
         if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_TRANSLUCENT_BLOCKS || origin == null) return;
         Minecraft client = Minecraft.getInstance();
-        if (client.level != previewLevel || !client.hasSingleplayerServer() || mesh == null) return;
+        if (client.level != previewLevel || !(com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.supported()) || mesh == null) return;
         double seconds = ((client.level.getGameTime() - startTick + event.getPartialTick()) % 60.0D) / 20.0D;
         if (seconds >= 2.2D) return;
         float sample = (float)(seconds / mesh.step);

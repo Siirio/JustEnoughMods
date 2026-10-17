@@ -52,7 +52,7 @@ public final class FierySlash {
     @SubscribeEvent public static void tick(TickEvent.ServerTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
         MinecraftServer server = net.minecraftforge.server.ServerLifecycleHooks.getCurrentServer();
-        if (server == null || server.isDedicatedServer()) return;
+        if (server == null || !RaceExperience.serverActive(server)) return;
         ACTIVE.entrySet().removeIf(entry -> {
             ServerPlayer player = server.getPlayerList().getPlayer(entry.getKey());
             Combo combo = entry.getValue();

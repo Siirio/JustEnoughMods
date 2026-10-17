@@ -12,7 +12,7 @@ public final class MainSkillProgression {
     }
     @net.minecraftforge.eventbus.api.SubscribeEvent
     public static void clone(net.minecraftforge.event.entity.player.PlayerEvent.Clone e){
-        if(e.getEntity().getServer()==null || e.getEntity().getServer().isDedicatedServer())return;
+        if(e.getEntity().getServer()==null || !RaceExperience.serverActive(e.getEntity().getServer()))return;
         e.getEntity().getPersistentData().putInt("JemSandboxMainUpgrade2",Math.max(0,Math.min(3,e.getOriginal().getPersistentData().getInt("JemSandboxMainUpgrade2"))));
     }
 }

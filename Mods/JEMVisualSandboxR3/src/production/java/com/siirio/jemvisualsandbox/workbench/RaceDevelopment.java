@@ -5,6 +5,7 @@ import net.minecraft.server.level.ServerPlayer;
 /** Sealed PRODUCTION implementation: no cheat packet action, command or state mutation. */
 final class RaceDevelopment {
     private RaceDevelopment() {}
+    static boolean integrated(){return false;}
     static boolean enabled(ServerPlayer p){return false;}
     static boolean cooldownsDisabled(ServerPlayer p){return false;}
     static boolean unlimitedSelection(ServerPlayer p){return false;}

@@ -46,7 +46,7 @@ public final class SandboxUtilities {
     private static void cue(ServerPlayer p,int action) { SandboxNetwork.effect(p,action,race(p),p.position(),p.getYRot(),p.getId()); }
     public static boolean tryLavaDrink(net.minecraft.world.entity.player.Player player,InteractionHand hand) {
         var server=net.minecraftforge.server.ServerLifecycleHooks.getCurrentServer();
-        if(server==null || server.isDedicatedServer() || player.isShiftKeyDown() || !player.getItemInHand(hand).is(Items.LAVA_BUCKET) || player.getPersistentData().getInt("JemSandboxRace")!=4)return false;
+        if(server==null || !RaceExperience.serverActive(server) || player.isShiftKeyDown() || !player.getItemInHand(hand).is(Items.LAVA_BUCKET) || player.getPersistentData().getInt("JemSandboxRace")!=4)return false;
         if(player instanceof ServerPlayer p && (!RaceExperience.canAct(p)||!RaceExperience.requireReady(p,"lava_drink")||p.isUsingItem()))return false;
         player.startUsingItem(hand);player.getPersistentData().putBoolean("JemSandboxDrinking",true);return true;
     }
@@ -115,7 +115,7 @@ public final class SandboxUtilities {
         if(p.tickCount%20==0)SandboxPathData.get(p.server).tick(p.server);
     }
     @SubscribeEvent public static void pearl(ProjectileImpactEvent e) {
-        if(!(e.getProjectile() instanceof ThrownEnderpearl pearl) || !pearl.getPersistentData().getBoolean("JemSandboxVoidProjectile") || !(pearl.getOwner() instanceof ServerPlayer p) || p.server.isDedicatedServer())return;
+        if(!(e.getProjectile() instanceof ThrownEnderpearl pearl) || !pearl.getPersistentData().getBoolean("JemSandboxVoidProjectile") || !(pearl.getOwner() instanceof ServerPlayer p) || !RaceExperience.serverActive(p.server))return;
         e.setCanceled(true);Vec3 hit=e.getRayTraceResult().getLocation();
         SandboxNetwork.effect(p,29,1,hit,0,-1);
         if(allowed(p) && race(p)==1) {
@@ -170,7 +170,7 @@ public final class SandboxUtilities {
         SandboxNetwork.effect(p,27,0,golem.position(),0,golem.getId());if(threat!=null)golem.setTarget(threat);
     }
     @SubscribeEvent public static void golem(LivingEvent.LivingTickEvent e) {
-        if(!(e.getEntity() instanceof IronGolem g) || g.level().isClientSide || g.getServer()==null || g.getServer().isDedicatedServer() || !g.getPersistentData().contains("JemSandboxGuardianExpiry"))return;
+        if(!(e.getEntity() instanceof IronGolem g) || g.level().isClientSide || g.getServer()==null || !RaceExperience.serverActive(g.getServer()) || !g.getPersistentData().contains("JemSandboxGuardianExpiry"))return;
         if(g.getServer().overworld().getGameTime()>=g.getPersistentData().getLong("JemSandboxGuardianExpiry") || g.getServer().getPlayerList().getPlayer(g.getPersistentData().getUUID("JemSandboxGuardianOwner"))==null) { g.discard();return; }
         if(g.tickCount%20==0)g.level().getEntitiesOfClass(Mob.class,g.getBoundingBox().inflate(16),m->m instanceof Enemy && m.isAlive()).stream().min(java.util.Comparator.comparingDouble(g::distanceToSqr)).ifPresent(g::setTarget);
     }
@@ -186,15 +186,15 @@ public final class SandboxUtilities {
             int resonance=Math.min(100,p.getPersistentData().getInt("JemSandboxResonance")+10);p.getPersistentData().putInt("JemSandboxResonance",resonance);
             p.displayClientMessage(Component.literal("Resonance: "+resonance+" / И: consume25 or reveal"),true);cue(p,24);
         }
-        if(e.getEntity() instanceof ServerPlayer p && !p.server.isDedicatedServer())selectionChanged(p);
+        if(e.getEntity() instanceof ServerPlayer p && RaceExperience.serverActive(p.server))selectionChanged(p);
     }
     @SubscribeEvent public static void drops(LivingDropsEvent e) { if(e.getEntity().getPersistentData().contains("JemSandboxGuardianExpiry"))e.getDrops().clear(); }
     @SubscribeEvent public static void pathBreak(BlockEvent.BreakEvent e) {
-        if(e.getLevel() instanceof net.minecraft.server.level.ServerLevel level && !level.getServer().isDedicatedServer()
+        if(e.getLevel() instanceof net.minecraft.server.level.ServerLevel level && RaceExperience.serverActive(level.getServer())
                 && e.getState().is(Blocks.OAK_LEAVES) && SandboxPathData.get(level.getServer()).contains(level.dimension(),e.getPos()))e.setCanceled(true);
     }
     @SubscribeEvent public static void xp(LivingExperienceDropEvent e) { if(e.getEntity().getPersistentData().contains("JemSandboxGuardianExpiry"))e.setDroppedExperience(0); }
-    @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent e) { if(e.getEntity() instanceof ServerPlayer p && !p.server.isDedicatedServer())selectionChanged(p); }
-    @SubscribeEvent public static void dimension(PlayerEvent.PlayerChangedDimensionEvent e) { if(e.getEntity() instanceof ServerPlayer p && !p.server.isDedicatedServer())selectionChanged(p); }
+    @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent e) { if(e.getEntity() instanceof ServerPlayer p && RaceExperience.serverActive(p.server))selectionChanged(p); }
+    @SubscribeEvent public static void dimension(PlayerEvent.PlayerChangedDimensionEvent e) { if(e.getEntity() instanceof ServerPlayer p && RaceExperience.serverActive(p.server))selectionChanged(p); }
     @SubscribeEvent public static void stopped(ServerStoppedEvent e) { CHARGES.clear(); }
 }

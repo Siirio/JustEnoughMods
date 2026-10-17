@@ -21,6 +21,7 @@ public final class PiglinFortuneLoot extends LootModifier {
     public PiglinFortuneLoot(LootItemCondition[] conditions) { super(conditions); }
 
     @Override protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> loot, LootContext context) {
+        if (net.minecraftforge.fml.ModList.get().isLoaded("jem_visual_sandbox")) return loot;
         if (!(context.getParamOrNull(LootContextParams.THIS_ENTITY) instanceof AbstractPiglin piglin)) return loot;
         ServerPlayer ancestor = piglin.level().getEntitiesOfClass(ServerPlayer.class, piglin.getBoundingBox().inflate(16),
                         player -> RaceApi.hasRace(player, RaceId.ANCESTORS))

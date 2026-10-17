@@ -50,7 +50,7 @@ public final class SandboxRaceTraits {
     private SandboxRaceTraits() {}
 
     private static boolean owner(ServerPlayer p) {
-        return !p.server.isDedicatedServer() && p.server.isSingleplayerOwner(p.getGameProfile());
+        return RaceExperience.allowed(p);
     }
     public static boolean hasRace(ServerPlayer p, int race) {
         return owner(p) && RaceExperience.selected(p) && RaceExperience.race(p) == race;
@@ -175,7 +175,7 @@ public final class SandboxRaceTraits {
     }
     @SubscribeEvent public static void containerClose(PlayerContainerEvent.Close e) { if (e.getEntity() instanceof ServerPlayer p && owner(p)) restoreMerchantDiscount(p); }
     @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent e) { if (e.getEntity() instanceof ServerPlayer p && owner(p)) clear(p); }
-    @SubscribeEvent public static void stopped(ServerStoppedEvent e) { if (!e.getServer().isDedicatedServer()) DISCOUNTS.clear(); }
+    @SubscribeEvent public static void stopped(ServerStoppedEvent e) { if (RaceExperience.serverActive(e.getServer())) DISCOUNTS.clear(); }
     public static void clear(ServerPlayer p) {
         if (!owner(p)) return;
         restoreMerchantDiscount(p); clearAttributes(p);

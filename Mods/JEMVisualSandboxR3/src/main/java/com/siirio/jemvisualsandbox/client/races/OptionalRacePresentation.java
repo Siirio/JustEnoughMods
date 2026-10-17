@@ -31,7 +31,7 @@ public final class OptionalRacePresentation {
     }
     public static boolean nativeKey(KeyMapping key){return Boolean.TRUE.equals(call("usesNativeKey",new Class<?>[]{KeyMapping.class},key));}
     public static boolean nativeHud(){
-        if(!net.minecraft.client.Minecraft.getInstance().hasSingleplayerServer()&&ModList.get().isLoaded("jem_roles")&&ModList.get().isLoaded("irons_spellbooks"))return true;
+        if(!(com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.supported())&&ModList.get().isLoaded("jem_roles")&&ModList.get().isLoaded("irons_spellbooks"))return true;
         return Boolean.TRUE.equals(call("shouldUseNativeCast",new Class<?>[0]));
     }
 }

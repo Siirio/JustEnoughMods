@@ -1,5 +1,13 @@
 # JEM Races
 
+## Final sandbox promotion — 2026-10-18
+
+The user approved the final Races and Settlements for the local dedicated server and `test jem` via native AutoModpack. Matching fresh production Races1.1.0, Roles2.0.0 and full Settlements2.1.0 artifacts now form the local managed generation. MineRENT, stable profiles and the immutable release baseline are unchanged.
+
+Races uses the final authored ability pipeline and previews on dedicated connections. Existing authenticated JEMRoles account records remain the sole save owner: final per-race mastery/cooldown data lives in their Mechanics compound, initialized from existing selection/progress/cooldowns. Legacy gameplay/key/loot owners yield while final Races is installed. Production has normal cooldowns and no developer authority. Origin count, DEV tier/reset controls and the crossed preview/DEV cooldown explanations are removed from the shared screen for every origin. Settlements promotes the existing final protocol9 source, without redesigning its town simulation.
+
+Only necessary production compilation/reobfuscation and ordinary server installation/publication were performed. No tests, client launch or gameplay/visual acceptance is claimed. Artifact and publication receipt: `Docs/races/server-test-migration.json`.
+
 ## Current sandbox follow-up — 2026-10-17
 
 User requests leaf decay10seconds at stage0 and+5seconds each later stage:200+100×stage ticks,10/15/20/25seconds. Forward reach and activation cooldown remain unchanged. Only the sandbox JAR is rebuilt/installed; ordinary Client/Server and release baseline are not promoted. Cohesive wood material applies to progression information; the protected black origin selection and quiet origin controls remain. Existing source-owned profession progression is now available in the same sandbox through F7 or `/professions`; see [professions](../professions/README.md). Installation receipts: [sandbox-only delivery](../settlements/standalone/sandbox-only-iteration-delivery.json). No game launch, tests or visual acceptance claimed.

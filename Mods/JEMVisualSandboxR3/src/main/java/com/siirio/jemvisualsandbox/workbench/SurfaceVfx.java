@@ -18,12 +18,12 @@ final class SurfaceVfx {
     private SurfaceVfx() {}
     static void clear(){ACTIVE.clear();}
     static void receive(SandboxNetwork.Path packet) {
-        var c=Minecraft.getInstance();if(c.level==null || !c.hasSingleplayerServer() || packet.points().size()<2)return;
+        var c=Minecraft.getInstance();if(c.level==null || !(com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.supported()) || packet.points().size()<2)return;
         if(ACTIVE.size()==16)ACTIVE.remove(0);
         ACTIVE.add(new Trail(c.level,c.level.getGameTime(),packet.kind(),packet.points()));
     }
     static void render(RenderLevelStageEvent event) {
-        var c=Minecraft.getInstance();if(c.level==null || !c.hasSingleplayerServer()){clear();return;}
+        var c=Minecraft.getInstance();if(c.level==null || !(com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.supported())){clear();return;}
         ACTIVE.removeIf(t->t.level!=c.level || c.level.getGameTime()-t.start>=48);
         for(Trail t:ACTIVE) {
             draw(VisualRenderContext.world(event),t.points,t.kind,c.level.getGameTime()-t.start+event.getPartialTick());

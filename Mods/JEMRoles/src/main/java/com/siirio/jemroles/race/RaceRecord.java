@@ -12,6 +12,8 @@ public final class RaceRecord {
     private int spellTier = 1;
     private int spellProgress;
     private final CompoundTag cooldowns = new CompoundTag();
+    private final CompoundTag mechanics = new CompoundTag();
+    public CompoundTag mechanics() { return mechanics; }
     private int resonance;
     private int waterExposure;
     private int lavaExposure;
@@ -71,6 +73,7 @@ public final class RaceRecord {
     CompoundTag save() {
         CompoundTag tag = new CompoundTag();
         tag.putInt("Schema", SCHEMA);
+        tag.put("Mechanics", mechanics.copy());
         tag.putString("Race", race.name());
         tag.putLong("SelectedAt", selectedAt);
         tag.putLong("ActiveTicks", activeTicks);
@@ -89,6 +92,7 @@ public final class RaceRecord {
     static RaceRecord load(CompoundTag tag) {
         RaceId id = RaceId.parse(tag.getString("Race")).orElseThrow();
         RaceRecord record = new RaceRecord(id, tag.getLong("SelectedAt"), tag.getLong("ActiveTicks"), tag.getBoolean("FreeSwitchUsed"), tag.getLong("LastRespecAt"));
+        if (tag.contains("Mechanics")) record.mechanics.merge(tag.getCompound("Mechanics"));
         record.spellProgress = Math.max(0, Math.min(30, tag.getInt("SpellProgress")));
         record.spellTier = Math.max(1, Math.min(3, tag.contains("SpellTier") ? tag.getInt("SpellTier") :
                 (record.spellProgress >= 30 ? 3 : record.spellProgress >= 10 ? 2 : 1)));
