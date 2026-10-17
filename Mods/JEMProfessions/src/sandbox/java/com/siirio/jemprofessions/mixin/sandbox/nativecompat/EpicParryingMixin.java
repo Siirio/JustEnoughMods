@@ -1,4 +1,4 @@
-package com.siirio.jemprofessions.sandbox.nativecompat.mixin;
+package com.siirio.jemprofessions.mixin.sandbox.nativecompat;
 
 import com.siirio.jemprofessions.sandbox.nativecompat.SandboxWarriorEffects;
 import org.spongepowered.asm.mixin.Mixin;

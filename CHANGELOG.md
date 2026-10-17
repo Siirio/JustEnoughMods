@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-17 — Repair profession sandbox class loading
+
+- User supplied the Forge startup failure after installing the profession migration; scope remains jem sandbox only.
+- Bug / Client / jem_professions_sandbox.mixins.json reserved the entire com.siirio.jemprofessions.sandbox application namespace, so Mixin rejected the normal SandboxProfileMarker during Forge mod construction with IllegalClassLoadError / in testing. Codex moves all16 Mixin/accessor classes into a dedicated mixin.sandbox namespace, updates config names and the fishing accessor import, and keeps marker/plugin/gameplay helpers outside the reserved package. Moving only the first rejected marker would have left the same failure on every helper.
+- Required sandbox profession artifact rebuilt/reobfuscated and installed with backup/hash evidence in Docs/professions/sandbox-delivery.json. Injection targets, approved skills/XP/controls, native owners and dependencies are preserved. Archive inspection covers package isolation, configured classes and regenerated refmap. Ordinary Server, ManagedPack, generation26 and release baseline unchanged. No tests, static analysis or game launch; startup/player acceptance pending.
+
 ## 2026-10-17 — Implement full professions in jem sandbox
 
 - User requests a fully functional separate profession mod, the supplied radial composition without overlapping icons/sidebar, short clear Russian effect/XP instructions and free individual claim/unclaim. User explicitly approved the complete78-effect contract and chose preserving Create, magic, commerce and town features with their required systems.

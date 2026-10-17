@@ -1,5 +1,5 @@
 {
-  "dateTime": "2026-10-17T23:37:55.471979+05:00",
+  "dateTime": "2026-10-17T23:49:43.280129+05:00",
   "scope": "jem sandbox only; integrated logical server",
   "profileClosedAtInstall": true,
   "atomicReplacement": true,
@@ -7,10 +7,10 @@
     {
       "source": "C:\\MyProjects\\Minecraft\\JustEnoughMods\\Mods\\JEMProfessions\\build\\sandbox-profile\\libs\\jem-professions-1.0.0-sandbox.jar",
       "target": "C:\\Users\\user\\AppData\\Roaming\\.minecraft\\versions\\jem sandbox\\mods\\jem-professions-1.0.0-sandbox.jar",
-      "sha256": "3a20cf6ce6a7827fcdfd12347fab89f6af12e748e91936a5c519f184b4b6cf2b",
-      "previousSha256": "59d592266991d897860669778ef4ed076897d8f158b599d354d0d959c11ee617",
+      "sha256": "a93f116cb67be3ccc8eedbef38e54fc982e829132ba6f24d498a59da7201b978",
+      "previousSha256": "3a20cf6ce6a7827fcdfd12347fab89f6af12e748e91936a5c519f184b4b6cf2b",
       "installedMatchesSource": true,
-      "backup": "C:\\MyProjects\\Minecraft\\JustEnoughMods\\Server\\local\\sandbox-professions-20261017-233755\\jem-professions-1.0.0-sandbox.jar"
+      "backup": "C:\\MyProjects\\Minecraft\\JustEnoughMods\\Server\\local\\sandbox-profession-loading-20261017-234943\\jem-professions-1.0.0-sandbox.jar"
     },
     {
       "source": "C:\\MyProjects\\Minecraft\\JustEnoughMods\\Mods\\JEMEconomy\\build\\libs\\jem-economy-1.3.0.jar",
@@ -134,7 +134,7 @@
   "atlas": {
     "scope": "Exact staged task snapshot through canonical Atlas rebuild/audit/scan/validation, preserving unrelated dirty Catalog files in place.",
     "valid": true,
-    "recordDigest": "5e340e4c006c93868cc75b35539e8e16594edff76d821260aa2eb6bf19d62097",
+    "recordDigest": "71b8de556593aac9b4a3fb2d594577e9889a1c57aa90d978c526eecc08ae340a",
     "changeRecords": 42,
     "uncoveredTaskPaths": [],
     "canonicalArtifactDrift": {
@@ -149,5 +149,24 @@
       "minecraft:sheep"
     ]
   },
-  "sourceBaseCommit": "c641ce02360b1f4397dfa06de3e7c0235e58a43b"
+  "sourceBaseCommit": "bee5a12ade803183cefbaff976102a4cd8622ac7",
+  "followUps": [
+    {
+      "dateTime": "2026-10-17T23:49:43.280129+05:00",
+      "userEvidence": "crash-2026-10-17_23.45.47-fml.txt",
+      "rootCause": "Mixin config reserved sandbox application namespace; normal @Mod marker rejected by IllegalClassLoadError.",
+      "correction": "Dedicated com.siirio.jemprofessions.mixin.sandbox package for all16 actual injection/accessor classes; config names and fishing import follow relocation. Marker, plugin and gameplay helpers stay outside.",
+      "previousSha256": "3a20cf6ce6a7827fcdfd12347fab89f6af12e748e91936a5c519f184b4b6cf2b",
+      "sha256": "a93f116cb67be3ccc8eedbef38e54fc982e829132ba6f24d498a59da7201b978",
+      "backup": "C:\\MyProjects\\Minecraft\\JustEnoughMods\\Server\\local\\sandbox-profession-loading-20261017-234943\\jem-professions-1.0.0-sandbox.jar",
+      "build": "sandboxJar BUILD SUCCESSFUL; test/check excluded",
+      "archiveInspection": {
+        "onlyConfigured16MixinsInReservedPackage": true,
+        "normalModAndHelpersOutsideReservedPackage": true,
+        "oldMixinClassesAbsent": true,
+        "refmapEntriesInNewNamespace": 9
+      },
+      "acceptance": "in testing; user restart confirmation pending; no game launched by Codex"
+    }
+  ]
 }

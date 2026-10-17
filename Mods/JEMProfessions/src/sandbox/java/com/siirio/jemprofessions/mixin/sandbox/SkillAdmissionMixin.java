@@ -1,6 +1,9 @@
-package com.siirio.jemprofessions.sandbox;
+package com.siirio.jemprofessions.mixin.sandbox;
 
 import com.siirio.jemprofessions.api.ProfessionApi;
+import com.siirio.jemprofessions.sandbox.SandboxProfessionSupport;
+import com.siirio.jemprofessions.sandbox.SandboxProfessionPolicy;
+import com.siirio.jemprofessions.sandbox.SandboxSkillAdmission;
 import com.siirio.jemprofessions.progress.ProfessionId;
 import com.siirio.jemprofessions.tree.ProfessionCatalog;
 import net.minecraft.resources.ResourceLocation;

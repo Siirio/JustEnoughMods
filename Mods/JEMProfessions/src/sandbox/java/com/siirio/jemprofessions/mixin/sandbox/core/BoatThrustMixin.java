@@ -1,4 +1,4 @@
-package com.siirio.jemprofessions.sandbox.core.mixin;
+package com.siirio.jemprofessions.mixin.sandbox.core;
 
 import com.siirio.jemprofessions.sandbox.SandboxProfessionSupport;
 import net.minecraft.world.entity.vehicle.Boat;

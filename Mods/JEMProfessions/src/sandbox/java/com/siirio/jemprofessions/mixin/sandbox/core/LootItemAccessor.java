@@ -1,4 +1,4 @@
-package com.siirio.jemprofessions.sandbox.core.mixin;
+package com.siirio.jemprofessions.mixin.sandbox.core;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.storage.loot.entries.LootItem;

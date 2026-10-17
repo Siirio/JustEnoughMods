@@ -4,7 +4,7 @@ import com.siirio.jemprofessions.progress.ProfessionId;
 import com.siirio.jemprofessions.progress.ProfessionSavedData;
 import com.siirio.jemprofessions.progress.SourceKind;
 import com.siirio.jemprofessions.sandbox.SandboxProfessionSupport;
-import com.siirio.jemprofessions.sandbox.core.mixin.LootItemAccessor;
+import com.siirio.jemprofessions.mixin.sandbox.core.LootItemAccessor;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;

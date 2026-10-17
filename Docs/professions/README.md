@@ -6,6 +6,10 @@ Status: user approved the complete contract on 2026-10-17. All78 skill adapters 
 
 Source diagnosis: professions is already a standalone mod, not part of Races. The sandbox screen selects one profession through a left rail; its details renderer does not show the profession XP instruction. The 78-node presentation catalog contains many entries with generic rank text. `sandbox-availability.json` admits only eight nodes because most promised gameplay adapters do not exist; the packager deliberately makes unsupported nodes unaffordable. Thus importing the data or removing the gate cannot create the missing effects. The owning correction is to implement each effect and native gain signal, bind descriptions to their real contract, then admit those nodes and replace the sandbox presentation. This is a source-backed cause chain, not a claim that gameplay was launched or that every one of the eight existing effects was manually verified.
 
+### Sandbox startup correction — 2026-10-17
+
+The user’s actual Forge crash report `crash-2026-10-17_23.45.47-fml.txt` identified `IllegalClassLoadError` for `SandboxProfileMarker`. The Mixin configuration declared the entire sandbox application namespace, so Mixin rejected the normal marker before Forge could construct it; moving only that marker would leave the same fault on the gameplay helpers. All16 Mixin/accessor classes now live in `com.siirio.jemprofessions.mixin.sandbox`, with matching configuration names and fishing accessor import. Marker, plugin and effect helpers remain outside that reserved namespace. This changes class-loading ownership only; native injection targets, dependencies and approved mechanics remain. Required sandbox JAR rebuilt/reobfuscated and replaced with backup/hash evidence in the delivery record. User startup acceptance remains in testing; no client was launched by Codex.
+
 ### User decisions
 
 - Work in the `jem sandbox` profile and use the existing local test server as evidence for installed versions, native behavior and existing JEM owners.
