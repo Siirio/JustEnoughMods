@@ -41,7 +41,7 @@ public final class SandboxHostileControl {
             count++;
             mob.hurt(owner.damageSources().playerAttack(owner),BloomMechanics.INITIAL_DAMAGE);if(mob.isAlive())bind(owner,mob);
         }
-        if(count==0)owner.displayClientMessage(net.minecraft.network.chat.Component.translatable("jem.roles.action.target_required"),true);
+        if(count==0)owner.displayClientMessage(net.minecraft.network.chat.Component.translatable("jem_visual_sandbox.action.target_required"),true);
         return count>0;
     }
     @SubscribeEvent public static void tick(net.minecraftforge.event.TickEvent.ServerTickEvent e) {

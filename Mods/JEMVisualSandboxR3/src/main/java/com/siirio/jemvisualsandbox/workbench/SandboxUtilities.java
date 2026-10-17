@@ -53,7 +53,7 @@ public final class SandboxUtilities {
     public static void press(ServerPlayer p) {
         if(!allowed(p))return;
         switch(race(p)) {
-            case 0 -> p.displayClientMessage(Component.literal("Guardian activates below 40% health; V: Life Chorus"),true);
+            case 0 -> p.displayClientMessage(Component.translatable("jem_visual_sandbox.action.guardian_hint"),true);
             case 1 -> {
                 if(p.isShiftKeyDown()) {
                     if(!RaceExperience.requireReady(p,"gravity"))return;
@@ -67,13 +67,13 @@ public final class SandboxUtilities {
             case 2 -> {
                 boolean on=!p.getPersistentData().getBoolean("JemSandboxLivingPath");if(on&&!RaceExperience.requireReady(p,"leaf_bridge"))return;
                 p.getPersistentData().putBoolean("JemSandboxLivingPath",on);p.getPersistentData().remove("JemSandboxLivingPathAwarded");if(on)RaceExperience.cooldown(p,"leaf_bridge",300);
-                p.displayClientMessage(Component.literal("Living Path: "+(on?"ON":"OFF")),true);if(on)cue(p,23);
+                p.displayClientMessage(Component.translatable(on?"jem_visual_sandbox.action.living_path_on":"jem_visual_sandbox.action.living_path_off"),true);if(on)cue(p,23);
             }
             case 3 -> {
                 int resonance=p.getPersistentData().getInt("JemSandboxResonance");
                 if(resonance>=25) { p.getPersistentData().putInt("JemSandboxResonance",0);p.heal(RacePowerStages.recoveryHeal(RaceExperience.tier(p)));RaceOwnedEffects.grant(p,new MobEffectInstance(MobEffects.ABSORPTION,RacePowerStages.absorptionTicks(RaceExperience.tier(p)),1));cue(p,25);RaceExperience.finishUtility(p); }
                 else if(RaceExperience.requireReady(p,"echo")) {
-                    if(p.serverLevel().getEntitiesOfClass(net.minecraft.world.entity.LivingEntity.class,p.getBoundingBox().inflate(RacePowerStages.echoRadius(RaceExperience.tier(p))),e->e!=p&&e.isAlive()).isEmpty()){p.displayClientMessage(Component.literal("No living creatures nearby"),true);return;}
+                    if(p.serverLevel().getEntitiesOfClass(net.minecraft.world.entity.LivingEntity.class,p.getBoundingBox().inflate(RacePowerStages.echoRadius(RaceExperience.tier(p))),e->e!=p&&e.isAlive()).isEmpty()){p.displayClientMessage(Component.translatable("jem_visual_sandbox.action.no_living_creatures"),true);return;}
                     SandboxSkills.echoVision(p);RaceExperience.cooldown(p,"echo",160);RaceExperience.finishUtility(p);
                 }
             }
@@ -84,7 +84,7 @@ public final class SandboxUtilities {
     public static void release(ServerPlayer p) {
         Charge charge=CHARGES.remove(p.getUUID());
         if(charge==null || !RaceExperience.canAct(p) || race(p)!=1 || charge.dimension!=p.serverLevel().dimension() || !RaceExperience.requireReady(p,"void_projectile"))return;
-        if(p.level().getGameTime()-charge.start<10) { p.displayClientMessage(Component.literal("Hold И/B for at least half a second"),true);return; }
+        if(p.level().getGameTime()-charge.start<10) { p.displayClientMessage(Component.translatable("jem_visual_sandbox.action.charge_too_short"),true);return; }
         ThrownEnderpearl pearl=new ThrownEnderpearl(p.level(),p);pearl.getPersistentData().putBoolean("JemSandboxVoidProjectile",true);ProjectileEstimation.launch(pearl,p);
         if(p.level().addFreshEntity(pearl)){RaceExperience.cooldown(p,"void_projectile",SandboxRaceRules.VOID_PROJECTILE_COOLDOWN.get());SandboxNetwork.effect(p,28,1,pearl.position(),p.getYRot(),pearl.getId());}
     }
@@ -121,7 +121,7 @@ public final class SandboxUtilities {
         if(allowed(p) && race(p)==1) {
             BlockPos safe=SandboxEnvironment.nearestSafe(p,p.serverLevel(),BlockPos.containing(hit),5,true).orElse(null);
             if(safe!=null) { p.teleportTo(p.serverLevel(),safe.getX()+.5,safe.getY(),safe.getZ()+.5,p.getYRot(),p.getXRot());SandboxHostileControl.refreshTargets(p);RaceExperience.finishUtility(p); }
-            else p.displayClientMessage(Component.literal("Void pearl: no safe destination"),true);
+            else p.displayClientMessage(Component.translatable("jem_visual_sandbox.action.no_safe_destination"),true);
         }
         pearl.discard();
     }
@@ -155,7 +155,7 @@ public final class SandboxUtilities {
             if(placed)break;
         }
         if(!placed)return;
-        golem.setPlayerCreated(true);golem.setInvulnerable(true);golem.setCustomName(Component.literal("Ancestral Guardian"));
+        golem.setPlayerCreated(true);golem.setInvulnerable(true);golem.setCustomName(Component.translatable("jem_visual_sandbox.entity.ancestral_guardian"));
         golem.getPersistentData().putLong("JemSandboxGuardianExpiry",p.server.overworld().getGameTime()+RacePowerStages.guardianTicks(RaceExperience.tier(p)));
         golem.getPersistentData().putUUID("JemSandboxGuardianOwner",p.getUUID());
         if(!p.level().addFreshEntity(golem))return;
@@ -184,7 +184,7 @@ public final class SandboxUtilities {
     @SubscribeEvent public static void death(LivingDeathEvent e) {
         if(e.getSource().getEntity() instanceof ServerPlayer p && allowed(p) && race(p)==3 && e.getEntity() instanceof Enemy) {
             int resonance=Math.min(100,p.getPersistentData().getInt("JemSandboxResonance")+10);p.getPersistentData().putInt("JemSandboxResonance",resonance);
-            p.displayClientMessage(Component.literal("Resonance: "+resonance+" / И: consume25 or reveal"),true);cue(p,24);
+            p.displayClientMessage(Component.translatable("jem_visual_sandbox.action.resonance",resonance),true);cue(p,24);
         }
         if(e.getEntity() instanceof ServerPlayer p && RaceExperience.serverActive(p.server))selectionChanged(p);
     }

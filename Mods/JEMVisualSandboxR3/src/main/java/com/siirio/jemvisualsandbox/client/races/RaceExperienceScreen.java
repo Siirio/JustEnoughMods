@@ -61,7 +61,11 @@ public final class RaceExperienceScreen extends Screen {
         if(race==2) this.previewTier=this.previewBloom;
     }
 
+    private static final double FIXED_GUI_SCALE = 3.0;
+
     @Override protected void init() {
+        width = (int)Math.ceil(minecraft.getWindow().getWidth() / FIXED_GUI_SCALE);
+        height = (int)Math.ceil(minecraft.getWindow().getHeight() / FIXED_GUI_SCALE);
         bloomUnlocks.clear();
         developerTier = null;
         resetProgress = null;
@@ -179,6 +183,14 @@ public final class RaceExperienceScreen extends Screen {
     }
 
     @Override public void render(GuiGraphics g, int mouseX, int mouseY, float partialTick) {
+        float scale = (float)(FIXED_GUI_SCALE / minecraft.getWindow().getGuiScale());
+        g.pose().pushPose();
+        try {
+            g.pose().scale(scale, scale, 1);
+            renderFixed(g, (int)(mouseX / scale), (int)(mouseY / scale), partialTick);
+        } finally { g.pose().popPose(); }
+    }
+    private void renderFixed(GuiGraphics g, int mouseX, int mouseY, float partialTick) {
         float entry = entryAt == 0 ? 0 : Mth.clamp(elapsed(entryAt) / (float) ENTRY_MS, 0, 1);
         float reveal = smooth((entry - .90F) / .10F);
         float opening=smooth(elapsed(openedAt)/450F);
@@ -201,7 +213,7 @@ public final class RaceExperienceScreen extends Screen {
         else g.fill(left,49,left+1,height-42,0xFF282828);
 
         String[] icons={"life_chorus","rift_ambush","verdant_dominion","sculk_veins","infernal_eruption"};
-        if(previewSlot==0) g.blit(new net.minecraft.resources.ResourceLocation("jem_visual_sandbox","textures/gui/spells/"+icons[race]+".png"),left+12,52,0,0,16,16,16,16);
+        if(previewSlot==0) g.blit(new net.minecraft.resources.ResourceLocation("jem_visual_sandbox","textures/gui/spell_icons/"+icons[race]+".png"),left+12,52,0,0,16,16,16,16);
         else {
             net.minecraft.world.item.Item[] utilityIcons={net.minecraft.world.item.Items.IRON_GOLEM_SPAWN_EGG,net.minecraft.world.item.Items.ENDER_PEARL,
                     net.minecraft.world.item.Items.OAK_LEAVES,net.minecraft.world.item.Items.ECHO_SHARD,net.minecraft.world.item.Items.BLAZE_POWDER};
@@ -212,10 +224,12 @@ public final class RaceExperienceScreen extends Screen {
         if(height>=216) {
         g.fill(previewX,previewY,previewX+previewW,previewBottom(),0xFF08090C);
         abilityPreview.render(g,previewX,previewY,previewW,previewBottom()-previewY,
-                race,previewSlot,previewTier,previewBloom,partialTick);
+                race,previewSlot,previewTier,previewBloom,partialTick,FIXED_GUI_SCALE);
         }
         int top = height>=216?previewBottom()+25:119, bottom = Math.max(top+1,height - 41);
-        g.enableScissor(left + 9, top, right + 3, bottom);
+        double scissorScale = FIXED_GUI_SCALE / minecraft.getWindow().getGuiScale();
+        g.enableScissor((int)Math.floor((left + 9) * scissorScale), (int)Math.floor(top * scissorScale),
+                (int)Math.ceil((right + 3) * scissorScale), (int)Math.ceil(bottom * scissorScale));
         List<Line> lines = abilityLines();
         lines.add(Line.gap());
         lines.addAll(progression ? progressionLines() : originLines());
@@ -430,7 +444,15 @@ public final class RaceExperienceScreen extends Screen {
     private static long elapsed(long start) { return (System.nanoTime() - start) / 1_000_000; }
     private static float smooth(float value) { float t = Mth.clamp(value, 0, 1); return t * t * (3 - 2 * t); }
 
+    private double fixedCoordinate(double value) { return value * minecraft.getWindow().getGuiScale() / FIXED_GUI_SCALE; }
+    @Override public boolean mouseClicked(double x, double y, int button) { return super.mouseClicked(fixedCoordinate(x), fixedCoordinate(y), button); }
+    @Override public boolean mouseReleased(double x, double y, int button) { return super.mouseReleased(fixedCoordinate(x), fixedCoordinate(y), button); }
+    @Override public void mouseMoved(double x, double y) { super.mouseMoved(fixedCoordinate(x), fixedCoordinate(y)); }
+    @Override public boolean mouseDragged(double x, double y, int button, double dx, double dy) {
+        return super.mouseDragged(fixedCoordinate(x), fixedCoordinate(y), button, fixedCoordinate(dx), fixedCoordinate(dy));
+    }
     @Override public boolean mouseScrolled(double x, double y, double delta) {
+        x = fixedCoordinate(x); y = fixedCoordinate(y);
         if (entryAt != 0 || requested >= 0) return true;
         if (x >= panelLeft()+12 && x < width-12 && y>=96 && y<(height>=216?previewBottom()+20:114)) changePreviewTier(delta < 0 ? 1 : -1);
         else if (x >= panelLeft()) scroll = Math.max(0, scroll - (int) (delta * 30));

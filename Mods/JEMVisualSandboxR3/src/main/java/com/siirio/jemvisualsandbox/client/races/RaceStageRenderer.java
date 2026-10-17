@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexSorting;
 import net.minecraft.client.Minecraft;
+import com.siirio.jemmenus.client.VanillaGuiPlayers;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.util.Mth;
 import org.joml.Matrix3f;
@@ -35,10 +36,10 @@ final class RaceStageRenderer {
         int y = (int) Math.round((screenHeight - bottom) * scaleY);
 
         float yaw = (1 - switchProgress) * turnDirection * .55F + orbit * Mth.PI;
-        float distance = Mth.lerp(enter, 3.75F, .008F);
-        float targetY = Mth.lerp(enter, player.getBbHeight() * .51F, player.getEyeHeight());
-        float rearHeight=Mth.lerp(orbit,player.getBbHeight()*.58F,player.getEyeHeight()+.18F);
-        float cameraY = Mth.lerp(enter, rearHeight, player.getEyeHeight());
+        float distance = Mth.lerp(enter, 5.0F, .008F);
+        float targetY = Mth.lerp(enter, 1.8F * .51F, 1.62F);
+        float rearHeight=Mth.lerp(orbit,1.8F*.58F,1.62F+.18F);
+        float cameraY = Mth.lerp(enter, rearHeight, 1.62F);
         Matrix4f view = new Matrix4f().lookAt(Mth.sin(yaw) * distance, cameraY,
                 Mth.cos(yaw) * distance, 0, targetY, 0, 0, 1, 0);
         Matrix4f projection = new Matrix4f().perspective((float) Math.toRadians(34), width / (float) height, .004F, 64);
@@ -83,11 +84,7 @@ final class RaceStageRenderer {
             RenderSystem.setInverseViewRotationMatrix(new Matrix3f(view).transpose());
             RenderSystem.setShaderFogStart(64);
             RenderSystem.setShaderFogEnd(128);
-            // A quiet race tint preserves the player's authored skin colors.
-            // Directional shader lights are deliberately left untouched.
-            RenderSystem.setShaderColor(.94F + .06F * ((accent >> 16 & 255) / 255F),
-                    .94F + .06F * ((accent >> 8 & 255) / 255F),
-                    .94F + .06F * ((accent & 255) / 255F), 1);
+            RenderSystem.setShaderColor(1, 1, 1, 1);
             dispatcher.overrideCameraOrientation(new Quaternionf().setFromNormalized(new Matrix3f(view)).conjugate());
             player.yBodyRot = player.yBodyRotO = 0;
             player.yHeadRot = player.yHeadRotO = 0;
@@ -101,8 +98,7 @@ final class RaceStageRenderer {
             // Resolve through the dispatcher, then render only the live entity.
             // Skipping dispatcher.render avoids world shadows, fire and hitboxes
             // without changing any of the dispatcher's corresponding flags.
-            RenderSystem.runAsFancy(() -> dispatcher.getRenderer(player).render(player, 0,
-                    client.getFrameTime(), poses, buffers, 15728880));
+            RenderSystem.runAsFancy(() -> VanillaGuiPlayers.render(player, 0, poses, buffers, 15728880));
             buffers.endBatch();
         } finally {
             player.yBodyRot = body; player.yBodyRotO = oldBody;

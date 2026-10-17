@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "change_id": "transport.aircraft-onboard-fuel-feed",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "entities",
+      "value": "immersive_aircraft"
+    }
+  ],
+  "conditions": [],
+  "precedence": {
+    "layer": "local_gui_and_native_integrations",
+    "priority": 30
+  },
+  "change": {
+    "summary": "Restore native in-flight engine fuel feeding from onboard inventory while retaining quarter-rate grounded consumption.",
+    "modifiers": [
+      {
+        "property": "aircraft.engine.onboard_fuel_feed",
+        "operation": "replace",
+        "before": "JEM cancels native refuel while airborne or moving >=0.5 blocks/s",
+        "after": "Remove cancellation of native refuel(); upstream 1.5.0 feeds each BOILER slot into its fuel buffer throughout flight; grounded 0.25 consumption multiplier retained"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM canonical module sources",
+    "kind": "user_requested_behavior_and_bug_fix",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/EngineVehicleFuelMixin.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Restore native in-flight engine fuel feeding from onboard inventory while retaining quarter-rate grounded consumption.",
+    "decision_source": "User explicitly requested behavior; exact implementation chosen by Codex."
+  },
+  "introduced": {
+    "date": "2026-10-18",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "Restore native in-flight engine fuel feeding from onboard inventory while retaining quarter-rate grounded consumption.",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/EngineVehicleFuelMixin.java"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "Restore native in-flight engine fuel feeding from onboard inventory while retaining quarter-rate grounded consumption.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/EngineVehicleFuelMixin.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "Engine thrust",
+      "Native LOW_ON_FUEL warning",
+      "All engine aircraft"
+    ],
+    "relations": [],
+    "notes": [
+      "Production artifacts synchronized only to local Server and canonical ManagedPack; stable profile and release baseline unchanged.",
+      "No automated tests or gameplay/client launch. Acceptance remains in testing."
+    ],
+    "unresolved": [
+      "Player acceptance pending"
+    ]
+  }
+}

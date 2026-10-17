@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-18",
+  "requested": [
+    "Vanilla player rendering in every GUI",
+    "Fixed smaller race-selection GUI scale and farther camera",
+    "Unlimited money for local Sirio_o",
+    "Fix Iron’s Spells icons and localize ability misuse errors",
+    "Restore biplane flight with onboard fuel"
+  ],
+  "artifacts": [
+    {
+      "source": "Mods/JEMCompat/build/libs/jemcompat-3.7.0.jar",
+      "file": "jemcompat-3.7.0.jar",
+      "sha256": "0adba6e38af9f3fe69ba33754459f4b2a3799bf90ab0a26ad03db8d82c7cb6d6",
+      "bytes": 285199
+    },
+    {
+      "source": "Mods/JEMVisualSandboxR3/build/production-profile/libs/jem-races-1.1.0.jar",
+      "file": "jem-races-1.1.0.jar",
+      "sha256": "b0fc468af9b7e9ab3df874127148db2e4f93e3885db8a31264e6cc7a3a971fc7",
+      "bytes": 7067277
+    },
+    {
+      "source": "Mods/JEMEconomy/build/libs/jem-economy-1.3.0.jar",
+      "file": "jem-economy-1.3.0.jar",
+      "sha256": "01c5e88c4ad7bea2d66e7f3ce773395d2e45b028cf3b79832ca0a388f88d39e6",
+      "bytes": 2101068
+    },
+    {
+      "source": "Mods/JEMSettlements/build/libs/jem-settlements-2.1.0.jar",
+      "file": "jem-settlements-2.1.0.jar",
+      "sha256": "3808e14e6448613ab7018fec56d4c24de23602d3665ced9614d41daeb08fbc56",
+      "bytes": 2483358
+    }
+  ],
+  "server": "Ordinary dedicated local Server running with exact fresh production artifacts; native startup completed and selected local wallet explicitly activated",
+  "publication": {
+    "published": true,
+    "journalSequence": 31,
+    "publishedManifestSha1": "dde654f549142a73d5b1a411f6cd6171e0884879",
+    "stagedManifestSha1": "dde654f549142a73d5b1a411f6cd6171e0884879"
+  },
+  "clientInstallation": {
+    "profile": "test jem",
+    "status": "Pending client close; test jem still runs its earlier native active generation; no raw copy or client launch performed",
+    "clientLaunched": false
+  },
+  "localMoney": {
+    "balance": 1000000000000,
+    "replenishing": true,
+    "boundary": "Dedicated JVM property plus ignored exact account marker and explicit runtime activation",
+    "backup": "Ignored Server/local/before-development-wallet-20261018.dat; never deploy development world ledger",
+    "account": "Explicitly selected local development account; identity marker stays ignored and private"
+  },
+  "testsRun": false,
+  "stableProfile": "untouched",
+  "releaseBaseline": "unchanged",
+  "MineRENT": "not deployed",
+  "acceptance": "in testing",
+  "atlas": "Four scoped applied rules; schema validation passed. Working-tree scan also reports pre-existing unrelated source/installed-artifact drift; this task does not claim to resolve those gaps."
+}

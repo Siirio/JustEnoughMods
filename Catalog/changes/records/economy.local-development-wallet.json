@@ -1,0 +1,78 @@
+{
+  "schema_version": 2,
+  "change_id": "economy.local-development-wallet",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:player"
+    }
+  ],
+  "conditions": [
+    {
+      "scope": "Explicit local development JVM flag, exact ignored account marker and per-runtime activation only; never deploy the resulting local world ledger"
+    }
+  ],
+  "precedence": {
+    "layer": "local_gui_and_native_integrations",
+    "priority": 30
+  },
+  "change": {
+    "summary": "Give the explicitly selected local development account a replenishing real wallet without enabling production issuance.",
+    "modifiers": [
+      {
+        "property": "economy.local_wallet",
+        "operation": "replace",
+        "before": "Fixed 100000 total supply everywhere",
+        "after": "Only dedicated JVM opt-in jem.localDevelopmentMoney plus local/unlimited-wallet-account.txt and explicit runtime activation permit replenishment to 1000000000000; issuance is persisted and conserved; missing boundary freezes this development ledger"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM canonical module sources",
+    "kind": "user_requested_behavior_and_bug_fix",
+    "source_files": [
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Give the explicitly selected local development account a replenishing real wallet without enabling production issuance.",
+    "decision_source": "User explicitly requested behavior; exact implementation chosen by Codex."
+  },
+  "introduced": {
+    "date": "2026-10-18",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "Give the explicitly selected local development account a replenishing real wallet without enabling production issuance.",
+    "source_files": [
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "Give the explicitly selected local development account a replenishing real wallet without enabling production issuance.",
+      "source_files": [
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "Native funded purchases",
+      "Physical coin backing",
+      "Local world ledger release exclusion"
+    ],
+    "relations": [],
+    "notes": [
+      "Production artifacts synchronized only to local Server and canonical ManagedPack; stable profile and release baseline unchanged.",
+      "No automated tests or gameplay/client launch. Acceptance remains in testing."
+    ],
+    "unresolved": [
+      "Player acceptance pending"
+    ]
+  }
+}

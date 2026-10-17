@@ -1,0 +1,112 @@
+{
+  "schema_version": 2,
+  "change_id": "races.irons-icons-action-localization",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "jem_visual_sandbox"
+    }
+  ],
+  "conditions": [],
+  "precedence": {
+    "layer": "local_gui_and_native_integrations",
+    "priority": 30
+  },
+  "change": {
+    "summary": "Fix native Iron’s Spells racial spell icon paths and translate racial ability misuse failures into Russian and English.",
+    "modifiers": [
+      {
+        "property": "client.racial_spell.icons",
+        "operation": "replace",
+        "before": "textures/gui/spells; native final icon resolver requests spell_icons",
+        "after": "Five unchanged authored PNGs at textures/gui/spell_icons; race screen uses same native path"
+      },
+      {
+        "property": "client.racial_ability.errors",
+        "operation": "replace",
+        "before": "Missing jem.roles.action keys and literal English failures",
+        "after": "Owned translatable action keys for ru_ru/en_us including wrong-race casting"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM canonical module sources",
+    "kind": "user_requested_behavior_and_bug_fix",
+    "source_files": [
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxRacialSpell.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalAbilities.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxHostileControl.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SculkDomain.java",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/ru_ru.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/en_us.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/life_chorus.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/rift_ambush.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/verdant_dominion.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/sculk_veins.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/infernal_eruption.png"
+    ]
+  },
+  "rationale": {
+    "purpose": "Fix native Iron’s Spells racial spell icon paths and translate racial ability misuse failures into Russian and English.",
+    "decision_source": "User explicitly requested behavior; exact implementation chosen by Codex."
+  },
+  "introduced": {
+    "date": "2026-10-18",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "Fix native Iron’s Spells racial spell icon paths and translate racial ability misuse failures into Russian and English.",
+    "source_files": [
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxRacialSpell.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalAbilities.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxHostileControl.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SculkDomain.java",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/ru_ru.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/en_us.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/life_chorus.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/rift_ambush.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/verdant_dominion.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/sculk_veins.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/infernal_eruption.png"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "Fix native Iron’s Spells racial spell icon paths and translate racial ability misuse failures into Russian and English.",
+      "source_files": [
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxRacialSpell.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalAbilities.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxHostileControl.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SculkDomain.java",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/ru_ru.json",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/en_us.json",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/life_chorus.png",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/rift_ambush.png",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/verdant_dominion.png",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/sculk_veins.png",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/infernal_eruption.png"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "Iron’s Spells 3.15.6",
+      "Race ability messages"
+    ],
+    "relations": [],
+    "notes": [
+      "Production artifacts synchronized only to local Server and canonical ManagedPack; stable profile and release baseline unchanged.",
+      "No automated tests or gameplay/client launch. Acceptance remains in testing."
+    ],
+    "unresolved": [
+      "Player acceptance pending"
+    ]
+  }
+}

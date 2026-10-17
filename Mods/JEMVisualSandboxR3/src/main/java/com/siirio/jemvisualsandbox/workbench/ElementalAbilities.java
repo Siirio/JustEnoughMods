@@ -32,11 +32,11 @@ public final class ElementalAbilities {
     public static boolean rift(ServerPlayer p) {
         if (!RaceExperience.canAct(p) || RIFTS.containsKey(p.getUUID())) return false;
         LivingEntity target = SandboxSkills.riftTarget(p);
-        if (target == null) { p.displayClientMessage(Component.literal("Look at a living target within range"),true); return false; }
-        if(target instanceof net.minecraft.world.entity.player.Player&&!p.server.isPvpAllowed()){p.displayClientMessage(Component.translatable("jem.roles.action.pvp_disabled"),true);return false;}
+        if (target == null) { p.displayClientMessage(Component.translatable("jem_visual_sandbox.action.look_at_target"),true); return false; }
+        if(target instanceof net.minecraft.world.entity.player.Player&&!p.server.isPvpAllowed()){p.displayClientMessage(Component.translatable("jem_visual_sandbox.action.pvp_disabled"),true);return false;}
         Vec3 behind=target.position().subtract(target.getLookAngle().normalize().scale(1.8));
         if(SandboxEnvironment.nearestSafe(p,p.serverLevel(),net.minecraft.core.BlockPos.containing(behind),3,true).isEmpty()){
-            p.displayClientMessage(Component.translatable("jem.roles.action.no_safe_destination"),true);return false;
+            p.displayClientMessage(Component.translatable("jem_visual_sandbox.action.no_safe_destination"),true);return false;
         }
         RIFTS.put(p.getUUID(),new Rift(target.getUUID(),p.serverLevel().dimension(),p.level().getGameTime()));
         SandboxNetwork.effect(p,5,1,p.position().add(forward(p).scale(1.2)),p.getYRot(),-1);
@@ -46,7 +46,7 @@ public final class ElementalAbilities {
         if (!RaceExperience.canAct(p) || WAVES.containsKey(p.getUUID())) return false;
         Vec3 direction=forward(p);java.util.List<Vec3> spots=new java.util.ArrayList<>();
         for(int i=0;i<5;i++)spots.add(SurfacePlacement.top(p,p.position().add(direction.scale(1.6+i*2)),10));
-        if(spots.stream().allMatch(java.util.Objects::isNull)){p.displayClientMessage(Component.literal("No valid eruption surface"),true);return false;}
+        if(spots.stream().allMatch(java.util.Objects::isNull)){p.displayClientMessage(Component.translatable("jem_visual_sandbox.action.eruption_surface_required"),true);return false;}
         WAVES.put(p.getUUID(),new Wave(spots,direction,p.serverLevel().dimension(),p.level().getGameTime(),RaceExperience.tier(p)));
         java.util.List<Vec3> trail=new java.util.ArrayList<>();
         for(int i=0;i<=20;i++) {

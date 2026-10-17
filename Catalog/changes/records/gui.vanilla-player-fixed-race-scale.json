@@ -1,0 +1,119 @@
+{
+  "schema_version": 2,
+  "change_id": "gui.vanilla-player-fixed-race-scale",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:player"
+    }
+  ],
+  "conditions": [],
+  "precedence": {
+    "layer": "local_gui_and_native_integrations",
+    "priority": 30
+  },
+  "change": {
+    "summary": "All GUI player previews use freshly baked vanilla skin geometry; race screen owns fixed GUI scale 3 and a camera 25% farther away.",
+    "modifiers": [
+      {
+        "property": "client.gui.player_preview",
+        "operation": "replace",
+        "before": "Live modded renderer and animation/resource-pack model reloads",
+        "after": "Shared vanilla classic/slim mesh, skin only, neutral pose; screen-scoped PlayerRenderer interception and exact Quick Skin preview seam; world rendering unchanged"
+      },
+      {
+        "property": "client.gui.race_scale",
+        "operation": "replace",
+        "before": "Minecraft global GUI scale and 3.75 camera distance",
+        "after": "Own scale 3 with matching input, scissor and GL viewport coordinates; fixed native player height and distance 5.0"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM canonical module sources",
+    "kind": "user_requested_behavior_and_bug_fix",
+    "source_files": [
+      "Mods/JEMMenuSupport/build.gradle",
+      "Mods/JEMMenuSupport/embed.gradle",
+      "Mods/JEMMenuSupport/src/main/java/com/siirio/jemmenus/client/VanillaGuiPlayers.java",
+      "Mods/JEMCompat/build.gradle",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/render/GuiPlayerRenderScope.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/GuiPlayerFrameMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/GuiPlayerRendererMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/QuickSkinVanillaPreviewMixin.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+      "Mods/JEMVisualSandboxR3/build.gradle",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceStageRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/AbilityPreviewRenderer.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "All GUI player previews use freshly baked vanilla skin geometry; race screen owns fixed GUI scale 3 and a camera 25% farther away.",
+    "decision_source": "User explicitly requested behavior; exact implementation chosen by Codex."
+  },
+  "introduced": {
+    "date": "2026-10-18",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "All GUI player previews use freshly baked vanilla skin geometry; race screen owns fixed GUI scale 3 and a camera 25% farther away.",
+    "source_files": [
+      "Mods/JEMMenuSupport/build.gradle",
+      "Mods/JEMMenuSupport/embed.gradle",
+      "Mods/JEMMenuSupport/src/main/java/com/siirio/jemmenus/client/VanillaGuiPlayers.java",
+      "Mods/JEMCompat/build.gradle",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/render/GuiPlayerRenderScope.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/GuiPlayerFrameMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/GuiPlayerRendererMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/QuickSkinVanillaPreviewMixin.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+      "Mods/JEMVisualSandboxR3/build.gradle",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceStageRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/AbilityPreviewRenderer.java"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "All GUI player previews use freshly baked vanilla skin geometry; race screen owns fixed GUI scale 3 and a camera 25% farther away.",
+      "source_files": [
+        "Mods/JEMMenuSupport/build.gradle",
+        "Mods/JEMMenuSupport/embed.gradle",
+        "Mods/JEMMenuSupport/src/main/java/com/siirio/jemmenus/client/VanillaGuiPlayers.java",
+        "Mods/JEMCompat/build.gradle",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/render/GuiPlayerRenderScope.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/GuiPlayerFrameMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/GuiPlayerRendererMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/QuickSkinVanillaPreviewMixin.java",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+        "Mods/JEMVisualSandboxR3/build.gradle",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceStageRenderer.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/AbilityPreviewRenderer.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "GUI presentation",
+      "Quick Skin",
+      "Epic Fight isolation"
+    ],
+    "relations": [],
+    "notes": [
+      "Production artifacts synchronized only to local Server and canonical ManagedPack; stable profile and release baseline unchanged.",
+      "No automated tests or gameplay/client launch. Acceptance remains in testing."
+    ],
+    "unresolved": [
+      "Player acceptance pending"
+    ]
+  }
+}

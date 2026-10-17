@@ -7,6 +7,8 @@ import com.siirio.jemvisualsandbox.workbench.AbilityPreviewPresentation;
 import com.siirio.jemvisualsandbox.workbench.RacePowerStages;
 import com.siirio.jemvisualsandbox.workbench.VisualRenderContext;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.AbstractClientPlayer;
+import com.siirio.jemmenus.client.VanillaGuiPlayers;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.RemotePlayer;
@@ -73,9 +75,9 @@ public final class AbilityPreviewRenderer {
     }
 
     public void render(GuiGraphics graphics, int x, int y, int width, int height,
-                       int race, int slot, int tier, int bloomStage, float partialTick) {
+                       int race, int slot, int tier, int bloomStage, float partialTick, double guiScale) {
         var client = Minecraft.getInstance();
-        if (width <= 0 || height <= 0 || x >= graphics.guiWidth() || y >= graphics.guiHeight()
+        if (width <= 0 || height <= 0 || x * guiScale >= client.getWindow().getWidth() || y * guiScale >= client.getWindow().getHeight()
                 || x + width <= 0 || y + height <= 0 || !prepare()) { previousFrame = 0; return; }
         int key = race * 100 + slot * 40 + tier * 4 + bloomStage;
         long now = System.nanoTime();
@@ -133,9 +135,9 @@ public final class AbilityPreviewRenderer {
         target.setSharedFlagOnFire(race==4 && hit>=0 && hit<RacePowerStages.fireSeconds(tier)*20);
 
         graphics.flush();
-        double sx = client.getWindow().getWidth() / (double)graphics.guiWidth();
-        double sy = client.getWindow().getHeight() / (double)graphics.guiHeight();
-        int vx = (int)Math.round(x * sx), vy = (int)Math.round((graphics.guiHeight() - y - height) * sy);
+        double sx = guiScale;
+        double sy = guiScale;
+        int vx = (int)Math.round(x * sx), vy = (int)Math.round(client.getWindow().getHeight() - (y + height) * sy);
         int vw = Math.max(1, (int)Math.round(width * sx)), vh = Math.max(1, (int)Math.round(height * sy));
         float aspect = vw / (float)vh;
         float distance = Math.max(5.5F, 13 / aspect) / (2 * (float)Math.tan(Math.toRadians(17)));
@@ -277,8 +279,12 @@ public final class AbilityPreviewRenderer {
     private static <T extends Entity> void drawEntity(T entity, Vec3 at, PoseStack poses, float partialTick) {
         var client = Minecraft.getInstance();
         poses.pushPose(); poses.translate(at.x, at.y, at.z);
-        RenderSystem.runAsFancy(() -> client.getEntityRenderDispatcher().getRenderer(entity)
-                .render(entity, entity.getYRot(), partialTick, poses, client.renderBuffers().bufferSource(), 15728880));
+        if (entity instanceof AbstractClientPlayer player) {
+            VanillaGuiPlayers.render(player, entity.getYRot(), poses, client.renderBuffers().bufferSource(), 15728880);
+        } else {
+            RenderSystem.runAsFancy(() -> client.getEntityRenderDispatcher().getRenderer(entity)
+                    .render(entity, entity.getYRot(), partialTick, poses, client.renderBuffers().bufferSource(), 15728880));
+        }
         poses.popPose();
     }
     private static float smooth(float value) {

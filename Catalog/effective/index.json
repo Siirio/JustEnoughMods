@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "0e5f418b2faec9335071466e33c12140368f19fba84c246d6777fed72ef588b0",
+  "change_records_sha256": "9abfcd3b520df5719d656fe63c7dfc36c9c1905a331ea0d01f63e58fa2c5e182",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -231,6 +231,21 @@
       "potential_static_target_count": 143
     },
     {
+      "change_id": "economy.local-development-wallet",
+      "status": "conditional",
+      "summary": "Give the explicitly selected local development account a replenishing real wallet without enabling production issuance.",
+      "record": "Catalog/changes/records/economy.local-development-wallet.json",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:player"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 1
+    },
+    {
       "change_id": "final-races-settlements-server-migration",
       "status": "active",
       "summary": "Promote final sandbox Races and Settlements to the ordinary local server and native managed client generation; remove crossed race UI elements for all five origins.",
@@ -254,6 +269,21 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 0
+    },
+    {
+      "change_id": "gui.vanilla-player-fixed-race-scale",
+      "status": "active",
+      "summary": "All GUI player previews use freshly baked vanilla skin geometry; race screen owns fixed GUI scale 3 and a camera 25% farther away.",
+      "record": "Catalog/changes/records/gui.vanilla-player-fixed-race-scale.json",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:player"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 1
     },
     {
       "change_id": "smp.market-reference-storefront",
@@ -479,6 +509,21 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 63
+    },
+    {
+      "change_id": "races.irons-icons-action-localization",
+      "status": "active",
+      "summary": "Fix native Iron’s Spells racial spell icon paths and translate racial ability misuse failures into Russian and English.",
+      "record": "Catalog/changes/records/races.irons-icons-action-localization.json",
+      "selectors": [
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "jem_visual_sandbox"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 0
     },
     {
       "change_id": "sandbox-ancients-pearl-vfx",
@@ -916,6 +961,21 @@
       "potential_static_target_count": 0
     },
     {
+      "change_id": "transport.aircraft-onboard-fuel-feed",
+      "status": "active",
+      "summary": "Restore native in-flight engine fuel feeding from onboard inventory while retaining quarter-rate grounded consumption.",
+      "record": "Catalog/changes/records/transport.aircraft-onboard-fuel-feed.json",
+      "selectors": [
+        {
+          "type": "namespace",
+          "registry": "entities",
+          "value": "immersive_aircraft"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 7
+    },
+    {
       "change_id": "vinery.native-merchant-registered-ids",
       "status": "conditional",
       "summary": "Correct two nonexistent Vinery seed references and remove the unregistered calendar from native merchant configuration.",
@@ -1020,17 +1080,22 @@
     "Docs/races/assets/guardian-dome/export.mjs": "6dedc11a5d5bd716180afc9361870c2081ffbe8018f2dc104a35eeab2046eee8",
     "Docs/races/assets/guardian-dome/guardian-dome.bbmodel": "3f56200e6a08a5209e730fa901313907cd67a72429c27389df3945c5c525e080",
     "Docs/smp-gui/README.md": "47233f2f237719435d021a34de6f79481f79a946cd6046b670ab6e4790d382fc",
-    "Mods/JEMCompat/build.gradle": "b6a886c28e81a7108ee436396d045d3e54eb00c19421178544f730d212118621",
-    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java": "37a15b2256a1a2c1397872e1701c6097ba912e395403f763c74dc9de670dcc41",
+    "Mods/JEMCompat/build.gradle": "3185ad02cac74d50264df608c6a4d02bef72715c25f01319c3e185ccfa33d96a",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java": "c153b5740c80da38bcb0c20d805e2acdebd0263cd97d844e7d4f98936d32d6c2",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/CuriosEquipment.java": "ae3145570e4a29833e17091cc15c0e806269e3f2fc97da0363d47de01b520342",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java": "dc8ea20619dbb90d83637c20751d91a0c02f630cba2fc15b3797e9e939c8f010",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiCatalog.java": "96e3991d1e35ec5807dbb41f2243191ca89da9304def9070ebb51f8943c910e8",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/render/GuiPlayerRenderScope.java": "869fc86c1ce1b94294a1b0855cd4703a353cd34dedfb6b45db1fe060f35ecaf5",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/fabric/FabricTradeMixinCanceller.java": "4f5a2834ffcfb69fb613440bfced0fa925ca53737d60b1f48e3d03c74e66fe54",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/fabric/FabricTradeMixinPolicy.java": "8717fff814132e9bcbe355fc1552be11232f09d516b35705bd3f1cb26e400067",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/GuiPlayerFrameMixin.java": "96752409bdb147bc5daad70121aaee06eb8e65024c401dfe66efb16eeeeae55c",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/GuiPlayerRendererMixin.java": "ebde334231687b2a06a9a9fddc12f297a3528e5b9beffba366bbb3999b5f4cd9",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/QuickSkinVanillaPreviewMixin.java": "8027c34c8b6cc2428596a0265c49a119f3d025d923ff85703cfb14e226e28926",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/trading/FabricTypeAwareTradeMixin.java": "f28b6503c73ad37c5824554737a03879a667f796e9680104df7cd5e2928da551",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/EngineVehicleFuelMixin.java": "82815826b00b1f841e8255ea2cfa5dfea3fec20b3415f254bf9ce4f9f83ca10a",
     "Mods/JEMCompat/src/main/resources/META-INF/services/com.bawnorton.mixinsquared.api.MixinCanceller": "b27fafce4802d4a2b9b2fa0c2a0ca5b3347418b9c49e1696654c1cf3461a43c9",
     "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/jei/cooking_catalysts.json": "03396bba90220095d54a4c45fd349f5cec968cd962551b5f483ea7fdda04aefe",
-    "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json": "40867b7dd095caadc3953f6d4aac3f0cfe2d05ba6cb9cb5028d588a5fbdf189e",
+    "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json": "e3e138e73ec3f09776f95fb23fb77398a3e5d859dffea28e37e28f23646fc073",
     "Mods/JEMCurrencyCore/build.gradle": "2f5570a6a59351bdfabfe1833d08585e3590a3fa1019ea19b744572e1fca686d",
     "Mods/JEMCurrencyCore/embed.gradle": "d2204661d1a2bf57aca16084dd7abc0c7b95a35214e53a5c0e8dfa96e0a6da50",
     "Mods/JEMCurrencyCore/gradle.properties": "58a820524b1197f432cc0720f670689fa7f634b2fb68554c581b8685a7ae50fc",
@@ -1053,7 +1118,7 @@
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/NativeTradeScreenAccess.java": "860f45d42f004d0d6a2062f2c8e19965a30629fcca7a57bde62cddd6c09d3bea",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/WalletClientState.java": "8b9c8299d45f5552a0f6ee1c963988507d2fa14108016e1b20c48fa80e5b569d",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/WalletScreen.java": "012461db92422e515374df9a790ebbc27f16b2504f50554923e95b3098bc3916",
-    "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java": "4a29a645821be3c5085b978f240e664c6a3f48a8742a02192aeb3bf814ac3b9a",
+    "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java": "f6cab2abd9b81b1956b80a4fe04c628189075d0653bf4643dc4521681178c4c1",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/SystemAccount.java": "f2546fcc1ee4a8fbf555811c48277c52269fb0631b9aa498a723601100928060",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/TransferResult.java": "ae73f40f548e978fb4296872aa2ab0b94f39ccf59c77846c70a5257f8a404316",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java": "2d36f8e8e770fc48b33812a004058267be235ea1dc76232e8370ccc468704a1b",
@@ -1151,7 +1216,9 @@
     "Mods/JEMEconomy/src/main/resources/META-INF/mods.toml": "fb4d0190124e257c2431f8cec8a69adf6c280cf4dd5080e8e8623b0e2a780a26",
     "Mods/JEMEconomy/tools/author_building_supply.py": "224eda6f8002e4d0d4b2d5f45535863450aa0c1feda0308bebaa3e974f00aabd",
     "Mods/JEMEconomy/tools/reconcile_economy.py": "b5398267b536ca334fe6ae4e5a78a8ebdbab0d6c3b55eb5369f2e2fbdba980a9",
-    "Mods/JEMMenuSupport/embed.gradle": "ec7419c5cccea9f1fac135b8832a686c567c0c35988b6f6cb0dd129b903ce7ab",
+    "Mods/JEMMenuSupport/build.gradle": "cbe190a4ff18196c3bd80aa2e922115aba66cbd523b10717ea9a1ac3f5396ba8",
+    "Mods/JEMMenuSupport/embed.gradle": "77f902e1df07f438cacdae7b519e836ea2fd70b1813093e8c02690f726900767",
+    "Mods/JEMMenuSupport/src/main/java/com/siirio/jemmenus/client/VanillaGuiPlayers.java": "22b1ee2644c9eddb56e285b892d71f81dbb419e4d879a1842f543cfbf54b978b",
     "Mods/JEMProfessions/build.gradle": "281a8be70c903d0d489513d5ac760f69856b9193b05e35b176149125fff301c5",
     "Mods/JEMProfessions/prepare-sandbox-data.py": "53329ec0252d0bea01093ccc9c1c51067297209dc8ab3e2c56cb44a5fcc62778",
     "Mods/JEMProfessions/settings.gradle": "3d75f9a604a31ced72c0209633689eb42ab9583a27cb7c9ca5b7098ad77fdb7e",
@@ -1405,23 +1472,23 @@
     "Mods/JEMVisualSandboxR3/author-elemental-models.mjs": "7964cf94f35b1fe6a99ae7e135fe122f67b58f3732d554a6bc55610b38db0151",
     "Mods/JEMVisualSandboxR3/bake-workbench.mjs": "f8dc63c95ef02259d3ca7a4006f424a0d998680630245c888e3eed4784dc509b",
     "Mods/JEMVisualSandboxR3/bake.mjs": "e335fa9f88418ec9f79dd5b18215819c59ef9d981010e53d92314334d3f1aa69",
-    "Mods/JEMVisualSandboxR3/build.gradle": "74356909e8967d8b04529b9780daa13f6345087672f13b8cc97b25289167f632",
+    "Mods/JEMVisualSandboxR3/build.gradle": "f251693c2d00a3f734b863c7089e550659bef78570e76dd14771059364abd186",
     "Mods/JEMVisualSandboxR3/generate-skills.py": "18bd50a36a59a5705cbf3fa54748de4b55bc4cf195ebf5e743fe95ca7cda766f",
     "Mods/JEMVisualSandboxR3/install-sandbox.py": "28d043a9ce28fdaf736e7caf0313b10a39c166a4f8baab38fe734da454c58426",
     "Mods/JEMVisualSandboxR3/prepare.py": "2c443f20dec5a70d0b02a4e73a77da1f2c644d49c114751489e684098b7bfc95",
     "Mods/JEMVisualSandboxR3/settings.gradle": "f4f7ff9183af10c06ad8294f978a2dc75637309e0c762719c063b7fe44f5cf33",
     "Mods/JEMVisualSandboxR3/snapshot-sources.py": "1e6d80eef0e3fd7cd3f6ac3519a469c9e96396112ca692eb14d91394c92eb4f1",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/JemRacesSandbox.java": "568bb42e472a497043a46e32b4d1fe32349154f0ef3e410f115843e1382401f8",
-    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/AbilityPreviewRenderer.java": "e5d9bd5c69f1da16911c130713ab0e3d3fdf5b1e961cbf97e984c5298fd9d174",
+    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/AbilityPreviewRenderer.java": "f3daaeb2c6371dee9dc77fd8a360cfb4093a213946bccebe2f29dd8b93570d79",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/OptionalRacePresentation.java": "56d4503752e626799a69076f6dd2eab7e96eba3f9e8c6f96efb8af67d91ef42e",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceAbilityHud.java": "f845b82dbd34913ee5b961889e786912e642315b0e1f1ff106f7f0788f5397d9",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceClient.java": "e6d08c935fcb5a331f0195e6e25c3befaf2fd4bebf5d01e56e719f315546130a",
-    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java": "4802371222c60d8834139fd54c3c41d23914a5624debe7c5b20c0c898d017422",
+    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java": "65a6c6e2a2ccd2349470edb54b47dea653080fb7a72e59a2b3b7e9c8003a43b1",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RacePanelMaterials.java": "7f046400fff809d1ad7b9a3164f060f3c3dda859411eba1ff475fd9b4b33af3f",
-    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceStageRenderer.java": "1a415e8b735b9ac9ddb344cf12c9253f5422657e0808ff30f6bb40b3ca0d2ff2",
+    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceStageRenderer.java": "69b52848ec0ccfb8a36ad4d645db64c46502d9ed59227d0c0c519306422f92ae",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/SculkScaleClient.java": "2602e4cc56543f298e8fb641374714c2c1712fb8ca1572f41b77b22734c6d226",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxIronsBridge.java": "c7f0a9952d559ce18a7db8f615cefdcb00be1425b6bd5d5b095b1e15524e0d48",
-    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxRacialSpell.java": "c4e6d9654fe5cdc4fb0ff21406dbe1b6f01350f963c2585f173dbc1f8dc66b41",
+    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxRacialSpell.java": "3c898181ebbb0e4f11dfb882d0510cd22ab8bcc3e4dc03abc2289fefedcbc476",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/client/SandboxIronsClient.java": "70c9e7789f22941cd4e7fb17d2b5bb6ca809d5a42473ab695feaf14e35e56f7b",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/mixin/RaceNarratorHotkeyMixin.java": "f2c3aaf35f5195f9e4c51c65c9cb7d9feadae8be94a2f163b5475ebf42ee3510",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/mixin/RootedHostileTickMixin.java": "d7593cdd120436feb6ec6ec80cc724a6c025b7a3215ce5b99016b1e5f004e4f7",
@@ -1435,7 +1502,7 @@
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/AbilityPreviewPresentation.java": "4a1420df59b806ae7460127fe3e1854541398dfc6cef417a85de624a9b827c86",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/BlockbenchWorkbench.java": "183ea2c3eb14f207ba938159371cb59f0a78942ed43d6daa50a75dec5a59bded",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/BloomMechanics.java": "d5f64faa547bf4e24d57cfcf229f7c49de0bc040232262bd1567db37cb93f0fe",
-    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalAbilities.java": "e100ba7ab0bdcbc68fa11a03ff50aac25e2df91d84adc4e703ee3abd251cb396",
+    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalAbilities.java": "fc4d2f90391a74536ec47e522668065c896de3d77d1cdc14c31c6d29d41cb2fa",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalRenderer.java": "a1ce5a7d40854e71723822c4e76d8bec4fb1b5770273da4389e9fb10d9ddaa06",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/FierySlash.java": "2074edafb06a4fdbc178c29b8c86a722c64cae690e0166c8d958e101876443e3",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/FlameSlashRenderer.java": "420ee147b5ae53857b1a203dc70b296dd9410ead6d7d1586d9f8be9022a50e04",
@@ -1449,13 +1516,13 @@
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceExperience.java": "037d9c80552f5568c505332ad345a0d6d88a4c2283df67360f32fe95fa465d45",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceOwnedEffects.java": "016b1c72f7d62beb87c672206da8c56ff09b4f19049205d9f4954efdbe1e7787",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RacePowerStages.java": "81202f566a63803adc2b0bf2c5b283635e69cd3415fa6f95b40bd93bc0f1e841",
-    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxHostileControl.java": "43ec22bf7017d80a22b3435c22821b80bc6e1e124fa9ef96b1cb5de15edb19e4",
+    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxHostileControl.java": "4504f64ae578db98f27e0cd6adf7419e68b485c96660330bb00050a75f4106e2",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java": "40832ab316b52ca11b2c34d22a1cc9276757d52d9d2b4fa0dbae9ac0acca5a49",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxOptionalIrons.java": "06445c365418bd18791a70348de797cfddc5ba1c002b3524c7740f7fab1c4987",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceLoot.java": "bd2aa0f087bc9a3111ef9bbb495bea69bc77f64067b082cd2c1910cc0892946c",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceTraits.java": "2431d56e1fbd6a32553f2c7b899f920a84de8cebf666dce01390c9de717f3058",
-    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java": "a30c8db81ef250d19ed1ac7925c1bf5952cebcad331eb74700a70962fec329c9",
-    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SculkDomain.java": "15c6f22b276e50a165a1448078da3168a9a5d5c3e4ee57806d1f8a3a82d5e82c",
+    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java": "6b2de1c92ae4b6c69ccef79871364d441e786ed9d07c1f6ad7f569320a8e4e77",
+    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SculkDomain.java": "9dddcd0c9eb63fe2be9180feedc447b681cc4d95bf2d383b6e69a37fc80ec563",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SonicWaveAbility.java": "c14b7d22d64f91026781561ec8334d849e8e2036093f02d0db1cb04f03b72807",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SonicWaveRenderer.java": "f3b5c676e123be86505eef6709b5a88ad0ad55874e2bd3cd4b08503e6f2440a4",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SurfacePlacement.java": "4a39e8346c42ac92e1036d3b73ac35d5e25307764adf5a9bf8991078f8adb37f",
@@ -1488,8 +1555,8 @@
     "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/guardian_dome/gold-wave.png": "40cc15355dd22558c3a892724260cab63899962e211500f0c6b4112a2489627a",
     "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/guardian_dome/gold-wave.png.mcmeta": "19da50ce4eae0113003dc596133aa4f0c854778b88b1058d6223d9b5311d6f75",
     "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/guardian_dome/model.json": "f63ac1a48dffcb6bb60c2dc2732faf42904b6d909734a25948a85884bcf3a626",
-    "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/en_us.json": "940b24fb1500f083ba17af11186d8f7b23a98c46bb54d1db2b2901502b29543c",
-    "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/ru_ru.json": "91f2e77132d286a088e391e08e716062d0a7b6ec1337da8426e51e0eaca2eaa7",
+    "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/en_us.json": "636c1a068cd05ccf1cfbb23735c3f4bf92146a57206a58d5d71ea2ac8c29325a",
+    "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/ru_ru.json": "88080de3cf10a4d64e024f0171e357c45c6a2ff7725e19572fa5ea6ba1936ac8",
     "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/life_chorus/answer.png": "95d5c73ff8e6cb25894735454de8ea24467c131f9c07ee85120a61de83cb6ff9",
     "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/life_chorus/awakening.png": "1717b90558b5b89259a0cd4116497ff0db16e26bbb2dde19de8f16ecac91622a",
     "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/life_chorus/crumble.png": "1c65012a4a0b4c348c36b3a942fd92a9599cb1d0c7d9283bd7bfabdbed8fff6b",
@@ -1505,11 +1572,11 @@
     "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/r3/foliage.png": "e00aaf5526b0316afb9d76660e0c3f7080e8c739bcbcc100e077af44464903b9",
     "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/r3/provenance.json": "a1ea8c34e5306ad6a0b8024a8de7efdb48ade84623529525263c8944890f8514",
     "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/r3/verdant_grasp.mesh": "261a76d286eeed8981d7ef81ab3bdd0200d4c057836bd2c382905c50d76e271f",
-    "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/infernal_eruption.png": "31e9706099b1029fa8d00e160c42f348a3fb8049008d951a5c190a42dff7b366",
-    "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/life_chorus.png": "6b1bf003692ca8971e6a2e47298d3b955d93f705571491f44eb768ddd188f6d8",
-    "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/rift_ambush.png": "139b2a0710aacae98a8be8371ab43dcf8d6696e8c165156b05859cdc0ce1ba81",
-    "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/sculk_veins.png": "181c4a1720871b0d88ca10a1275688677ed0970e7b319bdb04ae2eca9cdfc4fe",
-    "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/verdant_dominion.png": "009d18d7e7d089225d2f1169994a8ac6a3db651efaec562b16210fde9fa73187",
+    "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/infernal_eruption.png": "018698333dd51832abe7b4c82a9343a2e289da644529a59580c345174987d0b8",
+    "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/life_chorus.png": "43dc8e1bd4c2d3b6b3b60edab0707c138d02cabc7892670fa7415566f45f35de",
+    "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/rift_ambush.png": "5872058122f4febbe1082cb0dabc67bb00352e8140a2c18117f984170a35edbe",
+    "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/sculk_veins.png": "82c386ad60c27848e6a3453d3969d603a3cb77b533ba3904c483f0b964e89e57",
+    "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/verdant_dominion.png": "ba196e487e9f32f210fdabbf1603a18a195bcf3c7af0c98ac66683af5d819af0",
     "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/coffer-0.png": "ce37af0c491a874c655b91e8ca73a93ead9ec750362f287473f5c20dabbf8073",
     "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/coffer.mesh": "330a815c38a7307d126c951e7e82952adb9e7a26ece1223b5a89fa9288fd6a35",
     "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/entity_vines-0.png": "fe0c6d90852a1907d701e2b667fdd13d5285b6eb8eb3eb25bdf58089742cf03c",

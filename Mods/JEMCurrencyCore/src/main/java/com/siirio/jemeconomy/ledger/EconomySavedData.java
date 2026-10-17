@@ -4,6 +4,7 @@ import com.siirio.jemeconomy.physical.CoinDenomination;
 import com.siirio.jemeconomy.physical.CoinLot;
 import com.siirio.jemeconomy.physical.PhysicalCoinOperation;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -23,6 +24,7 @@ public final class EconomySavedData extends SavedData {
     private static final int MAX_OPERATIONS = 50_000;
     private static final int MAX_LOTS = 100_000;
     private static final long INITIAL_SUPPLY = 100_000L;
+    private static final long DEVELOPMENT_WALLET_BALANCE = 1_000_000_000_000L;
 
     private final Map<UUID, Long> balances = new LinkedHashMap<>();
     private final LinkedHashMap<String, UUID> receipts = new LinkedHashMap<>();
@@ -31,20 +33,79 @@ public final class EconomySavedData extends SavedData {
     private final LinkedHashMap<UUID, CoinLot> lots = new LinkedHashMap<>();
     private final LinkedHashMap<UUID, PhysicalCoinOperation> physicalOperations = new LinkedHashMap<>();
     private boolean frozen;
+    private String frozenReason = "";
+    private UUID developmentAccount;
+    private long developmentIssued;
+    private MinecraftServer developmentServer;
+    private boolean developmentWalletActivated;
 
     public EconomySavedData() {
         for (SystemAccount account : SystemAccount.values()) balances.put(account.id(), account.initialBalance());
     }
 
     public static EconomySavedData get(MinecraftServer server) {
-        return server.overworld().getDataStorage().computeIfAbsent(EconomySavedData::load, EconomySavedData::new, NAME);
+        return server.overworld().getDataStorage().computeIfAbsent(tag -> load(tag, server), () -> {
+            EconomySavedData data = new EconomySavedData();
+            data.developmentServer = server;
+            return data;
+        }, NAME);
+    }
+
+    /** Explicit authenticated local activation; replay never resets issuance or clears a frozen ledger. */
+    public synchronized boolean enableLocalDevelopmentWallet(MinecraftServer server, UUID account) {
+        if (server == null || server != developmentServer || !server.isSameThread() || account == null || frozen
+                || !localDevelopmentMarkerMatches(server, account)) return false;
+        for (SystemAccount system : SystemAccount.values()) if (system.id().equals(account)) return false;
+        if (developmentAccount != null && !developmentAccount.equals(account)) return false;
+        developmentAccount = account;
+        developmentWalletActivated = true;
+        setDirty();
+        balance(account);
+        return !frozen;
     }
 
     public synchronized long balance(UUID id) {
+        if (!frozen && developmentAccount != null) {
+            if (!localDevelopmentMarkerMatches(developmentServer, developmentAccount)) {
+                freezeDevelopmentLedger("Development currency requires its dedicated local JVM opt-in and matching account marker; do not deploy this world ledger");
+            } else if (developmentWalletActivated && developmentAccount.equals(id)) {
+                long current = balances.getOrDefault(id, 0L);
+                if (current < DEVELOPMENT_WALLET_BALANCE) {
+                    try {
+                        long issuance = Math.subtractExact(DEVELOPMENT_WALLET_BALANCE, current);
+                        long nextIssued = Math.addExact(developmentIssued, issuance);
+                        Math.addExact(INITIAL_SUPPLY, nextIssued);
+                        developmentIssued = nextIssued;
+                        balances.put(id, DEVELOPMENT_WALLET_BALANCE);
+                        setDirty();
+                    } catch (ArithmeticException overflow) {
+                        freezeDevelopmentLedger("Local development currency issuance overflow");
+                    }
+                }
+            }
+        }
         return id == null ? 0L : balances.getOrDefault(id, 0L);
     }
 
+    private static boolean localDevelopmentMarkerMatches(MinecraftServer server, UUID account) {
+        if (server == null || !server.isDedicatedServer() || !Boolean.getBoolean("jem.localDevelopmentMoney")) return false;
+        try {
+            var marker = server.getServerDirectory().getCanonicalFile().toPath().resolve("local/unlimited-wallet-account.txt");
+            return Files.isRegularFile(marker) && Files.size(marker) <= 128L
+                    && account.toString().equals(Files.readString(marker, StandardCharsets.UTF_8).trim());
+        } catch (java.io.IOException | SecurityException unavailable) { return false; }
+    }
+
+    private void freezeDevelopmentLedger(String reason) {
+        frozen = true;
+        frozenReason = reason;
+        com.mojang.logging.LogUtils.getLogger().error("JEM economy frozen: {}", reason);
+        setDirty();
+    }
+
     public synchronized boolean frozen() {
+        if (!frozen && developmentAccount != null && !localDevelopmentMarkerMatches(developmentServer, developmentAccount))
+            freezeDevelopmentLedger("Development currency requires its dedicated local JVM opt-in and matching account marker; do not deploy this world ledger");
         return frozen;
     }
 
@@ -87,7 +148,7 @@ public final class EconomySavedData extends SavedData {
     }
 
     public synchronized TransferResult transfer(UUID source, UUID destination, long amount, String idempotencyKey) {
-        if (frozen) return new TransferResult(TransferResult.Status.UNAVAILABLE, null, balance(source), balance(destination));
+        if (frozen()) return new TransferResult(TransferResult.Status.UNAVAILABLE, null, balance(source), balance(destination));
         if (source == null || destination == null || source.equals(destination) || amount <= 0L ||
                 idempotencyKey == null || idempotencyKey.isBlank() || idempotencyKey.length() > 160) {
             return new TransferResult(TransferResult.Status.INVALID, null, balance(source), balance(destination));
@@ -104,6 +165,7 @@ public final class EconomySavedData extends SavedData {
         long destinationBalance;
         try { destinationBalance = Math.addExact(balance(destination), amount); }
         catch (ArithmeticException overflow) { return new TransferResult(TransferResult.Status.INVALID, null, sourceBalance, balance(destination)); }
+        if (frozen()) return new TransferResult(TransferResult.Status.UNAVAILABLE, null, sourceBalance, balance(destination));
         balances.put(source, sourceBalance - amount);
         balances.put(destination, destinationBalance);
         UUID receipt = UUID.nameUUIDFromBytes(("jem:receipt:" + idempotencyKey).getBytes(StandardCharsets.UTF_8));
@@ -372,6 +434,9 @@ public final class EconomySavedData extends SavedData {
     public synchronized CompoundTag save(CompoundTag tag) {
         tag.putInt("Schema", SCHEMA);
         tag.putBoolean("Frozen", frozen);
+        if (!frozenReason.isEmpty()) tag.putString("FrozenReason", frozenReason);
+        if (developmentAccount != null) tag.putUUID("DevelopmentAccount", developmentAccount);
+        tag.putLong("DevelopmentIssued", developmentIssued);
         CompoundTag balanceTag = new CompoundTag();
         balances.forEach((id, amount) -> balanceTag.putLong(id.toString(), amount));
         CompoundTag receiptTag = new CompoundTag();
@@ -390,8 +455,12 @@ public final class EconomySavedData extends SavedData {
         return tag;
     }
 
-    private static EconomySavedData load(CompoundTag tag) {
+    private static EconomySavedData load(CompoundTag tag, MinecraftServer server) {
         EconomySavedData data = new EconomySavedData();
+        data.developmentServer = server;
+        data.developmentAccount = tag.hasUUID("DevelopmentAccount") ? tag.getUUID("DevelopmentAccount") : null;
+        data.developmentIssued = tag.getLong("DevelopmentIssued");
+        data.frozenReason = tag.getString("FrozenReason");
         CompoundTag balanceTag = tag.getCompound("Balances");
         for (String key : balanceTag.getAllKeys()) {
             try { data.balances.put(UUID.fromString(key), Math.max(0L, balanceTag.getLong(key))); }
@@ -420,6 +489,11 @@ public final class EconomySavedData extends SavedData {
             data.physicalOperations.put(operation.id(), operation);
         }
         data.frozen = tag.getBoolean("Frozen") || !data.conservationValid();
+        if ((data.developmentAccount != null || data.developmentIssued != 0L)
+                && (data.developmentIssued < 0L || data.developmentAccount == null
+                    || !localDevelopmentMarkerMatches(server, data.developmentAccount))) {
+            data.freezeDevelopmentLedger("Saved development currency is outside its dedicated local opt-in/account marker boundary; do not deploy this world ledger");
+        }
         data.trimReceipts();
         data.trimPhysicalHistory();
         return data;
@@ -429,7 +503,10 @@ public final class EconomySavedData extends SavedData {
         try {
             long total = 0L;
             for (long amount : balances.values()) total = Math.addExact(total, amount);
-            return total == INITIAL_SUPPLY;
+            if (developmentIssued < 0L) return false;
+            if (developmentAccount == null) return developmentIssued == 0L && total == INITIAL_SUPPLY;
+            return localDevelopmentMarkerMatches(developmentServer, developmentAccount)
+                    && total == Math.addExact(INITIAL_SUPPLY, developmentIssued);
         } catch (ArithmeticException overflow) { return false; }
     }
 

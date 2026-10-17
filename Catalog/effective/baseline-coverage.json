@@ -2,11 +2,11 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "0e5f418b2faec9335071466e33c12140368f19fba84c246d6777fed72ef588b0",
+  "change_records_sha256": "9abfcd3b520df5719d656fe63c7dfc36c9c1905a331ea0d01f63e58fa2c5e182",
   "totals": {
-    "watched": 3449,
-    "covered": 516,
-    "unresolved": 2933
+    "watched": 3454,
+    "covered": 523,
+    "unresolved": 2931
   },
   "groups": {
     "Client/ManagedPack/config": {
@@ -1460,9 +1460,9 @@
       ]
     },
     "Mods/JEMCompat": {
-      "watched": 72,
-      "covered": 10,
-      "unresolved": 62,
+      "watched": 76,
+      "covered": 15,
+      "unresolved": 61,
       "unresolved_paths": [
         "Mods/JEMCompat/gradle.properties",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
@@ -1501,7 +1501,6 @@
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/events/LuminousEventVictoryMixin.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/guide/SpawnWithJourneyGuideProcedureMixin.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/DonkeyInventoryMixin.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/EngineVehicleFuelMixin.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/EntityStuckSpeedAccessor.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/FurnaceMinecartMixin.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/ItemBasedSteeringAccessor.java",
@@ -1600,11 +1599,10 @@
       ]
     },
     "Mods/JEMMenuSupport": {
-      "watched": 5,
-      "covered": 0,
-      "unresolved": 5,
+      "watched": 6,
+      "covered": 2,
+      "unresolved": 4,
       "unresolved_paths": [
-        "Mods/JEMMenuSupport/build.gradle",
         "Mods/JEMMenuSupport/gradle.properties",
         "Mods/JEMMenuSupport/src/main/java/com/siirio/jemmenus/Buttons.java",
         "Mods/JEMMenuSupport/src/main/java/com/siirio/jemmenus/TextInput.java",

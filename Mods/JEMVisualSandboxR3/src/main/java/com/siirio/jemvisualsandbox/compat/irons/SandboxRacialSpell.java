@@ -44,7 +44,8 @@ public final class SandboxRacialSpell extends AbstractSpell {
 
     @Override public CastResult canBeCastedBy(int level, CastSource source, MagicData data, Player entity) {
         if (!(entity instanceof ServerPlayer player)) return super.canBeCastedBy(level, source, data, entity);
-        if (!ownsSpell(player)) return new CastResult(CastResult.Type.FAILURE);
+        if (!ownsSpell(player)) return new CastResult(CastResult.Type.FAILURE,
+                Component.translatable("jem_visual_sandbox.action.race_required"));
         SandboxIronsBridge.sync(player);
         long remaining = RaceExperience.remaining(player, "signature");
         if (remaining > 0) return new CastResult(CastResult.Type.FAILURE,

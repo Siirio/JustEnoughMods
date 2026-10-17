@@ -50,10 +50,13 @@ jar {
     tasks.register("${profile}Jar", GradleBuild) {
         buildName = "jem-races-${profile}"
         dir = projectDir
-        tasks = ['jar']
+        tasks = ['jarJar']
         startParameter.projectProperties = gradle.startParameter.projectProperties + [
             raceProfile: profile,
             raceProfileOutput: new File(projectDir, "build/${profile}-profile").absolutePath
         ]
     }
 }
+
+apply from: '../JEMMenuSupport/embed.gradle'
+tasks.named('jarJar') { archiveBaseName = 'jem-races'; archiveClassifier = raceProfile == 'sandbox' ? 'sandbox' : '' }

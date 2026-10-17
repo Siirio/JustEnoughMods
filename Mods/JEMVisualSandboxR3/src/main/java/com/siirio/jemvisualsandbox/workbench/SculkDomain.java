@@ -46,7 +46,7 @@ public final class SculkDomain {
         // At most797 columns,7 already-loaded surface candidates per column.
         surface: for(int dx=-16;dx<=16;dx++)for(int dz=-16;dz<=16;dz++){
             if(store.tiles.size()>=4096){
-                owner.displayClientMessage(net.minecraft.network.chat.Component.literal("Sculk terrain: pending unloaded ground must restore before more is placed"),true);break surface;
+                owner.displayClientMessage(net.minecraft.network.chat.Component.translatable("jem_visual_sandbox.action.sculk_restore_pending"),true);break surface;
             }
             if(dx*dx+dz*dz>RADIUS*RADIUS)continue;
             for(int dy=2;dy>=-4;dy--){

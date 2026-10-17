@@ -168,6 +168,8 @@ tasks.withType(JavaCompile).configureEach {
 
 tasks.withType(Test).configureEach { enabled = false }
 
+apply from: '../JEMMenuSupport/embed.gradle'
+
 // Explicit full-economy compatibility regression; does not start Minecraft.
 tasks.register('compatTradePolicyContractTest', JavaExec) {
     dependsOn testClasses

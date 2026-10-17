@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-18 — Vanilla GUI players, race presentation and native aircraft fuel
+
+- User requested vanilla player previews in every GUI regardless Epic Fight/animation packs, a smaller fixed race-selection screen and local unlimited money; later reported missing Iron’s Spells race icons, untranslated ability errors and a biplane losing thrust despite onboard fuel.
+- Implementation: shared vanilla classic/slim skin mesh bypasses live player animation/model layers in GUI only, including Quick Skin. Race selection owns GUI scale 3, converted controls/scissor/preview viewport and camera distance 5.0 instead of 3.75. General Minecraft GUI options stay unchanged.
+- Bug / Client Sided / Iron’s Spells 3.15.6 final icon resolver requests textures/gui/spell_icons but five racial PNGs lived under spells; action messages also lacked translation keys or used literal English / in testing. Move the existing icons to the native path and provide owned ru_ru/en_us action messages.
+- Bug / Both Sided / JEM EngineVehicleFuelMixin canceled refuel() airborne, but upstream uses that method to feed the engine buffer from BOILER inventory, not to accept external fuel. The buffer depleted, native LOW_ON_FUEL reduced thrust, and touching ground temporarily restored feeding / in testing. Remove that cancellation; retain quarter-rate ground fuel consumption.
+- Local money is explicit development issuance in the canonical real ledger, replenishing the selected wallet to 1,000,000,000,000. It requires an ignored local account marker, dedicated JVM opt-in and runtime activation; persisted issuance remains conserved. The pre-change local ledger is backed up and this development world ledger must never be deployed.
+- Required production JAR builds only; no tests or client/gameplay launches. Fresh Server/ManagedPack artifacts and native AutoModpack publication are recorded in Docs/races/gui-local-delivery.json. Stable profile, MineRENT and release baseline remain untouched. Player acceptance pending.
+
 ## 2026-10-18 — Recover the corrected native test jem generation
 
 - User report: test jem crashed again. Bug / Client Sided / native launch apply refused unreviewed locally built JAR replacements, kept generation27, and loaded its duplicate narrator redirects despite generation29 already being published and downloaded / in testing. Exact resolution mechanism: prepare and commit the already-authorized generation29 through native ModpackUpdater/UpdateAttempt, checking each JAR mutation against canonical local source bytes.

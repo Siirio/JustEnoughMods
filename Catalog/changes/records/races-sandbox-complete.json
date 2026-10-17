@@ -108,11 +108,11 @@
       "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/guardian_dome/gold-wave-one-shot.png.mcmeta",
       "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/en_us.json",
       "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/ru_ru.json",
-      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/infernal_eruption.png",
-      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/life_chorus.png",
-      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/rift_ambush.png",
-      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/sculk_veins.png",
-      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/verdant_dominion.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/infernal_eruption.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/life_chorus.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/rift_ambush.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/sculk_veins.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/verdant_dominion.png",
       "Mods/JEMVisualSandboxR3/src/main/resources/data/forge/loot_modifiers/global_loot_modifiers.json",
       "Mods/JEMVisualSandboxR3/src/main/resources/data/jem_visual_sandbox/loot_modifiers/piglin_fortune.json",
       "Mods/JEMVisualSandboxR3/src/main/resources/jem_sandbox.mixins.json",
@@ -249,6 +249,19 @@
       "summary": "Current user brief requires compile-time sandbox/production authority instead of a production-reachable manual developer opt-in. RaceCommands source is deleted; retain its old contract/path in history only. Current development source alternatives are owned by races.sandbox-preview-profiles.",
       "source_files": [
         "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceCommands.java"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "correct_icon_source_paths",
+      "summary": "Existing images moved from spells to native Iron’s Spells spell_icons; former source paths are historical only.",
+      "source_files": [
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/infernal_eruption.png",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/life_chorus.png",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/rift_ambush.png",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/sculk_veins.png",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/textures/gui/spells/verdant_dominion.png"
       ]
     }
   ],
