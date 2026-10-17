@@ -207,3 +207,7 @@
 Удаление поселения с долгом зарплаты запрещено; увольнение останавливает только
 будущие начисления. Подробные технические границы и фактические результаты
 интеграционных проверок: `Docs/economy/settlement-implementation-notes.md`.
+## Standalone redesign status
+
+The 2026-10-17 standalone design and source audit are in [standalone/README.md](standalone/README.md). They are proposals awaiting design approval, not changes to the behavior documented above. The user clarified that Workers/Recruits gameplay remains available only with those optional mods installed. The new design explicitly requests Gold-per-added-block expansion and standalone Settlements authority; neither has been implemented by this documentation checkpoint.
+

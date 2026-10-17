@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-17 — Settlements standalone audit and GUI production contract
+
+- User direction: implement the attached standalone Forge1.20.1/Java17 Settlements master brief, preserve established mechanics, use compact native Minecraft controls and exploration-map styling, and define real UI/action contracts before artwork. Explicit clarification: Workers and Recruits gameplay requires their respective optional mods; do not build replacement NPCs or combat AI.
+- Codex design choices: six linked documents in Docs/settlements/standalone define source-backed feature coverage, all18 screen roles, eight-section shell without Overview, selection/request/acknowledgment lifecycle, exact sprite dimensions/slices/states/placement, and truthful pending acceptance. Propose a single bundled shared currency runtime owner preserving existing registry IDs, ledger/provenance/receipts and town account UUIDs; keep integrated Settlements authority local instead of activating global SMP behavior.
+- Source audit finds existing multiple-town storage, fatigue10/day, actual hostility, seven-day payroll/three-miss rebellion and six-day catch-up code; standalone is blocked by mandatory dependencies, dedicated guards, optional NPC types in common classes and SMP-owned screens. Current safe vanilla food rejection and Copper-per-added-block price differ from the requested behavior. These are audit findings, not repaired defects or runtime acceptance claims.
+- Design-only checkpoint awaiting approval under the applicable brainstorming workflow. Read-only builder review corrected compact-window bounds, session bootstrap ordering, currency ownership and absent/incompatible channel handling. No production source/config/assets/JAR changes, build, tests, fixtures, game launch or Atlas gameplay mutation. The six-day catch-up audit records that only evidenced Workers farmer wheat output currently has a recipe; no other yields invented.
+- Ordinary local Server and Client/ManagedPack remain unchanged; native AutoModpack generation18 was already published with matching staged/published manifest SHA1 b479c75beb82aec9b80e3be94568033a3045a804. No MineRENT, stable-profile or release-baseline changes. Full mod implementation, distribution and in-game visual preview remain pending.
+
+
 ## 2026-10-17 — Pearl afterfire and Ancients VFX revision
 
 - User direction: select image3 upper-right pearl afterfire; remake Ancients. User explicitly confirms golden shields, healing pulse and dome without floor runes, then rejects the first curling-tail dome and requires a continuous solid sphere. Pasted overhaul instructions remain reference context; no UI, standalone architecture or balance changes are included.

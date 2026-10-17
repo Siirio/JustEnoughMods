@@ -1,0 +1,95 @@
+# GUI specification
+
+Status: design contract, not implemented UI. `GUI_STATE_MACHINE.md` owns request/reply and lifecycle behavior. `ART_BRIEFS.md` owns sprite pixels. All dimensions below are **logical GUI pixels**, not framebuffer pixels; all labels are translatable Minecraft text.
+
+## Layout and shared components
+
+Codex layout proposal: 352×240 centered window with 8-pixel safe margin. Header `(8,8,336,24)`; sidebar `(8,36,88,196)`; content `(100,36,244,196)`. Content header24, footer28, remaining144 scrolling pixels. Coordinates are window-relative. Item icons16×16; icon targets20×20 minimum; regular buttons20 high. Native font9 high with12-pixel line spacing. Rows32 high; text wraps rather than scaling below native font size.
+
+The normal352×240 window plus8px screen margins requires368×256 available logical screen pixels. Below either threshold, use screen-safe window bounds (screen width/height minus16), top section picker instead of sidebar and one column. Narrow selector24 high; detail portrait collapses to48×64 before text; footer wraps vertically with its own reserved height. Each content scroll viewport clips both rendering and mouse regions. If no useful content fits at extreme GUI scale, show a localized scale instruction with Close; never draw overlapping active targets.
+
+This structural wireframe is an asset-placement mockup, **not an in-game screenshot or approved art**:
+
+```text
+352 logical pixels
++-------------------------------------------------------------+
+| 16px emblem  Settlement name       Switch*  Help  Close      | 24
++----------------+--------------------------------------------+
+| Map            | Section title / current filter             | 24
+| Residents      +--------------------------------------------+
+| Happiness      |                                            |
+| Food           | Live section viewport                      |144
+| Workers        | (scroll/clipped; no text baked in PNG)      |
+| Recruits       |                                            |
+| Treasury       +--------------------------------------------+
+| Settings       | Real quote / reason          Primary action| 28
++----------------+--------------------------------------------+
+* only when multiple settlements; 8px outer inset, 4px gutters
+```
+
+| Component | Geometry/rendering | Interaction and accessibility |
+| --- | --- | --- |
+| SettlementPanel | 16×16 nine-slice source, fixed3 corners; content inset8 | Non-interactive; no false button seams |
+| SettlementButton | 16×20 source nine-slice, corner3; native text centered | Default/hover/pressed/disabled + programmatic focus border; Space/Enter; disabled reason narration/tooltip |
+| IconButton | Icon16 in target20×20 | Tooltip with action + reason; focusable; no hover-only essential action |
+| SettlementTabs | Sidebar row20 or compact picker24; selected overlay | Scroll navigation when needed; selected label narrated; no Overview |
+| CoinAmount | Actual registered item icons16, localized counts | Five denominations, checked integer decomposition, wrap groups; detailed amount tooltip |
+| StatusBar | Source track16×8 nine-slice; width≥48; fill inner height4 | Separate Happiness and Satiety labels; actual0–100; tooltip numerator/denominator; icon + text indicate criticality |
+| VillagerPortrait | Preferred64×112 in details; resident-row icon16 | Live loaded entity only; stable camera/yaw per widget; unloaded uses explicitly labelled role icon, never a fake villager |
+| ResidentRow | Height32; portrait16; name/role; two48×8 bars when width permits | Whole-row Open with one clear target; search/filter/sort outside scroll content |
+| WorkerRow / RecruitRow | Height40; icon16; two text lines + state | Open detail first; destructive action never hidden in row click |
+| FoodRow | Height32 or48 when wrapped; item16; effect/count columns | Native item tooltip + true villager effects; stock may be unknown |
+| MapCanvas | Main viewport at least128×96 | Pan/zoom anchored under cursor; drag capture released on mouse-up, Escape, blur, screen change and resize |
+| MapClaimCell | Geometry calculated from current rectangle/quote | Same world-to-screen transform for hit, fill and outline; no raster terrain stamping |
+| ConfirmationDialog | Width224, dynamic height; button footer20 | Cancel initially focused for destructive actions; Escape cancels; confirm separate target |
+| SearchField | Height20, width≥80 | Standard edit focus, selection/caret, narration; no global hotkeys while typing |
+| FilterControl | Height20, bounded dropdown/scroll | Valid server-backed options only; filters local over loaded rows or explicit server query |
+| Tooltip | Nine-slice16, fixed3 corners; text inset4 | One tooltip at a time, clamp to screen, wrap long Russian; keyboard-focus equivalent |
+| NotificationToast | Width160, height32/48; icon16 + title/body | Severity by icon/text and color; deduplicate per state-machine contract |
+| BookPage |128×160 page surface, content inset8 | Chapters/previous/next/back; paragraphs reflow with locale |
+| EmptyState / LoadingState | Available content bounds, symbol16 + wrapped text | Empty state offers valid Create/Link action; loading blocks mutation and has Close |
+
+Display proposal for bar colors: 0–9 red,10–34 orange,35–64 yellow,65–100 green. These are presentation bands, not new simulation thresholds. Hunger UI uses **Satiety / Сытость** (higher=healthier), from `ResidentMood.satiety`; a “Hunger” label must explicitly invert fill and severity if used. Never show hunger100 as green while satiety0.
+
+## Screens and exact data/actions
+
+For every action below: source fields come from authorized server views, refresh follows the state-machine event table, authority is logical server unless explicitly “local”, success requires matching result/revision, rejection stays on current context with localized reason and refreshed quote. Unsupported remote servers expose only compatibility/Close; they cannot execute actions. Local filter/navigation controls require no gameplay mutation.
+
+| # / screen | Live fields and source | Interactive elements, validation, success/failure |
+| --- | --- | --- |
+|1 Entry | Handshake/capabilities, authorized owned count | Configurable key and `/settlements` -> directory request;0 creation/1 map/many selector. No fake zero while loading |
+|2 Selector | Town UUID/name/dimension, living count, happiness and real alerts | Search, scroll, name/dimension sort local; Open validates current owner/ID then loads Map; Create opens3; remembered ID is highlight only; deletion never inline |
+|3 Creation | Name, looked-at/placed bell and dimension, initial97×97 bounds, authoritative founding cost/restrictions | Name edit, preview, Create, Cancel; normalized3–32 name, unique name, actual bell≤16 blocks, overlap/separation/loaded dimension/funds checked server. Existing300-copper default retained. Pending blocks duplicate submit; failure inline; ACK opens exact new UUID |
+|4 Shell | Selected UUID/name, directory count, active section | Eight section buttons, switcher when multiple, Help, Close; local navigation, loading changed section as needed. No summary-card dashboard |
+|5 Map | Authoritative bounds/dimension/center/player where available, explored map samples, selected quote and available funds | Zoom±, drag, Center settlement/player, select neighbor, Expand. Server verifies same dimension, bounds±256, adjacency/union, separation16, ownership/revision and Gold price. Preview **entire added strip**, label1 Gold/block plus added-block count and total; debit only after valid commit. Unsupported/unexplored terrain remains parchment/unknown; centering never teleports or force-loads chunks |
+|6 Residents | Living registered ResidentMood UUIDs, names/professions/role, actual mood/satiety/craving/hostility | Search, name/profession/hunger/happiness sort; All/profession/role/Hungry/Unhappy/Working; In danger only if real state exists. Thresholds server-specified; row opens7. Unloaded living residents retained with unknown transient data; dead removed on confirmed death |
+|7 Resident details | Same resident view, native profession distinct from assignment, needs/modifiers, home/work reference, actual recent foods and per-item day counts | Feed guidance opens food/source context; See Home focuses5 at home, never teleport; Work opens10 when capability exists; Remove confirmation checks ownership, membership, hostility/debt before clearing affiliation. No kill/entity deletion/native-profession conversion |
+|8 Happiness | Actual settlement score and housing/food/safety/jobs/community/decoration/tax contributions, individual mood | Contributor click opens its guide page/related section; critical-resident row opens7. Six actual categories each documented; Tax is deduction, not invented seventh happiness type. Explain weighted settlement value vs individual mood |
+|9 Food | Food registry/policy in villager context, physical linked-container stock, active requests, dimension-access and serving counters | Search/item sort, filter acceptance/demand/unlocked, storage list, food detail tooltip, focus resident. Link/enable food storage only via validated real block interaction. No virtual inventory or item spawning. Unknown/unloaded quantities use text, not zero. Request restriction does not forbid eating already obtained item |
+|10 Workers | Native Workers ownership/job/work area/state/output/destination, existing production obligations | With Workers: select actual worker, inspect native assignment and supported native management actions; Assign/Change/Remove only where exact native API is verified. Locate focuses map if known. Without Workers: explanatory unavailable state, no assignment buttons. No made-up yields or conversion of all villagers to workers |
+|11 Recruits | Native recruit entity/role, wage config, next due gameTime, unpaid period IDs, persisted loyalty/defeat | With Recruits: details, payroll funding/settlement action, authorized native hire/buyback, supported native management. Server verifies employer, roster generation, actual due periods/funds and native hire requirements. Seven-day cycle/three misses unchanged; no forced payment for a future not-yet-due cycle. Without Recruits: unavailable state |
+|12 Treasury | Town account balance, spendable wallet/physical split, upcoming payroll, backed transaction history/receipts | Five-denomination amount input, Deposit, Withdraw; explicit town/request IDs, valid amount/source/destination/capacity/funds. No optimistic balance mutation; history only ledger-backed facts, not generated UI rows. Missing canonical provider is an error, never emerald fallback |
+|13 Settings | Name, actual owner/dimension/location/bounds, existing tax/management rules | Rename edit/Save/Cancel; normalized name uniqueness/revision check. Tax selector only existing0/5/10/15 supported values if authorized endpoint is implemented. Delete opens18; unpaid payroll and unresolved consequence checks; refund once, unassign residents, preserve recruits' personal payroll/loyalty, clear selection/overlays after ACK. Physical world stays intact |
+|14 Guide | Chapters from implemented authoritative rules/config/capabilities | Chapter list, page previous/next, Back; `/settlements help` opens GUI rather than only giving written book. One page each housing/food/safety/jobs/community/decoration, plus tax explanation. Food/fatigue, founding, map, treasury, optional workers/physical output and recruits/payroll/rebellion; absent integrations explicitly explained |
+|15 Jade overlay | Same registered-resident projection scoped to looked-at entity | Name/profession/membership, two labelled bars and current refusal/status; optional Jade only. No forged settlement fields for unregistered villager; no standalone dependence on Jade |
+|16 World menu | Looked-at real supported entity, owner/capabilities | Deliberate modifier/key opens View/Work/Role/Remove as applicable; entity UUID/reach/ownership checked for mutation. Ordinary right-click preserves native trade. Escape returns game; no stale entity-ID reuse |
+|17 Notifications | Authoritative event/condition transitions and operation ACKs | Icon/title/one-line reason; section action in accessible list; dedup key and severity behavior in state machine. Persistent conditions remain visible in owning section |
+|18 Shared states | Loading/empty/success/recoverable error/failed action/confirmation/destructive/unsupported | Retry only safe reads or original-operation reconciliation; Close/Back always available. Destructive dialog names exact town/entity and consequences. Disabled buttons explain reason; no fake success on click |
+
+## Guide and localization contract
+
+String keys under `jem.settlements.gui.*`, `jem.settlements.reason.*`, `jem.settlements.guide.*`; English and Russian must have equal coverage. Formatting uses Components and typed arguments, not server-generated untranslated English. Item/profession/dimension names use native translations when available; user names are literal sanitized text. Long text wraps; no abbreviating away price, debt or destructive consequences.
+
+| Situation | Russian | English |
+| --- | --- | --- |
+| Unsupported | Этот сервер не поддерживает Поселения. | This server does not support Settlements. |
+| No Gold | Недостаточно золотых монет. | Not enough Gold Coins. |
+| Unit price | За каждый новый блок: 1 золотая монета. | Each added block costs 1 Gold Coin. |
+| Fatigue | Житель больше не хочет эту еду сегодня. | This resident does not want more of this food today. |
+| Full output | Работники не могут доставить предметы: хранилище заполнено. | Workers cannot deliver items: storage is full. |
+| Unloaded entity | Житель сейчас вне загруженной области. | This resident is outside the loaded area. |
+| Pending outcome | Результат уточняется… | Checking result… |
+| Optional workers absent | Для работников нужен мод Workers. | Workers requires the Workers mod. |
+| Optional recruits absent | Для рекрутов нужен мод Recruits. | Recruits requires the Recruits mod. |
+
+No debug registry IDs/packet/null jargon in ordinary text. Advanced diagnostics may record exact IDs in logs. Guide values are bound to canonical rules, not independently copied balance constants.
