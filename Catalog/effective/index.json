@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "25693470fabf1894b184b70d436dcdf272325da6632b37d57ce0341a1ae23dc4",
+  "change_records_sha256": "0e5f418b2faec9335071466e33c12140368f19fba84c246d6777fed72ef588b0",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -48,7 +48,7 @@
     {
       "change_id": "compat.narrator-and-shared-categories",
       "status": "active",
-      "summary": "Disable narrator Ctrl+B shortcut and share the existing item category owner between client catalog and authoritative market admission.",
+      "summary": "Shared item category owner between client catalog and authoritative market admission. Narrator shortcut ownership is transferred exclusively to Races.",
       "record": "Catalog/changes/records/client-narrator-shared-categories.json",
       "selectors": [
         {
@@ -57,7 +57,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17029
+      "potential_static_target_count": 17049
     },
     {
       "change_id": "compat.ffapi-forge-native-villager-trades",
@@ -1027,11 +1027,10 @@
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiCatalog.java": "96e3991d1e35ec5807dbb41f2243191ca89da9304def9070ebb51f8943c910e8",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/fabric/FabricTradeMixinCanceller.java": "4f5a2834ffcfb69fb613440bfced0fa925ca53737d60b1f48e3d03c74e66fe54",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/fabric/FabricTradeMixinPolicy.java": "8717fff814132e9bcbe355fc1552be11232f09d516b35705bd3f1cb26e400067",
-    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/NarratorHotkeyMixin.java": "21d7bfd49137a2652732c6bc2e2ea526278e7b63a44fc6cde2ea33ac5b2723c0",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/trading/FabricTypeAwareTradeMixin.java": "f28b6503c73ad37c5824554737a03879a667f796e9680104df7cd5e2928da551",
     "Mods/JEMCompat/src/main/resources/META-INF/services/com.bawnorton.mixinsquared.api.MixinCanceller": "b27fafce4802d4a2b9b2fa0c2a0ca5b3347418b9c49e1696654c1cf3461a43c9",
     "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/jei/cooking_catalysts.json": "03396bba90220095d54a4c45fd349f5cec968cd962551b5f483ea7fdda04aefe",
-    "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json": "28ae102b32416b707976346e6c919d7aa14d6e8fd6883a46f650453bbfb60aa9",
+    "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json": "40867b7dd095caadc3953f6d4aac3f0cfe2d05ba6cb9cb5028d588a5fbdf189e",
     "Mods/JEMCurrencyCore/build.gradle": "2f5570a6a59351bdfabfe1833d08585e3590a3fa1019ea19b744572e1fca686d",
     "Mods/JEMCurrencyCore/embed.gradle": "d2204661d1a2bf57aca16084dd7abc0c7b95a35214e53a5c0e8dfa96e0a6da50",
     "Mods/JEMCurrencyCore/gradle.properties": "58a820524b1197f432cc0720f670689fa7f634b2fb68554c581b8685a7ae50fc",

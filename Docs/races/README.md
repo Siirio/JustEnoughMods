@@ -1,5 +1,9 @@
 # JEM Races
 
+## Startup crash correction — 2026-10-18
+
+The user assigns Ctrl+B narrator suppression exclusively to Races. The duplicate `JEMCompat` narrator Mixin class and configuration entry are removed; the original required Races hook remains unchanged. This removes the explicit Redirect collision that aborted test jem initialization. Physical B/И input and explicit narrator settings retain their behavior. Fresh matching production Races/Compat artifacts and native generation are delivered locally; player startup acceptance remains pending. No tests or client launch were performed.
+
 ## Final sandbox promotion — 2026-10-18
 
 The user approved the final Races and Settlements for the local dedicated server and `test jem` via native AutoModpack. Matching fresh production Races1.1.0, Roles2.0.0 and full Settlements2.1.0 artifacts now form the local managed generation. MineRENT, stable profiles and the immutable release baseline are unchanged.

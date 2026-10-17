@@ -20,7 +20,7 @@
     "overrides": []
   },
   "change": {
-    "summary": "Disable narrator Ctrl+B shortcut and share the existing item category owner between client catalog and authoritative market admission.",
+    "summary": "Shared item category owner between client catalog and authoritative market admission. Narrator shortcut ownership is transferred exclusively to Races.",
     "modifiers": [
       {
         "property": "jemcompat.input_and_catalog",
@@ -32,7 +32,8 @@
           "narrator_hotkey": false,
           "category_owner": "com.siirio.jemcompat.catalog.JemCatalogCategories",
           "cooking_catalysts": "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/jei/cooking_catalysts.json",
-          "client_context": "JEI cooking catalyst predicate and native wearer context are preserved."
+          "client_context": "JEI cooking catalyst predicate and native wearer context are preserved.",
+          "narrator_hotkey_owner": "JEM Races; JEMCompat hook deleted at user request"
         }
       }
     ]
@@ -44,7 +45,6 @@
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/CuriosEquipment.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiCatalog.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/NarratorHotkeyMixin.java",
       "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/jei/cooking_catalysts.json",
       "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
       "Client/ManagedPack/mods/jemcompat-3.7.0.jar"
@@ -85,6 +85,16 @@
         "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
         "Client/ManagedPack/mods/jemcompat-3.7.0.jar",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuriosEquipment.java"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "remove_duplicate_hook",
+      "summary": "User explicitly assigns narrator suppression to Races. Remove JEMCompat narrator class and Mixin config entry to eliminate the startup Redirect collision; item category behavior is unchanged.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/NarratorHotkeyMixin.java",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
       ]
     }
   ],

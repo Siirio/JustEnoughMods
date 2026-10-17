@@ -49,6 +49,12 @@
         "operation": "replace",
         "before": "Ordinary local artifact predates final sandbox protocol9 meal/chest/navigation changes",
         "after": "Fresh current source-built Settlements2.1.0 full JarJar on Server and ManagedPack; source gameplay and saved towns preserved."
+      },
+      {
+        "property": "race.client.narrator_hook_owner",
+        "operation": "derive",
+        "before": "Races and JEMCompat both obligatorily redirect GameNarrator.isActive inside KeyboardHandler.keyPress, causing a critical 0/1 injection failure during client initialization.",
+        "after": "Races is the sole Ctrl+B narrator-shortcut owner. Delete the duplicate JEMCompat narrator Mixin class and config entry; retain the original required Races redirect. No deferral plugin, weakened injection requirement or keyboard-event cancellation."
       }
     ]
   },
@@ -56,18 +62,22 @@
     "owner": "JEMRoles persistence; JEMVisualSandboxR3 final mechanics/presentation; JEMSettlements towns",
     "kind": "authorized_final_sandbox_migration",
     "source_files": [
+      "Docs/races/server-test-migration.json",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/JemRoles.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RoleClientState.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/loot/PiglinFortuneLoot.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RolesNetwork.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRecord.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceAbilities.java",
+      "Mods/JEMSettlements/build.gradle",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/OptionalRacePresentation.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceClient.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/SculkScaleClient.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxIronsBridge.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/client/SandboxIronsClient.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/mixin/RaceNarratorHotkeyMixin.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/r3/BloomR3Preview.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/BlockbenchWorkbench.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalAbilities.java",
@@ -91,15 +101,14 @@
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SurfaceVfx.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/UtilityVfx.java",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/VoidDistancePreview.java",
+      "Mods/JEMVisualSandboxR3/src/main/resources/jem_sandbox.mixins.json",
       "Mods/JEMVisualSandboxR3/src/production/java/com/siirio/jemvisualsandbox/workbench/RaceDevelopment.java",
-      "Mods/JEMVisualSandboxR3/src/sandbox/java/com/siirio/jemvisualsandbox/workbench/RaceDevelopment.java",
-      "Mods/JEMSettlements/build.gradle",
-      "Docs/races/server-test-migration.json"
+      "Mods/JEMVisualSandboxR3/src/sandbox/java/com/siirio/jemvisualsandbox/workbench/RaceDevelopment.java"
     ]
   },
   "rationale": {
     "purpose": "Promote final sandbox Races and Settlements to the ordinary local server and native managed client generation; remove crossed race UI elements for all five origins.",
-    "decision_source": "User explicitly declares Races/Settlements final, requests fast safe server-test migration without tests, removes crossed UI across every race, and asks to start the server for joining. Codex selected the native-save adapter and production artifact boundary."
+    "decision_source": "User explicitly declares Races/Settlements final, requests fast safe server-test migration without tests, removes crossed UI across every race, and asks to start the server for joining. Codex selected the native-save adapter and production artifact boundary. Follow-up: user explicitly requires Races to handle narrator suppression and its removal from Compat."
   },
   "introduced": {
     "date": "2026-10-18",
@@ -151,6 +160,17 @@
         "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/VoidDistancePreview.java",
         "Mods/JEMVisualSandboxR3/src/production/java/com/siirio/jemvisualsandbox/workbench/RaceDevelopment.java",
         "Mods/JEMVisualSandboxR3/src/sandbox/java/com/siirio/jemvisualsandbox/workbench/RaceDevelopment.java"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "fix",
+      "summary": "User reports the client startup crash and explicitly selects Races as the sole narrator-hook owner: remove the duplicate JEMCompat class/config entry. Exact redirect-conflict warning establishes the cause. Acceptance remains in testing.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/NarratorHotkeyMixin.java",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/mixin/RaceNarratorHotkeyMixin.java"
       ]
     }
   ],

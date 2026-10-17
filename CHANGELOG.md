@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-18 — Races owns narrator suppression; remove duplicate Compat hook
+
+- User report: test jem crashed after the race migration. User technical direction: Races must handle narrator suppression; remove it from Compat. Prior no-tests/no-client-launch scope remains.
+- Bug / Client Sided / Races and JEMCompat both required a Redirect of the same GameNarrator.isActive call in KeyboardHandler.keyPress; JEMCompat claimed it first, leaving Races with 0/1 matches and aborting Minecraft initialization / in testing. Exact resolution mechanism: delete JEMCompat NarratorHotkeyMixin and its Mixin configuration entry; retain the original Races redirect as the sole owner.
+- Evidence: crash-2026-10-18_01.16.18-client.txt and the 01:16:18 Redirect conflict warning. Cause chain: standalone Races migrated beside Compat -> duplicate hooks target one invocation -> first redirect removes the call -> required second injection cannot match -> client initialization aborts. Migration omitted existing pack ownership coordination.
+- Fresh reobfuscated Races/Compat artifacts are synchronized to local Server/ManagedPack and published through native AutoModpack. No deferral plugin, tests, client launch, direct profile copy, stable change or release-baseline promotion. Player startup acceptance is pending.
+
 ## 2026-10-18 — Final Races and Settlements migration to the local test server
 
 - User request: promote the final sandbox Races/Settlements quickly into the local server/test jem, remove the crossed counter, DEV buttons and preview/DEV explanation text for every race, run no tests, and start the server for the user to join.
