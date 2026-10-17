@@ -64,3 +64,12 @@
 - Unlock condition: Explicit user request to change this behavior or evidence that the core execution pipeline changed.
 - Created: 2026-10-13
 
+## LOCKED: Guardian texture silhouette interpolation
+- Scope: Docs/races/assets/guardian-dome/texture-animation/author.py and approved-loop source evidence
+- Approved signal: THAT WHAT I WANTED - LOCK THAT TEXTURE ANIMATION LOGIC
+- Protected behavior: Preserve the approved user-cel-based continuous silhouette and nested material-region interpolation, stable 256x64 UV frame space, connected wave identity, crisp unfiltered pixels and external editable cels. The approved loop and original user drawings remain immutable visual evidence.
+- Reuse pattern: Preserve the existing implementation pattern unless the unlock condition is met.
+- Allowed changes: The same user request explicitly changes playback to one shot, extends travel to complete dome coverage, adds warm color gradients, emissive appearance and partial transparency; timing and coverage may extend without returning to disconnected tiles or replacing the approved wave with unrelated shapes.
+- Unlock condition: Explicit user request to change this behavior or evidence that the core execution pipeline changed.
+- Created: 2026-10-17
+
