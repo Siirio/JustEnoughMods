@@ -35,7 +35,7 @@ public abstract class RecruitHireScreenMixin extends AbstractContainerScreen<Rec
     protected RecruitHireScreenMixin(RecruitHireMenu menu, Inventory inventory, Component title) { super(menu, inventory, title); }
 
     @Inject(method = "init", at = @At("HEAD"))
-    private void jem$dimensions(CallbackInfo ci) { imageWidth = 300; imageHeight = 223; }
+    private void jem$dimensions(CallbackInfo ci) { imageWidth = RecruitHirePresentation.WIDTH; imageHeight = 223; }
 
     @Inject(method = "init", at = @At("TAIL"))
     private void jem$controls(CallbackInfo ci) {

@@ -131,7 +131,19 @@ public class SettlementScreen extends Screen {
         }
     }
     private Button button(Component label,int x,int y,int w,Runnable action,boolean mutation) {
-        Button widget=Button.builder(label,b->action.run()).bounds(x,y,Math.max(20,w),20).build();
+        return button(label,x,y,w,action,mutation,ItemStack.EMPTY);
+    }
+    private Button button(Component label,int x,int y,int w,Runnable action,boolean mutation,ItemStack icon) {
+        Button widget=new Button(Button.builder(label,b->action.run()).bounds(x,y,Math.max(20,w),20)) {
+            @Override public void renderWidget(GuiGraphics g,int mx,int my,float partial) {
+                SettlementMaterials.frame(g,getX(),getY(),getWidth(),getHeight(),active&&isHoveredOrFocused());
+                if(!active)g.fill(getX()+2,getY()+2,getX()+getWidth()-2,getY()+getHeight()-2,0x780f110e);
+                int reserve=icon.isEmpty()?0:18;
+                if(!icon.isEmpty())g.renderFakeItem(icon,getX()+3,getY()+2);
+                String text=font.plainSubstrByWidth(getMessage().getString(),Math.max(1,getWidth()-reserve-8));
+                g.drawCenteredString(font,text,getX()+reserve+(getWidth()-reserve)/2,getY()+6,active?0xfffff1cb:0xffaaa38c);
+            }
+        };
         widget.active=!mutation || !SettlementClientState.pending();
         if (!widget.active) widget.setTooltip(Tooltip.create(tr("pending")));
         addRenderableWidget(widget); return widget;
@@ -141,8 +153,8 @@ public class SettlementScreen extends Screen {
             int index=Arrays.asList(SECTIONS).indexOf(section);
             button(tr("section."+section),left+8,top+34,panelW-16,()->{section=SECTIONS[(index+1)%SECTIONS.length];inspecting=false;detail=null;scroll=0;search="";rebuild();},false);
         } else for (int i=0;i<SECTIONS.length;i++) {
-            String key=SECTIONS[i]; Button tab=button(tr("section."+key),left+8,top+36+i*23,88,()->{section=key;inspecting=false;detail=null;scroll=0;search="";filter="all";rebuild();},false);
-            if (section.equals(key)) tab.setMessage(Component.literal("> ").append(tr("section."+key)));
+            String key=SECTIONS[i]; Button tab=button(tr("section."+key),left+8,top+36+i*23,88,()->{section=key;inspecting=false;detail=null;scroll=0;search="";filter="all";rebuild();},false,new ItemStack(switch(key){case "map"->Items.MAP;case "residents"->Items.VILLAGER_SPAWN_EGG;case "happiness"->Items.SUNFLOWER;case "food"->Items.BREAD;case "recruits"->Items.IRON_SWORD;case "treasury"->Items.CHEST;default->Items.COMPARATOR;}));
+            if (section.equals(key)) drawings.add(()->graphics.renderOutline(tab.getX()-1,tab.getY()-1,tab.getWidth()+2,tab.getHeight()+2,0xff9cb572));
         }
     }
     private EditBox edit(int x,int y,int w,String value,String hint,int max) {
@@ -242,7 +254,7 @@ public class SettlementScreen extends Screen {
         } else {
             drawWrapped(Component.translatable("jem.settlements.gui.loyalty."+detail.getString("Loyalty").toLowerCase(Locale.ROOT)),tx,py,tw,INK);
             drawWrapped(tr("missed",detail.getInt("MissedPayrolls")),tx,py+20,tw,MUTED);
-            drawWrapped(tr("due_in",Math.max(0,detail.getLong("NextPayroll")-envelope.getLong("GameTime"))),tx,py+42,tw,MUTED);
+            drawWrapped(tr("due_in",String.format(Locale.ROOT,"%.1f",Math.max(0,detail.getLong("NextPayroll")-envelope.getLong("GameTime"))/24000.0)),tx,py+42,tw,MUTED);
             drawLine(tr("wage"),tx,py+66,MUTED);drawings.add(()->coins(detail.getLong("Wage"),tx,py+78,tw));
         }
         listTop=py+104;listBottom=bottom-48;
@@ -431,7 +443,10 @@ public class SettlementScreen extends Screen {
     }
     @Override public void render(GuiGraphics g,int mouseX,int mouseY,float partialTick){
         graphics=g;renderBackground(g);
-        g.fill(left,top,left+panelW,top+panelH,0xff30372f);g.fill(left+1,top+1,left+panelW-1,top+panelH-1,0xff777e68);g.fill(left+3,top+3,left+panelW-3,top+panelH-3,0xff30372f);
+        SettlementMaterials.frame(g,left,top,panelW,panelH,false);
+        g.fill(cx-3,cy-3,cx+cw+3,bottom+2,0xc0181915);
+        SettlementMaterials.foliage(g,left+panelW-22,top+3);
+        SettlementMaterials.foliage(g,left+3,top+panelH-19);
         g.drawString(font,mode.equals("town")?clip(Component.literal(detail==null?town.getString("Name"):detail.getString("Name")),Math.max(40,panelW-128)):title,left+9,top+13,INK,false);
         if(mode.equals("loading")||mode.equals("unsupported")||mode.equals("scale"))g.drawWordWrap(font,tr(mode),left+12,top+50,Math.max(20,panelW-24),INK);
         if(!inspecting&&mode.equals("town")&&section.equals("map")&&detail==null&&confirm==null)map.render(g,town,town,minecraft);

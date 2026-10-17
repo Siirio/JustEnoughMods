@@ -94,3 +94,10 @@ The House Viewer replaces exploded floors with a0–10 depth slider and rounded 
 The Recruit hire screen uses a300×223 logical-pixel wood/parchment panel, actual equipped model, drag rotation and nine icon stats. Server quote carries actual modified statistics (attack is not natively client-syncable), price, wages, affordability and reason, refreshed every20ticks while the menu is open. Fee appears once, Hire contains no repeated currency icon; wages remain every168000ticks. Native36player slots, stack/click synchronization and real command groups are retained. Infantry is a native group, not a class transformation. Emerald default/full Economy Coin ownership is unchanged. See `RECRUITS_COMPARISON.md` for15feature rows, exact installed IDs/versions/licenses and the separate GuardVillagers coverage gap.
 
 Production compilation/source review and exact artifacts are recorded in `recruit-housing-delivery.json`; no test suite, gameplay scenario, automated multi-scale check or after screenshot is fabricated. Fresh player visual/AI/inventory acceptance remains pending. Protocol8 requires the matching Settlements client and server artifact.
+
+
+## Fed resident recovery — 2026-10-17
+
+User requests player-like gradual recovery after eating. Registered living ordinary villagers now recover1HP per80loadedticks while satiety>=90, after an actual recorded serving, only with naturalRegeneration enabled and missing health. Codex chooses4satiety cost per healed HP on the existing0–100scale. The timer persists, resets when ineligible, never catches up offline and never revives dead residents. Existing craving/food selection, professions, home/work AI, morale and starvation remain owned by their prior systems. Recruits1.15.2 already heals0.02HP per native update with hunger>=70 and keeps its native food healing; it does not receive a second healing loop.
+
+Delivery evidence: [readability/recovery delivery](readability-recovery-delivery.json). GUI direction and limits are recorded in GUI_SPEC.md.

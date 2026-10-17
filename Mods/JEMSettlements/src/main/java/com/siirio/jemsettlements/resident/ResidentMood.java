@@ -41,6 +41,7 @@ public final class ResidentMood {
     private int cravingThreshold;
     private int cravingCycle;
     private long servingDay = Long.MIN_VALUE;
+    private int regenerationTicks;
 
     public ResidentMood(UUID villagerId, UUID townId, GlobalPos home, GlobalPos workplace) {
         this.villagerId = java.util.Objects.requireNonNull(villagerId); this.townId = java.util.Objects.requireNonNull(townId); this.home = home; this.workplace = workplace;
@@ -64,6 +65,18 @@ public final class ResidentMood {
     public Optional<ResourceLocation> repeatedDish() { return repeatedDish ? Optional.ofNullable(lastDish) : Optional.empty(); }
     public boolean canRequest(ResourceLocation dish) { return dish != null && !recentFoods.contains(dish.toString()); }
     public long lastServingGameTime() { return lastServingGameTime; }
+    /** Loaded time only: one half-heart per four seconds while well fed, at a food cost. */
+    public boolean regenerate(boolean canHeal) {
+        if (!canHeal || !living || satiety < 90 || lastServingGameTime == Long.MIN_VALUE) {
+            regenerationTicks = 0;
+            return false;
+        }
+        regenerationTicks += 20;
+        if (regenerationTicks < 80) return false;
+        regenerationTicks = 0;
+        satiety = Math.max(0, satiety - 4);
+        return true;
+    }
     public AmenitySnapshot homeAmenities() { return homeAmenities; }
     public AmenitySnapshot workAmenities() { return workAmenities; }
     public long amenityDirtySince() { return amenityDirtySince; }
@@ -126,6 +139,7 @@ public final class ResidentMood {
     public CompoundTag save() {
         CompoundTag tag = new CompoundTag(); tag.putUUID("Villager", villagerId); tag.putUUID("Town", townId); savePos(tag, "Home", home); savePos(tag, "Work", workplace);
         tag.putInt("Mood", mood); tag.putInt("Satiety", satiety); tag.putLong("LastServing", lastServingGameTime); tag.putLong("LastDailyUpdate", lastDailyUpdate); tag.putBoolean("Living", living);
+        tag.putInt("RegenerationTicks", regenerationTicks);
         tag.putLong("ServingDay", servingDay); CompoundTag servings = new CompoundTag(); servingsToday.forEach(servings::putInt); tag.put("ServingsToday", servings);
         tag.putBoolean("Craving", craving); tag.putInt("CravingThreshold", cravingThreshold); tag.putInt("CravingCycle", cravingCycle);
         tag.put("HomeAmenities", homeAmenities.save()); tag.put("WorkAmenities", workAmenities.save()); tag.putLong("AmenityDirtySince", amenityDirtySince);
@@ -138,6 +152,7 @@ public final class ResidentMood {
         ResidentMood resident = new ResidentMood(tag.getUUID("Villager"), tag.getUUID("Town"), loadPos(tag, "Home"), loadPos(tag, "Work"));
         resident.mood = tag.contains("Mood") ? clamp(tag.getInt("Mood")) : 50; resident.satiety = tag.contains("Satiety") ? clamp(tag.getInt("Satiety")) : 50;
         resident.lastServingGameTime = tag.contains("LastServing") ? tag.getLong("LastServing") : Long.MIN_VALUE; resident.lastDailyUpdate = tag.contains("LastDailyUpdate") ? tag.getLong("LastDailyUpdate") : Long.MIN_VALUE;
+        resident.regenerationTicks = Math.max(0, Math.min(79, tag.getInt("RegenerationTicks")));
         resident.servingDay = tag.contains("ServingDay") ? tag.getLong("ServingDay") : Long.MIN_VALUE;
         CompoundTag servings = tag.getCompound("ServingsToday"); servings.getAllKeys().forEach(key -> resident.servingsToday.put(key, Math.max(0, servings.getInt(key))));
         resident.craving = tag.getBoolean("Craving"); resident.cravingCycle = tag.getInt("CravingCycle"); resident.cravingThreshold = tag.contains("CravingThreshold") ? Math.max(10, Math.min(99, tag.getInt("CravingThreshold"))) : resident.nextCravingThreshold();

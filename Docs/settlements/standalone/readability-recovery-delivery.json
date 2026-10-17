@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-17",
+  "status": "in testing",
+  "artifact": "jem-settlements-2.1.0.jar",
+  "sha256": "dd04ac1664b8666e263948712daa1b78aaddc8573dd4595423dae86f53406cec",
+  "production_build": "jarJar reobfJarJar; BUILD SUCCESSFUL; Java17; no tests",
+  "server": "Matching full JAR installed after clean stop; ordinary dedicated server running with the fresh artifact.",
+  "managed_client": "Matching fresh full JAR staged and natively published.",
+  "gameplay_client_launched": false,
+  "visual_acceptance": "WAITING_FOR_REAL_GAME_CAPTURE",
+  "baseline_promoted": false,
+  "packaging": {
+    "contains_material_renderer": true,
+    "refmap_present": true,
+    "embedded_dependencies": [
+      "META-INF/jarjar/jem-currency-core-1.0.0.jar",
+      "META-INF/jarjar/jem-identity-1.0.0.jar"
+    ]
+  },
+  "packSyncPublication": {
+    "published": true,
+    "journalSequence": 26,
+    "publishedManifestSha1": "a4cbc077a872813d6dbff99ffe483517d9537034",
+    "stagedManifestSha1": "a4cbc077a872813d6dbff99ffe483517d9537034"
+  },
+  "native_preview": {
+    "added": 0,
+    "changed": [
+      "main/jem-pack/manifest.json",
+      "main/mods/jem-settlements-2.1.0.jar"
+    ],
+    "removed": 0,
+    "content_token": "5809c1c"
+  },
+  "native_publish": "PUBLISHED;2026-10-17 21:33:25 Asia/Yekaterinburg;content token5809c1c",
+  "atlas": "Canonical full regeneration, rebuild, audit, schema validation and staged-source impact scan passed; no uncovered task paths or artifact drift. Unrelated dirty worktree paths remain outside this delivery.",
+  "atlas_record_digest": "b158d64e004e35bde3b265c18169995355411ee90d0578d3ee4b425a22bb305e"
+}

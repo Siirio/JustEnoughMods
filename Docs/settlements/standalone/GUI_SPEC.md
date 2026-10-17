@@ -109,3 +109,14 @@ Jade shows native profession only; the Settlements provider owns mood/satiety/to
 Native hire menu slots remain its original36player slots, never reinterpreted as recruit equipment. The presentation reserves a dark equipped-model portrait, two stat columns, separate fee/wage summary and the actual native command-group selector. Server-projected eligibility/reason/stats are display data; native hire remains authoritative. No fake class/training control. Source-owned parchment is reused with native wood/items; user direction is not runtime artwork approval.
 
 Jade: compact mood gradient/star/smiley and satiety fill/foodicon use actual authoritative values and percentages. Only the native Jade provider shows profession. Native recruit morale/hunger are bridged, never duplicated by GUI or metadata.
+
+
+## Recruit readability and material correction — 2026-10-17
+
+User requests the existing hire menu corrected, using the supplied style reference for arrangement, reused icons, appropriate visual elements, and wood/metal/vegetation. Reference classification: [supplied screenshots](../assets/reference/recruit-layout-2026-10-17/README.md).
+
+Codex implementation: hire frame252×223 logical pixels (previous300×223); native36slots and coordinates unchanged, equipped portrait and native group/action preserved. Two80pxstatcolumns, white values over dark recessed wood, compact fee and seven-day wage cells. Full stat explanations remain tooltips. Shared SettlementMaterials uses Minecraft spruce planks, fixed metal corners and vanilla tinted vines. Settlements navigation uses actual item icons and the same controls. No new directories, NPC roles or invented state from the reference.
+
+Jade happiness fills left-to-right from red/low through yellow to green/high and shrinks when its synchronized value decreases. Remove moving star, retain smile/actualpercent. Payroll countdown displays one decimal game day (24000ticks), recurring period remains7game days.
+
+No runtime visual acceptance is claimed. Native GUI scaling, Cyrillic labels and actual item interactions await user review. No tests, linters or gameplay clients launched.

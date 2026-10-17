@@ -32,14 +32,13 @@ final class NeedsBarElement extends Element {
         int railWidth = Math.max(32, end - start);
         graphics.fill(start - 1, top + 1, start + railWidth + 1, top + 12, 0xFF211B18);
         graphics.fill(start, top + 2, start + railWidth, top + 11, 0xFF514139);
-        int fill = mood ? railWidth : Math.round(railWidth * value / 100F);
+        int fill = Math.round(railWidth * value / 100F);
         for (int pixel = 0; pixel < fill; pixel++) {
             float fraction = pixel / (float) Math.max(1, railWidth - 1);
-            int color = mood ? (fraction < .5F ? blend(0xFF57BA59, 0xFFE8CE50, fraction * 2) : blend(0xFFE8CE50, 0xFFB6443C, fraction * 2 - 1))
+            int color = mood ? (fraction < .5F ? blend(0xFFB6443C, 0xFFE8CE50, fraction * 2) : blend(0xFFE8CE50, 0xFF57BA59, fraction * 2 - 1))
                     : blend(0xFFBD3931, 0xFFF0D83E, fraction);
             graphics.fill(start + pixel, top + 2, start + pixel + 1, top + 11, color);
         }
-        if (mood) drawItem(graphics, new ItemStack(Items.NETHER_STAR), start + Math.round((railWidth - 9) * (100 - value) / 100F), top + 2, 9);
         int iconX = start + railWidth + 4;
         if (mood) graphics.blit(MOOD_ICON, iconX, top + 2, 0, 0, 9, 9, 9, 9);
         else drawItem(graphics, new ItemStack(Items.BREAD), iconX, top + 1, 11);

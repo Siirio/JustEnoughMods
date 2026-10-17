@@ -19,10 +19,9 @@ import net.minecraft.world.item.Items;
 
 /** Pixel-sized native assets; no inventory, currency or recruit state is reconstructed here. */
 public final class RecruitHirePresentation {
-    private static final ResourceLocation OAK = new ResourceLocation("minecraft", "textures/block/dark_oak_planks.png");
-    private static final ResourceLocation PARCHMENT = new ResourceLocation("jem_settlements", "textures/gui/recruit/parchment.png");
     private static final ResourceLocation HUD = new ResourceLocation("minecraft", "textures/gui/icons.png");
-    private static final int INK = 0xff352718;
+    public static final int WIDTH = 252;
+    private static final int INK = 0xffffffff;
     private static final String[] STATS = {"health", "max_health", "level", "attack", "kills", "speed", "xp", "armor", "morale"};
     private static final Item[] ICONS = {Items.APPLE, Items.GOLDEN_APPLE, Items.IRON_SWORD, Items.DIAMOND_SWORD,
             Items.SKELETON_SKULL, Items.LEATHER_BOOTS, Items.EXPERIENCE_BOTTLE, Items.SHIELD, Items.HONEY_BOTTLE};
@@ -47,22 +46,16 @@ public final class RecruitHirePresentation {
     }
 
     public static void wood(GuiGraphics g, int x, int y, int w, int h, boolean focused) {
-        g.fill(x, y, x + w, y + h, 0xff21180f);
-        for (int dy = 2; dy < h - 2; dy += 16) for (int dx = 2; dx < w - 2; dx += 16)
-            g.blit(OAK, x + dx, y + dy, 0, 0, Math.min(16, w - 2 - dx), Math.min(16, h - 2 - dy), 16, 16);
-        g.fill(x + 1, y + 1, x + w - 1, y + 2, focused ? 0xffe6cf83 : 0xffa78248);
-        g.fill(x + 1, y + 2, x + 2, y + h - 1, 0xffa78248);
-        g.fill(x + 2, y + h - 2, x + w - 1, y + h - 1, 0xff392719);
-        for (int dx : new int[]{2, w - 5}) for (int dy : new int[]{2, h - 5}) {
-            g.fill(x + dx, y + dy, x + dx + 3, y + dy + 3, 0xff6a6556);
-            g.fill(x + dx, y + dy, x + dx + 2, y + dy + 1, 0xffc4b994);
-        }
+        SettlementMaterials.frame(g, x, y, w, h, focused);
     }
 
     public static void background(GuiGraphics g, Font font, AbstractRecruitEntity recruit, RecruitHireMenu menu,
                                   int x, int y, float rotation) {
-        wood(g, x, y, 300, 223, false);
-        g.blitNineSliced(PARCHMENT, x + 5, y + 19, 290, 198, 3, 16, 16, 0, 0);
+        wood(g, x, y, WIDTH, 223, false);
+        g.fill(x + 81, y + 20, x + WIDTH - 7, y + 97, 0xb51b1814);
+        g.fill(x + 182, y + 125, x + WIDTH - 7, y + 213, 0xb51b1814);
+        SettlementMaterials.foliage(g, x + WIDTH - 22, y + 4);
+        SettlementMaterials.foliage(g, x + 5, y + 105);
         g.fill(x + 8, y + 23, x + 77, y + 97, 0xff413d35);
         g.fill(x + 10, y + 25, x + 75, y + 95, 0xff211b17);
         g.fill(x + 11, y + 26, x + 74, y + 27, 0xff72634a);
@@ -87,24 +80,23 @@ public final class RecruitHirePresentation {
         g.drawCenteredString(font, tr(recruit.getIsOwned() ? "employed" : "available"), 42, 86, 0xffdbc99b);
         String[] values = values(recruit,quote);
         for (int i = 0; i < STATS.length; i++) {
-            int sx = 85 + (i % 2) * 104, sy = 24 + (i / 2) * 15;
+            int sx = 85 + (i % 2) * 80, sy = 24 + (i / 2) * 15;
             if (i < 2) g.blit(HUD, sx + 3, sy + 3, 52, 0, 9, 9);
             else g.renderFakeItem(new ItemStack(ICONS[i]), sx, sy);
-            g.drawString(font, values[i], sx + 20, sy + 4, INK, false);
-            if (i == 1) g.drawString(font, tr("max"), sx + 54, sy + 4, 0xff77613b, false);
+            g.drawString(font, values[i], sx + 20, sy + 4, INK, true);
         }
-        g.drawString(font, tr("player_inventory"), 8, 128, INK, false);
+        g.drawString(font, tr("player_inventory"), 8, 128, INK, true);
         // Fee and weekly wages are shown once each. The primary action contains no currency icon.
-        int row = wrapped(g, font, tr("fee"), 186, 128, 101, INK);
+        int row = wrapped(g, font, tr("fee"), 186, 128, 59, INK);
         if (quote != null) {
-            SettlementPriceRenderer.draw(g, font, quote.cost(), 186, row + 1, 102, INK, quote.coins());
-            int wages = wrapped(g, font, tr("weekly_wage"), 186, row + 23, 102, INK);
-            SettlementPriceRenderer.draw(g, font, quote.wage(), 186, wages + 1, 102, INK, quote.coins());
+            SettlementPriceRenderer.draw(g, font, quote.cost(), 186, row + 1, 59, INK, quote.coins());
+            int wages = wrapped(g, font, tr("weekly_wage"), 186, row + 23, 59, INK);
+            SettlementPriceRenderer.draw(g, font, quote.wage(), 186, wages + 1, 59, INK, quote.coins());
         } else if (requiresQuote()) {
-            wrapped(g, font, tr("pending"), 186, row + 3, 102, INK);
+            wrapped(g, font, tr("pending"), 186, row + 3, 59, INK);
         } else if (ClientManager.currency != null) {
             g.renderFakeItem(ClientManager.currency, 186, row + 1);
-            g.drawString(font, Integer.toString(recruit.getCost()), 205, row + 5, INK, false);
+            g.drawString(font, Integer.toString(recruit.getCost()), 205, row + 5, INK, true);
         }
     }
 
@@ -123,14 +115,14 @@ public final class RecruitHirePresentation {
     public static void tooltips(GuiGraphics g, Font font, AbstractRecruitEntity recruit, int x, int y, int mx, int my) {
         int rx = mx - x, ry = my - y;
         for (int i = 0; i < STATS.length; i++) {
-            int sx = 85 + (i % 2) * 104, sy = 24 + (i / 2) * 15;
-            if (rx >= sx && rx < sx + 101 && ry >= sy && ry < sy + 15) {
+            int sx = 85 + (i % 2) * 80, sy = 24 + (i / 2) * 15;
+            if (rx >= sx && rx < sx + 77 && ry >= sy && ry < sy + 15) {
                 g.renderComponentTooltip(font, List.of(tr("stat." + STATS[i], values(recruit,HireQuoteClient.quote(recruit.getId()))[i])), mx, my); return;
             }
         }
         if (rx >= 9 && rx < 76 && ry >= 25 && ry < 97)
             g.renderComponentTooltip(font, List.of(recruit.getName(), tr("rotate")), mx, my);
-        else if (rx >= 180 && rx < 292 && ry >= 128 && ry < 212)
+        else if (rx >= 180 && rx < WIDTH - 7 && ry >= 128 && ry < 212)
             g.renderComponentTooltip(font, List.of(tr("payroll_tooltip")), mx, my);
         else if (rx >= 94 && rx < 174 && ry >= 101 && ry < 121) {
             var selected = ClientManager.getSelectedGroup();

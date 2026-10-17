@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-17 — Fed resident recovery and readable compact recruit interface
+
+- User requests: gradual health recovery after eating; happiness decreases by fill instead of a moving star, red/low on the left; white Recruit text, days instead of ticks, less right whitespace. Supplied style extraction: arrangement, reused icons, useful visual controls, wood/metal/vegetation.
+- Bug / Server / ordinary resident food acceptance changed satiety/mood without a regeneration lifecycle / in testing. Codex adds1HP/80loadedticks after actual eating at>=90satiety, naturalRegeneration enabled,4satiety cost; persisted timer resets when ineligible, no offline healing/revival. Native Recruits already regenerates and retains its single native owner.
+- Bug / Client / Jade happiness was a full reversed gradient with inverse star marker / in testing. Direct synchronized fill now shrinks, with red-left/yellow/green-right; smile/percentage retained. Happiness calculation/decay unchanged.
+- Bug / Client / dark stats on dark wood, hardcoded300pxwidth and raw tick presentation / in testing. White stats,252pxhireframe, native36slots/model/group/hire/quotes retained, game-day countdown and7daywages. Shared native spruce/vine materials and pixel metal corners also style settlement controls/navigation icons.
+- Production artifact and local native publication evidence: Docs/settlements/standalone/readability-recovery-delivery.json. No tests, lint, gameplay launch, visual approval, stable profile changes, MineRENT or release-baseline promotion.
+
 ## 2026-10-17 — Reference market storefront
 
 - User requests: integrate the generated reference UI on the local test server, with a live mouse-following librarian and one category dropdown; preserve the remaining reference composition.

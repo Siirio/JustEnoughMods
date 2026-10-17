@@ -156,6 +156,8 @@ public final class SettlementRuntime {
                 resident.seen(villager.getBrain().getMemory(MemoryModuleType.HOME).orElse(null), villager.getBrain().getMemory(MemoryModuleType.JOB_SITE).orElse(null)); resident.dailyUpdate(day);
                 resident.retainRequestedDishes(availableDishes);
                 resident.refreshCraving();
+                if (resident.regenerate(level.getGameRules().getBoolean(GameRules.RULE_NATURAL_REGENERATION)
+                        && villager.getHealth() < villager.getMaxHealth())) villager.heal(1.0F);
                 if (resident.craving() && resident.requestedDish().isEmpty() && !availableDishes.isEmpty()) {
                     var requestable = availableDishes.stream().filter(resident::canRequest).toList();
                     if (!requestable.isEmpty()) resident.requestedDish(requestable.get(Math.floorMod(resident.villagerId().hashCode() * 31 + Long.hashCode(day), requestable.size())));

@@ -1,0 +1,129 @@
+{
+  "schema_version": 2,
+  "change_id": "settlements.fed-recovery-readable-native-ui",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:villager"
+    },
+    {
+      "type": "namespace",
+      "registry": "entities",
+      "value": "recruits"
+    }
+  ],
+  "conditions": [
+    {
+      "scope": "Registered living loaded residents; native Recruits/Jade presentation when installed. naturalRegeneration applies to new ordinary villager healing."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_java",
+    "priority": 170,
+    "overrides": [
+      "settlements.recruit-needs-camera-cutaway-hire-gui"
+    ]
+  },
+  "change": {
+    "summary": "Food-dependent resident regeneration; direct happiness fill and compact legible material-based native recruit interface.",
+    "modifiers": [
+      {
+        "property": "settlements.resident.regeneration",
+        "operation": "add",
+        "before": "Ordinary registered villager serving updates satiety/mood only; no ongoing regeneration. Recruits already owns native healing.",
+        "after": "For loaded living registered villagers after an actual serving:1HP/80ticks while satiety>=90 and naturalRegeneration and health missing;4satiety/HP; persisted bounded timer, reset when ineligible; no offline catchup or revival. Native Recruits healing unchanged."
+      },
+      {
+        "property": "settlements.jade_needs",
+        "operation": "replace",
+        "before": "Fully drawn happiness rail green-left/red-right and inverse moving nether-star marker.",
+        "after": "Actualpercent determines fill length; red-low-left/yellow/green-high-right; no moving star; smile and percentage retained; existing happiness calculation/decay unchanged."
+      },
+      {
+        "property": "settlements.recruit_hire_gui",
+        "operation": "replace",
+        "before": "300wide menu with dark stat/cost text, excess right space and168000tick wage tooltip.",
+        "after": "252wide native menu, white statistics/costs on recessed dark surfaces; original36slots, real model, groups, requests and quotes unchanged; native wood/vines and shared pixel metal corners; game-day countdown/7day wage captions. Settlement navigation uses native item icons and shared controls."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMSettlements",
+    "kind": "Server resident lifecycle and client-only presentation",
+    "source_files": [
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementMaterials.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/RecruitHirePresentation.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/jade/NeedsBarElement.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitHireScreenMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/ResidentMood.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Implement exact user recovery/readability/layout feedback while preserving native Recruits authority and existing food/economy contracts.",
+    "decision_source": "User requests recovery after food, decreasing happiness fill red-left, white Recruit text, days, less right whitespace; explicitly selects layout/icon reuse/materials. Codex chooses healing rate/cost,252width and native-material rendering."
+  },
+  "introduced": {
+    "date": "2026-10-17",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "User-requested fed resident regeneration, direct happiness fill, white compact native recruit GUI and game-day time presentation.",
+    "source_files": [
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementMaterials.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/RecruitHirePresentation.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/jade/NeedsBarElement.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitHireScreenMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/ResidentMood.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "User-requested fed resident regeneration, direct happiness fill, white compact native recruit GUI and game-day time presentation.",
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementMaterials.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/RecruitHirePresentation.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/jade/NeedsBarElement.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitHireScreenMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/ResidentMood.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "resident health",
+      "food satiety",
+      "Jade",
+      "native recruit GUI",
+      "payroll display",
+      "settlement navigation"
+    ],
+    "relations": [
+      "actual serving -> eligible loaded regeneration -> health and satiety",
+      "authoritative needs -> shrinking HUD fill",
+      "unchanged native menu/quotes -> compact client layout"
+    ],
+    "notes": [
+      "No new registries, recipes, network channel versions or payment schedule. Native Recruits hunger/morale/healing/combat and all36slots remain original.",
+      "GUI in testing, no user approval or game footage. Atlas baseline worktree already has unrelated changes; generated delivery is based on exact staged source."
+    ],
+    "unresolved": [
+      "Runtime visual/interaction and player acceptance pending; no tests or client gameplay launches."
+    ]
+  }
+}
