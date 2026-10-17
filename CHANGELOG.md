@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-17 — Connected guardian dome geometry and UV ownership
+
+- Latest user steering: reject the overlapping flat/engraved tile grid; explicitly request one proper curved hemisphere/cohesive solid model, correct face orientation, smooth shading, UV continuity and Minecraft player scale. This supersedes the previous request for individually stacked cuboid segments.
+- Codex choices: one native Blockbench mesh with194 shared positions/208 faces, radius2.2/baseY.1/thickness.04 blocks, joined rim and crown; reversed inner winding, analytic smooth corner normals, per-corner UV wrap on one256x64 external four-layer gold-wave atlas. No repeated pottery/item motifs or independent dome panels.
+- Bug / Client / separate fixed-size radial plaques did not share edge topology, reused independent small UV tiles and baked flat per-face normals; smaller upper-row spacing produced intersecting panels / in testing. Resolution mechanism: replace the geometry owner with one shared vertex/face graph, export actual native mesh UVs/normals into indexed JSON, and render one appropriate radial surface with additive triangles, culling and depth test. No coplanar decals/depth-offset camouflage.
+- Full Atlas audit/validation is blocked by concurrent unrelated JEMEconomy-to-JEMCurrencyCore source moves and stale Economy cause paths. Canonical source-watch scan covers the dome task; no installed artifact drift. Preserve unrelated work and stage only task-specific generated metadata.
+- Existing30-tick protection envelope, Chorus/shields, pearl, gameplay and protocol unchanged. Native editor evidence/negative revisions retained; overexposed Blockbench additive preview explicitly rejected and neutral source/UV captures labelled separately. Runtime additive appearance, smooth lighting and user acceptance remain unobserved. No tests/game launch/profile mutation. Prepared production artifact and exact hashes in guardian-dome/delivery.json. Ordinary Server/ManagedPack and published generation18 unchanged.
+
+
 ## 2026-10-17 — Settlements standalone audit and GUI production contract
 
 - User direction: implement the attached standalone Forge1.20.1/Java17 Settlements master brief, preserve established mechanics, use compact native Minecraft controls and exploration-map styling, and define real UI/action contracts before artwork. Explicit clarification: Workers and Recruits gameplay requires their respective optional mods; do not build replacement NPCs or combat AI.
@@ -7,6 +16,15 @@
 - Source audit finds existing multiple-town storage, fatigue10/day, actual hostility, seven-day payroll/three-miss rebellion and six-day catch-up code; standalone is blocked by mandatory dependencies, dedicated guards, optional NPC types in common classes and SMP-owned screens. Current safe vanilla food rejection and Copper-per-added-block price differ from the requested behavior. These are audit findings, not repaired defects or runtime acceptance claims.
 - Design-only checkpoint awaiting approval under the applicable brainstorming workflow. Read-only builder review corrected compact-window bounds, session bootstrap ordering, currency ownership and absent/incompatible channel handling. No production source/config/assets/JAR changes, build, tests, fixtures, game launch or Atlas gameplay mutation. The six-day catch-up audit records that only evidenced Workers farmer wheat output currently has a recipe; no other yields invented.
 - Ordinary local Server and Client/ManagedPack remain unchanged; native AutoModpack generation18 was already published with matching staged/published manifest SHA1 b479c75beb82aec9b80e3be94568033a3045a804. No MineRENT, stable-profile or release-baseline changes. Full mod implementation, distribution and in-game visual preview remain pending.
+
+
+## 2026-10-17 — Ancestors cuboid mosaic guardian dome
+
+- User direction: reject smooth sphere/UV mesh/GLTF-style dome as foreign to Minecraft; require cuboid-stacked segmented hemisphere, engraved pixel plates, rune sparks, gold/amber/ivory and additive or alpha-test edges. This explicitly supersedes the previous solid-sphere interpretation.
+- Codex choices:41 separately rigged stepped plaques (four cubes each) plus12 cube sparks;176 cubes/1056 faces,64x32 externally painted three-layer ORA atlas,31 native Blockbench poses over the existing30-tick event. Assemble/hover/scatter-shrink keys, native MCP model creation and real editor frames/GIF. Existing OBJ-to-packed-cube-quads export is reused; no smooth mesh or GLTF.
+- Remove Java spherical vertex/Fresnel/glass path and active sphere texture; retire its author/preview entry points and label historical output USER_REJECTED. GuardianDomeRenderer draws exported cube faces with fullbright entityCutoutNoCull and nearest metadata. Alpha-test is selected from the user's allowed alternatives; plate disappearance is geometry-driven.
+- Gameplay, emergency Resistance duration, Chorus healing/front, shield orbit, pearl afterfire and protocol unchanged. Production jar/reobfJar passed with test/check excluded; prepared standalone artifact outside launcher profiles. No game launch/tests, no runtime visual or user approval claim. Plan/source/evidence: Docs/races/assets/guardian-mosaic.
+- Ordinary Server/Client/ManagedPack, stable profiles and baseline unchanged; native AutoModpack generation18 remains published. Same-task Atlas history/effective maintenance; commit reported in final handoff.
 
 
 ## 2026-10-17 — Pearl afterfire and Ancients VFX revision

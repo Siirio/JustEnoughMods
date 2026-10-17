@@ -22,7 +22,7 @@
     ]
   },
   "change": {
-    "summary": "Reference-directed pearl afterfire and Ancients presentation without decorative ground runes.",
+    "summary": "Selected pearl afterfire and enlarged Ancients shields; guardian dome now uses one connected mesh after the user rejected smooth glass and then overlapping separate plaques.",
     "modifiers": [
       {
         "property": "sandbox.void_projectile_presentation",
@@ -34,7 +34,7 @@
         "property": "sandbox.ancestors_presentation",
         "operation": "replace",
         "before": "Local gold runes, .48-block orbiting R7 shields, guardian wave without a shell.",
-        "after": "No decorative rune draws; existing healing front and actual recipient motes; four .95-block outward R7 shields at radius1.45; continuous filled golden sphere on successful guardian entry for30 ticks. Existing healing,100-tick25% reduction and passive Resistance unchanged."
+        "after": "No floor runes; Chorus/recipient responses and enlarged outward R7 shields unchanged. Guardian dome is one connected thick hemisphere:194 shared positions,208 faces, radius2.2/baseY.1/thickness.04 blocks, per-corner UVs on one256x64 gold-wave atlas and analytic smooth normals. Native Blockbench project export to indexed JSON; additive normal-aware triangles, one radial surface selected per camera,30-tick envelope. No independent item/plate instances, coplanar decals, Fresnel or per-panel UV resets."
       }
     ]
   },
@@ -47,13 +47,20 @@
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusRenderer.java",
       "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/ancients_pearl/pearl_afterfire.png",
       "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/ancients_pearl/pearl_breakup.png",
-      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/ancients_pearl/guardian_sphere.png",
-      "Mods/JEMVisualSandboxR3/prepare.py"
+      "Mods/JEMVisualSandboxR3/prepare.py",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/GuardianDomeRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/guardian_dome/model.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/guardian_dome/gold-wave.png",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/guardian_dome/gold-wave.png.mcmeta",
+      "Docs/races/assets/guardian-dome/author.py",
+      "Docs/races/assets/guardian-dome/export.mjs",
+      "Docs/races/assets/guardian-dome/guardian-dome.bbmodel",
+      "Docs/races/assets/guardian-dome/PLAN.md"
     ]
   },
   "rationale": {
     "purpose": "Match the selected image3 afterfire and remake Ancients VFX from image4 while preserving gameplay.",
-    "decision_source": "User selects pearl afterfire; explicitly confirms shields, pulse and dome without floor rune. Codex chooses native pixel art, motion bounds, shell opacity and larger existing model scale. Broader pasted overhaul remains context."
+    "decision_source": "User selects pearl afterfire; explicitly confirms shields, pulse and dome without floor rune. Codex chooses native pixel art, motion bounds, shell opacity and larger existing model scale. Broader pasted overhaul remains context. Latest user explicitly rejects smooth spherical meshes and requires voxel/cuboid-stacked segmented hemisphere, crisp pixel art, warm gold/amber/ivory and additive or alpha-test. Codex chooses cutout,41 plaques/12 sparks and30-tick native animation; gameplay remains unchanged. Latest subsequent user steering rejects clipping flat tile grid and explicitly permits a proper curved hemisphere or cohesive solid model, requiring correct face orientation, smooth shading, UV continuity and player scale. This supersedes the separate cuboid-plaque restriction. Codex chooses a connected194-vertex thick shell and additive whole-surface gold-wave material."
   },
   "introduced": {
     "date": "2026-10-17",
@@ -67,6 +74,34 @@
       "commit": "SELF",
       "action": "add",
       "summary": "Authored three layered timelines, actual-history pearl trail, larger shields, continuous golden sphere after explicit rejection of curling tails and no decorative floor rune."
+    },
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "replace",
+      "summary": "User rejects smooth sphere; replace its generator/texture with native cuboid Blockbench plates, animated sparks and cutout rendering.",
+      "source_files": [
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/ancients_pearl/guardian_sphere.png",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/GuardianDomeRenderer.java",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/guardian_mosaic.mesh",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/guardian_mosaic-0.png",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/guardian_mosaic-0.png.mcmeta",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/provenance.json",
+        "Docs/races/assets/guardian-mosaic/guardian-mosaic.bbmodel",
+        "Docs/races/assets/guardian-mosaic/author.py",
+        "Docs/races/assets/guardian-mosaic/PLAN.md"
+      ]
+    },
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "replace",
+      "summary": "User rejects independent engraved plaque grid; replace generator/export/render with one connected native mesh, shared positions, per-corner UV seam and smooth analytic normals.",
+      "source_files": [
+        "Docs/races/assets/guardian-mosaic/author.py",
+        "Docs/races/assets/guardian-dome/author.py",
+        "Docs/races/assets/guardian-dome/export.mjs"
+      ]
     }
   ],
   "impacts": {
@@ -83,9 +118,9 @@
       "Production artifact prepared outside launcher profiles. Ordinary Server and canonical Client generation18 remain unchanged."
     ],
     "unresolved": [
-      "Minecraft first/third-person, shader, terrain, curved-flight and visual acceptance unobserved.",
-      "Sphere is continuous with translucent body and bright rim; existing R7 shield remains kite-shaped rather than circular.",
-      "Pre-existing unrelated JEMRoles VFX coverage warnings remain outside this task."
+      "Minecraft runtime camera transitions, additive shader behavior and smooth normal lighting not observed; editor candidate is not user-approved.",
+      "Native additive editor preview overexposed; neutral editor captures inspect connected geometry/UV only.",
+      "Two pre-existing unrelated JEMRoles VFX coverage warnings remain outside scope."
     ]
   }
 }

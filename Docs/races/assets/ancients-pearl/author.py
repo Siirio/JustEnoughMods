@@ -41,17 +41,6 @@ def trail(f):
         d[4].rectangle((x,y,x+w,y+1),fill='#a54ddd')
     return ls
 
-def shell(f):
-    ls=layers((128,64));d=[ImageDraw.Draw(l) for l in ls]
-    # Explicit user correction: a continuous filled spherical surface. No
-    # disconnected scrollwork, ribbon bands or gaps. Runtime supplies the
-    # view-dependent bright rim; the material is unbroken warm gold.
-    d[1].rectangle((0,0,127,63),fill='#ffd36c')
-    for i,(x,y) in enumerate([(29,15),(38,38),(69,24),(75,46),(109,9),(117,29)]):
-        color=['#ffe59a','#ffeebc','#fff8dc','#ffeebc','#ffe59a','#ffda7d','#ffda7d','#ffda7d'][(f+i)%8]
-        d[4].polygon([(x,y-2),(x+1,y),(x,y+2),(x-1,y)],fill=color)
-    return ls
-
 def impact(f):
     ls=layers((32,32));d=[ImageDraw.Draw(l) for l in ls]
     # Fractured outward wisps followed by four surviving pieces, then clear.
@@ -66,7 +55,7 @@ def impact(f):
 
 def main():
     OUT.mkdir(parents=True,exist_ok=True);frames={};rows=[]
-    for name,fn,size in [('pearl_afterfire',trail,(96,32)),('guardian_sphere',shell,(128,64)),('pearl_breakup',impact,(32,32))]:
+    for name,fn,size in [('pearl_afterfire',trail,(96,32)),('pearl_breakup',impact,(32,32))]:
         cels=[fn(f) for f in range(8)];images=[composite(ls) for ls in cels];frames[name]=images
         aseprite(ROOT/(name+'.aseprite'),cels,size)
         strip=Image.new('RGBA',(size[0],size[1]*8))
@@ -87,7 +76,7 @@ def main():
         canvas.paste(cel,(80,35),cel)
         # Scale cue only; native Minecraft pearl remains untouched at runtime.
         d.ellipse((635,114,667,146),fill='#135e58',outline='#a3d6a7',width=3)
-        d.text((255,235),'Sphere shape: see spatial-playback.gif',fill='#b48230')
+        d.text((255,235),'Guardian: superseded by ../guardian-mosaic',fill='#b48230')
         preview.append(canvas)
     preview[0].save(ROOT/'asset-playback.gif',save_all=True,append_images=preview[1:],duration=100,loop=0)
     (ROOT/'assets.json').write_text(json.dumps(rows,indent=2)+'\n')

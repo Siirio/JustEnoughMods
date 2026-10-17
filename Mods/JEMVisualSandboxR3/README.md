@@ -1,5 +1,20 @@
 # Bloom R3 — isolated sandbox extension
 
+Latest guardian dome steering,2026-10-17: the overlapping plate grid is USER_REJECTED. Current owner is Docs/races/assets/guardian-dome/PLAN.md: one connected native mesh, shared vertices, whole-surface pixel UVs, smooth normals and additive rendering. This supersedes the separate cuboid mosaic described below. Gameplay remains unchanged.
+
+
+## Current guardian dome — 2026-10-17
+
+User rejects smooth sphere/GLTF-style geometry. Current dome is41 separately
+rigged engraved stepped plates plus12 cuboid sparks,176 cubes/1056 faces in a
+native editable Blockbench file. Existing native export supplies31 posed cube-face
+frames; GuardianDomeRenderer uses cutout/fullbright and geometry breakup, without
+spherical vertices, Fresnel, translucent glass or a smooth model. Current owner:
+`Docs/races/assets/guardian-mosaic/PLAN.md`, actual editor evidence in REVIEW.md.
+Previous continuous-sphere interpretation is USER_REJECTED. Gameplay, pearl,
+Chorus and orbiting shields remain unchanged. Prepared artifact outside profiles;
+ordinary Server and published AutoModpack generation18 remain unchanged.
+
 ## Latest Ancients / pearl VFX — 2026-10-17
 
 Image3 upper-right pearl afterfire now follows bounded actual entity history;

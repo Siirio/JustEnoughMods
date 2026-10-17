@@ -1,4 +1,10 @@
+Current dome: [connected native mesh](../guardian-dome/PLAN.md). The independent mosaic has also been rejected and superseded.
+
 # Life Chorus — current golden reference production
+
+Latest guardian presentation: [cuboid mosaic](../guardian-mosaic/PLAN.md), replacing
+the subsequently rejected smooth sphere. This changes the guardian dome only,
+without changing Chorus, protection mechanics or enlarged outward shield orbit.
 
 Superseded presentation, 2026-10-17: the user explicitly confirms shields, pulse
 and dome with no floor rune. Current [Ancients/pearl brief](../ancients-pearl/BRIEF.md)

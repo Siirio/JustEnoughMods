@@ -1,4 +1,11 @@
+Current dome: [connected native mesh](../guardian-dome/PLAN.md). The independent mosaic has also been rejected and superseded.
+
 # Review — revised sphere ART_CANDIDATE; tail shell USER_REJECTED
+
+LATER USER VERDICT: smooth sphere is also USER_REJECTED as foreign to Minecraft.
+Current replacement is [guardian-mosaic](../guardian-mosaic/PLAN.md). This review
+and images below are historical evidence; sphere texture/Java are removed from
+the active renderer and author recipe. Old sphere preview entry point is retired.
 
 Latest user correction: "the dome is ass"; it must be a solid sphere, not wiggly
 tails. The first open-scroll shell is USER_REJECTED. Its exact source, layered

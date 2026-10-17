@@ -1,3 +1,10 @@
+# Latest guardian dome correction — 2026-10-17
+
+Latest guardian dome steering,2026-10-17: the overlapping plate grid is USER_REJECTED. Current owner is Docs/races/assets/guardian-dome/PLAN.md: one connected native mesh, shared vertices, whole-surface pixel UVs, smooth normals and additive rendering. This supersedes the separate cuboid mosaic described below. Gameplay remains unchanged.
+
+
+Smooth sphere is USER_REJECTED. Current [cuboid mosaic contract](assets/guardian-mosaic/PLAN.md): separate engraved plates, rune sparks, warm gold/amber/ivory, hard pixel edges and cutout rendering. No UV sphere, Fresnel or glass. This supersedes older continuous-sphere wording below. Gameplay is unchanged.
+
 # Race VFX reference prompts — current standalone sandbox
 
 2026-10-17. Mechanics below come from Mods/JEMVisualSandboxR3's source and explicit

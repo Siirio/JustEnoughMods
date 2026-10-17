@@ -1,4 +1,11 @@
+Current dome: [connected native mesh](../guardian-dome/PLAN.md). The independent mosaic has also been rejected and superseded.
+
 # Ancients and pearl afterfire — 2026-10-17
+
+Superseded dome: the user rejects the smooth sphere and explicitly requests a
+cuboid mosaic hemisphere. Current owner: [guardian-mosaic/PLAN.md](../guardian-mosaic/PLAN.md).
+Sphere and tail versions below are historical USER_REJECTED evidence. The pearl
+afterfire and enlarged orbital shields remain current; no floor rune is restored.
 
 Scope: existing standalone sandbox renderer. The pasted overhaul is context;
 this request selects image 3's upper-right pearl afterfire and remakes Ancients

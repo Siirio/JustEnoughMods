@@ -1,5 +1,14 @@
 # JEM Races
 
+Latest guardian dome steering,2026-10-17: the overlapping plate grid is USER_REJECTED. Current owner is Docs/races/assets/guardian-dome/PLAN.md: one connected native mesh, shared vertices, whole-surface pixel UVs, smooth normals and additive rendering. This supersedes the separate cuboid mosaic described below. Gameplay remains unchanged.
+
+
+Последняя правка купола,2026-10-17: гладкая сфера USER_REJECTED. Её заменяет
+[кубоидная мозаика Ancestors](assets/guardian-mosaic/PLAN.md):41 отдельная
+гравированная пластина,12 искр, нативный Blockbench-клип и cutout-render.
+План/исходник/код и [фактический редакторский результат](assets/guardian-mosaic/REVIEW.md).
+Предыдущие sphere/tail изображения — отрицательная история, не текущая версия.
+
 Latest sandbox VFX revision, 2026-10-17:
 [pearl afterfire and Ancients](assets/ancients-pearl/BRIEF.md). User confirms large
 golden shields, healing pulse and protective dome **without floor runes**.

@@ -85,6 +85,14 @@ def compose(base):
                 for source in sorted(revised_sources.rglob("*")):
                     if source.is_file() and "__pycache__" not in source.parts and source.name != "delivery.json":
                         editable.write(source, "ancients-pearl/" + source.relative_to(revised_sources).as_posix())
+                mosaic_sources = HERE.parent.parent / "Docs/races/assets/guardian-mosaic"
+                for source in sorted(mosaic_sources.rglob("*")):
+                    if source.is_file() and "__pycache__" not in source.parts and source.name != "delivery.json":
+                        editable.write(source, "guardian-mosaic/" + source.relative_to(mosaic_sources).as_posix())
+                dome_sources = HERE.parent.parent / "Docs/races/assets/guardian-dome"
+                for source in sorted(dome_sources.rglob("*")):
+                    if source.is_file() and "__pycache__" not in source.parts and source.name != "delivery.json":
+                        editable.write(source, "guardian-dome/" + source.relative_to(dome_sources).as_posix())
             output.write(archive, "assets/jem_visual_sandbox/sources.zip")
         with zipfile.ZipFile(target) as output:
             preserved = [n for n in original.namelist() if n not in collisions and n != "META-INF/MANIFEST.MF"]
