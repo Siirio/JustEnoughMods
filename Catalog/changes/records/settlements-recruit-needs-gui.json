@@ -1,0 +1,199 @@
+{
+  "schema_version": 2,
+  "change_id": "settlements.recruit-needs-camera-cutaway-hire-gui",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "recruits"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:villager"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "minecraft:rotten_flesh"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "minecraft:poisonous_potato"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "minecraft:spider_eye"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "minecraft:pufferfish"
+    },
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "minecraft:red_bed"
+    },
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "minecraft:chest"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime": "Active Settlements logical server; native Recruits1.15.2 optional; Jade11.13.3 optional client presentation.",
+      "scope": "Hired active canonical workforce only for JEM food policy. Native unowned recruits expose native needs in Jade without enrollment. Shared chest access requires owned matching town/dimension.",
+      "authority": "Native Recruits hunger/morale/decay/healing and combat/equipment/group state remain owners; JEM persists serving/wish history without duplicate needs values."
+    }
+  ],
+  "precedence": {
+    "layer": "jem",
+    "priority": 200
+  },
+  "change": {
+    "summary": "Native recruit food/needs bridge, starvation-only bad food, compact Jade needs, camera-space spherical house cutaway and authoritative native hire presentation.",
+    "modifiers": [
+      {
+        "property": "settlements.food_access",
+        "operation": "replace",
+        "before": "Villager-only food loop; drops lost priority behind chest approach, bad food reduced satiety. Recruits native eat goal bypassed JEM meal policy.",
+        "after": "One owner selects desired dish, other good food, then starvation food across real inventory/drops/shared stores. Immediate choices cannot outrank an available desired dish. Bad classified edibles only at satiety<10, +1 satiety and negative mood subject to existing history limits. Recruit native bad-food blacklist exception only under that threshold; good blacklisted items still denied. No duplicate extraction, native containers/healing retained."
+      },
+      {
+        "property": "recruits.needs_authority",
+        "operation": "derive",
+        "before": "JEM resident/Jade path only handles Villager; native recruit hunger/morale invisible there.",
+        "after": "Use native getHunger/setHunger and getMorale/setMoral, native decay clocks and native heal(saturation modifier); FoodHistory stores only serving/craving/history. Native EatGoal serving suppressed only for managed recruits after native decay. Owner-offline town garrisons can eat; no private-chest theft by unassigned NPCs."
+      },
+      {
+        "property": "settlements.housing_inspector",
+        "operation": "replace",
+        "before": "Yaw-only upper front plane removal and explodedY floors; fixed framing clipped legend/bounds.",
+        "after": "Actual preview inverse rotation/pitch chooses rounded voxel cavity0–10blocks from camera-facing surface; zero retains all cells, bed/amenities/opposite interior remain, geometry selection cached. Smoothorbit/RMBpan/boundedzoom/reset and authoritative scan-boundary fit; actual existing bed17x11x17/amenity scoring unchanged."
+      },
+      {
+        "property": "settlements.recruit_hire_gui",
+        "operation": "replace",
+        "before": "Native grey labels plus appended JEM price cells overlapped; repeated costs, clientbaseattack value, unclear Infantry class label.",
+        "after": "Native300x223 wood/parchment interface with equipped model, real server-observed nine stats, once-only hiringfee and7-game-daywages, authoritative reason/affordability refresh20ticks. Native36player slots/clicks and existing commandgroups retained; no invented class/equipment changes. Protocol8 carries bounded reasons/stat values."
+      },
+      {
+        "property": "settlements.jade_needs",
+        "operation": "replace",
+        "before": "Generic progress bars and no native recruit needs.",
+        "after": "Compact labelled happiness gradient rail with inverse star marker (high=green), smile and actualpercent; satiety fill/foodicon. Native Jade profession remains sole display. Recruit needs shown from native synchronized fields, independent of enrollment."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Mods/JEMSettlements",
+    "kind": "Canonical server food policy, optional native adapters and client-only screen/rendering",
+    "source_files": [
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/HireQuoteClient.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/HousingInspector.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/RecruitHirePresentation.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/jade/NeedsBarElement.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/jade/RecruitJadeData.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/jade/SettlementJadePlugin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitNeedsService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitRuntime.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/FoodValueRegistry.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitEatGoalMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitHireScreenMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/HireQuotePacket.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/RecruitQuoteNetwork.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/ResidentMood.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/ResidentFoodService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/workforce/WorkforceRecord.java",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/jade/mood.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/recruit/parchment.png",
+      "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/food_values.json",
+      "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Honor supplied house/recruit visual contract and direct hunger/badfood/Jade corrections without duplicating native systems.",
+    "decision_source": "Userexplicitcutaway0–10/roundedcamera, hirepresentation, requested-food/badfood/drop/Jade reference direction. Codex sharedmetadata, quote refresh/stat snapshot and guardednative adapters; native state/fees/classes/slots remain original."
+  },
+  "introduced": {
+    "date": "2026-10-17",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "Requested recruit food and GUI revision."
+  },
+  "history": [
+    {
+      "date": "2026-10-17",
+      "commit": "SELF",
+      "action": "implement_native_needs_and_presentation",
+      "summary": "Source/build delivery; tests and gameplay acceptance not claimed.",
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/HireQuoteClient.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/HousingInspector.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/RecruitHirePresentation.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/jade/NeedsBarElement.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/jade/RecruitJadeData.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/jade/SettlementJadePlugin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitNeedsService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitRuntime.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/FoodValueRegistry.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitEatGoalMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitHireScreenMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/HireQuotePacket.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/RecruitQuoteNetwork.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/ResidentMood.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/ResidentFoodService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/workforce/WorkforceRecord.java",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/jade/mood.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/recruit/parchment.png",
+        "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/food_values.json",
+        "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "hunger",
+      "happiness",
+      "Jade",
+      "native Recruits",
+      "inventory/drops",
+      "shared chests",
+      "food blacklist",
+      "healing",
+      "housing rendering",
+      "native groups",
+      "payroll presentation",
+      "server stats",
+      "network8"
+    ],
+    "relations": [
+      "native needs → shared eligibility/history → one real serving → native healing/needs → Jade",
+      "native menu/open/20tick → server fee/eligibility/stats → native client hire action",
+      "actual bed snapshot → camera-space cached clipping → visible evidence without world writes"
+    ],
+    "notes": [
+      "Badfood is never a second native needs authority or a global blacklist/config override.",
+      "Hire menu shows player36slots; soldier equipment menu remains native. Recruits is already JEM native owner, GuardVillagers is separate and not silently integrated.",
+      "Native merchant/Xaero, approved economy, stable profile, MineRENT and baseline preserved."
+    ],
+    "unresolved": [
+      "Actual GUI scales/rendering/item clicks/AI food intake and multiplayer/player acceptance pending; no gameplay launches or automated tests authorized by current request."
+    ]
+  }
+}

@@ -15,7 +15,7 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 
-/** Persistent mood belongs only to a sanctioned vanilla resident UUID. */
+/** Resident needs, or serving metadata bridged to a native recruit needs owner. */
 public final class ResidentMood {
     private final UUID villagerId;
     private final UUID townId;
@@ -53,6 +53,11 @@ public final class ResidentMood {
     public int mood() { return mood; }
     public int satiety() { return satiety; }
     public int hunger() { return 100 - satiety; }
+    /** Native Recruits owns these values; this snapshot only drives shared serving rules. */
+    public void nativeNeeds(float morale, float hunger) {
+        mood = clamp(Math.round(morale)); satiety = clamp((int) Math.floor(hunger));
+        if (satiety >= 100 && craving) { craving = false; cravingCycle++; cravingThreshold = nextCravingThreshold(); requestedDish = null; }
+    }
     public boolean craving() { return craving; }
     public int cravingThreshold() { return cravingThreshold; }
     public Optional<ResourceLocation> requestedDish() { return Optional.ofNullable(requestedDish); }

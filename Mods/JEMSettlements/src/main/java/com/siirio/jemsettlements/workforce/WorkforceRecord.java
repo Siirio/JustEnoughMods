@@ -39,6 +39,11 @@ public final class WorkforceRecord {
             unpaidPenaltyPeriods.clear(); for (long period : tag.getLongArray("UnpaidPenaltyPeriods")) unpaidPenaltyPeriods.add(period);
         }
     }
+    private com.siirio.jemsettlements.resident.ResidentMood foodHistory;
+    public com.siirio.jemsettlements.resident.ResidentMood foodHistory() {
+        if (foodHistory == null) foodHistory = new com.siirio.jemsettlements.resident.ResidentMood(entityId, townId, null, null);
+        return foodHistory;
+    }
     private Loyalty loyalty = Loyalty.LOYAL;
     private UUID lastWorkAreaId;
     private long lastWorkEvidenceGameTime = Long.MIN_VALUE;
@@ -114,7 +119,13 @@ public final class WorkforceRecord {
         tag.put("CoinPayroll", coinPayroll.save()); tag.put("EmeraldPayroll", emeraldPayroll.save());
         tag.putLong("NextWageGameTime", nextWageGameTime); tag.putLong("HireGeneration", hireGeneration); tag.putString("Loyalty", loyalty.name());
         if (lastWorkAreaId != null) tag.putUUID("LastWorkArea", lastWorkAreaId);
-        tag.putLong("LastWorkEvidenceGameTime", lastWorkEvidenceGameTime); return tag;
+        tag.putLong("LastWorkEvidenceGameTime", lastWorkEvidenceGameTime);
+        if (foodHistory != null) {
+            CompoundTag history = foodHistory.save();
+            history.remove("Mood"); history.remove("Satiety"); // Native entity NBT is the sole needs owner.
+            tag.put("FoodHistory", history);
+        }
+        return tag;
     }
     public static WorkforceRecord load(CompoundTag tag) {
         String nativeMod = tag.getString("NativeMod"); ResourceLocation nativeType = ResourceLocation.tryParse(tag.getString("NativeEntityType"));
@@ -130,6 +141,7 @@ public final class WorkforceRecord {
         record.coinPayroll.load(tag.contains("CoinPayroll") ? tag.getCompound("CoinPayroll") : tag);
         if (tag.contains("EmeraldPayroll")) record.emeraldPayroll.load(tag.getCompound("EmeraldPayroll"));
         try { record.loyalty = Loyalty.valueOf(tag.getString("Loyalty")); } catch (IllegalArgumentException ignored) { }
+        if (tag.contains("FoodHistory")) record.foodHistory = com.siirio.jemsettlements.resident.ResidentMood.load(tag.getCompound("FoodHistory"));
         record.lastWorkAreaId = tag.hasUUID("LastWorkArea") ? tag.getUUID("LastWorkArea") : null;
         record.lastWorkEvidenceGameTime = tag.contains("LastWorkEvidenceGameTime") ? tag.getLong("LastWorkEvidenceGameTime") : Long.MIN_VALUE; return record;
     }

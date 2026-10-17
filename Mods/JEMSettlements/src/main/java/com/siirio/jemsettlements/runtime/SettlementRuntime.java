@@ -161,8 +161,9 @@ public final class SettlementRuntime {
                     if (!requestable.isEmpty()) resident.requestedDish(requestable.get(Math.floorMod(resident.villagerId().hashCode() * 31 + Long.hashCode(day), requestable.size())));
                 }
                 if (!resident.craving() || villager.isSleeping() || villager.hurtTime>0 || villager.getBrain().hasMemoryValue(MemoryModuleType.NEAREST_HOSTILE)) continue;
-                boolean available = approachAndConsumeStorage(level, town, villager, resident, now);
-                if (!available && level.getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING) && consumeDrop(level, villager, resident, now)) continue;
+                boolean available = ResidentFoodService.feed(level, town, villager, resident, now, stack -> true, java.util.List.of(),
+                        stack -> { var food = stack.getItem().getFoodProperties(stack, villager); return food == null ? 0 : food.getNutrition() * 4; },
+                        stack -> ResidentFoodService.preserveBreedingFood(villager, stack));
                 if (!available) {
                     if (resident.satiety() < 10 && Math.floorMod(now + resident.villagerId().hashCode(), 200L) < 20L)
                         villager.hurt(level.damageSources().starve(), 1.0F);
@@ -170,64 +171,12 @@ public final class SettlementRuntime {
                 }
             }
         }
+        if (net.minecraftforge.fml.ModList.get().isLoaded("recruits"))
+            com.siirio.jemsettlements.compat.recruits.RecruitNeedsService.feed(data, now);
         data.changed();
     }
     private static ServerLevel dataLevel(SettlementSavedData ignored, TownRecord town) {
         var server = net.minecraftforge.server.ServerLifecycleHooks.getCurrentServer(); return server == null ? null : server.getLevel(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION, town.dimension()));
-    }
-    private static boolean consumeDrop(ServerLevel level, Villager villager, ResidentMood resident, long now) {
-        var candidates = level.getEntitiesOfClass(ItemEntity.class, villager.getBoundingBox().inflate(3.0D), item -> item.isAlive() && item.getOwner() == null && !item.hasPickUpDelay()).stream().sorted(Comparator.comparingDouble(villager::distanceToSqr)).toList();
-        for (ItemEntity item : candidates) if (accept(level, villager, resident, item.getItem(), now, () -> { ItemStack taken = item.getItem().split(1); if (item.getItem().isEmpty()) item.discard(); return taken; })) return true; return false;
-    }
-    private static boolean approachAndConsumeStorage(ServerLevel level, TownRecord town, Villager villager, ResidentMood resident, long now) {
-        StorageFood selected = null;
-        int slotBudget=8192;
-        for (var link : town.storage()) {
-            if(slotBudget<=0)break;
-            if (!link.dimension().equals(level.dimension().location()) || !level.hasChunkAt(link.position())) continue;
-            var blockEntity = level.getBlockEntity(link.position()); if (blockEntity == null) continue; var optional = blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).resolve(); if (optional.isEmpty()) continue; var handler = optional.get();
-            var state=level.getBlockState(link.position());
-            if(state.getBlock() instanceof net.minecraft.world.level.block.ChestBlock chest && net.minecraft.world.level.block.ChestBlock.getContainer(chest,state,level,link.position(),false)==null)continue;
-            double reach=villager.distanceToSqr(link.position().getX()+.5,link.position().getY()+.5,link.position().getZ()+.5);
-            if(reach>6.25D){var path=villager.getNavigation().createPath(link.position(),2);if(path==null||!path.canReach())continue;}
-            int checked=Math.min(slotBudget,handler.getSlots());slotBudget-=checked;
-            for (int slot = 0; slot < checked; slot++) {
-                ItemStack simulated = handler.extractItem(slot, 1, true); var id = BuiltInRegistries.ITEM.getKey(simulated.getItem());
-                if (simulated.isEmpty() || id == null || FoodValueRegistry.classify(simulated, villager).isEmpty() || !resident.canEat(now, id)) continue;
-                boolean requested = resident.requestedDish().map(id::equals).orElse(false);
-                StorageFood candidate = new StorageFood(link.position(), handler, slot, simulated, requested);
-                if (selected == null || candidate.requested() && !selected.requested()
-                        || candidate.requested() == selected.requested() && villager.distanceToSqr(candidate.position().getX() + .5D, candidate.position().getY() + .5D, candidate.position().getZ() + .5D)
-                        < villager.distanceToSqr(selected.position().getX() + .5D, selected.position().getY() + .5D, selected.position().getZ() + .5D)) selected = candidate;
-            }
-        }
-        if (selected == null) return false;
-        double distance = villager.distanceToSqr(selected.position().getX() + .5D, selected.position().getY() + .5D, selected.position().getZ() + .5D);
-        if (distance > 6.25D) {
-            if (!villager.isSleeping() && villager.hurtTime == 0 && !villager.getBrain().hasMemoryValue(MemoryModuleType.NEAREST_HOSTILE)) {
-                villager.getBrain().setMemory(MemoryModuleType.WALK_TARGET, new net.minecraft.world.entity.ai.memory.WalkTarget(selected.position(),0.65F,2));
-                villager.getBrain().setMemory(MemoryModuleType.LOOK_TARGET, new net.minecraft.world.entity.ai.behavior.BlockPosTracker(selected.position()));
-            }
-            return true;
-        }
-        StorageFood food = selected;
-        boolean ate=accept(level, villager, resident, food.stack(), now, () -> food.handler().extractItem(food.slot(), 1, false));
-        if(ate) SharedStorageService.open(level,food.position(),now);
-        return ate;
-    }
-    private record StorageFood(BlockPos position, net.minecraftforge.items.IItemHandler handler, int slot, ItemStack stack, boolean requested) {}
-    private static boolean accept(ServerLevel level, Villager villager, ResidentMood resident, ItemStack stack, long now, java.util.function.Supplier<ItemStack> consume) {
-        var value = FoodValueRegistry.classify(stack, villager); var id = BuiltInRegistries.ITEM.getKey(stack.getItem()); if (value.isEmpty() || id == null || !resident.canEat(now, id)) return false;
-        ItemStack accepted = consume.get(); if (accepted.isEmpty() || accepted.getCount() != 1 || !accepted.is(stack.getItem())) return false;
-        if (value.get().mood() > 0 && isNativeBreedingFood(accepted)) villager.getInventory().addItem(accepted.copy());
-        var food = accepted.getItem().getFoodProperties(accepted, villager);
-        int satietyDelta = value.get().satiety() != 0 ? value.get().satiety() : food == null ? 0 : Math.max(0, food.getNutrition()) * 4;
-        resident.acceptFood(id, value.get().mood(), satietyDelta, now);
-        villager.playSound(SoundEvents.GENERIC_EAT, 0.8F, 0.9F + villager.getRandom().nextFloat() * 0.2F); villager.gameEvent(GameEvent.EAT);
-        ItemStack particle = accepted.copy(); particle.setCount(1); level.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, particle), villager.getX(), villager.getEyeY(), villager.getZ(), 8, .2D, .2D, .2D, .05D); return true;
-    }
-    private static boolean isNativeBreedingFood(ItemStack stack) {
-        return stack.is(Items.BREAD) || stack.is(Items.CARROT) || stack.is(Items.POTATO) || stack.is(Items.BEETROOT);
     }
     private static void guideResidentsHome(SettlementSavedData data) {
         for (TownRecord town : data.towns()) {

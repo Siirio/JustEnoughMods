@@ -18,13 +18,16 @@ import snownee.jade.api.config.IPluginConfig;
 @WailaPlugin
 public final class SettlementJadePlugin implements IWailaPlugin {
     private static final ResidentProvider RESIDENT = new ResidentProvider();
-    @Override public void register(IWailaCommonRegistration registration) { registration.registerEntityDataProvider(RESIDENT, Villager.class); }
-    @Override public void registerClient(IWailaClientRegistration registration) { registration.registerEntityComponent(RESIDENT, Villager.class); }
+    @Override public void register(IWailaCommonRegistration registration) { registration.registerEntityDataProvider(RESIDENT, net.minecraft.world.entity.LivingEntity.class); }
+    @Override public void registerClient(IWailaClientRegistration registration) { registration.registerEntityComponent(RESIDENT, net.minecraft.world.entity.LivingEntity.class); }
 
     private static final class ResidentProvider implements IServerDataProvider<EntityAccessor>, IEntityComponentProvider {
         private static final ResourceLocation UID = new ResourceLocation("jem_settlements", "resident");
         @Override public void appendServerData(CompoundTag tag, EntityAccessor accessor) {
-            if (!(accessor.getEntity() instanceof Villager villager) || villager.getServer() == null) return;
+            if (accessor.getEntity().getServer() == null) return;
+            if (net.minecraftforge.fml.ModList.get().isLoaded("recruits")
+                    && RecruitJadeData.append(tag, accessor.getEntity())) return;
+            if (!(accessor.getEntity() instanceof Villager villager)) return;
             var resident = com.siirio.jemsettlements.town.SettlementSavedData.get(villager.getServer()).resident(villager.getUUID());
             if (resident.isEmpty()) return;
             tag.putBoolean("JemResident", true);
@@ -40,10 +43,8 @@ public final class SettlementJadePlugin implements IWailaPlugin {
             if (!tag.getBoolean("JemResident")) return;
             if (tag.contains("JemSettlementName")) tooltip.add(Component.translatable("jade.jem_settlements.settlement", tag.getString("JemSettlementName")));
             var elements = tooltip.getElementHelper();
-            tooltip.add(elements.progress(tag.getInt("JemHappiness") / 100.0F, Component.translatable("jade.jem_settlements.happiness_bar"),
-                    elements.progressStyle().color(0xFFB75046, 0xFF789B65).textColor(0xFFFFFFFF), snownee.jade.api.ui.BoxStyle.DEFAULT, true));
-            tooltip.add(elements.progress(tag.getInt("JemSatiety") / 100.0F, Component.translatable("jade.jem_settlements.satiety_bar"),
-                    elements.progressStyle().color(0xFFB75046, 0xFF789B65).textColor(0xFFFFFFFF), snownee.jade.api.ui.BoxStyle.DEFAULT, true));
+            tooltip.add(new NeedsBarElement(tag.getInt("JemHappiness"), true));
+            tooltip.add(new NeedsBarElement(tag.getInt("JemSatiety"), false));
             if (tag.getBoolean("JemCraving")) tooltip.add(Component.translatable("jade.jem_settlements.craving"));
             ResourceLocation request = ResourceLocation.tryParse(tag.getString("JemRequestedDish"));
             if (request != null && net.minecraft.core.registries.BuiltInRegistries.ITEM.containsKey(request)) {

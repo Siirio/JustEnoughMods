@@ -28,13 +28,17 @@ final class RecruitQuoteNetwork {
         long balance = com.siirio.jemsettlements.currency.SettlementCurrency.balance(player);
         boolean affordable = balance >= price || com.siirio.jemsettlements.currency.SettlementCurrency.held(player) >= price - balance;
         String team = player.getTeam() == null ? "" : player.getTeam().getName();
-        boolean canHire = affordable && com.siirio.jemsettlements.compat.recruits.RecruitHiringService.mayHire(player, recruit)
-                && com.talhanation.recruits.RecruitEvents.recruitsPlayerUnitManager.canPlayerRecruit(team, player.getUUID());
+        boolean eligible=com.siirio.jemsettlements.compat.recruits.RecruitHiringService.mayHire(player,recruit);
+        boolean capacity=com.talhanation.recruits.RecruitEvents.recruitsPlayerUnitManager.canPlayerRecruit(team,player.getUUID());
+        boolean canHire=affordable&&eligible&&capacity;
+        String reason=recruit.getIsOwned()?"jem.settlements.hire.reason.owned":!eligible?"jem.settlements.hire.reason.unavailable":!capacity?"jem.settlements.hire.reason.cap":!affordable?"jem.settlements.hire.reason.funds":"";
         com.talhanation.recruits.Main.SIMPLE_CHANNEL.send(PacketDistributor.PLAYER.with(() -> player),
                 new com.talhanation.recruits.network.MessageToClientUpdateHireState(canHire));
         SettlementNetwork.channel().send(PacketDistributor.PLAYER.with(() -> player), new HireQuotePacket(recruit.getId(),
                 com.siirio.jemsettlements.compat.recruits.RecruitHiringService.quote(recruit),
-                com.siirio.jemsettlements.payroll.RecruitRank.of(BuiltInRegistries.ENTITY_TYPE.getKey(recruit.getType())).wage(), com.siirio.jemsettlements.currency.SettlementCurrency.coins()));
+                com.siirio.jemsettlements.payroll.RecruitRank.of(BuiltInRegistries.ENTITY_TYPE.getKey(recruit.getType())).wage(), com.siirio.jemsettlements.currency.SettlementCurrency.coins(), affordable, reason, new HireQuotePacket.Stats(recruit.getHealth(),recruit.getMaxHealth(),recruit.getXpLevel(),
+                        recruit.getAttributeValue(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE),recruit.getKills(),
+                        recruit.getAttributeValue(net.minecraft.world.entity.ai.attributes.Attributes.MOVEMENT_SPEED),recruit.getXp(),recruit.getArmorValue(),recruit.getMorale())));
     }
 
 }

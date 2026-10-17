@@ -18,6 +18,13 @@ public final class RecruitRuntime {
             SettlementNetwork.sendHireQuote(player, menu.getRecruitEntity());
     }
 
+    @SubscribeEvent public static void refreshHireQuote(net.minecraftforge.event.TickEvent.ServerTickEvent event) {
+        if(event.phase!=net.minecraftforge.event.TickEvent.Phase.END || event.getServer().getTickCount()%20!=0 || !SettlementAuthority.active(event.getServer()))return;
+        for(ServerPlayer player:event.getServer().getPlayerList().getPlayers())
+            if(player.containerMenu instanceof com.talhanation.recruits.inventory.RecruitHireMenu menu)
+                SettlementNetwork.sendHireQuote(player,menu.getRecruitEntity());
+    }
+
     @SubscribeEvent public static void interact(net.minecraftforge.event.entity.player.PlayerInteractEvent.EntityInteract event) {
         if (event.getEntity() instanceof ServerPlayer player && SettlementAuthority.active(player)
             && event.getTarget() instanceof com.talhanation.recruits.entities.AbstractRecruitEntity recruit

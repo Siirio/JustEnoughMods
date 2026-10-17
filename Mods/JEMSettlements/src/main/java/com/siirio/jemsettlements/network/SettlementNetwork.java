@@ -24,7 +24,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class SettlementNetwork {
-    private static final String VERSION = "7";
+    private static final String VERSION = "8";
     private static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(JemSettlements.MOD_ID, "town"))
             .networkProtocolVersion(() -> VERSION).clientAcceptedVersions(value -> VERSION.equals(value) || NetworkRegistry.ABSENT.equals(value) || NetworkRegistry.ACCEPTVANILLA.equals(value)).serverAcceptedVersions(value -> VERSION.equals(value) || NetworkRegistry.ABSENT.equals(value) || NetworkRegistry.ACCEPTVANILLA.equals(value)).simpleChannel();
     private SettlementNetwork() {}
@@ -140,7 +140,7 @@ public final class SettlementNetwork {
         if (net.minecraftforge.fml.ModList.get().isLoaded("recruits")) com.siirio.jemsettlements.client.NobleQuoteClient.accept(view);
     }
     private static void acceptHire(HireQuotePacket packet) {
-        if (net.minecraftforge.fml.ModList.get().isLoaded("recruits")) com.siirio.jemsettlements.client.HireQuoteClient.accept(packet.entityId(), packet.cost(), packet.wage(), packet.coins());
+        if (net.minecraftforge.fml.ModList.get().isLoaded("recruits")) com.siirio.jemsettlements.client.HireQuoteClient.accept(packet.entityId(), packet.cost(), packet.wage(), packet.coins(), packet.affordable(), packet.reason(), packet.stats());
     }
 
     /** Bounded server-authorized projection for read-only consumers such as the SMP information screen. */

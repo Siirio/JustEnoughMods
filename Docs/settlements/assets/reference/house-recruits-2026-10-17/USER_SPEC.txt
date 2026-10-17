@@ -1,0 +1,438 @@
+# JEM Settlements — House Viewer & Recruit GUI Overhaul
+
+Minecraft Forge 1.20.1.
+
+You are working on my existing JEM Settlements system. I provided four screenshots:
+
+- Screenshot 1 — current Recruit GUI, which is difficult to read and use.
+- Screenshot 2 — current House Viewer, where wall cutting and layer visibility work incorrectly.
+- Screenshot 3 — desired general visual quality and style of the Settlements GUI.
+- Screenshot 4 — desired Recruit GUI visual direction.
+
+**Your job is to investigate the existing implementations, fix their behavior, redesign their interfaces, and compare our recruitment system with the additional Recruits mod I installed.**
+
+Do not blindly imitate screenshots. Understand the functionality and build a polished, native Minecraft-style GUI.
+
+## PART 1 — House Viewer: Camera-Aware Volumetric Cutaway
+
+### 1. Fix wall removal direction
+
+Currently, the House Viewer does not correctly remove walls from the side the player is looking at.
+
+Expected behavior:
+
+1. Detect the current 3D preview camera position and viewing direction.
+2. Determine which blocks are between the camera and the house interior.
+3. Remove only the obstructing blocks on the camera-facing side.
+4. When the camera rotates around the house, dynamically update the cutaway.
+5. Never remove the opposite wall simply because it shares a particular world axis.
+6. Roof sections must also be handled when the camera is looking downward.
+
+Example:
+
+- Viewing from the north → cut away the north-facing obstruction.
+- Rotate east → update the cutaway for the eastern viewpoint.
+- View from above → reveal the room through the roof.
+- View diagonally → remove the relevant obstructing corner volume, not an arbitrary complete wall.
+
+Cutaway selection must be relative to the **preview camera**, not player world orientation or a hardcoded north/south/east/west direction.
+
+### 2. Replace the current Layers behavior
+
+I want a slider called **Просмотр внутрь** / **See Inside**.
+
+Range: 0–10.
+
+| Value | Expected behavior |
+|---|---|
+| 0 | Default complete house rendering, with no additional cutaway |
+| 1 | Look approximately 1 block deeper through the obstructing side |
+| 3 | A larger opening reaching approximately 3 blocks inward |
+| 5 | A broad, clearly visible cutaway reaching 5 blocks inward |
+| 10 | Maximum cutaway depth of 10 blocks, exposing as much relevant interior as possible |
+
+The value represents maximum depth in blocks from the camera-facing surface, not a Y-level or the number of removed floors.
+
+### 3. Spherical voxel cutaway
+
+I do NOT want the current flat rectangular wall removal.
+
+I want a **spherical or rounded volumetric cutaway formed from Minecraft block-sized cubes**.
+
+Imagine cutting a rounded cavity into the front of the building to expose its rooms.
+
+Requirements:
+
+- All removed geometry must follow the Minecraft block grid.
+- The resulting empty region should approximate a sphere or rounded excavation using individual block positions.
+- Increasing the slider makes the cutaway deeper and wider.
+- The opening should remain centered around the useful visible interior rather than randomly expanding.
+- The opening should work from diagonal camera angles.
+- Prioritize revealing beds, workstations, decorations, furniture and other relevant interior blocks.
+- Never create real air blocks in the world.
+
+Implementation guidance:
+
+Use camera-space geometry or an equivalent voxel selection algorithm.
+
+Determine the preview-visible surface and calculate a rounded cutting volume extending inward along the camera viewing direction.
+
+Allow the effective opening radius to grow smoothly as depth increases, while keeping the specified slider depth as its hard limit.
+
+The default state at 0 must retain the existing full-house view.
+
+If the renderer uses a cached block model, rebuild or filter the visible geometry when the slider or camera orientation changes. Avoid rebuilding every frame unnecessarily.
+
+### 4. Camera interaction
+
+Keep and improve:
+
+- Left-drag: rotate house
+- Mouse wheel: zoom
+- Right-drag: pan, if supported
+- Reset View button
+- Smooth camera rotation
+- Sensible minimum/maximum zoom
+- Consistent camera focus
+
+Do not let the camera accidentally rotate the underlying Minecraft world.
+
+The cutaway must update correctly during rotation without obvious flickering.
+
+### 5. Preserve house recognition
+
+The House Viewer exists to help players understand how a villager's home is recognized and what should be decorated.
+
+Preserve the actual detected house boundaries and its existing validation logic.
+
+Where data is available, make it possible to visually distinguish:
+
+- Recognized house boundaries
+- Beds and functional objects
+- Existing decorations
+- Missing requirements
+- Current comfort versus saved comfort
+
+Do not invent decoration scores or house requirements.
+
+Provide hover tooltips explaining recognized objects and their contribution when supported by existing game data.
+
+A cutaway should make the interior easier to understand, not hide relevant objects.
+
+### 6. Performance and safety
+
+- Rendering-only changes: NEVER modify real world blocks.
+- Work for houses of different dimensions and shapes.
+- Avoid scanning entire chunks on every rendered frame.
+- Handle camera angles, missing blocks, large houses and unusual roofs.
+- Keep the UI responsive when rotating and changing the slider.
+- Avoid permanently invisible blocks when exiting the screen.
+- Restore the original rendering state immediately when closing the preview.
+
+## PART 2 — Recruit GUI: Complete UX Redesign
+
+The existing Recruit interface is confusing, crowded and inconsistent.
+
+Screenshot 4 is a visual reference for the desired direction, not a requirement to duplicate an existing texture exactly.
+
+### 1. Visual style
+
+Use a polished Minecraft-themed interface with:
+
+- Wooden borders and panels
+- Parchment-colored stat background
+- Pixel-art icons
+- Dark recessed inventory slots
+- Consistent panel padding
+- Clear visual hierarchy
+- Correctly aligned text
+- Pixel-perfect scaling
+
+No modern flat web-app design, random gradients, smooth vector icons or blurry AI-looking assets.
+
+Preserve native Minecraft visual proportions.
+
+Reuse our existing GUI assets and shared components when possible. Create new compatible pixel-art assets only when necessary.
+
+Use responsive/scaled positions, not fixed coordinates that break under different Minecraft GUI scales.
+
+### 2. Recruit 3D preview
+
+Left section:
+
+- Render the actual recruit model.
+- Include equipment, held weapons and armor.
+- Keep readable recruit name and employment status.
+- Allow model rotation by dragging.
+- Automatically fit the character inside the preview frame.
+
+The recruit preview must not overlap labels.
+
+### 3. Replace plain stats with icons
+
+Every important stat must have its own recognizable Minecraft-style pixel-art icon.
+
+Use the following logical layout:
+
+| Left column | Right column |
+|---|---|
+| ❤️ Current HP | ❤️ Maximum HP |
+| ⚔️ Level | 🗡️ Attack |
+| ☠️ Kills | 👢 Movement speed |
+| ⭐ Experience | 🛡️ Armor |
+| 🙂 Morale | — |
+
+These emojis describe icon meanings only. **Use actual pixel-art assets in the implementation, not emoji fonts.**
+
+Avoid redundant labels if the icon and tooltip already explain the value.
+
+Important:
+
+- Current HP and maximum HP must remain distinguishable.
+- Show useful numerical units when available.
+- Respect actual attribute modifiers.
+- Do not hardcode a recruit's attack or speed.
+- Format values consistently, e.g. `1.0`, not arbitrary precision.
+- Provide a tooltip explaining each stat.
+- Show progress bars only when they represent actual measurable progress.
+
+All displayed values must come from actual game data.
+
+### 4. Fix confusing recruitment payments
+
+The current interface shows:
+
+- An emerald icon and 120
+- Another emerald icon and 20
+- "За 7 дней"
+- Another emerald inside the Hire button
+
+This is visually repetitive and does not explain what the player is purchasing.
+
+First inspect the existing recruitment/payment code and establish what each payment actually means.
+
+If the values represent an initial hiring fee and recurring wages, display:
+
+**Стоимость найма: 120 монет**
+
+**Жалование: 20 монет каждые 7 игровых дней**
+
+English:
+
+**Hiring cost: 120 coins**
+
+**Wages: 20 coins every 7 Minecraft days**
+
+Use actual configured amounts instead of hardcoded example values.
+
+Do not claim wages are recurring until the code confirms they are.
+
+If there are existing wage timers, payment deadlines, arrears or employment conditions, explain them through contextual tooltips.
+
+Use the JEM economy currency and correct coin denomination icons wherever the current integration supports them.
+
+Do not introduce emerald payments if the JEM economy has already replaced them with coins.
+
+Avoid displaying the same currency icon beside every repetition of the same price.
+
+The primary action should simply read:
+
+**Нанять / Hire**
+
+The cost should be clearly visible once in the pricing section.
+
+If the player cannot afford hiring, disable the button and explain the reason on hover.
+
+If the recruit is already employed, show the appropriate management actions rather than a misleading Hire button.
+
+### 5. Improve recruit class selection
+
+The existing `Infantry` dropdown must be understandable.
+
+Requirements:
+
+- Localized class names
+- Class-specific icon when available
+- Tooltip describing the class's combat role
+- Current class visibly selected
+- Correct class availability restrictions
+- Clear indication of equipment or training requirements, if they exist
+
+Do not invent new recruit classes.
+
+Use existing registered classes and actual gameplay rules.
+
+### 6. Inventory layout
+
+Keep the recruit's inventory functional.
+
+Requirements:
+
+- Consistent native item slot dimensions
+- Standard 9-column inventory grid where the existing data model permits
+- Clearly separated recruit inventory and player inventory, when both are present
+- Normal item tooltips
+- Standard mouse clicks and stack interactions
+- No overlapping text or buttons
+- Correct synchronization between client and server
+
+Never discard items or change inventory capacity as part of a visual redesign.
+
+### 7. Localization
+
+Both Russian and English must be supported.
+
+Avoid mixed strings such as Russian descriptions paired with unexplained English controls.
+
+Test layout with long Russian translations.
+
+Do not truncate important information unless a tooltip provides the full text.
+
+## PART 3 — Compare Our Recruitment System with the Newly Installed Recruits Mod
+
+I installed another mod providing recruits. I want to understand exactly how its functionality differs from our JEM Settlements recruitment system.
+
+### 1. Identify both implementations
+
+Inspect:
+
+- Our existing Settlements source code
+- Current modpack manifest
+- Installed mod JARs and mod IDs
+- Relevant configurations
+- Recruit entity registrations
+- Commands, screens and inventory handlers
+
+Identify the newly installed recruitment mod by its actual mod ID, name and version.
+
+Do not assume its identity from screenshots.
+
+### 2. Feature comparison
+
+Create a factual comparison table covering:
+
+1. How recruits are obtained or hired
+2. Recruitment costs and currency
+3. Recurring salaries
+4. Recruit leveling and experience
+5. Combat AI
+6. Combat formations and commands
+7. Recruit classes
+8. Equipment and inventories
+9. Follow, guard and patrol behavior
+10. Death and respawn rules
+11. Morale or happiness systems
+12. Settlement ownership and assignment
+13. Multiplayer synchronization and permissions
+14. Configuration options
+15. Integration with modded weapons and armor
+
+For every feature indicate:
+
+- JEM supports it
+- External Recruits mod supports it
+- Both support it
+- Neither supports it
+- Unverified, with the reason
+
+Provide specific source paths, methods or configuration entries as evidence.
+
+### 3. Detect conflicts
+
+Check whether the two recruitment systems interfere with one another.
+
+Especially:
+
+- Duplicate recruit types
+- Different hiring currencies
+- Conflicting commands
+- Separate ownership systems
+- Duplicate soldier management screens
+- Incompatible salary logic
+- Equipment handling conflicts
+- Recruit AI interoperability
+- Multiplayer ownership/security problems
+
+Determine whether the external Recruits mod can safely coexist with JEM Settlements.
+
+Do not silently delete or disable either mod.
+
+### 4. Recommend what to integrate
+
+I want one coherent Settlements gameplay experience.
+
+Recommend useful external-mod features that our recruits lack, but distinguish:
+
+- Directly reusable functionality
+- Functionality needing custom implementation
+- Functionality already present
+- Functionality that conflicts with our design
+
+Do not copy third-party code or artwork without verifying its license.
+
+Do not implement unrelated new combat systems as part of this GUI task without reporting the proposal first.
+
+## PART 4 — Implementation Process
+
+Follow this order:
+
+**Step 1 — Investigation**
+
+Inspect the existing code, identify all affected screens, renderers, GUI assets and payment systems.
+
+Confirm current versus intended behavior.
+
+**Step 2 — Functional changes**
+
+Implement the camera-aware spherical cutaway and depth slider.
+
+Fix any real state/interaction problems discovered during investigation.
+
+**Step 3 — Visual redesign**
+
+Rebuild the Recruit GUI layout and icon usage.
+
+Keep all existing functionality intact.
+
+**Step 4 — External mod audit**
+
+Compare our recruits against the installed mod and record compatibility findings.
+
+**Step 5 — Verification**
+
+Build and test on Forge 1.20.1.
+
+Test both GUIs at multiple UI scales and screen resolutions.
+
+Verify client/server separation, inventory interactions, localization, and rendering behavior.
+
+Provide screenshots of the actual implemented GUI where your testing environment allows them. Do not substitute generated mockups for runtime evidence.
+
+## Acceptance criteria
+
+- House Viewer cuts from the preview-camera-facing side.
+- Rotating the camera correctly changes the cutaway.
+- Slider 0 preserves the complete house.
+- Slider 10 allows visibility up to 10 blocks inward.
+- Cutaway is rounded, voxel-based, and never alters the world.
+- Recruit statistics are readable, correctly aligned and icon-based.
+- Hiring fee and recurring wages are distinct and understandable.
+- Currency is displayed without redundant emerald icons.
+- Recruit and player inventories still work.
+- Russian and English labels render correctly.
+- No missing textures, clipping, blurry scaling or broken interaction areas.
+- The two recruit implementations are compared using actual evidence.
+- Forge build succeeds with no new relevant errors.
+
+## Final deliverables
+
+Return:
+
+1. **Implemented changes** — files modified and functionality added.
+2. **Before/after screenshots** — if the game can be launched and captured.
+3. **External Recruits mod comparison** — actual features and differences.
+4. **Conflict report** — whether both systems can coexist safely.
+5. **Recommended next improvements** — without automatically implementing out-of-scope features.
+6. **Verification report** — what was tested, passed, failed or could not be tested.
+
+Do not stop after writing a design proposal. Implement the requested GUI and rendering fixes wherever the repository and test environment allow it. Clearly identify anything that remains unverified.

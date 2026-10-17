@@ -1,0 +1,81 @@
+{
+  "installedAt": "2026-10-17T20:36:55.582945+05:00",
+  "source": "Mods\\JEMSettlements\\build\\libs\\jem-settlements-2.1.0.jar",
+  "sha256": "85decefb1e22a2be0f4e4ab8873082822088af0a0e14ac7697742215f997e714",
+  "installed": [
+    {
+      "target": "C:\\MyProjects\\Minecraft\\JustEnoughMods\\Client\\ManagedPack\\mods\\jem-settlements-2.1.0.jar",
+      "sha256": "85decefb1e22a2be0f4e4ab8873082822088af0a0e14ac7697742215f997e714"
+    },
+    {
+      "target": "C:\\MyProjects\\Minecraft\\JustEnoughMods\\Server\\mods\\jem-settlements-2.1.0.jar",
+      "sha256": "85decefb1e22a2be0f4e4ab8873082822088af0a0e14ac7697742215f997e714"
+    },
+    {
+      "target": "C:\\Users\\user\\AppData\\Roaming\\.minecraft\\versions\\jem sandbox\\mods\\jem-settlements-2.1.0.jar",
+      "sha256": "85decefb1e22a2be0f4e4ab8873082822088af0a0e14ac7697742215f997e714"
+    }
+  ],
+  "backup": "C:\\MyProjects\\Minecraft\\JustEnoughMods\\Server\\local\\recruit-housing-backup-20261017-203655",
+  "sandboxPending": null,
+  "preparedSandboxArtifact": "C:\\MyProjects\\Minecraft\\JustEnoughMods\\Server\\local\\recruit-housing-ready\\jem-settlements-2.1.0.jar",
+  "build": "jarJar -x test -x check BUILD SUCCESSFUL",
+  "sourceReview": "Focused and final manual reviews: no remaining concrete P1/P2; runtime visuals/native interaction pending",
+  "testsRun": false,
+  "gameplayClientLaunched": false,
+  "publication": {
+    "published": true,
+    "journalSequence": 24,
+    "publishedManifestSha1": "a94dcd18b0b0798200d192379f5ff90c0c4212c4",
+    "stagedManifestSha1": "a94dcd18b0b0798200d192379f5ff90c0c4212c4"
+  },
+  "stable": "untouched",
+  "MineRENT": "not deployed",
+  "baseline": "not promoted",
+  "sandboxInstalledAt": "2026-10-17T20:41:31.664649+05:00",
+  "sandboxBackup": "C:\\MyProjects\\Minecraft\\JustEnoughMods\\Server\\local\\sandbox-recruit-housing-backup-20261017-204130",
+  "nativePreview": {
+    "added": 0,
+    "changed": [
+      "main/jem-pack/manifest.json",
+      "main/mods/jem-settlements-2.1.0.jar"
+    ],
+    "deleted": 0,
+    "publishedAt": "2026-10-17T20:41:20+05:00"
+  },
+  "atlas": {
+    "valid": true,
+    "changeRecords": 37,
+    "artifacts": 706,
+    "manifestSha256": "0f54e6425e1f775b8bedac47dd7060474d3d52fefbd144288ef72ddef1da4178",
+    "currentTaskUncovered": [],
+    "unrelatedWorktreeUncovered": [
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/MarketSupply.java",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/gui/market/storefront.png",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/vfx/RaceVfxParticles.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/vfx/RaceVfxRenderer.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/NobleQuotePacket.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/RecruitRank.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/SettlementSavedData.java",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/provenance.json"
+    ],
+    "installedArtifactDrift": {
+      "added": [],
+      "removed": [],
+      "changed": [],
+      "unresolved": []
+    },
+    "representativeQueriesConflictFree": [
+      "recruits:recruit",
+      "minecraft:villager",
+      "minecraft:chest",
+      "minecraft:red_bed",
+      "minecraft:rotten_flesh",
+      "minecraft:poisonous_potato",
+      "minecraft:spider_eye",
+      "minecraft:pufferfish"
+    ]
+  }
+}
