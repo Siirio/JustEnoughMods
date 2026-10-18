@@ -67,7 +67,7 @@ public final class BossHostingPrompt {
         }
         if(!canOffer(player,boss)) throw new com.siirio.jemserver.smp.SmpActionFailure("unavailable");
         var key = net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(boss.getType());
-        EventNetwork.prompt(player, id, EventEntryKind.BOSS_FIGHT.name(), boss.getDisplayName().getString(), key.toString());
+        EventNetwork.prompt(player, id, EventEntryKind.BOSS_FIGHT, boss.getDisplayName().getString(), key.toString());
     }
 
     private static void enroll(LivingEntity boss) {
@@ -171,11 +171,11 @@ public final class BossHostingPrompt {
 
     @SubscribeEvent(priority=EventPriority.HIGHEST)
     public static void stagingDamage(net.minecraftforge.event.entity.living.LivingAttackEvent event) {
-        if(event.getEntity() instanceof ServerPlayer player && CANDIDATES.values().stream().anyMatch(boss->HostedEncounterApi.held(boss) && com.siirio.jemserver.smp.events.BossStaging.contains(boss,player))) event.setCanceled(true);
+        if(event.getEntity() instanceof ServerPlayer player && !HostedEncounterApi.participating(player) && CANDIDATES.values().stream().anyMatch(boss->HostedEncounterApi.held(boss) && com.siirio.jemserver.smp.events.BossStaging.contains(boss,player))) event.setCanceled(true);
     }
     @SubscribeEvent(priority=EventPriority.HIGHEST)
     public static void stagingDeath(net.minecraftforge.event.entity.living.LivingDeathEvent event) {
-        if(event.getEntity() instanceof ServerPlayer player && CANDIDATES.values().stream().anyMatch(boss->HostedEncounterApi.held(boss) && com.siirio.jemserver.smp.events.BossStaging.contains(boss,player))) { event.setCanceled(true);player.setHealth(Math.max(1,player.getHealth())); }
+        if(event.getEntity() instanceof ServerPlayer player && !HostedEncounterApi.participating(player) && CANDIDATES.values().stream().anyMatch(boss->HostedEncounterApi.held(boss) && com.siirio.jemserver.smp.events.BossStaging.contains(boss,player))) { event.setCanceled(true);player.setHealth(Math.max(1,player.getHealth())); }
     }
 
     @SubscribeEvent

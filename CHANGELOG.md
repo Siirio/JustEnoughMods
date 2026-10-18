@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-19 — Local boss encounter repair
+
+- User reports MineRENT crab-entry crash, barriers without bosses, three knight boss bars and Helvar second-phase attack animations without damage; requests repair in test jem before any later server release. Codex chooses typed prompt producers, shared presence-based virtual walls, dedicated whole-entity dormant tick and canonical active-participant exclusion from waiting protection. MineRENT, stable profile and release baseline are excluded.
+- Bug / Client Sided / supplied03:53:57 crash is EventNetwork.select parsing obsolete BOSS with EventEntryKind.valueOf; source producer was already corrected in4dc02558 but report executes stale deployed bytes / in testing. Typed EventEntryKind prompt API now prevents this invalid source producer; fresh local production delivery carries the existing repair.
+- Bug / Server Sided / StructureStaging enumerated every discovered structure as a wall without live-boss/open-party ownership / in testing. One shared presence predicate gates visual packets, virtual collision, teleport redirection and waiting immunity; original arena identity/revival stays saved.
+- Bug / Server Sided / NoAI does not stop Bosses Rise2.1.2 override tick, which directly runs cinematic/attacks and re-enables bar/music / in testing. Dedicated ServerLevel dispatch now pauses held-boss native tick until canonical Start releases it; tracking suppression stays native.
+- Bug / Server Sided / BossHostingPrompt and StructureStaging waiting immunity canceled all incoming damage/death when another held boss or overlapping unauthorized arena was nearby, without checking the active hosted participant / in testing. Both owners now query canonical HostedEncounters ALIVE membership before granting waiting protection. This is a proven source defect consistent with the reported no-damage phase; exact live MineRENT phase-two state was not captured. Native phases/attack damage remain unchanged, player confirmation pending.
+
 ## 2026-10-18 — Race panels and settlement isometry
 
 - User requests black race panels matching supplied screenshot02, Minecraft-style race icons above larger bold names with existing lore, no bottom Bloom Roman controls, successful-use progress only inside the inspected upgrade, and a left sidebar «Поселение» city view. Codex reuses native item icons and existing server progression thresholds10/20/30, retaining current saves, packet fields, authority and selection flow. Small-window layout retains readable upgrade details.

@@ -79,7 +79,7 @@ public final class EventAreaHooks {
         SmpRecords.require(row != null && row.getString("state").equals("ACTIVE") && !row.getBoolean("combatStarted"), "unavailable");
         String type = row.getString("activity");
         SmpRecords.require((type.equals("BLOOD_MOON") || type.equals("BOSS_RAID")) && EventRegions.near(row, player.serverLevel(), player.blockPosition()), "travel_to_arena");
-        EventNetwork.prompt(player, id, type, Component.translatable("jem.smp." + type).getString(), "");
+        EventNetwork.prompt(player, id, EventEntryKind.valueOf(type), Component.translatable("jem.smp." + type).getString(), "");
     }
 
     @SubscribeEvent

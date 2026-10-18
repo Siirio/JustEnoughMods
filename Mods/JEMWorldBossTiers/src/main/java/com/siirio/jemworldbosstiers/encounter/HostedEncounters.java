@@ -87,6 +87,11 @@ public final class HostedEncounters {
         return ACTIVE.values().stream().filter(boss -> players(boss).contains(player.toString())).findFirst().orElse(null);
     }
 
+    public static boolean participating(ServerPlayer player) {
+        LivingEntity boss = encounter(player.getUUID());
+        return boss != null && ALIVE.equals(participant(boss, player.getUUID()).getString("State"));
+    }
+
     public static UUID participantSession(ServerPlayer player) {
         var boss=encounter(player.getUUID());
         return boss!=null && !boss.getPersistentData().getBoolean("jem_solo") && players(boss).size()>1 && ALIVE.equals(participant(boss,player.getUUID()).getString("State")) ? boss.getUUID() : null;

@@ -36,6 +36,7 @@ public final class HostedEncounterApi {
 
     public static boolean hold(LivingEntity boss) { return com.siirio.jemworldbosstiers.encounter.HostedLobby.hold(boss); }
     public static boolean held(LivingEntity boss) { return com.siirio.jemworldbosstiers.encounter.HostedLobby.held(boss); }
+    public static boolean participating(ServerPlayer player) { return HostedEncounters.participating(player); }
     public static void release(LivingEntity boss) { com.siirio.jemworldbosstiers.encounter.HostedLobby.release(boss); }
 
     public static boolean prepareRaid(LivingEntity boss) {

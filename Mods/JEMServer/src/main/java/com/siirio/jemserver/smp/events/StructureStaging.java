@@ -60,6 +60,7 @@ public final class StructureStaging {
     private static final Map<UUID, UUID> INSIDE = new HashMap<>();
     private static final Map<UUID, UUID> NEAR = new HashMap<>();
     private static final Map<UUID, Optional<CompoundTag>> PARTY_CACHE = new HashMap<>();
+    private static final Map<UUID, Presence> PRESENCE = new HashMap<>();
     private static final LinkedHashMap<String, Optional<Area>> NATIVE_LOOKUPS = new LinkedHashMap<>();
 
     private StructureStaging() {}
@@ -69,7 +70,7 @@ public final class StructureStaging {
         event.addListener(new SimpleJsonResourceReloadListener(new Gson(), "jem/events/structures") {
             @Override
             protected void apply(Map<ResourceLocation, JsonElement> files, ResourceManager manager, ProfilerFiller profiler) {
-                STRUCTURES.clear(); ACTIVATION_BLOCKS.clear(); ACTIVATION_ITEMS.clear(); AREAS.clear(); INSIDE.clear(); NEAR.clear(); PARTY_CACHE.clear(); NATIVE_LOOKUPS.clear();
+                STRUCTURES.clear(); ACTIVATION_BLOCKS.clear(); ACTIVATION_ITEMS.clear(); AREAS.clear(); INSIDE.clear(); NEAR.clear(); PARTY_CACHE.clear(); PRESENCE.clear(); NATIVE_LOOKUPS.clear();
                 for (JsonElement file : files.values()) {
                     var root = file.getAsJsonObject();
                     for (JsonElement value : root.getAsJsonArray("structures")) {
@@ -235,7 +236,7 @@ public final class StructureStaging {
         Area area = AREAS.get(id);
         SmpRecords.require(area != null && area.near(player.serverLevel(), player.position()), "travel_to_arena");
         SmpRecords.require(!physicallyLocked(player.serverLevel(), area) && !locked(player, area), "unavailable");
-        EventNetwork.prompt(player, area.id(), "BOSS_STRUCTURE", Component.translatable(BuiltInRegistries.ENTITY_TYPE.get(area.boss()).getDescriptionId()).getString(), area.boss().toString());
+        EventNetwork.prompt(player, area.id(), EventEntryKind.BOSS_STRUCTURE, Component.translatable(BuiltInRegistries.ENTITY_TYPE.get(area.boss()).getDescriptionId()).getString(), area.boss().toString());
     }
 
     public static boolean arrive(ServerPlayer player, CompoundTag row) {
@@ -486,6 +487,7 @@ public final class StructureStaging {
                 || WorldTierApi.profile(boss).isEmpty() || boss.getPersistentData().getBoolean(EventSession.SPAWNED)) return;
         Area area = bossArea(level,boss);
         if (area == null) return;
+        PRESENCE.remove(area.id());
         AABB column = new AABB(area.bounds().minX(), level.getMinBuildHeight(), area.bounds().minZ(), area.bounds().maxX() + 1, level.getMaxBuildHeight(), area.bounds().maxZ() + 1);
         boolean duplicate = !level.getEntitiesOfClass(LivingEntity.class, column, entity -> entity != boss && entity.isAlive()
                 && BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).equals(area.boss())).isEmpty();
@@ -551,7 +553,7 @@ public final class StructureStaging {
             var bounds = area.shell();
             double distance = Math.max(Math.max(bounds.minX() - player.getX(), player.getX() - bounds.maxX()),
                     Math.max(bounds.minZ() - player.getZ(), player.getZ() - bounds.maxZ()));
-            if (distance > EventRules.BOUNDARY_DISTANCE.get()) continue;
+            if (distance > EventRules.BOUNDARY_DISTANCE.get() || !guarded(player.serverLevel(), area)) continue;
             CompoundTag row = party(player.serverLevel(), area.id());
             boolean passable = row != null && HostedBoundary.passable(player, row);
             result.add(SolidBoundary.boundary(area.id(), area.dimension(), bounds.minX(), bounds.minZ(), bounds.maxX(), bounds.maxZ(),
@@ -580,14 +582,28 @@ public final class StructureStaging {
         BoundingBox bounds=area.bounds();
         return level.getEntitiesOfClass(LivingEntity.class,
                 new AABB(bounds.minX(),level.getMinBuildHeight(),bounds.minZ(),bounds.maxX()+1,level.getMaxBuildHeight(),bounds.maxZ()+1),
-                entity->entity.isAlive()&&BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).equals(area.boss()))
+                entity->entity.isAlive()&&!entity.isRemoved()&&BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).equals(area.boss()))
                 .stream().findFirst().orElse(null);
     }
 
     private static Area nearby(ServerLevel level, Vec3 position) {
         discover(level, BlockPos.containing(position));
-        return AREAS.values().stream().filter(area -> area.near(level, position)).findFirst().orElse(null);
+        return AREAS.values().stream().filter(area -> area.near(level, position) && guarded(level, area)).findFirst().orElse(null);
     }
+
+    private static boolean guarded(ServerLevel level, Area area) {
+        if (party(level, area.id()) != null) return true;
+        Presence presence = PRESENCE.get(area.id());
+        long tick = level.getGameTime();
+        if (presence == null || presence.tick() != tick) {
+            if (PRESENCE.size() >= AREA_LIMIT) PRESENCE.clear();
+            presence = new Presence(tick, livingBoss(level, area) != null);
+            PRESENCE.put(area.id(), presence);
+        }
+        return presence.livingBoss();
+    }
+
+    private record Presence(long tick, boolean livingBoss) {}
 
     public static List<String> occupants(ServerPlayer player, UUID id) {
         Area area = AREAS.get(id);
@@ -626,6 +642,7 @@ public final class StructureStaging {
             BoundingBox bounds = area.shell();
             if (query != null && (query.maxX < bounds.minX() || query.minX > bounds.maxX() + 1D
                     || query.maxZ < bounds.minZ() || query.minZ > bounds.maxZ() + 1D)) continue;
+            if (!guarded(level, area)) continue;
             List<ServerPlayer> players = SolidBoundary.players(entity);
             CompoundTag row = party(level, area.id());
             boolean passable = row != null && !players.isEmpty() && players.stream().allMatch(player -> HostedBoundary.passable(player, row));
@@ -649,6 +666,8 @@ public final class StructureStaging {
             boolean destinationInside = level == areaLevel && SolidBoundary.contains(destination, boundary);
             boolean destinationWall = level == areaLevel && SolidBoundary.intersectsWall(destination, boundary);
             CompoundTag row = party(areaLevel, area.id());
+            if (!sourceInside && !destinationInside && !destinationWall && (row == null || !HostedBoundary.locked(player, row))) continue;
+            if (!guarded(areaLevel, area)) continue;
             if (row != null && HostedBoundary.locked(player, row)) {
                 if (destinationInside && !destinationWall && level.noCollision(player, destination)) continue;
                 if (sourceInside && !SolidBoundary.intersectsWall(source, boundary) && areaLevel.noCollision(player, source))
@@ -726,8 +745,9 @@ public final class StructureStaging {
     }
 
     private static boolean stagingProtected(ServerPlayer player) {
+        if (HostedEncounterApi.participating(player)) return false;
         Area area = discover(player.serverLevel(), player.blockPosition());
-        if (area == null) return false;
+        if (area == null || !guarded(player.serverLevel(), area)) return false;
         CompoundTag row = party(player.serverLevel(), area.id());
         return row == null || !HostedBoundary.authorized(player, row);
     }
@@ -760,7 +780,7 @@ public final class StructureStaging {
     public static void logout(PlayerEvent.PlayerLoggedOutEvent event) { UUID id = event.getEntity().getUUID(); INSIDE.remove(id); NEAR.remove(id); }
 
     @SubscribeEvent
-    public static void stopped(ServerStoppedEvent event) { AREAS.clear(); INSIDE.clear(); NEAR.clear(); PARTY_CACHE.clear(); NATIVE_LOOKUPS.clear(); }
+    public static void stopped(ServerStoppedEvent event) { AREAS.clear(); INSIDE.clear(); NEAR.clear(); PARTY_CACHE.clear(); PRESENCE.clear(); NATIVE_LOOKUPS.clear(); }
 
     private record Area(UUID id, String dimension, ResourceLocation boss, BoundingBox bounds) {
         boolean contains(ServerLevel level, BlockPos pos) {

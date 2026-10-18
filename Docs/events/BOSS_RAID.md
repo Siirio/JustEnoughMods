@@ -36,3 +36,11 @@ Xaero не создаёт отдельную Raid-территорию: active R
 - Skill books в наградах отвергнуты решением от 2026-09-28.
 - Activities/feed как журнал боя отвергнут: остаются encounter messages и native reward delivery.
 
+
+## Hosted lifecycle repair — 2026-10-19
+
+A discovered structure retains its canonical arena/revival identity, but its virtual wall exists only while a living registered boss or an open hosted party owns it. Rendering, collision and teleport checks use the same presence predicate, bounded to one entity lookup per area per level tick. Empty arenas therefore stay traversable; native ritual activation and canonical revival eligibility remain separate.
+
+Waiting-area immunity never applies to an ALIVE participant of another active hosted encounter. HostedEncounters owns that classification, preventing overlapping waiting bosses from canceling active boss damage. Held bosses skip their whole native entity tick at the physically dedicated ServerLevel dispatcher: NoAI alone cannot pause Bosses Rise custom combat/cinematics/bar/music. Start clears the existing hold marker and resumes native behavior; tracking still suppresses dormant bars. Integrated singleplayer is excluded by JemServerMixinPlugin. Native phases, damage values, rewards and progression are unchanged.
+
+The supplied crab crash is an obsolete BOSS prompt passed to EventEntryKind.valueOf; source producer was already corrected in4dc02558. The prompt API now accepts only EventEntryKind, preserving protocol9 and rejecting invalid producers at compilation. Helvar second-phase no-damage is consistent with overlapping lobby immunity; the exact live incident is not observed locally. All fixes remain in testing until player acceptance.

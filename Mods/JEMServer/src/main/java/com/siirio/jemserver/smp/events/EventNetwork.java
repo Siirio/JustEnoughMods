@@ -35,9 +35,9 @@ public final class EventNetwork {
     public static void beam(ServerPlayer player,net.minecraft.core.BlockPos position,int duration,float entityWidth) { CHANNEL.send(PacketDistributor.PLAYER.with(()->player),new EventBeam(player.level().dimension().location(),position,duration,Math.max(.25F,Math.min(8F,entityWidth*.4F)))); }
     public static void telegraph(ServerPlayer player,UUID eventId,AttackGeometry geometry,int duration,int color) { CHANNEL.send(PacketDistributor.PLAYER.with(()->player),new EventTelegraph(eventId,player.level().dimension().location(),geometry,duration,color)); }
     public static void attackVfx(ServerPlayer player,UUID eventId,AttackGeometry geometry,int duration,int color) { CHANNEL.send(PacketDistributor.PLAYER.with(()->player),new EventAttackVfx(eventId,player.level().dimension().location(),geometry,duration,color)); }
-    public static void prompt(ServerPlayer player,UUID id,String type,String title,String entityType) {
-        boolean structure=type.equals("BOSS_STRUCTURE");
-        CHANNEL.send(PacketDistributor.PLAYER.with(()->player),new EventPrompt(id,type,title,entityType,
+    public static void prompt(ServerPlayer player,UUID id,EventEntryKind type,String title,String entityType) {
+        boolean structure=type==EventEntryKind.BOSS_STRUCTURE;
+        CHANNEL.send(PacketDistributor.PLAYER.with(()->player),new EventPrompt(id,type.name(),title,entityType,
                 structure && StructureStaging.raidAvailable(player,id),structure?StructureStaging.arenaState(player,id):"FREE",
                 structure?StructureStaging.occupants(player,id).stream().limit(MAX_PROMPT_OCCUPANTS).toList():List.of()));
     }

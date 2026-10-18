@@ -1,0 +1,125 @@
+{
+  "schema_version": 2,
+  "change_id": "hosted.arena-presence-and-lobby-isolation",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "entities"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "requires": "registered WorldTierApi boss profile; dedicated JEM hosted lifecycle; structural boundary additionally requires live boss or open hosted party"
+    }
+  ],
+  "precedence": {
+    "layer": "hosted_encounter_lifecycle",
+    "priority": 510
+  },
+  "change": {
+    "summary": "Typed boss prompts, presence-based walls, dormant whole-entity tick and active-participant exclusion from overlapping lobby protection. MineRENT report supplied; local acceptance remains pending.",
+    "modifiers": [
+      {
+        "property": "hosted.arena_boundary_presence",
+        "operation": "derive",
+        "before": "Every discovered structure produces a wall even when no boss or party exists.",
+        "after": "Rendering, collision and teleport policy share live registered boss OR open party presence, cached for one level tick; saved arena identity and revival remain intact."
+      },
+      {
+        "property": "hosted.lobby_protection",
+        "operation": "replace",
+        "before": "Nearby held boss or unauthorized overlapping structure cancels all incoming damage and player death, even for an ALIVE participant in another active hosted encounter.",
+        "after": "Canonical active ALIVE hosted participant bypasses waiting-area immunity; ordinary hosted combat validates attackers/participants. Held bosses still cannot attack anyone."
+      },
+      {
+        "property": "hosted.dormant_tick",
+        "operation": "replace",
+        "before": "NoAI stops goals but Bosses Rise custom tick reactivates bars/music and runs attacks/cinematics.",
+        "after": "Dedicated ServerLevel tickNonPassenger skips held boss native tick until canonical Start removes the lobby marker; no client/integrated tick interception."
+      },
+      {
+        "property": "hosted.prompt_kind",
+        "operation": "replace",
+        "before": "String API accepted BOSS despite EventEntryKind lacking that value; deployed client crash supplied. Existing source producer already corrected in4dc02558.",
+        "after": "Prompt producers accept EventEntryKind and serialize name; no invented legacy alias or wire change."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMServer StructureStaging/BossHostingPrompt, JEMWorldBossTiers HostedEncounters",
+    "kind": "bugfix",
+    "source_files": [
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/BossHostingPrompt.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventAreaHooks.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventNetwork.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/staging/HostedBossTickMixin.java",
+      "Mods/JEMServer/src/main/resources/jem_server.mixins.json",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/HostedEncounterApi.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Fix reported boss-entry crash, empty barriers, unwanted bars and active-boss damage canceled by overlapping lobby immunity.",
+    "decision_source": "User requests local test jem repair before a later MineRENT update; clarifies Helvar animates attacks without damage.",
+    "user_requested": "Repair four symptoms locally; leave MineRENT unchanged.",
+    "codex_choices": "Use typed producer API, one-tick presence cache, dedicated whole-entity tick guard and canonical participant query."
+  },
+  "introduced": {
+    "date": "2026-10-19",
+    "commit": "SELF",
+    "action": "repair_hosted_lifecycle",
+    "summary": "Typed boss prompts, presence-based walls, dormant whole-entity tick and active-participant exclusion from overlapping lobby protection. MineRENT report supplied; local acceptance remains pending.",
+    "source_files": [
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/BossHostingPrompt.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventAreaHooks.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventNetwork.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/staging/HostedBossTickMixin.java",
+      "Mods/JEMServer/src/main/resources/jem_server.mixins.json",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/HostedEncounterApi.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-19",
+      "commit": "SELF",
+      "action": "repair_hosted_lifecycle",
+      "summary": "Typed boss prompts, presence-based walls, dormant whole-entity tick and active-participant exclusion from overlapping lobby protection. MineRENT report supplied; local acceptance remains pending.",
+      "source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/BossHostingPrompt.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventAreaHooks.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventNetwork.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/staging/HostedBossTickMixin.java",
+        "Mods/JEMServer/src/main/resources/jem_server.mixins.json",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/HostedEncounterApi.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "hosted_boss_combat",
+      "boss_presentation",
+      "arena_collision",
+      "teleports",
+      "progression",
+      "native_pack_delivery"
+    ],
+    "relations": [
+      "arena->live_boss_or_open_party->wall",
+      "held_boss->native_tick_paused",
+      "canonical_participant->waiting_protection_exclusion"
+    ],
+    "notes": [
+      "Bosses Rise2.1.2 exact installed native code inspected. Screenshot has three native knight bars. Crab crash is EventEntryKind.BOSS at EventNetwork.select. Active native damage source/phase patterns are preserved. No tests or gameplay launches."
+    ],
+    "unresolved": [
+      "No live MineRENT state captured; overlapping lobby immunity is a source-proven cancellation mechanism consistent with the report, not observed proof of its exact second-phase incident. Player acceptance required."
+    ]
+  }
+}
