@@ -847,5 +847,5 @@ dedicated-server-only; integrated singleplayer remains native.
 
 Source and bytecode investigation establishes the missing repair mechanism.
 No automated test, static-analysis suite, gameplay launch or sleep/wake acceptance
-was performed here. Production build/artifact synchronization and real acceptance
-are parent-task delivery steps; the bug remains in testing until user approval.
+was performed here. Production build/artifact synchronization and native publication evidence are
+recorded in the task delivery receipt; the bug remains in testing until user approval.

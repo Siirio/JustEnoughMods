@@ -1,0 +1,106 @@
+{
+  "status": "delivered-player-acceptance-pending",
+  "branch": "main",
+  "sourceCommit": "af13baf8",
+  "requestedByUser": "Fix actual client crash and ordinary villagers not sleeping in Handcrafted beds.",
+  "causes": {
+    "clientCrash": {
+      "observed": "crash-2026-10-18_21.46.09-client.txt; Rendering screen; DebugInvScreen; PoseStack.last NoSuchElementException in WATUT capture",
+      "owner": "Recruits1.15.2 DebugInvScreen native renderLabels",
+      "mechanism": "Native0.7 label scale and trailing pop have no local push; the pop consumes AbstractContainerScreen caller frame. WATUT recapture subsequently reads empty stack.",
+      "fix": "Version-gated client-only local push immediately before unique native scale; existing trailing pop, text and UI retained.",
+      "acceptance": "in testing"
+    },
+    "handcraftedBeds": {
+      "owner": "Native HOME matching and persisted POI section lifecycle",
+      "demonstratedGap": "Prior adapter populated only reverse-state map. Existing IsValid=true POI sections skip refresh and can retain missing previously placed Handcrafted beds.",
+      "fix": "Dedicated-only consistent public HOME matching without record/hash mutation; reapply before server chunk loading; section-local native consistency invalidation for actual Handcrafted HEAD palette, retaining existing PoiRecords/tickets.",
+      "notEstablished": "Individual reported villager HOME/path/time/bed state was not captured; native sleep/wake acceptance pending.",
+      "acceptance": "in testing"
+    }
+  },
+  "artifacts": {
+    "JEMCompat": {
+      "source": "Mods/JEMCompat/build/libs/jemcompat-3.7.0.jar",
+      "sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "bytes": 353817,
+      "refmap": "jemcompat.refmap.json"
+    },
+    "JEMSettlements": {
+      "source": "Mods/JEMSettlements/build/libs/jem-settlements-2.1.0.jar",
+      "sha256": "0f159cd3c2426e206ba020d085eb60cdbd793035cee4a1933296b5c9176f9e51",
+      "bytes": 2565431,
+      "refmap": "jem_settlements.refmap.json"
+    }
+  },
+  "sourcePaths": [
+    "CHANGELOG.md",
+    "Docs/DEVELOPMENT.md",
+    "Docs/settlements/standalone/README.md",
+    "Catalog/changes/records/recruits-debug-labels-pose-ownership.json",
+    "Catalog/changes/records/settlements-handcrafted-native-home-repair.json",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+    "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/recruits/RecruitDebugScreenPoseMixin.java",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/NativeBedCompatibility.java",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java",
+    "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiTypeHomeMixin.java",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiManagerBedRepairMixin.java",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiSectionAccess.java",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiSectionStorageAccess.java"
+  ],
+  "checks": {
+    "productionBuilds": [
+      "Compat jarJar/reobfJarJar successful",
+      "Settlements jarJar/reobfJarJar successful"
+    ],
+    "dedicatedStartup": "Done; no new Mixin application failure",
+    "nativePreview": "+0 ~3 -0: exact two JARs and manifest",
+    "published": {
+      "published": true,
+      "journalSequence": 37,
+      "publishedManifestSha1": "86e962bcea7f48cdc3acf7cc48a6da055210ff3c",
+      "stagedManifestSha1": "86e962bcea7f48cdc3acf7cc48a6da055210ff3c"
+    },
+    "automatedTestsRun": false,
+    "gameplayTestsRun": false,
+    "clientLaunched": false,
+    "atlas": {
+      "valid": true,
+      "canonical_counts": {
+        "biomes": 264,
+        "blocks": 12135,
+        "creative_tabs": 55,
+        "effects": 436,
+        "enchantments": 218,
+        "entities": 1593,
+        "items": 17050,
+        "structures": 520
+      },
+      "change_records": 58,
+      "effective_index": "Catalog/effective/index.json"
+    }
+  },
+  "unchangedBoundaries": [
+    "Native recruit/merchant UI and WATUT capture retained",
+    "Native villager/recruit AI, navigation, bed occupancy and ticket ownership retained",
+    "Integrated singleplayer has no added server gameplay",
+    "Stable profile, release baseline and MineRENT untouched",
+    "Unrelated existing source/runtime modifications preserved"
+  ],
+  "nativeInstallation": {
+    "publishedSequence": 37,
+    "publishedToken": "4a833906cc043a20d4587d19ea152dd14599430b",
+    "installedToken": "4a833906cc043a20d4587d19ea152dd14599430b",
+    "mirroredToken": "4a833906cc043a20d4587d19ea152dd14599430b",
+    "allTokensMatch": true,
+    "artifactMatches": {
+      "JEMCompat": true,
+      "JEMSettlements": true
+    },
+    "preferenceCount": 24,
+    "changedPreferences": [],
+    "pendingTransaction": false
+  }
+}

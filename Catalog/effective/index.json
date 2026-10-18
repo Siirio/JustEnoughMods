@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "b7d588ecd2e09f1113f23c45d09b97833a442480df550f924fadcd92b6d85345",
+  "change_records_sha256": "c8c3066a378919046a6a2b5a19003e8ea3feebb398c47418d14e39ae77d65e55",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -646,6 +646,21 @@
       "potential_static_target_count": 0
     },
     {
+      "change_id": "client.recruits-debug-labels-pose-ownership",
+      "status": "conditional",
+      "summary": "Restore the missing native label-scale pose frame in exact Recruits1.15.2; fixes observed WATUT capture crash while preserving labels and caller transforms.",
+      "record": "Catalog/changes/records/recruits-debug-labels-pose-ownership.json",
+      "selectors": [
+        {
+          "type": "namespace",
+          "registry": "entities",
+          "value": "recruits"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 11
+    },
+    {
       "change_id": "sandbox-ancients-pearl-vfx",
       "status": "conditional",
       "summary": "Selected pearl afterfire and enlarged Ancients shields; guardian dome now uses one connected mesh after the user rejected smooth glass and then overlapping separate plaques.",
@@ -883,6 +898,31 @@
       "summary": "Food-dependent resident regeneration; direct happiness fill and compact legible material-based native recruit interface.",
       "record": "Catalog/changes/records/settlements-fed-recovery-readable-ui.json",
       "selectors": [
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:villager"
+        },
+        {
+          "type": "namespace",
+          "registry": "entities",
+          "value": "recruits"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 12
+    },
+    {
+      "change_id": "settlements.handcrafted-native-home-repair",
+      "status": "conditional",
+      "summary": "Repair incomplete native HOME POI integration for Handcrafted beds, including persisted valid-but-incomplete chunk POI sections without resetting claimed tickets.",
+      "record": "Catalog/changes/records/settlements-handcrafted-native-home-repair.json",
+      "selectors": [
+        {
+          "type": "tag",
+          "registry": "blocks",
+          "value": "handcrafted:fancy_beds"
+        },
         {
           "type": "id",
           "registry": "entities",
@@ -1267,9 +1307,9 @@
     "Client/ManagedPack/mods/jem-economy-1.3.0.jar": "3af3c047e14d9913fafd04130a8ad1cfec227fffa30dc0dd221fb4e849fe4950",
     "Client/ManagedPack/mods/jem-roles-2.0.0.jar": "b22a7a3abb4253d98b5e439a5f997314f4482ea5f7ac0053e310844dfc28740a",
     "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar": "53e4df0307365959c23a81b1ec61288b46dc67c8f43d5cf9b106bcff78111612",
-    "Client/ManagedPack/mods/jem-settlements-2.1.0.jar": "941837a4d33e21e2ee9171b1eb0640d5ee761f40650b5ff33c209b5f37eac531",
-    "Client/ManagedPack/mods/jemcompat-3.7.0.jar": "a116f096518df187211cb5689a69715cbe6f1078c359508c29aec81485a452af",
-    "Docs/DEVELOPMENT.md": "b43cb1a431f461924b68e619861547b0084786c67f7092dfb1593b5438fe3794",
+    "Client/ManagedPack/mods/jem-settlements-2.1.0.jar": "0f159cd3c2426e206ba020d085eb60cdbd793035cee4a1933296b5c9176f9e51",
+    "Client/ManagedPack/mods/jemcompat-3.7.0.jar": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+    "Docs/DEVELOPMENT.md": "451b948c0efc12bd0e85cf8b9e4d5e00df542b74380d5556a1436e6b2a52865b",
     "Docs/power-system/Allies.md": "829e010d57941891c31134a0707b3e74f2f6d943f9c57325f4f903c341ed9875",
     "Docs/power-system/Armor.md": "168c85fba7fcd6362c52085f9ba8aae13454548bce1a55c6d7caf15180608f12",
     "Docs/power-system/Balance.md": "ff41e05a33378f6115934a72599b1a7aeeabd3918f72fd103142aee542a641a1",
@@ -1286,14 +1326,14 @@
     "Docs/races/assets/guardian-dome/export.mjs": "6dedc11a5d5bd716180afc9361870c2081ffbe8018f2dc104a35eeab2046eee8",
     "Docs/races/assets/guardian-dome/guardian-dome.bbmodel": "3f56200e6a08a5209e730fa901313907cd67a72429c27389df3945c5c525e080",
     "Docs/races/server-test-migration.json": "666c4642ce4b177eea8a20f7a9dfc2269e2fec05ab5f2d68c049395aca188f1a",
-    "Docs/settlements/standalone/README.md": "043603c19287c532a23cfddf99b3f462a2696739f8d691561d9d87ebfcd5b47e",
+    "Docs/settlements/standalone/README.md": "809402806acc03aebd3a07b55238aa018c16e2f208a4f0d9c3c5b676f9bd0311",
     "Docs/smp-gui/README.md": "4c9cdb748cc40d5183eaf8455003ebff7eb3325d637dd8f2dbe371c399437a0e",
     "Mods/JEMBootstrap/patches/reliable-updates.patch": "3dde2e020c9880f9198a87ccb6c491b414762853069b977635085541a5030a69",
     "Mods/JEMBootstrap/prepare.py": "e582eb57b8363b93121a03c291e93ffb4cd082bf73904390cf9700a4a9d77d2a",
     "Mods/JEMBootstrap/upstream.json": "0385ee945a3c54fc73f2b782f20d5e8bf022feb28332930752440f59bc4da022",
     "Mods/JEMCompat/build.gradle": "d1768cf2e8fbbe648a5b7f54005d213db6f6fe79312de30895008af19dab16ce",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java": "9571397e03d52c4d42b936dbe7f13805114b5dc0869699561c60af5ca91ac719",
-    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java": "aa7d438283f8e4b03b0023073e01e38667a653c077d5b34e0ac72f259c74b62a",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java": "97deefc2386953f6fb30349ef95f4711b69510b670b1b90f0876cd540b6bcb59",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/CuriosEquipment.java": "52e8d713c9881ee1eadee81684a79754106fd3e70249b5697b79c810399d3ec4",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java": "be01dce9803e85ae7cd51f5bacfd4d71eae6244ccf03d09522eb9ba70d3a7bb2",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiCatalog.java": "14bcf20eb72cb3c1319857d8392c892d7b2aa98e1c148adc0c643048806f66b8",
@@ -1324,6 +1364,7 @@
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/OptionsKeyRetentionMixin.java": "c850033f574261cd248b235c4d7f2baba36eeb6a46ff040feb8e64ce95a9e1d7",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/QuickSkinVanillaPreviewMixin.java": "8027c34c8b6cc2428596a0265c49a119f3d025d923ff85703cfb14e226e28926",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/VillagerOutfitMixin.java": "6c838f131c9fe2b8bfe71ee97f8503b4ff2bde64f1959de3af2600a5eb83c8ab",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/recruits/RecruitDebugScreenPoseMixin.java": "77b90932a9d89dbe2c25fe5905062b4a4d77e7a4583faca9d27ddc705dfb41e6",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ServerLoginRespawnPacketMixin.java": "ea9c3326e28a9ce40603c647b02e0a1e6272161d171281408dac02000c2df2df",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/trading/FabricTypeAwareTradeMixin.java": "329c1a2f95637a32aa883832f5aa7332a4994a2b64a8f04aefe9f2d2aebd7479",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/AircraftFuelSlotMixin.java": "77ab1b2174a625d7947cd354370675b02751ebfad05767ea908c36fcae60bc29",
@@ -1347,7 +1388,7 @@
     "Mods/JEMCompat/src/main/resources/data/jemcompat/recipes/augment_bay.json": "90fbe58017783b18012bf21ebaf7e082411ce350356351ee79c720486a526345",
     "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/jei/cooking_catalysts.json": "5a7463634353f887ac45675092f022f3b37590d34ff472e31d6e344e24c3ed9e",
     "Mods/JEMCompat/src/main/resources/data/minecraft/tags/blocks/mineable/axe.json": "ea45719c1b5087ca3b682147a9783b96620630fb420f22c20ad2fa967f97f960",
-    "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json": "72884bb1d375c927afa4c25f997f786659b8fbb0e0753a87e06b84ec90924dbb",
+    "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json": "cfbd73457891d195c70631cb805d03d124e23e8c730eabfd3799425ab30b2e8b",
     "Mods/JEMCurrencyCore/build.gradle": "4e05e22210afa95d41fd44c841aea7cdf73efef9ddc76fb7681c328b9eb03369",
     "Mods/JEMCurrencyCore/embed.gradle": "06cd052d7d1fa7e97b8a9ac169de89c00c5c2634efb770c2e2ec422382481ddb",
     "Mods/JEMCurrencyCore/gradle.properties": "58a820524b1197f432cc0720f670689fa7f634b2fb68554c581b8685a7ae50fc",
@@ -1648,7 +1689,7 @@
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/command/SettlementCommands.java": "a59a47adab2f796a78f22b52f9df4e754a00e9e72de1eedc4db14d55769e29ce",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/command/SettlementGuidebook.java": "469924771919341e1f4cdbcb45bce8236680d40bda789caf9dd3a87d2f550277",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/FairyLightsEvidence.java": "e9d2efa7fc9521830b2afcaa48dba6466c247789f28008b07bd1c5e65d460f12",
-    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/NativeBedCompatibility.java": "fe62c50065b59320baa8112b56ff0390907d265f8e5d5af024f12878ed691b7a",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/NativeBedCompatibility.java": "25e15b48fbf5bcf2a6acdab36ef983d431f6aa8db9282e80451f41e1c36db99d",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/jade/NeedsBarElement.java": "04e728c27a2acdfb85054c453c3f499cb669fb0e3269f487c15b0455e0d35e33",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/jade/RecruitJadeData.java": "2eb9257c276c8bd0b5146d09dda42a1a66e1add6e56a0d4b08432ee849962c46",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/jade/SettlementJadePlugin.java": "a213ed40aa327d541772c37ee1ce40652af32a82371251a1a03134ad7b3d9ee9",
@@ -1684,12 +1725,16 @@
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/NobleTradeScreenMixin.java": "df7185b5feaae7ed13f90e5b572280452003b248aca95d8a7e5027e1c64991cd",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PatPatSuccessMixin.java": "0abeaab83cb3636bc9299512acde245840ce3aea512668bd0b6e1012ddb4d90a",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PlayerSaveAccess.java": "d0fa7382732e9253c4cb3ac5b93363ffb1b6e7565af20ada29e8b9ffb1f0f7d4",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiManagerBedRepairMixin.java": "475f2fada49a5fc424e40f64725332edd3441d446414875a50165e792180f4f8",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiSectionAccess.java": "7853e163548d3ce0b1fb6860dd74be6e51db744026b00d976fe036faadd97a59",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiSectionStorageAccess.java": "bd9a23d9a831103ac54727fc737e1e203850748ab3be5b72e68b571a0818f7e1",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiTypeHomeMixin.java": "371b60746480c9868687278e6132c85070746ced0e5be295c6d95d1d952d43dd",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiTypesAccess.java": "ea03ebae6a466dd31e1af91f99a9eebc10ef512754d146257ee84e5b2128da3c",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitCurrencyMixin.java": "3e9bc3af28c72a0f5878cf374922394cb0c7c7b4a16fecabdd504d04931786f9",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitEatGoalMixin.java": "615e96ed6d0b9d07de1ca71b802e5991d03ffc83d25132dbe0a3eb7c1f91e87e",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitHireScreenMixin.java": "12e4f98acc5140aa1fe0117e09e85541080ebdbf7ddb2c60db4a71f0f6e0ec5b",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitHiringMixin.java": "5eb609b988ac0c76e7ffcc0a0f5177bc4717e1f2ea4543ae184a4ab6020cfcff",
-    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java": "3f2cb6b088786aebdea05e147a592194bf1df0d4b4c47073af48f7e2415de5a9",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java": "9aa934b1bc99d1d5cfaf806763991180470730728b3616eca6dd8f13d4698b5c",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SharedChestLidMixin.java": "2ad06bbdbd8abe52d97d06eabebfbc861fc65d9ca1e096832fae7fe639e5cedb",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/VillagerBirthMixin.java": "6ab347325c1bf7305a73bcc14c5e2814f7a4a7addbb306caef214cc00e492541",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/xaero/SettlementMapScreenMixin.java": "bffd5b1a393143f2e1ea93ce5bc17d41faca59249ad88cd50ae66ccc172435d1",
@@ -1739,7 +1784,7 @@
     "Mods/JEMSettlements/src/main/resources/data/jem_settlements/tags/items/cooking/end_ingredients.json": "781586d02df8a50a059255e8c666feaa5fe9c1c99b2e4c766c3af9070e2f21e5",
     "Mods/JEMSettlements/src/main/resources/data/jem_settlements/tags/items/cooking/nether_ingredients.json": "ef9813b006ab1d66fe67038936715070ac18eaa3841f9b5012a2531afa5d266c",
     "Mods/JEMSettlements/src/main/resources/data/jem_settlements/tags/items/cooking/world_ingredients.json": "fb6e6461bf1d0ce3eca95f81c428ea97ced7148a4e036e35f165ab4e5e81eeda",
-    "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json": "2f30b173696c5cf0b73e6e89abfa4135e924edd4035de2f0866657113f82b3a5",
+    "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json": "38016cf3561416ad19e10680a5c6adc26ec8f6c6b3207c22092609d07afeeb98",
     "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemtwelveeyes/client/CampaignMapClient.java": "adec11232ba62576cd56e6f902c7a6af5ce8ab40b00531a21a4bb0e395ce749b",
     "Mods/JEMVisualSandboxR3/README.md": "11356eaf024e6394031151e001cd591b5e681142a8577348cc38e9a8d7b1dbb1",
     "Mods/JEMVisualSandboxR3/author-elemental-models.mjs": "74b7ec5c74429b5623d728a17452894a84c82256f4c63d572008979bb6fda5e8",
