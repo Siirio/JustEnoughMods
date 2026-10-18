@@ -15,8 +15,11 @@ public final class AnimalObservationService {
     private static int tick=-1,used;
     private static final String LAST="JemAnimalObservationTick";
     private AnimalObservationService() { }
+    public static boolean supported(net.minecraft.world.entity.Mob mob) {
+        return mob instanceof Animal || mob instanceof net.minecraft.world.entity.animal.WaterAnimal;
+    }
     @SubscribeEvent public static void observe(net.minecraftforge.event.entity.living.LivingEvent.LivingTickEvent event) {
-        if(!(event.getEntity() instanceof Animal animal)||!(animal.level() instanceof ServerLevel level)||!SettlementAuthority.active(level.getServer()))return;
+        if(!(event.getEntity() instanceof net.minecraft.world.entity.Mob animal)||!supported(animal)||!(animal.level() instanceof ServerLevel level)||!SettlementAuthority.active(level.getServer()))return;
         int now=level.getServer().getTickCount();if(tick!=now){tick=now;used=0;}if(used>=64)return;
         var nbt=animal.getPersistentData();
         long last=nbt.getLong(LAST);if(last>0&&now>=last&&now-last<200)return;

@@ -277,6 +277,16 @@
       "source_files": [
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/CityComfortService.java"
       ]
+    },
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "extend_native_animal_evidence",
+      "summary": "Include native WaterAnimal families (fish, squid and dolphins) alongside Animal families; preserve hostile/angry/targeting exclusions and existing bounded observation owner.",
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AnimalObservationService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/TownMetricsService.java"
+      ]
     }
   ],
   "impacts": {

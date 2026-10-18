@@ -146,7 +146,7 @@ public final class TownMetricsService {
         for(String key:java.util.Set.copyOf(observations.getAllKeys())) {
             var row=observations.getCompound(key);var pos=BlockPos.of(row.getLong("Position"));
             var entity=level.getEntity(java.util.UUID.fromString(key));
-            if(entity instanceof net.minecraft.world.entity.animal.Animal animal && animal.isAlive() && town.contains(animal.blockPosition())) {
+            if(entity instanceof net.minecraft.world.entity.Mob animal && AnimalObservationService.supported(animal) && animal.isAlive() && town.contains(animal.blockPosition())) {
                 if(animal.getTarget()!=null||animal instanceof net.minecraft.world.entity.monster.Enemy||animal instanceof net.minecraft.world.entity.NeutralMob neutral&&neutral.isAngry())observations.remove(key);
             } else if(entity!=null||!town.contains(pos)||level.hasChunkAt(pos))observations.remove(key);
             else stale=true;
