@@ -167,3 +167,5 @@ Bloom main-attack damage is10% lower: initial5.4HP and stage2constriction2.7HP/s
 User follow-up: Sculk B recovery requires at least25resonance, consumes the entire current pool and resets it to0 on its single recovery activation. It cannot heal again until resonance is earned again; echo vision remains a separate low-resonance contextual action.
 
 2026-10-18: race screen uses its own fixed GUI scale 3 and farther vanilla skin camera, independent of combat pose. Iron’s Spells icons now live at its native textures/gui/spell_icons path; action misuse messages use owned Russian/English translation keys. Delivery: gui-local-delivery.json. Acceptance in testing; no gameplay launch or tests.
+
+2026-10-18 client startup correction: the new vanilla GUI renderer requires embedded MenuSupport >=1.1.0; a broad >=1.0 range previously let the older Server library win and break client mod construction/resources. The exact dependency floor and native client/resource recovery are recorded in gui-library-crash-recovery.json. Client startup/player acceptance remains pending; no launch or tests were run.

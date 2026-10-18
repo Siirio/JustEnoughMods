@@ -11,13 +11,13 @@
     {
       "source": "Mods/JEMCompat/build/libs/jemcompat-3.7.0.jar",
       "file": "jemcompat-3.7.0.jar",
-      "sha256": "0adba6e38af9f3fe69ba33754459f4b2a3799bf90ab0a26ad03db8d82c7cb6d6",
+      "sha256": "2c164a4f14f67cb431e8cb200e918d8dafc9590fca1a4336d7f0f622928f7b61",
       "bytes": 285199
     },
     {
       "source": "Mods/JEMVisualSandboxR3/build/production-profile/libs/jem-races-1.1.0.jar",
       "file": "jem-races-1.1.0.jar",
-      "sha256": "b0fc468af9b7e9ab3df874127148db2e4f93e3885db8a31264e6cc7a3a971fc7",
+      "sha256": "41388462e2c40c9b7b086f548503e91d6bcc8e4166d6b8bd7d3fe3d7c2f0b478",
       "bytes": 7067277
     },
     {
@@ -36,25 +36,25 @@
   "server": "Ordinary dedicated local Server running with exact fresh production artifacts; native startup completed and selected local wallet explicitly activated",
   "publication": {
     "published": true,
-    "journalSequence": 31,
-    "publishedManifestSha1": "dde654f549142a73d5b1a411f6cd6171e0884879",
-    "stagedManifestSha1": "dde654f549142a73d5b1a411f6cd6171e0884879"
+    "journalSequence": 32,
+    "publishedManifestSha1": "81b3913d32cf6b69c65aba0bd4c5accb3f376fd8",
+    "stagedManifestSha1": "81b3913d32cf6b69c65aba0bd4c5accb3f376fd8"
   },
   "clientInstallation": {
     "profile": "test jem",
-    "status": "Installed through native reviewed ModpackUpdater/UpdateAttempt commit after user confirmed client closed",
-    "journalSequence": 31,
-    "activeContentToken": "2bfcfebfc487b7ce0982c515853f3785f26d1502",
+    "status": "Installed corrected dependency-floor generation through native reviewed AutoModpack transaction",
+    "journalSequence": 32,
+    "activeContentToken": "337669c3317188724a0aaa29d676d0ba85214880",
     "matchesPublishedHead": true,
     "artifacts": [
       {
         "file": "jemcompat-3.7.0.jar",
-        "sha256": "0adba6e38af9f3fe69ba33754459f4b2a3799bf90ab0a26ad03db8d82c7cb6d6",
+        "sha256": "2c164a4f14f67cb431e8cb200e918d8dafc9590fca1a4336d7f0f622928f7b61",
         "matchesPublishedArtifact": true
       },
       {
         "file": "jem-races-1.1.0.jar",
-        "sha256": "b0fc468af9b7e9ab3df874127148db2e4f93e3885db8a31264e6cc7a3a971fc7",
+        "sha256": "41388462e2c40c9b7b086f548503e91d6bcc8e4166d6b8bd7d3fe3d7c2f0b478",
         "matchesPublishedArtifact": true
       },
       {
@@ -70,7 +70,7 @@
     ],
     "pendingTransaction": false,
     "clientLaunched": false,
-    "acceptance": "in testing; no gameplay or startup acceptance inferred"
+    "acceptance": "in testing; player startup acceptance pending"
   },
   "localMoney": {
     "balance": 1000000000000,
@@ -84,5 +84,6 @@
   "releaseBaseline": "unchanged",
   "MineRENT": "not deployed",
   "acceptance": "in testing",
-  "atlas": "Four scoped applied rules; schema validation passed. Working-tree scan also reports pre-existing unrelated source/installed-artifact drift; this task does not claim to resolve those gaps."
+  "atlas": "Four scoped applied rules; schema validation passed. Working-tree scan also reports pre-existing unrelated source/installed-artifact drift; this task does not claim to resolve those gaps.",
+  "dependencyCorrection": "gui-library-crash-recovery.json"
 }

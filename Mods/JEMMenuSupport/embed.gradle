@@ -3,7 +3,8 @@ repositories { flatDir { dirs '../JEMMenuSupport/build/libs' } }
 dependencies {
     compileOnly files('../JEMMenuSupport/build/classes/java/main')
     jarJar('com.siirio.jem:jem-menu-support:1.1.0') {
-        jarJar.ranged(it, '[1.0.0,2.0.0)')
+        // Consumers use the 1.1 GUI renderer; accepting 1.0 lets Forge select a library without it.
+        jarJar.ranged(it, '[1.1.0,2.0.0)')
         transitive = false
     }
 }

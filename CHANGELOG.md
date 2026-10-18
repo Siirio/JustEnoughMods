@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-18 — Fix the shared GUI library floor and recover client resources
+
+- User reported lost mod-list localization/FancyMenu presentation and a crash while joining. Bug / Client Sided / my previous GUI update embedded MenuSupport1.1 but left its dependency range at [1.0.0,2.0.0), allowing Forge to select the older Server-embedded1.0 without VanillaGuiPlayers / in testing. Exact resolution: shared embed metadata now requires [1.1.0,2.0.0); rebuild and deliver both renderer consumers through native AutoModpack.
+- Evidence chain: latest.log selected jem-menu-support-1.0.0.jar, Mixin could not resolve VanillaGuiPlayers, six mod constructors failed, resource reload removed all selected resource packs, and joining then dereferenced the uninitialized dynamic-light singleton. Fix dependency selection rather than hiding that secondary null error. FancyMenu’s19 files and all57 resource-pack files match canonical bytes; ru_ru remains selected.
+- Recovery targets only the client-owned resourcePacks option that Minecraft cleared after the failed reload, preserving every other personal option and a local backup. Canonical distribution options stay unchanged. Required production builds and ordinary server/native publication only; no tests or client/gameplay launches. Full installation evidence: Docs/races/gui-library-crash-recovery.json. Stable profile, MineRENT and release baseline unchanged; functional acceptance pending.
+
 ## 2026-10-18 — Require a fully updated test jem before handoff
 
 - User requested a permanent rule: always update the test client through AutoModpack beforehand so joining the server does not trigger a second update.

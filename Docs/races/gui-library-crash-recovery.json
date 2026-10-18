@@ -1,0 +1,95 @@
+{
+  "date": "2026-10-18",
+  "report": "Lost mod-list localization/FancyMenu appearance and crash upon joining",
+  "failure": {
+    "crashReport": "crash-2026-10-18_11.55.11-client.txt",
+    "root": "Forge selected MenuSupport1.0 because new consumers still allowed [1.0.0,2.0.0); VanillaGuiPlayers exists only in1.1",
+    "chain": [
+      "Mixin metadata could not resolve VanillaGuiPlayers",
+      "Six CONSTRUCT failures and broken mod state",
+      "Mod resources were unavailable; resource reload removed all selected packs",
+      "Joining dereferenced the never-initialized dynamic-light singleton"
+    ],
+    "localizationAndFancyMenu": "Russian language selection preserved; all19 FancyMenu config files and57 resourcepack files matched canonical bytes. Presentation loss followed broken mod loading, not missing distribution assets."
+  },
+  "fix": {
+    "owner": "Mods/JEMMenuSupport/embed.gradle",
+    "minimumRange": "[1.1.0,2.0.0)",
+    "freshConsumers": [
+      "jemcompat-3.7.0.jar",
+      "jem-races-1.1.0.jar"
+    ],
+    "ordinaryServerEvidence": "Forge UniqueModListBuilder selected jem-menu-support-1.1.0.jar after restart; ordinary startup reached Done",
+    "secondaryNullGuardAdded": false
+  },
+  "artifacts": [
+    {
+      "source": "Mods/JEMCompat/build/libs/jemcompat-3.7.0.jar",
+      "file": "jemcompat-3.7.0.jar",
+      "sha256": "2c164a4f14f67cb431e8cb200e918d8dafc9590fca1a4336d7f0f622928f7b61",
+      "bytes": 285199
+    },
+    {
+      "source": "Mods/JEMVisualSandboxR3/build/production-profile/libs/jem-races-1.1.0.jar",
+      "file": "jem-races-1.1.0.jar",
+      "sha256": "41388462e2c40c9b7b086f548503e91d6bcc8e4166d6b8bd7d3fe3d7c2f0b478",
+      "bytes": 7067277
+    }
+  ],
+  "publication": {
+    "published": true,
+    "journalSequence": 32,
+    "publishedManifestSha1": "81b3913d32cf6b69c65aba0bd4c5accb3f376fd8",
+    "stagedManifestSha1": "81b3913d32cf6b69c65aba0bd4c5accb3f376fd8"
+  },
+  "clientInstallation": {
+    "profile": "test jem",
+    "status": "Installed corrected dependency-floor generation through native reviewed AutoModpack transaction",
+    "journalSequence": 32,
+    "activeContentToken": "337669c3317188724a0aaa29d676d0ba85214880",
+    "matchesPublishedHead": true,
+    "artifacts": [
+      {
+        "file": "jemcompat-3.7.0.jar",
+        "sha256": "2c164a4f14f67cb431e8cb200e918d8dafc9590fca1a4336d7f0f622928f7b61",
+        "matchesPublishedArtifact": true
+      },
+      {
+        "file": "jem-races-1.1.0.jar",
+        "sha256": "41388462e2c40c9b7b086f548503e91d6bcc8e4166d6b8bd7d3fe3d7c2f0b478",
+        "matchesPublishedArtifact": true
+      },
+      {
+        "file": "jem-economy-1.3.0.jar",
+        "sha256": "01c5e88c4ad7bea2d66e7f3ce773395d2e45b028cf3b79832ca0a388f88d39e6",
+        "matchesPublishedArtifact": true
+      },
+      {
+        "file": "jem-settlements-2.1.0.jar",
+        "sha256": "3808e14e6448613ab7018fec56d4c24de23602d3665ced9614d41daeb08fbc56",
+        "matchesPublishedArtifact": true
+      }
+    ],
+    "pendingTransaction": false,
+    "clientLaunched": false,
+    "acceptance": "in testing; player startup acceptance pending"
+  },
+  "optionsRecovery": {
+    "externalPackCount": 49,
+    "preservedPreCrashExternalOrder": true,
+    "restoredKnownNativePacks": true,
+    "changedOptionKeys": [
+      "resourcePacks"
+    ],
+    "otherPersonalOptionsUnchanged": true,
+    "language": "ru_ru",
+    "backup": "ignored local backup",
+    "managedFilesCopied": false
+  },
+  "testsRun": false,
+  "clientLaunched": false,
+  "acceptance": "in testing; no player acceptance inferred",
+  "stableProfile": "untouched",
+  "MineRENT": "not deployed",
+  "releaseBaseline": "unchanged"
+}

@@ -28,6 +28,12 @@
         "operation": "replace",
         "before": "Minecraft global GUI scale and 3.75 camera distance",
         "after": "Own scale 3 with matching input, scissor and GL viewport coordinates; fixed native player height and distance 5.0"
+      },
+      {
+        "property": "dependency.jem_menu_support.minimum_version",
+        "operation": "replace",
+        "before": "New renderer consumers advertised [1.0.0,2.0.0), allowing old 1.0 without VanillaGuiPlayers to win selection.",
+        "after": "Every rebuilt consumer declares [1.1.0,2.0.0), excluding 1.0 while intersecting the older Server consumer range."
       }
     ]
   },
@@ -99,13 +105,27 @@
         "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceStageRenderer.java",
         "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/AbilityPreviewRenderer.java"
       ]
+    },
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "fix_dependency_floor",
+      "summary": "Client crash11:55: Forge selected MenuSupport1.0, six CONSTRUCT failures followed, resource reload removed all selected packs, then joining hit uninitialized dynamic lights. Require1.1 in shared embed metadata; restore only the client-owned resourcePacks option from its proven pre-crash order. No FancyMenu/resourcepack files were missing.",
+      "source_files": [
+        "Mods/JEMMenuSupport/embed.gradle"
+      ]
     }
   ],
   "impacts": {
     "systems": [
       "GUI presentation",
       "Quick Skin",
-      "Epic Fight isolation"
+      "Epic Fight isolation",
+      "Forge JarJar library resolution",
+      "Client mod CONSTRUCT lifecycle",
+      "Mod language/FancyMenu resource registration",
+      "Native resource reload recovery",
+      "Dynamic light initialization before server connect"
     ],
     "relations": [],
     "notes": [
