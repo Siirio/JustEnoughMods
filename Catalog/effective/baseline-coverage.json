@@ -2,17 +2,17 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "53b4576a40edfec04ecc77325ee92aecefec41d120cc2a6d730ec506b1dce376",
+  "change_records_sha256": "9f1c27a983c0132971db77c908c022d9e920820ab0afcd661556651784f3ab62",
   "totals": {
-    "watched": 3455,
-    "covered": 524,
-    "unresolved": 2931
+    "watched": 3504,
+    "covered": 584,
+    "unresolved": 2920
   },
   "groups": {
     "Client/ManagedPack/config": {
-      "watched": 1418,
-      "covered": 54,
-      "unresolved": 1364,
+      "watched": 1416,
+      "covered": 56,
+      "unresolved": 1360,
       "unresolved_paths": [
         "Client/ManagedPack/config/Barnyard Buddies Config.toml",
         "Client/ManagedPack/config/CoroUtil/General.toml",
@@ -147,8 +147,6 @@
         "Client/ManagedPack/config/boss_checklist/boss_checklist-client.json",
         "Client/ManagedPack/config/boss_checklist/boss_checklist-server.json",
         "Client/ManagedPack/config/cameraoverhaul.toml",
-        "Client/ManagedPack/config/carryon-client.toml",
-        "Client/ManagedPack/config/carryon-common.toml",
         "Client/ManagedPack/config/cataclysm-client.toml",
         "Client/ManagedPack/config/cataclysm-common.toml",
         "Client/ManagedPack/config/chat_heads.json5",
@@ -1237,9 +1235,7 @@
         "Client/ManagedPack/config/punchy/punchy_config.json",
         "Client/ManagedPack/config/punchy/punchy_tuning.json",
         "Client/ManagedPack/config/punchy/triggerable-keybindings.json",
-        "Client/ManagedPack/config/quickskin-client.json",
         "Client/ManagedPack/config/quickskin-server.json",
-        "Client/ManagedPack/config/quickskin_preferences.json",
         "Client/ManagedPack/config/railways-client.toml",
         "Client/ManagedPack/config/railways-common.toml",
         "Client/ManagedPack/config/resourceful-config-web.json",
@@ -1460,12 +1456,11 @@
       ]
     },
     "Mods/JEMCompat": {
-      "watched": 77,
-      "covered": 16,
-      "unresolved": 61,
+      "watched": 111,
+      "covered": 53,
+      "unresolved": 58,
       "unresolved_paths": [
         "Mods/JEMCompat/gradle.properties",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/advancement/AdvancementAwards.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/AdvancementScreenEvents.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/CuratedItemTooltips.java",
@@ -1482,12 +1477,10 @@
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/TamingCatalog.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/TamingDataLoader.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/TamingProvider.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/config/JEMClientConfig.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/blastfromthepast/FrostbiteSpawnSupport.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/elements/ElementalImpactEvents.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/kaleidoscope/VoidWalkerEvents.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/leash/UniversalLeashEvents.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/TransportContent.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/TransportEvents.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/worldtier/EnhancedAiTierController.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/worldtier/EnhancedAiTierPolicy.java",
@@ -1528,8 +1521,8 @@
       ]
     },
     "Mods/JEMCurrencyCore": {
-      "watched": 101,
-      "covered": 101,
+      "watched": 102,
+      "covered": 102,
       "unresolved": 0,
       "unresolved_paths": []
     },
@@ -2629,8 +2622,8 @@
     },
     "Mods/JEMServer": {
       "watched": 296,
-      "covered": 38,
-      "unresolved": 258,
+      "covered": 39,
+      "unresolved": 257,
       "unresolved_paths": [
         "Mods/JEMServer/gradle.properties",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/BossLeaderboard.java",
@@ -2657,7 +2650,6 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/ItemRewardStrip.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/JeiItemLink.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/PlayerPreviewWidget.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/PreviewPlayerEntity.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/ResultScreen.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpActionButton.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpClient.java",
@@ -2893,17 +2885,15 @@
       ]
     },
     "Mods/JEMSettlements": {
-      "watched": 110,
-      "covered": 91,
-      "unresolved": 19,
+      "watched": 126,
+      "covered": 110,
+      "unresolved": 16,
       "unresolved_paths": [
         "Mods/JEMSettlements/gradle.properties",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/collection/MountRoster.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/collection/PlayerMountCollectionSavedData.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitReadinessAdapter.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitsAdapter.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AmenityRegistry.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/HappinessService.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/TownFoundPacket.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/TownViewPacket.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/TreasuryActionPacket.java",
@@ -2914,7 +2904,6 @@
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownSpecialization.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownTier.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/workforce/WorkforceType.java",
-        "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/amenities.json",
         "Mods/JEMSettlements/src/main/resources/pack.mcmeta"
       ]
     },

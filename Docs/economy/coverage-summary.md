@@ -1,8 +1,8 @@
 # Economy registry coverage
 
-Generated from Atlas schema 1 at `2026-10-17T16:30:17.150043+00:00` for `ff63760b202310a6e0a70cc6f52c12bafef9f18b`.
+Generated from Atlas schema 1 at `2026-10-18T11:38:00.964332+00:00` for `93b1da183d2085ca716ddd32fac585b524e455a1`.
 
-Static evidence observed 17,029 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
+Static evidence observed 17,030 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
 
 | Mod | Registered | Reviewed | Unknown | BUY_AND_SELL | NONE |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -66,7 +66,7 @@ Static evidence observed 17,029 canonical item IDs. This is not a Forge runtime 
 | jem_currency_core | 5 | 0 | 5 | 0 | 5 |
 | jem_economy | 1 | 0 | 1 | 0 | 1 |
 | jem_pack_core | 4 | 0 | 4 | 0 | 4 |
-| jemcompat | 78 | 0 | 78 | 0 | 78 |
+| jemcompat | 79 | 0 | 79 | 0 | 79 |
 | kaleidoscope_compat | 218 | 0 | 218 | 0 | 218 |
 | kaleidoscope_cookery | 224 | 9 | 215 | 7 | 217 |
 | kaleidoscope_doll | 705 | 0 | 705 | 0 | 705 |

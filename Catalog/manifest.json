@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "ff63760b202310a6e0a70cc6f52c12bafef9f18b",
-  "generated_utc": "2026-10-17T16:30:17.150043+00:00",
+  "snapshot_sha": "93b1da183d2085ca716ddd32fac585b524e455a1",
+  "generated_utc": "2026-10-18T11:38:00.964332+00:00",
   "minecraft": "1.20.1",
   "forge": "47.4.10",
   "java": "17",
@@ -1176,142 +1176,6 @@
       ],
       "source_path": "Client\\ManagedPack\\mods\\CameraOverhaul-v2.1.1-forge%2Bmc%5B1.20-1.20.5%5D.jar",
       "nested_dependencies": []
-    },
-    {
-      "filename": "carryon-forge-1.20.1-2.1.2.7.jar",
-      "sha256": "d7470921fc5ff988788d43409083f62478aecc91f4b81d7e6b63c80c933d4613",
-      "sides": [
-        "client"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "carryon",
-          "name": "Carry On",
-          "version": "${file.jarVersion}",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "carryon"
-      ],
-      "source_path": "Client\\ManagedPack\\mods\\carryon-forge-1.20.1-2.1.2.7.jar",
-      "nested_dependencies": [
-        {
-          "path": "META-INF/jarjar/mixinextras-forge-0.2.0-beta.6.jar",
-          "sha256": "1a5cd0e71de8bd9d896ee154c6da7c206f6ca9394208d4f3b69366cec46011d2",
-          "identifier": {
-            "group": "com.github.llamalad7.mixinextras",
-            "artifact": "mixinextras-forge"
-          },
-          "version": {
-            "range": "[0.2.0-beta.6,)",
-            "artifactVersion": "0.2.0-beta.6"
-          },
-          "mods": [
-            {
-              "id": "mixinextras",
-              "name": "MixinExtras",
-              "version": "0.2.0-beta.6",
-              "display_test": "unknown"
-            }
-          ],
-          "namespaces": [],
-          "sides": [
-            "client",
-            "server"
-          ],
-          "nested_dependencies": [
-            {
-              "path": "META-INF/jars/MixinExtras-0.2.0-beta.6.jar",
-              "sha256": "a4e7b62d3cccde991b19cff06640ec223a7879fd4bd398b444f300420def13e2",
-              "identifier": {
-                "group": "com.github.LlamaLad7",
-                "artifact": "MixinExtras"
-              },
-              "version": {
-                "range": "[0.2.0-beta.6,)",
-                "artifactVersion": "0.2.0-beta.6"
-              },
-              "mods": [],
-              "namespaces": [],
-              "sides": [
-                "client",
-                "server"
-              ],
-              "nested_dependencies": []
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "filename": "carryon-forge-1.20.1-2.1.2.7.jar",
-      "sha256": "d7470921fc5ff988788d43409083f62478aecc91f4b81d7e6b63c80c933d4613",
-      "sides": [
-        "server"
-      ],
-      "enabled": true,
-      "mods": [
-        {
-          "id": "carryon",
-          "name": "Carry On",
-          "version": "${file.jarVersion}",
-          "display_test": "unknown"
-        }
-      ],
-      "namespaces": [
-        "carryon"
-      ],
-      "source_path": "Server\\mods\\carryon-forge-1.20.1-2.1.2.7.jar",
-      "nested_dependencies": [
-        {
-          "path": "META-INF/jarjar/mixinextras-forge-0.2.0-beta.6.jar",
-          "sha256": "1a5cd0e71de8bd9d896ee154c6da7c206f6ca9394208d4f3b69366cec46011d2",
-          "identifier": {
-            "group": "com.github.llamalad7.mixinextras",
-            "artifact": "mixinextras-forge"
-          },
-          "version": {
-            "range": "[0.2.0-beta.6,)",
-            "artifactVersion": "0.2.0-beta.6"
-          },
-          "mods": [
-            {
-              "id": "mixinextras",
-              "name": "MixinExtras",
-              "version": "0.2.0-beta.6",
-              "display_test": "unknown"
-            }
-          ],
-          "namespaces": [],
-          "sides": [
-            "client",
-            "server"
-          ],
-          "nested_dependencies": [
-            {
-              "path": "META-INF/jars/MixinExtras-0.2.0-beta.6.jar",
-              "sha256": "a4e7b62d3cccde991b19cff06640ec223a7879fd4bd398b444f300420def13e2",
-              "identifier": {
-                "group": "com.github.LlamaLad7",
-                "artifact": "MixinExtras"
-              },
-              "version": {
-                "range": "[0.2.0-beta.6,)",
-                "artifactVersion": "0.2.0-beta.6"
-              },
-              "mods": [],
-              "namespaces": [],
-              "sides": [
-                "client",
-                "server"
-              ],
-              "nested_dependencies": []
-            }
-          ]
-        }
-      ]
     },
     {
       "filename": "casualswing-0.1.0-1.20.1-Forge.jar",
@@ -9298,7 +9162,7 @@
     },
     {
       "filename": "jem-bootstrap.jar",
-      "sha256": "649f235c1a481129272866e0bccc5655d77e6460db9d056f2759c112eaf5fed6",
+      "sha256": "49863d3e1eb01fac591ae943c640b94086d4f8c26c7a0914fc779935df923d2c",
       "sides": [
         "server"
       ],
@@ -9319,7 +9183,7 @@
     },
     {
       "filename": "jem-economy-1.3.0.jar",
-      "sha256": "4f84748de28eef5b0b6c053f8c29bee8084531fc7aac7035bcb8d7270eb87c4f",
+      "sha256": "3af3c047e14d9913fafd04130a8ad1cfec227fffa30dc0dd221fb4e849fe4950",
       "sides": [
         "client"
       ],
@@ -9340,7 +9204,7 @@
       "nested_dependencies": [
         {
           "path": "META-INF/jarjar/jem-currency-core-1.0.0.jar",
-          "sha256": "6c6dc1f6bcbec76cf71ad90c02cc4a73c07b18842c3f46c51287e98de19b1d9b",
+          "sha256": "ec4b5731280e6ebb8dc2f4569e806f69a751dfc2029ff852da44366cf9c3a7a0",
           "identifier": {
             "group": "com.siirio.jemcurrency",
             "artifact": "jem-currency-core"
@@ -9396,7 +9260,7 @@
     },
     {
       "filename": "jem-economy-1.3.0.jar",
-      "sha256": "4f84748de28eef5b0b6c053f8c29bee8084531fc7aac7035bcb8d7270eb87c4f",
+      "sha256": "3af3c047e14d9913fafd04130a8ad1cfec227fffa30dc0dd221fb4e849fe4950",
       "sides": [
         "server"
       ],
@@ -9417,7 +9281,7 @@
       "nested_dependencies": [
         {
           "path": "META-INF/jarjar/jem-currency-core-1.0.0.jar",
-          "sha256": "6c6dc1f6bcbec76cf71ad90c02cc4a73c07b18842c3f46c51287e98de19b1d9b",
+          "sha256": "ec4b5731280e6ebb8dc2f4569e806f69a751dfc2029ff852da44366cf9c3a7a0",
           "identifier": {
             "group": "com.siirio.jemcurrency",
             "artifact": "jem-currency-core"
@@ -9637,8 +9501,94 @@
       "nested_dependencies": []
     },
     {
+      "filename": "jem-races-1.1.0.jar",
+      "sha256": "8777555b6d10257901915315cfeb1620040164d19f1a7c0d2b6a1ca12f2e03b5",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "jem_visual_sandbox",
+          "name": "JEM Races",
+          "version": "1.1.0",
+          "display_test": "IGNORE_SERVER_VERSION"
+        }
+      ],
+      "namespaces": [
+        "forge",
+        "jem_roles",
+        "jem_visual_sandbox"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\jem-races-1.1.0.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jarjar/jem-menu-support-1.1.1.jar",
+          "sha256": "ef682f76cab7e3da538512a15de990112e2822bbc4c42093af7ff258e41665c0",
+          "identifier": {
+            "group": "com.siirio.jem",
+            "artifact": "jem-menu-support"
+          },
+          "version": {
+            "range": "[1.1.1,2.0.0)",
+            "artifactVersion": "1.1.1"
+          },
+          "mods": [],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": []
+        }
+      ]
+    },
+    {
+      "filename": "jem-races-1.1.0.jar",
+      "sha256": "8777555b6d10257901915315cfeb1620040164d19f1a7c0d2b6a1ca12f2e03b5",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "jem_visual_sandbox",
+          "name": "JEM Races",
+          "version": "1.1.0",
+          "display_test": "IGNORE_SERVER_VERSION"
+        }
+      ],
+      "namespaces": [
+        "forge",
+        "jem_roles",
+        "jem_visual_sandbox"
+      ],
+      "source_path": "Server\\mods\\jem-races-1.1.0.jar",
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jarjar/jem-menu-support-1.1.1.jar",
+          "sha256": "ef682f76cab7e3da538512a15de990112e2822bbc4c42093af7ff258e41665c0",
+          "identifier": {
+            "group": "com.siirio.jem",
+            "artifact": "jem-menu-support"
+          },
+          "version": {
+            "range": "[1.1.1,2.0.0)",
+            "artifactVersion": "1.1.1"
+          },
+          "mods": [],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": []
+        }
+      ]
+    },
+    {
       "filename": "jem-roles-2.0.0.jar",
-      "sha256": "6dece3f51bc87b27097b4f00dc9434507bf308dd047902228c47c6ac7d849f4d",
+      "sha256": "b22a7a3abb4253d98b5e439a5f997314f4482ea5f7ac0053e310844dfc28740a",
       "sides": [
         "client"
       ],
@@ -9660,7 +9610,7 @@
     },
     {
       "filename": "jem-roles-2.0.0.jar",
-      "sha256": "6dece3f51bc87b27097b4f00dc9434507bf308dd047902228c47c6ac7d849f4d",
+      "sha256": "b22a7a3abb4253d98b5e439a5f997314f4482ea5f7ac0053e310844dfc28740a",
       "sides": [
         "server"
       ],
@@ -9682,7 +9632,7 @@
     },
     {
       "filename": "jem-server-2.0.0-dev.jar",
-      "sha256": "4556080d5afda9d98daeab90f22527e700d981d76ba862970f887cbfae5d899b",
+      "sha256": "53e4df0307365959c23a81b1ec61288b46dc67c8f43d5cf9b106bcff78111612",
       "sides": [
         "client"
       ],
@@ -9704,15 +9654,15 @@
       "source_path": "Client\\ManagedPack\\mods\\jem-server-2.0.0-dev.jar",
       "nested_dependencies": [
         {
-          "path": "META-INF/jarjar/jem-menu-support-1.0.0.jar",
-          "sha256": "f49a992312608501042e91b2ed400b38f53b817bd22b36a0b7ffc7caeb1fd602",
+          "path": "META-INF/jarjar/jem-menu-support-1.1.1.jar",
+          "sha256": "ef682f76cab7e3da538512a15de990112e2822bbc4c42093af7ff258e41665c0",
           "identifier": {
             "group": "com.siirio.jem",
             "artifact": "jem-menu-support"
           },
           "version": {
-            "range": "[1.0.0,2.0.0)",
-            "artifactVersion": "1.0.0"
+            "range": "[1.1.1,2.0.0)",
+            "artifactVersion": "1.1.1"
           },
           "mods": [],
           "namespaces": [],
@@ -9726,7 +9676,7 @@
     },
     {
       "filename": "jem-server-2.0.0-dev.jar",
-      "sha256": "4556080d5afda9d98daeab90f22527e700d981d76ba862970f887cbfae5d899b",
+      "sha256": "53e4df0307365959c23a81b1ec61288b46dc67c8f43d5cf9b106bcff78111612",
       "sides": [
         "server"
       ],
@@ -9748,15 +9698,15 @@
       "source_path": "Server\\mods\\jem-server-2.0.0-dev.jar",
       "nested_dependencies": [
         {
-          "path": "META-INF/jarjar/jem-menu-support-1.0.0.jar",
-          "sha256": "f49a992312608501042e91b2ed400b38f53b817bd22b36a0b7ffc7caeb1fd602",
+          "path": "META-INF/jarjar/jem-menu-support-1.1.1.jar",
+          "sha256": "ef682f76cab7e3da538512a15de990112e2822bbc4c42093af7ff258e41665c0",
           "identifier": {
             "group": "com.siirio.jem",
             "artifact": "jem-menu-support"
           },
           "version": {
-            "range": "[1.0.0,2.0.0)",
-            "artifactVersion": "1.0.0"
+            "range": "[1.1.1,2.0.0)",
+            "artifactVersion": "1.1.1"
           },
           "mods": [],
           "namespaces": [],
@@ -9770,7 +9720,7 @@
     },
     {
       "filename": "jem-settlements-2.1.0.jar",
-      "sha256": "dd04ac1664b8666e263948712daa1b78aaddc8573dd4595423dae86f53406cec",
+      "sha256": "941837a4d33e21e2ee9171b1eb0640d5ee761f40650b5ff33c209b5f37eac531",
       "sides": [
         "client"
       ],
@@ -9790,7 +9740,7 @@
       "nested_dependencies": [
         {
           "path": "META-INF/jarjar/jem-currency-core-1.0.0.jar",
-          "sha256": "6c6dc1f6bcbec76cf71ad90c02cc4a73c07b18842c3f46c51287e98de19b1d9b",
+          "sha256": "ec4b5731280e6ebb8dc2f4569e806f69a751dfc2029ff852da44366cf9c3a7a0",
           "identifier": {
             "group": "com.siirio.jemcurrency",
             "artifact": "jem-currency-core"
@@ -9846,7 +9796,7 @@
     },
     {
       "filename": "jem-settlements-2.1.0.jar",
-      "sha256": "c74d7eeac9c373fd2ad664a4995e1f628e1b3da0d8b289da8602660ff2da91b0",
+      "sha256": "941837a4d33e21e2ee9171b1eb0640d5ee761f40650b5ff33c209b5f37eac531",
       "sides": [
         "server"
       ],
@@ -9866,7 +9816,7 @@
       "nested_dependencies": [
         {
           "path": "META-INF/jarjar/jem-currency-core-1.0.0.jar",
-          "sha256": "6c6dc1f6bcbec76cf71ad90c02cc4a73c07b18842c3f46c51287e98de19b1d9b",
+          "sha256": "ec4b5731280e6ebb8dc2f4569e806f69a751dfc2029ff852da44366cf9c3a7a0",
           "identifier": {
             "group": "com.siirio.jemcurrency",
             "artifact": "jem-currency-core"
@@ -10065,7 +10015,7 @@
     },
     {
       "filename": "jemcompat-3.7.0.jar",
-      "sha256": "5dc888a1e4bb4a8600c719e07ef61645b4c2d19601f28bcf3fff792ddf285cee",
+      "sha256": "a116f096518df187211cb5689a69715cbe6f1078c359508c29aec81485a452af",
       "sides": [
         "client"
       ],
@@ -10079,14 +10029,35 @@
         }
       ],
       "namespaces": [
-        "jemcompat"
+        "jemcompat",
+        "minecraft"
       ],
       "source_path": "Client\\ManagedPack\\mods\\jemcompat-3.7.0.jar",
-      "nested_dependencies": []
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jarjar/jem-menu-support-1.1.1.jar",
+          "sha256": "ef682f76cab7e3da538512a15de990112e2822bbc4c42093af7ff258e41665c0",
+          "identifier": {
+            "group": "com.siirio.jem",
+            "artifact": "jem-menu-support"
+          },
+          "version": {
+            "range": "[1.1.1,2.0.0)",
+            "artifactVersion": "1.1.1"
+          },
+          "mods": [],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": []
+        }
+      ]
     },
     {
       "filename": "jemcompat-3.7.0.jar",
-      "sha256": "5dc888a1e4bb4a8600c719e07ef61645b4c2d19601f28bcf3fff792ddf285cee",
+      "sha256": "a116f096518df187211cb5689a69715cbe6f1078c359508c29aec81485a452af",
       "sides": [
         "server"
       ],
@@ -10100,10 +10071,31 @@
         }
       ],
       "namespaces": [
-        "jemcompat"
+        "jemcompat",
+        "minecraft"
       ],
       "source_path": "Server\\mods\\jemcompat-3.7.0.jar",
-      "nested_dependencies": []
+      "nested_dependencies": [
+        {
+          "path": "META-INF/jarjar/jem-menu-support-1.1.1.jar",
+          "sha256": "ef682f76cab7e3da538512a15de990112e2822bbc4c42093af7ff258e41665c0",
+          "identifier": {
+            "group": "com.siirio.jem",
+            "artifact": "jem-menu-support"
+          },
+          "version": {
+            "range": "[1.1.1,2.0.0)",
+            "artifactVersion": "1.1.1"
+          },
+          "mods": [],
+          "namespaces": [],
+          "sides": [
+            "client",
+            "server"
+          ],
+          "nested_dependencies": []
+        }
+      ]
     },
     {
       "filename": "kaleidoscope_compat-2.6.5-forge%2Bmc1.20.1.jar",
@@ -21622,8 +21614,7 @@
           ],
           "namespaces": [],
           "sides": [
-            "client",
-            "server"
+            "client"
           ],
           "nested_dependencies": [
             {
@@ -21640,8 +21631,7 @@
               "mods": [],
               "namespaces": [],
               "sides": [
-                "client",
-                "server"
+                "client"
               ],
               "nested_dependencies": []
             }

@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "ff63760b202310a6e0a70cc6f52c12bafef9f18b",
-  "generated_utc": "2026-10-17T16:30:17.150043+00:00",
+  "snapshot_sha": "93b1da183d2085ca716ddd32fac585b524e455a1",
+  "generated_utc": "2026-10-18T11:38:00.964332+00:00",
   "claim": "100% of statically observed canonical IDs; runtime boundary unresolved",
   "id_coverage": {
     "items": {
       "expected_id_count": null,
-      "enumerated_id_count": 17029,
+      "enumerated_id_count": 17030,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
@@ -72,7 +72,7 @@
         "jem_currency_core": 5,
         "jem_economy": 1,
         "jem_pack_core": 4,
-        "jemcompat": 78,
+        "jemcompat": 79,
         "kaleidoscope_compat": 218,
         "kaleidoscope_cookery": 224,
         "kaleidoscope_doll": 705,
@@ -129,7 +129,7 @@
     },
     "blocks": {
       "expected_id_count": null,
-      "enumerated_id_count": 12133,
+      "enumerated_id_count": 12134,
       "missing_ids": null,
       "duplicate_ids": 0,
       "unresolved_mod_owners": 0,
@@ -185,6 +185,7 @@
         "jem_economy": 1,
         "jem_server": 1,
         "jem_twelve_eyes": 1,
+        "jemcompat": 1,
         "kaleidoscope_cookery": 113,
         "kaleidoscope_doll": 701,
         "kaleidoscope_end": 21,
@@ -511,19 +512,18 @@
   },
   "classification_coverage": {
     "armor": 261,
-    "foods": 4,
     "mobs": 1579,
-    "placeables": 9586,
+    "placeables": 9587,
     "tools": 75,
-    "trade_policies": 17029,
+    "trade_policies": 17030,
     "weapons": 379
   },
   "semantic_field_coverage": {
     "runtime_verified": 0,
-    "static_inferred": 32234,
+    "static_inferred": 32236,
     "note": "Null is intentional where static sources do not prove semantics."
   },
   "unresolved_counts": {
-    "entries": 67
+    "entries": 68
   }
 }
