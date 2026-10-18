@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-18 — Apply the published GUI and aircraft update to test jem
+
+- User confirmed the client was closed. Applied already-published local generation31 through the native ModpackUpdater/UpdateAttempt review and commit; native HeadMirror, JournalMirror and ClientObjectStore own metadata/cache acquisition. No managed game files or active-state pointers were raw-copied or manually edited.
+- Installed active content token matches the published server head. All four installed JEM JAR SHA-256 values match the delivered production artifacts, and no native transaction remains pending. The current installation receipt is Docs/races/gui-local-delivery.json.
+- Server publication31 remains current. No tests or client/gameplay launches; functional acceptance remains in testing. Stable profile, MineRENT and release baseline remain unchanged.
+
 ## 2026-10-18 — Vanilla GUI players, race presentation and native aircraft fuel
 
 - User requested vanilla player previews in every GUI regardless Epic Fight/animation packs, a smaller fixed race-selection screen and local unlimited money; later reported missing Iron’s Spells race icons, untranslated ability errors and a biplane losing thrust despite onboard fuel.
