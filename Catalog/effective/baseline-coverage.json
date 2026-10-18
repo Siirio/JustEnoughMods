@@ -2,11 +2,11 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "fbf8f27069cba74b933f54787fcfdaecd99020cc8bd3a887e53bff2ea8707d79",
+  "change_records_sha256": "4dff78c49b75cbe793a7e7b5e7b94683511e1c7c36f799a195537211e45e8b1d",
   "totals": {
-    "watched": 3509,
-    "covered": 589,
-    "unresolved": 2920
+    "watched": 3510,
+    "covered": 596,
+    "unresolved": 2914
   },
   "groups": {
     "Client/ManagedPack/config": {
@@ -2621,9 +2621,9 @@
       "unresolved_paths": []
     },
     "Mods/JEMServer": {
-      "watched": 296,
-      "covered": 39,
-      "unresolved": 257,
+      "watched": 297,
+      "covered": 44,
+      "unresolved": 253,
       "unresolved_paths": [
         "Mods/JEMServer/gradle.properties",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/BossLeaderboard.java",
@@ -2710,7 +2710,6 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/shared/FullCaveLayerPolicyMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/shared/FullCaveMapLayerMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/shared/SharedMapSyncMixin.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/BossHostingPrompt.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/CombatNetwork.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/DiscoveryProfiles.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/EventDescriptions.java",
@@ -2766,7 +2765,6 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/CookingStations.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/DimensionProgress.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EncounterContext.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventAreaHooks.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventAttackPacket.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventAttackVfx.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventAttempts.java",
@@ -2778,7 +2776,6 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventMobModifiers.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventMobPacket.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventMobScale.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventNetwork.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventParticipants.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventPrompt.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventRules.java",
@@ -2802,7 +2799,6 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/SolidBoundary.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/SpawnPresentation.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureBarrierBlock.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/WeeklySchedule.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/calendar/CalendarEvent.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/calendar/CalendarEventData.java",
@@ -2986,15 +2982,14 @@
     },
     "Mods/JEMWorldBossTiers": {
       "watched": 86,
-      "covered": 5,
-      "unresolved": 81,
+      "covered": 7,
+      "unresolved": 79,
       "unresolved_paths": [
         "Mods/JEMWorldBossTiers/build.gradle",
         "Mods/JEMWorldBossTiers/gradle.properties",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/BossEffectApi.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/BossRevivalApi.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/ExperienceRewardApi.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/HostedEncounterApi.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/RaidArenaApi.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/WorldTierApi.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BalanceDataLoader.java",
@@ -3021,7 +3016,6 @@
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/EncounterData.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/EncounterProvenance.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedConfig.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedLobby.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedRewards.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedScaling.java",

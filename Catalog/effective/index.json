@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "fbf8f27069cba74b933f54787fcfdaecd99020cc8bd3a887e53bff2ea8707d79",
+  "change_records_sha256": "4dff78c49b75cbe793a7e7b5e7b94683511e1c7c36f799a195537211e45e8b1d",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -364,6 +364,20 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 1
+    },
+    {
+      "change_id": "hosted.arena-presence-and-lobby-isolation",
+      "status": "conditional",
+      "summary": "Typed boss prompts, presence-based walls, dormant whole-entity tick and active-participant exclusion from overlapping lobby protection. MineRENT report supplied; local acceptance remains pending.",
+      "record": "Catalog/changes/records/hosted-arena-presence-and-lobby-isolation.json",
+      "selectors": [
+        {
+          "type": "registry",
+          "registry": "entities"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 1593
     },
     {
       "change_id": "login.native-respawn-before-authentication",
@@ -1350,7 +1364,7 @@
     "Client/ManagedPack/kubejs/server_scripts/jem/economy_recipe_guards.js": "0dad22168c091d46b4a010ffc65819b5177685c7751d70accefa1027527ea62c",
     "Client/ManagedPack/mods/jem-economy-1.3.0.jar": "3af3c047e14d9913fafd04130a8ad1cfec227fffa30dc0dd221fb4e849fe4950",
     "Client/ManagedPack/mods/jem-roles-2.0.0.jar": "b22a7a3abb4253d98b5e439a5f997314f4482ea5f7ac0053e310844dfc28740a",
-    "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar": "53e4df0307365959c23a81b1ec61288b46dc67c8f43d5cf9b106bcff78111612",
+    "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar": "d0534b581c3d8d4d9f6fc961432689c777c91ee05d5d62f69ef5fd92bc97b4b0",
     "Client/ManagedPack/mods/jem-settlements-2.1.0.jar": "bfe64ec6bd7a1d8b992a2062af92e05bde027b8fd095a1e445fcf1acca9c5cd5",
     "Client/ManagedPack/mods/jemcompat-3.7.0.jar": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
     "Docs/DEVELOPMENT.md": "451b948c0efc12bd0e85cf8b9e4d5e00df542b74380d5556a1436e6b2a52865b",
@@ -1689,7 +1703,9 @@
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/map/RegionGeometry.java": "c1f31dbe902744eccd25648363995e334ccaa4a477855c2a8cd2c3bf59d19a79",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/map/RegionUnion.java": "b12ff718613fef73f12845cb2203313ee7f5d9777684d16d20084a93c1172cd5",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/JemServerMixinPlugin.java": "03d90d2c7611f0939d272c88e32f64bd10d76cefd1d97f5dfc9a20ccfc64d097",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/staging/HostedBossTickMixin.java": "1afbfb3f1f5bef74247bc30a6e7ba37fe82fe49894b68fedc8190e388f22befc",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/MapScreenMixin.java": "efa5fe452219be18dfb3ddb33b547ba2c323a997343018f1bd42756413354261",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/BossHostingPrompt.java": "79953ec9d71c2e3d552392ecba9b27bb132cfbd77f469010236b4e4d053846d0",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/HomePreview.java": "8927a92e2b708d0ae510c7a2c2c4a2b02a20a47c60662a872f4853a156244b00",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Profiles.java": "1b9966f09f11c80ef7ed8882974901e15e312b2437e4a431076decebdd821b18",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SettlementUiAction.java": "769f451af3543468f3d79b845c9f17c5b88b96f1fa1d6d00390f599779d20474",
@@ -1703,14 +1719,17 @@
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpTable.java": "8b0065265a3ff9d99f951f77ee5e07d25fb3eb585c731a82330b3fc53f5e3103",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViews.java": "ad929a18df754d1b1279e7a5ab0e71fa18fd1f47e131e423909190c979f9c0b4",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/CookingRecipes.java": "f07011ea6cd34e987334bce4d412da2e9521aeea72229fd5658c0ba54b0d6c6c",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventAreaHooks.java": "cbbd544338db878ea2729547c76f20e627581ab897cd4b85936497f58320b7da",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventCommands.java": "d965dd860b5f737fffab4666df0e7f90b2ac9166f9c89530041be9b999f35366",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventNetwork.java": "52d5a74a2b2a0e23984cf7ba37d0a860094fec263e2c646a5b50c67fecb04580",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventRegions.java": "d88b2c69231c9c0345467249907157962c48d0b7140c1ccf35144da768ccbf73",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventRegistryExport.java": "bcf4f88213e84518f3657aff475eca9837b7c2206f03243e019996072db8ef63",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java": "193fab330835809d8c3c3165d330acc38a80423f979c77a31233bd4f718c87b9",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/recruits/RecruitProjection.java": "f9973c6ee45ca8c54ef7dd3edf24bfffd6610654e93b2220f26439b5be5499ec",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/settlements/SettlementProjection.java": "7284d0d46b8ab129529295c81468b1aa5f584c25a8ab348ffecf00b79c7a13c2",
     "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json": "8bf918320269cc997a532e89cd237755d339656b035c6e0c5a1d5bb348b5f414",
     "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json": "7e6690f5c058bc5997ba67ed59669f2d702ff00f579228934ac3c2db06f7aafb",
-    "Mods/JEMServer/src/main/resources/jem_server.mixins.json": "6554916da0150a55295cb292d3c79d759bc4ffcf613bc51aaea0ad567275bb84",
+    "Mods/JEMServer/src/main/resources/jem_server.mixins.json": "494b0981d79d8e32c2bdb82d4aeb1a77c97b197ceaf9b2ce31a9ab8c84cc1103",
     "Mods/JEMSettlements/build.gradle": "d051fde4e737aabab81f8eb0ba1781a7bf1e3571fbbbec6fda2e2280b7dad6b4",
     "Mods/JEMSettlements/settings.gradle": "f8b891577df47e6452a03e7eff35b7b0a48a6cf1dd653568e810c6a5e7f1d948",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/JemSettlements.java": "427307f052d771e9e048375275cae6b8d896f9b4b4c693dba675c5bb75ee09e8",
@@ -1972,9 +1991,11 @@
     "Mods/JEMVisualSandboxR3/src/production/java/com/siirio/jemvisualsandbox/workbench/RaceDevelopment.java": "9ae7c3c3b9e79fe03f692a86a94074eeec264e8ed40ce56e8786078232bf5138",
     "Mods/JEMVisualSandboxR3/src/sandbox/java/com/siirio/jemvisualsandbox/workbench/RaceDevelopment.java": "81bf01d9ca63d96bf2e88fa13f040ec236b7dd391ecef730441b00bb98dd763a",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java": "c61a7005a954859d0be5bb6206ecac5a01db656734481d38fac8991225e6e3ae",
+    "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/HostedEncounterApi.java": "4b356aa1ef364eea029e1beeab4b8a24c002a39af16107d3d1bf412110b65744",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/OrdinaryHostileScaler.java": "729980767df8c532c8463e4699a39ba6821053c9829995237ec56855009abeaf",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/command/BossCommands.java": "9d9247f5b5d521c145a968cc0f1786f6dda7d9fba391ca34df4824bcb1c921f3",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/command/TierCommands.java": "065a2fb12fbec009307b4b447ef91e4ab8dca3a3aa258c59ed256c666a91982d",
+    "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java": "4bbb771e390a10bad5aee649bc6eb8a6e22c2be70a6642c9ec2808c0b0486d53",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/ArenaProtection.java": "834f9622b3f4ac70caa838ca31c32beacd3fc9f729098b6c36858d66ad3a9f7c",
     "Server/automodpack/server.conf": "9f6f18c2187c4610c93b85e03b8c208265865a2a2258b504899d86ee09180d6a",
     "Server/config/item_obliterator.json5": "91d0d15d2a500269c29990db48b0d8f29a44d6f5ade1047979fc2b8d023d181e",

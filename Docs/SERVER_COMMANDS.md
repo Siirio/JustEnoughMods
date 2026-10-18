@@ -78,3 +78,9 @@ Chunky `1.3.146` доступен server console и OP. Pre-generation созд�
 
 
 Respawn recovery must invoke the complete vanilla ServerGamePacketListenerImpl client-command handler with PERFORM_RESPAWN on the server thread. Calling PlayerList.respawn alone omits the caller’s replacement-player connection binding. The authorized recovery must preserve AuthGate authentication state; a respawned locked account still needs ordinary login. Never use account unlock or health editing as the persistent fix. Future pre-auth death-screen requests are handled by the dedicated-only Compat adapter described in DEVELOPMENT.md.
+
+## Local world metadata recovery — 2026-10-19
+
+The ordinary Server restart encountered native NBT depth518 in `Data.WorldGenSettings.dimensions.minecraft:the_nether.generator.settings.surface_rule`, with repeated `terrablender:merged` and nested `minecraft:sequence`. Both current and previous metadata exceeded512; archived2026-10-11 metadata contains the same pattern. The failed startup reached DestroyJavaVM with no Server thread before its remaining JVM was stopped.
+
+Local recovery backed up both level.dat and level.dat_old under ignored `Server/local/boss-20261019/world-metadata-before-normalization`. It flattened353 strictly nested minecraft:sequence wrappers, retaining every child and evaluation order. Exact installed Minecraft SequenceRule bytecode returns the first non-null child result, so associative flattening preserves terrain-rule evaluation. Total depth became229. Only the Nether surface_rule payload was replaced atomically; decompressed prefix/suffix matched exactly. No chunk, player, dimension, seed, mod config, safe-mode flag or depth limit changed. Receipt and exact original hashes are under the same ignored recovery folder. The integration that repeatedly wraps saved rules remains unverified and must be investigated before claiming recurrence prevention.
