@@ -1,0 +1,87 @@
+{
+  "schema_version": 2,
+  "change_id": "login.native-respawn-before-authentication",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:player"
+    }
+  ],
+  "conditions": [
+    {
+      "scope": "Physical dedicated server with installed Server Login; only vanilla ServerboundClientCommandPacket.Action.PERFORM_RESPAWN"
+    }
+  ],
+  "precedence": {
+    "layer": "dedicated_server_compatibility",
+    "priority": 30
+  },
+  "change": {
+    "summary": "Dead players can use the vanilla respawn button before login, without unlocking their account or permitting other gameplay packets.",
+    "modifiers": [
+      {
+        "property": "serverlogin.locked.native_respawn_packet",
+        "operation": "allow",
+        "before": "Server Login1.0.3 PacketPolicy denies all ServerboundClientCommandPacket actions before authentication; a player saved with Health0 cannot respawn to reach the login UI.",
+        "after": "Dedicated-only JEM Compat adapter admits only PERFORM_RESPAWN. Vanilla validates the current player and binds the respawned replacement; all other packets/actions and authentication ownership remain upstream."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Mods/JEMCompat optional dedicated-only Server Login adapter",
+    "kind": "native_packet_lifecycle_integration",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ServerLoginRespawnPacketMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Break the dead-before-login cycle at the packet classifier that caused it, without authenticating or healing the old entity as a fallback.",
+    "decision_source": "User reported being unable to respawn again; narrow native packet adaptation and server-only delivery selected by Codex from exact installed bytecode and live locked/dead state."
+  },
+  "introduced": {
+    "date": "2026-10-18",
+    "commit": "SELF",
+    "action": "fix",
+    "summary": "Allow native PERFORM_RESPAWN through Server Login pre-auth packet policy on a physical dedicated server; authentication remains locked and native lifecycle owns all validation and replacement binding.",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ServerLoginRespawnPacketMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "fix",
+      "summary": "Allow native PERFORM_RESPAWN through Server Login pre-auth packet policy on a physical dedicated server; authentication remains locked and native lifecycle owns all validation and replacement binding.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ServerLoginRespawnPacketMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "Server Login packet policy",
+      "Vanilla dead-player respawn and connection binding",
+      "Client login reachability",
+      "Native death penalties and event elimination"
+    ],
+    "relations": [
+      "Locked dead connection -> native respawn -> living but still locked connection -> ordinary password authentication"
+    ],
+    "notes": [
+      "Live authorized recovery used the complete vanilla client-command handler; health became24.499998 and both before/after authentication stayed locked.",
+      "No automatic event resurrection, hidden life, account unlock, new registry, custom packet, client prediction or client resource change. Existing clients use the same vanilla packet; canonical ManagedPack/publication32 remain unchanged."
+    ],
+    "unresolved": [
+      "Player acceptance of future pre-auth respawn button flow remains pending."
+    ]
+  }
+}

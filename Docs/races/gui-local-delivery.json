@@ -85,5 +85,13 @@
   "MineRENT": "not deployed",
   "acceptance": "in testing",
   "atlas": "Four scoped applied rules; schema validation passed. Working-tree scan also reports pre-existing unrelated source/installed-artifact drift; this task does not claim to resolve those gaps.",
-  "dependencyCorrection": "gui-library-crash-recovery.json"
+  "dependencyCorrection": "gui-library-crash-recovery.json",
+  "serverOnlyOverlay": {
+    "receipt": "login-respawn-recovery.json",
+    "artifact": "jemcompat-3.7.0.jar",
+    "serverSha256": "b8c4249c4ab00dbc545d0894e5340894c40736d3bf159332a2ebfc3960d775e9",
+    "managedClientSha256": "2c164a4f14f67cb431e8cb200e918d8dafc9590fca1a4336d7f0f622928f7b61",
+    "clientUpdateRequired": false,
+    "publicationUnchanged": 32
+  }
 }

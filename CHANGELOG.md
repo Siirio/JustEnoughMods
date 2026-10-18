@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-18 — Restore native respawn before Server Login authentication
+
+- User reported being unable to respawn again. Bug / Server Sided / Server Login1.0.3’s pre-auth PacketPolicy denies the vanilla PERFORM_RESPAWN packet; the joining player had Health0 and an authenticated=false/locked connection, so the death screen could not reach ordinary login / in testing. Exact resolution mechanism: dedicated-only optional Compat adapter admits that one native action while preserving all other gate policy and account authentication.
+- Immediate authorized recovery used the complete native client-command handler. It replaced the dead player and preserved the correct connection owner and locked authentication state; the server reported24.499998 HP afterwards. This is not a login bypass, health patch, hidden event life or gameplay test. Recovery instructions now prohibit invoking PlayerList.respawn without its caller’s connection rebinding.
+- Implementation choice: server-only artifact change. No registry entries, custom channels, schemas, client inputs, resources or prediction change; existing clients already send the vanilla packet. Only the ordinary local Server Compat JAR changes; ManagedPack, native publication32 and test jem stay unchanged. Required production build and clean ordinary server restart only; no tests or client launch. Evidence and exact server/client boundary: Docs/races/login-respawn-recovery.json. Future player acceptance pending.
+
 ## 2026-10-18 — Fix the shared GUI library floor and recover client resources
 
 - User reported lost mod-list localization/FancyMenu presentation and a crash while joining. Bug / Client Sided / my previous GUI update embedded MenuSupport1.1 but left its dependency range at [1.0.0,2.0.0), allowing Forge to select the older Server-embedded1.0 without VanillaGuiPlayers / in testing. Exact resolution: shared embed metadata now requires [1.1.0,2.0.0); rebuild and deliver both renderer consumers through native AutoModpack.

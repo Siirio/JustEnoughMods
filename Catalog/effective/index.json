@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "4617b09320eb260cae77f0e8b9af021e55a3debd4698363456617e9cd96b0eea",
+  "change_records_sha256": "53b4576a40edfec04ecc77325ee92aecefec41d120cc2a6d730ec506b1dce376",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -275,6 +275,21 @@
       "status": "active",
       "summary": "All GUI player previews use freshly baked vanilla skin geometry; race screen owns fixed GUI scale 3 and a camera 25% farther away.",
       "record": "Catalog/changes/records/gui.vanilla-player-fixed-race-scale.json",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:player"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 1
+    },
+    {
+      "change_id": "login.native-respawn-before-authentication",
+      "status": "conditional",
+      "summary": "Dead players can use the vanilla respawn button before login, without unlocking their account or permitting other gameplay packets.",
+      "record": "Catalog/changes/records/login.native-respawn-before-authentication.json",
       "selectors": [
         {
           "type": "id",
@@ -1081,7 +1096,7 @@
     "Docs/races/assets/guardian-dome/guardian-dome.bbmodel": "3f56200e6a08a5209e730fa901313907cd67a72429c27389df3945c5c525e080",
     "Docs/smp-gui/README.md": "47233f2f237719435d021a34de6f79481f79a946cd6046b670ab6e4790d382fc",
     "Mods/JEMCompat/build.gradle": "3185ad02cac74d50264df608c6a4d02bef72715c25f01319c3e185ccfa33d96a",
-    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java": "c153b5740c80da38bcb0c20d805e2acdebd0263cd97d844e7d4f98936d32d6c2",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java": "518a0c9e1e7eb5db2e54efc7c26799bddd84b3e0d4a8b458c32a5401990bd562",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/CuriosEquipment.java": "ae3145570e4a29833e17091cc15c0e806269e3f2fc97da0363d47de01b520342",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java": "dc8ea20619dbb90d83637c20751d91a0c02f630cba2fc15b3797e9e939c8f010",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiCatalog.java": "96e3991d1e35ec5807dbb41f2243191ca89da9304def9070ebb51f8943c910e8",
@@ -1091,11 +1106,12 @@
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/GuiPlayerFrameMixin.java": "96752409bdb147bc5daad70121aaee06eb8e65024c401dfe66efb16eeeeae55c",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/GuiPlayerRendererMixin.java": "ebde334231687b2a06a9a9fddc12f297a3528e5b9beffba366bbb3999b5f4cd9",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/QuickSkinVanillaPreviewMixin.java": "8027c34c8b6cc2428596a0265c49a119f3d025d923ff85703cfb14e226e28926",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ServerLoginRespawnPacketMixin.java": "ea9c3326e28a9ce40603c647b02e0a1e6272161d171281408dac02000c2df2df",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/trading/FabricTypeAwareTradeMixin.java": "f28b6503c73ad37c5824554737a03879a667f796e9680104df7cd5e2928da551",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/EngineVehicleFuelMixin.java": "82815826b00b1f841e8255ea2cfa5dfea3fec20b3415f254bf9ce4f9f83ca10a",
     "Mods/JEMCompat/src/main/resources/META-INF/services/com.bawnorton.mixinsquared.api.MixinCanceller": "b27fafce4802d4a2b9b2fa0c2a0ca5b3347418b9c49e1696654c1cf3461a43c9",
     "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/jei/cooking_catalysts.json": "03396bba90220095d54a4c45fd349f5cec968cd962551b5f483ea7fdda04aefe",
-    "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json": "e3e138e73ec3f09776f95fb23fb77398a3e5d859dffea28e37e28f23646fc073",
+    "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json": "b7031d22ef0655bcfaea6cac9660bb5885124d21d6a307dfda36707893db261f",
     "Mods/JEMCurrencyCore/build.gradle": "2f5570a6a59351bdfabfe1833d08585e3590a3fa1019ea19b744572e1fca686d",
     "Mods/JEMCurrencyCore/embed.gradle": "d2204661d1a2bf57aca16084dd7abc0c7b95a35214e53a5c0e8dfa96e0a6da50",
     "Mods/JEMCurrencyCore/gradle.properties": "58a820524b1197f432cc0720f670689fa7f634b2fb68554c581b8685a7ae50fc",

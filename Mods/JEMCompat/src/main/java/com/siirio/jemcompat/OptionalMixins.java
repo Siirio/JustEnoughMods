@@ -27,6 +27,10 @@ public final class OptionalMixins implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
+        if (mixinClassName.equals("com.siirio.jemcompat.mixin.login.ServerLoginRespawnPacketMixin")) {
+            return FMLLoader.getDist().isDedicatedServer()
+                    && FMLLoader.getLoadingModList().getModFileById("serverlogin") != null;
+        }
         if (mixinClassName.equals("com.siirio.jemcompat.mixin.trading.FabricTypeAwareTradeMixin")) {
             var file = FMLLoader.getLoadingModList().getModFileById("fabric_object_builder_api_v1");
             return file != null && file.getMods().stream().anyMatch(mod -> mod.getModId().equals("fabric_object_builder_api_v1")

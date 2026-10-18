@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-18",
+  "request": "Unable to respawn again",
+  "rootCause": "Installed Server Login1.0.3 blocks every ServerboundClientCommandPacket action while AuthGate is locked. A saved-dead player cannot use the death screen to reach ordinary password login.",
+  "liveRecovery": {
+    "beforeHealth": 0,
+    "beforeAuthLocked": true,
+    "connectionMatchedBefore": true,
+    "mechanism": "Authorized server-thread invocation of the complete native PERFORM_RESPAWN handler",
+    "replacementBoundToConnection": true,
+    "afterAuthLocked": true,
+    "observedHealthAfter": 24.499998
+  },
+  "permanentFix": {
+    "owner": "JEMCompat dedicated-only optional Server Login packet-policy adapter",
+    "allowedAction": "PERFORM_RESPAWN",
+    "nativeValidation": "Vanilla owns health/credits validation, respawn penalties and replacement binding",
+    "otherPolicy": "REQUEST_STATS, movement/inventory/gameplay packets and authentication stay unchanged; no unlock or auto-resurrection",
+    "serverArtifact": {
+      "source": "Mods/JEMCompat/build/libs/jemcompat-3.7.0.jar",
+      "file": "jemcompat-3.7.0.jar",
+      "sha256": "b8c4249c4ab00dbc545d0894e5340894c40736d3bf159332a2ebfc3960d775e9",
+      "bytes": 286685
+    }
+  },
+  "delivery": {
+    "server": "Ordinary local dedicated Server running; exact fresh full Compat installed after native world save/clean shutdown; startup reached Done. Existing local development wallet reactivated after restart.",
+    "clientUpdateRequired": false,
+    "reason": "Same3.7.0 mod handshake; no registry/channel/schema/resource/input/prediction delta. Existing client sends the unchanged vanilla packet. Adapter is disabled on physical clients/integrated singleplayer.",
+    "managedClientArtifactSha256": "2c164a4f14f67cb431e8cb200e918d8dafc9590fca1a4336d7f0f622928f7b61",
+    "publishedGeneration": 32,
+    "publishedContentToken": "337669c3317188724a0aaa29d676d0ba85214880",
+    "installedClientMatchesPublishedHead": true,
+    "ManagedPack": "unchanged",
+    "testClient": "unchanged; already current via native AutoModpack"
+  },
+  "testsRun": false,
+  "clientLaunched": false,
+  "acceptance": "in testing; native recovery observed but future button behavior not player-approved",
+  "stableProfile": "untouched",
+  "MineRENT": "not deployed",
+  "releaseBaseline": "unchanged"
+}

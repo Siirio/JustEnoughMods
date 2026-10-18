@@ -76,3 +76,5 @@ Chunky `1.3.146` доступен server console и OP. Pre-generation созд�
 - `chunky continue` — продолжить сохранённую задачу.
 - `chunky cancel` — удалить текущую задачу после подтверждения.
 
+
+Respawn recovery must invoke the complete vanilla ServerGamePacketListenerImpl client-command handler with PERFORM_RESPAWN on the server thread. Calling PlayerList.respawn alone omits the caller’s replacement-player connection binding. The authorized recovery must preserve AuthGate authentication state; a respawned locked account still needs ordinary login. Never use account unlock or health editing as the persistent fix. Future pre-auth death-screen requests are handled by the dedicated-only Compat adapter described in DEVELOPMENT.md.
