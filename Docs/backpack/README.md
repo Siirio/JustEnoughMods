@@ -54,6 +54,13 @@ stored while the augment is disabled/removed and return when it is enabled again
 Dock/shelf and pickpocket screens retain their native non-owner behavior and do
 not receive a detached crafting grid. Integrated singleplayer keeps upstream
 Backpacked runtime behavior; shared registry/asset compatibility remains present.
+The station recipe has the Forge `jemcompat:dedicated_server` condition, evaluated
+against physical host Dist.DEDICATED_SERVER. Its serializer is registered during
+the recipe-serializer registry event before recipe reload. Integrated-host native
+`AugmentType.stream()` hides only Workbench while a current non-dedicated server
+exists; all native augments, the Workbench registry/codec ID and remote-client
+full selection list remain intact. Dedicated server recipe snapshots synchronize
+to remote clients normally.
 
 ## Decisions and evidence
 

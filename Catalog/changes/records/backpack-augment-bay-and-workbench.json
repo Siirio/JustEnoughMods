@@ -35,7 +35,7 @@
         "property": "backpack.native_augment_registry",
         "operation": "add",
         "before": "Installed Backpacked native AugmentType codec registry and native free selection/settings; no Workbench.",
-        "after": "Register jemcompat:workbench through native custom Forge registry. Codec and native augment packets save installed state. A station-paid backpack-local entitlement is required for native Workbench selection; ordinary native augments keep their existing selection path."
+        "after": "Register jemcompat:workbench through native custom Forge registry. Codec and native augment packets save installed state. A station-paid backpack-local entitlement is required for native Workbench selection; ordinary native augments keep their existing selection path. Integrated-host AugmentType.stream removes only Workbench.TYPE while a current non-dedicated server exists; registry/codec ID and remote-client full list remain intact."
       },
       {
         "property": "backpack.augment_bay_station",
@@ -54,7 +54,8 @@
             "dependent installed augments",
             "complete resources before mutation"
           ],
-          "persistence": "Use native SavedAugments and Augments.cached on actual inserted backpack. Return unused input items through vanilla clearContainer on menu close. No block entity or second backpack inventory."
+          "persistence": "Use native SavedAugments and Augments.cached on actual inserted backpack. Return unused input items through vanilla clearContainer on menu close. No block entity or second backpack inventory.",
+          "recipe_condition": "Forge ICondition jemcompat:dedicated_server requires FMLLoader physical Dist.DEDICATED_SERVER; serializer registered in the recipe-serializer RegisterEvent before reload. Remote clients receive the server recipe snapshot."
         }
       },
       {
@@ -92,8 +93,10 @@
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackContent.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackCraftingGrid.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackWorkbench.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/DedicatedRecipeCondition.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/WorkbenchAugment.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackAugmentAdmissionMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackIntegratedAugmentListMixin.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackWorkbenchMenuMixin.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackWorkbenchScreenMixin.java",
       "Mods/JEMCompat/src/main/resources/META-INF/mods.toml",
@@ -173,6 +176,20 @@
       "source_files": [
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackCraftingGrid.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackWorkbenchMenuMixin.java"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "preserve_integrated_singleplayer_catalog",
+      "summary": "Physical dedicated-server recipe condition removes Augment Bay crafting from integrated singleplayer; exact native AugmentType.stream filters only Workbench in an integrated host without removing its registered compatibility ID. Forge47.4.10 ICondition/IConditionSerializer/CraftingHelper signatures inspected from local mapped production API.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/DedicatedRecipeCondition.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackIntegratedAugmentListMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackContent.java",
+        "Mods/JEMCompat/src/main/resources/data/jemcompat/recipes/augment_bay.json",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
       ]
     }
   ],

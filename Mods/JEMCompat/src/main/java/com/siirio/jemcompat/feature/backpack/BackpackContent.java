@@ -37,6 +37,9 @@ public final class BackpackContent {
     }
 
     private static void registerAugment(RegisterEvent event) {
+        if (event.getRegistryKey().equals(ForgeRegistries.Keys.RECIPE_SERIALIZERS)) {
+            net.minecraftforge.common.crafting.CraftingHelper.register(new DedicatedRecipeCondition.Serializer());
+        }
         event.register(ModRegistries.AUGMENT_TYPES.getKey(), helper -> helper.register(WorkbenchAugment.TYPE.id(), WorkbenchAugment.TYPE));
     }
 
