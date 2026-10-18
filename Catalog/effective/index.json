@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "9f1c27a983c0132971db77c908c022d9e920820ab0afcd661556651784f3ab62",
+  "change_records_sha256": "b7d588ecd2e09f1113f23c45d09b97833a442480df550f924fadcd92b6d85345",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -1269,6 +1269,7 @@
     "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar": "53e4df0307365959c23a81b1ec61288b46dc67c8f43d5cf9b106bcff78111612",
     "Client/ManagedPack/mods/jem-settlements-2.1.0.jar": "941837a4d33e21e2ee9171b1eb0640d5ee761f40650b5ff33c209b5f37eac531",
     "Client/ManagedPack/mods/jemcompat-3.7.0.jar": "a116f096518df187211cb5689a69715cbe6f1078c359508c29aec81485a452af",
+    "Docs/DEVELOPMENT.md": "b43cb1a431f461924b68e619861547b0084786c67f7092dfb1593b5438fe3794",
     "Docs/power-system/Allies.md": "829e010d57941891c31134a0707b3e74f2f6d943f9c57325f4f903c341ed9875",
     "Docs/power-system/Armor.md": "168c85fba7fcd6362c52085f9ba8aae13454548bce1a55c6d7caf15180608f12",
     "Docs/power-system/Balance.md": "ff41e05a33378f6115934a72599b1a7aeeabd3918f72fd103142aee542a641a1",
@@ -1287,8 +1288,9 @@
     "Docs/races/server-test-migration.json": "666c4642ce4b177eea8a20f7a9dfc2269e2fec05ab5f2d68c049395aca188f1a",
     "Docs/settlements/standalone/README.md": "043603c19287c532a23cfddf99b3f462a2696739f8d691561d9d87ebfcd5b47e",
     "Docs/smp-gui/README.md": "4c9cdb748cc40d5183eaf8455003ebff7eb3325d637dd8f2dbe371c399437a0e",
-    "Mods/JEMBootstrap/patches/reliable-updates.patch": "d387a64d1f4a2361774aeda3a24f2bf6dd7bbf5d43679af657cc840adf5457ab",
-    "Mods/JEMBootstrap/upstream.json": "141f780429c2a2c82853fc4ef525a63813a0afbc8444e423602a3fec8781e3aa",
+    "Mods/JEMBootstrap/patches/reliable-updates.patch": "3dde2e020c9880f9198a87ccb6c491b414762853069b977635085541a5030a69",
+    "Mods/JEMBootstrap/prepare.py": "e582eb57b8363b93121a03c291e93ffb4cd082bf73904390cf9700a4a9d77d2a",
+    "Mods/JEMBootstrap/upstream.json": "0385ee945a3c54fc73f2b782f20d5e8bf022feb28332930752440f59bc4da022",
     "Mods/JEMCompat/build.gradle": "d1768cf2e8fbbe648a5b7f54005d213db6f6fe79312de30895008af19dab16ce",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java": "9571397e03d52c4d42b936dbe7f13805114b5dc0869699561c60af5ca91ac719",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java": "aa7d438283f8e4b03b0023073e01e38667a653c077d5b34e0ac72f259c74b62a",

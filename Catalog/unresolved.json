@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "ff63760b202310a6e0a70cc6f52c12bafef9f18b",
+  "snapshot_sha": "85181258f00459f5dbce9fc2db44798dca21c54d",
   "entries": [
     {
       "type": "artifact_metadata",
@@ -11,14 +11,6 @@
       "type": "artifact_metadata",
       "artifact": "kotlinforforge-4.12.0-all.jar",
       "reason": "KeyError"
-    },
-    {
-      "type": "duplicate_mod_id",
-      "mod_id": "jem_settlements",
-      "artifacts": [
-        "jem-settlements-2.1.0.jar",
-        "jem-settlements-2.1.0.jar"
-      ]
     },
     {
       "type": "duplicate_mod_id",
@@ -42,14 +34,6 @@
       "artifacts": [
         "forge-mixinextras-forge-0.3.2.jar",
         "mixinextras-forge-0.4.1.jar"
-      ]
-    },
-    {
-      "type": "duplicate_mod_id",
-      "mod_id": "mixinextras",
-      "artifacts": [
-        "forge-mixinextras-forge-0.3.2.jar",
-        "mixinextras-forge-0.2.0-beta.6.jar"
       ]
     },
     {
@@ -318,6 +302,14 @@
     },
     {
       "type": "duplicate_mod_id",
+      "mod_id": "mixinextras",
+      "artifacts": [
+        "forge-mixinextras-forge-0.3.2.jar",
+        "mixinextras-forge-0.2.0-beta.6.jar"
+      ]
+    },
+    {
+      "type": "duplicate_mod_id",
       "mod_id": "xaerolib",
       "artifacts": [
         "xaerolib-forge-1.20.1-1.7.1.jar",
@@ -331,6 +323,17 @@
       "source": "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemcurrency/CurrencyItems.java",
       "expressions": [
         "denomination.id()"
+      ],
+      "reason": "Nonliteral registration IDs require their enum/helper/runtime evidence; source strings are not promoted as IDs"
+    },
+    {
+      "type": "dynamic_source_registration",
+      "registry": "items",
+      "artifact": "jemcompat-3.7.0.jar",
+      "source": "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackContent.java",
+      "expressions": [
+        "ModRegistries.AUGMENT_TYPES.getKey()",
+        "WorkbenchAugment.TYPE.id()"
       ],
       "reason": "Nonliteral registration IDs require their enum/helper/runtime evidence; source strings are not promoted as IDs"
     },

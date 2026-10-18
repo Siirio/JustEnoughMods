@@ -16,7 +16,7 @@
   ],
   "conditions": [
     {
-      "requires": "matching jem.6 bootstrap and newly published editable policy for preference preservation"
+      "requires": "matching verified jem.7 bootstrap and published editable policy for preference preservation"
     }
   ],
   "precedence": {
@@ -36,7 +36,7 @@
         "property": "client.personal_preferences",
         "operation": "replace",
         "before": "main.editable empty; unchanged server files silently reset and new versions can replace editable overlays",
-        "after": "Explicit presentation preference policy; jem.6 captures live bytes during server-owned to editable transition and keeps personal overlays across server default changes"
+        "after": "Verified jem.7 captures live bytes during server-owned to editable transition and retains personal overlays across changed defaults, including live bytes equal to the old default. prepare.py blocks outer Git discovery and validates actual hashes for all11 patch-owned original/added source files before reuse; manifest revision alone is insufficient."
       },
       {
         "property": "client.options.removed_mod_keybinds",
@@ -50,11 +50,13 @@
     "owner": "Native AutoModpack reconciliation and current JEM distribution",
     "kind": "user_requested_behavior_and_bug_fix",
     "source_files": [
-      "Mods/JEMBootstrap/upstream.json",
+      "Docs/DEVELOPMENT.md",
       "Mods/JEMBootstrap/patches/reliable-updates.patch",
+      "Mods/JEMBootstrap/prepare.py",
+      "Mods/JEMBootstrap/upstream.json",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/OptionsKeyRetentionMixin.java",
       "Server/automodpack/server.conf",
-      "tools/workspace.json",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/OptionsKeyRetentionMixin.java"
+      "tools/workspace.json"
     ]
   },
   "rationale": {
@@ -109,6 +111,27 @@
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/OptionsKeyRetentionMixin.java",
         "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
       ]
+    },
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "fix_patch_preparation_and_preserve_equal_personal_defaults",
+      "summary": "Generation36 exposed jem.6 source/artifact mismatch: outer Git discovery skipped final git-format ClientUpdatePlanBuilder patch; existing plain-unified repair sections applied. Fix repository discovery and all11 prepared-source hash receipts; jem.7 also guards old-default equality so personal ownership remains sticky. Full artifact SHA256714becc9e5cff26629a271b6bda82de13e3e95d8da7b26e6bcd9f33fe0fd07bc verified by manifest and actual planner bytecode.",
+      "source_files": [
+        "Mods/JEMBootstrap/prepare.py",
+        "Mods/JEMBootstrap/upstream.json",
+        "Mods/JEMBootstrap/patches/reliable-updates.patch",
+        "Docs/DEVELOPMENT.md"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "recover_exact_native_skin_preferences",
+      "summary": "Restore only two task-reset QuickSkin preference files from native history122 after original SHA256 and exact current-default gates; native mutation lock, LIVE124, verified CAS overlay+game publication and FILE_RESTORE125. All24 preference hashes match, active generation36 token unchanged, no pending transaction. No raw managed-file copy, stable mutation or gameplay launch.",
+      "source_files": [
+        "Docs/DEVELOPMENT.md"
+      ]
     }
   ],
   "impacts": {
@@ -124,7 +147,8 @@
       "Stopped-world backup and preference snapshot stored outside repository. Saved CarryOnData type INVALID for all 17 player records before removal.",
       "No installed mod declared Carry On in Forge/Fabric metadata.",
       "Settings gameplay/update acceptance pending; configuration preservation does not establish skin provider availability or mod-removed keybind persistence.",
-      "Native generation33 token065a141ba595da93b092f894a2afa9ea9ffc9552 applied through UpdateAttempt; all22 closed-client preference hashes unchanged and no transaction pending. This proves this application, not a real game restart/skin service acceptance."
+      "Native generation33 token065a141ba595da93b092f894a2afa9ea9ffc9552 applied through UpdateAttempt; all22 closed-client preference hashes unchanged and no transaction pending. This proves this application, not a real game restart/skin service acceptance.",
+      "Installed jem.6 lacked planner personalPreference despite revision metadata. Verified jem.7 final bytecode has personalPreference and personal guards before old-default equality/replacement clearing; recovery restored24/24 original preferences through native history/overlay APIs. Acceptance remains in testing until user approval."
     ],
     "unresolved": [
       "Real settings restart/update acceptance pending",

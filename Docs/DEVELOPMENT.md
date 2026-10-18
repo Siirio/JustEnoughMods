@@ -166,7 +166,7 @@ Build или runtime action выполняется только по прямо�
 
 - Один и тот же `mods/jem-bootstrap.jar` устанавливается на dedicated server и вручную на новый клиент. Текущий установленный файл — upstream AutoModpack `5.0.0-rc.1`; исправленная source revision `jem.4` поверх `5.0.0-rc.1` принадлежит `Mods/JEMBootstrap`, основана на exact upstream commit `4348bf2532bb8261af3297cf2480a3a0ee91befb` под LGPL-3.0-or-later и сохраняет native downloader, planner, transaction, object store и ownership ledger. Исходный commit, hashes затронутых файлов, native source patch и лицензия сохраняются в модуле; готовый сторонний JAR побайтно не патчится.
 - `python Mods/JEMBootstrap/prepare.py` получает pinned upstream source и применяет `patches/reliable-updates.patch`, исключая tests и fixtures. `--source <локальный upstream checkout>` берёт тот же commit через git archive. Только явно запрошенный `--build` запускает upstream Gradle wrapper и `oneJar` для Forge 1.20.1; обычный результат находится в `Mods/JEMBootstrap/build/libs/jem-bootstrap.jar`. Test, verification и formatting tasks отключены. Подготовка исходников не меняет Client, Server, launcher profiles или release baseline.
-- Upstream Gradle plugins требуют build JVM Java 25; путь можно передать через `--java-home <JDK>` без изменения JVM TLauncher. Runtime class target остаётся Java 17. Native AutoModpack version остаётся `5.0.0-rc.1`, чтобы существующий сервер не скачал upstream JAR обратно через version synchronization; изменённый файл явно отмечен manifest attributes `JEM-Bootstrap-Revision`, `JEM-Upstream-Commit` и `JEM-Skip-Shaders`. Текущий обычный local Server, clean installer и test jem используют revision `jem.6`; stable profile остаётся на `jem.4`. Source revision `jem.6` сохраняет wire version и опциональный shader distribution profile, добавляя сохранение персональных editable preferences.
+- Upstream Gradle plugins требуют build JVM Java 25; путь можно передать через `--java-home <JDK>` без изменения JVM TLauncher. Runtime class target остаётся Java 17. Native AutoModpack version остаётся `5.0.0-rc.1`, чтобы существующий сервер не скачал upstream JAR обратно через version synchronization; изменённый файл явно отмечен manifest attributes `JEM-Bootstrap-Revision`, `JEM-Upstream-Commit` и `JEM-Skip-Shaders`. Текущий обычный local Server, clean installer и test jem используют revision `jem.7`; stable profile остаётся на `jem.4`. Source revision `jem.7` сохраняет wire version и опциональный shader distribution profile, добавляя сохранение персональных editable preferences.
 - Исправленная revision ждёт helper lease в BootRecovery до чтения состояния и загрузки active JAR; при таймауте останавливает запуск вместо загрузки старых модов. Recovery признаёт выполненную замену только при совпадении exact planned result и сохранённых исходных bytes в CAS; настоящая сторонняя правка вызывает native replan. Сам helper получает loader type и native loader service от запустившего его клиента и выполняет bounded native replan без внешних скриптов.
 - Первый Windows-запуск публикует распакованный loader impl через atomic directory move, но при `AccessDeniedException` от Windows provider безопасно повторяет ещё не выполненный перенос обычным move; если atomic операция фактически завершилась, состояние распознаётся по исчезнувшему source и существующему target. Поэтому чистому клиенту не требуется заранее созданный `automodpack/client/impl-cache`.
 - Все native state/config writes сначала публикуются atomic file replace; если Windows provider сообщает общий `AccessDeniedException` вместо специального unsupported-atomic результата, владелец проверяет, не завершился ли перенос фактически, и только при сохранённом temporary повторяет замену обычным same-filesystem move. Это распространяется на `connection.json`, journals, selection, ownership и остальные записи через единый `DurableFiles`.
@@ -322,7 +322,7 @@ Server Login1.0.3 rejects ServerboundClientCommandPacket before authentication, 
 ## Personal settings and native preview correction — 2026-10-18
 
 User requests settings persistence, Carry On removal and the supplied inventory/SMP
-preview corrections. Bootstrap source revision jem.6 extends the pinned native
+preview corrections. Bootstrap source revision jem.7 extends the pinned native
 AutoModpack reconciliation for the explicit personal presentation preference set
 in server.conf: Oculus, optional Iris, QuickSkin client preferences, Fzzy/Punchy
 keybind files and root shaderpack option .txt files. Before the first transition
@@ -332,6 +332,43 @@ retain native ownership/reset policy; options.txt remains excluded. This does no
 claim to restore settings already lost before migration or authenticate skin
 providers. Friends require the matching standalone bootstrap revision before
 using this policy; gameplay updates cannot replace early bootstrap classes.
+
+The generation36 application exposed a concrete build-provenance defect: the
+installed artifact labelled jem.6 had no `personalPreference` method. Preparation
+ran Git inside an ignored generated directory without its own repository; Git
+discovered the outer JEM checkout and skipped the final git-format planner patch
+section, while the earlier plain-unified repair sections did apply. A matching
+patch receipt/manifest alone therefore did not prove patched class contents.
+
+`prepare.py` now bounds Git repository discovery with
+`GIT_CEILING_DIRECTORIES` and records/verifies actual prepared SHA256 for all11
+patch-owned original/added Java files before cached reuse. Pristine upstream pins
+remain separate. Revision jem.7 also preserves a personal overlay when live bytes
+equal the previous shipped default; equality is no longer interpreted as consent
+to replace a personal setting. Ordinary server-owned configurations keep native
+reset and replacement policy. Final production bytecode inspection verified both
+`personalPreference` and the personal guard before equality/replacement clearing;
+Windows durable move and projection-head repairs remain in the same source patch.
+
+Verified full jem.7 bootstrap SHA256:
+`714becc9e5cff26629a271b6bda82de13e3e95d8da7b26e6bcd9f33fe0fd07bc`.
+Wire version remains5.0.0-rc.1. Matching standalone bytes are synchronized to the
+ordinary Server, canonical ManagedPack/installer and stopped test jem profile;
+stable remains untouched. Bootstrap is excluded from native served-pack entries.
+
+For the two observed generation36 resets, recovery used native history122
+GAME_DIR entries only after their CAS SHA256 matched the saved pre-update hashes
+and current live bytes matched the exact new canonical empty defaults. Native
+`fileRestoreGate` had to return AVAILABLE. Under `ClientStorageMutation.run`,
+recovery recorded LIVE124, used verified CAS `VerifiedFileTransfer.copyAtomic` to
+the native overlay and game paths, cleared only those two native tombstones, and
+recorded FILE_RESTORE125. `StateHistory.restoreFile` itself refuses overwriting a
+different live file, so its verified primitives were used with that explicit
+recovery authorization; no active pointer, trust check or gameplay JAR was changed.
+All24 saved preference hashes match again; active token
+`e4c80d6c3d0ffe2bbab93318e6e8035c3d2783ea` stayed unchanged and no transaction
+remained. This is installation/recovery evidence, not a gameplay or skin-provider
+acceptance claim. Future native applications must retain these exact preferences.
 
 QuickSkin2.6.2.4 persistence has three native owners: `quickskin-client.json`
 contains the active/own skin, cape and CPM hashes; `quickskin_preferences.json`
@@ -350,10 +387,12 @@ Fresh installs therefore received nonempty hashes that native restore could not
 resolve. Only `Client/ManagedPack/config/quickskin-client.json` selected hashes
 and its `quickskin_preferences.json` player map are now empty defaults; other
 provider/settings fields remain native and unchanged. Existing local selections
-must survive through the jem.6 native editable-overlay migration and later
+must survive through the jem.7 native editable-overlay migration and later
 editable updates, not a raw copy. No test/stable skin files or personal uploads
-were modified. The observed test profile has both saved skin hashes backed by
-real local PNGs; this audit does not prove a current restore failure there.
+were changed by that canonical-default sanitization. The observed test profile
+has both saved skin hashes backed by real local PNGs. The later generation36
+installation did reset its two preference files; the native recovery below
+restored the exact original bytes without touching uploads or the stable profile.
 
 `config/skin-preferences.json` is additionally eligible for native editable
 ownership if ever distributed. It is currently absent from both canonical and

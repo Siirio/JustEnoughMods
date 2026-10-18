@@ -11,7 +11,7 @@
   ],
   "conditions": [
     {
-      "requires": "QuickSkin Forge1.20.1-2.6.2.4; matching jem.6 native editable bootstrap for existing-client ownership migration"
+      "requires": "QuickSkin Forge1.20.1-2.6.2.4; matching verified jem.7 native editable bootstrap for existing-client ownership migration"
     }
   ],
   "precedence": {
@@ -25,7 +25,7 @@
         "property": "client.quickskin.shipped_default_selection",
         "operation": "replace",
         "before": "Canonical quickskin-client contains nonempty active/own skin hashes and quickskin_preferences has one per-player UUID entry; no corresponding quickskin/uploads source tree is distributed.",
-        "after": "Only shipped activeSkinHash/activeCpmModelHash/activeCapeHash/playerOwnSkinHash are empty and shipped players map is empty. Native provider/config settings unchanged; live profile bytes/uploads untouched."
+        "after": "Only shipped activeSkinHash/activeCpmModelHash/activeCapeHash/playerOwnSkinHash are empty and shipped players map is empty. Native provider/config settings unchanged. Generation36 exposed missing preference patch in the old bootstrap; the two reset live preference files were recovered through native history122 and native overlays. Personal uploads remain untouched."
       },
       {
         "property": "client.quickskin.optional_model_preferences",
@@ -60,6 +60,12 @@
       "commit": "SELF",
       "action": "replace",
       "summary": "Remove dangling maintainer-only appearance hashes and player UUID rows from shipped QuickSkin defaults; retain native editable user overlays and actual local uploads."
+    },
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "replace",
+      "summary": "Require verified jem.7: preparation skipped the final preference patch section in the prior artifact. Native history recovery restores the two task-reset personal files and preserves current generation identity; clean defaults remain empty for new installations."
     }
   ],
   "impacts": {
