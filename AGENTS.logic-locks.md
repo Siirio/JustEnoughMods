@@ -73,3 +73,12 @@
 - Unlock condition: Explicit user request to change this behavior or evidence that the core execution pipeline changed.
 - Created: 2026-10-17
 
+## LOCKED: Fully update test jem through native AutoModpack before handoff
+- Scope: AGENTS.md step 5; Docs/DEVELOPMENT.md native AutoModpack delivery workflow; test jem native client generation
+- Approved signal: добавь правило - всегда через auto modpack клиент обновляй тестовый чтобы на сервак мне не приходилось заходить и еще раз обновлять, чтобы сразу заходило
+- Protected behavior: After every managed client change, publish the local server generation and fully apply it to test jem through native AutoModpack before reporting readiness. The installed active token must match the published head, installed JAR hashes must match approved artifacts, and no native transaction may remain pending. The first server join must not be needed to install an already-published local update. Exact task-owned published artifacts are already authorized for native review/application; if the client is open, request closure and finish after it closes.
+- Reuse pattern: Preserve the existing implementation pattern unless the unlock condition is met.
+- Allowed changes: Improve native publication and reviewed installation automation while preserving native ownership, exact-byte review, closed-client application and the prohibition on unrequested client launches; no raw managed-file copies, active-state edits or weakened trust gate.
+- Unlock condition: Explicit user request to change this local client handoff guarantee.
+- Created: 2026-10-18
+

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-18 — Require a fully updated test jem before handoff
+
+- User requested a permanent rule: always update the test client through AutoModpack beforehand so joining the server does not trigger a second update.
+- Added the delivery requirement to AGENTS.md and the owning Docs/DEVELOPMENT.md workflow, with a precise persistent logic lock. Each managed client change must be published and natively installed into test jem before readiness is reported; verify installed/published tokens, exact JAR hashes and no pending transaction. Exact task-owned native application is authorized; if the client is open, request closure and finish afterwards.
+- Implementation choice: preserve native ownership and trust review, with no raw copies, active-state edits or unrequested client launch. Documentation-only change; no builds, tests, runtime changes, new publication or baseline promotion.
+
 ## 2026-10-18 — Apply the published GUI and aircraft update to test jem
 
 - User confirmed the client was closed. Applied already-published local generation31 through the native ModpackUpdater/UpdateAttempt review and commit; native HeadMirror, JournalMirror and ClientObjectStore own metadata/cache acquisition. No managed game files or active-state pointers were raw-copied or manually edited.
