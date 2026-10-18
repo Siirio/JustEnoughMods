@@ -421,3 +421,10 @@ conditions; JEM varies the native biome clothing layer, reusing pack resources.
 
 Build/application evidence is separate from actual in-game acceptance. The full
 master overhaul remains incomplete in Docs/plans/2026-10-18-gameplay-settlements-overhaul.md.
+
+
+## Recruits debug-screen matrix ownership — 2026-10-18
+
+The observed test jem crash at21:46:09 was Rendering screen / DebugInvScreen, with WATUT1.2.3 innerBlit calling PoseStack.last on an empty deque. Exact installed Recruits1.15.2 bytecode shows DebugInvScreen native labels method `m_280003_(GuiGraphics,II)V` calls `popPose` at offset2044 and never pushes a frame; its ScreenBase labels method is noop. AbstractContainerScreen owns the surrounding label transform. WATUT's real screen recapture exposes the earlier ownership violation; its capture and FancyMenu are retained.
+
+JEMCompat's client-only `RecruitDebugScreenPoseMixin`, gated to exact Recruits1.15.2, adds the missing local push immediately before the unique native0.7 scale, retaining its existing trailing pop and using full runtime descriptors. It does not guard/catch empty stacks, add balancing frames around unrelated screens, change UI content, or change recruit inventory/gameplay. The live crash is evidence; production compilation/publication is distinct from fresh player acceptance, which remains in testing.

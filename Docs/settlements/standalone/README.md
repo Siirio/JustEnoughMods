@@ -808,3 +808,44 @@ physically dedicated-only so integrated singleplayer remains native.
 
 
 Peaceful animal diversity includes both native Animal and WaterAnimal families, so vanilla fish, squid and dolphins and their compatible mod subclasses participate under the same bounded observations. Hostile, angry and actively targeting mobs remain ineligible.
+
+
+## Handcrafted native HOME repair - 2026-10-18
+
+Bug / Server Sided / reverse-map-only bed integration left saved valid POI
+sections incomplete, with no native refresh migration / in testing. User reports
+ordinary villagers still do not sleep. This section supersedes the earlier
+reverse-index-only compatibility description, not the native sleep rules.
+
+Exact installed evidence is Handcrafted3.0.6 in both ManagedPack and Server and
+Forge1.20.1-47.4.10 mapped bytecode. FancyBedBlock already extends BedBlock, shares
+native PART/OCCUPIED and ships its11beds in minecraft:beds. Native SleepInBed
+requires HOME memory, the bed tag, unoccupied state and physical reach; it needs
+no teleport or replacement animation. AcquirePoi obtains HOME from real POI
+records. Existing PoiSection.refresh returns immediately for saved IsValid=true,
+so adding a reverse-map entry does not repair previously missing bed records.
+The previous adapter also left HOME.is()/matchingStates() vanilla-only; that is
+an incomplete native API contract. ValidateNearbyPoi itself uses POI holder
+existence, so the predicate mismatch alone is not claimed as this report's proved
+immediate cause. Exact affected villager memory/path/time is not captured here.
+
+The fix preserves the original registered HOME PoiType record identity, ticket
+limit, valid range and immutable fields/hash. Dedicated-only matching API hooks
+expose the exact registered Handcrafted HEAD-state union; the existing Forge
+Map<BlockState,PoiType> reverse index remains the native owner. Common setup and
+ServerAboutToStart apply it before chunks load, including registry restoration.
+No Holder/PoiType map-cast bug was found in the exact Forge build.
+
+A narrow hook in the native checkConsistencyWithBlocks lifecycle checks the
+already supplied chunk-section palette. Only a section containing supported
+Handcrafted HEAD states invalidates its existing PoiSection. The original native
+refresh then checks its bounded4096 cells, snapshots/reuses old PoiRecord objects
+and preserves occupied tickets while adding missing beds. It does not reset all
+POIs, force world chunks, assign villager memory or move NPCs. New sections use
+normal native construction. All hooks and lifecycle listeners are physically
+dedicated-server-only; integrated singleplayer remains native.
+
+Source and bytecode investigation establishes the missing repair mechanism.
+No automated test, static-analysis suite, gameplay launch or sleep/wake acceptance
+was performed here. Production build/artifact synchronization and real acceptance
+are parent-task delivery steps; the bug remains in testing until user approval.

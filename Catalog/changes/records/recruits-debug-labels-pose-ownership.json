@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "change_id": "client.recruits-debug-labels-pose-ownership",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "entities",
+      "value": "recruits"
+    }
+  ],
+  "conditions": [
+    {
+      "requires": "Recruits1.15.2 client; captured crash in WATUT1.20.1-1.2.3; player acceptance pending"
+    }
+  ],
+  "precedence": {
+    "layer": "native_client_render_contract",
+    "priority": 80
+  },
+  "change": {
+    "summary": "Restore the missing native label-scale pose frame in exact Recruits1.15.2; fixes observed WATUT capture crash while preserving labels and caller transforms.",
+    "modifiers": [
+      {
+        "property": "recruits.debug_screen.labels_pose",
+        "operation": "replace",
+        "before": "DebugInvScreen.m_280003_(GuiGraphics,II)V unconditionally calls PoseStack.popPose at bytecode2044 despite no push in the method/class; ScreenBase labels is noop. This removes AbstractContainerScreen caller frame. WATUT renders the same screen for capture and then innerBlit/last fails with NoSuchElementException.",
+        "after": "Client-only, exact-version gated injection opens the missing local pose immediately before the native0.7 label scale. The existing native trailing pop closes it; AbstractContainerScreen caller frame and subsequent foreground/carried-item transforms remain intact. Native labels, inventory, commands, ordinary recruit and WATUT/FancyMenu behavior are retained."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Recruits1.15.2 DebugInvScreen native labels renderer via optional JEMCompat adapter",
+    "kind": "evidence_backed_client_crash_fix",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/recruits/RecruitDebugScreenPoseMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Repair the missing local matrix scope, preserving the native0.7 labels scale and trailing pop, rather than catch an empty stack, remove an intentional scale restoration, or disable WATUT/FancyMenu.",
+    "decision_source": "User reported actual crash. Exact21:46:09 report identifies DebugInvScreen, PoseStack.last and WATUT capture. Bytecode735 scales0.7 and2044 pops without push; caller owns its separate frame. Codex chose a narrow injection immediately before the native scale because no public event reaches this local label scope."
+  },
+  "introduced": {
+    "date": "2026-10-18",
+    "commit": "SELF",
+    "action": "replace",
+    "summary": "Restore the missing native label-scale pose frame in exact Recruits1.15.2; fixes observed WATUT capture crash while preserving labels and caller transforms."
+  },
+  "history": [
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "replace",
+      "summary": "Restore the missing native label-scale pose frame in exact Recruits1.15.2; fixes observed WATUT capture crash while preserving labels and caller transforms."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "native_recruit_debug_gui",
+      "client_rendering",
+      "WATUT_capture"
+    ],
+    "relations": [],
+    "notes": [
+      "Client presentation only; no new registry, packet or server authority. Crash observed; corrected artifact/player acceptance remains in testing.",
+      "Five Whys: empty PoseStack in WATUT -> prior labels render consumed caller frame -> native labels scale/pop lacks local push -> DebugInvScreen violated AbstractContainerScreen matrix scope -> restore missing native scope exactly before the scale, retaining all native drawing."
+    ],
+    "unresolved": [
+      "Real player reopening/capture acceptance has not been run; no game launch or automated test is authorized."
+    ]
+  }
+}

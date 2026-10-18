@@ -1,0 +1,135 @@
+{
+  "schema_version": 2,
+  "change_id": "settlements.handcrafted-native-home-repair",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "tag",
+      "registry": "blocks",
+      "value": "handcrafted:fancy_beds"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:villager"
+    },
+    {
+      "type": "namespace",
+      "registry": "entities",
+      "value": "recruits"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime": "Physical dedicated server only; exact Handcrafted3.0.6 installed, actual registered handcrafted BedBlock HEAD states; native Forge1.20.1-47.4.10 mapping/POI lifecycle."
+    },
+    {
+      "acceptance": "Source repair; parent production artifact build/sync and user sleep/wake acceptance pending. No game launch or automated test."
+    }
+  ],
+  "precedence": {
+    "layer": "native_settlement_sleep_compatibility",
+    "priority": 125,
+    "overrides": [
+      "settlements.evidence-derived-needs-overhaul"
+    ]
+  },
+  "change": {
+    "summary": "Repair incomplete native HOME POI integration for Handcrafted beds, including persisted valid-but-incomplete chunk POI sections without resetting claimed tickets.",
+    "modifiers": [
+      {
+        "property": "settlements.handcrafted_sleep.home_contract",
+        "operation": "replace",
+        "before": "Common setup injected supported HEAD states only into Forge TYPE_BY_STATE; HOME.is()/matchingStates() remained vanilla-only and Forge registry restoration was not reapplied.",
+        "after": "Preserve registered HOME record identity, maxTickets, validRange and immutable fields/hash; extend is()/matchingStates() through cached exact-state hooks plus native reverse map; reapply at dedicated ServerAboutToStart before chunks load."
+      },
+      {
+        "property": "settlements.handcrafted_sleep.existing_poi_sections",
+        "operation": "replace",
+        "before": "No migration/repair: native PoiSection.refresh skips IsValid=true saved sections even when beds were absent from old index, so AcquirePoi may find no HOME and SleepInBed lacks its required HOME memory.",
+        "after": "During native checkConsistencyWithBlocks on supplied loaded sections, only actual Handcrafted HEAD-containing palettes invalidate their existing PoiSection. Original native refresh rescans at most4096 cells and reuses old PoiRecords/tickets, adding missing native HOME records. No whole-world scan, forced chunk load, manual HOME assignment, teleport or AI replacement."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMSettlements dedicated native bed compatibility and native POI lifecycle seams",
+    "kind": "user_reported_sleep_defect_with_exact_bytecode_lifecycle_evidence",
+    "source_files": [
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/NativeBedCompatibility.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiTypesAccess.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiTypeHomeMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiSectionAccess.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiSectionStorageAccess.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiManagerBedRepairMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java",
+      "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json",
+      "Docs/settlements/standalone/README.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Restore actual native villager sleep acquisition for Handcrafted beds while preserving native claims, pathing, occupancy and saved worlds.",
+    "decision_source": "User2026-10-18 reports ordinary villagers still do not sleep in Handcrafted beds after overhaul; canonical evidence-first debugging workflow.",
+    "user_requested": "Fix Handcrafted sleep for normal villagers without replacing native AI or introducing singleplayer gameplay.",
+    "codex_choices": "Narrow matching API injections avoid mutating immutable PoiType record/hash used by registries. Existing native consistency call is the section-local repair owner; use its ticket-preserving refresh rather than recreate POIs or scan the world. Extend startup seam before chunk loading."
+  },
+  "introduced": {
+    "date": "2026-10-18",
+    "commit": "SELF",
+    "action": "repair_native_handcrafted_home_lifecycle",
+    "summary": "Complete existing HOME state APIs and use native ticket-preserving POI section refresh for loaded sections containing actual Handcrafted HEAD states; gameplay approval remains pending.",
+    "source_files": [
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/NativeBedCompatibility.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiTypesAccess.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiTypeHomeMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiSectionAccess.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiSectionStorageAccess.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiManagerBedRepairMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java",
+      "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json",
+      "Docs/settlements/standalone/README.md"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "repair_native_handcrafted_home_lifecycle",
+      "summary": "Complete existing HOME state APIs and use native ticket-preserving POI section refresh for loaded sections containing actual Handcrafted HEAD states; gameplay approval remains pending.",
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/NativeBedCompatibility.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiTypesAccess.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiTypeHomeMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiSectionAccess.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiSectionStorageAccess.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiManagerBedRepairMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java",
+        "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json",
+        "Docs/settlements/standalone/README.md"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "native_home_poi",
+      "villager_sleep",
+      "native_breeding_beds",
+      "poi_section_persistence",
+      "optional_recruit_sleep",
+      "dedicated_only"
+    ],
+    "relations": [
+      "Forge TYPE_BY_STATE -> PoiTypes.forState -> native POI section records -> AcquirePoi -> HOME memory -> SleepInBed",
+      "PoiSection IsValid=true -> native refresh skips -> missing historical bed records require targeted invalidation",
+      "native refresh snapshots records and reuses existing positional PoiRecord instances -> occupied claim tickets retained"
+    ],
+    "notes": [
+      "Exact mapped Forge47.4.10 uses Map<BlockState,PoiType>, then forState resolves Forge registry holder; no erased Holder/PoiType mismatch exists.",
+      "Handcrafted3.0.6 FancyBedBlock extends BedBlock, aliases PART/OCCUPIED and ships11beds in minecraft:beds. Native SleepInBed already accepts its tag/occupancy semantics.",
+      "ValidateNearbyPoi uses PoiManager.exists(holder predicate), not PoiType.is directly. Predicate mismatch is a demonstrated incomplete API contract, not asserted as the proven immediate cause of the particular villager report.",
+      "The source-level old-section omission is demonstrated; exact reported villager HOME/path/time/chunk state has not been captured in-game. Recruits RestGoal already uses native isBed/occupancy/navigation and is not replaced."
+    ],
+    "unresolved": [
+      "No runtime bed position/villager memory or physical sleep/wake acceptance captured in this subtask. Parent owns permitted production build/sync; user acceptance remains in testing."
+    ]
+  }
+}

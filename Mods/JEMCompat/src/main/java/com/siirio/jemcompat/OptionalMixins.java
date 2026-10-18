@@ -34,6 +34,11 @@ public final class OptionalMixins implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
+        if (mixinClassName.equals("com.siirio.jemcompat.mixin.client.recruits.RecruitDebugScreenPoseMixin")) {
+            var file = FMLLoader.getLoadingModList().getModFileById("recruits");
+            return file != null && file.getMods().stream().anyMatch(mod -> mod.getModId().equals("recruits")
+                    && mod.getVersion().toString().equals("1.15.2"));
+        }
         if (mixinClassName.equals("com.siirio.jemcompat.mixin.login.ServerLoginRespawnPacketMixin")) {
             return FMLLoader.getDist().isDedicatedServer()
                     && FMLLoader.getLoadingModList().getModFileById("serverlogin") != null;
