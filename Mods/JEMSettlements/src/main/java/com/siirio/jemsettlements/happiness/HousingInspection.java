@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.BedBlock;
 /** Exact bed-centred amenity region. No invented roof, door or furniture requirements. */
 public final class HousingInspection {
     private HousingInspection() {}
-    public static CompoundTag capture(MinecraftServer server,ResidentMood resident) {
+    public static CompoundTag capture(MinecraftServer server,ResidentMood resident,net.minecraft.server.level.ServerPlayer viewer) {
         CompoundTag result=new CompoundTag();result.putUUID("Resident",resident.villagerId());result.putInt("Radius",AmenityScanService.WIDTH/2);result.putInt("VerticalRadius",AmenityScanService.HEIGHT/2);
         result.putInt("VerifiedPoints",resident.homeAmenities().points());result.putBoolean("Stale",resident.homeAmenities().stale());
         ListTag examples=new ListTag();
@@ -24,7 +24,7 @@ public final class HousingInspection {
         AmenityEvidence evidence=new AmenityEvidence();
         for(int y=-AmenityScanService.HEIGHT/2;y<=AmenityScanService.HEIGHT/2;y++)for(int z=-AmenityScanService.WIDTH/2;z<=AmenityScanService.WIDTH/2;z++)for(int x=-AmenityScanService.WIDTH/2;x<=AmenityScanService.WIDTH/2;x++){
             BlockPos pos=anchor.offset(x,y,z);if(!level.hasChunkAt(pos)){result.putBoolean("Unloaded",true);continue;}
-            var state=level.getBlockState(pos);if(state.isAir())continue;
+            var state=level.getBlockState(pos);if(!SnapshotVisibility.disclose(level,pos,state,viewer))continue;
             int id=ids.computeIfAbsent(state,value->{palette.add(NbtUtils.writeBlockState(value));return palette.size()-1;});
             CompoundTag row=new CompoundTag();row.putLong("Position",pos.asLong());row.putInt("State",id);row.putBoolean("Bed",state.getBlock() instanceof BedBlock && pos.distSqr(anchor)<=1);
             row.merge(evidence.observe(level,pos,state));blocks.add(row);

@@ -48,7 +48,7 @@ public final class FoodValueRegistry extends SimpleJsonResourceReloadListener {
     public static Map<ResourceLocation, Value> snapshot() { return values; }
     public static void applySynced(Map<ResourceLocation, Value> synced) { values = Map.copyOf(synced); }
     private static Map<ResourceLocation, Value> loadBuiltIn() {
-        try (var stream = FoodValueRegistry.class.getResourceAsStream("/data/jem_settlements/happiness/food_values.json")) {
+        try (var stream = FoodValueRegistry.class.getResourceAsStream("/data/jem_settlements/happiness/food_values/base.json")) {
             if (stream == null) return Map.of();
             JsonElement root = com.google.gson.JsonParser.parseReader(new InputStreamReader(stream, StandardCharsets.UTF_8));
             Map<ResourceLocation, Value> loaded = new LinkedHashMap<>();

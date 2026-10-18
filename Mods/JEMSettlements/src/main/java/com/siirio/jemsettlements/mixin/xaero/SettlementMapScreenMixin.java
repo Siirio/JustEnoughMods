@@ -30,7 +30,7 @@ public abstract class SettlementMapScreenMixin {
     @Shadow private int mouseBlockPosZ;
 
     @Inject(method = "m_7856_", at = @At("TAIL"))
-    private void jem$request(CallbackInfo callback) { SettlementMapClient.opened(); }
+    private void jem$request(CallbackInfo callback) { SettlementMapClient.opened(this); }
 
     @Inject(method = "renderPreDropdown", at = @At("HEAD"))
     private void jem$settlements(GuiGraphics graphics, int mouseX, int mouseY, float partialTick, CallbackInfo callback) {
@@ -38,7 +38,7 @@ public abstract class SettlementMapScreenMixin {
         var screen = (GuiMap) (Object) this;
         SettlementMapClient.render(graphics, lastViewedDimensionId.location(), cameraX, cameraZ,
                 scale / Minecraft.getInstance().getWindow().getGuiScale(), screen.width, screen.height,
-                mouseBlockPosX, mouseBlockPosZ, mouseX, mouseY);
+                mouseBlockPosX, mouseBlockPosZ, mouseX, mouseY, rightClickMenu != null);
     }
 
     @Inject(method = "m_6375_", at = @At("HEAD"), cancellable = true)

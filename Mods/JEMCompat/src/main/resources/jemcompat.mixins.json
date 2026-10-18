@@ -17,6 +17,11 @@
     "worldtier.CaptainCorneliaHealingMixin",
     "events.LuminousEventVictoryMixin",
     "transport.EngineVehicleFuelMixin",
+    "transport.AircraftInventoryMixin",
+    "transport.AircraftFuelSlotMixin",
+    "transport.AircraftLiftMixin",
+    "backpack.BackpackWorkbenchMenuMixin",
+    "backpack.BackpackAugmentAdmissionMixin",
     "transport.EntityStuckSpeedAccessor",
     "transport.DonkeyInventoryMixin",
     "transport.FurnaceMinecartMixin",
@@ -27,12 +32,15 @@
     "trading.FabricTypeAwareTradeMixin"
   ],
   "client": [
+    "backpack.BackpackWorkbenchScreenMixin",
     "client.GuiPlayerRendererMixin",
+    "client.VillagerOutfitMixin",
     "client.GuiPlayerFrameMixin",
     "client.QuickSkinVanillaPreviewMixin",
     "client.EntityRenderDispatcherFrozenTintMixin",
     "client.IngredientListOverlayAccessor",
-    "client.StorageTerminalFocusMixin"
+    "client.StorageTerminalFocusMixin",
+    "client.OptionsKeyRetentionMixin"
   ],
   "injectors": {
     "defaultRequire": 1

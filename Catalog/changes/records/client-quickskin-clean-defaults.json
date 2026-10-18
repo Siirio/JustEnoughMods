@@ -1,0 +1,87 @@
+{
+  "schema_version": 2,
+  "change_id": "client.quickskin-clean-defaults",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:player"
+    }
+  ],
+  "conditions": [
+    {
+      "requires": "QuickSkin Forge1.20.1-2.6.2.4; matching jem.6 native editable bootstrap for existing-client ownership migration"
+    }
+  ],
+  "precedence": {
+    "layer": "native_client_preferences",
+    "priority": 90
+  },
+  "change": {
+    "summary": "Clean first-install native QuickSkin defaults avoid dangling maintainer asset references; existing user selections remain native editable overlays.",
+    "modifiers": [
+      {
+        "property": "client.quickskin.shipped_default_selection",
+        "operation": "replace",
+        "before": "Canonical quickskin-client contains nonempty active/own skin hashes and quickskin_preferences has one per-player UUID entry; no corresponding quickskin/uploads source tree is distributed.",
+        "after": "Only shipped activeSkinHash/activeCpmModelHash/activeCapeHash/playerOwnSkinHash are empty and shipped players map is empty. Native provider/config settings unchanged; live profile bytes/uploads untouched."
+      },
+      {
+        "property": "client.quickskin.optional_model_preferences",
+        "operation": "allow",
+        "before": "skin-preferences.json not listed in editable policy and absent from current canonical/test configs.",
+        "after": "Exact optional config/skin-preferences.json editable rule only; absent unmanaged file remains absent, not a pack source. This model choice file is not the active-skin owner."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Canonical clean Client distribution defaults and native AutoModpack editable policy",
+    "kind": "evidence_backed_clean_install_state_fix",
+    "source_files": [
+      "Client/ManagedPack/config/quickskin-client.json",
+      "Client/ManagedPack/config/quickskin_preferences.json",
+      "Server/automodpack/server.conf"
+    ]
+  },
+  "rationale": {
+    "purpose": "Avoid shipping another player selection without its personal sources and retain native local selection persistence without a provider/auth replacement or retry fallback.",
+    "decision_source": "User master section2 requires persistent skins; root explicitly authorized canonical-only personal hash/player-row sanitation after exact installed-bytecode investigation. Codex chose no provider Mixin because no failure in native restore was established."
+  },
+  "introduced": {
+    "date": "2026-10-18",
+    "commit": "SELF",
+    "action": "replace",
+    "summary": "Remove dangling maintainer-only appearance hashes and player UUID rows from shipped QuickSkin defaults; retain native editable user overlays and actual local uploads."
+  },
+  "history": [
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "replace",
+      "summary": "Remove dangling maintainer-only appearance hashes and player UUID rows from shipped QuickSkin defaults; retain native editable user overlays and actual local uploads."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "clean_client_installation",
+      "native_quickskin_restore",
+      "native_editable_preferences",
+      "personal_skin_sources"
+    ],
+    "relations": [
+      "ClientConfig active hashes and LocalAssetManager discovered metadata own restoration",
+      "Existing jem.6 AutoModpack editable overlay retains user bytes before first server-owned-to-editable migration",
+      "Personal quickskin/uploads and quickskin_cache stay outside managed pack inputs"
+    ],
+    "notes": [
+      "Five Whys: clean client selected hash has no texture -> native restore needs metadata for nonempty active hash -> local discovery has no corresponding uploaded source -> distribution ships maintainer config but excludes personal uploads -> clean-default ownership mistakenly included maintainer state; sanitize canonical default selections only.",
+      "Observed test profile saved active and own hashes each match one of two local PNG sources; model prefs file absent in both test/canonical configs. No live user state was mutated.",
+      "Native startup/join/respawn/quit/cache/source behavior inspected in exact2.6.2.4 bytecode. Native authentication/provider/network unchanged."
+    ],
+    "unresolved": [
+      "No live reconnect/restart or update acceptance performed; other skin complaints have no proven cause.",
+      "Parent must stage/publish/apply native generation and compare existing user preference hashes; no raw gameDir copy."
+    ]
+  }
+}

@@ -28,6 +28,7 @@ public final class JEMCompat {
     public JEMCompat() {
         var modBus = FMLJavaModLoadingContext.get().getModEventBus();
         TransportContent.register(modBus);
+        if (ModList.get().isLoaded("backpacked")) com.siirio.jemcompat.feature.backpack.BackpackContent.register(modBus);
         modBus.addListener(JEMCompat::creativeTabs);
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, JEMClientConfig.SPEC);
         MinecraftForge.EVENT_BUS.register(this);

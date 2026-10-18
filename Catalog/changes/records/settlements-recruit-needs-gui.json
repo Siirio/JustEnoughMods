@@ -117,7 +117,7 @@
       "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
       "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/jade/mood.png",
       "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/recruit/parchment.png",
-      "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/food_values.json",
+      "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/food_values/base.json",
       "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json"
     ]
   },
@@ -163,6 +163,16 @@
         "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/recruit/parchment.png",
         "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/food_values.json",
         "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "move_food_resource_into_reload_root",
+      "summary": "Preserve original food values; move packaged source into happiness/food_values/base.json so the existing reload listener actually discovers it. Historical path references remain history.",
+      "source_files": [
+        "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/food_values.json",
+        "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/food_values/base.json"
       ]
     }
   ],

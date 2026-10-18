@@ -2,6 +2,7 @@ package com.siirio.jemsettlements.compat.xaero;
 
 import com.siirio.jemsettlements.client.SettlementClientState;
 import com.siirio.jemsettlements.client.SettlementPriceRenderer;
+import com.siirio.jemsettlements.client.TerritoryDragState;
 import com.siirio.jemsettlements.network.SettlementNetwork;
 import com.siirio.jemsettlements.town.TerritoryQuote;
 import java.util.ArrayList;
@@ -22,11 +23,23 @@ public final class SettlementMapClient {
     public record Draft(Area area, int x, int z, TerritoryQuote quote) { }
     private static List<Area> areas = List.of();
     private static Draft draft;
-    private static boolean dragging, coins, received;
+    private static boolean coins, received;
+    private static TerritoryDragState state = TerritoryDragState.IDLE;
+    private static Object activeScreen;
+    private static long perBlock, minimum;
     private static long lastRequest;
     private SettlementMapClient() { }
-    public static void opened() { draft = null; dragging = false; refresh(true); }
-    public static void clear() { areas = List.of(); draft = null; dragging = false; received = false; lastRequest = 0; }
+    public static void opened(Object screen) { cancel(); activeScreen = screen; refresh(true); }
+    public static void cancel() { state = TerritoryDragState.CANCEL; draft = null; state = TerritoryDragState.IDLE; }
+    /** Also catches removal/focus loss when the native screen receives no mouse-up. */
+    public static void tick() {
+        var client = Minecraft.getInstance();
+        if (activeScreen == null) return;
+        if (client.screen != activeScreen || !client.isWindowActive()) { cancel(); activeScreen = null; return; }
+        if (state == TerritoryDragState.DRAGGING && org.lwjgl.glfw.GLFW.glfwGetMouseButton(client.getWindow().getWindow(), 0) != org.lwjgl.glfw.GLFW.GLFW_PRESS) cancel();
+        if (org.lwjgl.glfw.GLFW.glfwGetKey(client.getWindow().getWindow(), org.lwjgl.glfw.GLFW.GLFW_KEY_ESCAPE) == org.lwjgl.glfw.GLFW.GLFW_PRESS) cancel();
+    }
+    public static void clear() { areas = List.of(); cancel(); activeScreen = null; received = false; perBlock = 0; minimum = 0; lastRequest = 0; }
     public static void accept(CompoundTag view) {
         List<Area> rows = new ArrayList<>(); var tags = view.getList("MapAreas", Tag.TAG_COMPOUND);
         for (int i = 0; i < Math.min(256, tags.size()); i++) {
@@ -35,8 +48,12 @@ public final class SettlementMapClient {
             rows.add(new Area(row.getUUID("Id"), row.getString("Name"), dim, BlockPos.of(row.getLong("Center")),
                     row.getBoolean("Owned"), row.getInt("MinX"), row.getInt("MinZ"), row.getInt("MaxX"), row.getInt("MaxZ")));
         }
-        areas = List.copyOf(rows); coins = view.getBoolean("CoinCurrency"); received = true;
-        if (draft != null && !areas.contains(draft.area())) { draft = null; dragging = false; }
+        areas = List.copyOf(rows); coins = view.getBoolean("CoinCurrency");
+        long nextRate = view.getLong("ExpansionCostPerBlock"), nextMinimum = view.getLong("ExpansionMinimumCost");
+        if (nextRate != perBlock || nextMinimum != minimum) cancel();
+        perBlock = nextRate; minimum = nextMinimum; received = perBlock > 0L && minimum > 0L;
+        if (state == TerritoryDragState.COMMIT && !SettlementClientState.pending()) cancel();
+        if (draft != null && !areas.contains(draft.area())) cancel();
         if (view.hasUUID("Request") && view.contains("Reason") && !view.getString("Result").equals("RETRY")) {
             var player = Minecraft.getInstance().player;
             if (player != null) player.displayClientMessage(Component.translatable(view.getString("Reason")), true);
@@ -54,33 +71,43 @@ public final class SettlementMapClient {
                 && x >= a.minX() && x <= a.maxX() && z >= a.minZ() && z <= a.maxZ()).findFirst().orElse(null);
     }
     public static boolean begin(ResourceLocation dim, int x, int z) {
-        if (!received || SettlementClientState.pending()) return false;
+        if (!received || state == TerritoryDragState.COMMIT || SettlementClientState.pending()) return false;
+        cancel(); activeScreen = Minecraft.getInstance().screen;
         Area area = area(dim, x, z, true); if (area == null) return false;
-        draft = new Draft(area, x, z, TerritoryQuote.union(area.minX(), area.minZ(), area.maxX(), area.maxZ(), x, z, x, z));
-        dragging = true; return true;
+        draft = new Draft(area, x, z, TerritoryQuote.union(area.minX(), area.minZ(), area.maxX(), area.maxZ(), x, z, x, z, perBlock, minimum));
+        state = TerritoryDragState.DRAGGING; return true;
     }
     public static void update(ResourceLocation dim, int x, int z) {
-        if (!dragging || draft == null || !draft.area().dimension().equals(dim)) return;
+        if (state != TerritoryDragState.DRAGGING || draft == null) return;
+        if (!draft.area().dimension().equals(dim)) { cancel(); return; }
         Area a = draft.area();
         int tx = Math.max(a.center().getX() - 256, Math.min(a.center().getX() + 256, x));
         int tz = Math.max(a.center().getZ() - 256, Math.min(a.center().getZ() + 256, z));
-        draft = new Draft(a, tx, tz, TerritoryQuote.union(a.minX(), a.minZ(), a.maxX(), a.maxZ(), tx, tz, tx, tz));
+        draft = new Draft(a, tx, tz, TerritoryQuote.union(a.minX(), a.minZ(), a.maxX(), a.maxZ(), tx, tz, tx, tz, perBlock, minimum));
     }
-    public static boolean finish() { boolean wasDragging = dragging; dragging = false; return wasDragging; }
+    public static boolean finish() {
+        if (state != TerritoryDragState.DRAGGING) return false;
+        if (draft == null || draft.quote().addedCopper() <= 0L) cancel();
+        else state = TerritoryDragState.PREVIEW;
+        return true;
+    }
     public static Draft pending(ResourceLocation dim) {
-        return !dragging && draft != null && draft.area().dimension().equals(dim) && draft.quote().addedCopper() > 0L ? draft : null;
+        return state == TerritoryDragState.PREVIEW && draft != null && draft.area().dimension().equals(dim) && draft.quote().addedCopper() > 0L ? draft : null;
     }
-    public static Component price(Draft value) { return SettlementPriceRenderer.format(value.quote().addedCopper(), coins); }
+    public static Component price(Draft value) { return coins ? com.siirio.jemeconomy.physical.CoinFormatter.formatAll(value.quote().addedCopper()) : SettlementPriceRenderer.format(value.quote().addedCopper(), false); }
     public static void confirm(Draft value) {
-        if (draft != value || SettlementClientState.pending()) return;
+        if (state != TerritoryDragState.PREVIEW || draft != value || SettlementClientState.pending()) return;
         var a = value.area(); CompoundTag payload = new CompoundTag(); payload.putInt("X", value.x()); payload.putInt("Z", value.z());
         payload.putInt("ExpectedMinX", a.minX()); payload.putInt("ExpectedMaxX", a.maxX());
         payload.putInt("ExpectedMinZ", a.minZ()); payload.putInt("ExpectedMaxZ", a.maxZ());
-        if (SettlementClientState.action("mapexpand", a.id(), payload)) draft = null;
+        payload.putLong("ExpectedCost", value.quote().addedCopper()); payload.putBoolean("ExpectedCoins", coins);
+        if (SettlementClientState.action("mapexpand", a.id(), payload)) { state = TerritoryDragState.COMMIT; draft = null; }
     }
     public static void render(GuiGraphics graphics, ResourceLocation dim, double cx, double cz, double scale,
-                              int width, int height, int blockX, int blockZ, int mouseX, int mouseY) {
+                              int width, int height, int blockX, int blockZ, int mouseX, int mouseY, boolean menuOpen) {
         refresh(false); if (!received) return;
+        if (state == TerritoryDragState.PREVIEW && !menuOpen) cancel();
+        if (draft != null && !draft.area().dimension().equals(dim)) cancel();
         update(dim, blockX, blockZ);
         for (Area a : areas) if (a.dimension().equals(dim)) rectangle(graphics, a.minX(), a.minZ(), a.maxX(), a.maxZ(),
                 a.owned() ? 0xE4AF87 : 0xB37D55, a.owned() ? 0x42 : 0x2C, cx, cz, scale, width, height);

@@ -91,6 +91,8 @@ dependencies {
     compileOnly fg.deobf(files(installedMod('endrem_forge-*.jar')))
     compileOnly fg.deobf(files(installedMod('trotting_wagons-*.jar')))
     compileOnly fg.deobf(files(installedMod('immersive_aircraft-*.jar')))
+    compileOnly fg.deobf(files(installedMod('backpacked-forge-*.jar')))
+    compileOnly fg.deobf(files(installedMod('framework-forge-*.jar')))
     compileOnly files(installedMod('BetterAdvancements-*.jar'))
     compileOnly files('../JEMAchievementGuide/build/classes/java/main')
     compileOnly files('../JEMPackCore/build/classes/java/main')

@@ -1,0 +1,208 @@
+{
+  "schema_version": 2,
+  "change_id": "backpack.augment-bay-and-workbench",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "items",
+      "value": "backpacked"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "jemcompat:augment_bay"
+    },
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "jemcompat:augment_bay"
+    }
+  ],
+  "conditions": [
+    {
+      "expression": "Dedicated server gameplay; Backpacked3.0.9 and Framework0.8.0 installed; client retains registry/native-menu compatibility"
+    }
+  ],
+  "precedence": {
+    "layer": "native_mod_extensions",
+    "priority": 40
+  },
+  "change": {
+    "summary": "Native Backpacked Workbench augment, paid Augment Bay station and persistent3x3 crafting extension with original editable pixel assets.",
+    "modifiers": [
+      {
+        "property": "backpack.native_augment_registry",
+        "operation": "add",
+        "before": "Installed Backpacked native AugmentType codec registry and native free selection/settings; no Workbench.",
+        "after": "Register jemcompat:workbench through native custom Forge registry. Codec and native augment packets save installed state. A station-paid backpack-local entitlement is required for native Workbench selection; ordinary native augments keep their existing selection path."
+      },
+      {
+        "property": "backpack.augment_bay_station",
+        "operation": "add",
+        "before": null,
+        "after": {
+          "id": "jemcompat:augment_bay",
+          "recipe": "4 iron ingots +4 planks +1 crafting table",
+          "resources_per_station_change": "4 lapis lazuli; first Workbench purchase also consumes1 crafting table",
+          "validation": [
+            "live backpack item",
+            "registered non-disabled augment",
+            "native unlocked/max bay",
+            "duplicate across4 positions",
+            "native augment prerequisites",
+            "dependent installed augments",
+            "complete resources before mutation"
+          ],
+          "persistence": "Use native SavedAugments and Augments.cached on actual inserted backpack. Return unused input items through vanilla clearContainer on menu close. No block entity or second backpack inventory."
+        }
+      },
+      {
+        "property": "backpack.workbench_inventory",
+        "operation": "add",
+        "before": null,
+        "after": {
+          "owner": "Native equipped owner BackpackContainerMenu + actual BackpackInventory ItemStack",
+          "layout": "Append9 ingredients and vanilla ResultSlot; move native player inventory by76px; keep existing indices. Bounded wheel viewport scrolling with native popup priority for short GUI scales.",
+          "persistence": "JemWorkbenchIngredients NBT on backpack; preserve while removed/disabled; restore on enable. Result is authoritative recipe preview recomputed from persisted matrix, never persisted as an independently claimable item.",
+          "crafting": "Native RecipeManager, limited-crafting/features, ResultSlot ingredient/remainder/reward hooks; result packets use actual appended slot index; explicit shift transfer and no pick-all extraction from result.",
+          "lifecycle": "Native change/toggle packets reopen native menu only when installed slot layout differs; shelf/dock/pickpocket remain native non-owner screens.",
+          "admission": "Reuse exact BackpackInventory.isAllowedItem for all ingredient Slots and authoritative grid canPlaceItem/setItem. Recipe remainders and direct writes pass the same container boundary. Persist sanitizes existing loaded and in-place-mutated forbidden contents by removal then return to player inventory/drop, never nested retention or deletion."
+        }
+      },
+      {
+        "property": "backpack.augment_bay_assets",
+        "operation": "add",
+        "before": null,
+        "after": "Original16px block faces,12px augment icon,176x220 station GUI and176x76 native workbench insert. Editable6 OpenRaster sources + hand-authored exporter retained; native Backpacked buttons reused through public TextureDefinitions without copying third-party pixel files."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCompat native Backpacked adapter",
+    "kind": "user_requested_feature",
+    "source_files": [
+      "Mods/JEMCompat/build.gradle",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/AugmentBayBlock.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/AugmentBayMenu.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/AugmentBayScreen.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackClient.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackContent.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackCraftingGrid.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackWorkbench.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/WorkbenchAugment.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackAugmentAdmissionMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackWorkbenchMenuMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackWorkbenchScreenMixin.java",
+      "Mods/JEMCompat/src/main/resources/META-INF/mods.toml",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/blockstates/augment_bay.json",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/en_us.json",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/ru_ru.json",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/models/block/augment_bay.json",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/models/item/augment_bay.json",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/block/augment_bay_front.png",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/block/augment_bay_side.png",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/block/augment_bay_top.png",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/gui/augment_bay.png",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/gui/backpack_workbench.png",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/gui/workbench_augment.png",
+      "Mods/JEMCompat/src/main/resources/data/jemcompat/loot_tables/blocks/augment_bay.json",
+      "Mods/JEMCompat/src/main/resources/data/jemcompat/recipes/augment_bay.json",
+      "Mods/JEMCompat/src/main/resources/data/minecraft/tags/blocks/mineable/axe.json",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Provide a real augment workstation and persistent crafting between native inventories without replacing Backpacked persistence, menus or native augment settings.",
+    "decision_source": "User master overhaul section14; user authorizes implementation choices without further design confirmation.",
+    "user_requested": "Original Minecraft pixel art/GUI, native-compatible augment install/change, resource/duplicate validation, saved upgrades and functional saved crafting with shift-click.",
+    "codex_choices": "Native custom augment registry + narrow Mixins rather than fork, separate station,4-lapis fee and first-table purchase entitlement,9 item-NBT ingredient slots,76px insert with wheel viewport handling. Native pre-existing ordinary augment selection remains unchanged."
+  },
+  "introduced": {
+    "date": "2026-10-18",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "Native Backpacked Workbench augment, paid Augment Bay station and persistent3x3 crafting extension with original editable pixel assets."
+  },
+  "history": [
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "Native Backpacked Workbench augment, paid Augment Bay station and persistent3x3 crafting extension with original editable pixel assets.",
+      "source_files": [
+        "Mods/JEMCompat/build.gradle",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/AugmentBayBlock.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/AugmentBayMenu.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/AugmentBayScreen.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackClient.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackContent.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackCraftingGrid.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackWorkbench.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/WorkbenchAugment.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackAugmentAdmissionMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackWorkbenchMenuMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackWorkbenchScreenMixin.java",
+        "Mods/JEMCompat/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/blockstates/augment_bay.json",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/en_us.json",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/ru_ru.json",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/models/block/augment_bay.json",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/models/item/augment_bay.json",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/block/augment_bay_front.png",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/block/augment_bay_side.png",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/block/augment_bay_top.png",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/gui/augment_bay.png",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/gui/backpack_workbench.png",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/gui/workbench_augment.png",
+        "Mods/JEMCompat/src/main/resources/data/jemcompat/loot_tables/blocks/augment_bay.json",
+        "Mods/JEMCompat/src/main/resources/data/jemcompat/recipes/augment_bay.json",
+        "Mods/JEMCompat/src/main/resources/data/minecraft/tags/blocks/mineable/axe.json",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "preserve_native_storage_admission",
+      "summary": "Independent review identified crafting-grid bypass of native backpack/shulker/config blacklist. Enforce native admission at UI, container and persistence/remainder seams; return prohibited existing ingredients safely.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackCraftingGrid.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackWorkbenchMenuMixin.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "native backpack augments",
+      "backpack item NBT",
+      "recipes and craft remainders",
+      "station input conservation",
+      "shift transfer",
+      "client native menu sizing/popups",
+      "GUI Scale",
+      "shared registry/network compatibility",
+      "integrated singleplayer preservation"
+    ],
+    "relations": [
+      "Framework AUGMENT_TYPES -> native Augment codec -> native Augments.cached",
+      "AugmentBayMenu resource validation -> actual backpack state",
+      "Native BackpackContainerMenu -> backpack-owned3x3 ingredients -> vanilla RecipeManager/ResultSlot",
+      "Native BackpackScreen -> original art strip and relocated native player panel"
+    ],
+    "notes": [
+      "Exact installed Backpacked3.0.9 JAR SHA2562b9b07d873fc3a913e6f259cd0e85c45999e1f1c03927a7202fbd4f7fb185d14 and Framework0.8.0 source/bytecode inspected; native vanilla1.20.1 crafting signatures and behavior inspected.",
+      "No fork, third-party binary modification, copied unlicensed pixel asset or parallel backpack item-content authority.",
+      "Original source/export contact sheet visually inspected. No automated tests, static analysis or gameplay launch by worker; production build handled by root.",
+      "Missing user screenshot3/4 explicitly prevent exact-reference comparison. Native installed Backpacked material pixels inspected as technical reference; external official screenshots remain proposed references."
+    ],
+    "unresolved": [
+      "Player acceptance pending: station closure/disconnect, all shift/drag/hotbar gestures, crafting hooks/remainders/partial output, toggles/swaps/reconnect/death, GUI Scale and viewport navigation.",
+      "No screenshot-specific fidelity or runtime appearance acceptance claimed; OpenRaster editor opening is unverified."
+    ]
+  }
+}

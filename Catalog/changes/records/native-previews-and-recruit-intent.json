@@ -1,0 +1,144 @@
+{
+  "schema_version": 2,
+  "change_id": "client.native-previews-and-recruit-intent",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:player"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:villager"
+    },
+    {
+      "type": "namespace",
+      "registry": "entities",
+      "value": "recruits"
+    }
+  ],
+  "conditions": [
+    {
+      "requires": "matching fresh local artifacts; player acceptance pending"
+    }
+  ],
+  "precedence": {
+    "layer": "native_client_presentation_and_settlement_enrollment",
+    "priority": 60
+  },
+  "change": {
+    "summary": "Correct native GUI body rotation, reuse loaded player skins, use existing race name keys, vary villager outfits visually and claim recruit enrollment interaction intent.",
+    "modifiers": [
+      {
+        "property": "client.gui_player_rotation",
+        "operation": "replace",
+        "before": "Uses dispatcher render yaw; native inventory supplies body pose separately",
+        "after": "Use native yBodyRot for skin-only GUI mesh; direct race/QuickSkin rotation contract preserved"
+      },
+      {
+        "property": "client.smp_player_skin",
+        "operation": "replace",
+        "before": "Preview overrides appearance and only loads authenticated SkinManager profile textures",
+        "after": "Loaded real player remains appearance source, including installed skin provider; unloaded profiles retain native SkinManager lookup"
+      },
+      {
+        "property": "client.smp_race_label",
+        "operation": "replace",
+        "before": "Translation key missing .name suffix",
+        "after": "Use existing jem.roles.race.<id>.name localization"
+      },
+      {
+        "property": "villager.client_outfit_type",
+        "operation": "derive",
+        "before": "Native biome type fixes outfit in a single biome",
+        "after": "Optional deterministic UUID selection among seven native outfit textures; saved type, professions, trades and breeding remain native"
+      },
+      {
+        "property": "recruit.interaction",
+        "operation": "replace",
+        "before": "Rejected Shift+bell registration falls through to native Shift menu; normal click can change follow state",
+        "after": "Claim Shift+bell for server enrollment on both Forge interaction paths, show result, and open owned recruit management only for normal main-hand click"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Shared vanilla GUI mesh, SMP appearance projection, client villager outfit layer and Settlements interaction router",
+    "kind": "user_requested_behavior_and_bug_fix",
+    "source_files": [
+      "Mods/JEMMenuSupport/src/main/java/com/siirio/jemmenus/client/VanillaGuiPlayers.java",
+      "Mods/JEMMenuSupport/build.gradle",
+      "Mods/JEMMenuSupport/embed.gradle",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/PreviewPlayerEntity.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/config/JEMClientConfig.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/VillagerOutfitMixin.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitRuntime.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "User supplied current screenshots and explicit outfit/enrollment/menu corrections.",
+    "decision_source": "User defines behavior; implementation chosen by Codex after exact native 1.20.1 and Recruits 1.15.2 bytecode inspection."
+  },
+  "introduced": {
+    "date": "2026-10-18",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "Correct native GUI body rotation, reuse loaded player skins, use existing race name keys, vary villager outfits visually and claim recruit enrollment interaction intent.",
+    "source_files": [
+      "Mods/JEMMenuSupport/src/main/java/com/siirio/jemmenus/client/VanillaGuiPlayers.java",
+      "Mods/JEMMenuSupport/build.gradle",
+      "Mods/JEMMenuSupport/embed.gradle",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/PreviewPlayerEntity.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/config/JEMClientConfig.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/VillagerOutfitMixin.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitRuntime.java"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "Correct native GUI body rotation, reuse loaded player skins, use existing race name keys, vary villager outfits visually and claim recruit enrollment interaction intent.",
+      "source_files": [
+        "Mods/JEMMenuSupport/src/main/java/com/siirio/jemmenus/client/VanillaGuiPlayers.java",
+        "Mods/JEMMenuSupport/build.gradle",
+        "Mods/JEMMenuSupport/embed.gradle",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/PreviewPlayerEntity.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/config/JEMClientConfig.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/VillagerOutfitMixin.java",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitRuntime.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "Inventory player preview",
+      "SMP profile appearance and race name",
+      "Villager resource-pack outfits",
+      "Recruit enrollment and Jade needs",
+      "Native recruit menu"
+    ],
+    "relations": [],
+    "notes": [
+      "Current sandbox and canonical free-recruit hire presentation/mixin/material classes and Recruits JAR compare byte-for-byte equal; no fabricated UI rewrite.",
+      "Shared GUI library version raised to 1.1.1 and embedded minimum updated to prevent old selected helpers.",
+      "Fresh Compat/Server/Races/Settlements built and synchronized to local Server and ManagedPack; native generation34 applied to test jem with matching approved SHA256s and no pending transaction. No client/gameplay launch.",
+      "Final interaction routing explicitly preserves Villager Noble native trading and Creative recruit-spawn-egg diagnostics."
+    ],
+    "unresolved": [
+      "Real GUI/player acceptance pending",
+      "Hire UI difference needs current runtime inspection; no source/artifact overwrite established"
+    ]
+  }
+}

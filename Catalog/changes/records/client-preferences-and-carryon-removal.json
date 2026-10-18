@@ -1,0 +1,134 @@
+{
+  "schema_version": 2,
+  "change_id": "client.preferences-and-carryon-removal",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "carryon"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:player"
+    }
+  ],
+  "conditions": [
+    {
+      "requires": "matching jem.6 bootstrap and newly published editable policy for preference preservation"
+    }
+  ],
+  "precedence": {
+    "layer": "client_preferences_and_distribution",
+    "priority": 50
+  },
+  "change": {
+    "summary": "Remove Carry On from current client/server inputs; retain historical baselines and preserve shader/skin/keybind preference bytes through native AutoModpack.",
+    "modifiers": [
+      {
+        "property": "distribution.installed",
+        "operation": "deny",
+        "before": "Carry On Forge 1.20.1-2.1.2.7 installed",
+        "after": "Carry On JAR and live client/server configs removed; historical release baseline and past research remain unchanged"
+      },
+      {
+        "property": "client.personal_preferences",
+        "operation": "replace",
+        "before": "main.editable empty; unchanged server files silently reset and new versions can replace editable overlays",
+        "after": "Explicit presentation preference policy; jem.6 captures live bytes during server-owned to editable transition and keeps personal overlays across server default changes"
+      },
+      {
+        "property": "client.options.removed_mod_keybinds",
+        "operation": "allow",
+        "before": "Vanilla Options.save writes only currently registered key mappings, losing absent mods keys",
+        "after": "Capture existing native key_* lines before save; append only omitted names after native save. Currently registered keys retain vanilla precedence and native conflict indications."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Native AutoModpack reconciliation and current JEM distribution",
+    "kind": "user_requested_behavior_and_bug_fix",
+    "source_files": [
+      "Mods/JEMBootstrap/upstream.json",
+      "Mods/JEMBootstrap/patches/reliable-updates.patch",
+      "Server/automodpack/server.conf",
+      "tools/workspace.json",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/OptionsKeyRetentionMixin.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "User requires durable personal settings and complete Carry On removal without loss of world objects.",
+    "decision_source": "User supplied settings/removal requirements; scoped native reconciliation implementation chosen by Codex."
+  },
+  "introduced": {
+    "date": "2026-10-18",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "Preserve personal preferences through native editable migration and remove Carry On after stopped-world backup.",
+    "source_files": [
+      "Mods/JEMBootstrap/upstream.json",
+      "Mods/JEMBootstrap/patches/reliable-updates.patch",
+      "Server/automodpack/server.conf",
+      "tools/workspace.json"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "Preserve personal preferences through native editable migration and remove Carry On after stopped-world backup.",
+      "source_files": [
+        "Mods/JEMBootstrap/upstream.json",
+        "Mods/JEMBootstrap/patches/reliable-updates.patch",
+        "Server/automodpack/server.conf",
+        "tools/workspace.json"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "remove",
+      "summary": "Remove current Carry On distribution inputs after clean stopped-world backup; keep historical baselines intact.",
+      "source_files": [
+        "Client/ManagedPack/config/carryon-client.toml",
+        "Client/ManagedPack/config/carryon-common.toml",
+        "Client/ManagedPack/mods/carryon-forge-1.20.1-2.1.2.7.jar",
+        "Server/config/carryon-client.toml",
+        "Server/config/carryon-common.toml",
+        "Server/mods/carryon-forge-1.20.1-2.1.2.7.jar"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "Preserve removed mod key entries across native options saves",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/OptionsKeyRetentionMixin.java",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "AutoModpack editable overlays",
+      "Shader selection/enabled flag",
+      "QuickSkin client preferences",
+      "Mod keybind preferences",
+      "Carry On current distribution"
+    ],
+    "relations": [],
+    "notes": [
+      "Stopped-world backup and preference snapshot stored outside repository. Saved CarryOnData type INVALID for all 17 player records before removal.",
+      "No installed mod declared Carry On in Forge/Fabric metadata.",
+      "Settings gameplay/update acceptance pending; configuration preservation does not establish skin provider availability or mod-removed keybind persistence.",
+      "Native generation33 token065a141ba595da93b092f894a2afa9ea9ffc9552 applied through UpdateAttempt; all22 closed-client preference hashes unchanged and no transaction pending. This proves this application, not a real game restart/skin service acceptance."
+    ],
+    "unresolved": [
+      "Real settings restart/update acceptance pending",
+      "Skin source/cache failure not yet independently reproduced"
+    ]
+  }
+}

@@ -21,7 +21,7 @@ public final class SettlementActions {
     private static final Map<UUID, Subscription> VIEWERS = new HashMap<>();
     private static int viewerCursor;
     private static final Map<UUID, Long> LAST_REQUEST = new HashMap<>();
-    private static final java.util.Set<String> READS = java.util.Set.of("open", "select", "refresh", "close", "guide", "heartbeat", "mapopen", "housing", "storage");
+    private static final java.util.Set<String> READS = java.util.Set.of("open", "select", "refresh", "close", "guide", "heartbeat", "mapopen", "housing", "city", "storage");
     private SettlementActions() { }
 
     public static void handle(ServerPlayer player, SettlementActionPacket packet) {
@@ -65,7 +65,10 @@ public final class SettlementActions {
             if(packet.action().equals("housing")) {
                 var owned=SettlementApi.ownedTown(player,packet.townId());
                 if(owned.isPresent() && packet.payload().hasUUID("Entity")) SettlementSavedData.get(player.getServer()).resident(packet.payload().getUUID("Entity"))
-                    .filter(resident->resident.townId().equals(owned.get().id())&&resident.living()).ifPresent(resident->response.put("Housing",com.siirio.jemsettlements.happiness.HousingInspection.capture(player.getServer(),resident)));
+                    .filter(resident->resident.townId().equals(owned.get().id())&&resident.living()).ifPresent(resident->response.put("Housing",com.siirio.jemsettlements.happiness.HousingInspection.capture(player.getServer(),resident,player)));
+            }
+            if(packet.action().equals("city")) {
+                SettlementApi.ownedTown(player,packet.townId()).ifPresent(owned -> response.put("City",com.siirio.jemsettlements.happiness.CityInspection.capture(player,owned)));
             }
             SettlementNetwork.send(player, new TownViewPacket(false, response));
             return;
@@ -147,6 +150,11 @@ public final class SettlementActions {
         int x = p.getInt("X"), z = p.getInt("Z");
         if (!packet.action().equals("mapexpand") && ((long) x < (long) town.territoryMinX() - 1L || (long) x > (long) town.territoryMaxX() + 1L
                 || (long) z < (long) town.territoryMinZ() - 1L || (long) z > (long) town.territoryMaxZ() + 1L)) return SettlementApi.Result.INVALID;
+        if (Math.abs((long) x - town.center().getX()) > 256L || Math.abs((long) z - town.center().getZ()) > 256L) return SettlementApi.Result.CONFLICT;
+        long expected = com.siirio.jemsettlements.town.TerritoryQuote.union(town.territoryMinX(), town.territoryMinZ(),
+                town.territoryMaxX(), town.territoryMaxZ(), x, z, x, z).addedCopper();
+        if (!p.contains("ExpectedCost") || p.getLong("ExpectedCost") != expected
+                || p.getBoolean("ExpectedCoins") != com.siirio.jemsettlements.currency.SettlementCurrency.coins()) return SettlementApi.Result.CONFLICT;
         return SettlementApi.expandTerritory(player, town.id(), x, z, packet.requestId());
     }
     private static boolean successful(SettlementApi.Result result) { return result == SettlementApi.Result.ACCEPTED || result == SettlementApi.Result.REPLAYED; }
@@ -226,6 +234,8 @@ public final class SettlementActions {
     private static CompoundTag mapEnvelope(ServerPlayer player, Subscription sub) {
         CompoundTag view = new CompoundTag(); view.putUUID("Session", sub.session); view.putBoolean("MapOnly", true);
         view.putBoolean("CoinCurrency", com.siirio.jemsettlements.currency.SettlementCurrency.coins());
+        view.putLong("ExpansionCostPerBlock", com.siirio.jemsettlements.payroll.SettlementEconomyConfig.expansionPerBlock());
+        view.putLong("ExpansionMinimumCost", com.siirio.jemsettlements.payroll.SettlementEconomyConfig.expansionMinimum());
         ListTag areas = new ListTag(); UUID owner = SettlementAuthority.principal(player).orElse(null);
         for (TownRecord town : SettlementSavedData.get(player.getServer()).towns().stream().limit(256).toList()) {
             CompoundTag row = new CompoundTag(); row.putUUID("Id", town.id()); row.putString("Name", town.name());

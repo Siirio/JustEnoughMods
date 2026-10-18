@@ -166,7 +166,7 @@ Build или runtime action выполняется только по прямо�
 
 - Один и тот же `mods/jem-bootstrap.jar` устанавливается на dedicated server и вручную на новый клиент. Текущий установленный файл — upstream AutoModpack `5.0.0-rc.1`; исправленная source revision `jem.4` поверх `5.0.0-rc.1` принадлежит `Mods/JEMBootstrap`, основана на exact upstream commit `4348bf2532bb8261af3297cf2480a3a0ee91befb` под LGPL-3.0-or-later и сохраняет native downloader, planner, transaction, object store и ownership ledger. Исходный commit, hashes затронутых файлов, native source patch и лицензия сохраняются в модуле; готовый сторонний JAR побайтно не патчится.
 - `python Mods/JEMBootstrap/prepare.py` получает pinned upstream source и применяет `patches/reliable-updates.patch`, исключая tests и fixtures. `--source <локальный upstream checkout>` берёт тот же commit через git archive. Только явно запрошенный `--build` запускает upstream Gradle wrapper и `oneJar` для Forge 1.20.1; обычный результат находится в `Mods/JEMBootstrap/build/libs/jem-bootstrap.jar`. Test, verification и formatting tasks отключены. Подготовка исходников не меняет Client, Server, launcher profiles или release baseline.
-- Upstream Gradle plugins требуют build JVM Java 25; путь можно передать через `--java-home <JDK>` без изменения JVM TLauncher. Runtime class target остаётся Java 17. Native AutoModpack version остаётся `5.0.0-rc.1`, чтобы существующий сервер не скачал upstream JAR обратно через version synchronization; изменённый файл явно отмечен manifest attributes `JEM-Bootstrap-Revision`, `JEM-Upstream-Commit` и `JEM-Skip-Shaders`. Текущий обычный server/stable bootstrap остаётся revision `jem.4`; source revision `jem.5` добавляет только опциональный client distribution profile и сохраняет текущий wire contract.
+- Upstream Gradle plugins требуют build JVM Java 25; путь можно передать через `--java-home <JDK>` без изменения JVM TLauncher. Runtime class target остаётся Java 17. Native AutoModpack version остаётся `5.0.0-rc.1`, чтобы существующий сервер не скачал upstream JAR обратно через version synchronization; изменённый файл явно отмечен manifest attributes `JEM-Bootstrap-Revision`, `JEM-Upstream-Commit` и `JEM-Skip-Shaders`. Текущий обычный local Server, clean installer и test jem используют revision `jem.6`; stable profile остаётся на `jem.4`. Source revision `jem.6` сохраняет wire version и опциональный shader distribution profile, добавляя сохранение персональных editable preferences.
 - Исправленная revision ждёт helper lease в BootRecovery до чтения состояния и загрузки active JAR; при таймауте останавливает запуск вместо загрузки старых модов. Recovery признаёт выполненную замену только при совпадении exact planned result и сохранённых исходных bytes в CAS; настоящая сторонняя правка вызывает native replan. Сам helper получает loader type и native loader service от запустившего его клиента и выполняет bounded native replan без внешних скриптов.
 - Первый Windows-запуск публикует распакованный loader impl через atomic directory move, но при `AccessDeniedException` от Windows provider безопасно повторяет ещё не выполненный перенос обычным move; если atomic операция фактически завершилась, состояние распознаётся по исчезнувшему source и существующему target. Поэтому чистому клиенту не требуется заранее созданный `automodpack/client/impl-cache`.
 - Все native state/config writes сначала публикуются atomic file replace; если Windows provider сообщает общий `AccessDeniedException` вместо специального unsupported-atomic результата, владелец проверяет, не завершился ли перенос фактически, и только при сохранённом temporary повторяет замену обычным same-filesystem move. Это распространяется на `connection.json`, journals, selection, ownership и остальные записи через единый `DurableFiles`.
@@ -314,6 +314,71 @@ The editable native-only merchandise and weighted profession pools live beside i
 
 The dedicated-only KubeJS economy_recipe_guards.js changes the mincer stone recipe from two to one cobblestone, eliminating the material amplifier with fuel-free Create fan smelting. Integrated singleplayer skips this guard. Full catalog reconciliation and exact evidence limits are in Docs/economy/FINAL_PRICE_LIST/.
 
-JEMMenuSupport 1.1.0 owns the shared vanilla GUI skin mesh. Compat and Races now embed it and their full distributables require jarJar/reobfJarJar (Races productionJar invokes that full profile). Every rebuilt consumer requires [1.1.0,2.0.0): artifactVersion alone does not require the new API, and the former [1.0.0,2.0.0) floor allowed Forge to select Server’s embedded 1.0 without VanillaGuiPlayers. The older Server range intersects the new floor, so 1.0 is excluded. Local development money requires -Djem.localDevelopmentMoney=true, an ignored Server/local/unlimited-wallet-account.txt containing the authorized account UUID, and explicit server-thread EconomySavedData.enableLocalDevelopmentWallet activation per runtime. No production command enables it. Persisted development issuance belongs only to this local world; never deploy that ledger. Before first activation preserve world/data/jem_economy.dat while cleanly stopped. Without both local opt-ins an issued ledger freezes instead of silently weakening fixed-supply conservation. Aircraft native refuel() feeds the onboard engine buffer during flight; do not restrict that lifecycle method to grounded aircraft.
+JEMMenuSupport 1.1.1 owns the shared vanilla GUI skin mesh. Compat and Races now embed it and their full distributables require jarJar/reobfJarJar (Races productionJar invokes that full profile). Every rebuilt consumer requires [1.1.1,2.0.0): artifactVersion alone does not require the new API, and the former [1.0.0,2.0.0) floor allowed Forge to select Server’s embedded 1.0 without VanillaGuiPlayers. The older Server range intersects the new floor, so 1.0 is excluded. Local development money requires -Djem.localDevelopmentMoney=true, an ignored Server/local/unlimited-wallet-account.txt containing the authorized account UUID, and explicit server-thread EconomySavedData.enableLocalDevelopmentWallet activation per runtime. No production command enables it. Persisted development issuance belongs only to this local world; never deploy that ledger. Before first activation preserve world/data/jem_economy.dat while cleanly stopped. Without both local opt-ins an issued ledger freezes instead of silently weakening fixed-supply conservation. Aircraft native refuel() feeds the onboard engine buffer during flight; do not restrict that lifecycle method to grounded aircraft.
 
-Server Login1.0.3 rejects ServerboundClientCommandPacket before authentication, which traps a saved Health0 player on the death screen before they can type login. JEM Compat’s optional ServerLoginRespawnPacketMixin is physically dedicated-only and admits only PERFORM_RESPAWN through PacketPolicy. Vanilla still owns death/credits validation, replacement entity/connection binding and death penalties; the same AuthGate connection remains locked. REQUEST_STATS, movement, inventory, gameplay actions and all account writes retain their existing gate. This adapter adds no registry/channel/schema/input/resource contract: only the local Server Compat artifact needs replacement, while ManagedPack/test jem keep publication32. The current server-only overlay is recorded in Docs/races/login-respawn-recovery.json.
+Server Login1.0.3 rejects ServerboundClientCommandPacket before authentication, which traps a saved Health0 player on the death screen before they can type login. JEM Compat’s optional ServerLoginRespawnPacketMixin is physically dedicated-only and admits only PERFORM_RESPAWN through PacketPolicy. Vanilla still owns death/credits validation, replacement entity/connection binding and death penalties; the same AuthGate connection remains locked. REQUEST_STATS, movement, inventory, gameplay actions and all account writes retain their existing gate. This adapter adds no registry/channel/schema/input/resource contract: the original fix needed only the local Server Compat artifact and kept ManagedPack/test jem on publication32. That historical server-only delivery is recorded in Docs/races/login-respawn-recovery.json; the later shared GUI checkpoint also includes the same protected adapter.
+
+
+## Personal settings and native preview correction — 2026-10-18
+
+User requests settings persistence, Carry On removal and the supplied inventory/SMP
+preview corrections. Bootstrap source revision jem.6 extends the pinned native
+AutoModpack reconciliation for the explicit personal presentation preference set
+in server.conf: Oculus, optional Iris, QuickSkin client preferences, Fzzy/Punchy
+keybind files and root shaderpack option .txt files. Before the first transition
+from server-owned to editable, live user bytes enter the native overlay. Later
+server-default replacements retain those personal overlays. Other server files
+retain native ownership/reset policy; options.txt remains excluded. This does not
+claim to restore settings already lost before migration or authenticate skin
+providers. Friends require the matching standalone bootstrap revision before
+using this policy; gameplay updates cannot replace early bootstrap classes.
+
+QuickSkin2.6.2.4 persistence has three native owners: `quickskin-client.json`
+contains the active/own skin, cape and CPM hashes; `quickskin_preferences.json`
+contains per-player last selections; optional `skin-preferences.json` contains
+per-hash arm-model choices. `LocalAssetManager` discovers actual local PNG/GIF
+sources under `quickskin/uploads/skins` and `quickskin/uploads/capes`, while
+`quickskin_cache` stores derived data. Those personal asset/cache directories are
+outside `packSyncIncluded` and must never be filled from maintainer assets.
+Native join/respawn restores the active hash through discovered metadata; quit
+clears GPU/network handles and the in-memory appearance repository, not uploaded
+source files, and saves the native preferences.
+
+The2026-10-18 source audit found dangling maintainer hashes and one per-player
+record in the canonical shipped defaults with no corresponding shipped uploads.
+Fresh installs therefore received nonempty hashes that native restore could not
+resolve. Only `Client/ManagedPack/config/quickskin-client.json` selected hashes
+and its `quickskin_preferences.json` player map are now empty defaults; other
+provider/settings fields remain native and unchanged. Existing local selections
+must survive through the jem.6 native editable-overlay migration and later
+editable updates, not a raw copy. No test/stable skin files or personal uploads
+were modified. The observed test profile has both saved skin hashes backed by
+real local PNGs; this audit does not prove a current restore failure there.
+
+`config/skin-preferences.json` is additionally eligible for native editable
+ownership if ever distributed. It is currently absent from both canonical and
+test configs, so it is not added to the pack, seeded into profiles or claimed as
+the active-skin cause; no bootstrap change is needed for that absent unmanaged
+file. Native provider/authentication/network behavior and missing-asset error
+semantics remain unchanged. Other skin-provider complaints and actual
+reconnect/restart/update acceptance remain unproven until observed.
+
+
+Carry On2.1.2.7 and current client/server Carry On configs are removed. All17 saved
+player CarryOnData types were INVALID before removal; the ordinary server was
+stopped cleanly and the complete world was copied outside Git. Historical release
+baselines and prior research remain history. MineRENT and stable profile unchanged.
+
+MenuSupport1.1.1 reads InventoryScreen's yBodyRot for GUI geometry rather than the
+unrelated dispatcher yaw. Direct race/QuickSkin preview rotation remains explicit.
+Compat, Server and production Races embed the matching helper and require1.1.1.
+SMP loaded-player previews delegate skin/model/cape to the actual player, preserving
+the installed provider; offline profiles retain SkinManager lookup. SMP race labels
+use the existing .name localization key. Compat's client-only variedVillagerOutfits
+option deterministically chooses seven native outfit types by villager UUID while
+leaving saved biome type, professions, trades and breeding unchanged. Installed
+Fresh Animations details already randomizes adult face textures without biome
+conditions; JEM varies the native biome clothing layer, reusing pack resources.
+
+Build/application evidence is separate from actual in-game acceptance. The full
+master overhaul remains incomplete in Docs/plans/2026-10-18-gameplay-settlements-overhaul.md.

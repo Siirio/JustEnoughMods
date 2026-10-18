@@ -31,7 +31,7 @@ public final class MarketSupply {
 
     /** Presentation filter over admitted stock; never admits goods or changes buyback policy. */
     public static boolean matchesCategory(Listing listing, String category) {
-        if (category.equals("all")) return true;
+        if (!java.util.Set.of("blocks","food","plants","resources","drops").contains(category)) return false;
         if (!category.equals("plants")) return listing.policy().marketCategory().name().equalsIgnoreCase(category);
         try {
             Object kind = BuildingCatalog.CLASSIFY.invoke(null, listing.stack(), null,

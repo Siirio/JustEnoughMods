@@ -1,0 +1,104 @@
+{
+  "schema_version": 2,
+  "change_id": "economy.native-money-cell-coordinates",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:villager"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:wandering_trader"
+    }
+  ],
+  "conditions": [
+    {
+      "requires": "Server-backed native trade snapshot and matching production client/server JARs; merchants outside existing AbstractVillager integration remain native"
+    }
+  ],
+  "precedence": {
+    "layer": "integration",
+    "priority": 180,
+    "overrides": [
+      "economy.native-trading-presentation"
+    ]
+  },
+  "change": {
+    "summary": "Use exact Forge1.20.1 native offer cell geometry for authoritative Coin quotes and remove monetary emerald tooltips; preserve native goods, slots and lifecycle.",
+    "modifiers": [
+      {
+        "property": "economy.native_money_cells",
+        "operation": "replace",
+        "before": "Quote lookup origin top+20 skipped native first icon at top+19 and rendered previous-row price thereafter;37px A total overlapped actual B cell; native button tooltip still showed Emeralds.",
+        "after": "Exact top+19 step20 quote mapping; x10/40/73 cell ownership; reserve actual B item; one total for two monetary inputs; server denial marker for unpriced money; goods/barter untouched."
+      },
+      {
+        "property": "economy.native_money_tooltips",
+        "operation": "replace",
+        "before": "Native Emerald item tooltip beneath later Coin overlay; compressed price tooltip and gray selected result-slot patch.",
+        "after": "Narrow native button monetary-tooltip redirect; full-size wrapping Coin breakdown plus existing reason; measured selected label width and empty money-input face; guarded payout previews leading denomination. Native slot paint/highlight retained."
+      },
+      {
+        "property": "economy.native_quote_settlement",
+        "operation": "document",
+        "before": "Existing NativeTradeSession/NativeTradeSettlement authority.",
+        "after": "Same container/revision/offer/nonce, exact current quote/terms, funded reserve/payment before goods/native callbacks; preview item face is cosmetic only. No transaction logic changed."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCurrencyCore native monetary presentation and existing guarded result preview",
+    "kind": "user_requested_native_gui_bug_fix",
+    "source_files": [
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/mixin/MerchantScreenMixin.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/mixin/MerchantOfferTooltipMixin.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/NativeTradeScreenAccess.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CoinPriceRenderer.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSession.java",
+      "Mods/JEMCurrencyCore/src/main/resources/jem_currency_core.mixins.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Render the price the server actually validates and settles, remove monetary Emerald placeholders/tooltip conflicts and protect native merchant contracts.",
+    "decision_source": "User master brief section16 defines behavior. Exact Forge47.4.10 mapped MerchantScreen/TradeOfferButton/MerchantMenu bytecode and existing server transaction source determine coordinates and narrow adapters."
+  },
+  "introduced": {
+    "date": "2026-10-18",
+    "commit": "SELF",
+    "action": "replace",
+    "summary": "Correct native monetary row origin19 instead20, cell ownership and Coin-only tooltips; user requests existing five denominations without replacing native trade UI."
+  },
+  "history": [
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "replace",
+      "summary": "Correct native monetary row origin19 instead20, cell ownership and Coin-only tooltips; user requests existing five denominations without replacing native trade UI."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "native_merchant_gui",
+      "five_coin_denominations",
+      "native_trade_quotes",
+      "guarded_result_preview",
+      "native_tooltips"
+    ],
+    "relations": [
+      "NativeTradePacket remains the only monetary client projection",
+      "MerchantOffer owns merchandise/count/NBT/profession/stock/restock",
+      "NativeTradeSession and Economy ledger retain transaction and delivery authority"
+    ],
+    "notes": [
+      "Five Whys: Emerald/wrong amount visible -> quote missing/previous row -> row mapping subtracts20 -> native icon origin actually19 -> adapter used guessed geometry; exact-bytecode coordinates now own row projection.",
+      "Missing quote or non-integrated merchant retains native behavior. No price is invented."
+    ],
+    "unresolved": [
+      "Missing user screenshots5/6; GUI-scale fit and live vanilla/modded merchant acceptance not observed.",
+      "Runtime Mixin application, multi-denomination buy/sell, barter, restock and item conservation not run by this worker. Parent owns production compilation and native application."
+    ]
+  }
+}

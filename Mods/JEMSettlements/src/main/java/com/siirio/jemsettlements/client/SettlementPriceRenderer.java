@@ -24,6 +24,29 @@ public final class SettlementPriceRenderer {
             graphics.pose().scale(.5F, .5F, 1F); graphics.drawString(font, count, 0, 0, color, true); graphics.pose().popPose();
         }
     }
+    /** Full-size currency cells wrap before the next icon; no denomination is truncated or scaled away. */
+    public static int fullHeight(Font font, long amount, int width, boolean coins) {
+        if (!coins) return 18;
+        int dx=0, rows=1; long remainder=Math.max(0L,amount);
+        for (var denomination:com.siirio.jemeconomy.physical.CoinDenomination.descending()) {
+            long count=remainder/denomination.value(); remainder%=denomination.value();
+            int cell=22+font.width(Long.toString(count));
+            if (dx>0 && dx+cell>width) { rows++; dx=0; }
+            dx+=cell;
+        }
+        return rows*18;
+    }
+    public static void drawFull(GuiGraphics graphics, Font font, long amount, int x, int y, int width, int color, boolean coins) {
+        if (!coins) { draw(graphics,font,amount,x,y,width,color,false); return; }
+        int dx=0,dy=0; long remainder=Math.max(0L,amount);
+        for (var denomination:com.siirio.jemeconomy.physical.CoinDenomination.descending()) {
+            long count=remainder/denomination.value(); remainder%=denomination.value();
+            int cell=22+font.width(Long.toString(count));
+            if (dx>0 && dx+cell>width) { dy+=18; dx=0; }
+            graphics.renderItem(new ItemStack(com.siirio.jemcurrency.CurrencyItems.item(denomination)),x+dx,y+dy);
+            graphics.drawString(font,Long.toString(count),x+dx+18,y+dy+4,color,false); dx+=cell;
+        }
+    }
     public static void tooltip(GuiGraphics graphics, Font font, long amount, int x, int y, int width, int height, boolean coins) {
         if (coins) CoinPriceRenderer.tooltip(graphics, font, amount, x, y, width, height);
         else graphics.renderTooltip(font, format(amount, false), x, y);

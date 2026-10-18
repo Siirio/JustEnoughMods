@@ -25,7 +25,8 @@ public final class VanillaGuiPlayers {
         return LayerDefinition.create(PlayerModel.createMesh(CubeDeformation.NONE, slim), 64, 64).bakeRoot();
     }
     public static void render(AbstractClientPlayer player, float yaw, PoseStack poses, MultiBufferSource buffers, int light) {
-        render(player.getSkinTextureLocation(), "slim".equals(player.getModelName()), yaw, poses, buffers, light);
+        // InventoryScreen sets the body's GUI orientation; the dispatcher yaw argument is zero there.
+        render(player.getSkinTextureLocation(), "slim".equals(player.getModelName()), player.yBodyRot, poses, buffers, light);
     }
     public static void render(ResourceLocation skin, boolean slim, float yaw, PoseStack poses, MultiBufferSource buffers, int light) {
         ModelPart root = slim ? SLIM : CLASSIC;

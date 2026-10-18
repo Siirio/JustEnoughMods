@@ -1,0 +1,118 @@
+{
+  "schema_version": 2,
+  "change_id": "settlements.configured-territory-and-pointer-lifecycle",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "minecraft:bell"
+    },
+    {
+      "type": "namespace",
+      "registry": "items",
+      "value": "jem_economy"
+    }
+  ],
+  "conditions": [
+    {
+      "requires": "Dedicated server authority with matching fresh client/server artifacts; runtime acceptance pending"
+    }
+  ],
+  "precedence": {
+    "layer": "jem_settlements",
+    "priority": 470,
+    "overrides": [
+      "settlements.economy-hiring-weekly-payroll",
+      "settlements.emerald-recruits-xaero-race-controls"
+    ]
+  },
+  "change": {
+    "summary": "Configure cheaper positive expansion and bind complete five-denomination quote to explicit pointer/ACK lifecycle without replacing native Xaero.",
+    "modifiers": [
+      {
+        "property": "settlements.territory_cost",
+        "operation": "replace",
+        "before": {
+          "per_new_block": 100,
+          "minimum": null,
+          "currency": "Existing Coin copper units or independently selected standalone Emeralds"
+        },
+        "after": {
+          "coin_per_new_block": 1,
+          "coin_minimum": 10,
+          "emerald_per_new_block": 1,
+          "emerald_minimum": 1,
+          "formula": "addedBlocks==0 ? 0 : max(minimum, addedBlocks * perBlock)",
+          "configuration": "SettlementEconomyConfig expansionCopperPerBlock, expansionMinimumCopper, expansionEmeraldsPerBlock, expansionMinimumEmeralds; all positive",
+          "validation": "Same server quote; bind expected bounds/fullcost/currency before debit; existing payment journal and radius/separation retained"
+        }
+      },
+      {
+        "property": "settlements.map_selection",
+        "operation": "replace",
+        "before": "Independent dragging flag/draft; no focus/removal/context-dismissal cleanup; built-in text converts total to whole Gold",
+        "after": "Explicit IDLE DRAGGING PREVIEW COMMIT/CANCEL IDLE; cursor updates only during drag, draft disappears on commit/cancel/ACK/focus loss/removal/reopen; same five-denomination full-price native option and wrapping dormant built-in helper; no restored map tab"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMSettlements territory quote, native map adapter and existing action journal",
+    "kind": "user_requested_balance_and_pointer_bug_fix",
+    "source_files": [
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TerritoryQuote.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/SettlementEconomyConfig.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementActions.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementMap.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/TerritoryDragState.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementClientState.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementPriceRenderer.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/xaero/SettlementMapClient.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/xaero/SettlementMapScreenMixin.java",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Reduce expansion cost without free area or new currency, eliminate stale mouse-following selection and show complete decision price.",
+    "decision_source": "User master brief section13 specifies behavior; Codex independently selects 1copper/block/min10 and standalone1emerald/block/min1 plus explicit lifecycle."
+  },
+  "introduced": {
+    "date": "2026-10-18",
+    "commit": "SELF",
+    "action": "replace",
+    "summary": "User requested cheaper configurable expansion, complete price and terminal drag cleanup; Codex selected positive perblock/minimum defaults and existing server/journal ownership."
+  },
+  "history": [
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "replace",
+      "summary": "User requested cheaper configurable expansion, complete price and terminal drag cleanup; Codex selected positive perblock/minimum defaults and existing server/journal ownership."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "settlement_territory",
+      "native_xaero",
+      "currency_quotes",
+      "server_actions",
+      "client_pointer_lifecycle"
+    ],
+    "relations": [
+      "TownRecord bounds remain canonical",
+      "SettlementCurrency/physical Coins retain payment authority",
+      "SettlementClientState owns pending action and journal reconciliation"
+    ],
+    "notes": [
+      "No registry or denomination changes; no save migration. Built-in map remains removed from navigation.",
+      "Five Whys: stale cursor-following draft -> dragging state remained live across screen lifecycle -> only mouse-up stopped it -> no focus/removal/menu cancellation transition -> pointer lifecycle lacked one explicit owner; explicit state and native-screen tick cleanup now own terminal transitions."
+    ],
+    "unresolved": [
+      "Compilation handled by parent integration; not run here.",
+      "Missing master screenshots1/2, gameplay pointer scenarios, GUI-scale/native context-menu fit and player acceptance remain unverified."
+    ]
+  }
+}

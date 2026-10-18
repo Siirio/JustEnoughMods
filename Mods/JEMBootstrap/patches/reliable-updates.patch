@@ -416,3 +416,55 @@
 +		}
 +	}
 +}
+
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/client/ClientUpdatePlanBuilder.java b/core/src/main/java/pl/skidam/automodpack_core/client/ClientUpdatePlanBuilder.java
+--- a/core/src/main/java/pl/skidam/automodpack_core/client/ClientUpdatePlanBuilder.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/client/ClientUpdatePlanBuilder.java
+@@ -307,7 +307,11 @@
+ 		boolean sameModpackTarget = target != null && target.modpackId.equals(activeTarget.modpackId);
+ 		Set<String> deletedPaths = new TreeSet<>(storage.readOverlayState(activeTarget.modpackId).deletedPaths);
+ 		for (var item : activeTarget.list) {
+-			if (!item.editable) {
++			var requested = sameModpackTarget ? targetItems.get(LogicalPath.normalize(item.file)) : null;
++			// Capture the existing player's bytes before the first server-owned -> editable migration.
++			boolean personal = personalPreference(item.file);
++			boolean becomesEditable = personal && requested != null && requested.editable;
++			if (!item.editable && !becomesEditable) {
+ 				resetDriftedServerFile(cache, projection, activeTarget, targetItems, item);
+ 				continue;
+ 			}
+@@ -316,7 +320,7 @@
+ 			var targetItem = sameModpackTarget ? targetItems.get(LogicalPath.normalize(item.file)) : null;
+ 			if (!Files.isRegularFile(live, LinkOption.NOFOLLOW_LINKS)) {
+ 				if (projection.matchesPendingGameState(item.file, new UpdatePlan.FileState(null, -1, false))) continue;
+-				if (targetItem != null && !targetItem.sha1.equalsIgnoreCase(item.sha1)) {
++				if (!personal && targetItem != null && !targetItem.sha1.equalsIgnoreCase(item.sha1)) {
+ 					// The pack replaced the content while the file was removed: the removal intent is spent and the new version comes back.
+ 					Files.deleteIfExists(overlay);
+ 					deletedPaths.remove(LogicalPath.normalize(item.file));
+@@ -335,7 +339,7 @@
+ 				deletedPaths.remove(LogicalPath.normalize(item.file));
+ 				continue;
+ 			}
+-			if (targetItem != null && !targetItem.sha1.equalsIgnoreCase(item.sha1)) {
++			if (!personal && targetItem != null && !targetItem.sha1.equalsIgnoreCase(item.sha1)) {
+ 				// The pack owner replaced the file: leave the player's bytes in place and let the plan install the new
+ 				// server version once; the update entry's captures pin the replaced bytes for the state history.
+ 				Files.deleteIfExists(overlay);
+@@ -348,6 +352,16 @@
+ 			deletedPaths.remove(LogicalPath.normalize(item.file));
+ 		}
+ 		storage.writeOverlayState(activeTarget.modpackId, deletedPaths);
++	}
++
++	/** Only presentation preferences opt into sticky player ownership; server gameplay configs retain native policy. */
++	private static boolean personalPreference(String path) {
++		String relative = LogicalPath.normalize(path);
++		return Set.of("config/oculus.properties", "config/iris.properties",
++				"config/quickskin-client.json", "config/quickskin_preferences.json",
++				"config/fzzy_config/keybinds.toml", "config/punchy/triggerable-keybindings.json").contains(relative)
++				|| relative.startsWith("shaderpacks/") && relative.endsWith(".txt")
++					&& relative.substring("shaderpacks/".length()).indexOf('/') < 0;
+ 	}
+ 
+ 	/** A drifted file the pack owns: the drifted bytes are acquired for the state history and the live file gets the pack version back, without a review. */

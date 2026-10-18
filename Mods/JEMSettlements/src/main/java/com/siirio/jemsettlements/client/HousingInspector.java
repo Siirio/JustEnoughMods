@@ -28,18 +28,21 @@ public final class HousingInspector {
     private float cachedYaw=Float.NaN,cachedPitch=Float.NaN;
     private int depth,cachedDepth=-1,x,y,w,h;
     private boolean cachedExample;
-    public boolean example;
+    public boolean example,onlyAmenities,surfaceOnly,showBounds=true;
+    public void refreshGeometry(){invalidate();}
     private long lastFrame;
+    private final java.util.Map<Long,Integer> surface=new java.util.HashMap<>();
     private final Vector3f focus=new Vector3f(),interest=new Vector3f(),minimum=new Vector3f(),maximum=new Vector3f();
 
     public void accept(CompoundTag data){
-        snapshot=data.copy();actual.clear();sample.clear();invalidate();
+        snapshot=data.copy();actual.clear();sample.clear();surface.clear();invalidate();
         var mc=Minecraft.getInstance();if(mc.level==null)return;
         var palette=data.getList("Palette",Tag.TAG_COMPOUND);var rows=data.getList("Blocks",Tag.TAG_COMPOUND);BlockPos anchor=BlockPos.of(data.getLong("Anchor"));
-        for(int i=0;i<Math.min(3179,rows.size());i++){
+        for(int i=0;i<Math.min(data.getBoolean("City")?8192:3179,rows.size());i++){
             var row=rows.getCompound(i);int id=row.getInt("State");
             if(id>=0&&id<palette.size())actual.add(new Cell(BlockPos.of(row.getLong("Position")).subtract(anchor),NbtUtils.readBlockState(mc.level.registryAccess().lookupOrThrow(Registries.BLOCK),palette.getCompound(id)),row));
         }
+        for(Cell cell:actual)surface.merge(net.minecraft.world.level.ChunkPos.asLong(cell.pos().getX(),cell.pos().getZ()),cell.pos().getY(),Math::max);
         for(int sx=-3;sx<=3;sx++)for(int sz=-3;sz<=3;sz++){
             sample.add(new Cell(new BlockPos(sx,-1,sz),Blocks.OAK_PLANKS.defaultBlockState(),new CompoundTag()));
             if(Math.abs(sx)==3||Math.abs(sz)==3)for(int sy=0;sy<=3;sy++)sample.add(new Cell(new BlockPos(sx,sy,sz),Blocks.OAK_PLANKS.defaultBlockState(),new CompoundTag()));
@@ -78,8 +81,14 @@ public final class HousingInspector {
             int radius=snapshot.getInt("Radius"),vertical=snapshot.getInt("VerticalRadius");
             // Fit the same authoritative scan box that is outlined below, including sparse
             // homes. User zoom and pan still deliberately move beyond this reset framing.
-            minimum.min(new Vector3f(-radius,-vertical,-radius));
-            maximum.max(new Vector3f(radius+1,vertical+1,radius+1));
+            BlockPos anchor=BlockPos.of(snapshot.getLong("Anchor"));
+            if(snapshot.getBoolean("City")) {
+                minimum.min(new Vector3f(snapshot.getInt("MinX")-anchor.getX(),-vertical,snapshot.getInt("MinZ")-anchor.getZ()));
+                maximum.max(new Vector3f(snapshot.getInt("MaxX")-anchor.getX()+1,vertical+1,snapshot.getInt("MaxZ")-anchor.getZ()+1));
+            } else {
+                minimum.min(new Vector3f(-radius,-vertical,-radius));
+                maximum.max(new Vector3f(radius+1,vertical+1,radius+1));
+            }
         }
         focus.set(minimum).add(maximum).mul(.5F);if(relevant>0)interest.div(relevant);else interest.set(focus);
         if(depth==0){visible.addAll(cells);return;}
@@ -122,17 +131,23 @@ public final class HousingInspector {
             pose.translate(x+w*.5+panX,y+h*.5+panY,300);pose.scale(scale,-scale,scale);pose.mulPose(Axis.XP.rotationDegrees(pitch));pose.mulPose(Axis.YP.rotationDegrees(yaw));pose.translate(-focus.x,-focus.y,-focus.z);
             Matrix4f matrix=new Matrix4f(pose.last().pose());RenderSystem.enableDepthTest();com.mojang.blaze3d.platform.Lighting.setupFor3DItems();
             for(Cell cell:visible){
+                if(onlyAmenities&&!cell.facts().getBoolean("Counted"))continue;
+                if(surfaceOnly&&cell.pos().getY()<surface.getOrDefault(net.minecraft.world.level.ChunkPos.asLong(cell.pos().getX(),cell.pos().getZ()),Integer.MIN_VALUE))continue;
                 var pos=cell.pos();pose.pushPose();pose.translate(pos.getX(),pos.getY(),pos.getZ());
+                if(snapshot.getBoolean("City")&&!cell.relevant())pose.scale(snapshot.getInt("Stride"),1,snapshot.getInt("Stride"));
                 mc.getBlockRenderer().renderSingleBlock(cell.state(),pose,buffers,15728880,net.minecraft.client.renderer.texture.OverlayTexture.NO_OVERLAY);
                 if(cell.relevant())LevelRenderer.renderLineBox(pose,buffers.getBuffer(RenderType.lines()),0,0,0,1,1,1,cell.facts().getBoolean("Bed")?.3F:.25F,cell.facts().getBoolean("Bed")?1F:.65F,cell.facts().getBoolean("Bed")?.4F:1F,.85F);
                 pose.popPose();
                 Vector3f projected=matrix.transformPosition(cell.center());double distance=Math.pow(projected.x-mouseX,2)+Math.pow(projected.y-mouseY,2);
                 if(distance<scale*scale*.65&&(distance<best*.65||projected.z>nearestZ)){hovered=cell;nearestZ=projected.z;best=distance;}
             }
-            if(!example){
+            if(!example&&showBounds){
                 int radius=snapshot.getInt("Radius"),vertical=snapshot.getInt("VerticalRadius");
-                LevelRenderer.renderLineBox(pose,buffers.getBuffer(RenderType.lines()),-radius,-vertical,-radius,radius+1,vertical+1,radius+1,.8F,.72F,.4F,.22F);
-                if(!snapshot.getBoolean("BedPresent")&&!snapshot.getBoolean("Unloaded")&&!snapshot.getBoolean("NoHome"))LevelRenderer.renderLineBox(pose,buffers.getBuffer(RenderType.lines()),0,0,0,1,1,2,1,.2F,.2F,1);
+                if(snapshot.getBoolean("City")) {
+                    BlockPos anchor=BlockPos.of(snapshot.getLong("Anchor"));
+                    LevelRenderer.renderLineBox(pose,buffers.getBuffer(RenderType.lines()),snapshot.getInt("MinX")-anchor.getX(),-vertical,snapshot.getInt("MinZ")-anchor.getZ(),snapshot.getInt("MaxX")-anchor.getX()+1,vertical+1,snapshot.getInt("MaxZ")-anchor.getZ()+1,.8F,.72F,.4F,.5F);
+                } else LevelRenderer.renderLineBox(pose,buffers.getBuffer(RenderType.lines()),-radius,-vertical,-radius,radius+1,vertical+1,radius+1,.8F,.72F,.4F,.22F);
+                if(!snapshot.getBoolean("City")&&!snapshot.getBoolean("BedPresent")&&!snapshot.getBoolean("Unloaded")&&!snapshot.getBoolean("NoHome"))LevelRenderer.renderLineBox(pose,buffers.getBuffer(RenderType.lines()),0,0,0,1,1,2,1,.2F,.2F,1);
             }
             buffers.endBatch();
         }finally{
@@ -141,8 +156,15 @@ public final class HousingInspector {
         if(!example&&(snapshot.getBoolean("NoHome")||snapshot.getBoolean("Unloaded")))g.drawWordWrap(mc.font,tr(snapshot.getBoolean("NoHome")?"no_home":"unloaded"),x+6,y+6,w-12,0xffe1b573);
         if(inside(mouseX,mouseY)&&hovered!=null){
             List<Component> lines=new ArrayList<>();lines.add(hovered.state().getBlock().getName());CompoundTag facts=hovered.facts();
-            lines.add(tr(facts.getBoolean("Bed")?"bed_rule":facts.contains("Category")?facts.getBoolean("Counted")?"counted":!facts.getBoolean("Active")?"unlit":!facts.getBoolean("Unique")?"duplicate":"capped":"structure"));
-            if(facts.contains("Category")){lines.add(tr("category",facts.getString("Category"),facts.getInt("Cap")));lines.add(tr("points_rule"));}
+            if(snapshot.getBoolean("City")&&facts.contains("Category")) {
+                lines.add(Component.translatable("jem.settlements.city.category",Component.translatable("jem.settlements.amenity."+facts.getString("Category"))));
+                lines.add(Component.translatable("jem.settlements.city.group",facts.getInt("GroupCount"),facts.getInt("GroupPoints")));
+                lines.add(Component.translatable("jem.settlements.city.category_points",facts.getInt("CategoryPoints")));
+                if(!facts.getBoolean("Active"))lines.add(tr("unlit"));
+            } else {
+                lines.add(tr(facts.getBoolean("Bed")?"bed_rule":facts.contains("Category")?facts.getBoolean("Counted")?"counted":!facts.getBoolean("Active")?"unlit":!facts.getBoolean("Unique")?"duplicate":"capped":"structure"));
+                if(facts.contains("Category")){lines.add(tr("category",facts.getString("Category"),facts.getInt("Cap")));lines.add(tr("points_rule"));}
+            }
             if(!example){var absolute=hovered.pos().offset(BlockPos.of(snapshot.getLong("Anchor")));lines.add(Component.literal(absolute.getX()+", "+absolute.getY()+", "+absolute.getZ()));}
             g.renderComponentTooltip(mc.font,lines,mouseX,mouseY);
         }

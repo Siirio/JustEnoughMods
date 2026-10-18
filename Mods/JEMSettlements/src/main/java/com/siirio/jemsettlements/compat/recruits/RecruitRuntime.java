@@ -25,10 +25,19 @@ public final class RecruitRuntime {
                 SettlementNetwork.sendHireQuote(player,menu.getRecruitEntity());
     }
 
-    @SubscribeEvent public static void interact(net.minecraftforge.event.entity.player.PlayerInteractEvent.EntityInteract event) {
-        if (event.getEntity() instanceof ServerPlayer player && SettlementAuthority.active(player)
-            && event.getTarget() instanceof com.talhanation.recruits.entities.AbstractRecruitEntity recruit
-            && RecruitRebellionService.interceptInteraction(player, recruit)) event.setCanceled(true);
+    @SubscribeEvent(priority = net.minecraftforge.eventbus.api.EventPriority.HIGH)
+    public static void interact(net.minecraftforge.event.entity.player.PlayerInteractEvent.EntityInteract event) {
+        if (!(event.getEntity() instanceof ServerPlayer player) || !SettlementAuthority.active(player)
+                || !(event.getTarget() instanceof com.talhanation.recruits.entities.AbstractRecruitEntity recruit)) return;
+        if (RecruitRebellionService.interceptInteraction(player, recruit)) { event.setCanceled(true); return; }
+        // Noble trade interaction and native creative diagnostics are not ordinary soldier management.
+        if (recruit instanceof com.talhanation.recruits.entities.VillagerNobleEntity
+                || player.isCreative() && player.getMainHandItem().getItem() == com.talhanation.recruits.init.ModItems.RECRUIT_SPAWN_EGG.get()) return;
+        if (event.getHand() != net.minecraft.world.InteractionHand.MAIN_HAND
+                || !RecruitsAdapter.ownedBy(recruit, SettlementAuthority.principal(player).orElse(null))) return;
+        if (!player.isShiftKeyDown()) recruit.openGUI(player);
+        event.setCancellationResult(net.minecraft.world.InteractionResult.SUCCESS);
+        event.setCanceled(true);
     }
     @SubscribeEvent public static void damage(net.minecraftforge.event.entity.living.LivingDamageEvent event) { RecruitRebellionService.interceptDefeat(event); }
     public static void adopt(net.minecraft.server.MinecraftServer server) {

@@ -48,7 +48,7 @@ public final class SettlementRuntime {
     private static final java.util.List<FoundingWave> FOUNDING_WAVES = new java.util.ArrayList<>();
     private SettlementRuntime() { }
 
-    @SubscribeEvent public static void stopped(net.minecraftforge.event.server.ServerStoppedEvent event) { SharedStorageService.clear(); TownMealService.clear(); }
+    @SubscribeEvent public static void stopped(net.minecraftforge.event.server.ServerStoppedEvent event) { SharedStorageService.clear(); TownMealService.clear(); com.siirio.jemsettlements.happiness.CityComfortService.clear(); com.siirio.jemsettlements.happiness.TownMetricsService.clear(); }
     @SubscribeEvent public static void reload(AddReloadListenerEvent event) { event.addListener(new FoodValueRegistry()); event.addListener(new AmenityRegistry()); }
 
     @SubscribeEvent
@@ -65,30 +65,78 @@ public final class SettlementRuntime {
         if (result == SettlementApi.Result.ACCEPTED) SettlementNetwork.sendOwned(player, false); event.setCanceled(true);
     }
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = net.minecraftforge.eventbus.api.EventPriority.HIGHEST)
     public static void entityInteraction(PlayerInteractEvent.EntityInteract event) {
         if (!(event.getEntity() instanceof ServerPlayer player) || !SettlementAuthority.active(player)) return;
-        if (!player.isShiftKeyDown() || !player.getMainHandItem().is(Items.BELL)) return;
-        SettlementApi.Result result = event.getTarget() instanceof Villager villager ? SettlementApi.registerResident(player, villager)
-                : SettlementApi.registerNativeWorker(player, event.getTarget(), WorkforceType.RECRUIT, false);
-        if (result == SettlementApi.Result.ACCEPTED) { player.sendSystemMessage(Component.translatable(event.getTarget() instanceof Villager ? "jem.settlements.resident_added" : "jem.settlements.workforce_added"), true); SettlementNetwork.sendOwned(player, false); event.setCanceled(true); }
+        if (!registerWithBell(player, event.getTarget(), event.getHand())) return;
+        event.setCancellationResult(net.minecraft.world.InteractionResult.SUCCESS);
+        event.setCanceled(true);
+    }
+
+    @SubscribeEvent(priority = net.minecraftforge.eventbus.api.EventPriority.HIGHEST)
+    public static void preciseEntityInteraction(PlayerInteractEvent.EntityInteractSpecific event) {
+        if (!(event.getEntity() instanceof ServerPlayer player) || !SettlementAuthority.active(player)) return;
+        if (!registerWithBell(player, event.getTarget(), event.getHand())) return;
+        event.setCancellationResult(net.minecraft.world.InteractionResult.SUCCESS);
+        event.setCanceled(true);
+    }
+
+    private static boolean registerWithBell(ServerPlayer player, net.minecraft.world.entity.Entity target,
+                                            net.minecraft.world.InteractionHand hand) {
+        if (hand != net.minecraft.world.InteractionHand.MAIN_HAND || !player.isShiftKeyDown()
+                || !player.getMainHandItem().is(Items.BELL)) return false;
+        boolean villager = target instanceof Villager;
+        boolean recruit = BuiltInRegistries.ENTITY_TYPE.getKey(target.getType()).getNamespace().equals("recruits");
+        if (!villager && !recruit) return false;
+        SettlementApi.Result result = villager ? SettlementApi.registerResident(player, (Villager) target)
+                : SettlementApi.registerNativeWorker(player, target, WorkforceType.RECRUIT, false);
+        String key = result == SettlementApi.Result.ACCEPTED
+                ? villager ? "jem.settlements.resident_added" : "jem.settlements.workforce_added"
+                : "jem.settlements.enrollment." + result.name().toLowerCase(java.util.Locale.ROOT);
+        player.sendSystemMessage(Component.translatable(key), true);
+        if (result == SettlementApi.Result.ACCEPTED) SettlementNetwork.sendOwned(player, false);
+        // Claim the intent even on rejection: native Recruits uses Shift to open its menu.
+        return true;
     }
 
     @SubscribeEvent public static void placed(BlockEvent.EntityPlaceEvent event) {
-        if (!(event.getLevel() instanceof ServerLevel level)) return;
+        if (!(event.getLevel() instanceof ServerLevel level) || !SettlementAuthority.active(level.getServer())) return;
         AmenityScanService.invalidate(level.getServer(), level.dimension(), event.getPos());
         if (event.getPlacedBlock().is(Blocks.BELL) && event.getEntity() instanceof ServerPlayer player && SettlementAuthority.active(player))
             SettlementNetwork.sendFounding(player, event.getPos());
     }
-    @SubscribeEvent public static void broken(BlockEvent.BreakEvent event) { if (event.getLevel() instanceof ServerLevel level) AmenityScanService.invalidate(level.getServer(), level.dimension(), event.getPos()); }
-    @SubscribeEvent public static void finalizedSpawn(MobSpawnEvent.FinalizeSpawn event) { MountCollectionService.finalizedSpawn(event); }
-    @SubscribeEvent public static void tamed(AnimalTameEvent event) { if (MountCollectionService.tame(event) && event.getTamer() instanceof ServerPlayer player) player.sendSystemMessage(Component.translatable("jem.settlements.mount.recorded"), true); }
+    @SubscribeEvent public static void broken(BlockEvent.BreakEvent event) { if (event.getLevel() instanceof ServerLevel level && SettlementAuthority.active(level.getServer())) AmenityScanService.invalidate(level.getServer(), level.dimension(), event.getPos()); }
+    public static void registerBornChild(ServerLevel level, Villager firstParent, Villager secondParent, Villager child) {
+        if (!SettlementAuthority.active(level.getServer()) || child == null || !child.isAlive()
+                || level.getEntity(child.getUUID()) != child) return;
+        var data = SettlementSavedData.get(level.getServer());
+        if (data.residentAssigned(child.getUUID())) return;
+        var first = data.resident(firstParent.getUUID());
+        var second = data.resident(secondParent.getUUID());
+        if (first.isEmpty() || second.isEmpty() || !first.get().living() || !second.get().living()
+                || !first.get().townId().equals(second.get().townId())) return;
+        var town = data.town(first.get().townId());
+        if (town.isEmpty() || !town.get().dimension().equals(level.dimension().location()) || !town.get().contains(child.blockPosition())) return;
+        var resident = new ResidentMood(child.getUUID(), town.get().id(), null, null);
+        resident.observeName(child); resident.markAmenitiesDirty(level.getGameTime()); data.add(resident);
+    }
+    @SubscribeEvent public static void finalizedSpawn(MobSpawnEvent.FinalizeSpawn event) { if (event.getLevel() instanceof ServerLevel level && SettlementAuthority.active(level.getServer())) MountCollectionService.finalizedSpawn(event); }
+    @SubscribeEvent public static void tamed(AnimalTameEvent event) { if (event.getAnimal().level() instanceof ServerLevel level && SettlementAuthority.active(level.getServer()) && MountCollectionService.tame(event) && event.getTamer() instanceof ServerPlayer player) player.sendSystemMessage(Component.translatable("jem.settlements.mount.recorded"), true); }
     @SubscribeEvent public static void login(PlayerEvent.PlayerLoggedInEvent event) { if (event.getEntity() instanceof ServerPlayer player && SettlementAuthority.active(player)) { com.siirio.jemsettlements.happiness.DishProgression.get(player.getServer()).visit(player.level().dimension().location()); SettlementNetwork.sendFoodPolicy(player); } }
 
-    @SubscribeEvent public static void dimension(PlayerEvent.PlayerChangedDimensionEvent event) { if (event.getEntity() instanceof ServerPlayer player) com.siirio.jemsettlements.happiness.DishProgression.get(player.getServer()).visit(event.getTo().location()); }
+    @SubscribeEvent public static void dimension(PlayerEvent.PlayerChangedDimensionEvent event) { if (event.getEntity() instanceof ServerPlayer player && SettlementAuthority.active(player)) com.siirio.jemsettlements.happiness.DishProgression.get(player.getServer()).visit(event.getTo().location()); }
 
     public static void celebrateFounding(ServerLevel level, BlockPos bell) { if (level != null && bell != null) FOUNDING_WAVES.add(new FoundingWave(level.dimension(), bell.immutable(), 0)); }
 
+    @SubscribeEvent public static void permanentlyRemoved(net.minecraftforge.event.entity.EntityLeaveLevelEvent event) {
+        if(!(event.getLevel() instanceof ServerLevel level)||!SettlementAuthority.active(level.getServer()))return;
+        var reason=event.getEntity().getRemovalReason();
+        if(reason==null||!reason.shouldDestroy())return;
+        var data=SettlementSavedData.get(level.getServer());data.removeEntity(event.getEntity().getUUID());
+        String id=event.getEntity().getUUID().toString();
+        for(var town:data.towns())town.animalObservations().remove(id);
+        data.changed();
+    }
     @SubscribeEvent
     public static void death(LivingDeathEvent event) {
         if (!(event.getEntity().level() instanceof ServerLevel level) || !SettlementAuthority.active(level.getServer())) return;
@@ -100,12 +148,11 @@ public final class SettlementRuntime {
     @SubscribeEvent
     public static void damaged(LivingDamageEvent event) {
         if (!(event.getEntity() instanceof Villager) || !(event.getEntity().level() instanceof ServerLevel level)
-                || event.getAmount() <= 0.0F || event.getSource().is(net.minecraft.world.damagesource.DamageTypes.FALL)) return;
+                || !SettlementAuthority.active(level.getServer()) || event.getAmount() <= 0.0F || event.getSource().is(net.minecraft.world.damagesource.DamageTypes.FALL)) return;
         SettlementSavedData data = SettlementSavedData.get(level.getServer());
         var resident = data.resident(event.getEntity().getUUID());
         if (resident.isEmpty() || !resident.get().living()) return;
         resident.get().damaged(event.getAmount());
-        data.town(resident.get().townId()).ifPresent(town -> recomputeTown(data, town, level));
         data.changed();
     }
 
@@ -115,6 +162,8 @@ public final class SettlementRuntime {
         tickFoundingWaves(event.getServer());
         SharedStorageService.tick(event.getServer());
         AmenityScanService.tick(event.getServer());
+        com.siirio.jemsettlements.happiness.TownMetricsService.tickPaths(event.getServer());
+        com.siirio.jemsettlements.happiness.CityComfortService.tick(event.getServer());
         if (event.getServer().getTickCount() % 10 == 0) {
             SettlementSavedData data = SettlementSavedData.get(event.getServer());
             if (net.minecraftforge.fml.ModList.get().isLoaded("recruits")) com.siirio.jemsettlements.compat.recruits.RecruitRebellionService.tick(event.getServer());
@@ -224,14 +273,7 @@ public final class SettlementRuntime {
     }
 
     private static void recomputeTown(SettlementSavedData data, TownRecord town, ServerLevel level) {
-        var residents = data.residents(town.id()).stream().filter(ResidentMood::living).toList(); var workers = data.workforce(town.id()); int population = residents.size();
-        int housing = population == 0 ? 50 : (int) Math.round(residents.stream().mapToInt(value -> value.home().isPresent() ? Math.min(100, 45 + value.homeAmenities().points() * 4) : 20).average().orElse(50));
-        int food = population == 0 ? 50 : (int) Math.round(residents.stream().mapToInt(value -> value.craving() ? (value.satiety() < 10 ? 0 : 35) : 100).average().orElse(50));
-        int community = population == 0 ? 40 : (int) Math.round(residents.stream().mapToInt(ResidentMood::mood).average().orElse(50));
-        int recruits = (int) workers.stream().filter(value -> value.type() == WorkforceType.RECRUIT && value.settlementActive()).count(); int safety = Math.min(100, recruits * 25);
-        int jobs = population == 0 ? 25 : (int) Math.min(100L, residents.stream().filter(value -> value.workplace().isPresent()).count() * 100L / population);
-        int decoration = population == 0 ? 0 : (int) Math.min(20, Math.round(residents.stream().mapToInt(value -> value.homeAmenities().points() + value.workAmenities().points()).average().orElse(0)));
-        town.happinessEvidence(housing, food, safety, jobs, community, decoration); town.happiness(HappinessService.calculate(housing, food, safety, jobs, community, decoration, town.taxPercent())); town.lastHappinessDay(Math.floorDiv(level.getGameTime(), 24_000L));
+        com.siirio.jemsettlements.happiness.TownMetricsService.recompute(data, town, level);
     }
 
     private static void openSettlementsRoute(ServerPlayer player) { SettlementNetwork.sendOwned(player, true); }

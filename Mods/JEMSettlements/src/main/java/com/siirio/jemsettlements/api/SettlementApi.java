@@ -144,12 +144,12 @@ public final class SettlementApi {
     }
 
     public static Result registerResident(ServerPlayer player, Villager villager) {
-        if (!SettlementAuthority.active(player) || villager == null || !villager.isAlive() || villager.isBaby()) return Result.INVALID;
+        if (!SettlementAuthority.active(player) || villager == null || !villager.isAlive()) return Result.INVALID;
         var town = ownedTownNear(player, villager.blockPosition());
         return town.isEmpty() ? Result.INVALID : registerResident(player, town.get().id(), villager);
     }
     public static Result registerResident(ServerPlayer player, UUID townId, Villager villager) {
-        if (!SettlementAuthority.active(player) || villager == null || !villager.isAlive() || villager.isBaby() || villager.level() != player.level() || player.distanceToSqr(villager) > 256.0D) return Result.INVALID;
+        if (!SettlementAuthority.active(player) || villager == null || !villager.isAlive() || villager.level() != player.level() || player.distanceToSqr(villager) > 256.0D) return Result.INVALID;
         var town = ownedTown(player, townId); if (town.isEmpty() || !town.get().contains(villager.blockPosition())) return Result.UNAUTHENTICATED;
         if (!town.get().dimension().equals(player.serverLevel().dimension().location()) || town.get().center().distSqr(villager.blockPosition()) > 128L * 128L) return Result.INVALID;
         SettlementSavedData data = SettlementSavedData.get(player.getServer()); if (data.residentAssigned(villager.getUUID())) return Result.CONFLICT;

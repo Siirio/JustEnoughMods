@@ -178,14 +178,14 @@ public final class EconomyApi {
     }
 
     public static MarketCatalogSnapshot marketCatalog(ServerPlayer player, String rawSearch, String rawCategory, int requestedPage) {
-        if (!CurrencyAuthority.active(player)) return new MarketCatalogSnapshot(0L, 0, 0, "", "all", 0L, new int[5], 0L, List.of(), "jem.economy.market.unavailable");
+        if (!CurrencyAuthority.active(player)) return new MarketCatalogSnapshot(0L, 0, 0, "", "blocks", 0L, new int[5], 0L, List.of(), "jem.economy.market.unavailable");
         var principal = IdentityPolicy.resolve(player);
-        if (principal.isEmpty()) return new MarketCatalogSnapshot(0L, 0, 0, "", "all", 0L, new int[5], 0L, List.of(), "jem.economy.identity_required");
+        if (principal.isEmpty()) return new MarketCatalogSnapshot(0L, 0, 0, "", "blocks", 0L, new int[5], 0L, List.of(), "jem.economy.identity_required");
         ensureStarter(player, principal.get().accountId());
         String search = rawSearch == null ? "" : rawSearch.strip().toLowerCase(Locale.ROOT);
         if (search.length() > 64) search = search.substring(0, 64);
-        String category = rawCategory == null ? "all" : rawCategory.toLowerCase(Locale.ROOT);
-        if (!java.util.Set.of("all", "food", "plants", "resources", "blocks", "drops").contains(category)) category = "all";
+        String category = rawCategory == null ? "blocks" : rawCategory.toLowerCase(Locale.ROOT);
+        if (!java.util.Set.of("food", "plants", "resources", "blocks", "drops").contains(category)) category = "blocks";
         final String selectedSearch = search;
         final String selectedCategory = category;
         MarketSavedData market = MarketSavedData.get(player.getServer());

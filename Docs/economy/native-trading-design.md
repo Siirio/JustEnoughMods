@@ -265,3 +265,18 @@ native публикация или MineRENT; работа следующего �
 
 Mapped Forge47.4.10 class signatures were inspected locally. User-supplied image
 links are references only, not assets or evidence that the proposed GUI was rendered.
+
+
+## Native monetary-cell correction - 2026-10-18
+
+User direction (master brief section16): remove emerald money placeholders, show the existing five Coin denominations, correct selected prices/tooltips and preserve native merchandise, levels, professions, restock and actual payment. Supplied screenshots5/6 were absent, so no screenshot comparison or visual acceptance is claimed.
+
+Exact local Forge1.20.1-47.4.10 mapped bytecode establishes the first offer icon at `topPos+19`, then20 pixels per row. Native cell x positions are `leftPos+10` (A), `+40` (B), `+73` (output); button hit rows begin at `topPos+18`. The old `topPos+20` quote lookup skipped the first row and used the previous quote for every subsequent row. That display error was independent of the server's correct selected-offer transaction owner.
+
+`MerchantScreenMixin` now maps those exact coordinates and current `scrollOff` to the same `NativeTradePacket` quote used by selected purchases. The A money cell reserves the actual B item; two monetary inputs show one total, not two charges. Original goods, item counts, NBT and barter keep native rendering. Unpriced monetary cells show an unavailable marker and their existing server reason, never an invented amount or an emerald exchange rate.
+
+Native `TradeOfferButton` monetary tooltips are narrowly suppressed before the Coin tooltip is drawn. Merchandise and barter tooltips remain native. Compact cells retain the complete denomination decomposition; their decision tooltip wraps full-size icons/counts to available screen width and includes an actual denial reason when needed. The selected amount uses measured localized-label width, monetary empty inputs have a non-inventory Coin face, and the existing guarded payout preview uses the leading quoted denomination. The old flat gray result-slot paint-over is removed; native resource-pack slot surfaces and highlighting remain.
+
+Financial path inspected without changing it: `NativeTradeClickMixin` sends the acknowledged container/revision/offer/nonce; `NativeTradeSession.takeQuoted` compares current price/direction and original native terms, then `take` checks current funds/inputs/stock and output capacity. `NativeTradeSettlement.commit` uses the exact same `quote.copper()` for funded sale or reserved purchase settlement before goods move and native callbacks run. A cosmetic result preview is never a delivered physical coin. No new conversion, quote cache, offer list, transfer or restock owner was added.
+
+Source correction and parent-owned production compilation are separate from runtime acceptance. No tests, automated static analysis or gameplay launch were run by this worker; vanilla/modded merchant, multi-denomination, barter, restock, inventory-conservation and GUI-scale acceptance remain pending.

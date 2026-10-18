@@ -21,7 +21,12 @@ public final class ResidentMood {
     private final UUID townId;
     private GlobalPos home;
     private GlobalPos workplace;
+    private CompoundTag needObservation = new CompoundTag();
+    public CompoundTag needObservation() { return needObservation.copy(); }
+    public void needObservation(CompoundTag value) { needObservation = value.copy(); }
     private int mood = 50;
+    private int environmentBonus;
+    private int socialMoodCap = 100;
     private int satiety = 50;
     private long lastServingGameTime = Long.MIN_VALUE;
     private long lastDailyUpdate = Long.MIN_VALUE;
@@ -34,11 +39,16 @@ public final class ResidentMood {
     private AmenitySnapshot workAmenities = AmenitySnapshot.empty();
     private long amenityDirtySince;
     private boolean living = true;
+    private boolean child;
+    private long lastPatDay = Long.MIN_VALUE;
+    public boolean child() { return child; }
+    public boolean pat(long day) { if (!living || day <= lastPatDay) return false; lastPatDay = day; mood = clamp(mood + 8); return true; }
     private String displayName;
     private String profession = "minecraft:none";
     public String displayName() { return displayName; }
     public String profession() { return profession; }
     public void observeName(net.minecraft.world.entity.npc.Villager villager) {
+        child = villager.isBaby();
         displayName = net.minecraft.network.chat.Component.Serializer.toJson(villager.getCustomName()!=null?villager.getCustomName():villager.getName());
         profession = net.minecraft.core.registries.BuiltInRegistries.VILLAGER_PROFESSION.getKey(villager.getVillagerData().getProfession()).toString();
     }
@@ -59,7 +69,14 @@ public final class ResidentMood {
     public UUID townId() { return townId; }
     public Optional<GlobalPos> home() { return Optional.ofNullable(home); }
     public Optional<GlobalPos> workplace() { return Optional.ofNullable(workplace); }
-    public int mood() { return mood; }
+    public int mood() { return com.siirio.jemsettlements.happiness.HappinessService.residentMood(mood, environmentBonus, socialMoodCap); }
+    public int personalMood() { return mood; }
+    public int environmentBonus() { return environmentBonus; }
+    public int socialMoodCap() { return socialMoodCap; }
+    public void environment(int comfort, int social, int animals) {
+        environmentBonus = com.siirio.jemsettlements.happiness.HappinessService.environmentBonus(comfort, animals);
+        socialMoodCap = com.siirio.jemsettlements.happiness.HappinessService.socialCap(social);
+    }
     public int satiety() { return satiety; }
     public int hunger() { return 100 - satiety; }
     /** Native Recruits owns these values; this snapshot only drives shared serving rules. */
@@ -90,7 +107,7 @@ public final class ResidentMood {
     public long amenityDirtySince() { return amenityDirtySince; }
     public boolean living() { return living; }
     public void markDead() { living = false; }
-    public void seen(GlobalPos currentHome, GlobalPos currentWorkplace) { living = true; if (currentHome != null) home = currentHome; if (currentWorkplace != null) workplace = currentWorkplace; }
+    public void seen(GlobalPos currentHome, GlobalPos currentWorkplace) { living = true; if (!java.util.Objects.equals(home, currentHome) || !java.util.Objects.equals(workplace, currentWorkplace)) markAmenitiesDirty(1L); home = currentHome; workplace = currentWorkplace; }
     public void markAmenitiesDirty(long gameTime) { if (amenityDirtySince == 0L) amenityDirtySince = Math.max(1L, gameTime); }
     public void homeAmenities(AmenitySnapshot value) { homeAmenities = value; amenityDirtySince = 0L; }
     public void workAmenities(AmenitySnapshot value) { workAmenities = value; amenityDirtySince = 0L; }
@@ -148,8 +165,8 @@ public final class ResidentMood {
     public CompoundTag save() {
         CompoundTag tag = new CompoundTag(); tag.putUUID("Villager", villagerId); tag.putUUID("Town", townId); savePos(tag, "Home", home); savePos(tag, "Work", workplace);
         if (displayName != null) tag.putString("DisplayName", displayName);
-        tag.putString("Profession", profession);
-        tag.putInt("Mood", mood); tag.putInt("Satiety", satiety); tag.putLong("LastServing", lastServingGameTime); tag.putLong("LastDailyUpdate", lastDailyUpdate); tag.putBoolean("Living", living);
+        tag.putString("Profession", profession); tag.putBoolean("Child", child); tag.putLong("LastPatDay", lastPatDay);
+        tag.put("NeedObservation", needObservation.copy()); tag.putInt("Mood", mood); tag.putInt("EnvironmentBonus", environmentBonus); tag.putInt("SocialMoodCap", socialMoodCap); tag.putInt("Satiety", satiety); tag.putLong("LastServing", lastServingGameTime); tag.putLong("LastDailyUpdate", lastDailyUpdate); tag.putBoolean("Living", living);
         tag.putInt("RegenerationTicks", regenerationTicks);
         tag.putLong("ServingDay", servingDay); CompoundTag servings = new CompoundTag(); servingsToday.forEach(servings::putInt); tag.put("ServingsToday", servings);
         tag.putBoolean("Craving", craving); tag.putInt("CravingThreshold", cravingThreshold); tag.putInt("CravingCycle", cravingCycle);
@@ -161,6 +178,8 @@ public final class ResidentMood {
     }
     public static ResidentMood load(CompoundTag tag) {
         ResidentMood resident = new ResidentMood(tag.getUUID("Villager"), tag.getUUID("Town"), loadPos(tag, "Home"), loadPos(tag, "Work"));
+        resident.needObservation = tag.getCompound("NeedObservation").copy();
+        resident.environmentBonus = clamp(tag.getInt("EnvironmentBonus")); resident.socialMoodCap = tag.contains("SocialMoodCap") ? clamp(tag.getInt("SocialMoodCap")) : 100;
         resident.mood = tag.contains("Mood") ? clamp(tag.getInt("Mood")) : 50; resident.satiety = tag.contains("Satiety") ? clamp(tag.getInt("Satiety")) : 50;
         resident.lastServingGameTime = tag.contains("LastServing") ? tag.getLong("LastServing") : Long.MIN_VALUE; resident.lastDailyUpdate = tag.contains("LastDailyUpdate") ? tag.getLong("LastDailyUpdate") : Long.MIN_VALUE;
         resident.displayName = tag.contains("DisplayName") ? tag.getString("DisplayName") : null;
@@ -169,6 +188,7 @@ public final class ResidentMood {
         resident.servingDay = tag.contains("ServingDay") ? tag.getLong("ServingDay") : Long.MIN_VALUE;
         CompoundTag servings = tag.getCompound("ServingsToday"); servings.getAllKeys().forEach(key -> resident.servingsToday.put(key, Math.max(0, servings.getInt(key))));
         resident.craving = tag.getBoolean("Craving"); resident.cravingCycle = tag.getInt("CravingCycle"); resident.cravingThreshold = tag.contains("CravingThreshold") ? Math.max(10, Math.min(99, tag.getInt("CravingThreshold"))) : resident.nextCravingThreshold();
+        resident.child = tag.getBoolean("Child"); resident.lastPatDay = tag.contains("LastPatDay") ? tag.getLong("LastPatDay") : Long.MIN_VALUE;
         resident.living = !tag.contains("Living") || tag.getBoolean("Living"); if (tag.contains("HomeAmenities")) resident.homeAmenities = AmenitySnapshot.load(tag.getCompound("HomeAmenities"));
         if (tag.contains("WorkAmenities")) resident.workAmenities = AmenitySnapshot.load(tag.getCompound("WorkAmenities")); resident.amenityDirtySince = tag.getLong("AmenityDirtySince");
         ListTag groups = tag.contains("RecentFoods") ? tag.getList("RecentFoods", Tag.TAG_COMPOUND) : tag.getList("RecentGroups", Tag.TAG_COMPOUND); for (int i = 0; i < groups.size() && i < 4; i++) { String value = groups.getCompound(i).contains("Food") ? groups.getCompound(i).getString("Food") : groups.getCompound(i).getString("Group"); if (!value.isBlank()) resident.recentFoods.addLast(value); }

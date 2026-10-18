@@ -58,6 +58,12 @@ public final class SettlementClientState {
         if (acknowledged) { pending = null; pendingAction = null; pendingPayload=null; pendingTown=null; }
         if (incoming.getBoolean("MapOnly")) { com.siirio.jemsettlements.compat.xaero.SettlementMapClient.accept(incoming); return; }
         Minecraft client = Minecraft.getInstance();
+        if(incoming.contains("Housing")&&client.screen instanceof CityInspectorScreen screen){screen.acceptHouse(incoming.getCompound("Housing"));return;}
+        if(incoming.contains("City")) {
+            if(client.screen instanceof CityInspectorScreen screen)screen.accept(incoming.getCompound("City"));
+            else client.setScreen(new CityInspectorScreen(client.screen,incoming.getCompound("City")));
+            return;
+        }
         if (client.screen instanceof SettlementScreen screen) screen.accept(view, completed);
         else if (packet.open() && (!view.contains("Request") || awaitingOpen)) {
             client.setScreen(new SettlementScreen());
@@ -90,6 +96,7 @@ public final class SettlementClientState {
     }
     @SubscribeEvent public static void tick(TickEvent.ClientTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
+        com.siirio.jemsettlements.compat.xaero.SettlementMapClient.tick();
         while (OPEN.consumeClick()) if (Minecraft.getInstance().player != null) open();
     }
     @SubscribeEvent public static void tooltip(ItemTooltipEvent event) {

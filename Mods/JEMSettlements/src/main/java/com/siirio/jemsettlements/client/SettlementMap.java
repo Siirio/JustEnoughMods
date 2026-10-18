@@ -8,13 +8,24 @@ import net.minecraft.nbt.Tag;
 /** Shared transform for drawing and hit-testing real inclusive block rectangles. */
 final class SettlementMap {
     private double centerX, centerZ, zoom = 1;
-    private boolean centered, dragging;
+    private boolean centered, panning;
+    private TerritoryDragState state = TerritoryDragState.IDLE;
     private int x, y, width, height;
     private Integer targetX, targetZ;
-    void bounds(int x, int y, int width, int height) { this.x=x; this.y=y; this.width=width; this.height=height; dragging=false; }
+    private CompoundTag quoteContext;
+    void bounds(int x, int y, int width, int height) { this.x=x; this.y=y; this.width=width; this.height=height; }
     void center(BlockPos pos) { centerX=pos.getX(); centerZ=pos.getZ(); centered=true; }
-    void release() { dragging=false; }
-    void clearQuote() { targetX=null; targetZ=null; }
+    void release() { panning=false; if (state==TerritoryDragState.DRAGGING) state=TerritoryDragState.PREVIEW; }
+    void clearQuote() { state=TerritoryDragState.CANCEL; targetX=null; targetZ=null; quoteContext=null; panning=false; state=TerritoryDragState.IDLE; }
+    void accept(CompoundTag town) {
+        if (state==TerritoryDragState.COMMIT && !SettlementClientState.pending()) { clearQuote(); return; }
+        if (quoteContext==null) return;
+        for (String key:new String[]{"Id","Dimension","TerritoryMinX","TerritoryMaxX","TerritoryMinZ","TerritoryMaxZ","ExpansionCostPerBlock","ExpansionMinimumCost","CoinCurrency"})
+            if (!java.util.Objects.equals(quoteContext.get(key),town.get(key))) { clearQuote(); return; }
+    }
+    void committed() { targetX=null; targetZ=null; panning=false; state=TerritoryDragState.COMMIT; }
+    boolean dragging() { return state==TerritoryDragState.DRAGGING; }
+    boolean preview() { return state==TerritoryDragState.PREVIEW; }
     boolean contains(double mx,double my) { return mx>=x && mx<x+width && my>=y && my<y+height; }
     void zoom(double delta,double mx,double my) {
         double wx=worldX(mx), wz=worldZ(my);
@@ -28,25 +39,35 @@ final class SettlementMap {
     private int sy(double wz) { return (int)Math.floor(y+height/2d+(wz-centerZ)*zoom); }
     boolean click(double mx,double my,int button,CompoundTag town) {
         if (!contains(mx,my)) return false;
-        if (button==1) { dragging=true; return true; }
-        if (button!=0) return false;
+        if (button==1) { clearQuote(); panning=true; return true; }
+        if (button!=0 || state==TerritoryDragState.COMMIT || SettlementClientState.pending()) return false;
         int wx=(int)Math.floor(worldX(mx)), wz=(int)Math.floor(worldZ(my));
         int minX=town.getInt("TerritoryMinX"), maxX=town.getInt("TerritoryMaxX"), minZ=town.getInt("TerritoryMinZ"), maxZ=town.getInt("TerritoryMaxZ");
         boolean adjacent = ((wx==minX-1 || wx==maxX+1) && wz>=minZ && wz<=maxZ)
                 || ((wz==minZ-1 || wz==maxZ+1) && wx>=minX && wx<=maxX);
-        if (adjacent) { targetX=wx; targetZ=wz; } else clearQuote();
+        if (adjacent || wx>=minX && wx<=maxX && wz>=minZ && wz<=maxZ) {
+            targetX=wx; targetZ=wz; quoteContext=town.copy(); state=TerritoryDragState.DRAGGING;
+        } else clearQuote();
         return true;
     }
-    boolean drag(double mx,double my,double dx,double dy) { if (!dragging) return false; centerX-=dx/zoom; centerZ-=dy/zoom; return true; }
+    boolean drag(double mx,double my,double dx,double dy,CompoundTag town) {
+        if (panning) { centerX-=dx/zoom; centerZ-=dy/zoom; return true; }
+        if (state!=TerritoryDragState.DRAGGING) return false;
+        BlockPos center=BlockPos.of(town.getLong("Center"));
+        targetX=Math.max(center.getX()-256,Math.min(center.getX()+256,(int)Math.floor(worldX(mx))));
+        targetZ=Math.max(center.getZ()-256,Math.min(center.getZ()+256,(int)Math.floor(worldZ(my))));
+        return true;
+    }
     boolean quoted() { return targetX!=null; }
     long added(CompoundTag town) {
         if (!quoted()) return 0;
         long minX=town.getInt("TerritoryMinX"), maxX=town.getInt("TerritoryMaxX"), minZ=town.getInt("TerritoryMinZ"), maxZ=town.getInt("TerritoryMaxZ");
         return (Math.max(maxX,targetX)-Math.min(minX,targetX)+1)*(Math.max(maxZ,targetZ)-Math.min(minZ,targetZ)+1)-(maxX-minX+1)*(maxZ-minZ+1);
     }
-    long cost(CompoundTag town) { return Math.multiplyExact(added(town),town.getLong("ExpansionCostPerBlock")); }
+    long cost(CompoundTag town) { return added(town)<=0 ? 0L : Math.max(town.getLong("ExpansionMinimumCost"),Math.multiplyExact(added(town),town.getLong("ExpansionCostPerBlock"))); }
     String invalidReason(CompoundTag town) {
         if(!quoted())return "";
+        if(added(town)<=0 || town.getLong("ExpansionCostPerBlock")<=0 || town.getLong("ExpansionMinimumCost")<=0)return "selection";
         if(!town.getBoolean("SameDimension"))return "dimension";
         BlockPos center=BlockPos.of(town.getLong("Center"));
         long minX=Math.min(town.getInt("TerritoryMinX"),targetX),maxX=Math.max(town.getInt("TerritoryMaxX"),targetX);
@@ -64,6 +85,7 @@ final class SettlementMap {
     CompoundTag payload(CompoundTag town) {
         CompoundTag payload=new CompoundTag();
         payload.putInt("X",targetX); payload.putInt("Z",targetZ);
+        payload.putLong("ExpectedCost",cost(town)); payload.putBoolean("ExpectedCoins",town.getBoolean("CoinCurrency"));
         for (String axis:new String[]{"MinX","MaxX","MinZ","MaxZ"}) payload.putInt("Expected"+axis,town.getInt("Territory"+axis));
         return payload;
     }

@@ -67,6 +67,7 @@ public class SettlementScreen extends Screen {
         UUID previous=town.hasUUID("Id")?town.getUUID("Id"):null;
         envelope=view.copy();
         town=view.contains("Selected",Tag.TAG_COMPOUND)?view.getCompound("Selected").copy():new CompoundTag();
+        map.accept(town);
         if (view.contains("Reason")) notice=view.getString("Reason");
         boolean accepted=view.getString("Result").equals("ACCEPTED") || view.getString("Result").equals("REPLAYED");
         if (completed.equals("create") && accepted || completed.equals("select") && !town.isEmpty()) { mode="town"; detail=null; chest=null; section="residents"; map.clearQuote(); }
@@ -88,7 +89,7 @@ public class SettlementScreen extends Screen {
         if (completed.equals("storage") && accepted && town.contains("SelectedStorage",Tag.TAG_COMPOUND)) chest=town.getCompound("SelectedStorage").copy();
         if(chest!=null && town.contains("SelectedStorage",Tag.TAG_COMPOUND) && chest.getLong("Position")==town.getCompound("SelectedStorage").getLong("Position"))chest=town.getCompound("SelectedStorage").copy();
         if(previous!=null && town.hasUUID("Id") && !previous.equals(town.getUUID("Id")))chest=null;
-        if (completed.equals("expand") && accepted) map.clearQuote();
+        if (completed.equals("expand") || completed.equals("mapexpand")) map.clearQuote();
         focusDesired();
         if (minecraft!=null) rebuild();
     }
@@ -205,15 +206,22 @@ public class SettlementScreen extends Screen {
         button(tr("back"),cx+cw/2+2,bottom-44,cw/2-2,()->{mode="selector";rebuild();},false);
     }
     private void mapWidgets() {
-        drawLine(tr("section.map"),cx,cy,INK);int my=cy+16,mh=bottom-my-66;map.bounds(cx,my,cw,Math.max(40,mh));
+        long total=map.cost(town);
+        int priceHeight=map.quoted()?12+SettlementPriceRenderer.fullHeight(font,total,cw,coinCurrency()):12;
+        drawLine(tr("section.map"),cx,cy,INK);int my=cy+16,mh=bottom-my-52-priceHeight;map.bounds(cx,my,cw,Math.max(24,mh));
         
         button(Component.literal("-"),cx+cw-44,my+2,20,()->map.zoom(-1),false);button(Component.literal("+"),cx+cw-22,my+2,20,()->map.zoom(1),false);
         button(tr("center"),cx,bottom-46,Math.max(48,cw/3),()->map.center(BlockPos.of(town.getLong("Center"))),false);
         button(tr("player"),cx+cw/3+2,bottom-46,Math.max(48,cw/3-2),()->{if(minecraft.player!=null&&minecraft.level!=null&&minecraft.level.dimension().location().toString().equals(town.getString("Dimension")))map.center(minecraft.player.blockPosition());},false);
         Button expand=button(tr("expand"),cx+cw*2/3+2,bottom-46,cw/3-2,()->{
-            if (!map.quoted()) return;long added=map.added(town);CompoundTag payload=map.payload(town);ask(tr(coinCurrency()?"expand_confirm":"emerald_expand_confirm",added,territoryPrice()),()->request("expand",payload));
-        },true);expand.active=map.quoted()&&map.invalidReason(town).isEmpty()&&!SettlementClientState.pending();expand.setTooltip(Tooltip.create(tr(!map.invalidReason(town).isEmpty()?"map_invalid."+map.invalidReason(town):map.quoted()?(coinCurrency()?"gold_unit":"emerald_unit"):"select_neighbor")));
-        drawLine(map.quoted()?tr(coinCurrency()?"quote":"emerald_quote",map.added(town),territoryPrice()):tr("map_help"),cx,bottom-60,MUTED);
+            if (!map.preview()) return;long added=map.added(town);CompoundTag payload=map.payload(town);
+            Component fullPrice=coinCurrency()?com.siirio.jemeconomy.physical.CoinFormatter.formatAll(map.cost(town)):SettlementPriceRenderer.format(map.cost(town),false);
+            ask(tr("expansion_confirmation",added).copy().append("\n").append(fullPrice),()->{if(SettlementClientState.action("mapexpand",town.getUUID("Id"),payload))map.committed();});
+        },true);expand.active=map.preview()&&map.invalidReason(town).isEmpty()&&!SettlementClientState.pending();expand.setTooltip(Tooltip.create(tr(!map.invalidReason(town).isEmpty()?"map_invalid."+map.invalidReason(town):map.quoted()?"expansion_configured":"select_neighbor")));
+        if(map.quoted()) {
+            drawLine(tr("expansion_area",map.added(town)),cx,bottom-50-priceHeight,MUTED);
+            drawings.add(()->SettlementPriceRenderer.drawFull(graphics,font,map.cost(town),cx,bottom-38-priceHeight,cw,INK,coinCurrency()));
+        } else drawLine(tr("map_help"),cx,bottom-60,MUTED);
     }
     private static boolean recruit(CompoundTag row){return row.getString("Type").equals("RECRUIT") || row.contains("Loyalty");}
     private static Component residentName(CompoundTag row) {
@@ -234,7 +242,7 @@ public class SettlementScreen extends Screen {
         listTop=cy+48;listBottom=bottom-24;
         List<CompoundTag> residents=roster();residents.sort(switch(sort){case "profession"->Comparator.comparing(r->recruit(r)?tr("filter.recruits").getString():profession(r).getString(),String.CASE_INSENSITIVE_ORDER);case "hunger"->Comparator.comparingInt(r->r.contains("Satiety")?r.getInt("Satiety"):Integer.MAX_VALUE);case "happiness"->Comparator.comparingInt(r->r.contains("Mood")?r.getInt("Mood"):Integer.MAX_VALUE);default->Comparator.comparing(r->residentName(r).getString(),String.CASE_INSENSITIVE_ORDER);});
         for (CompoundTag row:residents) {
-            Component role=recruit(row)?tr("filter.recruits"):profession(row);
+            Component role=row.getBoolean("Child")?tr("metrics.child"):recruit(row)?tr("filter.recruits"):profession(row);
             if (!matches(residentName(row).getString()+" "+role.getString())) continue;
             if(filter.equals("recruits")&&!recruit(row)||filter.equals("villagers")&&recruit(row))continue;
             if(filter.startsWith("profession:")&&!row.getString("Profession").equals(filter.substring(11)) || filter.startsWith("role:")&&!row.getString("Role").equals(filter.substring(5)))continue;
@@ -281,10 +289,22 @@ public class SettlementScreen extends Screen {
     }
     private void happinessRows() {
         drawLine(tr("happiness_total",town.getInt("Happiness")),cx,cy,INK);listTop=cy+18;listBottom=bottom-24;
+        CompoundTag metrics=town.getCompound("Metrics");
+        if(metrics.getBoolean("NeedsStale")) rows.add(new Row(tr("metrics.uncertain"),tr("metrics.uncertain_details",metrics.getInt("ResidentsStale"),metrics.getInt("ResidentsUnknown"),metrics.getBoolean("GuardsStale")?"?":"-",metrics.getBoolean("AnimalsStale")?"?":"-"),new ItemStack(Items.CLOCK),new CompoundTag(),null));
         for (String category:new String[]{"housing","food","safety","jobs","community","decoration"}) {
             String field=category.substring(0,1).toUpperCase(Locale.ROOT)+category.substring(1);
-            rows.add(new Row(tr("category."+category),Component.literal(Integer.toString(town.getInt(field))),new ItemStack(switch(category){case "housing"->Items.RED_BED;case "food"->Items.BREAD;case "safety"->Items.SHIELD;case "jobs"->Items.IRON_PICKAXE;case "community"->Items.BELL;default->Items.FLOWER_POT;}),new CompoundTag(),()->{chapter=Arrays.asList(CHAPTERS).indexOf(category.equals("food")?"food_satisfaction":category);guide();}));
+            Component explanation=switch(category) {
+                case "safety"->tr("metrics.guards",metrics.getInt("EffectiveGuards"),metrics.getInt("RequiredGuards"));
+                case "jobs"->tr("metrics.jobs",metrics.getInt("EmployedAdults"),metrics.getInt("WorkingAdults"));
+                case "community"->tr("metrics.population",metrics.getInt("PresentResidents"),metrics.getInt("RequiredResidents"));
+                case "decoration"->tr("metrics.comfort",metrics.getInt("ComfortKnownChunks"),metrics.getInt("ComfortTotalChunks"),metrics.getInt("ComfortStaleChunks"));
+                default->tr("metrics.value",town.getInt(field));
+            };
+            rows.add(new Row(tr("category."+category).copy().append(" "+town.getInt(field)+"%"),explanation,new ItemStack(switch(category){case "housing"->Items.RED_BED;case "food"->Items.BREAD;case "safety"->Items.SHIELD;case "jobs"->Items.IRON_PICKAXE;case "community"->Items.BELL;default->Items.FLOWER_POT;}),new CompoundTag(),()->{chapter=Arrays.asList(CHAPTERS).indexOf(category.equals("food")?"food_satisfaction":category);guide();}));
         }
+        rows.add(new Row(tr("metrics.animals"),tr("metrics.animal_types",metrics.getInt("AnimalTypes"),metrics.getInt("RequiredAnimalTypes")),new ItemStack(Items.WHEAT),new CompoundTag(),null));
+        CompoundTag categories=metrics.getCompound("ComfortCategories");
+        for(String category:new java.util.TreeSet<>(categories.getAllKeys())) rows.add(new Row(tr("amenity."+category),tr("metrics.points",categories.getInt(category)),new ItemStack(Items.FLOWER_POT),new CompoundTag(),null));
         rows.add(new Row(tr("tax",town.getInt("Tax")),tr("tax_deduction"),new ItemStack(Items.PAPER),new CompoundTag(),()->{chapter=CHAPTERS.length-1;guide();}));listWidgets();refreshFooter();
     }
     private void residentDetail() {
@@ -312,6 +332,10 @@ public class SettlementScreen extends Screen {
             drawLine(tr("wage"),tx,py+66,MUTED);drawings.add(()->coins(detail.getLong("Wage"),tx,py+78,tw));
         }
         listTop=py+104;listBottom=bottom-48;
+        if(resident&&!isRecruit) {
+            rows.add(new Row(tr("metrics.environment"),tr("metrics.mood_breakdown",detail.getInt("PersonalMood"),detail.getInt("EnvironmentBonus"),detail.getInt("SocialMoodCap")),new ItemStack(Items.FLOWER_POT),new CompoundTag(),null));
+            if(!detail.getString("EmploymentReason").isEmpty()) rows.add(new Row(tr("category.jobs"),tr("metrics.employment."+detail.getString("EmploymentReason")),new ItemStack(Items.IRON_PICKAXE),new CompoundTag(),null));
+        }
         for (CompoundTag row:servings(detail)) rows.add(new Row(item(row.getString("Item")).getHoverName(),tr("served_today",row.getInt("Count")),item(row.getString("Item")),row,null));listWidgets();
         if(resident && isRecruit) {
             button(tr("feed"),cx,bottom-44,cw/2-2,()->{detail=null;chest=null;section="chests";scroll=0;rebuild();},false);
@@ -398,7 +422,8 @@ public class SettlementScreen extends Screen {
         } catch(NumberFormatException|ArithmeticException invalid) {notice="jem.settlements.reason.invalid";}
     }
     private void settings() {
-        nameBox=edit(cx,cy,cw,editedName.isEmpty()?town.getString("Name"):editedName,"name",32);
+        nameBox=edit(cx,cy,Math.max(60,cw-66),editedName.isEmpty()?town.getString("Name"):editedName,"name",32);
+        button(Component.translatable("jem.settlements.city.open"),cx+cw-62,cy,62,()->request("city",new CompoundTag()),false).setTooltip(Tooltip.create(Component.translatable("jem.settlements.city.title")));
         button(tr("save_name"),cx,cy+24,cw,()->{CompoundTag payload=new CompoundTag();payload.putString("Name",nameBox.getValue().strip());request("rename",payload);},true);
         drawWrapped(tr("location",dimension(town.getString("Dimension")),position(town.getLong("Center"))),cx,cy+52,cw,MUTED);
         drawWrapped(tr("bounds",town.getInt("TerritoryMinX"),town.getInt("TerritoryMinZ"),town.getInt("TerritoryMaxX"),town.getInt("TerritoryMaxZ")),cx,cy+80,cw,MUTED);
@@ -421,7 +446,7 @@ public class SettlementScreen extends Screen {
     private void confirmationWidgets() {
         int dx=left+Math.max(8,(panelW-224)/2),dw=Math.min(224,panelW-16);
         int lines=font.split(confirmText,dw-16).size(),dy=top+Math.max(34,(panelH-(lines*12+44))/2);drawWrapped(confirmText,dx+8,dy+8,dw-16,INK);
-        Button cancel=button(tr(information?"close":"cancel"),dx,Math.min(bottom-24,dy+lines*12+20),dw/2-2,()->{confirm=null;mode=confirmMode;rebuild();},false);
+        Button cancel=button(tr(information?"close":"cancel"),dx,Math.min(bottom-24,dy+lines*12+20),dw/2-2,()->{confirm=null;mode=confirmMode;map.clearQuote();rebuild();},false);
         if(!information)button(tr("confirm"),dx+dw/2+2,Math.min(bottom-24,dy+lines*12+20),dw/2-2,()->{Runnable action=confirm;confirm=null;mode=confirmMode;action.run();rebuild();},true);setInitialFocus(cancel);
     }
     private void refreshFooter() {if(SettlementClientState.pending())button(tr("reconcile"),cx,bottom-20,cw,SettlementClientState::reconcileNow,false);else button(tr("refresh"),cx,bottom-20,cw,()->request("refresh",new CompoundTag()),true);}
@@ -458,7 +483,6 @@ public class SettlementScreen extends Screen {
         int by=y+(label.getString().isEmpty()?0:11);g.fill(x,by,x+w,by+7,0xff20271f);g.fill(x+1,by+1,x+1+(w-2)*value/100,by+6,color);
     }
     private boolean coinCurrency() { return envelope.getBoolean("CoinCurrency"); }
-    private long territoryPrice() { return coinCurrency()?map.cost(town)/CoinDenomination.GOLD.value():map.cost(town); }
     private ItemStack currencyItem() { return coinCurrency()?item("jem_economy:"+denomination.id()):new ItemStack(Items.EMERALD); }
     private void coins(long copper,int x,int y,int maxWidth) {
         if (!coinCurrency()) { SettlementPriceRenderer.draw(graphics,font,copper,x,y,maxWidth,INK,false); return; }
@@ -486,27 +510,29 @@ public class SettlementScreen extends Screen {
     private int refreshTicks;
     @Override public void tick(){
         if(minecraft.level==null||minecraft.player==null){onClose();return;}
+        if(!minecraft.isWindowActive())map.clearQuote();
+        if(map.dragging() && org.lwjgl.glfw.GLFW.glfwGetMouseButton(minecraft.getWindow().getWindow(),0)!=org.lwjgl.glfw.GLFW.GLFW_PRESS) {map.clearQuote();rebuild();}
         SettlementClientState.reconcile();
         if(++refreshTicks>=100){refreshTicks=0;if(SettlementNetwork.supported()){
             UUID id=town.hasUUID("Id")?town.getUUID("Id"):null;
             SettlementNetwork.action("heartbeat",id,new CompoundTag(),UUID.randomUUID());
         }}
     }
-    @Override public void onClose(){map.release();SettlementClientState.closed();minecraft.setScreen(null);}
-    @Override public void removed(){map.release();SettlementClientState.closed();}
+    @Override public void onClose(){map.clearQuote();SettlementClientState.closed();minecraft.setScreen(null);}
+    @Override public void removed(){map.clearQuote();SettlementClientState.closed();}
     @Override public boolean keyPressed(int key,int scan,int modifiers){
         if(key==256&&inspecting&&confirm==null){inspecting=false;rotatingHouse=false;panningHouse=false;rebuild();return true;}
-        if(key==256){map.release();if(confirm!=null){confirm=null;mode=confirmMode;rebuild();return true;}if(mode.equals("guide")){mode=guideMode;section=guideReturn;rebuild();return true;}if(chest!=null){chest=null;rebuild();return true;}if(detail!=null){detail=null;rebuild();return true;}}
+        if(key==256){map.clearQuote();if(confirm!=null){confirm=null;mode=confirmMode;rebuild();return true;}if(mode.equals("guide")){mode=guideMode;section=guideReturn;rebuild();return true;}if(chest!=null){chest=null;rebuild();return true;}if(detail!=null){detail=null;rebuild();return true;}}
         return super.keyPressed(key,scan,modifiers);
     }
     @Override public boolean mouseClicked(double x,double y,int button){
         if(super.mouseClicked(x,y,button))return true;
         if(inspecting&&mode.equals("town")&&confirm==null&&housing.inside(x,y)&&(button==0||button==1)){rotatingHouse=button==0;panningHouse=button==1;return true;}
-        if(!inspecting&&confirm==null&&mode.equals("town")&&section.equals("map")&&detail==null&&map.click(x,y,button,town)){if(button==0)rebuild();return true;}
+        if(!inspecting&&confirm==null&&mode.equals("town")&&section.equals("map")&&detail==null&&map.click(x,y,button,town)){return true;}
         return false;
     }
-    @Override public boolean mouseDragged(double x,double y,int button,double dx,double dy){if(inspecting&&confirm==null){if(rotatingHouse&&button==0){housing.rotate(dx,dy);return true;}if(panningHouse&&button==1){housing.pan(dx,dy);return true;}}return !inspecting&&confirm==null&&section.equals("map")&&map.drag(x,y,dx,dy)||super.mouseDragged(x,y,button,dx,dy);}
-    @Override public boolean mouseReleased(double x,double y,int button){rotatingHouse=false;panningHouse=false;map.release();return super.mouseReleased(x,y,button);}
+    @Override public boolean mouseDragged(double x,double y,int button,double dx,double dy){if(inspecting&&confirm==null){if(rotatingHouse&&button==0){housing.rotate(dx,dy);return true;}if(panningHouse&&button==1){housing.pan(dx,dy);return true;}}return !inspecting&&confirm==null&&section.equals("map")&&map.drag(x,y,dx,dy,town)||super.mouseDragged(x,y,button,dx,dy);}
+    @Override public boolean mouseReleased(double x,double y,int button){rotatingHouse=false;panningHouse=false;boolean selected=map.dragging();map.release();if(selected)rebuild();return super.mouseReleased(x,y,button);}
     @Override public boolean mouseScrolled(double x,double y,double delta){
         if(confirm!=null)return false;
         if(inspecting&&housing.inside(x,y)){housing.zoom(delta);return true;}

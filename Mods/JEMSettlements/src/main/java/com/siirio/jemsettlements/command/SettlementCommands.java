@@ -18,6 +18,7 @@ public final class SettlementCommands {
 
     @SubscribeEvent
     public static void register(RegisterCommandsEvent event) {
+        if (event.getCommandSelection() != Commands.CommandSelection.DEDICATED) return;
         event.getDispatcher().register(Commands.literal("jem")
                 .then(Commands.literal("town")
                         .executes(context -> status(context.getSource().getPlayerOrException()))

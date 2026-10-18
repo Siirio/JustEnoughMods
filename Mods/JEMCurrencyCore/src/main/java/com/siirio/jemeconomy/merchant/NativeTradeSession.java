@@ -88,12 +88,18 @@ public final class NativeTradeSession {
         var offer = offer(); var quote = quote();
         boolean ready = !preview && offer != null && quote.available() && matchesInputs(offer);
         ItemStack result = ready ? quote.direction() == NativeTradeQuote.Direction.PLAYER_SELLS
-                ? new ItemStack(CurrencyItems.COPPER_COIN.get()) : offer.getResult().copy() : ItemStack.EMPTY;
+                ? payoutPreview(quote.copper()) : offer.getResult().copy() : ItemStack.EMPTY;
         if (ready && quote.direction() == NativeTradeQuote.Direction.PLAYER_SELLS)
             result.setHoverName(net.minecraft.network.chat.Component.translatable("jem.economy.trade.wallet_credit",
                     com.siirio.jemeconomy.physical.CoinFormatter.format(quote.copper())));
         ((NativeTradeContainer) inputs).jem$projection(ready ? offer : null, result, ready ? offer.getXp() : 0);
         return true;
+    }
+    /** Guarded monetary result preview only; taking it still credits the exact server quote through the journal. */
+    private static ItemStack payoutPreview(long copper) {
+        for (var coin : com.siirio.jemeconomy.physical.CoinDenomination.descending())
+            if (copper >= coin.value()) return new ItemStack(CurrencyItems.item(coin));
+        return new ItemStack(CurrencyItems.COPPER_COIN.get());
     }
     private boolean matchesInputs(MerchantOffer offer) {
         return inputOrder(offer) >= 0;

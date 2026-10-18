@@ -5,6 +5,7 @@ import com.mojang.authlib.minecraft.MinecraftProfileTexture;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.multiplayer.PlayerInfo;
+import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.player.RemotePlayer;
 import net.minecraft.client.resources.DefaultPlayerSkin;
 import net.minecraft.resources.ResourceLocation;
@@ -25,6 +26,7 @@ final class PreviewPlayerEntity extends RemotePlayer {
     }
 
     void refreshAppearance() {
+        if (appearanceSource() != null) return;
         var minecraft = Minecraft.getInstance();
         minecraft.getSkinManager().registerSkins(getGameProfile(), (type, location, texture) -> minecraft.execute(() -> {
             if (type == MinecraftProfileTexture.Type.SKIN) {
@@ -34,6 +36,13 @@ final class PreviewPlayerEntity extends RemotePlayer {
         }), true);
     }
 
+    /** The loaded player's appearance already includes the installed skin provider. */
+    private AbstractClientPlayer appearanceSource() {
+        var level = Minecraft.getInstance().level;
+        var entity = level == null ? null : level.getPlayerByUUID(getUUID());
+        return entity instanceof AbstractClientPlayer player && player != this ? player : null;
+    }
+
     @Override
     protected PlayerInfo getPlayerInfo() {
         return null;
@@ -41,22 +50,26 @@ final class PreviewPlayerEntity extends RemotePlayer {
 
     @Override
     public ResourceLocation getSkinTextureLocation() {
-        return skin;
+        var source = appearanceSource();
+        return source == null ? skin : source.getSkinTextureLocation();
     }
 
     @Override
     public ResourceLocation getCloakTextureLocation() {
-        return cape;
+        var source = appearanceSource();
+        return source == null ? cape : source.getCloakTextureLocation();
     }
 
     @Override
     public boolean isCapeLoaded() {
-        return cape != null;
+        var source = appearanceSource();
+        return source == null ? cape != null : source.isCapeLoaded();
     }
 
     @Override
     public String getModelName() {
-        return model;
+        var source = appearanceSource();
+        return source == null ? model : source.getModelName();
     }
 
     @Override

@@ -1,0 +1,89 @@
+{
+  "status": "partial-overhaul-awaiting-player-acceptance",
+  "branch": "main",
+  "bootstrapRevision": "jem.6",
+  "bootstrapSha256": "49863d3e1eb01fac591ae943c640b94086d4f8c26c7a0914fc779935df923d2c",
+  "artifacts": {
+    "compat": {
+      "source": "Mods/JEMCompat/build/libs/jemcompat-3.7.0.jar",
+      "sha256": "b5eb0067745d5a4994a10912d77e11a7b4b61a24bfc8fdf0375dea62c204150d",
+      "bytes": 288481,
+      "menuSupport": [
+        {
+          "identifier": {
+            "group": "com.siirio.jem",
+            "artifact": "jem-menu-support"
+          },
+          "version": {
+            "range": "[1.1.1,2.0.0)",
+            "artifactVersion": "1.1.1"
+          },
+          "path": "META-INF/jarjar/jem-menu-support-1.1.1.jar",
+          "isObfuscated": false
+        }
+      ]
+    },
+    "server": {
+      "source": "Mods/JEMServer/build/libs/jem-server-2.0.0-dev.jar",
+      "sha256": "53e4df0307365959c23a81b1ec61288b46dc67c8f43d5cf9b106bcff78111612",
+      "bytes": 19833407,
+      "menuSupport": [
+        {
+          "identifier": {
+            "group": "com.siirio.jem",
+            "artifact": "jem-menu-support"
+          },
+          "version": {
+            "range": "[1.1.1,2.0.0)",
+            "artifactVersion": "1.1.1"
+          },
+          "path": "META-INF/jarjar/jem-menu-support-1.1.1.jar",
+          "isObfuscated": false
+        }
+      ]
+    },
+    "races": {
+      "source": "Mods/JEMVisualSandboxR3/build/production-profile/libs/jem-races-1.1.0.jar",
+      "sha256": "8777555b6d10257901915315cfeb1620040164d19f1a7c0d2b6a1ca12f2e03b5",
+      "bytes": 7067287,
+      "menuSupport": [
+        {
+          "identifier": {
+            "group": "com.siirio.jem",
+            "artifact": "jem-menu-support"
+          },
+          "version": {
+            "range": "[1.1.1,2.0.0)",
+            "artifactVersion": "1.1.1"
+          },
+          "path": "META-INF/jarjar/jem-menu-support-1.1.1.jar",
+          "isObfuscated": false
+        }
+      ]
+    },
+    "settlements": {
+      "source": "Mods/JEMSettlements/build/libs/jem-settlements-2.1.0.jar",
+      "sha256": "686de320a7e34fa0384b380195d6d8f5680d0431aa4bb14e2d57e2c187292e2e",
+      "bytes": 2484775,
+      "menuSupport": []
+    }
+  },
+  "artifactMismatches": [],
+  "nativePublication": {
+    "published": true,
+    "journalSequence": 34,
+    "publishedManifestSha1": "2886749ff0d82001ae6f74cdf3d94c25ae8bce71",
+    "stagedManifestSha1": "2886749ff0d82001ae6f74cdf3d94c25ae8bce71"
+  },
+  "installedToken": "e6be1e0775014bae43c78f4eccc8cee111fe0112",
+  "publishedToken": "e6be1e0775014bae43c78f4eccc8cee111fe0112",
+  "pendingTransactions": [],
+  "preferencesCompared": 22,
+  "preferenceMismatches": [],
+  "serverLoaded": true,
+  "gameplayTestsRun": false,
+  "clientLaunched": false,
+  "mineRentDeployed": false,
+  "stableProfileChanged": false,
+  "releaseBaselinePromoted": false
+}

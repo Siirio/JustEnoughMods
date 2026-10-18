@@ -24,6 +24,7 @@ public final class AmenityScanService {
     private AmenityScanService() { }
 
     public static void invalidate(MinecraftServer server, net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level> dimension, BlockPos changed) {
+        CityComfortService.invalidate(server, dimension, changed);
         SettlementSavedData data = SettlementSavedData.get(server);
         for (var town : data.towns()) for (ResidentMood resident : data.residents(town.id())) {
             if (near(resident.home().orElse(null), dimension, changed) || near(resident.workplace().orElse(null), dimension, changed)) resident.markAmenitiesDirty(server.overworld().getGameTime());

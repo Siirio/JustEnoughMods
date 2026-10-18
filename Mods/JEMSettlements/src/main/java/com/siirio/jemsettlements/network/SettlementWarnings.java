@@ -19,7 +19,7 @@ public final class SettlementWarnings {
     private static int cursor;
     private SettlementWarnings() { }
     @SubscribeEvent public static void tick(TickEvent.ServerTickEvent event) {
-        if (event.phase != TickEvent.Phase.END || event.getServer().getTickCount() % 100 != 0) return;
+        if (!SettlementAuthority.active(event.getServer()) || event.phase != TickEvent.Phase.END || event.getServer().getTickCount() % 100 != 0) return;
         var data = SettlementSavedData.get(event.getServer()); var towns = new java.util.ArrayList<>(data.towns());
         if (towns.isEmpty()) return;
         for (int i = 0; i < Math.min(4, towns.size()); i++) {
@@ -43,7 +43,7 @@ public final class SettlementWarnings {
         CONDITIONS.keySet().removeIf(id -> data.town(id).isEmpty());
     }
     @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent event) {
-        if (event.getEntity() instanceof net.minecraft.server.level.ServerPlayer player)
+        if (event.getEntity() instanceof net.minecraft.server.level.ServerPlayer player && SettlementAuthority.active(player))
             SettlementAuthority.principal(player).ifPresent(owner -> SettlementSavedData.get(player.getServer()).ownedTowns(owner).forEach(town -> CONDITIONS.remove(town.id())));
     }
     @SubscribeEvent public static void stopped(ServerStoppedEvent event) { CONDITIONS.clear(); cursor = 0; }

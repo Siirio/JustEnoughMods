@@ -771,7 +771,7 @@ public final class SmpScreen extends Screen {
         int sx = bodyX + portraitWidth + 10, sw = bodyWidth - portraitWidth - 10;
         text(g, Component.literal(row.getString("name")), sx, y + 8, CREAM, sw);
         int identityY = y + 22;
-        if (row.contains("race")) { text(g, Component.translatable("jem.smp.profile.race", Component.translatable("jem.roles.race." + row.getString("race").toLowerCase(Locale.ROOT))), sx, identityY, PEACH, sw); identityY += 14; }
+        if (row.contains("race")) { text(g, Component.translatable("jem.smp.profile.race", Component.translatable("jem.roles.race." + row.getString("race").toLowerCase(Locale.ROOT) + ".name")), sx, identityY, PEACH, sw); identityY += 14; }
         if (row.contains("settlement")) { text(g, Component.translatable("jem.smp.profile.settlement", row.getString("settlement"), row.getString("settlementTier")), sx, identityY, MUTED, sw); identityY += 14; }
         text(g, Component.translatable("jem.smp.profile.recruits", row.getLong("recruitCount")), sx, identityY, MUTED, sw); identityY += 14;
         var professionRows = row.getList("professions", Tag.TAG_COMPOUND);

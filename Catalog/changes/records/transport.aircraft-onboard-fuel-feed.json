@@ -7,6 +7,11 @@
       "type": "namespace",
       "registry": "entities",
       "value": "immersive_aircraft"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "jemcompat:aircraft_fuel"
     }
   ],
   "conditions": [],
@@ -15,13 +20,30 @@
     "priority": 30
   },
   "change": {
-    "summary": "Restore native in-flight engine fuel feeding from onboard inventory while retaining quarter-rate grounded consumption.",
+    "summary": "Dedicated-server aircraft use 90 real active seconds per fuel, a shared 16-unit capacity including burning fuel, grounded insertion and configured Y-only ascent.",
     "modifiers": [
       {
         "property": "aircraft.engine.onboard_fuel_feed",
         "operation": "replace",
-        "before": "JEM cancels native refuel while airborne or moving >=0.5 blocks/s",
-        "after": "Remove cancellation of native refuel(); upstream 1.5.0 feeds each BOILER slot into its fuel buffer throughout flight; grounded 0.25 consumption multiplier retained"
+        "before": "Native IA 1.5.0 preloads BOILER buffers up to target 1000 and stochastic per-tick consumption; JEM multiplies grounded consumption by 0.25.",
+        "after": "Server-owned monotonic active-time reservoir; each accepted unit adds exactly 90 seconds only when required by active work. Native presentation receives synchronized utilization/low-fuel state. Offline/unloaded intervals are excluded and remaining nanoseconds persist in entity and packed item NBT."
+      },
+      {
+        "property": "aircraft.fuel.admission",
+        "operation": "replace",
+        "before": "Native FuelSlot accepts configured fuel without ground/capacity check; occupied quick-transfer merge bypasses mayPlace. Custom fuel item stacks to 32.",
+        "after": "Custom item stack maximum16. Owner-bound native inventory and fuel slots share a capacity16 including burning units across all boilers. Slot item/no-argument limits also gate occupied merges, drag/hotbar/quick transfer; entity and raw inventory automation admission share the server ground check. Rejected direct writes and legacy overcapacity preserve excess items as nearby drops. Deserialization restores saved items before one-time capacity reconciliation."
+      },
+      {
+        "property": "aircraft.vertical_ascent",
+        "operation": "add",
+        "before": "Native IA flight/controller acceleration.",
+        "after": {
+          "upward_acceleration_blocks_per_tick_squared": 0.045,
+          "max_upward_blocks_per_second": 8,
+          "config": "SERVER jemcompat-aircraft-server.toml: aircraft.ascentAcceleration, aircraft.maxAscentSpeed",
+          "condition": "Powered positive native climb request; airplanes use nose-up vector and do not boost brake input. Only deltaMovement.y changes; descent and horizontal components stay native."
+        }
       }
     ]
   },
@@ -29,12 +51,26 @@
     "owner": "JEM canonical module sources",
     "kind": "user_requested_behavior_and_bug_fix",
     "source_files": [
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/EngineVehicleFuelMixin.java"
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/AircraftFuelInventory.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/AircraftFuelSlot.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/AircraftFuelState.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/AircraftPolicy.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/TransportContent.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/EngineVehicleFuelMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/AircraftInventoryMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/AircraftFuelSlotMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/AircraftLiftMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/en_us.json",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/ru_ru.json"
     ]
   },
   "rationale": {
-    "purpose": "Restore native in-flight engine fuel feeding from onboard inventory while retaining quarter-rate grounded consumption.",
-    "decision_source": "User explicitly requested behavior; exact implementation chosen by Codex."
+    "purpose": "Implement master overhaul section1 while preserving native menus, controls, horizontal movement, braking and standalone singleplayer behavior.",
+    "decision_source": "User master brief section1, implementation approved without further design confirmation.",
+    "user_requested": "90 active real seconds, capacity16, server-grounded refuelling, saved remainder/readable time, responsive configured vertical acceleration and cap.",
+    "codex_choices": "One shared lazily filled reservoir, monotonic nanosecond clock, native slots/inventory extension, actionbar HUD, synced SERVER lift config; old buffer fraction converts against installed configured unit1125, excess old items are returned beside the aircraft without deletion."
   },
   "introduced": {
     "date": "2026-10-18",
@@ -54,21 +90,55 @@
       "source_files": [
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/EngineVehicleFuelMixin.java"
       ]
+    },
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "implement_master_section1",
+      "summary": "Dedicated-server aircraft use 90 real active seconds per fuel, a shared 16-unit capacity including burning fuel, grounded insertion and configured Y-only ascent.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/AircraftFuelInventory.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/AircraftFuelSlot.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/AircraftFuelState.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/AircraftPolicy.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/TransportContent.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/EngineVehicleFuelMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/AircraftInventoryMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/AircraftFuelSlotMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/AircraftLiftMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/en_us.json",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/ru_ru.json"
+      ]
     }
   ],
   "impacts": {
     "systems": [
-      "Engine thrust",
-      "Native LOW_ON_FUEL warning",
-      "All engine aircraft"
+      "all engine aircraft",
+      "native fuel slots and quick transfer",
+      "automation",
+      "fuel item stack capacity",
+      "NBT/reconnect/chunk unload/packed aircraft",
+      "pilot actionbar",
+      "remote client native motion prediction",
+      "integrated singleplayer preservation"
     ],
-    "relations": [],
+    "relations": [
+      "FuelSlotDescription -> owner-bound native FuelSlot -> AircraftFuelInventory",
+      "EngineVehicle -> persisted active-time reservoir -> native synchronized UTILIZATION/LOW_ON_FUEL",
+      "VehicleEntity native locally controlled movement -> Y-only configured climb"
+    ],
     "notes": [
-      "Production artifacts synchronized only to local Server and canonical ManagedPack; stable profile and release baseline unchanged.",
-      "No automated tests or gameplay/client launch. Acceptance remains in testing."
+      "Installed exact Immersive Aircraft1.5.0 JAR SHA256 7e00754f893d910f301134e0cada37dde0be36c8df15ebf98a5b6512fa664077 inspected with javap and CFR0.152; source bodies are reference evidence, not copied production source.",
+      "Five Whys: duration differs by surface -> getFuelConsumption is multiplied onGround -> stochastic per-tick decrement depends on server ticks -> refuel buffers are native integer burn ticks rather than active real duration -> EngineVehicle fuel owner lacked the required monotonic active-work contract.",
+      "Configured free fuel/Creative exemption remains native; integrated singleplayer retains native fuel/inventory/motion policy. Registry compatibility retains shared fuel stack maximum16.",
+      "No build, tests, static analysis or gameplay launch performed by aircraft worker; root integrates and builds production artifacts."
     ],
     "unresolved": [
-      "Player acceptance pending"
+      "Gameplay acceptance pending: exact wall-clock timing under low TPS, all click/automation routes, reconnect/unload, packed item, controller response and native movement synchronization.",
+      "One-tick engine sampling bounds start/stop observation precision; timing is wall-clock based rather than a tick count.",
+      "Legacy native buffers do not preserve historical consumed wall time; migration retains their unspent fraction of the current configured1125-unit fuel."
     ]
   }
 }

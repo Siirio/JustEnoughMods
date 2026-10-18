@@ -15,7 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public final class TownRecord implements com.siirio.jemsettlements.payroll.PayrollBook {
     public static final int INITIAL_RADIUS = 48;
-    public static final int CURRENT_SCHEMA = 7;
+    public static final int CURRENT_SCHEMA = 8;
     private int nextStorageNumber = 1;
     private final UUID id;
     private final UUID owner;
@@ -26,7 +26,7 @@ public final class TownRecord implements com.siirio.jemsettlements.payroll.Payro
     private final List<StorageLink> storage = new ArrayList<>();
     private final List<PayrollPeriod> payroll = new ArrayList<>();
     private SettlementSimulationState simulation = new SettlementSimulationState();
-    private int happiness = 50;
+    private int happiness;
     private int taxPercent;
     private long lastHappinessDay = Long.MIN_VALUE;
     private long payrollEpoch;
@@ -38,7 +38,13 @@ public final class TownRecord implements com.siirio.jemsettlements.payroll.Payro
     private TownSpecialization primarySpecialization = TownSpecialization.NONE;
     private TownSpecialization secondarySpecialization = TownSpecialization.NONE;
     private long lastSpecializationEvaluation;
-    private int housingScore = 50, foodScore = 50, safetyScore = 0, jobsScore = 25, communityScore = 40, decorationScore;
+    private int housingScore, foodScore, safetyScore, jobsScore, communityScore, decorationScore;
+    private CompoundTag metrics = new CompoundTag();
+    private CompoundTag comfortChunks = new CompoundTag();
+    public CompoundTag metrics() { return metrics.copy(); }
+    public CompoundTag animalObservations() { if (!metrics.contains("AnimalObservations")) metrics.put("AnimalObservations", new CompoundTag()); return metrics.getCompound("AnimalObservations"); }
+    public void metrics(CompoundTag value) { metrics = value.copy(); }
+    public CompoundTag comfortChunks() { return comfortChunks; }
     private int territoryRadius = INITIAL_RADIUS;
     private int territoryMinX, territoryMaxX, territoryMinZ, territoryMaxZ;
     private final Set<UUID> expansionReceipts = new LinkedHashSet<>();
@@ -74,7 +80,7 @@ public final class TownRecord implements com.siirio.jemsettlements.payroll.Payro
     }
     public void lastHappinessDay(long value) { lastHappinessDay = value; }
     public void happiness(int value) { happiness = clamp(value); }
-    public void happinessEvidence(int housing, int food, int safety, int jobs, int community, int decoration) { housingScore = clamp(housing); foodScore = clamp(food); safetyScore = clamp(safety); jobsScore = clamp(jobs); communityScore = clamp(community); decorationScore = Math.max(0, Math.min(20, decoration)); }
+    public void happinessEvidence(int housing, int food, int safety, int jobs, int community, int decoration) { housingScore = clamp(housing); foodScore = clamp(food); safetyScore = clamp(safety); jobsScore = clamp(jobs); communityScore = clamp(community); decorationScore = clamp(decoration); }
     public void taxPercent(int value) { if (value != 0 && value != 5 && value != 10 && value != 15) throw new IllegalArgumentException("Unsupported tax rate"); taxPercent = value; }
     public boolean addStorage(StorageLink link) { return storage.stream().noneMatch(value -> value.dimension().equals(link.dimension()) && value.position().equals(link.position())) && storage.size() < 64 && storage.add(link.numbered(nextStorageNumber++)); }
     public void replaceStorage(java.util.List<StorageLink> links) { storage.clear(); storage.addAll(links); }
@@ -99,6 +105,7 @@ public final class TownRecord implements com.siirio.jemsettlements.payroll.Payro
         tag.putString("Dimension", dimension.toString()); tag.putLong("Center", center.asLong()); tag.putInt("Happiness", happiness); tag.putInt("Tax", taxPercent); tag.putLong("LastHappinessDay", lastHappinessDay);
         tag.putLong("PayrollEpoch", payrollEpoch); tag.putLong("NextPayrollGameTime", nextPayrollGameTime); tag.putLong("NextPayrollIndex", nextPayrollIndex); tag.putInt("ConsecutiveMissedPayrolls", consecutiveMissedPayrolls); tag.putInt("EmeraldMissedPayrolls", emeraldMissedPayrolls);
         tag.putString("Tier", tier.name()); tag.putString("PrimarySpecialization", primarySpecialization.name()); tag.putString("SecondarySpecialization", secondarySpecialization.name()); tag.putLong("LastSpecializationEvaluation", lastSpecializationEvaluation);
+        tag.put("Metrics", metrics.copy()); tag.put("ComfortChunks", comfortChunks.copy());
         tag.putInt("HousingScore", housingScore); tag.putInt("FoodScore", foodScore); tag.putInt("SafetyScore", safetyScore); tag.putInt("JobsScore", jobsScore); tag.putInt("CommunityScore", communityScore); tag.putInt("DecorationScore", decorationScore);
         tag.putInt("TerritoryRadius", territoryRadius); tag.putInt("TerritoryMinX", territoryMinX); tag.putInt("TerritoryMaxX", territoryMaxX); tag.putInt("TerritoryMinZ", territoryMinZ); tag.putInt("TerritoryMaxZ", territoryMaxZ);
         ListTag receiptTags = new ListTag(); expansionReceipts.forEach(value -> { CompoundTag row = new CompoundTag(); row.putUUID("Id", value); receiptTags.add(row); }); tag.put("ExpansionReceipts", receiptTags);
@@ -108,7 +115,8 @@ public final class TownRecord implements com.siirio.jemsettlements.payroll.Payro
     }
     static TownRecord load(CompoundTag tag) {
         TownRecord town = new TownRecord(tag.getUUID("Id"), tag.getUUID("Owner"), tag.getString("Name"), new ResourceLocation(tag.getString("Dimension")), BlockPos.of(tag.getLong("Center")));
-        town.happiness(tag.contains("Happiness") ? tag.getInt("Happiness") : 50); town.taxPercent(tag.getInt("Tax")); town.lastHappinessDay(tag.contains("LastHappinessDay") ? tag.getLong("LastHappinessDay") : Long.MIN_VALUE);
+        town.metrics = tag.getCompound("Metrics").copy(); town.comfortChunks = tag.getCompound("ComfortChunks").copy();
+        town.happiness(tag.contains("Happiness") ? tag.getInt("Happiness") : 0); town.taxPercent(tag.getInt("Tax")); town.lastHappinessDay(tag.contains("LastHappinessDay") ? tag.getLong("LastHappinessDay") : Long.MIN_VALUE);
         ListTag members = tag.contains("Members") ? tag.getList("Members", Tag.TAG_COMPOUND) : tag.getList("Residents", Tag.TAG_COMPOUND); for (int i = 0; i < members.size(); i++) if (members.getCompound(i).hasUUID("Id")) town.members.add(members.getCompound(i).getUUID("Id"));
         ListTag stores = tag.getList("Storage", Tag.TAG_COMPOUND); for (int i = 0; i < stores.size() && town.storage.size() < 64; i++) town.storage.add(StorageLink.load(stores.getCompound(i)));
         town.nextStorageNumber = Math.max(1, tag.getInt("NextStorageNumber"));

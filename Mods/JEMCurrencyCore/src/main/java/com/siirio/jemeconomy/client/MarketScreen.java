@@ -26,11 +26,12 @@ public final class MarketScreen extends Screen {
     private static final ResourceLocation ART = new ResourceLocation("jem_economy", "textures/gui/market/storefront.png");
     private static final int ART_WIDTH = 1671, ART_HEIGHT = 941, CANVAS_WIDTH = 836, CANVAS_HEIGHT = 471;
     private static final int CREAM = 0xFFFFE7C2, MUTED = 0xFFD0B99A, EDGE = 0xFFC17A3C;
-    private static final String[] CATEGORIES = {"all", "blocks", "food", "plants", "resources", "drops"};
+    private static final String[] CATEGORIES = {"blocks", "food", "plants", "resources", "drops"};
     private final Screen parent;
     private final List<Hit> hits = new ArrayList<>();
     private MarketCatalogSnapshot data;
     private EditBox search;
+    private String activeCategory;
     private Villager merchant;
     private boolean exchange, categoriesOpen;
     private CoinDenomination source = CoinDenomination.COPPER, target = CoinDenomination.SILVER;
@@ -44,9 +45,11 @@ public final class MarketScreen extends Screen {
         super(Component.translatable("jem.economy.market.title"));
         this.parent = parent;
         this.data = data;
+        this.activeCategory = java.util.Arrays.asList(CATEGORIES).contains(data.category())?data.category():"blocks";
     }
 
     void accept(MarketCatalogSnapshot next) {
+        if(next.errorKey().isBlank()&&!next.category().equals(activeCategory))return;
         data = next;
         if (search != null && !search.isFocused() && !search.getValue().equals(next.search())) search.setValue(next.search());
     }
@@ -56,13 +59,13 @@ public final class MarketScreen extends Screen {
         uiScale = Math.min((width - 8f) / CANVAS_WIDTH, (height - 8f) / CANVAS_HEIGHT);
         originX = (width - CANVAS_WIDTH * uiScale) / 2f;
         originY = (height - CANVAS_HEIGHT * uiScale) / 2f;
-        search = new EditBox(font, 270, 101, 158, 16, Component.translatable("jem.economy.market.search"));
-        search.setBordered(false);
+        search = new EditBox(font, 61, 382, 129, 16, Component.translatable("jem.economy.market.search"));
+        search.setBordered(true);
         search.setTextColor(CREAM);
         search.setValue(draft);
         search.setMaxLength(64);
         search.setHint(Component.translatable("jem.economy.market.search"));
-        search.setResponder(value -> { if (!exchange) EconomyNetwork.marketQuery(value, data.category(), 0, false); });
+        search.setResponder(value -> { if (!exchange) EconomyNetwork.marketQuery(value, activeCategory, 0, false); });
         addWidget(search);
         if (minecraft != null && minecraft.level != null) {
             merchant = EntityType.VILLAGER.create(minecraft.level);
@@ -90,8 +93,8 @@ public final class MarketScreen extends Screen {
         if (exchange) renderExchange(g, mx, my);
         else {
             renderCatalog(g, mx, my);
+            renderCategories(g, mx, my);
             search.render(g, mx, my, partialTick);
-            if (categoriesOpen) renderCategories(g, mx, my);
         }
         if (!data.errorKey().isBlank()) {
             g.fill(245, 387, 786, 398, 0xE0201510);
@@ -115,9 +118,9 @@ public final class MarketScreen extends Screen {
             } finally { g.disableScissor(); }
         }
         g.drawString(font, tr("merchant"), 58, 270, 0xFF302015, false);
-        wrapped(g, tr("merchant_quote"), 58, 288, 151, 0xFF664329);
-        wrapped(g, (exchange ? Component.translatable("jem.economy.exchange.physical_only") : tr("merchant_about")), 58, 328, 150, 0xFF664329);
-        button(g, 160, 379, 49, 16, Component.translatable("gui.back"), this::onClose);
+        if(exchange)wrapped(g, tr("merchant_quote"), 58, 288, 151, 0xFF664329);
+        if(exchange)wrapped(g, Component.translatable("jem.economy.exchange.physical_only"), 58, 328, 150, 0xFF664329);
+        button(g, 58, 406, 151, 18, Component.translatable("gui.back"), this::onClose);
     }
 
     private void renderHeader(GuiGraphics g, int mx, int my) {
@@ -143,16 +146,13 @@ public final class MarketScreen extends Screen {
     }
 
     private void renderCatalog(GuiGraphics g, int mx, int my) {
-        // Reference magnifier, drawn at the same pixel scale as the live text.
-        int glass = 0xFFB6B6AE;
-        g.fill(253, 102, 259, 103, glass); g.fill(253, 109, 259, 110, glass);
-        g.fill(251, 104, 252, 108, glass); g.fill(260, 104, 261, 108, glass);
-        g.fill(252, 103, 254, 104, glass); g.fill(258, 103, 260, 104, glass);
-        g.fill(252, 108, 254, 109, glass); g.fill(258, 108, 260, 110, glass);
-        g.fill(260, 110, 262, 112, glass); g.fill(262, 112, 264, 114, glass);
-        g.renderItem(categoryIcon(data.category()), 452, 101);
-        g.drawString(font, categoryName(data.category()), 475, 105, CREAM, false);
-        hits.add(new Hit(444, 95, 335, 28, () -> categoriesOpen = !categoriesOpen));
+        g.fill(244,95,787,124,0xff35251c);
+        g.renderItem(categoryIcon(activeCategory),252,101);
+        g.drawString(font,categoryName(activeCategory),273,105,CREAM,false);
+        if(!data.category().equals(activeCategory)||!data.errorKey().isBlank()) {
+            g.drawCenteredString(font,Component.translatable("jem.economy.market.loading_category"),516,244,MUTED);
+            return;
+        }
         for (int index = 0; index < 12; index++) {
             int x = 245 + index % 4 * 137, y = 134 + index / 4 * 86;
             if (index >= data.items().size()) {
@@ -182,25 +182,22 @@ public final class MarketScreen extends Screen {
         artButton(g, 544, 403, 43, 21, Component.literal("›"), data.page() + 1 < data.pages(), mx, my, () -> queryPage(data.page() + 1));
     }
 
-    private void renderCategories(GuiGraphics g, int mx, int my) {
-        hoveredItem = ItemStack.EMPTY; hoveredText = null; hoveredPrice = -1;
-        g.pose().pushPose(); g.pose().translate(0, 0, 350);
-        for (int i = 0; i < CATEGORIES.length; i++) {
-            String category = CATEGORIES[i]; int y = 125 + i * 23;
-            boolean selected = category.equals(data.category());
-            g.fill(444, y, 779, y + 23, selected || inside(mx, my, 444, y, 335, 23) ? 0xFF70482F : 0xFF35251C);
-            g.fill(444, y, 779, y + 1, EDGE);
-            g.renderItem(categoryIcon(category), 452, y + 3);
-            g.drawString(font, categoryName(category), 475, y + 8, CREAM, false);
-            hits.add(new Hit(444, y, 335, 23, () -> {
-                categoriesOpen = false; EconomyNetwork.marketQuery(search.getValue(), category, 0, false);
-            }));
+    private void renderCategories(GuiGraphics g,int mx,int my) {
+        for(int i=0;i<CATEGORIES.length;i++) {
+            String category=CATEGORIES[i];int y=284+i*18;
+            g.fill(58,y,210,y+18,category.equals(activeCategory)?0xff70482f:0xff35251c);
+            g.renderItem(categoryIcon(category),61,y+1);
+            fitted(g,categoryName(category),81,y+5,125,CREAM);
+            hits.add(new Hit(58,y,152,18,()->{activeCategory=category;EconomyNetwork.marketQuery(search.getValue(),category,0,false);}));
         }
-        g.pose().popPose();
+        g.fill(58,378,210,402,0xff35251c);
+        hits.add(new Hit(192,381,16,18,()->{search.setValue("");search.setFocused(true);setFocused(search);}));
+        g.drawCenteredString(font,Component.literal("x"),200,386,CREAM);
     }
 
     private void transact(MarketActionPacket.Action action, MarketItemSnapshot item) {
-        EconomyNetwork.marketAction(action, item.id(), 1, data.revision(), data.search(), data.category(), data.page());
+        if(!data.category().equals(activeCategory)||!data.errorKey().isBlank())return;
+        EconomyNetwork.marketAction(action, item.id(), 1, data.revision(), data.search(), activeCategory, data.page());
     }
 
     private void artButton(GuiGraphics g, int x, int y, int w, int h, Component label, boolean enabled, int mx, int my, Runnable action) {
@@ -266,7 +263,7 @@ public final class MarketScreen extends Screen {
         g.drawString(font, "×" + receive, cx + 55, y + 87, exact ? CREAM : 0xFFFF7777, false);
         g.drawCenteredString(font, exact ? Component.translatable("jem.economy.exchange.exact") : Component.translatable("jem.economy.exchange.no_fraction"), cx, y + 108, exact ? MUTED : 0xFFFF7777);
         if (exact) button(g, cx - 58, y + 126, 116, 20, Component.translatable("jem.economy.exchange.confirm"),
-                () -> EconomyNetwork.exchange(source, exchangeCount, target, data.search(), data.category(), data.page()));
+                () -> EconomyNetwork.exchange(source, exchangeCount, target, data.search(), activeCategory, data.page()));
         int[] held = data.physicalCounts(); int hx = cx - 84;
         for (CoinDenomination denomination : CoinDenomination.values()) {
             g.renderItem(new ItemStack(CurrencyItems.item(denomination)), hx, 350);
@@ -276,7 +273,7 @@ public final class MarketScreen extends Screen {
 
 
     private void queryPage(int page) {
-        if (page >= 0 && page < data.pages()) EconomyNetwork.marketQuery(search.getValue(), data.category(), page, false);
+        if (page >= 0 && page < data.pages()) EconomyNetwork.marketQuery(search.getValue(), activeCategory, page, false);
     }
     private static CoinDenomination next(CoinDenomination value) {
         CoinDenomination[] values = CoinDenomination.values(); return values[(value.ordinal() + 1) % values.length];
@@ -319,6 +316,7 @@ public final class MarketScreen extends Screen {
         return false;
     }
     @Override public boolean keyPressed(int key, int scanCode, int modifiers) {
+        if(key==256&&search.isFocused()){if(!search.getValue().isEmpty())search.setValue("");else{search.setFocused(false);setFocused(null);}return true;}
         if (key == 256 && categoriesOpen) { categoriesOpen = false; return true; }
         return super.keyPressed(key, scanCode, modifiers);
     }

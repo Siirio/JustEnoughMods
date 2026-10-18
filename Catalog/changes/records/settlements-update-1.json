@@ -244,7 +244,7 @@
       "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/SettlementSavedData.java",
       "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownRecord.java",
       "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/workforce/WorkforceRecord.java",
-      "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/food_values.json",
+      "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/food_values/base.json",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/MapNetwork.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpIcons.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java",
@@ -319,6 +319,16 @@
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/CoinFormatter.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinService.java"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "move_food_resource_into_reload_root",
+      "summary": "Preserve original food values; move packaged source into happiness/food_values/base.json so the existing reload listener actually discovers it. Historical path references remain history.",
+      "source_files": [
+        "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/food_values.json",
+        "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/food_values/base.json"
       ]
     }
   ],

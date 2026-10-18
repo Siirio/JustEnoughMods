@@ -1,0 +1,316 @@
+{
+  "schema_version": 2,
+  "change_id": "settlements.evidence-derived-needs-overhaul",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:villager"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:painting"
+    },
+    {
+      "type": "namespace",
+      "registry": "entities",
+      "value": "recruits"
+    },
+    {
+      "type": "registry",
+      "registry": "entities"
+    },
+    {
+      "type": "source_set",
+      "registry": "blocks",
+      "members_path": "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/amenities/decor_compat.json",
+      "id_field": "block"
+    },
+    {
+      "type": "registry",
+      "registry": "blocks"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime": "Dedicated settlement authority only; exact block IDs/tags or native carpet/nonempty pot/lit candle types; native Animal diversity only nonhostile/nonangry/nontargeting; optional mod classes isolated."
+    },
+    {
+      "acceptance": "Production source awaiting parent build/sync and real player scenarios; no gameplay acceptance implied."
+    }
+  ],
+  "precedence": {
+    "layer": "settlement_server_needs",
+    "priority": 115
+  },
+  "change": {
+    "summary": "Derive settlement needs from actual registered living NPCs, valid unique reachable jobs, native holding guards, territory area, peaceful animal diversity and bounded citywide placed decor; native children/PatPat and Handcrafted beds.",
+    "modifiers": [
+      {
+        "property": "settlements.initial_need_scores",
+        "operation": "set",
+        "before": "Town happiness50, housing50, food50, jobs25, community40 without any source; recompute also synthesizes empty defaults.",
+        "after": "New town starts0; old UUID/bounds/stores/finances preserved and evidence recalculated; schema8 additive metrics/chunk summaries."
+      },
+      {
+        "property": "settlements.security",
+        "operation": "derive",
+        "before": "min(100,stored_active_recruits*25)",
+        "after": "floor(100*min(1,effective_guards/ceil(area/configured2048))); effective requires living owned loyal employed native recruit in town with native hold-position anchored inside town, no follow."
+      },
+      {
+        "property": "settlements.jobs",
+        "operation": "derive",
+        "before": "Non-null stored workplace divided by all residents; memory loss never clears saved POI.",
+        "after": "Each nonbaby/nonnitwit adult needs one actual matching profession POI unique among residents, physical block and native reachable path<=48 blocks or current physical proximity<=2; unavailable eligible adults stay in denominator; exact reason projection. Path requests queue globally<=256, four native probes/tick, cached400ticks; pending observations explicitly uncredited; combat-triggered recomputation never creates unbounded path work."
+      },
+      {
+        "property": "settlements.city_comfort",
+        "operation": "derive",
+        "before": "Resident-local amenities averaged, cap20 and additive happiness cap10; state values fabricate distinct objects; packaged amenities path outside listener root.",
+        "after": "Independent bounded loaded-chunk survey global1024blocks/tick queue128; per-ID repeat3/category25/city100 configurable; persisted unloaded summaries labelled stale; physical removals invalidate and periodic1200ticks resurvey; exact rules1250IDs+5tags and native carpets/nonempty pots/lit candles/paintings; FairyLights actual connected block fastener only; resources relocated into actual reload directories."
+      },
+      {
+        "property": "settlements.social_animals_happiness",
+        "operation": "derive",
+        "before": "Community is average resident mood, no population density or animals.",
+        "after": "social=min(100,present_registered_living*100/max(2,ceil(area/config1024))); happiness weighted20housing20food20security15jobs15social10comfort minus existing tax, +<=config10 for4peaceful Animal types; final social ceiling config40+(100-40)*social/100."
+      },
+      {
+        "property": "settlements.children",
+        "operation": "allow",
+        "before": "Both API enrollment overloads reject babies; no birth adapter.",
+        "after": "Successful native VillagerMakeLove.breed return after actual world addition registers child once by UUID when both live registered parents share town and birth is within its territory; existing resident serving/hunger/save systems apply, child work duty excluded until growth."
+      },
+      {
+        "property": "settlements.patpat",
+        "operation": "add",
+        "before": null,
+        "after": "PatPat1.3.1 successful handlePacket tail; native success and additional authoritative reach4/LOS/living/visible registered town checks; resident mood+8 once per authoritative overworld dayTime day (sleep advances eligibility; rollback cannot replay a prior day) globally across players persisted LastPatDay."
+      },
+      {
+        "property": "settlements.handcrafted_sleep",
+        "operation": "allow",
+        "before": "FancyBedBlock already native BedBlock + same PART/OCCUPIED +minecraft:beds, but no native HOME state integration.",
+        "after": "Register actual Handcrafted HEAD state variants into existing native HOME POI reverse index at common setup; retain native navigation/occupancy/sleep/wake and Recruits RestGoal."
+      },
+      {
+        "property": "settlements.integrated_server",
+        "operation": "deny",
+        "before": "SettlementAuthority.active accepts integrated server, runtime hooks/commands can run there.",
+        "after": "Dedicated authority gate plus dedicated command registration and active checks on event-only listeners; client registry/network/presentation compatibility retained."
+      },
+      {
+        "property": "settlements.resident_effective_mood",
+        "operation": "derive",
+        "before": "ResidentMood.mood returns only saved personal stimulus state; city comfort/social constraints affect no individual projection.",
+        "after": "ResidentMood.mood is sole effective owner=min(configured social ceiling,clamp(personal saved stimuli+comfort/config10+animal/config10)); personal food/damage/pat data unchanged; components separately persisted/recomputed and projected in UI; Jade uses same API; aggregate town formula never reads this projection."
+      },
+      {
+        "property": "settlements.unloaded_observations",
+        "operation": "replace",
+        "before": "Unloaded resident entity treated as zero physical housing/food/presence/employment; new guard/animal observation absence also depleted scores.",
+        "after": "Per-resident persisted verified needs reused with stale labels; missing initial observation freezes prior relevant town score; guard qualified UUID facts retained on unload; animal512 bounded UUID/type/position observations retained only when last chunk unavailable; actual loaded departure/death/destruction invalidates. UI names uncertainty. Native work path cannot be bypassed by proximity. Native HOME/birth/pat hooks dedicated-only."
+      },
+      {
+        "property": "settlements.metrics_work_budget",
+        "operation": "replace",
+        "before": "Damage event recomputes whole town; animal AABB predicate caps stored types but still traverses whole herd.",
+        "after": "Damage mutates resident stimuli only, scheduled200tick aggregate owns recalculation. Animal observations reuse native LivingTick events with globally64updates/tick,200tick per-animal cooldown and512saved UUIDs/town; no AABB herd enumeration. Native path observations globally4/tick as above."
+      },
+      {
+        "property": "settlements.city_comfort.observation_fairness",
+        "operation": "derive",
+        "before": "Fixed lexicographic admission with TTL refreshes could starve unseen chunks; a painting crossing a chunk AABB could contribute to multiple chunk summaries.",
+        "after": "Unseen/invalidated/bounds-invalid candidates before ordinary expired refresh, circular per-town admission cursor with bounded lifecycle cleanup, existing128queue/configured observation budget retained; painting belongs exclusively to its block anchor chunk."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMSettlements canonical runtime/resident/town/happiness and isolated exact-version compat",
+    "kind": "approved_master_overhaul_and_evidence_backed_owner_fixes",
+    "source_files": [
+      "Mods/JEMSettlements/build.gradle",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/JemSettlements.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/command/SettlementCommands.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AmenityRegistry.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AmenityEvidence.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AmenityScanService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/CityComfortService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/TownMetricsService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/HappinessService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/SettlementMetricsConfig.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/ResidentPatService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/FoodValueRegistry.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/ResidentMood.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementAuthority.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownRecord.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementWarnings.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/NativeBedCompatibility.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/FairyLightsEvidence.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitDefenseEvidence.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PatPatSuccessMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiTypesAccess.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java",
+      "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json",
+      "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/amenities/base.json",
+      "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/amenities/decor_compat.json",
+      "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/food_values/base.json",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+      "Docs/settlements/standalone/README.md",
+      "Catalog/changes/sets/settlements-decor-coverage.json",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/VillagerBirthMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AnimalObservationService.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Meet master overhaul sections3-11 without inventing sources, duplicate gameplay owners or destructive save migration.",
+    "decision_source": "User master brief2026-10-18 sections3-11 and dedicated-only standing project rule.",
+    "user_requested": "Empty towns0, distinct city comfort, genuine decor/security/jobs/social/animals, children, daily+8PatPat, native Handcrafted sleep; server authority and persistence.",
+    "codex_choices": "guard2048area;social1024area minimum2;social cap40+60ratio;4animal types bonus10;hold-position guards conservative;48block bounded native path evidence;1024observations/tick;repeat3/category25;1250 reviewed exact static blockstate IDs plus5tags and typed native rules. All parameter choices exposed where relevant. Individual environment component preserves raw personal history, exposes breakdown and social ceiling, and avoids circular aggregate feedback."
+  },
+  "introduced": {
+    "date": "2026-10-18",
+    "commit": "SELF",
+    "action": "implement_master_settlement_needs",
+    "summary": "Implement actual settlement evidence, social/security/work/comfort formulas, native children/PatPat/bed integration and source-backed decor, preserving save identity. Gameplay acceptance pending.",
+    "source_files": [
+      "Mods/JEMSettlements/build.gradle",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/JemSettlements.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/command/SettlementCommands.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AmenityRegistry.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AmenityEvidence.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AmenityScanService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/CityComfortService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/TownMetricsService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/HappinessService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/SettlementMetricsConfig.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/ResidentPatService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/FoodValueRegistry.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/ResidentMood.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementAuthority.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownRecord.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementWarnings.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/NativeBedCompatibility.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/FairyLightsEvidence.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitDefenseEvidence.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PatPatSuccessMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiTypesAccess.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java",
+      "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json",
+      "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/amenities/base.json",
+      "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/amenities/decor_compat.json",
+      "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/food_values/base.json",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+      "Docs/settlements/standalone/README.md",
+      "Catalog/changes/sets/settlements-decor-coverage.json",
+      "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/amenities.json",
+      "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/food_values.json",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/VillagerBirthMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AnimalObservationService.java"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "implement_master_settlement_needs",
+      "summary": "Implement actual settlement evidence, social/security/work/comfort formulas, native children/PatPat/bed integration and source-backed decor, preserving save identity. Gameplay acceptance pending.",
+      "source_files": [
+        "Mods/JEMSettlements/build.gradle",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/JemSettlements.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/command/SettlementCommands.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AmenityRegistry.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AmenityEvidence.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AmenityScanService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/CityComfortService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/TownMetricsService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/HappinessService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/SettlementMetricsConfig.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/ResidentPatService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/FoodValueRegistry.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/ResidentMood.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementAuthority.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownRecord.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementWarnings.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/NativeBedCompatibility.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/FairyLightsEvidence.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitDefenseEvidence.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PatPatSuccessMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiTypesAccess.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java",
+        "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json",
+        "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/amenities/base.json",
+        "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/amenities/decor_compat.json",
+        "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/food_values/base.json",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+        "Docs/settlements/standalone/README.md",
+        "Catalog/changes/sets/settlements-decor-coverage.json",
+        "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/amenities.json",
+        "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/food_values.json",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/VillagerBirthMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AnimalObservationService.java"
+      ]
+    },
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "fix",
+      "summary": "Read-only correctness review identified TTL-driven chunk starvation and cross-chunk painting duplicate contributions; fix native observation ownership and fair bounded admission before integration.",
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/CityComfortService.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "settlement_needs",
+      "town_save",
+      "recruits_defense",
+      "native_villager_professions",
+      "food_policy_reload",
+      "city_comfort",
+      "decor_compatibility",
+      "native_sleep",
+      "patpat",
+      "children",
+      "client_projection",
+      "dedicated_only"
+    ],
+    "relations": [
+      "native entity/POI/block evidence -> TownMetricsService -> TownRecord -> SettlementNetwork -> Happiness UI",
+      "native PatPat success -> server reach/LOS -> persisted ResidentMood.LastPatDay",
+      "native VillagerMakeLove.breed successful return -> canonical ResidentMood record -> existing shared feeding",
+      "native Handcrafted HEAD states -> existing HOME POI -> native NPC sleep"
+    ],
+    "notes": [
+      "Exact installed evidence PatPat1.3.1,Handcrafted3.0.6,Recruits1.15.2,FairyLights7; no runtime mod API guessed.",
+      "Decor audit source is static JAR blockstates, not proof every candidate registered; runtime registry filters each exact row.",
+      "Unknown/unloaded NPC observations are explicitly unavailable, not dead; unloaded comfort summaries remain explicitly stale.",
+      "City comfort admission rotates within each town and prioritizes missing/invalid observations over TTL refresh; each painting contributes only through its anchor chunk. No chunk forcing, new metric owner or raised scan budget."
+    ],
+    "unresolved": [
+      "No gameplay scenarios or actual sleeping model/wake accepted; parent production build/sync pending.",
+      "Custom art entities not inheriting Painting and Fairy Lights fence-fastener entities not scored; exact unclassified IDs enumerated.",
+      "Guard count does not grade spatial post distribution.",
+      "Existing loaded chunks may require native POI consistency refresh/load after HOME map extension."
+    ]
+  }
+}

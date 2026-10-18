@@ -1,0 +1,153 @@
+{
+  "schema_version": 2,
+  "change_id": "settlements.city-disclosure-and-category-market",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "blocks"
+    },
+    {
+      "type": "registry",
+      "registry": "items"
+    }
+  ],
+  "conditions": [
+    {
+      "requires": "Matching rebuilt source artifacts; gameplay and visual acceptance pending"
+    }
+  ],
+  "precedence": {
+    "layer": "server_snapshot_disclosure_and_market_query",
+    "priority": 65
+  },
+  "change": {
+    "summary": "Add a bounded dedicated-server city surface LOD view, sanitize detached block palettes before transmission and restrict storefront search to one server-validated category.",
+    "modifiers": [
+      {
+        "property": "settlements.snapshot.disclosure",
+        "operation": "deny",
+        "before": "Housing palette includes enclosed nonair states; local cutaway can expose hidden resources",
+        "after": "Omit fully enclosed blocks before palette; tagged ores additionally require server eye-ray visibility. Same policy applies to city, housing, filters and tooltips."
+      },
+      {
+        "property": "settlements.city.surface_view",
+        "operation": "add",
+        "before": null,
+        "after": "Owner-authorized max8 cached jobs,128 columns globally/tick,automatic surface LOD up to8192 states,loaded chunks only,200tick refresh; observed comfort samples revalidated; camera/zoom/pan/filter/detail controls."
+      },
+      {
+        "property": "market.search.category",
+        "operation": "replace",
+        "before": "Global all category plus category dropdown overlays catalog",
+        "after": "Exactly blocks/food/plants/resources/drops; server normalizes invalid/global to blocks; persistent category panel search at its bottom,clear/Escape/page reset."
+      },
+      {
+        "property": "currency.coin.visuals",
+        "operation": "replace",
+        "before": "Fixed round extrusion and previous detailed face sprites",
+        "after": "Five original native16x16 layered pixel material exports with distinct silhouettes through vanilla generated item models; IDs/values untouched"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Settlements detached snapshot producer and CurrencyCore server catalog query",
+    "kind": "user_requested_behavior_and_bug_fix",
+    "source_files": [
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/SnapshotVisibility.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/HousingInspection.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/CityInspection.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/HousingInspector.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/CityInspectorScreen.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementClientState.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementActions.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/MarketSupply.java",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/models/item/aether_coin.json",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/models/item/arcane_coin.json",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/models/item/copper_coin.json",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/models/item/gold_coin.json",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/models/item/silver_coin.json",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/aether_coin_front.png",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/arcane_coin_front.png",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/copper_coin_front.png",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/gold_coin_front.png",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/silver_coin_front.png"
+    ]
+  },
+  "rationale": {
+    "purpose": "Implement master brief sections12 and17 without client world authority or hidden-resource disclosure.",
+    "decision_source": "User requests whole-city view and category-only search; Codex chooses bounded surface sampling and server-side palette sanitization."
+  },
+  "introduced": {
+    "date": "2026-10-18",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "Add a bounded dedicated-server city surface LOD view, sanitize detached block palettes before transmission and restrict storefront search to one server-validated category.",
+    "source_files": [
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/SnapshotVisibility.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/HousingInspection.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/CityInspection.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/HousingInspector.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/CityInspectorScreen.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementClientState.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementActions.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/MarketSupply.java"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "Add a bounded dedicated-server city surface LOD view, sanitize detached block palettes before transmission and restrict storefront search to one server-validated category.",
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/SnapshotVisibility.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/HousingInspection.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/CityInspection.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/HousingInspector.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/CityInspectorScreen.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementClientState.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementActions.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/MarketSupply.java",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/models/item/aether_coin.json",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/models/item/arcane_coin.json",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/models/item/copper_coin.json",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/models/item/gold_coin.json",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/models/item/silver_coin.json",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/aether_coin_front.png",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/arcane_coin_front.png",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/copper_coin_front.png",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/gold_coin_front.png",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/silver_coin_front.png"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "Housing cutaway",
+      "City surface visualization",
+      "City comfort source filter",
+      "Market categories and pagination",
+      "Native update delivery"
+    ],
+    "relations": [],
+    "notes": [
+      "No chunk force-loads or per-frame world scan. Coarse city surface view intentionally labelled LOD; not a full voxel city dump.",
+      "Five denomination values and JEI remain unchanged."
+    ],
+    "unresolved": [
+      "Original seven screenshot references absent",
+      "In-game visual/interaction acceptance not performed",
+      "Bounded observed comfort samples are not an exhaustive city-object listing"
+    ]
+  }
+}

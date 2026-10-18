@@ -12,12 +12,12 @@ public final class AmenityEvidence {
     private final java.util.Map<String,Integer> caps=new java.util.HashMap<>();
     public CompoundTag observe(ServerLevel level,BlockPos pos,BlockState state) {
         CompoundTag facts=new CompoundTag();
-        AmenityRegistry.get(state.getBlock()).ifPresent(value->{
+        AmenityRegistry.get(state).ifPresent(value->{
             facts.putString("Category",value.category());facts.putInt("Cap",value.cap());
-            boolean active=!value.requiresLight()||state.getLightEmission(level,pos)>0&&level.getBrightness(LightLayer.BLOCK,pos)>0;
+            boolean active=AmenityRegistry.active(level,pos,state,value);
             facts.putBoolean("Active",active);if(!active)return;
             var seen=distinct.computeIfAbsent(value.category(),ignored->new java.util.LinkedHashSet<>());
-            String key=net.minecraftforge.registries.ForgeRegistries.BLOCKS.getKey(state.getBlock())+"#"+state.getValues();
+            String key=net.minecraftforge.registries.ForgeRegistries.BLOCKS.getKey(state.getBlock()).toString();
             facts.putBoolean("Unique",seen.add(key));facts.putInt("Ordinal",seen.size());caps.merge(value.category(),value.cap(),Math::max);
         });return facts;
     }
