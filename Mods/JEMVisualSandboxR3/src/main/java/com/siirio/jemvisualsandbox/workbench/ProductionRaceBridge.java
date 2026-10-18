@@ -27,7 +27,7 @@ public final class ProductionRaceBridge {
             tag.putInt("Uses"+race,((Number)call(type,record,"spellProgress",new Class<?>[0])).intValue());
             tag.putLong("Cooldown"+race+"_signature",((Number)call(type,record,"cooldown",new Class<?>[]{String.class},"signature")).longValue());
             for(String key:new String[]{"guardian","gravity","void_projectile","lava_drink","second_blossom"})tag.putLong("Cooldown"+race+"_"+key,((Number)call(type,record,"cooldown",new Class<?>[]{String.class},key)).longValue());
-            tag.putInt("BloomUpgrade",race==2?Math.min(3,tag.getInt("Uses2")/10):0);
+            tag.putInt("BloomUpgrade",race==2?RacePowerStages.stageForUses(tag.getInt("Uses2")):0);
             p.getPersistentData().putInt("JemSandboxResonance",((Number)call(type,record,"resonance",new Class<?>[0])).intValue());
             tag.putBoolean("Migrated",true);dirty(p);
         }

@@ -46,7 +46,7 @@ public final class SandboxNetwork {
         static Status decode(FriendlyByteBuf b){
             int race=b.readVarInt();boolean selected=b.readBoolean();int[] tiers=new int[5],progress=new int[5];
             if(race< -1 || race>4)throw new IllegalArgumentException("Invalid race snapshot");
-            for(int i=0;i<5;i++){tiers[i]=b.readVarInt();progress[i]=b.readVarInt();if(tiers[i]<0||tiers[i]>3||progress[i]<0||progress[i]>30)throw new IllegalArgumentException("Invalid mastery snapshot");}
+            for(int i=0;i<5;i++){tiers[i]=b.readVarInt();progress[i]=b.readVarInt();if(tiers[i]<0||tiers[i]>3||progress[i]<0||progress[i]>RacePowerStages.requiredUses(3))throw new IllegalArgumentException("Invalid mastery snapshot");}
             long signature=b.readVarLong(),secondary=b.readVarLong();boolean developer=b.readBoolean();int bloom=b.readVarInt();
             if(signature<0||secondary<0||bloom<0||bloom>3)throw new IllegalArgumentException("Invalid cooldown snapshot");
             return new Status(new RaceExperience.Status(race,selected,tiers,progress,signature,secondary,developer,bloom));

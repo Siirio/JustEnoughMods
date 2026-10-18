@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-18 — Race panels and settlement isometry
+
+- User requests black race panels matching supplied screenshot02, Minecraft-style race icons above larger bold names with existing lore, no bottom Bloom Roman controls, successful-use progress only inside the inspected upgrade, and a left sidebar «Поселение» city view. Codex reuses native item icons and existing server progression thresholds10/20/30, retaining current saves, packet fields, authority and selection flow. Small-window layout retains readable upgrade details.
+- Bug / Both Sided / snapshot visibility previously omitted enclosed solid blocks and resource states, and city rendering defaulted to surface-only geometry; this produced apparent air beneath buildings instead of host-rock substitution / in testing. Codex replaces ore states before palette/facts with bounded nearby ordinary native/modded host rock, preserves storage-block architecture and ordinary solids, renders a bounded16-block city foundation with clipped edge LOD footprints, and defaults city views to solid geometry. World blocks, real cave air and gameplay scoring remain unchanged. Exact nearest-host limitations and per-tick budgets are documented in the owning Settlements source.
+- Codex places the existing city renderer in the requested sidebar, preserves server-owned request/ACK checks, and corrects late-reply, filter and window-resize lifecycle behavior found during source review. Supplied screenshots are retained as reference originals. No new painted texture, replacement merchant/Xaero interface or progression rebalance is introduced.
+- Delivery pending production builds, matching local artifacts, Atlas refresh and native AutoModpack publication/application. No automated tests, client/gameplay launch, visual/player acceptance, stable-profile mutation, release-baseline promotion or MineRENT deployment authorized/performed by this prompt.
+
 ## 2026-10-18 — Recruits debug crash and Handcrafted native beds
 
 - Delivery: fresh Compat/Settlements production JARs synchronized to canonical ManagedPack and ordinary local Server; server started successfully. Native generation37 published and installed through AutoModpack in stopped test jem, matching tokens and both JAR hashes;24/24 current preference files preserved and no pending transaction. Atlas validated with58 change records. No automated tests, client/gameplay launch, sleep/wake acceptance, stable-profile mutation, release-baseline promotion or MineRENT deployment. Details: `Docs/plans/2026-10-18-crash-and-handcrafted-delivery.json`.

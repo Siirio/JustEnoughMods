@@ -169,3 +169,14 @@ User follow-up: Sculk B recovery requires at least25resonance, consumes the enti
 2026-10-18: race screen uses its own fixed GUI scale 3 and farther vanilla skin camera, independent of combat pose. Iron’s Spells icons now live at its native textures/gui/spell_icons path; action misuse messages use owned Russian/English translation keys. Delivery: gui-local-delivery.json. Acceptance in testing; no gameplay launch or tests.
 
 2026-10-18 client startup correction: the new vanilla GUI renderer requires embedded MenuSupport >=1.1.0; a broad >=1.0 range previously let the older Server library win and break client mod construction/resources. The exact dependency floor and native client/resource recovery are recorded in gui-library-crash-recovery.json. Client startup/player acceptance remains pending; no launch or tests were run.
+
+
+## Black panels, race identity and contextual upgrades — 2026-10-18
+
+User-selected screenshot02 supersedes the prior wood material on race progression only: every race and both information tabs retain the black void and black right panel, quiet controls and a subdued vertical separator. Under the actual player, a native Minecraft item icon precedes a1.35x bold wrapped race name, then the unchanged lore. Semantic icons are Totem/Ender Pearl/Oak Sapling/Echo Shard/Blaze Powder. Originals and precise before/target labels: `assets/reference/black-panels-2026-10-18/README.md`. No new bitmap art is authored or cropped.
+
+The generic mastery count/threshold paragraph is removed from the shared screen. Only the viewed locked upgrade under Abilities & progression shows current successful uses versus its actual server threshold. Base and Origin do not show a mastery counter. Existing thresholds remain I10/II20/III30 and the cap30: the request's30/50 numbers are treated as display examples, not an implicit rebalance. `RacePowerStages.requiredUses/stageForUses` supplies the same unchanged values to the server, migration, snapshot bound and UI denominator. Native record ownership, successful V/B results, cooldowns and packet shape are unchanged.
+
+Bloom's three bottom Roman unlock buttons are removed. Its real manual unlock remains beside the inspected V upgrade, only on Abilities & progression; server thresholds and sequential purchase rules still apply. A later upgrade explains that the earlier stage must be opened first. Preview browsing grants no progress. Runtime visual/player acceptance remains pending; no gameplay launch or automated test is performed.
+
+The progression layout reserves a readable text region when an inspected Bloom unlock is visible. Small windows omit the 3D preview before consuming the counter/details viewport; the large-window reference layout is retained.

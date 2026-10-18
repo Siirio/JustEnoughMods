@@ -1,0 +1,118 @@
+{
+  "schema_version": 2,
+  "change_id": "settlements.isometry-local-host-masking",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "blocks"
+    }
+  ],
+  "conditions": [
+    {
+      "surface": "Owner-authorized server housing/city snapshot projection only; never changes real world blocks or native gameplay state."
+    },
+    {
+      "resource_selector": "Native/mod ore tags ores,ore,ores/*,*_ores; explicit ore registry-ID families *_ore,ore_*; minecraft:ancient_debris. Player-built storage blocks and other nonresource blocks stay original."
+    },
+    {
+      "acceptance": "Source repair; production parent build/sync and in-game user acceptance still pending."
+    }
+  ],
+  "precedence": {
+    "layer": "server_snapshot_disclosure",
+    "priority": 140
+  },
+  "change": {
+    "summary": "Keep opaque subsurface geometry solid while masking ore/resource states as nearest locally observed ordinary host stone before any snapshot palette or tooltip facts exist.",
+    "modifiers": [
+      {
+        "property": "isometry.resource_disclosure",
+        "operation": "replace",
+        "before": "SnapshotVisibility.disclose drops every enclosed block and rejects hidden ores; omitted blocks become void in detached isometry. Existing visible ore ray contract can expose original ore IDs in snapshots.",
+        "after": "Projection preserves actual nonair nonresource states. All recognized ore/resource states in snapshots, even physically visible ores, become ordinary nearby host rock selected deterministically by squared distance within radius3 from loaded chunks. No original state ID/tag/name/Counted/amenity facts or ore-mask marker is transmitted."
+      },
+      {
+        "property": "isometry.host_lookup_budget",
+        "operation": "derive",
+        "before": null,
+        "after": "Shared cache per snapshot job,4096 additional host world reads/job; global256host reads/server tick across housing+city calls. Search skips unavailable chunks, air, liquids, block entities, resources and nonfull collision shapes. Common native/Forge stone tags preserve modded hosts; exact installed Alexs Caves natural rock IDs cover missing common tags. If no eligible host is observed in bounded loaded context, use native dimension host (netherrack/endstone; otherwise deepslate below0 or stone). No forced chunks or world writes."
+      },
+      {
+        "property": "isometry.city_foundation",
+        "operation": "replace",
+        "before": "At most1800 sampled top columns and4vertical cells, with enclosed cells then removed; no solid subsurface band.",
+        "after": "At most450sampledcolumns with16cells from actual surface downward,32columns/server tick; base<=7200cells plus<=512observeddecor positions remains below8192. Air remains real air; this is bounded foundation LOD, not whole-world underground dumping."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMSettlements server SnapshotVisibility projection and HousingInspection/CityInspection palette/fact construction",
+    "kind": "user_requested_host_rock_mask_and_evidence_backed_empty_geometry_fix",
+    "source_files": [
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/SnapshotVisibility.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/HousingInspection.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/CityInspection.java",
+      "Docs/settlements/standalone/README.md",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/HousingInspector.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "User requires ores to look like nearby ordinary rock rather than holes, while preserving non-disclosure before network/render/filter construction.",
+    "decision_source": "User follow-up2026-10-18 reports empty bottom of isometries after ore hiding and explicitly requests nearest surrounding stone/deepslate/modded rock replacement.",
+    "user_requested": "Replace hidden ores with nearest ordinary surrounding rock; no empty air at ore coordinates; preserve mod rocks.",
+    "codex_choices": "Server state projection, uniform resource masking including exposed ores, radius3 deterministic nearest observed host,4096job/global256tick host read bounds, dimension fallback when bounded context unknown;16cell/450column city foundation to stay inside existing8192packet/render ceiling."
+  },
+  "introduced": {
+    "date": "2026-10-18",
+    "commit": "SELF",
+    "action": "project_secret_resources_as_local_host_rock",
+    "summary": "Replace snapshot culling with bounded nearest-local-host projection before palette/facts; preserve solid house floor and city16cell foundation band. User acceptance pending.",
+    "source_files": [
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/SnapshotVisibility.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/HousingInspection.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/CityInspection.java",
+      "Docs/settlements/standalone/README.md"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "project_secret_resources_as_local_host_rock",
+      "summary": "Replace snapshot culling with bounded nearest-local-host projection before palette/facts; preserve solid house floor and city16cell foundation band. User acceptance pending.",
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/SnapshotVisibility.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/HousingInspection.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/CityInspection.java",
+        "Docs/settlements/standalone/README.md"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "housing_snapshot",
+      "city_snapshot",
+      "ore_privacy",
+      "palette_disclosure",
+      "tooltip_facts",
+      "city_lod",
+      "server_work_budget"
+    ],
+    "relations": [
+      "actual world BlockState -> server projected nonresource BlockState -> palette+geometry -> detached renderer",
+      "only unchanged-original nonresource states -> amenity/contribution facts; projected rock never reveals raw ore metadata"
+    ],
+    "notes": [
+      "No client masking fallback and no changes to saved world blocks, drops, registries, recipes or actual city scoring.",
+      "Static Atlas evidence queried native iron/gold/diamond/coal/deepslate ore/stone plus installed Alexs Caves host tags. Correct actual uranium ID is alexscaves:radrock_uranium_ore, not guessed alexscaves:uranium_ore.",
+      "Native base-stone/ore-replaceable tags and forge:stone/c:stones cover installed ordinary mod rocks; exact tagless Alexs Caves guanostone/coprolith/abyssmarine are natural host candidates.",
+      "Ordinary real underground cavities remain air. Unobserved/unloaded context or exhausted lookup budget can require native fallback; no claim to identify unregistered/untagged/non-ore-named resource semantics automatically.",
+      "Client city LOD clips final sampled X/Z footprints to authoritative MaxX/MaxZ bounds instead of extending stride past territory."
+    ],
+    "unresolved": [
+      "Production build/artifact delivery belongs to parent; no screenshot/gameplay acceptance conducted.",
+      "Host search is nearest among bounded observed radius3 candidates; dimensions with unknown custom host and no tagged/known rock use conservative native stone/deepslate fallback."
+    ]
+  }
+}

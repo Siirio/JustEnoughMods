@@ -849,3 +849,86 @@ Source and bytecode investigation establishes the missing repair mechanism.
 No automated test, static-analysis suite, gameplay launch or sleep/wake acceptance
 was performed here. Production build/artifact synchronization and native publication evidence are
 recorded in the task delivery receipt; the bug remains in testing until user approval.
+
+
+## Settlement sidebar city view - 2026-10-18
+
+User correction: the whole settlement isometry belongs in a visible left sidebar
+tab named `Поселение`, not a button beside the town name field in Settings.
+`SettlementScreen` now has that first sidebar tab (and the same entry in compact
+navigation). Selecting it embeds the existing detached `HousingInspector` renderer
+in the main content area while keeping sidebar navigation visible. The existing
+Residents default/registration flow, needs, chests, treasury, recruit controls and
+native Xaero territory interface remain unchanged. Settings retains its name
+field and ordinary controls; its hidden city shortcut is removed.
+
+Both embedded and standalone city views initially show the solid foundation band.
+The existing LOD toggle can hide it deliberately; ordinary polling preserves that
+choice. Returning from a house projection restores the solid city view.
+
+Late replies still update the server projection and clear their pending request,
+but cannot reopen a closed city screen. Housing presentation requires the original
+resident and navigation context; changing tabs, opening the guide or returning
+from the detail cancels that presentation intent. House views clear the city-only
+comfort filter so beds and walls remain visible. Insufficient window size is a
+temporary layout warning, preserving the current mode when the window grows.
+
+The tab requests the existing authoritative `city` snapshot for the selected town
+and retains only that server projection inside the existing screen envelope across
+same-town ordinary refreshes. `SettlementClientState` routes replies into this
+screen; it does not create another city renderer or another gameplay/data owner.
+Changing town drops the previous snapshot. Progress, partial loaded coverage and
+LOD captions retain the existing server meaning. Build progress polls every2s,
+completed city views every10s only while the tab is active; pending actions keep
+the existing reconciliation path. No chunk load or disclosure policy changes here.
+
+Orbit, pan, zoom, boundaries, camera reset, comfort filter, surface/detail and
+refresh use the existing viewer controls. A home drill-down reuses the existing
+`housing` request and returns to the city tab with Back/Escape. Wide content uses
+three control columns; narrow content uses two, with viewport space reserved above
+the footer and complete control labels in tooltips. The established material and
+semantic Bell icon are reused; no new art or replacement map GUI is introduced.
+
+Source-only delivery: no build, test, static analysis, screenshot verification or
+game launch ran for this sidebar change. Root owns production artifacts, native
+application and final delivery; real GUI-scale/viewport acceptance remains pending.
+
+
+## Solid isometry geometry and local ore masking - 2026-10-18
+
+Bug / Both Sided presentation, server snapshot owner / disclosure admission
+removed all enclosed blocks before palette construction, leaving ordinary stone
+and hidden ore coordinates empty; city additionally captured only4surface cells /
+in testing. User requests nearby ordinary stone/deepslate/modded host replacement.
+
+SnapshotVisibility now projects server states instead of using a boolean cull.
+Actual nonair nonresource blocks remain real geometry, including enclosed ordinary
+stone, so the house floor/subsurface stays solid. Recognized ore/resource states
+are consistently replaced even when physically visible in-world. The nearest
+observed ordinary full host rock within3blocks is chosen by squared distance and
+stable y/z/x ties, using loaded chunks only. Common native/Forge stone tags and
+known installed tagless natural Alexs Caves rocks preserve local modded geology.
+No eligible observed host means native dimension fallback: Nether netherrack,
+End endstone, otherwise deepslate below0 or stone. Real caves remain real air.
+
+Each snapshot job shares sampled host states and limits additional host-world
+reads4096/job, with a global256read/server-tick ceiling across housing and city
+requests. Unknown/unloaded/budget-limited context cannot force chunks. City LOD
+now includes a16cell foundation band per sampled column, up to450columns and
+32columns/tick;7200base cells plus at most512decor positions stay below the
+existing8192cell packet/render bound. This is a bounded foundation band, not full
+underground world disclosure.
+
+Projection happens before palette construction. Replaced cells carry only host
+rock identity and ordinary geometry, with no original ore ID, tag, name, mask
+marker, category, contribution or tooltip facts. Only unchanged nonresource
+originals can produce amenity facts in both house/city paths. Filters, depth,
+rotation and hover therefore never receive the hidden source state. Native world
+blocks, mining/drops, city scoring and saved data are unchanged.
+
+The conservative resource selector uses real ore tags, unambiguous
+ore registry-ID families and ancient_debris. It does not claim automatic knowledge
+of future resource blocks having neither tags nor an ore identity. Player-built
+storage blocks remain original architecture. Source changes
+are implemented; no build/test/game launch or visual acceptance is claimed in this
+section. Parent delivery owns artifacts/publication; user approval remains pending.

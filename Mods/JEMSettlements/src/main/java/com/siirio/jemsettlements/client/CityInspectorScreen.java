@@ -16,10 +16,10 @@ public final class CityInspectorScreen extends Screen {
     private int selectedHome;
     private long nextPoll,nextHeartbeat;
     public CityInspectorScreen(Screen parent, CompoundTag data) {
-        super(Component.translatable("jem.settlements.city.title")); this.parent=parent; inspector.surfaceOnly=true; accept(data);
+        super(Component.translatable("jem.settlements.city.title")); this.parent=parent; inspector.surfaceOnly=false; accept(data);
     }
     public void accept(CompoundTag data) { this.data=data.copy(); if(!data.getBoolean("Building")&&!house)inspector.accept(data); nextPoll=System.currentTimeMillis()+(data.getBoolean("Building")?2000:10000); }
-    public void acceptHouse(CompoundTag snapshot){house=true;inspector.surfaceOnly=false;inspector.accept(snapshot);inspector.resetView();}
+    public void acceptHouse(CompoundTag snapshot){house=true;inspector.surfaceOnly=false;inspector.onlyAmenities=false;inspector.accept(snapshot);inspector.resetView();}
     private void home(){
         var homes=data.getList("Homes",net.minecraft.nbt.Tag.TAG_COMPOUND);
         if(homes.isEmpty()||SettlementClientState.pending())return;
@@ -38,7 +38,7 @@ public final class CityInspectorScreen extends Screen {
         addRenderableWidget(Button.builder(tr("lod"),b->{inspector.surfaceOnly=!inspector.surfaceOnly;inspector.refreshGeometry();}).bounds(x+3*(size+gap),y,size,20).build());
         addRenderableWidget(Button.builder(tr("refresh"),b->refresh()).bounds(x+4*(size+gap),y,size,20).build());
     }
-    private void refresh(){house=false;inspector.surfaceOnly=true;if(data.hasUUID("Town")&&!SettlementClientState.pending())SettlementClientState.action("city",data.getUUID("Town"),new CompoundTag());}
+    private void refresh(){if(house)inspector.surfaceOnly=false;house=false;if(data.hasUUID("Town")&&!SettlementClientState.pending())SettlementClientState.action("city",data.getUUID("Town"),new CompoundTag());}
     @Override public void tick(){super.tick();
         if(System.currentTimeMillis()>=nextHeartbeat){nextHeartbeat=System.currentTimeMillis()+5000;com.siirio.jemsettlements.network.SettlementNetwork.action("heartbeat",null,new CompoundTag(),UUID.randomUUID());}if(!house&&System.currentTimeMillis()>=nextPoll){nextPoll=System.currentTimeMillis()+(data.getBoolean("Building")?2000:10000);refresh();}}
     @Override public boolean isPauseScreen(){return false;}

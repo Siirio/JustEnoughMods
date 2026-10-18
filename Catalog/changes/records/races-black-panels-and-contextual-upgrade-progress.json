@@ -1,0 +1,94 @@
+{
+  "schema_version": 2,
+  "change_id": "races.black-panels-and-contextual-upgrade-progress",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:player"
+    }
+  ],
+  "conditions": [
+    {
+      "requires": "JEM Races production profile; authoritative existing per-race progression and matching client presentation",
+      "acceptance": "User screenshots define direction; implementation visual/player acceptance remains pending."
+    }
+  ],
+  "precedence": {
+    "layer": "native_race_presentation",
+    "priority": 130
+  },
+  "change": {
+    "summary": "Use reference-selected black race panels, native identity icons and bold titles; move mastery counts and Bloom unlock action into inspected upgrade context.",
+    "modifiers": [
+      {
+        "property": "race.selection.presentation",
+        "operation": "replace",
+        "before": "Progression tab uses RacePanelMaterials wooden board; identity has normal-sized name and no race badge.",
+        "after": "Both tabs for every race use existing black void/right panel and subdued separator. Existing player -> native Minecraft item icon ->1.35x bold race title -> unchanged lore. Existing skin, camera, selection and acknowledged world entry retained."
+      },
+      {
+        "property": "race.upgrade.context",
+        "operation": "replace",
+        "before": "Generic mastery counter/threshold paragraph duplicates progress below upgrade overview; Bloom has three Roman unlock buttons across player-column bottom.",
+        "after": "Only inspected locked upgrade under Abilities & progression shows successful-use count/its actual required count. Bloom manual unlock is beside that inspected V upgrade, with native order/threshold gating and prior-stage reason; no bottom Roman buttons."
+      },
+      {
+        "property": "race.mastery.contract",
+        "operation": "document",
+        "before": "Base0/I10/II20/III30 successful results; shared per-race V/B counter capped30; native server record, existing migration, packet ordering and manual Bloom gates.",
+        "after": "Identical mechanics and data values; common RacePowerStages.requiredUses/stageForUses serves server admission, migration, packet bound and displayed denominator. Request30/50 examples treated as illustrative counters, not a balance change."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM Races RaceExperienceScreen and common authoritative stage contract",
+    "kind": "explicit_user_reference_correction",
+    "source_files": [
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RacePowerStages.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceExperience.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ProductionRaceBridge.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Match supplied screenshot02 material and requested hierarchy while preserving existing progression state and actionable Bloom upgrade route.",
+    "decision_source": "User explicitly requests no wooden race panel, native-style race icons, larger bold names, no bottom Bloom Roman controls and contextual upgrade counter. Codex chose native semantic item icons and preserves actual thresholds rather than rebalance from illustrative numbers."
+  },
+  "introduced": {
+    "date": "2026-10-18",
+    "commit": "SELF",
+    "action": "replace",
+    "summary": "Use reference-selected black race panels, native identity icons and bold titles; move mastery counts and Bloom unlock action into inspected upgrade context."
+  },
+  "history": [
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "replace",
+      "summary": "Use reference-selected black race panels, native identity icons and bold titles; move mastery counts and Bloom unlock action into inspected upgrade context."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "race_selection",
+      "ability_preview",
+      "bloom_upgrade_ui",
+      "mastery_snapshot",
+      "native_item_renderer"
+    ],
+    "relations": [
+      "RacePowerStages -> RaceExperience successful results and ProductionRaceBridge migration -> existing Status snapshot -> inspected upgrade progress",
+      "Server upgrade gate remains authoritative; preview browsing/clicks do not award mastery."
+    ],
+    "notes": [
+      "No new textures or cropped reference production assets; native item renderer uses existing Minecraft resources.",
+      "Shared10/20/30 lookup is a behavior-preserving extraction; existing saved values and wire fields/order unchanged."
+    ],
+    "unresolved": [
+      "No client/game launch or screenshot acceptance performed under current project rules."
+    ]
+  }
+}

@@ -4,6 +4,10 @@ package com.siirio.jemvisualsandbox.workbench;
 public final class RacePowerStages {
     private RacePowerStages() {}
     public static int clamp(int stage) { return Math.max(0,Math.min(3,stage)); }
+    public static int requiredUses(int stage) { return 10*clamp(stage); }
+    public static int stageForUses(int uses) {
+        return uses>=requiredUses(3)?3:uses>=requiredUses(2)?2:uses>=requiredUses(1)?1:0;
+    }
     public static int chorusRadius(int stage) { return clamp(stage)==0?12:16; }
     public static int riftRange(int stage) { return clamp(stage)==0?24:32; }
     public static int riftSlowTicks(int stage) { return clamp(stage)<2?0:clamp(stage)==2?40:60; }

@@ -36,8 +36,8 @@ public final class RaceExperience {
     public static boolean developerMode(ServerPlayer p){return RaceDevelopment.enabled(p);}
     public static int race(ServerPlayer p){return selected(p)?data(p).getInt("Race"):-1;}
     public static int tier(ServerPlayer p){return RaceDevelopment.tier(p,Math.max(0,race(p)),tierFor(uses(p,Math.max(0,race(p)))));}
-    private static int tierFor(int uses){return uses>=30?3:uses>=20?2:uses>=10?1:0;}
-    private static int uses(ServerPlayer p,int race){return Math.max(0,Math.min(30,data(p).getInt("Uses"+race)));}
+    private static int tierFor(int uses){return RacePowerStages.stageForUses(uses);}
+    private static int uses(ServerPlayer p,int race){return Math.max(0,Math.min(RacePowerStages.requiredUses(3),data(p).getInt("Uses"+race)));}
     static CompoundTag data(ServerPlayer p){return p.server.isDedicatedServer()?ProductionRaceBridge.data(p):Store.get(p.server).record(p);}
     static void dirty(ServerPlayer p){if(p.server.isDedicatedServer())ProductionRaceBridge.dirty(p);else Store.get(p.server).setDirty();}
     private static String cooldownKey(ServerPlayer p,String key){return "Cooldown"+Math.max(0,race(p))+"_"+key;}
@@ -102,7 +102,7 @@ public final class RaceExperience {
     /** Award only after a real utility result, never input, preview or charge windup. */
     static void finishUtility(ServerPlayer p){
         if(!allowed(p)||!selected(p))return;
-        data(p).putInt("Uses"+race(p),Math.min(30,uses(p,race(p))+1));dirty(p);
+        data(p).putInt("Uses"+race(p),Math.min(RacePowerStages.requiredUses(3),uses(p,race(p))+1));dirty(p);
         snapshot(p);
     }
     public static boolean requireReady(ServerPlayer p,String key){

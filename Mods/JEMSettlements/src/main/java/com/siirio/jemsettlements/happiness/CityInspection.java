@@ -13,7 +13,7 @@ import net.minecraftforge.event.server.ServerStoppedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-/** Bounded surface LOD snapshots. Never loads a chunk or scans a city on a GUI frame. */
+/** Bounded surface/foundation LOD snapshots. Never loads a chunk or scans a city on a GUI frame. */
 @Mod.EventBusSubscriber(modid = JemSettlements.MOD_ID, value = net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER)
 public final class CityInspection {
     private static final Map<String, Job> JOBS = new LinkedHashMap<>();
@@ -53,17 +53,18 @@ public final class CityInspection {
         ServerPlayer viewer = event.getServer().getPlayerList().getPlayer(job.viewer);
         var level = event.getServer().getLevel(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION, job.dimension));
         if (viewer == null || level == null) { job.column = job.total; job.data.putBoolean("Unloaded", true); return; }
-        for (int budget = 0; budget < 128 && !job.done(); budget++, job.column++) {
+        job.projection.beginTick();
+        for (int budget = 0; budget < 32 && !job.done(); budget++, job.column++) {
             int x = job.minX + job.column % job.columns * job.stride, z = job.minZ + job.column / job.columns * job.stride;
             BlockPos probe = new BlockPos(x, level.getMinBuildHeight(), z);
             if (!level.hasChunkAt(probe)) { job.data.putBoolean("Partial", true); continue; }
             int top = level.getHeight(Heightmap.Types.WORLD_SURFACE, x, z) - 1;
-            for (int depth = 0; depth < 4 && top - depth >= level.getMinBuildHeight(); depth++) {
-                BlockPos pos = new BlockPos(x, top - depth, z); BlockState state = level.getBlockState(pos);
-                if (!SnapshotVisibility.disclose(level, pos, state, viewer)) continue;
+            for (int depth = 0; depth < 16 && top - depth >= level.getMinBuildHeight(); depth++) {
+                BlockPos pos = new BlockPos(x, top - depth, z); BlockState original = level.getBlockState(pos);
+                BlockState state=job.projection.project(level,pos,original);if(state==null)continue;
                 int id = job.ids.computeIfAbsent(state, value -> { job.palette.add(NbtUtils.writeBlockState(value)); return job.palette.size()-1; });
                 CompoundTag row = new CompoundTag(); row.putLong("Position", pos.asLong()); row.putInt("State", id);
-                row.merge(job.facts(level,pos,state)); job.blocks.add(row);
+                if(state==original&&!SnapshotVisibility.resource(original))row.merge(job.facts(level,pos,original)); job.blocks.add(row);
             }
         }
         if (job.done()) {
@@ -76,7 +77,7 @@ public final class CityInspection {
                     var source=sources.getCompound(i);BlockPos pos=BlockPos.of(source.getLong("Position"));
                     if(present.contains(pos.asLong())||!level.hasChunkAt(pos))continue;
                     var state=level.getBlockState(pos);
-                    if(AmenityRegistry.get(state).isEmpty()||!SnapshotVisibility.disclose(level,pos,state,viewer))continue;
+                    if(AmenityRegistry.get(state).isEmpty()||SnapshotVisibility.resource(state))continue;
                     int id=job.ids.computeIfAbsent(state,value->{job.palette.add(NbtUtils.writeBlockState(value));return job.palette.size()-1;});
                     CompoundTag row=new CompoundTag();row.putLong("Position",pos.asLong());row.putInt("State",id);row.merge(job.facts(level,pos,state));job.blocks.add(row);
                 }
@@ -90,16 +91,19 @@ public final class CityInspection {
         final UUID viewer,town; final net.minecraft.resources.ResourceLocation dimension; final String bounds;
         final long created; final int minX, minZ, stride, columns, total;
         final CompoundTag data = new CompoundTag(); final ListTag palette = new ListTag(), blocks = new ListTag();
+        final SnapshotVisibility.Projection projection=new SnapshotVisibility.Projection();
         final Map<BlockState,Integer> ids = new LinkedHashMap<>(); final Map<String,CompoundTag> contributions;
         int column;
         Job(ServerPlayer player, TownRecord town, String bounds, long now) {
             viewer=player.getUUID(); this.town=town.id(); contributions=CityComfortService.projectionFacts(town); dimension=town.dimension(); this.bounds=bounds; created=now;
             minX=town.territoryMinX(); minZ=town.territoryMinZ();
-            stride=Math.max(1,(int)Math.ceil(Math.sqrt(town.territoryArea()/1800D)));
+            int step=Math.max(1,(int)Math.ceil(Math.sqrt(town.territoryArea()/450D)));
+            while(((town.territoryMaxX()-minX)/step+1)*((town.territoryMaxZ()-minZ)/step+1)>450)step++;
+            stride=step;
             columns=(town.territoryMaxX()-minX)/stride+1;
             total=columns*((town.territoryMaxZ()-minZ)/stride+1);
             data.putUUID("Town",town.id()); data.putLong("Anchor",town.center().asLong()); data.putString("Name",town.name());
-            data.putInt("Radius",town.territoryRadius()); data.putInt("VerticalRadius",1); data.putInt("Stride",stride); data.putBoolean("City",true);
+            data.putInt("Radius",town.territoryRadius()); data.putInt("VerticalRadius",16); data.putInt("Stride",stride); data.putBoolean("City",true);
             data.putInt("MinX",minX); data.putInt("MaxX",town.territoryMaxX()); data.putInt("MinZ",minZ); data.putInt("MaxZ",town.territoryMaxZ());
         }
         CompoundTag facts(net.minecraft.server.level.ServerLevel level,BlockPos pos,BlockState state) {

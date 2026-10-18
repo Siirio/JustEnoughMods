@@ -1,0 +1,91 @@
+{
+  "schema_version": 2,
+  "change_id": "settlements.city-sidebar-tab",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:player"
+    }
+  ],
+  "conditions": [
+    {
+      "requires": "Existing server-owned city/housing projections for authenticated selected settlement; matching client artifact and runtime visual acceptance pending."
+    }
+  ],
+  "precedence": {
+    "layer": "native_settlement_client_navigation",
+    "priority": 150
+  },
+  "change": {
+    "summary": "Make whole-city isometry discoverable in an explicit Settlement sidebar tab, using the same viewer/server projection and existing controls.",
+    "modifiers": [
+      {
+        "property": "settlements.city_navigation",
+        "operation": "replace",
+        "before": "City view launched separately through a small button beside the name field in Settings.",
+        "after": "First explicit Settlement sidebar tab embeds existing HousingInspector in SettlementScreen; compact navigation includes the same tab; Settings name field regains full width. Existing Residents default remains."
+      },
+      {
+        "property": "settlements.city_client_projection",
+        "operation": "derive",
+        "before": "SettlementClientState opened a separate CityInspectorScreen for every City reply.",
+        "after": "Active SettlementScreen receives authoritative City replies and caches that town projection in its existing envelope; same viewer handles city and home drill-down, same-town refresh retains it, town switch invalidates it. Existing non-Settlement callers retain standalone fallback. Only active city tab polls using existing2s-building/10s-complete cadence."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "SettlementScreen navigation and existing server packet client router",
+    "kind": "explicit_user_navigation_correction",
+    "source_files": [
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementClientState.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/CityInspectorScreen.java",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Expose the requested whole-settlement view directly in navigation without duplicate city state, server authority changes or replacement native Xaero controls.",
+    "decision_source": "User explicitly requests a left sidebar tab named Поселение; Codex reuses existing viewer, server city/housing requests, material controls and responsive2/3-column footer. No new art/theme chosen."
+  },
+  "introduced": {
+    "date": "2026-10-18",
+    "commit": "SELF",
+    "action": "replace",
+    "summary": "User moves whole-settlement isometry into an explicit Settlement sidebar tab; reuse the existing server snapshot/viewer instead of a hidden settings shortcut."
+  },
+  "history": [
+    {
+      "date": "2026-10-18",
+      "commit": "SELF",
+      "action": "replace",
+      "summary": "User moves whole-settlement isometry into an explicit Settlement sidebar tab; reuse the existing server snapshot/viewer instead of a hidden settings shortcut."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "settlement_sidebar_navigation",
+      "city_snapshot_projection",
+      "existing_housing_inspector",
+      "localized_client_controls"
+    ],
+    "relations": [
+      "CityInspection/HousingInspection/SnapshotVisibility retain server source and disclosure ownership unchanged",
+      "SettlementClientState retains pending request/ACK/reconciliation ownership",
+      "The existing HousingInspector instance renders the detached projection; native Xaero remains separate"
+    ],
+    "notes": [
+      "No server action, world/save, pricing, city scan/disclosure, needs, recruit or merchant owner changed.",
+      "Existing server owner checks still validate city and housing requests. Local camera/filters are presentation only.",
+      "Embedded and fallback city views default to solid foundation geometry; refresh preserves deliberate LOD choices, while house-to-city restoration returns to solid.",
+      "Pending request origin gates late city fallback opening; housing display additionally requires matching resident/navigation intent. Closing or navigating cancels presentation without discarding server acknowledgment/cache.",
+      "House entry clears city-only comfort filtering; minimum-size warning is transient layout state and cannot overwrite town mode."
+    ],
+    "unresolved": [
+      "No build/tests/static analysis/game launch or screenshot verification by this worker.",
+      "Parent owns matching artifact publication/application; actual tab/controls/GUI-scale acceptance pending."
+    ]
+  }
+}

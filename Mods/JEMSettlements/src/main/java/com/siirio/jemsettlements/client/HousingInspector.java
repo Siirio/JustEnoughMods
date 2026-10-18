@@ -134,7 +134,12 @@ public final class HousingInspector {
                 if(onlyAmenities&&!cell.facts().getBoolean("Counted"))continue;
                 if(surfaceOnly&&cell.pos().getY()<surface.getOrDefault(net.minecraft.world.level.ChunkPos.asLong(cell.pos().getX(),cell.pos().getZ()),Integer.MIN_VALUE))continue;
                 var pos=cell.pos();pose.pushPose();pose.translate(pos.getX(),pos.getY(),pos.getZ());
-                if(snapshot.getBoolean("City")&&!cell.relevant())pose.scale(snapshot.getInt("Stride"),1,snapshot.getInt("Stride"));
+                if(snapshot.getBoolean("City")&&!cell.relevant()) {
+                    BlockPos anchor=BlockPos.of(snapshot.getLong("Anchor"));int stride=Math.max(1,snapshot.getInt("Stride"));
+                    int spanX=Math.max(1,Math.min(stride,snapshot.getInt("MaxX")-anchor.getX()-pos.getX()+1));
+                    int spanZ=Math.max(1,Math.min(stride,snapshot.getInt("MaxZ")-anchor.getZ()-pos.getZ()+1));
+                    pose.scale(spanX,1,spanZ);
+                }
                 mc.getBlockRenderer().renderSingleBlock(cell.state(),pose,buffers,15728880,net.minecraft.client.renderer.texture.OverlayTexture.NO_OVERLAY);
                 if(cell.relevant())LevelRenderer.renderLineBox(pose,buffers.getBuffer(RenderType.lines()),0,0,0,1,1,1,cell.facts().getBoolean("Bed")?.3F:.25F,cell.facts().getBoolean("Bed")?1F:.65F,cell.facts().getBoolean("Bed")?.4F:1F,.85F);
                 pose.popPose();

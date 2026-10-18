@@ -23,7 +23,7 @@ import net.minecraft.world.item.Items;
 
 /** Standalone native presentation. Each operation names a town and waits for its server ACK. */
 public class SettlementScreen extends Screen {
-    private static final String[] SECTIONS={"residents","happiness","chests","treasury","settings"};
+    private static final String[] SECTIONS={"settlement","residents","happiness","chests","treasury","settings"};
     private static final int ROW_HEIGHT=36;
     private static final String[] CHAPTERS={"founding","territory","feeding","housing","food_satisfaction","safety","jobs","community","decoration","chest_delivery","payroll","rebellion","treasury","tax"};
     private static final int INK=0xffe4dfca, MUTED=0xffb9bdaf;
@@ -31,15 +31,18 @@ public class SettlementScreen extends Screen {
     private String section="residents", mode="loading", search="", filter="all", sort="name", notice="";
     private String guideReturn="residents", guideMode="town";
     private int chapter, scroll, left, top, panelW, panelH, cx, cy, cw, bottom, listTop, listBottom;
-    private boolean compact, information, foodDetails;
-    private UUID desiredEntity;
+    private boolean compact, information, foodDetails,scaleLimited;
+    private UUID expectedHousing;
+    private String expectedHousingSection;
+    private UUID desiredEntity,inspectedCityResident;
     private EditBox searchBox, nameBox, amountBox;
     private String editedName="", amount="1";
     private CoinDenomination denomination=CoinDenomination.COPPER;
     private final SettlementMap map=new SettlementMap();
     private final HousingInspector housing=new HousingInspector();
     private boolean inspecting,rotatingHouse,panningHouse;
-    private int housePreviewY,housePreviewH;
+    private int housePreviewY,housePreviewH,selectedCityHome;
+    private long nextCityPoll;
     private final List<Row> rows=new ArrayList<>();
     private final List<Runnable> drawings=new ArrayList<>();
     private Runnable confirm;
@@ -63,10 +66,28 @@ public class SettlementScreen extends Screen {
     public void focusEntity(UUID id){desiredEntity=id;focusDesired();}
     private void focusDesired(){if(desiredEntity==null || !mode.equals("town"))return; for(String key:new String[]{"Residents","Defense"})for(CompoundTag row:tags(town,key))if((!key.equals("Defense")||row.getBoolean("NeedsEnrolled"))&&row.hasUUID("Id")&&desiredEntity.equals(row.getUUID("Id"))){detail=row;section="residents";desiredEntity=null;scroll=0;return;}}
     public void accept(CompoundTag view,String completed) {
-        if(view.contains("Housing")){housing.accept(view.getCompound("Housing"));inspecting=true;}
+        if(view.contains("Housing")&&completed.equals("housing")&&mode.equals("town")&&section.equals(expectedHousingSection)&&expectedHousing!=null
+                &&(section.equals("settlement")||detail!=null&&detail.hasUUID("Id")&&expectedHousing.equals(detail.getUUID("Id")))
+                &&view.getCompound("Housing").hasUUID("Resident")&&expectedHousing.equals(view.getCompound("Housing").getUUID("Resident"))){
+            housing.surfaceOnly=false;housing.onlyAmenities=false;
+            if(section.equals("settlement")){housing.example=false;inspectedCityResident=expectedHousing;}
+            housing.accept(view.getCompound("Housing"));inspecting=true;
+        }
+        if(completed.equals("housing")){expectedHousing=null;expectedHousingSection=null;}
         UUID previous=town.hasUUID("Id")?town.getUUID("Id"):null;
+        CompoundTag retainedCity=envelope.getCompound("City");
         envelope=view.copy();
         town=view.contains("Selected",Tag.TAG_COMPOUND)?view.getCompound("Selected").copy():new CompoundTag();
+        if(!envelope.contains("City")&&retainedCity.hasUUID("Town")&&town.hasUUID("Id")&&retainedCity.getUUID("Town").equals(town.getUUID("Id")))
+            envelope.put("City",retainedCity.copy());
+        if(view.contains("City")) {
+            var city=view.getCompound("City");
+            if(!city.hasUUID("Town")||!town.hasUUID("Id")||!city.getUUID("Town").equals(town.getUUID("Id")))envelope.remove("City");
+            nextCityPoll=System.currentTimeMillis()+(city.getBoolean("Building")?2000L:10000L);
+            if(section.equals("settlement")&&!inspecting&&city.hasUUID("Town")&&town.hasUUID("Id")&&city.getUUID("Town").equals(town.getUUID("Id"))&&!city.getBoolean("Building")) {
+                housing.example=false;housing.accept(city);
+            }
+        }
         map.accept(town);
         if (view.contains("Reason")) notice=view.getString("Reason");
         boolean accepted=view.getString("Result").equals("ACCEPTED") || view.getString("Result").equals("REPLAYED");
@@ -80,7 +101,7 @@ public class SettlementScreen extends Screen {
             else mode="selector";
         }
         if (view.getBoolean("Founding")) mode="create";
-        if (previous!=null && town.hasUUID("Id") && !previous.equals(town.getUUID("Id"))) { inspecting=false; map.center(BlockPos.of(town.getLong("Center"))); }
+        if (previous!=null && town.hasUUID("Id") && !previous.equals(town.getUUID("Id"))) { inspecting=false; inspectedCityResident=null; map.center(BlockPos.of(town.getLong("Center"))); }
         if (detail!=null && detail.hasUUID("Id")) {
             UUID id=detail.getUUID("Id"); CompoundTag refreshed=null;
             for (String key:new String[]{"Residents","WorkforceRows","Defense"}) for (CompoundTag row:tags(town,key)) if (row.hasUUID("Id") && id.equals(row.getUUID("Id"))) refreshed=row;
@@ -93,7 +114,7 @@ public class SettlementScreen extends Screen {
         focusDesired();
         if (minecraft!=null) rebuild();
     }
-    public void guide() { guideReturn=section; guideMode=mode; mode="guide"; scroll=0; if (minecraft!=null) rebuild(); }
+    public void guide() { expectedHousing=null;guideReturn=section; guideMode=mode; mode="guide"; scroll=0; if (minecraft!=null) rebuild(); }
     @Override protected void init() { rebuild(); }
     private void rebuild() {
         String focus=getFocused()==searchBox&&searchBox!=null?"search":getFocused()==nameBox&&nameBox!=null?"name":getFocused()==amountBox&&amountBox!=null?"amount":"";
@@ -106,9 +127,11 @@ public class SettlementScreen extends Screen {
         if (nameBox!=null) editedName=nameBox.getValue();
         if (amountBox!=null) amount=amountBox.getValue();
         searchBox=null; nameBox=null; amountBox=null; clearWidgets(); drawings.clear(); rows.clear(); map.release();
-        panelW=Math.min(inspecting?600:384,width-16); panelH=Math.min(inspecting?380:264,height-16); left=(width-panelW)/2; top=(height-panelH)/2;
+        boolean citySection=mode.equals("town")&&section.equals("settlement");
+        panelW=Math.min(inspecting||citySection?600:384,width-16); panelH=Math.min(inspecting||citySection?380:264,height-16); left=(width-panelW)/2; top=(height-panelH)/2;
         compact=width<400 || height<256; cx=left+(compact?8:116); cy=top+(compact?62:36); cw=panelW-(compact?16:124); bottom=top+panelH-24;
-        if (panelW<228 || panelH<180 || inspecting&&panelH<228) {mode="scale";button(tr("close"),left+8,bottom-20,panelW-16,this::onClose,false);return;}
+        scaleLimited=panelW<228 || panelH<180 || (inspecting||citySection)&&panelH<228;
+        if (scaleLimited) {rotatingHouse=false;panningHouse=false;button(tr("close"),left+8,bottom-20,panelW-16,this::onClose,false);return;}
         button(Component.literal("x"),left+panelW-28,top+8,20,this::onClose,false);
         if (!mode.equals("unsupported") && !mode.equals("loading")) {
             if(!mode.equals("guide"))button(Component.literal("?"),left+panelW-52,top+8,20,this::guide,false);
@@ -125,6 +148,7 @@ public class SettlementScreen extends Screen {
         if (inspecting) { housingWidgets(); return; }
         if (detail!=null) { residentDetail(); return; }
         switch(section) {
+            case "settlement" -> cityWidgets();
             case "residents" -> residentRows();
             case "happiness" -> happinessRows();
             case "chests" -> {if(chest==null)chestRows();else chestContents();}
@@ -154,10 +178,56 @@ public class SettlementScreen extends Screen {
     private void navigation() {
         if (compact) {
             int index=Arrays.asList(SECTIONS).indexOf(section);
-            button(tr("section."+section),left+8,top+34,panelW-16,()->{section=SECTIONS[(index+1)%SECTIONS.length];inspecting=false;detail=null;chest=null;scroll=0;search="";rebuild();},false);
+            button(tr("section."+section),left+8,top+34,panelW-16,()->selectSection(SECTIONS[(index+1)%SECTIONS.length]),false);
         } else for (int i=0;i<SECTIONS.length;i++) {
-            String key=SECTIONS[i]; Button tab=button(tr("section."+key),left+8,top+38+i*28,100,()->{section=key;inspecting=false;detail=null;chest=null;scroll=0;search="";filter="all";rebuild();},false,new ItemStack(switch(key){case "residents"->Items.VILLAGER_SPAWN_EGG;case "happiness"->Items.SUNFLOWER;case "chests"->Items.CHEST;case "treasury"->Items.CHEST;default->Items.COMPARATOR;}));
+            String key=SECTIONS[i]; Button tab=button(tr("section."+key),left+8,top+38+i*28,100,()->selectSection(key),false,new ItemStack(switch(key){case "settlement"->Items.BELL;case "residents"->Items.VILLAGER_SPAWN_EGG;case "happiness"->Items.SUNFLOWER;case "chests"->Items.CHEST;case "treasury"->Items.CHEST;default->Items.COMPARATOR;}));
             if (section.equals(key)) drawings.add(()->graphics.renderOutline(tab.getX()-1,tab.getY()-1,tab.getWidth()+2,tab.getHeight()+2,0xff9cb572));
+        }
+    }
+    private void selectSection(String key) {
+        expectedHousing=null;section=key;inspecting=false;inspectedCityResident=null;rotatingHouse=false;panningHouse=false;
+        detail=null;chest=null;scroll=0;search="";filter="all";map.clearQuote();
+        if(key.equals("settlement")){restoreCityView();nextCityPoll=0;requestCity();}
+        rebuild();
+    }
+    private boolean cityActive() { return !scaleLimited&&mode.equals("town")&&section.equals("settlement")&&detail==null&&!inspecting&&confirm==null; }
+    private static Component cityText(String key,Object...args) { return Component.translatable("jem.settlements.city."+key,args); }
+    private void restoreCityView() {
+        housing.example=false;housing.surfaceOnly=false;housing.depth(0);
+        var city=envelope.getCompound("City");
+        housing.accept(city.hasUUID("Town")&&town.hasUUID("Id")&&city.getUUID("Town").equals(town.getUUID("Id"))?city:new CompoundTag());
+        housing.resetView();
+    }
+    private boolean requestCity() {
+        if(!town.hasUUID("Id")||SettlementClientState.pending())return false;
+        if(!SettlementClientState.action("city",town.getUUID("Id"),new CompoundTag()))return false;
+        nextCityPoll=System.currentTimeMillis()+(envelope.getCompound("City").getBoolean("Building")?2000L:10000L);
+        return true;
+    }
+    private void inspectCityHome() {
+        var homes=envelope.getCompound("City").getList("Homes",Tag.TAG_COMPOUND);
+        if(homes.isEmpty()||SettlementClientState.pending())return;
+        var row=homes.getCompound(Math.floorMod(selectedCityHome++,homes.size()));
+        if(!row.hasUUID("Resident"))return;
+        CompoundTag payload=new CompoundTag();payload.putUUID("Entity",row.getUUID("Resident"));request("housing",payload);
+    }
+    private void cityWidgets() {
+        var city=envelope.getCompound("City");
+        drawLine(cityText("title"),cx,cy,INK);
+        drawLine(city.isEmpty()?cityText("waiting"):cityText(city.getBoolean("Building")?"building":city.getBoolean("Partial")?"partial":"surface",
+                city.getBoolean("Building")?city.getInt("Progress"):city.getInt("Stride")),cx,cy+12,MUTED);
+        int columns=cw>=390?3:2,rows=(6+columns-1)/columns,gap=4,cell=(cw-gap*(columns-1))/columns;
+        int footer=bottom-rows*24+2;
+        housePreviewY=cy+28;housePreviewH=Math.max(24,footer-8-housePreviewY);
+        Component[] labels={cityText("boundaries"),cityText("house"),cityText("reset"),cityText(housing.onlyAmenities?"all":"comfort"),cityText("lod"),cityText("refresh")};
+        Runnable[] actions={()->{housing.showBounds=!housing.showBounds;},this::inspectCityHome,housing::resetView,
+                ()->{housing.onlyAmenities=!housing.onlyAmenities;rebuild();},()->{housing.surfaceOnly=!housing.surfaceOnly;housing.refreshGeometry();},
+                ()->{if(requestCity())rebuild();}};
+        boolean ready=city.contains("Palette")&&!city.getBoolean("Building");
+        for(int i=0;i<labels.length;i++) {
+            Button control=button(labels[i],cx+(i%columns)*(cell+gap),footer+(i/columns)*24,cell,actions[i],false);
+            control.setTooltip(Tooltip.create(labels[i]));
+            control.active=i==5?!SettlementClientState.pending():ready&&(i!=1||!city.getList("Homes",Tag.TAG_COMPOUND).isEmpty()&&!SettlementClientState.pending());
         }
     }
     private EditBox edit(int x,int y,int w,String value,String hint,int max) {
@@ -171,7 +241,7 @@ public class SettlementScreen extends Screen {
     }
     private void request(String action,CompoundTag payload) {
         UUID id=town.hasUUID("Id")?town.getUUID("Id"):null;
-        if (SettlementClientState.action(action,id,payload)) rebuild();
+        if (SettlementClientState.action(action,id,payload)) {if(action.equals("housing")&&payload.hasUUID("Entity")){expectedHousing=payload.getUUID("Entity");expectedHousingSection=section;}rebuild();}
     }
     private void readDirectory(int offset) {CompoundTag payload=new CompoundTag();payload.putInt("Offset",Math.max(0,offset));request("open",payload);}
     private void selector() {
@@ -308,7 +378,7 @@ public class SettlementScreen extends Screen {
         rows.add(new Row(tr("tax",town.getInt("Tax")),tr("tax_deduction"),new ItemStack(Items.PAPER),new CompoundTag(),()->{chapter=CHAPTERS.length-1;guide();}));listWidgets();refreshFooter();
     }
     private void residentDetail() {
-        button(tr("back"),cx,cy,60,()->{detail=null;scroll=0;rebuild();},false);
+        button(tr("back"),cx,cy,60,()->{expectedHousing=null;detail=null;scroll=0;rebuild();},false);
         int py=cy+26,portraitWidth=compact?48:64;boolean resident=detail.contains("Mood"),isRecruit=recruit(detail);
         if(resident)button(tr(foodDetails?"needs":"food_history"),cx+64,cy,cw-64,()->{foodDetails=!foodDetails;scroll=0;rebuild();},false);
         if(resident&&foodDetails){listTop=py;listBottom=bottom-24;for(CompoundTag row:servings(detail))rows.add(new Row(item(row.getString("Item")).getHoverName(),tr("served_today",row.getInt("Count")),item(row.getString("Item")),row,null));listWidgets();return;}
@@ -353,7 +423,7 @@ public class SettlementScreen extends Screen {
         }
     }
     private void housingWidgets() {
-        button(tr("back"),cx,cy,52,()->{inspecting=false;rebuild();},false);
+        button(tr("back"),cx,cy,52,()->{expectedHousing=null;inspecting=false;if(section.equals("settlement"))restoreCityView();rebuild();},false);
         button(HousingInspector.tr(housing.example?"example":"mine"),cx+56,cy,Math.max(60,cw-56),()->{housing.example=!housing.example;rebuild();},false);
         int half=(cw-4)/2;
         addRenderableWidget(new AbstractSliderButton(cx,bottom-46,cw,20,HousingInspector.tr("see_inside",housing.depth()),housing.depth()/10D){
@@ -361,7 +431,7 @@ public class SettlementScreen extends Screen {
             @Override protected void applyValue(){housing.depth((int)Math.round(value*10));}
         }).setTooltip(Tooltip.create(HousingInspector.tr("depth_hint")));
         button(HousingInspector.tr("reset_view"),cx,bottom-22,half,housing::resetView,false);
-        button(tr("refresh"),cx+half+4,bottom-22,cw-half-4,()->{if(detail!=null){CompoundTag payload=new CompoundTag();payload.putUUID("Entity",detail.getUUID("Id"));request("housing",payload);}},true);
+        button(tr("refresh"),cx+half+4,bottom-22,cw-half-4,()->{UUID resident=detail!=null&&detail.hasUUID("Id")?detail.getUUID("Id"):section.equals("settlement")?inspectedCityResident:null;if(resident!=null){CompoundTag payload=new CompoundTag();payload.putUUID("Entity",resident);request("housing",payload);}},true);
         drawLine(housing.score(),cx,cy+24,MUTED);
         housePreviewY=cy+36;housePreviewH=Math.max(24,bottom-78-housePreviewY);
         drawLine(HousingInspector.tr("controls"),cx,bottom-74,MUTED);
@@ -422,8 +492,7 @@ public class SettlementScreen extends Screen {
         } catch(NumberFormatException|ArithmeticException invalid) {notice="jem.settlements.reason.invalid";}
     }
     private void settings() {
-        nameBox=edit(cx,cy,Math.max(60,cw-66),editedName.isEmpty()?town.getString("Name"):editedName,"name",32);
-        button(Component.translatable("jem.settlements.city.open"),cx+cw-62,cy,62,()->request("city",new CompoundTag()),false).setTooltip(Tooltip.create(Component.translatable("jem.settlements.city.title")));
+        nameBox=edit(cx,cy,cw,editedName.isEmpty()?town.getString("Name"):editedName,"name",32);
         button(tr("save_name"),cx,cy+24,cw,()->{CompoundTag payload=new CompoundTag();payload.putString("Name",nameBox.getValue().strip());request("rename",payload);},true);
         drawWrapped(tr("location",dimension(town.getString("Dimension")),position(town.getLong("Center"))),cx,cy+52,cw,MUTED);
         drawWrapped(tr("bounds",town.getInt("TerritoryMinX"),town.getInt("TerritoryMinZ"),town.getInt("TerritoryMaxX"),town.getInt("TerritoryMaxZ")),cx,cy+80,cw,MUTED);
@@ -513,6 +582,7 @@ public class SettlementScreen extends Screen {
         if(!minecraft.isWindowActive())map.clearQuote();
         if(map.dragging() && org.lwjgl.glfw.GLFW.glfwGetMouseButton(minecraft.getWindow().getWindow(),0)!=org.lwjgl.glfw.GLFW.GLFW_PRESS) {map.clearQuote();rebuild();}
         SettlementClientState.reconcile();
+        if(cityActive()&&System.currentTimeMillis()>=nextCityPoll&&requestCity())rebuild();
         if(++refreshTicks>=100){refreshTicks=0;if(SettlementNetwork.supported()){
             UUID id=town.hasUUID("Id")?town.getUUID("Id"):null;
             SettlementNetwork.action("heartbeat",id,new CompoundTag(),UUID.randomUUID());
@@ -521,21 +591,23 @@ public class SettlementScreen extends Screen {
     @Override public void onClose(){map.clearQuote();SettlementClientState.closed();minecraft.setScreen(null);}
     @Override public void removed(){map.clearQuote();SettlementClientState.closed();}
     @Override public boolean keyPressed(int key,int scan,int modifiers){
-        if(key==256&&inspecting&&confirm==null){inspecting=false;rotatingHouse=false;panningHouse=false;rebuild();return true;}
-        if(key==256){map.clearQuote();if(confirm!=null){confirm=null;mode=confirmMode;rebuild();return true;}if(mode.equals("guide")){mode=guideMode;section=guideReturn;rebuild();return true;}if(chest!=null){chest=null;rebuild();return true;}if(detail!=null){detail=null;rebuild();return true;}}
+        if(key==256&&inspecting&&confirm==null){expectedHousing=null;inspecting=false;rotatingHouse=false;panningHouse=false;if(section.equals("settlement"))restoreCityView();rebuild();return true;}
+        if(key==256){expectedHousing=null;map.clearQuote();if(confirm!=null){confirm=null;mode=confirmMode;rebuild();return true;}if(mode.equals("guide")){mode=guideMode;section=guideReturn;rebuild();return true;}if(chest!=null){chest=null;rebuild();return true;}if(detail!=null){detail=null;rebuild();return true;}}
         return super.keyPressed(key,scan,modifiers);
     }
     @Override public boolean mouseClicked(double x,double y,int button){
         if(super.mouseClicked(x,y,button))return true;
-        if(inspecting&&mode.equals("town")&&confirm==null&&housing.inside(x,y)&&(button==0||button==1)){rotatingHouse=button==0;panningHouse=button==1;return true;}
+        if(scaleLimited)return false;
+        if((inspecting||cityActive())&&mode.equals("town")&&confirm==null&&housing.inside(x,y)&&(button==0||button==1)){rotatingHouse=button==0;panningHouse=button==1;return true;}
         if(!inspecting&&confirm==null&&mode.equals("town")&&section.equals("map")&&detail==null&&map.click(x,y,button,town)){return true;}
         return false;
     }
-    @Override public boolean mouseDragged(double x,double y,int button,double dx,double dy){if(inspecting&&confirm==null){if(rotatingHouse&&button==0){housing.rotate(dx,dy);return true;}if(panningHouse&&button==1){housing.pan(dx,dy);return true;}}return !inspecting&&confirm==null&&section.equals("map")&&map.drag(x,y,dx,dy,town)||super.mouseDragged(x,y,button,dx,dy);}
+    @Override public boolean mouseDragged(double x,double y,int button,double dx,double dy){if((inspecting||cityActive())&&confirm==null){if(rotatingHouse&&button==0){housing.rotate(dx,dy);return true;}if(panningHouse&&button==1){housing.pan(dx,dy);return true;}}return !inspecting&&confirm==null&&section.equals("map")&&map.drag(x,y,dx,dy,town)||super.mouseDragged(x,y,button,dx,dy);}
     @Override public boolean mouseReleased(double x,double y,int button){rotatingHouse=false;panningHouse=false;boolean selected=map.dragging();map.release();if(selected)rebuild();return super.mouseReleased(x,y,button);}
     @Override public boolean mouseScrolled(double x,double y,double delta){
+        if(scaleLimited)return false;
         if(confirm!=null)return false;
-        if(inspecting&&housing.inside(x,y)){housing.zoom(delta);return true;}
+        if((inspecting||cityActive())&&housing.inside(x,y)){housing.zoom(delta);return true;}
         if(!inspecting&&mode.equals("town")&&section.equals("map")&&detail==null&&map.contains(x,y)){map.zoom(delta,x,y);return true;}
         if(chest==null&&x>=cx&&x<cx+cw&&y>=listTop&&y<listBottom){scroll=Math.max(0,scroll+(delta>0?-1:1));rebuild();return true;}
         return super.mouseScrolled(x,y,delta);
@@ -548,9 +620,11 @@ public class SettlementScreen extends Screen {
         SettlementMaterials.foliage(g,left+panelW-22,top+3);
         SettlementMaterials.foliage(g,left+3,top+panelH-19);
         g.drawString(font,mode.equals("town")?clip(Component.literal(detail==null?town.getString("Name"):residentName(detail).getString()),Math.max(40,panelW-128)):title,left+9,top+13,INK,false);
-        if(mode.equals("loading")||mode.equals("unsupported")||mode.equals("scale"))g.drawWordWrap(font,tr(mode),left+12,top+50,Math.max(20,panelW-24),INK);
+        if(scaleLimited){g.drawWordWrap(font,tr("scale"),left+12,top+50,Math.max(20,panelW-24),INK);super.render(g,mouseX,mouseY,partialTick);graphics=null;return;}
+        if(mode.equals("loading")||mode.equals("unsupported"))g.drawWordWrap(font,tr(mode),left+12,top+50,Math.max(20,panelW-24),INK);
         if(!inspecting&&mode.equals("town")&&section.equals("map")&&detail==null&&confirm==null)map.render(g,town,town,minecraft);
         super.render(g,mouseX,mouseY,partialTick);for(Runnable draw:drawings)draw.run();
+        if(cityActive())housing.render(g,cx,housePreviewY,cw,housePreviewH,mouseX,mouseY);
         if(inspecting&&mode.equals("town")&&confirm==null){
             housing.render(g,cx,housePreviewY,cw,housePreviewH,mouseX,mouseY);
             if(mouseX>=cx&&mouseX<cx+cw&&mouseY>=bottom-76&&mouseY<bottom-50)g.renderComponentTooltip(font,List.of(HousingInspector.tr("controls"),HousingInspector.tr("legend_bed"),HousingInspector.tr("legend_decor"),HousingInspector.tr("area"),HousingInspector.tr("legend_missing")),mouseX,mouseY);

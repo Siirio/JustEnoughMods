@@ -27,6 +27,7 @@ public final class SettlementClientState {
     private static UUID pendingTown;
     private static CompoundTag pendingPayload;
     private static String pendingAction;
+    private static net.minecraft.client.gui.screens.Screen pendingScreen;
     private static boolean foodPolicySynced, awaitingOpen;
     private static final KeyMapping OPEN = new KeyMapping("key.jem_settlements.open", InputConstants.Type.KEYSYM,
             InputConstants.UNKNOWN.getValue(), "key.categories.jem_settlements");
@@ -45,6 +46,7 @@ public final class SettlementClientState {
     public static boolean action(String action, UUID town, CompoundTag payload) {
         if (!SettlementNetwork.supported() || pending != null) return false;
         pending = SettlementNetwork.newRequestId(); pendingAction = action; sentAt = System.currentTimeMillis(); lastAttempt=sentAt; pendingTown=town; pendingPayload=payload.copy();
+        pendingScreen=Minecraft.getInstance().screen;
         SettlementNetwork.action(action, town, payload, pending); return true;
     }
     public static void accept(TownViewPacket packet) {
@@ -55,13 +57,15 @@ public final class SettlementClientState {
         if (!incoming.getBoolean("MapOnly")) view = incoming.copy();
         boolean acknowledged = pending != null && incoming.hasUUID("Request") && pending.equals(incoming.getUUID("Request")) && !incoming.getString("Result").equals("OUTCOME_UNKNOWN") && !incoming.getString("Result").equals("RETRY");
         String completed = acknowledged ? pendingAction : "";
-        if (acknowledged) { pending = null; pendingAction = null; pendingPayload=null; pendingTown=null; }
+        var origin=acknowledged?pendingScreen:null;
+        if (acknowledged) { pending = null; pendingAction = null; pendingPayload=null; pendingTown=null; pendingScreen=null; }
         if (incoming.getBoolean("MapOnly")) { com.siirio.jemsettlements.compat.xaero.SettlementMapClient.accept(incoming); return; }
         Minecraft client = Minecraft.getInstance();
-        if(incoming.contains("Housing")&&client.screen instanceof CityInspectorScreen screen){screen.acceptHouse(incoming.getCompound("Housing"));return;}
+        if(incoming.contains("Housing")&&origin==client.screen&&client.screen instanceof CityInspectorScreen screen){screen.acceptHouse(incoming.getCompound("Housing"));return;}
         if(incoming.contains("City")) {
-            if(client.screen instanceof CityInspectorScreen screen)screen.accept(incoming.getCompound("City"));
-            else client.setScreen(new CityInspectorScreen(client.screen,incoming.getCompound("City")));
+            if(client.screen instanceof SettlementScreen screen){screen.accept(view,completed);awaitingOpen=false;return;}
+            if(origin==client.screen&&client.screen instanceof CityInspectorScreen screen)screen.accept(incoming.getCompound("City"));
+            else if(origin!=null&&origin==client.screen)client.setScreen(new CityInspectorScreen(client.screen,incoming.getCompound("City")));
             return;
         }
         if (client.screen instanceof SettlementScreen screen) screen.accept(view, completed);
@@ -81,12 +85,12 @@ public final class SettlementClientState {
         static UUID target(Minecraft client){return net.minecraft.client.gui.screens.Screen.hasShiftDown()&&client.hitResult instanceof net.minecraft.world.phys.EntityHitResult hit?hit.getEntity().getUUID():null;}
     }
     public static void acceptFoodPolicy(FoodPolicyPacket packet) { FoodValueRegistry.applySynced(packet.values()); foodPolicySynced = true; }
-    public static void closed() { awaitingOpen = false; if (SettlementNetwork.supported()) SettlementNetwork.action("close", null, new CompoundTag(), UUID.randomUUID()); }
+    public static void closed() { awaitingOpen = false; pendingScreen=null; if (SettlementNetwork.supported()) SettlementNetwork.action("close", null, new CompoundTag(), UUID.randomUUID()); }
     @SubscribeEvent public static void logout(ClientPlayerNetworkEvent.LoggingOut event) {
         SettlementNetwork.clearClientSession();
         SettlementNotices.clear();
         com.siirio.jemsettlements.compat.xaero.SettlementMapClient.clear();
-        view = new CompoundTag(); pending = null; pendingAction = null; pendingTown=null; pendingPayload=null; foodPolicySynced = false; awaitingOpen = false;
+        view = new CompoundTag(); pending = null; pendingAction = null; pendingTown=null; pendingPayload=null; pendingScreen=null; foodPolicySynced = false; awaitingOpen = false;
         FoodValueRegistry.applySynced(java.util.Map.of());
     }
     @Mod.EventBusSubscriber(modid = JemSettlements.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)

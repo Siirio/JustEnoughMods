@@ -22,12 +22,13 @@ public final class HousingInspection {
         var level=server.getLevel(home.dimension());if(level==null){result.putBoolean("Unloaded",true);return result;}
         ListTag palette=new ListTag(),blocks=new ListTag();java.util.Map<net.minecraft.world.level.block.state.BlockState,Integer> ids=new java.util.LinkedHashMap<>();
         AmenityEvidence evidence=new AmenityEvidence();
+        var projection=new SnapshotVisibility.Projection();projection.beginTick();
         for(int y=-AmenityScanService.HEIGHT/2;y<=AmenityScanService.HEIGHT/2;y++)for(int z=-AmenityScanService.WIDTH/2;z<=AmenityScanService.WIDTH/2;z++)for(int x=-AmenityScanService.WIDTH/2;x<=AmenityScanService.WIDTH/2;x++){
             BlockPos pos=anchor.offset(x,y,z);if(!level.hasChunkAt(pos)){result.putBoolean("Unloaded",true);continue;}
-            var state=level.getBlockState(pos);if(!SnapshotVisibility.disclose(level,pos,state,viewer))continue;
+            var original=level.getBlockState(pos);var state=projection.project(level,pos,original);if(state==null)continue;
             int id=ids.computeIfAbsent(state,value->{palette.add(NbtUtils.writeBlockState(value));return palette.size()-1;});
             CompoundTag row=new CompoundTag();row.putLong("Position",pos.asLong());row.putInt("State",id);row.putBoolean("Bed",state.getBlock() instanceof BedBlock && pos.distSqr(anchor)<=1);
-            row.merge(evidence.observe(level,pos,state));blocks.add(row);
+            if(state==original&&!SnapshotVisibility.resource(original))row.merge(evidence.observe(level,pos,original));blocks.add(row);
         }
         for(int i=0;i<blocks.size();i++)evidence.finishFacts(blocks.getCompound(i));
         result.putInt("CurrentPoints",evidence.points(12));result.putBoolean("BedPresent",level.hasChunkAt(anchor)&&level.getBlockState(anchor).getBlock() instanceof BedBlock);

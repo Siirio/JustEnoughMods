@@ -48,7 +48,7 @@ public final class RaceExperienceScreen extends Screen {
     private Button next;
     private Button tab;
     private Button developerTier;
-    private final List<Button> bloomUnlocks = new ArrayList<>();
+    private Button bloomUnlock;
 
     RaceExperienceScreen(RaceExperience.Status status, boolean mandatory, boolean progression) {
         super(Component.translatable("jem.roles.screen.title"));
@@ -66,7 +66,7 @@ public final class RaceExperienceScreen extends Screen {
     @Override protected void init() {
         width = (int)Math.ceil(minecraft.getWindow().getWidth() / FIXED_GUI_SCALE);
         height = (int)Math.ceil(minecraft.getWindow().getHeight() / FIXED_GUI_SCALE);
-        bloomUnlocks.clear();
+        bloomUnlock = null;
         developerTier = null;
         resetProgress = null;
         if (!hudCaptured) {
@@ -92,21 +92,15 @@ public final class RaceExperienceScreen extends Screen {
         addRenderableWidget(new QuietButton(panelLeft()+12+slotWidth, 75, slotWidth, 18, Component.literal("B / И"), b -> selectPreview(1)));
         previewLevel=null;
         {
-        int controlsY=height>=216?previewBottom()+2:96;
+        int controlsY=previewVisible()?previewBottom()+2:96;
         addRenderableWidget(new QuietButton(panelLeft()+12,controlsY,22,18,Component.literal("‹"),b->changePreviewTier(-1)));
         previewLevel=addRenderableWidget(new QuietButton(panelLeft()+36,controlsY,previewWidth-48,18,
                 Component.literal(""),b->changePreviewTier(1)));
         addRenderableWidget(new QuietButton(width-36,controlsY,22,18,Component.literal("›"),b->changePreviewTier(1)));
         }
-        if (progression && race == 2 && status.selected() && status.race() == 2) {
-            int cell = Math.max(24, (stage - 24) / 3);
-            for (int i = 1; i <= 3; i++) {
-                final int unlock = i;
-                bloomUnlocks.add(addRenderableWidget(new QuietButton(12 + (i - 1) * cell,
-                        height - 28, cell - 2, 20,
-                        Component.literal(new String[]{"I", "II", "III"}[i - 1]), b -> SandboxNetwork.upgrade(unlock))));
-            }
-        }
+        bloomUnlock = addRenderableWidget(new QuietButton(panelLeft()+12,
+                (previewVisible()?previewBottom()+2:96)+20,previewWidth,18,
+                Component.empty(),b -> SandboxNetwork.upgrade(previewTier)));
         updateButtons();
     }
 
@@ -162,11 +156,11 @@ public final class RaceExperienceScreen extends Screen {
         if (previewLevel != null) previewLevel.setMessage(Component.literal((previewSlot==0?"V":"B")+" · ")
                 .append(stageName(previewTier))
                 .append(text(previewUnlocked()?" · открыт":" · закрыт",previewUnlocked()?" · unlocked":" · locked")));
-        for (int i = 0; i < bloomUnlocks.size(); i++) {
-            int nextTier = i + 1;
-            Button unlock = bloomUnlocks.get(i);
-            unlock.active = !busy && nextTier == status.bloomUpgrade() + 1 && nextTier <= tier();
-            unlock.setMessage(Component.literal((nextTier <= status.bloomUpgrade() ? "✓ " : "") + new String[]{"I", "II", "III"}[i]));
+        if (bloomUnlock != null) {
+            bloomUnlock.visible = progression && race==2 && previewSlot==0 && status.selected()
+                    && status.race()==race && previewTier>status.bloomUpgrade();
+            bloomUnlock.active = !busy && previewTier==status.bloomUpgrade()+1 && previewTier<=tier();
+            bloomUnlock.setMessage(text("Открыть улучшение "+previewTier,"Unlock upgrade "+previewTier));
         }
     }
 
@@ -202,15 +196,9 @@ public final class RaceExperienceScreen extends Screen {
 
         int left = panelLeft(), right = width - 16;
         int accent = ACCENTS[race];
-        if(progression) RacePanelMaterials.board(g,left+5,7,panelWidth()-12,height-14,false);
         g.drawCenteredString(font,text("ВЫБЕРИ СВОЁ ПРОИСХОЖДЕНИЕ", "CHOOSE YOUR ORIGIN"),panelLeft()/2,20,0xD9D6CE);
-        int nameY = Math.max(56, height - 81);
-        int nameWidth = Math.max(70, left - 40);
-        List<FormattedCharSequence> name = font.split(tr("name"), nameWidth);
-        for (int i = 0; i < name.size(); i++) g.drawCenteredString(font, name.get(i), left / 2, nameY + i * 11, accent);
-        if (height > 260) g.drawCenteredString(font, tr("lore"), left / 2, nameY + name.size() * 11 + 5, 0xA9A9A9);
-        if(progression) g.fill(left+12,45,width-19,46,0xFF59472F);
-        else g.fill(left,49,left+1,height-42,0xFF282828);
+        renderRaceIdentity(g,left,accent);
+        g.fill(left,49,left+1,height-42,0xFF282828);
 
         String[] icons={"life_chorus","rift_ambush","verdant_dominion","sculk_veins","infernal_eruption"};
         if(previewSlot==0) g.blit(new net.minecraft.resources.ResourceLocation("jem_visual_sandbox","textures/gui/spell_icons/"+icons[race]+".png"),left+12,52,0,0,16,16,16,16);
@@ -221,19 +209,20 @@ public final class RaceExperienceScreen extends Screen {
         }
         g.drawString(font,font.plainSubstrByWidth(abilityName().getString(),Math.max(24,right-left-38)),left+34,56,accent,false);
         int previewX=left+12, previewY=96, previewW=panelWidth()-24;
-        if(height>=216) {
+        if(previewVisible()) {
         g.fill(previewX,previewY,previewX+previewW,previewBottom(),0xFF08090C);
         abilityPreview.render(g,previewX,previewY,previewW,previewBottom()-previewY,
                 race,previewSlot,previewTier,previewBloom,partialTick,FIXED_GUI_SCALE);
         }
-        int top = height>=216?previewBottom()+25:119, bottom = Math.max(top+1,height - 41);
+        int top = (previewVisible()?previewBottom()+25:119)+(bloomUnlock!=null&&bloomUnlock.visible?20:0);
+        int bottom = Math.max(top+1,height - 41);
         double scissorScale = FIXED_GUI_SCALE / minecraft.getWindow().getGuiScale();
         g.enableScissor((int)Math.floor((left + 9) * scissorScale), (int)Math.floor(top * scissorScale),
                 (int)Math.ceil((right + 3) * scissorScale), (int)Math.ceil(bottom * scissorScale));
         List<Line> lines = abilityLines();
         lines.add(Line.gap());
         lines.addAll(progression ? progressionLines() : originLines());
-        if(height<216)lines.add(new Line(text("Уменьши масштаб GUI для 3D-просмотра", "Reduce GUI scale to show the 3D preview"),0xD8BD8D));
+        if(!previewVisible())lines.add(new Line(text("Уменьши масштаб GUI для 3D-просмотра", "Reduce GUI scale to show the 3D preview"),0xD8BD8D));
         int y = top - scroll;
         for (Line line : lines) {
             if (line.text() == null) { y += 7; continue; }
@@ -266,6 +255,31 @@ public final class RaceExperienceScreen extends Screen {
     private void renderSkin(GuiGraphics g, float entry, float reveal) {
         RaceStageRenderer.render(g, width, height, panelLeft(), ACCENTS[race], entry, reveal,
                 smooth(elapsed(switchedAt) / 340F), turnDirection);
+    }
+
+    private void renderRaceIdentity(GuiGraphics graphics,int left,int accent) {
+        int center=left/2, nameY=Math.max(64,height-80), available=Math.max(70,left-40);
+        float titleScale=1.35F;
+        var name=font.split(tr("name").copy().withStyle(net.minecraft.ChatFormatting.BOLD),(int)(available/titleScale));
+        graphics.pose().pushPose();
+        try {
+            graphics.pose().translate(center-12,nameY-30,0);
+            graphics.pose().scale(1.5F,1.5F,1);
+            net.minecraft.world.item.Item[] icons={net.minecraft.world.item.Items.TOTEM_OF_UNDYING,
+                    net.minecraft.world.item.Items.ENDER_PEARL,net.minecraft.world.item.Items.OAK_SAPLING,
+                    net.minecraft.world.item.Items.ECHO_SHARD,net.minecraft.world.item.Items.BLAZE_POWDER};
+            graphics.renderFakeItem(new net.minecraft.world.item.ItemStack(icons[race]),0,0);
+        } finally { graphics.pose().popPose(); }
+        graphics.pose().pushPose();
+        try {
+            graphics.pose().translate(center,nameY,0);
+            graphics.pose().scale(titleScale,titleScale,1);
+            for(int i=0;i<name.size();i++)graphics.drawCenteredString(font,name.get(i),0,i*11,accent);
+        } finally { graphics.pose().popPose(); }
+        if(height>260) {
+            int y=nameY+(int)Math.ceil(name.size()*11*titleScale)+4;
+            for(var line:font.split(tr("lore"),available)) { graphics.drawCenteredString(font,line,center,y,0xA9A9A9); y+=11; }
+        }
     }
 
     private List<Line> originLines() {
@@ -303,15 +317,13 @@ public final class RaceExperienceScreen extends Screen {
         lines.add(new Line(text("База · исходное умение без улучшений", "Base · initial ability without upgrades"), 0xD4EAC5));
         for (int i = 1; i <= 3; i++) lines.add(new Line(Component.literal(i <= tier() ? "◆ " : "◇ ")
                 .append(tr("tier.short." + i)), i <= tier() ? 0xD4EAC5 : 0x767676));
-        lines.add(new Line(Component.translatable("jem.roles.progress", progress(), 30), 0xDEDEDE));
-        lines.add(new Line(tr("mastery.detail"), 0xB2B2B2));
         if (race == 2) {
             lines.add(Line.gap());
             lines.add(new Line(text("УЛУЧШЕНИЯ КОРНЕЙ", "ROOT UPGRADES"), ACCENTS[race]));
             lines.add(new Line(text("I · блокировка действий; II · 2,7 урона/сек.; III · яд после захвата.",
                     "I · action lock; II · 2.7 damage/sec; III · poison after release."), 0xDEDEDE));
-            lines.add(new Line(text("Открыты: " + status.bloomUpgrade() + "/3. Кнопки I–III открывают следующий доступный этап без пропусков.",
-                    "Unlocked: " + status.bloomUpgrade() + "/3. Buttons I–III unlock the next available stage in order."), 0xB2B2B2));
+            lines.add(new Line(text("Выбери нужное улучшение в просмотре V; кнопка под ним открывает следующий доступный этап без пропусков.",
+                    "Inspect an upgrade under V; its button unlocks the next available stage in order."), 0xB2B2B2));
         }
         if (chosen) {
             lines.add(Line.gap());
@@ -322,7 +334,8 @@ public final class RaceExperienceScreen extends Screen {
         return lines;
     }
 
-    private int previewBottom() { return 96 + Mth.clamp((height-144)/2, 30, 102); }
+    private boolean previewVisible() { return height >= 280; }
+    private int previewBottom() { return Math.min(96 + Mth.clamp((height-144)/2, 30, 102),height-150); }
     private void selectPreview(int slot) {
         previewSlot=slot;
         if(race==2&&slot==0) previewTier=previewBloom;
@@ -345,6 +358,15 @@ public final class RaceExperienceScreen extends Screen {
         List<Line> lines=new ArrayList<>();
         lines.add(new Line(abilityName().copy().append(" · ").append(stageName(previewTier)),ACCENTS[race]));
         lines.add(new Line(text(previewUnlocked()?"Открыто":"Закрыто · доступен только просмотр",previewUnlocked()?"Unlocked":"Locked · inspection only"),previewUnlocked()?0xB5DBA4:0xC0A081));
+        if(progression && previewTier>0 && !previewUnlocked()) {
+            int required=RacePowerStages.requiredUses(previewTier);
+            lines.add(new Line(text(Math.min(progress(),required)+"/"+required+" успешных использований",
+                    Math.min(progress(),required)+"/"+required+" successful uses"),0xD4EAC5));
+            if(race==2 && previewSlot==0 && status.selected() && status.race()==race
+                    && previewTier>status.bloomUpgrade()+1)
+                lines.add(new Line(text("Сначала открой улучшение "+(status.bloomUpgrade()+1),
+                        "Unlock upgrade "+(status.bloomUpgrade()+1)+" first"),0xC0A081));
+        }
         String ru="", en="";
         if(previewSlot==0) switch(race) {
             case 0 -> {
@@ -402,8 +424,6 @@ public final class RaceExperienceScreen extends Screen {
     private int tier() { return RacePowerStages.clamp(status.tiers()[race]); }
     private int progress() { return Math.max(0, status.progress()[race]); }
     private Component tr(String suffix) {
-        if(suffix.equals("mastery.detail"))return text("Успешные V и B развивают одну расу: база — 0; уровень I — 10, II — 20, III — 30 применений.",
-                "Successful V and B uses share race progression: Base at 0; level I at 10, II at 20, III at 30 uses.");
         if(race==0&&suffix.equals("spell.detail"))return text("Золотой фронт восстанавливает игрокам 3 сердца, полностью исцеляет мирных животных и текущего ездового питомца. Четыре щита уменьшают входящий урон на 25% на 5 секунд. Перезарядка: 25 секунд.","A golden front restores 3 hearts to players and fully heals peaceful animals and your living mount. Four wards reduce incoming damage by 25% for 5 seconds. Cooldown: 25 seconds.");
         if(race==0&&suffix.equals("tier.short.1"))return text("I · радиус Хора 16 блоков", "I · Chorus radius 16 blocks");
         if(race==0&&suffix.equals("tier.short.2"))return text("II · очищение", "II · cleanse");
@@ -454,7 +474,7 @@ public final class RaceExperienceScreen extends Screen {
     @Override public boolean mouseScrolled(double x, double y, double delta) {
         x = fixedCoordinate(x); y = fixedCoordinate(y);
         if (entryAt != 0 || requested >= 0) return true;
-        if (x >= panelLeft()+12 && x < width-12 && y>=96 && y<(height>=216?previewBottom()+20:114)) changePreviewTier(delta < 0 ? 1 : -1);
+        if (x >= panelLeft()+12 && x < width-12 && y>=96 && y<(previewVisible()?previewBottom()+20:114)) changePreviewTier(delta < 0 ? 1 : -1);
         else if (x >= panelLeft()) scroll = Math.max(0, scroll - (int) (delta * 30));
         else switchRace(delta < 0 ? 1 : -1);
         return true;
