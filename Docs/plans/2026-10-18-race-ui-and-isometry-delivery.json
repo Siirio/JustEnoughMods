@@ -1,0 +1,125 @@
+{
+  "status": "delivered-player-acceptance-pending",
+  "branch": "main",
+  "sourceCommit": "8f2271ac",
+  "requestedByUser": [
+    "Black panels for every race matching screenshot02",
+    "Minecraft-style icon, larger bold race name, existing lore under actual player",
+    "Remove Bloom bottom Roman controls; show successful-use count inside inspected upgrade only",
+    "Left sidebar Поселение with whole-city isometry",
+    "Replace ores by nearby ordinary rock without turning underground solids into air"
+  ],
+  "implementationChoices": [
+    "Reuse native Minecraft item rendering, existing skin/camera and contextual Bloom action",
+    "Preserve existing10/20/30 server thresholds and saved progression, no rebalance from example numbers",
+    "Server projects ore states before palette/facts with radius3 bounded nearest-host sampling; exhausted/unloaded contexts use dimension/Y native host fallback",
+    "Preserve storage-block architecture; bounded16-block city foundation; clip edge LOD to authoritative territory",
+    "Reuse existing city inspector and server ACK/ownership lifecycle, keep filters/polling/resizing coherent"
+  ],
+  "artifacts": {
+    "Races": {
+      "source": "Mods/JEMVisualSandboxR3/build/production-profile/libs/jem-races-1.1.0.jar",
+      "sha256": "ac666fe152e981ab08860bc85e0b0ba6736a1c303e313e340a1bf266e880244f",
+      "bytes": 7067659,
+      "refmaps": [
+        "jem_sandbox.refmap.json"
+      ],
+      "embedded": [
+        "META-INF/jarjar/jem-menu-support-1.1.1.jar"
+      ]
+    },
+    "Settlements": {
+      "source": "Mods/JEMSettlements/build/libs/jem-settlements-2.1.0.jar",
+      "sha256": "bfe64ec6bd7a1d8b992a2062af92e05bde027b8fd095a1e445fcf1acca9c5cd5",
+      "bytes": 2571132,
+      "refmaps": [
+        "jem_settlements.refmap.json"
+      ],
+      "embedded": [
+        "META-INF/jarjar/jem-currency-core-1.0.0.jar",
+        "META-INF/jarjar/jem-identity-1.0.0.jar"
+      ]
+    }
+  },
+  "sourcePaths": [
+    "CHANGELOG.md",
+    "Docs/races/README.md",
+    "Docs/settlements/standalone/README.md",
+    "Catalog/changes/records/races-black-panels-and-contextual-upgrade-progress.json",
+    "Catalog/changes/records/settlements-city-sidebar-tab.json",
+    "Catalog/changes/records/settlements-isometry-local-host-masking.json",
+    "Docs/races/assets/reference/black-panels-2026-10-18/01-current-wood-progression.png",
+    "Docs/races/assets/reference/black-panels-2026-10-18/02-target-black-panel.png",
+    "Docs/races/assets/reference/black-panels-2026-10-18/README.md",
+    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RacePowerStages.java",
+    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceExperience.java",
+    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ProductionRaceBridge.java",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/CityInspectorScreen.java",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementClientState.java",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/HousingInspector.java",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/SnapshotVisibility.java",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/CityInspection.java",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/HousingInspection.java",
+    "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+    "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json"
+  ],
+  "checks": {
+    "productionBuilds": [
+      "Races productionJar -> full production jarJar/reobfJarJar successful",
+      "Settlements jarJar/reobfJarJar successful"
+    ],
+    "raceProfile": "PRODUCTION",
+    "dedicatedStartup": "Done (2.610s), ordinary local Server PID3804 on31604",
+    "nativePreview": "+0 ~3 -0: exact Races/Settlements JARs and manifest",
+    "atlas": {
+      "valid": true,
+      "canonical_counts": {
+        "biomes": 264,
+        "blocks": 12135,
+        "creative_tabs": 55,
+        "effects": 436,
+        "enchantments": 218,
+        "entities": 1593,
+        "items": 17050,
+        "structures": 520
+      },
+      "change_records": 61,
+      "effective_index": "Catalog/effective/index.json"
+    },
+    "automatedTestsRun": false,
+    "clientLaunched": false,
+    "gameplayTestsRun": false,
+    "visualPlayerAcceptance": "pending",
+    "nativePublication": {
+      "published": true,
+      "journalSequence": 38,
+      "publishedManifestSha1": "b502e9ccd260185eb9bbf10f6ffbf99ffa0fdf36",
+      "stagedManifestSha1": "b502e9ccd260185eb9bbf10f6ffbf99ffa0fdf36"
+    },
+    "taskSourceImpactValid": true,
+    "workingTreeImpactNote": "Only six preserved pre-existing unrelated source/resource paths remain uncovered; installed artifact drift empty."
+  },
+  "boundaries": [
+    "Stable profile, release baseline and MineRENT unchanged",
+    "Unrelated source/runtime changes preserved",
+    "No world block edits, cave-air filling or new gameplay scoring",
+    "Native merchant/Xaero screens unchanged"
+  ],
+  "nativeInstallation": {
+    "publishedSequence": 38,
+    "publishedToken": "639cd62ee87d2fc98fe1db511b74ec618eee1c56",
+    "installedToken": "639cd62ee87d2fc98fe1db511b74ec618eee1c56",
+    "mirroredToken": "639cd62ee87d2fc98fe1db511b74ec618eee1c56",
+    "allTokensMatch": true,
+    "artifactMatches": {
+      "Races": true,
+      "Settlements": true
+    },
+    "preferenceCount": 24,
+    "changedPreferences": [],
+    "pendingTransaction": false
+  }
+}
