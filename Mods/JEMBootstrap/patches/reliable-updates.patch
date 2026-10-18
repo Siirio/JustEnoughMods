@@ -442,7 +442,13 @@ diff --git a/core/src/main/java/pl/skidam/automodpack_core/client/ClientUpdatePl
  					// The pack replaced the content while the file was removed: the removal intent is spent and the new version comes back.
  					Files.deleteIfExists(overlay);
  					deletedPaths.remove(LogicalPath.normalize(item.file));
-@@ -335,7 +339,7 @@
+@@ -330,12 +334,12 @@
+ 			String hash = FileIntegrity.observedHash(live, item.size, item.sha1, cache);
+ 			UpdatePlan.FileState state = new UpdatePlan.FileState(hash, size, true);
+ 			if (projection.matchesPendingGameState(item.file, state)) continue;
+-			if (item.sha1.equalsIgnoreCase(state.sha1()) && item.size == state.size()) {
++			if (!personal && item.sha1.equalsIgnoreCase(state.sha1()) && item.size == state.size()) {
+ 				Files.deleteIfExists(overlay);
  				deletedPaths.remove(LogicalPath.normalize(item.file));
  				continue;
  			}

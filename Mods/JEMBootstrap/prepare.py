@@ -22,8 +22,22 @@ def prepare(config, source):
         "commit": config["commit"],
         "patchSha256": hashlib.sha256(PATCH.read_bytes()).hexdigest(),
     }
-    if receipt.is_file() and all(json.loads(receipt.read_text(encoding="utf-8")).get(key) == value for key, value in identity.items()):
-        return destination
+    patched_paths = {
+        line.removeprefix("+++ b/").strip()
+        for line in PATCH.read_text(encoding="utf-8").splitlines()
+        if line.startswith("+++ b/")
+    }
+    prepared_paths = set(config["sourceHashes"]) | patched_paths
+    if receipt.is_file():
+        previous = json.loads(receipt.read_text(encoding="utf-8"))
+        if all(previous.get(key) == value for key, value in identity.items()):
+            applied = previous.get("preparedSourceHashes", {})
+            if applied and set(applied) == prepared_paths and all(
+                (destination / relative).is_file()
+                and hashlib.sha256((destination / relative).read_bytes()).hexdigest() == expected
+                for relative, expected in applied.items()
+            ):
+                return destination
     if destination.exists():
         raise SystemExit(f"Prepared source differs from this patch; remove only {destination} before preparing again")
     if source is not None:
@@ -52,7 +66,15 @@ def prepare(config, source):
     for relative, expected in config["sourceHashes"].items():
         if hashlib.sha256((destination / relative).read_bytes()).hexdigest() != expected:
             raise SystemExit(f"Pinned upstream source differs: {relative}")
-    subprocess.run(["git", "apply", "--ignore-space-change", str(PATCH)], cwd=destination, check=True)
+    # This generated directory intentionally has no .git. Do not let git discover
+    # the outer JEM checkout: its cwd-prefix filtering silently skips these paths.
+    patch_environment = dict(os.environ)
+    patch_environment["GIT_CEILING_DIRECTORIES"] = str(destination.parent.resolve())
+    subprocess.run(["git", "apply", "--ignore-space-change", str(PATCH)], cwd=destination, env=patch_environment, check=True)
+    identity["preparedSourceHashes"] = {
+        relative: hashlib.sha256((destination / relative).read_bytes()).hexdigest()
+        for relative in sorted(prepared_paths)
+    }
     receipt.write_text(json.dumps(identity, indent=2) + "\n", encoding="utf-8")
     return destination
 
