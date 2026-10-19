@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "items",
-  "snapshot_sha": "dbb949ded7e6a5be1603997e0357731825ff7845",
+  "snapshot_sha": "deea5bbd52d5c586d9170443f06b08c8a4d6b3ac",
   "generation": {
-    "generated_utc": "2026-10-19T04:27:28.972524+00:00",
+    "generated_utc": "2026-10-19T06:07:13.848692+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -21,7 +21,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -77,14 +77,13 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
       "observed_in": [
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackContent.java",
-        "assets/jemcompat/models/item/augment_bay.json",
-        "data/jemcompat/recipes/augment_bay.json"
+        "assets/jemcompat/models/item/augment_bay.json"
       ],
       "display_name_en_us": "Augment Bay",
       "display_name_ru_ru": "Мастерская улучшений",
@@ -92,12 +91,11 @@
       "implementation_class": null,
       "tags": [],
       "is_registered": true,
-      "survival_obtainable": true,
-      "acquisition_class": "normal_survival",
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
       "source_provenance": [
         "BackpackContent.java:Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackContent.java",
-        "jemcompat-3.7.0.jar:assets/jemcompat/models/item/augment_bay.json",
-        "jemcompat-3.7.0.jar:data/jemcompat/recipes/augment_bay.json"
+        "jemcompat-3.7.0.jar:assets/jemcompat/models/item/augment_bay.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -118,9 +116,7 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": "jemcompat:augment_bay",
-      "acquisition_routes": [
-        "jemcompat:augment_bay"
-      ],
+      "acquisition_routes": [],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:jemcompat:augment_bay"
@@ -133,7 +129,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "source"
       ],
@@ -183,7 +179,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -233,7 +229,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -287,7 +283,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -337,7 +333,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -387,7 +383,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -441,7 +437,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -491,7 +487,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -541,7 +537,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -591,7 +587,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -641,7 +637,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -695,7 +691,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -749,7 +745,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -803,7 +799,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -853,7 +849,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -907,7 +903,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -961,7 +957,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -1015,7 +1011,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -1065,7 +1061,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -1119,7 +1115,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -1169,7 +1165,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -1219,7 +1215,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -1273,7 +1269,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -1327,7 +1323,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -1377,7 +1373,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -1431,7 +1427,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -1481,7 +1477,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -1531,7 +1527,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -1581,7 +1577,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -1631,7 +1627,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -1683,7 +1679,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -1735,7 +1731,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -1787,7 +1783,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -1839,7 +1835,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -1891,7 +1887,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -1943,7 +1939,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -1995,7 +1991,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -2047,7 +2043,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -2099,7 +2095,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -2151,7 +2147,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -2203,7 +2199,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -2255,7 +2251,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -2307,7 +2303,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -2359,7 +2355,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -2411,7 +2407,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -2463,7 +2459,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -2515,7 +2511,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -2567,7 +2563,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -2619,7 +2615,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -2671,7 +2667,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -2723,7 +2719,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -2775,7 +2771,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -2827,7 +2823,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -2879,7 +2875,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -2931,7 +2927,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -2983,7 +2979,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -3035,7 +3031,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -3087,7 +3083,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -3139,7 +3135,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -3191,7 +3187,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -3243,7 +3239,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -3295,7 +3291,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -3347,7 +3343,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -3399,7 +3395,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -3451,7 +3447,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -3503,7 +3499,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -3555,7 +3551,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -3607,7 +3603,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -3659,7 +3655,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -3711,7 +3707,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -3763,7 +3759,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -3813,7 +3809,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -3865,7 +3861,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -3917,7 +3913,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -3969,7 +3965,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -4019,7 +4015,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],
@@ -4069,7 +4065,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "e3ae6793f1accc18b9c3ab538b654dc6d9ca5622c23b90cbfa29b9a3a3ae4296",
+      "source_sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
       "side_availability": [
         "client"
       ],

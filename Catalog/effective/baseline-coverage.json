@@ -2,11 +2,11 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "ac4044d7b96dd299a28c028140e7f5ccddb72adb6bb3e448f9ea3e50ae919073",
+  "change_records_sha256": "a77dd0099a87c95c6b7637bd785f2d7de726919c88c1c12675e5572e34c7c151",
   "totals": {
-    "watched": 3510,
-    "covered": 598,
-    "unresolved": 2912
+    "watched": 3506,
+    "covered": 586,
+    "unresolved": 2920
   },
   "groups": {
     "Client/ManagedPack/config": {
@@ -1456,11 +1456,12 @@
       ]
     },
     "Mods/JEMCompat": {
-      "watched": 112,
-      "covered": 54,
-      "unresolved": 58,
+      "watched": 106,
+      "covered": 40,
+      "unresolved": 66,
       "unresolved_paths": [
         "Mods/JEMCompat/gradle.properties",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/advancement/AdvancementAwards.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/AdvancementScreenEvents.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/CuratedItemTooltips.java",
@@ -1468,7 +1469,6 @@
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CatalogCategory.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CatalogLayout.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiOverlay.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/render/FrozenTintBufferSource.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/equipment/InfiniteEquipmentDurability.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/BreedingFoodCatalog.java",
@@ -1505,10 +1505,17 @@
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/worldtier/KrakenStaggerMixin.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/worldtier/SandwormStaggerMixin.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/worldtier/BossMechanicPolicy.java",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/blockstates/augment_bay.json",
         "Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_english_aliases.json",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/models/block/augment_bay.json",
         "Mods/JEMCompat/src/main/resources/assets/jemcompat/models/item/aircraft_fuel.json",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/models/item/augment_bay.json",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/block/augment_bay_front.png",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/block/augment_bay_side.png",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/block/augment_bay_top.png",
         "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/item/aircraft_fuel.png",
         "Mods/JEMCompat/src/main/resources/data/jemcompat/jemcompat/taming/current_pack.json",
+        "Mods/JEMCompat/src/main/resources/data/jemcompat/loot_tables/blocks/augment_bay.json",
         "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/freezing_impact_items.json",
         "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/igniting_impact_items.json",
         "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/jei/create_redstone.json",
@@ -1517,6 +1524,7 @@
         "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/not_weapons.json",
         "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/transport.json",
         "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/weapons.json",
+        "Mods/JEMCompat/src/main/resources/data/minecraft/tags/blocks/mineable/axe.json",
         "Mods/JEMCompat/src/main/resources/pack.mcmeta"
       ]
     },
@@ -2621,8 +2629,8 @@
       "unresolved_paths": []
     },
     "Mods/JEMServer": {
-      "watched": 297,
-      "covered": 46,
+      "watched": 299,
+      "covered": 48,
       "unresolved": 251,
       "unresolved_paths": [
         "Mods/JEMServer/gradle.properties",

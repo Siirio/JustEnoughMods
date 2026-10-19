@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-19",
+  "branch": "main",
+  "sourceCommits": [
+    "7a389be791d040fdc5f62d1fd0bb5514dafb87ae",
+    "92305e302fbe997a743e3c6f25a6a8f742ec94b8",
+    "2bd65722f12a912868542ac4b5b3ceb8cc5c0a3d",
+    "e57e66cfac1b4deed3949c511084436a64f9bcc4",
+    "deea5bbd52d5c586d9170443f06b08c8a4d6b3ac"
+  ],
+  "scope": "Direct native backpack Workbench selection, native-styled crafting insert/cream icon, workshop removal and hosted-boss chat entry repair.",
+  "artifacts": [
+    {
+      "module": "JEMCompat",
+      "filename": "jemcompat-3.7.0.jar",
+      "source": "Mods/JEMCompat/build/libs/jemcompat-3.7.0.jar",
+      "sha256": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
+      "bytes": 335078
+    },
+    {
+      "module": "JEMServer",
+      "filename": "jem-server-2.0.0-dev.jar",
+      "source": "Mods/JEMServer/build/libs/jem-server-2.0.0-dev.jar",
+      "sha256": "aea34602126392f22732e10d4d20ff32cfe5382bfe6666e6cece9e706da2eb21",
+      "bytes": 19842400
+    }
+  ],
+  "nativeInstallation": {
+    "publishedSequence": 43,
+    "publishedToken": "eda37f6d504450db0a0ee5083617ca5191bbad11",
+    "activeToken": "eda37f6d504450db0a0ee5083617ca5191bbad11",
+    "mirroredToken": "eda37f6d504450db0a0ee5083617ca5191bbad11",
+    "allTokensMatch": true,
+    "artifactMatches": {
+      "jemcompat-3.7.0.jar": {
+        "testJemActiveProjection": true,
+        "Server": true,
+        "ManagedPack": true
+      },
+      "jem-server-2.0.0-dev.jar": {
+        "testJemActiveProjection": true,
+        "Server": true,
+        "ManagedPack": true
+      }
+    },
+    "preferenceCount": 24,
+    "changedPreferences": [],
+    "pendingTransaction": false
+  },
+  "localServer": {
+    "pid": 46388,
+    "startup": "Done (4.194s)",
+    "running": true
+  },
+  "behavior": [
+    "Select Workbench in unlocked owner augment bay; successful native selection enables it and refreshes real native menu slots immediately.",
+    "Native112x80 compact centered crafting insert without side tab/title; native pale player inventory and12px cream/shadow picker icon.",
+    "Station UI/recipe/payments/creative and JEI entries removed; inert block/item identity and shape retained for saves.",
+    "Ingredient NBT, native ResultSlot/remainders/limits and integrated-singleplayer exclusion preserved.",
+    "Typed ARENA/BOSS+UUID chat prompt requests replace removed commands; old boss/arena scrollback links also work through the same validated path.",
+    "Authenticated dedicated server, shared throttle and canonical proximity/progression/availability still own admission; opening GUI does not start combat."
+  ],
+  "evidence": {
+    "atlas": "64 change records valid; exact task source scan passes, no installed artifact drift. Global scan retains unrelated preexisting changes.",
+    "packaging": "Both reobfuscated full JARs contain current refmaps and embedded MenuSupport1.1.1; no retired station menu/screen/recipe/GUI exports remain.",
+    "art": "Original supplied screenshots preserved/classified; icon native-pixel SVG/PNG preview inspected. No runtime screenshot or visual acceptance claimed.",
+    "previousLocalServerIncident": "Prior process stopped at10:09:45 by watchdog while TeleportCommand waited on a chunk. This prompt does not establish the deepest hang cause or claim a hang fix."
+  },
+  "notPerformed": [
+    "automated tests",
+    "client/gameplay launch",
+    "player acceptance",
+    "MineRENT deployment",
+    "stable profile mutation",
+    "release baseline promotion"
+  ],
+  "status": "in testing; player acceptance pending"
+}
