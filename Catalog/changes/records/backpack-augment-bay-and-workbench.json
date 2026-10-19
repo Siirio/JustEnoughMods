@@ -45,7 +45,8 @@
           "recipe": "removed",
           "station_menu": "removed",
           "creative_entry": "removed",
-          "legacy_compatibility": "Old block/item IDs and placed-block geometry retained as inert save compatibility only. No interaction, purchase or entitlement check."
+          "legacy_compatibility": "Old block/item IDs and placed-block geometry retained as inert save compatibility only. No interaction, purchase or entitlement check.",
+          "jei": "Remove retired item through native IngredientManager before curated catalog rebuild"
         }
       },
       {
@@ -85,7 +86,8 @@
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackAugmentAdmissionMixin.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackIntegratedAugmentListMixin.java",
       "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/ru_ru.json",
-      "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/en_us.json"
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/en_us.json",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java"
     ]
   },
   "rationale": {
@@ -185,7 +187,8 @@
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/AugmentBayMenu.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/AugmentBayScreen.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/DedicatedRecipeCondition.java",
-        "Mods/JEMCompat/src/main/resources/data/jemcompat/recipes/augment_bay.json"
+        "Mods/JEMCompat/src/main/resources/data/jemcompat/recipes/augment_bay.json",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java"
       ]
     }
   ],

@@ -35,6 +35,12 @@ public final class JEMJeiPlugin implements IModPlugin {
     @Override
     public void onRuntimeAvailable(IJeiRuntime availableRuntime) {
         runtime = availableRuntime;
+        var retiredStation = ForgeRegistries.ITEMS.getValue(new ResourceLocation("jemcompat", "augment_bay"));
+        if (retiredStation != null && retiredStation != net.minecraft.world.item.Items.AIR) {
+            availableRuntime.getIngredientManager().removeIngredientsAtRuntime(
+                    mezz.jei.api.constants.VanillaTypes.ITEM_STACK,
+                    java.util.List.of(new net.minecraft.world.item.ItemStack(retiredStation)));
+        }
         CuratedJeiCatalog.rebuild(availableRuntime);
         setNativeOverlayVisible(false);
     }

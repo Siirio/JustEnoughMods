@@ -8,7 +8,7 @@ Open the equipped backpack, choose an unlocked native augment bay and click Work
 
 Changing/removing/toggling an augment refreshes only when the actual enabled/unlocked crafting layout differs from installed menu slots. Ingredients remain on the same backpack under JemWorkbenchIngredients: removing/disabling Workbench preserves them, re-enabling restores them.
 
-The retired jemcompat:augment_bay block/item identities and placed-block geometry remain only for existing saves. Recipe, creative entry, interaction, menu/screen, payment code and purchase messages are removed. Existing JemWorkbenchPurchased metadata is ignored without rewriting saves.
+The retired jemcompat:augment_bay block/item identities and placed-block geometry remain only for existing saves. Recipe, creative/JEI entry, interaction, menu/screen, payment code and purchase messages are removed. Existing JemWorkbenchPurchased metadata is ignored without rewriting saves.
 
 ## Inventory and authority
 
