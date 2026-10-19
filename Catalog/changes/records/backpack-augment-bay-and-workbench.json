@@ -66,7 +66,7 @@
         "property": "backpack.augment_bay_assets",
         "operation": "add",
         "before": null,
-        "after": "Crafting insert uses exact native BACKPACK_BACKGROUND/BACKPACK_SLOT/ARROW_RIGHT FrameworkTexture definitions. Editable WorkbenchIcon.java defines12px cream/shadow crafting-table silhouette; rejected green GUI exports are removed from production."
+        "after": "Crafting insert uses exact native AUGMENT_MENU_BACKGROUND/BACKPACK_SLOT/ARROW_RIGHT FrameworkTexture definitions. Editable WorkbenchIcon.java defines12px cream/shadow crafting-table silhouette; rejected green GUI exports are removed from production."
       }
     ]
   },
@@ -192,6 +192,15 @@
         "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/gui/augment_bay.png",
         "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/gui/backpack_workbench.png",
         "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/gui/workbench_augment.png"
+      ]
+    },
+    {
+      "date": "2026-10-19",
+      "commit": "SELF",
+      "action": "fit_native_crafting_frame",
+      "summary": "Use native5px augment-menu frame instead of11px backpack outer frame in the76px insert, preserving slot clearance.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackWorkbenchScreenMixin.java"
       ]
     }
   ],

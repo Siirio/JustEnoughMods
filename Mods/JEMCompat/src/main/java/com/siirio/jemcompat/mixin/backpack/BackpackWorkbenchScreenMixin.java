@@ -69,11 +69,11 @@ public abstract class BackpackWorkbenchScreenMixin extends CustomContainerScreen
         if (!((BackpackWorkbench) menu).jemcompat$hasWorkbench()) return;
         int left = x + (width - 176) / 2;
         int top = y + 44 + menu.getRows() * 18;
-        TextureDefinitions.BACKPACK_BACKGROUND.draw(graphics, left, top, 176, BackpackWorkbench.INSERT_HEIGHT);
+        TextureDefinitions.AUGMENT_MENU_BACKGROUND.draw(graphics, left, top, 176, BackpackWorkbench.INSERT_HEIGHT);
         TextureDefinitions.BACKPACK_SLOT.draw(graphics, left + 29, top + 15, 54, 54);
         TextureDefinitions.BACKPACK_SLOT.draw(graphics, left + 123, top + 33, 18, 18);
         TextureDefinitions.ARROW_RIGHT.draw(graphics, left + 98, top + 38, 8, 8);
-        graphics.drawString(font, Component.translatable("gui.jemcompat.backpack.workbench"), left + 8, top + 4, 0xFF47392A, false);
+        graphics.drawString(font, Component.translatable("gui.jemcompat.backpack.workbench"), left + 8, top + 6, 0xFF47392A, false);
         if (imageHeight > this.height - 8) graphics.drawString(font, Component.translatable("gui.jemcompat.backpack.scroll"), 4, this.height - 12, 0xFFF5E9D4, true);
     }
 }

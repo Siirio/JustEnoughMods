@@ -20,6 +20,6 @@ Integrated singleplayer retains upstream behavior: Workbench is hidden there, wh
 
 ## Appearance and evidence
 
-The crafting insert uses native BACKPACK_BACKGROUND, BACKPACK_SLOT and ARROW_RIGHT FrameworkTexture definitions, native tiling and18px spacing. WorkbenchIcon.java is the editable12px cream/shadow crafting-table silhouette; rejected green icon and separate GUI PNGs no longer ship. Short viewports retain bounded menu scrolling with native popup priority.
+The crafting insert uses native AUGMENT_MENU_BACKGROUND, BACKPACK_SLOT and ARROW_RIGHT FrameworkTexture definitions, native tiling and18px spacing. WorkbenchIcon.java is the editable12px cream/shadow crafting-table silhouette; rejected green icon and separate GUI PNGs no longer ship. Short viewports retain bounded menu scrolling with native popup priority.
 
 Original user screenshots and exact extraction: Docs/art/backpack-augment-bay/reference/2026-10-19/README.md. Current art source: Docs/art/backpack-augment-bay/README.md. Source/build and preview evidence do not establish gameplay/visual approval. No client/gameplay launch or automated tests; click refresh, crafting remainders and GUI Scale require player review.
