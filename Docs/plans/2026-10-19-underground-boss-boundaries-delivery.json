@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-19",
+  "branch": "main",
+  "sourceCommit": "a3929b493b3bc7ca8d75f9bc404e7b4467cb0e88",
+  "scope": "Shared registered 3D structural boss arena correction; user requests underground Harbinger and other Overworld/Nether bosses then local startup.",
+  "artifact": {
+    "source": "Mods/JEMServer/build/libs/jem-server-2.0.0-dev.jar",
+    "sha256": "0376553d4c8790462b69e417705e1fe72d4e14cb892636f8186365a7e404321e",
+    "bytes": 19836643
+  },
+  "nativeInstallation": {
+    "publishedSequence": 40,
+    "publishedToken": "a9ca6767da2a27b0e5ac1871c2880082a588ec6b",
+    "activeToken": "a9ca6767da2a27b0e5ac1871c2880082a588ec6b",
+    "mirroredToken": "a9ca6767da2a27b0e5ac1871c2880082a588ec6b",
+    "allTokensMatch": true,
+    "artifactMatches": {
+      "testJemActiveProjection": true,
+      "Server": true,
+      "ManagedPack": true
+    },
+    "preferenceCount": 24,
+    "changedPreferences": [],
+    "pendingTransaction": false
+  },
+  "localServer": {
+    "pid": 5124,
+    "startup": "Done (2.712s)",
+    "running": true
+  },
+  "behavior": [
+    "Packets, collision and teleport policy use registered shell minY/maxY instead of dimension height.",
+    "Six collision faces and full player/vehicle-box volume classification preserve containment while unrelated upper/lower space stays outside.",
+    "Legacy X/Z-only entry marks reconcile once without corrective teleport or member/reward reset.",
+    "Only records with structureBounds gain Y-aware EventRegions presence/proximity/ejection.",
+    "No duplicate full-height Raid wall; post-Raid cleanup uses true volume.",
+    "Blood Moon/Resource Rush height, native boss lookup/revival and all boss phases/rewards/progression unchanged."
+  ],
+  "evidence": {
+    "installedNativeMod": "Cataclysm3.31 ancient_factory JSON: underground_decoration, start_height absolute -30; no native worldgen modified.",
+    "atlas": "63records validate, no installed artifact drift; exact task source impact passes. Representative Harbinger/Helvar queries contain new rule without conflicts. Global dirty-source scan separately retains unrelated changes.",
+    "generatedReview": "Beyond generated metadata, changes are the effective rule/index, source-JAR provenance and coverage metadata; registry counts unchanged."
+  },
+  "notPerformed": [
+    "automated tests",
+    "client/gameplay launch",
+    "player acceptance",
+    "MineRENT deployment",
+    "stable profile mutation",
+    "release baseline promotion"
+  ],
+  "status": "in testing; player acceptance pending"
+}
