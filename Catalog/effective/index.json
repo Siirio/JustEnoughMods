@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "0b70feab3eb30f9fd2dfd58b21ae15a6691956ee99466320c3a6d6052eea4417",
+  "change_records_sha256": "c126fd103f2873d764b8b72e76226a4e61fe8c6bffc18c51f686a7cbd0dcbf62",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -1169,7 +1169,7 @@
     {
       "change_id": "settlements.reference-dashboard-layout",
       "status": "conditional",
-      "summary": "Reference-led Settlements dashboard: authored stone/parchment controls, fixed four-page shell, actual town summaries/isometry, adjacent roster/detail and real happiness factor/complaint/distribution hierarchy.",
+      "summary": "Compact screenshot-corrected Settlements dashboard, no whole-town isometry, resident houses retained, live search and textured local focus states.",
       "record": "Catalog/changes/records/settlements-reference-dashboard-layout.json",
       "selectors": [
         {
@@ -1916,12 +1916,12 @@
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/NobleTradePresentation.java": "ad77c8b23d86fff9111f6b1b6dcfb11f51e0bf3e27fee88446bc753a10a2e0ec",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/RecruitHirePresentation.java": "945e1e8bf8846e382e5be2b6efda70c4912a66f99b3d8e4a17203db3b4685d67",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementClientState.java": "64aa4e190faf589637b6750b089fa524c06ebad2330ebbc9d4c3ed6cd89f14e6",
-    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementDashboardArt.java": "f33092c9eb4090a53bd96057fbe06e45abe831716dbb811e066bc3968450106a",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementDashboardArt.java": "efe373d19ab9737f770e8b25a33d93abfd93655683f6830acc99031e03ce9946",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementMap.java": "6392d2c3314a4695fbefb1ee44c826260eaae36670d9a93e79d91a4449a8c278",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementMaterials.java": "21524453967d225e0f4c40e14df5a9396b29b19ef8b9c19f69b302d6fdd92e45",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementNotices.java": "fef4f44a857ded4cc0eda7d6322c4430db3bcee35901a58b709292badd9c5306",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementPriceRenderer.java": "001a58a43216c8237b39c0c8ae0e1d1147d196a0e8263e0cec624f9a79ac9352",
-    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java": "3ff4e0ff92e4cad7d415b842f9ccf952dca475f810fabeecbb34d5e740bc0cb4",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java": "09557296beb7a0dd438bdc74a4e41a4d69cdbd2d75b44abdfcfeff9c5b8797c9",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/StorageLabels.java": "f77d87938673723cfc947c8a2666efa67d67554887e415c337a88defa5539659",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/TerritoryDragState.java": "1694ae4dffe9ddb6bc424d39c61a434f656d749dbbc6637009886636413ce639",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/TownFoundingScreen.java": "789bc0345051588dc2f379ecf5aa57dbb31af193ca87fc7b2d6ed7a413338c5e",
@@ -2130,7 +2130,7 @@
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SurfaceVfx.java": "3d19c18931c1314235a344e780bfcbebe232b31786146b8ea0bf50be3aac864a",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/UtilityVfx.java": "f92b97f699eb0c56ca6938426f3a8826a7e22b8f9f24a9045a77915a7d413226",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/VisualRenderContext.java": "9af2a8efd2534aa274acabe96bb41bb035604b362e10aefa9df4686de5f403cf",
-    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/VoidDistancePreview.java": "57db05a3e90e4da1251b96dd7b56ad1aee51392414972cd52f538708e585588d",
+    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/VoidDistancePreview.java": "3f415fc7f14407f88278439f6d2b154fe435f8728a01d6732c9850668ade5f58",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/WorkbenchMesh.java": "6e2d0365e97ab6ac385a067eda942e350550126c73b9b11283803a577520864f",
     "Mods/JEMVisualSandboxR3/src/main/resources/META-INF/mods.toml": "102478bd8d6ee01a7f1c6f2289e08556f661180c7f53397aa81ab6e6e500b873",
     "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_roles/lang/en_us.json": "a88c182a08fb44ca3ed5324011b5d08deaa8a2903b9135e7bd4d87e6121815a4",
@@ -2156,8 +2156,8 @@
     "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/guardian_dome/gold-wave.png": "f4c73ea86a5ae65cf276cc78bd107f14c881508288131d5241e39ed21159bb5d",
     "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/guardian_dome/gold-wave.png.mcmeta": "19da50ce4eae0113003dc596133aa4f0c854778b88b1058d6223d9b5311d6f75",
     "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/guardian_dome/model.json": "f63ac1a48dffcb6bb60c2dc2732faf42904b6d909734a25948a85884bcf3a626",
-    "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/en_us.json": "636c1a068cd05ccf1cfbb23735c3f4bf92146a57206a58d5d71ea2ac8c29325a",
-    "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/ru_ru.json": "88080de3cf10a4d64e024f0171e357c45c6a2ff7725e19572fa5ea6ba1936ac8",
+    "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/en_us.json": "c28128672b59b820a7d80d8aced3566c232ab92e39ca8c1ff0c9b16d2e8c947c",
+    "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/ru_ru.json": "6bdfc1911aec4eb0df2379475c0aa406d49538c08b869850e229ce3511d26454",
     "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/life_chorus/answer.png": "413ea21a3ea4bf66c9bad0c9eb235a8ad94ed4d66daedc353da7ef9f4fb605d3",
     "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/life_chorus/awakening.png": "ab430d5c18ae66ee085d7fa0bdd8c66699f05d4577ae1b45e02ff0ed7e8ff0e1",
     "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/life_chorus/crumble.png": "33ccd4f9c05ac81acc75105ab8c2b7c31bb3e3e7f96ea769ab9c2863b739740c",

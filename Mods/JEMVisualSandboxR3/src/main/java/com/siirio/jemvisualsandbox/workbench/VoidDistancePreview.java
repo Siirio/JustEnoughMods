@@ -131,11 +131,10 @@ final class VoidDistancePreview {
         var client = Minecraft.getInstance();
         if (prediction == null || prediction.points().isEmpty() || client.player == null || client.screen != null) return;
         Vec3 end = prediction.points().get(prediction.points().size() - 1);
-        boolean russian = client.options.languageCode.startsWith("ru");
-        String state = supported ? (russian ? "РєРѕРЅС‚Р°РєС‚ СЃРІРѕР±РѕРґРµРЅ" : "clear contact")
-                : prediction.complete() ? (russian ? "РЅРµС‚ СЃРІРѕР±РѕРґРЅРѕР№ РїР»РѕС‰Р°РґРєРё" : "no clear landing")
-                : (russian ? "РєРѕРЅРµС† РїСѓС‚Рё РЅРµРёР·РІРµСЃС‚РµРЅ" : "path end unknown");
-        String label = String.format(java.util.Locale.ROOT, "%.1f m В· %s", client.player.position().distanceTo(end), state);
+        String stateKey = supported ? "clear" : prediction.complete() ? "blocked" : "unknown";
+        var label = net.minecraft.network.chat.Component.translatable("jem.sandbox.void_preview.distance",
+                String.format(java.util.Locale.ROOT, "%.1f", client.player.position().distanceTo(end)),
+                net.minecraft.network.chat.Component.translatable("jem.sandbox.void_preview." + stateKey));
         event.getGuiGraphics().drawCenteredString(client.font, label, client.getWindow().getGuiScaledWidth() / 2,
                 client.getWindow().getGuiScaledHeight() / 2 + 25, supported ? 0xD4B4FF : 0xFF8D9A);
     }

@@ -199,3 +199,7 @@ bounded camera-facing size, and a0.46block contact ring on the actual hit face.
 Existing authored afterfire assets are unchanged. This is a sandbox presentation
 iteration; production profile is prepared but ordinary Server/ManagedPack are not
 deployed. No tests, gameplay launch or visual acceptance is claimed.
+
+## Void Walker trajectory HUD encoding —2026-10-19
+
+The user's runtime screenshot showed mojibake in the distance/contact label. The first incorrect data was already in `VoidDistancePreview.hud`: Russian phrases and the middle-dot separator were stored as corrupted Java literals; languageCode chose those literals and the native font rendered them faithfully. The label bypassed the owning localization resources. It now uses `Component.translatable` with ru_ru/en_us distance, clear/blocked/unknown keys, so the selected resource language owns the wording. Prediction, projectile motion and teleport safety are unchanged. Sandbox and production profiles are built; only jem sandbox is installed. No tests or launch; user acceptance pending.

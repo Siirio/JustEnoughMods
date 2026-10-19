@@ -101,3 +101,12 @@
 - Unlock condition: Explicit user request to change this behavior or evidence that the core execution pipeline changed.
 - Created: 2026-10-19
 
+## LOCKED: Settlements textured hover and selection
+- Scope: SettlementScreen.factorHelp/drawRow/navigation and SettlementDashboardArt.control
+- Approved signal: Никогда не делай такие solid color при hover или выборе; закрепи
+- Protected behavior: Hover and selection retain authored pixel materials and use local subject cues or sculpted sprite borders. Never substitute flat full-row color fills or a plain rectangular renderOutline; text has a single readable glyph pass and shared status baselines have one active message.
+- Reuse pattern: Preserve the existing implementation pattern unless the unlock condition is met.
+- Allowed changes: Improve authored material states and local focus cues; preserve tooltip access, keyboard focus, contrast and click regions.
+- Unlock condition: Explicit user request to change this behavior or evidence that the core execution pipeline changed.
+- Created: 2026-10-19
+

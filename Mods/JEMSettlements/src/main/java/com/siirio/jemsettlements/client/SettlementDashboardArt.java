@@ -69,9 +69,9 @@ public final class SettlementDashboardArt {
 
     public static void control(GuiGraphics g, int x, int y, int w, int h,
                                boolean selected, boolean hovered, boolean enabled) {
-        surface(g, !enabled ? DISABLED : selected ? SELECTED : hovered ? HOVER : CONTROL, x, y, w, h);
+        surface(g, !enabled ? DISABLED : hovered ? HOVER : CONTROL, x, y, w, h);
         if (selected && enabled && w > 8 && h > 8) {
-            g.fill(x + 3, y + 5, x + 4, y + h - 5, 0xff9cd7f1);
+            rim(g, SELECTED, x, y, w, h);
         }
     }
 

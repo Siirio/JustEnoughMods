@@ -29,7 +29,7 @@
     "priority": 160
   },
   "change": {
-    "summary": "Reference-led Settlements dashboard: authored stone/parchment controls, fixed four-page shell, actual town summaries/isometry, adjacent roster/detail and real happiness factor/complaint/distribution hierarchy.",
+    "summary": "Compact screenshot-corrected Settlements dashboard, no whole-town isometry, resident houses retained, live search and textured local focus states.",
     "modifiers": [
       {
         "property": "settlements.dashboard.layout",
@@ -42,6 +42,12 @@
         "operation": "replace",
         "before": "Dashboard reused native recruit wood material helper.",
         "after": "Separate authored20PNG dashboard family from layered ORA, stone/parchment/wood/blue/gold, native-pixel ornaments/moods. Original reference pixels never shipped; native recruit/trading/Xaero surfaces remain."
+      },
+      {
+        "property": "settlements.dashboard.runtime_corrections",
+        "operation": "replace",
+        "before": "Whole-town isometry, full-screen directory/chest, manual Find/Name controls, plain factor outline and shadowed text.",
+        "after": "No city requests/render; individual houses retained; compact content bounds, 2x2 comfort, live search, authored selected rim/book cue, no pale-text shadow or concurrent footer messages."
       }
     ]
   },
@@ -122,6 +128,16 @@
         "Docs/settlements/assets/source/dashboard-r2/author_dashboard.py",
         "Docs/settlements/assets/source/dashboard-r2/regions.json",
         "Docs/settlements/assets/source/dashboard-r2/dashboard-r2.ora"
+      ]
+    },
+    {
+      "date": "2026-10-19",
+      "commit": "SELF",
+      "action": "replace",
+      "summary": "No city requests/render; individual houses retained; compact content bounds, 2x2 comfort, live search, authored selected rim/book cue, no pale-text shadow or concurrent footer messages.",
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementDashboardArt.java"
       ]
     }
   ],

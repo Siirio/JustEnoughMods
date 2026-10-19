@@ -54,6 +54,12 @@
         "operation": "replace",
         "before": "Eye-centred shared launch position and thin forward dashed preview collapse to a centre line/contact bar in first person.",
         "after": "Shared real/predicted dominant-hand0.42lateral/0.24down origin, native block-clipped against nearby cover; world-spaced0.75 lavender chevrons and0.46face contact marker. Existing afterfire, projectile physics and server safe-arrival retained."
+      },
+      {
+        "property": "races.void_preview.localization",
+        "operation": "replace",
+        "before": "HUD chooses corrupted Russian Java literals and middle-dot separator by languageCode.",
+        "after": "Component.translatable distance/contact label from ru_ru and en_us resources. Prediction and physical launch unchanged."
       }
     ]
   },
@@ -88,7 +94,10 @@
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/VisualRenderContext.java",
       "Mods/JEMVisualSandboxR3/src/production/java/com/siirio/jemvisualsandbox/workbench/RaceDevelopment.java",
       "Mods/JEMVisualSandboxR3/src/sandbox/java/com/siirio/jemvisualsandbox/workbench/RaceDevelopment.java",
-      "Mods/JEMVisualSandboxR3/install-sandbox.py"
+      "Mods/JEMVisualSandboxR3/install-sandbox.py",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/VoidDistancePreview.java",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/ru_ru.json",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/en_us.json"
     ],
     "resources": []
   },
@@ -147,6 +156,17 @@
       "source_files": [
         "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ProjectileEstimation.java",
         "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/VoidDistancePreview.java"
+      ]
+    },
+    {
+      "date": "2026-10-19",
+      "commit": "SELF",
+      "action": "replace",
+      "summary": "Component.translatable distance/contact label from ru_ru and en_us resources. Prediction and physical launch unchanged.",
+      "source_files": [
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/VoidDistancePreview.java",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/ru_ru.json",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/en_us.json"
       ]
     }
   ],

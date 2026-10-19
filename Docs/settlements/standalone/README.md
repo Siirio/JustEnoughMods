@@ -1134,3 +1134,7 @@ and production profile. An external dedicated server is not required: standalone
 authority accepts Minecraft's ordinary integrated singleplayer server. No client
 launch or live NPC acceptance is claimed. Delivery receipt:
 `living-conditions-delivery.json`.
+
+### Runtime UI correction, 2026-10-19
+
+The user removed whole-town isometry and crossed header/search controls; resident house inspection remains. Directory and chest windows now fit their data. Search filters on typing, control states retain pixel material, factor hover uses a book cue, pale-card glyphs render without shadows and footer statuses are mutually exclusive. Ordinary Server/ManagedPack and AutoModpack generation44 remain unchanged. New sandbox delivery receipt: `ui-corrections-delivery.json`. No gameplay launch or tests; runtime acceptance pending.

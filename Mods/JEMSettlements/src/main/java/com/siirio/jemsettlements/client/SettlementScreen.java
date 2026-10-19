@@ -41,10 +41,9 @@ public class SettlementScreen extends Screen {
     private final SettlementMap map=new SettlementMap();
     private final HousingInspector housing=new HousingInspector();
     private boolean inspecting,rotatingHouse,panningHouse;
-    private int housePreviewY,housePreviewH,selectedCityHome,cityContentTop,cityScrollLimit;
-    private long nextCityPoll;
-    private int sidebarWidth, cityPreviewX, cityPreviewW, dashboardTop, dashboardLimit, residentScroll, detailScroll, detailTop, detailBottom;
-    private boolean residentSplit;
+    private int housePreviewY,housePreviewH,cityContentTop,cityScrollLimit;
+    private int sidebarWidth, dashboardTop, dashboardLimit, residentScroll, detailScroll, detailTop, detailBottom;
+    private boolean residentSplit, searchDirty;
     private int renderMouseX, renderMouseY;
     private final List<Row> rows=new ArrayList<>();
     private final List<Runnable> drawings=new ArrayList<>();
@@ -80,23 +79,12 @@ public class SettlementScreen extends Screen {
         }
         if(completed.equals("housing")){expectedHousing=null;expectedHousingSection=null;}
         UUID previous=town.hasUUID("Id")?town.getUUID("Id"):null;
-        CompoundTag retainedCity=envelope.getCompound("City");
         envelope=view.copy();
         town=view.contains("Selected",Tag.TAG_COMPOUND)?view.getCompound("Selected").copy():new CompoundTag();
-        if(!envelope.contains("City")&&retainedCity.hasUUID("Town")&&town.hasUUID("Id")&&retainedCity.getUUID("Town").equals(town.getUUID("Id")))
-            envelope.put("City",retainedCity.copy());
-        if(view.contains("City")) {
-            var city=view.getCompound("City");
-            if(!city.hasUUID("Town")||!town.hasUUID("Id")||!city.getUUID("Town").equals(town.getUUID("Id")))envelope.remove("City");
-            nextCityPoll=System.currentTimeMillis()+(city.getBoolean("Building")?2000L:10000L);
-            if(section.equals("settlement")&&!inspecting&&city.hasUUID("Town")&&town.hasUUID("Id")&&city.getUUID("Town").equals(town.getUUID("Id"))&&!city.getBoolean("Building")) {
-                housing.example=false;housing.accept(city);
-            }
-        }
         map.accept(town);
         if (view.contains("Reason")) notice=view.getString("Reason");
         boolean accepted=view.getString("Result").equals("ACCEPTED") || view.getString("Result").equals("REPLAYED");
-        if (completed.equals("create") && accepted || completed.equals("select") && !town.isEmpty()) { mode="town"; detail=null; chest=null; section="settlement"; nextCityPoll=0; map.clearQuote(); }
+        if (completed.equals("create") && accepted || completed.equals("select") && !town.isEmpty()) { mode="town"; detail=null; chest=null; section="settlement"; map.clearQuote(); }
         else if (completed.equals("delete") && accepted) { mode="selector"; detail=null; map.clearQuote(); }
         else if (mode.equals("loading")) {
             int total=view.contains("DirectoryTotal")?view.getInt("DirectoryTotal"):view.getList("Directory",Tag.TAG_COMPOUND).size();
@@ -106,7 +94,7 @@ public class SettlementScreen extends Screen {
             else mode="selector";
         }
         if (view.getBoolean("Founding")) mode="create";
-        if (previous!=null && town.hasUUID("Id") && !previous.equals(town.getUUID("Id"))) { inspecting=false; inspectedCityResident=null; editedName=""; if(nameBox!=null)nameBox.setValue(""); scroll=0; map.center(BlockPos.of(town.getLong("Center"))); if(section.equals("settlement"))restoreCityView(); }
+        if (previous!=null && town.hasUUID("Id") && !previous.equals(town.getUUID("Id"))) { inspecting=false; inspectedCityResident=null; editedName=""; if(nameBox!=null)nameBox.setValue(""); scroll=0; map.center(BlockPos.of(town.getLong("Center")));  }
         if (detail!=null && detail.hasUUID("Id")) {
             UUID id=detail.getUUID("Id"); CompoundTag refreshed=null;
             for (String key:new String[]{"Residents","WorkforceRows","Defense"}) for (CompoundTag row:tags(town,key)) if (row.hasUUID("Id") && id.equals(row.getUUID("Id"))) refreshed=row;
@@ -133,19 +121,20 @@ public class SettlementScreen extends Screen {
         if (amountBox!=null) amount=amountBox.getValue();
         searchBox=null; nameBox=null; amountBox=null; clearWidgets(); drawings.clear(); rows.clear(); map.release();
         boolean citySection=mode.equals("town")&&section.equals("settlement");
-        panelW=Math.min(860,width-24); panelH=Math.min(548,height-36); left=(width-panelW)/2; top=(height-panelH)/2;
-        compact=panelW<500 || panelH<270; sidebarWidth=compact?0:Math.max(96,Math.min(132,panelW/5));
+        boolean directory=mode.equals("selector"), storage=mode.equals("town")&&section.equals("chests")&&chest!=null;
+        int wantedW=directory?460:storage?364:860;
+        int wantedH=directory?148+Math.min(6,Math.max(1,tags(envelope,"Directory").size()))*ROW_HEIGHT:
+                storage?Math.max(260,168+18*((Math.min(54,Math.max(1,chest.getInt("SlotsTotal")))+8)/9)):548;
+        panelW=Math.min(wantedW,width-24); panelH=Math.min(wantedH,height-36); left=(width-panelW)/2; top=(height-panelH)/2;
+        compact=directory || (storage?width<390||panelH<250:panelW<500||panelH<270);
+        sidebarWidth=compact?0:storage?96:Math.max(96,Math.min(132,panelW/5));
         cx=left+(compact?10:sidebarWidth+14); cy=top+(compact?80:60); cw=panelW-(compact?20:sidebarWidth+26); bottom=top+panelH-22;
         residentSplit=mode.equals("town")&&section.equals("residents")&&cw>=350&&!inspecting;
         dashboardLimit=0; dashboardTop=cy;
         scaleLimited=panelW<228 || panelH<180 || (inspecting||citySection)&&panelH<228;
         if (scaleLimited) {rotatingHouse=false;panningHouse=false;button(tr("close"),left+8,bottom-20,panelW-16,this::onClose,false);return;}
-        button(Component.literal("x"),left+panelW-79,top+13,20,this::onClose,false);
-        if (!mode.equals("unsupported") && !mode.equals("loading")) {
-            if(!mode.equals("guide"))button(Component.literal("?"),left+panelW-104,top+13,20,this::guide,false);
-            if (mode.equals("town") && envelope.getInt("DirectoryTotal")>1 && !SettlementClientState.pending()) button(tr("switch"),left+panelW-168,top+13,56,()->{mode="selector";scroll=0;detail=null;rebuild();},false);
-        }
-        if(SettlementClientState.pending())button(tr("reconcile"),left+panelW-188,top+13,80,SettlementClientState::reconcileNow,false);
+        if (mode.equals("town") && envelope.getInt("DirectoryTotal")>1 && !SettlementClientState.pending())
+            button(tr("switch"),left+panelW-118,top+13,56,()->{mode="selector";scroll=0;detail=null;rebuild();},false);
         if (confirm!=null) { confirmationWidgets(); return; }
         if (mode.equals("loading") || mode.equals("unsupported")) return;
         if (mode.equals("selector")) { selector(); return; }
@@ -178,7 +167,7 @@ public class SettlementScreen extends Screen {
                 int reserve=icon.isEmpty()?0:18;
                 if(!icon.isEmpty())g.renderFakeItem(icon,getX()+3,getY()+2);
                 String text=font.plainSubstrByWidth(getMessage().getString(),Math.max(1,getWidth()-reserve-8));
-                g.drawCenteredString(font,text,getX()+reserve+(getWidth()-reserve)/2,getY()+6,active?0xfffff1cb:0xffaaa38c);
+                g.drawString(font,text,getX()+reserve+(getWidth()-reserve-font.width(text))/2,getY()+6,active?0xfffff1cb:0xffaaa38c,false);
             }
         };
         widget.setTooltip(Tooltip.create(label));
@@ -199,7 +188,7 @@ public class SettlementScreen extends Screen {
                 @Override public void renderWidget(GuiGraphics g,int mx,int my,float partial) {
                     boolean selected=section.equals(key);SettlementDashboardArt.control(g,getX(),getY(),getWidth(),getHeight(),selected,isHoveredOrFocused(),true);
                     icon(g,icon,getX()+7,getY()+8,22);
-                    g.drawString(font,clip(getMessage(),getWidth()-39),getX()+34,getY()+15,0xfff6eddd,true);
+                    g.drawString(font,clip(getMessage(),getWidth()-39),getX()+34,getY()+15,0xfff6eddd,false);
                 }
             };
             tab.setTooltip(Tooltip.create(tr("section."+key)));addRenderableWidget(tab);
@@ -208,44 +197,24 @@ public class SettlementScreen extends Screen {
     private void selectSection(String key) {
         expectedHousing=null;section=key;inspecting=false;inspectedCityResident=null;rotatingHouse=false;panningHouse=false;
         detail=null;chest=null;scroll=0;search="";filter="all";map.clearQuote();
-        if(key.equals("settlement")){restoreCityView();nextCityPoll=0;requestCity();}
         rebuild();
     }
     private boolean cityActive() { return !scaleLimited&&mode.equals("town")&&section.equals("settlement")&&detail==null&&!inspecting&&confirm==null; }
     private static Component cityText(String key,Object...args) { return Component.translatable("jem.settlements.city."+key,args); }
-    private void restoreCityView() {
-        housing.example=false;housing.surfaceOnly=false;housing.depth(0);
-        var city=envelope.getCompound("City");
-        housing.accept(city.hasUUID("Town")&&town.hasUUID("Id")&&city.getUUID("Town").equals(town.getUUID("Id"))?city:new CompoundTag());
-        housing.resetView();
-    }
-    private boolean requestCity() {
-        if(!town.hasUUID("Id")||SettlementClientState.pending())return false;
-        if(!SettlementClientState.action("city",town.getUUID("Id"),new CompoundTag()))return false;
-        nextCityPoll=System.currentTimeMillis()+(envelope.getCompound("City").getBoolean("Building")?2000L:10000L);
-        return true;
-    }
-    private void inspectCityHome() {
-        var homes=envelope.getCompound("City").getList("Homes",Tag.TAG_COMPOUND);
-        if(homes.isEmpty()||SettlementClientState.pending())return;
-        var row=homes.getCompound(Math.floorMod(selectedCityHome++,homes.size()));
-        if(!row.hasUUID("Resident"))return;
-        CompoundTag payload=new CompoundTag();payload.putUUID("Entity",row.getUUID("Resident"));request("housing",payload);
-    }
     private void cityWidgets() {
         var metrics=town.getCompound("Metrics");
         summaryCards(false);
         cityContentTop=cy+66;listTop=cityContentTop;listBottom=bottom;
-        int viewHeight=Math.max(1,bottom-cityContentTop),contentHeight=420;
+        int viewHeight=Math.max(1,bottom-cityContentTop),contentHeight=361;
         cityScrollLimit=Math.max(0,contentHeight-viewHeight);scroll=Math.min(scroll,cityScrollLimit);
         int firstDrawing=drawings.size(),firstWidget=children().size();int y=cityContentTop-scroll;
         final int treasuryY=y;
         drawings.add(()->{
             SettlementDashboardArt.panel(graphics,cx,treasuryY,cw,91,true);
             icon(graphics,new ItemStack(Items.CHEST),cx+10,treasuryY+25,40);
-            graphics.drawString(font,tr("section.treasury"),cx+58,treasuryY+9,PALE,true);
+            graphics.drawString(font,tr("section.treasury"),cx+58,treasuryY+9,PALE,false);
             graphics.drawString(font,tr("dashboard.balance"),cx+58,treasuryY+25,0xffbbb9b2,false);
-            graphics.drawString(font,clip(SettlementPriceRenderer.format(town.getLong("Treasury"),coinCurrency()),Math.max(45,cw/2-62)),cx+58,treasuryY+42,GOLD,true);
+            graphics.drawString(font,clip(SettlementPriceRenderer.format(town.getLong("Treasury"),coinCurrency()),Math.max(45,cw/2-62)),cx+58,treasuryY+42,GOLD,false);
             int rx=cx+cw/2+6;
             graphics.drawString(font,tr("dashboard.yesterday"),rx,treasuryY+10,PALE,false);
             graphics.drawString(font,clip(tr("resident_income",SettlementPriceRenderer.format(town.getLong("LastResidentTax"),coinCurrency())),cw/2-16),rx,treasuryY+28,0xffc8cfb3,false);
@@ -261,29 +230,23 @@ public class SettlementScreen extends Screen {
         amountBox=edit(cx+quarter+3,moneyY,quarter-3,amount,"amount",16);amountBox.setFilter(value->value.matches("[0-9]*"));amountBox.setResponder(value->amount=value);
         button(tr("deposit"),cx+quarter*2+3,moneyY,quarter-3,()->transfer("deposit"),true);
         button(tr("withdraw"),cx+quarter*3+3,moneyY,cw-quarter*3-3,()->transfer("withdraw"),true);y+=30;
-        int cityWidth=Math.max(110,(int)(cw*.55)),comfortX=cx+cityWidth+8,comfortWidth=cw-cityWidth-8;
         final int sectionY=y;
-        drawings.add(()->{SettlementDashboardArt.panel(graphics,cx,sectionY,cityWidth,184,true);SettlementDashboardArt.panel(graphics,comfortX,sectionY,comfortWidth,184,false);});
-        drawLine(cityText("title"),cx+8,y+8,PALE);
-        cityPreviewX=cx+5;cityPreviewW=cityWidth-10;housePreviewY=y+23;housePreviewH=129;
-        int controls=y+157,cell=(cityWidth-16)/3;
-        Component[] labels={cityText("house"),cityText("reset"),cityText(housing.onlyAmenities?"all":"comfort")};
-        Runnable[] actions={this::inspectCityHome,housing::resetView,()->{housing.onlyAmenities=!housing.onlyAmenities;rebuild();}};
-        for(int i=0;i<3;i++)button(labels[i],cx+5+i*(cell+3),controls,cell,actions[i],false).active=envelope.getCompound("City").contains("Palette")&&(i!=0||!envelope.getCompound("City").getList("Homes",Tag.TAG_COMPOUND).isEmpty())&&!SettlementClientState.pending();
-        drawLine(tr("dashboard.comfort"),comfortX+8,y+8,INK);
+        drawings.add(()->SettlementDashboardArt.panel(graphics,cx,sectionY,cw,126,false));
+        drawLine(tr("dashboard.comfort"),cx+8,y+8,INK);
         var categories=metrics.getCompound("ComfortCategories");int index=0;
         for(String category:new String[]{"paths","animals","lighting","greenery"}) {
             String field=switch(category){case "paths"->"Path";case "animals"->"Animals";case "lighting"->"Lighting";default->"Greenery";};
-            int value=(int)Math.round(categories.getDouble(field)*4),rowY=y+29+index++*37;
+            int value=(int)Math.round(categories.getDouble(field)*4),position=index++,cardW=(cw-24)/2;
+            int cardX=cx+8+(position%2)*(cardW+8),rowY=y+27+(position/2)*46;
             ItemStack item=new ItemStack(switch(category){case "paths"->Items.COBBLESTONE;case "animals"->Items.WHEAT;case "lighting"->Items.LANTERN;default->Items.OAK_SAPLING;});
             drawings.add(()->{
-                icon(graphics,item,comfortX+7,rowY,19);
-                graphics.drawString(font,clip(tr("dashboard."+category),comfortWidth-36),comfortX+30,rowY+1,INK,false);
-                graphics.drawString(font,Math.round(categories.getDouble(field))+"/25",comfortX+30,rowY+12,MUTED,false);
-                SettlementDashboardArt.track(graphics,comfortX+8,rowY+25,comfortWidth-16,6,value,category.equals("lighting")?0xff43bfe0:category.equals("paths")?0xffe0b24b:0xff7ab849);
+                icon(graphics,item,cardX,rowY,19);
+                graphics.drawString(font,clip(tr("dashboard."+category),cardW-28),cardX+26,rowY,INK,false);
+                graphics.drawString(font,Math.round(categories.getDouble(field))+"/25",cardX+26,rowY+12,MUTED,false);
+                SettlementDashboardArt.track(graphics,cardX,rowY+27,cardW,6,value,category.equals("lighting")?0xff43bfe0:category.equals("paths")?0xffe0b24b:0xff7ab849);
             });
         }
-        y+=195;
+        y+=137;
         drawLine(tr("name"),cx,y,INK);y+=15;
         nameBox=edit(cx,y,Math.max(50,cw-88),editedName.isEmpty()?town.getString("Name"):editedName,"name",32);
         button(tr("save_name"),cx+cw-83,y,83,()->{CompoundTag payload=new CompoundTag();payload.putString("Name",nameBox.getValue().strip());request("rename",payload);},true);y+=31;
@@ -295,11 +258,8 @@ public class SettlementScreen extends Screen {
         EditBox box=new EditBox(font,x,y,w,20,tr(hint)); box.setMaxLength(max);box.setHint(tr(hint));box.setValue(value);addRenderableWidget(box);return box;
     }
     private void search(int y) {
-        int actionWidth=cw<190?22:40,input=Math.max(28,cw-actionWidth*2-8);
-        searchBox=edit(cx,y,input,search,"search",64);
-        searchBox.setResponder(value->{search=value;scroll=0;residentScroll=0;});
-        button(tr("apply"),cx+input+4,y,actionWidth,()->{scroll=0;residentScroll=0;rebuild();},false);
-        button(tr("sort."+sort),cx+input+actionWidth+8,y,actionWidth,()->{sort=next(sort,section.equals("residents")?new String[]{"name","profession","hunger","happiness"}:new String[]{"name","value"});scroll=0;residentScroll=0;rebuild();},false);
+        searchBox=edit(cx,y,cw,search,"search",64);
+        searchBox.setResponder(value->{search=value;scroll=0;residentScroll=0;searchDirty=true;});
     }
     private void request(String action,CompoundTag payload) {
         UUID id=town.hasUUID("Id")?town.getUUID("Id"):null;
@@ -307,15 +267,17 @@ public class SettlementScreen extends Screen {
     }
     private void readDirectory(int offset) {CompoundTag payload=new CompoundTag();payload.putInt("Offset",Math.max(0,offset));request("open",payload);}
     private void selector() {
-        cx=left+8;cw=panelW-16;cy=top+36;search(cy);listTop=cy+24;listBottom=bottom-48;
+        cx=left+8;cw=panelW-16;cy=top+60;search(cy);listTop=cy+26;listBottom=bottom-30;
         List<CompoundTag> list=tags(envelope,"Directory");list.sort(Comparator.comparing(r->r.getString(sort.equals("name")?"Name":"Dimension"),String.CASE_INSENSITIVE_ORDER));
         for (CompoundTag row:list) if (matches(row.getString("Name")+" "+row.getString("Dimension"))) rows.add(new Row(Component.literal(row.getString("Name")),tr("town_row",dimension(row.getString("Dimension")),row.getInt("Residents"),row.getInt("Happiness")),new ItemStack(Items.BELL),row,()->{
             if (SettlementClientState.action("select",row.getUUID("Id"),new CompoundTag())) { mode="loading";rebuild(); }
         }));
         listWidgets();int offset=envelope.getInt("DirectoryOffset"),total=envelope.getInt("DirectoryTotal");
-        button(Component.literal("<"),cx,bottom-44,22,()->readDirectory(offset-64),true).active=offset>0 && !SettlementClientState.pending();
-        button(Component.literal(">"),cx+26,bottom-44,22,()->readDirectory(offset+64),true).active=offset+64<total && !SettlementClientState.pending();
-        button(tr("create"),cx+cw-100,bottom-44,100,()->{mode="create";editedName="";rebuild();},false);drawLine(tr("directory_count",total),cx+54,bottom-38,MUTED);
+        if(total>64){
+            button(Component.literal("<"),cx,bottom-24,22,()->readDirectory(offset-64),true).active=offset>0 && !SettlementClientState.pending();
+            button(Component.literal(">"),cx+26,bottom-24,22,()->readDirectory(offset+64),true).active=offset+64<total && !SettlementClientState.pending();
+        }
+        button(tr("create"),cx+cw-100,bottom-24,100,()->{mode="create";editedName="";rebuild();},false);drawLine(tr("directory_count",total),cx+(total>64?54:0),bottom-18,MUTED);
     }
     private void creation() {
         cx=left+8;cw=panelW-16;cy=top+40;nameBox=edit(cx,cy,cw,editedName,"name",32);
@@ -414,9 +376,12 @@ public class SettlementScreen extends Screen {
                 for(CompoundTag slot:tags(chest,"Slots"))if(slot.getInt("Slot")==offset+i){ItemStack stack=ItemStack.of(slot.getCompound("Stack"));graphics.renderItem(stack,sx+1,sy+1);graphics.renderItemDecorations(font,stack,sx+1,sy+1);break;}
             }
         });
-        button(Component.literal("<"),cx,bottom-44,24,()->openStorage(chest,offset-capacity),false).active=offset>0&&!SettlementClientState.pending();
-        button(Component.literal(">"),cx+28,bottom-44,24,()->openStorage(chest,offset+capacity),false).active=offset+capacity<total&&!SettlementClientState.pending();
-        drawLine(tr("chest_slots",total==0?0:offset+1,Math.min(total,offset+capacity),total),cx+58,bottom-38,MUTED);
+        boolean paged=total>capacity;
+        if(paged){
+            button(Component.literal("<"),cx,bottom-44,24,()->openStorage(chest,offset-capacity),false).active=offset>0&&!SettlementClientState.pending();
+            button(Component.literal(">"),cx+28,bottom-44,24,()->openStorage(chest,offset+capacity),false).active=offset+capacity<total&&!SettlementClientState.pending();
+        }
+        drawLine(tr("chest_slots",total==0?0:offset+1,Math.min(total,offset+capacity),total),cx+(paged?58:0),bottom-38,MUTED);
         Button feed=button(tr("chest_feed_all"),cx,bottom-20,cw,()->{CompoundTag payload=new CompoundTag();payload.putLong("Position",chest.getLong("Position"));request("feedall",payload);},true,new ItemStack(Items.BREAD));
         feed.active=chest.getBoolean("InventoryKnown")&&!SettlementClientState.pending();feed.setTooltip(Tooltip.create(tr("chest_feed_all_hint")));
     }
@@ -425,7 +390,7 @@ public class SettlementScreen extends Screen {
         int contentHeight=405,viewport=Math.max(1,bottom-dashboardTop);dashboardLimit=Math.max(0,contentHeight-viewport);scroll=Math.min(scroll,dashboardLimit);
         int firstDrawing=drawings.size(),firstWidget=children().size();int y=dashboardTop-scroll;
         final int factorsY=y;
-        drawings.add(()->{SettlementDashboardArt.panel(graphics,cx,factorsY,cw,207,true);graphics.drawString(font,tr("dashboard.factors"),cx+10,factorsY+9,PALE,true);});
+        drawings.add(()->{SettlementDashboardArt.panel(graphics,cx,factorsY,cw,207,true);graphics.drawString(font,tr("dashboard.factors"),cx+10,factorsY+9,PALE,false);});
         var metrics=town.getCompound("Metrics");int index=0;
         for(String category:new String[]{"housing","food","safety","jobs","community","decoration"}) {
             String field=category.substring(0,1).toUpperCase(Locale.ROOT)+category.substring(1);
@@ -445,7 +410,7 @@ public class SettlementScreen extends Screen {
         final int taxPenalty=com.siirio.jemsettlements.happiness.HappinessService.taxPenalty(town.getInt("Tax"));
         drawings.add(()->graphics.drawString(font,clip(tr("dashboard.budget",taxPenalty),cw-20),cx+10,factorsY+188,0xffc9c3ad,false));
         y+=216;final int complaintsY=y;
-        drawings.add(()->{SettlementDashboardArt.panel(graphics,cx,complaintsY,cw,92,false);graphics.drawString(font,tr("dashboard.housing_complaints"),cx+9,complaintsY+9,INK,true);});
+        drawings.add(()->{SettlementDashboardArt.panel(graphics,cx,complaintsY,cw,92,false);graphics.drawString(font,tr("dashboard.housing_complaints"),cx+9,complaintsY+9,INK,false);});
         List<CompoundTag> residents=tags(town,"Residents");
         String[] reasons={"no_bed","no_roof","crowding","light"};ItemStack[] icons={new ItemStack(Items.RED_BED),new ItemStack(Items.OAK_STAIRS),new ItemStack(Items.OAK_DOOR),new ItemStack(Items.LANTERN)};
         int cell=(cw-16)/4;
@@ -463,7 +428,7 @@ public class SettlementScreen extends Screen {
         long happy=residents.stream().filter(r->r.getInt("Mood")>=80).count(),neutral=residents.size()-unhappy-happy;
         drawings.add(()->{
             SettlementDashboardArt.panel(graphics,cx,distributionY,cw,76,true);
-            graphics.drawString(font,tr("dashboard.distribution"),cx+9,distributionY+9,PALE,true);
+            graphics.drawString(font,tr("dashboard.distribution"),cx+9,distributionY+9,PALE,false);
             int bx=cx+10,bw=cw-20,total=Math.max(1,residents.size());
             graphics.fill(bx,distributionY+26,bx+bw,distributionY+37,0xff171b23);
             int a=(int)(bw*unhappy/total),b=(int)(bw*neutral/total);
@@ -476,7 +441,7 @@ public class SettlementScreen extends Screen {
     private void factorHelp(String category,int x,int y,int w,int h) {
         Component explanation=switch(category){case "safety"->metricText("guards",town.getCompound("Metrics").getInt("EffectiveGuards"),town.getCompound("Metrics").getInt("RequiredGuards"));case "community"->metricText("population",town.getCompound("Metrics").getInt("RegisteredResidents"),town.getCompound("Metrics").getInt("RequiredResidents"));case "jobs"->metricText("jobs",town.getCompound("Metrics").getInt("EmployedAdults"),town.getCompound("Metrics").getInt("WorkingAdults"));case "decoration"->tr("comfort_summary");default->metricText(category);};
         Button help=new Button(Button.builder(tr("category."+category),b->{chapter=Arrays.asList(CHAPTERS).indexOf(category.equals("food")?"food_satisfaction":category);guide();}).bounds(x,y,w,h)) {
-            @Override public void renderWidget(GuiGraphics g,int mx,int my,float partial){if(isHoveredOrFocused())g.renderOutline(getX(),getY(),getWidth(),getHeight(),0xffc8a55b);}
+            @Override public void renderWidget(GuiGraphics g,int mx,int my,float partial){if(isHoveredOrFocused())g.renderFakeItem(new ItemStack(Items.BOOK),getX()+getWidth()-19,getY()+(getHeight()-16)/2);}
         };help.setTooltip(Tooltip.create(explanation));addRenderableWidget(help);
     }
     private void conditionRows(CompoundTag source) {
@@ -502,7 +467,7 @@ public class SettlementScreen extends Screen {
         final int portraitW=Math.max(40,Math.min(58,w/3));
         drawings.add(()->{
             SettlementDashboardArt.panel(graphics,x,y,portraitW,95,true);portrait(graphics,selected,x+3,y+3,portraitW-6,89);
-            graphics.drawString(font,clip(residentName(selected),w-portraitW-10),x+portraitW+7,y+4,INK,true);
+            graphics.drawString(font,clip(residentName(selected),w-portraitW-10),x+portraitW+7,y+4,INK,false);
             graphics.drawString(font,clip(guard(selected)?tr("filter.guards"):profession(selected),w-portraitW-10),x+portraitW+7,y+19,MUTED,false);
             if(needs){
                 SettlementDashboardArt.mood(graphics,x+portraitW+7,y+37,16,selected.getInt("Mood"));
@@ -530,7 +495,7 @@ public class SettlementScreen extends Screen {
         for(CompoundTag food:servings(selected))facts.add(new Row(item(food.getString("Item")).getHoverName(),tr("served_today",food.getInt("Count")),item(food.getString("Item")),new CompoundTag(),null));
         int visible=Math.max(1,(detailBottom-detailTop-16)/ROW_HEIGHT);detailScroll=Math.max(0,Math.min(detailScroll,Math.max(0,facts.size()-visible)));int start=detailScroll;
         drawings.add(()->{
-            graphics.enableScissor(x,detailTop,x+w,detailBottom);graphics.drawString(font,tr("dashboard.needs"),x+2,detailTop,INK,true);
+            graphics.enableScissor(x,detailTop,x+w,detailBottom);graphics.drawString(font,tr("dashboard.needs"),x+2,detailTop,INK,false);
             for(int i=start;i<Math.min(facts.size(),start+visible);i++)drawRow(graphics,facts.get(i),x,detailTop+15+(i-start)*ROW_HEIGHT,w,false);
             graphics.disableScissor();
         });
@@ -594,7 +559,7 @@ public class SettlementScreen extends Screen {
         }
     }
     private void housingWidgets() {
-        button(tr("back"),cx,cy,52,()->{expectedHousing=null;inspecting=false;if(section.equals("settlement"))restoreCityView();rebuild();},false);
+        button(tr("back"),cx,cy,52,()->{expectedHousing=null;inspecting=false;rebuild();},false);
         button(HousingInspector.tr(housing.example?"example":"mine"),cx+56,cy,Math.max(60,cw-56),()->{housing.example=!housing.example;rebuild();},false);
         int half=(cw-4)/2;
         addRenderableWidget(new AbstractSliderButton(cx,bottom-46,cw,20,HousingInspector.tr("see_inside",housing.depth()),housing.depth()/10D){
@@ -696,7 +661,7 @@ public class SettlementScreen extends Screen {
         boolean npc=row.data().hasUUID("Id")&&(row.data().contains("Mood")||guard(row.data()));
         if(npc)portrait(g,row.data(),x+4,y+4,25,29);else icon(g,row.icon(),x+7,y+9,20);
         int nameWidth=Math.max(20,w-42-(npc?19:0)),nameColor=selected?0xfff9efda:INK;
-        g.drawString(font,clip(row.name(),nameWidth),x+35,y+6,nameColor,selected);
+        g.drawString(font,clip(row.name(),nameWidth),x+35,y+6,nameColor,false);
         if(npc){
             g.drawString(font,clip(guard(row.data())?tr("filter.guards"):profession(row.data()),Math.max(20,w-49)),x+35,y+18,selected?0xffd8e4eb:MUTED,false);
             if(row.data().contains("Mood")){SettlementDashboardArt.mood(g,x+w-23,y+5,16,row.data().getInt("Mood"));SettlementDashboardArt.track(g,x+35,y+30,w-43,6,row.data().getInt("Mood"),scoreColor(row.data().getInt("Mood")));}
@@ -736,7 +701,7 @@ public class SettlementScreen extends Screen {
                 SettlementDashboardArt.card(graphics,x,cy,w,58,key.equals("beauty")?0xffc58bac:key.equals("treasury")?GOLD:key.equals("residents")?0xff92b66c:0xffd6b168);
                 graphics.drawString(font,clip(tr("dashboard."+key),w-12),x+6,cy+7,INK,false);
                 if(key.equals("happiness"))SettlementDashboardArt.mood(graphics,x+6,cy+21,20,value);else icon(graphics,icon,x+6,cy+21,20);
-                graphics.drawString(font,clip(display,w-35),x+30,cy+27,INK,true);
+                graphics.drawString(font,clip(display,w-35),x+30,cy+27,INK,false);
                 if(!key.equals("treasury"))SettlementDashboardArt.track(graphics,x+7,cy+47,w-14,6,value,key.equals("beauty")?0xff45b8d5:key.equals("unhappy")?0xffd36459:scoreColor(value));
             });
         }
@@ -783,7 +748,7 @@ public class SettlementScreen extends Screen {
         if(!minecraft.isWindowActive())map.clearQuote();
         if(map.dragging() && org.lwjgl.glfw.GLFW.glfwGetMouseButton(minecraft.getWindow().getWindow(),0)!=org.lwjgl.glfw.GLFW.GLFW_PRESS) {map.clearQuote();rebuild();}
         SettlementClientState.reconcile();
-        if(cityActive()&&System.currentTimeMillis()>=nextCityPoll&&requestCity())rebuild();
+        if(searchDirty){searchDirty=false;rebuild();}
         if(++refreshTicks>=100){refreshTicks=0;if(SettlementNetwork.supported()){
             UUID id=town.hasUUID("Id")?town.getUUID("Id"):null;
             SettlementNetwork.action("heartbeat",id,new CompoundTag(),UUID.randomUUID());
@@ -792,23 +757,23 @@ public class SettlementScreen extends Screen {
     @Override public void onClose(){map.clearQuote();SettlementClientState.closed();minecraft.setScreen(null);}
     @Override public void removed(){map.clearQuote();SettlementClientState.closed();}
     @Override public boolean keyPressed(int key,int scan,int modifiers){
-        if(key==256&&inspecting&&confirm==null){expectedHousing=null;inspecting=false;rotatingHouse=false;panningHouse=false;if(section.equals("settlement"))restoreCityView();rebuild();return true;}
+        if(key==256&&inspecting&&confirm==null){expectedHousing=null;inspecting=false;rotatingHouse=false;panningHouse=false;rebuild();return true;}
         if(key==256){expectedHousing=null;map.clearQuote();if(confirm!=null){confirm=null;mode=confirmMode;rebuild();return true;}if(mode.equals("guide")){mode=guideMode;section=guideReturn;rebuild();return true;}if(chest!=null){chest=null;rebuild();return true;}if(detail!=null&&!residentSplit){detail=null;rebuild();return true;}}
         return super.keyPressed(key,scan,modifiers);
     }
     @Override public boolean mouseClicked(double x,double y,int button){
         if(super.mouseClicked(x,y,button))return true;
         if(scaleLimited)return false;
-        if((inspecting||cityActive()&&y>=cityContentTop&&y<bottom)&&mode.equals("town")&&confirm==null&&housing.inside(x,y)&&(button==0||button==1)){rotatingHouse=button==0;panningHouse=button==1;return true;}
+        if(inspecting&&mode.equals("town")&&confirm==null&&housing.inside(x,y)&&(button==0||button==1)){rotatingHouse=button==0;panningHouse=button==1;return true;}
         if(!inspecting&&confirm==null&&mode.equals("town")&&section.equals("map")&&detail==null&&map.click(x,y,button,town)){return true;}
         return false;
     }
-    @Override public boolean mouseDragged(double x,double y,int button,double dx,double dy){if((inspecting||cityActive())&&confirm==null){if(rotatingHouse&&button==0){housing.rotate(dx,dy);return true;}if(panningHouse&&button==1){housing.pan(dx,dy);return true;}}return !inspecting&&confirm==null&&section.equals("map")&&map.drag(x,y,dx,dy,town)||super.mouseDragged(x,y,button,dx,dy);}
+    @Override public boolean mouseDragged(double x,double y,int button,double dx,double dy){if(inspecting&&confirm==null){if(rotatingHouse&&button==0){housing.rotate(dx,dy);return true;}if(panningHouse&&button==1){housing.pan(dx,dy);return true;}}return !inspecting&&confirm==null&&section.equals("map")&&map.drag(x,y,dx,dy,town)||super.mouseDragged(x,y,button,dx,dy);}
     @Override public boolean mouseReleased(double x,double y,int button){rotatingHouse=false;panningHouse=false;boolean selected=map.dragging();map.release();if(selected)rebuild();return super.mouseReleased(x,y,button);}
     @Override public boolean mouseScrolled(double x,double y,double delta){
         if(scaleLimited)return false;
         if(confirm!=null)return false;
-        if((inspecting||cityActive()&&y>=cityContentTop&&y<bottom)&&housing.inside(x,y)){housing.zoom(delta);return true;}
+        if(inspecting&&housing.inside(x,y)){housing.zoom(delta);return true;}
         if(!inspecting&&mode.equals("town")&&section.equals("map")&&detail==null&&map.contains(x,y)){map.zoom(delta,x,y);return true;}
         if(cityActive()&&y>=cityContentTop&&x>=cx&&x<cx+cw){scroll=Math.max(0,Math.min(cityScrollLimit,scroll+(delta>0?-24:24)));rebuild();return true;}
         if(mode.equals("town")&&section.equals("happiness")&&y>=dashboardTop&&y<bottom&&x>=cx&&x<cx+cw){scroll=Math.max(0,Math.min(dashboardLimit,scroll+(delta>0?-24:24)));rebuild();return true;}
@@ -821,18 +786,17 @@ public class SettlementScreen extends Screen {
         SettlementDashboardArt.shell(g,left,top+44,panelW,panelH-44,compact?8:sidebarWidth+6);
         SettlementDashboardArt.header(g,left+(compact?0:sidebarWidth-3),top,panelW-(compact?0:sidebarWidth-3),44);
         Component heading=mode.equals("town")?Component.literal(town.getString("Name")):title;
-        int hx=left+(compact?57:sidebarWidth+58),hw=Math.max(25,panelW-(compact?170:sidebarWidth+180));
+        int hx=left+(compact?57:sidebarWidth+58),hw=Math.max(25,panelW-(compact?120:sidebarWidth+120)-(mode.equals("town")&&envelope.getInt("DirectoryTotal")>1?62:0));
         g.pose().pushPose();g.pose().translate(hx,top+17,0);g.pose().scale(1.4F,1.4F,1);g.drawString(font,clip(heading,(int)(hw/1.4)),0,0,INK,false);g.pose().popPose();
         if(scaleLimited){g.drawWordWrap(font,tr("scale"),left+12,top+50,Math.max(20,panelW-24),INK);super.render(g,mouseX,mouseY,partialTick);graphics=null;return;}
         if(mode.equals("loading")||mode.equals("unsupported"))g.drawWordWrap(font,tr(mode),left+12,top+50,Math.max(20,panelW-24),INK);
         if(!inspecting&&mode.equals("town")&&section.equals("map")&&detail==null&&confirm==null)map.render(g,town,town,minecraft);
         for(Runnable draw:drawings)draw.run();super.render(g,mouseX,mouseY,partialTick);
-        if(cityActive()){g.enableScissor(cx,cityContentTop,cx+cw,bottom);housing.render(g,cityPreviewX,housePreviewY,cityPreviewW,housePreviewH,mouseX,mouseY);g.disableScissor();}
         if(inspecting&&mode.equals("town")&&confirm==null){
             housing.render(g,cx,housePreviewY,cw,housePreviewH,mouseX,mouseY);
             if(mouseX>=cx&&mouseX<cx+cw&&mouseY>=bottom-76&&mouseY<bottom-50)g.renderComponentTooltip(font,List.of(HousingInspector.tr("controls"),HousingInspector.tr("legend_bed"),HousingInspector.tr("legend_decor"),HousingInspector.tr("area"),HousingInspector.tr("legend_missing")),mouseX,mouseY);
         }
-        if(!notice.isBlank())g.drawString(font,clip(Component.translatable(notice),panelW-16),left+8,top+panelH-12,0xffe6bd75,false);
+        if(!notice.isBlank()&&!SettlementClientState.pending()&&envelope.getInt("UncertainActions")==0)g.drawString(font,clip(Component.translatable(notice),panelW-16),left+8,top+panelH-12,0xffe6bd75,false);
         if(envelope.getInt("UncertainActions")>0&&!SettlementClientState.pending())g.drawString(font,clip(tr("unresolved"),panelW-16),left+8,top+panelH-12,0xffedcc84,false);
         if(SettlementClientState.pending())g.drawString(font,clip(tr(SettlementClientState.outcomeUnknown()?"outcome_unknown":"pending"),panelW-16),left+8,top+panelH-12,0xffedcc84,false);
         if(mode.equals("town")&&section.equals("chests")&&chest!=null&&confirm==null&&bottom-52-(cy+40)>=18){
