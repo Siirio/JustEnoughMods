@@ -55,7 +55,7 @@
         "before": null,
         "after": {
           "owner": "Native equipped owner BackpackContainerMenu + actual BackpackInventory ItemStack",
-          "layout": "Append9 ingredients and vanilla ResultSlot; move native player inventory by76px; keep existing indices. Bounded wheel viewport scrolling with native popup priority for short GUI scales.",
+          "layout": "Append9ingredients and vanilla ResultSlot at shared112x80 centered crafting geometry: inputs12,12 at18px stride, result85,30. Move native player inventory by80px; keep slot indices and bounded short-viewport scrolling.",
           "persistence": "JemWorkbenchIngredients NBT on backpack; preserve while removed/disabled; restore on enable. Result is authoritative recipe preview recomputed from persisted matrix, never persisted as an independently claimable item.",
           "crafting": "Native RecipeManager, limited-crafting/features, ResultSlot ingredient/remainder/reward hooks; result packets use actual appended slot index; explicit shift transfer and no pick-all extraction from result.",
           "lifecycle": "Successful native selection enables Workbench; native change/toggle reopens immediately only when actual enabled/unlocked layout differs. Same ingredients survive disable/removal and return on re-enable.",
@@ -66,7 +66,7 @@
         "property": "backpack.augment_bay_assets",
         "operation": "add",
         "before": null,
-        "after": "Crafting insert uses exact native AUGMENT_MENU_BACKGROUND/BACKPACK_SLOT/ARROW_RIGHT FrameworkTexture definitions. Editable WorkbenchIcon.java defines12px cream/shadow crafting-table silhouette; rejected green GUI exports are removed from production."
+        "after": "Compact112x80 native BACKPACK_BACKGROUND crafting panel with BACKPACK_SLOT and ARROW_RIGHT, no title/side tab. Lower inventory uses native AUGMENT_MENU_BACKGROUND/BACKPACK_SLOT while Workbench is active. Editable cream/shadow12px picker icon remains; removed tab exists only in original reference05."
       }
     ]
   },
@@ -200,6 +200,17 @@
       "action": "fit_native_crafting_frame",
       "summary": "Use native5px augment-menu frame instead of11px backpack outer frame in the76px insert, preserving slot clearance.",
       "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackWorkbenchScreenMixin.java"
+      ]
+    },
+    {
+      "date": "2026-10-19",
+      "commit": "SELF",
+      "action": "match_compact_reference_without_tab",
+      "summary": "User supplies compact centered crafting and pale lower-inventory reference, explicitly removes left crafting-table tab. Codex keeps real18px slots and shared112x80 geometry rather than copying inconsistent mockup scale.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackWorkbench.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackWorkbenchMenuMixin.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackWorkbenchScreenMixin.java"
       ]
     }

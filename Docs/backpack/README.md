@@ -12,7 +12,7 @@ The retired jemcompat:augment_bay block/item identities and placed-block geometr
 
 ## Inventory and authority
 
-Only the equipped owner's native BackpackContainerMenu gains crafting; docks, shelves and pickpocket views keep their native lifecycles. Existing backpack/player slot indices remain;9ingredients and vanilla ResultSlot append after them. Player inventory moves76px down and the crafting insert occupies that space. Shift-click preserves backpack/player direction and sends crafting inputs/results to player inventory. Native ResultSlot owns consumption, remainders, hooks and rewards; partial shifted results drop like vanilla CraftingMenu. Result pick-all is blocked.
+Only the equipped owner's native BackpackContainerMenu gains crafting; docks, shelves and pickpocket views keep their native lifecycles. Existing backpack/player slot indices remain;9ingredients and vanilla ResultSlot append after them. Player inventory moves80px down and the crafting insert occupies that space. Shift-click preserves backpack/player direction and sends crafting inputs/results to player inventory. Native ResultSlot owns consumption, remainders, hooks and rewards; partial shifted results drop like vanilla CraftingMenu. Result pick-all is blocked.
 
 Server RecipeManager, limited-crafting policy and enabled features determine results; the result is never saved as an extra claimable item. Native BackpackInventory.isAllowedItem governs ingredient slots, container setters, remainders and persistence. Invalid loaded/in-place-mutated ingredients are removed before return to player inventory/drop, without deletion or nested-container bypass.
 
@@ -20,6 +20,6 @@ Integrated singleplayer retains upstream behavior: Workbench is hidden there, wh
 
 ## Appearance and evidence
 
-The crafting insert uses native AUGMENT_MENU_BACKGROUND, BACKPACK_SLOT and ARROW_RIGHT FrameworkTexture definitions, native tiling and18px spacing. WorkbenchIcon.java is the editable12px cream/shadow crafting-table silhouette; rejected green icon and separate GUI PNGs no longer ship. Short viewports retain bounded menu scrolling with native popup priority.
+The compact centered crafting insert uses native BACKPACK_BACKGROUND, BACKPACK_SLOT and ARROW_RIGHT FrameworkTexture definitions, native tiling and18px spacing. Shared BackpackWorkbench constants own its112×80 geometry, ingredient offsets12,12 and result85,30. It has no title or side tab. With Workbench active, the lower player inventory uses native AUGMENT_MENU_BACKGROUND and BACKPACK_SLOT rather than the grey inventory material. WorkbenchIcon.java is the editable12px cream/shadow crafting-table silhouette; rejected green icon and separate GUI PNGs no longer ship. Short viewports retain bounded menu scrolling with native popup priority.
 
 Original user screenshots and exact extraction: Docs/art/backpack-augment-bay/reference/2026-10-19/README.md. Current art source: Docs/art/backpack-augment-bay/README.md. Source/build and preview evidence do not establish gameplay/visual approval. No client/gameplay launch or automated tests; click refresh, crafting remainders and GUI Scale require player review.

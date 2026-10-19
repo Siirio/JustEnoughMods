@@ -69,13 +69,13 @@ public abstract class BackpackWorkbenchMenuMixin extends AbstractContainerMenu i
         jemcompat$result = new ResultContainer();
         jemcompat$originalSlots = slots.size();
         int width = 22 + Math.max(cols, 9) * 18;
-        int x = (width - 176) / 2;
+        int x = (width - CRAFT_WIDTH) / 2;
         int y = 44 + rows * 18;
-        for (int row = 0; row < 3; row++) for (int col = 0; col < 3; col++) addSlot(new Slot(jemcompat$grid, col + row * 3, x + 30 + col * 18, y + 16 + row * 18) {
+        for (int row = 0; row < 3; row++) for (int col = 0; col < 3; col++) addSlot(new Slot(jemcompat$grid, col + row * 3, x + GRID_X + col * 18, y + GRID_Y + row * 18) {
             @Override public boolean mayPlace(ItemStack incoming) { return jemcompat$grid.canPlaceItem(getContainerSlot(), incoming); }
         });
         jemcompat$resultIndex = slots.size();
-        addSlot(new ResultSlot(inventory.player, jemcompat$grid, jemcompat$result, 0, x + 124, y + 34));
+        addSlot(new ResultSlot(inventory.player, jemcompat$grid, jemcompat$result, 0, x + RESULT_X, y + RESULT_Y));
         jemcompat$updateRecipe();
     }
 

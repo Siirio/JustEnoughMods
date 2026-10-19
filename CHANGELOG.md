@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-19 — Backpack reference layout correction
+
+- User supplies a target image and a mask, requests deleting the left crafting-table tab from the image and matching that compact centered crafting section and pale lower inventory in the real interface. The tab is removed through imagegen; original05 and edited reference06 are preserved as design evidence, not runtime screenshots/textures.
+- Codex uses shared112×80 geometry with real18px native crafting slots, no title or external tab, a native dark outer crafting frame, arrow/result and native pale player-inventory surfaces. Existing slot indices, ingredient ownership, recipes, native controls and server authority remain. The original direct-selection and boss-chat repairs continue in the same delivery; runtime/player acceptance remains pending.
+
 ## 2026-10-19 — Direct backpack crafting and boss chat entry
 
 - User requests removing the upgrade workshop, immediate3×3+result crafting between backpack/player inventories on Workbench selection, a native-style cream icon instead of green, and repair of Harbinger/Helvar «Открыть бой» command errors. Codex reuses native Backpacked surfaces, removes station payments/UI/recipe/creative/JEI entry, and retains inert old block/item IDs and geometry for existing saves. Native unlocks, ingredient NBT, authoritative ResultSlot crafting and integrated-singleplayer exclusions remain.
