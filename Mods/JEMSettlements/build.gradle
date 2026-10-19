@@ -2,6 +2,10 @@ plugins { id 'net.minecraftforge.gradle' version '[6.0,6.2)'; id 'org.spongepowe
 group = 'com.siirio.jemsettlements'
 version = '2.1.0'
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+def settlementProfile = providers.gradleProperty('settlementProfile').getOrElse('production')
+if (!(settlementProfile in ['production', 'sandbox'])) throw new GradleException('settlementProfile must be production or sandbox')
+if (settlementProfile == 'sandbox') layout.buildDirectory = file('build/sandbox-profile')
+sourceSets.main.java.srcDir "src/${settlementProfile}/java"
 minecraft { mappings channel: 'official', version: '1.20.1' }
 repositories { flatDir { dirs '../../Server/mods' } }
 def xaeroWorldMap = file('../../Client/ManagedPack/mods/xaeroworldmap-forge-1.20.1-1.46.0.jar')
@@ -42,3 +46,11 @@ tasks.register('settlementEconomyContractTest', JavaExec) {
 jar { archiveBaseName = 'jem-settlements'; manifest { attributes 'MixinConfigs': 'jem_settlements.mixins.json' }; finalizedBy 'reobfJar' }
 
 apply from: '../JEMCurrencyCore/embed.gradle'
+
+tasks.named('jar', Jar).configure {
+    manifest { attributes 'JEM-Settlement-Profile': settlementProfile }
+}
+tasks.named('jarJar').configure {
+    if (settlementProfile == 'sandbox') archiveClassifier = 'sandbox'
+    manifest { attributes 'JEM-Settlement-Profile': settlementProfile }
+}

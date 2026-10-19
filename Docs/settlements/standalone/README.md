@@ -1,5 +1,26 @@
 # Settlements standalone design
 
+## Sandbox artifact boundary — 2026-10-19
+
+The ordinary test jem production artifact intentionally keeps singleplayer native:
+it does not register Settlements gameplay listeners on the physical client and
+rejects integrated-server authority. Copying it directly into jem sandbox therefore
+cannot open the founding screen when a bell is placed. This happens before payment.
+The existing currency owner selects physical emeralds whenever actual `jem_economy`
+is absent; bundled Currency Core alone does not enable Coins.
+
+Build the standalone artifact explicitly from `Mods/JEMSettlements` with the existing
+Gradle wrapper: `../JEMServer/gradlew.bat -PsettlementProfile=sandbox jarJar`.
+This selects the sandbox `SettlementBuild` source, writes only under
+`build/sandbox-profile`, and produces `libs/jem-settlements-2.1.0-sandbox.jar`.
+Its integrated logical server owns existing gameplay, with native housing/birth/pat
+hooks enabled. Production is the default profile and retains dedicated-only behavior.
+Both artifacts retain bundled Identity/Core and the same currency selection; do not
+add Economy or Professions to make standalone work. Replace only the sandbox JAR,
+backing up the old file outside `mods` while the game is closed. Ordinary Server,
+ManagedPack, native AutoModpack publication and stable profiles are outside this repair.
+Runtime founding and emerald purchase acceptance remain pending.
+
 
 
 

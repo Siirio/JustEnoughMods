@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-19 — Restore standalone Settlements bell entry
+
+- Delivery: sandbox jarJar/reobfuscation succeeded; after the user closed jem sandbox, installed `jem-settlements-2.1.0-sandbox.jar` with matching SHA-256 and moved the copied production JAR to a timestamped backup outside mods. Atlas65 records validate; this task's source changes are covered, with six pre-existing unrelated dirty paths left intact. Details: `Docs/settlements/standalone/sandbox-bell-recovery-delivery.json`.
+- User reports placing a bell opens nothing after requesting the test jem Settlements JAR in jem sandbox, and reiterates standalone emerald fallback. Bug / Both Sided / the copied production artifact intentionally skips physical-client gameplay listener registration and rejects integrated-server authority, so bell placement never reaches founding or currency selection / in testing. Codex separates explicit sandbox/production compile-time profiles, authority and native HOME/birth/pat hook selection; production remains dedicated-only. The existing actual-Economy-or-emerald payment owner is preserved.
+- Sandbox output is isolated under `Mods/JEMSettlements/build/sandbox-profile` with an explicit sandbox classifier and profile manifest. Only the standalone sandbox artifact is an installation target; ordinary Server, ManagedPack/publication43, stable profiles and immutable release baseline remain unchanged. No automated tests or game launch; user gameplay approval remains pending.
+
 ## 2026-10-19 — Backpack reference layout correction
 
 - Delivery: fresh full production Compat/Server JARs built/reobfuscated and synchronized to ManagedPack and ordinary Server. Local server reached Done and remains running; native generation43 published and applied to closed test jem. Active/head/published tokens and both installed JAR hashes match,24/24 personal preference files unchanged and no pending transaction. Atlas64 records validate; exact task source scan passes without artifact drift. Details: `Docs/plans/2026-10-19-backpack-and-fight-links-delivery.json`.
