@@ -13,6 +13,7 @@ public final class JemSettlements {
     public JemSettlements() {
         net.minecraftforge.fml.ModLoadingContext.get().registerConfig(net.minecraftforge.fml.config.ModConfig.Type.SERVER, com.siirio.jemsettlements.payroll.SettlementEconomyConfig.SPEC);
         net.minecraftforge.fml.ModLoadingContext.get().registerConfig(net.minecraftforge.fml.config.ModConfig.Type.SERVER, com.siirio.jemsettlements.happiness.SettlementMetricsConfig.SPEC, "jem-settlements-metrics.toml");
+        net.minecraftforge.fml.ModLoadingContext.get().registerConfig(net.minecraftforge.fml.config.ModConfig.Type.SERVER, com.siirio.jemsettlements.happiness.HousingConditionConfig.SPEC, "jem-settlements-living-conditions.toml");
         SettlementNetwork.register();
         if (!SettlementBuild.STANDALONE && !net.minecraftforge.fml.loading.FMLLoader.getDist().isDedicatedServer()) return;
         MinecraftForge.EVENT_BUS.register(SettlementCommands.class);
@@ -20,6 +21,10 @@ public final class JemSettlements {
         MinecraftForge.EVENT_BUS.register(com.siirio.jemsettlements.network.SettlementActions.class);
         MinecraftForge.EVENT_BUS.register(com.siirio.jemsettlements.network.SettlementWarnings.class);
         MinecraftForge.EVENT_BUS.register(SettlementRuntime.class);
+        MinecraftForge.EVENT_BUS.register(com.siirio.jemsettlements.happiness.CityInspection.class);
+        MinecraftForge.EVENT_BUS.register(com.siirio.jemsettlements.happiness.AnimalObservationService.class);
+        MinecraftForge.EVENT_BUS.register(com.siirio.jemsettlements.happiness.ResidentConditions.class);
+        MinecraftForge.EVENT_BUS.register(com.siirio.jemsettlements.compat.NativeBedCompatibility.ServerLifecycle.class);
         if (net.minecraftforge.fml.ModList.get().isLoaded("recruits")) MinecraftForge.EVENT_BUS.register(com.siirio.jemsettlements.compat.recruits.RecruitRuntime.class);
     }
 }

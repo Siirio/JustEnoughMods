@@ -428,3 +428,16 @@ master overhaul remains incomplete in Docs/plans/2026-10-18-gameplay-settlements
 The observed test jem crash at21:46:09 was Rendering screen / DebugInvScreen, with WATUT1.2.3 innerBlit calling PoseStack.last on an empty deque. Exact installed Recruits1.15.2 bytecode shows DebugInvScreen native labels method `m_280003_(GuiGraphics,II)V` calls `popPose` at offset2044 and never pushes a frame; its ScreenBase labels method is noop. AbstractContainerScreen owns the surrounding label transform. WATUT's real screen recapture exposes the earlier ownership violation; its capture and FancyMenu are retained.
 
 JEMCompat's client-only `RecruitDebugScreenPoseMixin`, gated to exact Recruits1.15.2, adds the missing local push immediately before the unique native0.7 scale, retaining its existing trailing pop and using full runtime descriptors. It does not guard/catch empty stacks, add balancing frames around unrelated screens, change UI content, or change recruit inventory/gameplay. The live crash is evidence; production compilation/publication is distinct from fresh player acceptance, which remains in testing.
+
+## Settlements living-condition ownership — 2026-10-19
+
+`HousingConditionConfig` owns the proposed balance defaults in
+`jem-settlements-living-conditions.toml`. `ResidentialRooms` owns bounded cached
+reachable interior floor observations; `ResidentConditions` owns current occupancy,
+BLOCK-light and visible-hostile observations. `ResidentMood` remains the single
+happiness owner; native Recruits retains base morale, with derived condition penalties
+applied only through Settlements snapshots. Native damage-to-fear does not also
+permanently subtract mood. Bed privacy is a native sleep eligibility condition.
+Matching production client/server Settlements protocol10 carries localized reasons
+and entity-linked refusal. Both source profiles include the same complete GUI and
+localization resources; only the explicit sandbox profile enables integrated gameplay.

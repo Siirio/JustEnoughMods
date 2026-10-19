@@ -54,3 +54,13 @@ tasks.named('jarJar').configure {
     if (settlementProfile == 'sandbox') archiveClassifier = 'sandbox'
     manifest { attributes 'JEM-Settlement-Profile': settlementProfile }
 }
+
+// Explicitly requested living-condition regressions; never attached to ordinary builds.
+['LivingConditionContracts', 'ResidentialRoomsContracts', 'ThreatRouteContracts'].each { contract ->
+    tasks.register(contract[0].toLowerCase() + contract.substring(1), JavaExec) {
+        dependsOn testClasses
+        classpath = sourceSets.test.runtimeClasspath
+        mainClass = 'com.siirio.jemsettlements.happiness.' + contract
+        systemProperty 'jem.test.standalone', settlementProfile == 'sandbox'
+    }
+}

@@ -1,0 +1,105 @@
+{
+  "schema_version": 2,
+  "change_id": "settlements.migration-completeness",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "minecraft:bell"
+    },
+    {
+      "type": "namespace",
+      "registry": "entities",
+      "value": "minecraft"
+    },
+    {
+      "type": "namespace",
+      "registry": "entities",
+      "value": "recruits"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime": "Settlements authoritative gameplay only; production dedicated, explicitly built sandbox integrated. Optional Recruits requires installed1.15.2."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_settlements",
+    "priority": 540
+  },
+  "change": {
+    "summary": "Repair empty isometry and untranslated happiness UI after migration; carry the entire developed Noble UI scope and lock complete migrations",
+    "modifiers": [
+      {
+        "property": "settlements.city_snapshot_lifecycle",
+        "operation": "replace",
+        "before": "CityInspection auto-subscriber and explicit tick guard are physical dedicated-only; sandbox capture queues a job that never advances. Animal observation and native bed lifecycle are likewise omitted.",
+        "after": "Register these three Forge subscribers once behind the owning Settlements profile gate. City jobs use SettlementAuthority; explicit sandbox permits logical integrated work, production remains dedicated-only. Existing 32 columns/tick, 450 sampled columns, visibility projection, no-force-load policy and cleanup retained."
+      },
+      {
+        "property": "settlements.localized_gui_completeness",
+        "operation": "replace",
+        "before": "SettlementScreen looks up metrics/amenity keys under gui namespace; source translations exist under metrics/amenity. Housing tooltips expose raw category IDs. Noble retains grey surfaces.",
+        "after": "Use explicit existing translation namespace owners; localized real metric explanations and tax penalty; localize housing categories. Noble uses existing Recruit material/components while retaining native offer list and actions. All locale/resource sets remain in both complete artifacts."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMSettlements canonical owners",
+    "kind": "migration_repair_and_requested_food_behavior",
+    "source_files": [
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/JemSettlements.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/CityInspection.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AnimalObservationService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/NativeBedCompatibility.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/HousingInspector.java",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+      "Client/ManagedPack/mods/jem-settlements-2.1.0.jar",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/NobleTradePresentation.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/NobleTradeScreenMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/NobleTradeListEntryMixin.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Repair empty isometry and untranslated happiness UI after migration; carry the entire developed Noble UI scope and lock complete migrations",
+    "decision_source": "User: empty city isometry, untranslated happiness details, complete migration lock, Noble UI parity, and positive food happiness with extra matching-dish bonus.",
+    "codex_choices": "Reuse existing material family and server-owned calculation. Safe repeats+1 and requested bonus+4 are implementation choices; no new runtime dependencies."
+  },
+  "introduced": {
+    "date": "2026-10-19",
+    "commit": "SELF",
+    "action": "complete_feature_scope",
+    "summary": "Repair empty isometry and untranslated happiness UI after migration; carry the entire developed Noble UI scope and lock complete migrations"
+  },
+  "history": [
+    {
+      "date": "2026-10-19",
+      "commit": "SELF",
+      "action": "complete_feature_scope",
+      "summary": "Repair empty isometry and untranslated happiness UI after migration; carry the entire developed Noble UI scope and lock complete migrations"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "settlements",
+      "city_lod",
+      "localization",
+      "gui",
+      "animals",
+      "housing",
+      "native_recruits",
+      "packaging"
+    ],
+    "relations": [],
+    "notes": [
+      "Native merchant/recruit state, ownership, inventory and quote/payment authority preserved.",
+      "No tests or gameplay launch; user acceptance remains pending."
+    ],
+    "unresolved": [
+      "Visual/runtime acceptance pending user review."
+    ]
+  }
+}

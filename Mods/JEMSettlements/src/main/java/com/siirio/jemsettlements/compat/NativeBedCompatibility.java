@@ -21,7 +21,7 @@ public final class NativeBedCompatibility {
     private static volatile Set<BlockState> supportedHeads=Set.of(),homeStates=Set.of();
     private NativeBedCompatibility() { }
     @SubscribeEvent public static void setup(FMLCommonSetupEvent event) {
-        if(net.minecraftforge.fml.loading.FMLEnvironment.dist!=net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER)return;
+        if(!com.siirio.jemsettlements.SettlementBuild.STANDALONE&&net.minecraftforge.fml.loading.FMLEnvironment.dist!=net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER)return;
         event.enqueueWork(NativeBedCompatibility::extendNativeHome);
     }
     private static void extendNativeHome() {
@@ -48,11 +48,10 @@ public final class NativeBedCompatibility {
     public static Set<BlockState> homeStates() { return homeStates; }
 
     /** Forge can restore registry snapshots between server lifecycles; refresh the native reverse index before chunks load. */
-    @Mod.EventBusSubscriber(modid=JemSettlements.MOD_ID,value=net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER)
     public static final class ServerLifecycle {
         private ServerLifecycle() { }
         @SubscribeEvent public static void beforeStart(net.minecraftforge.event.server.ServerAboutToStartEvent event) {
-            if(event.getServer().isDedicatedServer())extendNativeHome();
+            if(com.siirio.jemsettlements.SettlementBuild.STANDALONE||event.getServer().isDedicatedServer())extendNativeHome();
         }
     }
 }

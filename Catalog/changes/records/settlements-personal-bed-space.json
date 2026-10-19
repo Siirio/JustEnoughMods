@@ -1,0 +1,145 @@
+{
+  "schema_version": 2,
+  "change_id": "settlements.personal-bed-space",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "blocks"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:villager"
+    },
+    {
+      "type": "namespace",
+      "registry": "entities",
+      "value": "recruits"
+    }
+  ],
+  "conditions": [
+    {
+      "scope": "Physical BedBlock subclasses, registered living villagers and explicitly enrolled owned recruits, authoritative Settlements profile only."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_settlements",
+    "priority": 550
+  },
+  "change": {
+    "summary": "Four configurable server-owned living conditions: same-room bed privacy, reachable-floor overcrowding, persistent block lighting and visible-hostile fear.",
+    "modifiers": [
+      {
+        "property": "settlements.housing.personal_space",
+        "operation": "deny",
+        "before": "Any assigned physical bed could count as suitable housing and native sleep regardless of other beds immediately around it.",
+        "after": "Distinct normalized beds within horizontal radius2 on the same floor and same room refuse native sleep before bookkeeping; release matching HOME ticket before memory removal. Crowded bed housing is zero. Native recruit rejected targets clear for reselection. No arbitrary personal happiness cap."
+      },
+      {
+        "property": "settlements.housing.refusal_presentation",
+        "operation": "add",
+        "before": null,
+        "after": "Protocol10 entityId+UUID fixed localized notice Я хочу кровать подальше от других;60tick overhead within24blocks,200tick per-entity cadence,128 slots; GUI/Jade current condition reasons and uncertainty."
+      },
+      {
+        "property": "settlements.housing.overcrowding",
+        "operation": "add",
+        "before": null,
+        "after": "Cached reachable covered useful floor area / (residents*9); current linear penalty up to30 below ratio1; connected accessible floors, no forced chunks; bounded tick-distributed traversal with block and roster invalidation."
+      },
+      {
+        "property": "settlements.housing.lighting",
+        "operation": "add",
+        "before": null,
+        "after": "BLOCK light at bed plus up to12 spatially/vertically stratified accessible floor points every600ticks: >=8 zero,4..7 penalty5,0..3 penalty10; skylight excluded."
+      },
+      {
+        "property": "settlements.housing.fear",
+        "operation": "add",
+        "before": null,
+        "after": "Visible hostile16blocks: clear sight10, glass-only5, reachable local collision route10 even hidden; actual running native BreakDoorGoal may open its nearby wooden door in route observation. Attack20; recovery1/100ticks when safe. Global128 route nodes/tick,16/job,2048/job maximum, cached and bounded; unknown preserves prior fear. No per-scan native pathfinding or environmental hazard fear."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMSettlements ResidentialRooms, ResidentConditions, BedPersonalSpace and ResidentMood",
+    "kind": "user_requested_housing_constraint",
+    "source_files": [
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/BedPersonalSpace.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/ResidentMood.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/TownMetricsService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitsAdapter.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitNeedsService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/jade/SettlementJadePlugin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/jade/RecruitJadeData.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/BedSpaceNoticePacket.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/BedSpaceNotices.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/VillagerSleepSpaceMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitSleepSpaceMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitBedSpaceGoalMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java",
+      "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+      "Client/ManagedPack/mods/jem-settlements-2.1.0.jar",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/HousingConditionConfig.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/ResidentConditions.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/ResidentialRooms.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementViewDetails.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/JemSettlements.java",
+      "Mods/JEMSettlements/build.gradle",
+      "Mods/JEMSettlements/src/test/java/com/siirio/jemsettlements/happiness/LivingConditionContracts.java",
+      "Mods/JEMSettlements/src/test/java/com/siirio/jemsettlements/happiness/ResidentialRoomsContracts.java",
+      "Mods/JEMSettlements/src/test/java/com/siirio/jemsettlements/happiness/ThreatRouteContracts.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/ThreatAssessment.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/ThreatRouteModel.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/LightingPolicy.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/CrowdingPolicy.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/ThreatCollisionPolicy.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Four configurable server-owned living conditions: same-room bed privacy, reachable-floor overcrowding, persistent block lighting and visible-hostile fear.",
+    "decision_source": "User final four-mechanic specification; all numeric defaults proposed balance, not confirmed historical values. User follow-up explicitly authorizes automated edge-case tests, glass visibility, open routes/door-breaking threats without per-scan expensive pathfinding, room-wide block light and low-furniture privacy rules.",
+    "codex_choices": "Visible fear10, attack20, recovery1/100ticks; bounded cached traversal and distributed occupancy observations; current derived penalties preserve base mood and native morale. Overhead60ticks/200tick cadence. Glass fear5;128 route nodes globally per tick,16/job slice with per-job bounded block-state memoization; exact collision-owner margins include protruding fence/wall shapes; incomplete extent preserves unknown."
+  },
+  "introduced": {
+    "date": "2026-10-19",
+    "commit": "SELF",
+    "action": "require_personal_bed_space",
+    "summary": "Four configurable server-owned living conditions: same-room bed privacy, reachable-floor overcrowding, persistent block lighting and visible-hostile fear."
+  },
+  "history": [
+    {
+      "date": "2026-10-19",
+      "commit": "SELF",
+      "action": "require_personal_bed_space",
+      "summary": "Four configurable server-owned living conditions: same-room bed privacy, reachable-floor overcrowding, persistent block lighting and visible-hostile fear."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "housing",
+      "personal_mood",
+      "native_home_poi",
+      "native_sleep",
+      "recruits",
+      "network_protocol10",
+      "localized_overhead_text",
+      "jade"
+    ],
+    "relations": [],
+    "notes": [
+      "Production remains dedicated-only; explicit sandbox enables integrated gameplay.",
+      "Matching Settlements JAR required on local Server and managed clients due protocol10.",
+      "Native may reconsider a rejected bed; every actual sleep attempt remains validated and cannot receive successful-sleep credit."
+    ],
+    "unresolved": [
+      "In-game visual/player acceptance pending; automated edge-case contracts are explicitly authorized by the current user follow-up."
+    ]
+  }
+}

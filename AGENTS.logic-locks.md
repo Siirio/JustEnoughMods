@@ -83,3 +83,12 @@
 - Unlock condition: Explicit user request to change this local client handoff guarantee.
 - Created: 2026-10-18
 
+## LOCKED: Complete Settlements feature migration
+- Scope: Mods/JEMSettlements source profiles, client GUI and resources, network/runtime subscribers, bundled dependencies and destination artifacts; global migration procedure owned by protect-approved-logic
+- Approved signal: При миграций чего либо всегдла переносить всю его локализацию, GUI компоненты и все связанное что было разработано в его scope - закрепить
+- Protected behavior: Every Settlements migration preserves the complete developed feature scope, including every supported translation, GUI component/resource and its required producers, routes, lifecycle and dependencies; destination profile retains working end-to-end behavior. Follow the canonical protect-approved-logic Complete feature migrations procedure.
+- Reuse pattern: Preserve the existing implementation pattern unless the unlock condition is met.
+- Allowed changes: Profile-specific authority and packaging adapters preserving all existing feature capabilities; no unrelated subsystem migration or duplicate state owners.
+- Unlock condition: Explicit user request to remove or redesign a named feature capability.
+- Created: 2026-10-19
+

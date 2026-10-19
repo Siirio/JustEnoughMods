@@ -49,13 +49,14 @@ public final class TownMetricsService {
             if(entity==null)for(var other:level.getServer().getAllLevels())if(other!=level&&other.getEntity(resident.villagerId())!=null){entity=other.getEntity(resident.villagerId());break;}
             if(entity instanceof Villager villager&&villager.isAlive()) {
                 resident.observeName(villager);
+                BedPersonalSpace.refresh(villager, resident);
                 resident.seen(villager.getBrain().getMemory(net.minecraft.world.entity.ai.memory.MemoryModuleType.HOME).orElse(null),villager.getBrain().getMemory(net.minecraft.world.entity.ai.memory.MemoryModuleType.JOB_SITE).orElse(null));
                 boolean inside=villager.level()==level&&town.contains(villager.blockPosition());
                 observation.putBoolean("Known",true);observation.putBoolean("Present",inside);observation.putLong("Time",level.getGameTime());
                 observation.putBoolean("Adult",!villager.isBaby()&&villager.getVillagerData().getProfession()!=VillagerProfession.NITWIT);
                 observation.putInt("Food",inside?(resident.craving()?resident.satiety()<10?0:35:100):0);
                 var home=resident.home().orElse(null);
-                boolean homeUnavailable=inside&&home!=null&&home.dimension().equals(level.dimension())&&town.contains(home.pos())&&!level.hasChunkAt(home.pos());
+                boolean homeUnavailable=inside&&home!=null&&home.dimension().equals(level.dimension())&&town.contains(home.pos())&&(!level.hasChunkAt(home.pos())||BedPersonalSpace.inspect(level,home.pos())==BedPersonalSpace.Space.UNAVAILABLE);
                 if(homeUnavailable) { housingUnknown|=!prior.contains("Housing");stale++; }
                 else observation.putInt("Housing",inside&&validHome(level,town,home)?Math.min(100,45+resident.homeAmenities().points()*4):0);
                 String reason=!inside?"outside":villager.isBaby()?"child":!observation.getBoolean("Adult")?"not_workforce":employment(level,town,villager,resident.workplace().orElse(null),usedJobs);
@@ -117,12 +118,17 @@ public final class TownMetricsService {
         town.happinessEvidence(housing,food,safety,jobs,social,comfort);
         int happiness=divisor==0?0:HappinessService.calculate(housing,food,safety,jobs,social,comfort,town.taxPercent());
         if(divisor>0)happiness=Math.min(happiness+animals*SettlementMetricsConfig.ANIMAL_BONUS.get()/100,HappinessService.socialCap(social));
-        town.happiness(happiness);town.lastHappinessDay(Math.floorDiv(level.getGameTime(),24000L));
+        int crowdPenalty=divisor==0?0:(int)Math.round(residents.stream().mapToInt(ResidentMood::crowdingPenalty).average().orElse(0));
+        int lightPenalty=divisor==0?0:(int)Math.round(residents.stream().mapToInt(ResidentMood::lightPenalty).average().orElse(0));
+        int fearPenalty=divisor==0?0:(int)Math.round(residents.stream().mapToInt(ResidentMood::fearPenalty).average().orElse(0));
+        metrics.putInt("CrowdingPenalty",crowdPenalty);metrics.putInt("LightPenalty",lightPenalty);metrics.putInt("FearPenalty",fearPenalty);
+        metrics.putBoolean("ConditionsUnknown",residents.stream().anyMatch(ResidentMood::conditionsUnknown));town.metrics(metrics);
+        town.happiness(Math.max(0,happiness-crowdPenalty-lightPenalty-fearPenalty));town.lastHappinessDay(Math.floorDiv(level.getGameTime(),24000L));
     }
     private static int required(long area, int coverage, int minimum) { return (int)Math.max(minimum, (area + coverage - 1) / coverage); }
     private static boolean validHome(ServerLevel level, TownRecord town, GlobalPos home) {
         return home != null && home.dimension().equals(level.dimension()) && town.contains(home.pos()) && level.hasChunkAt(home.pos())
-                && level.getBlockState(home.pos()).getBlock() instanceof BedBlock;
+                && level.getBlockState(home.pos()).getBlock() instanceof BedBlock && BedPersonalSpace.inspect(level,home.pos())==BedPersonalSpace.Space.CLEAR;
     }
     private static String employment(ServerLevel level, TownRecord town, Villager villager, GlobalPos site, java.util.Set<GlobalPos> used) {
         if (site == null) return "missing";

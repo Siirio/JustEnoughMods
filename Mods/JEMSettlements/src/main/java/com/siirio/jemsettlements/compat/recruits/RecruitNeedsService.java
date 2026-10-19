@@ -82,6 +82,7 @@ public final class RecruitNeedsService {
     private static com.siirio.jemsettlements.town.TownRecord prepareMeal(SettlementSavedData data, WorkforceRecord record,
                                                                  AbstractRecruitEntity recruit, long now, boolean critical) {
         var needs = record.foodHistory();
+        com.siirio.jemsettlements.happiness.BedPersonalSpace.refresh(recruit, needs);
         needs.nativeNeeds(recruit.getMorale(), recruit.getHunger());
         var dishes = com.siirio.jemsettlements.happiness.AvailableDishService.moddedDishes(recruit.getServer());
         needs.retainRequestedDishes(dishes); needs.refreshCraving();
@@ -109,11 +110,11 @@ public final class RecruitNeedsService {
             food.add(new ResidentFoodService.Food(stack.copyWithCount(1), () -> inventory.removeItem(selected, 1), null,
                     ResidentFoodService.priority(needs, stack, recruit), 0));
         }
-        float morale = recruit.getMorale(), satiety = recruit.getHunger(); int previousMood = needs.mood();
+        float morale = recruit.getMorale(), satiety = recruit.getHunger(); int previousMood = needs.personalMood();
         // A critical combat pause uses food already carried or within reach; it never drags combat AI across town.
         boolean fed = ResidentFoodService.feed((ServerLevel) recruit.level(), town, recruit, needs, now, nativeRule, food,
                 stack -> { var properties = stack.getItem().getFoodProperties(stack, recruit); return properties == null ? 0 : (int) (properties.getNutrition() * 5 + properties.getSaturationModifier()); }, accepted -> {
-            recruit.setMoral(Math.max(0, Math.min(100, morale + needs.mood() - previousMood)));
+            recruit.setMoral(Math.max(0, Math.min(100, morale + needs.personalMood() - previousMood)));
             var classification = com.siirio.jemsettlements.happiness.FoodValueRegistry.classify(accepted, recruit).orElseThrow();
             var properties = accepted.getItem().getFoodProperties(accepted, recruit);
             if (properties != null) recruit.heal(properties.getSaturationModifier());

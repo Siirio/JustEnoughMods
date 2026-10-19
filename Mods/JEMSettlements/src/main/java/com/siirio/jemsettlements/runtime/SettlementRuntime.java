@@ -48,7 +48,7 @@ public final class SettlementRuntime {
     private static final java.util.List<FoundingWave> FOUNDING_WAVES = new java.util.ArrayList<>();
     private SettlementRuntime() { }
 
-    @SubscribeEvent public static void stopped(net.minecraftforge.event.server.ServerStoppedEvent event) { SharedStorageService.clear(); TownMealService.clear(); com.siirio.jemsettlements.happiness.CityComfortService.clear(); com.siirio.jemsettlements.happiness.TownMetricsService.clear(); }
+    @SubscribeEvent public static void stopped(net.minecraftforge.event.server.ServerStoppedEvent event) { SharedStorageService.clear(); TownMealService.clear(); com.siirio.jemsettlements.happiness.CityComfortService.clear(); com.siirio.jemsettlements.happiness.TownMetricsService.clear(); com.siirio.jemsettlements.happiness.BedPersonalSpace.clear(); com.siirio.jemsettlements.happiness.ResidentConditions.clear(); }
     @SubscribeEvent public static void reload(AddReloadListenerEvent event) { event.addListener(new FoodValueRegistry()); event.addListener(new AmenityRegistry()); }
 
     @SubscribeEvent
@@ -102,10 +102,24 @@ public final class SettlementRuntime {
     @SubscribeEvent public static void placed(BlockEvent.EntityPlaceEvent event) {
         if (!(event.getLevel() instanceof ServerLevel level) || !SettlementAuthority.active(level.getServer())) return;
         AmenityScanService.invalidate(level.getServer(), level.dimension(), event.getPos());
+        com.siirio.jemsettlements.happiness.BedPersonalSpace.invalidate(level, event.getPos());
+        com.siirio.jemsettlements.happiness.ResidentConditions.invalidate(level, event.getPos());
         if (event.getPlacedBlock().is(Blocks.BELL) && event.getEntity() instanceof ServerPlayer player && SettlementAuthority.active(player))
             SettlementNetwork.sendFounding(player, event.getPos());
     }
-    @SubscribeEvent public static void broken(BlockEvent.BreakEvent event) { if (event.getLevel() instanceof ServerLevel level && SettlementAuthority.active(level.getServer())) AmenityScanService.invalidate(level.getServer(), level.dimension(), event.getPos()); }
+    @SubscribeEvent public static void broken(BlockEvent.BreakEvent event) { if (event.getLevel() instanceof ServerLevel level && SettlementAuthority.active(level.getServer())) { AmenityScanService.invalidate(level.getServer(), level.dimension(), event.getPos()); com.siirio.jemsettlements.happiness.BedPersonalSpace.invalidate(level, event.getPos()); com.siirio.jemsettlements.happiness.ResidentConditions.invalidate(level, event.getPos()); } }
+    @SubscribeEvent public static void exploded(net.minecraftforge.event.level.ExplosionEvent.Detonate event) {
+        if (!(event.getLevel() instanceof ServerLevel level) || !SettlementAuthority.active(level.getServer())) return;
+        for (BlockPos pos : event.getAffectedBlocks()) {
+            com.siirio.jemsettlements.happiness.BedPersonalSpace.invalidate(level, pos);
+            com.siirio.jemsettlements.happiness.ResidentConditions.invalidate(level, pos);
+        }
+    }
+    @SubscribeEvent public static void pistonMoved(net.minecraftforge.event.level.PistonEvent.Post event) {
+        if (!(event.getLevel() instanceof ServerLevel level) || !SettlementAuthority.active(level.getServer())) return;
+        com.siirio.jemsettlements.happiness.BedPersonalSpace.clear();
+        com.siirio.jemsettlements.happiness.ResidentConditions.invalidate(level, event.getPos());
+    }
     public static void registerBornChild(ServerLevel level, Villager firstParent, Villager secondParent, Villager child) {
         if (!SettlementAuthority.active(level.getServer()) || child == null || !child.isAlive()
                 || level.getEntity(child.getUUID()) != child) return;
@@ -152,6 +166,7 @@ public final class SettlementRuntime {
         SettlementSavedData data = SettlementSavedData.get(level.getServer());
         var resident = data.resident(event.getEntity().getUUID());
         if (resident.isEmpty() || !resident.get().living()) return;
+        if (com.siirio.jemsettlements.happiness.ResidentConditions.isHostileDamage(event)) return;
         resident.get().damaged(event.getAmount());
         data.changed();
     }
@@ -164,6 +179,7 @@ public final class SettlementRuntime {
         AmenityScanService.tick(event.getServer());
         com.siirio.jemsettlements.happiness.TownMetricsService.tickPaths(event.getServer());
         com.siirio.jemsettlements.happiness.CityComfortService.tick(event.getServer());
+        com.siirio.jemsettlements.happiness.ResidentConditions.tick(event.getServer());
         if (event.getServer().getTickCount() % 10 == 0) {
             SettlementSavedData data = SettlementSavedData.get(event.getServer());
             if (net.minecraftforge.fml.ModList.get().isLoaded("recruits")) com.siirio.jemsettlements.compat.recruits.RecruitRebellionService.tick(event.getServer());
@@ -202,6 +218,7 @@ public final class SettlementRuntime {
             var availableDishes = com.siirio.jemsettlements.happiness.AvailableDishService.moddedDishes(level.getServer());
             for (ResidentMood resident : data.residents(town.id())) {
                 var entity = level.getEntity(resident.villagerId()); if (!(entity instanceof Villager villager) || !villager.isAlive()) continue;
+                com.siirio.jemsettlements.happiness.BedPersonalSpace.refresh(villager, resident);
                 resident.observeName(villager); resident.seen(villager.getBrain().getMemory(MemoryModuleType.HOME).orElse(null), villager.getBrain().getMemory(MemoryModuleType.JOB_SITE).orElse(null)); resident.dailyUpdate(day);
                 resident.retainRequestedDishes(availableDishes);
                 resident.refreshCraving(); TownMealService.prepare(level, town, villager, resident, now);

@@ -1,16 +1,13 @@
 package com.siirio.jemsettlements.happiness;
 
-import com.siirio.jemsettlements.JemSettlements;
 import com.siirio.jemsettlements.runtime.SettlementAuthority;
 import com.siirio.jemsettlements.town.SettlementSavedData;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 
 /** Reuse native per-entity ticks rather than allocate unbounded AABB herd query lists. */
-@Mod.EventBusSubscriber(modid=JemSettlements.MOD_ID,value=net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER)
 public final class AnimalObservationService {
     private static int tick=-1,used;
     private static final String LAST="JemAnimalObservationTick";

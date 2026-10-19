@@ -1,0 +1,87 @@
+{
+  "schema_version": 2,
+  "change_id": "settlements.safe-food-mood",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "items"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:villager"
+    },
+    {
+      "type": "namespace",
+      "registry": "entities",
+      "value": "recruits"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime": "Settlements authoritative gameplay only; production dedicated, explicitly built sandbox integrated. Optional Recruits requires installed1.15.2."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_settlements",
+    "priority": 540
+  },
+  "change": {
+    "summary": "User requests a small happiness increase from eaten food and a larger increase for the suitable requested dish",
+    "modifiers": [
+      {
+        "property": "settlements.serving_mood",
+        "operation": "replace",
+        "before": "Safe recent-repeat food applies -2; requested dish only raises a nonnegative gain to at least5, so high-value preferred food receives no extra bonus.",
+        "after": "For an actual accepted serving, unsafe baseMood<0 retains its penalty; safe recent-repeat gives+1, other safe food max(1,baseMood); matching current requestedDish adds+4 and clears request. Existing+15 positive/-20 negative over rolling7days,100 mood/social caps, native food properties, serving cadence, real extraction and satiety remain. Both villagers and explicitly enrolled recruits reuse this same owner."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMSettlements canonical owners",
+    "kind": "migration_repair_and_requested_food_behavior",
+    "source_files": [
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/ResidentMood.java",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "User requests a small happiness increase from eaten food and a larger increase for the suitable requested dish",
+    "decision_source": "User: empty city isometry, untranslated happiness details, complete migration lock, Noble UI parity, and positive food happiness with extra matching-dish bonus.",
+    "codex_choices": "Reuse existing material family and server-owned calculation. Safe repeats+1 and requested bonus+4 are implementation choices; no new runtime dependencies."
+  },
+  "introduced": {
+    "date": "2026-10-19",
+    "commit": "SELF",
+    "action": "complete_feature_scope",
+    "summary": "User requests a small happiness increase from eaten food and a larger increase for the suitable requested dish"
+  },
+  "history": [
+    {
+      "date": "2026-10-19",
+      "commit": "SELF",
+      "action": "complete_feature_scope",
+      "summary": "User requests a small happiness increase from eaten food and a larger increase for the suitable requested dish"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "food",
+      "resident_mood",
+      "native_recruit_morale",
+      "real_inventory",
+      "jade",
+      "guide_localization"
+    ],
+    "relations": [],
+    "notes": [
+      "Native merchant/recruit state, ownership, inventory and quote/payment authority preserved.",
+      "No tests or gameplay launch; user acceptance remains pending."
+    ],
+    "unresolved": [
+      "Visual/runtime acceptance pending user review."
+    ]
+  }
+}

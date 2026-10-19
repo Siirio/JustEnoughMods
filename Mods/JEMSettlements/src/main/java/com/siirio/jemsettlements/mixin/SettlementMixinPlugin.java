@@ -15,6 +15,8 @@ public final class SettlementMixinPlugin implements IMixinConfigPlugin {
         if (mixin.contains(".xaero.")) return FMLEnvironment.dist == Dist.CLIENT
                 && net.minecraftforge.fml.loading.FMLLoader.getLoadingModList().getModFileById("xaeroworldmap") != null;
         if (mixin.endsWith(".PatPatSuccessMixin")) return gameplayMixins() && net.minecraftforge.fml.loading.FMLLoader.getLoadingModList().getModFileById("patpat") != null;
+        if (mixin.endsWith(".VillagerSleepSpaceMixin") || mixin.endsWith(".RecruitSleepSpaceMixin")) return gameplayMixins();
+        if (mixin.endsWith(".RecruitBedSpaceGoalMixin")) return gameplayMixins() && net.minecraftforge.fml.loading.FMLLoader.getLoadingModList().getModFileById("recruits") != null;
         if (mixin.endsWith(".PoiTypesAccess") || mixin.endsWith(".PoiTypeHomeMixin") || mixin.endsWith(".PoiSectionAccess") || mixin.endsWith(".PoiSectionStorageAccess") || mixin.endsWith(".PoiManagerBedRepairMixin") || mixin.endsWith(".VillagerBirthMixin")) return gameplayMixins();
         if (mixin.endsWith(".PlayerSaveAccess") || mixin.endsWith(".SharedChestLidMixin")) return true;
         if (net.minecraftforge.fml.loading.FMLLoader.getLoadingModList().getModFileById("recruits") == null) return false;

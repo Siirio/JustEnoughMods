@@ -27,6 +27,23 @@ public final class ResidentMood {
     private int mood = 50;
     private int environmentBonus;
     private int socialMoodCap = 100;
+    private GlobalPos crowdedHome;
+    public Optional<GlobalPos> crowdedHome() { return Optional.ofNullable(crowdedHome); }
+    public void crowdedHome(GlobalPos value) { crowdedHome = value; }
+    private GlobalPos observedBed;
+    public Optional<GlobalPos> observedBed() { return Optional.ofNullable(observedBed); }
+    public void observedBed(GlobalPos value) { observedBed = value; }
+    private int crowdingPenalty, lightPenalty, fearPenalty;
+    private boolean conditionsUnknown;
+    public int crowdingPenalty() { return crowdingPenalty; }
+    public int lightPenalty() { return lightPenalty; }
+    public int fearPenalty() { return fearPenalty; }
+    public int conditionsPenalty() { return crowdingPenalty + lightPenalty + fearPenalty; }
+    public boolean conditionsUnknown() { return conditionsUnknown; }
+    public void crowdingPenalty(int value) { crowdingPenalty = clamp(value); }
+    public void lightPenalty(int value) { lightPenalty = clamp(value); }
+    public void fearPenalty(int value) { fearPenalty = clamp(value); }
+    public void conditionsUnknown(boolean value) { conditionsUnknown = value; }
     private int satiety = 50;
     private long lastServingGameTime = Long.MIN_VALUE;
     private long lastDailyUpdate = Long.MIN_VALUE;
@@ -69,7 +86,7 @@ public final class ResidentMood {
     public UUID townId() { return townId; }
     public Optional<GlobalPos> home() { return Optional.ofNullable(home); }
     public Optional<GlobalPos> workplace() { return Optional.ofNullable(workplace); }
-    public int mood() { return com.siirio.jemsettlements.happiness.HappinessService.residentMood(mood, environmentBonus, socialMoodCap); }
+    public int mood() { return clamp(com.siirio.jemsettlements.happiness.HappinessService.residentMood(mood, environmentBonus, socialMoodCap) - conditionsPenalty()); }
     public int personalMood() { return mood; }
     public int environmentBonus() { return environmentBonus; }
     public int socialMoodCap() { return socialMoodCap; }
@@ -130,8 +147,10 @@ public final class ResidentMood {
         if (requestedDish != null && !available.contains(requestedDish)) requestedDish = null;
     }
     public int acceptFood(ResourceLocation food, int baseMood, int satietyDelta, long gameTime) {
-        long day = Math.floorDiv(gameTime, 24_000L); resetServingDay(day); pruneStimuli(day); boolean repeated = recentFoods.contains(food.toString()); int applied = baseMood > 0 && repeated ? -2 : baseMood;
-        if (food.equals(requestedDish) && applied >= 0) { applied = Math.max(applied, 5); requestedDish = null; }
+        long day = Math.floorDiv(gameTime, 24_000L); resetServingDay(day); pruneStimuli(day);
+        boolean repeated = recentFoods.contains(food.toString());
+        int applied = baseMood < 0 ? baseMood : repeated ? 1 : Math.max(1, baseMood);
+        if (food.equals(requestedDish) && baseMood >= 0) { applied += 4; requestedDish = null; }
         if (applied > 0) { int used = positiveByDay.values().stream().mapToInt(Integer::intValue).sum(); applied = Math.min(applied, Math.max(0, 15 - used)); positiveByDay.merge(day, applied, Integer::sum); }
         else if (applied < 0) { int used = -negativeByDay.values().stream().mapToInt(Integer::intValue).sum(); applied = Math.max(applied, -Math.max(0, 20 - used)); negativeByDay.merge(day, applied, Integer::sum); }
         mood = clamp(mood + applied); satiety = clamp(satiety + satietyDelta); lastServingGameTime = gameTime; foodCooldownDays.put(food.toString(), day);
@@ -167,6 +186,9 @@ public final class ResidentMood {
         if (displayName != null) tag.putString("DisplayName", displayName);
         tag.putString("Profession", profession); tag.putBoolean("Child", child); tag.putLong("LastPatDay", lastPatDay);
         tag.put("NeedObservation", needObservation.copy()); tag.putInt("Mood", mood); tag.putInt("EnvironmentBonus", environmentBonus); tag.putInt("SocialMoodCap", socialMoodCap); tag.putInt("Satiety", satiety); tag.putLong("LastServing", lastServingGameTime); tag.putLong("LastDailyUpdate", lastDailyUpdate); tag.putBoolean("Living", living);
+        savePos(tag, "CrowdedHome", crowdedHome);
+        savePos(tag, "ObservedBed", observedBed);
+        tag.putInt("CrowdingPenalty", crowdingPenalty); tag.putInt("LightPenalty", lightPenalty); tag.putInt("FearPenalty", fearPenalty); tag.putBoolean("ConditionsUnknown", conditionsUnknown);
         tag.putInt("RegenerationTicks", regenerationTicks);
         tag.putLong("ServingDay", servingDay); CompoundTag servings = new CompoundTag(); servingsToday.forEach(servings::putInt); tag.put("ServingsToday", servings);
         tag.putBoolean("Craving", craving); tag.putInt("CravingThreshold", cravingThreshold); tag.putInt("CravingCycle", cravingCycle);
@@ -179,6 +201,9 @@ public final class ResidentMood {
     public static ResidentMood load(CompoundTag tag) {
         ResidentMood resident = new ResidentMood(tag.getUUID("Villager"), tag.getUUID("Town"), loadPos(tag, "Home"), loadPos(tag, "Work"));
         resident.needObservation = tag.getCompound("NeedObservation").copy();
+        resident.crowdedHome = loadPos(tag, "CrowdedHome");
+        resident.observedBed = loadPos(tag, "ObservedBed");
+        resident.crowdingPenalty = clamp(tag.getInt("CrowdingPenalty")); resident.lightPenalty = clamp(tag.getInt("LightPenalty")); resident.fearPenalty = clamp(tag.getInt("FearPenalty")); resident.conditionsUnknown = tag.getBoolean("ConditionsUnknown");
         resident.environmentBonus = clamp(tag.getInt("EnvironmentBonus")); resident.socialMoodCap = tag.contains("SocialMoodCap") ? clamp(tag.getInt("SocialMoodCap")) : 100;
         resident.mood = tag.contains("Mood") ? clamp(tag.getInt("Mood")) : 50; resident.satiety = tag.contains("Satiety") ? clamp(tag.getInt("Satiety")) : 50;
         resident.lastServingGameTime = tag.contains("LastServing") ? tag.getLong("LastServing") : Long.MIN_VALUE; resident.lastDailyUpdate = tag.contains("LastDailyUpdate") ? tag.getLong("LastDailyUpdate") : Long.MIN_VALUE;

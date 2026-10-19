@@ -1,5 +1,86 @@
 # Settlements standalone design
 
+## Living conditions — 2026-10-19
+
+User specifies four server-authoritative conditions. These numbers are proposed
+configurable balance defaults, not historical confirmed JEM values. Configuration:
+`jem-settlements-living-conditions.toml`, owned by `HousingConditionConfig`.
+
+- Personal boundaries: distinct physical beds within horizontal radius2 on the same
+  floor and in the same room prevent sleep. HEAD/FOOT remain one bed. Exact Russian
+  refusal: «Я хочу кровать подальше от других». Doors and walls separate rooms.
+- Overcrowding: reachable useful covered floor area / (residents ×9), with a linear
+  penalty of30×(1−ratio) below1. Connected accessible floors count together; walls,
+  obstacles and inaccessible cells do not. Unknown/unloaded/truncated observations
+  remain explicit and never invent a complete house area.
+- Lighting: BLOCK light at the bed and adjacent accessible floor, every600ticks.
+  Levels8–15 have no penalty,4–7 cost5,0–3 cost10. Skylight does not replace lamps.
+- Fear: visible hostile entities within16blocks, every100ticks. Walls block sight;
+  hostile damage creates strong fear. Codex chooses visible fear10, attack fear20,
+  recovery1 per100ticks. Water, lava and height are not fear sources.
+
+`ResidentialRooms` owns cached bounded reachable-floor discovery. Block changes and
+roster changes invalidate their corresponding observations; work is spread across
+server ticks. No forced chunk loads. `ResidentConditions` derives current penalties
+in the existing `ResidentMood`; they do not repeatedly consume permanent mood or
+native recruit morale. Food gains use personal base mood before condition penalties.
+Resolved crowding/light penalties disappear; fear fades. GUI and Jade show current
+reasons and unknown evidence. There is no separate60% happiness cap.
+
+Native sleep guards precede Villager LAST_SLEPT credit and Recruits goToBed's separate
+sleeping-position write. Matching native HOME POI release precedes memory removal;
+a rejected recruit target is cleared so native selection can continue. Crowded beds
+score zero housing. Registered residents and enrolled owned recruits alone are affected.
+
+The localized entity-linked refusal lasts60ticks, at most once per200ticks per NPC,
+within24blocks, with128 client slots. Protocol10 requires matching Settlements JARs.
+No names, audio or global dialogue scenes are replaced. Production stays dedicated
+server-only; explicit sandbox alone enables integrated gameplay. Runtime and visual
+acceptance remain in testing; opt-in automatic edge-case contracts are authorized by the follow-up. No gameplay launch is claimed.
+
+## Complete migration, city inspection and food happiness — 2026-10-19
+
+The user's current sandbox report exposed two omitted migration paths: the city
+snapshot job was still a physical-dedicated auto-subscriber with a dedicated tick
+guard, while the screen called existing metrics/amenity translations under the GUI
+namespace. City, animal-observation and native-bed lifecycle listeners now register
+once through the canonical Settlements profile gate. City jobs use the same logical
+authority as founding. Production remains dedicated-only; sandbox owns integrated
+gameplay. Existing snapshot budgets, visibility projection, no forced chunks,
+native HOME state and logical-server ownership remain.
+
+The happiness rows are evidence categories, not separate gameplay modes: housing20%,
+food20%, safety20%, jobs15%, community15% and city comfort10%, then the existing tax
+penalty. Clicking a category opens its existing guide chapter. Peaceful animal
+diversity and comfort subcategories describe their actual evidence; all labels,
+details, stale-state notices and housing categories use the correct translation
+owners in Russian and English. The tax explanation now names its real happiness
+penalty rather than claiming it only affects income.
+
+User additionally requires the Noble Villager screen to use the regular recruit UI
+family. Noble reuses the existing wood/metal/vine materials, localized group names
+and fee/weekly-wage components. Native offer order/selection/uses, scrolling, hire
+actions, group objects, permission-gated inventory and server quotes remain native.
+The read-only native description scroll area reserves a footer for real fee/wage;
+this is a presentation adapter, not a new offer or payment owner. Original evidence:
+`Docs/settlements/assets/reference/noble-recruit-family-2026-10-19/README.md`.
+
+User requests eaten food to add a little happiness and suitable food to add more.
+Codex retains the existing food-property gain1–5 for a fresh safe dish, changes a
+safe recent repeat from-2 to+1, and adds+4 when it matches the current requested
+dish. `ResidentMood.acceptFood` remains the single shared serving owner for ordinary
+villagers and explicitly enrolled native recruits. Bonuses happen after actual
+single-item extraction; harmful-food penalties, the rolling7-day positive15 and
+negative20 bounds, social/100 caps, satiety, per-food serving counts, cadence and
+native Recruits morale/food ownership remain. Jade and both localized guides explain
+the changed repeat and preference behavior.
+
+The user explicitly locks complete migration of every feature's developed scope.
+`protect-approved-logic` owns the global procedure; `AGENTS.logic-locks.md` binds the
+Settlements sources, resources, lifecycle, network, GUI and destination artifacts to
+it. Build/package success is not visual or gameplay acceptance. Current changes
+remain in testing until the user's review.
+
 ## Sandbox artifact boundary — 2026-10-19
 
 The ordinary test jem production artifact intentionally keeps singleplayer native:
@@ -953,3 +1034,43 @@ of future resource blocks having neither tags nor an ore identity. Player-built
 storage blocks remain original architecture. Source changes
 are implemented; no build/test/game launch or visual acceptance is claimed in this
 section. Parent delivery owns artifacts/publication; user approval remains pending.
+
+The follow-up edge-case specification preserves this owner split. Glass-visible
+hostiles cause mild fear, collision-accessible routes and actual native door-breaking
+are threats even around corners. Cheap bounded cached route observations replace
+per-scan native pathfinding. Full-height room separation permits close beds; low
+partitions, signs and carpets do not partition privacy room air. BLOCK-light samples
+are distributed over the accessible room, not just one bed coordinate. Registered
+occupants are derived from saved canonical membership, never a loaded-entity count.
+
+### Explicit living-condition regression suite
+
+User authorized these automatic tests on2026-10-19. From the repository root with
+Java17, use the existing JEMServer Gradle wrapper against Mods/JEMSettlements:
+`livingConditionContracts residentialRoomsContracts threatRouteContracts --offline`.
+They are opt-in and are not attached to ordinary production builds. Results:
+15 state/profile/localization/compiled-integration assertions,35 room/area assertions,40 threat/light/
+census assertions;90 total pass in each production and sandbox profile. Tests use production traversal, collision-height,
+divider and projection policies, with deterministic world/grid observations. Native
+sleep wiring checks compiled cancellable HEAD injections for Villager, LivingEntity
+and Recruits RestGoal; these prove the denial path cancels native successful-sleep
+side effects, not merely sends text. They are not a launched Forge NPC scenario or
+a visual acceptance test. No game/client is launched by these runners.
+
+A valid slab-floor corridor and vertical stair links retain useful area. Pending or
+unloaded geometry never becomes a final partial census; registered residents are
+not replaced by loaded-entity counts. Sampling is bounded to12floor points plusbed,
+with up to3vertical bands. Room discovery is bounded4096cells,32XZ/24Y and1024new
+block observations per tick; roofs are actual collision cover within24blocks. Cheap
+threat routes use actual body collision/support,128nodes per tick,16perjob,2048per
+observation, and one live job per resident/hostile pair. Bounds yield unknown.
+
+The user additionally requires the latest mechanics in standalone sandbox. The
+installed sandbox artifact has STANDALONE enabled, identical gameplay resources and
+localization to production, and embedded Identity/CurrencyCore. Full Economy is
+absent from the actual sandbox profile; the existing emerald payment owner remains
+selected. The same90 automatic assertions pass under the sandbox compile profile
+and production profile. An external dedicated server is not required: standalone
+authority accepts Minecraft's ordinary integrated singleplayer server. No client
+launch or live NPC acceptance is claimed. Delivery receipt:
+`living-conditions-delivery.json`.

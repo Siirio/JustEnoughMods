@@ -1,6 +1,6 @@
 package com.siirio.jemsettlements.happiness;
 
-import com.siirio.jemsettlements.JemSettlements;
+import com.siirio.jemsettlements.runtime.SettlementAuthority;
 import com.siirio.jemsettlements.town.TownRecord;
 import java.util.*;
 import net.minecraft.core.BlockPos;
@@ -11,10 +11,8 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.server.ServerStoppedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 
 /** Bounded surface/foundation LOD snapshots. Never loads a chunk or scans a city on a GUI frame. */
-@Mod.EventBusSubscriber(modid = JemSettlements.MOD_ID, value = net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER)
 public final class CityInspection {
     private static final Map<String, Job> JOBS = new LinkedHashMap<>();
     private static int cursor;
@@ -45,7 +43,7 @@ public final class CityInspection {
     }
 
     @SubscribeEvent public static void tick(TickEvent.ServerTickEvent event) {
-        if (event.phase != TickEvent.Phase.END || !event.getServer().isDedicatedServer() || JOBS.isEmpty()) return;
+        if (event.phase != TickEvent.Phase.END || !SettlementAuthority.active(event.getServer()) || JOBS.isEmpty()) return;
         JOBS.values().removeIf(job -> event.getServer().getPlayerList().getPlayer(job.viewer) == null || event.getServer().overworld().getGameTime() - job.created > 400);
         var pending = JOBS.values().stream().filter(job -> !job.done()).toList();
         if (pending.isEmpty()) return;

@@ -24,12 +24,17 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class SettlementNetwork {
-    private static final String VERSION = "9";
+    private static final String VERSION = "10";
     private static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(JemSettlements.MOD_ID, "town"))
             .networkProtocolVersion(() -> VERSION).clientAcceptedVersions(value -> VERSION.equals(value) || NetworkRegistry.ABSENT.equals(value) || NetworkRegistry.ACCEPTVANILLA.equals(value)).serverAcceptedVersions(value -> VERSION.equals(value) || NetworkRegistry.ABSENT.equals(value) || NetworkRegistry.ACCEPTVANILLA.equals(value)).simpleChannel();
     private SettlementNetwork() {}
 
     static SimpleChannel channel() { return CHANNEL; }
+    public static void sendBedSpaceNotice(net.minecraft.world.entity.LivingEntity entity) {
+        if (!(entity.level() instanceof ServerLevel level)) return;
+        for (ServerPlayer player : level.players()) if (player.distanceToSqr(entity) <= 24 * 24 && CHANNEL.isRemotePresent(player.connection.connection))
+            CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new BedSpaceNoticePacket(entity.getId(), entity.getUUID()));
+    }
     public static boolean supported() { return ClientConnection.remote(CHANNEL); }
     public static void requestOpen() { action("open", null, new CompoundTag(), java.util.UUID.randomUUID()); }
     public static void action(String action, java.util.UUID townId, CompoundTag payload, java.util.UUID requestId) {
@@ -43,6 +48,11 @@ public final class SettlementNetwork {
     public static java.util.UUID newRequestId() { return ClientConnection.request(); }
     public static void sendStorageLabels(ServerPlayer player,CompoundTag view) { if(CHANNEL.isRemotePresent(player.connection.connection)) CHANNEL.send(PacketDistributor.PLAYER.with(()->player),new StorageLabelsPacket(view)); }
     public static void register() {
+        CHANNEL.messageBuilder(BedSpaceNoticePacket.class, 8, NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(BedSpaceNoticePacket::encode).decoder(BedSpaceNoticePacket::decode).consumerMainThread((packet, context) -> {
+                    DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> com.siirio.jemsettlements.client.BedSpaceNotices.accept(packet));
+                    context.get().setPacketHandled(true);
+                }).add();
         CHANNEL.messageBuilder(StorageLabelsPacket.class,7,NetworkDirection.PLAY_TO_CLIENT).encoder(StorageLabelsPacket::encode).decoder(StorageLabelsPacket::decode).consumerMainThread((packet,context)->{ DistExecutor.unsafeRunWhenOn(Dist.CLIENT,()->()->com.siirio.jemsettlements.client.StorageLabels.accept(packet.view()));context.get().setPacketHandled(true);}).add();
         CHANNEL.messageBuilder(SettlementActionPacket.class, 6, NetworkDirection.PLAY_TO_SERVER)
                 .encoder(SettlementActionPacket::encode).decoder(SettlementActionPacket::decode).consumerMainThread((packet, context) -> {
@@ -185,6 +195,8 @@ public final class SettlementNetwork {
         for (var resident : data.residents(town.id()).stream().filter(com.siirio.jemsettlements.resident.ResidentMood::living).toList()) {
             CompoundTag row = new CompoundTag(); row.putUUID("Id", resident.villagerId()); row.putInt("Mood", resident.mood()); row.putInt("Satiety", resident.satiety()); row.putBoolean("Craving", resident.craving()); row.putBoolean("Living", resident.living());
             row.putInt("PersonalMood", resident.personalMood()); row.putInt("EnvironmentBonus", resident.environmentBonus()); row.putInt("SocialMoodCap", resident.socialMoodCap());
+            row.putBoolean("CrowdedHome", resident.crowdedHome().isPresent());
+            SettlementViewDetails.conditions(row, resident);
             row.putBoolean("Child", resident.child()); row.putString("EmploymentReason", town.metrics().getCompound("EmploymentReasons").getString(resident.villagerId().toString()));
             row.putBoolean("Home", resident.home().isPresent()); row.putBoolean("Work", row.getString("EmploymentReason").equals("employed")); row.putInt("HomeAmenities", resident.homeAmenities().points()); row.putInt("WorkAmenities", resident.workAmenities().points());
             row.putBoolean("AmenitiesStale", resident.homeAmenities().stale() || resident.workAmenities().stale());
@@ -214,9 +226,12 @@ public final class SettlementNetwork {
             row.putString("Type", "RECRUIT"); row.putString("Kind", "RECRUIT"); row.putBoolean("NeedsEnrolled", record.needsEnrolled());
             if (record.needsEnrolled()) {
                 var history = record.foodHistory();
+                row.putBoolean("CrowdedHome", history.crowdedHome().isPresent());
+                SettlementViewDetails.conditions(row, history);
                 SettlementViewDetails.foodCounts(row,history,player.getServer().overworld().getGameTime());
                 if (row.contains("Morale")) {
-                    row.putBoolean("NeedsKnown", true); row.putInt("Mood", Math.max(0, Math.min(100, Math.round(row.getFloat("Morale")))));
+                    history.nativeNeeds(row.getFloat("Morale"),row.getFloat("Hunger"));
+                    row.putBoolean("NeedsKnown", true); row.putInt("Mood", history.mood());
                     row.putInt("Satiety", Math.max(0, Math.min(100, (int) Math.floor(row.getFloat("Hunger")))));
                     row.putBoolean("Craving", history.craving());
                     history.requestedDish().ifPresent(value -> row.putString("RequestedDish", value.toString()));

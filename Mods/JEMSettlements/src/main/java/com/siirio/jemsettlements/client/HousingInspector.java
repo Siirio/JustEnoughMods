@@ -168,7 +168,7 @@ public final class HousingInspector {
                 if(!facts.getBoolean("Active"))lines.add(tr("unlit"));
             } else {
                 lines.add(tr(facts.getBoolean("Bed")?"bed_rule":facts.contains("Category")?facts.getBoolean("Counted")?"counted":!facts.getBoolean("Active")?"unlit":!facts.getBoolean("Unique")?"duplicate":"capped":"structure"));
-                if(facts.contains("Category")){lines.add(tr("category",facts.getString("Category"),facts.getInt("Cap")));lines.add(tr("points_rule"));}
+                if(facts.contains("Category")){lines.add(tr("category",Component.translatable("jem.settlements.amenity."+facts.getString("Category")),facts.getInt("Cap")));lines.add(tr("points_rule"));}
             }
             if(!example){var absolute=hovered.pos().offset(BlockPos.of(snapshot.getLong("Anchor")));lines.add(Component.literal(absolute.getX()+", "+absolute.getY()+", "+absolute.getZ()));}
             g.renderComponentTooltip(mc.font,lines,mouseX,mouseY);

@@ -2,11 +2,13 @@ package com.siirio.jemsettlements.mixin;
 
 import com.siirio.jemsettlements.client.SettlementPriceRenderer;
 import com.siirio.jemsettlements.client.NobleQuoteClient;
+import com.siirio.jemsettlements.client.RecruitHirePresentation;
 import com.talhanation.recruits.world.RecruitsHireTrade;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.Font;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.resources.ResourceLocation;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -20,6 +22,13 @@ import org.spongepowered.asm.mixin.Unique;
 public abstract class NobleTradeListEntryMixin {
     @Shadow(remap = false) @Final private RecruitsHireTrade trade;
     @Unique private int jem$priceX, jem$priceY;
+    @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphics;blitNineSliced(Lnet/minecraft/resources/ResourceLocation;IIIIIIIIII)V"))
+    private void jem$offerMaterial(GuiGraphics g, ResourceLocation texture, int x, int y, int width, int height,
+                                   int borderX, int borderY, int textureWidth, int textureHeight, int u, int v) {
+        // Native state sprite row 86 means hover/selection; row 46 means exhausted.
+        RecruitHirePresentation.wood(g, x, y, width, height, trade.uses > 0 && v == 86);
+        if (trade.uses <= 0) g.fill(x + 2, y + 2, x + width - 2, y + height - 2, 0x70211b17);
+    }
     @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphics;renderFakeItem(Lnet/minecraft/world/item/ItemStack;II)V"))
     private void jem$price(GuiGraphics g, ItemStack stack, int x, int y) {
         jem$priceX = x; jem$priceY = y;

@@ -55,6 +55,8 @@ public class SettlementScreen extends Screen {
     public static void open() { SettlementClientState.open(); }
     public static void openGuide() { SettlementClientState.openGuide(); }
     private static Component tr(String key,Object... args) { return Component.translatable("jem.settlements.gui."+key,args); }
+    private static Component metricText(String key,Object... args) { return Component.translatable("jem.settlements.metrics."+key,args); }
+    private static Component amenityText(String key) { return Component.translatable("jem.settlements.amenity."+key); }
     private void initial() {
         if (!SettlementNetwork.supported()) { mode="unsupported"; return; }
         if (envelope.getBoolean("Guide")) { mode="guide"; return; }
@@ -312,7 +314,7 @@ public class SettlementScreen extends Screen {
         listTop=cy+48;listBottom=bottom-24;
         List<CompoundTag> residents=roster();residents.sort(switch(sort){case "profession"->Comparator.comparing(r->recruit(r)?tr("filter.recruits").getString():profession(r).getString(),String.CASE_INSENSITIVE_ORDER);case "hunger"->Comparator.comparingInt(r->r.contains("Satiety")?r.getInt("Satiety"):Integer.MAX_VALUE);case "happiness"->Comparator.comparingInt(r->r.contains("Mood")?r.getInt("Mood"):Integer.MAX_VALUE);default->Comparator.comparing(r->residentName(r).getString(),String.CASE_INSENSITIVE_ORDER);});
         for (CompoundTag row:residents) {
-            Component role=row.getBoolean("Child")?tr("metrics.child"):recruit(row)?tr("filter.recruits"):profession(row);
+            Component role=row.getBoolean("Child")?metricText("child"):recruit(row)?tr("filter.recruits"):profession(row);
             if (!matches(residentName(row).getString()+" "+role.getString())) continue;
             if(filter.equals("recruits")&&!recruit(row)||filter.equals("villagers")&&recruit(row))continue;
             if(filter.startsWith("profession:")&&!row.getString("Profession").equals(filter.substring(11)) || filter.startsWith("role:")&&!row.getString("Role").equals(filter.substring(5)))continue;
@@ -360,22 +362,32 @@ public class SettlementScreen extends Screen {
     private void happinessRows() {
         drawLine(tr("happiness_total",town.getInt("Happiness")),cx,cy,INK);listTop=cy+18;listBottom=bottom-24;
         CompoundTag metrics=town.getCompound("Metrics");
-        if(metrics.getBoolean("NeedsStale")) rows.add(new Row(tr("metrics.uncertain"),tr("metrics.uncertain_details",metrics.getInt("ResidentsStale"),metrics.getInt("ResidentsUnknown"),metrics.getBoolean("GuardsStale")?"?":"-",metrics.getBoolean("AnimalsStale")?"?":"-"),new ItemStack(Items.CLOCK),new CompoundTag(),null));
+        if(metrics.getBoolean("NeedsStale")) rows.add(new Row(metricText("uncertain"),metricText("uncertain_details",metrics.getInt("ResidentsStale"),metrics.getInt("ResidentsUnknown"),metrics.getBoolean("GuardsStale")?"?":"-",metrics.getBoolean("AnimalsStale")?"?":"-"),new ItemStack(Items.CLOCK),new CompoundTag(),null));
         for (String category:new String[]{"housing","food","safety","jobs","community","decoration"}) {
             String field=category.substring(0,1).toUpperCase(Locale.ROOT)+category.substring(1);
             Component explanation=switch(category) {
-                case "safety"->tr("metrics.guards",metrics.getInt("EffectiveGuards"),metrics.getInt("RequiredGuards"));
-                case "jobs"->tr("metrics.jobs",metrics.getInt("EmployedAdults"),metrics.getInt("WorkingAdults"));
-                case "community"->tr("metrics.population",metrics.getInt("PresentResidents"),metrics.getInt("RequiredResidents"));
-                case "decoration"->tr("metrics.comfort",metrics.getInt("ComfortKnownChunks"),metrics.getInt("ComfortTotalChunks"),metrics.getInt("ComfortStaleChunks"));
-                default->tr("metrics.value",town.getInt(field));
+                case "housing"->metricText("housing");
+                case "food"->metricText("food");
+                case "safety"->metricText("guards",metrics.getInt("EffectiveGuards"),metrics.getInt("RequiredGuards"));
+                case "jobs"->metricText("jobs",metrics.getInt("EmployedAdults"),metrics.getInt("WorkingAdults"));
+                case "community"->metricText("population",metrics.getInt("PresentResidents"),metrics.getInt("RequiredResidents"));
+                case "decoration"->metricText("comfort",metrics.getInt("ComfortKnownChunks"),metrics.getInt("ComfortTotalChunks"),metrics.getInt("ComfortStaleChunks"));
+                default->metricText("value",town.getInt(field));
             };
             rows.add(new Row(tr("category."+category).copy().append(" "+town.getInt(field)+"%"),explanation,new ItemStack(switch(category){case "housing"->Items.RED_BED;case "food"->Items.BREAD;case "safety"->Items.SHIELD;case "jobs"->Items.IRON_PICKAXE;case "community"->Items.BELL;default->Items.FLOWER_POT;}),new CompoundTag(),()->{chapter=Arrays.asList(CHAPTERS).indexOf(category.equals("food")?"food_satisfaction":category);guide();}));
         }
-        rows.add(new Row(tr("metrics.animals"),tr("metrics.animal_types",metrics.getInt("AnimalTypes"),metrics.getInt("RequiredAnimalTypes")),new ItemStack(Items.WHEAT),new CompoundTag(),null));
+        rows.add(new Row(metricText("animals"),metricText("animal_types",metrics.getInt("AnimalTypes"),metrics.getInt("RequiredAnimalTypes")),new ItemStack(Items.WHEAT),new CompoundTag(),null));
+        conditionRows(metrics);
         CompoundTag categories=metrics.getCompound("ComfortCategories");
-        for(String category:new java.util.TreeSet<>(categories.getAllKeys())) rows.add(new Row(tr("amenity."+category),tr("metrics.points",categories.getInt(category)),new ItemStack(Items.FLOWER_POT),new CompoundTag(),null));
+        for(String category:new java.util.TreeSet<>(categories.getAllKeys())) rows.add(new Row(amenityText(category),metricText("points",categories.getInt(category)),new ItemStack(Items.FLOWER_POT),new CompoundTag(),null));
         rows.add(new Row(tr("tax",town.getInt("Tax")),tr("tax_deduction"),new ItemStack(Items.PAPER),new CompoundTag(),()->{chapter=CHAPTERS.length-1;guide();}));listWidgets();refreshFooter();
+    }
+    private void conditionRows(CompoundTag source) {
+        for(String key:new String[]{"CrowdingPenalty","LightPenalty","FearPenalty"})if(source.getInt(key)>0){
+            String reason=key.equals("CrowdingPenalty")?"crowding":key.equals("LightPenalty")?"light":"fear";
+            rows.add(new Row(Component.translatable("jem.settlements.conditions."+reason,source.getInt(key)),Component.translatable("jem.settlements.conditions."+reason+"_hint"),new ItemStack(key.equals("CrowdingPenalty")?Items.RED_BED:key.equals("LightPenalty")?Items.TORCH:Items.ZOMBIE_HEAD),new CompoundTag(),null));
+        }
+        if(source.getBoolean("ConditionsUnknown"))rows.add(new Row(Component.translatable("jem.settlements.conditions.unknown"),Component.translatable("jem.settlements.conditions.unknown_hint"),new ItemStack(Items.CLOCK),new CompoundTag(),null));
     }
     private void residentDetail() {
         button(tr("back"),cx,cy,60,()->{expectedHousing=null;detail=null;scroll=0;rebuild();},false);
@@ -403,8 +415,10 @@ public class SettlementScreen extends Screen {
         }
         listTop=py+104;listBottom=bottom-48;
         if(resident&&!isRecruit) {
-            rows.add(new Row(tr("metrics.environment"),tr("metrics.mood_breakdown",detail.getInt("PersonalMood"),detail.getInt("EnvironmentBonus"),detail.getInt("SocialMoodCap")),new ItemStack(Items.FLOWER_POT),new CompoundTag(),null));
-            if(!detail.getString("EmploymentReason").isEmpty()) rows.add(new Row(tr("category.jobs"),tr("metrics.employment."+detail.getString("EmploymentReason")),new ItemStack(Items.IRON_PICKAXE),new CompoundTag(),null));
+            rows.add(new Row(metricText("environment"),metricText("mood_breakdown",detail.getInt("PersonalMood"),detail.getInt("EnvironmentBonus"),detail.getInt("SocialMoodCap")),new ItemStack(Items.FLOWER_POT),new CompoundTag(),null));
+            if(detail.getBoolean("CrowdedHome"))rows.add(new Row(Component.translatable("jem.settlements.housing.personal_space_refusal"),Component.translatable("jem.settlements.housing.personal_space_hint"),new ItemStack(Items.RED_BED),new CompoundTag(),null));
+            conditionRows(detail);
+            if(!detail.getString("EmploymentReason").isEmpty()) rows.add(new Row(tr("category.jobs"),metricText("employment."+detail.getString("EmploymentReason")),new ItemStack(Items.IRON_PICKAXE),new CompoundTag(),null));
         }
         for (CompoundTag row:servings(detail)) rows.add(new Row(item(row.getString("Item")).getHoverName(),tr("served_today",row.getInt("Count")),item(row.getString("Item")),row,null));listWidgets();
         if(resident && isRecruit) {

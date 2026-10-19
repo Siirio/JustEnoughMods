@@ -19,6 +19,9 @@ final class RecruitJadeData {
             data.town(record.townId()).ifPresent(town -> tag.putString("JemSettlementName", town.name()));
             if (!com.siirio.jemsettlements.compat.recruits.RecruitNeedsService.managed(recruit)) return;
             var history = record.foodHistory();
+            com.siirio.jemsettlements.compat.recruits.RecruitsAdapter.syncNeeds(recruit,history);
+            tag.putInt("JemHappiness",history.mood());SettlementJadePlugin.appendConditions(tag,history);
+            tag.putBoolean("JemCrowdedHome", history.crowdedHome().isPresent());
             tag.putBoolean("JemCraving", history.craving());
             history.requestedDish().ifPresent(value -> tag.putString("JemRequestedDish", value.toString()));
             history.repeatedDish().ifPresent(value -> tag.putString("JemRepeatedDish", value.toString()));

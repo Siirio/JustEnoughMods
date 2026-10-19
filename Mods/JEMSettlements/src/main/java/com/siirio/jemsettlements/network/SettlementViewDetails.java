@@ -27,6 +27,10 @@ final class SettlementViewDetails {
     private static List<Item> foodItems;
     private SettlementViewDetails() { }
     static void invalidate() { foodItems = null; }
+    static void conditions(CompoundTag row, com.siirio.jemsettlements.resident.ResidentMood history) {
+        row.putInt("CrowdingPenalty", history.crowdingPenalty()); row.putInt("LightPenalty", history.lightPenalty());
+        row.putInt("FearPenalty", history.fearPenalty()); row.putBoolean("ConditionsUnknown", history.conditionsUnknown());
+    }
 
     static void foodCounts(CompoundTag row,com.siirio.jemsettlements.resident.ResidentMood history,long now){
         CompoundTag saved=history.save();ListTag counts=new ListTag();

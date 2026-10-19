@@ -1,0 +1,125 @@
+{
+  "date": "2026-10-19",
+  "scope": [
+    "complete migration and localization",
+    "Noble recruit UI family",
+    "earned food happiness",
+    "bed privacy",
+    "reachable housing area",
+    "BLOCK lighting",
+    "hostile fear",
+    "explicit standalone sandbox compatibility"
+  ],
+  "artifacts": [
+    {
+      "profile": "production",
+      "sha256": "bce66f5e361645d6048f519594812b17d357f2b6f3768e567d8505946182e943",
+      "bytes": 2663493,
+      "source": "Mods\\JEMSettlements\\build\\libs\\jem-settlements-2.1.0.jar",
+      "resources": {
+        "assets/jem_settlements/lang/en_us.json": "598c68c09662ded88ade9e1ea51fcc042815e5a8c239f0c543b9bacb30f2bfac",
+        "assets/jem_settlements/lang/ru_ru.json": "990cfed6cad37cc169b96e0d72f47188a4370aba08e059bc078e6be60df60f3f",
+        "assets/jem_settlements/textures/gui/jade/mood.png": "0e35956288805b89b786490714dd45da66d682a700349b980830f86267d6226f",
+        "assets/jem_settlements/textures/gui/recruit/parchment.png": "7856ee58406cbf938921fe52671b619864e05e92a938561b2247a0e9ca87de61",
+        "data/jem_settlements/happiness/amenities/base.json": "06d822c0dc4ea64f7fdccb81956b4ac9ab03f820c276d2c3eca3558ef15f332c",
+        "data/jem_settlements/happiness/amenities/decor_compat.json": "1e15bae81ced9a74fbe0a005dff9cd17861891e4f31d8de9caf438e8406d3a25",
+        "data/jem_settlements/happiness/food_values/base.json": "c8772d4ecd88f3c074153d69a5572be3b3acb8bf6472e8b6c3749e2eff0cc3a6",
+        "data/jem_settlements/tags/items/cooking/end_ingredients.json": "781586d02df8a50a059255e8c666feaa5fe9c1c99b2e4c766c3af9070e2f21e5",
+        "data/jem_settlements/tags/items/cooking/nether_ingredients.json": "ef9813b006ab1d66fe67038936715070ac18eaa3841f9b5012a2531afa5d266c",
+        "data/jem_settlements/tags/items/cooking/world_ingredients.json": "fb6e6461bf1d0ce3eca95f81c428ea97ced7148a4e036e35f165ab4e5e81eeda"
+      },
+      "targets": [
+        "C:\\MyProjects\\Minecraft\\JustEnoughMods\\Server\\mods\\jem-settlements-2.1.0.jar",
+        "C:\\MyProjects\\Minecraft\\JustEnoughMods\\Client\\ManagedPack\\mods\\jem-settlements-2.1.0.jar"
+      ]
+    },
+    {
+      "profile": "sandbox",
+      "sha256": "2ebed218b7ffc0d044ecb50ed7de783d213a322588f63e1140ccac22f51e2b9c",
+      "bytes": 2663170,
+      "source": "Mods\\JEMSettlements\\build\\sandbox-profile\\libs\\jem-settlements-2.1.0-sandbox.jar",
+      "resources": {
+        "assets/jem_settlements/lang/en_us.json": "598c68c09662ded88ade9e1ea51fcc042815e5a8c239f0c543b9bacb30f2bfac",
+        "assets/jem_settlements/lang/ru_ru.json": "990cfed6cad37cc169b96e0d72f47188a4370aba08e059bc078e6be60df60f3f",
+        "assets/jem_settlements/textures/gui/jade/mood.png": "0e35956288805b89b786490714dd45da66d682a700349b980830f86267d6226f",
+        "assets/jem_settlements/textures/gui/recruit/parchment.png": "7856ee58406cbf938921fe52671b619864e05e92a938561b2247a0e9ca87de61",
+        "data/jem_settlements/happiness/amenities/base.json": "06d822c0dc4ea64f7fdccb81956b4ac9ab03f820c276d2c3eca3558ef15f332c",
+        "data/jem_settlements/happiness/amenities/decor_compat.json": "1e15bae81ced9a74fbe0a005dff9cd17861891e4f31d8de9caf438e8406d3a25",
+        "data/jem_settlements/happiness/food_values/base.json": "c8772d4ecd88f3c074153d69a5572be3b3acb8bf6472e8b6c3749e2eff0cc3a6",
+        "data/jem_settlements/tags/items/cooking/end_ingredients.json": "781586d02df8a50a059255e8c666feaa5fe9c1c99b2e4c766c3af9070e2f21e5",
+        "data/jem_settlements/tags/items/cooking/nether_ingredients.json": "ef9813b006ab1d66fe67038936715070ac18eaa3841f9b5012a2531afa5d266c",
+        "data/jem_settlements/tags/items/cooking/world_ingredients.json": "fb6e6461bf1d0ce3eca95f81c428ea97ced7148a4e036e35f165ab4e5e81eeda"
+      },
+      "targets": [
+        "C:\\Users\\user\\AppData\\Roaming\\.minecraft\\versions\\jem sandbox\\mods\\jem-settlements-2.1.0-sandbox.jar"
+      ]
+    }
+  ],
+  "nativeApplication": {
+    "sequence": 44,
+    "publishedToken": "45bb06aa2ec8910b30c1612026d8a7bb0b22afe1",
+    "mirroredToken": "45bb06aa2ec8910b30c1612026d8a7bb0b22afe1",
+    "installedToken": "45bb06aa2ec8910b30c1612026d8a7bb0b22afe1",
+    "installedSha256": "bce66f5e361645d6048f519594812b17d357f2b6f3768e567d8505946182e943",
+    "pendingTransaction": false,
+    "personalFilesPreserved": 24
+  },
+  "standalonePackaging": {
+    "profile": "jem sandbox",
+    "standaloneSettlements": true,
+    "identityEmbedded": true,
+    "currencyCoreEmbedded": true,
+    "fullEconomyAbsent": true,
+    "embedded": [
+      "META-INF/jarjar/mclib-20.jar",
+      "META-INF/jarjar/jem-currency-core-1.0.0.jar",
+      "META-INF/jarjar/jem-identity-1.0.0.jar",
+      "META-INF/jarjar/xaerolib-forge-1.20.1-1.7.1.jar",
+      "META-INF/jarjar/xaerolib-forge-1.20.1-1.7.3.jar"
+    ],
+    "settlementsJarSha256": "2ebed218b7ffc0d044ecb50ed7de783d213a322588f63e1140ccac22f51e2b9c"
+  },
+  "tests": {
+    "production": {
+      "livingStateProfileLocalizationSleepWiring": 15,
+      "roomsReachabilityAndGeometry": 35,
+      "threatCrowdingLighting": 40,
+      "total": 90,
+      "passed": true
+    },
+    "sandbox": {
+      "livingStateProfileLocalizationSleepWiring": 15,
+      "roomsReachabilityAndGeometry": 35,
+      "threatCrowdingLighting": 40,
+      "total": 90,
+      "passed": true
+    },
+    "runTasks": [
+      "livingConditionContracts",
+      "residentialRoomsContracts",
+      "threatRouteContracts"
+    ],
+    "limitations": "Production policy/grid/collision contracts and compiled cancellable HEAD sleep wiring. No launched Forge NPC scenario, client/gameplay launch or visual acceptance."
+  },
+  "server": {
+    "productionSynchronized": true,
+    "ordinaryServerStarted": true,
+    "startupDone": "2026-10-19 13:54:26 +05:00"
+  },
+  "atlas": {
+    "fullRegeneration": true,
+    "changeRecords": 68,
+    "validatorPassed": true,
+    "preexistingUnrelatedGeneratedFilesPreserved": 19
+  },
+  "acceptance": "in testing",
+  "immutableReleaseBaseline": "unchanged",
+  "stableProfile": "unchanged",
+  "MineRENT": "unchanged",
+  "nativePublication": {
+    "published": true,
+    "journalSequence": 44,
+    "publishedManifestSha1": "03ebf06b2c52e8f3ebdaaed12c4b33370f815038",
+    "stagedManifestSha1": "03ebf06b2c52e8f3ebdaaed12c4b33370f815038"
+  }
+}
