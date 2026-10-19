@@ -2,11 +2,11 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "4dff78c49b75cbe793a7e7b5e7b94683511e1c7c36f799a195537211e45e8b1d",
+  "change_records_sha256": "ac4044d7b96dd299a28c028140e7f5ccddb72adb6bb3e448f9ea3e50ae919073",
   "totals": {
     "watched": 3510,
-    "covered": 596,
-    "unresolved": 2914
+    "covered": 598,
+    "unresolved": 2912
   },
   "groups": {
     "Client/ManagedPack/config": {
@@ -2622,8 +2622,8 @@
     },
     "Mods/JEMServer": {
       "watched": 297,
-      "covered": 44,
-      "unresolved": 253,
+      "covered": 46,
+      "unresolved": 251,
       "unresolved_paths": [
         "Mods/JEMServer/gradle.properties",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/BossLeaderboard.java",
@@ -2787,7 +2787,6 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventTravel.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventZones.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/HomeTravel.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/HostedBoundary.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/PartyTeleportFlow.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/PendingEventTravel.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/PlayerExperienceRetention.java",
@@ -2796,7 +2795,6 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/ReviveSupport.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/RushLoot.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/SmpEventBlocks.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/SolidBoundary.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/SpawnPresentation.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureBarrierBlock.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/WeeklySchedule.java",

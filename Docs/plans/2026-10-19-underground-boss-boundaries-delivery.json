@@ -5,14 +5,14 @@
   "scope": "Shared registered 3D structural boss arena correction; user requests underground Harbinger and other Overworld/Nether bosses then local startup.",
   "artifact": {
     "source": "Mods/JEMServer/build/libs/jem-server-2.0.0-dev.jar",
-    "sha256": "0376553d4c8790462b69e417705e1fe72d4e14cb892636f8186365a7e404321e",
-    "bytes": 19836643
+    "sha256": "5b92defd77260a26f27b9dc77d84e5ceab3e45d58002262ca6fd2bea01b088f7",
+    "bytes": 19836758
   },
   "nativeInstallation": {
-    "publishedSequence": 40,
-    "publishedToken": "a9ca6767da2a27b0e5ac1871c2880082a588ec6b",
-    "activeToken": "a9ca6767da2a27b0e5ac1871c2880082a588ec6b",
-    "mirroredToken": "a9ca6767da2a27b0e5ac1871c2880082a588ec6b",
+    "publishedSequence": 41,
+    "publishedToken": "13f73c6710af3c61efdc59faaaa44747b6abff7e",
+    "activeToken": "13f73c6710af3c61efdc59faaaa44747b6abff7e",
+    "mirroredToken": "13f73c6710af3c61efdc59faaaa44747b6abff7e",
     "allTokensMatch": true,
     "artifactMatches": {
       "testJemActiveProjection": true,
@@ -24,12 +24,12 @@
     "pendingTransaction": false
   },
   "localServer": {
-    "pid": 5124,
-    "startup": "Done (2.712s)",
+    "pid": 20604,
+    "startup": "Done (5.023s)",
     "running": true
   },
   "behavior": [
-    "Packets, collision and teleport policy use registered shell minY/maxY instead of dimension height.",
+    "Packets, collision and teleport policy use exact registered structure minY/maxY, with horizontal shell margin only and inward floor/ceiling thickness.",
     "Six collision faces and full player/vehicle-box volume classification preserve containment while unrelated upper/lower space stays outside.",
     "Legacy X/Z-only entry marks reconcile once without corrective teleport or member/reward reset.",
     "Only records with structureBounds gain Y-aware EventRegions presence/proximity/ejection.",
@@ -49,5 +49,10 @@
     "stable profile mutation",
     "release baseline promotion"
   ],
-  "status": "in testing; player acceptance pending"
+  "status": "in testing; player acceptance pending",
+  "refinementSourceCommit": "dbb949ded7e6a5be1603997e0357731825ff7845",
+  "supersededLocalGeneration": {
+    "sequence": 40,
+    "reason": "Final review found old vertical margin/outward caps could touch the space immediately above the roof or below the floor; generation41 corrects both."
+  }
 }
