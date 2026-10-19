@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-19 — Specify personal happiness weights and readable decision journal
+
+- User defines maximum personal happiness as common conditions90 (comfort15, guard safety10, housing20, nutrition20, community15, employment10) plus10 for individual activities such as PatPat; common shortfalls affect all residents while light/space/fear remain individual. Rewrote the journal in that exact structure, player-readable first, with class links only at the end.
+- Codex fills explicitly labelled balance proposals: four comfort components25each including animals; coverage/occupancy formulas; bed10+roof10; satiety15+meal quality5; PatPat10 for24000ticks; common tax0/3/8/16; bounded temporary food/injury penalties. The document prevents double subtraction, removes hidden legacy50-base/social-cap/extra-animal bonuses from the target design and preserves the distinction between accepted user weights and unapproved detailed numbers.
+- Documentation only. Current gameplay, JARs, local Server, client profiles, native publication44 and release baseline remain unchanged. No build or tests run.
+
 ## 2026-10-19 — Settlements decision journal and happiness clarification
 
 - User requests a maintained Markdown journal committed and pushed with Settlements changes, asks for complete happiness/tax influences and explicitly defers social/friendship simulation. Added Docs/settlements/DESIGN_JOURNAL.md with source-linked implemented formulas, requested plans, unapproved proposals and open decisions; linked it from the owning standalone guide and pinned its maintenance contract.
