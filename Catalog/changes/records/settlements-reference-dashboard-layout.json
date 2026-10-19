@@ -1,0 +1,149 @@
+{
+  "schema_version": 2,
+  "change_id": "settlements.reference-dashboard-layout",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:villager"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:iron_golem"
+    },
+    {
+      "type": "namespace",
+      "registry": "entities",
+      "value": "recruits"
+    }
+  ],
+  "conditions": [
+    {
+      "scope": "JEM-owned settlement GUI only, actual server snapshots and existing native actions; no gameplay/balance/assignment authority change."
+    }
+  ],
+  "precedence": {
+    "layer": "settlement_presentation",
+    "priority": 160
+  },
+  "change": {
+    "summary": "Reference-led Settlements dashboard: authored stone/parchment controls, fixed four-page shell, actual town summaries/isometry, adjacent roster/detail and real happiness factor/complaint/distribution hierarchy.",
+    "modifiers": [
+      {
+        "property": "settlements.dashboard.layout",
+        "operation": "replace",
+        "before": "Separate small page widths, wood controls, residents list replaced by detail, text-heavy happiness rows.",
+        "after": "One bounded responsive shell; persistent roster/detail at sufficient width; live summaries, real city/comfort, factor rails and housing-count/distribution groups. Native font and actual item/entity presentation; independent scrolling and existing action transport."
+      },
+      {
+        "property": "settlements.dashboard.materials",
+        "operation": "replace",
+        "before": "Dashboard reused native recruit wood material helper.",
+        "after": "Separate authored20PNG dashboard family from layered ORA, stone/parchment/wood/blue/gold, native-pixel ornaments/moods. Original reference pixels never shipped; native recruit/trading/Xaero surfaces remain."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMSettlements.client",
+    "kind": "client_gui",
+    "source_files": [
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementDashboardArt.java",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/banner.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/blue.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/card.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/control.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/control_disabled.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/control_hover.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/control_selected.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/dark_frame.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/lantern.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/mood_happy.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/mood_neutral.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/mood_sad.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/paper.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/paper_frame.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/stone.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/stone_frame.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/track.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/vine.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/wood.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/wood_frame.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+      "Docs/settlements/assets/source/dashboard-r2/author_dashboard.py",
+      "Docs/settlements/assets/source/dashboard-r2/regions.json",
+      "Docs/settlements/assets/source/dashboard-r2/dashboard-r2.ora"
+    ]
+  },
+  "rationale": {
+    "purpose": "Deliver the user-selected UI restructure while preserving current gameplay facts.",
+    "decision_source": "User selects3references and frontend/Minecraft taste route. Codex chooses responsive bounds, content grouping, scroll composition, native controls and original asset production."
+  },
+  "introduced": {
+    "date": "2026-10-19",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "Reference-led Settlements dashboard: authored stone/parchment controls, fixed four-page shell, actual town summaries/isometry, adjacent roster/detail and real happiness factor/complaint/distribution hierarchy."
+  },
+  "history": [
+    {
+      "date": "2026-10-19",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "Reference-led Settlements dashboard: authored stone/parchment controls, fixed four-page shell, actual town summaries/isometry, adjacent roster/detail and real happiness factor/complaint/distribution hierarchy.",
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementDashboardArt.java",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/banner.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/blue.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/card.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/control.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/control_disabled.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/control_hover.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/control_selected.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/dark_frame.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/lantern.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/mood_happy.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/mood_neutral.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/mood_sad.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/paper.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/paper_frame.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/stone.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/stone_frame.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/track.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/vine.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/wood.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/wood_frame.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+        "Docs/settlements/assets/source/dashboard-r2/author_dashboard.py",
+        "Docs/settlements/assets/source/dashboard-r2/regions.json",
+        "Docs/settlements/assets/source/dashboard-r2/dashboard-r2.ora"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "settlements_gui",
+      "resident_cards",
+      "happiness_explanation",
+      "localization",
+      "authored_gui_assets"
+    ],
+    "relations": [
+      "Existing server snapshot and ACK actions",
+      "Native Minecraft font/item/entity renderer",
+      "Original reference selection"
+    ],
+    "notes": [
+      "No simulation, currency, tax, home/work assignment or NPC authority modifications.",
+      "Sandbox runtime visual acceptance pending; no tests or gameplay launch."
+    ],
+    "unresolved": [
+      "Actual in-game composition at each GUI scale remains unobserved; no successful build is claimed as visual approval."
+    ]
+  }
+}

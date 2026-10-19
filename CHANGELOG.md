@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-19 — Restructure Settlements around the selected Minecraft dashboard references
+
+- User selects three town/residents/happiness references and requests frontend taste for information design followed by the chosen Minecraft GUI style. Extracted a consistent stone sidebar, blue selection, wood/cloth/lantern header, parchment content, meaningful dark inserts, summary cards and persistent roster/detail hierarchy. Reference values and assignment buttons are visual examples, not requests for new mechanics.
+- Codex implements one responsive shell, actual town summaries/treasury/isometry/four comfort rails, adjacent roster and selected NPC with independently scrolled needs/history, six real happiness factors with current complaint counts/distribution, and the existing chest controls. Actual90+10, native housing/work/food/payroll/currency authority, live entity portraits/HP, pending ACK and confirmation behavior remain.
+- New original20-texture dashboard family and layered ORA/export source replace the old dashboard wood-only control presentation. Reference pixels were never cropped into production. The shared native recruit/trade/Xaero materials remain outside this dashboard change. RU/EN labels and owning journal/docs/Atlas updated.
+- Both production and sandbox jarJar/reobfJarJar builds succeeded. Final sandbox JAR installed while the profile was closed; previous artifact backed up outside mods. Delivery receipt: Docs/settlements/standalone/dashboard-reference-delivery.json. Ordinary Server, ManagedPack, AutoModpack publication44, test jem, stable and release baseline unchanged. Art export/native-size inspection and builds do not imply real-game visual approval. No automated tests, validators, static analysis or gameplay launch. Status: in testing pending user visual acceptance.
+
 ## 2026-10-19 — Readable Void Walker pearl arc
 
 - User requests the supplied off-centre projectile-arc composition while retaining JEM VFX, because the current centred preview reads as a straight line and moving horizontal bar.

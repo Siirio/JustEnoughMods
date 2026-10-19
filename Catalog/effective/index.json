@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "1d578b3c4fd254f666138520e6c087de0fd1878a8a60e65b562608852fc6f968",
+  "change_records_sha256": "0b70feab3eb30f9fd2dfd58b21ae15a6691956ee99466320c3a6d6052eea4417",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -1167,6 +1167,31 @@
       "potential_static_target_count": 38
     },
     {
+      "change_id": "settlements.reference-dashboard-layout",
+      "status": "conditional",
+      "summary": "Reference-led Settlements dashboard: authored stone/parchment controls, fixed four-page shell, actual town summaries/isometry, adjacent roster/detail and real happiness factor/complaint/distribution hierarchy.",
+      "record": "Catalog/changes/records/settlements-reference-dashboard-layout.json",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:villager"
+        },
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:iron_golem"
+        },
+        {
+          "type": "namespace",
+          "registry": "entities",
+          "value": "recruits"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 13
+    },
+    {
       "change_id": "settlements.safe-food-mood",
       "status": "conditional",
       "summary": "User requests a small happiness increase from eaten food and a larger increase for the suitable requested dish",
@@ -1533,13 +1558,18 @@
     "Docs/power-system/NUMERIC_TABLES.md": "328838a5d28016b792c136f3e4642f3400c8785f2f9ddcdac4246a3ba53fb114",
     "Docs/power-system/README.md": "ca69c9b298c3c62c4e48f71c1d39b1f9152fcef62a3f7d02983968c75d9c03f1",
     "Docs/power-system/Weapons.md": "c63a055513709e21af477ec465fcb28941255999d571907d27c34100d534f0e7",
+    "Docs/races/README.md": "9b1af47d5f1d855f1b839098d72e31f9796e3b0322ece3c3fbfd026cdb5a67ae",
     "Docs/races/VFX_REFERENCE_BRIEFS.md": "e6e6f81334f8fdaf0b5f2197562ee4afc0eb8c2e2b1e6cf3d33d56c2e2233c87",
     "Docs/races/assets/guardian-dome/PLAN.md": "8519ffb62d2ed6f61ccb8e21cb907cd2a1a0563f1a839ca1afb40b17b1dc5f52",
     "Docs/races/assets/guardian-dome/author.py": "7b644e0ccc1c13820f09262a43d573ea7489ff780133375a01b05146185504c4",
     "Docs/races/assets/guardian-dome/export.mjs": "6dedc11a5d5bd716180afc9361870c2081ffbe8018f2dc104a35eeab2046eee8",
     "Docs/races/assets/guardian-dome/guardian-dome.bbmodel": "3f56200e6a08a5209e730fa901313907cd67a72429c27389df3945c5c525e080",
     "Docs/races/server-test-migration.json": "666c4642ce4b177eea8a20f7a9dfc2269e2fec05ab5f2d68c049395aca188f1a",
-    "Docs/settlements/standalone/README.md": "654aee4109e8e8cecb1ef3ed7631d394eb7d32fd37dd9503f90ec657a6fd515a",
+    "Docs/settlements/DESIGN_JOURNAL.md": "1fe7155f076b5de9eb2852c72f026831eadb0ba362de2398ad70b3fc2dc32515",
+    "Docs/settlements/assets/source/dashboard-r2/author_dashboard.py": "98fa13c327c20af73c3b9d6d341967f069b18c1367768155b6867f755ab928d8",
+    "Docs/settlements/assets/source/dashboard-r2/dashboard-r2.ora": "15729a822314845f271a79782977b7c8572d6572d28b32387804848f28210931",
+    "Docs/settlements/assets/source/dashboard-r2/regions.json": "64e589b6512dac75641325c3e7fb59df7cf3e2402126b4c14bedaff59f015b2b",
+    "Docs/settlements/standalone/README.md": "63c72d49774e0bb625febf9843a10941d5b1add06b11d971692f992864d04ef7",
     "Docs/smp-gui/README.md": "b234afad08970b72d92ac1f4c3c0bd9514091218e33befa76f46e1549d055a61",
     "Mods/JEMBootstrap/patches/reliable-updates.patch": "3dde2e020c9880f9198a87ccb6c491b414762853069b977635085541a5030a69",
     "Mods/JEMBootstrap/prepare.py": "e582eb57b8363b93121a03c291e93ffb4cd082bf73904390cf9700a4a9d77d2a",
@@ -1886,11 +1916,12 @@
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/NobleTradePresentation.java": "ad77c8b23d86fff9111f6b1b6dcfb11f51e0bf3e27fee88446bc753a10a2e0ec",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/RecruitHirePresentation.java": "945e1e8bf8846e382e5be2b6efda70c4912a66f99b3d8e4a17203db3b4685d67",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementClientState.java": "64aa4e190faf589637b6750b089fa524c06ebad2330ebbc9d4c3ed6cd89f14e6",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementDashboardArt.java": "f33092c9eb4090a53bd96057fbe06e45abe831716dbb811e066bc3968450106a",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementMap.java": "6392d2c3314a4695fbefb1ee44c826260eaae36670d9a93e79d91a4449a8c278",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementMaterials.java": "21524453967d225e0f4c40e14df5a9396b29b19ef8b9c19f69b302d6fdd92e45",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementNotices.java": "fef4f44a857ded4cc0eda7d6322c4430db3bcee35901a58b709292badd9c5306",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementPriceRenderer.java": "001a58a43216c8237b39c0c8ae0e1d1147d196a0e8263e0cec624f9a79ac9352",
-    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java": "c7404b19fecb4b952c79f1cadd08cdb7a1fa5ff66e7bf94df08bc5a8ab3e297c",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java": "3ff4e0ff92e4cad7d415b842f9ccf952dca475f810fabeecbb34d5e740bc0cb4",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/StorageLabels.java": "f77d87938673723cfc947c8a2666efa67d67554887e415c337a88defa5539659",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/TerritoryDragState.java": "1694ae4dffe9ddb6bc424d39c61a434f656d749dbbc6637009886636413ce639",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/TownFoundingScreen.java": "789bc0345051588dc2f379ecf5aa57dbb31af193ca87fc7b2d6ed7a413338c5e",
@@ -2001,8 +2032,28 @@
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownRecord.java": "e85603034ae8dcfe9a9510afb6849369f8af42147c3ed5af3bd6ee24188a74f2",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/workforce/WorkforceRecord.java": "c1a56970bae361c929ff327e6fe2def3babd89f376cdf7b200fa30a12dcd4c43",
     "Mods/JEMSettlements/src/main/resources/META-INF/mods.toml": "f46e983d89097252d236dcb7897569cbac2b6aa8c80a6af55060ef01cfe92ee7",
-    "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json": "579f45d8d90f0654f9d03255da555d8eb9166b60432a2f6027b76da07cb0da4e",
-    "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json": "768de1acc6e24f16ec7a152531fb322e15425090789fd8b67c7158e13273bbf2",
+    "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json": "8c332f1eca6dc912ffc11079dd4bd6f96c67115d34baff724f85532200feca1d",
+    "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json": "fd3ab13236567f2163c4ed858687f486d8d2af82713b55d65598504688cfe623",
+    "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/banner.png": "8c8a7abdedb4157f8e542b05527d1c9aec3df20ae0a611efeffeb4507205eb98",
+    "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/blue.png": "c9d670600de603fa97ff0ff1b785345ad2f3bb49e3d53c346396bb4bab2eb2fa",
+    "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/card.png": "7b096583ef6b3a7b6f8b77e49b51158ed7aef60cfa641b40b8d8ba574ab96287",
+    "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/control.png": "4f0bab7347dcfe294f36600abbce5f0e2097aba214a788e34a3bee36f6a80fa9",
+    "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/control_disabled.png": "a4b86fc32a1c482c1a25a18848052e62750b490b1fca606a303c17191d93b12c",
+    "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/control_hover.png": "077c19812c908e27f74cc57110bf72b5b4f6281009d3aaee386cc82ff8359f8a",
+    "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/control_selected.png": "736753ab9b99fa74ba2b77421d1fef43aeb52c7dbba1eb0d0500d3c69d6ffa9e",
+    "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/dark_frame.png": "ad63db81a1b2ac4250bb70bd5d1463678e3690a76bf4a309ea25b982263a95ab",
+    "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/lantern.png": "0b1a5eecea9caa798af6cf5f0a4cb29d03ab03c518d71ceeaa78e26e06a4da72",
+    "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/mood_happy.png": "5169012441c09113a9ffb312bb1eab77574c9c27bc2f83b20d301c64feeffcfa",
+    "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/mood_neutral.png": "7ae855078b1886d8a291a0457f880147e1525b2fcf4d33145d5814fd3a99f707",
+    "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/mood_sad.png": "ccb88506b9349e1cd35fd3af97133ba7d6711d3ea93112795bc6f25c68f7ee3c",
+    "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/paper.png": "dbc0ee1f8834b7f45905e86f3be0895598df0af184d6b6ee4365b8a0ef157d3c",
+    "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/paper_frame.png": "ada296d73781b54a32d17d4a5df7e8dedfd28c8dfbf5c5569d295efe3093f3ad",
+    "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/stone.png": "db4a5074d480d544dc40d70467891c1d956d0e1202b5fcb8c33dfc7d23966a11",
+    "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/stone_frame.png": "b93f8d50150241584a379ba3de3c4f21af0cbd858227f83ca1d501d4989c430e",
+    "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/track.png": "d7e1eb5ef388fd29660a7f729e108c8ed7ede8e97121857ed13b93579ea81fa3",
+    "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/vine.png": "2356d9c3dedf8f7d483a421f9e43a6290d3be393ca8b04b476398bf88c0af7dd",
+    "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/wood.png": "cd72f4858402c126fa98ebafe48f9198a761c53fa28462d42c5760b757601096",
+    "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/dashboard/wood_frame.png": "c49c98674e7d75d2d10b85109e5bfafa94c971c0470a1d8aa3bf43734865c32e",
     "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/jade/mood.png": "0e35956288805b89b786490714dd45da66d682a700349b980830f86267d6226f",
     "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/recruit/parchment.png": "7856ee58406cbf938921fe52671b619864e05e92a938561b2247a0e9ca87de61",
     "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/amenities/base.json": "06d822c0dc4ea64f7fdccb81956b4ac9ab03f820c276d2c3eca3558ef15f332c",
@@ -2173,7 +2224,6 @@
     "Server/kubejs/server_scripts/jem/recipe_replacements.js": "ce74ae9c2867e1ee44c3332609ec03b09c3c4989bf1558771ac6aca6354ef957",
     "Server/run.bat": "4d42c275b005814be58b8819283f79a108876923e51cf63557b27caba4352f2a",
     "tools/generate_profession_skills.py": "9800359f334ff9887cac91885122de7734a0279c4a9d6b0d2be5c7b6c1c437e0",
-    "tools/workspace.json": "5990bec2557b8b798ba739428ab2989ad00f0d4ad28e396303b27d8c245f1bea",
-    "Docs/races/README.md": "9b1af47d5f1d855f1b839098d72e31f9796e3b0322ece3c3fbfd026cdb5a67ae"
+    "tools/workspace.json": "5990bec2557b8b798ba739428ab2989ad00f0d4ad28e396303b27d8c245f1bea"
   }
 }

@@ -4,6 +4,30 @@
 изменения ведутся в [журнале Settlements](../DESIGN_JOURNAL.md). Обновлять его
 в той же задаче при изменениях механик или плана; предложения не считать реализацией.
 
+## Reference dashboard restructure —2026-10-19
+
+The user's three [selected references](../assets/reference/dashboard-2026-10-19/README.md)
+now guide the actual SettlementScreen. `SettlementDashboardArt` is a separate
+JEM-owned stone/parchment/blue/gold family, with native-size authored cloth, lamps,
+vines and mood sprites. Native recruit `SettlementMaterials` is unchanged.
+Editable art/export contract: [dashboard-r2](../assets/source/dashboard-r2/README.md).
+
+All four destinations retain one shell; Settlement summarizes residents/happiness/
+comfort/treasury, then finances and the real isometric city beside four comfort
+rails. Residents uses a persistent roster/detail view at sufficient logical width,
+with independent scrolling, real loaded NPC portraits, actual health, needs and
+complaints. Narrow windows retain single-column navigation. Happiness uses live
+summaries, six real weighted factors, housing complaint counts and a resident mood
+distribution. Chests retain actual server inventory/actions. Concept numbers and
+manual assignment buttons do not create new game rules or assignment APIs.
+
+The former page-specific384/600px panel widths are replaced by one bounded shell
+up to860x548 logical pixels. Text remains Minecraft-native; no body text shrinking.
+Frame corners and ornaments retain native pixels, quiet materials tile. Keyboard,
+focus/hover, pending ACK, confirmations, saved edits, native management and housing
+inspection still use their existing owners. Source/export/build evidence is not
+actual gameplay visual acceptance; no game launch or automated tests are run.
+
 ## Happiness/comfort/taxes implementation —2026-10-19
 
 The current owner is [DESIGN_JOURNAL.md](../DESIGN_JOURNAL.md), sections1–6.
