@@ -9,7 +9,7 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.level.saveddata.SavedData;
 
-/** Only emeralds actually removed from inventories back these accounts. Coin saves are never read. */
+/** Physical deposits and explicitly authorized daily NPC emerald income; coin saves are never read. */
 final class EmeraldTreasury extends SavedData {
     final Map<UUID, Long> accounts = new LinkedHashMap<>();
     final Map<String, CompoundTag> pending = new LinkedHashMap<>();

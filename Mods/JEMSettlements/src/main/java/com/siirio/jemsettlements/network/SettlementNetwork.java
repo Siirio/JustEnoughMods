@@ -24,7 +24,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class SettlementNetwork {
-    private static final String VERSION = "10";
+    private static final String VERSION = "11";
     private static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(JemSettlements.MOD_ID, "town"))
             .networkProtocolVersion(() -> VERSION).clientAcceptedVersions(value -> VERSION.equals(value) || NetworkRegistry.ABSENT.equals(value) || NetworkRegistry.ACCEPTVANILLA.equals(value)).serverAcceptedVersions(value -> VERSION.equals(value) || NetworkRegistry.ABSENT.equals(value) || NetworkRegistry.ACCEPTVANILLA.equals(value)).simpleChannel();
     private SettlementNetwork() {}
@@ -176,10 +176,11 @@ public final class SettlementNetwork {
 
     static CompoundTag buildView(ServerPlayer player, TownRecord town) {
         CompoundTag view = new CompoundTag(); view.putBoolean("CoinCurrency", com.siirio.jemsettlements.currency.SettlementCurrency.coins()); view.putLong("ExpansionCostPerBlock", com.siirio.jemsettlements.payroll.SettlementEconomyConfig.expansionPerBlock()); view.putLong("ExpansionMinimumCost", com.siirio.jemsettlements.payroll.SettlementEconomyConfig.expansionMinimum()); view.putUUID("Id", town.id()); view.putString("Name", town.name());
-        view.putInt("Happiness", town.happiness()); view.putInt("Tax", town.taxPercent()); view.putLong("Center", town.center().asLong());
+        view.putBoolean("SetTaxAvailable",!com.siirio.jemsettlements.sandbox.SandboxCivicRuntime.active(player.getServer()));view.putInt("Happiness", town.happiness()); view.putInt("Tax", town.taxPercent()); view.putLong("Center", town.center().asLong());
         view.putInt("TerritoryRadius", town.territoryRadius()); view.putInt("TerritoryMinX", town.territoryMinX()); view.putInt("TerritoryMaxX", town.territoryMaxX()); view.putInt("TerritoryMinZ", town.territoryMinZ()); view.putInt("TerritoryMaxZ", town.territoryMaxZ()); view.putLong("TerritoryArea", town.territoryArea());
         view.putString("Tier", town.tier().name()); view.putString("PrimarySpecialization", town.primarySpecialization().name()); view.putString("SecondarySpecialization", town.secondarySpecialization().name());
         view.put("Metrics", town.metrics());
+        view.putLong("LastResidentTax",town.metrics().getLong("LastResidentIncome"));view.putLong("LastBeautyTax",town.metrics().getLong("LastComfortIncome"));view.putLong("LastDailyTax",town.metrics().getLong("LastDailyTax"));
         view.putInt("Housing", town.housingScore()); view.putInt("Food", town.foodScore()); view.putInt("Safety", town.safetyScore()); view.putInt("Jobs", town.jobsScore()); view.putInt("Community", town.communityScore()); view.putInt("Decoration", town.decorationScore());
         view.putLong("Treasury", SettlementApi.treasuryBalance(player, town));
         var bulletin = com.siirio.jemsettlements.currency.SettlementCurrency.coins() ? com.siirio.jemeconomy.api.EconomyApi.marketBulletin(player) : new com.siirio.jemeconomy.api.EconomyApi.MarketBulletin("", "", 0L, 0L, 0L);
@@ -239,6 +240,13 @@ public final class SettlementNetwork {
                 }
                 defense.add(row);
             }
+        }
+        var golems=town.metrics().getCompound("GolemObservations");
+        for(String key:golems.getAllKeys()) {
+            var row=golems.getCompound(key).copy();row.putString("Type","GOLEM");row.putString("Kind","GOLEM");
+            row.putString("NativeType","minecraft:iron_golem");row.putBoolean("Living",true);row.putBoolean("Ready",row.getBoolean("Qualified"));
+            if(!row.contains("Name"))row.putString("Name",net.minecraft.network.chat.Component.translatable("entity.minecraft.iron_golem").getString());
+            defense.add(row);
         }
         view.put("Defense", defense); view.putLong("ProjectedPayroll", projected); view.putLong("NextPayroll", data.workforce(town.id()).stream().filter(com.siirio.jemsettlements.workforce.WorkforceRecord::settlementActive).mapToLong(com.siirio.jemsettlements.workforce.WorkforceRecord::nextWageGameTime).filter(value -> value > 0L).min().orElse(0L)); view.putInt("MissedPayrolls", town.consecutiveMissedPayrolls());
         long unpaid = town.payroll().stream().filter(period -> period.currentCurrency() && !period.paid()).mapToLong(com.siirio.jemsettlements.payroll.PayrollPeriod::total).sum(); view.putLong("UnpaidPayroll", unpaid); view.putLong("PayrollShortfall", Math.max(0L, unpaid - com.siirio.jemsettlements.currency.SettlementCurrency.townBalance(player.getServer(), town.id())));

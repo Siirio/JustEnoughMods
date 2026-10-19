@@ -38,7 +38,7 @@ public final class HousingInspector {
         snapshot=data.copy();actual.clear();sample.clear();surface.clear();invalidate();
         var mc=Minecraft.getInstance();if(mc.level==null)return;
         var palette=data.getList("Palette",Tag.TAG_COMPOUND);var rows=data.getList("Blocks",Tag.TAG_COMPOUND);BlockPos anchor=BlockPos.of(data.getLong("Anchor"));
-        for(int i=0;i<Math.min(data.getBoolean("City")?8192:3179,rows.size());i++){
+        for(int i=0;i<Math.min(data.getBoolean("City")?16384:3179,rows.size());i++){
             var row=rows.getCompound(i);int id=row.getInt("State");
             if(id>=0&&id<palette.size())actual.add(new Cell(BlockPos.of(row.getLong("Position")).subtract(anchor),NbtUtils.readBlockState(mc.level.registryAccess().lookupOrThrow(Registries.BLOCK),palette.getCompound(id)),row));
         }
@@ -75,7 +75,13 @@ public final class HousingInspector {
         if(cachedDepth==depth&&cachedExample==example&&Math.abs(cachedYaw-yaw)<.6F&&Math.abs(cachedPitch-pitch)<.6F)return;
         cachedDepth=depth;cachedExample=example;cachedYaw=yaw;cachedPitch=pitch;visible.clear();
         minimum.set(Float.POSITIVE_INFINITY);maximum.set(Float.NEGATIVE_INFINITY);interest.zero();int relevant=0;
-        for(Cell cell:cells){Vector3f center=cell.center();minimum.min(new Vector3f(center).sub(.5F,.5F,.5F));maximum.max(new Vector3f(center).add(.5F,.5F,.5F));if(cell.relevant()){interest.add(center);relevant++;}}
+        for(Cell cell:cells){
+            Vector3f center=cell.center();
+            float span=footprint(cell);
+            minimum.min(new Vector3f(center).sub(.5F,.5F,.5F));
+            maximum.max(new Vector3f(center).add(span-.5F,.5F,span-.5F));
+            if(cell.relevant()){interest.add(center);relevant++;}
+        }
         if(cells.isEmpty()){minimum.set(-.5F);maximum.set(.5F);}
         if(!example&&snapshot.contains("Radius")&&snapshot.contains("VerticalRadius")){
             int radius=snapshot.getInt("Radius"),vertical=snapshot.getInt("VerticalRadius");
@@ -83,8 +89,8 @@ public final class HousingInspector {
             // homes. User zoom and pan still deliberately move beyond this reset framing.
             BlockPos anchor=BlockPos.of(snapshot.getLong("Anchor"));
             if(snapshot.getBoolean("City")) {
-                minimum.min(new Vector3f(snapshot.getInt("MinX")-anchor.getX(),-vertical,snapshot.getInt("MinZ")-anchor.getZ()));
-                maximum.max(new Vector3f(snapshot.getInt("MaxX")-anchor.getX()+1,vertical+1,snapshot.getInt("MaxZ")-anchor.getZ()+1));
+                minimum.min(new Vector3f(snapshot.getInt("MinX")-anchor.getX(),minimum.y,snapshot.getInt("MinZ")-anchor.getZ()));
+                maximum.max(new Vector3f(snapshot.getInt("MaxX")-anchor.getX()+1,maximum.y,snapshot.getInt("MaxZ")-anchor.getZ()+1));
             } else {
                 minimum.min(new Vector3f(-radius,-vertical,-radius));
                 maximum.max(new Vector3f(radius+1,vertical+1,radius+1));
@@ -113,13 +119,17 @@ public final class HousingInspector {
             if(along<0||inward<0||inward>depth||rounded<=0||lateral>radius*radius*rounded)visible.add(cell);
         }
     }
+    private int footprint(Cell cell){
+        if(example||!snapshot.getBoolean("City"))return 1;
+        return cell.facts().getBoolean("Coarse")?Math.max(1,snapshot.getInt("Stride")):Math.max(1,cell.facts().getInt("Span"));
+    }
     private float fittedScale(Matrix4f rotation,int width,int height){
         float extentX=1,extentY=1;
         for(int corner=0;corner<8;corner++){
             Vector3f point=new Vector3f((corner&1)==0?minimum.x:maximum.x,(corner&2)==0?minimum.y:maximum.y,(corner&4)==0?minimum.z:maximum.z).sub(focus);
             rotation.transformPosition(point);extentX=Math.max(extentX,Math.abs(point.x)*2);extentY=Math.max(extentY,Math.abs(point.y)*2);
         }
-        return Math.max(.1F,Math.min((width-16)/extentX,(height-16)/extentY))*zoom;
+        return Math.max(.0001F,Math.min((width-16)/extentX,(height-16)/extentY))*zoom;
     }
     public void render(GuiGraphics g,int x,int y,int w,int h,int mouseX,int mouseY){
         this.x=x;this.y=y;this.w=w;this.h=h;var mc=Minecraft.getInstance();camera();Matrix4f rotation=rotation();geometry(example?sample:actual,rotation);
@@ -134,8 +144,8 @@ public final class HousingInspector {
                 if(onlyAmenities&&!cell.facts().getBoolean("Counted"))continue;
                 if(surfaceOnly&&cell.pos().getY()<surface.getOrDefault(net.minecraft.world.level.ChunkPos.asLong(cell.pos().getX(),cell.pos().getZ()),Integer.MIN_VALUE))continue;
                 var pos=cell.pos();pose.pushPose();pose.translate(pos.getX(),pos.getY(),pos.getZ());
-                if(snapshot.getBoolean("City")&&!cell.relevant()) {
-                    BlockPos anchor=BlockPos.of(snapshot.getLong("Anchor"));int stride=Math.max(1,snapshot.getInt("Stride"));
+                if(snapshot.getBoolean("City")&&footprint(cell)>1) {
+                    BlockPos anchor=BlockPos.of(snapshot.getLong("Anchor"));int stride=footprint(cell);
                     int spanX=Math.max(1,Math.min(stride,snapshot.getInt("MaxX")-anchor.getX()-pos.getX()+1));
                     int spanZ=Math.max(1,Math.min(stride,snapshot.getInt("MaxZ")-anchor.getZ()-pos.getZ()+1));
                     pose.scale(spanX,1,spanZ);
@@ -150,7 +160,7 @@ public final class HousingInspector {
                 int radius=snapshot.getInt("Radius"),vertical=snapshot.getInt("VerticalRadius");
                 if(snapshot.getBoolean("City")) {
                     BlockPos anchor=BlockPos.of(snapshot.getLong("Anchor"));
-                    LevelRenderer.renderLineBox(pose,buffers.getBuffer(RenderType.lines()),snapshot.getInt("MinX")-anchor.getX(),-vertical,snapshot.getInt("MinZ")-anchor.getZ(),snapshot.getInt("MaxX")-anchor.getX()+1,vertical+1,snapshot.getInt("MaxZ")-anchor.getZ()+1,.8F,.72F,.4F,.5F);
+                    LevelRenderer.renderLineBox(pose,buffers.getBuffer(RenderType.lines()),snapshot.getInt("MinX")-anchor.getX(),minimum.y,snapshot.getInt("MinZ")-anchor.getZ(),snapshot.getInt("MaxX")-anchor.getX()+1,maximum.y,snapshot.getInt("MaxZ")-anchor.getZ()+1,.8F,.72F,.4F,.5F);
                 } else LevelRenderer.renderLineBox(pose,buffers.getBuffer(RenderType.lines()),-radius,-vertical,-radius,radius+1,vertical+1,radius+1,.8F,.72F,.4F,.22F);
                 if(!snapshot.getBoolean("City")&&!snapshot.getBoolean("BedPresent")&&!snapshot.getBoolean("Unloaded")&&!snapshot.getBoolean("NoHome"))LevelRenderer.renderLineBox(pose,buffers.getBuffer(RenderType.lines()),0,0,0,1,1,2,1,.2F,.2F,1);
             }
@@ -163,8 +173,6 @@ public final class HousingInspector {
             List<Component> lines=new ArrayList<>();lines.add(hovered.state().getBlock().getName());CompoundTag facts=hovered.facts();
             if(snapshot.getBoolean("City")&&facts.contains("Category")) {
                 lines.add(Component.translatable("jem.settlements.city.category",Component.translatable("jem.settlements.amenity."+facts.getString("Category"))));
-                lines.add(Component.translatable("jem.settlements.city.group",facts.getInt("GroupCount"),facts.getInt("GroupPoints")));
-                lines.add(Component.translatable("jem.settlements.city.category_points",facts.getInt("CategoryPoints")));
                 if(!facts.getBoolean("Active"))lines.add(tr("unlit"));
             } else {
                 lines.add(tr(facts.getBoolean("Bed")?"bed_rule":facts.contains("Category")?facts.getBoolean("Counted")?"counted":!facts.getBoolean("Active")?"unlit":!facts.getBoolean("Unique")?"duplicate":"capped":"structure"));

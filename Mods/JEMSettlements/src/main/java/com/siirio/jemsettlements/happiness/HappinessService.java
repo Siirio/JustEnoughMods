@@ -1,43 +1,26 @@
 package com.siirio.jemsettlements.happiness;
 
+/** One shared 90-point needs budget, with a separate ten-point personal activity. */
 public final class HappinessService {
-    private HappinessService() {
+    private HappinessService() { }
+    public static int taxPenalty(int percent) {
+        return switch (percent) { case 0 -> 0; case 5 -> 3; case 10 -> 8; case 15 -> 16;
+            default -> throw new IllegalArgumentException("Unsupported tax rate"); };
     }
-
+    public static double core(double housing, double food, double safety, double jobs, double community, double comfort) {
+        return .20 * bound(housing) + .20 * bound(food) + .10 * bound(safety)
+                + .10 * bound(jobs) + .15 * bound(community) + .15 * bound(comfort);
+    }
     public static int calculate(int housing, int food, int safety, int jobs, int community, int taxPercent) {
         return calculate(housing, food, safety, jobs, community, 0, taxPercent);
     }
-
-    public static int calculate(int housing, int food, int safety, int jobs, int community, int decoration, int taxPercent) {
-        int penalty = switch (taxPercent) {
-            case 0 -> 0;
-            case 5 -> 3;
-            case 10 -> 8;
-            case 15 -> 16;
-            default -> throw new IllegalArgumentException("Unsupported tax rate");
-        };
-        long weighted = Math.round(0.20D * clamp(housing) + 0.20D * clamp(food) + 0.20D * clamp(safety)
-                + 0.15D * clamp(jobs) + 0.15D * clamp(community) + 0.10D * clamp(decoration));
-        return clamp((int) weighted - penalty);
+    public static int calculate(int housing, int food, int safety, int jobs, int community, int comfort, int taxPercent) {
+        return (int)Math.round(bound(core(housing, food, safety, jobs, community, comfort) - taxPenalty(taxPercent)));
     }
-
-    /** Personal stimuli and town environment have separate owners; no feedback from aggregate happiness. */
-    public static int residentMood(int personal, int environmentBonus, int socialCap) {
-        return Math.min(clamp(socialCap), clamp(personal + Math.max(0, environmentBonus)));
-    }
-    public static int socialCap(int social) {
-        int floor = SettlementMetricsConfig.SOCIAL_BASE_CAP.get();
-        return floor + clamp(social) * (100 - floor) / 100;
-    }
-    public static int environmentBonus(int comfort, int animals) {
-        return clamp(comfort) * SettlementMetricsConfig.COMFORT_BONUS.get() / 100
-                + clamp(animals) * SettlementMetricsConfig.ANIMAL_BONUS.get() / 100;
-    }
-    public static double productionFactor(int happiness) {
-        if (happiness >= 80) return 1.05D;
-        if (happiness < 35) return 0.90D;
-        return 1.0D;
-    }
-
-    private static int clamp(int value) { return Math.max(0, Math.min(100, value)); }
+    /** Retained for native recruit adapters; ordinary residents use the shared core directly. */
+    public static int residentMood(int personal, int environmentBonus, int socialCap) { return (int)bound(personal); }
+    public static int socialCap(int social) { return 100; }
+    public static int environmentBonus(int comfort, int animals) { return 0; }
+    public static double productionFactor(int happiness) { return happiness >= 80 ? 1.05 : happiness < 35 ? .90 : 1; }
+    private static double bound(double value) { return Math.max(0, Math.min(100, value)); }
 }

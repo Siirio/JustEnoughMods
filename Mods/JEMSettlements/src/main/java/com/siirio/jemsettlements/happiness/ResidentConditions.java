@@ -89,6 +89,7 @@ public final class ResidentConditions {
             if (entity == null) continue;
             Observation state = OBSERVATIONS.computeIfAbsent(actor.mood().villagerId(), ignored -> new Observation());
             if (actor.recruit() != null) RecruitsAdapter.syncNeeds(entity, actor.mood());
+            actor.mood().advanceTime(now);
             BedPersonalSpace.refresh(entity, actor.mood());
             var previousBed = actor.mood().observedBed();
             GlobalPos home = home(entity, actor.mood(), state);
@@ -140,8 +141,13 @@ public final class ResidentConditions {
     }
     private static void observeHousing(Actor actor, Observation state, ServerLevel level, long now) {
         GlobalPos home = state.home;
-        if (home == null || !home.dimension().equals(level.dimension()) || !level.hasChunkAt(home.pos())
-                || !(level.getBlockState(home.pos()).getBlock() instanceof BedBlock)) {
+        if (home == null || home.dimension().equals(level.dimension()) && level.hasChunkAt(home.pos())
+                && !(level.getBlockState(home.pos()).getBlock() instanceof BedBlock)) {
+            // Missing housing has its own common shortfall, not a fictitious zero-area room.
+            actor.mood().crowdingPenalty(0); actor.mood().lightPenalty(0);
+            state.roomUnknown = false; state.lightUnknown = false; state.nextHome = now + 100; return;
+        }
+        if (!home.dimension().equals(level.dimension()) || !level.hasChunkAt(home.pos())) {
             state.roomUnknown = true; state.lightUnknown = true; state.nextHome = now + 100; return;
         }
         var room = ResidentialRooms.request(level, home.pos());

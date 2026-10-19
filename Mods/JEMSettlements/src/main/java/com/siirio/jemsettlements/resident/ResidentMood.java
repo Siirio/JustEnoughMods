@@ -24,7 +24,30 @@ public final class ResidentMood {
     private CompoundTag needObservation = new CompoundTag();
     public CompoundTag needObservation() { return needObservation.copy(); }
     public void needObservation(CompoundTag value) { needObservation = value.copy(); }
-    private int mood = 50;
+    private int mood;
+    private double sharedCore;
+    private int taxPenalty, mealQuality, injuryPenalty;
+    private boolean nativeNeeds;
+    private long clock, patUntil, harmfulUntil, injuryRecoveryAt;
+    public void advanceTime(long now) {
+        clock = now;
+        if (injuryPenalty > 0 && now >= injuryRecoveryAt) {
+            long steps = 1 + (now - injuryRecoveryAt) / 100;
+            injuryPenalty = Math.max(0, injuryPenalty - (int)Math.min(10, steps));
+            injuryRecoveryAt = now + 100;
+        }
+    }
+    public void sharedNeeds(double core, int tax, long now) {
+        advanceTime(now); nativeNeeds = false; sharedCore = Math.max(0, Math.min(90, core)); taxPenalty = tax;
+    }
+    public double exactMood() {
+        double base = nativeNeeds ? mood : sharedCore + activityBonus() - taxPenalty;
+        return Math.max(0, Math.min(100, base - conditionsPenalty() - injuryPenalty - harmfulFoodPenalty()));
+    }
+    public int activityBonus() { return clock < patUntil ? 10 : 0; }
+    public int harmfulFoodPenalty() { return clock < harmfulUntil ? 5 : 0; }
+    public int injuryPenalty() { return injuryPenalty; }
+    public int mealQuality(long now) { return lastServingGameTime != Long.MIN_VALUE && now >= lastServingGameTime && now - lastServingGameTime < 24000 ? mealQuality : 0; }
     private int environmentBonus;
     private int socialMoodCap = 100;
     private GlobalPos crowdedHome;
@@ -59,7 +82,7 @@ public final class ResidentMood {
     private boolean child;
     private long lastPatDay = Long.MIN_VALUE;
     public boolean child() { return child; }
-    public boolean pat(long day) { if (!living || day <= lastPatDay) return false; lastPatDay = day; mood = clamp(mood + 8); return true; }
+    public boolean pat(long now) { advanceTime(now); if (!living || now < patUntil) return false; patUntil = now + 24000; lastPatDay = Math.floorDiv(now, 24000); return true; }
     private String displayName;
     private String profession = "minecraft:none";
     public String displayName() { return displayName; }
@@ -86,7 +109,7 @@ public final class ResidentMood {
     public UUID townId() { return townId; }
     public Optional<GlobalPos> home() { return Optional.ofNullable(home); }
     public Optional<GlobalPos> workplace() { return Optional.ofNullable(workplace); }
-    public int mood() { return clamp(com.siirio.jemsettlements.happiness.HappinessService.residentMood(mood, environmentBonus, socialMoodCap) - conditionsPenalty()); }
+    public int mood() { return (int)Math.round(exactMood()); }
     public int personalMood() { return mood; }
     public int environmentBonus() { return environmentBonus; }
     public int socialMoodCap() { return socialMoodCap; }
@@ -98,7 +121,7 @@ public final class ResidentMood {
     public int hunger() { return 100 - satiety; }
     /** Native Recruits owns these values; this snapshot only drives shared serving rules. */
     public void nativeNeeds(float morale, float hunger) {
-        mood = clamp(Math.round(morale)); satiety = clamp((int) Math.floor(hunger));
+        nativeNeeds = true; mood = clamp(Math.round(morale)); satiety = clamp((int) Math.floor(hunger));
         if (satiety >= 100 && craving) { craving = false; cravingCycle++; cravingThreshold = nextCravingThreshold(); requestedDish = null; }
     }
     public boolean craving() { return craving; }
@@ -151,19 +174,27 @@ public final class ResidentMood {
         boolean repeated = recentFoods.contains(food.toString());
         int applied = baseMood < 0 ? baseMood : repeated ? 1 : Math.max(1, baseMood);
         if (food.equals(requestedDish) && baseMood >= 0) { applied += 4; requestedDish = null; }
-        if (applied > 0) { int used = positiveByDay.values().stream().mapToInt(Integer::intValue).sum(); applied = Math.min(applied, Math.max(0, 15 - used)); positiveByDay.merge(day, applied, Integer::sum); }
-        else if (applied < 0) { int used = -negativeByDay.values().stream().mapToInt(Integer::intValue).sum(); applied = Math.max(applied, -Math.max(0, 20 - used)); negativeByDay.merge(day, applied, Integer::sum); }
-        mood = clamp(mood + applied); satiety = clamp(satiety + satietyDelta); lastServingGameTime = gameTime; foodCooldownDays.put(food.toString(), day);
+        advanceTime(gameTime);
+        mealQuality = baseMood < 0 ? 0 : Math.min(5, applied);
+        if (!nativeNeeds && baseMood < 0 && gameTime >= harmfulUntil) harmfulUntil = gameTime + 24000;
+        // Food changes the bounded nutrition contribution, never a second permanent mood bank.
+        applied = baseMood < 0 ? -5 : mealQuality;
+        if(nativeNeeds) {
+            if(applied>0){int used=positiveByDay.values().stream().mapToInt(Integer::intValue).sum();applied=Math.min(applied,Math.max(0,15-used));positiveByDay.merge(day,applied,Integer::sum);}
+            else if(applied<0){int used=-negativeByDay.values().stream().mapToInt(Integer::intValue).sum();applied=Math.max(applied,-Math.max(0,20-used));negativeByDay.merge(day,applied,Integer::sum);}
+            mood=clamp(mood+applied);
+        }
+        satiety = clamp(satiety + satietyDelta); lastServingGameTime = gameTime; foodCooldownDays.put(food.toString(), day);
         servingsToday.merge(food.toString(), 1, Integer::sum);
         if (satiety >= 100) { craving = false; cravingCycle++; cravingThreshold = nextCravingThreshold(); requestedDish = null; }
         repeatedDish = repeated; lastDish = food;
         recentFoods.remove(food.toString()); recentFoods.addFirst(food.toString()); while (recentFoods.size() > 4) recentFoods.removeLast(); return applied;
     }
-    public int damaged(float amount) { int penalty = Math.max(1, Math.min(10, (int) Math.ceil(amount))); mood = clamp(mood - penalty); return penalty; }
+    public int damaged(float amount) { int penalty = Math.max(1, Math.min(10, (int) Math.ceil(amount))); injuryPenalty = Math.max(injuryPenalty, penalty); injuryRecoveryAt = clock + 100; return penalty; }
     public void dailyUpdate(long day) {
         if (lastDailyUpdate == Long.MIN_VALUE) { lastDailyUpdate = day; return; }
         long elapsed = Math.min(6L, Math.max(0L, day - lastDailyUpdate));
-        for (int i = 0; i < elapsed; i++) { satiety = Math.max(0, satiety - 12); if (mood < 50) mood = Math.min(50, mood + 2); else if (mood > 50) mood = Math.max(50, mood - 2); }
+        for (int i = 0; i < elapsed; i++) { satiety = Math.max(0, satiety - 12); }
         lastDailyUpdate = Math.max(lastDailyUpdate, day); pruneStimuli(day);
     }
     private void resetServingDay(long day) {
@@ -182,7 +213,12 @@ public final class ResidentMood {
     }
 
     public CompoundTag save() {
-        CompoundTag tag = new CompoundTag(); tag.putUUID("Villager", villagerId); tag.putUUID("Town", townId); savePos(tag, "Home", home); savePos(tag, "Work", workplace);
+        CompoundTag tag = new CompoundTag();
+        tag.putInt("HappinessModel", 2); tag.putDouble("SharedCore", sharedCore); tag.putInt("TaxPenalty", taxPenalty);
+        tag.putBoolean("NativeNeeds", nativeNeeds); tag.putLong("MoodClock", clock); tag.putLong("PatUntil", patUntil);
+        tag.putLong("HarmfulUntil", harmfulUntil); tag.putInt("MealQuality", mealQuality);
+        tag.putInt("InjuryPenalty", injuryPenalty); tag.putLong("InjuryRecoveryAt", injuryRecoveryAt);
+        tag.putUUID("Villager", villagerId); tag.putUUID("Town", townId); savePos(tag, "Home", home); savePos(tag, "Work", workplace);
         if (displayName != null) tag.putString("DisplayName", displayName);
         tag.putString("Profession", profession); tag.putBoolean("Child", child); tag.putLong("LastPatDay", lastPatDay);
         tag.put("NeedObservation", needObservation.copy()); tag.putInt("Mood", mood); tag.putInt("EnvironmentBonus", environmentBonus); tag.putInt("SocialMoodCap", socialMoodCap); tag.putInt("Satiety", satiety); tag.putLong("LastServing", lastServingGameTime); tag.putLong("LastDailyUpdate", lastDailyUpdate); tag.putBoolean("Living", living);
@@ -200,7 +236,14 @@ public final class ResidentMood {
     }
     public static ResidentMood load(CompoundTag tag) {
         ResidentMood resident = new ResidentMood(tag.getUUID("Villager"), tag.getUUID("Town"), loadPos(tag, "Home"), loadPos(tag, "Work"));
+        resident.sharedCore = Math.max(0, Math.min(90, tag.getDouble("SharedCore")));
+        resident.taxPenalty = tag.getInt("TaxPenalty"); resident.nativeNeeds = tag.getBoolean("NativeNeeds");
+        resident.clock = tag.getLong("MoodClock"); resident.patUntil = tag.getLong("PatUntil");
+        resident.harmfulUntil = tag.getLong("HarmfulUntil"); resident.mealQuality = Math.max(0, Math.min(5, tag.getInt("MealQuality")));
+        resident.injuryPenalty = Math.max(0, Math.min(10, tag.getInt("InjuryPenalty"))); resident.injuryRecoveryAt = tag.getLong("InjuryRecoveryAt");
+        // Legacy Mood/EnvironmentBonus are retained only as native recruit metadata, not ordinary happiness.
         resident.needObservation = tag.getCompound("NeedObservation").copy();
+        if(tag.getInt("HappinessModel")!=2){resident.needObservation.remove("Housing");resident.needObservation.remove("Food");}
         resident.crowdedHome = loadPos(tag, "CrowdedHome");
         resident.observedBed = loadPos(tag, "ObservedBed");
         resident.crowdingPenalty = clamp(tag.getInt("CrowdingPenalty")); resident.lightPenalty = clamp(tag.getInt("LightPenalty")); resident.fearPenalty = clamp(tag.getInt("FearPenalty")); resident.conditionsUnknown = tag.getBoolean("ConditionsUnknown");

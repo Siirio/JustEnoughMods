@@ -4,6 +4,38 @@
 изменения ведутся в [журнале Settlements](../DESIGN_JOURNAL.md). Обновлять его
 в той же задаче при изменениях механик или плана; предложения не считать реализацией.
 
+## Happiness/comfort/taxes implementation —2026-10-19
+
+The current owner is [DESIGN_JOURNAL.md](../DESIGN_JOURNAL.md), sections1–6.
+New ordinary resident happiness is shared90 plus personal PatPat10 minus tax and
+conditions, with no legacy50base, daily drift, social ceiling or separate animal
+addition. Native Recruits morale/orders/payroll remain native. Housing is bed10
+plus roof10 shared coverage; roof absence does not zero independent room floor.
+City comfort uses used-house paths, peaceful animals, BLOCK light and greenery,
+25each, retaining confirmed fractional evidence during unloaded refreshes.
+
+Settlement sidebar now has four pages; isometry/comfort/treasury/name/deletion live
+on Settlement. Native golems and recruits share Guards; cards show actual HP.
+Protocol11 requires the matching artifact at each connection endpoint. New
+TownRecord schema9 and ResidentMood HappinessModel2 preserve prior identities,
+finances, food metadata and ordinary registration while replacing legacy scores.
+
+DailyTaxService runs after needs updates every logical server tick. A day is24000
+gameTime ticks; separate resident happiness/satiety integrals, observed-day fraction
+and rate/15 determine up to1 native currency unit/resident. Comfort grants up to10
+units once per town independently of population/rate. Fractions and pending intents
+persist. Vanilla emerald NPC income is explicit; Coins transfer finite OPERATIONS
+funds, retaining unpaid intents during shortage. TaxDurability follows journal ->
+currency receipt -> acknowledgment ordering. These coefficient choices are Codex
+implementation defaults, not claims of separately approved economic values.
+
+This requested delivery installs only the new standalone sandbox JAR; production
+artifact is also built. Ordinary Server/ManagedPack/test jem/native publication44,
+stable and release baseline remain unchanged. No tests, validators, impact scans,
+static analysis or gameplay launches are run. Compilation is artifact preparation,
+not runtime acceptance. Earlier sections below describe historical implementations
+and are superseded where the current journal changes their formulas/layout.
+
 ## Living conditions — 2026-10-19
 
 User specifies four server-authoritative conditions. These numbers are proposed

@@ -28,6 +28,9 @@ final class SettlementViewDetails {
     private SettlementViewDetails() { }
     static void invalidate() { foodItems = null; }
     static void conditions(CompoundTag row, com.siirio.jemsettlements.resident.ResidentMood history) {
+        row.putInt("ActivityBonus", history.activityBonus()); row.putInt("InjuryPenalty",history.injuryPenalty());
+        row.putInt("HarmfulFoodPenalty",history.harmfulFoodPenalty());
+        if(history.needObservation().contains("HasBed")){row.putBoolean("HasBed",history.needObservation().getBoolean("HasBed"));row.putBoolean("Roofed",history.needObservation().getBoolean("Roofed"));}
         row.putInt("CrowdingPenalty", history.crowdingPenalty()); row.putInt("LightPenalty", history.lightPenalty());
         row.putInt("FearPenalty", history.fearPenalty()); row.putBoolean("ConditionsUnknown", history.conditionsUnknown());
     }
@@ -64,7 +67,7 @@ final class SettlementViewDetails {
             });
             var entity = level == null ? null : level.getEntity(row.getUUID("Id"));
             row.putBoolean("Loaded", entity != null && entity.isAlive());
-            if (entity != null && entity.isAlive()) { row.putLong("Position", entity.blockPosition().asLong()); row.putInt("EntityId", entity.getId()); }
+            if (entity instanceof LivingEntity living && living.isAlive()) { row.putFloat("Health",living.getHealth());row.putFloat("MaxHealth",living.getMaxHealth()); row.putLong("Position", entity.blockPosition().asLong()); row.putInt("EntityId", entity.getId()); }
         }
         for (String list : List.of("WorkforceRows", "Defense")) {
             ListTag workers = view.getList(list, Tag.TAG_COMPOUND);

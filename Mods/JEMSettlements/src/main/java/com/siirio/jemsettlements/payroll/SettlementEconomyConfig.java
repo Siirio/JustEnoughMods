@@ -8,6 +8,7 @@ public final class SettlementEconomyConfig {
     public static final ForgeConfigSpec SPEC;
     private static final ForgeConfigSpec.LongValue FOUNDING;
     private static final ForgeConfigSpec.LongValue EMERALD_FOUNDING;
+    private static final ForgeConfigSpec.LongValue TAX_RESIDENT_COPPER, TAX_RESIDENT_EMERALDS, TAX_COMFORT_COPPER, TAX_COMFORT_EMERALDS;
     private static final ForgeConfigSpec.LongValue EXPANSION, EXPANSION_MINIMUM, EMERALD_EXPANSION, EMERALD_EXPANSION_MINIMUM;
     private static final EnumMap<RecruitRank, ForgeConfigSpec.LongValue> EMERALD_HIRE = new EnumMap<>(RecruitRank.class);
     private static final EnumMap<RecruitRank, ForgeConfigSpec.LongValue> EMERALD_WAGE = new EnumMap<>(RecruitRank.class);
@@ -15,6 +16,10 @@ public final class SettlementEconomyConfig {
     private static final EnumMap<RecruitRank, ForgeConfigSpec.LongValue> WAGE = new EnumMap<>(RecruitRank.class);
     static {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
+        TAX_RESIDENT_COPPER = builder.comment("Maximum daily resident tax at 15 percent, full happiness and satiety. Native copper units, not an emerald exchange rate.").defineInRange("dailyResidentTaxCopper", 1L, 0L, 1L);
+        TAX_RESIDENT_EMERALDS = builder.comment("Maximum daily resident emerald income at 15 percent, full happiness and satiety.").defineInRange("dailyResidentTaxEmeralds", 1L, 0L, 1L);
+        TAX_COMFORT_COPPER = builder.comment("Town-wide daily comfort bonus at 100 comfort; independent of population, satiety and tax rate. Funded by finite Economy OPERATIONS.").defineInRange("dailyComfortTaxCopper", 10L, 0L, 1_000_000L);
+        TAX_COMFORT_EMERALDS = builder.comment("Town-wide daily emerald comfort bonus at 100 comfort.").defineInRange("dailyComfortTaxEmeralds", 10L, 0L, 1_000_000L);
         FOUNDING = builder.comment("Found a 97 by 97 settlement; expansion has separate configurable rates.")
                 .defineInRange("foundingCopper", 300L, 1L, 1_000_000L);
         EMERALD_FOUNDING = builder.comment("Standalone emerald count; independent of Coins and never converted from a Coin balance.").defineInRange("foundingEmeralds", 300L, 1L, 1_000_000L);
@@ -35,6 +40,8 @@ public final class SettlementEconomyConfig {
         SPEC = builder.build();
     }
     private SettlementEconomyConfig() { }
+    public static long dailyResidentTax(boolean coins) { return (coins ? TAX_RESIDENT_COPPER : TAX_RESIDENT_EMERALDS).get(); }
+    public static long dailyComfortTax(boolean coins) { return (coins ? TAX_COMFORT_COPPER : TAX_COMFORT_EMERALDS).get(); }
     public static long expansionPerBlock() { return (com.siirio.jemsettlements.currency.SettlementCurrency.coins() ? EXPANSION : EMERALD_EXPANSION).get(); }
     public static long expansionMinimum() { return (com.siirio.jemsettlements.currency.SettlementCurrency.coins() ? EXPANSION_MINIMUM : EMERALD_EXPANSION_MINIMUM).get(); }
     public static long founding() { return com.siirio.jemsettlements.currency.SettlementCurrency.coins() ? FOUNDING.get() : EMERALD_FOUNDING.get(); }

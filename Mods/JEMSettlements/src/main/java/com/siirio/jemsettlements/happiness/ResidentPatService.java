@@ -13,6 +13,6 @@ public final class ResidentPatService {
         var data = com.siirio.jemsettlements.town.SettlementSavedData.get(player.getServer());
         var resident = data.resident(id);
         if (resident.isEmpty() || data.town(resident.get().townId()).filter(town -> town.dimension().equals(level.dimension().location()) && town.contains(villager.blockPosition())).isEmpty()) return;
-        if (resident.get().pat(Math.floorDiv(player.getServer().overworld().getDayTime(), 24000L))) data.changed();
+        if (resident.get().pat(player.getServer().overworld().getGameTime())) data.changed();
     }
 }

@@ -219,6 +219,17 @@ public final class SettlementApi {
         return payment.status() == com.siirio.jemeconomy.ledger.TransferResult.Status.REPLAYED ? Result.REPLAYED : Result.ACCEPTED;
     }
 
+    public static Result setTax(ServerPlayer player, UUID townId, int percent) {
+        var town=ownedTown(player,townId);if(town.isEmpty())return Result.UNAUTHENTICATED;
+        if(percent!=0&&percent!=5&&percent!=10&&percent!=15)return Result.INVALID;
+        // Civic law retains its permission owner when the full civic runtime is active.
+        if(com.siirio.jemsettlements.sandbox.SandboxCivicRuntime.active(player.getServer()))return Result.UNAVAILABLE;
+        town.get().taxPercent(percent);var data=SettlementSavedData.get(player.getServer());
+        var level=player.getServer().getLevel(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION,town.get().dimension()));
+        if(level!=null)com.siirio.jemsettlements.happiness.TownMetricsService.recompute(data,town.get(),level);
+        data.changed();return Result.ACCEPTED;
+    }
+
     public static Result rename(ServerPlayer player, UUID townId, String rawName) {
         var town = ownedTown(player, townId);
         if (town.isEmpty()) return Result.UNAUTHENTICATED;

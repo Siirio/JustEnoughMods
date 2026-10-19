@@ -123,6 +123,7 @@ public final class SettlementActions {
         if (town.isEmpty()) return SettlementApi.Result.UNAUTHENTICATED;
         CompoundTag data = packet.payload(); UUID id = town.get().id();
         return switch (packet.action()) {
+            case "tax" -> SettlementApi.setTax(player,id,data.getInt("Percent"));
             case "rename" -> SettlementApi.rename(player, id, data.getString("Name"));
             case "delete" -> SettlementApi.delete(player, id, packet.requestId());
             case "remove" -> data.hasUUID("Entity") ? SettlementApi.removeRegistration(player, id, data.getUUID("Entity")) : SettlementApi.Result.INVALID;

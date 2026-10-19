@@ -1,0 +1,187 @@
+{
+  "schema_version": 2,
+  "change_id": "settlements.happiness-comfort-daily-tax",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:villager"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:iron_golem"
+    },
+    {
+      "type": "namespace",
+      "registry": "entities",
+      "value": "recruits"
+    },
+    {
+      "type": "registry",
+      "registry": "blocks"
+    }
+  ],
+  "conditions": [
+    {
+      "authority": "Production dedicated server, explicit standalone profile integrated logical server; native recruit morale remains upstream-owned. Local delivery requested for jem sandbox."
+    }
+  ],
+  "precedence": {
+    "layer": "settlement_server_needs",
+    "priority": 140,
+    "overrides": [
+      "settlements.evidence-derived-needs-overhaul"
+    ]
+  },
+  "change": {
+    "summary": "Implement shared90 plus personal10 happiness, independent bed/roof/room complaints, occupied-street comfort, native golem/recruit guards, four-page settlement GUI and durable daily resident/comfort taxes.",
+    "modifiers": [
+      {
+        "property": "settlements.personal_happiness",
+        "operation": "replace",
+        "before": "Legacy50base and daily drift, weighted town20/20/20/15/15/10, additive comfort/animals and social ceiling.",
+        "after": "Shared comfort15+safety10+housing20+food20+community15+jobs10, plus personal PatPat10/24000ticks; tax0/3/8/16 once and independent room/light/fear/injury/harmful-food deductions. Precise internal doubles, final round; town is mean ordinary resident happiness."
+      },
+      {
+        "property": "settlements.housing",
+        "operation": "replace",
+        "before": "Privacy-gated bed45 plus local amenities; room floor required roof.",
+        "after": "Bed coverage10 plus roof coverage10, roof over both halves excluding leaves; distinct no-bed/no-roof, one physical bed per resident; room space independently reachable and never zeroed by missing roof. Native private-bed sleep refusal retained without additional happiness penalty."
+      },
+      {
+        "property": "settlements.city_comfort",
+        "operation": "replace",
+        "before": "Repeated arbitrary decoration registry counts capped citywide.",
+        "after": "Four25point components: actual used house-bell paving connectivity; four peaceful animal types; BLOCK8 street/entrance coverage; visible nearby greenery coverage20 plus four kinds5. Bounded resumable observations preserve confirmed values on unload/incompletion."
+      },
+      {
+        "property": "settlements.security",
+        "operation": "derive",
+        "before": "Native owned stationary recruits only.",
+        "after": "Living stationary owned recruits plus native golems; persistent observation identity survives unloading. Newly spawned in-town guards receive numbered localized names only if no manual name; native AI/orders/health retained."
+      },
+      {
+        "property": "settlements.daily_tax",
+        "operation": "derive",
+        "before": null,
+        "after": "24000elapsed-gameTime day: separately averaged resident happiness and satiety multiplied, max1 native currency unit/resident scaled taxRate/15 and observed/day fraction; one town comfort bonus max10 independent of population/rate, proportional daily comfort. Currency-specific fractions persist; intent/receipt/ack persistence prevents duplicate payout. Emeralds vanilla NPC income; coins finite OPERATIONS transfer, shortage stays pending."
+      },
+      {
+        "property": "settlements.gui",
+        "operation": "replace",
+        "before": "Separate treasury/settings, cramped town framing and scan diagnostics.",
+        "after": "Settlement/residents/happiness/chests; town isometry and used-home detail, four comfort categories, compact treasury and tax control, name and confirmed delete; guards include golems, actual HP, resident redundant buttons removed, player-facing conditions."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMSettlements",
+    "kind": "forge_java",
+    "source_files": [
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/JemSettlements.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/HousingInspector.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/jade/SettlementJadePlugin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/currency/EmeraldTreasury.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/currency/SettlementCurrency.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/CityComfortService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/CityComfortObservation.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/CityInspection.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/GuardObservationService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/HappinessService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/ResidentConditions.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/ResidentPatService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/ResidentialRooms.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/TownMetricsService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementActions.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementViewDetails.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/SettlementEconomyConfig.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/DailyTaxService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/TaxDurability.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/ResidentMood.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownRecord.java",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Implement the full supplied plan in the standalone sandbox without tests, audits or launches.",
+    "decision_source": "User explicitly requests full implementation on2026-10-19; weights and page structure user-specified. Codex selected detailed defaults from prior proposals and tax coefficients, rate scaling, finite coin funding and bounded snapshot implementation."
+  },
+  "introduced": {
+    "date": "2026-10-19",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "Implement shared90 plus personal10 happiness, independent bed/roof/room complaints, occupied-street comfort, native golem/recruit guards, four-page settlement GUI and durable daily resident/comfort taxes."
+  },
+  "history": [
+    {
+      "date": "2026-10-19",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "Implement shared90 plus personal10 happiness, independent bed/roof/room complaints, occupied-street comfort, native golem/recruit guards, four-page settlement GUI and durable daily resident/comfort taxes.",
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/JemSettlements.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/HousingInspector.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/jade/SettlementJadePlugin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/currency/EmeraldTreasury.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/currency/SettlementCurrency.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/CityComfortService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/CityComfortObservation.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/CityInspection.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/GuardObservationService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/HappinessService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/ResidentConditions.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/ResidentPatService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/ResidentialRooms.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/TownMetricsService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementActions.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementViewDetails.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/SettlementEconomyConfig.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/DailyTaxService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/TaxDurability.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/ResidentMood.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownRecord.java",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "settlements",
+      "resident_needs",
+      "housing",
+      "city_comfort",
+      "guard_roster",
+      "currency",
+      "taxes",
+      "gui",
+      "jade",
+      "standalone"
+    ],
+    "relations": [
+      "minecraft native HOME and JOB_SITE",
+      "PatPat accepted interaction",
+      "native Recruits morale/orders",
+      "Economy finite operations balance"
+    ],
+    "notes": [
+      "Production and standalone share source/resources; only sandbox artifact is installed for this requested iteration.",
+      "No automated tests, scans, validators, static analysis or gameplay launch. Effective index is generated as catalog data maintenance."
+    ],
+    "unresolved": [
+      "Player acceptance pending. Unloaded geometry retains last confirmed evidence; unknown first observation is not invented.",
+      "Exact runtime render and native tax receipt paths were not exercised by gameplay."
+    ]
+  }
+}

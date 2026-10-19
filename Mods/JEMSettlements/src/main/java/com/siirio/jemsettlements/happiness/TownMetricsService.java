@@ -15,8 +15,8 @@ import net.minecraft.world.level.block.BedBlock;
 /** Actual entity, POI and navigation evidence; no generated workers or client authority. */
 public final class TownMetricsService {
     private static final java.util.ArrayDeque<PathRequest> PATHS = new java.util.ArrayDeque<>();
-    private static final java.util.Set<java.util.UUID> QUEUED = new java.util.HashSet<>();
-    private static final java.util.Map<java.util.UUID, PathFact> PATH_FACTS = new java.util.LinkedHashMap<>();
+    private static final java.util.Set<PathRequest> QUEUED = new java.util.HashSet<>();
+    private static final java.util.Map<PathRequest, PathFact> PATH_FACTS = new java.util.LinkedHashMap<>();
     private record PathRequest(java.util.UUID resident, GlobalPos site) { }
     private record PathFact(GlobalPos site, long tick, boolean reachable) { }
     private TownMetricsService() { }
@@ -24,7 +24,7 @@ public final class TownMetricsService {
     /** Globally at most four native path probes per tick; repeated combat recomputes cannot multiply work. */
     public static void tickPaths(net.minecraft.server.MinecraftServer server) {
         for (int budget=0;budget<4&&!PATHS.isEmpty();budget++) {
-            var request=PATHS.removeFirst(); QUEUED.remove(request.resident());
+            var request=PATHS.removeFirst(); QUEUED.remove(request);
             var level=server.getLevel(request.site().dimension());
             if(level==null||!level.hasChunkAt(request.site().pos())||!(level.getEntity(request.resident()) instanceof Villager villager)||!villager.isAlive())continue;
             boolean reachable=false;
@@ -32,13 +32,16 @@ public final class TownMetricsService {
                 var path=villager.getNavigation().createPath(request.site().pos(),1);
                 reachable=path!=null&&path.canReach();
             }
-            PATH_FACTS.put(request.resident(),new PathFact(request.site(),server.getTickCount(),reachable));
+            PATH_FACTS.put(request,new PathFact(request.site(),server.getTickCount(),reachable));
             while(PATH_FACTS.size()>4096)PATH_FACTS.remove(PATH_FACTS.keySet().iterator().next());
         }
     }
     public static void recompute(SettlementSavedData data, TownRecord town, ServerLevel level) {
         var residents = data.residents(town.id()).stream().filter(ResidentMood::living).toList();
-        int present=0,adults=0,employed=0,housing=0,food=0,unknown=0,stale=0;
+        int present=0,adults=0,employed=0,unknown=0,stale=0;
+        double housing=0,food=0;
+        long now=level.getServer().overworld().getGameTime();
+        var usedBeds=new java.util.HashSet<GlobalPos>();
         boolean housingUnknown=false,jobsUnknown=false;
         var usedJobs=new java.util.HashSet<GlobalPos>();
         var creditedJobs=new java.util.HashSet<Long>();
@@ -54,11 +57,22 @@ public final class TownMetricsService {
                 boolean inside=villager.level()==level&&town.contains(villager.blockPosition());
                 observation.putBoolean("Known",true);observation.putBoolean("Present",inside);observation.putLong("Time",level.getGameTime());
                 observation.putBoolean("Adult",!villager.isBaby()&&villager.getVillagerData().getProfession()!=VillagerProfession.NITWIT);
-                observation.putInt("Food",inside?(resident.craving()?resident.satiety()<10?0:35:100):0);
-                var home=resident.home().orElse(null);
-                boolean homeUnavailable=inside&&home!=null&&home.dimension().equals(level.dimension())&&town.contains(home.pos())&&(!level.hasChunkAt(home.pos())||BedPersonalSpace.inspect(level,home.pos())==BedPersonalSpace.Space.UNAVAILABLE);
-                if(homeUnavailable) { housingUnknown|=!prior.contains("Housing");stale++; }
-                else observation.putInt("Housing",inside&&validHome(level,town,home)?Math.min(100,45+resident.homeAmenities().points()*4):0);
+                resident.advanceTime(now);
+                observation.putDouble("Food", .75 * resident.satiety() + 5 * resident.mealQuality(now));
+                var home=resident.home().orElseGet(()->resident.observedBed().orElseGet(()->resident.crowdedHome().orElse(null)));
+                boolean bedUnavailable=inside&&home!=null&&home.dimension().equals(level.dimension())&&town.contains(home.pos())&&!level.hasChunkAt(home.pos());
+                if (bedUnavailable) { housingUnknown|=!prior.contains("Housing"); stale++; }
+                else {
+                    GlobalPos normalized=normalizeBed(level,town,home);
+                    String access=normalized==null?"missing":accessibility(level,villager,normalized);
+                    if (access.equals("pending")||access.equals("unavailable")) { housingUnknown|=!prior.contains("Housing");stale++; }
+                    else {
+                        boolean bed=inside&&normalized!=null&&!access.equals("unreachable")&&usedBeds.add(normalized);
+                        boolean roof=bed&&roofed(level,normalized.pos());
+                        observation.putBoolean("HasBed",bed);observation.putBoolean("Roofed",roof);
+                        observation.putDouble("Housing",bed?(roof?100:50):0);
+                    }
+                }
                 String reason=!inside?"outside":villager.isBaby()?"child":!observation.getBoolean("Adult")?"not_workforce":employment(level,town,villager,resident.workplace().orElse(null),usedJobs);
                 if(reason.equals("unavailable")||reason.equals("pending")) {
                     boolean sameWork=resident.workplace().isPresent()&&prior.contains("WorkPos")&&prior.getLong("WorkPos")==resident.workplace().get().pos().asLong();
@@ -92,20 +106,21 @@ public final class TownMetricsService {
                 }
             }
             if(observation.getBoolean("Present"))present++;
-            housing+=observation.getInt("Housing");food+=observation.getInt("Food");
+            housing+=observation.getDouble("Housing");food+=.75*resident.satiety()+5*resident.mealQuality(now);
             if(observation.getBoolean("Adult")){adults++;if(observation.getBoolean("Employed"))employed++;}
         }
         int guards=0;
         if(net.minecraftforge.fml.ModList.get().isLoaded("recruits"))guards=com.siirio.jemsettlements.compat.recruits.RecruitDefenseEvidence.count(data,town,level,metrics);
+        guards+=GuardObservationService.count(town,level,metrics);
         int required=required(town.territoryArea(),SettlementMetricsConfig.GUARD_AREA.get(),1);
         int socialRequired=required(town.territoryArea(),SettlementMetricsConfig.RESIDENT_AREA.get(),2);
-        int safety=metrics.getBoolean("GuardsUnknown")?town.safetyScore():Math.min(100,guards*100/required);
-        int jobs=unknown>0||jobsUnknown?town.jobsScore():adults==0?0:employed*100/adults;
-        int social=unknown>0?town.communityScore():Math.min(100,present*100/socialRequired);
+        double safety=metrics.getBoolean("GuardsUnknown")?metrics.getDouble("SafetyExact"):Math.min(100,guards*100.0/required);
+        double jobs=unknown>0||jobsUnknown?metrics.getDouble("JobsExact"):adults==0?100:employed*100.0/adults;
+        double social=Math.min(100,residents.size()*100.0/socialRequired);
         int animals=animalEvidence(level,town,metrics);
-        int comfort=Math.min(100,metrics.getInt("Comfort"));
+        double comfort=Math.min(100,metrics.contains("ComfortExact")?metrics.getDouble("ComfortExact"):metrics.getInt("Comfort"));
         // Stale positive observations remain explicitly stale, never rewritten as factual absence.
-        if(unknown==0)residents.forEach(resident->resident.environment(comfort,social,animals));
+
         metrics.putInt("PresentResidents",present);metrics.putInt("RegisteredResidents",residents.size());
         metrics.putInt("RequiredResidents",socialRequired);metrics.putInt("EffectiveGuards",guards);metrics.putInt("RequiredGuards",required);
         metrics.putInt("WorkingAdults",adults);metrics.putInt("EmployedAdults",employed);metrics.putInt("Animals",animals);metrics.put("EmploymentReasons",reasons);
@@ -113,22 +128,53 @@ public final class TownMetricsService {
         metrics.putBoolean("NeedsStale",stale>0||unknown>0||metrics.getBoolean("GuardsStale")||metrics.getBoolean("AnimalsStale"));
         town.metrics(metrics);
         int divisor=residents.size();
-        housing=unknown>0||housingUnknown?town.housingScore():divisor==0?0:housing/divisor;
-        food=unknown>0?town.foodScore():divisor==0?0:food/divisor;
-        town.happinessEvidence(housing,food,safety,jobs,social,comfort);
-        int happiness=divisor==0?0:HappinessService.calculate(housing,food,safety,jobs,social,comfort,town.taxPercent());
-        if(divisor>0)happiness=Math.min(happiness+animals*SettlementMetricsConfig.ANIMAL_BONUS.get()/100,HappinessService.socialCap(social));
+        housing=unknown>0||housingUnknown?metrics.getDouble("HousingExact"):divisor==0?0:housing/divisor;
+        food=unknown>0?metrics.getDouble("FoodExact"):divisor==0?0:food/divisor;
+        town.happinessEvidence((int)Math.round(housing),(int)Math.round(food),(int)Math.round(safety),(int)Math.round(jobs),(int)Math.round(social),(int)Math.round(comfort));
+        double core=HappinessService.core(housing,food,safety,jobs,social,comfort);
+        metrics.putInt("HappinessModel",2);
+        metrics.putDouble("HousingExact",housing);metrics.putDouble("FoodExact",food);metrics.putDouble("SafetyExact",safety);
+        metrics.putDouble("JobsExact",jobs);metrics.putDouble("CommunityExact",social);metrics.putDouble("SharedCore",core);
+        for(var resident:residents)resident.sharedNeeds(core,HappinessService.taxPenalty(town.taxPercent()),now);
+        int happiness=divisor==0?0:(int)Math.round(residents.stream().mapToDouble(ResidentMood::exactMood).average().orElse(0));
         int crowdPenalty=divisor==0?0:(int)Math.round(residents.stream().mapToInt(ResidentMood::crowdingPenalty).average().orElse(0));
         int lightPenalty=divisor==0?0:(int)Math.round(residents.stream().mapToInt(ResidentMood::lightPenalty).average().orElse(0));
         int fearPenalty=divisor==0?0:(int)Math.round(residents.stream().mapToInt(ResidentMood::fearPenalty).average().orElse(0));
         metrics.putInt("CrowdingPenalty",crowdPenalty);metrics.putInt("LightPenalty",lightPenalty);metrics.putInt("FearPenalty",fearPenalty);
         metrics.putBoolean("ConditionsUnknown",residents.stream().anyMatch(ResidentMood::conditionsUnknown));town.metrics(metrics);
-        town.happiness(Math.max(0,happiness-crowdPenalty-lightPenalty-fearPenalty));town.lastHappinessDay(Math.floorDiv(level.getGameTime(),24000L));
+        town.happiness(happiness);town.lastHappinessDay(Math.floorDiv(level.getGameTime(),24000L));
     }
     private static int required(long area, int coverage, int minimum) { return (int)Math.max(minimum, (area + coverage - 1) / coverage); }
-    private static boolean validHome(ServerLevel level, TownRecord town, GlobalPos home) {
-        return home != null && home.dimension().equals(level.dimension()) && town.contains(home.pos()) && level.hasChunkAt(home.pos())
-                && level.getBlockState(home.pos()).getBlock() instanceof BedBlock && BedPersonalSpace.inspect(level,home.pos())==BedPersonalSpace.Space.CLEAR;
+    private static GlobalPos normalizeBed(ServerLevel level,TownRecord town,GlobalPos home) {
+        if(home==null||!home.dimension().equals(level.dimension())||!town.contains(home.pos())||!level.hasChunkAt(home.pos()))return null;
+        var state=level.getBlockState(home.pos());if(!(state.getBlock() instanceof BedBlock))return null;
+        var head=state.getValue(BedBlock.PART)==net.minecraft.world.level.block.state.properties.BedPart.HEAD?home.pos():home.pos().relative(state.getValue(BedBlock.FACING));
+        var foot=head.relative(state.getValue(BedBlock.FACING).getOpposite());
+        if(!level.hasChunkAt(head)||!level.hasChunkAt(foot))return null;
+        var h=level.getBlockState(head);var f=level.getBlockState(foot);
+        if(h.getBlock()!=state.getBlock()||f.getBlock()!=state.getBlock()||h.getValue(BedBlock.PART)!=net.minecraft.world.level.block.state.properties.BedPart.HEAD
+            ||f.getValue(BedBlock.PART)!=net.minecraft.world.level.block.state.properties.BedPart.FOOT||h.getValue(BedBlock.FACING)!=f.getValue(BedBlock.FACING))return null;
+        return GlobalPos.of(level.dimension(),head);
+    }
+    private static boolean roofed(ServerLevel level,BlockPos bed) {
+        var state=level.getBlockState(bed);
+        for(var half:new BlockPos[]{bed,bed.relative(state.getValue(BedBlock.FACING).getOpposite())}) {
+            boolean covered=false;
+            for(int y=1;y<=24&&half.getY()+y<level.getMaxBuildHeight();y++) {
+                var at=half.above(y);var block=level.getBlockState(at);
+                if(!block.is(net.minecraft.tags.BlockTags.LEAVES)&&!block.getCollisionShape(level,at).isEmpty()){covered=true;break;}
+            }
+            if(!covered)return false;
+        }
+        return true;
+    }
+    private static String accessibility(ServerLevel level,Villager villager,GlobalPos site) {
+        if(!level.hasChunkAt(site.pos()))return "unavailable";
+        if(villager.blockPosition().distSqr(site.pos())>48L*48L)return "unreachable";
+        var request=new PathRequest(villager.getUUID(),site);var fact=PATH_FACTS.get(request);
+        if(fact!=null&&level.getServer().getTickCount()-fact.tick()<=400L)return fact.reachable()?"reachable":"unreachable";
+        if(PATHS.size()<256&&QUEUED.add(request))PATHS.addLast(request);
+        return "pending";
     }
     private static String employment(ServerLevel level, TownRecord town, Villager villager, GlobalPos site, java.util.Set<GlobalPos> used) {
         if (site == null) return "missing";
@@ -138,13 +184,8 @@ public final class TownMetricsService {
         if (poi.isEmpty() || !villager.getVillagerData().getProfession().heldJobSite().test(poi.get())
                 || PoiTypes.forState(level.getBlockState(site.pos())).filter(type -> type.equals(poi.get())).isEmpty()) return "invalid";
         if (!used.add(site)) return "duplicate";
-        // A remote remembered POI is not proof of accessibility. Bound path work to native follow range.
-        if (villager.blockPosition().distSqr(site.pos()) > 48L * 48L) return "unreachable";
-        var fact=PATH_FACTS.get(villager.getUUID());
-        if(fact!=null&&fact.site().equals(site)&&level.getServer().getTickCount()-fact.tick()<=400L)
-            return fact.reachable()?"employed":"unreachable";
-        if(PATHS.size()<256&&QUEUED.add(villager.getUUID()))PATHS.addLast(new PathRequest(villager.getUUID(),site));
-        return "pending";
+        String access=accessibility(level,villager,site);
+        return access.equals("reachable")?"employed":access;
     }
     private static int animalEvidence(ServerLevel level,TownRecord town,CompoundTag metrics) {
         CompoundTag observations=metrics.getCompound("AnimalObservations").copy();

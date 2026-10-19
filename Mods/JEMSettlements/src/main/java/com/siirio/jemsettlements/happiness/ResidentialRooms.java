@@ -205,7 +205,7 @@ public final class ResidentialRooms {
             }
             while (seed < seeds.size()) {
                 BlockPos candidate = seeds.get(seed);
-                if (walkable(level, candidate) && roof(level, candidate)) add(candidate);
+                if (walkable(level, candidate)) add(candidate);
                 seed++;
             }
             // Fully loaded obstructed adjacency proves zero usable area, rather than unknown.
@@ -215,7 +215,7 @@ public final class ResidentialRooms {
                     for (int dy : key.privacy() ? new int[] {0} : new int[] {0, 1, -1})
                         next.add(current.relative(direction).offset(0, dy, 0));
                 return next;
-            }, (current, next) -> walkable(level, next) && edge(level, current, next) && roof(level, next),
+            }, (current, next) -> walkable(level, next) && edge(level, current, next),
                     next -> Math.abs(next.getX() - key.bed().getX()) <= 32
                             && Math.abs(next.getZ() - key.bed().getZ()) <= 32 && Math.abs(next.getY() - key.bed().getY()) <= 24);
             unknown |= graph.bounded;

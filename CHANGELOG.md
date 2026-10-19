@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-19 — Implement Settlements happiness, comfort, guards and daily taxes
+
+- User requests full implementation of the journal and supplied GUI/housing/tax plan, ending with jem sandbox, without further audits, tests or checks. User owns the90+10 weights, four-page navigation, split complaints, guards/HP and day-average tax requirements.
+- Codex implements shared fractional90-point needs, PatPat10/24000ticks, temporary food/injury penalties, independent bed/roof and floor observations, actual occupied-street comfort25×4, persistent native golem/recruit guard identity/names, readable four-page GUI and expanded fitted isometry. Native recruit morale/orders/payroll, manual names, registration, storage and server authority remain.
+- Codex selects prior detailed proposals as starting balance and adds explicit currency-specific daily ceilings:1/resident scaled by taxRate/15 and time-weighted happiness/satiety, plus town comfort up to10 independent of population/rate. Fractions, intent/receipt/ack durability and finite OPERATIONS coin funding prevent duplicate/unbacked coin payouts; vanilla emerald NPC income uses its existing treasury owner.
+- Scope: matching production/standalone source and resources, protocol11, model2/schema9, owning docs and Atlas record/effective data. Only jem sandbox installation requested for this iteration; ordinary local Server, ManagedPack, test jem, native publication44, stable, MineRENT and immutable baseline remain unchanged.
+- Production and sandbox jarJar/reobfJarJar builds succeeded. Final sandbox JAR installed after user reported the game closed; previous JAR backed up outside mods. Delivery receipt: Docs/settlements/standalone/happiness-comfort-tax-delivery.json. No automated tests, impact scans, validators, static analysis, gameplay launch or player acceptance. Status: in testing until user acceptance.
+
 ## 2026-10-19 — Specify personal happiness weights and readable decision journal
 
 - User defines maximum personal happiness as common conditions90 (comfort15, guard safety10, housing20, nutrition20, community15, employment10) plus10 for individual activities such as PatPat; common shortfalls affect all residents while light/space/fear remain individual. Rewrote the journal in that exact structure, player-readable first, with class links only at the end.

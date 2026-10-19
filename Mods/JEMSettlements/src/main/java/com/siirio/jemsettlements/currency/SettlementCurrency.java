@@ -205,6 +205,34 @@ public final class SettlementCurrency {
         return new TransferResult(TransferResult.Status.COMMITTED, receipt, current - amount, 0L);
     }
     public static ListTag emeraldHistory(MinecraftServer server, UUID town) { return EmeraldTreasury.get(server).history(townAccount(town)); }
+    /** Server-authored daily NPC income. Coins transfer existing funds; standalone emeralds are vanilla NPC income. */
+    public static TransferResult creditDailyTax(MinecraftServer server, UUID town, long amount, long day) {
+        if (!SettlementAuthority.active(server) || town == null || amount <= 0 || day < 0) return result(TransferResult.Status.INVALID);
+        String key = "settlementDailyTax:" + town + ":" + day;
+        if (coins()) {
+            var ledger = com.siirio.jemeconomy.ledger.EconomySavedData.get(server);
+            var transfer = ledger.transfer(com.siirio.jemeconomy.ledger.SystemAccount.OPERATIONS.id(), townAccount(town), amount, key);
+            if (transfer.status() == TransferResult.Status.COMMITTED || transfer.status() == TransferResult.Status.REPLAYED)
+                com.siirio.jemsettlements.payroll.TaxDurability.save(server, ledger, "jem_economy");
+            return transfer;
+        }
+        var data = EmeraldTreasury.get(server); UUID account = townAccount(town); String terms = account + ":" + amount;
+        var prior = data.prior(key);
+        if (prior != null) {
+            data.flush(server);
+            return prior.getString("Terms").equals(terms)
+                    ? new TransferResult(TransferResult.Status.REPLAYED, prior.getUUID("Receipt"), 0L, data.balance(account))
+                    : result(TransferResult.Status.INVALID);
+        }
+        if (data.full() || data.locked(account)) return result(TransferResult.Status.UNAVAILABLE);
+        long next;
+        try { next = Math.addExact(data.balance(account), amount); }
+        catch (ArithmeticException overflow) { return result(TransferResult.Status.INVALID); }
+        data.accounts.put(account, next);
+        UUID receipt = data.record(key, terms, UUID.nameUUIDFromBytes("jem:settlements:npc_daily_tax".getBytes(java.nio.charset.StandardCharsets.UTF_8)), account, amount);
+        data.flush(server);
+        return new TransferResult(TransferResult.Status.COMMITTED, receipt, 0L, next);
+    }
     public static net.minecraft.network.chat.Component format(long amount) {
         return coins() ? com.siirio.jemeconomy.physical.CoinFormatter.format(amount)
                 : net.minecraft.network.chat.Component.translatable("jem.settlements.currency.emerald_amount", amount);

@@ -167,6 +167,7 @@ public final class SettlementRuntime {
         var resident = data.resident(event.getEntity().getUUID());
         if (resident.isEmpty() || !resident.get().living()) return;
         if (com.siirio.jemsettlements.happiness.ResidentConditions.isHostileDamage(event)) return;
+        resident.get().advanceTime(level.getServer().overworld().getGameTime());
         resident.get().damaged(event.getAmount());
         data.changed();
     }
@@ -186,9 +187,10 @@ public final class SettlementRuntime {
             tickHostileResidents(event.getServer(), data);
         }
         if (event.getServer().getTickCount() % 20 == 0) feedLoadedResidents(event.getServer().overworld().getGameTime(), SettlementSavedData.get(event.getServer()));
-        if (event.getServer().getTickCount() % 200 != 0) return;
+        if (event.getServer().getTickCount() % 200 != 0) { com.siirio.jemsettlements.payroll.DailyTaxService.tick(event.getServer()); return; }
         SettlementSavedData data = SettlementSavedData.get(event.getServer()); data.purgeDeadRecords();
         guideResidentsHome(data); PayrollService.tick(event.getServer()); SettlementSimulationService.tick(event.getServer()); recomputeHappiness(data);
+        com.siirio.jemsettlements.payroll.DailyTaxService.tick(event.getServer());
     }
 
     private static void tickFoundingWaves(net.minecraft.server.MinecraftServer server) {
@@ -219,7 +221,7 @@ public final class SettlementRuntime {
             for (ResidentMood resident : data.residents(town.id())) {
                 var entity = level.getEntity(resident.villagerId()); if (!(entity instanceof Villager villager) || !villager.isAlive()) continue;
                 com.siirio.jemsettlements.happiness.BedPersonalSpace.refresh(villager, resident);
-                resident.observeName(villager); resident.seen(villager.getBrain().getMemory(MemoryModuleType.HOME).orElse(null), villager.getBrain().getMemory(MemoryModuleType.JOB_SITE).orElse(null)); resident.dailyUpdate(day);
+                resident.advanceTime(now); resident.observeName(villager); resident.seen(villager.getBrain().getMemory(MemoryModuleType.HOME).orElse(null), villager.getBrain().getMemory(MemoryModuleType.JOB_SITE).orElse(null)); resident.dailyUpdate(day);
                 resident.retainRequestedDishes(availableDishes);
                 resident.refreshCraving(); TownMealService.prepare(level, town, villager, resident, now);
                 if (resident.regenerate(level.getGameRules().getBoolean(GameRules.RULE_NATURAL_REGENERATION)

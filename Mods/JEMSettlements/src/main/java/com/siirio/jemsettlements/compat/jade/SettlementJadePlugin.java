@@ -20,6 +20,9 @@ public final class SettlementJadePlugin implements IWailaPlugin {
     private static final ResidentProvider RESIDENT = new ResidentProvider();
     static void appendConditions(CompoundTag tag, com.siirio.jemsettlements.resident.ResidentMood history) {
         tag.putInt("JemCrowdingPenalty",history.crowdingPenalty());tag.putInt("JemLightPenalty",history.lightPenalty());
+        tag.putInt("JemInjuryPenalty",history.injuryPenalty());tag.putInt("JemHarmfulFoodPenalty",history.harmfulFoodPenalty());
+        tag.putBoolean("JemHousingKnown",history.needObservation().contains("HasBed"));
+        tag.putBoolean("JemHasBed",history.needObservation().getBoolean("HasBed"));tag.putBoolean("JemRoofed",history.needObservation().getBoolean("Roofed"));
         tag.putInt("JemFearPenalty",history.fearPenalty());tag.putBoolean("JemConditionsUnknown",history.conditionsUnknown());
     }
     @Override public void register(IWailaCommonRegistration registration) { registration.registerEntityDataProvider(RESIDENT, net.minecraft.world.entity.LivingEntity.class); }
@@ -34,7 +37,7 @@ public final class SettlementJadePlugin implements IWailaPlugin {
             if (!(accessor.getEntity() instanceof Villager villager)) return;
             var resident = com.siirio.jemsettlements.town.SettlementSavedData.get(villager.getServer()).resident(villager.getUUID());
             if (resident.isEmpty()) return;
-            tag.putBoolean("JemResident", true);
+            tag.putBoolean("JemResident", true);tag.putBoolean("JemOrdinaryResident",true);
             com.siirio.jemsettlements.town.SettlementSavedData.get(villager.getServer()).town(resident.get().townId())
                     .ifPresent(town -> tag.putString("JemSettlementName", town.name()));
             tag.putInt("JemHappiness", resident.get().mood());
@@ -54,7 +57,10 @@ public final class SettlementJadePlugin implements IWailaPlugin {
             if (tag.getInt("JemCrowdingPenalty")>0) tooltip.add(Component.translatable("jem.settlements.conditions.crowding",tag.getInt("JemCrowdingPenalty")));
             if (tag.getInt("JemLightPenalty")>0) tooltip.add(Component.translatable("jem.settlements.conditions.light",tag.getInt("JemLightPenalty")));
             if (tag.getInt("JemFearPenalty")>0) tooltip.add(Component.translatable("jem.settlements.conditions.fear",tag.getInt("JemFearPenalty")));
-            if (tag.getBoolean("JemConditionsUnknown")) tooltip.add(Component.translatable("jem.settlements.conditions.unknown"));
+            if (tag.getInt("JemInjuryPenalty")>0) tooltip.add(Component.translatable("jem.settlements.conditions.injury",tag.getInt("JemInjuryPenalty")));
+            if (tag.getInt("JemHarmfulFoodPenalty")>0) tooltip.add(Component.translatable("jem.settlements.conditions.harmful_food",tag.getInt("JemHarmfulFoodPenalty")));
+            if (tag.getBoolean("JemOrdinaryResident") && tag.getBoolean("JemHousingKnown") && !tag.getBoolean("JemHasBed")) tooltip.add(Component.translatable("jem.settlements.gui.no_bed"));
+            else if (tag.getBoolean("JemOrdinaryResident") && tag.getBoolean("JemHousingKnown") && !tag.getBoolean("JemRoofed")) tooltip.add(Component.translatable("jem.settlements.gui.no_roof"));
             tooltip.add(new NeedsBarElement(tag.getInt("JemSatiety"), false));
             if (tag.getBoolean("JemCraving")) tooltip.add(Component.translatable("jade.jem_settlements.craving"));
             ResourceLocation request = ResourceLocation.tryParse(tag.getString("JemRequestedDish"));
