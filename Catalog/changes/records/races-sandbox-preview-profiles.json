@@ -48,6 +48,12 @@
         "operation": "replace",
         "before": "Copy over a potentially loaded mod JAR; user reported deferred class-load crash after live overwrite.",
         "after": "Require closed sandbox Java profile, verify complete ZIP/class presence, backup and atomically replace. User crash-free acceptance pending."
+      },
+      {
+        "property": "races.void_pearl_aiming_readability",
+        "operation": "replace",
+        "before": "Eye-centred shared launch position and thin forward dashed preview collapse to a centre line/contact bar in first person.",
+        "after": "Shared real/predicted dominant-hand0.42lateral/0.24down origin, native block-clipped against nearby cover; world-spaced0.75 lavender chevrons and0.46face contact marker. Existing afterfire, projectile physics and server safe-arrival retained."
       }
     ]
   },
@@ -131,6 +137,16 @@
         "Mods/JEMVisualSandboxR3/src/production/java/com/siirio/jemvisualsandbox/workbench/RaceDevelopment.java",
         "Mods/JEMVisualSandboxR3/src/sandbox/java/com/siirio/jemvisualsandbox/workbench/RaceDevelopment.java",
         "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceCommands.java"
+      ]
+    },
+    {
+      "date": "2026-10-19",
+      "commit": "SELF",
+      "action": "fix",
+      "summary": "User-supplied arc reference: off-centre truthful hand launch and readable lavender directional preview; sandbox visual acceptance pending.",
+      "source_files": [
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ProjectileEstimation.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/VoidDistancePreview.java"
       ]
     }
   ],

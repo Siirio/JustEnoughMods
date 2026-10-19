@@ -180,3 +180,22 @@ The generic mastery count/threshold paragraph is removed from the shared screen.
 Bloom's three bottom Roman unlock buttons are removed. Its real manual unlock remains beside the inspected V upgrade, only on Abilities & progression; server thresholds and sequential purchase rules still apply. A later upgrade explains that the earlier stage must be opened first. Preview browsing grants no progress. Runtime visual/player acceptance remains pending; no gameplay launch or automated test is performed.
 
 The progression layout reserves a readable text region when an inspected Bloom unlock is visible. Small windows omit the 3D preview before consuming the counter/details viewport; the large-window reference layout is retained.
+
+## Void pearl aiming readability —2026-10-19
+
+User selects the [supplied reference](assets/void-pearl-trajectory/reference/2026-10-19/README.md)
+for an off-centre readable arc with JEM's existing effect. The former shared
+initial position was eye-centred; thin forward line segments projected end-on,
+hiding horizontal depth and flattening the contact ring into a short bar.
+
+`ProjectileEstimation.initialPosition` now starts at the dominant throwing hand:
+0.42blocks lateral and0.24 below the eye. A native block ray clips this short
+hand offset against nearby cover. Both the actual pearl launch and detached
+prediction use this exact position; velocity, drag, gravity, collision and server
+teleport safety remain. This small physical origin adjustment is Codex's explicit
+technical choice to keep the visibly offset path truthful, not an offset fake arc.
+`VoidDistancePreview` uses lavender direction chevrons every0.75world blocks with
+bounded camera-facing size, and a0.46block contact ring on the actual hit face.
+Existing authored afterfire assets are unchanged. This is a sandbox presentation
+iteration; production profile is prepared but ordinary Server/ManagedPack are not
+deployed. No tests, gameplay launch or visual acceptance is claimed.

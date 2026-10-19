@@ -49,11 +49,29 @@ final class VoidDistancePreview {
             RenderType type = RenderType.lines();
             VertexConsumer vertices = buffers.getBuffer(type);
             List<Vec3> points = prediction.points();
+            double distance = 0, nextMarker = .35;
             for (int i = 1; i < points.size(); i++) {
                 Vec3 a = points.get(i - 1), b = points.get(i);
-                Vec3 begin = a.lerp(b, .10), end = a.lerp(b, .88);
-                float fade = 1 - i / (float) Math.max(1, points.size()) * .35F;
-                line(vertices, poses, begin, end, .73F, .48F, 1, .78F * fade);
+                double length = a.distanceTo(b);
+                if (length < .0001) continue;
+                // Equal world-distance spacing describes the arc, not its simulation tick rate.
+                while (nextMarker <= distance + length) {
+                    Vec3 center = a.lerp(b, (nextMarker - distance) / length);
+                    Vec3 view = center.subtract(camera).normalize();
+                    Vec3 travel = b.subtract(a).normalize();
+                    Vec3 forward = travel.subtract(view.scale(travel.dot(view)));
+                    if (forward.lengthSqr() < .00001) forward = new Vec3(0, 1, 0).subtract(view.scale(view.y));
+                    forward = forward.normalize();
+                    Vec3 side = view.cross(forward).normalize();
+                    double size = Math.max(.045, Math.min(.28, center.distanceTo(camera) * .007));
+                    Vec3 tip = center.add(forward.scale(size));
+                    Vec3 back = center.subtract(forward.scale(size * .7));
+                    float fade = 1 - i / (float)Math.max(1, points.size()) * .3F;
+                    line(vertices, poses, back.add(side.scale(size * .8)), tip, .73F, .48F, 1, .9F * fade);
+                    line(vertices, poses, tip, back.subtract(side.scale(size * .8)), .73F, .48F, 1, .9F * fade);
+                    nextMarker += .75;
+                }
+                distance += length;
             }
             if (prediction.impact() instanceof BlockHitResult block) contact(vertices, poses, block, supported);
             else if (!points.isEmpty()) invalid(vertices, poses, points.get(points.size() - 1));
@@ -78,7 +96,7 @@ final class VoidDistancePreview {
         Vec3 bitangent = normal.cross(tangent).normalize();
         Vec3 center = block.getLocation().add(normal.scale(.018));
         float red = valid ? .81F : 1F, green = valid ? .62F : .34F, blue = valid ? 1F : .45F;
-        double radius = .32;
+        double radius = .46;
         for (int i = 0; i < 40; i++) {
             double a = i * Math.PI * 2 / 40, b = (i + .82) * Math.PI * 2 / 40;
             Vec3 from = center.add(tangent.scale(Math.cos(a) * radius)).add(bitangent.scale(Math.sin(a) * radius));
@@ -114,10 +132,10 @@ final class VoidDistancePreview {
         if (prediction == null || prediction.points().isEmpty() || client.player == null || client.screen != null) return;
         Vec3 end = prediction.points().get(prediction.points().size() - 1);
         boolean russian = client.options.languageCode.startsWith("ru");
-        String state = supported ? (russian ? "контакт свободен" : "clear contact")
-                : prediction.complete() ? (russian ? "нет свободной площадки" : "no clear landing")
-                : (russian ? "конец пути неизвестен" : "path end unknown");
-        String label = String.format(java.util.Locale.ROOT, "%.1f m · %s", client.player.position().distanceTo(end), state);
+        String state = supported ? (russian ? "РєРѕРЅС‚Р°РєС‚ СЃРІРѕР±РѕРґРµРЅ" : "clear contact")
+                : prediction.complete() ? (russian ? "РЅРµС‚ СЃРІРѕР±РѕРґРЅРѕР№ РїР»РѕС‰Р°РґРєРё" : "no clear landing")
+                : (russian ? "РєРѕРЅРµС† РїСѓС‚Рё РЅРµРёР·РІРµСЃС‚РµРЅ" : "path end unknown");
+        String label = String.format(java.util.Locale.ROOT, "%.1f m В· %s", client.player.position().distanceTo(end), state);
         event.getGuiGraphics().drawCenteredString(client.font, label, client.getWindow().getGuiScaledWidth() / 2,
                 client.getWindow().getGuiScaledHeight() / 2 + 25, supported ? 0xD4B4FF : 0xFF8D9A);
     }

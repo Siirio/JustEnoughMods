@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-19 — Readable Void Walker pearl arc
+
+- User requests the supplied off-centre projectile-arc composition while retaining JEM VFX, because the current centred preview reads as a straight line and moving horizontal bar.
+- Bug / Client presentation and shared Sandbox launch / eye-centred initialPosition plus forward-only thin segments collapse under first-person projection; contact ring is viewed edge-on / in testing. Codex changes the shared real/predicted origin to dominant hand0.42 lateral and0.24 below eye, clipped against nearby block cover, and replaces thin segments with spaced camera-facing lavender chevrons plus a larger exact contact marker. Existing velocity/gravity/drag/native collision, authored afterfire and server arrival safety remain.
+- Five Whys: endpoint hard to locate -> arc collapses on screen -> segments align with view -> origin sits exactly on eye/crosshair axis -> shared launch/predict owner lacked throwing-hand composition and renderer lacked directional-width markers. Source cause established; player visual acceptance pending.
+- Both sandboxJar and productionJar builds succeeded. Sandbox JAR installed after user confirmed closure, with old JAR backed up outside mods. Receipt: Docs/races/void-pearl-trajectory-delivery.json. Production artifact is prepared only; ordinary Server, ManagedPack, AutoModpack publication44, test jem, stable and baseline unchanged. No automated tests/checks/gameplay launch requested or run.
+
 ## 2026-10-19 — Implement Settlements happiness, comfort, guards and daily taxes
 
 - User requests full implementation of the journal and supplied GUI/housing/tax plan, ending with jem sandbox, without further audits, tests or checks. User owns the90+10 weights, four-page navigation, split complaints, guards/HP and day-average tax requirements.

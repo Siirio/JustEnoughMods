@@ -24,10 +24,20 @@ public final class ProjectileEstimation {
     private ProjectileEstimation() {}
 
     public static Vec3 initialPosition(Player owner) {
-        return new Vec3(owner.getX(), owner.getEyeY() - (double) .1F, owner.getZ());
+        // The same physical throwing-hand origin drives launch and prediction. An eye-centred
+        // path is viewed end-on in first person and hides its depth and landing location.
+        double yaw = Math.toRadians(owner.getYRot());
+        double hand = owner.getMainArm() == net.minecraft.world.entity.HumanoidArm.RIGHT ? 1 : -1;
+        Vec3 eye = owner.getEyePosition();
+        Vec3 desired = eye.add(-Math.cos(yaw) * .42 * hand, -.24, -Math.sin(yaw) * .42 * hand);
+        var hit = owner.level().clip(new net.minecraft.world.level.ClipContext(eye, desired,
+                net.minecraft.world.level.ClipContext.Block.COLLIDER,
+                net.minecraft.world.level.ClipContext.Fluid.NONE, owner));
+        // Keep the origin on the player's side of nearby cover, rather than spawning through it.
+        return hit.getType() == HitResult.Type.MISS ? desired : eye.lerp(hit.getLocation(), .8);
     }
 
-    /** Same float trig, normalized launch and inherited movement as shootFromRotation(…,1.5,0). */
+    /** Same float trig, normalized launch and inherited movement as shootFromRotation(вЂ¦,1.5,0). */
     public static Vec3 initialVelocity(Player owner) {
         float radians = (float) Math.PI / 180F;
         float x = -Mth.sin(owner.getYRot() * radians) * Mth.cos(owner.getXRot() * radians);
