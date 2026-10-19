@@ -92,3 +92,12 @@
 - Unlock condition: Explicit user request to remove or redesign a named feature capability.
 - Created: 2026-10-19
 
+## LOCKED: Settlements mechanics and decision journal
+- Scope: Docs/settlements/DESIGN_JOURNAL.md; owning Settlements mechanic, balance, UI and planning changes; Docs/settlements/standalone/README.md
+- Approved signal: Веди такой журнал как md который будет пушится в гит и всегда обновлятся при изменений
+- Protected behavior: Update the canonical Markdown journal in the same task whenever relevant Settlements mechanics, balance, UI or agreed plans change; commit and push it with that change. Separate source-backed implemented formulas, explicit user decisions, unapproved proposals and unresolved questions; keep town versus personal happiness and tax effects distinct. Do not add the explicitly deferred friendship/conversation simulation or treat the journal as gameplay implementation authorization.
+- Reuse pattern: Preserve the existing implementation pattern unless the unlock condition is met.
+- Allowed changes: Maintain current status, source links, decision history and evidence alongside authorized work; preserve unrelated changes and the existing engineering/distribution owner.
+- Unlock condition: Explicit user request to change this behavior or evidence that the core execution pipeline changed.
+- Created: 2026-10-19
+

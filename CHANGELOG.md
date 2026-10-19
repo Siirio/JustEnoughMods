@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-19 — Settlements decision journal and happiness clarification
+
+- User requests a maintained Markdown journal committed and pushed with Settlements changes, asks for complete happiness/tax influences and explicitly defers social/friendship simulation. Added Docs/settlements/DESIGN_JOURNAL.md with source-linked implemented formulas, requested plans, unapproved proposals and open decisions; linked it from the owning standalone guide and pinned its maintenance contract.
+- Source audit corrects Codex's earlier mixed ten-item explanation: six weights20/20/20/15/15/10 belong to the town score, while personal mood has its own base/events/environment/social-cap/condition projection. Current tax0/5/10/15 reduces town happiness by0/3/8/16; it is not directly subtracted from ResidentMood. This distinction and the pending personal-tax decision are explicit. Food, PatPat, damage, daily drift, animals, conditions and native recruit/payroll ownership are documented without changing gameplay.
+- Documentation only: no Java/config/JAR changes, build, tests, server restart, native publication, profile mutation or release-baseline change. Prior production/sandbox90-contract results remain historical evidence, not a new run.
+
 ## 2026-10-19 — Verify latest Settlements in standalone sandbox
 
 - User additionally requires the new mechanics in jem sandbox and operation without an external server. The installed explicit sandbox artifact includes the full gameplay/GUI/localization scope and embedded Identity/CurrencyCore; full Economy is absent, preserving native emerald payment. Production remains dedicated-only; sandbox accepts the ordinary integrated singleplayer server.

@@ -1,5 +1,9 @@
 # Settlements standalone design
 
+Текущие формулы счастья, решения пользователя, открытые вопросы и отложенные
+изменения ведутся в [журнале Settlements](../DESIGN_JOURNAL.md). Обновлять его
+в той же задаче при изменениях механик или плана; предложения не считать реализацией.
+
 ## Living conditions — 2026-10-19
 
 User specifies four server-authoritative conditions. These numbers are proposed
