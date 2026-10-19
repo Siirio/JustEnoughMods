@@ -25,7 +25,7 @@
         "property": "hosted.structural_boundary_height",
         "operation": "replace",
         "before": "Structure minY/maxY saved but visual packets, collision and teleport policy substitute dimension build limits; contains and arenaEntered use X/Z only.",
-        "after": "Canonical shell minY/maxY with existing one-block margin owns side walls, top/bottom collision caps, full player/vehicle box containment and teleport endpoints. Unrelated space above/below is outside. Blood Moon/Resource Rush geometry unchanged."
+        "after": "Canonical structure minY/maxY with one-block horizontal-only margin owns side walls; floor/ceiling collision thickness is inward within the exact Y interval. Full player/vehicle containment and teleport endpoints share that volume. No collision extends above roof/below floor; Blood Moon/Resource Rush unchanged."
       },
       {
         "property": "hosted.structural_event_scope",
@@ -60,7 +60,7 @@
   },
   "introduced": {
     "date": "2026-10-19",
-    "commit": "SELF",
+    "commit": "a3929b493b3bc7ca8d75f9bc404e7b4467cb0e88",
     "action": "bound_structural_arena_in_three_dimensions",
     "summary": "Replace dimension-height boss columns with registered structure-shell volume, preserve ordinary event height and repair legacy X/Z-only entry marks.",
     "source_files": [
@@ -74,7 +74,7 @@
   "history": [
     {
       "date": "2026-10-19",
-      "commit": "SELF",
+      "commit": "a3929b493b3bc7ca8d75f9bc404e7b4467cb0e88",
       "action": "bound_structural_arena_in_three_dimensions",
       "summary": "Replace dimension-height boss columns with registered structure-shell volume, preserve ordinary event height and repair legacy X/Z-only entry marks.",
       "source_files": [
@@ -83,6 +83,16 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/HostedBoundary.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventAreaHooks.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventRegions.java"
+      ]
+    },
+    {
+      "date": "2026-10-19",
+      "commit": "SELF",
+      "action": "keep_vertical_margin_inside_structure",
+      "summary": "Final review: preserve one-block X/Z margin but use exact native Y; floor/ceiling thickness points inward, so no collision reaches the block above the roof or below the floor. Legacy physical-barrier cleanup retains its historic margin.",
+      "source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/SolidBoundary.java"
       ]
     }
   ],

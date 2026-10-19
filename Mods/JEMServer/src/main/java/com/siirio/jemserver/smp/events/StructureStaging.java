@@ -287,7 +287,7 @@ public final class StructureStaging {
             PartyTeleportFlow.clearMember(party, player.getUUID());
             return true;
         }
-        BoundingBox shell = new BoundingBox(saved[0] - 1, saved[1] - 1, saved[2] - 1, saved[3] + 1, saved[4] + 1, saved[5] + 1);
+        BoundingBox shell = arenaShell(new BoundingBox(saved[0], saved[1], saved[2], saved[3], saved[4], saved[5]));
         boolean insideArena = player.serverLevel() == level && SolidBoundary.movementBox(player).intersects(
                 new AABB(shell.minX(), shell.minY(), shell.minZ(), shell.maxX() + 1D, shell.maxY() + 1D, shell.maxZ() + 1D));
         if (!insideArena) {
@@ -640,7 +640,7 @@ public final class StructureStaging {
             BoundingBox bounds = area.shell();
             if (query != null && (query.maxX < bounds.minX() - SolidBoundary.WALL_THICKNESS || query.minX > bounds.maxX() + 1D + SolidBoundary.WALL_THICKNESS
                     || query.maxZ < bounds.minZ() - SolidBoundary.WALL_THICKNESS || query.minZ > bounds.maxZ() + 1D + SolidBoundary.WALL_THICKNESS
-                    || query.maxY < bounds.minY() - SolidBoundary.WALL_THICKNESS || query.minY > bounds.maxY() + 1D + SolidBoundary.WALL_THICKNESS)) continue;
+                    || query.maxY < bounds.minY() || query.minY > bounds.maxY() + 1D)) continue;
             if (!guarded(level, area)) continue;
             List<ServerPlayer> players = SolidBoundary.players(entity);
             CompoundTag row = party(level, area.id());
@@ -686,7 +686,9 @@ public final class StructureStaging {
     }
 
     private static void forEachBarrierPosition(Area area,ChunkPos chunk,java.util.function.Consumer<BlockPos> action) {
-        BoundingBox shell=area.shell();
+        BoundingBox bounds = area.bounds();
+        // Remove retired physical barriers at their original all-axis margin, not the current territory.
+        BoundingBox shell = new BoundingBox(bounds.minX()-1,bounds.minY()-1,bounds.minZ()-1,bounds.maxX()+1,bounds.maxY()+1,bounds.maxZ()+1);
         int minX=Math.max(shell.minX(),chunk.getMinBlockX()),maxX=Math.min(shell.maxX(),chunk.getMaxBlockX());
         int minZ=Math.max(shell.minZ(),chunk.getMinBlockZ()),maxZ=Math.min(shell.maxZ(),chunk.getMaxBlockZ());
         for(int x=minX;x<=maxX;x++) for(int z=minZ;z<=maxZ;z++) {
@@ -781,6 +783,10 @@ public final class StructureStaging {
     @SubscribeEvent
     public static void stopped(ServerStoppedEvent event) { AREAS.clear(); INSIDE.clear(); NEAR.clear(); PARTY_CACHE.clear(); PRESENCE.clear(); NATIVE_LOOKUPS.clear(); }
 
+    private static BoundingBox arenaShell(BoundingBox bounds) {
+        return new BoundingBox(bounds.minX()-1,bounds.minY(),bounds.minZ()-1,bounds.maxX()+1,bounds.maxY(),bounds.maxZ()+1);
+    }
+
     private record Area(UUID id, String dimension, ResourceLocation boss, BoundingBox bounds) {
         boolean contains(ServerLevel level, BlockPos pos) {
             return dimension.equals(level.dimension().location().toString()) && bounds.isInside(pos);
@@ -813,7 +819,7 @@ public final class StructureStaging {
         }
 
         BoundingBox shell() {
-            return new BoundingBox(bounds.minX()-1,bounds.minY()-1,bounds.minZ()-1,bounds.maxX()+1,bounds.maxY()+1,bounds.maxZ()+1);
+            return arenaShell(bounds);
         }
 
     }

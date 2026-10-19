@@ -116,10 +116,10 @@ public final class SolidBoundary {
             result.add(Shapes.create(new AABB(minX, minY, minZ - WALL_THICKNESS, maxX, maxY, minZ)));
             result.add(Shapes.create(new AABB(minX, minY, maxZ, maxX, maxY, maxZ + WALL_THICKNESS)));
             if (boundary.type().equals("BOSS_FIGHT")) {
-                result.add(Shapes.create(new AABB(minX - WALL_THICKNESS, minY - WALL_THICKNESS, minZ - WALL_THICKNESS,
-                        maxX + WALL_THICKNESS, minY, maxZ + WALL_THICKNESS)));
-                result.add(Shapes.create(new AABB(minX - WALL_THICKNESS, maxY, minZ - WALL_THICKNESS,
-                        maxX + WALL_THICKNESS, maxY + WALL_THICKNESS, maxZ + WALL_THICKNESS)));
+                result.add(Shapes.create(new AABB(minX - WALL_THICKNESS, minY, minZ - WALL_THICKNESS,
+                        maxX + WALL_THICKNESS, minY + WALL_THICKNESS, maxZ + WALL_THICKNESS)));
+                result.add(Shapes.create(new AABB(minX - WALL_THICKNESS, maxY - WALL_THICKNESS, minZ - WALL_THICKNESS,
+                        maxX + WALL_THICKNESS, maxY, maxZ + WALL_THICKNESS)));
             }
             return result;
         }
