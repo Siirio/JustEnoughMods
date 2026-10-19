@@ -22,12 +22,16 @@ public final class EventRegions {
     public static boolean contains(CompoundTag event, ServerLevel level, BlockPos pos) {
         if (!event.getString("dimension").equals(level.dimension().location().toString()))
             return false;
-        return pos.getX() >= minX(event) && pos.getX() <= maxX(event) && pos.getZ() >= minZ(event) && pos.getZ() <= maxZ(event);
+        int[] structure = event.getIntArray("structureBounds");
+        return pos.getX() >= minX(event) && pos.getX() <= maxX(event) && pos.getZ() >= minZ(event) && pos.getZ() <= maxZ(event)
+                && (structure.length != 6 || pos.getY() >= structure[1] && pos.getY() <= structure[4]);
     }
     public static boolean contains(CompoundTag event, ServerLevel level, AABB box) {
         if (!event.getString("dimension").equals(level.dimension().location().toString())) return false;
+        int[] structure = event.getIntArray("structureBounds");
         return box.minX >= minX(event) && box.maxX <= maxX(event) + 1D
-                && box.minZ >= minZ(event) && box.maxZ <= maxZ(event) + 1D;
+                && box.minZ >= minZ(event) && box.maxZ <= maxZ(event) + 1D
+                && (structure.length != 6 || box.minY >= structure[1] && box.maxY <= structure[4] + 1D);
     }
     public static int minX(CompoundTag row) { return row.contains("minX") ? row.getInt("minX") : BlockPos.of(row.getLong("position")).getX()-row.getInt("radius"); }
     public static int maxX(CompoundTag row) { return row.contains("maxX") ? row.getInt("maxX") : BlockPos.of(row.getLong("position")).getX()+row.getInt("radius"); }
@@ -59,7 +63,9 @@ public final class EventRegions {
         if (!event.getString("dimension").equals(level.dimension().location().toString())) return false;
         int xDistance=Math.max(Math.max(minX(event)-pos.getX(),0),pos.getX()-maxX(event));
         int zDistance=Math.max(Math.max(minZ(event)-pos.getZ(),0),pos.getZ()-maxZ(event));
-        return Math.max(xDistance,zDistance)<=EventRules.ENTRY_PROMPT_DISTANCE.get();
+        int[] structure = event.getIntArray("structureBounds");
+        int yDistance = structure.length == 6 ? Math.max(Math.max(structure[1] - pos.getY(), 0), pos.getY() - structure[4]) : 0;
+        return Math.max(yDistance,Math.max(xDistance,zDistance))<=EventRules.ENTRY_PROMPT_DISTANCE.get();
     }
 
 
@@ -106,7 +112,10 @@ public final class EventRegions {
     }
 
     public static void ejectOutsiders(ServerLevel level,CompoundTag event) {
-        var bounds=new net.minecraft.world.phys.AABB(minX(event),level.getMinBuildHeight(),minZ(event),maxX(event)+1,level.getMaxBuildHeight(),maxZ(event)+1);
+        int[] structure = event.getIntArray("structureBounds");
+        int minY = structure.length == 6 ? structure[1] : level.getMinBuildHeight();
+        int maxY = structure.length == 6 ? structure[4] + 1 : level.getMaxBuildHeight();
+        var bounds=new net.minecraft.world.phys.AABB(minX(event),minY,minZ(event),maxX(event)+1,maxY,maxZ(event)+1);
         for(var mob:level.getEntitiesOfClass(Mob.class,bounds,candidate->!BloodMoon.belongs(event,candidate)&&!RaidEvent.belongs(event,candidate))) eject(mob,event);
     }
 

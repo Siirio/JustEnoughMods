@@ -23,6 +23,7 @@ import java.util.UUID;
 
 public final class HostedBoundary {
     private static final String ENTERED = "arenaEntered";
+    private static final String VOLUME_ENTRY = "arenaVolumeEntry";
     private static final String ENTRANCE_DIMENSION = "arenaEntranceDimension";
     private static final String ENTRANCE_X = "arenaEntranceX";
     private static final String ENTRANCE_Y = "arenaEntranceY";
@@ -63,20 +64,42 @@ public final class HostedBoundary {
     }
 
     public static boolean passable(ServerPlayer player, CompoundTag party) {
-        return authorized(player, party) && !SmpRecords.members(party).getCompound(player.getStringUUID()).getBoolean(ENTERED);
+        return authorized(player, party) && !entered(player, party);
     }
 
     static boolean locked(ServerPlayer player, CompoundTag party) {
-        return authorized(player, party) && SmpRecords.members(party).getCompound(player.getStringUUID()).getBoolean(ENTERED);
+        return authorized(player, party) && entered(player, party);
+    }
+
+    private static boolean entered(ServerPlayer player, CompoundTag party) {
+        CompoundTag member = SmpRecords.members(party).getCompound(player.getStringUUID());
+        if (!member.getBoolean(ENTERED)) return false;
+        if (member.getBoolean(VOLUME_ENTRY)) return true;
+        // Older saves recorded entry by X/Z alone, including players on the surface above an arena.
+        Boundary boundary = boundary(player.server, party);
+        var box = SolidBoundary.movementBox(player);
+        boolean inside = boundary != null && player.serverLevel() == boundary.level()
+                && box.minX >= boundary.bounds().minX() && box.maxX <= boundary.bounds().maxX() + 1D
+                && box.minY >= boundary.bounds().minY() && box.maxY <= boundary.bounds().maxY() + 1D
+                && box.minZ >= boundary.bounds().minZ() && box.maxZ <= boundary.bounds().maxZ() + 1D;
+        if (inside) member.putBoolean(VOLUME_ENTRY, true);
+        else member.remove(ENTERED);
+        SmpData.get(player.server).changed(party);
+        return inside;
     }
 
     public static void observe(ServerPlayer player, CompoundTag party, BoundingBox bounds) {
         var box = player.getRootVehicle().getBoundingBox().minmax(player.getBoundingBox());
         if (!authorized(player, party) || box.minX < bounds.minX() || box.maxX > bounds.maxX() + 1D
-                || box.minZ < bounds.minZ() || box.maxZ > bounds.maxZ() + 1D) return;
+                || box.minZ < bounds.minZ() || box.maxZ > bounds.maxZ() + 1D
+                || box.minY < bounds.minY() || box.maxY > bounds.maxY() + 1D) return;
         CompoundTag member = SmpRecords.members(party).getCompound(player.getStringUUID());
         if (!member.getBoolean(ENTERED)) {
             member.putBoolean(ENTERED, true);
+            member.putBoolean(VOLUME_ENTRY, true);
+            SmpData.get(player.server).changed(party);
+        } else if (!member.getBoolean(VOLUME_ENTRY)) {
+            member.putBoolean(VOLUME_ENTRY, true);
             SmpData.get(player.server).changed(party);
         }
         if (distanceToEdge(bounds, player.position()) <= FORFEIT_DISTANCE) prompt(player, party);
@@ -85,8 +108,7 @@ public final class HostedBoundary {
     public static boolean canForfeit(ServerPlayer player, CompoundTag party) {
         Boundary boundary = boundary(player.server, party);
         if (boundary == null || player.serverLevel() != boundary.level()) return false;
-        CompoundTag member = SmpRecords.members(party).getCompound(player.getStringUUID());
-        if (!member.getBoolean(ENTERED) || !boundary.bounds().isInside(player.blockPosition())) return false;
+        if (!entered(player, party) || !boundary.bounds().isInside(player.blockPosition())) return false;
         return distanceToEdge(boundary.bounds(), player.position()) <= FORFEIT_DISTANCE
                 || player.serverLevel().getGameTime() <= FORFEIT_UNTIL.getOrDefault(player.getUUID(), 0L);
     }

@@ -288,10 +288,9 @@ public final class StructureStaging {
             return true;
         }
         BoundingBox shell = new BoundingBox(saved[0] - 1, saved[1] - 1, saved[2] - 1, saved[3] + 1, saved[4] + 1, saved[5] + 1);
-        BlockPos position = player.blockPosition();
-        boolean insideColumn = player.serverLevel() == level && position.getX() >= shell.minX() && position.getX() <= shell.maxX()
-                && position.getZ() >= shell.minZ() && position.getZ() <= shell.maxZ();
-        if (!insideColumn) {
+        boolean insideArena = player.serverLevel() == level && SolidBoundary.movementBox(player).intersects(
+                new AABB(shell.minX(), shell.minY(), shell.minZ(), shell.maxX() + 1D, shell.maxY() + 1D, shell.maxZ() + 1D));
+        if (!insideArena) {
             member.remove(RAID_EXIT_PENDING);
             PartyTeleportFlow.clearMember(party, player.getUUID());
             return true;
@@ -551,13 +550,12 @@ public final class StructureStaging {
         for (Area area : AREAS.values()) {
             if (!area.dimension().equals(player.level().dimension().location().toString())) continue;
             var bounds = area.shell();
-            double distance = Math.max(Math.max(bounds.minX() - player.getX(), player.getX() - bounds.maxX()),
-                    Math.max(bounds.minZ() - player.getZ(), player.getZ() - bounds.maxZ()));
+            double distance = area.distance(player.position());
             if (distance > EventRules.BOUNDARY_DISTANCE.get() || !guarded(player.serverLevel(), area)) continue;
             CompoundTag row = party(player.serverLevel(), area.id());
             boolean passable = row != null && HostedBoundary.passable(player, row);
             result.add(SolidBoundary.boundary(area.id(), area.dimension(), bounds.minX(), bounds.minZ(), bounds.maxX(), bounds.maxZ(),
-                    player.serverLevel().getMinBuildHeight(), player.serverLevel().getMaxBuildHeight() - 1, EventRules.RAID_COLOR.get(), passable));
+                    bounds.minY(), bounds.maxY(), EventRules.RAID_COLOR.get(), passable));
             if (result.size() >= BOUNDARY_LIMIT) break;
         }
         return result;
@@ -640,14 +638,15 @@ public final class StructureStaging {
         for (Area area : AREAS.values()) {
             if (!area.dimension().equals(level.dimension().location().toString())) continue;
             BoundingBox bounds = area.shell();
-            if (query != null && (query.maxX < bounds.minX() || query.minX > bounds.maxX() + 1D
-                    || query.maxZ < bounds.minZ() || query.minZ > bounds.maxZ() + 1D)) continue;
+            if (query != null && (query.maxX < bounds.minX() - SolidBoundary.WALL_THICKNESS || query.minX > bounds.maxX() + 1D + SolidBoundary.WALL_THICKNESS
+                    || query.maxZ < bounds.minZ() - SolidBoundary.WALL_THICKNESS || query.minZ > bounds.maxZ() + 1D + SolidBoundary.WALL_THICKNESS
+                    || query.maxY < bounds.minY() - SolidBoundary.WALL_THICKNESS || query.minY > bounds.maxY() + 1D + SolidBoundary.WALL_THICKNESS)) continue;
             if (!guarded(level, area)) continue;
             List<ServerPlayer> players = SolidBoundary.players(entity);
             CompoundTag row = party(level, area.id());
             boolean passable = row != null && !players.isEmpty() && players.stream().allMatch(player -> HostedBoundary.passable(player, row));
             if (!passable) result.add(SolidBoundary.boundary(area.id(), area.dimension(), bounds.minX(), bounds.minZ(), bounds.maxX(), bounds.maxZ(),
-                    level.getMinBuildHeight(), level.getMaxBuildHeight() - 1, EventRules.RAID_COLOR.get(), false));
+                    bounds.minY(), bounds.maxY(), EventRules.RAID_COLOR.get(), false));
         }
         return result;
     }
@@ -661,7 +660,7 @@ public final class StructureStaging {
             if (areaLevel == null) continue;
             BoundingBox shell = area.shell();
             EventBoundary boundary = SolidBoundary.boundary(area.id(), area.dimension(), shell.minX(), shell.minZ(), shell.maxX(), shell.maxZ(),
-                    areaLevel.getMinBuildHeight(), areaLevel.getMaxBuildHeight() - 1, EventRules.RAID_COLOR.get(), false);
+                    shell.minY(), shell.maxY(), EventRules.RAID_COLOR.get(), false);
             boolean sourceInside = player.serverLevel() == areaLevel && SolidBoundary.contains(source, boundary);
             boolean destinationInside = level == areaLevel && SolidBoundary.contains(destination, boundary);
             boolean destinationWall = level == areaLevel && SolidBoundary.intersectsWall(destination, boundary);

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class SolidBoundary {
-    private static final double WALL_THICKNESS = .25D;
+    static final double WALL_THICKNESS = .25D;
     private static volatile List<EventBoundary> clientZones = List.of();
 
     public static void clientZones(List<EventBoundary> zones) {
@@ -92,7 +92,9 @@ public final class SolidBoundary {
 
     static boolean contains(AABB box, EventBoundary boundary) {
         return box.minX >= boundary.minX() && box.maxX <= boundary.maxX() + 1D
-                && box.minZ >= boundary.minZ() && box.maxZ <= boundary.maxZ() + 1D;
+                && box.minZ >= boundary.minZ() && box.maxZ <= boundary.maxZ() + 1D
+                && (!boundary.type().equals("BOSS_FIGHT")
+                    || box.minY >= boundary.minY() && box.maxY <= boundary.maxY() + 1D);
     }
 
     static EventBoundary boundary(java.util.UUID id, String dimension, int minX, int minZ, int maxX, int maxZ,
@@ -108,11 +110,17 @@ public final class SolidBoundary {
             double maxZ = boundary.maxZ() + 1D;
             double minY = boundary.minY();
             double maxY = boundary.maxY() + 1D;
-            List<VoxelShape> result = new ArrayList<>(4);
+            List<VoxelShape> result = new ArrayList<>(6);
             result.add(Shapes.create(new AABB(minX - WALL_THICKNESS, minY, minZ - WALL_THICKNESS, minX, maxY, maxZ + WALL_THICKNESS)));
             result.add(Shapes.create(new AABB(maxX, minY, minZ - WALL_THICKNESS, maxX + WALL_THICKNESS, maxY, maxZ + WALL_THICKNESS)));
             result.add(Shapes.create(new AABB(minX, minY, minZ - WALL_THICKNESS, maxX, maxY, minZ)));
             result.add(Shapes.create(new AABB(minX, minY, maxZ, maxX, maxY, maxZ + WALL_THICKNESS)));
+            if (boundary.type().equals("BOSS_FIGHT")) {
+                result.add(Shapes.create(new AABB(minX - WALL_THICKNESS, minY - WALL_THICKNESS, minZ - WALL_THICKNESS,
+                        maxX + WALL_THICKNESS, minY, maxZ + WALL_THICKNESS)));
+                result.add(Shapes.create(new AABB(minX - WALL_THICKNESS, maxY, minZ - WALL_THICKNESS,
+                        maxX + WALL_THICKNESS, maxY + WALL_THICKNESS, maxZ + WALL_THICKNESS)));
+            }
             return result;
         }
 

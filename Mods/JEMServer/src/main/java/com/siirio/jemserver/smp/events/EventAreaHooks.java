@@ -57,7 +57,7 @@ public final class EventAreaHooks {
                     entry.putDouble("safeX",player.getX());entry.putDouble("safeY",player.getY());entry.putDouble("safeZ",player.getZ());
                 }
             }
-            if((!type.equals("BOSS_RAID")||row.hasUUID("targetBoss")) && zones.size()<32 && row.getString("dimension").equals(player.level().dimension().location().toString())) {
+            if(!type.equals("BOSS_RAID") && zones.size()<32 && row.getString("dimension").equals(player.level().dimension().location().toString())) {
                 double distance=Math.max(Math.max(EventRegions.minX(row)-player.getX(),player.getX()-EventRegions.maxX(row)),Math.max(EventRegions.minZ(row)-player.getZ(),player.getZ()-EventRegions.maxZ(row)));
                 if(distance<=EventRules.BOUNDARY_DISTANCE.get()) {
                     var encounter=new EncounterContext(row);

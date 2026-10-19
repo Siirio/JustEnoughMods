@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-19 — Structural boss arenas stop blocking upper levels
+
+- User reports underground boss structures blocking the chunks/space above them, names Cataclysm Harbinger and requests a common Overworld/Nether correction followed by local server startup. This explicitly changes the former full-height structural-boss presentation contract; ordinary event walls retain their approved height and style. Codex selects registered 3D structure bounds rather than per-boss exceptions or terrain-height guesses.
+- Bug / Both Sided / StructureStaging persisted real structure minY/maxY but substituted dimension build heights for boundary packets, collision and teleport policy; SolidBoundary/HostedBoundary/EventRegions then classified entry and territory using X/Z alone, extending underground ownership onto the surface / in testing. The canonical shell now supplies height everywhere, with side/floor/ceiling collision, full player/vehicle box entry, conditional Y-aware structural event queries and no duplicate Raid wall. Existing unversioned entry marks are reconciled once against the real volume without teleporting players or resetting membership/rewards. Boss presence/revival, native worldgen, phases, ordinary Blood Moon/Resource Rush and dedicated-server authority remain unchanged.
+
 ## 2026-10-19 — Local boss encounter repair
 
 - Delivery: fresh production World Boss Tiers/Server JARs synchronized to ManagedPack and ordinary Server. Local server reached Done; native generation39 published and applied to closed test jem, all tokens and both installed active-projection JAR hashes match,24/24 personal preference files unchanged and no pending transaction. Atlas62records validate, exact task impact scan passes and artifact drift is empty; six unrelated dirty sources remain outside this task. Details: `Docs/plans/2026-10-19-boss-encounter-delivery.json`. No tests, client/gameplay launch, player acceptance, MineRENT/stable deployment or release-baseline promotion.

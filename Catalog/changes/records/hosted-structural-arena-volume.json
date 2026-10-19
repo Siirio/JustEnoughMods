@@ -1,0 +1,115 @@
+{
+  "schema_version": 2,
+  "change_id": "hosted.structural-arena-volume",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "entities"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "requires": "dedicated JEM hosted structural boss arena registered by canonical RaidArenaApi/StructureStaging; every dimension, no entity allowlist"
+    }
+  ],
+  "precedence": {
+    "layer": "hosted_encounter_lifecycle",
+    "priority": 511
+  },
+  "change": {
+    "summary": "Replace dimension-height boss columns with registered structure-shell volume, preserve ordinary event height and repair legacy X/Z-only entry marks.",
+    "modifiers": [
+      {
+        "property": "hosted.structural_boundary_height",
+        "operation": "replace",
+        "before": "Structure minY/maxY saved but visual packets, collision and teleport policy substitute dimension build limits; contains and arenaEntered use X/Z only.",
+        "after": "Canonical shell minY/maxY with existing one-block margin owns side walls, top/bottom collision caps, full player/vehicle box containment and teleport endpoints. Unrelated space above/below is outside. Blood Moon/Resource Rush geometry unchanged."
+      },
+      {
+        "property": "hosted.structural_event_scope",
+        "operation": "replace",
+        "before": "EventRegions uses X/Z only for presence, nearby prompts and outsider-mob collection; legacy targetBoss Raid row may add another dimension-height boundary.",
+        "after": "Saved six-coordinate structureBounds adds Y to containment/near/ejection only for structural records. Raid renders exclusively the canonical structure boundary; reward/phase/progression owners unchanged."
+      },
+      {
+        "property": "hosted.legacy_entry_migration",
+        "operation": "derive",
+        "before": "Saved arenaEntered may have been set from the surface above an underground structure.",
+        "after": "Unversioned entry flag is validated once against actual full-box volume; inside becomes arenaVolumeEntry, outside clears only stale arenaEntered. Future real 3D entry persists both; no corrective teleport or participant/reward reset."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMServer structural arena lifecycle",
+    "kind": "bugfix",
+    "source_files": [
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/SolidBoundary.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/HostedBoundary.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventAreaHooks.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventRegions.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Keep underground bosses from blocking unrelated chunks/space above or below in Overworld/Nether and other dimensions.",
+    "decision_source": "User explicitly reports Harbinger and other underground bosses and requests correction then local server startup; this changes the former full-height hosted-boss lock.",
+    "user_requested": "Underground structures must not block upper chunks; apply common correction and start server afterward.",
+    "codex_choices": "Use actual registered structure volume for all structural arenas, six collision faces, conditional Y-aware event queries and one-time legacy entry migration; preserve wall style."
+  },
+  "introduced": {
+    "date": "2026-10-19",
+    "commit": "SELF",
+    "action": "bound_structural_arena_in_three_dimensions",
+    "summary": "Replace dimension-height boss columns with registered structure-shell volume, preserve ordinary event height and repair legacy X/Z-only entry marks.",
+    "source_files": [
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/SolidBoundary.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/HostedBoundary.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventAreaHooks.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventRegions.java"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-19",
+      "commit": "SELF",
+      "action": "bound_structural_arena_in_three_dimensions",
+      "summary": "Replace dimension-height boss columns with registered structure-shell volume, preserve ordinary event height and repair legacy X/Z-only entry marks.",
+      "source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/SolidBoundary.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/HostedBoundary.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventAreaHooks.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventRegions.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "arena_collision",
+      "teleports",
+      "event_boundaries",
+      "boss_fight",
+      "boss_raid",
+      "entry_persistence",
+      "mounted_players",
+      "mob_ejection",
+      "local_pack_delivery"
+    ],
+    "relations": [
+      "registered_structure_bounds->one_shared_3D_shell->client_collision_and_server_authority",
+      "structural_party_entry->full_box_volume",
+      "structureBounds->conditional_event_vertical_scope"
+    ],
+    "notes": [
+      "Installed Cataclysm3.31 ancient_factory resource inspected; no native structure placement or boss registrations modified.",
+      "Boss presence and full-column native boss recovery scans remain canonical and unchanged; only player/event physical territory is volumetric.",
+      "One existing protocol9 Server JAR must match on local client/server because common collision geometry changes; no packet field or new channel added."
+    ],
+    "unresolved": [
+      "No gameplay/client launch or player acceptance performed; fix remains in testing."
+    ]
+  }
+}
