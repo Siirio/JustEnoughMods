@@ -160,7 +160,8 @@ public final class BossHostingPrompt {
                 player.sendSystemMessage(Component.literal("▣ ").withStyle(ChatFormatting.GOLD)
                         .append(boss.getDisplayName()).append(" ")
                         .append(Component.translatable("jem.smp.open_fight").withStyle(style->style.withColor(ChatFormatting.GREEN).withBold(true)
-                                .withClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND,"/smp boss "+id)))));
+                                .withClickEvent(new com.siirio.jemserver.smp.events.EventPromptRequest(
+                                        com.siirio.jemserver.smp.events.EventPromptRequest.Kind.BOSS, id).clickEvent()))));
                 seen = SEEN.computeIfAbsent(player.getUUID(), key -> new LinkedHashSet<>());
                 if (seen.size() >= SEEN_PER_PLAYER) seen.remove(seen.iterator().next());
                 seen.add(id);

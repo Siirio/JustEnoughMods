@@ -522,7 +522,7 @@ public final class StructureStaging {
                 else player.sendSystemMessage(Component.literal("▣ ").withStyle(ChatFormatting.GOLD)
                         .append(Component.translatable(BuiltInRegistries.ENTITY_TYPE.get(close.boss()).getDescriptionId())).append(" ")
                         .append(Component.translatable("jem.smp.open_fight").withStyle(style -> style.withColor(ChatFormatting.GREEN).withBold(true)
-                                .withClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/smp arena " + close.id())))));
+                                .withClickEvent(new EventPromptRequest(EventPromptRequest.Kind.ARENA, close.id()).clickEvent()))));
             }
         }
         AREAS.values().stream()

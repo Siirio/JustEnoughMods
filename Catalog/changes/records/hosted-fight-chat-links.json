@@ -1,0 +1,81 @@
+{
+  "schema_version": 2,
+  "change_id": "hosted-fight-chat-links",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "entities"
+    }
+  ],
+  "conditions": [
+    {
+      "expression": "Authenticated dedicated SMP; registered hosted boss near eligible player"
+    }
+  ],
+  "precedence": {
+    "layer": "hosted_encounter_presentation",
+    "priority": 512
+  },
+  "change": {
+    "summary": "Hosted fight chat links open validated native encounter GUI through a bounded typed request, without removed public SMP subcommands.",
+    "modifiers": [
+      {
+        "property": "hosted_encounter.chat_entry",
+        "operation": "replace",
+        "before": "Boss/structure notification RUN_COMMAND targets /smp boss or /smp arena, but only /smp is registered; Brigadier rejects UUID as an invalid argument.",
+        "after": "Typed ARENA/BOSS + UUID presentation request; client intercepts exact reserved action and old boss/arena scrollback links. Server verifies dedicated authentication, shared throttle and canonical prompt proximity/availability/progression; selection/start unchanged."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMServer hosted encounter presentation",
+    "kind": "bugfix",
+    "source_files": [
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/BossHostingPrompt.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventNetwork.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventPromptRequest.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/client/HostedFightChatLinkMixin.java",
+      "Mods/JEMServer/src/main/resources/jem_server.mixins.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Repair reported Harbinger/Helvar Open fight links while preserving GUI-only SMP navigation.",
+    "decision_source": "User error screenshots2026-10-19; Codex chooses typed packet and narrow component-click adapter.",
+    "user_requested": "Fix invalid command error when opening boss fight.",
+    "codex_choices": "New EventPromptRequest on events channel discriminator7; protocol10 matching client/server; no new public server command and no direct combat/teleport mutation."
+  },
+  "introduced": {
+    "date": "2026-10-19",
+    "commit": "SELF",
+    "summary": "Repair boss chat action transport."
+  },
+  "history": [
+    {
+      "date": "2026-10-19",
+      "commit": "SELF",
+      "action": "repair_chat_entry_transport",
+      "summary": "Removed commands remained in both notification producers; replace with validated GUI request."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "chat",
+      "hosted_boss_gui",
+      "proximity",
+      "progression",
+      "network_compatibility"
+    ],
+    "relations": [
+      "notification->component_click->typed_prompt_request->canonical_prompt->EventEntryScreen"
+    ],
+    "notes": [
+      "Both arena and direct entity producers corrected; old scrollback links remain usable on updated client.",
+      "Exact same protocol10 JEMServer artifact required on local client/server; ordinary /smp command remains sole public SMP command."
+    ],
+    "unresolved": [
+      "Runtime click and player acceptance not performed; in testing."
+    ]
+  }
+}

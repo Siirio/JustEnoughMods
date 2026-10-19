@@ -1,4 +1,16 @@
-# Augment Bay / native backpack workbench art
+# Backpack Workbench art
+
+## Current correction —2026-10-19
+
+User rejects the green augment symbol and separate workshop, and explicitly selects native Backpacked palette/style and crafting between backpack/player inventories. Exact original screenshots/classification: [reference](reference/2026-10-19/README.md). This screen-specific direction does not change other JEM GUI themes.
+
+Production surfaces now call native TextureDefinitions.BACKPACK_BACKGROUND/BACKPACK_SLOT/ARROW_RIGHT directly; no licensed native pixels are copied into a new resource. Native 18px grid: ingredient item positions30,16 with18px stride; result124,34 in the176×76 insert. Editable WorkbenchIcon.java defines a12×12 cream/shadow crafting-table silhouette, transparent outside. No green accent or separate panel skin. GuiGraphics fills exact pixel cells; no smoothing or source-image scaling. Native icon dimensions and draw API were inspected from installed Framework0.8.0/Backpacked3.0.9 bytecode and native atlas.
+
+Existing .ora files/contact sheet and author_assets.py below are historical rejected/superseded art evidence, not current production inputs. Do not run that old exporter to restore removed GUI assets. Old block faces stay shipped solely for inert block/item save compatibility. Runtime/player visual acceptance remains pending.
+
+## Historical initial implementation
+
+### Initial Augment Bay / native backpack workbench art
 
 Status: editable layered OpenRaster sources and PNG exports created; native-size
 and nearest-neighbour contact sheet visually inspected. Game/editor application

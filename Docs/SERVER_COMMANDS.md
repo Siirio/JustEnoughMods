@@ -12,6 +12,8 @@
 
 Все три управляющие операции требуют permission 2. Старые `smp event ...`, `smp boss ...`, `smp arena ...`, `smp event-open`, `smp event-return`, `smp vote`, `smp forfeit` и `smp encounter-leave` больше не регистрируются.
 
+Boss «Открыть бой» chat actions use typed GUI prompt requests, without a public command. Updated clients consume reserved `/jem-ui arena|boss <uuid>` click markers and old `/smp arena|boss <uuid>` scrollback links. Markers are not commands to type or register. Server authentication, throttle, proximity/progression and availability remain canonical; opening the screen does not start combat.
+
 ## World tier
 
 Вся управляющая и диагностическая ветка `jemtier ...` требует permission 2.

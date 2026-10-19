@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-19 — Direct backpack crafting and boss chat entry
+
+- User requests removing the upgrade workshop, immediate3×3+result crafting between backpack/player inventories on Workbench selection, a native-style cream icon instead of green, and repair of Harbinger/Helvar «Открыть бой» command errors. Codex reuses native Backpacked surfaces, removes station payments/UI/recipe/creative entry, and retains inert old block/item IDs and geometry for existing saves. Native unlocks, ingredient NBT, authoritative ResultSlot crafting and integrated-singleplayer exclusions remain.
+- Bug / Both Sided / Workbench selection was blocked by JemWorkbenchPurchased from a separate paid station and layout refresh inferred presence from a different augment lookup than the actual enabled/unlocked menu predicate / in testing. Selection now uses the native owner/unlocked-bay path, enables successful Workbench choice and reopens only when real slot layout differs; native surfaces supply the insert.
+- Bug / Both Sided / both hosted-boss notification producers retained /smp arena and /smp boss after those commands were removed, so Brigadier rejected their UUID argument / in testing. Typed ARENA/BOSS+UUID GUI request and narrow component-click adapter replace command transport, preserving authentication, throttle and canonical prompt validation. Old boss/arena scrollback links also use that path. Matching events protocol10 JEMServer artifacts required on both sides.
+- No automated tests, client/gameplay launch or player approval. MineRENT/stable profiles and immutable release baseline excluded.
+
 ## 2026-10-19 — Structural boss arenas stop blocking upper levels
 
 - Final geometry review corrected an edge case in the first local generation40: the old one-block Y shell margin and outward cap thickness could still touch space directly above a roof/below a floor. Current correction uses exact native Y, retains only horizontal margin and puts cap thickness inward; legacy retired-block cleanup keeps its old coordinates. Matching local generation41 supersedes40 below.

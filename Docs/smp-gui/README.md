@@ -107,3 +107,8 @@ The user-selected storefront uses the generated physical wood/iron/red-cloth art
 Background anchors and source/export provenance: [asset contract](assets/market-2026-10-17/README.md). The whole canvas keeps its proportions; text/hit regions and preview scissor follow the same scale. No client gameplay launch or visual acceptance is claimed; real game capture remains pending.
 
 GUI player previews always use shared vanilla classic/slim skin geometry and a neutral pose, bypassing live PlayerRenderer layers and animation/resource-pack model setup. JEM Compat scopes the native PlayerRenderer adapter to Screen rendering and handles Quick Skin’s exact preview entry point; Races uses the shared helper directly. World rendering retains native installed-mod behavior. Race selection alone owns GUI scale 3, including mouse coordinates, text clipping and miniature GL viewports; its camera rests at distance 5.0.
+
+
+## Hosted fight chat links —2026-10-19
+
+Both structural-arena and direct-boss «Открыть бой» notifications request the existing encounter entry screen via EventPromptRequest (ARENA/BOSS, UUID), not removed SMP subcommands. Screen component clicks consume the reserved action marker, including old boss/arena scrollback links, only on remote multiplayer. Dedicated authentication, shared request throttle and canonical prompt proximity/progression/availability are checked before presentation. Combat still requires the ordinary validated selection/start. Events protocol10 requires the same JEMServer JAR on client/server.

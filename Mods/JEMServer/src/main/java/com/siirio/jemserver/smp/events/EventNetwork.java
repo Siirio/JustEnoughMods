@@ -11,12 +11,15 @@ import net.minecraftforge.network.simple.SimpleChannel;
 import java.util.*;
 
 public final class EventNetwork {
-    private static final String PROTOCOL_VERSION="9";
+    private static final String PROTOCOL_VERSION="10";
     private static final int MAX_PROMPT_OCCUPANTS = 256;
     private static final int MAX_ATTACK_SPAN = 512;
     private static final SimpleChannel CHANNEL=NetworkRegistry.newSimpleChannel(new ResourceLocation("jem_server","events"),()->PROTOCOL_VERSION,PROTOCOL_VERSION::equals,PROTOCOL_VERSION::equals);
 
     public static void register(BiConsumer<ServerPlayer, EventChoice> actions) {
+        CHANNEL.messageBuilder(EventPromptRequest.class,7,NetworkDirection.PLAY_TO_SERVER)
+                .encoder(EventPromptRequest::encode).decoder(EventPromptRequest::decode)
+                .consumerMainThread((request,context)->{var player=context.get().getSender();if(player!=null) request.open(player);context.get().setPacketHandled(true);}).add();
         CHANNEL.messageBuilder(EventTelegraph.class,5,NetworkDirection.PLAY_TO_CLIENT)
                 .encoder((packet,buffer)->writeAttack(packet.eventId(),packet.dimension(),packet.geometry(),packet.duration(),packet.color(),buffer))
                 .decoder(buffer->{EventAttackPacket packet=readAttack(buffer);return new EventTelegraph(packet.eventId(),packet.dimension(),packet.geometry(),packet.duration(),packet.color());})
@@ -43,6 +46,7 @@ public final class EventNetwork {
     }
     public static void zones(ServerPlayer player,List<EventBoundary> bounds) { CHANNEL.send(PacketDistributor.PLAYER.with(()->player),new EventZones(bounds)); }
     public static void select(EventPrompt prompt,String mode,boolean solo) { CHANNEL.sendToServer(new EventChoice(prompt.id(),EventEntryKind.valueOf(prompt.type()),EventEntryKind.valueOf(mode),solo)); }
+    public static void requestPrompt(EventPromptRequest request) { CHANNEL.sendToServer(request); }
     private static void writeAttack(UUID eventId,ResourceLocation dimension,AttackGeometry geometry,int duration,int color,FriendlyByteBuf buffer) {
         buffer.writeUUID(eventId);buffer.writeResourceLocation(dimension);buffer.writeEnum(geometry.type());
         buffer.writeInt(geometry.minX());buffer.writeInt(geometry.maxX());buffer.writeInt(geometry.minZ());buffer.writeInt(geometry.maxZ());
