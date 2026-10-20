@@ -1,3 +1,10 @@
+## 2026-10-21 — Three native Aseprite SMP style studies
+
+- User requests inspecting references and creating three SMP style examples using Aseprite. Codex proposes Trading Station, Notice Board and Stone/Oak material directions on the same Events layout, preserving the current nine navigation entries and omitting separate Buyer/wallet entries. These are comparison candidates with illustrative data, not an approved style or implemented GUI.
+- Inspected original GUI+05/+06/+09 and GUI-18 reference images. Authored512x320 layered native Aseprite sources, direct1x exports, text-free surfaces and nearest-neighbour2x MCP previews. Hand-painted materials, cloth, moon/forest and portrait/group silhouettes; reused native Minecraft font/item inputs. No AI raster, reference cutout, downsampling or external image rasterizer.
+- Visual-auditor self-review used C0 plus two correction rounds: strengthened joinery/semantic icons, then isolated label baselines from board seams and removed a clipped study caption from the art. Editable sources, provenance, inspected references and explicit unobserved runtime gates are archived in `Docs/art/smp-style-studies-2026-10-21`. Prior C0/C1 evidence remains in the external Aseprite study. User selection and runtime acceptance remain pending.
+- No production code/resources, builds/tests/game launches, local Server/MineRENT updates, native AutoModpack publication/application, profile changes or release-baseline changes.
+
 ## 2026-10-21 — Plan source-only economy, races, Settlements and SMP GUI revision
 
 - User requests a plan only and explicitly excludes server updates: cover stackable Coins, remove personal/world quota UI, restore the stated64-diamond/1-Ether sale anchor, review Mending prices, allow netherite-ingot sales, public exclusive-session Shipping Box with no abandoned Coins, icon dropdown exchange and deposit/withdraw, remove Buyer functionality and the wallet UI while preserving monetary data, and then restyle JEM SMP pages in the collector family.
