@@ -34,26 +34,26 @@ function button(c,x,y,w,state='normal'){
  if(state==='focus'){c.line(x+5,y+2,w-10,P.gold);c.line(x+5,y+19,w-10,P.gold);}
  rivet(c,x+3,y+8);rivet(c,x+w-6,y+8);
 }
-const ui=canvas(304,272);panel(ui,0,0,304,272);
+const ui=canvas(368,272);panel(ui,0,0,368,272);
 // Structural wood beams; intentional quiet horizontal grain, no random noise.
-for(const y of [18,174]){ui.rect(4,y,296,5,P.wood0);ui.line(5,y,294,P.wood3);ui.line(8,y+3,287,P.wood1);}
+for(const y of [18,174]){ui.rect(4,y,360,5,P.wood0);ui.line(5,y,358,P.wood3);ui.line(8,y+3,351,P.wood1);}
 for(const [x,y,n]of [[39,5,28],[78,11,19],[210,7,24],[253,12,15],[19,268,24],[119,265,17]])ui.line(x,y,n,P.wood1);
 ui.rect(7,23,174,148,P.wood0);ui.rect(9,25,170,144,P.wood1);
 ui.rect(7,179,174,87,P.wood0);ui.rect(9,181,170,83,P.wood1);
-iron(ui,183,23,113,150);ui.rect(186,26,107,143,P.wood0);
-ui.line(190,52,99,P.wood2);ui.line(190,78,99,P.wood1);ui.line(190,105,99,P.wood1);
-button(ui,189,127,103);
+iron(ui,183,23,177,150);ui.rect(186,26,171,143,P.wood0);
+ui.line(190,60,164,P.wood2);ui.line(190,96,164,P.wood1);ui.line(190,132,164,P.wood1);
+button(ui,190,137,164);
 // Corner brackets have a shaped silhouette and one fastener per arm.
-for(const [x,y,sx,sy] of [[2,2,1,1],[301,2,-1,1],[2,269,1,-1],[301,269,-1,-1]]){
+for(const [x,y,sx,sy] of [[2,2,1,1],[365,2,-1,1],[2,269,1,-1],[365,269,-1,-1]]){
  for(let a=0;a<14;a++)for(let b=0;b<4;b++){ui.pixel(x+sx*a,y+sy*b,P.iron1);ui.pixel(x+sx*b,y+sy*a,P.iron1);}
  for(let a=1;a<13;a++){ui.pixel(x+sx*a,y,P.iron3);ui.pixel(x,y+sy*a,P.iron2);}
  const rx=sx===1?x+1:x-3,ry=sy===1?y+1:y-3;rivet(ui,rx,ry);
 }
 // The player inventory extends down only under the real slots; no empty right slab.
-ui.clear(184,176,120,96);
+ui.clear(184,176,184,96);
 ui.rect(181,180,3,90,P.iron0);ui.rect(181,181,1,87,P.iron2);
 ui.line(8,270,174,P.iron0);ui.line(8,269,174,P.iron2);rivet(ui,179,267);
-const wells=canvas(304,272);
+const wells=canvas(368,272);
 for(let row=0;row<6;row++)for(let col=0;col<9;col++)slot(wells,13+18*col,29+18*row);
 for(let col=0;col<9;col++)slot(wells,13+18*col,153,true);
 for(let row=0;row<3;row++)for(let col=0;col<9;col++)slot(wells,13+18*col,194+18*row);
@@ -89,15 +89,17 @@ const fonts={
 '2':['01110','10001','00001','00010','00100','01000','11111'], '3':['11110','00001','00001','01110','00001','00001','11110'],
 '4':['00010','00110','01010','10010','11111','00010','00010'], '8':['01110','10001','10001','01110','10001','10001','01110']};
 function text(c,s,x,y,color=P.text){for(const a of s.toUpperCase()){const g=fonts[a];if(g)g.forEach((r,dy)=>[...r].forEach((p,dx)=>{if(p==='1')c.pixel(x+dx,y+dy,color);}));x+=a===' '?4:6;}}
-const demo=canvas(304,272);
+const demo=canvas(368,272);
+for(const [x,w,active]of [[179,78,true],[263,91,false]]){ui.rect(x,3,w,14,P.iron0);ui.rect(x+1,4,w-2,12,active?P.wood1:P.wood0);ui.line(x+2,4,w-4,active?P.gold:P.iron2);}
+text(demo,'Продажа',195,7);text(demo,'Обмен монет',275,7,P.mute);
 text(demo,'Сборщик',35,7);text(demo,'Товары',13,21);text(demo,'Оплата',13,143);text(demo,'Инвентарь',13,183);
-text(demo,'К выплате',192,34,P.gold);text(demo,'Ваш лимит',192,60,P.mute);text(demo,'Бюджет рынка',192,86,P.mute);
-text(demo,'Забрать товар',202,135);text(demo,'Готово',192,158,P.blue);
-text(demo,'1',213,45);text(demo,'2',246,45);text(demo,'8',278,45);
-text(demo,'2',213,71);text(demo,'4',246,71);
-text(demo,'1',213,97);text(demo,'2',246,97);
+text(demo,'К выплате',192,43,P.gold);text(demo,'Ваш лимит',192,79,P.mute);text(demo,'Бюджет рынка',192,115,P.mute);
+text(demo,'Забрать товар',233,145);text(demo,'Готово',192,162,P.blue);
+text(demo,'1',288,43);text(demo,'2',316,43);text(demo,'8',344,43);
+text(demo,'2',288,79);text(demo,'4',316,79);
+text(demo,'1',288,115);text(demo,'2',316,115);
 
-const source=out+'/shipping-ui.aseprite';op('create_sprite',{outputPath:source,width:304,height:272});
+const source=out+'/shipping-ui.aseprite';op('create_sprite',{outputPath:source,width:368,height:272});
 op('set_layer_properties',{inputPath:source,layerIndex:1,name:'01 wood and iron'});
 op('draw_grid',{inputPath:source,layerIndex:1,...ui.grid()});
 op('add_layer',{inputPath:source,name:'02 native slots'});op('draw_grid',{inputPath:source,layerIndex:2,...wells.grid()});
@@ -106,11 +108,11 @@ op('export_png',{inputPath:source,outputPath:out+'/shipping-ui.png'});
 op('add_layer',{inputPath:source,name:'03 preview labels only'});op('draw_grid',{inputPath:source,layerIndex:3,...demo.grid()});
 op('add_layer',{inputPath:source,name:'04 preview native items only'});
 const currency=resolve(root,'../../../Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item').replaceAll('\\','/');
-for(const [names,y]of [[['gold','silver','copper'],40],[['aether','gold'],66],[['arcane','aether'],92]])for(const[i,name]of names.entries())op('draw_image',{inputPath:source,layerIndex:4,imagePath:currency+'/'+name+'_coin_front.png',x:192+i*32,y});
+for(const [names,y]of [[['gold','silver','copper'],39],[['aether','gold'],75],[['arcane','aether'],111]])for(const[i,name]of names.entries())op('draw_image',{inputPath:source,layerIndex:4,imagePath:currency+'/'+name+'_coin_front.png',x:270+i*28,y});
 const nativeItems=resolve(root,'../../../Server/local/shipping-art-20261020/native-reference-items').replaceAll('\\','/');
 for(const[i,name]of ['wheat','iron_ingot','carrot'].entries())op('draw_image',{inputPath:source,layerIndex:4,imagePath:nativeItems+'/'+name+'.png',x:14+18*i,y:30});
 const iconSource=out+'/collector-icon.aseprite';op('create_sprite',{outputPath:iconSource,width:16,height:16});op('draw_grid',{inputPath:iconSource,...icon.grid()});op('export_png',{inputPath:iconSource,outputPath:out+'/collector-icon.png'});
-op('draw_image',{inputPath:source,layerIndex:4,imagePath:out+'/collector-icon.png',x:13,y:3});
+op('draw_image',{inputPath:source,layerIndex:4,imagePath:out+'/collector-icon.png',x:13,y:1});
 op('export_png',{inputPath:source,outputPath:out+'/shipping-ui-preview-1x.png'});
 op('render_sprite',{inputPath:source,scale:4,background:'#1B1B1D',outputPath:root+'/shipping-ui-preview-4x.png'});
 
@@ -131,4 +133,4 @@ for(const face of ['front','side','top']){
  const f=out+'/block-'+face+'.aseprite';op('create_sprite',{outputPath:f,width:16,height:16});op('draw_grid',{inputPath:f,...c.grid()});op('export_png',{inputPath:f,outputPath:out+'/block-'+face+'.png'});
 }
 await writeFile(root+'/aseprite-operations.json',JSON.stringify(operations));
-console.log(JSON.stringify({operations:operations.length,request:root+'/aseprite-operations.json',nativeSize:'304x272',source}));
+console.log(JSON.stringify({operations:operations.length,request:root+'/aseprite-operations.json',nativeSize:'368x272',source}));

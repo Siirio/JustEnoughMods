@@ -1,0 +1,2989 @@
+{
+  "canvas": "native pixels",
+  "pages": [
+    {
+      "id": "01-directory",
+      "title": "Выбор поселения",
+      "section": "",
+      "route": "mode=selector",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/01-directory.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/01-directory.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/01-directory.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поиск",
+          "x": 122,
+          "y": 78,
+          "w": 376,
+          "h": 21,
+          "kind": "EditBox"
+        },
+        {
+          "id": "Основать поселение",
+          "x": 330,
+          "y": 274,
+          "w": 168,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "02-founding",
+      "title": "Основание поселения",
+      "section": "",
+      "route": "mode=create / TownFoundingScreen",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/02-founding.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/02-founding.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/02-founding.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Название поселения",
+          "x": 122,
+          "y": 80,
+          "w": 376,
+          "h": 21,
+          "kind": "EditBox"
+        },
+        {
+          "id": "Основать",
+          "x": 122,
+          "y": 274,
+          "w": 182,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Назад",
+          "x": 312,
+          "y": 274,
+          "w": 186,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "03-overview",
+      "title": "Обзор поселения",
+      "section": "settlement",
+      "route": "section=settlement / cityWidgets",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/03-overview.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/03-overview.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/03-overview.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Налог: 5%",
+          "x": 130,
+          "y": 177,
+          "w": 85,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Монета",
+          "x": 223,
+          "y": 177,
+          "w": 65,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Внести",
+          "x": 354,
+          "y": 177,
+          "w": 65,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Вывести",
+          "x": 425,
+          "y": 177,
+          "w": 65,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Название",
+          "x": 358,
+          "y": 273,
+          "w": 67,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Удалить",
+          "x": 431,
+          "y": 273,
+          "w": 67,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "04-residents",
+      "title": "Жители поселения",
+      "section": "residents",
+      "route": "section=residents / residentsDashboard",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/04-residents.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/04-residents.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/04-residents.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поиск",
+          "x": 122,
+          "y": 77,
+          "w": 376,
+          "h": 21,
+          "kind": "EditBox"
+        },
+        {
+          "id": "Покормить",
+          "x": 319,
+          "y": 249,
+          "w": 80,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Мой дом",
+          "x": 407,
+          "y": 249,
+          "w": 79,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Исключить",
+          "x": 319,
+          "y": 274,
+          "w": 167,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "05-villager",
+      "title": "Карточка жителя",
+      "section": "residents",
+      "route": "residentPane / residentDetail",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/05-villager.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/05-villager.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/05-villager.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Покормить",
+          "x": 122,
+          "y": 274,
+          "w": 120,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Мой дом",
+          "x": 250,
+          "y": 274,
+          "w": 120,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Исключить",
+          "x": 378,
+          "y": 274,
+          "w": 120,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "06-recruit",
+      "title": "Карточка рекрута",
+      "section": "residents",
+      "route": "residentPane / isRecruit",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/06-recruit.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/06-recruit.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/06-recruit.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Оплатить долг",
+          "x": 312,
+          "y": 204,
+          "w": 174,
+          "h": 20,
+          "state": "disabled"
+        },
+        {
+          "id": "Покормить",
+          "x": 122,
+          "y": 274,
+          "w": 182,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Управлять",
+          "x": 312,
+          "y": 274,
+          "w": 186,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "07-golem",
+      "title": "Карточка защитника",
+      "section": "residents",
+      "route": "residentPane / guard without needs",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/07-golem.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/07-golem.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/07-golem.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Координаты",
+          "x": 122,
+          "y": 274,
+          "w": 182,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Назад",
+          "x": 312,
+          "y": 274,
+          "w": 186,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "08-happiness",
+      "title": "Счастье поселения",
+      "section": "happiness",
+      "route": "happinessRows top",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/08-happiness.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/08-happiness.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/08-happiness.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "09-happiness-details",
+      "title": "Жильё и распределение",
+      "section": "happiness",
+      "route": "happinessRows lower scroll",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/09-happiness-details.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/09-happiness-details.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/09-happiness-details.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "10-chests",
+      "title": "Общие сундуки",
+      "section": "chests",
+      "route": "section=chests / chestRows",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/10-chests.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/10-chests.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/10-chests.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поиск",
+          "x": 122,
+          "y": 77,
+          "w": 376,
+          "h": 21,
+          "kind": "EditBox"
+        }
+      ]
+    },
+    {
+      "id": "11-chest-content",
+      "title": "Сундук №1",
+      "section": "chests",
+      "route": "chestContents / InventoryKnown",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/11-chest-content.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/11-chest-content.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/11-chest-content.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Покормить всех",
+          "x": 122,
+          "y": 274,
+          "w": 376,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "12-home-location",
+      "title": "Мой дом",
+      "section": "residents",
+      "route": "confirmationWidgets / Мой дом",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/12-home-location.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/12-home-location.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/12-home-location.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Закрыть",
+          "x": 179,
+          "y": 214,
+          "w": 262,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "13-delete-confirm",
+      "title": "Удалить поселение?",
+      "section": "residents",
+      "route": "confirmationWidgets / Удалить поселение?",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/13-delete-confirm.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/13-delete-confirm.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/13-delete-confirm.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Отмена",
+          "x": 179,
+          "y": 214,
+          "w": 125,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Подтвердить",
+          "x": 316,
+          "y": 214,
+          "w": 125,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "14-resident-remove",
+      "title": "Исключить жителя?",
+      "section": "residents",
+      "route": "confirmationWidgets / Исключить жителя?",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/14-resident-remove.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/14-resident-remove.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/14-resident-remove.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Отмена",
+          "x": 179,
+          "y": 214,
+          "w": 125,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Подтвердить",
+          "x": 316,
+          "y": 214,
+          "w": 125,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "15-transfer-confirm",
+      "title": "Подтверждение перевода",
+      "section": "residents",
+      "route": "confirmationWidgets / Подтверждение перевода",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/15-transfer-confirm.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/15-transfer-confirm.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/15-transfer-confirm.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Отмена",
+          "x": 179,
+          "y": 214,
+          "w": 125,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Подтвердить",
+          "x": 316,
+          "y": 214,
+          "w": 125,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "16-coordinates",
+      "title": "Координаты защитника",
+      "section": "residents",
+      "route": "confirmationWidgets / Координаты защитника",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/16-coordinates.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/16-coordinates.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/16-coordinates.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Закрыть",
+          "x": 179,
+          "y": 214,
+          "w": 262,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "guide-01-founding",
+      "title": "Основание",
+      "section": "",
+      "route": "guideWidgets / chapter=founding",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/guide-01-founding.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/guide-01-founding.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/guide-01-founding.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Назад",
+          "x": 122,
+          "y": 65,
+          "w": 67,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "<",
+          "x": 197,
+          "y": 65,
+          "w": 26,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": ">",
+          "x": 231,
+          "y": 65,
+          "w": 26,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Предыдущая",
+          "x": 122,
+          "y": 282,
+          "w": 182,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Следующая",
+          "x": 312,
+          "y": 282,
+          "w": 186,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "guide-02-territory",
+      "title": "Территория",
+      "section": "",
+      "route": "guideWidgets / chapter=territory",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/guide-02-territory.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/guide-02-territory.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/guide-02-territory.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Назад",
+          "x": 122,
+          "y": 65,
+          "w": 67,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "<",
+          "x": 197,
+          "y": 65,
+          "w": 26,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": ">",
+          "x": 231,
+          "y": 65,
+          "w": 26,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Предыдущая",
+          "x": 122,
+          "y": 282,
+          "w": 182,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Следующая",
+          "x": 312,
+          "y": 282,
+          "w": 186,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "guide-03-feeding",
+      "title": "Питание",
+      "section": "",
+      "route": "guideWidgets / chapter=feeding",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/guide-03-feeding.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/guide-03-feeding.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/guide-03-feeding.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Назад",
+          "x": 122,
+          "y": 65,
+          "w": 67,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "<",
+          "x": 197,
+          "y": 65,
+          "w": 26,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": ">",
+          "x": 231,
+          "y": 65,
+          "w": 26,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Предыдущая",
+          "x": 122,
+          "y": 282,
+          "w": 182,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Следующая",
+          "x": 312,
+          "y": 282,
+          "w": 186,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "guide-04-housing",
+      "title": "Жильё",
+      "section": "",
+      "route": "guideWidgets / chapter=housing",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/guide-04-housing.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/guide-04-housing.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/guide-04-housing.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Назад",
+          "x": 122,
+          "y": 65,
+          "w": 67,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "<",
+          "x": 197,
+          "y": 65,
+          "w": 26,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": ">",
+          "x": 231,
+          "y": 65,
+          "w": 26,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Предыдущая",
+          "x": 122,
+          "y": 282,
+          "w": 182,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Следующая",
+          "x": 312,
+          "y": 282,
+          "w": 186,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "guide-05-food_satisfaction",
+      "title": "Питание",
+      "section": "",
+      "route": "guideWidgets / chapter=food_satisfaction",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/guide-05-food_satisfaction.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/guide-05-food_satisfaction.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/guide-05-food_satisfaction.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Назад",
+          "x": 122,
+          "y": 65,
+          "w": 67,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "<",
+          "x": 197,
+          "y": 65,
+          "w": 26,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": ">",
+          "x": 231,
+          "y": 65,
+          "w": 26,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Предыдущая",
+          "x": 122,
+          "y": 282,
+          "w": 182,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Следующая",
+          "x": 312,
+          "y": 282,
+          "w": 186,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "guide-06-safety",
+      "title": "Безопасность",
+      "section": "",
+      "route": "guideWidgets / chapter=safety",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/guide-06-safety.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/guide-06-safety.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/guide-06-safety.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Назад",
+          "x": 122,
+          "y": 65,
+          "w": 67,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "<",
+          "x": 197,
+          "y": 65,
+          "w": 26,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": ">",
+          "x": 231,
+          "y": 65,
+          "w": 26,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Предыдущая",
+          "x": 122,
+          "y": 282,
+          "w": 182,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Следующая",
+          "x": 312,
+          "y": 282,
+          "w": 186,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "guide-07-jobs",
+      "title": "Работа",
+      "section": "",
+      "route": "guideWidgets / chapter=jobs",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/guide-07-jobs.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/guide-07-jobs.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/guide-07-jobs.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Назад",
+          "x": 122,
+          "y": 65,
+          "w": 67,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "<",
+          "x": 197,
+          "y": 65,
+          "w": 26,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": ">",
+          "x": 231,
+          "y": 65,
+          "w": 26,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Предыдущая",
+          "x": 122,
+          "y": 282,
+          "w": 182,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Следующая",
+          "x": 312,
+          "y": 282,
+          "w": 186,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "guide-08-community",
+      "title": "Сообщество",
+      "section": "",
+      "route": "guideWidgets / chapter=community",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/guide-08-community.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/guide-08-community.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/guide-08-community.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Назад",
+          "x": 122,
+          "y": 65,
+          "w": 67,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "<",
+          "x": 197,
+          "y": 65,
+          "w": 26,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": ">",
+          "x": 231,
+          "y": 65,
+          "w": 26,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Предыдущая",
+          "x": 122,
+          "y": 282,
+          "w": 182,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Следующая",
+          "x": 312,
+          "y": 282,
+          "w": 186,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "guide-09-decoration",
+      "title": "Обустройство города",
+      "section": "",
+      "route": "guideWidgets / chapter=decoration",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/guide-09-decoration.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/guide-09-decoration.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/guide-09-decoration.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Назад",
+          "x": 122,
+          "y": 65,
+          "w": 67,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "<",
+          "x": 197,
+          "y": 65,
+          "w": 26,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": ">",
+          "x": 231,
+          "y": 65,
+          "w": 26,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Предыдущая",
+          "x": 122,
+          "y": 282,
+          "w": 182,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Следующая",
+          "x": 312,
+          "y": 282,
+          "w": 186,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "guide-10-chest_delivery",
+      "title": "Общие сундуки",
+      "section": "",
+      "route": "guideWidgets / chapter=chest_delivery",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/guide-10-chest_delivery.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/guide-10-chest_delivery.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/guide-10-chest_delivery.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Назад",
+          "x": 122,
+          "y": 65,
+          "w": 67,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "<",
+          "x": 197,
+          "y": 65,
+          "w": 26,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": ">",
+          "x": 231,
+          "y": 65,
+          "w": 26,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Предыдущая",
+          "x": 122,
+          "y": 282,
+          "w": 182,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Следующая",
+          "x": 312,
+          "y": 282,
+          "w": 186,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "guide-11-payroll",
+      "title": "Жалованье",
+      "section": "",
+      "route": "guideWidgets / chapter=payroll",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/guide-11-payroll.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/guide-11-payroll.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/guide-11-payroll.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Назад",
+          "x": 122,
+          "y": 65,
+          "w": 67,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "<",
+          "x": 197,
+          "y": 65,
+          "w": 26,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": ">",
+          "x": 231,
+          "y": 65,
+          "w": 26,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Предыдущая",
+          "x": 122,
+          "y": 282,
+          "w": 182,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Следующая",
+          "x": 312,
+          "y": 282,
+          "w": 186,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "guide-12-rebellion",
+      "title": "Верность",
+      "section": "",
+      "route": "guideWidgets / chapter=rebellion",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/guide-12-rebellion.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/guide-12-rebellion.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/guide-12-rebellion.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Назад",
+          "x": 122,
+          "y": 65,
+          "w": 67,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "<",
+          "x": 197,
+          "y": 65,
+          "w": 26,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": ">",
+          "x": 231,
+          "y": 65,
+          "w": 26,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Предыдущая",
+          "x": 122,
+          "y": 282,
+          "w": 182,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Следующая",
+          "x": 312,
+          "y": 282,
+          "w": 186,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "guide-13-treasury",
+      "title": "Казна",
+      "section": "",
+      "route": "guideWidgets / chapter=treasury",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/guide-13-treasury.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/guide-13-treasury.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/guide-13-treasury.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Назад",
+          "x": 122,
+          "y": 65,
+          "w": 67,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "<",
+          "x": 197,
+          "y": 65,
+          "w": 26,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": ">",
+          "x": 231,
+          "y": 65,
+          "w": 26,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Предыдущая",
+          "x": 122,
+          "y": 282,
+          "w": 182,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Следующая",
+          "x": 312,
+          "y": 282,
+          "w": 186,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "guide-14-tax",
+      "title": "Ежедневный налог",
+      "section": "",
+      "route": "guideWidgets / chapter=tax",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/guide-14-tax.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/guide-14-tax.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/guide-14-tax.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Назад",
+          "x": 122,
+          "y": 65,
+          "w": 67,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "<",
+          "x": 197,
+          "y": 65,
+          "w": 26,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": ">",
+          "x": 231,
+          "y": 65,
+          "w": 26,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Предыдущая",
+          "x": 122,
+          "y": 282,
+          "w": 182,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Следующая",
+          "x": 312,
+          "y": 282,
+          "w": 186,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "state-loading",
+      "title": "Загрузка",
+      "section": "settlement",
+      "route": "runtime state: loading",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/state-loading.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/state-loading.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/state-loading.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "state-unsupported",
+      "title": "Нет поддержки",
+      "section": "settlement",
+      "route": "runtime state: unsupported",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/state-unsupported.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/state-unsupported.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/state-unsupported.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "state-pending",
+      "title": "Операция выполняется",
+      "section": "settlement",
+      "route": "runtime state: pending",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/state-pending.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/state-pending.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/state-pending.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "state-uncertain",
+      "title": "Результат неизвестен",
+      "section": "settlement",
+      "route": "runtime state: uncertain",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/state-uncertain.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/state-uncertain.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/state-uncertain.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Сверить результат",
+          "x": 145,
+          "y": 198,
+          "w": 326,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "state-empty-residents",
+      "title": "Нет жителей",
+      "section": "settlement",
+      "route": "runtime state: empty-residents",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/state-empty-residents.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/state-empty-residents.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/state-empty-residents.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "state-chest-unloaded",
+      "title": "Сундук недоступен",
+      "section": "chests",
+      "route": "runtime state: chest-unloaded",
+      "width": 512,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/state-chest-unloaded.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/state-chest-unloaded.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/state-chest-unloaded.png",
+      "controls": [
+        {
+          "id": "nav.settlement",
+          "x": 8,
+          "y": 58,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.residents",
+          "x": 8,
+          "y": 97,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.happiness",
+          "x": 8,
+          "y": 136,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "nav.chests",
+          "x": 8,
+          "y": 175,
+          "w": 94,
+          "h": 32
+        },
+        {
+          "id": "Справка",
+          "x": 8,
+          "y": 267,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Поселения",
+          "x": 8,
+          "y": 292,
+          "w": 94,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "compact-resident",
+      "title": "Карточка жителя",
+      "section": "residents",
+      "route": "residentDetail / compact",
+      "width": 320,
+      "height": 320,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/compact-resident.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/native/compact-resident.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/settlements-pages-2026-10-20/pages/compact-resident.png",
+      "controls": [
+        {
+          "id": "Покормить",
+          "x": 20,
+          "y": 242,
+          "w": 132,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Мой дом",
+          "x": 160,
+          "y": 242,
+          "w": 140,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Назад",
+          "x": 20,
+          "y": 276,
+          "w": 280,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    },
+    {
+      "id": "shipping-exchange",
+      "title": "Обмен монет",
+      "section": "",
+      "route": "ShippingBoxScreen / proposed second tab",
+      "width": 368,
+      "height": 272,
+      "source": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/shipping-station-2026-10-20/native/shipping-exchange.aseprite",
+      "background": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/shipping-station-2026-10-20/native/shipping-exchange.png",
+      "preview": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/art/shipping-station-2026-10-20/native/shipping-exchange-preview-1x.png",
+      "controls": [
+        {
+          "id": "Серебро",
+          "x": 15,
+          "y": 43,
+          "w": 72,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Золото",
+          "x": 96,
+          "y": 43,
+          "w": 76,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "-",
+          "x": 15,
+          "y": 88,
+          "w": 25,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "+",
+          "x": 138,
+          "y": 88,
+          "w": 34,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Обменять",
+          "x": 15,
+          "y": 121,
+          "w": 157,
+          "h": 20,
+          "state": "normal"
+        },
+        {
+          "id": "Получить монеты",
+          "x": 192,
+          "y": 126,
+          "w": 157,
+          "h": 20,
+          "state": "normal"
+        }
+      ]
+    }
+  ],
+  "source": "paint-pages.mjs; matching render/hit rectangles",
+  "data": "illustrative examples; no server snapshot"
+}

@@ -333,3 +333,9 @@ User decision: implement the approved Settlements resident and SMP Events concep
 ## 2026-10-20 — Windows tax persistence correction
 
 User reports local connection refusal. Actual server crash originates in the save owner, not tax balance: Windows rejects replacement of existing data via Java ATOMIC_MOVE. Codex retains the exact tax formulas/receipts and intent-before-payment ordering, uses native same-volume replace-existing/write-through on Windows, and verifies complete NBT before marking persisted. Existing Minecraft JNA only; no world edits. In testing pending actual player acceptance.
+
+## 2026-10-20 — Native Aseprite page candidates and resident control removal
+
+User requests all Settlements pages, semantic icons beside figures and removal of All residents/By name from GUI and code; rejects the flat first art pass and requires actual reference inspection for every visual task. The global workflow owner is Taste Engine. Codex inspects positive GUI+05/+06/+01 originals and prepares native512×320 pages, compact320×320, semantic16px sources and populated previews. [Gallery and provenance](../art/settlements-pages-2026-10-20/README.md). The candidate remains unapproved/uninstalled; original positive references are not approval of the new art.
+
+Prepared canonical source removes resident filtering/controller and unused sort branches, preserves live search and automatic case-insensitive name ordering. Payroll debt remains payable from roster whenever debt exists, including when no recruit remains visible, and from split/compact recruit detail; it uses the same confirmation/request/server validation. Native professions, ordinary villager AI, optional Recruits and all happiness/tax/payroll formulas remain. Food-catalogue filtering is outside this change. No Workers/isometry is introduced. No build, game launch, runtime installation or native publication in this planning/art stage; unrelated unfinished source in the same module is preserved.

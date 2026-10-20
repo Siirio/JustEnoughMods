@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "4ec7a23468016a617379271bd56bf65e2d5bad34c88464e328efcebcfda92068",
+  "change_records_sha256": "e6ebc5a02c0a92245798c1d14e62571305e51ad4c6500c9a5e8b46f7837d6105",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -1468,6 +1468,31 @@
       "potential_static_target_count": 13
     },
     {
+      "change_id": "settlements.resident-search-only-presentation",
+      "status": "conditional",
+      "summary": "Remove resident filter/sort controls and their unused branching; retain live search and automatic name ordering, preserving payroll access in recruit detail.",
+      "record": "Catalog/changes/records/settlements-resident-search-only-presentation.json",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:villager"
+        },
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:iron_golem"
+        },
+        {
+          "type": "namespace",
+          "registry": "entities",
+          "value": "recruits"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 13
+    },
+    {
       "change_id": "settlements.safe-food-mood",
       "status": "conditional",
       "summary": "User requests a small happiness increase from eaten food and a larger increase for the suitable requested dish",
@@ -2257,7 +2282,7 @@
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementMaterials.java": "21524453967d225e0f4c40e14df5a9396b29b19ef8b9c19f69b302d6fdd92e45",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementNotices.java": "fef4f44a857ded4cc0eda7d6322c4430db3bcee35901a58b709292badd9c5306",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementPriceRenderer.java": "1bbaba15cefbd0c4d1d15974a435da66d9b7b3affeddd77d7f5e0688d905bb10",
-    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java": "37d93612eab33355e0c5f1e8086f8f64ffa20031ca74ed74e9f7a4360a359a2f",
+    "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java": "48e586c1ee1e7c4351228a30dab5f70b57eb6a51554d1f5e941717373f1738c0",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/StorageLabels.java": "f77d87938673723cfc947c8a2666efa67d67554887e415c337a88defa5539659",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/TerritoryDragState.java": "c1db7b59f0cce191fd41c5a88b32355372cf1f25885beccec6546f71fd038734",
     "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/TownFoundingScreen.java": "b53e641f31bfa86c4122e9314ce2b2185a1a369828a82e4e863bd19277fbdb8d",

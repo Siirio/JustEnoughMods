@@ -1,0 +1,38 @@
+{
+  "schema_version": 2,
+  "change_id": "settlements.resident-search-only-presentation",
+  "status": "conditional",
+  "selectors": [
+    {"type": "id", "registry": "entities", "value": "minecraft:villager"},
+    {"type": "id", "registry": "entities", "value": "minecraft:iron_golem"},
+    {"type": "namespace", "registry": "entities", "value": "recruits"}
+  ],
+  "conditions": [{"runtime": "JEM-owned SettlementScreen on a compatible dedicated server; source prepared, not built or installed by this art/planning task."}],
+  "precedence": {"layer": "settlements_client_presentation", "priority": 130},
+  "change": {
+    "summary": "Remove resident filter/sort controls and their unused branching; retain live search and automatic name ordering, preserving payroll access in recruit detail.",
+    "modifiers": [
+      {"property": "settlements.residents.visible_navigation", "operation": "replace", "before": "Resident filter cycles all/villagers/guards/needs/profession/legacy roles; sort state holds unreachable alternate branches. Mockup also shows a By name control.", "after": "One live search field, complete matching roster, deterministic case-insensitive name order, no All residents or By name buttons or resident filtering controller."},
+      {"property": "settlements.payroll.client_action_access", "operation": "replace", "before": "Roster payroll action is available only behind the guards filter.", "after": "Same global payroll request and confirmation available from the roster whenever debt exists, even without a visible recruit, plus split/compact recruit detail; active only with unpaid payroll and no pending request. Existing server authorization, debt, funding and payment semantics unchanged."}
+    ]
+  },
+  "cause": {
+    "owner": "JEMSettlements SettlementScreen client presentation",
+    "kind": "explicit_user_requested_control_removal",
+    "source_files": ["Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java"]
+  },
+  "rationale": {
+    "purpose": "Remove controls the user does not want without hiding residents or losing the existing payroll action.",
+    "decision_source": "User2026-10-20 explicitly requests removing All residents and By name from GUI and code.",
+    "user_requested": "Remove these controls and their resident navigation code.",
+    "codex_choices": "Preserve automatic name ordering and live search; place global debt payment in recruit detail using the unchanged authoritative request. Food catalogue filtering is outside this request and remains."
+  },
+  "introduced": {"date": "2026-10-20", "commit": "SELF", "action": "simplify_resident_navigation", "summary": "Prepare source-only removal and preserve payroll access; no deployment or gameplay verification."},
+  "history": [{"date": "2026-10-20", "commit": "SELF", "action": "simplify_resident_navigation", "summary": "Prepare source-only removal and preserve payroll access; no deployment or gameplay verification."}],
+  "impacts": {
+    "systems": ["resident_roster", "live_search", "recruit_payroll_ui", "compact_detail"],
+    "relations": ["Native server snapshot -> searchable complete roster -> selected resident detail", "Recruit detail -> existing confirmation -> unchanged payroll request -> server-owned validation/payment"],
+    "notes": ["No happiness, needs, territory, tax, treasury, native trade, recruit command, saved-world or network schema changes.", "Mockups are external Aseprite candidates and do not replace actual screen implementation or establish visual acceptance."],
+    "unresolved": ["Production build, local distribution/native publication and in-game acceptance remain pending; MineRENT freeze is preserved."]
+  }
+}

@@ -9,7 +9,7 @@
 - Вместо неё выбран ящик с товарами и весами сверху. Выбор направления не означает одобрение конкретного generated render.
 - Пользователь отдельно запретил список каждого предмета в правой панели. Содержимое видно только в товарных слотах; справа общий итог, лимиты, кнопка и короткий статус.
 - Поздняя обязательная коррекция: UI, новые item icons и текстуры с самого начала рисовать в Aseprite, в конечном PNG-формате/размере для Minecraft. AI разрешён только для референсов. После этой коррекции AI generation не использовался.
-- Дополнение про Settlements: исправить layout/overlap, подготовить общие слоты и кнопки с настоящими native controls. Settlements ещё не перерисован: он включён в [план реализации, этап10](../../plans/2026-10-20-shipping-economy-implementation.md).
+- Дополнение про Settlements: исправить layout/overlap, подготовить общие слоты и кнопки с настоящими native controls. Внешние Aseprite-кандидаты Settlements теперь находятся в [галерее37 страниц](../settlements-pages-2026-10-20/index.html); runtime интеграция остаётся в плане.
 
 ## Источники и классификация
 
@@ -28,10 +28,10 @@
 
 | Артефакт | Целевой размер | Состояние |
 | --- | --- | --- |
-| `native/shipping-ui.aseprite` | 304×272 | 4 редактируемых слоя: материалы, native slots, demo labels, demo native items |
-| `native/shipping-ui.png` | 304×272 PNG | фон и слоты, без baked text/цен/предметов; исходный размер, без ресайза |
-| `native/shipping-ui-preview-1x.png` | 304×272 | отдельный демонстрационный вид; не игровая текстура |
-| `shipping-ui-preview-4x.png` | 1216×1088 | только nearest-neighbour просмотр исходных пикселей |
+| `native/shipping-ui.aseprite` | 368×272 | 4 редактируемых слоя: материалы, native slots, demo labels, demo native items |
+| `native/shipping-ui.png` | 368×272 PNG | фон и слоты, без baked text/цен/предметов; исходный размер, без ресайза |
+| `native/shipping-ui-preview-1x.png` | 368×272 | отдельный демонстрационный вид; не игровая текстура |
+| `shipping-ui-preview-4x.png` | 1472×1088 | только nearest-neighbour просмотр исходных пикселей |
 | `native/collector-icon.aseprite`, `.png` | 16×16 | авторский значок весового сборщика |
 | `native/controls.aseprite`, `.png` | 128×128 | native18 slot, payout slot и 103×22 button normal/hover/focus/pressed/disabled |
 | `native/block-front/side/top.aseprite`, `.png` | 16×16 каждый | первичный материал ящика; не законченная модель весов |
@@ -63,3 +63,11 @@ node Docs/art/shipping-station-2026-10-20/paint.mjs
 Это первый native-pixel кандидат, не финальное художественное принятие. Полная геометрия весов, её UV и изображения самой реальной модели, game layout/hit/focus/scissor и настоящий Screen ещё относятся к реализации. Код не интегрирован, JAR не собирался, клиент/сервер/миры не запускались и не изменялись. Внешний asset export не доказывает отсутствие runtime-overlap у Settlements.
 
 Активные точные Taste Pairs: `Minecraft/GUI/Forge-1.20.1-jem-smp-screens` и `Minecraft/Textures (Resource packs)/Blockbench-textures/Minecraft-pixel-uv-and-tiling`. Общий authoring contract — `Taste-Engine/aseprite/MCP.md`; более поздние инструкции пользователя про Aseprite/PNG превосходят старые hybrid-generated указания.
+
+## Коррекция выравнивания и вторая вкладка
+
+[Открыть обе вкладки](index.html). Левая сетка и player inventory сохранены в прежних координатах и пикселях. Колонка расчёта расширена, значок весов помещён внутри header, монеты/числа стоят на общей baseline, разделители с ними не пересекаются. Правый низ остаётся прозрачным.
+
+Пользователь переносит обмен монет из `/smp market` во вторую вкладку сборщика. `native/shipping-exchange.aseprite/.png` и `shipping-exchange-preview-1x.png` показывают размен и получение обеспеченных монет из личного кошелька в инвентарь. Это отдельный арт-кандидат/план, не уже работающий Screen. Валютный owner, точный курс и будущие проверки menu/hidden slots описаны в плане реализации; рыночная витрина сохраняется.
+
+Для будущего block renderer пользователь требует настоящие native diamond/fish ItemStack displays, а в узкой части oak blocks. Текущие16×16 face studies не являются этой законченной моделью. При реализации разместить нативные render anchors в модели, сохранить один BlockEntity/storage owner и не выдавать декоративные предметы за содержимое слотов. Не рисовать fake vanilla icons и не переносить AI-пиксели в atlas.
