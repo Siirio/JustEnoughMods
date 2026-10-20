@@ -1,3 +1,39 @@
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/auth/ConnectionStore.java b/core/src/main/java/pl/skidam/automodpack_core/auth/ConnectionStore.java
+--- a/core/src/main/java/pl/skidam/automodpack_core/auth/ConnectionStore.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/auth/ConnectionStore.java
+@@ -43,13 +43,30 @@
+ 	}
+ 
+ 	public static ConnectionJsons.ConnectionInfo getConnection(ClientStorage storage, String modpackId) throws IOException {
+-		return read(storage, modpackId).connection;
++		Path route = storage.historyPackDirectory(modpackId).resolve("route.json");
++		return FileLocks.withLock(route.resolveSibling("route.json.lock"), () -> {
++			if (Files.exists(route)) {
++				ConnectionJsons.ConnectionInfo connection = readUnlocked(route).connection;
++				if (connection == null || !connection.isComplete()) throw new IOException("Installed pack route is incomplete: " + modpackId);
++				return connection;
++			}
++			return read(storage, modpackId).connection;
++		});
+ 	}
+ 
+ 	public static void saveConnection(ClientStorage storage, String modpackId, ConnectionJsons.ConnectionInfo connection) throws IOException {
+ 		ModpackId.requireValid(modpackId);
+ 		if (connection == null || !connection.isComplete()) throw new IllegalArgumentException("Connection origin or endpoint is missing");
+ 		update(storage, modpackId, fields -> fields.connection = connection);
++		// The shared record retains secrets/backward compatibility; another profile must not retarget this instance.
++		Path route = storage.historyPackDirectory(modpackId).resolve("route.json");
++		FileLocks.withLock(route.resolveSibling("route.json.lock"), () -> {
++			ConnectionJsons.ConnectionRecordFields fields = new ConnectionJsons.ConnectionRecordFields();
++			fields.connection = connection;
++			Files.createDirectories(route.getParent());
++			ConfigTools.writeAtomic(route, fields);
++			return null;
++		});
+ 	}
+ 
+ 	public static Secrets.Secret getClientSecret(ClientStorage storage, String modpackId, InetSocketAddress origin) throws IOException {
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/client/BootRecovery.java b/core/src/main/java/pl/skidam/automodpack_core/client/BootRecovery.java
 --- a/core/src/main/java/pl/skidam/automodpack_core/client/BootRecovery.java
 +++ b/core/src/main/java/pl/skidam/automodpack_core/client/BootRecovery.java
 @@ -39,6 +39,7 @@
@@ -8,6 +44,64 @@
  		loadClientConfig();
  		recoverPendingRepair();
  		recoverPendingTransaction();
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/client/ClientUpdatePlanBuilder.java b/core/src/main/java/pl/skidam/automodpack_core/client/ClientUpdatePlanBuilder.java
+--- a/core/src/main/java/pl/skidam/automodpack_core/client/ClientUpdatePlanBuilder.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/client/ClientUpdatePlanBuilder.java
+@@ -307,7 +307,11 @@
+ 		boolean sameModpackTarget = target != null && target.modpackId.equals(activeTarget.modpackId);
+ 		Set<String> deletedPaths = new TreeSet<>(storage.readOverlayState(activeTarget.modpackId).deletedPaths);
+ 		for (var item : activeTarget.list) {
+-			if (!item.editable) {
++			var requested = sameModpackTarget ? targetItems.get(LogicalPath.normalize(item.file)) : null;
++			// Capture the existing player's bytes before the first server-owned -> editable migration.
++			boolean personal = personalPreference(item.file);
++			boolean becomesEditable = personal && requested != null && requested.editable;
++			if (!item.editable && !becomesEditable) {
+ 				resetDriftedServerFile(cache, projection, activeTarget, targetItems, item);
+ 				continue;
+ 			}
+@@ -316,7 +320,7 @@
+ 			var targetItem = sameModpackTarget ? targetItems.get(LogicalPath.normalize(item.file)) : null;
+ 			if (!Files.isRegularFile(live, LinkOption.NOFOLLOW_LINKS)) {
+ 				if (projection.matchesPendingGameState(item.file, new UpdatePlan.FileState(null, -1, false))) continue;
+-				if (targetItem != null && !targetItem.sha1.equalsIgnoreCase(item.sha1)) {
++				if (!personal && targetItem != null && !targetItem.sha1.equalsIgnoreCase(item.sha1)) {
+ 					// The pack replaced the content while the file was removed: the removal intent is spent and the new version comes back.
+ 					Files.deleteIfExists(overlay);
+ 					deletedPaths.remove(LogicalPath.normalize(item.file));
+@@ -330,12 +334,12 @@
+ 			String hash = FileIntegrity.observedHash(live, item.size, item.sha1, cache);
+ 			UpdatePlan.FileState state = new UpdatePlan.FileState(hash, size, true);
+ 			if (projection.matchesPendingGameState(item.file, state)) continue;
+-			if (item.sha1.equalsIgnoreCase(state.sha1()) && item.size == state.size()) {
++			if (!personal && item.sha1.equalsIgnoreCase(state.sha1()) && item.size == state.size()) {
+ 				Files.deleteIfExists(overlay);
+ 				deletedPaths.remove(LogicalPath.normalize(item.file));
+ 				continue;
+ 			}
+-			if (targetItem != null && !targetItem.sha1.equalsIgnoreCase(item.sha1)) {
++			if (!personal && targetItem != null && !targetItem.sha1.equalsIgnoreCase(item.sha1)) {
+ 				// The pack owner replaced the file: leave the player's bytes in place and let the plan install the new
+ 				// server version once; the update entry's captures pin the replaced bytes for the state history.
+ 				Files.deleteIfExists(overlay);
+@@ -348,6 +352,16 @@
+ 			deletedPaths.remove(LogicalPath.normalize(item.file));
+ 		}
+ 		storage.writeOverlayState(activeTarget.modpackId, deletedPaths);
++	}
++
++	/** Only presentation preferences opt into sticky player ownership; server gameplay configs retain native policy. */
++	private static boolean personalPreference(String path) {
++		String relative = LogicalPath.normalize(path);
++		return Set.of("config/oculus.properties", "config/iris.properties",
++				"config/quickskin-client.json", "config/quickskin_preferences.json",
++				"config/fzzy_config/keybinds.toml", "config/punchy/triggerable-keybindings.json").contains(relative)
++				|| relative.startsWith("shaderpacks/") && relative.endsWith(".txt")
++					&& relative.substring("shaderpacks/".length()).indexOf('/') < 0;
+ 	}
+ 
+ 	/** A drifted file the pack owns: the drifted bytes are acquired for the state history and the live file gets the pack version back, without a review. */
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/client/DetachedUpdateHelper.java b/core/src/main/java/pl/skidam/automodpack_core/client/DetachedUpdateHelper.java
 --- a/core/src/main/java/pl/skidam/automodpack_core/client/DetachedUpdateHelper.java
 +++ b/core/src/main/java/pl/skidam/automodpack_core/client/DetachedUpdateHelper.java
 @@ -36,10 +36,6 @@
@@ -60,8 +154,269 @@
  		}
  	}
  
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/client/UpdateHelperMain.java b/core/src/main/java/pl/skidam/automodpack_core/client/UpdateHelperMain.java
+--- a/core/src/main/java/pl/skidam/automodpack_core/client/UpdateHelperMain.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/client/UpdateHelperMain.java
+@@ -1,5 +1,6 @@
+ package pl.skidam.automodpack_core.client;
+ 
++import static pl.skidam.automodpack_core.Constants.*;
+ import static pl.skidam.automodpack_core.storage.StoragePaths.HELPER_LEASE_FILE;
+ 
+ import java.io.IOException;
+@@ -20,10 +21,13 @@
+ 
+ import pl.skidam.automodpack_core.loader.FileInspection;
+ import pl.skidam.automodpack_core.loader.LoaderManagerService;
++import pl.skidam.automodpack_core.loader.ModpackLoaderService;
+ import pl.skidam.automodpack_core.storage.DataRootResolver;
+ import pl.skidam.automodpack_core.storage.GameDirectory;
+ import pl.skidam.automodpack_core.update.SelfUpdateSwap;
+ import pl.skidam.automodpack_core.update.UpdateTransactionExecutor;
++import pl.skidam.automodpack_core.update.UpdateReplanRequiredException;
++import pl.skidam.automodpack_core.update.UpdateTransaction;
+ import pl.skidam.automodpack_core.utils.JarUtils;
+ 
+ public final class UpdateHelperMain {
+@@ -60,7 +64,7 @@
+ 	}
+ 
+ 	private static int runOnce(String[] arguments) throws IOException, InterruptedException {
+-		if (arguments.length < 1 || arguments.length > 2) throw new IOException("Expected parent PID and optional environment");
++		if (arguments.length < 1 || arguments.length > 4 || arguments.length == 3) throw new IOException("Expected parent PID, optional environment, and optional loader type and service");
+ 		long parentPid = Long.parseLong(arguments[0]);
+ 		if (parentPid <= 0 || parentPid == ProcessHandle.current().pid()) throw new IOException("Invalid parent PID");
+ 		LoaderManagerService.EnvironmentType environment = environment(arguments);
+@@ -86,11 +90,26 @@
+ 				try {
+ 					if (!waitForGameExit(parentPid)) return 1;
+ 
++					if (arguments.length == 4) {
++						LOADER = arguments[2];
++						try {
++							MODPACK_LOADER = Class.forName(arguments[3])
++									.asSubclass(ModpackLoaderService.class).getDeclaredConstructor().newInstance();
++						} catch (ReflectiveOperationException e) {
++							throw new IOException("Cannot initialize the launching client's native modpack loader", e);
++						}
++					}
+ 					UpdateTransactionExecutor executor = UpdateTransactionSupport.executor();
+ 					long backoff = UpdateRecovery.INITIAL_BACKOFF_MILLIS;
+ 					for (int attempt = 1;; attempt++) {
+ 						boolean selfUpdateRecovered = recoverSelfUpdate(gameDirectory, dataLocation);
+-						UpdateTransactionExecutor.Execution execution = executor.recoverLatest();
++						UpdateTransactionExecutor.Execution execution;
++						try {
++							execution = executor.recoverLatest();
++						} catch (UpdateReplanRequiredException e) {
++							execution = replanPending();
++						}
++						if (execution.replanRequired() && arguments.length == 4) execution = replanPending();
+ 						if (execution.success() && selfUpdateRecovered) {
+ 							log("Pending update transaction recovered on attempt " + attempt);
+ 							return 0;
+@@ -122,6 +141,15 @@
+ 	 * holds. False when the parent outlived {@link #PARENT_EXIT_TIMEOUT_MILLIS} or the wait failed; the
+ 	 * transaction then stays pending and the next game launch retries it.
+ 	 */
++	private static UpdateTransactionExecutor.Execution replanPending() throws IOException {
++		if (MODPACK_LOADER == null)
++			throw new UpdateReplanRequiredException(null, "The next client launch must resume this pending update with its native loader");
++		var storage = UpdateTransactionSupport.storage();
++		var pending = UpdateTransaction.read(storage.transactionFile());
++		if (pending == null) return UpdateTransactionSupport.executor().recoverLatest();
++		return UpdateAttempt.resume(storage, pending, MODPACK_LOADER, LOADER);
++	}
++
+ 	private static boolean waitForGameExit(long parentPid) throws InterruptedException {
+ 		ProcessHandle parent = ProcessHandle.of(parentPid).orElse(null);
+ 		if (parent == null) return true;
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/config/ClientStorageJsons.java b/core/src/main/java/pl/skidam/automodpack_core/config/ClientStorageJsons.java
+--- a/core/src/main/java/pl/skidam/automodpack_core/config/ClientStorageJsons.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/config/ClientStorageJsons.java
+@@ -21,6 +21,8 @@
+ 		public String modpackId = "";
+ 		public String contentToken = "";
+ 		public String status = "ACTIVE";
++		/** Exact committed metadata, independent of a subsequently fetched server branch. */
++		public GenerationJsons.JournalEntryFields generationWitness;
+ 		public GenerationJsons.OwnershipLedgerFields ownershipLedger = new GenerationJsons.OwnershipLedgerFields();
+ 		/**
+ 		 * Local sovereignty of the active pack. Exactly two transition kinds exist, both explicit: declared true by
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/loader/ImplStore.java b/core/src/main/java/pl/skidam/automodpack_core/loader/ImplStore.java
+--- a/core/src/main/java/pl/skidam/automodpack_core/loader/ImplStore.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/loader/ImplStore.java
+@@ -139,15 +139,30 @@
+ 		stamp.digest = manifest.digest();
+ 		DurableFiles.writeVolatile(staging.resolve(STAMP_FILE), ConfigTools.GSON.toJson(stamp).getBytes(StandardCharsets.UTF_8));
+ 
+-		// Publish is the rename: nothing at the live path until the whole tree is on disk.
+-		// On Windows a concurrent reader holding an impl open makes this delete fail - that is a loud
+-		// crash, never a half-published tree.
+ 		FileTrees.delete(cacheDir);
+-		FileTrees.moveRecoverableDirectory(staging, cacheDir);
++		publishStagedCache(staging, cacheDir, manifest);
+ 		// Records after publish so they key the final absolute paths; a crash here costs one rehash
+ 		// next boot (matchesImmutable recomputes and republishes), never a wrong hit.
+ 		for (ImplManifest.Entry entry : manifest.entries()) {
+ 			cache.overwriteCache(cacheDir.resolve(entry.id() + ".jar"), entry.sha1());
++		}
++	}
++
++	private static void publishStagedCache(Path staging, Path cacheDir, ImplManifest manifest) throws IOException {
++		try {
++			FileTrees.moveRecoverableDirectory(staging, cacheDir);
++		} catch (IOException directoryMoveFailure) {
++			try {
++				Files.createDirectory(cacheDir);
++				for (ImplManifest.Entry entry : manifest.entries()) {
++					Files.copy(staging.resolve(entry.id() + ".jar"), cacheDir.resolve(entry.id() + ".jar"));
++				}
++				DurableFiles.writeVolatile(cacheDir.resolve(STAMP_FILE), Files.readAllBytes(staging.resolve(STAMP_FILE)));
++				FileTrees.delete(staging);
++			} catch (IOException filePublicationFailure) {
++				filePublicationFailure.addSuppressed(directoryMoveFailure);
++				throw filePublicationFailure;
++			}
+ 		}
+ 	}
+ 
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/modpack/group/ClientDistributionProfile.java b/core/src/main/java/pl/skidam/automodpack_core/modpack/group/ClientDistributionProfile.java
+new file mode 100644
+--- /dev/null
++++ b/core/src/main/java/pl/skidam/automodpack_core/modpack/group/ClientDistributionProfile.java
+@@ -0,0 +1,48 @@
++package pl.skidam.automodpack_core.modpack.group;
++
++import static pl.skidam.automodpack_core.Constants.LOGGER;
++import static pl.skidam.automodpack_core.Constants.THIS_MOD_JAR;
++
++import java.io.IOException;
++import java.nio.file.Files;
++import java.nio.file.Path;
++import java.util.jar.JarFile;
++import java.util.jar.Manifest;
++
++import pl.skidam.automodpack_core.utils.JarUtils;
++
++/** Build-time client distribution profile; absent or unreadable metadata always preserves the native full target. */
++final class ClientDistributionProfile {
++	private static final String SKIP_SHADERS_ATTRIBUTE = "JEM-Skip-Shaders";
++	private static final boolean SKIP_SHADERS = skipShaders();
++
++	private ClientDistributionProfile() {}
++
++	static boolean includes(String logicalPath) {
++		if (!SKIP_SHADERS || logicalPath == null) return true;
++		String normalized = logicalPath.replace('\\', '/');
++		return !normalized.equals("shaderpacks") && !normalized.startsWith("shaderpacks/");
++	}
++
++	private static boolean skipShaders() {
++		Path archive = THIS_MOD_JAR;
++		if (archive == null) {
++			try {
++				archive = JarUtils.getJarPath(ClientDistributionProfile.class);
++			} catch (RuntimeException e) {
++				LOGGER.warn("Cannot locate the bootstrap distribution profile; retaining the full client target", e);
++				return false;
++			}
++		}
++		if (!Files.isRegularFile(archive)) return false;
++		try (JarFile jar = new JarFile(archive.toFile())) {
++			Manifest manifest = jar.getManifest();
++			boolean skip = manifest != null && Boolean.parseBoolean(manifest.getMainAttributes().getValue(SKIP_SHADERS_ATTRIBUTE));
++			if (skip) LOGGER.info("Client distribution profile excludes shaderpacks/** from acquisition and projection");
++			return skip;
++		} catch (IOException | RuntimeException e) {
++			LOGGER.warn("Cannot read the bootstrap distribution profile; retaining the full client target", e);
++			return false;
++		}
++	}
++}
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/modpack/group/SelectedTreeComposer.java b/core/src/main/java/pl/skidam/automodpack_core/modpack/group/SelectedTreeComposer.java
+--- a/core/src/main/java/pl/skidam/automodpack_core/modpack/group/SelectedTreeComposer.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/modpack/group/SelectedTreeComposer.java
+@@ -27,6 +27,7 @@
+ 			if (group == null) throw new IllegalArgumentException("Selected group is absent from the catalogue: " + groupId);
+ 			for (var entry : group.files().entrySet()) {
+ 				if (!resolvePaths) break;
++				if (!ClientDistributionProfile.includes(entry.getKey())) continue;
+ 				GroupManifest.GroupFile previous = files.putIfAbsent(entry.getKey(), entry.getValue());
+ 				if (previous != null && !previous.sameEffectiveState(entry.getValue()))
+ 					throw new IllegalArgumentException("Selected groups produce conflicting path: " + entry.getKey());
+@@ -64,6 +65,7 @@
+ 	private static Set<ModpackJsons.ModpackContentFields.ModpackContentItem> allItems(GroupManifest manifest, Collection<String> groupIds) {
+ 		Set<ModpackJsons.ModpackContentFields.ModpackContentItem> items = new LinkedHashSet<>();
+ 		for (String groupId : groupIds) for (var entry : manifest.groups().get(groupId).files().entrySet()) {
++			if (!ClientDistributionProfile.includes(entry.getKey())) continue;
+ 			GroupManifest.GroupFile file = entry.getValue();
+ 			items.add(new ModpackJsons.ModpackContentFields.ModpackContentItem(entry.getKey(), file.size(), file.type(), file.editable(), file.sha1(), file.murmur()));
+ 		}
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/storage/DataRootResolver.java b/core/src/main/java/pl/skidam/automodpack_core/storage/DataRootResolver.java
+--- a/core/src/main/java/pl/skidam/automodpack_core/storage/DataRootResolver.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/storage/DataRootResolver.java
+@@ -196,7 +196,7 @@
+ 	}
+ 
+ 	/** Identifies a game installation across symlink aliases without trusting a user-controlled path string. */
+-	private static String computeOwnerIdentity(Path gameRoot) throws IOException {
++	static String computeOwnerIdentity(Path gameRoot) throws IOException {
+ 		Path realRoot = gameRoot.toRealPath();
+ 		Object fileKey = Files.readAttributes(realRoot, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS).fileKey();
+ 		return HashUtils.sha1(fileKey == null ? "real-path\n" + realRoot : "file-key\n" + fileKey);
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/storage/SharedObjectOwnership.java b/core/src/main/java/pl/skidam/automodpack_core/storage/SharedObjectOwnership.java
+--- a/core/src/main/java/pl/skidam/automodpack_core/storage/SharedObjectOwnership.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/storage/SharedObjectOwnership.java
+@@ -88,6 +88,27 @@
+ 		return Collections.unmodifiableSet(result);
+ 	}
+ 
++	/** Existing client installations sharing this CAS; read-only metadata recovery, never profile discovery. */
++	public static List<Path> clientOwnerPaths(DataRootResolver.Location location) throws IOException {
++		Path owners = location.layout().objectOwnersDirectory();
++		if (!Files.isDirectory(owners, LinkOption.NOFOLLOW_LINKS)) return List.of();
++		List<Path> result = new java.util.ArrayList<>();
++		try (Stream<Path> paths = Files.list(owners)) {
++			for (Path receipt : paths.filter(path -> path.getFileName().toString().endsWith(".client.json")).sorted().toList()) {
++				try {
++					readOwner(receipt);
++					StorageJsons.ObjectOwnershipFields fields = ConfigTools.read(receipt, StorageJsons.ObjectOwnershipFields.class).orElseThrow();
++					Path root = Path.of(fields.ownerPath).toAbsolutePath().normalize();
++					if ("client".equals(fields.component) && Files.isDirectory(root, LinkOption.NOFOLLOW_LINKS)
++							&& DataRootResolver.computeOwnerIdentity(root).equals(fields.ownerId)) result.add(root);
++				} catch (IOException | RuntimeException invalidPeer) {
++					pl.skidam.automodpack_core.Constants.LOGGER.debug("Peer ownership receipt cannot witness an installed generation: {}", receipt, invalidPeer);
++				}
++			}
++		}
++		return List.copyOf(result);
++	}
++
+ 	private static Set<String> readOwner(Path path) throws IOException {
+ 		if (Files.isSymbolicLink(path) || !Files.isRegularFile(path, LinkOption.NOFOLLOW_LINKS) || !path.getFileName().toString().endsWith(".json"))
+ 			throw new IOException("Shared object ownership root contains an unsupported entry: " + path);
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/update/ClientGenerationStore.java b/core/src/main/java/pl/skidam/automodpack_core/update/ClientGenerationStore.java
 --- a/core/src/main/java/pl/skidam/automodpack_core/update/ClientGenerationStore.java
 +++ b/core/src/main/java/pl/skidam/automodpack_core/update/ClientGenerationStore.java
+@@ -88,7 +88,7 @@
+ 	/** The active pack's document: active-state identity and ledger, its mirror entry, and its policy document from the CAS. */
+ 	public Optional<PackDocument> activeDocument() throws IOException {
+ 		ClientStorageJsons.ClientGenerationStateFields state = storage.readActiveState();
+-		return state == null ? Optional.empty() : Optional.of(document(state.modpackId, mirrorEntry(state.modpackId, state.contentToken), OwnershipLedger.fromFields(state.ownershipLedger)));
++		return state == null ? Optional.empty() : Optional.of(document(state.modpackId, InstalledGenerationWitness.active(storage, state), OwnershipLedger.fromFields(state.ownershipLedger)));
+ 	}
+ 
+ 	/** Whether an active pack pointer exists; {@link #hosting()} resolves the rest. */
+@@ -139,7 +139,7 @@
+ 
+ 	private SelectedModpackTarget resolveActive(ClientStorageJsons.ClientGenerationStateFields state, ClientPlatform platform) throws IOException {
+ 		Objects.requireNonNull(platform, "platform");
+-		PackDocument document = document(state.modpackId, mirrorEntry(state.modpackId, state.contentToken), OwnershipLedger.fromFields(state.ownershipLedger));
++		PackDocument document = document(state.modpackId, InstalledGenerationWitness.active(storage, state), OwnershipLedger.fromFields(state.ownershipLedger));
+ 		Optional<SelectionIntent> stored = new ClientSelectionStore(storage.selectionFile()).get(state.modpackId);
+ 		return stored.isPresent()
+ 				? SelectedModpackTarget.prepare(document, null, stored.get(), platform)
 @@ -164,6 +164,9 @@
  	/** One mirror generation's document: the entry's policy from the CAS, and the exact active-state ledger when that generation is active, else the mirror replay. */
  	public PackDocument document(String modpackId, JournalEntry entry) throws IOException {
@@ -72,6 +427,177 @@
  		ClientStorageJsons.ClientGenerationStateFields state = storage.readActiveState();
  		if (state != null && state.modpackId.equals(normalizedModpackId) && state.contentToken.equals(entry.contentToken()))
  			return document(normalizedModpackId, entry, OwnershipLedger.fromFields(state.ownershipLedger));
+@@ -277,7 +280,7 @@
+ 			Set<String> keptTokens = new TreeSet<>(Set.of(newest.contentToken()));
+ 			ClientStorageJsons.ClientGenerationStateFields state = storage.readActiveState();
+ 			if (state != null && state.modpackId.equals(modpackId)) {
+-				JournalEntry active = mirrorEntry(modpackId, state.contentToken);
++				JournalEntry active = InstalledGenerationWitness.active(storage, state);
+ 				retainGenerationContent(active, kept);
+ 				keptTokens.add(active.contentToken());
+ 			}
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/update/ClientObjectStore.java b/core/src/main/java/pl/skidam/automodpack_core/update/ClientObjectStore.java
+--- a/core/src/main/java/pl/skidam/automodpack_core/update/ClientObjectStore.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/update/ClientObjectStore.java
+@@ -21,6 +21,7 @@
+ import pl.skidam.automodpack_core.config.ConfigTools;
+ import pl.skidam.automodpack_core.config.GenerationJsons;
+ import pl.skidam.automodpack_core.modpack.ModpackId;
++import pl.skidam.automodpack_core.modpack.generation.ContentTree;
+ import pl.skidam.automodpack_core.modpack.generation.JournalEntry;
+ import pl.skidam.automodpack_core.protocol.PartialResume;
+ import pl.skidam.automodpack_core.storage.ObjectStoreMaintenance;
+@@ -312,6 +313,14 @@
+ 
+ 	/** Adds every durable client pin outside the mirror's history: overlays, generated copies, the state history, the pending transaction, and repair state. */
+ 	static void collectNonHistoryReferences(ClientStorage storage, ExpectedSizes retained) throws IOException {
++		var active = storage.readActiveState();
++		if (active != null) {
++			JournalEntry witness = InstalledGenerationWitness.active(storage, active);
++			retained.require(witness.policySha1(), Files.size(storage.objectFile(witness.policySha1())), "installed policy checkpoint");
++			var document = new ClientGenerationStore(storage).policyDocument(witness.policySha1());
++			for (var file : ContentTree.fromManifest(document).files().values())
++				retained.optional(file.sha1(), file.size(), "installed generation content");
++		}
+ 		collectOverlays(storage, retained);
+ 		collectGeneratedCopies(storage, retained);
+ 		collectStateJournal(storage, retained);
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/update/ClientStorage.java b/core/src/main/java/pl/skidam/automodpack_core/update/ClientStorage.java
+--- a/core/src/main/java/pl/skidam/automodpack_core/update/ClientStorage.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/update/ClientStorage.java
+@@ -530,7 +530,7 @@
+ 		return ConfigTools.readUnique(stateFile, ClientStorageJsons.ClientGenerationStateFields.class, "Client active state", ClientStorage::validatedActiveState).orElse(null);
+ 	}
+ 
+-	private static ClientStorageJsons.ClientGenerationStateFields validatedActiveState(ClientStorageJsons.ClientGenerationStateFields state) {
++	static ClientStorageJsons.ClientGenerationStateFields validatedActiveState(ClientStorageJsons.ClientGenerationStateFields state) {
+ 		if (!ModpackId.isValid(state.modpackId) || !HashUtils.isSha1(state.contentToken) || !"ACTIVE".equals(state.status))
+ 			throw new IllegalArgumentException("Client active state identity is invalid");
+ 		OwnershipLedger.fromFields(state.ownershipLedger);
+@@ -543,8 +543,17 @@
+ 		state.modpackId = ModpackId.requireValid(modpackId);
+ 		state.contentToken = HashUtils.requireDigest(contentToken, "generation ID");
+ 		state.ownershipLedger = Objects.requireNonNull(ownershipLedger, "ownership ledger");
++		state.generationWitness = InstalledGenerationWitness.forCommit(this, state).toFields();
+ 		state.detached = currentDetachmentFor(state.modpackId);
+ 		Files.createDirectories(stateFile.getParent());
++		ConfigTools.writeAtomic(stateFile, state);
++	}
++
++	/** Called under the mutation lease before a fetched journal can retire the installed branch. */
++	void checkpointActiveGeneration(String modpackId) throws IOException {
++		var state = readActiveState();
++		if (state == null || !state.modpackId.equals(modpackId) || state.generationWitness != null) return;
++		state.generationWitness = InstalledGenerationWitness.active(this, state).toFields();
+ 		ConfigTools.writeAtomic(stateFile, state);
+ 	}
+ 
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/update/InstalledGenerationWitness.java b/core/src/main/java/pl/skidam/automodpack_core/update/InstalledGenerationWitness.java
+new file mode 100644
+--- /dev/null
++++ b/core/src/main/java/pl/skidam/automodpack_core/update/InstalledGenerationWitness.java
+@@ -0,0 +1,89 @@
++package pl.skidam.automodpack_core.update;
++
++import java.io.IOException;
++import java.nio.file.Files;
++import java.nio.file.LinkOption;
++import java.nio.file.Path;
++import java.util.List;
++
++import pl.skidam.automodpack_core.config.ClientStorageJsons;
++import pl.skidam.automodpack_core.config.ConfigTools;
++import pl.skidam.automodpack_core.config.GenerationJsons;
++import pl.skidam.automodpack_core.modpack.generation.ContentTree;
++import pl.skidam.automodpack_core.modpack.generation.Journal;
++import pl.skidam.automodpack_core.modpack.generation.JournalEntry;
++import pl.skidam.automodpack_core.storage.SharedObjectOwnership;
++import pl.skidam.automodpack_core.storage.StoragePaths;
++import pl.skidam.automodpack_core.utils.HashUtils;
++
++/** The committed generation cannot depend on a mutable server-journal mirror. */
++final class InstalledGenerationWitness {
++    private InstalledGenerationWitness() { }
++
++    static JournalEntry active(ClientStorage storage, ClientStorageJsons.ClientGenerationStateFields state) throws IOException {
++        if (state.generationWitness != null) {
++            JournalEntry entry = JournalEntry.fromFields(state.generationWitness);
++            validate(storage, state, entry);
++            return entry;
++        }
++        JournalEntry entry = find(storage, state, new JournalMirror(storage).entries(state.modpackId));
++        if (entry != null) return entry;
++        // Migration only: another native instance's journal may still witness the lost branch.
++        // It grants no consent and contributes no ledger, credentials, current head or executable bytes.
++        for (Path peer : SharedObjectOwnership.clientOwnerPaths(storage.dataLocation())) {
++            if (peer.equals(storage.gameDirectory())) continue;
++            Path journal = peer.resolve(StoragePaths.CLIENT_HISTORY_DIR).resolve(state.modpackId).resolve("journal.jsonl");
++            if (!Files.isRegularFile(journal, LinkOption.NOFOLLOW_LINKS) || Files.isSymbolicLink(journal)) continue;
++            try {
++                var peerState = ConfigTools.readUnique(peer.resolve(StoragePaths.CLIENT_ACTIVE_STATE_FILE),
++                        ClientStorageJsons.ClientGenerationStateFields.class, "Peer active state", ClientStorage::validatedActiveState).orElse(null);
++                if (peerState == null || !state.modpackId.equals(peerState.modpackId) || !state.contentToken.equals(peerState.contentToken)
++                        || !state.ownershipLedger.digest.equals(peerState.ownershipLedger.digest)) continue;
++                if (peerState.generationWitness != null) {
++                    entry = JournalEntry.fromFields(peerState.generationWitness);
++                    validate(storage, state, entry);
++                    return entry;
++                }
++                var head = ConfigTools.read(journal.resolveSibling("head.json"), GenerationJsons.HeadDocumentFields.class).orElse(null);
++                if (head == null || !state.contentToken.equals(head.contentToken) || head.ownershipLedger == null
++                        || !state.ownershipLedger.digest.equals(head.ownershipLedger.digest)) continue;
++                for (JournalEntry witnessed : Journal.openComplete(journal).entries()) {
++                    if (!state.contentToken.equals(witnessed.contentToken()) || !head.policySha1.equals(witnessed.policySha1())) continue;
++                    validate(storage, state, witnessed);
++                    return witnessed;
++                }
++            } catch (IOException | RuntimeException invalidPeer) {
++                pl.skidam.automodpack_core.Constants.LOGGER.debug("Peer journal cannot witness an installed generation: {}", journal, invalidPeer);
++            }
++        }
++        throw new IOException("No verified installed-generation witness for " + state.contentToken + ": " + state.modpackId);
++    }
++
++    static JournalEntry forCommit(ClientStorage storage, ClientStorageJsons.ClientGenerationStateFields state) throws IOException {
++        JournalEntry entry = find(storage, state, new JournalMirror(storage).entries(state.modpackId));
++        if (entry == null) throw new IOException("Committed generation has no verified journal entry: " + state.contentToken);
++        return entry;
++    }
++
++    private static JournalEntry find(ClientStorage storage, ClientStorageJsons.ClientGenerationStateFields state, List<JournalEntry> entries) throws IOException {
++        JournalEntry found = null;
++        for (JournalEntry entry : entries) {
++            if (!state.contentToken.equals(entry.contentToken())) continue;
++            if (!Files.isRegularFile(storage.objectFile(entry.policySha1()), LinkOption.NOFOLLOW_LINKS)) continue;
++            validate(storage, state, entry);
++            found = entry;
++        }
++        return found;
++    }
++
++    private static void validate(ClientStorage storage, ClientStorageJsons.ClientGenerationStateFields state, JournalEntry entry) throws IOException {
++        Path policy = storage.objectFile(entry.policySha1());
++        if (!state.contentToken.equals(entry.contentToken()) || Files.isSymbolicLink(policy)
++                || !Files.isRegularFile(policy, LinkOption.NOFOLLOW_LINKS)
++                || !HashUtils.sha1(Files.readAllBytes(policy)).equals(entry.policySha1()))
++            throw new IOException("Installed generation witness fails its identity/hash check: " + state.contentToken);
++        var manifest = new ClientGenerationStore(storage).policyDocument(entry.policySha1());
++        if (!state.modpackId.equals(manifest.modpackId()) || !state.contentToken.equals(ContentTree.tokenOf(manifest)))
++            throw new IOException("Installed policy does not describe the committed generation: " + state.contentToken);
++    }
++}
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/update/JournalMirror.java b/core/src/main/java/pl/skidam/automodpack_core/update/JournalMirror.java
+--- a/core/src/main/java/pl/skidam/automodpack_core/update/JournalMirror.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/update/JournalMirror.java
+@@ -74,6 +74,7 @@
+ 	private void replaceFromLocked(String modpackId, int verifiedEntries, Path fetchedFile) throws IOException {
+ 		if (Journal.openComplete(fetchedFile).length() != verifiedEntries) throw new IOException("Fetched journal changed while it was swapped into the mirror");
+ 		Path mirror = storage.historyJournalFile(modpackId);
++		storage.checkpointActiveGeneration(modpackId);
+ 		Files.createDirectories(mirror.getParent());
+ 		DurableFiles.replace(fetchedFile, mirror);
+ 	}
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransactionExecutor.java b/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransactionExecutor.java
 --- a/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransactionExecutor.java
 +++ b/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransactionExecutor.java
 @@ -234,7 +234,7 @@
@@ -157,86 +683,10 @@
  	}
  
  	private void claimSelection(UpdateTransaction transaction) throws IOException {
---- a/core/src/main/java/pl/skidam/automodpack_core/client/UpdateHelperMain.java
-+++ b/core/src/main/java/pl/skidam/automodpack_core/client/UpdateHelperMain.java
-@@ -1,5 +1,6 @@
- package pl.skidam.automodpack_core.client;
- 
-+import static pl.skidam.automodpack_core.Constants.*;
- import static pl.skidam.automodpack_core.storage.StoragePaths.HELPER_LEASE_FILE;
- 
- import java.io.IOException;
-@@ -20,10 +21,13 @@
- 
- import pl.skidam.automodpack_core.loader.FileInspection;
- import pl.skidam.automodpack_core.loader.LoaderManagerService;
-+import pl.skidam.automodpack_core.loader.ModpackLoaderService;
- import pl.skidam.automodpack_core.storage.DataRootResolver;
- import pl.skidam.automodpack_core.storage.GameDirectory;
- import pl.skidam.automodpack_core.update.SelfUpdateSwap;
- import pl.skidam.automodpack_core.update.UpdateTransactionExecutor;
-+import pl.skidam.automodpack_core.update.UpdateReplanRequiredException;
-+import pl.skidam.automodpack_core.update.UpdateTransaction;
- import pl.skidam.automodpack_core.utils.JarUtils;
- 
- public final class UpdateHelperMain {
-@@ -60,7 +64,7 @@
- 	}
- 
- 	private static int runOnce(String[] arguments) throws IOException, InterruptedException {
--		if (arguments.length < 1 || arguments.length > 2) throw new IOException("Expected parent PID and optional environment");
-+		if (arguments.length < 1 || arguments.length > 4 || arguments.length == 3) throw new IOException("Expected parent PID, optional environment, and optional loader type and service");
- 		long parentPid = Long.parseLong(arguments[0]);
- 		if (parentPid <= 0 || parentPid == ProcessHandle.current().pid()) throw new IOException("Invalid parent PID");
- 		LoaderManagerService.EnvironmentType environment = environment(arguments);
-@@ -86,11 +90,26 @@
- 				try {
- 					if (!waitForGameExit(parentPid)) return 1;
- 
-+					if (arguments.length == 4) {
-+						LOADER = arguments[2];
-+						try {
-+							MODPACK_LOADER = Class.forName(arguments[3])
-+									.asSubclass(ModpackLoaderService.class).getDeclaredConstructor().newInstance();
-+						} catch (ReflectiveOperationException e) {
-+							throw new IOException("Cannot initialize the launching client's native modpack loader", e);
-+						}
-+					}
- 					UpdateTransactionExecutor executor = UpdateTransactionSupport.executor();
- 					long backoff = UpdateRecovery.INITIAL_BACKOFF_MILLIS;
- 					for (int attempt = 1;; attempt++) {
- 						boolean selfUpdateRecovered = recoverSelfUpdate(gameDirectory, dataLocation);
--						UpdateTransactionExecutor.Execution execution = executor.recoverLatest();
-+						UpdateTransactionExecutor.Execution execution;
-+						try {
-+							execution = executor.recoverLatest();
-+						} catch (UpdateReplanRequiredException e) {
-+							execution = replanPending();
-+						}
-+						if (execution.replanRequired() && arguments.length == 4) execution = replanPending();
- 						if (execution.success() && selfUpdateRecovered) {
- 							log("Pending update transaction recovered on attempt " + attempt);
- 							return 0;
-@@ -122,6 +141,15 @@
- 	 * holds. False when the parent outlived {@link #PARENT_EXIT_TIMEOUT_MILLIS} or the wait failed; the
- 	 * transaction then stays pending and the next game launch retries it.
- 	 */
-+	private static UpdateTransactionExecutor.Execution replanPending() throws IOException {
-+		if (MODPACK_LOADER == null)
-+			throw new UpdateReplanRequiredException(null, "The next client launch must resume this pending update with its native loader");
-+		var storage = UpdateTransactionSupport.storage();
-+		var pending = UpdateTransaction.read(storage.transactionFile());
-+		if (pending == null) return UpdateTransactionSupport.executor().recoverLatest();
-+		return UpdateAttempt.resume(storage, pending, MODPACK_LOADER, LOADER);
-+	}
-+
- 	private static boolean waitForGameExit(long parentPid) throws InterruptedException {
- 		ProcessHandle parent = ProcessHandle.of(parentPid).orElse(null);
- 		if (parent == null) return true;
-
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/utils/DurableFiles.java b/core/src/main/java/pl/skidam/automodpack_core/utils/DurableFiles.java
 --- a/core/src/main/java/pl/skidam/automodpack_core/utils/DurableFiles.java
 +++ b/core/src/main/java/pl/skidam/automodpack_core/utils/DurableFiles.java
-@@ -5,7 +5,6 @@ import static pl.skidam.automodpack_core.Constants.LOGGER;
+@@ -5,7 +5,6 @@
  import java.io.IOException;
  import java.nio.ByteBuffer;
  import java.nio.channels.FileChannel;
@@ -244,7 +694,7 @@
  import java.nio.file.Files;
  import java.nio.file.LinkOption;
  import java.nio.file.Path;
-@@ -33,8 +32,10 @@ public final class DurableFiles {
+@@ -33,8 +32,10 @@
  	public static void replace(Path temporary, Path target) throws IOException {
  		try {
  			replaceAtomically(temporary, target);
@@ -257,7 +707,7 @@
  		}
  	}
  
-@@ -44,11 +45,16 @@ public final class DurableFiles {
+@@ -44,11 +45,16 @@
  	}
  
  	/** The caller must have forced the temporary to stable storage; this publishes it and forces the directory entry. */
@@ -276,7 +726,7 @@
  		Path parent = target.toAbsolutePath().normalize().getParent();
  		if (parent != null) FileTrees.forceDirectory(parent);
  	}
-
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/utils/FileTrees.java b/core/src/main/java/pl/skidam/automodpack_core/utils/FileTrees.java
 --- a/core/src/main/java/pl/skidam/automodpack_core/utils/FileTrees.java
 +++ b/core/src/main/java/pl/skidam/automodpack_core/utils/FileTrees.java
 @@ -2,7 +2,6 @@
@@ -287,7 +737,7 @@
  import java.nio.file.DirectoryNotEmptyException;
  import java.nio.file.Files;
  import java.nio.file.LinkOption;
-@@ -23,7 +22,15 @@
+@@ -24,7 +23,15 @@
  			throw new IOException("Directory move requires concrete parent directories");
  		try {
  			Files.move(sourceDirectory, targetDirectory, StandardCopyOption.ATOMIC_MOVE);
@@ -304,173 +754,3 @@
  			try {
  				Files.move(sourceDirectory, targetDirectory);
  			} catch (IOException e) {
-
---- a/core/src/main/java/pl/skidam/automodpack_core/loader/ImplStore.java
-+++ b/core/src/main/java/pl/skidam/automodpack_core/loader/ImplStore.java
-@@ -139,11 +139,8 @@
- 		stamp.digest = manifest.digest();
- 		DurableFiles.writeVolatile(staging.resolve(STAMP_FILE), ConfigTools.GSON.toJson(stamp).getBytes(StandardCharsets.UTF_8));
- 
--		// Publish is the rename: nothing at the live path until the whole tree is on disk.
--		// On Windows a concurrent reader holding an impl open makes this delete fail - that is a loud
--		// crash, never a half-published tree.
- 		FileTrees.delete(cacheDir);
--		FileTrees.moveRecoverableDirectory(staging, cacheDir);
-+		publishStagedCache(staging, cacheDir, manifest);
- 		// Records after publish so they key the final absolute paths; a crash here costs one rehash
- 		// next boot (matchesImmutable recomputes and republishes), never a wrong hit.
- 		for (ImplManifest.Entry entry : manifest.entries()) {
-@@ -151,6 +148,24 @@
- 		}
- 	}
- 
-+	private static void publishStagedCache(Path staging, Path cacheDir, ImplManifest manifest) throws IOException {
-+		try {
-+			FileTrees.moveRecoverableDirectory(staging, cacheDir);
-+		} catch (IOException directoryMoveFailure) {
-+			try {
-+				Files.createDirectory(cacheDir);
-+				for (ImplManifest.Entry entry : manifest.entries()) {
-+					Files.copy(staging.resolve(entry.id() + ".jar"), cacheDir.resolve(entry.id() + ".jar"));
-+				}
-+				DurableFiles.writeVolatile(cacheDir.resolve(STAMP_FILE), Files.readAllBytes(staging.resolve(STAMP_FILE)));
-+				FileTrees.delete(staging);
-+			} catch (IOException filePublicationFailure) {
-+				filePublicationFailure.addSuppressed(directoryMoveFailure);
-+				throw filePublicationFailure;
-+			}
-+		}
-+	}
-+
- 	/**
- 	 * The persisted cache stamp: the one digest this tree was staged for. Regenerable, so a corrupt one is set aside and costs one restage. Document class, not record: this graph lands on disk where the game's Gson
- 	 * cannot read records.
-
---- a/core/src/main/java/pl/skidam/automodpack_core/modpack/group/SelectedTreeComposer.java
-+++ b/core/src/main/java/pl/skidam/automodpack_core/modpack/group/SelectedTreeComposer.java
-@@ -27,6 +27,7 @@ public final class SelectedTreeComposer {
- 			if (group == null) throw new IllegalArgumentException("Selected group is absent from the catalogue: " + groupId);
- 			for (var entry : group.files().entrySet()) {
- 				if (!resolvePaths) break;
-+				if (!ClientDistributionProfile.includes(entry.getKey())) continue;
- 				GroupManifest.GroupFile previous = files.putIfAbsent(entry.getKey(), entry.getValue());
- 				if (previous != null && !previous.sameEffectiveState(entry.getValue()))
- 					throw new IllegalArgumentException("Selected groups produce conflicting path: " + entry.getKey());
-@@ -64,6 +65,7 @@ public final class SelectedTreeComposer {
- 	private static Set<ModpackJsons.ModpackContentFields.ModpackContentItem> allItems(GroupManifest manifest, Collection<String> groupIds) {
- 		Set<ModpackJsons.ModpackContentFields.ModpackContentItem> items = new LinkedHashSet<>();
- 		for (String groupId : groupIds) for (var entry : manifest.groups().get(groupId).files().entrySet()) {
-+			if (!ClientDistributionProfile.includes(entry.getKey())) continue;
- 			GroupManifest.GroupFile file = entry.getValue();
- 			items.add(new ModpackJsons.ModpackContentFields.ModpackContentItem(entry.getKey(), file.size(), file.type(), file.editable(), file.sha1(), file.murmur()));
- 		}
-
---- /dev/null
-+++ b/core/src/main/java/pl/skidam/automodpack_core/modpack/group/ClientDistributionProfile.java
-@@ -0,0 +1,48 @@
-+package pl.skidam.automodpack_core.modpack.group;
-+
-+import static pl.skidam.automodpack_core.Constants.LOGGER;
-+import static pl.skidam.automodpack_core.Constants.THIS_MOD_JAR;
-+
-+import java.io.IOException;
-+import java.nio.file.Files;
-+import java.nio.file.Path;
-+import java.util.jar.JarFile;
-+import java.util.jar.Manifest;
-+
-+import pl.skidam.automodpack_core.utils.JarUtils;
-+
-+/** Build-time client distribution profile; absent or unreadable metadata always preserves the native full target. */
-+final class ClientDistributionProfile {
-+	private static final String SKIP_SHADERS_ATTRIBUTE = "JEM-Skip-Shaders";
-+	private static final boolean SKIP_SHADERS = skipShaders();
-+
-+	private ClientDistributionProfile() {}
-+
-+	static boolean includes(String logicalPath) {
-+		if (!SKIP_SHADERS || logicalPath == null) return true;
-+		String normalized = logicalPath.replace('\\', '/');
-+		return !normalized.equals("shaderpacks") && !normalized.startsWith("shaderpacks/");
-+	}
-+
-+	private static boolean skipShaders() {
-+		Path archive = THIS_MOD_JAR;
-+		if (archive == null) {
-+			try {
-+				archive = JarUtils.getJarPath(ClientDistributionProfile.class);
-+			} catch (RuntimeException e) {
-+				LOGGER.warn("Cannot locate the bootstrap distribution profile; retaining the full client target", e);
-+				return false;
-+			}
-+		}
-+		if (!Files.isRegularFile(archive)) return false;
-+		try (JarFile jar = new JarFile(archive.toFile())) {
-+			Manifest manifest = jar.getManifest();
-+			boolean skip = manifest != null && Boolean.parseBoolean(manifest.getMainAttributes().getValue(SKIP_SHADERS_ATTRIBUTE));
-+			if (skip) LOGGER.info("Client distribution profile excludes shaderpacks/** from acquisition and projection");
-+			return skip;
-+		} catch (IOException | RuntimeException e) {
-+			LOGGER.warn("Cannot read the bootstrap distribution profile; retaining the full client target", e);
-+			return false;
-+		}
-+	}
-+}
-
-diff --git a/core/src/main/java/pl/skidam/automodpack_core/client/ClientUpdatePlanBuilder.java b/core/src/main/java/pl/skidam/automodpack_core/client/ClientUpdatePlanBuilder.java
---- a/core/src/main/java/pl/skidam/automodpack_core/client/ClientUpdatePlanBuilder.java
-+++ b/core/src/main/java/pl/skidam/automodpack_core/client/ClientUpdatePlanBuilder.java
-@@ -307,7 +307,11 @@
- 		boolean sameModpackTarget = target != null && target.modpackId.equals(activeTarget.modpackId);
- 		Set<String> deletedPaths = new TreeSet<>(storage.readOverlayState(activeTarget.modpackId).deletedPaths);
- 		for (var item : activeTarget.list) {
--			if (!item.editable) {
-+			var requested = sameModpackTarget ? targetItems.get(LogicalPath.normalize(item.file)) : null;
-+			// Capture the existing player's bytes before the first server-owned -> editable migration.
-+			boolean personal = personalPreference(item.file);
-+			boolean becomesEditable = personal && requested != null && requested.editable;
-+			if (!item.editable && !becomesEditable) {
- 				resetDriftedServerFile(cache, projection, activeTarget, targetItems, item);
- 				continue;
- 			}
-@@ -316,7 +320,7 @@
- 			var targetItem = sameModpackTarget ? targetItems.get(LogicalPath.normalize(item.file)) : null;
- 			if (!Files.isRegularFile(live, LinkOption.NOFOLLOW_LINKS)) {
- 				if (projection.matchesPendingGameState(item.file, new UpdatePlan.FileState(null, -1, false))) continue;
--				if (targetItem != null && !targetItem.sha1.equalsIgnoreCase(item.sha1)) {
-+				if (!personal && targetItem != null && !targetItem.sha1.equalsIgnoreCase(item.sha1)) {
- 					// The pack replaced the content while the file was removed: the removal intent is spent and the new version comes back.
- 					Files.deleteIfExists(overlay);
- 					deletedPaths.remove(LogicalPath.normalize(item.file));
-@@ -330,12 +334,12 @@
- 			String hash = FileIntegrity.observedHash(live, item.size, item.sha1, cache);
- 			UpdatePlan.FileState state = new UpdatePlan.FileState(hash, size, true);
- 			if (projection.matchesPendingGameState(item.file, state)) continue;
--			if (item.sha1.equalsIgnoreCase(state.sha1()) && item.size == state.size()) {
-+			if (!personal && item.sha1.equalsIgnoreCase(state.sha1()) && item.size == state.size()) {
- 				Files.deleteIfExists(overlay);
- 				deletedPaths.remove(LogicalPath.normalize(item.file));
- 				continue;
- 			}
--			if (targetItem != null && !targetItem.sha1.equalsIgnoreCase(item.sha1)) {
-+			if (!personal && targetItem != null && !targetItem.sha1.equalsIgnoreCase(item.sha1)) {
- 				// The pack owner replaced the file: leave the player's bytes in place and let the plan install the new
- 				// server version once; the update entry's captures pin the replaced bytes for the state history.
- 				Files.deleteIfExists(overlay);
-@@ -348,6 +352,16 @@
- 			deletedPaths.remove(LogicalPath.normalize(item.file));
- 		}
- 		storage.writeOverlayState(activeTarget.modpackId, deletedPaths);
-+	}
-+
-+	/** Only presentation preferences opt into sticky player ownership; server gameplay configs retain native policy. */
-+	private static boolean personalPreference(String path) {
-+		String relative = LogicalPath.normalize(path);
-+		return Set.of("config/oculus.properties", "config/iris.properties",
-+				"config/quickskin-client.json", "config/quickskin_preferences.json",
-+				"config/fzzy_config/keybinds.toml", "config/punchy/triggerable-keybindings.json").contains(relative)
-+				|| relative.startsWith("shaderpacks/") && relative.endsWith(".txt")
-+					&& relative.substring("shaderpacks/".length()).indexOf('/') < 0;
- 	}
- 
- 	/** A drifted file the pack owns: the drifted bytes are acquired for the state history and the live file gets the pack version back, without a review. */

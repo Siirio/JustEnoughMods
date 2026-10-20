@@ -1,0 +1,80 @@
+{
+  "schema_version": 2,
+  "change_id": "pack-sync.installed-generation-witness",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:player"
+    }
+  ],
+  "conditions": [
+    {
+      "scope": "Native client update/prelaunch; a copied server identity may have divergent journals. Older missing witnesses migrate only from validated known native client receipts and an exact content-addressed policy."
+    }
+  ],
+  "precedence": {
+    "layer": "native_distribution_lifecycle",
+    "priority": 30
+  },
+  "change": {
+    "summary": "Installed targets remain resolvable when a remote journal replaces a locally installed branch; another profile no longer retargets a remembered route.",
+    "modifiers": [
+      {
+        "property": "automodpack.installed_generation_metadata",
+        "operation": "replace",
+        "before": "Active state persists only token and ledger; refresh replaces the only journal mirror, losing active generation metadata on a divergent server with the same pack ID. Per-user connection origin is shared across profiles.",
+        "after": "Native commit stores the exact journal witness beside active token/ledger, checkpoints it before mirror replacement, pins policy/content, and resolves active state independently. Legacy missing metadata can be recovered read-only from a known native instance with identical token and SHA1-verified policy. Login saves an instance-owned route; shared credentials/certificate trust remain unchanged."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Mods/JEMBootstrap pinned native AutoModpack source patch",
+    "kind": "committed_state_vs_remote_cache_ownership",
+    "source_files": [
+      "Mods/JEMBootstrap/patches/reliable-updates.patch",
+      "Mods/JEMBootstrap/upstream.json",
+      "Docs/DEVELOPMENT.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Finish native updates without repeated attempts or manually editing installed caches, pointers, JAR projections or trust settings.",
+    "decision_source": "User supplied the exact missing61920a3 journal-entry failure after updating JustEnoughMods, asked what friends should do, and confirmed client closure. Native checkpoint/validated peer migration/instance route chosen by Codex from actual local49/remote6 journals and shared origin evidence."
+  },
+  "introduced": {
+    "date": "2026-10-20",
+    "commit": "SELF",
+    "action": "fix",
+    "summary": "Keep committed generation metadata independent of fetched journal branches and bind saved routes to the instance."
+  },
+  "history": [
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "fix",
+      "summary": "Keep committed generation metadata independent of fetched journal branches and bind saved routes to the instance."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "Native AutoModpack active target reconstruction",
+      "Journal mirror refresh",
+      "CAS retention",
+      "Per-instance host route",
+      "Native update planning and helper recovery"
+    ],
+    "relations": [
+      "Commit -> persisted generation witness -> refresh preserves installed metadata -> native planner compares installed/advertised targets without fabricating history"
+    ],
+    "notes": [
+      "No world, registry, network schema, remote generation or MineRENT change. No runtime tests or game launch.",
+      "No assumed user consent for new code; native JAR review and certificate pinning remain unchanged. Peer journals supply metadata only, never credentials, ledgers or executable file bytes.",
+      "Client/bootstrap compatibility revision changes from jem.7 to jem.8 at the same native5.0.0-rc.1 wire/version contract."
+    ],
+    "unresolved": [
+      "Manual user acceptance and completed native migration after installing bootstrap remain pending.",
+      "A generation with no valid local witness or verified policy still fails explicitly; no target/policy is invented."
+    ]
+  }
+}

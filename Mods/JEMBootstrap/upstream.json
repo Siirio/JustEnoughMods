@@ -14,7 +14,15 @@
     "core/src/main/java/pl/skidam/automodpack_core/utils/FileTrees.java": "80d965bbb96334bac3dbdfabcdc3457aabe497fd9bec8344a56d9f1220304ab7",
     "core/src/main/java/pl/skidam/automodpack_core/utils/DurableFiles.java": "a4c5815c1a8bdbff0922cb7ed0d6f7c55d08d6f2db2a6afe644ce91fd14d26b8",
     "core/src/main/java/pl/skidam/automodpack_core/modpack/group/SelectedTreeComposer.java": "191de8b834d283def1a535167daf9f29be0b6de1331a1630104a4419f6573e00",
-    "core/src/main/java/pl/skidam/automodpack_core/client/ClientUpdatePlanBuilder.java": "666e020122dda6b5181bb0f8bdebe8ef05983189b78808e1c4f891908add6b13"
+    "core/src/main/java/pl/skidam/automodpack_core/client/ClientUpdatePlanBuilder.java": "666e020122dda6b5181bb0f8bdebe8ef05983189b78808e1c4f891908add6b13",
+    "core/src/main/java/pl/skidam/automodpack_core/config/ClientStorageJsons.java": "e6816c147f87463b6e5a92d77db6ae9f3888b7fc0789e02f52b7c58fdbad7359",
+    "core/src/main/java/pl/skidam/automodpack_core/loader/ImplStore.java": "53d4c79a587715b82b0dffc680cfe6778bfc68f6a692a76ff46877894690c7a5",
+    "core/src/main/java/pl/skidam/automodpack_core/storage/DataRootResolver.java": "55d94e0778ed9deea44ba770d64ea0bf84988da25b4cc6d4fb7fde610332fb4b",
+    "core/src/main/java/pl/skidam/automodpack_core/storage/SharedObjectOwnership.java": "9914f148561df16763f1930a1d2327e618f550306c05559e3b13702ff20584f4",
+    "core/src/main/java/pl/skidam/automodpack_core/update/ClientObjectStore.java": "6bb46259b5bc518acfcf905c905d75f955df243c415c4582d231ff368cc7c8c1",
+    "core/src/main/java/pl/skidam/automodpack_core/update/ClientStorage.java": "01af58893b7dcc06fc5c55a2d70d5ad622acd555c8fa0050496a3c812633f06a",
+    "core/src/main/java/pl/skidam/automodpack_core/update/JournalMirror.java": "0a6d5980e48d04bec6ca26e927ed565f0c94d71e79dc5027ef55987894dbd974",
+    "core/src/main/java/pl/skidam/automodpack_core/auth/ConnectionStore.java": "4a1704adfec8a8eb1df5de5ddd4aa4f06234369f70f67974bfb07b626e2005ae"
   },
   "buildArguments": [
     "oneJar",
@@ -26,5 +34,5 @@
     "-x",
     "spotlessCheck"
   ],
-  "revision": "jem.7"
+  "revision": "jem.8"
 }

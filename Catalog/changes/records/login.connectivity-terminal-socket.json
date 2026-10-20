@@ -1,0 +1,40 @@
+{
+  "schema_version": 2,
+  "change_id": "login.connectivity-terminal-socket",
+  "status": "conditional",
+  "selectors": [{"type": "id", "registry": "entities", "value": "minecraft:player"}],
+  "conditions": [{"scope": "Physical dedicated server with exact Connectivity1.20.1-7.6; only direct terminal socket IO, never decoder/protocol exceptions."}],
+  "precedence": {"layer": "dedicated_server_compatibility", "priority": 30},
+  "change": {
+    "summary": "Close terminated socket IO without disconnect-write recursion or malformed-IP strikes.",
+    "modifiers": [{
+      "property": "connection.terminal_transport_exception",
+      "operation": "replace",
+      "before": "Connectivity counts Broken pipe and Connection reset by peer as malformed traffic. Repeated disconnect-write failures can enter its process-lifetime IP block, which silently freezes subsequent channels for30s.",
+      "after": "Direct terminal IOException or ClosedChannelException closes its channel once before native disconnect writes and malformed counting. Decoder/protocol errors and all authentication/packet checks keep native handling."
+    }]
+  },
+  "cause": {
+    "owner": "JEMCompat dedicated Connectivity adapter",
+    "kind": "terminal_transport_lifecycle",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/login/TerminalSocketFailure.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/TerminalConnectionFailureMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ConnectivityTerminalSocketMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Prevent a dropped pack/login socket from making future legitimate connections unreachable.",
+    "decision_source": "User reports connection reset and no download, then challenges restarting without a fix. Codex selects a terminal-IO boundary from installed Connectivity7.6 bytecode and live repeated Broken pipe followed by blocked-IP evidence."
+  },
+  "introduced": {"date": "2026-10-20", "commit": "SELF", "action": "fix", "summary": "Close terminal socket IO before Connectivity counts errors or Minecraft writes a disconnect to the broken transport."},
+  "history": [{"date": "2026-10-20", "commit": "SELF", "action": "fix", "summary": "Close terminal socket IO before Connectivity counts errors or Minecraft writes a disconnect to the broken transport."}],
+  "impacts": {
+    "systems": ["Minecraft Connection.exceptionCaught", "Connectivity early blocker", "AutoModpack login reachability"],
+    "relations": ["socket termination -> close once -> future native login/review remains reachable"],
+    "notes": ["No registry, channel, packet, authentication, TLS, or native client trust-policy change; client artifact remains compatible.", "Stable maintainer active token a945410 and its localhost origin are preserved. Prelaunch refusal to install unverified JARs is separate and requires native remote review."],
+    "unresolved": ["Live player acceptance and initial peer-reset trigger remain unproven; this does not cure external network resets or accept unverified JARs for the player."]
+  }
+}
