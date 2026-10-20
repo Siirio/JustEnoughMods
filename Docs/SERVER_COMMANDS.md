@@ -87,6 +87,62 @@ The ordinary Server restart encountered native NBT depth518 in `Data.WorldGenSet
 
 Local recovery backed up both level.dat and level.dat_old under ignored `Server/local/boss-20261019/world-metadata-before-normalization`. It flattened353 strictly nested minecraft:sequence wrappers, retaining every child and evaluation order. Exact installed Minecraft SequenceRule bytecode returns the first non-null child result, so associative flattening preserves terrain-rule evaluation. Total depth became229. Only the Nether surface_rule payload was replaced atomically; decompressed prefix/suffix matched exactly. No chunk, player, dimension, seed, mod config, safe-mode flag or depth limit changed. Receipt and exact original hashes are under the same ignored recovery folder. The integration that repeatedly wraps saved rules remains unverified and must be investigated before claiming recurrence prevention.
 
+## MineRENT: тестовая копия и возврат на основной мир — 2026-10-20
+
+### История подготовки до разрешения на запуск
+
+- Сервер JustEnough / 0618360f продолжает работать на исходном `world`. Остановка, переключение, изменение игровых режимов и публикация нового клиентского пакета на MineRENT не выполнялись.
+- По прямому выбору пользователя тестовый мир взят из существующего `archive-2026-10-20T092221+0300.tar.zst`; панель показывала время файла 20 октября 11:23:42 Asia/Yekaterinburg. Это снимок архива, а не обещание включить последующий прогресс.
+- Штатные Copy → Move → Extract панели создали независимый `jem-test-2026-10-20/world`. Исходный архив и активный `world` не заменены. Рабочая копия архива лежит в `jem-test-2026-10-20/source-world.tar.zst`; новый снимок/бэкап не создавался.
+- В распакованной папке видны `level.dat`, `level.dat_old`, `region`, `entities`, `poi`, `DIM-1`, `DIM1`, `dimensions`, `playerdata`, `advancements`, `data`, `serverconfig` и `unified_xaero_worldmap`. Запуск и игровая проверка не выполнялись; содержимое каждого файла побайтно не сверялось.
+- Копия мира подготовлена; обновлённые runtime-каталоги и тестовые настройки ещё не активированы. Старый runtime остаётся рабочим до отдельной команды пользователя.
+
+### Выполнено после разрешения пользователя — 20 октября 16:24 +05:00
+
+- Сервер штатно остановлен командой `stop` с сохранением измерений. После установки пользователь подтвердил запуск; живая консоль показывает `Preparing level "jem-test-2026-10-20/world"` и `Done` в 16:19:32. Исходный `world` не перемещался и не запускался обновлённым runtime.
+- Активны тестовые `level-name=jem-test-2026-10-20/world`, `gamemode=creative`, `force-gamemode=true` и тестовый MOTD. Новые бэкапы не создавались.
+- Установлено 27 runtime JAR, 15 прежних/исключённых JAR сохранены в `jem-test-2026-10-20/previous-runtime-mods`; итоговый каталог содержит 245 JAR. Flan и JEM Claims исключены из активного runtime и клиентского host source. Источник — подготовленные артефакты текущего ManagedPack/Server на commit `4972eaa3`; никаких новых сборок или игровых тестов не выполнялось.
+- Старые host dirs сохранены в `previous-host`, старые host JAR — в `previous-host-mods`. Старые root `kubejs`, `defaultconfigs`, `config/TPA`, `config/jem`, `config/ftbquests` сохранены в `previous-runtime`. Относительно этих путей сохранения находятся внутри `jem-test-2026-10-20`. Production properties и AutoModpack policy сохранены там отдельно; credentials, auth и локальные worlds не загружались.
+- Клиентская публикация выполнена отдельно после запуска: `jempack preview` → `jempack publish` → history ENTRY6 `2026-10-20T11:24:05.015691140Z`, token prefix `8d1823f`, diff `+31 ~13 -10`. Повторный preview в16:24:24 дал тот же token и `+0 ~0 -0`. Предыдущая ENTRY5/token `a945410` сохранена в native journal для возврата.
+- До публикации сервер уже работал с новыми JAR, но выдавал прежнюю опубликованную клиентскую generation: это незавершённая операция выпуска. Она исправлена native publish; успешный вход каждого игрока ещё не подтверждён. Присланный Broken pipe фиксирует обрыв сокета, но сам по себе не доказывает причину на клиенте. Startup WARN про существующие scoreboard teams и skipped Mixins не помешали `Done`; их источники отдельно не исправлялись.
+- Это тестовый выпуск: playable stable профиль, friend ZIP и immutable release baseline не продвигались. Локальный Server не менялся этой операцией; локальная обычная publication49 уже опубликована. Все дальнейшие правки обновы по-прежнему принадлежат каноническим исходникам и последующему production выпуску, а не тестовому save.
+
+### Подготовить до окна переключения
+
+1. Завершить текущие параллельные изменения канонических исходников и `Client/ManagedPack`; записать commit и SHA-256 артефактов. Не замораживать промежуточный набор: при подготовке status показал staged manifest b6d1aa794b42a3df8022c2638830b0011fea3403 и опубликованный локальный 563de6390b9a07f8d24ea9de23dc0c7697d87388 (generation46), то есть `published=false`. Эти значения — наблюдение, не целевая финальная generation.
+2. Заранее загрузить и распаковать обновлённые server-owned `mods`, `config`, `defaultconfigs`, `kubejs` и необходимые native host-pack источники в неактивный staging. Client host pack формировать исключительно из канонического `Client/ManagedPack`; не загружать целиком локальный Server, его `local`, мир, auth, журналы, кеши или unlimited-wallet state. Не переносить sandbox JAR, test-only JVM flags и локальный AutoModpack test generation.
+3. По живому списку MineRENT зафиксировать точный add/replace/delete список. Сохранить старые runtime-каталоги переименованием при остановке, чтобы возврат не требовал повторной загрузки. Учесть server-only моды отдельно; не заменять server `mods` полным клиентским набором.
+4. Проверить все exercised Forge channels и matching JAR, включая зависимости aircraft. Подготовить совпадающий bootstrap отдельно; не менять stable профиль и release baseline во время подготовки теста. Существующий MineRENT AutoModpack journal/identity сохранять, не подменять локальным journal.
+5. До переключения прочитать и сохранить текущие production значения `server.properties` в закрытом staging на хостинге. Тестовый вариант отличается только целевым `level-name=jem-test-2026-10-20/world`, `gamemode=creative`, `force-gamemode=true` и явно отмеченным тестовым MOTD. Порт, auth, online-mode, whitelist, RCON и остальные настройки не ослаблять; OP всем не выдавать. При таком force-gamemode новый и вернувшийся игрок входит в creative; администратор может временно выдать survival для боя до следующего входа.
+6. Проинвентаризировать mutable state вне world (например, данные модов внутри config). Всё игровое состояние теста должно быть изолировано. Credentials/auth не публиковать и не заменять локальными аккаунтами. Не начинать тест, если владелец внешнего save-path не установлен.
+7. Пользователь сказал, что новый бэкап понадобится позже. Сейчас не создавать; согласовать момент и охват отдельно перед реальным окном переключения. Старый сохранённый runtime при переименовании — средство быстрого возврата, не новая архивная копия.
+
+### Быстро перейти на тест — только по новой команде пользователя
+
+1. До остановки все загрузки/распаковки и проверка manifest закончены. Штатно остановить сервер; дождаться сохранения и полного состояния Stopped. Не применять новые JAR поверх работающего процесса.
+2. По явному уточнению пользователя 20 октября оставить исходный `world` и тестовый `jem-test-2026-10-20/world` на своих местах. После полной остановки изменить только `level-name` на `jem-test-2026-10-20/world`. Не переименовывать и не перемещать оригинальный мир.
+3. Установить проверенный update delta; заменяемые/исключённые runtime JAR переместить в `jem-test-2026-10-20/previous-runtime-mods`, прежние host sources — в `previous-host`, заменяемые скрипты/defaultconfigs — в `previous-runtime`. Установить test properties, сохранив прежний `production-server.properties`. Не переносить local auth/unlimited-wallet state и не менять основной мир или его playerdata.
+4. Запустить dedicated server, убедиться в `Done` и отсутствии loader/channel/world ошибок. Изменение `level-name`/папки само по себе не считается успешным переключением.
+5. Выполнить native `jempack preview`, проверить точный delta и `jempack publish`; дождаться завершения публикации и записать generation/content token. Автогенерацию на старте не включать. Перед допуском игроков иметь matching bootstrap и понятный native путь установки обновы.
+6. При входе игроки получают creative через test properties; тестовое состояние остаётся исключительно в тестовом мире. Не переносить креативные предметы, деньги и прогресс в основной мир.
+
+### Быстро вернуть старую рабочую версию без ожидания исправлений
+
+1. По команде пользователя штатно остановить тест и дождаться Stopped.
+2. Миры не перемещать. Вернуть production `level-name=world`; тестовая копия остаётся в `jem-test-2026-10-20/world`. Исходный мир не запускать до восстановления выбранного matching runtime.
+3. Вернуть сохранённые старые runtime-каталоги, production properties и относящиеся к production внешние saves. Полный runtime возврат нужен вместе с миром: старый мир не открывать случайно обновлёнными модами.
+4. Вернуть записанную исходную клиентскую generation через native rollback, сохранив journal/identity. При несовместимом bootstrap требуется отдельно согласованный matching артефакт; не обещать автоматический downgrade. Запустить сервер и подтвердить обычный мир и исходный игровой режим.
+5. Исправленная обнова остаётся в канонических исходниках и staging; этот временный возврат её не отменяет и не продвигает release baseline.
+
+### Правки после теста и финальная обнова основного мира
+
+- Любая запрошенная после теста правка обновы по умолчанию предназначена также основному серверу. Исправлять canonical owner в `Mods`, `Client/ManagedPack`, общей конфигурации/скриптах и Atlas по действующим правилам, а не только установленный тестовый JAR. Фиксировать commit/hash и точный состав следующей версии.
+- Единственные исключения — явно тестовые creative/force-gamemode/MOTD и диагностические настройки. Они остаются отдельным overlay и не попадают в production.
+- Изменения блоков, инвентарей, казны, убийств боссов, рас/прогресса и прочих SavedData в тестовом мире не являются исправлениями кода. Их не сливать с оригиналом. Если исправление требует миграции production save, подготовить отдельную идемпотентную миграцию владельца; не переносить тестовый `.dat` или chunk.
+- После одобрения тестов и явной команды финального выпуска взять сохранённый основной мир с его реальным прогрессом, применить последнюю исправленную production сборку, соответствующие world/serverconfig изменения и разрешённые миграции. Использовать исходные production настройки Survival; тестовый мир оставить отдельно.
+- Выполнить обычную client-and-server release границу: native publication, matching bootstrap/stable путь, полный кумулятивный friend update со всем kubejs, дата/время и новая baseline только после успешного выпуска. Новый baseline не создаётся на стадии подготовки или тестовой копии.
+- Быстрый путь убирает загрузку мира и JAR из простоя; время штатного сохранения, запуска Forge и применения клиентского пакета всё равно необходимо. Фиксированные секунды не обещаются.
+
 
 ## Combat observation (2026-10-20)
 
