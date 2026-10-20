@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "placeables",
-  "snapshot_sha": "5c6d4d4994d90340ca0fd863b2647dbab084023d",
+  "snapshot_sha": "64122533f7100b0fb57b94deb66600b74536c0df",
   "generation": {
-    "generated_utc": "2026-10-19T08:54:03.175838+00:00",
+    "generated_utc": "2026-10-20T09:55:46.775229+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -9950,6 +9950,44 @@
       "acquisition_routes": [
         "minecraft:dispenser",
         "terralith:dispenser_alt"
+      ]
+    },
+    {
+      "item_id": "minecraft:dragon_head",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "data/skarrier_mobs/recipes/dragon_head_recipe.json"
+      ],
+      "display_name_en_us": "Dragon Head",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/dragon_head_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "minecraft:dragon_head",
+      "placed_registry_ids": [
+        "minecraft:dragon_head"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "skarrier_mobs:dragon_head_recipe"
       ]
     },
     {

@@ -1,0 +1,114 @@
+{
+  "schema_version": 2,
+  "change_id": "excavation-native-batch-wear-20261020",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "enchantments",
+      "value": "jem_pack_core:excavation"
+    }
+  ],
+  "conditions": [
+    {
+      "active": "enchantment present and player not holding Shift",
+      "partial_plane": "Wear proportional to successful native mining-wear requests; requested exact totals apply to nine requests."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_requested_update",
+    "priority": 830
+  },
+  "change": {
+    "summary": "Digger keeps one native 3x3 mining batch with a four-point full-plane wear budget, exact 0/1 wear with Unbreaking III, and shared server/client Shift gating.",
+    "modifiers": [
+      {
+        "property": "excavation.activation",
+        "operation": "replace",
+        "before": "BreakEvent recursively mines neighbors whenever enchantment exists, without Shift suppression.",
+        "after": "One native player mining entry captures a batch; active enchantment and no held Shift enable 3x3; Shift or disabled enchantment uses ordinary 1x1 native mining."
+      },
+      {
+        "property": "excavation.durability",
+        "operation": "replace",
+        "before": "Each native block destroy incurs ordinary tool mining wear, potentially nine for a full 3x3 plane.",
+        "after": "Intercept only normal DiggerItem mining wear on successful removals for this exact player/tool/batch; a complete nine-wear-request plane costs4 without Unbreaking, while Unbreaking III+ costs0 or1 with equal probability (mean0.5). I/II apply vanilla Unbreaking to four-point full-plane budget. Other damage and 1x1 remain vanilla; failed/protected removals do not consume batch mining wear."
+      },
+      {
+        "property": "excavation.highlight",
+        "operation": "replace",
+        "before": "Checks enchantment but does not share Shift state with server area mining.",
+        "after": "Uses same isAreaActive(player) predicate as server: enabled enchantment and no held Shift. Enabled state stays on native item enchantment/NBT synchronization; no new packet or parallel toggle state."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMPackCore ExcavationMining with narrow native mining Mixins",
+    "kind": "bugfix_native_mining_batch",
+    "source_files": [
+      "Mods/JEMPackCore/src/main/java/com/siirio/jempackcore/enchantment/ExcavationEvents.java",
+      "Mods/JEMPackCore/src/main/java/com/siirio/jempackcore/enchantment/ExcavationMining.java",
+      "Mods/JEMPackCore/src/main/java/com/siirio/jempackcore/client/ExcavationHighlight.java",
+      "Mods/JEMPackCore/src/main/java/com/justenoughmods/achievementguide/mixin/ExcavationGameModeMixin.java",
+      "Mods/JEMPackCore/src/main/java/com/justenoughmods/achievementguide/mixin/ExcavationDiggerItemMixin.java",
+      "Mods/JEMPackCore/src/main/java/com/justenoughmods/achievementguide/mixin/ExcavationItemStackMixin.java",
+      "Mods/JEMPackCore/src/main/resources/jem_pack_core.mixins.json",
+      "Client/ManagedPack/mods/jem-pack-core-2.0.0-dev.jar"
+    ]
+  },
+  "rationale": {
+    "purpose": "Requested 3x3 wear and accurate preview without duplicate mining or durability systems.",
+    "decision_source": "User requested this behavior, initially preparation only; subsequent user authorization requests actual local Server and Client application. Implementation seams chosen by Codex."
+  },
+  "introduced": {
+    "date": "2026-10-20",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "Digger keeps one native 3x3 mining batch with a four-point full-plane wear budget, exact 0/1 wear with Unbreaking III, and shared server/client Shift gating.",
+    "source_files": [
+      "Mods/JEMPackCore/src/main/java/com/siirio/jempackcore/enchantment/ExcavationEvents.java",
+      "Mods/JEMPackCore/src/main/java/com/siirio/jempackcore/enchantment/ExcavationMining.java",
+      "Mods/JEMPackCore/src/main/java/com/siirio/jempackcore/client/ExcavationHighlight.java",
+      "Mods/JEMPackCore/src/main/java/com/justenoughmods/achievementguide/mixin/ExcavationGameModeMixin.java",
+      "Mods/JEMPackCore/src/main/java/com/justenoughmods/achievementguide/mixin/ExcavationDiggerItemMixin.java",
+      "Mods/JEMPackCore/src/main/java/com/justenoughmods/achievementguide/mixin/ExcavationItemStackMixin.java",
+      "Mods/JEMPackCore/src/main/resources/jem_pack_core.mixins.json",
+      "Client/ManagedPack/mods/jem-pack-core-2.0.0-dev.jar"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "Digger keeps one native 3x3 mining batch with a four-point full-plane wear budget, exact 0/1 wear with Unbreaking III, and shared server/client Shift gating.",
+      "source_files": [
+        "Mods/JEMPackCore/src/main/java/com/siirio/jempackcore/enchantment/ExcavationEvents.java",
+        "Mods/JEMPackCore/src/main/java/com/siirio/jempackcore/enchantment/ExcavationMining.java",
+        "Mods/JEMPackCore/src/main/java/com/siirio/jempackcore/client/ExcavationHighlight.java",
+        "Mods/JEMPackCore/src/main/java/com/justenoughmods/achievementguide/mixin/ExcavationGameModeMixin.java",
+        "Mods/JEMPackCore/src/main/java/com/justenoughmods/achievementguide/mixin/ExcavationDiggerItemMixin.java",
+        "Mods/JEMPackCore/src/main/java/com/justenoughmods/achievementguide/mixin/ExcavationItemStackMixin.java",
+        "Mods/JEMPackCore/src/main/resources/jem_pack_core.mixins.json",
+        "Client/ManagedPack/mods/jem-pack-core-2.0.0-dev.jar"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "mining",
+      "durability",
+      "enchantments",
+      "block_break_protection",
+      "drops",
+      "tool_break_lifecycle",
+      "client_highlight",
+      "native_itemstack_sync"
+    ],
+    "relations": [],
+    "notes": "Local development distribution only. Stable profile, MineRENT and immutable release baseline are unchanged. Runtime player acceptance remains pending.",
+    "unresolved": [
+      "Gameplay acceptance and interaction with every third-party tool remain unexercised."
+    ]
+  }
+}

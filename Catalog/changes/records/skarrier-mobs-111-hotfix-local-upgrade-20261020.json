@@ -1,0 +1,101 @@
+{
+  "schema_version": 2,
+  "change_id": "skarrier-mobs-111-hotfix-local-upgrade-20261020",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "skarrier_mobs"
+    }
+  ],
+  "conditions": [
+    {
+      "scope": "ordinary local server and managed client; eventual native AutoModpack application"
+    }
+  ],
+  "precedence": {
+    "layer": "jem_requested_update",
+    "priority": 830
+  },
+  "change": {
+    "summary": "Upgrade local managed Skarrier Mobs from1.0.6 to official1.1.1 hotfix file9164445; same original JAR on both client and server.",
+    "modifiers": [
+      {
+        "property": "distribution.skarrier_version",
+        "operation": "replace",
+        "before": {
+          "version": "1.0.6",
+          "sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c"
+        },
+        "after": {
+          "version": "1.1.1",
+          "file_id": 9164445,
+          "sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
+          "release": "Beta hotfix"
+        },
+        "notes": "Official original bytes. New registrations/resources/packet classes come from upstream; JEM does not duplicate them. Carnager direct API signature retained."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Official Skarrier Mobs artifact and JEMServer compile dependency",
+    "kind": "upstream_mod_upgrade",
+    "source_files": [
+      "Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "Mods/JEMServer/build.gradle",
+      "Docs/prepared-updates/2026-10-20-digger-skarrier-aircraft/skarrier/manifest.json",
+      "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar"
+    ]
+  },
+  "rationale": {
+    "purpose": "User requested newest compatible Forge1.20.1 release. Matching sides required despite upstream unchanged channel/version string.",
+    "decision_source": "User requested this behavior, initially preparation only; subsequent user authorization requests actual local Server and Client application. Implementation seams chosen by Codex."
+  },
+  "introduced": {
+    "date": "2026-10-20",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "Upgrade local managed Skarrier Mobs from1.0.6 to official1.1.1 hotfix file9164445; same original JAR on both client and server.",
+    "source_files": [
+      "Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "Mods/JEMServer/build.gradle",
+      "Docs/prepared-updates/2026-10-20-digger-skarrier-aircraft/skarrier/manifest.json",
+      "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "Upgrade local managed Skarrier Mobs from1.0.6 to official1.1.1 hotfix file9164445; same original JAR on both client and server.",
+      "source_files": [
+        "Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar",
+        "Mods/JEMServer/build.gradle",
+        "Docs/prepared-updates/2026-10-20-digger-skarrier-aircraft/skarrier/manifest.json",
+        "Client/ManagedPack/mods/skarrier_mobs-1.0.6-forge-1.20.1.jar",
+        "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "entities",
+      "bosses",
+      "loot",
+      "recipes",
+      "effects",
+      "progression",
+      "worldgen",
+      "network_compatibility",
+      "acquisition",
+      "atlas"
+    ],
+    "relations": [],
+    "notes": "Local development distribution only. Stable profile, MineRENT and immutable release baseline are unchanged. Runtime player acceptance remains pending.",
+    "unresolved": [
+      "No runtime gameplay acceptance. Existing generated terrain unchanged; new placements affect future generation."
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "localDate": "2026-10-20T15:06:07.843181+05:00",
+  "scope": "ordinary local Server, canonical ManagedPack, native test jem; stable and MineRENT untouched",
+  "serverPid": 33648,
+  "address": "localhost:31604",
+  "tcpAvailable": true,
+  "builds": {
+    "JEMPackCore": "jar + reobfJar successful",
+    "JEMServer": "full jarJar + reobfJarJar successful against Skarrier1.1.1"
+  },
+  "artifacts": {
+    "mods/jem-pack-core-2.0.0-dev.jar": "a7f681ef74a1e5cc7d7c635afc46fc1d5193f2235dc5d6be87346fbbc8c15522",
+    "mods/jem-server-2.0.0-dev.jar": "83140de248095ff428e91e4405de40b8a15e60152ca16f3c603ddb6a5c986a72",
+    "mods/skarrier_mobs-1.1.1-forge-1.20.1.jar": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
+    "config/paxi/resourcepack_load_order.json": "7cd92a07775d3d70549f3b0775e5fdefe9683e4e5502faf3ccdf1bda1a0cdeaa",
+    "config/paxi/resourcepacks/Create Immersive Aircrafts Resource Pack 1.20.1 - 3.0.zip": "6474ca9582bccb35c96851f5c8f51657fe0d09b139004144c30cad88264d2fea"
+  },
+  "packSyncPublication": {
+    "published": true,
+    "journalSequence": 47,
+    "publishedManifestSha1": "112258b52f7f1427d48d46ed7b76e938ba3c2d4c",
+    "stagedManifestSha1": "112258b52f7f1427d48d46ed7b76e938ba3c2d4c"
+  },
+  "publishedContentToken": "85e8b2a533d66a90721f1d3d97d04d740185b58a",
+  "installedContentToken": "85e8b2a533d66a90721f1d3d97d04d740185b58a",
+  "pendingTransaction": false,
+  "nativeRecovery": "Initial incoming -> active rename deferred; native recoverLatest completed SUCCESS without pointer edits or raw-copy installation. Exact denying actor unestablished.",
+  "connectionInvestigation": {
+    "fatalTime": "2026-10-20 14:39:44",
+    "chain": "TCP refusal <- server stopped <- DailyTaxService.observe -> TaxDurability.save -> native Windows rename access denied5",
+    "status": "in testing; ordinary server restarted and accepts TCP; no speculative tax code",
+    "unresolved": "OS actor denying historical replacement not established; no causal equivalence claimed with client directory rename"
+  },
+  "verification": "Manual source/native-bytecode review; production builds; ordinary server startup and TCP availability; native publication/application hashes and transaction completion. No automated tests, scenarios or client game launch.",
+  "atlas": "Full snapshot regenerated for actual installed artifacts; validator passed. Six unrelated preexisting uncovered source paths remain outside this task; unrelated economy coverage CSV preserved.",
+  "preservedUnmanagedAircraftZip": "Existing test jem gameDir optional ZIP retained outside native ownership; required Paxi copy has identical bytes and activates independently."
+}

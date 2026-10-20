@@ -1,0 +1,62 @@
+{
+  "method": "Read exact ZIP contents, META-INF/mods.toml, javap -p -c without class loading or runtime execution",
+  "registrations": "String literals passed to register in each init class static initializer; item count excludes block-items registered by block owner; resource categories can overlap",
+  "directJemJavaReference": {
+    "file": "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BloodMoon.java",
+    "class": "net.mcreator.skarriermobs.procedures.CarnagerEntitySpawningConditionProcedure",
+    "oldAndNewSignature": "public static boolean execute(net.minecraft.world.level.LevelAccessor);"
+  },
+  "buildDependencyStillInstalled": "Mods/JEMServer/build.gradle: compileOnly instancePath/mods/skarrier_mobs-1.0.6-forge-1.20.1.jar",
+  "channel": {
+    "old": "skarrier_mobs:skarrier_mobs",
+    "new": "skarrier_mobs:skarrier_mobs",
+    "protocolOld": "1",
+    "protocolNew": "1",
+    "newNetworkClasses": [
+      "SemiLivingBootsDashKeybindMessage",
+      "SkarrierMobsModVariables$PlayerVariablesSyncMessage",
+      "WorkshopGUIButtonMessage"
+    ],
+    "newRegistrationConfirmed": "SkarrierMobsModVariables now registers PlayerVariablesSyncMessage after SavedDataSyncMessage"
+  },
+  "savedWorldVariables": {
+    "retained": [
+      "WitherDefeated"
+    ],
+    "addedDefaultFalse": [
+      "GraveConstructDefeated",
+      "ForsakenDefeated",
+      "EndorahDefeated"
+    ]
+  },
+  "worldgenPlacement": {
+    "stone_golem_circle": {
+      "old": {
+        "type": "minecraft:random_spread",
+        "spacing": 30,
+        "separation": 20,
+        "salt": 518608786
+      },
+      "new": {
+        "type": "minecraft:random_spread",
+        "spacing": 26,
+        "separation": 18,
+        "salt": 518608786
+      }
+    },
+    "tunnel_gore_lair_x": {
+      "old": {
+        "type": "minecraft:random_spread",
+        "spacing": 20,
+        "separation": 11,
+        "salt": 489090257
+      },
+      "new": {
+        "type": "minecraft:random_spread",
+        "spacing": 22,
+        "separation": 12,
+        "salt": 489090257
+      }
+    }
+  }
+}

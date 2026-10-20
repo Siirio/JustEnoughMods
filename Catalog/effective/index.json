@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "fa8c8c1c62088e9f08bdce799a10259670d662bcf6d60cba87bbeb8116eae7a6",
+  "change_records_sha256": "6b3e0aa3e1556e5bbca3956078d2ce66c654bfe4cd034992a12cd4b39495d616",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -16,6 +16,21 @@
   },
   "changes": [
     {
+      "change_id": "aircraft-resourcepack-native-autoload-20261020",
+      "status": "active",
+      "summary": "Use existing Paxi loader to enable the existing Create Immersive Aircrafts Resource Pack automatically after native managed download.",
+      "record": "Catalog/changes/records/aircraft-resourcepack-native-autoload-20261020.json",
+      "selectors": [
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "immersive_aircraft"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 48
+    },
+    {
       "change_id": "atlas.static-snapshot-provenance",
       "status": "active",
       "summary": "Static Atlas snapshot reports Forge version from actual Server launcher and describes runtime-capture import boundaries accurately; no gameplay changes.",
@@ -28,7 +43,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32271
+      "potential_static_target_count": 32478
     },
     {
       "change_id": "backpack.augment-bay-and-workbench",
@@ -82,7 +97,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17050
+      "potential_static_target_count": 17187
     },
     {
       "change_id": "client.preferences-and-carryon-removal",
@@ -165,7 +180,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 29185
+      "potential_static_target_count": 29327
     },
     {
       "change_id": "economy.reviewed-item-policies",
@@ -326,6 +341,21 @@
       "potential_static_target_count": 1
     },
     {
+      "change_id": "excavation-native-batch-wear-20261020",
+      "status": "active",
+      "summary": "Digger keeps one native 3x3 mining batch with a four-point full-plane wear budget, exact 0/1 wear with Unbreaking III, and shared server/client Shift gating.",
+      "record": "Catalog/changes/records/excavation-native-batch-wear-20261020.json",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "enchantments",
+          "value": "jem_pack_core:excavation"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 1
+    },
+    {
       "change_id": "final-races-settlements-server-migration",
       "status": "active",
       "summary": "Promote final sandbox Races and Settlements to the ordinary local server and native managed client generation; remove crossed race UI elements for all five origins.",
@@ -402,7 +432,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1593
+      "potential_static_target_count": 1622
     },
     {
       "change_id": "hosted-fight-chat-links",
@@ -416,7 +446,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1593
+      "potential_static_target_count": 1622
     },
     {
       "change_id": "hosted.structural-arena-volume",
@@ -430,7 +460,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1593
+      "potential_static_target_count": 1622
     },
     {
       "change_id": "login.native-respawn-before-authentication",
@@ -863,7 +893,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 29185
+      "potential_static_target_count": 29327
     },
     {
       "change_id": "settlements.city-sidebar-tab",
@@ -1002,7 +1032,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 13728
+      "potential_static_target_count": 13762
     },
     {
       "change_id": "settlements.fed-recovery-readable-native-ui",
@@ -1076,7 +1106,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 12148
+      "potential_static_target_count": 12153
     },
     {
       "change_id": "settlements.isometry-local-host-masking",
@@ -1090,7 +1120,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 12135
+      "potential_static_target_count": 12140
     },
     {
       "change_id": "settlements.migration-completeness",
@@ -1154,7 +1184,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 12147
+      "potential_static_target_count": 12152
     },
     {
       "change_id": "settlements.recruit-needs-camera-cutaway-hire-gui",
@@ -1253,7 +1283,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17062
+      "potential_static_target_count": 17199
     },
     {
       "change_id": "settlements.sandbox-build-boundary",
@@ -1378,7 +1408,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1716
+      "potential_static_target_count": 1729
     },
     {
       "change_id": "settlements.update-1",
@@ -1481,6 +1511,21 @@
       "potential_static_target_count": 12
     },
     {
+      "change_id": "skarrier-mobs-111-hotfix-local-upgrade-20261020",
+      "status": "active",
+      "summary": "Upgrade local managed Skarrier Mobs from1.0.6 to official1.1.1 hotfix file9164445; same original JAR on both client and server.",
+      "record": "Catalog/changes/records/skarrier-mobs-111-hotfix-local-upgrade-20261020.json",
+      "selectors": [
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "skarrier_mobs"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 450
+    },
+    {
       "change_id": "smp.market-profile-consolidation",
       "status": "active",
       "summary": "JEM SMP consolidates its custom Market, Wallet, profiles, navigation, read-only settlement/recruit projections and operator event commands under their canonical server owners.",
@@ -1564,7 +1609,7 @@
           "value": "c:bosses"
         }
       ],
-      "potential_static_target_count": 1593
+      "potential_static_target_count": 1622
     },
     {
       "change_id": "xaero.native-optional-overlays",
@@ -1598,16 +1643,20 @@
     "Catalog/views/power/durability.json": "24585a69e0334928957c814b4f54f07b6e4fe3d082b16de7e2074cad41ef676e",
     "Catalog/views/power/power-ladder.json": "935b132a5070074a4c537557c1f65b30d4942a2e3b9e4da48241080a8e2dbeda",
     "Client/ManagedPack/config/irons_spellbooks-client.toml": "1f2f0ebdd83a01b9a8452fd08ac5029fa1f11eb0ffaa18e38c5fe11246e42245",
+    "Client/ManagedPack/config/paxi/resourcepack_load_order.json": "7cd92a07775d3d70549f3b0775e5fdefe9683e4e5502faf3ccdf1bda1a0cdeaa",
+    "Client/ManagedPack/config/paxi/resourcepacks/Create Immersive Aircrafts Resource Pack 1.20.1 - 3.0.zip": "6474ca9582bccb35c96851f5c8f51657fe0d09b139004144c30cad88264d2fea",
     "Client/ManagedPack/config/quickskin-client.json": "42fa8b6ef2cac9b0795d3fefc585bbff66c7c0cfef2c11ab78c383d108cd62ea",
     "Client/ManagedPack/config/quickskin_preferences.json": "8710941f51651e91a63125a6ccddf18407900900f55e6b127f45b9a145cb933f",
     "Client/ManagedPack/config/vinery.toml": "060af71b78a7d7dbd937deeb4709ea98f1dadbb7577eaf452f7c406d388de00f",
     "Client/ManagedPack/kubejs/server_scripts/jem/economy_recipe_guards.js": "0dad22168c091d46b4a010ffc65819b5177685c7751d70accefa1027527ea62c",
     "Client/ManagedPack/mods/jem-economy-1.3.0.jar": "3af3c047e14d9913fafd04130a8ad1cfec227fffa30dc0dd221fb4e849fe4950",
+    "Client/ManagedPack/mods/jem-pack-core-2.0.0-dev.jar": "a7f681ef74a1e5cc7d7c635afc46fc1d5193f2235dc5d6be87346fbbc8c15522",
     "Client/ManagedPack/mods/jem-roles-2.0.0.jar": "b22a7a3abb4253d98b5e439a5f997314f4482ea5f7ac0053e310844dfc28740a",
-    "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar": "57d427a3d300c203e7bb874f3dd3ee643edb44f10164d74fc65b88c8c6eed489",
+    "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar": "83140de248095ff428e91e4405de40b8a15e60152ca16f3c603ddb6a5c986a72",
     "Client/ManagedPack/mods/jem-settlements-2.1.0.jar": "d7af4c9e209d4f690cfd8af226375e7cfba1f7a3996b392b775361bb5ab87b58",
     "Client/ManagedPack/mods/jemcompat-3.7.0.jar": "3b4af7a9aeed5e01afa243f8f87ecd5f33fd3bfc20b7d7b0da7f9882401bf4ee",
-    "Docs/DEVELOPMENT.md": "4362874c301553a7b730c7fd4693e4ef2b1d3425d4189171ee20f966eb9cedc9",
+    "Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
+    "Docs/DEVELOPMENT.md": "1c69bce1b5c057aed808a50ea85f20c9b1b87075065616f81e1a4f55d17ba8e9",
     "Docs/power-system/Allies.md": "829e010d57941891c31134a0707b3e74f2f6d943f9c57325f4f903c341ed9875",
     "Docs/power-system/Armor.md": "168c85fba7fcd6362c52085f9ba8aae13454548bce1a55c6d7caf15180608f12",
     "Docs/power-system/Balance.md": "ff41e05a33378f6115934a72599b1a7aeeabd3918f72fd103142aee542a641a1",
@@ -1618,6 +1667,7 @@
     "Docs/power-system/NUMERIC_TABLES.md": "328838a5d28016b792c136f3e4642f3400c8785f2f9ddcdac4246a3ba53fb114",
     "Docs/power-system/README.md": "ca69c9b298c3c62c4e48f71c1d39b1f9152fcef62a3f7d02983968c75d9c03f1",
     "Docs/power-system/Weapons.md": "c63a055513709e21af477ec465fcb28941255999d571907d27c34100d534f0e7",
+    "Docs/prepared-updates/2026-10-20-digger-skarrier-aircraft/skarrier/manifest.json": "42e3c46095986c686e5582a746f3bc96de8376ff3db03e4591c1971db1fa2406",
     "Docs/races/VFX_REFERENCE_BRIEFS.md": "e6e6f81334f8fdaf0b5f2197562ee4afc0eb8c2e2b1e6cf3d33d56c2e2233c87",
     "Docs/races/assets/guardian-dome/PLAN.md": "8519ffb62d2ed6f61ccb8e21cb907cd2a1a0563f1a839ca1afb40b17b1dc5f52",
     "Docs/races/assets/guardian-dome/author.py": "7b644e0ccc1c13820f09262a43d573ea7489ff780133375a01b05146185504c4",
@@ -1633,7 +1683,7 @@
     "Mods/JEMBootstrap/prepare.py": "e582eb57b8363b93121a03c291e93ffb4cd082bf73904390cf9700a4a9d77d2a",
     "Mods/JEMBootstrap/upstream.json": "0385ee945a3c54fc73f2b782f20d5e8bf022feb28332930752440f59bc4da022",
     "Mods/JEMCompat/build.gradle": "d1768cf2e8fbbe648a5b7f54005d213db6f6fe79312de30895008af19dab16ce",
-    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java": "45d48d2ea499af705721007fbc09f097337d6586305f69b957f2a5a4e890afe3",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java": "97deefc2386953f6fb30349ef95f4711b69510b670b1b90f0876cd540b6bcb59",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/CuriosEquipment.java": "52e8d713c9881ee1eadee81684a79754106fd3e70249b5697b79c810399d3ec4",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java": "be01dce9803e85ae7cd51f5bacfd4d71eae6244ccf03d09522eb9ba70d3a7bb2",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiCatalog.java": "14bcf20eb72cb3c1319857d8392c892d7b2aa98e1c148adc0c643048806f66b8",
@@ -1674,7 +1724,7 @@
     "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/en_us.json": "2d29dc17a786599aa4eb8a388162246f0fca9c4ef1e01d6cab1dcabff7bb04c2",
     "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/ru_ru.json": "44592f3eea09f5bb58018e2b3d0e344cf3b2b923d3c8b158e5b3ff0b52f6b0d8",
     "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/jei/cooking_catalysts.json": "5a7463634353f887ac45675092f022f3b37590d34ff472e31d6e344e24c3ed9e",
-    "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json": "ec4359f371356abee7ee168d001126936b15ca3ac80f6747024a91c41fc38c6b",
+    "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json": "cfbd73457891d195c70631cb805d03d124e23e8c730eabfd3799425ab30b2e8b",
     "Mods/JEMCurrencyCore/build.gradle": "4e05e22210afa95d41fd44c841aea7cdf73efef9ddc76fb7681c328b9eb03369",
     "Mods/JEMCurrencyCore/embed.gradle": "06cd052d7d1fa7e97b8a9ac169de89c00c5c2634efb770c2e2ec422382481ddb",
     "Mods/JEMCurrencyCore/gradle.properties": "58a820524b1197f432cc0720f670689fa7f634b2fb68554c581b8685a7ae50fc",
@@ -1799,6 +1849,13 @@
     "Mods/JEMMenuSupport/build.gradle": "89a823ef505dc08fea77beee59c0d747cc74342de5e8f1349606c3c983fa767e",
     "Mods/JEMMenuSupport/embed.gradle": "e2e3fccf69942bb4917939085c781ab6a06150cf01bac5e08c28c9ef079a63e6",
     "Mods/JEMMenuSupport/src/main/java/com/siirio/jemmenus/client/VanillaGuiPlayers.java": "029493498ed5d16894af8946a4ef279cfce44a92a489ceca8c7c56b546f358d1",
+    "Mods/JEMPackCore/src/main/java/com/justenoughmods/achievementguide/mixin/ExcavationDiggerItemMixin.java": "60b3fbb58750cb5063aa4d481817572573bb54338c6036d995a68682a043527a",
+    "Mods/JEMPackCore/src/main/java/com/justenoughmods/achievementguide/mixin/ExcavationGameModeMixin.java": "83b6c168cbe3226a713d094795dddbaf0c080785a9f95770038c69c90ea765a9",
+    "Mods/JEMPackCore/src/main/java/com/justenoughmods/achievementguide/mixin/ExcavationItemStackMixin.java": "f5d1312019680294d1049578e604bc909fca105178b3b20595d6446f978be0f1",
+    "Mods/JEMPackCore/src/main/java/com/siirio/jempackcore/client/ExcavationHighlight.java": "b9568a5aa33343201bf29c2e588660f3e5a63c6ea57e4d3837a59da1c78a2498",
+    "Mods/JEMPackCore/src/main/java/com/siirio/jempackcore/enchantment/ExcavationEvents.java": "149f50e55978ea017234e592cd5a7af2c5e13dfa514dcf657813811a97bca520",
+    "Mods/JEMPackCore/src/main/java/com/siirio/jempackcore/enchantment/ExcavationMining.java": "b23fca3bb2735731c5fab0d9273fa404bc67082d7195faba1ed460e42542f0b3",
+    "Mods/JEMPackCore/src/main/resources/jem_pack_core.mixins.json": "232f6e11be9eaab7de88671c09c0dcf10bc47f481ac95764d78a779e741e3a0d",
     "Mods/JEMProfessions/build.gradle": "281a8be70c903d0d489513d5ac760f69856b9193b05e35b176149125fff301c5",
     "Mods/JEMProfessions/prepare-sandbox-data.py": "53329ec0252d0bea01093ccc9c1c51067297209dc8ab3e2c56cb44a5fcc62778",
     "Mods/JEMProfessions/settings.gradle": "3d75f9a604a31ced72c0209633689eb42ab9583a27cb7c9ca5b7098ad77fdb7e",
@@ -1912,7 +1969,7 @@
     "Mods/JEMRoles/src/main/resources/data/forge/loot_modifiers/global_loot_modifiers.json": "23843003d453647cbd47a508f3eb836454dc899ed8ea112bcadd40505209f057",
     "Mods/JEMRoles/src/main/resources/data/jem_roles/loot_modifiers/piglin_fortune.json": "904633681f1e8839a632c1d2b95ad71ce5127e0a7684ace52ff1938d3b7c20ab",
     "Mods/JEMRoles/src/main/resources/jem_roles.mixins.json": "38759916f300caea40d65e141e64b23b4cfc482fc13a003a08b8fde1bbb0d00e",
-    "Mods/JEMServer/build.gradle": "6eb67c8573b08f5cfb9b6b856ede30e6cff9ba5a1a77f43f0a846fc1b63489bd",
+    "Mods/JEMServer/build.gradle": "bbd222f0ec5aacd4d4752274e6fe7e6957956ee75c938f079686239145268060",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/DeathHistory.java": "3db9cde1b59ae7bef00278fcd9e4287f8ccce693227a9ec61e726da1ab367616",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/JemServer.java": "772446314505e11819ec6f0e6d8f751234d81bf856af0a0967505d50a58aeabb",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/Landmarks.java": "9f473bf8321a286f2f7fd3e9a589dbb5db56259a31dd512d2d7184b01e2b4ed7",

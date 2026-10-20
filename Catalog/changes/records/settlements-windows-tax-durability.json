@@ -37,14 +37,14 @@
   },
   "cause": {
     "owner": "JEMSettlements payroll TaxDurability",
-    "kind": "windows_existing_file_replacement",
+    "kind": "windows_replacement_denied_actor_unresolved",
     "source_files": [
       "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/TaxDurability.java"
     ]
   },
   "rationale": {
     "purpose": "Restore local server availability after the observed save crash.",
-    "decision_source": "User cannot connect to local server. Codex traced actual14:01:43 crash to Windows atomic replacement, verified writable regular target and identical shutdown-written data/tmp hashes, and chose native rename using the existing Minecraft JNA dependency."
+    "decision_source": "User cannot connect to local server. Codex traced actual14:01:43 crash to Windows atomic replacement, verified writable regular target and identical shutdown-written data/tmp hashes, and chose native rename using the existing Minecraft JNA dependency. Later evidence correction: at14:39:44 native MoveFileEx also failed with Windows error5, so Java replacement semantics alone do not establish the complete causal explanation. No TaxDurability code was changed in the current prompt."
   },
   "introduced": {
     "date": "2026-10-20",
@@ -59,6 +59,16 @@
       "action": "fix",
       "summary": "Preserve tax intent/payment/ack saves on Windows by requesting native same-volume replace-existing with write-through, then verifying the complete NBT root.",
       "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/TaxDurability.java"
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "evidence_correction",
+      "summary": "Later14:39:44 native MoveFileEx error5 disproves Java replacement semantics as a complete cause. Keep conditional/in testing; OS denying actor unresolved. No tax source modification or speculative fix in this prompt.",
+      "source_files": [
+        "Docs/prepared-updates/2026-10-20-digger-skarrier-aircraft/README.md",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/TaxDurability.java"
       ]
     }
@@ -77,11 +87,15 @@
       "Minecraft already provides JNAplatform5.12.1"
     ],
     "notes": [
-      "Five Whys: connection refused -> server terminated -> daily-tax save threw -> Windows atomic move refused existing target -> save owner unconditionally used a Java atomic replacement that ignores REPLACE_EXISTING semantics.",
-      "Real I/O failures remain fatal/pending; no tax state discarded."
+      "Corrected causal chain, status in testing: client connection refused after server stopped -> daily-tax durable-save path failed -> native MoveFileEx replacement was denied with Windows error5 at14:39:44 -> intended save could not finish -> which Windows process, sharing restriction, security policy or other OS actor denied replacement is unresolved. The later watchdog crash is secondary.",
+      "The prior Five Whys ending at Java atomic replacement semantics was incomplete: later failure used explicit native REPLACE_EXISTING and WRITE_THROUGH. Existing permissions, free space and closed streams do not prove the denying actor. Do not treat the current native API choice as a verified resolution.",
+      "No tax source changes, new fallback, hidden retry, data discard or altered money/ack ordering were added in this prompt. Restart restored availability; durable tax-boundary acceptance remains pending.",
+      "Native client incoming-to-active rename was also deferred in this session. This is additional filesystem-replacement evidence, not proof that both failures share one denying actor."
     ],
     "unresolved": [
-      "Tax boundary execution and player acceptance remain unverified; status in testing."
+      "Concrete Windows actor or condition denying native replacement remains unresolved.",
+      "Tax boundary execution and player acceptance remain unverified; status in testing.",
+      "Whether the native client rename deferral and server tax replacement denial share one underlying OS cause is unproved."
     ]
   }
 }

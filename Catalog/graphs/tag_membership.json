@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "5c6d4d4994d90340ca0fd863b2647dbab084023d",
+  "snapshot_sha": "64122533f7100b0fb57b94deb66600b74536c0df",
   "tags": {
     "accessories:item/belt": [
       "minecraft:lantern",
@@ -12393,6 +12393,14 @@
     ],
     "forge:items/armors": [
       "skarrier_mobs:crushing_pauldron_chestplate",
+      "skarrier_mobs:deep_alloy_armor_boots",
+      "skarrier_mobs:deep_alloy_armor_chestplate",
+      "skarrier_mobs:deep_alloy_armor_helmet",
+      "skarrier_mobs:deep_alloy_armor_leggings",
+      "skarrier_mobs:invulnerite_armor_boots",
+      "skarrier_mobs:invulnerite_armor_chestplate",
+      "skarrier_mobs:invulnerite_armor_helmet",
+      "skarrier_mobs:invulnerite_armor_leggings",
       "skarrier_mobs:quake_boots_boots",
       "skarrier_mobs:resisteel_boots",
       "skarrier_mobs:resisteel_chestplate",
@@ -13372,8 +13380,12 @@
       "vinery:stripped_dark_cherry_wood"
     ],
     "forge:items/swords": [
+      "skarrier_mobs:behemoth_blade",
+      "skarrier_mobs:blitzblade",
       "skarrier_mobs:invulnerite_sword",
-      "skarrier_mobs:resisteel_sword"
+      "skarrier_mobs:resisteel_sword",
+      "skarrier_mobs:voracious_blade",
+      "skarrier_mobs:wretched_claymore"
     ],
     "forge:items/tomato_soups": [
       "farm_and_charm:simple_tomato_soup"
@@ -13430,7 +13442,8 @@
       "block_factorys_bosses:ice_gauntlet",
       "cataclysm:azure_sea_shield",
       "cataclysm:black_steel_targe",
-      "cataclysm:bulwark_of_the_flame"
+      "cataclysm:bulwark_of_the_flame",
+      "skarrier_mobs:forlorn_barrier"
     ],
     "forge:items/tools/swords": [
       "cataclysm:athame",
@@ -13440,7 +13453,9 @@
       "minecraft:iron_sword",
       "minecraft:netherite_sword",
       "minecraft:stone_sword",
-      "minecraft:wooden_sword"
+      "minecraft:wooden_sword",
+      "skarrier_mobs:behemoth_blade",
+      "skarrier_mobs:wretched_claymore"
     ],
     "forge:items/tools/tridents": [
       "cataclysm:coral_bardiche",
@@ -28180,6 +28195,7 @@
       "skarrier_mobs:tangled_wrong_deepslate_ore_emerald",
       "skarrier_mobs:tangled_wrong_deepslate_ore_gold",
       "skarrier_mobs:tangled_wrong_deepslate_ore_invulnerite",
+      "skarrier_mobs:void_scale_block",
       "skarrier_mobs:wrong_deepslate",
       "skarrier_mobs:wrong_deepslate_brick_slab",
       "skarrier_mobs:wrong_deepslate_brick_stairs",
@@ -32591,7 +32607,12 @@
       "netherexp:shotgun_explosion",
       "primal:chomp_trap",
       "primal:shark_tooth",
+      "skarrier_mobs:acidification",
+      "skarrier_mobs:annihilated",
+      "skarrier_mobs:burning_mind",
+      "skarrier_mobs:contagion_damage",
       "skarrier_mobs:dragger_web",
+      "skarrier_mobs:hemorrhaged",
       "skarrier_mobs:tunnel_gore_bite"
     ],
     "minecraft:damage_type/bypasses_cooldown": [
@@ -32610,6 +32631,10 @@
     ],
     "minecraft:damage_type/bypasses_effects": [
       "minecraft:starve",
+      "skarrier_mobs:annihilated",
+      "skarrier_mobs:burning_mind",
+      "skarrier_mobs:endorah_fire",
+      "skarrier_mobs:hemorrhaged",
       "skarrier_mobs:tunnel_gore_bite"
     ],
     "minecraft:damage_type/bypasses_enchantments": [
@@ -32620,6 +32645,10 @@
       "netherexp:jackhammer",
       "netherexp:shotgun_explosion",
       "netherexp:shotgun_pellet",
+      "skarrier_mobs:annihilated",
+      "skarrier_mobs:burning_mind",
+      "skarrier_mobs:contagion_damage",
+      "skarrier_mobs:hemorrhaged",
       "skarrier_mobs:tunnel_gore_bite"
     ],
     "minecraft:damage_type/bypasses_invulnerability": [
@@ -32642,6 +32671,11 @@
       "minecraft:falling_stalactite",
       "minecraft:sulfur_cube_hot",
       "netherexp:shotgun_explosion",
+      "skarrier_mobs:acidification",
+      "skarrier_mobs:annihilated",
+      "skarrier_mobs:burning_mind",
+      "skarrier_mobs:contagion_damage",
+      "skarrier_mobs:hemorrhaged",
       "skarrier_mobs:tunnel_gore_bite",
       "true_ending:mob_attack_pierce_shield"
     ],
@@ -32820,6 +32854,7 @@
       "minecraft:arrow",
       "minecraft:spectral_arrow",
       "netherexp:phasmo_arrow",
+      "skarrier_mobs:void_arrow_projectile",
       "tide:star_arrow"
     ],
     "minecraft:entity_types/axolotl_always_hostiles": [
@@ -33035,7 +33070,8 @@
       "minecraft:small_fireball",
       "minecraft:snowball",
       "minecraft:trident",
-      "minecraft:wither_skull"
+      "minecraft:wither_skull",
+      "skarrier_mobs:grave_skull"
     ],
     "minecraft:entity_types/inverted_healing_and_harm": [
       "irons_spellbooks:dead_king"
@@ -33390,6 +33426,7 @@
       "minecraft:tipped_arrow",
       "natures_spirit:cheese_arrow",
       "netherexp:phasmo_arrow",
+      "skarrier_mobs:void_arrow",
       "xtraarrows:apple_arrow",
       "xtraarrows:breeding_arrow",
       "xtraarrows:cupids_arrow",
@@ -33495,6 +33532,8 @@
       "minecraft:netherite_axe",
       "minecraft:stone_axe",
       "minecraft:wooden_axe",
+      "skarrier_mobs:decayerite_axe",
+      "skarrier_mobs:deep_alloy_axe",
       "skarrier_mobs:invulnerite_axe",
       "skarrier_mobs:resisteel_axe",
       "skarrier_mobs:serraxe"
@@ -34033,7 +34072,9 @@
       "#irons_spellbooks:staff"
     ],
     "minecraft:items/enchantable/weapon": [
-      "#irons_spellbooks:staff"
+      "#irons_spellbooks:staff",
+      "skarrier_mobs:behemoth_blade",
+      "skarrier_mobs:wretched_claymore"
     ],
     "minecraft:items/fence_gates": [
       "alexscaves:pewen_fence_gate",
@@ -34227,6 +34268,8 @@
       "minecraft:netherite_hoe",
       "minecraft:stone_hoe",
       "minecraft:wooden_hoe",
+      "skarrier_mobs:decayerite_hoe",
+      "skarrier_mobs:deep_alloy_hoe",
       "skarrier_mobs:invulnerite_hoe",
       "skarrier_mobs:resisteel_hoe"
     ],
@@ -34608,6 +34651,8 @@
       "minecraft:netherite_pickaxe",
       "minecraft:stone_pickaxe",
       "minecraft:wooden_pickaxe",
+      "skarrier_mobs:decayerite_pickaxe",
+      "skarrier_mobs:deep_alloy_pickaxe",
       "skarrier_mobs:invulnerite_pickaxe",
       "skarrier_mobs:resisteel_pickaxe",
       "unearthed_journey:rock_pick"
@@ -34799,6 +34844,8 @@
       "minecraft:netherite_shovel",
       "minecraft:stone_shovel",
       "minecraft:wooden_shovel",
+      "skarrier_mobs:decayerite_shovel",
+      "skarrier_mobs:deep_alloy_shovel",
       "skarrier_mobs:invulnerite_shovel",
       "skarrier_mobs:resisteel_shovel"
     ],
@@ -35701,10 +35748,14 @@
       "minecraft:netherite_sword",
       "minecraft:stone_sword",
       "minecraft:wooden_sword",
+      "skarrier_mobs:behemoth_blade",
       "skarrier_mobs:blitzblade",
+      "skarrier_mobs:decayerite_sword",
+      "skarrier_mobs:deep_alloy_sword",
       "skarrier_mobs:invulnerite_sword",
       "skarrier_mobs:resisteel_sword",
       "skarrier_mobs:voracious_blade",
+      "skarrier_mobs:wretched_claymore",
       "tide:blazing_swordfish",
       "tide:sailfish",
       "tide:swordfish",
@@ -35892,7 +35943,19 @@
       "minecraft:netherite_chestplate",
       "minecraft:netherite_helmet",
       "minecraft:netherite_leggings",
-      "minecraft:turtle_helmet"
+      "minecraft:turtle_helmet",
+      "skarrier_mobs:deep_alloy_armor_boots",
+      "skarrier_mobs:deep_alloy_armor_chestplate",
+      "skarrier_mobs:deep_alloy_armor_helmet",
+      "skarrier_mobs:deep_alloy_armor_leggings",
+      "skarrier_mobs:invulnerite_armor_boots",
+      "skarrier_mobs:invulnerite_armor_chestplate",
+      "skarrier_mobs:invulnerite_armor_helmet",
+      "skarrier_mobs:invulnerite_armor_leggings",
+      "skarrier_mobs:resisteel_boots",
+      "skarrier_mobs:resisteel_chestplate",
+      "skarrier_mobs:resisteel_helmet",
+      "skarrier_mobs:resisteel_leggings"
     ],
     "minecraft:items/villager_plantable_seeds": [
       "farm_and_charm:barley_seeds",
@@ -45608,6 +45671,9 @@
     "simplytooltips:items/simply_swords_compat": [
       "#simplyswords:uniques"
     ],
+    "skarrier_mobs:blocks/ammonite_brush_usable_on": [
+      "minecraft:gravel"
+    ],
     "skarrier_mobs:blocks/carniflore_spawnable_on": [
       "minecraft:azalea",
       "minecraft:clay",
@@ -45643,6 +45709,11 @@
     ],
     "skarrier_mobs:blocks/harms_tunnel_gore": [
       "minecraft:netherite_block"
+    ],
+    "skarrier_mobs:blocks/ignites_hellamander": [
+      "minecraft:fire",
+      "minecraft:lava",
+      "minecraft:soul_fire"
     ],
     "skarrier_mobs:blocks/mining_noticed_by_tg": [
       "minecraft:deepslate_diamond_ore",
@@ -45700,36 +45771,110 @@
       "skarrier_mobs:wrong_deepslate_ore_emerald",
       "skarrier_mobs:wrong_deepslate_ore_gold"
     ],
+    "skarrier_mobs:damage_type/ranged_damage": [
+      "arrow",
+      "falling_block",
+      "falling_stalactite",
+      "fireball",
+      "lightning_bolt",
+      "mob_projectile",
+      "on_fire",
+      "player_explosion",
+      "skarrier_mobs:spine",
+      "sonic_boom",
+      "thrown",
+      "trident",
+      "unattributed_fireball",
+      "wither_skull"
+    ],
+    "skarrier_mobs:damage_type/triggers_abyssal_touch": [
+      "arrow",
+      "cactus",
+      "dragon_breath",
+      "explosion",
+      "fall",
+      "falling_block",
+      "falling_stalactite",
+      "generic",
+      "hot_floor",
+      "indirect_magic",
+      "lava",
+      "lightning_bolt",
+      "magic",
+      "mob_attack",
+      "mob_attack_no_aggro",
+      "mob_projectile",
+      "player_attack",
+      "skarrier_mobs:endorah_fire",
+      "skarrier_mobs:flore",
+      "sonic_boom",
+      "sweet_berry_bush",
+      "thrown",
+      "trident",
+      "unattributed_fireball",
+      "wither_skull"
+    ],
+    "skarrier_mobs:entity_types/alcaves_forsaken": [
+      "alexscaves:forsaken"
+    ],
     "skarrier_mobs:entity_types/burns_in_daylight": [
-      "skarrier_mobs:breacher",
-      "skarrier_mobs:zombiflore"
+      "skarrier_mobs:breacher"
     ],
     "skarrier_mobs:entity_types/counts_as_mob_in_achievements": [
+      "skarrier_mobs:blare",
       "skarrier_mobs:bowlder",
       "skarrier_mobs:breacher",
       "skarrier_mobs:carnager",
       "skarrier_mobs:carniflore",
+      "skarrier_mobs:crimlin",
+      "skarrier_mobs:dangle",
       "skarrier_mobs:dragger",
+      "skarrier_mobs:eater",
+      "skarrier_mobs:endorah_head_main",
       "skarrier_mobs:flore_head",
+      "skarrier_mobs:gorger",
+      "skarrier_mobs:hellamander",
+      "skarrier_mobs:krill",
       "skarrier_mobs:rager",
+      "skarrier_mobs:slither",
+      "skarrier_mobs:slither_matriarch",
+      "skarrier_mobs:snap",
       "skarrier_mobs:sorcerer",
-      "skarrier_mobs:wrought"
+      "skarrier_mobs:trawler",
+      "skarrier_mobs:tunnel_gore",
+      "skarrier_mobs:viruleon",
+      "skarrier_mobs:wrought",
+      "skarrier_mobs:zombiflore"
     ],
     "skarrier_mobs:entity_types/endorah_part": [
       "skarrier_mobs:ender_blast_projectile",
       "skarrier_mobs:ender_flame_projectile",
       "skarrier_mobs:endorah_body",
+      "skarrier_mobs:endorah_energy_jaws",
+      "skarrier_mobs:endorah_energy_jaws_big",
       "skarrier_mobs:endorah_head_main",
+      "skarrier_mobs:endorah_head_main_flying",
       "skarrier_mobs:endorah_head_melee",
-      "skarrier_mobs:endorah_head_ranged"
+      "skarrier_mobs:endorah_head_melee_flying",
+      "skarrier_mobs:endorah_head_ranged",
+      "skarrier_mobs:endorah_head_ranged_flying"
     ],
     "skarrier_mobs:entity_types/flore_head_host": [
       "skarrier_mobs:carniflore",
       "skarrier_mobs:zombiflore"
     ],
+    "skarrier_mobs:entity_types/grave_totems": [
+      "skarrier_mobs:grave_totem",
+      "skarrier_mobs:grave_totem_melee",
+      "skarrier_mobs:grave_totem_ranged"
+    ],
     "skarrier_mobs:entity_types/immune_to_tg": [
       "ender_dragon",
       "wither"
+    ],
+    "skarrier_mobs:entity_types/piglin_entities": [
+      "piglin",
+      "piglin_brute"
     ],
     "skarrier_mobs:items/bowlder_dust_applicable": [
       "#forge:axes",
@@ -45743,10 +45888,40 @@
       "#minecraft:shovels",
       "#minecraft:swords"
     ],
+    "skarrier_mobs:items/composite_materials_shields": [
+      "composite_material:amethyst_shield",
+      "composite_material:dungeon_shield",
+      "composite_material:etherite_shield"
+    ],
+    "skarrier_mobs:items/composite_materials_tools": [
+      "#composite_material:allay_steel_tools",
+      "#composite_material:amethyst_tools",
+      "#composite_material:copper_tools",
+      "#composite_material:echoium_tools",
+      "#composite_material:etherite_tools",
+      "#composite_material:flint_tools",
+      "#composite_material:obsidian_tools",
+      "#composite_material:primitive_tools",
+      "#composite_material:rusted_copper_tools"
+    ],
+    "skarrier_mobs:items/deep_alloy_tool": [
+      "skarrier_mobs:deep_alloy_axe",
+      "skarrier_mobs:deep_alloy_hoe",
+      "skarrier_mobs:deep_alloy_pickaxe",
+      "skarrier_mobs:deep_alloy_shovel",
+      "skarrier_mobs:deep_alloy_sword"
+    ],
+    "skarrier_mobs:items/hedgesbestiary_weapons": [
+      "hedges_bestiary:murklevolence"
+    ],
     "skarrier_mobs:items/low_level_gear": [
       "minecraft:fishing_rod",
       "minecraft:iron_axe",
+      "minecraft:iron_boots",
+      "minecraft:iron_chestplate",
+      "minecraft:iron_helmet",
       "minecraft:iron_hoe",
+      "minecraft:iron_leggings",
       "minecraft:iron_pickaxe",
       "minecraft:iron_shovel",
       "minecraft:iron_sword",
@@ -45763,11 +45938,18 @@
       "minecraft:wooden_shovel",
       "minecraft:wooden_sword"
     ],
+    "skarrier_mobs:items/pure_darkness_item": [
+      "alexscaves:pure_darkness"
+    ],
     "skarrier_mobs:items/resisteel_tools": [
       "skarrier_mobs:resisteel_axe",
       "skarrier_mobs:resisteel_hoe",
       "skarrier_mobs:resisteel_pickaxe",
       "skarrier_mobs:resisteel_shovel"
+    ],
+    "skarrier_mobs:items/shields": [
+      "minecraft:shield",
+      "skarrier_mobs:forlorn_barrier"
     ],
     "skarrier_mobs:items/stone_tools": [
       "minecraft:stone_axe",
@@ -45775,6 +45957,40 @@
       "minecraft:stone_pickaxe",
       "minecraft:stone_shovel",
       "minecraft:stone_sword"
+    ],
+    "skarrier_mobs:items/totems": [
+      "minecraft:totem_of_undying",
+      "skarrier_mobs:totem_of_extinction",
+      "skarrier_mobs:totem_of_freezing",
+      "skarrier_mobs:totem_of_melding",
+      "skarrier_mobs:totem_of_repulsion",
+      "skarrier_mobs:totem_of_seething"
+    ],
+    "skarrier_mobs:worldgen/biome/alcaves_abyssalchasm": [
+      "alexscaves:abyssal_chasm"
+    ],
+    "skarrier_mobs:worldgen/biome/alcaves_biomes": [
+      "#skarrier_mobs:alcaves_abyssalchasm",
+      "#skarrier_mobs:alcaves_candycavity",
+      "#skarrier_mobs:alcaves_forlornhollows",
+      "#skarrier_mobs:alcaves_magneticcaves",
+      "#skarrier_mobs:alcaves_primordialcaves",
+      "#skarrier_mobs:alcaves_toxiccaves"
+    ],
+    "skarrier_mobs:worldgen/biome/alcaves_candycavity": [
+      "alexscaves:candy_cavity"
+    ],
+    "skarrier_mobs:worldgen/biome/alcaves_forlornhollows": [
+      "alexscaves:forlorn_hollows"
+    ],
+    "skarrier_mobs:worldgen/biome/alcaves_magneticcaves": [
+      "alexscaves:magnetic_caves"
+    ],
+    "skarrier_mobs:worldgen/biome/alcaves_primordialcaves": [
+      "alexscaves:primordial_caves"
+    ],
+    "skarrier_mobs:worldgen/biome/alcaves_toxiccaves": [
+      "alexscaves:toxic_caves"
     ],
     "smallships:items/briggs": [
       "smallships:acacia_brigg",

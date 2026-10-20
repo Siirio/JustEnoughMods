@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "5c6d4d4994d90340ca0fd863b2647dbab084023d",
+  "snapshot_sha": "64122533f7100b0fb57b94deb66600b74536c0df",
   "generation": {
-    "generated_utc": "2026-10-19T08:54:03.175838+00:00",
+    "generated_utc": "2026-10-20T09:55:46.775229+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -5291,7 +5291,7 @@
         "kaleidoscopecookery-1.4.1-forge_2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/chopping_board/bone_from_cod.json",
         "kaleidoscopecookery-1.4.1-forge_2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/chopping_board/bone_from_salmon.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/breacher_skull_disassemble_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/breacher_skull_disassemble_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -17287,6 +17287,46 @@
       "review_status": "unresolved"
     },
     {
+      "item_id": "minecraft:dragon_head",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "data/skarrier_mobs/recipes/dragon_head_recipe.json"
+      ],
+      "display_name_en_us": "Dragon Head",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/dragon_head_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "skarrier_mobs:dragon_head_recipe"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
       "item_id": "minecraft:dried_ghast",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -17638,12 +17678,14 @@
         "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/skarrier_mobs/recipes/echo_shard_recipe.json"
       ],
       "display_name_en_us": "Echo Shard",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/echo_shard_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -17652,7 +17694,9 @@
       "reason": "unreviewed_static_registry_entry",
       "progression_protected": false,
       "protection_source_ids": [],
-      "independent_ordinary_routes": [],
+      "independent_ordinary_routes": [
+        "skarrier_mobs:echo_shard_recipe"
+      ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
       "sell_copper": null,
@@ -19375,13 +19419,15 @@
       ],
       "observed_in": [
         "assets/minecraft/lang/en_us.json",
-        "data/minecraft/recipes/fermented_spider_eye.json"
+        "data/minecraft/recipes/fermented_spider_eye.json",
+        "data/skarrier_mobs/recipes/fermented_spider_eye_alt_recipe.json"
       ],
       "display_name_en_us": "Fermented Spider Eye",
       "display_name_ru_ru": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/fermented_spider_eye.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/fermented_spider_eye.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/fermented_spider_eye_alt_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -19391,7 +19437,8 @@
       "progression_protected": false,
       "protection_source_ids": [],
       "independent_ordinary_routes": [
-        "minecraft:fermented_spider_eye"
+        "minecraft:fermented_spider_eye",
+        "skarrier_mobs:fermented_spider_eye_alt_recipe"
       ],
       "recipe_dependency_evidence": [],
       "buy_copper": null,
@@ -24405,7 +24452,7 @@
       "display_name_ru_ru": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/heart_of_the_sea_duplication_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/heart_of_the_sea_duplication_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -31424,7 +31471,7 @@
       "display_name_en_us": "Lingering Potion of Armor Crumbling",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -31462,7 +31509,7 @@
       "display_name_en_us": "Lingering Potion of Armor Crumbling",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -31500,7 +31547,121 @@
       "display_name_en_us": "Lingering Potion of Armor Crumbling",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "minecraft:lingering_potion.effect.potion_televitality",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "display_name_en_us": "Lingering Potion of Televitality",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "minecraft:lingering_potion.effect.potion_televitality_long",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "display_name_en_us": "Lingering Potion of Televitality",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "minecraft:lingering_potion.effect.potion_televitality_strong",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "display_name_en_us": "Lingering Potion of Televitality",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -37762,7 +37923,7 @@
       "display_name_ru_ru": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/netherite_upgrade_smithing_template.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/netherite_upgrade_template_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/netherite_upgrade_template_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -45923,7 +46084,7 @@
       "display_name_en_us": "Potion of Armor Crumbling",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -45961,7 +46122,7 @@
       "display_name_en_us": "Potion of Armor Crumbling",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -45999,7 +46160,121 @@
       "display_name_en_us": "Potion of Armor Crumbling",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "minecraft:potion.effect.potion_televitality",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "display_name_en_us": "Potion of Televitality",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "minecraft:potion.effect.potion_televitality_long",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "display_name_en_us": "Potion of Televitality",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "minecraft:potion.effect.potion_televitality_strong",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "display_name_en_us": "Potion of Televitality",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -57191,7 +57466,7 @@
       "display_name_en_us": "Splash Potion of Armor Crumbling",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -57229,7 +57504,7 @@
       "display_name_en_us": "Splash Potion of Armor Crumbling",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -57267,7 +57542,121 @@
       "display_name_en_us": "Splash Potion of Armor Crumbling",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "minecraft:splash_potion.effect.potion_televitality",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "display_name_en_us": "Splash Potion of Televitality",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "minecraft:splash_potion.effect.potion_televitality_long",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "display_name_en_us": "Splash Potion of Televitality",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "minecraft:splash_potion.effect.potion_televitality_strong",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "display_name_en_us": "Splash Potion of Televitality",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -63636,7 +64025,7 @@
       "display_name_en_us": "Arrow of Armor Crumbling",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -63674,7 +64063,7 @@
       "display_name_en_us": "Arrow of Armor Crumbling",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -63712,7 +64101,121 @@
       "display_name_en_us": "Arrow of Armor Crumbling",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "minecraft:tipped_arrow.effect.potion_televitality",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "display_name_en_us": "Arrow of Armor Televitality",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "minecraft:tipped_arrow.effect.potion_televitality_long",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "display_name_en_us": "Arrow of Televitality",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "minecraft:tipped_arrow.effect.potion_televitality_strong",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "display_name_en_us": "Arrow of Televitality",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -64759,7 +65262,7 @@
       "display_name_ru_ru": null,
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/totem_of_undying_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/totem_of_undying_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",

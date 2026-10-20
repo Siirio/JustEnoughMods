@@ -1,0 +1,81 @@
+{
+  "schema_version": 2,
+  "change_id": "aircraft-resourcepack-native-autoload-20261020",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "immersive_aircraft"
+    }
+  ],
+  "conditions": [
+    {
+      "side": "client",
+      "loader": "existing Paxi",
+      "lifecycle": "native AutoModpack installs files before client Paxi discovery"
+    }
+  ],
+  "precedence": {
+    "layer": "jem_requested_update",
+    "priority": 830
+  },
+  "change": {
+    "summary": "Use existing Paxi loader to enable the existing Create Immersive Aircrafts Resource Pack automatically after native managed download.",
+    "modifiers": [
+      {
+        "property": "client.aircraft_resourcepack_autoload",
+        "operation": "replace",
+        "before": "ZIP exists in ordinary resourcepacks directory; downloading it does not force selection.",
+        "after": "Same ZIP under config/paxi/resourcepacks with explicit resourcepack_load_order entry; existing Paxi owns discovery/enabling on client startup. Remove obsolete ordinary resourcepacks copy; no new loader or options.txt edit."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Paxi resourcepack loader through ManagedPack",
+    "kind": "resourcepack_autoload_config",
+    "source_files": [
+      "Client/ManagedPack/config/paxi/resourcepack_load_order.json",
+      "Client/ManagedPack/config/paxi/resourcepacks/Create Immersive Aircrafts Resource Pack 1.20.1 - 3.0.zip"
+    ]
+  },
+  "rationale": {
+    "purpose": "User requests all server download recipients automatically receive and use existing aircraft visual pack.",
+    "decision_source": "User requested this behavior, initially preparation only; subsequent user authorization requests actual local Server and Client application. Implementation seams chosen by Codex."
+  },
+  "introduced": {
+    "date": "2026-10-20",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "Use existing Paxi loader to enable the existing Create Immersive Aircrafts Resource Pack automatically after native managed download.",
+    "source_files": [
+      "Client/ManagedPack/config/paxi/resourcepack_load_order.json",
+      "Client/ManagedPack/config/paxi/resourcepacks/Create Immersive Aircrafts Resource Pack 1.20.1 - 3.0.zip"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "Use existing Paxi loader to enable the existing Create Immersive Aircrafts Resource Pack automatically after native managed download.",
+      "source_files": [
+        "Client/ManagedPack/config/paxi/resourcepack_load_order.json",
+        "Client/ManagedPack/config/paxi/resourcepacks/Create Immersive Aircrafts Resource Pack 1.20.1 - 3.0.zip",
+        "Client/ManagedPack/resourcepacks/Create Immersive Aircrafts Resource Pack 1.20.1 - 3.0.zip"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "native_pack_delivery",
+      "client_resource_reload",
+      "aircraft_rendering"
+    ],
+    "relations": [],
+    "notes": "Local development distribution only. Stable profile, MineRENT and immutable release baseline are unchanged. Runtime player acceptance remains pending.",
+    "unresolved": [
+      "Visual runtime acceptance pending."
+    ]
+  }
+}

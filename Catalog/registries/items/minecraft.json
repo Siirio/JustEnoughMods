@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "items",
-  "snapshot_sha": "5c6d4d4994d90340ca0fd863b2647dbab084023d",
+  "snapshot_sha": "64122533f7100b0fb57b94deb66600b74536c0df",
   "generation": {
-    "generated_utc": "2026-10-19T08:54:03.175838+00:00",
+    "generated_utc": "2026-10-20T09:55:46.775229+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -7143,7 +7143,7 @@
         "kaleidoscopecookery-1.4.1-forge_2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/chopping_board/bone_from_cod.json",
         "kaleidoscopecookery-1.4.1-forge_2Bmc1.20.1.jar:data/kaleidoscope_cookery/recipes/chopping_board/bone_from_salmon.json",
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/breacher_skull_disassemble_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/breacher_skull_disassemble_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -23164,6 +23164,61 @@
       "trade_policy_ref": "trade:minecraft:dragon_breath"
     },
     {
+      "registry_id": "minecraft:dragon_head",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "data/skarrier_mobs/recipes/dragon_head_recipe.json"
+      ],
+      "display_name_en_us": "Dragon Head",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:items/noteblock_top_instruments",
+        "true_ending:items/end_blocks"
+      ],
+      "is_registered": null,
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/dragon_head_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": "minecraft:dragon_head",
+      "acquisition_routes": [
+        "skarrier_mobs:dragon_head_recipe"
+      ],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:dragon_head"
+    },
+    {
       "registry_id": "minecraft:dried_ghast",
       "registry_type": "item",
       "schema_version": 1,
@@ -23614,7 +23669,8 @@
         "server"
       ],
       "observed_in": [
-        "assets/minecraft/lang/en_us.json"
+        "assets/minecraft/lang/en_us.json",
+        "data/skarrier_mobs/recipes/echo_shard_recipe.json"
       ],
       "display_name_en_us": "Echo Shard",
       "display_name_ru_ru": null,
@@ -23624,10 +23680,11 @@
         "irons_spellbooks:items/eldritch_focus"
       ],
       "is_registered": null,
-      "survival_obtainable": null,
-      "acquisition_class": "unresolved",
+      "survival_obtainable": true,
+      "acquisition_class": "normal_survival",
       "source_provenance": [
-        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/echo_shard_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -23648,7 +23705,9 @@
       "crafting_remainder": null,
       "repair_ingredients": [],
       "block_item_id": null,
-      "acquisition_routes": [],
+      "acquisition_routes": [
+        "skarrier_mobs:echo_shard_recipe"
+      ],
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:echo_shard"
@@ -25922,7 +25981,8 @@
       ],
       "observed_in": [
         "assets/minecraft/lang/en_us.json",
-        "data/minecraft/recipes/fermented_spider_eye.json"
+        "data/minecraft/recipes/fermented_spider_eye.json",
+        "data/skarrier_mobs/recipes/fermented_spider_eye_alt_recipe.json"
       ],
       "display_name_en_us": "Fermented Spider Eye",
       "display_name_ru_ru": null,
@@ -25937,7 +25997,8 @@
       "acquisition_class": "normal_survival",
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
-        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/fermented_spider_eye.json"
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/fermented_spider_eye.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/fermented_spider_eye_alt_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -25959,7 +26020,8 @@
       "repair_ingredients": [],
       "block_item_id": null,
       "acquisition_routes": [
-        "minecraft:fermented_spider_eye"
+        "minecraft:fermented_spider_eye",
+        "skarrier_mobs:fermented_spider_eye_alt_recipe"
       ],
       "uses": [],
       "safe_canonical_stack": null,
@@ -32670,7 +32732,7 @@
       "acquisition_class": "normal_survival",
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/heart_of_the_sea_duplication_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/heart_of_the_sea_duplication_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -33984,7 +34046,8 @@
       "implementation_class": null,
       "tags": [
         "alexscaves:items/ferromagnetic_items",
-        "minecraft:items/trimmable_armor"
+        "minecraft:items/trimmable_armor",
+        "skarrier_mobs:items/low_level_gear"
       ],
       "is_registered": null,
       "survival_obtainable": true,
@@ -34042,7 +34105,8 @@
       "implementation_class": null,
       "tags": [
         "alexscaves:items/ferromagnetic_items",
-        "minecraft:items/trimmable_armor"
+        "minecraft:items/trimmable_armor",
+        "skarrier_mobs:items/low_level_gear"
       ],
       "is_registered": null,
       "survival_obtainable": true,
@@ -34209,7 +34273,8 @@
       "implementation_class": null,
       "tags": [
         "alexscaves:items/ferromagnetic_items",
-        "minecraft:items/trimmable_armor"
+        "minecraft:items/trimmable_armor",
+        "skarrier_mobs:items/low_level_gear"
       ],
       "is_registered": null,
       "survival_obtainable": true,
@@ -34511,7 +34576,8 @@
       "implementation_class": null,
       "tags": [
         "alexscaves:items/ferromagnetic_items",
-        "minecraft:items/trimmable_armor"
+        "minecraft:items/trimmable_armor",
+        "skarrier_mobs:items/low_level_gear"
       ],
       "is_registered": null,
       "survival_obtainable": true,
@@ -42059,7 +42125,7 @@
       "survival_obtainable": null,
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -42109,7 +42175,7 @@
       "survival_obtainable": null,
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -42159,7 +42225,7 @@
       "survival_obtainable": null,
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -42184,6 +42250,156 @@
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:lingering_potion.effect.potion_of_armor_crumbling_long"
+    },
+    {
+      "registry_id": "minecraft:lingering_potion.effect.potion_televitality",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "display_name_en_us": "Lingering Potion of Televitality",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:lingering_potion.effect.potion_televitality"
+    },
+    {
+      "registry_id": "minecraft:lingering_potion.effect.potion_televitality_long",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "display_name_en_us": "Lingering Potion of Televitality",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:lingering_potion.effect.potion_televitality_long"
+    },
+    {
+      "registry_id": "minecraft:lingering_potion.effect.potion_televitality_strong",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "display_name_en_us": "Lingering Potion of Televitality",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:lingering_potion.effect.potion_televitality_strong"
     },
     {
       "registry_id": "minecraft:lingering_potion.effect.regeneration",
@@ -50571,7 +50787,7 @@
       "acquisition_class": "normal_survival",
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/netherite_upgrade_smithing_template.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/netherite_upgrade_template_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/netherite_upgrade_template_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -61370,7 +61586,7 @@
       "survival_obtainable": null,
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -61420,7 +61636,7 @@
       "survival_obtainable": null,
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -61470,7 +61686,7 @@
       "survival_obtainable": null,
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -61495,6 +61711,156 @@
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:potion.effect.potion_of_armor_crumbling_long"
+    },
+    {
+      "registry_id": "minecraft:potion.effect.potion_televitality",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "display_name_en_us": "Potion of Televitality",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:potion.effect.potion_televitality"
+    },
+    {
+      "registry_id": "minecraft:potion.effect.potion_televitality_long",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "display_name_en_us": "Potion of Televitality",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:potion.effect.potion_televitality_long"
+    },
+    {
+      "registry_id": "minecraft:potion.effect.potion_televitality_strong",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "display_name_en_us": "Potion of Televitality",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:potion.effect.potion_televitality_strong"
     },
     {
       "registry_id": "minecraft:potion.effect.regeneration",
@@ -69806,7 +70172,8 @@
         "c:items/shields",
         "c:items/tools/shield",
         "c:items/tools/shields",
-        "skarrier_mobs:items/low_level_gear"
+        "skarrier_mobs:items/low_level_gear",
+        "skarrier_mobs:items/shields"
       ],
       "is_registered": null,
       "survival_obtainable": true,
@@ -76396,7 +76763,7 @@
       "survival_obtainable": null,
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -76446,7 +76813,7 @@
       "survival_obtainable": null,
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -76496,7 +76863,7 @@
       "survival_obtainable": null,
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -76521,6 +76888,156 @@
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:splash_potion.effect.potion_of_armor_crumbling_long"
+    },
+    {
+      "registry_id": "minecraft:splash_potion.effect.potion_televitality",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "display_name_en_us": "Splash Potion of Televitality",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:splash_potion.effect.potion_televitality"
+    },
+    {
+      "registry_id": "minecraft:splash_potion.effect.potion_televitality_long",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "display_name_en_us": "Splash Potion of Televitality",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:splash_potion.effect.potion_televitality_long"
+    },
+    {
+      "registry_id": "minecraft:splash_potion.effect.potion_televitality_strong",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "display_name_en_us": "Splash Potion of Televitality",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:splash_potion.effect.potion_televitality_strong"
     },
     {
       "registry_id": "minecraft:splash_potion.effect.regeneration",
@@ -84943,7 +85460,7 @@
       "survival_obtainable": null,
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -84993,7 +85510,7 @@
       "survival_obtainable": null,
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -85043,7 +85560,7 @@
       "survival_obtainable": null,
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -85068,6 +85585,156 @@
       "uses": [],
       "safe_canonical_stack": null,
       "trade_policy_ref": "trade:minecraft:tipped_arrow.effect.potion_of_armor_crumbling_long"
+    },
+    {
+      "registry_id": "minecraft:tipped_arrow.effect.potion_televitality",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "display_name_en_us": "Arrow of Armor Televitality",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:tipped_arrow.effect.potion_televitality"
+    },
+    {
+      "registry_id": "minecraft:tipped_arrow.effect.potion_televitality_long",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "display_name_en_us": "Arrow of Televitality",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:tipped_arrow.effect.potion_televitality_long"
+    },
+    {
+      "registry_id": "minecraft:tipped_arrow.effect.potion_televitality_strong",
+      "registry_type": "item",
+      "schema_version": 1,
+      "mod_id": "minecraft",
+      "mod_name": "Minecraft",
+      "mod_version": "1.20.1",
+      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
+      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "display_name_en_us": "Arrow of Televitality",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "categories": [],
+      "max_stack_size": null,
+      "durability": null,
+      "is_damageable": null,
+      "rarity": null,
+      "fire_resistant": null,
+      "equipment_slots": [],
+      "enchantability": null,
+      "crafting_remainder": null,
+      "repair_ingredients": [],
+      "block_item_id": null,
+      "acquisition_routes": [],
+      "uses": [],
+      "safe_canonical_stack": null,
+      "trade_policy_ref": "trade:minecraft:tipped_arrow.effect.potion_televitality_strong"
     },
     {
       "registry_id": "minecraft:tipped_arrow.effect.regeneration",
@@ -86409,13 +87076,15 @@
       "display_name_ru_ru": null,
       "java_registry_class": null,
       "implementation_class": null,
-      "tags": [],
+      "tags": [
+        "skarrier_mobs:items/totems"
+      ],
       "is_registered": null,
       "survival_obtainable": true,
       "acquisition_class": "normal_survival",
       "source_provenance": [
         "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/totem_of_undying_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/totem_of_undying_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",

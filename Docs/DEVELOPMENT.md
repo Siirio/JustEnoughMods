@@ -451,3 +451,7 @@ The user explicitly requested removal from `test jem` and confirmed removal from
 ## Windows tax save replacement — 2026-10-20
 
 TaxDurability retains temp-write/force → one same-volume replace → full-NBT readback → clear-dirty ordering. Windows explicitly uses Minecraft-bundled JNAplatform5.12.1 `Kernel32.MoveFileEx(REPLACE_EXISTING | WRITE_THROUGH)` without COPY_ALLOWED; the ordinary Java atomic move ignores other options and failed to replace existing local data. Other systems retain ATOMIC_MOVE. Native failure or readback mismatch stays dirty and aborts before dependent money/ack mutation. No delete-then-move substitute or new library is used. Source references: https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-movefileexw and https://github.com/java-native-access/jna/blob/5.12.1/contrib/platform/src/com/sun/jna/platform/win32/Kernel32.java .
+
+## Digger and native required aircraft resource pack
+
+The local2026-10-20 delivery contract and evidence are in `Docs/prepared-updates/2026-10-20-digger-skarrier-aircraft/README.md` and `delivery.json`. JEMPackCore owns one native completion/removal/wear batch for Excavation, retains its existing enchantment/NBT toggle and native inventory synchronization. Paxi4.0 owns required aircraft resource-pack activation from `config/paxi/resourcepacks`; AutoModpack owns its installation. Do not add a second pack loader or edit personal options. Skarrier1.1.1 hotfix requires matching client/server binaries despite unchanged advertised channel version.

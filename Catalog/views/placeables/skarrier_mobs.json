@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "registry_type": "placeables",
-  "snapshot_sha": "5c6d4d4994d90340ca0fd863b2647dbab084023d",
+  "snapshot_sha": "64122533f7100b0fb57b94deb66600b74536c0df",
   "generation": {
-    "generated_utc": "2026-10-19T08:54:03.175838+00:00",
+    "generated_utc": "2026-10-20T09:55:46.775229+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
   "mod": {
     "id": "skarrier_mobs",
     "name": "Skarrier Mobs",
-    "version": "1.0.6"
+    "version": "1.1.1"
   },
   "records": [
     {
@@ -19,9 +19,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -31,7 +31,7 @@
       "display_name_en_us": "Breacher Skull",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/breacher_skull.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/breacher_skull.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -50,14 +50,90 @@
       "acquisition_routes": []
     },
     {
+      "item_id": "skarrier_mobs:heart_socketed_stone",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/models/item/heart_socketed_stone.json",
+        "data/skarrier_mobs/recipes/heart_socketed_stone_recipe.json"
+      ],
+      "display_name_en_us": "Heart Socketed Stone",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/heart_socketed_stone.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/heart_socketed_stone_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "skarrier_mobs:heart_socketed_stone",
+      "placed_registry_ids": [
+        "skarrier_mobs:heart_socketed_stone"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "skarrier_mobs:heart_socketed_stone_recipe"
+      ]
+    },
+    {
+      "item_id": "skarrier_mobs:heart_socketed_stone_activated",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/models/item/heart_socketed_stone_activated.json"
+      ],
+      "display_name_en_us": "Activated Heart Socketed Stone",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/heart_socketed_stone_activated.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "skarrier_mobs:heart_socketed_stone_activated",
+      "placed_registry_ids": [
+        "skarrier_mobs:heart_socketed_stone_activated"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": []
+    },
+    {
       "item_id": "skarrier_mobs:resisteel_block",
       "registry_type": "item_view",
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -68,8 +144,8 @@
       "display_name_en_us": "Block of Resisteel",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/resisteel_block.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/resisteel_block_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/resisteel_block.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/resisteel_block_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -90,14 +166,50 @@
       ]
     },
     {
+      "item_id": "skarrier_mobs:seething_endstone",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/models/item/seething_endstone.json"
+      ],
+      "display_name_en_us": "Seething Endstone",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/seething_endstone.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "skarrier_mobs:seething_endstone",
+      "placed_registry_ids": [
+        "skarrier_mobs:seething_endstone"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": []
+    },
+    {
       "item_id": "skarrier_mobs:silk_block",
       "registry_type": "item_view",
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -108,8 +220,8 @@
       "display_name_en_us": "Block of Silk",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/silk_block.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/silk_block_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/silk_block.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/silk_block_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -135,19 +247,19 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
       "observed_in": [
         "assets/skarrier_mobs/models/item/stone_golem_unfinished_1.json"
       ],
-      "display_name_en_us": "Stone Golem Unfinished 1",
+      "display_name_en_us": "Unfinished Stone Golem",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/stone_golem_unfinished_1.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/stone_golem_unfinished_1.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -171,19 +283,19 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
       "observed_in": [
         "assets/skarrier_mobs/models/item/stone_golem_unfinished_2.json"
       ],
-      "display_name_en_us": "Stone Golem Unfinished 2",
+      "display_name_en_us": "Unfinished Stone Golem",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/stone_golem_unfinished_2.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/stone_golem_unfinished_2.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -207,19 +319,19 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
       "observed_in": [
         "assets/skarrier_mobs/models/item/stone_golem_unfinished_3.json"
       ],
-      "display_name_en_us": "Stone Golem Unfinished 3",
+      "display_name_en_us": "Unfinished Stone Golem",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/stone_golem_unfinished_3.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/stone_golem_unfinished_3.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -243,9 +355,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -255,7 +367,7 @@
       "display_name_en_us": "Tangled Wrong Deepslate Diamond Ore",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/tangled_wrong_deepslate_ore_diamond.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/tangled_wrong_deepslate_ore_diamond.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -279,9 +391,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -291,7 +403,7 @@
       "display_name_en_us": "Tangled Wrong Deepslate Emerald Ore",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/tangled_wrong_deepslate_ore_emerald.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/tangled_wrong_deepslate_ore_emerald.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -315,9 +427,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -327,7 +439,7 @@
       "display_name_en_us": "Tangled Wrong Deepslate Gold Ore",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/tangled_wrong_deepslate_ore_gold.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/tangled_wrong_deepslate_ore_gold.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -351,9 +463,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -363,7 +475,7 @@
       "display_name_en_us": "Tangled Wrong Deepslate Invulnerite Ore",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/tangled_wrong_deepslate_ore_invulnerite.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/tangled_wrong_deepslate_ore_invulnerite.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -387,9 +499,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -400,8 +512,8 @@
       "display_name_en_us": "Tremor Bomb",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/tremor_bomb.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/tremor_bomb_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/tremor_bomb.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/tremor_bomb_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -422,14 +534,94 @@
       ]
     },
     {
+      "item_id": "skarrier_mobs:void_scale_block",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/models/item/void_scale_block.json",
+        "data/skarrier_mobs/recipes/void_scale_block_recipe.json"
+      ],
+      "display_name_en_us": "Block of Void Scale",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/void_scale_block.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/void_scale_block_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "skarrier_mobs:void_scale_block",
+      "placed_registry_ids": [
+        "skarrier_mobs:void_scale_block"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "skarrier_mobs:void_scale_block_recipe"
+      ]
+    },
+    {
+      "item_id": "skarrier_mobs:workshop",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "skarrier_mobs",
+      "mod_name": "Skarrier Mobs",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/skarrier_mobs/models/item/workshop.json",
+        "data/skarrier_mobs/recipes/workshop_recipe.json"
+      ],
+      "display_name_en_us": "Workshop",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/workshop.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/workshop_recipe.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "skarrier_mobs:workshop",
+      "placed_registry_ids": [
+        "skarrier_mobs:workshop"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": [
+        "skarrier_mobs:workshop_recipe"
+      ]
+    },
+    {
       "item_id": "skarrier_mobs:wrong_deepslate",
       "registry_type": "item_view",
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -440,8 +632,8 @@
       "display_name_en_us": "Wrong Deepslate",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -467,9 +659,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -481,9 +673,9 @@
       "display_name_en_us": "Wrong Deepslate Brick Slab",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_brick_slab.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_brick_slab_cutter_recipe.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_brick_slab_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_brick_slab.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_brick_slab_cutter_recipe.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_brick_slab_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -510,9 +702,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -523,8 +715,8 @@
       "display_name_en_us": "Wrong Deepslate Brick Stairs",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_brick_stairs.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_brick_stairs_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_brick_stairs.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_brick_stairs_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -550,9 +742,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -564,9 +756,9 @@
       "display_name_en_us": "Wrong Deepslate Brick Wall",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_brick_wall.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_brick_wall_cutter_recipe.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_brick_wall_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_brick_wall.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_brick_wall_cutter_recipe.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_brick_wall_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -593,9 +785,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -607,9 +799,9 @@
       "display_name_en_us": "Wrong Deepslate Bricks",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_bricks.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_bricks_cutter_recipe.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_bricks_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_bricks.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_bricks_cutter_recipe.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_bricks_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -636,9 +828,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -649,8 +841,8 @@
       "display_name_en_us": "Cracked Wrong Deepslate Bricks",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_bricks_cracked.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_bricks_cracked_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_bricks_cracked.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_bricks_cracked_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -676,9 +868,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -689,8 +881,8 @@
       "display_name_en_us": "Chiseled Wrong Deepslate",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_chiseled.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_chieseld_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_chiseled.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_chieseld_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -716,9 +908,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -729,8 +921,8 @@
       "display_name_en_us": "Cobbled Wrong Deepslate Stairs",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_cobble_stairs.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_cobbled_stairs_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_cobble_stairs.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_cobbled_stairs_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -756,9 +948,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -768,7 +960,7 @@
       "display_name_en_us": "Cobbled Wrong Deepslate",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_cobbled.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_cobbled.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -792,9 +984,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -806,9 +998,9 @@
       "display_name_en_us": "Cobbled Wrong Deepslate Slab",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_cobbled_slab.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_cobbled_slab_cutter_recipe.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_cobbled_slab_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_cobbled_slab.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_cobbled_slab_cutter_recipe.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_cobbled_slab_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -835,9 +1027,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -849,9 +1041,9 @@
       "display_name_en_us": "Cobbled Wrong Deepslate Wall",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_cobbled_wall.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_cobbled_wall_cutter_recipe.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_cobbled_wall_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_cobbled_wall.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_cobbled_wall_cutter_recipe.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_cobbled_wall_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -878,9 +1070,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -890,7 +1082,7 @@
       "display_name_en_us": "Wrong Deepslate Diamond Ore",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_ore_diamond.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_ore_diamond.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -914,9 +1106,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -926,7 +1118,7 @@
       "display_name_en_us": "Wrong Deepslate Emerald Ore",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_ore_emerald.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_ore_emerald.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -950,9 +1142,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -962,7 +1154,7 @@
       "display_name_en_us": "Wrong Deepslate Gold Ore",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_ore_gold.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_ore_gold.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -986,9 +1178,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -998,7 +1190,7 @@
       "display_name_en_us": "Wrong Deepslate Invulnerite Ore",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_ore_invulnerite.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_ore_invulnerite.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1022,9 +1214,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -1036,9 +1228,9 @@
       "display_name_en_us": "Polished Wrong Deepslate",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_polished.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_polished_cutter_recipe.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_polished_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_polished.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_polished_cutter_recipe.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_polished_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1065,9 +1257,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -1079,9 +1271,9 @@
       "display_name_en_us": "Polished Wrong Deepslate Slab",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_polished_slab.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_polished_slab_cutter_recipe.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_polished_slab_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_polished_slab.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_polished_slab_cutter_recipe.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_polished_slab_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1108,9 +1300,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -1121,8 +1313,8 @@
       "display_name_en_us": "Polished Wrong Deepslate Stairs",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_polished_stairs.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_polished_stairs_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_polished_stairs.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_polished_stairs_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1148,9 +1340,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -1162,9 +1354,9 @@
       "display_name_en_us": "Polished Wrong Deepslate Wall",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_polished_wall.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_polished_wall_cutter_recipe.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_polished_wall_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_polished_wall.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_polished_wall_cutter_recipe.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_polished_wall_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1191,9 +1383,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -1203,7 +1395,7 @@
       "display_name_en_us": "Tangled Wrong Deepslate",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_tangled.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_tangled.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1227,9 +1419,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -1241,9 +1433,9 @@
       "display_name_en_us": "Wrong Deepslate Tile Slab",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_tile_slab.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_tile_slab_cutter_recipe.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_tile_slab_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_tile_slab.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_tile_slab_cutter_recipe.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_tile_slab_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1270,9 +1462,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -1283,8 +1475,8 @@
       "display_name_en_us": "Wrong Deepslate Tile Stairs",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_tile_stairs.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_tile_stairs_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_tile_stairs.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_tile_stairs_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1310,9 +1502,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -1324,9 +1516,9 @@
       "display_name_en_us": "Wrong Deepslate Tile Wall",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_tile_wall.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_tile_wall_cutter_recipe.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_tile_wall_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_tile_wall.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_tile_wall_cutter_recipe.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_tile_wall_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1353,9 +1545,9 @@
       "schema_version": 1,
       "mod_id": "skarrier_mobs",
       "mod_name": "Skarrier Mobs",
-      "mod_version": "1.0.6",
-      "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar",
-      "source_sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c",
+      "mod_version": "1.1.1",
+      "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar",
+      "source_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
       "side_availability": [
         "client"
       ],
@@ -1367,9 +1559,9 @@
       "display_name_en_us": "Wrong Deepslate Tiles",
       "display_name_ru_ru": null,
       "source_provenance": [
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_tiles.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_tiles_cutter_recipe.json",
-        "skarrier_mobs-1.0.6-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_tiles_recipe.json"
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:assets/skarrier_mobs/models/item/wrong_deepslate_tiles.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_tiles_cutter_recipe.json",
+        "skarrier_mobs-1.1.1-forge-1.20.1.jar:data/skarrier_mobs/recipes/wrong_deepslate_tiles_recipe.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",

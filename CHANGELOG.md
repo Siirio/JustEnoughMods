@@ -1,3 +1,12 @@
+## 2026-10-20 — Digger wear, Skarrier hotfix and required aircraft visuals
+
+- User requests3×3 (nine blocks) Digger, four durability without Unbreaking, exact 50% 0/1 with Unbreaking III, native 1×1 wear and highlight only while enabled without Shift. Codex replaces premature BreakEvent expansion with one scoped native completion/removal/wear operation; no duplicate toggle or packets. Partial rounding and Unbreaking I/II vanilla rolls over four points are Codex implementation choices.
+- User requests newest compatible Skarrier and automatic aircraft resource pack. Official1.1.1 hotfix replaces1.0.6 on both sides; existing Paxi 4.0 activates the unchanged aircraft3.0 ZIP from its required source. No custom pack manager or personal options rewrite.
+- User first prohibited installation, then explicitly authorized Server+Client application and connection investigation. Ordinary local delivery only; stable/MineRENT/baseline unchanged. Exact evidence and limits: Docs/prepared-updates/2026-10-20-digger-skarrier-aircraft/README.md and delivery.json.
+- Delivery: production builds passed; local Server accepts localhost:31604, native generation47 installed in test jem with matching token/hashes and no pending transaction. Initial client folder rename deferred, then native recovery completed. Gameplay/player acceptance remains pending.
+- Bug / Both Sided / Digger expanded before root acceptance and charged nine independent native wear requests; Shift gates absent / in testing; resolution mechanism is scoped successful-removal budgeting and shared active predicate.
+- Bug / Server / Windows native tax replacement returned access denied5, stopping server and causing TCP refusal; underlying OS denying actor remains unestablished / in testing. Previous atomic-replace explanation is incomplete; no speculative permanent workaround added. Restart and client installation evidence remain distinct from player approval.
+
 ## 2026-10-20 — Restore local server after Windows tax-save failure
 
 - User cannot connect: the server had loaded but crashed at14:01:43. Bug / Server / TaxDurability unconditionally used Java ATOMIC_MOVE to replace existing data; Windows returned AccessDeniedException while the ordinary shutdown save wrote byte-identical data successfully / in testing.
@@ -1341,3 +1350,9 @@ Built and installed the updated JEM Server artifact with Pehkui 3.8.2 into the l
 - Bug / Client / Pale-paper dashboard text used a dark shifted shadow; multiple independent footer conditions could draw at the same baseline / in testing. Mechanism: no-shadow glyph pass and mutually exclusive status rendering. Runtime visual acceptance pending.
 - Bug / Client / VoidDistancePreview stored already-corrupted Russian literals and separator in Java, selected them by languageCode and bypassed localization / in testing. User reports strange Void Walker text; Codex replaces literals with resource-owned Component.translatable keys in Russian/English. Physics and gameplay unchanged.
 - Delivery: required sandbox/production artifacts only, sandbox JAR replacement after the user's closed confirmation. Server/ManagedPack/native AutoModpack publication44/stable/baseline remain unchanged. No tests, static checks or gameplay launch; production outputs prepared, not deployed.
+
+## 2026-10-20 — Prepare isolated MineRENT test world and reversible transition
+
+- User requests a test copy of the current server world, creative for testers later, fast test/production transitions and carrying all post-test update fixes into production. User explicitly forbids switching/stopping the active world now or creating a new backup now; selected the existing archive displayed as 11:23.
+- Codex uses native MineRENT Copy/Move/Extract only in jem-test-2026-10-20, preserving the source archive and active world. The extracted world exposes dimensions, playerdata, SavedData and level.dat; no launch, per-file hash comparison or gameplay acceptance is claimed.
+- Canonical operations plan in Docs/SERVER_COMMANDS.md defines stopped-server directory swaps, separate production runtime/settings and test creative overlay, native client-generation rollback, source-owned fixes shared with the later production update, and no merging of creative test saves. Updated runtime staging, publication and actual transitions remain pending; stable profile/release baseline and local Server are unchanged by this preparation.

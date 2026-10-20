@@ -1,12 +1,11 @@
 package com.siirio.jempackcore.client;
 
 import com.siirio.jempackcore.JEMPackCore;
-import com.siirio.jempackcore.enchantment.CoreEnchantments;
+import com.siirio.jempackcore.enchantment.ExcavationEvents;
 import com.siirio.jempackcore.enchantment.ExcavationPattern;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RenderHighlightEvent;
@@ -23,7 +22,7 @@ public final class ExcavationHighlight {
         var player = minecraft.player;
         var level = minecraft.level;
         if (player == null || level == null
-                || EnchantmentHelper.getItemEnchantmentLevel(CoreEnchantments.EXCAVATION.get(), player.getMainHandItem()) == 0) return;
+                || !ExcavationEvents.isAreaActive(player)) return;
         var origin = event.getTarget().getBlockPos();
         var camera = event.getCamera().getPosition();
         var consumer = event.getMultiBufferSource().getBuffer(RenderType.lines());

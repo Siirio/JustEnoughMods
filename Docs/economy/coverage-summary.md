@@ -1,8 +1,8 @@
 # Economy registry coverage
 
-Generated from Atlas schema 1 at `2026-10-19T08:54:03.175838+00:00` for `5c6d4d4994d90340ca0fd863b2647dbab084023d`.
+Generated from Atlas schema 1 at `2026-10-20T09:55:46.775229+00:00` for `64122533f7100b0fb57b94deb66600b74536c0df`.
 
-Static evidence observed 17,030 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
+Static evidence observed 17,167 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
 
 | Mod | Registered | Reviewed | Unknown | BUY_AND_SELL | NONE |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -81,7 +81,7 @@ Static evidence observed 17,030 canonical item IDs. This is not a Forge runtime 
 | luminous_beasts | 183 | 0 | 183 | 0 | 183 |
 | luminous_nether | 205 | 0 | 205 | 0 | 205 |
 | luminoustag | 1 | 0 | 1 | 0 | 1 |
-| minecraft | 1689 | 92 | 1597 | 80 | 1609 |
+| minecraft | 1702 | 92 | 1610 | 80 | 1622 |
 | moa_decor_holidays | 151 | 0 | 151 | 0 | 151 |
 | moonlight | 1 | 0 | 1 | 0 | 1 |
 | moretotems | 7 | 0 | 7 | 0 | 7 |
@@ -101,7 +101,7 @@ Static evidence observed 17,030 canonical item IDs. This is not a Forge runtime 
 | shutterup | 20 | 0 | 20 | 0 | 20 |
 | siegeweapons | 8 | 0 | 8 | 0 | 8 |
 | simplybows | 115 | 0 | 115 | 0 | 115 |
-| skarrier_mobs | 170 | 2 | 168 | 2 | 168 |
+| skarrier_mobs | 294 | 2 | 292 | 2 | 292 |
 | smallships | 66 | 0 | 66 | 0 | 66 |
 | snowyspirit | 73 | 2 | 71 | 2 | 71 |
 | somemoreblocks | 663 | 0 | 663 | 0 | 663 |
