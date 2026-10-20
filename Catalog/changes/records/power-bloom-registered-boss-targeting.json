@@ -1,0 +1,96 @@
+{
+  "schema_version": 2,
+  "change_id": "power.bloom-registered-boss-targeting",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "entities",
+      "value": "*"
+    }
+  ],
+  "conditions": [
+    {
+      "expression": "WorldTierApi.profile(attacking mob).isPresent()",
+      "confidence": "runtime"
+    },
+    {
+      "expression": "Target is authenticated Born in Bloom player standing on green ground; final Races owner installed; jem_world_boss_tiers optional module present",
+      "confidence": "runtime"
+    }
+  ],
+  "precedence": {
+    "layer": "server_race_target_adapter",
+    "priority": 360,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Registered bosses retain native targeting against Bloom rather than becoming passive on ordinary green ground.",
+    "modifiers": [
+      {
+        "property": "race.bloom.green_ground_target_cancellation",
+        "operation": "replace",
+        "before": "Cancel every mob target toward Bloom on green except EnderMan, including every registered boss.",
+        "after": "Preserve cancellation for ordinary mobs; do not cancel for any mob with a canonical WorldTierApi.profile. No boss allowlist or independent encounter state."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Final Races SandboxRaceTraits and optional ProductionRaceBridge",
+    "kind": "race_passive_overbroad_boss_eligibility",
+    "source_files": [
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceTraits.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ProductionRaceBridge.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Prevent mandatory boss fights losing their targeting simply because a Bloom participant stands on grass.",
+    "decision_source": "User2026-10-20 Power System Revamp requests race/boss interaction fixes, coherent progression and no trivialized mandatory bosses.",
+    "user_requested": "Preserve working racial abilities and correct combat exploits through server authority.",
+    "codex_choices": "Exempt only canonical registered boss profiles through installed optional API; native targeting, start/participant gates and all V/B mechanics remain their existing owners."
+  },
+  "introduced": {
+    "date": "2026-10-20",
+    "commit": "SELF",
+    "action": "exempt_canonical_boss_profiles_from_bloom_target_suppression",
+    "summary": "Query canonical WorldTierApi.profile on the existing optional bridge; registered bosses retain native target selection against Bloom players on green ground. Ordinary mob passive preserved.",
+    "source_files": [
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceTraits.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ProductionRaceBridge.java"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "exempt_canonical_boss_profiles_from_bloom_target_suppression",
+      "summary": "Query canonical WorldTierApi.profile on the existing optional bridge; registered bosses retain native target selection against Bloom players on green ground. Ordinary mob passive preserved.",
+      "source_files": [
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceTraits.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ProductionRaceBridge.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "combat",
+      "boss_scaling",
+      "race_progression",
+      "multiplayer",
+      "server_authority"
+    ],
+    "relations": [
+      "SandboxRaceTraits.target -> ProductionRaceBridge.registeredBoss -> WorldTierApi.profile -> BalanceRegistry.boss",
+      "Registered boss keeps hosted encounter target validation rather than race passive canceling it"
+    ],
+    "notes": [
+      "Optional module absent returns false before reflective API resolution; present but incompatible API fails visibly using existing bridge error contract. No hard optional class linkage or mirrored profile state.",
+      "JemRoles constructor disables legacy RaceTraitRuntime when final jem_visual_sandbox installed; inactive legacy-only target path remains unchanged.",
+      "Offline regression executes actual unchanged target handler and bridge methods with minimal entity/registry/module boundaries; registered and dynamically unregistered profiles, ordinary green/barren targets, absent optional API, Void kin and Nether piglin passive checked."
+    ],
+    "unresolved": [
+      "Real native boss AI/target event interactions in equipped solo/co-op runtime remain unrun.",
+      "Roles-only distribution without final Races retains legacy passive behavior; current managed distribution uses final owner."
+    ]
+  }
+}

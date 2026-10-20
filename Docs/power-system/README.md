@@ -1,5 +1,7 @@
 # JEM Power Balance System
 
+Current corrections and before/after values: `Balance.md` (2026-10-20). Run `python tools/check_power_system.py` for offline contracts. Runtime observation uses `/jemcombat`, documented in `Docs/SERVER_COMMANDS.md`; neither a build nor an upper bound is a combat recording.
+
 This folder is the human entry point for combat balance. The machine-readable inventory is generated into `Catalog/views/power/`; native gameplay remains owned by Minecraft, installed mods and the existing JEM modules.
 
 The system deliberately does not reduce combat to one score. It tracks damage, cadence, range/area, control, sustain, defense, resources, acquisition and progression separately. An unknown value is never treated as zero.

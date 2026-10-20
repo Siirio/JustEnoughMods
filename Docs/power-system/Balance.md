@@ -1,4 +1,38 @@
-# Граница баланса после Stage 3.5C
+# Power system — applied corrections, 2026-10-20
+
+The Power System Revamp request authorizes source-verified implementation. The three October15 Drive documents remain proposals; their numerical pilots were not adopted as approved values. Baseline inspected: fetched GitHub `main` at `ff69ac30`. This is an implemented corrective batch, not a claim that every catalog candidate has been tuned or player-tested.
+
+| Mechanic / fixed context | Before | Implemented after | Evidence |
+|---|---|---|---|
+| Frost attackTargets, EASY / NORMAL / HARD, config1 |27 /14 /10 |10 /14 /18 |Exact bytecode and injection-handler contracts; native config order retained |
+| Frost hosted ordinary melee, T1 solo |43.7184 raw |16.192 raw |Native16 × tier1.15 × hosted0.88; extra Frost-only2.7 removed |
+| Frost hosted ordinary melee, T5 four players |154 raw |30.8 raw |Native16 × tier1.75 × party1.25 × hosted0.88; extra Frost-only5 removed |
+| Same T5 hit, full netherite Protection IV |46.5696 HP |4.9496832 HP |Armor20, toughness12, EPF16; static reference, not observed DPS |
+| Progression III–V chest guard |First eligible hurt spends cooldown |Incoming event at least8 before its reductions; spend only on own accepted health/absorption loss |35% and240ticks retained; canceled/reflected and nested-only damage cannot spend it |
+| Five Cataclysm capabilities |Generic/specialized resources compete |Explicit specialized native presets |Incinerator, Annihilator, Soul Render, Cursed Bow, Wrath of the Desert; native attributes/skills retained |
+| Race selection immunity |Reopen/confirmation packets renew immunity |Selected players cannot create scene protection; completion gets one100tick exit window |Initial and prolonged selection, saves and V/B(И) controls preserved |
+| Bloom passive vs registered boss |Green-ground target canceled |Canonical registered bosses retain targeting |Ordinary mob passive retained; no boss allowlist |
+| Actual uncanceled hosted death |Fallback restores1HP and hidden DOWNED life |Immediate canonical elimination, normal death continues |Existing canceled pre-death racial abilities retain ownership |
+| Ray of Siphoning healing |Pre-mitigation LivingHurtEvent amount |Native share × positive accepted net HP+absorption loss after hurt |Damage, resistance, mana and native healing modifiers retained |
+
+Removing Frost's blanket extra factor is a Codex balance choice under this overhaul request: native differentiated attacks keep their authored damage alongside existing World Tier and co-op scaling. It is neither Drive pilotA nor pilotB and adds no damage cap. Raid coefficients and Frost Raid exclusion remain. Chest8HP reuses the existing heavy-hit definition before armor, rather than8HP finally lost.
+
+## Corrected research
+
+- Laser Gatling's mapped calls manipulate fire ticks and set five seconds on fire, not invulnerableTime=5. Current installed `cataclysm:laser` lacks `bypasses_cooldown`; ordinary target hurt acceptance applies unless the target overrides it.49scheduled beams ×7 remains a potential upper bound, never observed343damage or DPS.
+- Withered Scythe's delayed41 uses unattributed `minecraft:wither`. Withered Abomination rejects that type: accepted bonus0 on that boss, rather than an assumed41. Armor/shield bypass is not enchantment, Resistance or ordinary cooldown bypass.
+- Incinerator's outer%5 and inner%2 gates permit one application per10entityticks per flame entity before geometry/acceptance. Accepted application remains6+2%maxHP; multiplying all spawned zones does not prove overlap.
+- Iron school/global resistance applies once in the inspected chain. Siphoning's early heal is a different issue. Same-call nested secondary damage/healing can affect its net-pool attribution and remains a runtime observation limit.
+
+## Verification and remaining work
+
+`python tools/check_power_system.py` runs offline owner arithmetic/lifecycle and resource contracts: guard transactions, Siphoning cases, actual Frost injection handlers, capability declarations and extracted actual race methods. Hosted death source safety contracts are not simulated combat.
+
+The opt-in `/jemcombat` observer is documented in `Docs/SERVER_COMMANDS.md`. It separates native hurt calls, event-stage values and actual net HP/absorption loss; deduplicates nested hits; and suppresses rates from invalid callback captures. It cannot invent native cooldown, Curios or spell-stack evidence.
+
+Still required: actual Laser/Scythe/Incinerator accepted-hit recordings, exact Iron stack/level/mana/school resistance and legal Curios builds, same-tier solo/co-op TTK/telegraphs, troop AI contribution, acquisition bypass reproduction and client acceptance. Vanilla equipment references are calculation anchors; realistic modded loadouts must be captured before final all-tier tuning. Ordinary-hostile, party and PvE/PvP spell vectors remain unchanged pending that evidence.
+
+## Historical Stage3.5C research boundary (before implementation)
 
 Phase 3 — это доказанные итоговые числа там, где цепочка уже полна, и конкретная символическая граница во всех остальных местах. Никакой auto-nerf, datapack override, config change или Java balance patch не применён.
 

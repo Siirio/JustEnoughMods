@@ -1,0 +1,182 @@
+{
+  "schema_version": 2,
+  "change_id": "power-system-native-cataclysm-capabilities",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "cataclysm:the_incinerator"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "cataclysm:the_annihilator"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "cataclysm:soul_render"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "cataclysm:cursed_bow"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "cataclysm:wrath_of_the_desert"
+    }
+  ],
+  "conditions": [
+    {
+      "requires_mods": [
+        "epicfight",
+        "p1nero_ec",
+        "cataclysm"
+      ],
+      "server": "dedicated JEM pack; external higher-priority datapacks may override"
+    }
+  ],
+  "precedence": {
+    "layer": "pack-data",
+    "priority": 560
+  },
+  "change": {
+    "summary": "Select the installed dedicated Cataclysm weapon presets deterministically; preserve all native attributes and skills.",
+    "modifiers": [
+      {
+        "property": "combat.epicfight.weapon_capability",
+        "operation": "replace",
+        "before": "Overlapping generic Epic Fight Patch and dedicated P1nero resources; winner depends on pack precedence.",
+        "after": {
+          "the_incinerator": {
+            "type": "p1nero_ec:the_incinerator",
+            "attributes": {
+              "common": {
+                "impact": 2.5,
+                "armor_negation": 20.0,
+                "max_strikes": 4,
+                "speed_bonus": -0.3
+              }
+            }
+          },
+          "the_annihilator": {
+            "type": "p1nero_ec:dual_annihilator",
+            "attributes": {
+              "common": {
+                "impact": 4.5,
+                "armor_negation": 10.0,
+                "max_strikes": 3,
+                "speed_bonus": 0.3
+              }
+            }
+          },
+          "soul_render": {
+            "type": "p1nero_ec:soul_render",
+            "attributes": {
+              "common": {
+                "impact": 1.0,
+                "armor_negation": 20.0,
+                "max_strikes": 3
+              }
+            }
+          },
+          "cursed_bow": {
+            "type": "p1nero_ec:cursed_bow",
+            "attributes": {
+              "common": {
+                "impact": 0.7,
+                "damage_bonus": 2.0,
+                "speed_bonus": -3.55
+              },
+              "ranged": {
+                "max_strikes": 1
+              }
+            }
+          },
+          "wrath_of_the_desert": {
+            "type": "p1nero_ec:wrath_of_the_desert",
+            "attributes": {
+              "common": {
+                "impact": 0.7,
+                "damage_bonus": 2.0,
+                "speed_bonus": -3.4,
+                "max_strikes": 5
+              },
+              "ranged": {
+                "max_strikes": 2
+              }
+            }
+          }
+        },
+        "notes": "Values are exact installed preset facts, not a damage multiplier stack or measured DPS."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMPackCore",
+    "kind": "native_resource_precedence",
+    "source_files": [
+      "Mods/JEMPackCore/src/main/resources/data/cataclysm/capabilities/weapons/the_incinerator.json",
+      "Mods/JEMPackCore/src/main/resources/data/cataclysm/capabilities/weapons/the_annihilator.json",
+      "Mods/JEMPackCore/src/main/resources/data/cataclysm/capabilities/weapons/soul_render.json",
+      "Mods/JEMPackCore/src/main/resources/data/cataclysm/capabilities/weapons/cursed_bow.json",
+      "Mods/JEMPackCore/src/main/resources/data/cataclysm/capabilities/weapons/wrath_of_the_desert.json",
+      "Mods/JEMPackCore/src/main/resources/META-INF/mods.toml",
+      "tools/tests/test_power_capabilities.py"
+    ]
+  },
+  "rationale": {
+    "purpose": "Retain distinct native combos and innate skills instead of generic spear, bow or greatsword fallbacks.",
+    "decision_source": "User requested verified capability conflict fixes; dedicated provider selection and dependency ordering chosen by Codex.",
+    "artifact_evidence": [
+      {
+        "artifact": "p1nero_ec-20.14.0.9.jar",
+        "sha256": "a079ae0561c6526c89ead33211c04df3518d6e038e27d80f23cee88ac9d5b69d"
+      },
+      {
+        "artifact": "EpicFight_X_L_Enders_Cataclysm-1.0.jar",
+        "sha256": "4c9d2b2f21f9ca2263d30fe160e9841b3a15fcac2ccbc219a05e626d91568925"
+      }
+    ],
+    "source_evidence": [
+      "P1nero PECWeaponPresets#registerWeaponCapabilityPreset native five type registrations (javap exact installed JAR).",
+      "Forge 47.4.10 ResourcePackLoader#loadResourcePacks and ServerLifecycleHooks#serverPackFinder preserve ordered ModList mod packs.",
+      "Optional AFTER dependencies order JEMPackCore after both existing providers for default server datapack order."
+    ]
+  },
+  "introduced": {
+    "date": "2026-10-20",
+    "commit": "SELF",
+    "action": "fix",
+    "summary": "Select the installed dedicated Cataclysm weapon presets deterministically; preserve all native attributes and skills."
+  },
+  "history": [
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "fix",
+      "summary": "Select the installed dedicated Cataclysm weapon presets deterministically; preserve all native attributes and skills."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "combat",
+      "epicfight",
+      "boss_rewards",
+      "client_sync",
+      "datapack_precedence"
+    ],
+    "relations": [],
+    "notes": [
+      "No native item class, right-click cooldown, recipe, acquisition, animation or innate skill code changed.",
+      "The declarations reproduce functional type IDs and numeric facts; no third-party code or expressive assets copied."
+    ],
+    "unresolved": [
+      "Existing save explicit datapack ordering and externally supplied higher-priority capability resources need live /datapack list and resolved-resource inspection.",
+      "Native Epic Fight capability synchronization and all five selected movesets require runtime acceptance."
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": 2,
+  "change_id": "power.opt-in-combat-capture",
+  "status": "conditional",
+  "selectors": [{"type": "registry", "registry": "entities"}],
+  "conditions": [{"runtime": "Dedicated server only; permission-2 operator explicitly selects one living target with /jemcombat start <target> <seconds>, 1-120 game seconds, at most 1024 stored observations."}],
+  "precedence": {"layer": "diagnostic_observation", "priority": 900, "overrides": []},
+  "change": {
+    "summary": "Opt-in bounded read-only observation of native combat rather than estimating accepted hits from requested damage or Forge damage-event amounts.",
+    "modifiers": [{
+      "property": "diagnostics.native_combat_capture",
+      "operation": "document",
+      "before": null,
+      "after": {"command": "/jemcombat start <target> <seconds>; /jemcombat status; /jemcombat stop", "default": "off", "max_game_seconds": 120, "max_stored_hurt_observations": 1024, "observations": ["LivingEntity.hurt entry requested amount, source and direct entity", "LivingHurtEvent and LivingDamageEvent amounts/cancellation at LOWEST, explicitly not accepted damage", "hurt return boolean", "actual net health and absorption before/after each call", "invulnerability ticks, death state, difficulty, tier, equipment SNBT and effects", "outer-call net pool-loss rate per game second including idle capture time"], "gameplay_mutation": false},
+      "notes": "Nested same-target observations are marked; aggregates use outer calls only. Head/return do not see rejection before super.hurt in Player/mod overrides, direct setHealth damage, or restoration within the call. Curios/capabilities, spell IDs and true cooldown timers are not captured. No test scenario, gear mutation, entity spawn, tier change or gameplay launch is performed."
+    }]
+  },
+  "cause": {
+    "owner": "JEMWorldBossTiers diagnostic combat boundary",
+    "kind": "opt_in_server_instrumentation",
+    "source_files": [
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/diagnostic/CombatProbe.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/diagnostic/CombatCaptureTotals.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CombatProbeMixin.java",
+      "Mods/JEMWorldBossTiers/src/main/resources/jem_world_boss_tiers.mixins.json",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Measure Laser Gatling, continuous spells and percentage-health attacks under realistic operator-selected loadouts without changing native damage acceptance or inventing observed DPS.",
+    "decision_source": "User explicitly requested targeted sandbox instrumentation in JEM Power System Revamp; Codex chose bounded selected-target read-only native hit observation."
+  },
+  "introduced": {"date": "2026-10-20", "commit": "SELF", "action": "instrumentation_added", "summary": "Added off-by-default selected-target dedicated-server combat capture."},
+  "history": [{"date": "2026-10-20", "commit": "SELF", "action": "instrumentation_added", "summary": "Inspected Forge47.4.10 mapped LivingEntity and Player bytecode; Player.hurt reaches LivingEntity.hurt while Player.actuallyHurt overrides the mitigation implementation. Observe entry/return around that dispatch, keeping event amounts separate from actual net pool changes."}],
+  "impacts": {
+    "systems": ["combat_observation", "world_tiers", "operator_commands"],
+    "relations": [],
+    "notes": ["Permission 2 commands and capture have no integrated-singleplayer runtime ownership.", "Output is one explicit target capture JSON under world/jem-combat-captures; no data is sent to clients or external services.", "Unpaired HEAD/RETURN observations from canceled injections or exceptions invalidate the capture at tick END and suppress rates; the diagnostic never changes combat or guard state.", "Standalone pure-Java regression checks cover nested de-duplication, absorption-only hits, true-return zero-damage calls, rejections, healing, invalid pools and tick-rate normalization."],
+    "unresolved": ["Runtime output has not been captured or promoted to measured evidence.", "Class-specific overrides that never invoke super.hurt and direct health mutation remain outside this observation boundary.", "Curios/capability state and native spell cooldown/IDs require separately verified owner adapters; inter-hit timing is not cooldown."]
+  }
+}

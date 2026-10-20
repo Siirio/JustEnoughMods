@@ -1,0 +1,92 @@
+{
+  "schema_version": 2,
+  "change_id": "power.race-cinematic-reentry",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:player"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime": "Authenticated production race player or authorized integrated sandbox owner; protection only while first authoritative selection is pending or its existing bounded exit scene completes."
+    }
+  ],
+  "precedence": {
+    "layer": "server_race_selection",
+    "priority": 360,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Prevent permanent combat immunity via race menu and selection packet replay.",
+    "modifiers": [
+      {
+        "property": "race.cinematic.protection_eligibility",
+        "operation": "replace",
+        "before": "Any authenticated player may create a600-tick protected scene using action6; clearing and reopening permits unlimited renewal.",
+        "after": "New scenes require authoritative unselected race state; selected progression-menu reopen cannot create immunity. Existing first-choice scene remains protected until selection and completion."
+      },
+      {
+        "property": "race.cinematic.completion_expiry",
+        "operation": "replace",
+        "before": "Every selection acknowledgement sets scene expiry to current tick+100, allowing repeated same-race selections to extend existing immunity.",
+        "after": "A transient server-owned completing marker permits exactly one100-tick completion window; repeated acknowledgements cannot extend it, including when initial selection took longer than600ticks."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "RaceExperience authoritative scene lifecycle",
+    "kind": "client_input_authority_validation_defect",
+    "source_files": [
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceExperience.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Keep initial selection safe while preventing indefinite invulnerability from repeatable UI input.",
+    "decision_source": "User2026-10-20 Power System Revamp explicitly prohibits permanent invulnerability and requires preserved keybinds/saves/abilities.",
+    "user_requested": "Source-proven combat exploits corrected with server authority.",
+    "codex_choices": "Reject only new scene creation after selection and mark first completion exactly once; no packet format, ability, selection/switch rule, save schema or cooldown redesign."
+  },
+  "introduced": {
+    "date": "2026-10-20",
+    "commit": "SELF",
+    "action": "restrict_cinematic_immunity_to_first_selection",
+    "summary": "Reject new protection scenes after authoritative race selection and complete each existing scene at most once; preserve mandatory first-choice protection and100-tick exit even after a long initial choice.",
+    "source_files": [
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceExperience.java"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "restrict_cinematic_immunity_to_first_selection",
+      "summary": "Reject new protection scenes after authoritative race selection and complete each existing scene at most once; preserve mandatory first-choice protection and100-tick exit even after a long initial choice.",
+      "source_files": [
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceExperience.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "combat",
+      "pvp",
+      "race_progression",
+      "multiplayer",
+      "server_authority"
+    ],
+    "relations": [
+      "SandboxNetwork.Input action6 -> RaceExperience.cinematic -> SCENES -> locked -> LivingAttackEvent cancellation",
+      "choose -> completeSelectionScene -> bounded existing scene expiry"
+    ],
+    "notes": [
+      "RaceExperienceScreen.init always sends cinematic true for both initial choice and F6 progression; the screen renders independently and remains usable after selected input is ignored.",
+      "Offline regression compiles unchanged actual Java cinematic/locked/selectionPending/completeSelectionScene methods against minimal player/server boundaries; checks first selection, late choice after original expiry,1200 repeated close/reopen inputs, repeated confirmations and unauthenticated rejection. This is not a Forge/gameplay runtime test."
+    ],
+    "unresolved": [
+      "Real Forge packet processing, mandatory first-choice camera completion and multiplayer equipped combat acceptance remain unrun."
+    ]
+  }
+}

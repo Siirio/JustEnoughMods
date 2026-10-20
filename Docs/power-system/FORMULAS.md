@@ -102,7 +102,7 @@ Priority beam candidates:
 
 - `sunbeam`: `0.5 * spell_power`, instant delayed native hit.
 - `ray_of_frost`: `3 + 1.5 * spell_power`, plus freeze buildup.
-- `ray_of_siphoning`: `0.25 * spell_power` per successful native channel application, with native lifesteal equal to post-event damage.
+- `ray_of_siphoning`: `0.25 * spell_power` per native channel application. Iron3.15.6 originally heals from pre-mitigation LivingHurtEvent; the dedicated JEM adapter now heals the native share of positive accepted net health+absorption loss after hurt. Rejected hits heal0; same-call nested damage/healing affects net attribution.
 - `electrocute`: `1 + 0.75 * spell_power` per successful native projectile/channel hit.
 
 None of those four bytecode paths computes a percentage of target health.
@@ -126,6 +126,10 @@ combined multiplier = (1 - largest) * product(1 - secondary_i * 0.25)
 ```
 
 Helmet projectile reduction is 15%/25%; Tier III has 20% full reflection/cancellation with reflected damage capped at 4. Chest heavy-hit reduction (incoming amount at least 8) is 10%/15%; Tier III guard adds 35% on a 240-tick cooldown. Boots reduce fall damage 35%/60%.
+
+Guard now additionally requires the same8HP pre-Progression event threshold. Its cooldown commits at native actuallyHurt completion only if that call causes health or absorption loss; nested same-target losses are excluded. Shield/iframe rejection before the call, canceled events and fully reflected hits cannot spend it. Existing strongest-full/secondary-quarter overlap is unchanged.
+
+Frost-only non-Raid special multipliers were removed2026-10-20. Native attackTargets keeps `14 × config` as its base and now uses EASY`base−4`, NORMAL`base`, HARD`base+4`; native config multiplication still precedes the offset. Other native attack expressions and tier/co-op/Raid ownership remain.
 
 ## World Tier enemies and bosses
 

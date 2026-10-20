@@ -1,0 +1,111 @@
+{
+  "schema_version": 2,
+  "change_id": "power.frostbitten-difficulty-and-composition",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "legendary_monsters:frostbitten_golem"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime": "Dedicated server; native difficulty injection gated to installed Legendary Monsters2.2.2 actual metadata1.20.1; balance profile loaded through existing registry owner."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_combat_balance",
+    "priority": 350,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Monotonic Frostbitten Golem attackTargets difficulty and one ordinary tier/co-op amplification path.",
+    "modifiers": [
+      {
+        "property": "combat.attackTargets.damage_before_jem_scaling",
+        "operation": "replace",
+        "before": "B=14*configured FrostbittenGolemDamageMutliplier; EASY=B+13, NORMAL=B, HARD=B-4",
+        "after": "B=14*configured FrostbittenGolemDamageMutliplier; EASY=B-4, NORMAL=B, HARD=B+4",
+        "notes": "Effective config1 gives10/14/18. Multiply-then-offset ordering retained; config2 gives24/28/32. No change to attack scheduling, hitbox, damage type or accepted-hit rules."
+      },
+      {
+        "property": "boss_profile.special_damage_multiplier",
+        "operation": "replace",
+        "before": [
+          2.7,
+          2.8,
+          3.2,
+          5.0,
+          5.0
+        ],
+        "after": null,
+        "notes": "Absent profile field already means native factor1 in the existing owner. Narrow Frost-only balance decision removes amplification applied to all outgoing hits, including ordinary melee; not a claim that author intent was accidental. WorldTier, co-op, hosted0.88 and Raid remain native JEM-owned."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCompat exact-version native adapter and JEMPackCore authoritative boss profile",
+    "kind": "installed_bytecode_difficulty_defect_and_authorized_balance_decision",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/worldtier/FrostbittenDifficultyMixin.java",
+      "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make EASY easier than NORMAL/HARD and prevent this subordinate mandatory boss receiving an additional2.7-to5 blanket damage increase over existing tier/co-op scaling.",
+    "decision_source": "User2026-10-20 comprehensive Power System Revamp names Frost excessive composition and inverted difficulty; exact installed jar javap attackTargets(Entity) and JEMWorldBossTiers.scaleDamage establish mechanics.",
+    "user_requested": "Source-verified high-impact combat improvements with preserved identity, realistic armor references and no invented observed DPS.",
+    "codex_choices": "Symmetric4-point native offsets around unchanged NORMAL; remove Frost-only blanket factor instead of selecting unsupported replacement pilot curves."
+  },
+  "introduced": {
+    "date": "2026-10-20",
+    "commit": "SELF",
+    "action": "correct_native_difficulty_and_remove_frost_only_blanket_amplification",
+    "summary": "Correct installed attackTargets offsets and remove the Frost-specific non-Raid special multiplier. Preserve native authored attacks, tier/co-op/Raid factors, saves and campaign eligibility. Runtime acceptance remains pending.",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/worldtier/FrostbittenDifficultyMixin.java",
+      "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "correct_native_difficulty_and_remove_frost_only_blanket_amplification",
+      "summary": "Correct installed attackTargets offsets and remove the Frost-specific non-Raid special multiplier. Preserve native authored attacks, tier/co-op/Raid factors, saves and campaign eligibility. Runtime acceptance remains pending.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/worldtier/FrostbittenDifficultyMixin.java",
+        "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "combat",
+      "boss_scaling",
+      "progression",
+      "multiplayer",
+      "campaign"
+    ],
+    "relations": [
+      "Installed legendarymonsters2.2.2 Frostbitten_GolemEntity.attackTargets -> narrow dedicated exact-version Mixin",
+      "JEMPackCore expanded_bosses profile -> JEMWorldBossTiers.scaleDamage -> existing hosted tier/co-op/Raid owner"
+    ],
+    "notes": [
+      "Exact installed jar SHA2568fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8.",
+      "Native melee16: hosted TierI solo raw43.7184->16.192; TierV four-player raw154->30.8; ordinary non-bypass vanilla full netherite ProtectionIV theoretical lostHP46.5696->4.9496832 at TierV. These are per-hit static calculations, not observed DPS or survival.",
+      "Native AreaAttack parameters12/13, attack selection, armor, HP, telegraphs, campaign/reward registration and Raid coefficient unchanged."
+    ],
+    "unresolved": [
+      "Realistic tier-matched equipped solo/co-op accepted-hit cadence, native damage-source bypass tags and player survival need runtime sandbox capture.",
+      "Dedicated server Mixin application and player acceptance have not been run by this subtask."
+    ]
+  }
+}

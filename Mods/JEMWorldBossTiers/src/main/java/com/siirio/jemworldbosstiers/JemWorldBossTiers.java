@@ -82,6 +82,7 @@ public final class JemWorldBossTiers {
         TierLoot.register(FMLJavaModLoadingContext.get().getModEventBus());
         TierNetwork.register();
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(com.siirio.jemworldbosstiers.diagnostic.CombatProbe.class);
         MinecraftForge.EVENT_BUS.register(new RevivalService());
         MinecraftForge.EVENT_BUS.register(bossRespawns);
         MinecraftForge.EVENT_BUS.register(new WeaponProtection());
@@ -98,6 +99,9 @@ public final class JemWorldBossTiers {
 
     @SubscribeEvent
     public void registerCommands(RegisterCommandsEvent event) {
+        if (event.getCommandSelection() == net.minecraft.commands.Commands.CommandSelection.DEDICATED) {
+            com.siirio.jemworldbosstiers.diagnostic.CombatProbe.register(event.getDispatcher());
+        }
         TierCommands.register(event.getDispatcher());
         BossCommands.register(event.getDispatcher());
     }

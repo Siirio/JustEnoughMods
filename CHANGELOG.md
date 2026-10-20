@@ -1,3 +1,16 @@
+## 2026-10-20 — Correct combat composition and race exploits
+
+- User requested the Power System Revamp across combat/progression using current main and October15 research, with verified improvements rather than speculative blanket nerfs. Later instruction prioritizes immediate local installation and stops further tests/audits.
+- Codex removed Frost's extra non-Raid all-channel amplification while preserving native attacks/tier/co-op/Raid ownership; corrected the exact native difficulty offsets to EASY10/NORMAL14/HARD18 at config1. These are implementation decisions, not approval of either proposed Frost pilot.
+- Progression guard reuses the8HP heavy-hit threshold and commits its unchanged35%/240tick defense only after its own accepted health/absorption loss. Specialized native presets now resolve five Cataclysm capability collisions without changing weapon damage or skills.
+- Closed repeatable race-menu invulnerability and completion replay; Bloom retains ordinary-mob green-ground pacification while canonical registered bosses retain targeting. Actual uncanceled hosted deaths immediately eliminate without the hidden1HP fallback. Working pre-death racial abilities retain native ownership.
+- Siphoning healing now follows accepted net HP/absorption loss and its native healing share; spell damage, mana and resistance vectors remain unchanged. Added bounded opt-in server combat capture. Laser research corrected: five seconds of fire, not five invulnerability ticks;49×7 is not observed DPS. Scythe WITHER rejection on Withered Abomination and Incinerator10tick eligibility remain explicit.
+- Before the later stop-checking instruction, offline owner contracts and all four production builds passed. No realistic equipped-player combat recordings or all-ID balance completion are claimed. Local artifacts are installed in Server/ManagedPack; native delivery receipt is `Docs/power-system/delivery-20261020.json`. Stable profiles, MineRENT and release baseline remain unchanged.
+- Bug / Server / guard spent on insignificant or ultimately rejected hurt / in testing; mechanism: significant-hit reservation and finally-paired native accepted-damage commit.
+- Bug / Server / Frost difficulty offsets inverted damage and extra profile amplified every damage channel / in testing; mechanisms: exact native offset adapter and removal of Frost-only amplification.
+- Bug / Server / race scene requests renewed combat immunity and Bloom target cancellation included registered bosses / in testing; mechanisms: one initial selection completion window and canonical boss-profile exemption.
+- Bug / Server / Siphoning healed from pre-mitigation event amount and hosted death fallback restored a hidden life / in testing; mechanisms: native post-hurt net-pool healing and direct canonical actual-death elimination.
+
 ## 2026-10-20 — Digger wear, Skarrier hotfix and required aircraft visuals
 
 - User requests3×3 (nine blocks) Digger, four durability without Unbreaking, exact 50% 0/1 with Unbreaking III, native 1×1 wear and highlight only while enabled without Shift. Codex replaces premature BreakEvent expansion with one scoped native completion/removal/wear operation; no duplicate toggle or packets. Partial rounding and Unbreaking I/II vanilla rolls over four points are Codex implementation choices.

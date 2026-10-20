@@ -1,0 +1,84 @@
+{
+  "schema_version": 2,
+  "change_id": "power-system-hosted-actual-death-elimination",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "entities"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime": "dedicated server active hosted encounter player participants; uncanceled LivingDeathEvent"
+    }
+  ],
+  "precedence": {
+    "layer": "server-lifecycle",
+    "priority": 570
+  },
+  "change": {
+    "summary": "Remove hosted fallback death cancellation and one-HP hidden extra life; actual death immediately uses canonical elimination.",
+    "modifiers": [
+      {
+        "property": "hosted.participant.actual_death",
+        "operation": "replace",
+        "before": "First multiplayer death without PlayerRevive canceled event, restored one HP, set DOWNED, granted hidden extra life and damage protection.",
+        "after": "Use existing eliminate(player, entry), clearing hosted DOWNED marker and setting ELIMINATED without canceling death, healing or teleporting.",
+        "notes": "Canceled pre-death racial abilities and native PlayerRevive are not actual accepted deaths; their handling stays with existing owners."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMWorldBossTiers HostedEncounters#death",
+    "kind": "hidden_life_on_accepted_death",
+    "source_files": [
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java",
+      "tools/tests/test_hosted_death_contract.py"
+    ]
+  },
+  "rationale": {
+    "purpose": "Honor explicit dead-means-dead participant contract while retaining native death/respawn and canonical targeting eligibility.",
+    "decision_source": "Current user AGENTS explicitly requires actual participant death immediate elimination without hidden lives, health restoration, immunity or teleport-to-boss.",
+    "evidence_chain": [
+      "LivingDeathEvent arrives uncanceled at LOWEST after earlier pre-death guards.",
+      "Old no-PlayerRevive/multiplayer/first-down branch cancels that death and sets health=1 and State=DOWNED.",
+      "DOWNED participant then receives attack cancellation and manual revival, turning actual death into extra life.",
+      "Remove the branch at its sole lifecycle owner and reuse eliminate.",
+      "Canonical ALIVE checks already exclude ELIMINATED players from targeting and combat contribution; save/network schema unchanged."
+    ]
+  },
+  "introduced": {
+    "date": "2026-10-20",
+    "commit": "SELF",
+    "action": "fix",
+    "summary": "Remove hosted fallback death cancellation and one-HP hidden extra life; actual death immediately uses canonical elimination."
+  },
+  "history": [
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "fix",
+      "summary": "Remove hosted fallback death cancellation and one-HP hidden extra life; actual death immediately uses canonical elimination."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "hosted_encounters",
+      "participant_elimination",
+      "boss_targeting",
+      "saved_state",
+      "racial_abilities",
+      "native_death"
+    ],
+    "relations": [],
+    "notes": [
+      "Boss victory branch unchanged; dead-player ordinary death, drops and respawn continue.",
+      "Existing canceled-death abilities retain Forge receiveCanceled=false semantics.",
+      "Legacy persisted DOWNED recovery and externally canceled PlayerRevive events unchanged; no new DOWNED state created by this handler."
+    ],
+    "unresolved": [
+      "Runtime multiplayer death/respawn and spectator targeting acceptance still require player QA."
+    ]
+  }
+}

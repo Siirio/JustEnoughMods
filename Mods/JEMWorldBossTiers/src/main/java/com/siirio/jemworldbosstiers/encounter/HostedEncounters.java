@@ -387,18 +387,8 @@ public final class HostedEncounters {
             return;
         }
         CompoundTag entry = participant(boss, player.getUUID());
-        if (!net.minecraftforge.fml.ModList.get().isLoaded("playerrevive") && !boss.getPersistentData().getBoolean("jem_solo") && players(boss).size() > 1 && ALIVE.equals(entry.getString("State")) && !entry.getBoolean("DownedUsed")) {
-            event.setCanceled(true);
-            entry.putInt("Downs", entry.getInt("Downs") + 1);
-            entry.putBoolean("DownedUsed", true);
-            entry.putString("State", DOWNED);
-            entry.putLong("BleedoutUntil", now(boss) + HostedConfig.BLEEDOUT.get());
-            entry.putDouble("X", player.getX());
-            entry.putDouble("Y", player.getY());
-            entry.putDouble("Z", player.getZ());
-            player.getPersistentData().putUUID(DOWNED_MARKER, boss.getUUID());
-            player.setHealth(1);
-        } else eliminate(player, entry);
+        // An uncanceled death ends participation; pre-death abilities retain their own event handling.
+        eliminate(player, entry);
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)

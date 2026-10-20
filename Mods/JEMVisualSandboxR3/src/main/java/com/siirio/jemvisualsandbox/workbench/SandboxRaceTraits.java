@@ -156,7 +156,7 @@ public final class SandboxRaceTraits {
         String id = net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(actor.getType()).toString();
         boolean endKin = List.of("minecraft:enderman", "minecraft:endermite", "minecraft:shulker").contains(id);
         boolean endBoss = actor instanceof EnderDragon || id.equals("minecraft:wither");
-        if (race == 1 && endKin && !endBoss || race == 2 && SandboxEnvironment.green(p.serverLevel(), p.blockPosition()) && !(actor instanceof EnderMan)
+        if (race == 1 && endKin && !endBoss || race == 2 && SandboxEnvironment.green(p.serverLevel(), p.blockPosition()) && !(actor instanceof EnderMan) && !ProductionRaceBridge.registeredBoss(actor)
                 || race == 4 && actor instanceof AbstractPiglin) e.setCanceled(true);
     }
     @SubscribeEvent public static void containerOpen(PlayerContainerEvent.Open e) {

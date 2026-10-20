@@ -27,7 +27,7 @@ public final class RaceExperience {
         @Override public int[] tiers(){return tiers.clone();}
         @Override public int[] progress(){return progress.clone();}
     }
-    private record Scene(net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level> dimension,Vec3 anchor,long expires) {}
+    private record Scene(net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level> dimension,Vec3 anchor,long expires,boolean completing) {}
     private static final Map<UUID,Scene> SCENES=new HashMap<>();
     private RaceExperience() {}
     public static boolean allowed(ServerPlayer p){return p!=null && (p.server.isDedicatedServer()?ProductionRaceBridge.authenticated(p):RaceDevelopment.integrated() && p.server.isSingleplayerOwner(p.getGameProfile()));}
@@ -77,7 +77,8 @@ public final class RaceExperience {
     private static void completeSelectionScene(ServerPlayer p){
         Scene scene=SCENES.get(p.getUUID());
         boolean confirmed=selected(p);
-        if(scene!=null&&confirmed)SCENES.put(p.getUUID(),new Scene(scene.dimension,scene.anchor,p.server.overworld().getGameTime()+100));
+        // Selection acknowledgements may repeat; they must never extend protection.
+        if(scene!=null&&confirmed&&!scene.completing)SCENES.put(p.getUUID(),new Scene(scene.dimension,scene.anchor,p.server.overworld().getGameTime()+100,true));
     }
     private static void mirror(ServerPlayer p){p.getPersistentData().putInt("JemSandboxRace",race(p));}
     public static boolean cast(ServerPlayer p){
@@ -116,7 +117,9 @@ public final class RaceExperience {
     public static void cinematic(ServerPlayer p,boolean enabled){
         if(!allowed(p))return;
         if(enabled){
-            SCENES.putIfAbsent(p.getUUID(),new Scene(p.serverLevel().dimension(),p.position(),p.server.overworld().getGameTime()+600));
+            // Reopening the progression menu must not grant gameplay immunity.
+            if(selected(p))return;
+            SCENES.putIfAbsent(p.getUUID(),new Scene(p.serverLevel().dimension(),p.position(),p.server.overworld().getGameTime()+600,false));
         }
         else SCENES.remove(p.getUUID());
     }

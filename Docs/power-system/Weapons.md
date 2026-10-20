@@ -1,5 +1,7 @@
 # Оружие — Stage 3.5A
 
+Correction2026-10-20: Laser Gatling sets five seconds of fire, not five invulnerability ticks. Its49scheduled beams are not49accepted hits. Five Cataclysm collisions now have explicit JEM specialized native preset declarations; see `Balance.md` for current implementation. Runtime combo DPS remains unresolved.
+
 Основной список находится в `Catalog/views/power/weapons.json`. Phase 2 больше не считает оружием каждую строку или модель, в имени которой встретилось `bow`, `sword` или похожее слово.
 
 В основной список попадают только канонические Minecraft-предметы, точные ID из boss-reward/JEM allowlist либо предметы, для которых найдено регистрационное доказательство в exact-version JAR. Отброшены bowls, spawn eggs, блоки профессий, компоненты апгрейда, `_visual_`, `_pulling_`, `_inventory`, модели руки и другие presentation-only варианты. Поэтому `minecraft:bowl` и визуальные стадии Simply Bows больше не отвечают на `query_atlas.py power`.

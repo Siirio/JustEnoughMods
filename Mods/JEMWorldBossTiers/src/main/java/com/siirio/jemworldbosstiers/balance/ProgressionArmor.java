@@ -8,6 +8,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -46,13 +47,15 @@ public final class ProgressionArmor {
     private static final String GUARD_READY_AT = "JEMProgressionGuardReadyAt";
     private static final String ATTACK_SPEED_END = "JEMProgressionAttackSpeedEnd";
     private static final UUID ATTACK_SPEED_MODIFIER_ID = UUID.fromString("fb8f7250-1860-45ab-8423-15bf043f7357");
+    private static final ThreadLocal<GuardHitTracker> GUARD_HITS = ThreadLocal.withInitial(GuardHitTracker::new);
 
     private ProgressionArmor() {
     }
 
     public static void apply(LivingHurtEvent event) {
         LivingEntity wearer = event.getEntity();
-        if (!(wearer.level() instanceof ServerLevel level)) {
+        if (event.isCanceled() || !Float.isFinite(event.getAmount()) || event.getAmount() <= 0
+                || !(wearer.level() instanceof ServerLevel level)) {
             return;
         }
         int tier = WorldTierData.get(level.getServer()).tier();
@@ -77,10 +80,9 @@ public final class ProgressionArmor {
         if (chest && event.getAmount() >= HEAVY_HIT_DAMAGE) {
             reductions.add(tier >= 3 ? TIER_THREE_HEAVY_REDUCTION : TIER_TWO_HEAVY_REDUCTION);
         }
-        if (chest && tier >= 3 && guardReady(wearer, level)) {
+        if (chest && tier >= 3 && event.getAmount() >= HEAVY_HIT_DAMAGE
+                && guardReady(wearer, level) && GUARD_HITS.get().reserve(wearer)) {
             reductions.add(TIER_THREE_GUARD_REDUCTION);
-            wearer.getPersistentData().putLong(GUARD_READY_AT, level.getGameTime() + GUARD_COOLDOWN_TICKS);
-            showGuard(wearer, level);
         }
         if (boots && fall) {
             reductions.add(tier >= 3 ? TIER_THREE_FALL_REDUCTION : TIER_TWO_FALL_REDUCTION);
@@ -92,6 +94,20 @@ public final class ProgressionArmor {
         if (boots && fall && tier >= 3) {
             wearer.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, LANDING_MOVEMENT_DURATION_TICKS, 1, false, true));
         }
+    }
+
+    public static void beginHit(LivingEntity wearer, DamageSource source, float amount) {
+        GUARD_HITS.get().begin(wearer, wearer.getHealth(), wearer.getAbsorptionAmount());
+    }
+
+    public static void finishHit(LivingEntity wearer) {
+        GuardHitTracker tracker = GUARD_HITS.get();
+        if (tracker.finish(wearer, wearer.getHealth(), wearer.getAbsorptionAmount())
+                && wearer.level() instanceof ServerLevel level) {
+            wearer.getPersistentData().putLong(GUARD_READY_AT, level.getGameTime() + GUARD_COOLDOWN_TICKS);
+            showGuard(wearer, level);
+        }
+        if (tracker.isEmpty()) GUARD_HITS.remove();
     }
 
     public static void tick(TickEvent.PlayerTickEvent event) {

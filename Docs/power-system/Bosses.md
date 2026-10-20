@@ -1,5 +1,7 @@
 # Боссы — Stage 3.5B
 
+The Frost figures and difficulty branch below describe the historical native/pre-revamp snapshot. Current2026-10-20 dedicated corrections and calculated before/after values are in `Balance.md` and `FORMULAS.md`; no all-boss DPS observation is claimed.
+
 `Catalog/views/power/bosses.json` содержит 61 босса: 56 зарегистрированных JEM-профилей и 5 дополнительных native boss candidates. Учтены Legendary Monsters, Cataclysm, Bosses'Rise (`block_factorys_bosses`), Luminous Beasts, Luminous Nether, Aquamirae, Alex's Caves, Iron's Spells, Companions и vanilla bosses.
 
 Для всех 61 найден exact-version owner class либо официальный mapped Minecraft/Forge class. Исправленный extractor понимает как mapped `AttributeSupplier.Builder.add`, так и реальный Forge 1.20.1 вызов `m_22268_`: exact native attributes теперь есть у 60/61 боссов, а `ATTACK_DAMAGE` — у 56/61.

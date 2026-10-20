@@ -1,5 +1,7 @@
 # Coverage Stage 3.5C после armor/accessory/durability resolution
 
+2026-10-20: the implemented correction batch and evidence boundaries are in `Balance.md`; this document's Stage3.5 counts are historical extraction metrics. Use the regenerated `Catalog/views/power/coverage.json` for current denominators (the pre-revamp snapshot reports3223named blockers, rather than the stale3880 below). Automated owner contracts and production builds do not close all-ID runtime combat cards.
+
 Машинный источник — `Catalog/views/power/coverage.json`. Текущий combat inventory содержит 2 365 записей:
 
 | View | Identified |

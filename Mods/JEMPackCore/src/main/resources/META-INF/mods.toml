@@ -43,3 +43,18 @@ mandatory=false
 versionRange="[1.0.0,)"
 ordering="AFTER"
 side="BOTH"
+
+# Keep the pack-owned capability choices above both overlapping providers.
+[[dependencies.jem_pack_core]]
+modId="epicfight_cataclysm"
+mandatory=false
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.jem_pack_core]]
+modId="p1nero_ec"
+mandatory=false
+versionRange="[20.14.0.9,)"
+ordering="AFTER"
+side="BOTH"

@@ -878,14 +878,14 @@ def audit_findings() -> list[dict[str, Any]]:
         {
             "id": "frostbitten-golem-special-stack",
             "status": "source_verified",
-            "severity": "critical_review",
-            "finding": "Frostbitten Golem special damage multipliers [2.7, 2.8, 3.2, 5.0, 5.0] stack with the ordinary registered-boss tier boost and hosted participant damage factor outside Raid; hosted owned attacks then receive x0.88. Raid skips the profile special multiplier.",
-            "mechanism": "JemWorldBossTiers multiplies factor by BossTierScaling.boost(tier), then non-Raid specialDamageMultiplier, then HostedEncounters.damageFactor; a later hosted-owner branch multiplies by 0.88.",
+            "severity": "corrected_pending_runtime",
+            "finding": "Frost-only blanket special multipliers [2.7, 2.8, 3.2, 5.0, 5.0] were removed. Native damage, the registered-boss tier boost, hosted participant factors and x0.88 remain; Raid is unchanged.",
+            "mechanism": "Frost no longer declares special_damage_multiplier in expanded_bosses.json. This removes amplification of every hurt channel, including basic melee; it is an intentional scoped balance decision, not an observed DPS result.",
             "sources": [
                 "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
                 "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java",
             ],
-            "runtime_change": False,
+            "runtime_change": True,
         },
         {
             "id": "blood-moon-penetration-post-mitigation",
@@ -902,11 +902,11 @@ def audit_findings() -> list[dict[str, Any]]:
         {
             "id": "progression-guard-any-hurt-event",
             "status": "source_verified",
-            "severity": "review",
-            "finding": "Tier III Progression chest guard is consumed by the first qualifying LivingHurtEvent while ready, without a heavy-hit, projectile, minimum-damage or damage-type gate of its own.",
-            "mechanism": "The guardReady branch adds 35% reduction and immediately writes a 240-tick cooldown; it is independent of the separate heavy-hit branch.",
+            "severity": "corrected_pending_runtime",
+            "finding": "Tier III Progression chest guard requires incoming LivingHurtEvent amount >=8 before its reductions; cooldown commits only after that hit decreases health or absorption.",
+            "mechanism": "ProgressionArmor reserves the unchanged 35% guard in a native actuallyHurt transaction; a try/finally boundary commits the unchanged 240-tick cooldown only for that call's own net pool loss, excluding nested same-target damage.",
             "sources": ["Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/ProgressionArmor.java"],
-            "runtime_change": False,
+            "runtime_change": True,
         },
         {
             "id": "equipment-durability-current-state",

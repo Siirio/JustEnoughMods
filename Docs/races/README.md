@@ -1,5 +1,9 @@
 # JEM Races
 
+## Combat exploit corrections — 2026-10-20
+
+Selected players may browse F6 without acquiring scene immunity. Initial selection remains protected, including prolonged reading; its first successful completion starts one100tick camera-exit window, and repeated acknowledgements cannot extend it. No save schema or V/B(И) control changes. Bloom's green-ground passive still pacifies ordinary eligible mobs, while canonical registered bosses retain targeting through WorldTierApi.profile. Exact mechanics and regression boundaries are recorded in the matching Atlas changes and `Docs/power-system/Balance.md`.
+
 ## Native installation recovery — 2026-10-18
 
 The second test jem crash still loaded generation27: native preload had downloaded generation29 but refused its locally built JAR replacements without review. Publication and download did not install the correction. The already-authorized exact local artifacts were applied through the existing native planner and UpdateAttempt commit, preserving native file ownership and the preload trust rule. The installed active token now equals the generation29 head, and installed Races/Compat SHA-256 values match ManagedPack; Compat contains no narrator Mixin and Races owns the sole hook. No client was launched or tests run. User startup confirmation remains pending; the complete receipt is `server-test-migration.json`.

@@ -16,6 +16,12 @@ public final class ProductionRaceBridge {
         return p!=null && p.server.isDedicatedServer() && net.minecraftforge.fml.ModList.get().isLoaded("jem_roles")
             && ((Optional<?>)call("com.siirio.jemidentity.api.IdentityPolicy",null,"resolve",new Class<?>[]{ServerPlayer.class},p)).isPresent();
     }
+    /** Boss membership belongs to the optional canonical profile registry. */
+    public static boolean registeredBoss(net.minecraft.world.entity.LivingEntity entity){
+        if(!net.minecraftforge.fml.ModList.get().isLoaded("jem_world_boss_tiers"))return false;
+        return ((Optional<?>)call("com.siirio.jemworldbosstiers.api.WorldTierApi",null,"profile",
+                new Class<?>[]{net.minecraft.world.entity.LivingEntity.class},entity)).isPresent();
+    }
     private static Optional<?> record(ServerPlayer p){return (Optional<?>)call("com.siirio.jemroles.race.RaceService",null,"record",new Class<?>[]{ServerPlayer.class},p);}
     public static CompoundTag data(ServerPlayer p){
         Object record=record(p).orElse(null);

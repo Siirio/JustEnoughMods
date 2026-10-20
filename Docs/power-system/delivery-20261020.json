@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-20",
+  "scope": "Local corrective combat batch; complete all-ID balancing remains unfinished",
+  "baseline_main": "ff69ac30",
+  "artifacts": [
+    {
+      "source": "Mods/JEMWorldBossTiers/build/libs/jem-world-boss-tiers-2.5.0-dev.jar",
+      "file": "jem-world-boss-tiers-2.5.0-dev.jar",
+      "path": "mods/jem-world-boss-tiers-2.5.0-dev.jar",
+      "sha256": "23c8eef763bf3eba1358830dde1b5f23294e8a600cb0049229df01707530ed8d"
+    },
+    {
+      "source": "Mods/JEMCompat/build/libs/jemcompat-3.7.0.jar",
+      "file": "jemcompat-3.7.0.jar",
+      "path": "mods/jemcompat-3.7.0.jar",
+      "sha256": "2579a6d57e0d1496f0960f233f456066301e5f09490e72ce7f4ceaff6747dfdf"
+    },
+    {
+      "source": "Mods/JEMPackCore/build/libs/jem-pack-core-2.0.0-dev.jar",
+      "file": "jem-pack-core-2.0.0-dev.jar",
+      "path": "mods/jem-pack-core-2.0.0-dev.jar",
+      "sha256": "7220a5f7b93a66ca6894985e7bf1a1bbda3dbc05df9926b3038ec59c105dda3e"
+    },
+    {
+      "source": "Mods/JEMVisualSandboxR3/build/production-profile/libs/jem-races-1.1.0.jar",
+      "file": "jem-races-1.1.0.jar",
+      "path": "mods/jem-races-1.1.0.jar",
+      "sha256": "59c5818430b5505598869b70607cb6d56d5330ede4a755ea47b3a0749416604f"
+    }
+  ],
+  "server": {
+    "installed": true,
+    "started": true,
+    "process_at_start": 28944
+  },
+  "native_automodpack": {
+    "generation": 48,
+    "content_token": "f83976230aa6816efcbc2f16d13b424ae06b4828",
+    "published": true,
+    "test_jem_applied": true,
+    "result": "NATIVE_TASK_APPLIED f83976230aa6816efcbc2f16d13b424ae06b4828",
+    "mechanism": "Native planner, reviewed exact five-path delta, approve and commit; no raw managed-file copies or active-state edits"
+  },
+  "verification_boundary": "Offline owner contracts and four production builds passed before the user instructed immediate installation with no more checks. No later tests/audits or gameplay/client launch.",
+  "remaining": [
+    "No realistic equipped-player combat recordings or final solo/co-op TTK acceptance.",
+    "Atlas raw snapshot regenerated; full completion blocked by concurrent unrelated GUI-removal record referencing missing assets.",
+    "Power view generation blocked by historical fixed219 defense denominator after current Atlas reports232 candidates; existing power views remain historical.",
+    "Startup logged a frozen local development economy ledger outside its required local opt-in boundary; personal save/ledger was not edited."
+  ],
+  "stable_minerent_release_baseline": "unchanged"
+}
