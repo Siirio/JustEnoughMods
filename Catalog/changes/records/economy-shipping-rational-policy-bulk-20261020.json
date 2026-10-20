@@ -1,0 +1,233 @@
+{
+  "schema_version": 2,
+  "change_id": "economy.shipping-rational-policy-bulk-20261020",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "source_set",
+      "registry": "items",
+      "members_path": "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/item_policies.json",
+      "id_field": "item"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "dedicated_server": true,
+      "authenticated_identity": true,
+      "canonical_stack": true
+    }
+  ],
+  "precedence": {
+    "layer": "jem_datapack_policy",
+    "priority": 650,
+    "overrides": [
+      "economy.reviewed-item-policies",
+      "economy.building-supply-prohibitions"
+    ]
+  },
+  "change": {
+    "summary": "Directional reviewed sales, exact rational batch anchors, shared material quotas, fixed10000 disc price/one shared per-account daily disc quota, ordinary400/10000 limits, and paid native-stack bulk delivery into authorized existing linked storage.",
+    "modifiers": [
+      {
+        "property": "economy.trade_policy",
+        "operation": "derive",
+        "before": "Legacy whole-item commodity prices and broad incoming ore/Create prohibition.",
+        "after": {
+          "canonical_source": "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/item_policies.json",
+          "sale": "floor(account residue + complete exact transaction); ceil remaining fractional liability backed by existing MARKET_ESCROW",
+          "buy": "ceil full order; building lots64/256/1024/4096",
+          "ordinary_daily_personal": 400,
+          "ordinary_daily_global": 10000,
+          "music_disc_fixed_copper": 10000,
+          "music_disc_daily_personal": 1,
+          "native_discount": "Exact rational full merchandise batch through native demand and Ancestors20% event; ceil once after safe purchase floor."
+        },
+        "notes": "No blanket registration/recipe-proof claim. Unknown identities stay fail closed. Complete current recipe graph and player acceptance unresolved."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCurrencyCore",
+    "kind": "java_resource_policy",
+    "source_files": [
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/WalletScreen.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/market/MarketBulkOrders.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/BuyerTradeOffers.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeItemPricing.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativePriceMath.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeTradePricing.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/ItemPolicy.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/MarketSupply.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/TradeRestrictions.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/RationalPrice.java",
+      "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/item_policies.json",
+      "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/market_limits.json",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/en_us.json",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/ru_ru.json",
+      "Mods/JEMCurrencyCore/tools/author_shipping_economy.py",
+      "Mods/JEMEconomy/tools/author_building_supply.py",
+      "Mods/JEMEconomy/tools/reconcile_economy.py",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/CoinTradePriceEvent.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/economy/CoinTradeRaceBridge.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/audit/EconomyRuntimeExport.java",
+      "Mods/JEMCurrencyCore/tools/derive_conversion_economy.py",
+      "Mods/JEMCurrencyCore/tools/monetary_potential.py",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/MarketActionPacket.java",
+      "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/native_item_prices.json",
+      "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/profession_pools.json",
+      "Client/ManagedPack/kubejs/server_scripts/jem/economy_recipe_guards.js",
+      "Catalog/generator/build_atlas.py",
+      "Catalog/generator/impact_model.py"
+    ]
+  },
+  "rationale": {
+    "purpose": "Implement authorized shipping economy specification without a second price owner or ledger.",
+    "decision_source": "User full shipping handoff implementation request2026-10-20",
+    "user_requested": "Food/crop/seed/mineral sell coverage, batch anchors, fixed disc payout, accessible building bulk and existing authorized storage.",
+    "codex_choices": "Exact checked RationalPrice arithmetic, persistent backed residual receipts, pooled linked settlement storage and explicit quarantine on ambiguous restart."
+  },
+  "introduced": {
+    "date": "2026-10-20",
+    "commit": "SELF",
+    "action": "implement_shipping_price_and_bulk_contract",
+    "summary": "User authorized full handoff execution. Adds directional sell-only/rational policies, backed residual owner and funded existing-storage bulk journal; current runtime coverage/recipe closure remains explicitly incomplete.",
+    "source_files": [
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/WalletScreen.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/market/MarketBulkOrders.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/BuyerTradeOffers.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeItemPricing.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativePriceMath.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeTradePricing.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/ItemPolicy.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/MarketSupply.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/TradeRestrictions.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/RationalPrice.java",
+      "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/item_policies.json",
+      "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/market_limits.json",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/en_us.json",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/ru_ru.json",
+      "Mods/JEMCurrencyCore/tools/author_shipping_economy.py",
+      "Mods/JEMEconomy/tools/author_building_supply.py",
+      "Mods/JEMEconomy/tools/reconcile_economy.py"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "implement_shipping_price_and_bulk_contract",
+      "summary": "User authorized full handoff execution. Adds directional sell-only/rational policies, backed residual owner and funded existing-storage bulk journal; current runtime coverage/recipe closure remains explicitly incomplete.",
+      "source_files": [
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/WalletScreen.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/market/MarketBulkOrders.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/BuyerTradeOffers.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeItemPricing.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativePriceMath.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeTradePricing.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/ItemPolicy.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/MarketSupply.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/TradeRestrictions.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/RationalPrice.java",
+        "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/item_policies.json",
+        "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/market_limits.json",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/en_us.json",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/ru_ru.json",
+        "Mods/JEMCurrencyCore/tools/author_shipping_economy.py",
+        "Mods/JEMEconomy/tools/author_building_supply.py",
+        "Mods/JEMEconomy/tools/reconcile_economy.py",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/CoinTradePriceEvent.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/economy/CoinTradeRaceBridge.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/audit/EconomyRuntimeExport.java",
+        "Mods/JEMCurrencyCore/tools/derive_conversion_economy.py"
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "current_recipe_potential_and_approved_copper_guard",
+      "summary": "User chose cheap construction with adjusted derived buyback, then explicitly approved only mincer copper-ingot to raw-copper removal. Current13935-item/15416-recipe capture;15273 supported exact expected inequalities;142 handler/NBT/dynamic cases and one approved removed recipe excluded. Positive sale families retained with common1m quantum/100m residual bound.",
+      "source_files": [
+        "Mods/JEMCurrencyCore/tools/derive_conversion_economy.py",
+        "Mods/JEMCurrencyCore/tools/monetary_potential.py",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/MarketActionPacket.java",
+        "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/native_item_prices.json",
+        "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/profession_pools.json",
+        "Client/ManagedPack/kubejs/server_scripts/jem/economy_recipe_guards.js",
+        "Catalog/generator/build_atlas.py"
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "correct_reciprocal_buy_denominator_and_retain_allowed_automation",
+      "summary": "Ordinary startup failed because generic9:1 authoring copied fractional sale denominator into brass block purchase216. Correct owner uses independent purchase denominator; runtime spread validator remains unchanged. Latest user revokes copper mincer removal: active productive cycle remains, explicitly exempt from no-arbitrage proof.",
+      "source_files": [
+        "Mods/JEMCurrencyCore/tools/author_shipping_economy.py",
+        "Mods/JEMCurrencyCore/tools/monetary_potential.py",
+        "Mods/JEMCurrencyCore/tools/derive_conversion_economy.py",
+        "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/item_policies.json",
+        "Client/ManagedPack/kubejs/server_scripts/jem/economy_recipe_guards.js"
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "reuse_source_set_snapshot",
+      "summary": "Atlas source-set lookups reuse parsed JSON keyed by path, modification time, size and selector fields; normal writes invalidate it. Selector membership and price behavior are unchanged.",
+      "source_files": [
+        "Catalog/generator/impact_model.py"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "ledger",
+      "shipping",
+      "market",
+      "native_merchants",
+      "settlement_storage",
+      "recipe_graph",
+      "daily_quotas"
+    ],
+    "relations": [],
+    "notes": [
+      "Ordinary native inventory sale lifecycle remains its existing owner; no runtime/player acceptance claimed.",
+      "No test/fixture/launch/linter/static analyzer run by this worker. Root owns production artifact build and publication.",
+      "Current schema2 opt-in exporter captures exact current JAR hashes, loaded item/block evidence, merged recipes, loaded item alternatives, Create rollable/fluid/heat data and admitted Market stock; never invokes removed native fixture projection.",
+      "Current loaded identities13935 are distinct from17187 static Atlas observations; all current IDs have one class, unknown remains NEEDS_REVIEW and excluded from subsidized bulk.",
+      "Exact expected potential certificate composes over arbitrary finite chains and byproducts of15273 modeled recipes; actual stored rows checked after serialization.",
+      "Retail1/8/64 uses inventory; distinct building bulk64/256/1024/4096 uses existing authorized storage.",
+      "Latest user decision retains copper-ingot to raw-copper mincer as allowed productive automation. The active recipe is exempt from monetary inequalities; no global no-arbitrage claim covers chains using it. Existing stone mincer guard unchanged.",
+      "Generic reciprocal authoring now copies independent buy denominators; brass block216/1 restored. Complete prepared proposal passes runtime-policy ranges/quotas/spread and both-direction exact purchase-root/sale checks before resource writes.",
+      "Current explicit admission is replayed from actual captured tags and permanent restrictions, including newly admitted canonical Create stock absent provisional capture.",
+      "Canonical red sand remains original NONE for shipping; exact native fallback stays positive. Twelve inactive native fallbacks restored to4:1 purchase budget after failed-proposal ID overlap.",
+      "Atlas source-set snapshot reuse avoids reparsing the same price resource once per registry object; it changes computation cost, not selector results."
+    ],
+    "unresolved": [
+      "142 dynamic/NBT/progression/container-handler recipes plus one active user-allowed productive copper circuit remain outside supported proof; no global no-arbitrage or complete behavioral closure claim.",
+      "Unknown technical classes remain NEEDS_REVIEW; no admission inferred from namespace/name.",
+      "Final corrected artifact startup/capture/synchronization belongs to parent delivery.",
+      "Bulk interruption ambiguity quarantines escrow/slots for reconciliation; no guessed refund/replay.",
+      "Manual player acceptance not performed."
+    ]
+  }
+}

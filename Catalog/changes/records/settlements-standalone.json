@@ -402,7 +402,6 @@
       "Mods/JEMEconomy/build.gradle",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/JemEconomy.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/audit/EconomyRuntimeExport.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/audit/NativeMerchantContracts.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/EconomyClient.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/market/MarketRuntime.java",
@@ -799,6 +798,15 @@
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollPeriod.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollService.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/workforce/WorkforceRecord.java"
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "remove_prohibited_fixture",
+      "summary": "Remove unreferenced automated native merchant fixture; opt-in evidence export records real loaded data without running tests.",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/audit/NativeMerchantContracts.java"
       ]
     }
   ],

@@ -1,6 +1,6 @@
 package com.siirio.jemeconomy.merchant;
 
-/** Checked integer arithmetic shared by real native quotes and standalone contract tests. */
+/** Checked integer arithmetic shared by real native quotes and native quote and authoring arithmetic. */
 public final class NativePriceMath {
     private NativePriceMath() { }
     public static long demandAdjusted(long base, int original, int current) {
@@ -23,7 +23,7 @@ public final class NativePriceMath {
         return Math.max(1L, Math.addExact(quotient, numerator % denominator == 0 ? 0L : 1L));
     }
     public static long minimumPurchaseBudget(long base, long maximumBuyback) {
-        if (base <= 0 || maximumBuyback <= 0) throw new ArithmeticException("Nonpositive native budget");
+        if (base <= 0 || maximumBuyback < 0) throw new ArithmeticException("Nonpositive native budget");
         return Math.max(Math.addExact(maximumBuyback, 1L), Math.floorDiv(Math.addExact(base, 1L), 2L));
     }
     public static long afterDiscount(long floor, long discounted) {

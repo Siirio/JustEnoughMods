@@ -1,3 +1,5 @@
+> Execution receipt: [original release, 2026-10-21](../releases/2026-10-21-original-handoff/README.md). The user subsequently authorized direct original cutover, deletion of the disposable test save and skipping backup integrity verification. The historical test-only instructions below describe the earlier boundary.
+
 # Передача обновления JEM: тест → исправления → оригинал
 
 Дата20.10.2026. **Сейчас выполнена подготовка планов и внешнего арта. Gameplay-задачи ниже не выполнены. MineRENT не менять и не перезапускать в этом запросе.**

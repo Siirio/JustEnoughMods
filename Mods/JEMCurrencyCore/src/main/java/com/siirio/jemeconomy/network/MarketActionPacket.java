@@ -6,7 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public record MarketActionPacket(Action action, ResourceLocation item, int units, long revision, UUID requestId,
                                  String search, String category, int page) {
-    public enum Action { BUY, SELL }
+    public enum Action { BUY, SELL, BULK_BUY }
     static void encode(MarketActionPacket packet, FriendlyByteBuf buffer) {
         buffer.writeEnum(packet.action); buffer.writeResourceLocation(packet.item); buffer.writeVarInt(packet.units);
         buffer.writeVarLong(packet.revision); buffer.writeUUID(packet.requestId); buffer.writeUtf(packet.search, 64);

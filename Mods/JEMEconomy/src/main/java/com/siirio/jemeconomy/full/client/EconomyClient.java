@@ -11,6 +11,9 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = JemEconomy.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public final class EconomyClient {
     private EconomyClient() { }
+    @SubscribeEvent public static void renderers(net.minecraftforge.client.event.EntityRenderersEvent.RegisterRenderers event) {
+        event.registerBlockEntityRenderer(com.siirio.jemeconomy.registry.EconomyBlockEntities.SHIPPING_BOX.get(), ShippingBoxRenderer::new);
+    }
     @SubscribeEvent public static void setup(FMLClientSetupEvent event) { event.enqueueWork(() -> {
         MenuScreens.register(EconomyMenus.SHIPPING_BOX.get(), ShippingBoxScreen::new);
         MenuScreens.register(EconomyMenus.COIN_MERCHANT.get(), net.minecraft.client.gui.screens.inventory.MerchantScreen::new);

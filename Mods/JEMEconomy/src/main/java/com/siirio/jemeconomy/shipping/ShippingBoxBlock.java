@@ -29,6 +29,9 @@ public final class ShippingBoxBlock extends BaseEntityBlock {
     @Override protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) { builder.add(BlockStateProperties.HORIZONTAL_FACING); }
     @Override public BlockState getStateForPlacement(net.minecraft.world.item.context.BlockPlaceContext context) { return defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, context.getHorizontalDirection().getOpposite()); }
     @Override public RenderShape getRenderShape(BlockState state) { return RenderShape.MODEL; }
+    @Override public net.minecraft.world.phys.shapes.VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, net.minecraft.world.phys.shapes.CollisionContext context) {
+        return ShippingStationShape.get(state.getValue(BlockStateProperties.HORIZONTAL_FACING));
+    }
     @Override public BlockEntity newBlockEntity(BlockPos pos, BlockState state) { return EconomyBlockEntities.SHIPPING_BOX.get().create(pos, state); }
     @Override public boolean hasAnalogOutputSignal(BlockState state) { return true; }
     @Override public int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {

@@ -1,0 +1,181 @@
+{
+  "schema_version": 2,
+  "change_id": "economy.shipping-instant-exchange-r2-20261020",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "jem_economy:shipping_box"
+    },
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "jem_economy:shipping_box"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime": "Dedicated production or exact bound dedicated test profile; matching client presentation/packet artifacts where applicable.",
+      "acceptance": "Source implementation recorded; final artifact synchronization/native publication/application, hosted startup and player acceptance remain pending root delivery evidence. Original migration not executed."
+    }
+  ],
+  "precedence": {
+    "layer": "server_owned_shipping_handoff",
+    "priority": 420
+  },
+  "change": {
+    "summary": "Replace scheduled shipping with immediate owner action; add guarded exchange/withdrawal tab and approved R2 body/native goods/collision integration.",
+    "modifiers": [
+      {
+        "property": "shipping.sale.trigger",
+        "operation": "replace",
+        "before": "MarketRuntime scheduled new daily sales; existing owner/slots/physical journal.",
+        "after": "Only valid current owner sale-tab action starts sellAndCollect: collect previous payout, fresh bounded rational quote, preserve recovery journal phases/fingerprints/provenance, collect new funded physical payout. MarketRuntime refreshes preview/recovery only. IDs,Owner,Instance,54+9 slots and existing contents retain owners."
+      },
+      {
+        "property": "shipping.sale.quote_presentation",
+        "operation": "replace",
+        "before": "Existing shipping right-side presentation/scheduled preview.",
+        "after": "One total, ordinary account/global allowances and localized result; no duplicated per-item list or contextual admission label. Server uses CurrencyCore exact rational prices/family quotas and actual funded reserve. Zero payout leaves goods; legacy journal source route preserved; disagreement quarantines instead of inventing payment."
+      },
+      {
+        "property": "shipping.container.exchange",
+        "operation": "replace",
+        "before": "No second currency-action tab in the shipping container.",
+        "after": "Same owner menu tab1 hides/blocks shipping slot gestures. CurrencyContainerAccess requires current matching valid container/tab; EconomyNetwork validates full-market authority and IdentityPolicy before existing exchangePhysical/withdraw. Bounded denomination/count/amount/request IDs and matching status packet; client does not own money."
+      },
+      {
+        "property": "shipping.presentation.approved_r2",
+        "operation": "replace",
+        "before": "Earlier block/item presentation; no approved weighing-station native display renderer/body-derived collision.",
+        "after": "Approved R2 body JSON/native atlas plus12 authored anchors rendered with actual ItemRenderer FIXED native models:4diamonds,4fish,4oak logs. Decoration adds no inventory/drop authority. Facing rotates body/anchors; ShippingStationShape derives collision/outline from same axis-aligned body cuboids and rejects unsupported body rotations. Shared ShippingBoxLayout owns real slot geometry; accepted native merchant/Market family retained."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMEconomy ShippingBox owner/menu/client renderer; CurrencyCore monetary APIs",
+    "kind": "source_owned_implementation",
+    "source_files": [
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlock.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlockEntity.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxMenu.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxLayout.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingStationShape.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/EconomyClient.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxRenderer.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/market/MarketRuntime.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/registry/EconomyBlocks.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/audit/EconomyRuntimeExport.java",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/block/shipping_box.json",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/block/shipping_goods.json",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/item/shipping_box.json",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/block/shipping_station_atlas.png",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/shipping_box.png",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/shipping-ui.png",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/shipping-exchange.png",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/controls.png",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/CurrencyContainerAccess.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CurrencyContainerScreen.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/ContainerCurrencyPacket.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/ContainerCurrencyStatusPacket.java",
+      "Docs/economy/native-trading-design.md",
+      "Docs/art/shipping-station-2026-10-20/model/README.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Implement exact immediate-sale/two-tab request and already approved R2 art without replacing financial or native interface owners.",
+    "decision_source": "User authorized full2026-10-20 shipping-economy handoff. User owns requested behavior and approved R2 art; exact state/API/layout/adapter choices are Codex implementation details."
+  },
+  "introduced": {
+    "date": "2026-10-20",
+    "commit": "SELF",
+    "action": "implement_authorized_shipping_handoff",
+    "summary": "Replace scheduled shipping with immediate owner action; add guarded exchange/withdrawal tab and approved R2 body/native goods/collision integration.",
+    "source_files": [
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlock.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlockEntity.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxMenu.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxLayout.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingStationShape.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/EconomyClient.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxRenderer.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/market/MarketRuntime.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/registry/EconomyBlocks.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/audit/EconomyRuntimeExport.java",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/block/shipping_box.json",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/block/shipping_goods.json",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/item/shipping_box.json",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/block/shipping_station_atlas.png",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/shipping_box.png",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/shipping-ui.png",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/shipping-exchange.png",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/controls.png",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/CurrencyContainerAccess.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CurrencyContainerScreen.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/ContainerCurrencyPacket.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/ContainerCurrencyStatusPacket.java",
+      "Docs/economy/native-trading-design.md",
+      "Docs/art/shipping-station-2026-10-20/model/README.md"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "implement_authorized_shipping_handoff",
+      "summary": "Replace scheduled shipping with immediate owner action; add guarded exchange/withdrawal tab and approved R2 body/native goods/collision integration.",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlock.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlockEntity.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxMenu.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxLayout.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingStationShape.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/EconomyClient.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxRenderer.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/market/MarketRuntime.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/registry/EconomyBlocks.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/audit/EconomyRuntimeExport.java",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/block/shipping_box.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/block/shipping_goods.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/item/shipping_box.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/block/shipping_station_atlas.png",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/shipping_box.png",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/shipping-ui.png",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/shipping-exchange.png",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/controls.png",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/CurrencyContainerAccess.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CurrencyContainerScreen.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/ContainerCurrencyPacket.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/ContainerCurrencyStatusPacket.java",
+        "Docs/economy/native-trading-design.md",
+        "Docs/art/shipping-station-2026-10-20/model/README.md"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "shipping inventory/journal",
+      "rational funded physical payout",
+      "native currency container packets",
+      "screen render/hit/slot geometry",
+      "body/item rendering",
+      "horizontal collision/outline",
+      "existing native Market/merchant preservation"
+    ],
+    "relations": [],
+    "notes": [
+      "User approved external R2 art; integration-source presence does not prove in-game item transform/collision/GUI fit.",
+      "Common registry/resources retain client compatibility; gameplay authority stays dedicated.",
+      "Separate economy rational-policy record owns price tables and bulk market semantics; this record owns shipping adapter/UI/renderer."
+    ],
+    "unresolved": [
+      "Final artifacts/runtime synchronization/native generation publication and installed application pending root delivery receipt.",
+      "Actual sale/payment replay and interrupted-journal recovery, GUI scale, output capacity and in-game model/outline acceptance not run.",
+      "No tests, gameplay launch, MineRENT/original migration, stable mutation or baseline promotion claimed."
+    ]
+  }
+}

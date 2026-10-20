@@ -1,0 +1,78 @@
+{
+  "schema_version": 2,
+  "change_id": "guide.natures-compass-native-id",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "naturescompass:naturescompass"
+    }
+  ],
+  "precedence": {
+    "layer": "native_mod_extensions",
+    "priority": 40
+  },
+  "change": {
+    "summary": "Correct nonexistent underscored Nature Compass inventory criterion and ingredient index to the installed native registration.",
+    "modifiers": [
+      {
+        "property": "guide.natures-compass-native-id",
+        "operation": "replace",
+        "before": "JEM guide used naturescompass:natures_compass in criteria/index although native icons already used naturescompass:naturescompass.",
+        "after": "Manifest, inventory_changed criterion and guide ingredient index all use naturescompass:naturescompass. Native registration/creative event unchanged."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMPackCore guide manifest",
+    "kind": "source",
+    "source_files": [
+      "Mods/JEMPackCore/src/main/advancements/manifest.json",
+      "Mods/JEMPackCore/src/main/resources/data/jem_guide/advancements/qol/natures_compass.json",
+      "Mods/JEMPackCore/src/main/resources/assets/jem_advancements/advancement_guides/index.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Fix the independently confirmed guide mismatch without inventing a duplicate native item or asserting a cause for an unobserved creative symptom.",
+    "decision_source": "User2026-10-20 shipping/economy full handoff tasks8/13 and explicit compass investigation; concrete adapter choices by Codex."
+  },
+  "introduced": {
+    "date": "2026-10-20",
+    "commit": "SELF",
+    "action": "implement_requested_owner_correction",
+    "summary": "Correct nonexistent underscored Nature Compass inventory criterion and ingredient index to the installed native registration.",
+    "source_files": [
+      "Mods/JEMPackCore/src/main/advancements/manifest.json",
+      "Mods/JEMPackCore/src/main/resources/data/jem_guide/advancements/qol/natures_compass.json",
+      "Mods/JEMPackCore/src/main/resources/assets/jem_advancements/advancement_guides/index.json"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "implement_requested_owner_correction",
+      "summary": "Correct nonexistent underscored Nature Compass inventory criterion and ingredient index to the installed native registration.",
+      "source_files": [
+        "Mods/JEMPackCore/src/main/advancements/manifest.json",
+        "Mods/JEMPackCore/src/main/resources/data/jem_guide/advancements/qol/natures_compass.json",
+        "Mods/JEMPackCore/src/main/resources/assets/jem_advancements/advancement_guides/index.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "guide manifest generation",
+      "server advancement inventory matching",
+      "client ingredient navigation"
+    ],
+    "relations": [],
+    "notes": [
+      "Exact installed-source inspection and same-task Atlas lookup/scan precede implementation."
+    ],
+    "unresolved": [
+      "Player-reported missing creative item symptom remains unproven; native active Compass JAR exists and hash matches canonical ManagedPack."
+    ]
+  }
+}

@@ -16,6 +16,10 @@ public final class BackpackClient {
         if (!net.minecraftforge.fml.ModList.get().isLoaded("backpacked")) return;
         event.enqueueWork(() -> {
             AugmentIcons.set(WorkbenchAugment.TYPE, new WorkbenchIcon());
+            AugmentIcons.set(FurnaceAugment.TYPE, FrameworkTexture.subImage(
+                    new net.minecraft.resources.ResourceLocation("jemcompat", "textures/gui/augment/furnace.png"),
+                    0, 0, 12, 12, 12, 12));
+            AugmentIcons.set(AutoFeedAugment.TYPE, new NativeItemAugmentIcon(net.minecraft.world.item.Items.APPLE));
         });
     }
 }

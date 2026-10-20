@@ -22,6 +22,11 @@ public abstract class OptionsKeyRetentionMixin {
     @Shadow @Final private File optionsFile;
     @Unique private final Map<String,String> jemcompat$rememberedKeys=new LinkedHashMap<>();
 
+    @Inject(method="load",at=@At("HEAD"))
+    private void jemcompat$detectCleanOptions(CallbackInfo ci) {
+        com.siirio.jemcompat.client.CuratedKeyPreset.observeOptions(optionsFile.toPath());
+    }
+
     @Inject(method="save",at=@At("HEAD"))
     private void jemcompat$captureKeys(CallbackInfo ci) {
         try {

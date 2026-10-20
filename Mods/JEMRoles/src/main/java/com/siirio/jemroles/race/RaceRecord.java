@@ -3,7 +3,10 @@ package com.siirio.jemroles.race;
 import net.minecraft.nbt.CompoundTag;
 
 public final class RaceRecord {
-    public static final int SCHEMA = 4;
+    public static final int SCHEMA = 5;
+    private long reselectReadyAt;
+    private String testChoiceEpoch = "";
+    private boolean choiceRequired;
     private RaceId race;
     private final long selectedAt;
     private long activeTicks;
@@ -36,13 +39,20 @@ public final class RaceRecord {
     public long activeTicks() { return activeTicks; }
     public boolean freeSwitchUsed() { return freeSwitchUsed; }
     public long lastRespecAt() { return lastRespecAt; }
-    public boolean freeSwitchAvailable() { return !freeSwitchUsed && activeTicks < 36_000L; }
+    public long remainingReselectTicks(long gameTime) { return Math.max(0L, reselectReadyAt - gameTime); }
+    public void beginReselectWait(long gameTime) { reselectReadyAt = Math.addExact(gameTime, 24_000L); }
+    public boolean choiceRequired() { return choiceRequired; }
+    public boolean prepareTestChoice(String epoch) {
+        if (epoch.equals(testChoiceEpoch)) return false;
+        testChoiceEpoch = epoch; choiceRequired = true; return true;
+    }
+    public void confirmChoice() { choiceRequired = false; }
     public void addActiveTicks(long ticks) { activeTicks = Math.addExact(activeTicks, Math.max(0L, ticks)); }
     public void change(RaceId next, boolean consumeFreeSwitch) {
         race = next;
         spellTier = 1;
         spellProgress = 0;
-        cooldowns.getAllKeys().forEach(cooldowns::remove);
+        new java.util.ArrayList<>(cooldowns.getAllKeys()).forEach(cooldowns::remove);
         resonance = 0;
         waterExposure = 0;
         lavaExposure = 0;
@@ -73,6 +83,9 @@ public final class RaceRecord {
     CompoundTag save() {
         CompoundTag tag = new CompoundTag();
         tag.putInt("Schema", SCHEMA);
+        tag.putLong("ReselectReadyAt", reselectReadyAt);
+        tag.putString("TestChoiceEpoch", testChoiceEpoch);
+        tag.putBoolean("ChoiceRequired", choiceRequired);
         tag.put("Mechanics", mechanics.copy());
         tag.putString("Race", race.name());
         tag.putLong("SelectedAt", selectedAt);
@@ -92,6 +105,10 @@ public final class RaceRecord {
     static RaceRecord load(CompoundTag tag) {
         RaceId id = RaceId.parse(tag.getString("Race")).orElseThrow();
         RaceRecord record = new RaceRecord(id, tag.getLong("SelectedAt"), tag.getLong("ActiveTicks"), tag.getBoolean("FreeSwitchUsed"), tag.getLong("LastRespecAt"));
+        // Legacy records receive one ready change without resetting their race or progress.
+        record.reselectReadyAt = Math.max(0L, tag.getLong("ReselectReadyAt"));
+        record.testChoiceEpoch = tag.getString("TestChoiceEpoch");
+        record.choiceRequired = tag.getBoolean("ChoiceRequired");
         if (tag.contains("Mechanics")) record.mechanics.merge(tag.getCompound("Mechanics"));
         record.spellProgress = Math.max(0, Math.min(30, tag.getInt("SpellProgress")));
         record.spellTier = Math.max(1, Math.min(3, tag.contains("SpellTier") ? tag.getInt("SpellTier") :

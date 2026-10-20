@@ -38,6 +38,14 @@ public final class EconomySavedData extends SavedData {
     private long developmentIssued;
     private MinecraftServer developmentServer;
     private boolean developmentWalletActivated;
+    private long testIssued;
+    private UUID testSaveIdentity;
+    private String testEpoch = "";
+    private final java.util.Set<UUID> testRecipients = new java.util.HashSet<>();
+    private final Map<UUID, com.siirio.jemeconomy.policy.RationalPrice> saleRemainders = new LinkedHashMap<>();
+    private final Map<String, SaleOperation> saleOperations = new LinkedHashMap<>();
+    private final Map<UUID, String> activeSales = new LinkedHashMap<>();
+    private final Map<UUID, String> walletReleases = new LinkedHashMap<>();
 
     public EconomySavedData() {
         for (SystemAccount account : SystemAccount.values()) balances.put(account.id(), account.initialBalance());
@@ -104,9 +112,74 @@ public final class EconomySavedData extends SavedData {
     }
 
     public synchronized boolean frozen() {
+        if (!frozen && (testIssued != 0L || testSaveIdentity != null) && !testBindingMatches())
+            freezeDevelopmentLedger("Test currency is outside its bound save identity/epoch; refusing account writes");
         if (!frozen && developmentAccount != null && !localDevelopmentMarkerMatches(developmentServer, developmentAccount))
             freezeDevelopmentLedger("Development currency requires its dedicated local JVM opt-in and matching account marker; do not deploy this world ledger");
         return frozen;
+    }
+
+    public record SaleQuote(long payout, long remainderNumerator, long remainderDenominator, long fundingRequired) {}
+    public enum SaleStatus { RESERVED, REPLAYED, INSUFFICIENT_FUNDS, BUSY, INVALID, CANCELLED, COMMITTED }
+    public record SaleReservation(SaleStatus status, SaleQuote quote) {}
+    private record SaleOperation(UUID account, long numerator, long denominator,
+                                 com.siirio.jemeconomy.policy.RationalPrice before, SaleQuote quote, SaleStatus status) {}
+
+    public synchronized SaleQuote quoteSale(UUID account, long numerator, long denominator) {
+        var before = saleRemainders.getOrDefault(account, com.siirio.jemeconomy.policy.RationalPrice.ZERO);
+        var total = before.add(new com.siirio.jemeconomy.policy.RationalPrice(numerator, denominator));
+        var after = total.remainder();
+        long funding = Math.subtractExact(Math.addExact(total.floor(), after.ceil()), before.ceil());
+        return new SaleQuote(total.floor(), after.numerator(), after.denominator(), funding);
+    }
+
+    /** Reserves full payout plus rounded-up fractional liability in the existing escrow account. */
+    public synchronized SaleReservation reserveSale(UUID account, String key, long numerator, long denominator) {
+        if (account == null || key == null || key.length() > 256 || frozen() || numerator <= 0 || denominator <= 0)
+            return new SaleReservation(SaleStatus.INVALID, null);
+        var prior = saleOperations.get(key);
+        if (prior != null) {
+            if (!prior.account.equals(account) || prior.numerator != numerator || prior.denominator != denominator)
+                return new SaleReservation(SaleStatus.INVALID, null);
+            return new SaleReservation(prior.status == SaleStatus.RESERVED || prior.status == SaleStatus.COMMITTED
+                    ? SaleStatus.REPLAYED : prior.status, prior.quote);
+        }
+        if (activeSales.containsKey(account) || saleOperations.size() >= MAX_OPERATIONS)
+            return new SaleReservation(SaleStatus.BUSY, null);
+        var quote = quoteSale(account, numerator, denominator);
+        if (quote.payout <= 0) return new SaleReservation(SaleStatus.INVALID, quote);
+        long market = balance(SystemAccount.NPC_MARKET.id());
+        if (market < quote.fundingRequired) return new SaleReservation(SaleStatus.INSUFFICIENT_FUNDS, quote);
+        long escrow = Math.addExact(balance(SystemAccount.MARKET_ESCROW.id()), quote.fundingRequired);
+        var before = saleRemainders.getOrDefault(account, com.siirio.jemeconomy.policy.RationalPrice.ZERO);
+        balances.put(SystemAccount.NPC_MARKET.id(), Math.subtractExact(market, quote.fundingRequired));
+        balances.put(SystemAccount.MARKET_ESCROW.id(), escrow);
+        saleRemainders.put(account, new com.siirio.jemeconomy.policy.RationalPrice(quote.remainderNumerator, quote.remainderDenominator));
+        saleOperations.put(key, new SaleOperation(account, numerator, denominator, before, quote, SaleStatus.RESERVED));
+        activeSales.put(account, key); setDirty();
+        return new SaleReservation(SaleStatus.RESERVED, quote);
+    }
+
+    /** Caller may cancel only before consuming inventory or issuing payment. */
+    public synchronized boolean cancelSale(UUID account, String key) {
+        var op = saleOperations.get(key);
+        if (op == null || !op.account.equals(account) || op.status != SaleStatus.RESERVED || frozen()) return false;
+        long escrow = Math.subtractExact(balance(SystemAccount.MARKET_ESCROW.id()), op.quote.fundingRequired);
+        if (escrow < 0) return false;
+        balances.put(SystemAccount.MARKET_ESCROW.id(), escrow);
+        balances.put(SystemAccount.NPC_MARKET.id(), Math.addExact(balance(SystemAccount.NPC_MARKET.id()), op.quote.fundingRequired));
+        saleRemainders.put(account, op.before);
+        saleOperations.put(key, new SaleOperation(account, op.numerator, op.denominator, op.before, op.quote, SaleStatus.CANCELLED));
+        activeSales.remove(account, key); setDirty(); return true;
+    }
+
+    /** Finish after durable inventory and payment commit; a retry never advances the fractional claim. */
+    public synchronized boolean commitSale(UUID account, String key) {
+        var op = saleOperations.get(key);
+        if (op == null || !op.account.equals(account) || op.status == SaleStatus.CANCELLED || frozen()) return false;
+        if (op.status == SaleStatus.COMMITTED) return true;
+        saleOperations.put(key, new SaleOperation(account, op.numerator, op.denominator, op.before, op.quote, SaleStatus.COMMITTED));
+        activeSales.remove(account, key); setDirty(); return true;
     }
 
     public synchronized boolean hasReceipt(String idempotencyKey) { return receipts.containsKey(idempotencyKey); }
@@ -141,6 +214,82 @@ public final class EconomySavedData extends SavedData {
         if (transfer.status() == TransferResult.Status.COMMITTED || transfer.status() == TransferResult.Status.REPLAYED) {
             starterRecipients.add(accountId); setDirty();
         }
+    }
+
+    /** Finite test issuance, never a refill. Identity is resolved at this owner before mutation. */
+    public synchronized boolean ensureTestGrant(net.minecraft.server.level.ServerPlayer player) {
+        if (player == null || player.getServer() != developmentServer || !developmentServer.isSameThread()) return false;
+        var principal = com.siirio.jemidentity.api.IdentityPolicy.resolve(player);
+        var binding = com.siirio.jemidentity.api.DedicatedTestProfile.binding(developmentServer);
+        if (principal.isEmpty() || binding.isEmpty() || frozen() || developmentAccount != null) return false;
+        UUID account = principal.get().accountId();
+        if (isSystemAccount(account)) return false;
+        var profile = binding.get();
+        if (testSaveIdentity != null && (!testSaveIdentity.equals(profile.saveIdentity()) || !testEpoch.equals(profile.epoch())))
+            throw new IllegalStateException("Explicit test epoch migration required");
+        if (testRecipients.contains(account)) return true;
+        long issuance = 100_000_000L;
+        long released = balance(account);
+        long reserve = Math.addExact(balance(SystemAccount.CENTRAL_RESERVE.id()), released);
+        long issued = Math.addExact(testIssued, issuance);
+        Math.addExact(INITIAL_SUPPLY, issued);
+        testSaveIdentity = profile.saveIdentity(); testEpoch = profile.epoch();
+        balances.put(SystemAccount.CENTRAL_RESERVE.id(), reserve);
+        balances.put(account, issuance); testIssued = issued; testRecipients.add(account);
+        starterRecipients.add(account);
+        setDirty();
+        if (!conservationValid()) throw new IllegalStateException("Test issuance conservation failure");
+        return true;
+    }
+
+    private boolean testBindingMatches() {
+        var binding = com.siirio.jemidentity.api.DedicatedTestProfile.binding(developmentServer);
+        return binding.isPresent() && binding.get().saveIdentity().equals(testSaveIdentity)
+                && binding.get().epoch().equals(testEpoch);
+    }
+
+    private static boolean isSystemAccount(UUID account) {
+        for (SystemAccount system : SystemAccount.values()) if (system.id().equals(account)) return true;
+        return false;
+    }
+
+    public record WalletRebasePreflight(int accounts, long existing, long target, long released,
+                                       long fundingBalance, long shortfall, long physicalLiability) {}
+
+    /** Caller supplies verified personal accounts, never town/escrow identifiers. No writes. */
+    public synchronized WalletRebasePreflight preflightWalletRebase(String release, java.util.Set<UUID> accounts,
+                                                                    SystemAccount funding) {
+        if (release == null || !release.matches("[A-Za-z0-9._-]{1,64}") || accounts == null
+                || funding == null || funding == SystemAccount.PHYSICAL_OUTSTANDING || funding == SystemAccount.MARKET_ESCROW)
+            throw new IllegalArgumentException("Invalid wallet migration terms");
+        long existing = 0L; int count = 0;
+        for (UUID account : accounts) {
+            if (account == null || isSystemAccount(account) || !starterRecipients.contains(account))
+                throw new IllegalArgumentException("Migration account is not an established personal wallet");
+            if (release.equals(walletReleases.get(account))) continue;
+            existing = Math.addExact(existing, balance(account)); count++;
+        }
+        long target = Math.multiplyExact((long) count, 2_000L);
+        long available = Math.addExact(balance(funding.id()), existing);
+        return new WalletRebasePreflight(count, existing, target, Math.max(0L, existing-target),
+                balance(funding.id()), Math.max(0L, target-available), physicalOutstanding());
+    }
+
+    /** One atomic SavedData transition retains funding, balances and release receipts together. */
+    public synchronized WalletRebasePreflight rebaseWallets(String release, java.util.Set<UUID> accounts, SystemAccount funding) {
+        if (developmentServer == null || !developmentServer.isDedicatedServer() || !developmentServer.isSameThread()
+                || frozen() || developmentAccount != null || testIssued != 0L || testSaveIdentity != null
+                || com.siirio.jemidentity.api.DedicatedTestProfile.active(developmentServer))
+            throw new IllegalStateException("Production wallet migration unavailable in this profile");
+        WalletRebasePreflight plan = preflightWalletRebase(release, accounts, funding);
+        if (plan.shortfall() > 0L) return plan;
+        long funded = Math.subtractExact(Math.addExact(plan.fundingBalance(), plan.existing()), plan.target());
+        for (UUID account : accounts) if (!release.equals(walletReleases.get(account))) {
+            balances.put(account, 2_000L); walletReleases.put(account, release);
+        }
+        balances.put(funding.id(), funded); setDirty();
+        if (!conservationValid()) throw new IllegalStateException("Wallet migration conservation failure");
+        return plan;
     }
 
     public synchronized long physicalOutstanding() {
@@ -265,7 +414,7 @@ public final class EconomySavedData extends SavedData {
     }
 
     public synchronized WithdrawLedgerResult prepareSystemIssuance(SystemAccount source, long amount, UUID operationId) {
-        if (source == null || source == SystemAccount.PHYSICAL_OUTSTANDING || source == SystemAccount.MARKET_ESCROW) {
+        if (source == null || source == SystemAccount.PHYSICAL_OUTSTANDING) {
             return new WithdrawLedgerResult(PhysicalStatus.INVALID, operationId, 0L, List.of());
         }
         return prepareWithdraw(source.id(), amount, operationId);
@@ -432,11 +581,26 @@ public final class EconomySavedData extends SavedData {
 
     @Override
     public synchronized CompoundTag save(CompoundTag tag) {
+        CompoundTag fractions = new CompoundTag();
+        saleRemainders.forEach((id, value) -> { CompoundTag row = new CompoundTag(); row.putLong("N", value.numerator()); row.putLong("D", value.denominator()); fractions.put(id.toString(), row); });
+        tag.put("SaleRemainders", fractions);
+        ListTag sales = new ListTag();
+        saleOperations.forEach((key, op) -> { CompoundTag row = new CompoundTag(); row.putString("Key", key); row.putUUID("Account", op.account);
+            row.putLong("N", op.numerator); row.putLong("D", op.denominator); row.putLong("BeforeN", op.before.numerator()); row.putLong("BeforeD", op.before.denominator());
+            row.putLong("Payout", op.quote.payout); row.putLong("AfterN", op.quote.remainderNumerator); row.putLong("AfterD", op.quote.remainderDenominator);
+            row.putLong("Funding", op.quote.fundingRequired); row.putString("Status", op.status.name()); sales.add(row); });
+        tag.put("SaleOperations", sales);
         tag.putInt("Schema", SCHEMA);
         tag.putBoolean("Frozen", frozen);
         if (!frozenReason.isEmpty()) tag.putString("FrozenReason", frozenReason);
         if (developmentAccount != null) tag.putUUID("DevelopmentAccount", developmentAccount);
         tag.putLong("DevelopmentIssued", developmentIssued);
+        tag.putLong("TestIssued", testIssued);
+        if (testSaveIdentity != null) tag.putUUID("TestSaveIdentity", testSaveIdentity);
+        tag.putString("TestEpoch", testEpoch);
+        ListTag testGrants = new ListTag(); testRecipients.stream().sorted().forEach(id -> testGrants.add(net.minecraft.nbt.StringTag.valueOf(id.toString())));
+        tag.put("TestRecipients", testGrants);
+        CompoundTag releases = new CompoundTag(); walletReleases.forEach((id, release) -> releases.putString(id.toString(), release)); tag.put("WalletReleases", releases);
         CompoundTag balanceTag = new CompoundTag();
         balances.forEach((id, amount) -> balanceTag.putLong(id.toString(), amount));
         CompoundTag receiptTag = new CompoundTag();
@@ -458,8 +622,24 @@ public final class EconomySavedData extends SavedData {
     private static EconomySavedData load(CompoundTag tag, MinecraftServer server) {
         EconomySavedData data = new EconomySavedData();
         data.developmentServer = server;
+        CompoundTag fractions = tag.getCompound("SaleRemainders");
+        fractions.getAllKeys().forEach(key -> { var row = fractions.getCompound(key); data.saleRemainders.put(UUID.fromString(key), new com.siirio.jemeconomy.policy.RationalPrice(row.getLong("N"), row.getLong("D"))); });
+        ListTag sales = tag.getList("SaleOperations", Tag.TAG_COMPOUND);
+        for (int i = 0; i < sales.size(); i++) {
+            var row = sales.getCompound(i); var status = SaleStatus.valueOf(row.getString("Status")); UUID account = row.getUUID("Account"); String key = row.getString("Key");
+            var quote = new SaleQuote(row.getLong("Payout"), row.getLong("AfterN"), row.getLong("AfterD"), row.getLong("Funding"));
+            data.saleOperations.put(key, new SaleOperation(account, row.getLong("N"), row.getLong("D"), new com.siirio.jemeconomy.policy.RationalPrice(row.getLong("BeforeN"), row.getLong("BeforeD")), quote, status));
+            if (status == SaleStatus.RESERVED && data.activeSales.put(account, key) != null) throw new IllegalStateException("Overlapping saved fractional sale");
+        }
         data.developmentAccount = tag.hasUUID("DevelopmentAccount") ? tag.getUUID("DevelopmentAccount") : null;
         data.developmentIssued = tag.getLong("DevelopmentIssued");
+        data.testIssued = tag.getLong("TestIssued");
+        data.testSaveIdentity = tag.hasUUID("TestSaveIdentity") ? tag.getUUID("TestSaveIdentity") : null;
+        data.testEpoch = tag.getString("TestEpoch");
+        ListTag testGrants = tag.getList("TestRecipients", Tag.TAG_STRING);
+        for (int i = 0; i < testGrants.size(); i++) data.testRecipients.add(UUID.fromString(testGrants.getString(i)));
+        CompoundTag releases = tag.getCompound("WalletReleases");
+        releases.getAllKeys().forEach(key -> data.walletReleases.put(UUID.fromString(key), releases.getString(key)));
         data.frozenReason = tag.getString("FrozenReason");
         CompoundTag balanceTag = tag.getCompound("Balances");
         for (String key : balanceTag.getAllKeys()) {
@@ -503,10 +683,11 @@ public final class EconomySavedData extends SavedData {
         try {
             long total = 0L;
             for (long amount : balances.values()) total = Math.addExact(total, amount);
-            if (developmentIssued < 0L) return false;
-            if (developmentAccount == null) return developmentIssued == 0L && total == INITIAL_SUPPLY;
+            if (developmentIssued < 0L || testIssued < 0L || (testIssued != 0L || testSaveIdentity != null) && !testBindingMatches()) return false;
+            long supply = Math.addExact(INITIAL_SUPPLY, testIssued);
+            if (developmentAccount == null) return developmentIssued == 0L && total == supply;
             return localDevelopmentMarkerMatches(developmentServer, developmentAccount)
-                    && total == Math.addExact(INITIAL_SUPPLY, developmentIssued);
+                    && testIssued == 0L && total == Math.addExact(supply, developmentIssued);
         } catch (ArithmeticException overflow) { return false; }
     }
 

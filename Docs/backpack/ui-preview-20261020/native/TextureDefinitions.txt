@@ -1,0 +1,756 @@
+Compiled from "TextureDefinitions.java"
+public final class com.mrcrayfish.backpacked.client.TextureDefinitions {
+  public static final net.minecraft.resources.ResourceLocation WIDGETS_LOCATION;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture MISSING_TEXTURE;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture BUTTON_ENABLED;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture BUTTON_DISABLED;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture BUTTON_ENABLED_HOVERED;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture EDIT_BOX_ENABLED;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture EDIT_BOX_DISABLED;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture EDIT_BOX_ENABLED_HOVERED;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture SEARCH_ICON;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture TOGGLE_OFF;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture TOGGLE_ON;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture BACKPACK_BACKGROUND;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture BACKPACK_SLOT;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture INVENTORY_BACKGROUND;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture INVENTORY_SLOT;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture LABEL_BACKGROUND;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture LABEL_WARNING_BACKGROUND;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture CHECKERS;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture ARROW_RIGHT;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture ARROW_LEFT;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture LOCK;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture LOCK_OUTLINED;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture MANAGE_ICON;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture CUSTOMISE_ICON;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture CONFIG_ICON;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture RENAME_ICON;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture SORT_ICON;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture SETTINGS_ICON;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture AUGMENT_DISABLED;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture AUGMENT_DISABLED_HOVERED;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture AUGMENT_ENABLED;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture AUGMENT_ENABLED_HOVERED;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture AUGMENT_SETTINGS_ENABLED;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture AUGMENT_SETTINGS_ENABLED_HOVERED;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture AUGMENT_SETTINGS_DISABLED;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture AUGMENT_MENU_BACKGROUND;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture NEXT_BACKPACK_BUTTON;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture PREVIOUS_BACKPACK_BUTTON;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture EXPERIENCE_ORB;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture SHELF;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture DROPDOWN_BACKGROUND;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture DROPDOWN_ITEM;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture DROPDOWN_ITEM_HOVERED;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture LIST_BACKGROUND;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture LIST_ITEM;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture LIST_ITEM_HOVERED;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture LIST_ITEM_SELECTED;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture LIST_ITEM_LOCKED;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture LIST_SCROLLER;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture LIST_SCROLLER_HOVERED;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture LIST_SCROLLER_SELECTED;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture PLAYER_DISPLAY_FRAME;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture SCROLLER;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture SCROLLER_DISABLED;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture ROUNDED_BOX;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture UNLOCK_PROGRESS_BAR_BACKGROUND;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture UNLOCK_PROGRESS_BAR_FOREGROUND;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture STEPPER_BACKGROUND;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture STEPPER_PREVIOUS;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture STEPPER_NEXT;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture SLOT_MODE_ENABLED;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture SLOT_MODE_PURCHASABLE;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture SLOT_MODE_DISABLED;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture AUGMENT_EMPTY;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture AUGMENT_FARMHAND;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture AUGMENT_FUNNELLING;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture AUGMENT_GIANT;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture AUGMENT_HOPPER_BRIDGE;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture AUGMENT_IMBUED_HIDE;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture AUGMENT_IMMORTAL;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture AUGMENT_LIGHTWEAVER;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture AUGMENT_LOOTBOUND;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture AUGMENT_QUIVERLINK;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture AUGMENT_RECALL;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture AUGMENT_REFORGE;
+
+  public static final com.mrcrayfish.framework.api.client.screen.widget.texture.FrameworkTexture AUGMENT_SEEDFLOW;
+
+  public com.mrcrayfish.backpacked.client.TextureDefinitions();
+    Code:
+       0: aload_0
+       1: invokespecial #87                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  static {};
+    Code:
+       0: new           #92                 // class net/minecraft/resources/ResourceLocation
+       3: dup
+       4: ldc           #94                 // String backpacked
+       6: ldc           #96                 // String textures/gui/backpack_assets.png
+       8: invokespecial #99                 // Method net/minecraft/resources/ResourceLocation."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+      11: putstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+      14: invokestatic  #107                // Method net/minecraft/client/renderer/texture/MissingTextureAtlasSprite.m_118071_:()Lnet/minecraft/resources/ResourceLocation;
+      17: iconst_0
+      18: iconst_0
+      19: bipush        16
+      21: bipush        16
+      23: bipush        16
+      25: bipush        16
+      27: invokestatic  #113                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIIIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+      30: putstatic     #115                // Field MISSING_TEXTURE:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+      33: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+      36: bipush        20
+      38: bipush        56
+      40: bipush        20
+      42: bipush        20
+      44: bipush        6
+      46: invokestatic  #121                // Method com/mrcrayfish/framework/api/client/screen/widget/layout/Border.of:(I)Lcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;
+      49: invokestatic  #125                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.nineSlice:(Lnet/minecraft/resources/ResourceLocation;IIIILcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+      52: putstatic     #127                // Field BUTTON_ENABLED:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+      55: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+      58: iconst_0
+      59: bipush        56
+      61: bipush        20
+      63: bipush        20
+      65: bipush        6
+      67: invokestatic  #121                // Method com/mrcrayfish/framework/api/client/screen/widget/layout/Border.of:(I)Lcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;
+      70: invokestatic  #125                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.nineSlice:(Lnet/minecraft/resources/ResourceLocation;IIIILcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+      73: putstatic     #129                // Field BUTTON_DISABLED:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+      76: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+      79: bipush        40
+      81: bipush        56
+      83: bipush        20
+      85: bipush        20
+      87: bipush        6
+      89: invokestatic  #121                // Method com/mrcrayfish/framework/api/client/screen/widget/layout/Border.of:(I)Lcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;
+      92: invokestatic  #125                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.nineSlice:(Lnet/minecraft/resources/ResourceLocation;IIIILcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+      95: putstatic     #131                // Field BUTTON_ENABLED_HOVERED:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+      98: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     101: iconst_0
+     102: bipush        24
+     104: bipush        64
+     106: bipush        16
+     108: iconst_3
+     109: invokestatic  #121                // Method com/mrcrayfish/framework/api/client/screen/widget/layout/Border.of:(I)Lcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;
+     112: invokestatic  #125                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.nineSlice:(Lnet/minecraft/resources/ResourceLocation;IIIILcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     115: putstatic     #133                // Field EDIT_BOX_ENABLED:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     118: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     121: iconst_0
+     122: bipush        8
+     124: bipush        64
+     126: bipush        16
+     128: iconst_3
+     129: invokestatic  #121                // Method com/mrcrayfish/framework/api/client/screen/widget/layout/Border.of:(I)Lcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;
+     132: invokestatic  #125                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.nineSlice:(Lnet/minecraft/resources/ResourceLocation;IIIILcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     135: putstatic     #135                // Field EDIT_BOX_DISABLED:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     138: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     141: iconst_0
+     142: bipush        40
+     144: bipush        64
+     146: bipush        16
+     148: iconst_3
+     149: invokestatic  #121                // Method com/mrcrayfish/framework/api/client/screen/widget/layout/Border.of:(I)Lcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;
+     152: invokestatic  #125                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.nineSlice:(Lnet/minecraft/resources/ResourceLocation;IIIILcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     155: putstatic     #137                // Field EDIT_BOX_ENABLED_HOVERED:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     158: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     161: bipush        64
+     163: bipush        8
+     165: bipush        10
+     167: bipush        10
+     169: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     172: putstatic     #142                // Field SEARCH_ICON:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     175: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     178: bipush        17
+     180: iconst_0
+     181: bipush        6
+     183: bipush        6
+     185: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     188: putstatic     #144                // Field TOGGLE_OFF:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     191: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     194: bipush        23
+     196: iconst_0
+     197: bipush        6
+     199: bipush        6
+     201: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     204: putstatic     #146                // Field TOGGLE_ON:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     207: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     210: sipush        128
+     213: iconst_0
+     214: sipush        128
+     217: sipush        128
+     220: bipush        11
+     222: invokestatic  #121                // Method com/mrcrayfish/framework/api/client/screen/widget/layout/Border.of:(I)Lcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;
+     225: invokestatic  #125                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.nineSlice:(Lnet/minecraft/resources/ResourceLocation;IIIILcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     228: putstatic     #148                // Field BACKPACK_BACKGROUND:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     231: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     234: sipush        238
+     237: sipush        128
+     240: bipush        18
+     242: bipush        18
+     244: invokestatic  #154                // Method com/mrcrayfish/backpacked/client/gui/screen/widget/texture/TiledTexture.create:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/backpacked/client/gui/screen/widget/texture/TiledTexture;
+     247: putstatic     #156                // Field BACKPACK_SLOT:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     250: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     253: bipush        66
+     255: bipush        31
+     257: bipush        15
+     259: bipush        15
+     261: iconst_4
+     262: invokestatic  #121                // Method com/mrcrayfish/framework/api/client/screen/widget/layout/Border.of:(I)Lcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;
+     265: invokestatic  #125                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.nineSlice:(Lnet/minecraft/resources/ResourceLocation;IIIILcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     268: putstatic     #158                // Field INVENTORY_BACKGROUND:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     271: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     274: bipush        81
+     276: bipush        31
+     278: bipush        18
+     280: bipush        18
+     282: invokestatic  #154                // Method com/mrcrayfish/backpacked/client/gui/screen/widget/texture/TiledTexture.create:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/backpacked/client/gui/screen/widget/texture/TiledTexture;
+     285: putstatic     #160                // Field INVENTORY_SLOT:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     288: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     291: bipush        74
+     293: bipush        14
+     295: bipush        15
+     297: bipush        15
+     299: iconst_4
+     300: invokestatic  #121                // Method com/mrcrayfish/framework/api/client/screen/widget/layout/Border.of:(I)Lcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;
+     303: invokestatic  #125                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.nineSlice:(Lnet/minecraft/resources/ResourceLocation;IIIILcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     306: putstatic     #162                // Field LABEL_BACKGROUND:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     309: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     312: bipush        89
+     314: bipush        14
+     316: bipush        15
+     318: bipush        15
+     320: iconst_4
+     321: invokestatic  #121                // Method com/mrcrayfish/framework/api/client/screen/widget/layout/Border.of:(I)Lcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;
+     324: invokestatic  #125                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.nineSlice:(Lnet/minecraft/resources/ResourceLocation;IIIILcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     327: putstatic     #164                // Field LABEL_WARNING_BACKGROUND:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     330: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     333: sipush        222
+     336: sipush        128
+     339: bipush        16
+     341: bipush        16
+     343: invokestatic  #154                // Method com/mrcrayfish/backpacked/client/gui/screen/widget/texture/TiledTexture.create:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/backpacked/client/gui/screen/widget/texture/TiledTexture;
+     346: putstatic     #166                // Field CHECKERS:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     349: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     352: bipush        29
+     354: iconst_0
+     355: iconst_4
+     356: bipush        6
+     358: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     361: putstatic     #168                // Field ARROW_RIGHT:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     364: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     367: bipush        33
+     369: iconst_0
+     370: iconst_4
+     371: bipush        6
+     373: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     376: putstatic     #170                // Field ARROW_LEFT:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     379: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     382: sipush        244
+     385: sipush        146
+     388: bipush        12
+     390: bipush        12
+     392: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     395: putstatic     #172                // Field LOCK:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     398: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     401: sipush        242
+     404: sipush        158
+     407: bipush        14
+     409: bipush        14
+     411: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     414: putstatic     #174                // Field LOCK_OUTLINED:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     417: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     420: sipush        212
+     423: sipush        128
+     426: bipush        10
+     428: bipush        10
+     430: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     433: putstatic     #176                // Field MANAGE_ICON:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     436: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     439: sipush        202
+     442: sipush        128
+     445: bipush        10
+     447: bipush        10
+     449: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     452: putstatic     #178                // Field CUSTOMISE_ICON:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     455: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     458: sipush        192
+     461: sipush        128
+     464: bipush        10
+     466: bipush        10
+     468: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     471: putstatic     #180                // Field CONFIG_ICON:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     474: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     477: sipush        182
+     480: sipush        128
+     483: bipush        10
+     485: bipush        10
+     487: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     490: putstatic     #182                // Field RENAME_ICON:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     493: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     496: sipush        172
+     499: sipush        128
+     502: bipush        10
+     504: bipush        10
+     506: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     509: putstatic     #184                // Field SORT_ICON:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     512: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     515: bipush        64
+     517: bipush        18
+     519: bipush        10
+     521: bipush        10
+     523: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     526: putstatic     #186                // Field SETTINGS_ICON:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     529: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     532: sipush        212
+     535: sipush        138
+     538: bipush        10
+     540: bipush        10
+     542: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     545: putstatic     #188                // Field AUGMENT_DISABLED:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     548: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     551: sipush        212
+     554: sipush        148
+     557: bipush        10
+     559: bipush        10
+     561: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     564: putstatic     #190                // Field AUGMENT_DISABLED_HOVERED:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     567: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     570: sipush        202
+     573: sipush        138
+     576: bipush        10
+     578: bipush        10
+     580: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     583: putstatic     #192                // Field AUGMENT_ENABLED:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     586: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     589: sipush        202
+     592: sipush        148
+     595: bipush        10
+     597: bipush        10
+     599: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     602: putstatic     #194                // Field AUGMENT_ENABLED_HOVERED:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     605: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     608: sipush        202
+     611: sipush        158
+     614: bipush        10
+     616: bipush        10
+     618: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     621: putstatic     #196                // Field AUGMENT_SETTINGS_ENABLED:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     624: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     627: sipush        202
+     630: sipush        178
+     633: bipush        10
+     635: bipush        10
+     637: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     640: putstatic     #198                // Field AUGMENT_SETTINGS_ENABLED_HOVERED:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     643: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     646: sipush        202
+     649: sipush        168
+     652: bipush        10
+     654: bipush        10
+     656: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     659: putstatic     #200                // Field AUGMENT_SETTINGS_DISABLED:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     662: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     665: bipush        64
+     667: bipush        49
+     669: bipush        64
+     671: bipush        64
+     673: iconst_5
+     674: invokestatic  #121                // Method com/mrcrayfish/framework/api/client/screen/widget/layout/Border.of:(I)Lcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;
+     677: invokestatic  #125                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.nineSlice:(Lnet/minecraft/resources/ResourceLocation;IIIILcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     680: putstatic     #202                // Field AUGMENT_MENU_BACKGROUND:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     683: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     686: sipush        190
+     689: sipush        138
+     692: bipush        12
+     694: bipush        12
+     696: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     699: putstatic     #204                // Field NEXT_BACKPACK_BUTTON:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     702: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     705: sipush        178
+     708: sipush        138
+     711: bipush        12
+     713: bipush        12
+     715: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     718: putstatic     #206                // Field PREVIOUS_BACKPACK_BUTTON:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     721: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     724: bipush        117
+     726: iconst_1
+     727: bipush        9
+     729: bipush        9
+     731: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     734: putstatic     #208                // Field EXPERIENCE_ORB:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     737: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     740: sipush        182
+     743: sipush        188
+     746: bipush        74
+     748: bipush        33
+     750: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     753: putstatic     #210                // Field SHELF:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     756: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     759: iconst_0
+     760: bipush        76
+     762: bipush        16
+     764: bipush        16
+     766: iconst_4
+     767: invokestatic  #121                // Method com/mrcrayfish/framework/api/client/screen/widget/layout/Border.of:(I)Lcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;
+     770: invokestatic  #125                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.nineSlice:(Lnet/minecraft/resources/ResourceLocation;IIIILcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     773: putstatic     #212                // Field DROPDOWN_BACKGROUND:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     776: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     779: bipush        16
+     781: bipush        76
+     783: bipush        16
+     785: bipush        16
+     787: bipush        6
+     789: invokestatic  #121                // Method com/mrcrayfish/framework/api/client/screen/widget/layout/Border.of:(I)Lcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;
+     792: invokestatic  #125                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.nineSlice:(Lnet/minecraft/resources/ResourceLocation;IIIILcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     795: putstatic     #214                // Field DROPDOWN_ITEM:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     798: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     801: bipush        32
+     803: bipush        76
+     805: bipush        16
+     807: bipush        16
+     809: bipush        6
+     811: invokestatic  #121                // Method com/mrcrayfish/framework/api/client/screen/widget/layout/Border.of:(I)Lcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;
+     814: invokestatic  #125                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.nineSlice:(Lnet/minecraft/resources/ResourceLocation;IIIILcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     817: putstatic     #216                // Field DROPDOWN_ITEM_HOVERED:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     820: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     823: bipush        64
+     825: bipush        113
+     827: bipush        64
+     829: bipush        64
+     831: bipush        6
+     833: invokestatic  #121                // Method com/mrcrayfish/framework/api/client/screen/widget/layout/Border.of:(I)Lcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;
+     836: invokestatic  #125                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.nineSlice:(Lnet/minecraft/resources/ResourceLocation;IIIILcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     839: putstatic     #218                // Field LIST_BACKGROUND:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     842: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     845: bipush        64
+     847: sipush        177
+     850: bipush        16
+     852: bipush        16
+     854: bipush        6
+     856: invokestatic  #121                // Method com/mrcrayfish/framework/api/client/screen/widget/layout/Border.of:(I)Lcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;
+     859: invokestatic  #125                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.nineSlice:(Lnet/minecraft/resources/ResourceLocation;IIIILcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     862: putstatic     #220                // Field LIST_ITEM:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     865: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     868: bipush        80
+     870: sipush        177
+     873: bipush        16
+     875: bipush        16
+     877: bipush        6
+     879: invokestatic  #121                // Method com/mrcrayfish/framework/api/client/screen/widget/layout/Border.of:(I)Lcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;
+     882: invokestatic  #125                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.nineSlice:(Lnet/minecraft/resources/ResourceLocation;IIIILcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     885: putstatic     #222                // Field LIST_ITEM_HOVERED:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     888: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     891: bipush        112
+     893: sipush        177
+     896: bipush        16
+     898: bipush        16
+     900: bipush        6
+     902: invokestatic  #121                // Method com/mrcrayfish/framework/api/client/screen/widget/layout/Border.of:(I)Lcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;
+     905: invokestatic  #125                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.nineSlice:(Lnet/minecraft/resources/ResourceLocation;IIIILcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     908: putstatic     #224                // Field LIST_ITEM_SELECTED:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     911: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     914: bipush        96
+     916: sipush        177
+     919: bipush        16
+     921: bipush        16
+     923: bipush        6
+     925: invokestatic  #121                // Method com/mrcrayfish/framework/api/client/screen/widget/layout/Border.of:(I)Lcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;
+     928: invokestatic  #125                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.nineSlice:(Lnet/minecraft/resources/ResourceLocation;IIIILcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     931: putstatic     #226                // Field LIST_ITEM_LOCKED:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     934: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     937: bipush        107
+     939: bipush        17
+     941: bipush        6
+     943: bipush        10
+     945: iconst_2
+     946: iconst_3
+     947: iconst_2
+     948: iconst_3
+     949: invokestatic  #229                // Method com/mrcrayfish/framework/api/client/screen/widget/layout/Border.of:(IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;
+     952: invokestatic  #125                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.nineSlice:(Lnet/minecraft/resources/ResourceLocation;IIIILcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     955: putstatic     #231                // Field LIST_SCROLLER:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     958: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     961: bipush        113
+     963: bipush        17
+     965: bipush        6
+     967: bipush        10
+     969: iconst_2
+     970: iconst_3
+     971: iconst_2
+     972: iconst_3
+     973: invokestatic  #229                // Method com/mrcrayfish/framework/api/client/screen/widget/layout/Border.of:(IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;
+     976: invokestatic  #125                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.nineSlice:(Lnet/minecraft/resources/ResourceLocation;IIIILcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     979: putstatic     #233                // Field LIST_SCROLLER_HOVERED:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     982: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+     985: bipush        119
+     987: bipush        17
+     989: bipush        6
+     991: bipush        10
+     993: iconst_2
+     994: iconst_3
+     995: iconst_2
+     996: iconst_3
+     997: invokestatic  #229                // Method com/mrcrayfish/framework/api/client/screen/widget/layout/Border.of:(IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;
+    1000: invokestatic  #125                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.nineSlice:(Lnet/minecraft/resources/ResourceLocation;IIIILcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1003: putstatic     #235                // Field LIST_SCROLLER_SELECTED:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1006: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+    1009: sipush        128
+    1012: sipush        144
+    1015: bipush        16
+    1017: bipush        16
+    1019: iconst_4
+    1020: invokestatic  #121                // Method com/mrcrayfish/framework/api/client/screen/widget/layout/Border.of:(I)Lcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;
+    1023: invokestatic  #125                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.nineSlice:(Lnet/minecraft/resources/ResourceLocation;IIIILcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1026: putstatic     #237                // Field PLAYER_DISPLAY_FRAME:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1029: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+    1032: bipush        99
+    1034: bipush        34
+    1036: bipush        12
+    1038: bipush        15
+    1040: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1043: putstatic     #239                // Field SCROLLER:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1046: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+    1049: bipush        111
+    1051: bipush        34
+    1053: bipush        12
+    1055: bipush        15
+    1057: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1060: putstatic     #241                // Field SCROLLER_DISABLED:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1063: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+    1066: sipush        128
+    1069: sipush        128
+    1072: bipush        16
+    1074: bipush        16
+    1076: iconst_4
+    1077: invokestatic  #121                // Method com/mrcrayfish/framework/api/client/screen/widget/layout/Border.of:(I)Lcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;
+    1080: invokestatic  #125                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.nineSlice:(Lnet/minecraft/resources/ResourceLocation;IIIILcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1083: putstatic     #243                // Field ROUNDED_BOX:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1086: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+    1089: bipush        64
+    1091: sipush        195
+    1094: bipush        89
+    1096: iconst_5
+    1097: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1100: putstatic     #245                // Field UNLOCK_PROGRESS_BAR_BACKGROUND:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1103: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+    1106: bipush        65
+    1108: sipush        200
+    1111: bipush        87
+    1113: iconst_3
+    1114: invokestatic  #154                // Method com/mrcrayfish/backpacked/client/gui/screen/widget/texture/TiledTexture.create:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/backpacked/client/gui/screen/widget/texture/TiledTexture;
+    1117: putstatic     #247                // Field UNLOCK_PROGRESS_BAR_FOREGROUND:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1120: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+    1123: sipush        144
+    1126: sipush        128
+    1129: bipush        16
+    1131: bipush        16
+    1133: iconst_4
+    1134: invokestatic  #121                // Method com/mrcrayfish/framework/api/client/screen/widget/layout/Border.of:(I)Lcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;
+    1137: invokestatic  #125                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.nineSlice:(Lnet/minecraft/resources/ResourceLocation;IIIILcom/mrcrayfish/framework/api/client/screen/widget/layout/Border;)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1140: putstatic     #249                // Field STEPPER_BACKGROUND:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1143: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+    1146: sipush        161
+    1149: sipush        129
+    1152: iconst_4
+    1153: bipush        6
+    1155: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1158: putstatic     #251                // Field STEPPER_PREVIOUS:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1161: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+    1164: sipush        166
+    1167: sipush        129
+    1170: iconst_4
+    1171: bipush        6
+    1173: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1176: putstatic     #253                // Field STEPPER_NEXT:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1179: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+    1182: sipush        212
+    1185: sipush        158
+    1188: bipush        10
+    1190: bipush        10
+    1192: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1195: putstatic     #255                // Field SLOT_MODE_ENABLED:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1198: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+    1201: sipush        212
+    1204: sipush        178
+    1207: bipush        10
+    1209: bipush        10
+    1211: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1214: putstatic     #257                // Field SLOT_MODE_PURCHASABLE:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1217: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+    1220: sipush        212
+    1223: sipush        168
+    1226: bipush        10
+    1228: bipush        10
+    1230: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1233: putstatic     #259                // Field SLOT_MODE_DISABLED:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1236: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+    1239: iconst_0
+    1240: sipush        244
+    1243: bipush        12
+    1245: bipush        12
+    1247: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1250: putstatic     #261                // Field AUGMENT_EMPTY:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1253: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+    1256: bipush        12
+    1258: sipush        244
+    1261: bipush        12
+    1263: bipush        12
+    1265: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1268: putstatic     #263                // Field AUGMENT_FARMHAND:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1271: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+    1274: bipush        24
+    1276: sipush        244
+    1279: bipush        12
+    1281: bipush        12
+    1283: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1286: putstatic     #265                // Field AUGMENT_FUNNELLING:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1289: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+    1292: bipush        36
+    1294: sipush        244
+    1297: bipush        12
+    1299: bipush        12
+    1301: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1304: putstatic     #267                // Field AUGMENT_GIANT:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1307: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+    1310: bipush        48
+    1312: sipush        244
+    1315: bipush        12
+    1317: bipush        12
+    1319: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1322: putstatic     #269                // Field AUGMENT_HOPPER_BRIDGE:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1325: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+    1328: bipush        60
+    1330: sipush        244
+    1333: bipush        12
+    1335: bipush        12
+    1337: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1340: putstatic     #271                // Field AUGMENT_IMBUED_HIDE:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1343: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+    1346: bipush        72
+    1348: sipush        244
+    1351: bipush        12
+    1353: bipush        12
+    1355: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1358: putstatic     #273                // Field AUGMENT_IMMORTAL:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1361: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+    1364: bipush        84
+    1366: sipush        244
+    1369: bipush        12
+    1371: bipush        12
+    1373: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1376: putstatic     #275                // Field AUGMENT_LIGHTWEAVER:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1379: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+    1382: bipush        96
+    1384: sipush        244
+    1387: bipush        12
+    1389: bipush        12
+    1391: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1394: putstatic     #277                // Field AUGMENT_LOOTBOUND:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1397: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+    1400: bipush        108
+    1402: sipush        244
+    1405: bipush        12
+    1407: bipush        12
+    1409: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1412: putstatic     #279                // Field AUGMENT_QUIVERLINK:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1415: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+    1418: bipush        120
+    1420: sipush        244
+    1423: bipush        12
+    1425: bipush        12
+    1427: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1430: putstatic     #281                // Field AUGMENT_RECALL:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1433: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+    1436: sipush        132
+    1439: sipush        244
+    1442: bipush        12
+    1444: bipush        12
+    1446: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1449: putstatic     #283                // Field AUGMENT_REFORGE:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1452: getstatic     #101                // Field WIDGETS_LOCATION:Lnet/minecraft/resources/ResourceLocation;
+    1455: sipush        144
+    1458: sipush        244
+    1461: bipush        12
+    1463: bipush        12
+    1465: invokestatic  #140                // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.subImage:(Lnet/minecraft/resources/ResourceLocation;IIII)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1468: putstatic     #285                // Field AUGMENT_SEEDFLOW:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+    1471: return
+}

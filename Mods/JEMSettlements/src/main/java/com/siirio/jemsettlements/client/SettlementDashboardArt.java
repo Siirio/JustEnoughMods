@@ -28,7 +28,7 @@ public final class SettlementDashboardArt {
 
     public static void shell(GuiGraphics g, int x, int y, int w, int h, int sidebarWidth) {
         g.fill(x + 3, y + 5, x + w + 3, y + h + 4, 0x90000000);
-        tile(g, STONE, x + 4, y + 4, w - 8, h - 8, 32);
+        SettlementPageArt.masonry(g, x + 4, y + 4, w - 8, h - 8);
         rim(g, STONE_FRAME, x, y, w, h);
         int split = Math.max(8, Math.min(w - 8, sidebarWidth));
         panel(g, x + split, y + 7, w - split - 7, h - 14, false);
@@ -40,7 +40,7 @@ public final class SettlementDashboardArt {
 
     /** Leave 56 native pixels at each end for the anchored cloth and lamps. */
     public static void header(GuiGraphics g, int x, int y, int w, int h) {
-        tile(g, WOOD, x + 3, y + 3, w - 6, h - 6, 32);
+        SettlementPageArt.wood(g, x + 3, y + 3, w - 6, h - 6);
         rim(g, WOOD_FRAME, x, y, w, h);
         if (w > 132) panel(g, x + 51, y + 5, w - 102, h - 10, false);
         int ornamentY = y + Math.max(3, (h - 32) / 2);
@@ -53,7 +53,8 @@ public final class SettlementDashboardArt {
     }
 
     public static void panel(GuiGraphics g, int x, int y, int w, int h, boolean dark) {
-        tile(g, dark ? STONE : PAPER, x + 3, y + 3, w - 6, h - 6, 32);
+        if (dark) tile(g, STONE, x + 3, y + 3, w - 6, h - 6, 32);
+        else SettlementPageArt.paper(g, x + 3, y + 3, w - 6, h - 6);
         rim(g, dark ? DARK_FRAME : PAPER_FRAME, x, y, w, h);
     }
 
@@ -69,7 +70,9 @@ public final class SettlementDashboardArt {
 
     public static void control(GuiGraphics g, int x, int y, int w, int h,
                                boolean selected, boolean hovered, boolean enabled) {
-        surface(g, !enabled ? DISABLED : hovered ? HOVER : CONTROL, x, y, w, h);
+        SettlementPageArt.button(g, x, y, w, h);
+        if (hovered && enabled) rim(g, HOVER, x, y, w, h);
+        if (!enabled) g.fill(x + 3, y + 3, x + w - 3, y + h - 3, 0x7017191b);
         if (selected && enabled && w > 8 && h > 8) {
             rim(g, SELECTED, x, y, w, h);
         }

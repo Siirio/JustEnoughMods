@@ -39,7 +39,7 @@ Boss «Открыть бой» chat actions use typed GUI prompt requests, witho
 - Поселения → Карта — предварительный просмотр точного прямоугольного расширения;1Gold за каждый новый блок, оплата через единый Wallet/backed Coin ledger. Это мягкая граница поселения, не защита земель.
 - `jem town mounts` — show the authenticated player's private lifetime/living mount counts and audited eligible-type progress; no town is required.
 - `home` — return to the last valid vanilla bed or charged respawn anchor after server identity, combat, cooldown, active-event and safe-arrival validation.
-- Рынок внутри `/smp` — системная покупка и продажа проверенных ингредиентов/ресурсов с реальными котировками и дневными лимитами; готовые блюда исключены.
+- Рынок внутри `/smp` — серверные котировки покупки/продажи по ItemPolicy, включая разрешённую готовую еду и отдельную категорию строительных материалов. Опт64/256/1024/4096 доставляется в существующий собственный связанный склад; отсутствие места отклоняет заказ до оплаты.
 - `jem project create <name>` — create a visual building project in the current dimension.
 - `jem project add <project-uuid> <x1> <z1> <x2> <z2>` — append a source rectangle.
 - `jem project remove <project-uuid> <zero-based-rectangle-index>` — remove a source rectangle and recompute its visual union.
@@ -131,7 +131,7 @@ Local recovery backed up both level.dat and level.dat_old under ignored `Server/
 3. Установить проверенный update delta; заменяемые/исключённые runtime JAR переместить в `jem-test-2026-10-20/previous-runtime-mods`, прежние host sources — в `previous-host`, заменяемые скрипты/defaultconfigs — в `previous-runtime`. Установить test properties, сохранив прежний `production-server.properties`. Не переносить local auth/unlimited-wallet state и не менять основной мир или его playerdata.
 4. Запустить dedicated server, убедиться в `Done` и отсутствии loader/channel/world ошибок. Изменение `level-name`/папки само по себе не считается успешным переключением.
 5. Выполнить native `jempack preview`, проверить точный delta и `jempack publish`; дождаться завершения публикации и записать generation/content token. Автогенерацию на старте не включать. Перед допуском игроков иметь matching bootstrap и понятный native путь установки обновы.
-6. При входе игроки получают creative через test properties; тестовое состояние остаётся исключительно в тестовом мире. Не переносить креативные предметы, деньги и прогресс в основной мир.
+6. Начальный режим — creative, но `force-gamemode=false`: подтверждённый игрок получает временный OP2 через bound test profile и может менять режим. Тестовое состояние остаётся исключительно в тестовом мире. Не переносить креативные предметы, деньги и прогресс в основной мир.
 
 ### Быстро вернуть старую рабочую версию без ожидания исправлений
 
@@ -156,3 +156,12 @@ Local recovery backed up both level.dat and level.dat_old under ignored `Server/
 `/jemcombat start <target> <seconds>` observes one living target for1–120seconds on the dedicated server; permission2. `/jemcombat status` shows progress; `/jemcombat stop` writes the capture. One active session, at most1024native hurt calls, auto-save at duration/sample limit and server stop. JSON output: `<world>/jem-combat-captures/<uuid>.json`; do not commit personal captures.
 
 Samples separate requested native hurt amount, LOWEST event-stage amounts/cancellation, returned boolean and real net health/absorption changes. They include ticks, tier/difficulty, ordinary equipment SNBT, armor/toughness and effects. Outer aggregates avoid nested double counting. Incomplete callback pairing invalidates the capture and suppresses rates. Game-second rates include idle capture time and are not wall-clock DPS, cooldown or attack-phase measurements. Direct setHealth, pre-super rejection, Curios/capability state and inferred spell IDs are outside its scope. Same-call healing/death prevention can mask net damage. The command does not change equipment, health, tier or the world; run actual combat scenarios only in the authorized sandbox.
+
+
+## Bound test profile and current delivery
+
+`Docs/DEVELOPMENT.md` owns the exact profile/save/epoch binding and original cutover contract. The two matching marker files are release-profile configuration, not a player command or an authentication bypass. Preserve the native world-local ServerLogin store of original `world`; only the stopped named test save receives a once-only private auth-store swap. Never copy test SavedData/playerdata back to original. No manual NBT balance or race patch is needed: authenticated Roles/CurrencyCore owners apply their epoch receipts.
+
+`/jemkeys preview` shows the current registered-key differences; `/jemkeys apply` applies the curated preset once. Existing clients are not silently remapped during an update. These are client-side commands; do not enter them in the dedicated console.
+
+Shipping Box sales use the owner-authorized native container button, without a scheduler or a new public sale command. Its second tab exchanges physical Coins and withdraws from the same CurrencyCore wallet. Test mode bypasses ordinary selling quotas only when its exact binding explicitly enables `bypassQuotas`; reserve backing and the shared music-disc quota remain active.

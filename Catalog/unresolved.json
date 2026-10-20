@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "b0e91bdd0658b1eade909246bcc07b974c682495",
+  "snapshot_sha": "4a4bc5621a4c059aeca46ad6c1f4719178d16b31",
   "entries": [
     {
       "type": "artifact_metadata",
@@ -332,6 +332,8 @@
       "artifact": "jemcompat-3.7.0.jar",
       "source": "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackContent.java",
       "expressions": [
+        "AutoFeedAugment.TYPE.id()",
+        "FurnaceAugment.TYPE.id()",
         "ModRegistries.AUGMENT_TYPES.getKey()",
         "WorkbenchAugment.TYPE.id()"
       ],

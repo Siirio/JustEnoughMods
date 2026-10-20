@@ -2,7 +2,7 @@ package com.siirio.jemcompat.mixin.backpack;
 
 import com.mrcrayfish.backpacked.common.augment.Augment;
 import com.mrcrayfish.backpacked.common.augment.AugmentType;
-import com.siirio.jemcompat.feature.backpack.WorkbenchAugment;
+import com.siirio.jemcompat.feature.backpack.*;
 import net.minecraftforge.server.ServerLifecycleHooks;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -16,7 +16,7 @@ public abstract class BackpackIntegratedAugmentListMixin {
     private static void jemcompat$hideServerWorkbench(CallbackInfoReturnable<Stream<AugmentType<? extends Augment<?>>>> callback) {
         var server = ServerLifecycleHooks.getCurrentServer();
         if (server != null && !server.isDedicatedServer()) {
-            callback.setReturnValue(callback.getReturnValue().filter(type -> type != WorkbenchAugment.TYPE));
+            callback.setReturnValue(callback.getReturnValue().filter(type -> type != WorkbenchAugment.TYPE && type != FurnaceAugment.TYPE && type != AutoFeedAugment.TYPE));
         }
     }
 }

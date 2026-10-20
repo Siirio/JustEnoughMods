@@ -16,7 +16,7 @@ import net.minecraft.world.item.Items;
 public final class RaceSelectionScreen extends Screen {
     private static final int VISIBLE = 3;
     private static final int GAP = 8;
-    private final RaceStatusPacket status;
+    private RaceStatusPacket status;
     private int first;
 
     public RaceSelectionScreen(RaceStatusPacket status) {
@@ -25,6 +25,7 @@ public final class RaceSelectionScreen extends Screen {
         int selected = status.selected() ? status.race().ordinal() : 0;
         this.first = Math.floorMod(selected - 1, RaceId.values().length);
     }
+    public void accept(RaceStatusPacket value) { status = value; rebuildWidgets(); }
 
     @Override protected void init() {
         clearWidgets();
@@ -71,7 +72,7 @@ public final class RaceSelectionScreen extends Screen {
         drawPeek(g, raceAt(VISIBLE), layout.right - 26, layout);
         for (int slot = 0; slot < VISIBLE; slot++) drawCard(g, raceAt(slot), layout.left + slot * (layout.cardWidth + GAP), layout, mouseX, mouseY);
         Component footer = !status.authenticated() ? Component.translatable("jem.roles.identity_required")
-                : status.selected() && !status.freeSwitchAvailable() ? Component.translatable("jem.roles.change_locked")
+                : status.selected() && !status.freeSwitchAvailable() ? Component.translatable("jem.roles.change_wait_days", com.siirio.jemidentity.api.MinecraftDays.format(status.remainingReselectTicks()))
                 : Component.translatable("jem.roles.free_first_choice");
         g.drawCenteredString(font, footer, width / 2, height - 15, 0xFFE1BE83);
         super.render(g, mouseX, mouseY, partialTick);

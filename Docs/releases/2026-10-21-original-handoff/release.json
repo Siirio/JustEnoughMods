@@ -1,0 +1,346 @@
+{
+  "schema": 1,
+  "date": "2026-10-21",
+  "timezone": "Asia/Yekaterinburg",
+  "mode": "client-and-server-original-world-release",
+  "status": "deployed-original-world",
+  "supersedesTarget": "Docs/releases/2026-10-20-test-handoff/README.md",
+  "historicalHostReceipt": "Docs/releases/2026-10-20-minerent-test-world.json",
+  "userDirection": {
+    "furnaceIcon": "Backpacked cream silhouette family",
+    "testStage": "skip remaining hosted test-world update/acceptance stage",
+    "target": "preserved original world",
+    "testWorldDeletion": "explicitly authorized and completed for jem-test-2026-10-20 only",
+    "globalCreative": "disable test-wide creative behavior",
+    "unlimitedMoney": "disable test grants/issuance/overrides; finite ordinary economy",
+    "backupIntegrity": "User explicitly: не надо проверять целостность; делай изменения и запускай. Archive integrity verification gate superseded; no integrity claim."
+  },
+  "artifacts": {
+    "status": "source-produced-and-synchronized-per-root-receipt",
+    "receipt": ".superpowers/shipping-handoff/final-artifacts-synchronized.json",
+    "sourceCommitLabel": "SELF",
+    "coreSha256": "d84791a4b7cdfcce1f836852576a12ac99c38f3d3d4afd4e01e43f35eafb05dd",
+    "files": {
+      "mods/jem-identity-1.0.0.jar": {
+        "sha256": "2e16fa761f05677274ef5068b4724c9ac037825c1874db98a80fbdab47d8a142",
+        "size": 10906,
+        "source": "Mods/JEMIdentity/build/libs/jem-identity-1.0.0.jar",
+        "runtime": true,
+        "runtimeName": "jem-identity-1.0.0.jar",
+        "evidence": "Successful production build; exact fresh full output"
+      },
+      "mods/jemcompat-3.7.0.jar": {
+        "sha256": "a01f9be7e7dff77519c96aacf0df58b54e50b8cc0dc5898be07229f66efbf5fc",
+        "size": 369481,
+        "source": "Mods/JEMCompat/build/libs/jemcompat-3.7.0.jar",
+        "runtime": true,
+        "runtimeName": "jemcompat-3.7.0.jar",
+        "evidence": "Successful full production build45s; authored native Backpacked Furnace icon and horizontal shared row"
+      },
+      "mods/jem-pack-core-2.0.0-dev.jar": {
+        "sha256": "19845761024d8f39200475ea84e16ffe9303d6437cd5e8ec043622a190d784ef",
+        "size": 770521,
+        "source": "Mods/JEMPackCore/build/libs/jem-pack-core-2.0.0-dev.jar",
+        "runtime": true,
+        "runtimeName": "jem-pack-core-2.0.0-dev.jar",
+        "evidence": "Successful production build; exact fresh full output"
+      },
+      "mods/jem-roles-2.0.0.jar": {
+        "sha256": "818ef9abda6c71aff9e74c10fef8cf541d50c1dc107f661941aa5415bd5305e8",
+        "size": 176414,
+        "source": "Mods/JEMRoles/build/libs/jem-roles-2.0.0.jar",
+        "runtime": true,
+        "runtimeName": "jem-roles-2.0.0.jar",
+        "evidence": "Successful production build; exact fresh full output"
+      },
+      "mods/jem-races-1.1.0.jar": {
+        "sha256": "17793c613c010f40d141aef9758bb3938e6a33ee1e2b6e7fc30bce13e46f5200",
+        "size": 7071431,
+        "source": "Mods/JEMVisualSandboxR3/build/production-profile/libs/jem-races-1.1.0.jar",
+        "runtime": true,
+        "runtimeName": "jem-races-1.1.0.jar",
+        "evidence": "Successful production build; exact fresh full output"
+      },
+      "mods/jem-server-2.0.0-dev.jar": {
+        "sha256": "e454308a4579b30ffb5b0fbce5979e9799ae4ad8bd1a9ba8b346b0935419df29",
+        "size": 19850410,
+        "source": "Mods/JEMServer/build/libs/jem-server-2.0.0-dev.jar",
+        "runtime": true,
+        "runtimeName": "jem-server-2.0.0-dev.jar",
+        "evidence": "Successful production build; exact fresh full output"
+      },
+      "mods/jem-economy-1.3.0.jar": {
+        "sha256": "b86209d1eea761d9d1c66269638c979a77bf88e52baf8a309995bd606dde2726",
+        "size": 2220281,
+        "source": "Mods/JEMEconomy/build/libs/jem-economy-1.3.0.jar",
+        "runtime": true,
+        "runtimeName": "jem-economy-1.3.0.jar",
+        "evidence": "Successful corrected full production build; retained native copper automation; current buy/sell resource gate"
+      },
+      "mods/jem-settlements-2.1.0.jar": {
+        "sha256": "917418afb42addd1ff24d686c2116b6e009968849e318061f5a9b4db43aa8029",
+        "size": 2814771,
+        "source": "Mods/JEMSettlements/build/libs/jem-settlements-2.1.0.jar",
+        "runtime": true,
+        "runtimeName": "jem-settlements-2.1.0.jar",
+        "evidence": "Successful corrected full production build; retained native copper automation; current buy/sell resource gate"
+      },
+      "mods/jem-bootstrap.jar": {
+        "sha256": "a8c26d26b28ba4d51134731cf6c285cd6a92268777d82c28831e38a716a5c99b",
+        "size": 3492275,
+        "source": "Client/ManagedPack/mods/jem-bootstrap.jar",
+        "runtime": true,
+        "runtimeName": "jem-bootstrap.jar",
+        "evidence": "Existing canonical jem.8 release output; exact matching standalone bytes"
+      }
+    },
+    "compatBuildDurationSeconds": 45,
+    "buildAuthority": "root release owner",
+    "buildDoesNotProveRuntimeAcceptance": true
+  },
+  "furnaceIcon": {
+    "status": "source-complete-editor-reviewed",
+    "resource": "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/gui/augment/furnace.png",
+    "sha256": "26d524e4ba1670a58118f4b9f61f468f0a83322abc77be9967f130907f2cca65",
+    "source": "Docs/backpack/furnace-icon-20261020/furnace.aseprite",
+    "evidence": "Docs/backpack/furnace-icon-20261020/README.md",
+    "horizontalLayoutPreserved": true,
+    "runtimeAcceptance": "pending"
+  },
+  "originalDataObservation": {
+    "status": "reported-by-root-from-fresh-authenticated-file-UI",
+    "scope": "preserved original world data directory",
+    "finding": "No existing Economy, Roles or Settlements SavedData stores were present in the inspected original data listing.",
+    "durableEvidenceReceipt": null,
+    "limits": "Does not replace final target identity, backup or startup receipts; no auth/player content copied into this record."
+  },
+  "economy": {
+    "target": "finite ordinary production economy",
+    "freshInitialization": "production-owner-path-active-account-receipts-unobserved",
+    "starterGrant": {
+      "owner": "EconomyApi STARTER_GRANT / EconomySavedData.ensureStarter",
+      "copper": 2000,
+      "oncePerAuthenticatedAccount": true,
+      "funding": "existing CENTRAL_RESERVE transfer; no repeated refill",
+      "executedCount": null
+    },
+    "existingLedgerRebase": {
+      "requiredFromObservedData": false,
+      "executed": false,
+      "reason": "Observed original save has no prior production ledger to rebase; use existing fresh initialization, never test wallet data."
+    },
+    "testStateImported": false,
+    "newLedgerOrMigrationAdapterAdded": false,
+    "sourceOnlyInitialCapacity": {
+      "initialSupplyCopper": 100000,
+      "centralReserveCopper": 60000,
+      "starterCopperPerAccount": 2000,
+      "initialReserveStarterCapacityAccounts": 30,
+      "actualPersistedBalancesOrRecipientsObserved": false
+    }
+  },
+  "preserve": [
+    "original world and identity",
+    "original auth and account identities",
+    "original player inventories/advancements/progression",
+    "original administrator privileges",
+    "native AutoModpack host identity/credentials/journal",
+    "unrelated server runtime config tuning"
+  ],
+  "operations": {
+    "freshOriginalBackup": {
+      "status": "archive-presence-observed-integrity-not-verified-by-user-request",
+      "receipt": {
+        "authority": "root authenticated host UI observation",
+        "archives": [
+          "archive-2026-10-20T221323+0300.tar.zst",
+          "archive-2026-10-20T221413+0300.tar.zst"
+        ],
+        "integrityVerified": false,
+        "readabilityVerified": false,
+        "hash": null,
+        "completeSnapshotClaim": false,
+        "beforeArchive": "Host clean All Dimensions Saved at2026-10-21 00:09:48+05:00; UI force process completion before archiving.",
+        "uiDisplayedSizeEach": "2.57 GB"
+      }
+    },
+    "hostArtifactsAndOriginalBinding": {
+      "status": "host-artifacts-applied-original-world-running",
+      "receipt": {
+        "authority": "root authenticated host UI/round-trip evidence",
+        "bundle": {
+          "sha256": "8829cc9412d2f48c24dcdb7cef9b48da3eca59f0a4ce2f7d6321ff792118630e",
+          "size": 68942610,
+          "operations": 19,
+          "uploadRoundTripHashMatched": true
+        },
+        "extracted": [
+          "8 shared runtime JARs plus matching bootstrap",
+          "8 native host-source JARs plus native manifest"
+        ],
+        "duplicateAircraftResourcePack": "moved out of managed host source to root handoff-retired-aircraft-resourcepack-20261021.zip",
+        "productionPropertiesReadBack": {
+          "level-name": "world",
+          "gamemode": "survival",
+          "force-gamemode": "false",
+          "motd": "ForeverSMP"
+        },
+        "originalAuthAdminAndIdentityAcceptance": "original world load confirmed; individual player authentication/privilege acceptance unobserved",
+        "normalRuntimeJarReplacements": 9,
+        "nativeHostSourceReplacements": 9,
+        "nativeHostSourceRetirements": 1
+      }
+    },
+    "disableTestProfileAndTemporaryPrivileges": {
+      "status": "production-profile-test-privileges-disabled",
+      "receipt": {
+        "console": "JEM dedicated production profile: test privileges disabled",
+        "observedAtLocal": "2026-10-21T00:21:44+05:00",
+        "testGlobalCreativeOpGrantDisabled": true,
+        "individualOriginalAdminLoginAcceptance": "unobserved"
+      }
+    },
+    "disableGlobalCreativeAndUnlimitedMoney": {
+      "status": "production-properties-and-test-privileges-disabled-confirmed",
+      "receipt": {
+        "gamemode": "survival",
+        "force-gamemode": false,
+        "unlimitedMoney": "Production-profile log confirms test privileges disabled; ordinary finite source policy active, actual account grant counts unobserved",
+        "allAccountsPaidClaim": false
+      }
+    },
+    "originalStartupAndDataInitialization": {
+      "status": "original-world-running-financial-account-receipts-unobserved",
+      "receipt": {
+        "authority": "root live host console/UI",
+        "levelLog": "Preparing level \"world\"",
+        "doneAtLocal": "2026-10-21T00:21:43+05:00",
+        "productionProfileAtLocal": "2026-10-21T00:21:44+05:00",
+        "productionProfileLog": "JEM dedicated production profile: test privileges disabled",
+        "doneObserved": true,
+        "runningConfirmed": true,
+        "financialAccountReceiptsObserved": false,
+        "individualPlayerAuthenticationAcceptance": "unobserved"
+      }
+    },
+    "deleteAuthorizedTestWorld": {
+      "status": "completed-exact-selected-test-folder-only",
+      "receipt": {
+        "authority": "root native file UI selected-folder deletion and subsequent root listing",
+        "selectedPath": "jem-test-2026-10-20",
+        "observedAtLocalRange": "2026-10-21 00:22–00:23+05:00",
+        "testPresent": false,
+        "originalPresent": true,
+        "originalPath": "world"
+      }
+    },
+    "hostNativePublication": {
+      "status": "published-and-fresh-projection-downloaded",
+      "receipt": {
+        "publishedAtLocal": "2026-10-21T00:22:46+05:00",
+        "head": 7,
+        "contentToken": "1d53eb24caf6059930ecb88d089bb06100e7ccc4",
+        "policySha1": "6fe8202c29932321064ce273833f7f8f0b731d36",
+        "diff": {
+          "added": 0,
+          "changed": 9,
+          "removed": 1
+        },
+        "privateEvidence": "remote-after-original-projection.json",
+        "matchesLocalGeneration": 51,
+        "matchesInstalledTestJemToken": true,
+        "nativeHostJournalPreserved": true
+      }
+    },
+    "localNativePublicationAndApplication": {
+      "status": "published-and-natively-applied-to-test-jem",
+      "receipt": {
+        "sequence": 51,
+        "token": "1d53eb24caf6059930ecb88d089bb06100e7ccc4",
+        "publishedAtLocal": "2026-10-21T00:08:34+05:00",
+        "ordinaryServerCleanStopAtLocal": "2026-10-21T00:08:36+05:00",
+        "testJemNativeAppliedAtLocal": "2026-10-21T00:16:57+05:00",
+        "exactJarHashesMatched": true,
+        "pendingTransaction": false,
+        "ordinaryServerState": "cleanly stopped",
+        "separateUnresolvedIssue": "Existing local Windows tax-durability issue remains unresolved; no resolution claimed."
+      }
+    },
+    "stableClientAndFriendReleaseBoundary": {
+      "status": "matching-bootstrap-and-cumulative-friend-package-completed",
+      "receipt": {
+        "stableBootstrapSync": {
+          "completed": true,
+          "copied": [],
+          "reason": "matching bootstrap already present; no broader stable native-application claim"
+        },
+        "friendPackage": {
+          "createdAtLocal": "2026-10-21T00:09:02+05:00",
+          "sha256": "0899effd33ecb4f4722d7f844cf0de13e75c1d3867bdc76ce2b68f1abf783a46",
+          "fullKubejsIncluded": true,
+          "currentCumulativePayload": true,
+          "personalJeiHistoryExcluded": true
+        },
+        "stableNativeManagedApplication": "Owned by matching bootstrap; no launch, raw managed copying or cache preseed",
+        "completeReleaseBoundary": "Host, native publication/application, matching bootstrap, cumulative friend package and promoted baseline completed; source snapshot is the enclosing SELF commit"
+      }
+    },
+    "releaseBaselinePromotion": {
+      "status": "completed",
+      "receipt": {
+        "createdAt": "2026-10-21T00:25:00.082595+05:00",
+        "previousCreatedAt": "2026-10-12T19:46:38.792312+05:00",
+        "managedDelta": {
+          "added": [],
+          "changed": [],
+          "deleted": []
+        },
+        "stableSync": {
+          "missing": [],
+          "changed": []
+        },
+        "nativePublication": {
+          "published": true,
+          "journalSequence": 51,
+          "publishedManifestSha1": "d99e3c30ab87ef9c672a2d3425c1830a2501af21",
+          "stagedManifestSha1": "d99e3c30ab87ef9c672a2d3425c1830a2501af21"
+        }
+      }
+    },
+    "sourceCommitAndPush": {
+      "status": "enclosing-source-commit",
+      "receipt": {
+        "branch": "main",
+        "commit": "SELF",
+        "remoteVerification": "Normal push and remote SHA are reported after this enclosing commit is created."
+      }
+    }
+  },
+  "runtimeAcceptance": "pending-user",
+  "automatedTestsRun": false,
+  "minecraftClientLaunchedByThisPreparation": false,
+  "worldDeletionCompleted": true,
+  "deploymentCompleted": true,
+  "notes": [
+    "Original world reached Done and production policy; hosted head7 matches local51 and installed test jem; exact test folder deleted. Matching stable bootstrap, cumulative friend package and baseline promotion completed. The enclosing source commit is SELF; remote verification is reported after normal push. Player authentication/payment/gameplay acceptance remains unobserved.",
+    "Historical test profile/epoch/grant templates are not original release inputs.",
+    "No original auth/progress/admin reset, test-data merge, manual wallet editing or new ledger adapter is authorized by this documentation."
+  ],
+  "network": {
+    "authority": "root fresh live MineRENT Network page",
+    "primary": "ForeverSMP.minerent.io:25565",
+    "numericFallback": "109.236.57.44:31604",
+    "portsKeptSeparate": true
+  },
+  "sourceCommit": "SELF",
+  "verification": {
+    "productionBuilds": "successful source-produced artifacts, no tests",
+    "atlas": {
+      "rebuild": "passed",
+      "audit": "passed",
+      "validation": "valid=true",
+      "impactScan": "only three preserved preexisting Settlements source paths uncovered; task artifact drift empty"
+    },
+    "manualPlayerAcceptance": "not performed"
+  }
+}

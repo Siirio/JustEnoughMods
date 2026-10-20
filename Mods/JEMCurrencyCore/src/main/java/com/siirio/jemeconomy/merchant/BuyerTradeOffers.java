@@ -16,10 +16,10 @@ public final class BuyerTradeOffers {
         var demand = MarketSavedData.get(player.getServer()).demand(player.getServer());
         MerchantOffers offers = new MerchantOffers();
         ItemPolicyRegistry.reviewed().stream().filter(policy -> policy.sellable()
-                && (policy.demandGroup().equals(demand.primary()) || policy.demandGroup().equals(demand.secondary())))
+                && (policy.disc() || policy.demandGroup().equals(demand.primary()) || policy.demandGroup().equals(demand.secondary())))
                 .sorted(java.util.Comparator.comparing(policy -> policy.item().toString())).forEach(policy -> {
                     var item = ForgeRegistries.ITEMS.getValue(policy.item());
-                    if (item != null && !com.siirio.jemeconomy.policy.TradeRestrictions.marketProhibited(new ItemStack(item))) offers.add(new MerchantOffer(new ItemStack(item), new ItemStack(Items.EMERALD),
+                    if (item != null && !com.siirio.jemeconomy.policy.TradeRestrictions.saleProhibited(new ItemStack(item))) offers.add(new MerchantOffer(new ItemStack(item), new ItemStack(Items.EMERALD),
                             Integer.MAX_VALUE, 0, 0.0F));
                 });
         // Emerald is only the native monetary-leg descriptor, never the delivered payout.

@@ -22,6 +22,7 @@ public final class OptionalMixins implements IMixinConfigPlugin {
             Map.entry("com.siirio.jemcompat.mixin.transport.AircraftInventoryMixin", List.of("immersive_aircraft")),
             Map.entry("com.siirio.jemcompat.mixin.transport.AircraftFuelSlotMixin", List.of("immersive_aircraft")),
             Map.entry("com.siirio.jemcompat.mixin.transport.AircraftLiftMixin", List.of("immersive_aircraft")),
+            Map.entry("com.siirio.jemcompat.mixin.backpack.BackpackInventoryProcessMixin", List.of("backpacked", "framework")),
             Map.entry("com.siirio.jemcompat.mixin.backpack.BackpackWorkbenchMenuMixin", List.of("backpacked", "framework")),
             Map.entry("com.siirio.jemcompat.mixin.backpack.BackpackAugmentAdmissionMixin", List.of("backpacked", "framework")),
             Map.entry("com.siirio.jemcompat.mixin.backpack.BackpackIntegratedAugmentListMixin", List.of("backpacked", "framework")),

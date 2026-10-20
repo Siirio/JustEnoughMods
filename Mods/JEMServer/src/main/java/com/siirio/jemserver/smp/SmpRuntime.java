@@ -33,6 +33,7 @@ public final class SmpRuntime {
         CombatNetwork.register();
         if (dedicated) {
             MinecraftForge.EVENT_BUS.register(new SmpRuntime());
+            MinecraftForge.EVENT_BUS.register(new TestProfileRuntime());
             if (net.minecraftforge.fml.ModList.get().isLoaded("jem_world_boss_tiers")) registerBossHooks();
         }
     }

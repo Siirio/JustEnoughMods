@@ -7,6 +7,7 @@ import hashlib
 import json
 import subprocess
 from collections import defaultdict
+from functools import lru_cache
 from pathlib import Path, PurePosixPath
 from typing import Any, Iterable
 
@@ -67,9 +68,18 @@ def _source_set_members(selector: dict[str, Any]) -> dict[str, dict[str, Any]]:
     path = ROOT / selector.get("members_path", "")
     if not path.is_file():
         return {}
+    stamp = path.stat()
+    return _source_set_snapshot(path, stamp.st_mtime_ns, stamp.st_size,
+                                selector.get("records_field", "records"), selector.get("id_field", "id"))
+
+
+@lru_cache(maxsize=32)
+def _source_set_snapshot(path: Path, modified_ns: int, size: int,
+                         records_field: str, id_field: str) -> dict[str, dict[str, Any]]:
+    # A source-set lookup runs once for every registry object. Reuse the parsed
+    # snapshot while its file identity is unchanged; normal writes invalidate it.
     payload = read_json(path)
-    rows = payload if isinstance(payload, list) else payload.get(selector.get("records_field", "records"), [])
-    id_field = selector.get("id_field", "id")
+    rows = payload if isinstance(payload, list) else payload.get(records_field, [])
     return {row[id_field]: row for row in rows if isinstance(row, dict) and row.get(id_field)}
 
 

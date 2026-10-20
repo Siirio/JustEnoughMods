@@ -46,12 +46,22 @@ public final class ProductionRaceBridge {
         Object save=call("com.siirio.jemroles.race.RaceSavedData",null,"get",new Class<?>[]{net.minecraft.server.MinecraftServer.class},p.server);
         call("com.siirio.jemroles.race.RaceSavedData",save,"changed",new Class<?>[0]);
     }
-    @SuppressWarnings({"unchecked","rawtypes"}) public static void choose(ServerPlayer p,int race){
+    public static long remainingReselectTicks(ServerPlayer p){
+        return record(p).map(value -> ((Number)call("com.siirio.jemroles.race.RaceRecord",value,"remainingReselectTicks",new Class<?>[]{long.class},p.server.overworld().getGameTime())).longValue()).orElse(0L);
+    }
+    public static boolean testProfile(ServerPlayer p){
+        return (Boolean)call("com.siirio.jemidentity.api.DedicatedTestProfile",null,"active",new Class<?>[]{net.minecraft.server.MinecraftServer.class},p.server);
+    }
+    public static java.util.UUID nonce(ServerPlayer p){
+        return (java.util.UUID)call("com.siirio.jemroles.race.RaceService",null,"currentNonce",new Class<?>[]{ServerPlayer.class},p);
+    }
+    @SuppressWarnings({"unchecked","rawtypes"}) public static String choose(ServerPlayer p,int race,java.util.UUID nonce){
         try{
             Class type=Class.forName("com.siirio.jemroles.race.RaceId");
             Object next=type.getEnumConstants()[race];
-            Object result=call("com.siirio.jemroles.race.RaceService",null,"choose",new Class<?>[]{ServerPlayer.class,type},p,next);
+            Object result=call("com.siirio.jemroles.race.RaceService",null,"choose",new Class<?>[]{ServerPlayer.class,type,java.util.UUID.class},p,next,nonce);
             if(((Enum<?>)result).name().equals("CHANGE_LOCKED"))p.displayClientMessage(net.minecraft.network.chat.Component.translatable("jem.roles.change_locked"),true);
+            return ((Enum<?>)result).name();
         }catch(ClassNotFoundException failure){throw new IllegalStateException(failure);}
     }
     public static void tick(ServerPlayer p){

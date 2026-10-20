@@ -96,6 +96,7 @@ dependencies {
     compileOnly files(installedMod('BetterAdvancements-*.jar'))
     compileOnly files('../JEMAchievementGuide/build/classes/java/main')
     compileOnly files('../JEMPackCore/build/classes/java/main')
+    compileOnly files('../JEMIdentity/build/classes/java/main')
     compileOnly files('../JEMWorldBossTiers/build/classes/java/main')
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }

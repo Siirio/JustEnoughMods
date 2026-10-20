@@ -30,7 +30,11 @@ public final class BackpackContent {
     }
 
     private static void registerAugment(RegisterEvent event) {
-        event.register(ModRegistries.AUGMENT_TYPES.getKey(), helper -> helper.register(WorkbenchAugment.TYPE.id(), WorkbenchAugment.TYPE));
+        event.register(ModRegistries.AUGMENT_TYPES.getKey(), helper -> {
+            helper.register(WorkbenchAugment.TYPE.id(), WorkbenchAugment.TYPE);
+            helper.register(FurnaceAugment.TYPE.id(), FurnaceAugment.TYPE);
+            helper.register(AutoFeedAugment.TYPE.id(), AutoFeedAugment.TYPE);
+        });
     }
 
 }

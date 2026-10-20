@@ -7,7 +7,7 @@ import net.minecraft.network.FriendlyByteBuf;
 public record RaceStatusPacket(boolean open, boolean authenticated, boolean selected, RaceId race,
                                long activeTicks, boolean freeSwitchAvailable, UUID nonce,
                                int spellTier, int spellProgress, int resonance, int waterExposure, int lavaExposure,
-                               int lavaCapacity, boolean livingPath) {
+                               int lavaCapacity, boolean livingPath, long remainingReselectTicks, boolean testProfile) {
     static void encode(RaceStatusPacket packet, FriendlyByteBuf buffer) {
         buffer.writeBoolean(packet.open);
         buffer.writeBoolean(packet.authenticated);
@@ -23,12 +23,14 @@ public record RaceStatusPacket(boolean open, boolean authenticated, boolean sele
         buffer.writeVarInt(packet.lavaExposure);
         buffer.writeVarInt(packet.lavaCapacity);
         buffer.writeBoolean(packet.livingPath);
+        buffer.writeVarLong(packet.remainingReselectTicks);
+        buffer.writeBoolean(packet.testProfile);
     }
 
     static RaceStatusPacket decode(FriendlyByteBuf buffer) {
         return new RaceStatusPacket(buffer.readBoolean(), buffer.readBoolean(), buffer.readBoolean(),
                 buffer.readEnum(RaceId.class), buffer.readVarLong(), buffer.readBoolean(), buffer.readUUID(),
                 buffer.readVarInt(), buffer.readVarInt(), buffer.readVarInt(), buffer.readVarInt(), buffer.readVarInt(),
-                buffer.readVarInt(), buffer.readBoolean());
+                buffer.readVarInt(), buffer.readBoolean(), buffer.readVarLong(), buffer.readBoolean());
     }
 }

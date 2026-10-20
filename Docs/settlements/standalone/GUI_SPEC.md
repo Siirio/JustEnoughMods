@@ -2,6 +2,29 @@
 
 Status: approved contract implemented by `Mods/JEMSettlements/.../client/SettlementScreen.java`, `SettlementMap.java` and server projections/actions. Native controls/items currently supply materials/icons; control-family ART_BRIEFS candidate sprites are exported but not integrated or approved. `GUI_STATE_MACHINE.md` owns request/reply and lifecycle behavior. All dimensions below are **logical GUI pixels**, not framebuffer pixels; all labels are translatable Minecraft text. Runtime visual acceptance is pending.
 
+## Native page art integration (20 October 2026)
+
+Current owners: SettlementScreen, SettlementDashboardArt, SettlementPageArt. The37 Aseprite page/state candidates in Docs/art/settlements-pages-2026-10-20 supply reusable material and semantic icons. Sample text, numbers, portraits and positions remain reference compositions. The live Screen is the sole runtime layout owner; full-page previews are never drawn behind unrelated live controls.
+
+Production mapping: native/04-residents.png is copied unchanged to assets/jem_settlements/textures/gui/pages/materials.png. Material regions are masonry(6,215,98,23), clean paper(314,114,64,48), wood(5,4,390,29), button(319,249,80,20). Fixed corners and repeating native texels preserve pixel density. Native icon-*.png files are copied unchanged into that directory at16x16. Editable Aseprite originals remain in the owning art directory. Existing sculpted rims, blue/gold selection, lamps and vines remain. No generated texture or reference screenshot ships.
+
+| Candidates | Live owner |
+| --- | --- |
+|01 directory /02 founding | selector /creation: real directory, bell, quote and request outcomes |
+|03 overview | cityWidgets: treasury, taxes, transfers, comfort, rename/delete |
+|04 residents /05 villager /06 recruit /07 golem /compact | residentRows, residentsDashboard, residentPane, residentDetail: real snapshot and actual loaded entity |
+|08 happiness /09 complaints/distribution | happinessRows: actual metrics and shared scrolling viewport |
+|10 chests /11 contents | chestRows, chestContents: real server slots and explicitly unknown/unloaded contents |
+|12 home /13 delete /14 remove /15 transfer /16 coordinates | info, ask, confirmationWidgets: wrapped live messages and initially focused Cancel |
+|14 guide chapters | guideWidgets: localized current chapter, previous/next/back |
+|loading /unsupported /pending /uncertain /empty /unloaded | Existing mode, request uncertainty, roster-empty and InventoryKnown state owners |
+
+All routes share authored controls at actual widget bounds, dynamic text, keyboard focus, clipped scrolling and the existing request state machine. Summary cards use two columns below440 content pixels; that same height defines the scrolling origin. Shared roster width determines draw and wheel regions. Resident mode requires300 vertical logical pixels; extreme scale shows the existing localized instruction instead of overlapping actions. Content-sized directory/chest retain separate thresholds.
+
+Distinct icons sit beside real happiness, satiety, housing/home, safety, work, community, comfort and resident values. Foods, currency and loaded entities retain native owners. Search filters on typing and automatically sorts names; All residents/By name remain removed. Recruit detail and indebted roster preserve the exact payroll request. Native manage/feed/home/remove/location actions remain authoritative. Money delegates to SettlementPriceRenderer/CurrencyCore; no second denomination loop. Guide/directory access is in the sidebar, without crossed header buttons.
+
+Inspected originals: GUI+05/+06/+01 and rejected runtime-corrections-2026-10-19/02.png. Applied bounded masonry seams, layered wood edges, and distinct semantic silhouettes. This is source integration, not a game screenshot or player acceptance. Build, distribution and native publication belong to the parent delivery; runtime GUI-scale/hover/readability acceptance remains pending.
+
 ## Layout and shared components
 
 Codex layout proposal: 352×240 centered window with 8-pixel safe margin. Header `(8,8,336,24)`; sidebar `(8,36,88,196)`; content `(100,36,244,196)`. Content header24, footer28, remaining144 scrolling pixels. Coordinates are window-relative. Item icons16×16; icon targets20×20 minimum; regular buttons20 high. Native font9 high with12-pixel line spacing. Rows32 high; text wraps rather than scaling below native font size.

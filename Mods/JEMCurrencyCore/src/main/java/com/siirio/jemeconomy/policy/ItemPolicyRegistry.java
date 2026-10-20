@@ -34,13 +34,16 @@ public final class ItemPolicyRegistry {
         return policies.getOrDefault(id, new ItemPolicy(1, id, ItemPolicy.Outcome.NONE, null, null, 0, 0, "", "Unclassified; fail closed"));
     }
 
-    public static boolean acceptsShipping(ItemStack stack) { return !TradeRestrictions.marketProhibited(stack) && policy(stack).map(ItemPolicy::sellable).orElse(false); }
+    public static boolean acceptsShipping(ItemStack stack) { return !TradeRestrictions.saleProhibited(stack) && policy(stack).map(ItemPolicy::sellable).orElse(false); }
     public static Collection<ItemPolicy> reviewed() { return java.util.List.copyOf(policies.values()); }
 
     public static boolean canonical(ItemStack stack) {
         if (stack.isEmpty() || stack.isDamaged() || stack.isEnchanted()) return false;
         CompoundTag tag = stack.getTag();
-        return tag == null || tag.isEmpty();
+        if (tag == null || tag.isEmpty()) return true;
+        // Exact native Vinery adapter accepts only bounded native aging fields, without stripping NBT.
+        return stack.getItem().isEdible() && com.siirio.jemeconomy.merchant.NativeItemPricing.usesWineAging(stack)
+                && com.siirio.jemeconomy.merchant.NativeItemPricing.matchesGoods(new ItemStack(stack.getItem()),stack);
     }
 
     @SubscribeEvent
@@ -73,19 +76,36 @@ public final class ItemPolicyRegistry {
             if (id == null) throw new IllegalArgumentException("Invalid policy item ID: " + row);
             String outcomeText = row.has("outcome") ? row.get("outcome").getAsString() : "NONE";
             ItemPolicy.Outcome outcome;
-            try { outcome = ItemPolicy.Outcome.valueOf(outcomeText); } catch (IllegalArgumentException ignored) { outcome = ItemPolicy.Outcome.NONE; }
+            try { outcome = ItemPolicy.Outcome.valueOf(outcomeText); } catch (IllegalArgumentException invalid) { throw new IllegalArgumentException("Invalid policy outcome for " + id,invalid); }
             Long sell = nullableLong(row, "sell_copper"), buy = nullableLong(row, "buy_copper");
             if (outcome == ItemPolicy.Outcome.BUY_AND_SELL && (sell == null || buy == null || sell <= 0L || buy <= 0L
-                    || buy > 1_000_000_000L || sell > 1_000_000_000L || buy <= Math.floorDiv(Math.multiplyExact(sell, 150L), 100L)
+                    || buy > 1_000_000_000L || sell > 1_000_000_000_000_000L || new RationalPrice(sell,positive(row,"sell_denominator")).ceil() > 1_000_000_000L || unsafeSpread(sell,positive(row,"sell_denominator"),buy,positive(row,"buy_denominator"))
                     || integer(row, "daily_player_units") <= 0 || integer(row, "daily_global_units") <= 0))
                 throw new IllegalArgumentException("Unsafe two-way economy policy: " + id);
+            if (outcome == ItemPolicy.Outcome.SELL_ONLY && (sell == null || sell <= 0 || sell > 1_000_000_000_000_000L || new RationalPrice(sell,positive(row,"sell_denominator")).ceil() > 1_000_000_000L
+                    || integer(row,"daily_player_units") <= 0 || integer(row,"daily_global_units") <= 0))
+                throw new IllegalArgumentException("Unsafe sell-only policy: " + id);
+            if (outcome == ItemPolicy.Outcome.BUY_ONLY && (buy == null || buy <= 0 || buy > 1_000_000_000L))
+                throw new IllegalArgumentException("Unsafe buy-only policy: " + id);
             if (result.containsKey(id)) throw new IllegalArgumentException("Duplicate economy policy: " + id);
             result.put(id, new ItemPolicy(row.has("schema") ? row.get("schema").getAsInt() : 1, id, outcome, sell, buy,
-                    integer(row, "daily_player_units"), integer(row, "daily_global_units"), string(row, "demand_group"), string(row, "notes")));
+                    integer(row, "daily_player_units"), integer(row, "daily_global_units"), string(row, "demand_group"), string(row, "notes"),
+                    positive(row,"sell_denominator"), positive(row,"buy_denominator"),
+                    row.has("quota_family") ? new ResourceLocation(row.get("quota_family").getAsString()) : id,
+                    (int) positive(row,"quota_units"), row.has("fixed_price") && row.get("fixed_price").getAsBoolean(), nullableLong(row,"bulk_1024")));
         }
         return result;
     }
 
+    private static boolean unsafeSpread(long sell,long sellDenominator,long buy,long buyDenominator) {
+        return java.math.BigInteger.valueOf(buy).multiply(java.math.BigInteger.valueOf(sellDenominator)).multiply(java.math.BigInteger.valueOf(100))
+                .compareTo(java.math.BigInteger.valueOf(sell).multiply(java.math.BigInteger.valueOf(buyDenominator)).multiply(java.math.BigInteger.valueOf(150)))<=0;
+    }
+    private static long positive(JsonObject row,String key) {
+        long value = row.has(key) ? row.get(key).getAsLong() : 1;
+        if (value <= 0 || value > 1_000_000_000L) throw new IllegalArgumentException("Invalid " + key);
+        return value;
+    }
     private static Long nullableLong(JsonObject row, String key) { return !row.has(key) || row.get(key).isJsonNull() ? null : row.get(key).getAsLong(); }
     private static int integer(JsonObject row, String key) { return row.has(key) ? Math.max(0, row.get(key).getAsInt()) : 0; }
     private static String string(JsonObject row, String key) { return row.has(key) ? row.get(key).getAsString() : ""; }

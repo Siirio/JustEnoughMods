@@ -1,0 +1,99 @@
+Compiled from "BackpackScreen.java"
+class com.mrcrayfish.backpacked.client.gui.screen.inventory.BackpackScreen$AugmentIcon extends com.mrcrayfish.framework.api.client.screen.widget.element.Icon {
+  private final com.mrcrayfish.framework.api.client.screen.widget.FrameworkButton button;
+
+  private final com.mrcrayfish.backpacked.inventory.container.BackpackContainerMenu menu;
+
+  private final com.mrcrayfish.backpacked.common.augment.Augments$Position position;
+
+  private com.mrcrayfish.backpacked.client.gui.screen.inventory.BackpackScreen$AugmentIcon(com.mrcrayfish.framework.api.client.screen.widget.FrameworkButton, com.mrcrayfish.backpacked.inventory.container.BackpackContainerMenu, com.mrcrayfish.backpacked.common.augment.Augments$Position);
+    Code:
+       0: aload_0
+       1: invokespecial #24                 // Method com/mrcrayfish/framework/api/client/screen/widget/element/Icon."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #26                 // Field button:Lcom/mrcrayfish/framework/api/client/screen/widget/FrameworkButton;
+       9: aload_0
+      10: aload_2
+      11: putfield      #28                 // Field menu:Lcom/mrcrayfish/backpacked/inventory/container/BackpackContainerMenu;
+      14: aload_0
+      15: aload_3
+      16: putfield      #30                 // Field position:Lcom/mrcrayfish/backpacked/common/augment/Augments$Position;
+      19: return
+
+  public int width();
+    Code:
+       0: bipush        12
+       2: ireturn
+
+  public int height();
+    Code:
+       0: bipush        12
+       2: ireturn
+
+  public void draw(net.minecraft.client.gui.GuiGraphics, int, int, float);
+    Code:
+       0: aload_0
+       1: getfield      #28                 // Field menu:Lcom/mrcrayfish/backpacked/inventory/container/BackpackContainerMenu;
+       4: invokevirtual #43                 // Method com/mrcrayfish/backpacked/inventory/container/BackpackContainerMenu.getAugmentBayController:()Lcom/mrcrayfish/backpacked/inventory/container/UnlockableController;
+       7: aload_0
+       8: getfield      #30                 // Field position:Lcom/mrcrayfish/backpacked/common/augment/Augments$Position;
+      11: invokevirtual #46                 // Method com/mrcrayfish/backpacked/common/augment/Augments$Position.ordinal:()I
+      14: invokevirtual #52                 // Method com/mrcrayfish/backpacked/inventory/container/UnlockableController.isSlotUnlocked:(I)Z
+      17: ifne          89
+      20: aload_0
+      21: getfield      #26                 // Field button:Lcom/mrcrayfish/framework/api/client/screen/widget/FrameworkButton;
+      24: invokevirtual #58                 // Method com/mrcrayfish/framework/api/client/screen/widget/FrameworkButton.m_142518_:()Z
+      27: ifeq          56
+      30: aload_0
+      31: getfield      #26                 // Field button:Lcom/mrcrayfish/framework/api/client/screen/widget/FrameworkButton;
+      34: invokevirtual #61                 // Method com/mrcrayfish/framework/api/client/screen/widget/FrameworkButton.m_274382_:()Z
+      37: ifeq          56
+      40: getstatic     #67                 // Field com/mrcrayfish/backpacked/client/TextureDefinitions.LOCK:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+      43: aload_1
+      44: iload_2
+      45: iload_3
+      46: bipush        12
+      48: bipush        12
+      50: invokevirtual #72                 // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.draw:(Lnet/minecraft/client/gui/GuiGraphics;IIII)V
+      53: goto          129
+      56: aload_1
+      57: fconst_1
+      58: fconst_1
+      59: fconst_1
+      60: ldc           #73                 // float 0.5f
+      62: invokevirtual #79                 // Method net/minecraft/client/gui/GuiGraphics.m_280246_:(FFFF)V
+      65: getstatic     #67                 // Field com/mrcrayfish/backpacked/client/TextureDefinitions.LOCK:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+      68: aload_1
+      69: iload_2
+      70: iload_3
+      71: bipush        12
+      73: bipush        12
+      75: invokevirtual #72                 // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.draw:(Lnet/minecraft/client/gui/GuiGraphics;IIII)V
+      78: aload_1
+      79: fconst_1
+      80: fconst_1
+      81: fconst_1
+      82: fconst_1
+      83: invokevirtual #79                 // Method net/minecraft/client/gui/GuiGraphics.m_280246_:(FFFF)V
+      86: goto          129
+      89: aload_0
+      90: getfield      #28                 // Field menu:Lcom/mrcrayfish/backpacked/inventory/container/BackpackContainerMenu;
+      93: invokevirtual #83                 // Method com/mrcrayfish/backpacked/inventory/container/BackpackContainerMenu.getAugments:()Lcom/mrcrayfish/backpacked/common/augment/Augments;
+      96: aload_0
+      97: getfield      #30                 // Field position:Lcom/mrcrayfish/backpacked/common/augment/Augments$Position;
+     100: invokevirtual #87                 // Method com/mrcrayfish/backpacked/common/augment/Augments.getAugment:(Lcom/mrcrayfish/backpacked/common/augment/Augments$Position;)Lcom/mrcrayfish/backpacked/common/augment/Augment;
+     103: invokeinterface #93,  1           // InterfaceMethod com/mrcrayfish/backpacked/common/augment/Augment.type:()Lcom/mrcrayfish/backpacked/common/augment/AugmentType;
+     108: astore        5
+     110: aload         5
+     112: invokestatic  #99                 // Method com/mrcrayfish/backpacked/client/AugmentIcons.get:(Lcom/mrcrayfish/backpacked/common/augment/AugmentType;)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+     115: astore        6
+     117: aload         6
+     119: aload_1
+     120: iload_2
+     121: iload_3
+     122: bipush        12
+     124: bipush        12
+     126: invokevirtual #72                 // Method com/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture.draw:(Lnet/minecraft/client/gui/GuiGraphics;IIII)V
+     129: return
+}

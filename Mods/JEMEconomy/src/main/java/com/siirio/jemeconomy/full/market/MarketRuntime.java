@@ -27,12 +27,11 @@ public final class MarketRuntime {
     @SubscribeEvent
     public static void tick(TickEvent.ServerTickEvent event) {
         if (event.phase != TickEvent.Phase.END || event.getServer().getTickCount() % 20 != 0 || !event.getServer().isDedicatedServer()) return;
-        long cycle = MarketSavedData.get(event.getServer()).cycle(event.getServer());
         if (event.getServer().getTickCount() % 1200 == 0) reconcileBuyer(event.getServer().overworld());
         synchronized (LOADED) {
             LOADED.forEach((level, positions) -> positions.removeIf(pos -> {
                 if (!level.isLoaded(pos)) return true;
-                if (level.getBlockEntity(pos) instanceof ShippingBoxBlockEntity box) { box.processScheduled(cycle); return false; }
+                if (level.getBlockEntity(pos) instanceof ShippingBoxBlockEntity box) { box.refresh(); return false; }
                 return true;
             }));
         }

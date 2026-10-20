@@ -6,7 +6,7 @@ import com.mrcrayfish.backpacked.inventory.BackpackInventory;
 import com.mrcrayfish.backpacked.inventory.container.BackpackContainerMenu;
 import com.siirio.jemcompat.feature.backpack.BackpackCraftingGrid;
 import com.siirio.jemcompat.feature.backpack.BackpackWorkbench;
-import com.siirio.jemcompat.feature.backpack.WorkbenchAugment;
+import com.siirio.jemcompat.feature.backpack.*;
 import com.siirio.jemcompat.feature.transport.AircraftPolicy;
 import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
 import net.minecraft.server.level.ServerPlayer;
@@ -34,49 +34,85 @@ public abstract class BackpackWorkbenchMenuMixin extends AbstractContainerMenu i
     @Unique private ResultContainer jemcompat$result;
     @Unique private Player jemcompat$player;
     @Unique private int jemcompat$originalSlots;
-    @Unique private int jemcompat$resultIndex;
+    @Unique private int jemcompat$resultIndex = -1;
+    @Unique private int jemcompat$furnaceResultIndex = -1;
     @Unique private boolean jemcompat$updating;
+    @Unique private BackpackFurnace jemcompat$furnace;
+    @Override public boolean jemcompat$installedWorkbench() { return jemcompat$grid != null; }
+    @Override public boolean jemcompat$installedFurnace() { return jemcompat$furnace != null; }
+    @Override public int jemcompat$nativeWidth() { return 22 + Math.max(jemcompat$menu().getCols(), 9) * 18; }
+    @Override public int jemcompat$furnaceData(int index) { return jemcompat$furnace == null ? 0 : jemcompat$furnace.value(index); }
+    @Override public boolean jemcompat$hasFurnace() { return jemcompat$enabledAugment(FurnaceAugment.TYPE); }
+    @Unique private boolean jemcompat$enabledAugment(com.mrcrayfish.backpacked.common.augment.AugmentType<?> type) {
+        if (jemcompat$player == null || !AircraftPolicy.enabled(jemcompat$player)
+                || com.mrcrayfish.backpacked.Config.getDisabledAugments().contains(type.id())) return false;
+        var menu = jemcompat$menu();
+        var position = menu.getAugments().findPosition(type);
+        return menu.isOwner() && position.isPresent() && menu.getAugments().getState(position.get())
+                && menu.getAugmentBayController().isSlotUnlocked(position.get().ordinal());
+    }
 
     protected BackpackWorkbenchMenuMixin(MenuType<?> type, int id) { super(type, id); }
     @Unique private BackpackContainerMenu jemcompat$menu() { return (BackpackContainerMenu) (Object) this; }
 
     @Override
     public boolean jemcompat$hasWorkbench() {
-        if (jemcompat$player == null || !AircraftPolicy.enabled(jemcompat$player)) return false;
-        var menu = jemcompat$menu();
-        var position = menu.getAugments().findPosition(WorkbenchAugment.TYPE);
-        return menu.isOwner() && position.isPresent() && menu.getAugments().getState(position.get())
-                && menu.getAugmentBayController().isSlotUnlocked(position.get().ordinal());
+        return jemcompat$enabledAugment(WorkbenchAugment.TYPE);
     }
 
     @ModifyArg(method = "<init>(ILnet/minecraft/world/entity/player/Inventory;Lnet/minecraft/world/Container;IIIIZLcom/mrcrayfish/backpacked/common/backpack/UnlockableSlots;Lcom/mrcrayfish/backpacked/common/Pagination;Lcom/mrcrayfish/backpacked/common/augment/Augments;Lcom/mrcrayfish/backpacked/common/backpack/UnlockableSlots;)V",
             at = @At(value = "INVOKE", target = "Lcom/mrcrayfish/backpacked/inventory/container/BackpackContainerMenu;addPlayerInventorySlots(Lnet/minecraft/world/entity/player/Inventory;II)V"), index = 2)
     private int jemcompat$insertCraftingSpace(Inventory inventory, int x, int y) {
         jemcompat$player = inventory.player;
-        return jemcompat$hasWorkbench() ? y + INSERT_HEIGHT : y;
+        return y + jemcompat$inventoryShift(jemcompat$menu().getRows());
     }
 
     @Inject(method = "<init>(ILnet/minecraft/world/entity/player/Inventory;Lnet/minecraft/world/Container;IIIIZLcom/mrcrayfish/backpacked/common/backpack/UnlockableSlots;Lcom/mrcrayfish/backpacked/common/Pagination;Lcom/mrcrayfish/backpacked/common/augment/Augments;Lcom/mrcrayfish/backpacked/common/backpack/UnlockableSlots;)V", at = @At("TAIL"))
     private void jemcompat$createCrafting(int id, Inventory inventory, Container backpack, int ownerId, int backpackIndex, int cols, int rows, boolean owner,
                                         com.mrcrayfish.backpacked.common.backpack.UnlockableSlots unlocked, com.mrcrayfish.backpacked.common.Pagination pagination,
                                         Augments augments, com.mrcrayfish.backpacked.common.backpack.UnlockableSlots bays, CallbackInfo callback) {
-        if (!jemcompat$hasWorkbench() || !AircraftPolicy.enabled(inventory.player)) return;
+        if (jemcompat$insertHeight() == 0 || !AircraftPolicy.enabled(inventory.player)) return;
         jemcompat$player = inventory.player;
         ItemStack stack = backpack instanceof BackpackInventory nativeInventory ? nativeInventory.getBackpackStack() : ItemStack.EMPTY;
         // Other owners (dock/shelf/pickpocket) have separate native lifecycles and never receive a detached grid.
         if (!inventory.player.level().isClientSide && stack.isEmpty()) return;
+        
+        jemcompat$originalSlots = slots.size();
+        int width = jemcompat$nativeWidth();
+        int x = jemcompat$workbenchLeft(width);
+        int y = jemcompat$insertTop(rows);
+        if (jemcompat$hasWorkbench()) {
         jemcompat$grid = new BackpackCraftingGrid(this, stack, inventory.player);
         jemcompat$result = new ResultContainer();
-        jemcompat$originalSlots = slots.size();
-        int width = 22 + Math.max(cols, 9) * 18;
-        int x = (width - CRAFT_WIDTH) / 2;
-        int y = 44 + rows * 18;
         for (int row = 0; row < 3; row++) for (int col = 0; col < 3; col++) addSlot(new Slot(jemcompat$grid, col + row * 3, x + GRID_X + col * 18, y + GRID_Y + row * 18) {
             @Override public boolean mayPlace(ItemStack incoming) { return jemcompat$grid.canPlaceItem(getContainerSlot(), incoming); }
         });
         jemcompat$resultIndex = slots.size();
         addSlot(new ResultSlot(inventory.player, jemcompat$grid, jemcompat$result, 0, x + RESULT_X, y + RESULT_Y));
         jemcompat$updateRecipe();
+        }
+        if (jemcompat$hasFurnace()) {
+            jemcompat$furnace = backpack instanceof BackpackInventory nativeInventory
+                    ? ((BackpackFurnaceAccess) nativeInventory).jemcompat$furnace() : new BackpackFurnace(ItemStack.EMPTY);
+            int furnaceX = jemcompat$furnaceLeft(width);
+            addSlot(new Slot(jemcompat$furnace, 0, furnaceX + FURNACE_INPUT_X, y + 12) {
+                @Override public boolean mayPlace(ItemStack incoming) { return jemcompat$furnace.canPlaceItem(0, incoming); }
+                @Override public boolean mayPickup(Player player) { return jemcompat$menu().stillValid(player) && jemcompat$hasFurnace(); }
+            });
+            addSlot(new Slot(jemcompat$furnace, 1, furnaceX + FURNACE_FUEL_X, y + 48) {
+                @Override public boolean mayPlace(ItemStack incoming) { return jemcompat$furnace.canPlaceItem(1, incoming); }
+                @Override public boolean mayPickup(Player player) { return jemcompat$menu().stillValid(player) && jemcompat$hasFurnace(); }
+            });
+            jemcompat$furnaceResultIndex = slots.size();
+            addSlot(new net.minecraft.world.inventory.FurnaceResultSlot(inventory.player, jemcompat$furnace, 2, furnaceX + FURNACE_OUTPUT_X, y + 30) {
+                @Override public boolean mayPickup(Player player) { return jemcompat$menu().stillValid(player) && jemcompat$hasFurnace(); }
+                @Override public void onTake(Player player, ItemStack output) {
+                    super.onTake(player, output);
+                    if (player instanceof ServerPlayer serverPlayer) jemcompat$furnace.award(serverPlayer);
+                }
+            });
+            addDataSlots(jemcompat$furnace);
+        }
     }
 
     @Override
@@ -107,7 +143,7 @@ public abstract class BackpackWorkbenchMenuMixin extends AbstractContainerMenu i
 
     @Inject(method = "m_7648_(Lnet/minecraft/world/entity/player/Player;I)Lnet/minecraft/world/item/ItemStack;", at = @At("HEAD"), cancellable = true, remap = false)
     private void jemcompat$craftingTransfer(Player player, int index, CallbackInfoReturnable<ItemStack> callback) {
-        if (jemcompat$grid == null) return;
+        if (jemcompat$grid == null && jemcompat$furnace == null) return;
         callback.setReturnValue(ItemStack.EMPTY);
         if (index < 0 || index >= slots.size()) return;
         Slot slot = slots.get(index);
@@ -119,17 +155,17 @@ public abstract class BackpackWorkbenchMenuMixin extends AbstractContainerMenu i
                 ? moveItemStackTo(stack, backpackSize, jemcompat$originalSlots, true)
                 : moveItemStackTo(stack, 0, backpackSize, false);
         if (!moved || copy.getCount() == stack.getCount()) return;
-        if (index == jemcompat$resultIndex) slot.onQuickCraft(stack, copy);
+        if (index == jemcompat$resultIndex || index == jemcompat$furnaceResultIndex) slot.onQuickCraft(stack, copy);
         if (stack.isEmpty()) slot.setByPlayer(ItemStack.EMPTY); else slot.setChanged();
         slot.onTake(player, stack);
         if (index == jemcompat$resultIndex) player.drop(stack, false);
-        if (!player.level().isClientSide) jemcompat$grid.persist();
+        if (!player.level().isClientSide && jemcompat$grid != null) jemcompat$grid.persist();
         callback.setReturnValue(copy);
     }
 
     @Override
     public boolean canTakeItemForPickAll(ItemStack stack, Slot slot) {
-        return slot.container != jemcompat$result && super.canTakeItemForPickAll(stack, slot);
+        return slot.container != jemcompat$result && (jemcompat$furnace == null || slot.container != jemcompat$furnace || slot.getContainerSlot() != 2) && super.canTakeItemForPickAll(stack, slot);
     }
 
     @Inject(method = "m_6877_(Lnet/minecraft/world/entity/player/Player;)V", at = @At("HEAD"), remap = false)

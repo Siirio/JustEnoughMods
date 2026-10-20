@@ -1,5 +1,17 @@
 # JEM Races
 
+## Daily reselection and first-login lifecycle —2026-10-20 source handoff
+
+The user requests a stable first choice after authentication, ordinary reselection once per Minecraft-day and unrestricted reselection only in the isolated test profile. JEMRoles RaceSavedData remains the sole production account record. RaceRecord schema5 adds ReselectReadyAt, TestChoiceEpoch and ChoiceRequired while retaining the existing record/Mechanics fields. RaceService uses authoritative overworld gameTime for the1Minecraft-day wait. A successful ordinary change starts the next wait; same-race selection returns unchanged. Legacy records lacking the new deadline are ready for their first change without losing their selected race or progress. The old JVM race-reselect flag is no longer an authority.
+
+DedicatedTestProfile from JEMIdentity owns the exact dedicated save/identity/epoch gate described in `Docs/DEVELOPMENT.md`. A matching test epoch marks an existing record ChoiceRequired once; effective/snapshot/ability reads exclude that record until confirmation. This preserves the record instead of deleting its historical state. A new or reconfirmed choice remains in the same canonical owner. A matching test profile bypasses the ordinary reselection wait; it does not bypass IdentityPolicy. Snapshot readiness carries remaining native duration, test flag and current server nonce. Roles protocol4 and Races skills protocol7 require matching client/server artifacts.
+
+ProductionRaceBridge reads the canonical record and presentation/mechanics view; it does not create a second race choice store. Selection requests carry the current nonce to RaceService. RaceExperienceClient tracks its actual client connection, clears status/pending view on connection change, queues the mandatory screen only after an authenticated server snapshot, and waits until player+level exist and no other screen is active. Login/loading screens therefore retain their lifecycle. Receiving a newer snapshot updates an already open RaceExperienceScreen in place; ordinary repeated status packets do not recreate it. F6 queues the same production view, and a chosen player receives no first-choice immunity merely by browsing it. The existing bounded initial-choice protection/one completion window remains owned by the server scene lifecycle.
+
+RoleClientState/legacy native selection and final RaceExperienceScreen show remaining reselection through the shared MinecraftDays formatter. Positive sub-day values never print ready; the client can interpolate a synchronized remaining presentation but cannot grant a change. Reconnection, dimension changes or sleeping do not rewrite the persisted readiness deadline. Original race reset is not part of the test epoch policy. Without the Races presentation module, an explicit native-screen request remains queued behind another screen; passive selected snapshots do not cancel it. Successful first selection, an already open selection screen or connection reset consumes that pending request.
+
+Implementation source is present; final artifact synchronization, native AutoModpack installation, current hosted profile startup and user acceptance remain pending their task delivery receipt. No gameplay/visual acceptance, tests or original-world migration is claimed by this section. Earlier dated sandbox/installation entries below are historical evidence, not the active production profile contract.
+
 ## Combat exploit corrections — 2026-10-20
 
 Selected players may browse F6 without acquiring scene immunity. Initial selection remains protected, including prolonged reading; its first successful completion starts one100tick camera-exit window, and repeated acknowledgements cannot extend it. No save schema or V/B(И) control changes. Bloom's green-ground passive still pacifies ordinary eligible mobs, while canonical registered bosses retain targeting through WorldTierApi.profile. Exact mechanics and regression boundaries are recorded in the matching Atlas changes and `Docs/power-system/Balance.md`.
@@ -38,6 +50,8 @@ profile or release baseline. Production compilation/reobfuscation packages the r
 
 ## Controls and first choice
 
+The integrated-world description below belongs only to the explicit standalone sandbox profile. Dedicated production uses the canonical Roles/Identity lifecycle described at the start of this document; ordinary singleplayer does not acquire shared-server gameplay.
+
 A new integrated-world player receives an authoritative unselected snapshot and
 the mandatory origin screen. The actual player skin is rendered in a pitch-black
 perspective stage. Minimal arrows browse five origins, the right panel scrolls
@@ -59,6 +73,8 @@ are restored when the screen ends or is removed.
   explains when the matching JEM gameplay channel is absent.
 
 ## Progression and authority
+
+This Store is the explicit standalone sandbox owner. Dedicated production uses the existing JEMRoles record and ProductionRaceBridge rather than this parallel sandbox save.
 
 `RaceExperience.Store` owns one UUID record per integrated world, saved as
 `jem_races_standalone`. It preserves the selected race, active time, per-race

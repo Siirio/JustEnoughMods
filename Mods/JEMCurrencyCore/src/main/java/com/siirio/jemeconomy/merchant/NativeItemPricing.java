@@ -21,7 +21,7 @@ public final class NativeItemPricing {
 
     public static Optional<ItemPolicy> policy(ItemStack stack) {
         if (stack.isEmpty()) return Optional.empty();
-        var canonical = ItemPolicyRegistry.policy(stack).filter(ItemPolicy::sellable);
+        var canonical = ItemPolicyRegistry.policy(stack).filter(p -> p.sellable() || p.buyable());
         if (canonical.isPresent()) return canonical;
         var id = ForgeRegistries.ITEMS.getKey(stack.getItem());
         var definition = NATIVE.get(id);
@@ -39,8 +39,8 @@ public final class NativeItemPricing {
         long buy = Math.addExact(policy.buyCopper(), premium);
         // Damage, custom names, maps and enchantments do not increase buyback. Original NBT remains on the offer.
         long sell = policy.sellCopper();
-        if (stack.isDamaged()) sell = Math.max(1L, sell / 4L);
-        return Optional.of(new ItemPolicy(1, id, ItemPolicy.Outcome.BUY_AND_SELL, sell, buy,
+        if (stack.isDamaged() && sell > 0) sell = Math.max(1L, sell / 4L);
+        return Optional.of(new ItemPolicy(1, id, policy.outcome(), sell, buy,
                 Math.min(policy.dailyPlayerUnits(), stack.getMaxStackSize() == 1 ? 8 : 64),
                 Math.min(policy.dailyGlobalUnits(), stack.getMaxStackSize() == 1 ? 128 : 512), policy.demandGroup(), policy.notes()));
     }
@@ -75,24 +75,24 @@ public final class NativeItemPricing {
 
     /** Price metadata for audit/export; canonical Market commodities always have denominator one. */
     public static int sellUnits(ItemStack goods) {
-        if (ItemPolicyRegistry.policy(goods).filter(ItemPolicy::sellable).isPresent()) return 1;
+        if (ItemPolicyRegistry.policy(goods).filter(ItemPolicy::sellable).isPresent()) return Math.toIntExact(ItemPolicyRegistry.policy(goods).orElseThrow().sellDenominator());
         var definition = NATIVE.get(ForgeRegistries.ITEMS.getKey(goods.getItem()));
         return definition == null ? 1 : definition.sellUnits();
     }
 
-    /** Exact whole-offer payout. Canonical Market commodities retain their per-unit rounding contract. */
-    public static long saleCopper(ItemStack goods, int quantity, int multiplier) {
-        if (goods.isEmpty() || quantity <= 0 || multiplier <= 0) throw new ArithmeticException("Invalid native sale");
-        var canonical = ItemPolicyRegistry.policy(goods).filter(ItemPolicy::sellable);
-        if (canonical.isPresent()) {
-            long unit = Math.floorDiv(Math.multiplyExact(canonical.get().sellCopper(), multiplier), 100L);
-            return Math.multiplyExact(unit, quantity);
-        }
-        var policy = policy(goods).orElseThrow(() -> new ArithmeticException("Unpriced native sale"));
-        var definition = NATIVE.get(ForgeRegistries.ITEMS.getKey(goods.getItem()));
-        if (definition == null) throw new ArithmeticException("Missing native sale definition");
-        return NativePriceMath.batchSale(policy.sellCopper(), quantity, multiplier, definition.sellUnits());
+    /** Shared exact sale arithmetic; native merchandise keeps its real sell_units denominator. */
+    public static com.siirio.jemeconomy.policy.RationalPrice salePrice(ItemStack goods,int quantity,int multiplier) {
+        if(goods.isEmpty()||quantity<=0||multiplier<=0)throw new ArithmeticException("Invalid native sale");
+        var canonical=ItemPolicyRegistry.policy(goods).filter(ItemPolicy::sellable);
+        if(canonical.isPresent())return canonical.get().salePrice(quantity,multiplier);
+        var policy=policy(goods).orElseThrow(()->new ArithmeticException("Unpriced native sale"));
+        if(!policy.sellable())return com.siirio.jemeconomy.policy.RationalPrice.ZERO;
+        var definition=NATIVE.get(ForgeRegistries.ITEMS.getKey(goods.getItem()));
+        if(definition==null)throw new ArithmeticException("Missing native sale definition");
+        return new com.siirio.jemeconomy.policy.RationalPrice(policy.sellCopper(),definition.sellUnits())
+                .multiply(quantity).multiply(multiplier).divide(100);
     }
+    public static long saleCopper(ItemStack goods,int quantity,int multiplier) { return salePrice(goods,quantity,multiplier).floor(); }
 
     private static Map<ResourceLocation, Definition> load() {
         Map<ResourceLocation, Definition> result = new LinkedHashMap<>();
@@ -109,9 +109,9 @@ public final class NativeItemPricing {
                 var id = new ResourceLocation(row.get("item").getAsString());
                 long buy = row.get("buy_copper").getAsLong(), sell = row.get("sell_copper").getAsLong();
                 int sellUnits = row.has("sell_units") ? row.get("sell_units").getAsInt() : 1;
-                if (sellUnits <= 0 || sell <= 0 || buy <= 0 || Math.multiplyExact(buy, sellUnits) <= Math.multiplyExact(sell, 2L))
+                if (sellUnits <= 0 || sell < 0 || sell == 0 && !row.has("buyback_blocked_reason") || buy <= 0 || Math.multiplyExact(buy, sellUnits) <= Math.multiplyExact(sell, 2L))
                     throw new IllegalStateException("Unsafe native spread: " + id);
-                var previous = result.putIfAbsent(id, new Definition(new ItemPolicy(1, id, ItemPolicy.Outcome.BUY_AND_SELL, sell, buy,
+                var previous = result.putIfAbsent(id, new Definition(new ItemPolicy(1, id, sell > 0 ? ItemPolicy.Outcome.BUY_AND_SELL : ItemPolicy.Outcome.BUY_ONLY, sell, buy,
                         row.has("daily_player_units") ? row.get("daily_player_units").getAsInt() : 8,
                         row.has("daily_global_units") ? row.get("daily_global_units").getAsInt() : 128,
                         "native_merchandise", row.get("notes").getAsString()), sellUnits));

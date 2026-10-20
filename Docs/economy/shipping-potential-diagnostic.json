@@ -1,0 +1,44 @@
+{
+  "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+  "maximumClayRetention": -0.0,
+  "support": [
+    {
+      "constraint": "ingredient",
+      "dual": -179.19998036996432
+    },
+    {
+      "constraint": "ingredient",
+      "dual": -19.911108929996036
+    },
+    {
+      "constraint": "ingredient",
+      "dual": -19.911108929996036
+    },
+    {
+      "constraint": "ingredient",
+      "dual": -19.911108929996036
+    },
+    {
+      "constraint": "create:crafting/materials/copper_ingot",
+      "dual": -19.911108929996036
+    },
+    {
+      "constraint": "create:crushing/raw_copper",
+      "dual": -19.911108929996036
+    },
+    {
+      "constraint": "create:splashing/crushed_raw_copper",
+      "dual": -19.911108929996036
+    },
+    {
+      "constraint": "farm_and_charm:mincer/raw_copper_from_copper_ingot",
+      "dual": -19.911108929996036
+    },
+    {
+      "constraint": "ingredient",
+      "dual": -9.955555651792594
+    }
+  ],
+  "scope": "Pre-decision productive-cycle diagnostic, not final supported-scope certificate",
+  "resolution": "Latest user decision retains this active copper automation with positive buyback. The circuit is explicitly outside monetary inequalities; it is not removed."
+}

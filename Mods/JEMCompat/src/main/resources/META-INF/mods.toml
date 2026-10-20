@@ -85,3 +85,10 @@ mandatory=false
 versionRange="[0.8.0,0.9)"
 ordering="AFTER"
 side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="jem_identity"
+mandatory=true
+versionRange="[1.0,)"
+ordering="AFTER"
+side="BOTH"

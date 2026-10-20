@@ -69,6 +69,13 @@ def exclude_inventory(files, excluded):
     }
 
 
+def exclude_delta(delta, excluded):
+    return {
+        kind: sorted(exclude_inventory(dict.fromkeys(paths), excluded))
+        for kind, paths in delta.items()
+    }
+
+
 def baseline_path(config):
     return config["state"] / "release-baseline.json"
 
@@ -100,7 +107,7 @@ def release_inventory(config):
     installer = config["installerSource"]
     ensure_directory(source, "Client source")
     ensure_directory(installer, "Installer source")
-    source_files = inventory(source)
+    source_files = inventory(source, config["releaseExcluded"])
     bootstrap_path = "mods/jem-bootstrap.jar"
     source_bootstrap = source / bootstrap_path
     installer_bootstrap = installer / bootstrap_path
@@ -126,19 +133,19 @@ def baseline(config):
     print(f"Baseline fixed: {len(source_files)} files")
 
 
-def point_update_folder_files(folder):
+def point_update_folder_files(folder, excluded=()):
     files = folder / "Файлы"
     guide = folder / "Что делать.md"
     if not files.is_dir() or not guide.is_file():
         raise SystemExit(f"Invalid point-update folder: {folder}")
-    return inventory(files)
+    return inventory(files, excluded)
 
 
 def cumulative_point_update_files(config, delta, base_update=None):
     included = set(point_update_files(config, delta))
     if base_update is not None:
-        included.update(point_update_folder_files(base_update))
-    client_files = inventory(config["clientSource"])
+        included.update(point_update_folder_files(base_update, config["releaseExcluded"]))
+    client_files = inventory(config["clientSource"], config["releaseExcluded"])
     return sorted(path for path in included if path in client_files)
 
 
@@ -152,7 +159,7 @@ def baseline_point_update_folder(baseline_data):
 def matching_point_update(config, delta, base_update=None):
     ensure_directory(config["updates"], "Updates directory")
     packaged_files = cumulative_point_update_files(config, delta, base_update)
-    client_files = inventory(config["clientSource"])
+    client_files = inventory(config["clientSource"], config["releaseExcluded"])
     expected_files = {
         path: client_files[path]
         for path in packaged_files
@@ -174,7 +181,7 @@ def promote_baseline(config):
     destination = baseline_path(config)
     previous = load_baseline(config)
     source_files = release_inventory(config)
-    delta = compare(previous["files"], source_files)
+    delta = compare(exclude_inventory(previous["files"], config["releaseExcluded"]), source_files)
     if not any(delta.values()):
         raise SystemExit("No client changes to promote")
     previous_point_update = baseline_point_update_folder(previous)
@@ -201,8 +208,8 @@ def promote_baseline(config):
 def current_delta(config):
     source = config["clientSource"]
     ensure_directory(source, "Client source")
-    baseline_files = load_baseline(config)["files"]
-    return compare(baseline_files, inventory(source))
+    baseline_files = exclude_inventory(load_baseline(config)["files"], config["releaseExcluded"])
+    return compare(baseline_files, inventory(source, config["releaseExcluded"]))
 
 
 def profile_delta(source_files, profile_files):
@@ -238,12 +245,12 @@ def pack_sync_publication(config):
 
 
 def status(config):
-    source_files = inventory(config["clientSource"])
+    source_files = inventory(config["clientSource"], config["releaseExcluded"])
     installer_files = inventory(config["installerSource"])
     bootstrap_path = "mods/jem-bootstrap.jar"
     stable_source_files = {bootstrap_path: installer_files[bootstrap_path]} if bootstrap_path in installer_files else {}
     stable_files = inventory(config["stableClient"], config["stableExcluded"])
-    delta = compare(load_baseline(config)["files"], source_files)
+    delta = compare(exclude_inventory(load_baseline(config)["files"], config["releaseExcluded"]), source_files)
     stable_delta = profile_delta(stable_source_files, stable_files)
     result = {
         "releaseDelta": delta,
@@ -517,6 +524,7 @@ def update_notes(delta, packaged_files=None):
 
 
 def package_delta(config, delta, base_update=None):
+    delta = exclude_delta(delta, config["releaseExcluded"])
     release_files = delta["added"] + delta["changed"]
     if not release_files and not delta["deleted"]:
         raise SystemExit("No client changes relative to the fixed release baseline")
@@ -557,7 +565,7 @@ def package_update(config):
 def repackage_release(config, base_update=None):
     destination = baseline_path(config)
     baseline_data = load_baseline(config)
-    if compare(baseline_data["files"], inventory(config["clientSource"])) != {"added": [], "changed": [], "deleted": []}:
+    if any(current_delta(config).values()):
         raise SystemExit("Client differs from the published release baseline")
     delta = baseline_data.get("publishedDelta")
     if not delta:

@@ -1,0 +1,116 @@
+{
+  "schema_version": 2,
+  "change_id": "server.bound-test-profile-20261020",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:player"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime": "Dedicated production or exact bound dedicated test profile; matching client presentation/packet artifacts where applicable.",
+      "acceptance": "Source implementation recorded; final artifact synchronization/native publication/application, hosted startup and player acceptance remain pending root delivery evidence. Original migration not executed."
+    }
+  ],
+  "precedence": {
+    "layer": "server_owned_shipping_handoff",
+    "priority": 420
+  },
+  "change": {
+    "summary": "Bind test privileges to exact dedicated save identity/epoch, authenticated finite grants and recoverable temporary OP; retain explicit production migration API.",
+    "modifiers": [
+      {
+        "property": "server.test_profile.binding",
+        "operation": "replace",
+        "before": "Race test override used a JVM flag; no shared exact save/identity/epoch Binding.",
+        "after": "DedicatedTestProfile reads config/jem/test-profile.properties and save-local jem-test-profile.properties; requires dedicated server, exact jem-test-2026-10-20/world canonical/real path, matching UUID identity and bounded epoch. Missing marker disables; invalid binding rejects startup. Cached per server instance; client/JVM cannot activate privileges."
+      },
+      {
+        "property": "server.test_profile.operator_lifecycle",
+        "operation": "replace",
+        "before": "No versioned temporary test-OP owner in this handoff baseline.",
+        "after": "Physical dedicated TestProfileRuntime snapshots original OP entries/levels privately before temporary grants; startup recovers originals before players, rejects mismatched journal epoch, logout/auth loss revokes only granted test OP, stop restores originals. Only authenticated players with canonical successful test grant receive temporary OP2; original administrators retain levels."
+      },
+      {
+        "property": "wallet.test_profile.finite_grant",
+        "operation": "replace",
+        "before": "No bound test issuance10000Arcane receipt in the existing ledger.",
+        "after": "ensureTestGrant sets one account wallet to100000000Copper per bound epoch, returns its old personal balance to CENTRAL_RESERVE and tracks testIssued/testRecipients/saveIdentity/epoch in existing EconomySavedData. Same epoch replay does not refill spending. Mismatched persisted test binding freezes conservation. No second ledger or unlimited production balance."
+      },
+      {
+        "property": "wallet.production_rebase.api",
+        "operation": "replace",
+        "before": "Lifetime starter receipts alone cannot reset established wallets to a release target.",
+        "after": "preflightWalletRebase/rebaseWallets accept explicit release, verified established personal starter accounts and permitted funding owner; require funded2000Copper targets, retain per-release receipts in the same SavedData, reject test/development/wrong thread/frozen state. API implemented; original execution and auth/admin/save switching not performed."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMIdentity DedicatedTestProfile; JEMServer TestProfileRuntime; CurrencyCore existing ledger",
+    "kind": "source_owned_implementation",
+    "source_files": [
+      "Mods/JEMIdentity/src/main/java/com/siirio/jemidentity/api/DedicatedTestProfile.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/TestProfileRuntime.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpRuntime.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
+      "Docs/DEVELOPMENT.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "One source-owned profile gate and original-admin preservation; finite test funds cannot leak into original.",
+    "decision_source": "User authorized full2026-10-20 shipping-economy handoff. User owns requested behavior and approved R2 art; exact state/API/layout/adapter choices are Codex implementation details."
+  },
+  "introduced": {
+    "date": "2026-10-20",
+    "commit": "SELF",
+    "action": "implement_authorized_shipping_handoff",
+    "summary": "Bind test privileges to exact dedicated save identity/epoch, authenticated finite grants and recoverable temporary OP; retain explicit production migration API.",
+    "source_files": [
+      "Mods/JEMIdentity/src/main/java/com/siirio/jemidentity/api/DedicatedTestProfile.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/TestProfileRuntime.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpRuntime.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
+      "Docs/DEVELOPMENT.md"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "implement_authorized_shipping_handoff",
+      "summary": "Bind test privileges to exact dedicated save identity/epoch, authenticated finite grants and recoverable temporary OP; retain explicit production migration API.",
+      "source_files": [
+        "Mods/JEMIdentity/src/main/java/com/siirio/jemidentity/api/DedicatedTestProfile.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/TestProfileRuntime.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpRuntime.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
+        "Docs/DEVELOPMENT.md"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "dedicated save identity",
+      "IdentityPolicy auth",
+      "OP lifecycle/recovery",
+      "canonical wallet conservation",
+      "race epoch preparation",
+      "future production migration"
+    ],
+    "relations": [],
+    "notes": [
+      "Marker logic does not itself isolate/reset global ServerLogin UserDatabase; auth store deployment remains a separate exact offline operation.",
+      "No credentials/ops contents/world saves are cataloged.",
+      "Initial creative is applied once after auth/grant per saveIdentity/epoch/account, with jem_test_initial_mode in native PlayerPersisted NBT. Respawn and later logins preserve the player's chosen mode; force-gamemode=false. Frozen ledger rejects test activation before temporary privileges.",
+      "User requests behavior; marker filenames/private OP journal and public API shape are implementation choices."
+    ],
+    "unresolved": [
+      "Final artifacts/runtime installation/publication/application and hosted startup pending.",
+      "Original backup/auth binding/wallet migration require their separately authorized actual operation; not executed.",
+      "No tests, gameplay launch or user acceptance."
+    ]
+  }
+}

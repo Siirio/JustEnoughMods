@@ -23,7 +23,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class RolesNetwork {
-    private static final String VERSION = "3";
+    private static final String VERSION = "4";
     private static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder
             .named(new ResourceLocation(JemRoles.MOD_ID, "main"))
             .networkProtocolVersion(() -> VERSION)
@@ -81,6 +81,7 @@ public final class RolesNetwork {
     }
 
     public static void sendStatus(ServerPlayer player, boolean open) {
+        RaceService.prepareTestChoice(player);
         if (net.minecraftforge.fml.ModList.get().isLoaded("jem_visual_sandbox")) {
             try { Class.forName("com.siirio.jemvisualsandbox.workbench.RaceExperience").getMethod(open?"openScreen":"snapshot", ServerPlayer.class).invoke(null, player); }
             catch (ReflectiveOperationException failure) { throw new IllegalStateException("Final race snapshot", failure); }
@@ -92,10 +93,10 @@ public final class RolesNetwork {
         var snapshot = principal.flatMap(value -> RaceApi.get(player.getServer(), value.accountId()));
         RaceStatusPacket packet = snapshot
                 .map(value -> new RaceStatusPacket(open, true, true, value.race(), value.activeTicks(),
-                        value.freeSwitchAvailable() || RaceRules.testRaceReselect(), nonce, value.spellTier(), value.spellProgress(), value.resonance(),
-                        value.waterExposure(), value.lavaExposure(), RaceRules.LAVA_BREATH.get(), value.livingPath()))
+                        value.freeSwitchAvailable(), nonce, value.spellTier(), value.spellProgress(), value.resonance(),
+                        value.waterExposure(), value.lavaExposure(), RaceRules.LAVA_BREATH.get(), value.livingPath(), value.remainingReselectTicks(), value.testProfile()))
                 .orElseGet(() -> new RaceStatusPacket(open, principal.isPresent(), false, RaceId.ANCESTORS,
-                        0L, true, nonce, 1, 0, 0, 0, 0, RaceRules.LAVA_BREATH.get(), false));
+                        0L, true, nonce, 1, 0, 0, 0, 0, RaceRules.LAVA_BREATH.get(), false, 0L, RaceService.testRaceReselect(player.getServer())));
         if (CHANNEL.isRemotePresent(player.connection.connection)) {
             CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), packet);
         } else if (open) {

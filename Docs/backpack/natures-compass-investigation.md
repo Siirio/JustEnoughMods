@@ -1,0 +1,9 @@
+# Nature's Compass evidence —2026-10-20
+
+Bug / Both Sided / invalid JEM guide inventory criterion used naturescompass:natures_compass instead of the actual native registered naturescompass:naturescompass / in testing.
+
+The canonical ManagedPack and test jem's native `automodpack/client/active/mods/NaturesCompass-1.20.1-1.12.0-forge.jar` both exist and have SHA256 bc3601e9e050802569647de843fe9d3160934c5f31412cba62ca2ea8c1485197. The native active-state receipt lists that logical JAR. A missing root gameDir/mods file is normal in this native layout and is not evidence that the mod is absent. Exact1.12.0 bytecode registers `naturescompass:naturescompass`; NaturesCompass#buildCreativeTabContents already inserts its native item. No duplicate item/creative registration was added.
+
+Confirmed causal chain: the JEM manifest used the underscored nonexistent item ID; resource generation preserved it in both criterion and guide ingredient index; server inventory_changed could not match the real native item; native icons were already correct, so display could still look plausible; the source manifest lacked consistency with the installed native registration. The fix updates the manifest plus its already-generated advancement and guide ingredient index. Native recipes, registration, creative content and search stay mod-owned.
+
+This independently confirmed guide defect does not establish the cause of a player's reported missing creative item. The current active native JAR is present and matches. Without an authorized current game observation/log proving its load and actual creative UI/search state, that separate symptom remains unresolved; successful source correction/build cannot establish runtime creative visibility or user approval. No client was launched and no native profile state was edited.

@@ -86,7 +86,6 @@
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/JemEconomy.java",
       "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/audit/EconomyRuntimeExport.java",
-      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/audit/NativeMerchantContracts.java",
       "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
       "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java",
       "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java"
@@ -162,6 +161,15 @@
       "source_files": [
         "Client/ManagedPack/mods/jem-economy-1.2.0.jar"
       ]
+    },
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "remove_prohibited_fixture",
+      "summary": "Remove unreferenced automated native merchant fixture; opt-in evidence export records real loaded data without running tests.",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/audit/NativeMerchantContracts.java"
+      ]
     }
   ],
   "impacts": {
@@ -184,7 +192,7 @@
       "EconomySavedData remains the sole ledger; existing backed physical Coin lots conserve total supply.",
       "EconomyApi owns charges/payroll transfers; dedicated authentication remains the gameplay entry boundary.",
       "Opt-in audit observes loaded registries/recipes/providers without treating static evidence as runtime gameplay acceptance.",
-      "NativeMerchantContracts is opt-in unsaved-NPC native persistence verification invoked only by EconomyRuntimeExport; no normal gameplay execution, saved test NPC or duplicate merchant state owner."
+      "Historical NativeMerchantContracts fixture removed2026-10-20; production evidence exporter no longer invokes or retains an automated native merchant test."
     ],
     "unresolved": [
       "Deliberate process-crash durability and every network/menu manipulation path require separate runtime evidence."

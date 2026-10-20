@@ -22,13 +22,15 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid="jem_visual_sandbox")
 public final class RaceExperience {
     public record Status(int race,boolean selected,int[] tiers,int[] progress,long signatureRemaining,
-                         long secondaryRemaining,boolean developerMode,int bloomUpgrade) {
+                         long secondaryRemaining,boolean developerMode,int bloomUpgrade,
+                         long reselectRemaining,boolean testProfile,UUID nonce) {
         public Status { tiers=tiers.clone();progress=progress.clone(); }
         @Override public int[] tiers(){return tiers.clone();}
         @Override public int[] progress(){return progress.clone();}
     }
     private record Scene(net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level> dimension,Vec3 anchor,long expires,boolean completing) {}
     private static final Map<UUID,Scene> SCENES=new HashMap<>();
+    private static final Map<UUID,UUID> LOCAL_NONCES=new HashMap<>();
     private RaceExperience() {}
     public static boolean allowed(ServerPlayer p){return p!=null && (p.server.isDedicatedServer()?ProductionRaceBridge.authenticated(p):RaceDevelopment.integrated() && p.server.isSingleplayerOwner(p.getGameProfile()));}
     public static boolean serverActive(MinecraftServer server){return server!=null && (server.isDedicatedServer() || RaceDevelopment.integrated());}
@@ -54,10 +56,17 @@ public final class RaceExperience {
         RaceDevelopment.storeBloomUpgrade(p,next);dirty(p);
         snapshot(p);
     }
-    public static void choose(ServerPlayer p,int next){
+    public static void choose(ServerPlayer p,int next,UUID nonce){
         if(next<0||next>4)return;
-        if(p.server.isDedicatedServer()){if(!allowed(p))return;selectionChanged(p);ProductionRaceBridge.choose(p,next);completeSelectionScene(p);mirror(p);SandboxRaceTraits.refresh(p);snapshot(p);return;}
+        if(p.server.isDedicatedServer()){
+            if(!allowed(p)||nonce==null)return;
+            String result=ProductionRaceBridge.choose(p,next,nonce);
+            if(result.equals("CHOSEN")||result.equals("CHANGED"))selectionChanged(p);
+            if(result.equals("CHOSEN")||result.equals("CHANGED")||result.equals("UNCHANGED"))completeSelectionScene(p);
+            mirror(p);SandboxRaceTraits.refresh(p);snapshot(p);return;
+        }
         if(!allowed(p)||!p.isAlive()||p.isSpectator())return;
+        if(nonce==null||!nonce.equals(LOCAL_NONCES.remove(p.getUUID()))){snapshot(p);return;}
         var tag=data(p);
         if(selected(p)&&race(p)==next){completeSelectionScene(p);snapshot(p);return;}
         if(!RaceDevelopment.unlimitedSelection(p)&&selected(p)&&race(p)!=next&&(tag.getBoolean("FreeSwitchUsed")||tag.getLong("ActiveTicks")>=36000)){
@@ -135,14 +144,17 @@ public final class RaceExperience {
         if(!allowed(p))return;
         int[] tiers=new int[5],progress=new int[5];for(int i=0;i<5;i++){progress[i]=uses(p,i);tiers[i]=RaceDevelopment.tier(p,i,tierFor(progress[i]));}
         String secondary=switch(race(p)){case 1->p.isShiftKeyDown()?"gravity":"void_projectile";case 2->"leaf_bridge";case 3->"echo";case 4->"fire_slash";default->"guardian";};
-        SandboxNetwork.sendStatus(p,new Status(Math.max(0,race(p)),selected(p),tiers,progress,remaining(p,"signature"),remaining(p,secondary),developerMode(p),bloomUpgrade(p)));
+        boolean test=p.server.isDedicatedServer()&&ProductionRaceBridge.testProfile(p);
+        long reselect=p.server.isDedicatedServer()&&!test?ProductionRaceBridge.remainingReselectTicks(p):0L;
+        UUID nonce=p.server.isDedicatedServer()?ProductionRaceBridge.nonce(p):LOCAL_NONCES.computeIfAbsent(p.getUUID(),ignored->UUID.randomUUID());
+        SandboxNetwork.sendStatus(p,new Status(Math.max(0,race(p)),selected(p),tiers,progress,remaining(p,"signature"),remaining(p,secondary),developerMode(p),bloomUpgrade(p),reselect,test,nonce));
         SandboxOptionalIrons.sync(p);
     }
     @SubscribeEvent public static void login(PlayerEvent.PlayerLoggedInEvent e){if(e.getEntity() instanceof ServerPlayer p&&(allowed(p))){mirrorIfLocal(p);snapshot(p);}}
     private static void mirrorIfLocal(ServerPlayer p){if(allowed(p))mirror(p);}
     @SubscribeEvent public static void respawn(PlayerEvent.PlayerRespawnEvent e){if(e.getEntity() instanceof ServerPlayer p){mirrorIfLocal(p);snapshot(p);}}
     @SubscribeEvent public static void changedDimension(PlayerEvent.PlayerChangedDimensionEvent e){if(e.getEntity() instanceof ServerPlayer p){SCENES.remove(p.getUUID());if(allowed(p))selectionChanged(p);mirrorIfLocal(p);snapshot(p);}}
-    @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent e){if(e.getEntity() instanceof ServerPlayer p){SCENES.remove(p.getUUID());if(allowed(p))selectionChanged(p);}}
+    @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent e){if(e.getEntity() instanceof ServerPlayer p){SCENES.remove(p.getUUID());LOCAL_NONCES.remove(p.getUUID());if(allowed(p))selectionChanged(p);}}
     @SubscribeEvent public static void tick(TickEvent.PlayerTickEvent e){
         if(e.phase!=TickEvent.Phase.END||!(e.player instanceof ServerPlayer p)||(!allowed(p)))return;
         if(allowed(p)){
@@ -159,7 +171,7 @@ public final class RaceExperience {
     @SubscribeEvent public static void protect(LivingAttackEvent e){if(e.getEntity() instanceof ServerPlayer p&&locked(p))e.setCanceled(true);}
     @SubscribeEvent public static void interact(PlayerInteractEvent e){if(e.getEntity() instanceof ServerPlayer p&&locked(p)&&e.isCancelable())e.setCanceled(true);}
     @SubscribeEvent public static void attack(AttackEntityEvent e){if(e.getEntity() instanceof ServerPlayer p&&locked(p))e.setCanceled(true);}
-    @SubscribeEvent public static void stop(ServerStoppedEvent e){SCENES.clear();RaceOwnedEffects.clearAll();}
+    @SubscribeEvent public static void stop(ServerStoppedEvent e){SCENES.clear();LOCAL_NONCES.clear();RaceOwnedEffects.clearAll();}
 
     /** One per-world record per UUID survives death without copying transient entity state. */
     private static final class Store extends SavedData {

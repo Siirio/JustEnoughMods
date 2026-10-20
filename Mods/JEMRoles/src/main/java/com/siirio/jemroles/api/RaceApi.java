@@ -14,15 +14,15 @@ public final class RaceApi {
     }
 
     public static Optional<RaceSnapshot> get(MinecraftServer server, UUID accountId) {
-        return RaceSavedData.get(server).find(accountId).map(RaceApi::snapshot);
+        return RaceSavedData.get(server).find(accountId).filter(record -> !record.choiceRequired()).map(record -> snapshot(server, record));
     }
 
     public static RaceId effectiveRace(MinecraftServer server, UUID accountId) {
-        return RaceSavedData.get(server).find(accountId).map(RaceRecord::race).orElse(RaceId.ANCESTORS);
+        return RaceSavedData.get(server).find(accountId).filter(record -> !record.choiceRequired()).map(RaceRecord::race).orElse(RaceId.ANCESTORS);
     }
 
     public static boolean hasRace(MinecraftServer server, UUID accountId, RaceId race) {
-        return RaceSavedData.get(server).find(accountId).map(RaceRecord::race).filter(race::equals).isPresent();
+        return RaceSavedData.get(server).find(accountId).filter(record -> !record.choiceRequired()).map(RaceRecord::race).filter(race::equals).isPresent();
     }
 
     public static boolean hasRace(ServerPlayer player, RaceId race) {
@@ -38,9 +38,11 @@ public final class RaceApi {
         com.siirio.jemroles.network.RolesNetwork.sendStatus(player, true);
     }
 
-    private static RaceSnapshot snapshot(RaceRecord record) {
-        return new RaceSnapshot(record.race(), true, record.activeTicks(), record.freeSwitchAvailable(), record.lastRespecAt(),
+    private static RaceSnapshot snapshot(MinecraftServer server, RaceRecord record) {
+        boolean test = com.siirio.jemroles.race.RaceService.testRaceReselect(server);
+        long remaining = test ? 0L : record.remainingReselectTicks(server.overworld().getGameTime());
+        return new RaceSnapshot(record.race(), true, record.activeTicks(), remaining == 0L, record.lastRespecAt(),
                 RaceRecord.SCHEMA, record.spellTier(), record.spellProgress(), record.resonance(), record.waterExposure(),
-                record.lavaExposure(), record.livingPath());
+                record.lavaExposure(), record.livingPath(), remaining, test);
     }
 }

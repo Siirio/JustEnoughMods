@@ -29,7 +29,7 @@
     "priority": 40
   },
   "change": {
-    "summary": "Native Workbench selection immediately opens persistent3x3 crafting between backpack/player inventory; separate paid station removed, native Backpacked surfaces and cream pixel icon.",
+    "summary": "Native Workbench selection immediately opens persistent3x3 crafting between backpack/player inventory; separate paid station removed, native Backpacked surfaces and cream pixel icon. Native equipped Furnace and silent ordinary-food Auto Feed extend the same menu/lifecycle; Workbench retained. User2026-10-20 follow-up places simultaneous Workbench/Furnace horizontally in one shared80px row.",
     "modifiers": [
       {
         "property": "backpack.native_augment_registry",
@@ -55,7 +55,7 @@
         "before": null,
         "after": {
           "owner": "Native equipped owner BackpackContainerMenu + actual BackpackInventory ItemStack",
-          "layout": "Append9ingredients and vanilla ResultSlot at shared112x80 centered crafting geometry: inputs12,12 at18px stride, result85,30. Move native player inventory by80px; keep slot indices and bounded short-viewport scrolling.",
+          "layout": "Append9ingredients and vanilla ResultSlot with native112x80 geometry: inputs12,12 at18px stride, result85,30. One active panel centers; both active use Workbench left/Furnace right with4px gap and228px combined row, height80. Menu slots/render/player-panel labels and occupied click bounds use shared geometry; only horizontally projecting rows gain the minimum clearance below both native side panels. Native storage frame width remains22+max(cols,9)*18.",
           "persistence": "JemWorkbenchIngredients NBT on backpack; preserve while removed/disabled; restore on enable. Result is authoritative recipe preview recomputed from persisted matrix, never persisted as an independently claimable item.",
           "crafting": "Native RecipeManager, limited-crafting/features, ResultSlot ingredient/remainder/reward hooks; result packets use actual appended slot index; explicit shift transfer and no pick-all extraction from result.",
           "lifecycle": "Successful native selection enables Workbench; native change/toggle reopens immediately only when actual enabled/unlocked layout differs. Same ingredients survive disable/removal and return on re-enable.",
@@ -67,6 +67,24 @@
         "operation": "add",
         "before": null,
         "after": "Compact112x80 native BACKPACK_BACKGROUND crafting panel with BACKPACK_SLOT and ARROW_RIGHT, no title/side tab. Lower inventory uses native AUGMENT_MENU_BACKGROUND/BACKPACK_SLOT while Workbench is active. Editable cream/shadow12px picker icon remains; removed tab exists only in original reference05."
+      },
+      {
+        "property": "backpack.equipped_furnace",
+        "operation": "add",
+        "before": "Native Backpacked3.0.9 has no JEM furnace augmentation.",
+        "after": "Native jemcompat:furnace codec in unlocked enabled bay; exact equipped BackpackInventory tick on authenticated dedicated server; actual native-menu input/fuel/FurnaceResultSlot, RecipeManager duration/fuel/capacity/remainders/XP; per-stack JemFurnace state; removal/death/logout pause without offline progress. Input smelting remainders and unsupported stacked fuel containers refused before consumption. Both active panels share one horizontal80px row rather than stacking160px; input/fuel/output slot order and handlers are unchanged."
+      },
+      {
+        "property": "backpack.silent_auto_feed",
+        "operation": "add",
+        "before": "No JEM silent native backpack feeding.",
+        "after": "Native jemcompat:auto_feed enabled augment; dedicated authenticated native equipped inventory, hunger acceptance, first eligible ordinary FoodProperties, exactly one portion and finite native cooldown. FoodData directly; no finishUsingItem/animation/sound/particles. Custom consumption/effect/always-edible/NBT food refused unchanged pending exact opt-in adapter. Native container remainder destination reserved before consumption."
+      },
+      {
+        "property": "backpack.furnace_augment_icon",
+        "operation": "replace",
+        "before": "Vanilla3D Furnace ItemStack rendered through NativeItemAugmentIcon.",
+        "after": "User-requested Backpacked-family cream/shadow12x12 PNG, directly authored/exported from layered Aseprite. Framework0.8.0 subImage draws the same resource in native bay/picker; Apple and Workbench remain unchanged. Horizontal layout/gameplay unchanged; runtime/player acceptance pending."
       }
     ]
   },
@@ -87,7 +105,19 @@
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackIntegratedAugmentListMixin.java",
       "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/ru_ru.json",
       "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/en_us.json",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java"
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/AutoFeedAugment.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackAutoFeed.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackFurnace.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackFurnaceAccess.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/FurnaceAugment.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/NativeItemAugmentIcon.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackInventoryProcessMixin.java",
+      "Mods/JEMCompat/build.gradle",
+      "Mods/JEMCompat/src/main/resources/META-INF/mods.toml",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/gui/augment/furnace.png"
     ]
   },
   "rationale": {
@@ -213,6 +243,58 @@
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackWorkbenchMenuMixin.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackWorkbenchScreenMixin.java"
       ]
+    },
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "extend_native_equipped_processes",
+      "summary": "User task13 requests furnace and silent Auto Feed preserving Workbench. Codex uses native inventory tick, server RecipeManager/FoodData, per-stack state and real native menu slots; conservatively refuses unsupported special consumption instead of losing effects or items.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/AugmentBayBlock.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/AutoFeedAugment.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackAutoFeed.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackClient.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackContent.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackCraftingGrid.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackFurnace.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackFurnaceAccess.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackWorkbench.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/FurnaceAugment.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/NativeItemAugmentIcon.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/WorkbenchAugment.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/WorkbenchIcon.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackInventoryProcessMixin.java",
+        "Mods/JEMCompat/build.gradle",
+        "Mods/JEMCompat/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java"
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "horizontal_native_workbench_furnace_row",
+      "summary": "User explicitly requested horizontal after reviewing vertical source composition. Workbench left/Furnace right,4px gap, one80px row; single112px panel remains centered at original native y. Codex adds source-backed max native bay/action clearance only where228px row projects beyond native frame, shared inventory/slot/render/click geometry and existing popup-priority scrolling. No new assets or gameplay-state changes. H1 Aseprite source preview inspected; build/runtime/player acceptance pending.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackWorkbench.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackWorkbenchMenuMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackWorkbenchScreenMixin.java",
+        "Docs/backpack/README.md",
+        "Docs/backpack/ui-preview-20261020/compose-horizontal-H1.lua"
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "native_family_furnace_icon",
+      "summary": "User explicitly requests Backpacked-style Furnace icon. Codex authors12px furnace-front silhouette in existing Workbench cream/shadow palette via Aseprite MCP, integrates native FrameworkTexture resource, and inspects1x/integer enlargement plus horizontal menu/picker compositions. No generated pixels or runtime approval claim.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackClient.java",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/gui/augment/furnace.png",
+        "Docs/backpack/furnace-icon-20261020/furnace.aseprite",
+        "Docs/backpack/furnace-icon-20261020/authoring.json",
+        "Docs/backpack/README.md"
+      ]
     }
   ],
   "impacts": {
@@ -225,7 +307,11 @@
       "client native menu sizing/popups",
       "GUI Scale",
       "shared registry/network compatibility",
-      "integrated singleplayer preservation"
+      "integrated singleplayer preservation",
+      "equipped native inventory lifecycle",
+      "fuel/smelting/XP",
+      "hunger and saturation",
+      "Identity authentication"
     ],
     "relations": [
       "Framework AUGMENT_TYPES -> native codec/selection -> unlocked enabled Workbench -> native menu layout refresh",
@@ -236,10 +322,12 @@
       "Exact installed Backpacked3.0.9 JAR SHA2562b9b07d873fc3a913e6f259cd0e85c45999e1f1c03927a7202fbd4f7fb185d14 and Framework0.8.0 source/bytecode inspected; native vanilla1.20.1 crafting signatures and behavior inspected.",
       "No fork, third-party binary modification, copied unlicensed pixel asset or parallel backpack item-content authority.",
       "Legacy JemWorkbenchPurchased is ignored; existing ingredient NBT is unchanged. Retired station UI, recipe and purchase messages removed. No gameplay launch or player approval.",
-      "User screenshots2026-10-19 provide exact layout/palette rejection evidence; runtime visual acceptance remains pending."
+      "User screenshots2026-10-19 provide exact layout/palette rejection evidence; runtime visual acceptance remains pending.",
+      "Horizontal follow-up: exact installed Config.Backpack.Inventory.Size admits rows1..11/columns1..23, current canonical config9x5. Native side layouts: three20px bays/two1px dividers/four2px gaps; five10px action controls/four2px gaps; native5px background padding. Small-row projecting insert clears both; default9x5 shift80, no gameplay launch/build by layout author."
     ],
     "unresolved": [
-      "Player acceptance pending: immediate selection refresh, shift/drag/hotbar gestures, remainders/partial output, toggles/swaps/reconnect/death, GUI Scale and viewport navigation."
+      "Player acceptance pending: immediate selection refresh, shift/drag/hotbar gestures, remainders/partial output, toggles/swaps/reconnect/death, GUI Scale and viewport navigation.",
+      "Furnace and Auto Feed gameplay/visual acceptance not exercised; no special-food opt-in adapter supplied. No tests or game launches."
     ]
   }
 }

@@ -1,0 +1,157 @@
+{
+  "schema_version": 2,
+  "change_id": "race.daily-reselection-first-login-20261020",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:player"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime": "Dedicated production or exact bound dedicated test profile; matching client presentation/packet artifacts where applicable.",
+      "acceptance": "Source implementation recorded; final artifact synchronization/native publication/application, hosted startup and player acceptance remain pending root delivery evidence. Original migration not executed."
+    }
+  ],
+  "precedence": {
+    "layer": "server_owned_shipping_handoff",
+    "priority": 420
+  },
+  "change": {
+    "summary": "Persist ordinary one-Minecraft-day reselection and exact test epoch choice; queue first-login UI by connection lifecycle without replacing active screens.",
+    "modifiers": [
+      {
+        "property": "race.reselection.readiness",
+        "operation": "replace",
+        "before": "Existing ordinary once-only free-switch eligibility and JVM test override; no persistent repeat deadline.",
+        "after": "RaceRecord schema5 stores ReselectReadyAt; successful ordinary change starts1Minecraft-day wait using overworld gameTime. Same-race remains unchanged. Legacy missing deadline is ready without resetting race/progress. Exact DedicatedTestProfile bypasses this wait only on its bound save."
+      },
+      {
+        "property": "race.first_choice.test_epoch",
+        "operation": "replace",
+        "before": "Existing selected records have no test epoch choice-required marker.",
+        "after": "prepareTestChoice marks ChoiceRequired once per saveIdentity:epoch without deleting record/Mechanics. Effective snapshot/ability reads exclude choice-required records until canonical selection confirmation. IdentityPolicy and server nonce remain selection boundaries."
+      },
+      {
+        "property": "race.presentation.first_login_lifecycle",
+        "operation": "replace",
+        "before": "RaceExperienceClient reset status on ClientLevel replacement and could open the pending screen directly during snapshot receipt.",
+        "after": "Track actual client connection, reset pending/status only when connection changes, queue unselected snapshot, open only with player+level and no other active screen. Already open RaceExperienceScreen receives status in place; native menu interception reuses it. F6 uses same queue; selected browsing does not create scene immunity."
+      },
+      {
+        "property": "presentation.minecraft_day_readiness",
+        "operation": "replace",
+        "before": "Presentation consumers had independent time wording/old readiness projection.",
+        "after": "MinecraftDays.format owns presentation-only ceil-to3-decimal Minecraft-day labels with separate positive<0.001 threshold. Roles protocol4/Races skills protocol7 carry authoritative remaining duration/test/nonce; native save/protocol clock units remain unchanged."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMRoles RaceRecord/RaceService with production Races presentation bridge",
+    "kind": "source_owned_implementation",
+    "source_files": [
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceApi.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceSnapshot.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RaceSelectionScreen.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RoleClientState.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RaceStatusPacket.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RolesNetwork.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRecord.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRules.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceService.java",
+      "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/ru_ru.json",
+      "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/en_us.json",
+      "Mods/JEMIdentity/src/main/java/com/siirio/jemidentity/api/MinecraftDays.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceClient.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ProductionRaceBridge.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceExperience.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/provenance.json",
+      "Docs/races/README.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Stable readable first choice after auth with one canonical persisted production race and truthful positive readiness.",
+    "decision_source": "User authorized full2026-10-20 shipping-economy handoff. User owns requested behavior and approved R2 art; exact state/API/layout/adapter choices are Codex implementation details."
+  },
+  "introduced": {
+    "date": "2026-10-20",
+    "commit": "SELF",
+    "action": "implement_authorized_shipping_handoff",
+    "summary": "Persist ordinary one-Minecraft-day reselection and exact test epoch choice; queue first-login UI by connection lifecycle without replacing active screens.",
+    "source_files": [
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceApi.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceSnapshot.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RaceSelectionScreen.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RoleClientState.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RaceStatusPacket.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RolesNetwork.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRecord.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRules.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceService.java",
+      "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/ru_ru.json",
+      "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/en_us.json",
+      "Mods/JEMIdentity/src/main/java/com/siirio/jemidentity/api/MinecraftDays.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceClient.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ProductionRaceBridge.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceExperience.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/provenance.json",
+      "Docs/races/README.md"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "implement_authorized_shipping_handoff",
+      "summary": "Persist ordinary one-Minecraft-day reselection and exact test epoch choice; queue first-login UI by connection lifecycle without replacing active screens.",
+      "source_files": [
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceApi.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceSnapshot.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RaceSelectionScreen.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RoleClientState.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RaceStatusPacket.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RolesNetwork.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRecord.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRules.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceService.java",
+        "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/ru_ru.json",
+        "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/en_us.json",
+        "Mods/JEMIdentity/src/main/java/com/siirio/jemidentity/api/MinecraftDays.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceClient.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/ProductionRaceBridge.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceExperience.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/provenance.json",
+        "Docs/races/README.md"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "canonical race save",
+      "authentication",
+      "server nonce/choice",
+      "first-login/loading screens",
+      "reconnect/dimension presentation",
+      "race cooldown packet compatibility"
+    ],
+    "relations": [],
+    "notes": [
+      "Initial first-choice scene protection and one bounded completion window retain existing server ownership.",
+      "Source-based lifecycle correction is in testing; no live symptom reproduction or gameplay acceptance is claimed.",
+      "Selected original races are not reset by a test-only epoch binding.",
+      "Fallback Roles-only presentation retains an explicit queued open across passive selected snapshots; successful first selection or displaying the selection screen consumes it. Connection reset clears it."
+    ],
+    "unresolved": [
+      "Matching Roles/Races/Identity artifacts, native generation application, actual authentication/first-choice/relogin acceptance pending.",
+      "No tests or game launch."
+    ]
+  }
+}

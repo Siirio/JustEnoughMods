@@ -8,7 +8,7 @@ import argparse, collections, csv, json, math, pathlib, re, zipfile
 from fractions import Fraction
 
 ROOT = pathlib.Path(__file__).resolve().parents[3]
-DATA = ROOT / 'Mods/JEMEconomy/src/main/resources/data/jem_economy/economy'
+DATA = ROOT / 'Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy'
 FINAL = ROOT / 'Docs/economy/FINAL_PRICE_LIST'
 RESEARCH = ROOT / '.superpowers/sdd/economy-overhaul'
 
@@ -536,7 +536,10 @@ def main():
     parser.add_argument('--verification',help='Optional JSON object of factual validation/delivery statuses for the report')
     parser.add_argument('--recipe-override',action='append',default=[],metavar='ID=COUNT',
                         help='Explicit audit-only recipe yield simulation, marked pending runtime capture')
-    args=parser.parse_args();runtime=read(args.runtime)
+    args=parser.parse_args()
+    if any(row.get('schema',1)>=2 for row in read(DATA/'item_policies.json')):
+        raise SystemExit('Rational schema2 policies require JEMCurrencyCore/tools/author_shipping_economy.py and derive_conversion_economy.py; legacy integer export cannot overwrite the current audit')
+    runtime=read(args.runtime)
     originalPath=RESEARCH/'approved-policies.json'
     if not originalPath.exists(): write(originalPath,read(DATA/'item_policies.json'))
     if args.propose:

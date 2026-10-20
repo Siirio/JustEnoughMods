@@ -61,7 +61,7 @@ public final class WalletScreen extends Screen {
         graphics.drawString(font, Component.translatable("jem.economy.wallet.limits_label"), x + 16, y + 202, 0xFFD9C6A9, false);
         CoinPriceRenderer.draw(graphics, font, status.accountRemaining(), x + 140, y + 198, 65, 0xFFD9C6A9);
         CoinPriceRenderer.draw(graphics, font, status.globalRemaining(), x + 213, y + 198, 71, 0xFFD9C6A9);
-        graphics.drawString(font, Component.translatable("jem.economy.wallet.market_update", status.ticksUntilUpdate()), x + 16, y + 216, 0xFFD9C6A9, false);
+        graphics.drawString(font, Component.translatable("jem.economy.wallet.market_update", com.siirio.jemidentity.api.MinecraftDays.format(status.ticksUntilUpdate())), x + 16, y + 216, 0xFFD9C6A9, false);
         super.render(graphics, mouseX, mouseY, partialTick);
     }
 

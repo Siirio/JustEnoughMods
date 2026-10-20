@@ -2,7 +2,6 @@ package com.siirio.jemsettlements.client;
 
 import com.siirio.jemsettlements.network.SettlementNetwork;
 import com.siirio.jemeconomy.physical.CoinDenomination;
-import com.siirio.jemcurrency.CurrencyItems;
 import java.util.*;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
@@ -40,6 +39,8 @@ public class SettlementScreen extends Screen {
     private int sidebarWidth, dashboardTop, dashboardLimit, residentScroll, detailScroll, detailTop, detailBottom;
     private boolean residentSplit, searchDirty;
     private int renderMouseX, renderMouseY;
+    private int rosterWidth() { return Math.max(144,Math.min(222,(int)(cw*.42))); }
+    private int summaryHeight() { return cw<440?122:58; }
     private final List<Row> rows=new ArrayList<>();
     private final List<Runnable> drawings=new ArrayList<>();
     private Runnable confirm;
@@ -113,12 +114,12 @@ public class SettlementScreen extends Screen {
         int wantedH=directory?148+Math.min(6,Math.max(1,tags(envelope,"Directory").size()))*ROW_HEIGHT:
                 storage?Math.max(260,168+18*((Math.min(54,Math.max(1,chest.getInt("SlotsTotal")))+8)/9)):548;
         panelW=Math.min(wantedW,width-24); panelH=Math.min(wantedH,height-36); left=(width-panelW)/2; top=(height-panelH)/2;
-        compact=directory || (storage?width<390||panelH<250:panelW<500||panelH<270);
+        compact=directory || (storage?width<390||panelH<310:panelW<500||panelH<310);
         sidebarWidth=compact?0:storage?96:Math.max(96,Math.min(132,panelW/5));
         cx=left+(compact?10:sidebarWidth+14); cy=top+(compact?80:60); cw=panelW-(compact?20:sidebarWidth+26); bottom=top+panelH-22;
         residentSplit=mode.equals("town")&&section.equals("residents")&&cw>=350;
         dashboardLimit=0; dashboardTop=cy;
-        scaleLimited=panelW<228 || panelH<180 || citySection&&panelH<228;
+        scaleLimited=panelW<260 || panelH<(directory?180:storage?250:228) || mode.equals("town")&&!storage&&panelH<300 || mode.equals("create")&&panelH<270;
         if (scaleLimited) {button(tr("close"),left+8,bottom-20,panelW-16,this::onClose,false);return;}
         if (confirm!=null) { confirmationWidgets(); return; }
         if (mode.equals("loading") || mode.equals("unsupported")) return;
@@ -171,12 +172,15 @@ public class SettlementScreen extends Screen {
             Button tab=new Button(Button.builder(tr("section."+key),b->selectSection(key)).bounds(tx,ty,tw,38)) {
                 @Override public void renderWidget(GuiGraphics g,int mx,int my,float partial) {
                     boolean selected=section.equals(key);SettlementDashboardArt.control(g,getX(),getY(),getWidth(),getHeight(),selected,isHoveredOrFocused(),true);
-                    icon(g,icon,getX()+7,getY()+8,22);
+                    if(key.equals("settlement"))icon(g,icon,getX()+7,getY()+8,22);
+                    else SettlementPageArt.icon(g,key.equals("chests")?"chest":key,getX()+10,getY()+11);
                     g.drawString(font,clip(getMessage(),getWidth()-39),getX()+34,getY()+15,0xfff6eddd,false);
                 }
             };
             tab.setTooltip(Tooltip.create(tr("section."+key)));addRenderableWidget(tab);
         }
+        button(Component.translatable("jem.settlements.tab.guide"),left+8,bottom-45,sidebarWidth-4,this::guide,false);
+        button(tr("title"),left+8,bottom-20,sidebarWidth-4,()->{detail=null;chest=null;mode="selector";scroll=0;request("open",new CompoundTag());rebuild();},false);
     }
     private void selectSection(String key) {
         section=key;
@@ -188,7 +192,7 @@ public class SettlementScreen extends Screen {
     private void cityWidgets() {
         var metrics=town.getCompound("Metrics");
         summaryCards(false);
-        cityContentTop=cy+66;listTop=cityContentTop;listBottom=bottom;
+        cityContentTop=cy+summaryHeight()+8;listTop=cityContentTop;listBottom=bottom;
         int viewHeight=Math.max(1,bottom-cityContentTop),contentHeight=361;
         cityScrollLimit=Math.max(0,contentHeight-viewHeight);scroll=Math.min(scroll,cityScrollLimit);
         int firstDrawing=drawings.size(),firstWidget=children().size();int y=cityContentTop-scroll;
@@ -367,7 +371,7 @@ public class SettlementScreen extends Screen {
         feed.active=chest.getBoolean("InventoryKnown")&&!SettlementClientState.pending();feed.setTooltip(Tooltip.create(tr("chest_feed_all_hint")));
     }
     private void happinessRows() {
-        summaryCards(true);dashboardTop=cy+66;listTop=dashboardTop;listBottom=bottom;
+        summaryCards(true);dashboardTop=cy+summaryHeight()+8;listTop=dashboardTop;listBottom=bottom;
         int contentHeight=405,viewport=Math.max(1,bottom-dashboardTop);dashboardLimit=Math.max(0,contentHeight-viewport);scroll=Math.min(scroll,dashboardLimit);
         int firstDrawing=drawings.size(),firstWidget=children().size();int y=dashboardTop-scroll;
         final int factorsY=y;
@@ -377,10 +381,9 @@ public class SettlementScreen extends Screen {
             String field=category.substring(0,1).toUpperCase(Locale.ROOT)+category.substring(1);
             int weight=switch(category){case "decoration","community"->15;case "safety","jobs"->10;default->20;};
             double score=metrics.contains(field+"Exact")?metrics.getDouble(field+"Exact"):category.equals("decoration")?metrics.getDouble("ComfortExact"):town.getInt(field);
-            ItemStack icon=new ItemStack(switch(category){case "housing"->Items.RED_BED;case "food"->Items.BREAD;case "safety"->Items.SHIELD;case "jobs"->Items.IRON_PICKAXE;case "community"->Items.BELL;default->Items.FLOWER_POT;});
             int rowY=y+29+index++*25;String value=String.format(Locale.ROOT,"%.1f / %d",score*weight/100,weight);
             drawings.add(()->{
-                icon(graphics,icon,cx+8,rowY,18);
+                SettlementPageArt.icon(graphics,switch(category){case "food"->"satiety";case "decoration"->"comfort";default->category;},cx+8,rowY+1);
                 graphics.drawString(font,clip(tr("category."+category),Math.max(45,cw/3-25)),cx+31,rowY+5,PALE,false);
                 int bx=cx+cw/3+12,bw=Math.max(36,cw/3-10);
                 SettlementDashboardArt.track(graphics,bx,rowY+6,bw,9,(int)Math.round(score),scoreColor((int)score));
@@ -433,7 +436,7 @@ public class SettlementScreen extends Screen {
 
     }
     private void residentsDashboard() {
-        int pageX=cx,pageW=cw,pageY=cy,rosterW=Math.max(144,Math.min(222,(int)(cw*.42))),rightX=pageX+rosterW+8,rightW=pageW-rosterW-8;
+        int pageX=cx,pageW=cw,pageY=cy,rosterW=rosterWidth(),rightX=pageX+rosterW+8,rightW=pageW-rosterW-8;
         drawings.add(()->{SettlementDashboardArt.panel(graphics,pageX,pageY,rosterW,bottom-pageY,false);SettlementDashboardArt.panel(graphics,rightX,pageY,rightW,bottom-pageY,false);});
         cx=pageX+5;cw=rosterW-10;cy=pageY+19;scroll=residentScroll;
         residentRows();residentScroll=scroll;
@@ -451,10 +454,10 @@ public class SettlementScreen extends Screen {
             graphics.drawString(font,clip(residentName(selected),w-portraitW-10),x+portraitW+7,y+4,INK,false);
             graphics.drawString(font,clip(guard(selected)?tr("filter.guards"):profession(selected),w-portraitW-10),x+portraitW+7,y+19,MUTED,false);
             if(needs){
-                SettlementDashboardArt.mood(graphics,x+portraitW+7,y+37,16,selected.getInt("Mood"));
+                SettlementPageArt.icon(graphics,"happiness",x+portraitW+7,y+37);
                 graphics.drawString(font,selected.getInt("Mood")+"/100",x+portraitW+27,y+41,INK,false);
                 SettlementDashboardArt.track(graphics,x+portraitW+7,y+57,w-portraitW-14,7,selected.getInt("Mood"),scoreColor(selected.getInt("Mood")));
-                icon(graphics,new ItemStack(Items.BREAD),x+portraitW+7,y+70,15);
+                SettlementPageArt.icon(graphics,"satiety",x+portraitW+7,y+70);
                 graphics.drawString(font,selected.getInt("Satiety")+"/100",x+portraitW+27,y+74,INK,false);
                 SettlementDashboardArt.track(graphics,x+portraitW+7,y+87,w-portraitW-14,7,selected.getInt("Satiety"),0xff7db954);
             }else graphics.drawWordWrap(font,tr("golem_role"),x+portraitW+7,y+39,w-portraitW-14,MUTED);
@@ -502,11 +505,11 @@ public class SettlementScreen extends Screen {
         if(resident) {
             drawWrapped(isRecruit?tr("filter.guards"):profession(detail),tx,py,tw,INK);
             drawings.add(()->bar(graphics,tx,py+24,tw,detail.getInt("Mood"),tr("happiness")));drawings.add(()->bar(graphics,tx,py+48,tw,detail.getInt("Satiety"),tr("satiety")));
-            drawWrapped(detail.contains("RequestedDish")?tr("requested",item(detail.getString("RequestedDish")).getHoverName()):tr("no_request"),tx,py+72,tw,MUTED);
+            drawWrapped(detail.contains("RequestedDish")?tr("requested",item(detail.getString("RequestedDish")).getHoverName()):tr("no_request"),tx,py+80,tw,MUTED);
         } else if(section.equals("workers")) {
             drawWrapped(Component.translatable("jem.settlements.worker."+detail.getString("Type").toLowerCase(Locale.ROOT)),tx,py,tw,INK);
             drawWrapped(tr("native_work_detail"),tx,py+28,tw,MUTED);
-            if(detail.contains("Position"))drawWrapped(tr("coordinates",position(detail.getLong("Position"))),tx,py+72,tw,MUTED);
+            if(detail.contains("Position"))drawWrapped(tr("coordinates",position(detail.getLong("Position"))),tx,py+80,tw,MUTED);
         } else if(guard(detail)&&!isRecruit) {
             drawWrapped(tr("filter.guards"),tx,py,tw,INK);
             drawWrapped(tr("golem_role"),tx,py+24,tw,MUTED);
@@ -516,7 +519,7 @@ public class SettlementScreen extends Screen {
             drawWrapped(tr("due_in",String.format(Locale.ROOT,"%.1f",Math.max(0,detail.getLong("NextPayroll")-envelope.getLong("GameTime"))/24000.0)),tx,py+42,tw,MUTED);
             drawLine(tr("wage"),tx,py+66,MUTED);drawings.add(()->coins(detail.getLong("Wage"),tx,py+78,tw));
         }
-        listTop=py+104;listBottom=bottom-(isRecruit?73:48);
+        listTop=py+112;listBottom=bottom-(isRecruit?73:48);
         if(resident&&!isRecruit) {
             rows.add(new Row(metricText("environment"),tr("personal_contribution",detail.getInt("ActivityBonus")),new ItemStack(Items.FLOWER_POT),new CompoundTag(),null));
             if(detail.contains("HasBed")&&!detail.getBoolean("HasBed"))rows.add(new Row(tr("no_bed"),tr("no_bed_hint"),new ItemStack(Items.RED_BED),new CompoundTag(),null));
@@ -598,7 +601,9 @@ public class SettlementScreen extends Screen {
     private void ask(Component message,Runnable action) {information=false;confirmMode=mode;confirmText=message;confirm=action;map.release();rebuild();}
     private void confirmationWidgets() {
         int dx=left+Math.max(8,(panelW-224)/2),dw=Math.min(224,panelW-16);
-        int lines=font.split(confirmText,dw-16).size(),dy=top+Math.max(34,(panelH-(lines*12+44))/2);drawWrapped(confirmText,dx+8,dy+8,dw-16,INK);
+        int lines=font.split(confirmText,dw-16).size(),dy=top+Math.max(34,(panelH-(lines*12+44))/2);
+        drawings.add(()->SettlementDashboardArt.panel(graphics,dx-5,dy-4,dw+10,lines*12+52,false));
+        drawWrapped(confirmText,dx+8,dy+8,dw-16,INK);
         Button cancel=button(tr(information?"close":"cancel"),dx,Math.min(bottom-24,dy+lines*12+20),dw/2-2,()->{confirm=null;mode=confirmMode;map.clearQuote();rebuild();},false);
         if(!information)button(tr("confirm"),dx+dw/2+2,Math.min(bottom-24,dy+lines*12+20),dw/2-2,()->{Runnable action=confirm;confirm=null;mode=confirmMode;action.run();rebuild();},true);setInitialFocus(cancel);
     }
@@ -622,7 +627,10 @@ public class SettlementScreen extends Screen {
         if(selected)SettlementDashboardArt.control(g,x,y,w,ROW_HEIGHT-3,true,focused,true);
         else SettlementDashboardArt.card(g,x,y,w,ROW_HEIGHT-3,focused?0xff4aa2d3:0xffbfa67c);
         boolean npc=row.data().hasUUID("Id")&&(row.data().contains("Mood")||guard(row.data()));
-        if(npc)portrait(g,row.data(),x+4,y+4,25,29);else icon(g,row.icon(),x+7,y+9,20);
+        if(npc)portrait(g,row.data(),x+4,y+4,25,29);
+        else if(row.name().equals(tr("home"))||row.name().equals(tr("no_bed")))SettlementPageArt.icon(g,"housing",x+9,y+11);
+        else if(row.name().equals(tr("category.jobs")))SettlementPageArt.icon(g,"jobs",x+9,y+11);
+        else icon(g,row.icon(),x+7,y+9,20);
         int nameWidth=Math.max(20,w-42-(npc?19:0)),nameColor=selected?0xfff9efda:INK;
         g.drawString(font,clip(row.name(),nameWidth),x+35,y+6,nameColor,false);
         if(npc){
@@ -637,8 +645,8 @@ public class SettlementScreen extends Screen {
     private static void smallItem(GuiGraphics g,ItemStack stack,int x,int y){g.pose().pushPose();g.pose().translate(x,y,0);g.pose().scale(.5F,.5F,1);g.renderFakeItem(stack,0,0);g.pose().popPose();}
     private void bar(GuiGraphics g,int x,int y,int w,int value,Component label) {
         value=Math.max(0,Math.min(100,value));
-        if(!label.getString().isEmpty())g.drawString(font,label.copy().append(" "+value+"/100"),x,y,INK,false);
-        SettlementDashboardArt.track(g,x,y+(label.getString().isEmpty()?0:12),w,8,value,scoreColor(value));
+        if(!label.getString().isEmpty()){SettlementPageArt.icon(g,label.equals(tr("satiety"))?"satiety":"happiness",x,y);g.drawString(font,clip(label.copy().append(" "+value+"/100"),Math.max(1,w-20)),x+20,y+2,INK,false);}
+        SettlementDashboardArt.track(g,x,y+(label.getString().isEmpty()?0:17),w,8,value,scoreColor(value));
     }
     private static int scoreColor(int value){return value<35?0xffd45f52:value<80?0xffe4b74e:0xff7ebd52;}
     private static void icon(GuiGraphics g,ItemStack item,int x,int y,int size) {
@@ -653,23 +661,22 @@ public class SettlementScreen extends Screen {
         g.disableScissor();
     }
     private void summaryCards(boolean happinessPage) {
-        var residents=tags(town,"Residents");var metrics=town.getCompound("Metrics");int gap=5,cell=(cw-gap*3)/4;
+        var residents=tags(town,"Residents");var metrics=town.getCompound("Metrics");int gap=5,columns=cw<440?2:4,cell=(cw-gap*(columns-1))/columns;
         String[] keys=happinessPage?new String[]{"happiness","satiety","unhappy","beauty"}:new String[]{"residents","happiness","beauty","treasury"};
         for(int i=0;i<4;i++) {
-            String key=keys[i];int x=cx+i*(cell+gap),w=i==3?cx+cw-x:cell;
+            String key=keys[i];int x=cx+(i%columns)*(cell+gap),cardY=cy+(i/columns)*64,w=i%columns==columns-1?cx+cw-x:cell;
             int value=switch(key){case "happiness"->town.getInt("Happiness");case "satiety"->(int)Math.round(residents.stream().mapToInt(r->r.getInt("Satiety")).average().orElse(0));case "unhappy"->(int)(100*residents.stream().filter(r->r.getInt("Mood")<town.getInt("UnhappyThreshold")).count()/Math.max(1,residents.size()));case "beauty"->town.getInt("Decoration");case "residents"->Math.min(100,residents.size()*100/Math.max(1,metrics.getInt("RequiredResidents")));default->0;};
             Component display=switch(key){case "residents"->Component.literal(residents.size()+" / "+metrics.getInt("RequiredResidents"));case "unhappy"->Component.literal(residents.stream().filter(r->r.getInt("Mood")<town.getInt("UnhappyThreshold")).count()+" / "+residents.size());case "treasury"->SettlementPriceRenderer.format(town.getLong("Treasury"),coinCurrency());default->Component.literal(value+"/100");};
-            ItemStack icon=new ItemStack(switch(key){case "residents","unhappy"->Items.VILLAGER_SPAWN_EGG;case "satiety"->Items.BREAD;case "beauty"->Items.POPPY;case "treasury"->coinCurrency()?CurrencyItems.item(CoinDenomination.GOLD):Items.EMERALD;default->Items.SUNFLOWER;});
             drawings.add(()->{
-                SettlementDashboardArt.card(graphics,x,cy,w,58,key.equals("beauty")?0xffc58bac:key.equals("treasury")?GOLD:key.equals("residents")?0xff92b66c:0xffd6b168);
-                graphics.drawString(font,clip(tr("dashboard."+key),w-12),x+6,cy+7,INK,false);
+                SettlementDashboardArt.card(graphics,x,cardY,w,58,key.equals("beauty")?0xffc58bac:key.equals("treasury")?GOLD:key.equals("residents")?0xff92b66c:0xffd6b168);
+                graphics.drawString(font,clip(tr("dashboard."+key),w-12),x+6,cardY+7,INK,false);
                 if(key.equals("treasury")) {
-                    SettlementPriceRenderer.draw(graphics,font,town.getLong("Treasury"),x+6,cy+23,w-12,INK,coinCurrency());
+                    SettlementPriceRenderer.draw(graphics,font,town.getLong("Treasury"),x+6,cardY+23,w-12,INK,coinCurrency());
                 } else {
-                    if(key.equals("happiness"))SettlementDashboardArt.mood(graphics,x+6,cy+21,20,value);else icon(graphics,icon,x+6,cy+21,20);
-                    graphics.drawString(font,clip(display,w-36),x+30,cy+27,INK,false);
+                    SettlementPageArt.icon(graphics,switch(key){case "beauty"->"comfort";default->key;},x+6,cardY+23);
+                    graphics.drawString(font,clip(display,w-36),x+30,cardY+27,INK,false);
                 }
-                if(!key.equals("treasury"))SettlementDashboardArt.track(graphics,x+7,cy+47,w-14,6,value,key.equals("beauty")?0xff45b8d5:key.equals("unhappy")?0xffd36459:scoreColor(value));
+                if(!key.equals("treasury"))SettlementDashboardArt.track(graphics,x+7,cardY+47,w-14,6,value,key.equals("beauty")?0xff45b8d5:key.equals("unhappy")?0xffd36459:scoreColor(value));
             });
         }
     }
@@ -687,13 +694,7 @@ public class SettlementScreen extends Screen {
     private boolean coinCurrency() { return envelope.getBoolean("CoinCurrency"); }
     private ItemStack currencyItem() { return coinCurrency()?item("jem_economy:"+denomination.id()):new ItemStack(Items.EMERALD); }
     private void coins(long copper,int x,int y,int maxWidth) {
-        if (!coinCurrency()) { SettlementPriceRenderer.draw(graphics,font,copper,x,y,maxWidth,INK,false); return; }
-        int dx=x,dy=y;
-        for(CoinDenomination coin:CoinDenomination.descending()) {
-            long count=copper/coin.value();copper%=coin.value();if(count==0&&coin!=CoinDenomination.COPPER)continue;
-            int w=18+font.width(Long.toString(count));if(dx>x&&dx+w>x+maxWidth){dx=x;dy+=18;}
-            graphics.renderItem(new ItemStack(CurrencyItems.item(coin)),dx,dy);graphics.drawString(font,Long.toString(count),dx+16,dy+4,INK,false);dx+=w;
-        }
+        SettlementPriceRenderer.draw(graphics,font,copper,x,y,maxWidth,INK,coinCurrency());
     }
     private Component clip(Component text,int width){return Component.literal(font.plainSubstrByWidth(text.getString(),width));}
     private void drawLine(Component text,int x,int y,int color) {drawings.add(()->graphics.drawString(font,clip(text,Math.max(20,left+panelW-8-x)),x,y,color,false));}
@@ -740,8 +741,8 @@ public class SettlementScreen extends Screen {
         if(mode.equals("town")&&section.equals("map")&&detail==null&&map.contains(x,y)){map.zoom(delta,x,y);return true;}
         if(cityActive()&&y>=cityContentTop&&x>=cx&&x<cx+cw){scroll=Math.max(0,Math.min(cityScrollLimit,scroll+(delta>0?-24:24)));rebuild();return true;}
         if(mode.equals("town")&&section.equals("happiness")&&y>=dashboardTop&&y<bottom&&x>=cx&&x<cx+cw){scroll=Math.max(0,Math.min(dashboardLimit,scroll+(delta>0?-24:24)));rebuild();return true;}
-        if(residentSplit&&y>=detailTop&&y<detailBottom&&x>=cx+Math.max(144,Math.min(222,(int)(cw*.42)))+8){detailScroll=Math.max(0,detailScroll+(delta>0?-1:1));rebuild();return true;}
-        if(chest==null&&x>=cx&&x<(residentSplit?cx+Math.max(144,Math.min(222,(int)(cw*.42))):cx+cw)&&y>=listTop&&y<listBottom){scroll=Math.max(0,scroll+(delta>0?-1:1));if(residentSplit)residentScroll=scroll;rebuild();return true;}
+        if(residentSplit&&y>=detailTop&&y<detailBottom&&x>=cx+rosterWidth()+8){detailScroll=Math.max(0,detailScroll+(delta>0?-1:1));rebuild();return true;}
+        if(chest==null&&x>=cx&&x<(residentSplit?cx+rosterWidth():cx+cw)&&y>=listTop&&y<listBottom){scroll=Math.max(0,scroll+(delta>0?-1:1));if(residentSplit)residentScroll=scroll;rebuild();return true;}
         return super.mouseScrolled(x,y,delta);
     }
     @Override public void render(GuiGraphics g,int mouseX,int mouseY,float partialTick){

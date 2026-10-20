@@ -1,0 +1,299 @@
+Compiled from "AugmentPopupMenu.java"
+public class com.mrcrayfish.backpacked.client.gui.screen.widget.AugmentPopupMenu extends com.mrcrayfish.backpacked.client.gui.screen.widget.popup.PopupMenu {
+  private static final int MAX_COLUMNS;
+
+  private final com.mrcrayfish.backpacked.client.gui.screen.layout.PaddedGridLayout layout;
+
+  private final net.minecraft.client.gui.layouts.GridLayout$RowHelper helper;
+
+  public com.mrcrayfish.backpacked.client.gui.screen.widget.AugmentPopupMenu(com.mrcrayfish.backpacked.client.gui.screen.widget.popup.PopupMenuHandler, java.util.function.Supplier<com.mrcrayfish.backpacked.common.augment.Augments>, java.util.function.Consumer<com.mrcrayfish.backpacked.common.augment.Augment<?>>, boolean);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #33                 // Method com/mrcrayfish/backpacked/client/gui/screen/widget/popup/PopupMenu."<init>":(Lcom/mrcrayfish/backpacked/client/gui/screen/widget/popup/PopupMenuHandler;)V
+       5: aload_0
+       6: new           #35                 // class com/mrcrayfish/backpacked/client/gui/screen/layout/PaddedGridLayout
+       9: dup
+      10: invokespecial #38                 // Method com/mrcrayfish/backpacked/client/gui/screen/layout/PaddedGridLayout."<init>":()V
+      13: bipush        8
+      15: invokevirtual #42                 // Method com/mrcrayfish/backpacked/client/gui/screen/layout/PaddedGridLayout.padding:(I)Lcom/mrcrayfish/backpacked/client/gui/screen/layout/PaddedGridLayout;
+      18: iconst_2
+      19: invokevirtual #46                 // Method com/mrcrayfish/backpacked/client/gui/screen/layout/PaddedGridLayout.m_267612_:(I)Lnet/minecraft/client/gui/layouts/GridLayout;
+      22: checkcast     #35                 // class com/mrcrayfish/backpacked/client/gui/screen/layout/PaddedGridLayout
+      25: putfield      #48                 // Field layout:Lcom/mrcrayfish/backpacked/client/gui/screen/layout/PaddedGridLayout;
+      28: aload_0
+      29: aload_0
+      30: getfield      #48                 // Field layout:Lcom/mrcrayfish/backpacked/client/gui/screen/layout/PaddedGridLayout;
+      33: iconst_1
+      34: invokevirtual #52                 // Method com/mrcrayfish/backpacked/client/gui/screen/layout/PaddedGridLayout.m_264606_:(I)Lnet/minecraft/client/gui/layouts/GridLayout$RowHelper;
+      37: putfield      #54                 // Field helper:Lnet/minecraft/client/gui/layouts/GridLayout$RowHelper;
+      40: aload_0
+      41: getstatic     #60                 // Field com/mrcrayfish/backpacked/client/gui/screen/widget/popup/Alignment.END_TOP:Lcom/mrcrayfish/backpacked/client/gui/screen/widget/popup/Alignment;
+      44: invokevirtual #64                 // Method setAlignment:(Lcom/mrcrayfish/backpacked/client/gui/screen/widget/popup/Alignment;)V
+      47: aload_0
+      48: getstatic     #70                 // Field com/mrcrayfish/backpacked/client/TextureDefinitions.AUGMENT_MENU_BACKGROUND:Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+      51: invokevirtual #74                 // Method setBackground:(Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;)V
+      54: new           #9                  // class net/minecraft/client/gui/layouts/GridLayout
+      57: dup
+      58: invokespecial #75                 // Method net/minecraft/client/gui/layouts/GridLayout."<init>":()V
+      61: iconst_2
+      62: invokevirtual #78                 // Method net/minecraft/client/gui/layouts/GridLayout.m_267750_:(I)Lnet/minecraft/client/gui/layouts/GridLayout;
+      65: iconst_2
+      66: invokevirtual #81                 // Method net/minecraft/client/gui/layouts/GridLayout.m_267749_:(I)Lnet/minecraft/client/gui/layouts/GridLayout;
+      69: astore        5
+      71: new           #83                 // class java/util/concurrent/atomic/AtomicInteger
+      74: dup
+      75: invokespecial #84                 // Method java/util/concurrent/atomic/AtomicInteger."<init>":()V
+      78: astore        6
+      80: invokestatic  #90                 // Method com/mrcrayfish/backpacked/common/augment/AugmentType.stream:()Ljava/util/stream/Stream;
+      83: invokeinterface #95,  1           // InterfaceMethod java/util/stream/Stream.sorted:()Ljava/util/stream/Stream;
+      88: aload_0
+      89: iload         4
+      91: aload_2
+      92: aload_3
+      93: aload         6
+      95: aload         5
+      97: invokedynamic #115,  0            // InvokeDynamic #0:accept:(Lcom/mrcrayfish/backpacked/client/gui/screen/widget/AugmentPopupMenu;ZLjava/util/function/Supplier;Ljava/util/function/Consumer;Ljava/util/concurrent/atomic/AtomicInteger;Lnet/minecraft/client/gui/layouts/GridLayout;)Ljava/util/function/Consumer;
+     102: invokeinterface #119,  2          // InterfaceMethod java/util/stream/Stream.forEach:(Ljava/util/function/Consumer;)V
+     107: aload         5
+     109: invokevirtual #122                // Method net/minecraft/client/gui/layouts/GridLayout.m_264036_:()V
+     112: aload_0
+     113: getfield      #54                 // Field helper:Lnet/minecraft/client/gui/layouts/GridLayout$RowHelper;
+     116: new           #124                // class com/mrcrayfish/backpacked/client/gui/screen/widget/TitleWidget
+     119: dup
+     120: ldc           #126                // String backpacked.gui.pick_an_augment
+     122: invokestatic  #132                // InterfaceMethod net/minecraft/network/chat/Component.m_237115_:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     125: invokestatic  #138                // Method net/minecraft/client/Minecraft.m_91087_:()Lnet/minecraft/client/Minecraft;
+     128: getfield      #142                // Field net/minecraft/client/Minecraft.f_91062_:Lnet/minecraft/client/gui/Font;
+     131: invokespecial #145                // Method com/mrcrayfish/backpacked/client/gui/screen/widget/TitleWidget."<init>":(Lnet/minecraft/network/chat/Component;Lnet/minecraft/client/gui/Font;)V
+     134: invokevirtual #149                // Method net/minecraft/client/gui/layouts/GridLayout$RowHelper.m_264139_:(Lnet/minecraft/client/gui/layouts/LayoutElement;)Lnet/minecraft/client/gui/layouts/LayoutElement;
+     137: checkcast     #124                // class com/mrcrayfish/backpacked/client/gui/screen/widget/TitleWidget
+     140: astore        7
+     142: aload_0
+     143: getfield      #54                 // Field helper:Lnet/minecraft/client/gui/layouts/GridLayout$RowHelper;
+     146: aload         5
+     148: invokevirtual #153                // Method net/minecraft/client/gui/layouts/GridLayout.m_5711_:()I
+     151: aload         7
+     153: invokevirtual #154                // Method com/mrcrayfish/backpacked/client/gui/screen/widget/TitleWidget.m_5711_:()I
+     156: invokestatic  #160                // Method java/lang/Math.max:(II)I
+     159: invokestatic  #166                // Method com/mrcrayfish/backpacked/client/gui/screen/widget/Divider.horizontal:(I)Lcom/mrcrayfish/backpacked/client/gui/screen/widget/Divider;
+     162: ldc           #167                // int -2044489
+     164: invokevirtual #170                // Method com/mrcrayfish/backpacked/client/gui/screen/widget/Divider.colour:(I)Lcom/mrcrayfish/backpacked/client/gui/screen/widget/Divider;
+     167: invokevirtual #149                // Method net/minecraft/client/gui/layouts/GridLayout$RowHelper.m_264139_:(Lnet/minecraft/client/gui/layouts/LayoutElement;)Lnet/minecraft/client/gui/layouts/LayoutElement;
+     170: checkcast     #162                // class com/mrcrayfish/backpacked/client/gui/screen/widget/Divider
+     173: astore        8
+     175: aload         7
+     177: aload         8
+     179: invokevirtual #171                // Method com/mrcrayfish/backpacked/client/gui/screen/widget/Divider.m_5711_:()I
+     182: invokevirtual #175                // Method com/mrcrayfish/backpacked/client/gui/screen/widget/TitleWidget.m_93674_:(I)V
+     185: aload_0
+     186: getfield      #54                 // Field helper:Lnet/minecraft/client/gui/layouts/GridLayout$RowHelper;
+     189: aload         5
+     191: invokestatic  #181                // InterfaceMethod net/minecraft/client/gui/layouts/LayoutSettings.m_264214_:()Lnet/minecraft/client/gui/layouts/LayoutSettings;
+     194: invokeinterface #184,  1          // InterfaceMethod net/minecraft/client/gui/layouts/LayoutSettings.m_264463_:()Lnet/minecraft/client/gui/layouts/LayoutSettings;
+     199: invokevirtual #188                // Method net/minecraft/client/gui/layouts/GridLayout$RowHelper.m_264206_:(Lnet/minecraft/client/gui/layouts/LayoutElement;Lnet/minecraft/client/gui/layouts/LayoutSettings;)Lnet/minecraft/client/gui/layouts/LayoutElement;
+     202: pop
+     203: return
+
+  protected net.minecraft.client.gui.layouts.Layout layout();
+    Code:
+       0: aload_0
+       1: getfield      #48                 // Field layout:Lcom/mrcrayfish/backpacked/client/gui/screen/layout/PaddedGridLayout;
+       4: areturn
+
+  private void lambda$new$3(boolean, java.util.function.Supplier, java.util.function.Consumer, java.util.concurrent.atomic.AtomicInteger, net.minecraft.client.gui.layouts.GridLayout, com.mrcrayfish.backpacked.common.augment.AugmentType);
+    Code:
+       0: invokestatic  #215                // Method com/mrcrayfish/backpacked/Config.getDisabledAugments:()Ljava/util/Set;
+       3: aload         6
+       5: invokevirtual #219                // Method com/mrcrayfish/backpacked/common/augment/AugmentType.id:()Lnet/minecraft/resources/ResourceLocation;
+       8: invokeinterface #225,  2          // InterfaceMethod java/util/Set.contains:(Ljava/lang/Object;)Z
+      13: ifeq          17
+      16: return
+      17: iload_1
+      18: ifne          33
+      21: aload         6
+      23: getstatic     #231                // Field com/mrcrayfish/backpacked/core/ModAugmentTypes.GIANT:Lcom/mrcrayfish/framework/api/registry/RegistryEntry;
+      26: invokevirtual #237                // Method com/mrcrayfish/framework/api/registry/RegistryEntry.get:()Ljava/lang/Object;
+      29: if_acmpne     33
+      32: return
+      33: invokestatic  #243                // Method com/mrcrayfish/backpacked/client/gui/screen/widget/BackpackButtons.builder:()Lcom/mrcrayfish/framework/api/client/screen/widget/FrameworkButton$Builder;
+      36: aload         6
+      38: invokestatic  #248                // Method com/mrcrayfish/backpacked/client/AugmentIcons.get:(Lcom/mrcrayfish/backpacked/common/augment/AugmentType;)Lcom/mrcrayfish/framework/api/client/screen/widget/texture/FrameworkTexture;
+      41: invokevirtual #252                // Method com/mrcrayfish/framework/api/client/screen/widget/FrameworkButton$Builder.setIcon:(Lcom/mrcrayfish/framework/api/client/screen/widget/element/Icon;)Lcom/mrcrayfish/framework/api/client/screen/widget/FrameworkButton$Builder;
+      44: aload         6
+      46: aload_2
+      47: invokedynamic #263,  0            // InvokeDynamic #1:get:(Lcom/mrcrayfish/backpacked/common/augment/AugmentType;Ljava/util/function/Supplier;)Ljava/util/function/Supplier;
+      52: invokevirtual #267                // Method com/mrcrayfish/framework/api/client/screen/widget/FrameworkButton$Builder.setDependent:(Ljava/util/function/Supplier;)Lcom/mrcrayfish/framework/api/client/screen/widget/FrameworkButton$Builder;
+      55: aload_0
+      56: aload         6
+      58: aload_2
+      59: aload_3
+      60: invokedynamic #277,  0            // InvokeDynamic #2:accept:(Lcom/mrcrayfish/backpacked/client/gui/screen/widget/AugmentPopupMenu;Lcom/mrcrayfish/backpacked/common/augment/AugmentType;Ljava/util/function/Supplier;Ljava/util/function/Consumer;)Ljava/util/function/Consumer;
+      65: invokevirtual #281                // Method com/mrcrayfish/framework/api/client/screen/widget/FrameworkButton$Builder.setAction:(Ljava/util/function/Consumer;)Lcom/mrcrayfish/framework/api/client/screen/widget/FrameworkButton$Builder;
+      68: aload         6
+      70: invokedynamic #294,  0            // InvokeDynamic #3:apply:(Lcom/mrcrayfish/backpacked/common/augment/AugmentType;)Ljava/util/function/Function;
+      75: invokevirtual #298                // Method com/mrcrayfish/framework/api/client/screen/widget/FrameworkButton$Builder.setTooltip:(Ljava/util/function/Function;)Lcom/mrcrayfish/framework/api/client/screen/widget/FrameworkButton$Builder;
+      78: iconst_2
+      79: invokevirtual #302                // Method com/mrcrayfish/framework/api/client/screen/widget/FrameworkButton$Builder.setTooltipOptions:(I)Lcom/mrcrayfish/framework/api/client/screen/widget/FrameworkButton$Builder;
+      82: invokevirtual #306                // Method com/mrcrayfish/framework/api/client/screen/widget/FrameworkButton$Builder.build:()Lcom/mrcrayfish/framework/api/client/screen/widget/FrameworkButton;
+      85: astore        7
+      87: aload         7
+      89: aload         6
+      91: invokevirtual #310                // Method com/mrcrayfish/backpacked/common/augment/AugmentType.name:()Lnet/minecraft/network/chat/Component;
+      94: invokestatic  #316                // Method net/minecraft/client/gui/components/Tooltip.m_257550_:(Lnet/minecraft/network/chat/Component;)Lnet/minecraft/client/gui/components/Tooltip;
+      97: invokevirtual #320                // Method com/mrcrayfish/framework/api/client/screen/widget/FrameworkButton.m_257544_:(Lnet/minecraft/client/gui/components/Tooltip;)V
+     100: aload         4
+     102: invokevirtual #323                // Method java/util/concurrent/atomic/AtomicInteger.getAndIncrement:()I
+     105: istore        8
+     107: aload         5
+     109: aload         7
+     111: iload         8
+     113: bipush        6
+     115: idiv
+     116: iload         8
+     118: bipush        6
+     120: irem
+     121: invokevirtual #327                // Method net/minecraft/client/gui/layouts/GridLayout.m_264379_:(Lnet/minecraft/client/gui/layouts/LayoutElement;II)Lnet/minecraft/client/gui/layouts/LayoutElement;
+     124: pop
+     125: return
+
+  private static net.minecraft.client.gui.components.Tooltip lambda$new$2(com.mrcrayfish.backpacked.common.augment.AugmentType, com.mrcrayfish.framework.api.client.screen.widget.FrameworkButton);
+    Code:
+       0: new           #334                // class java/util/ArrayList
+       3: dup
+       4: invokespecial #335                // Method java/util/ArrayList."<init>":()V
+       7: astore_2
+       8: aload_2
+       9: aload_0
+      10: invokevirtual #310                // Method com/mrcrayfish/backpacked/common/augment/AugmentType.name:()Lnet/minecraft/network/chat/Component;
+      13: invokeinterface #339,  1          // InterfaceMethod net/minecraft/network/chat/Component.m_6879_:()Lnet/minecraft/network/chat/MutableComponent;
+      18: getstatic     #345                // Field net/minecraft/ChatFormatting.BLUE:Lnet/minecraft/ChatFormatting;
+      21: invokevirtual #351                // Method net/minecraft/network/chat/MutableComponent.m_130940_:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+      24: invokeinterface #356,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      29: pop
+      30: aload_0
+      31: invokevirtual #360                // Method com/mrcrayfish/backpacked/common/augment/AugmentType.requires:()Ljava/util/function/Supplier;
+      34: invokeinterface #363,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      39: checkcast     #86                 // class com/mrcrayfish/backpacked/common/augment/AugmentType
+      42: astore_3
+      43: aload_3
+      44: ifnull        77
+      47: aload_2
+      48: ldc_w         #365                // String backpacked.gui.requires_augment
+      51: iconst_1
+      52: anewarray     #367                // class java/lang/Object
+      55: dup
+      56: iconst_0
+      57: aload_3
+      58: invokevirtual #310                // Method com/mrcrayfish/backpacked/common/augment/AugmentType.name:()Lnet/minecraft/network/chat/Component;
+      61: aastore
+      62: invokestatic  #371                // InterfaceMethod net/minecraft/network/chat/Component.m_237110_:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+      65: getstatic     #374                // Field net/minecraft/ChatFormatting.LIGHT_PURPLE:Lnet/minecraft/ChatFormatting;
+      68: invokevirtual #351                // Method net/minecraft/network/chat/MutableComponent.m_130940_:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+      71: invokeinterface #356,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      76: pop
+      77: aload_0
+      78: invokevirtual #378                // Method com/mrcrayfish/backpacked/common/augment/AugmentType.isEmpty:()Z
+      81: ifne          210
+      84: aload_0
+      85: invokevirtual #381                // Method com/mrcrayfish/backpacked/common/augment/AugmentType.description:()Lnet/minecraft/network/chat/Component;
+      88: invokeinterface #385,  1          // InterfaceMethod net/minecraft/network/chat/Component.getString:()Ljava/lang/String;
+      93: astore        4
+      95: aload         4
+      97: ldc_w         #387                // String \n
+     100: invokevirtual #393                // Method java/lang/String.indexOf:(Ljava/lang/String;)I
+     103: istore        5
+     105: invokestatic  #398                // Method net/minecraft/client/gui/screens/Screen.m_96638_:()Z
+     108: ifne          135
+     111: iload         5
+     113: iconst_m1
+     114: if_icmpeq     135
+     117: aload         4
+     119: iconst_0
+     120: iload         5
+     122: invokevirtual #402                // Method java/lang/String.substring:(II)Ljava/lang/String;
+     125: invokedynamic #414,  0            // InvokeDynamic #4:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     130: astore        4
+     132: goto          153
+     135: aload         4
+     137: ldc_w         #387                // String \n
+     140: ldc_w         #416                // String \n�
+     143: invokevirtual #420                // Method java/lang/String.replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+     146: invokedynamic #414,  0            // InvokeDynamic #4:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     151: astore        4
+     153: aload_2
+     154: aload         4
+     156: invokestatic  #423                // InterfaceMethod net/minecraft/network/chat/Component.m_237113_:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     159: getstatic     #426                // Field net/minecraft/ChatFormatting.GRAY:Lnet/minecraft/ChatFormatting;
+     162: invokevirtual #351                // Method net/minecraft/network/chat/MutableComponent.m_130940_:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     165: invokeinterface #356,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     170: pop
+     171: invokestatic  #398                // Method net/minecraft/client/gui/screens/Screen.m_96638_:()Z
+     174: ifne          210
+     177: iload         5
+     179: iconst_m1
+     180: if_icmpeq     210
+     183: aload_2
+     184: getstatic     #432                // Field com/mrcrayfish/backpacked/client/gui/screen/inventory/BackpackScreen.HOLD_TO_EXPAND:Ljava/util/function/Function;
+     187: invokestatic  #437                // Method com/mrcrayfish/backpacked/util/ScreenUtil.getShiftIcon:()Lnet/minecraft/network/chat/Component;
+     190: invokeinterface #441,  2          // InterfaceMethod java/util/function/Function.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+     195: checkcast     #347                // class net/minecraft/network/chat/MutableComponent
+     198: getstatic     #444                // Field net/minecraft/ChatFormatting.DARK_GRAY:Lnet/minecraft/ChatFormatting;
+     201: invokevirtual #351                // Method net/minecraft/network/chat/MutableComponent.m_130940_:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     204: invokeinterface #356,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     209: pop
+     210: invokestatic  #138                // Method net/minecraft/client/Minecraft.m_91087_:()Lnet/minecraft/client/Minecraft;
+     213: getfield      #448                // Field net/minecraft/client/Minecraft.f_91066_:Lnet/minecraft/client/Options;
+     216: getfield      #453                // Field net/minecraft/client/Options.f_92125_:Z
+     219: ifeq          245
+     222: aload_2
+     223: aload_0
+     224: invokevirtual #219                // Method com/mrcrayfish/backpacked/common/augment/AugmentType.id:()Lnet/minecraft/resources/ResourceLocation;
+     227: invokevirtual #458                // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+     230: invokestatic  #423                // InterfaceMethod net/minecraft/network/chat/Component.m_237113_:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     233: getstatic     #444                // Field net/minecraft/ChatFormatting.DARK_GRAY:Lnet/minecraft/ChatFormatting;
+     236: invokevirtual #351                // Method net/minecraft/network/chat/MutableComponent.m_130940_:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     239: invokeinterface #356,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     244: pop
+     245: aload_2
+     246: invokestatic  #462                // Method com/mrcrayfish/backpacked/util/ScreenUtil.createMultilineTooltip:(Ljava/util/List;)Lnet/minecraft/client/gui/components/Tooltip;
+     249: areturn
+
+  private void lambda$new$1(com.mrcrayfish.backpacked.common.augment.AugmentType, java.util.function.Supplier, java.util.function.Consumer, com.mrcrayfish.framework.api.client.screen.widget.FrameworkButton);
+    Code:
+       0: aload_1
+       1: invokevirtual #378                // Method com/mrcrayfish/backpacked/common/augment/AugmentType.isEmpty:()Z
+       4: ifne          23
+       7: aload_2
+       8: invokeinterface #363,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      13: checkcast     #473                // class com/mrcrayfish/backpacked/common/augment/Augments
+      16: aload_1
+      17: invokevirtual #477                // Method com/mrcrayfish/backpacked/common/augment/Augments.has:(Lcom/mrcrayfish/backpacked/common/augment/AugmentType;)Z
+      20: ifne          45
+      23: aload_3
+      24: aload_1
+      25: invokevirtual #480                // Method com/mrcrayfish/backpacked/common/augment/AugmentType.defaultSupplier:()Ljava/util/function/Supplier;
+      28: invokeinterface #363,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      33: checkcast     #482                // class com/mrcrayfish/backpacked/common/augment/Augment
+      36: invokeinterface #486,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      41: aload_0
+      42: invokevirtual #489                // Method deepClose:()V
+      45: return
+
+  private static java.lang.Boolean lambda$new$0(com.mrcrayfish.backpacked.common.augment.AugmentType, java.util.function.Supplier);
+    Code:
+       0: aload_0
+       1: invokevirtual #378                // Method com/mrcrayfish/backpacked/common/augment/AugmentType.isEmpty:()Z
+       4: ifne          23
+       7: aload_1
+       8: invokeinterface #363,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      13: checkcast     #473                // class com/mrcrayfish/backpacked/common/augment/Augments
+      16: aload_0
+      17: invokevirtual #477                // Method com/mrcrayfish/backpacked/common/augment/Augments.has:(Lcom/mrcrayfish/backpacked/common/augment/AugmentType;)Z
+      20: ifne          27
+      23: iconst_1
+      24: goto          28
+      27: iconst_0
+      28: invokestatic  #495                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      31: areturn
+}

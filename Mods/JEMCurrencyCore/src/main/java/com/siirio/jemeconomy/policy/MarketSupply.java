@@ -31,6 +31,7 @@ public final class MarketSupply {
 
     /** Presentation filter over admitted stock; never admits goods or changes buyback policy. */
     public static boolean matchesCategory(Listing listing, String category) {
+        if (category.startsWith("building")) return listing.policy().bulk1024() != null;
         if (!java.util.Set.of("blocks","food","plants","resources","drops").contains(category)) return false;
         if (!category.equals("plants")) return listing.policy().marketCategory().name().equalsIgnoreCase(category);
         try {
@@ -102,9 +103,10 @@ public final class MarketSupply {
     }
 
     private static ItemPolicy policy(ItemStack stack) {
-        if (TradeRestrictions.marketProhibited(stack)) return null;
         var id = ForgeRegistries.ITEMS.getKey(stack.getItem());
         var existing = ItemPolicyRegistry.policy(id);
+        if (existing.sellable() && !TradeRestrictions.saleProhibited(stack)) return existing;
+        if (TradeRestrictions.marketProhibited(stack)) return null;
         if (existing.buyable()) return existing;
         Long price = PRICES.get(id);
         if (price == null || !building(stack)) return null;

@@ -14,9 +14,8 @@ public final class CoinTradeRaceBridge {
     @SubscribeEvent public static void quote(CoinTradePriceEvent event) {
         var player = event.player();
         if (RaceApi.hasRace(player, RaceId.ANCESTORS)) {
-            long amount = event.copper();
-            // Exact integer-currency 20% discount, applied once to the authoritative quote.
-            event.setCopper(Math.max(1L, amount - amount / 5L));
+            // Keep the full offer rational until final settlement rounding.
+            event.discountPercent(20);
         }
     }
 }

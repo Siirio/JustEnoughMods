@@ -4,31 +4,10 @@ The runtime owner is the single `ItemPolicyRegistry`: only `BUY_AND_SELL` suppli
 
 ## Current reviewed protected endpoints
 
-- `alexsmobs:cooked_catfish`
-- `aquamirae:cooked_spinefish`
-- `bakery:apple_cupcake`
-- `bakery:baguette`
-- `bakery:bun`
-- `beachparty:cooked_mussel_meat`
-- `cnc:cooked_game`
-- `cnc:cooked_venison`
 - `kaleidoscope_cookery:apple_platter`
-- `kaleidoscope_cookery:baozi`
-- `minecraft:baked_potato`
-- `minecraft:bread`
-- `minecraft:cobblestone`
-- `minecraft:cooked_beef`
-- `minecraft:cooked_cod`
-- `minecraft:cooked_salmon`
 - `minecraft:emerald`
 - `minecraft:netherrack`
 - `minecraft:red_sand`
-- `minecraft:rotten_flesh`
-- `minecraft:sand`
-- `minecraft:stone`
-- `oceanicrealms:cooked_mackerel_fish`
-- `primal:apple_fritter`
-- `primal:cooked_venison`
 
 ## Evidence boundary
 

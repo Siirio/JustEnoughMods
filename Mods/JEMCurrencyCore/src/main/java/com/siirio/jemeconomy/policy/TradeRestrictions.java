@@ -36,9 +36,18 @@ public final class TradeRestrictions {
                 .anyMatch(tag -> block.getBlock().defaultBlockState().is(TagKey.create(Registries.BLOCK, new ResourceLocation(tag))));
     }
 
+    /** Explicit reviewed sell policies relax only former broad ore/Create exclusions. */
+    public static boolean saleProhibited(ItemStack stack) {
+        if (stack.isEmpty()) return true;
+        var id = ForgeRegistries.ITEMS.getKey(stack.getItem());
+        if (id == null || ITEMS.contains(id.toString()) || PREFIXES.stream().anyMatch(id.getPath()::startsWith)
+                || id.getPath().endsWith("_trophy")) return true;
+        return !ItemPolicyRegistry.policy(id).sellable();
+    }
+
     public static boolean marketProhibited(ItemStack stack) {
         var id = ForgeRegistries.ITEMS.getKey(stack.getItem());
-        return id == null || MARKET_NAMESPACES.contains(id.getNamespace()) || npcProhibited(stack);
+        return id == null || (MARKET_NAMESPACES.contains(id.getNamespace()) && !ItemPolicyRegistry.policy(id).buyable()) || npcProhibited(stack);
     }
 
     public static boolean offerProhibited(MerchantOffer offer) { return npcProhibited(offer.getResult()); }

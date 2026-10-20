@@ -1,0 +1,79 @@
+{
+  "schema_version": 2,
+  "change_id": "client.curated-key-preset",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "*",
+      "value": "*"
+    }
+  ],
+  "precedence": {
+    "layer": "native_mod_extensions",
+    "priority": 40
+  },
+  "change": {
+    "summary": "Key-only user layout with M/V/B/F6 and native modifier conflict resolution; clean-first-use or explicit one-time preview/apply.",
+    "modifiers": [
+      {
+        "property": "client.curated-key-preset",
+        "operation": "replace",
+        "before": "Native defaults and user key_ rows; no JEM preset consumer.",
+        "after": "Only real registered actions are applied from source-owned curated key map; no non-key profile settings. Existing profiles require /jemkeys preview/apply. Separate local receipt prevents update resets."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCompat client input",
+    "kind": "source",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/CuratedKeyPreset.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/OptionsKeyRetentionMixin.java",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_keys.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Preserve the user key map while keeping primary race/map actions accessible.",
+    "decision_source": "User2026-10-20 shipping/economy full handoff tasks8/13 and explicit compass investigation; concrete adapter choices by Codex."
+  },
+  "introduced": {
+    "date": "2026-10-20",
+    "commit": "SELF",
+    "action": "implement_requested_owner_correction",
+    "summary": "Key-only user layout with M/V/B/F6 and native modifier conflict resolution; clean-first-use or explicit one-time preview/apply.",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/CuratedKeyPreset.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/OptionsKeyRetentionMixin.java",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_keys.json"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "implement_requested_owner_correction",
+      "summary": "Key-only user layout with M/V/B/F6 and native modifier conflict resolution; clean-first-use or explicit one-time preview/apply.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/CuratedKeyPreset.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/OptionsKeyRetentionMixin.java",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_keys.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "native KeyMapping registry",
+      "Forge modifiers",
+      "options serialization",
+      "client-only commands"
+    ],
+    "relations": [],
+    "notes": [
+      "Exact installed-source inspection and same-task Atlas lookup/scan precede implementation."
+    ],
+    "unresolved": [
+      "No game launch: actual input ergonomics/context acceptance remains pending."
+    ]
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "schema_version": 2,
+  "change_id": "settlements.native-page-art-integration",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:villager"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:iron_golem"
+    },
+    {
+      "type": "namespace",
+      "registry": "entities",
+      "value": "recruits"
+    }
+  ],
+  "conditions": [
+    {
+      "scope": "JEM-owned SettlementScreen on compatible dedicated server; visual acceptance pending"
+    }
+  ],
+  "precedence": {
+    "layer": "settlement_presentation",
+    "priority": 170
+  },
+  "change": {
+    "summary": "Integrate reusable Aseprite materials and native16 indicators into all live states without mockup data or duplicated authority.",
+    "modifiers": [
+      {
+        "property": "settlements.dashboard.materials",
+        "operation": "replace",
+        "before": "Dashboard-only materials and general item placeholders; external Aseprite candidate unbound.",
+        "after": "Aseprite-native masonry, paper, wood and button regions at actual widget bounds; distinct needs and resident icons. Native item/entity/coin owners retained."
+      },
+      {
+        "property": "settlements.dashboard.layout",
+        "operation": "replace",
+        "before": "Four summary cells at all widths; repeated roster-width expressions; duplicate denomination loop.",
+        "after": "Two columns at narrow width with matching scroll origin; common roster geometry; canonical price renderer. Search, automatic name order, payroll and native management preserved."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMSettlements.client",
+    "kind": "explicit_user_requested_native_ui_integration",
+    "source_files": [
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementDashboardArt.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementPageArt.java",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/pages/icon-chest.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/pages/icon-comfort.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/pages/icon-community.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/pages/icon-happiness.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/pages/icon-housing.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/pages/icon-jobs.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/pages/icon-oak_stairs.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/pages/icon-red_bed.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/pages/icon-residents.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/pages/icon-safety.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/pages/icon-satiety.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/pages/icon-shield.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/pages/icon-unhappy.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/pages/materials.png",
+      "Docs/settlements/standalone/GUI_SPEC.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Use supplied native page/icon materials in functional screens preserving earlier family.",
+    "decision_source": "User task10 execution request for all page states, semantic icons, live search and recruit debt access.",
+    "codex_choices": "Compose clean material regions into responsive bounds instead of drawing baked mockup controls; preserve blue/gold sculpted selection."
+  },
+  "introduced": {
+    "date": "2026-10-20",
+    "commit": "SELF",
+    "action": "integrate_native_page_materials",
+    "summary": "Bind Aseprite-native page materials and semantic icons to the real responsive Screen, preserving authoritative actions."
+  },
+  "history": [
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "integrate_native_page_materials",
+      "summary": "Bind Aseprite-native page materials and semantic icons to the real responsive Screen, preserving authoritative actions."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "settlement_client_presentation",
+      "resident_roster",
+      "recruit_payroll_ui",
+      "treasury_presentation",
+      "shared_storage_view",
+      "guide_navigation"
+    ],
+    "relations": [
+      "Server snapshot -> existing live Screen -> authoritative request transport",
+      "Aseprite export -> SettlementPageArt regions -> actual widget bounds"
+    ],
+    "notes": [
+      "No gameplay, codec, persistence, native trade, Xaero or native recruit menu changes.",
+      "No AI production textures, city isometry or removed header controls.",
+      "All37 candidate states use shared materials and live data; candidate positions are not blindly blitted."
+    ],
+    "unresolved": [
+      "Runtime visual acceptance pending. Build and native publication owned by parent delivery."
+    ]
+  }
+}

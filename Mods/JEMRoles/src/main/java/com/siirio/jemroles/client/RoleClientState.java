@@ -26,17 +26,24 @@ public final class RoleClientState {
     private static final KeyMapping UTILITY = new KeyMapping("key.jem_roles.utility", InputConstants.Type.KEYSYM,
             InputConstants.KEY_B, "key.categories.jem_roles");
     private static boolean utilityHeld;
+    private static net.minecraft.client.multiplayer.ClientPacketListener connection;
+    private static boolean pendingOpen;
 
     private RoleClientState() {}
 
     public static void accept(RaceStatusPacket packet) {
         if (net.minecraftforge.fml.ModList.get().isLoaded("jem_visual_sandbox")) return;
+        var currentConnection = Minecraft.getInstance().getConnection();
+        if (connection != currentConnection) { connection=currentConnection; status=null; pendingOpen=false; utilityHeld=false; }
         boolean firstSelection = status != null && !status.selected() && packet.selected();
         status = packet;
         if (packet.selected() && net.minecraftforge.fml.ModList.get().isLoaded("irons_spellbooks")) {
             com.siirio.jemroles.compat.irons.RacialSpellBridge.refreshClient(firstSelection);
         }
-        if (packet.open()) Minecraft.getInstance().setScreen(new RaceSelectionScreen(packet));
+        var minecraft = Minecraft.getInstance();
+        if (firstSelection && !packet.open()) pendingOpen = false;
+        if (minecraft.screen instanceof RaceSelectionScreen screen) { pendingOpen = false; screen.accept(packet); }
+        else if (packet.open()) pendingOpen = true;
     }
 
     public static com.siirio.jemroles.race.RaceId race() { return status != null && status.selected() ? status.race() : null; }
@@ -56,6 +63,12 @@ public final class RoleClientState {
     @SubscribeEvent
     public static void tick(TickEvent.ClientTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
+        if (net.minecraftforge.fml.ModList.get().isLoaded("jem_visual_sandbox")) return;
+        var minecraft = Minecraft.getInstance();
+        if (connection != minecraft.getConnection()) { connection=minecraft.getConnection(); status=null; pendingOpen=false; utilityHeld=false; }
+        if (pendingOpen && status!=null && minecraft.player!=null && minecraft.level!=null && minecraft.screen==null) {
+            pendingOpen=false; minecraft.setScreen(new RaceSelectionScreen(status));
+        }
         while (SIGNATURE.consumeClick()) {
             // Iron's native selected-spell cast also defaults to V. One physical press has one owner.
             boolean nativeCast = net.minecraftforge.fml.ModList.get().isLoaded("irons_spellbooks")
