@@ -244,8 +244,10 @@ public final class SmpViews {
                 member = SmpRecords.member(row, player.getUUID());
         boolean closed = SmpData.closed(row);
         if (table.equals("profiles")) {
-            if (owner) add(result, "wallet", "death_history", "settlements", "roles", "professions");
-            else add(result, "message", "tpa", "invite", "view_shops", "settlements");
+            if (owner) {
+                add(result, "wallet", "death_history", "settlements", "roles");
+                if (net.minecraftforge.fml.ModList.get().isLoaded("jem_professions")) add(result, "professions");
+            } else add(result, "message", "tpa", "invite", "view_shops", "settlements");
             return result;
         }
         if (!closed && table.equals("parties") && !row.getString("state").equals("ACTIVE")) {

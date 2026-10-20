@@ -441,3 +441,8 @@ permanently subtract mood. Bed privacy is a native sleep eligibility condition.
 Matching production client/server Settlements protocol10 carries localized reasons
 and entity-linked refusal. Both source profiles include the same complete GUI and
 localization resources; only the explicit sandbox profile enables integrated gameplay.
+
+
+## Local module distribution — 2026-10-20
+
+The user explicitly requested removal from `test jem` and confirmed removal from local ManagedPack/server. `jem-professions-1.0.0.jar`, its otherwise unused mandatory `puffish_skills` dependency, the JEM professions datapack/config and its FTB guide chapter are removed from this distribution. Native AutoModpack owns client deletions. JEMServer hides the sidebar/profile module action and isolates optional API linkage. JEMProfessions source and historical world/player progression are retained as inactive history; ordinary villager professions are unaffected. Stable client, MineRENT and release baseline are unchanged. This later explicit request supersedes the earlier approved concept's Professions navigation label for this distribution.

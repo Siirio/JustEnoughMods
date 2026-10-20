@@ -1,0 +1,228 @@
+{
+  "schema_version": 2,
+  "change_id": "gui.crafted-settlements-smp-20261020",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:villager"
+    },
+    {
+      "type": "namespace",
+      "registry": "entities",
+      "value": "recruits"
+    },
+    {
+      "type": "category",
+      "registry": "*",
+      "value": "jem_smp_presentation"
+    }
+  ],
+  "conditions": [
+    {
+      "scope": "Client presentation of existing JEM-owned Settlements and SMP menus; server state/actions unchanged."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_client_presentation",
+    "priority": 180
+  },
+  "change": {
+    "summary": "User-approved illustrated Settlements/SMP concept implemented with separate generated icons/covers and exact Aseprite exports; current gameplay/action owners preserved.",
+    "modifiers": [
+      {
+        "property": "gui.crafted_material_family",
+        "operation": "replace",
+        "before": "24px dashboard materials and flat SMP panels/icon covers",
+        "after": {
+          "materials": "64x64, fixed 8px corners with repeated 48px centers",
+          "icons": "32 separate 32x32 PNGs",
+          "covers": "six separate 384x192 event illustrations",
+          "settlements": "Existing four sections with actual resident previews, needs, treasury and storage",
+          "smp": "Existing events navigation, landscape list and selected detail, real actions and state"
+        },
+        "notes": "No changed formulas, entities, registries, item behavior, event availability, network or payment authority."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMSettlements client and JEMServer client; Aseprite production exports",
+    "kind": "authored_gui_presentation",
+    "source_files": [
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpActionButton.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpGuiAssets.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpSidebar.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementDashboardArt.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/card.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/control.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/control_disabled.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/control_hover.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/control_selected.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/covers/blood_moon.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/covers/boss_raid.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/covers/cooking_show.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/covers/fishing.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/covers/resource_rush.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/covers/seasonal.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/dark_frame.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/back.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/blood_moon.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/boss.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/calendar.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/events.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/map.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/market.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/parties.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/players.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/professions.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/profile.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/resource_rush.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/rewards.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/roles.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/search.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/settlements.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/ornaments/banner.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/ornaments/lantern.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/ornaments/vine.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/paper_frame.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/stone_frame.png",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/wood_frame.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/card.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/control.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/control_disabled.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/control_hover.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/control_selected.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/dark_frame.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/back.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/bread.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/check.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/chests.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/coins.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/development.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/happiness.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/home.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/lantern.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/mood_happy.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/mood_neutral.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/mood_sad.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/residents.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/search.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/settlement.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/warning.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/paper_frame.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/stone_frame.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/treasury.png",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/wood_frame.png"
+    ]
+  },
+  "rationale": {
+    "purpose": "Apply the visual concepts explicitly selected by the user and construct functional interfaces from separate assets.",
+    "decision_source": "User: Yeeees, very good. Implement such style now fully; Icons generated as seperate assets; Images; At the end just construct and use them. Codex chose asset dimensions, atlas decomposition, geometry remapping, precise edge cleanup and responsive layout."
+  },
+  "introduced": {
+    "date": "2026-10-20",
+    "commit": "SELF",
+    "action": "replace",
+    "summary": "User-approved illustrated Settlements/SMP concept implemented with separate generated icons/covers and exact Aseprite exports; current gameplay/action owners preserved."
+  },
+  "history": [
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "replace",
+      "summary": "User-approved illustrated Settlements/SMP concept implemented with separate generated icons/covers and exact Aseprite exports; current gameplay/action owners preserved.",
+      "source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpActionButton.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpGuiAssets.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpSidebar.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementDashboardArt.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/card.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/control.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/control_disabled.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/control_hover.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/control_selected.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/covers/blood_moon.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/covers/boss_raid.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/covers/cooking_show.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/covers/fishing.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/covers/resource_rush.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/covers/seasonal.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/dark_frame.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/back.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/blood_moon.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/boss.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/calendar.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/events.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/map.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/market.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/parties.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/players.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/professions.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/profile.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/resource_rush.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/rewards.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/roles.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/search.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/icons/settlements.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/ornaments/banner.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/ornaments/lantern.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/ornaments/vine.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/paper_frame.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/stone_frame.png",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/crafted/wood_frame.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/card.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/control.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/control_disabled.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/control_hover.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/control_selected.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/dark_frame.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/back.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/bread.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/check.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/chests.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/coins.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/development.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/happiness.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/home.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/lantern.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/mood_happy.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/mood_neutral.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/mood_sad.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/residents.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/search.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/settlement.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/icons/warning.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/paper_frame.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/stone_frame.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/treasury.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/crafted/wood_frame.png"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "settlements_gui",
+      "smp_events_gui",
+      "shared_smp_controls",
+      "client_asset_exports"
+    ],
+    "relations": [
+      "Existing server-owned snapshots, ACK/actions and event queries",
+      "Native live entity/item rendering",
+      "Local native AutoModpack generation"
+    ],
+    "notes": [
+      "Visual-only; base registry facts unchanged.",
+      "User approved concept direction, not an observed in-game rendering.",
+      "Native merchant, recruitment, Xaero and unrelated race/profession screens retain their own interfaces."
+    ],
+    "unresolved": [
+      "WAITING_FOR_REAL_GAME_CAPTURE: no client launch/gameplay capture authorized."
+    ]
+  }
+}

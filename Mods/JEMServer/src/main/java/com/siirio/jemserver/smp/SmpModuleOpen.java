@@ -12,7 +12,15 @@ public record SmpModuleOpen(Module module) {
     void open(ServerPlayer player) {
         switch (module) {
             case ROLES -> com.siirio.jemroles.api.RaceApi.openScreen(player);
-            case PROFESSIONS -> com.siirio.jemprofessions.api.ProfessionApi.openScreen(player);
+            case PROFESSIONS -> {
+                if (net.minecraftforge.fml.ModList.get().isLoaded("jem_professions")) ProfessionsAdapter.open(player);
+            }
+        }
+    }
+
+    private static final class ProfessionsAdapter {
+        private static void open(ServerPlayer player) {
+            com.siirio.jemprofessions.api.ProfessionApi.openScreen(player);
         }
     }
 }

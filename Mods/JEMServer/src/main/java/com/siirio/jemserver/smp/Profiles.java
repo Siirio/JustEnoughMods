@@ -101,17 +101,14 @@ public final class Profiles {
                     player.getStats().getValue(net.minecraft.stats.Stats.CUSTOM.get(net.minecraft.stats.Stats.MOB_KILLS)));
         else if (source.contains("mobsKilled")) row.putInt("mobsKilled", source.getInt("mobsKilled"));
         com.siirio.jemroles.api.RaceApi.get(viewer.server, id).ifPresent(race -> row.putString("race", race.race().name()));
-        var professions = source.getList("professions", net.minecraft.nbt.Tag.TAG_COMPOUND).copy();
-        if (player != null) {
-            professions.clear();
-            for (var profession : com.siirio.jemprofessions.progress.ProfessionId.values()) {
-                long xp = com.siirio.jemprofessions.api.ProfessionApi.xp(player, profession);
-                if (xp <= 0L) continue;
-                var value = new CompoundTag(); value.putString("id", profession.name()); value.putLong("xp", xp);
-                value.putInt("level", com.siirio.jemprofessions.api.ProfessionApi.level(player, profession)); professions.add(value);
+        var professions = new net.minecraft.nbt.ListTag();
+        if (net.minecraftforge.fml.ModList.get().isLoaded("jem_professions")) {
+            professions = source.getList("professions", net.minecraft.nbt.Tag.TAG_COMPOUND).copy();
+            if (player != null) {
+                professions = ProfessionsAdapter.snapshot(player);
+                source.put("professions", professions.copy());
+                SmpData.get(viewer.server).changed(source);
             }
-            source.put("professions", professions.copy());
-            SmpData.get(viewer.server).changed(source);
         }
         row.put("professions", professions);
         var settlements = com.siirio.jemsettlements.town.SettlementSavedData.get(viewer.server);
@@ -123,6 +120,22 @@ public final class Profiles {
                 .filter(record -> record.ownerId().equals(id) && record.type() == com.siirio.jemsettlements.workforce.WorkforceType.RECRUIT).count();
         row.putLong("recruitCount", recruits);
         return row;
+    }
+
+    private static final class ProfessionsAdapter {
+        private static net.minecraft.nbt.ListTag snapshot(net.minecraft.server.level.ServerPlayer player) {
+            var professions = new net.minecraft.nbt.ListTag();
+            for (var profession : com.siirio.jemprofessions.progress.ProfessionId.values()) {
+                long xp = com.siirio.jemprofessions.api.ProfessionApi.xp(player, profession);
+                if (xp <= 0L) continue;
+                var value = new CompoundTag();
+                value.putString("id", profession.name());
+                value.putLong("xp", xp);
+                value.putInt("level", com.siirio.jemprofessions.api.ProfessionApi.level(player, profession));
+                professions.add(value);
+            }
+            return professions;
+        }
     }
 
     private Profiles() {}

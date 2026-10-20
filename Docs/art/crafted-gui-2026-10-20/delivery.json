@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-20",
+  "builds": [
+    {
+      "module": "JEMServer",
+      "artifact": "Mods/JEMServer/build/libs/jem-server-2.0.0-dev.jar",
+      "sha256": "57d427a3d300c203e7bb874f3dd3ee643edb44f10164d74fc65b88c8c6eed489",
+      "crafted_pngs": 34,
+      "full_jarJar_reobfuscated": true,
+      "managed_sha256": "57d427a3d300c203e7bb874f3dd3ee643edb44f10164d74fc65b88c8c6eed489",
+      "server_sha256": "57d427a3d300c203e7bb874f3dd3ee643edb44f10164d74fc65b88c8c6eed489",
+      "installed_sha256": "57d427a3d300c203e7bb874f3dd3ee643edb44f10164d74fc65b88c8c6eed489"
+    },
+    {
+      "module": "JEMSettlements",
+      "artifact": "Mods/JEMSettlements/build/libs/jem-settlements-2.1.0.jar",
+      "sha256": "e20083a5ef672d958bc2f7c210424f493d9e92573dc33fb17a9f731875c51661",
+      "crafted_pngs": 26,
+      "full_jarJar_reobfuscated": true,
+      "managed_sha256": "e20083a5ef672d958bc2f7c210424f493d9e92573dc33fb17a9f731875c51661",
+      "server_sha256": "e20083a5ef672d958bc2f7c210424f493d9e92573dc33fb17a9f731875c51661",
+      "installed_sha256": "e20083a5ef672d958bc2f7c210424f493d9e92573dc33fb17a9f731875c51661"
+    }
+  ],
+  "runtime_visual_state": "WAITING_FOR_REAL_GAME_CAPTURE",
+  "client_launched": false,
+  "tests_run": false,
+  "unrelated_source_preserved": [
+    "NobleQuotePacket.java",
+    "RecruitRank.java",
+    "SettlementSavedData.java"
+  ],
+  "delivered_local": "2026-10-20T12:14:39.428210+05:00",
+  "publication": {
+    "content_token": "444dd7fe425c7c60626ab23bdb91b1933ff86e1e",
+    "installed_active_token": "444dd7fe425c7c60626ab23bdb91b1933ff86e1e",
+    "test_profile": "test jem",
+    "native_commit": true,
+    "no_pending_transaction": true
+  },
+  "professions_removed": [
+    "jem-professions-1.0.0.jar",
+    "puffish_skills-0.19.2-1.20-forge.jar"
+  ],
+  "atlas": {
+    "validation": true,
+    "task_paths_covered": true,
+    "preexisting_unrelated_uncovered_paths": 6,
+    "original_registry_facts_preserved": true
+  },
+  "manual_review": "GUI and optional Professions-adapter source reviewed; confirmed findings corrected."
+}

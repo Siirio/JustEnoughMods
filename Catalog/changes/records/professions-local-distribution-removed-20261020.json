@@ -1,0 +1,138 @@
+{
+  "schema_version": 2,
+  "change_id": "professions.local-distribution-removed-20261020",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "category",
+      "registry": "*",
+      "value": "jem_professions_local_distribution"
+    }
+  ],
+  "precedence": {
+    "layer": "jem_pack_distribution",
+    "priority": 900
+  },
+  "change": {
+    "summary": "User explicitly removes Professions from test jem and the local managed pack/server; retained sources and historical player data are inactive.",
+    "modifiers": [
+      {
+        "property": "professions.local_distribution",
+        "operation": "deny",
+        "before": "jem-professions and puffish_skills plus profession pack data installed in ordinary local Server and ManagedPack",
+        "after": "Both modules and owned profession datapack/config/guide chapter removed; native AutoModpack applies deletions to test jem. Sidebar/profile actions absent; old saved records retained.",
+        "notes": "No source deletion or stable/MineRENT/baseline change."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "ManagedPack distribution and optional JEMServer module adapters",
+    "kind": "user_requested_distribution_removal",
+    "source_files": [
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpSidebar.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Profiles.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViews.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpModuleOpen.java",
+      "tools/jem.py"
+    ]
+  },
+  "rationale": {
+    "purpose": "Remove professions from the requested development client and local distribution without next-sync restoration.",
+    "decision_source": "User: remove professions as well from jem test; explicit clarification: Remove from test jem and local managed pack. Codex removes now-unused Pufferfish dependency after exact installed mandatory-dependency inspection and guards optional module references."
+  },
+  "introduced": {
+    "date": "2026-10-20",
+    "commit": "SELF",
+    "action": "remove",
+    "summary": "User explicitly removes Professions from test jem and the local managed pack/server; retained sources and historical player data are inactive."
+  },
+  "history": [
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "remove",
+      "summary": "User explicitly removes Professions from test jem and the local managed pack/server; retained sources and historical player data are inactive.",
+      "source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpSidebar.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Profiles.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViews.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpModuleOpen.java",
+        "Client/ManagedPack/mods/jem-professions-1.0.0.jar",
+        "Client/ManagedPack/mods/puffish_skills-0.19.2-1.20-forge.jar",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/professions.snbt",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/pack.mcmeta",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/config.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/architect/category.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/architect/connections.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/architect/definitions.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/architect/experience.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/architect/skills.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/engineer/category.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/engineer/connections.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/engineer/definitions.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/engineer/experience.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/engineer/skills.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/explorer/category.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/explorer/connections.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/explorer/definitions.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/explorer/experience.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/explorer/skills.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/farmer/category.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/farmer/connections.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/farmer/definitions.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/farmer/experience.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/farmer/skills.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/fisher/category.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/fisher/connections.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/fisher/definitions.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/fisher/experience.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/fisher/skills.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/mage/category.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/mage/connections.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/mage/definitions.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/mage/experience.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/mage/skills.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/mayor/category.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/mayor/connections.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/mayor/definitions.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/mayor/experience.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/mayor/skills.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/merchant/category.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/merchant/connections.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/merchant/definitions.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/merchant/experience.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/merchant/skills.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/miner/category.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/miner/connections.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/miner/definitions.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/miner/experience.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/miner/skills.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/warrior/category.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/warrior/connections.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/warrior/definitions.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/warrior/experience.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/data/jem_professions/puffish_skills/categories/warrior/skills.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "managed_pack",
+      "local_server",
+      "native_automodpack",
+      "smp_sidebar",
+      "profile_projection",
+      "profession_progression"
+    ],
+    "relations": [
+      "JEMProfessions required puffish_skills; no other installed mandatory consumers found",
+      "Old progression remains saved but inactive",
+      "Source JEMProfessions retained for optional future reuse"
+    ],
+    "notes": [
+      "Does not remove ordinary villager professions.",
+      "No raw copies/deletes in active AutoModpack managed projection."
+    ],
+    "unresolved": []
+  }
+}

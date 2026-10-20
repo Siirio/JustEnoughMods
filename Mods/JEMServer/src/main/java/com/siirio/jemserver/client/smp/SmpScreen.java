@@ -361,11 +361,18 @@ public final class SmpScreen extends Screen {
         hits.clear();
         hoveredItem = ItemStack.EMPTY;
         hoveredLabel = null;
-        frame(g, left, top, panelWidth, panelHeight, PANEL);
-        g.fill(left + 3, top + 3, left + panelWidth - 3, top + 31, INSET);
-        SmpIcons.draw(g, "crest", left + 10, top + 7, 20);
+        SmpGuiAssets.material(g, "stone_frame", left, top, panelWidth, panelHeight);
+        SmpGuiAssets.material(g, "dark_frame", left + 5, top + 34, bodyX - left - 13, panelHeight - 41);
+        SmpGuiAssets.material(g, "paper_frame", bodyX - 5, top + 34, bodyWidth + 10, panelHeight - 41);
+        SmpGuiAssets.material(g, "wood_frame", left + 5, top + 4, panelWidth - 10, 29);
+        SmpGuiAssets.ornament(g, "banner", left + 10, top + 3);
         text(g, title, left + 36, top + 12, CREAM, bodyX - left - 40);
-        text(g, Component.translatable("jem.smp." + tab), bodyX, top + 12, CREAM, bodyWidth - 30);
+        boolean decoratedHeader = bodyWidth >= 240;
+        text(g, Component.translatable("jem.smp." + tab), bodyX, top + 12, CREAM, bodyWidth - (decoratedHeader ? 132 : 30));
+        if (decoratedHeader) {
+            SmpGuiAssets.ornament(g, "vine", bodyX + bodyWidth - 112, top + 3);
+            SmpGuiAssets.ornament(g, "lantern", bodyX + bodyWidth - 58, top + 4);
+        }
         button(g, left + panelWidth - 28, top + 7, 20, 20, "close", this::onClose, mx, my);
         String activeSidebar = tab.equals("profiles") && selected != null && minecraft != null && minecraft.player != null
                 && selected.equals(minecraft.player.getUUID()) ? "profile" : tab.equals("profiles") ? "players" : tab;
@@ -394,6 +401,8 @@ public final class SmpScreen extends Screen {
             }
             search.render(g, mx, my, partial);
         } else bodyY = top + 42;
+        if (!(tab.equals("events") && selected == null && form.isEmpty()))
+            SmpGuiAssets.material(g, "dark_frame", bodyX - 2, bodyY - 2, bodyWidth + 4, bodyBottom - bodyY + 4);
         if (form.isEmpty()) {
             clippingBody = true;
             g.enableScissor(bodyX, bodyY, bodyX + bodyWidth, bodyBottom);
@@ -671,7 +680,7 @@ public final class SmpScreen extends Screen {
                 UUID id;
                 try { id = UUID.fromString(raw); } catch (IllegalArgumentException invalid) { continue; }
                 if (memberY + 40 >= memberListY && memberY < memberListY + memberListHeight) {
-                    frame(g, memberX, memberY, memberWidth, 40, id.equals(participant)?HOVER:ROW);
+                    SmpGuiAssets.material(g, id.equals(participant) ? "control_selected" : "control", memberX, memberY, memberWidth, 40);
                     CombatHud.head(g, id, memberX + 7, memberY + 9, 22);
                     String name = member.getString("name");
                     text(g, Component.literal(name.isBlank() ? raw : name), memberX + 36, memberY + 7, CREAM, memberWidth - 42);
@@ -819,8 +828,7 @@ public final class SmpScreen extends Screen {
     }
 
     private void eventFrame(GuiGraphics g, String activity, int x, int y, int w, int h, int fill) {
-        g.fill(x, y, x + w, y + h, fill);
-        SmpGuiAssets.frame(g, x, y, w, h, SmpGuiAssets.accent(activity));
+        SmpGuiAssets.material(g, "dark_frame", x, y, w, h);
     }
 
     private String eventActivity(CompoundTag event) {
@@ -832,14 +840,17 @@ public final class SmpScreen extends Screen {
         var rows = model.getList("rows", Tag.TAG_COMPOUND);
         if (rows.isEmpty()) {
             SmpIcons.draw(g, "events", bodyX + 12, bodyY + 13, 28);
-            text(g, Component.translatable("jem.smp.no_events"), bodyX + 48, bodyY + 23, MUTED, bodyWidth - 58);
+            text(g, Component.translatable("jem.smp.no_events"), bodyX + 48, bodyY + 23, SmpGuiAssets.PAPER_MUTED, bodyWidth - 58);
             maxScroll = 0;
             return;
         }
-        boolean preview = bodyWidth >= 580;
-        int previewWidth = preview ? Math.min(240, bodyWidth / 3) : 0;
+        boolean preview = bodyWidth >= 330 && bodyBottom - bodyY >= 180;
+        int previewWidth = preview ? Math.min(260, bodyWidth * 2 / 5) : 0;
         int listWidth = bodyWidth - (preview ? previewWidth + 10 : 0);
-        int rowHeight = 66;
+        boolean stackedArtwork = listWidth < 360 && bodyBottom - bodyY >= 180;
+        int listCoverWidth = stackedArtwork ? listWidth - 14 : Math.min(180, Math.max(64, listWidth * 2 / 5));
+        int listCoverHeight = listCoverWidth / 2;
+        int rowHeight = stackedArtwork ? listCoverHeight + 76 : Math.max(80, listCoverHeight + 14);
         maxScroll = Math.max(0, rows.size() * (rowHeight + GAP) - GAP - (bodyBottom - bodyY));
         scroll = Math.max(0, Math.min(scroll, maxScroll));
         CompoundTag chosen = rows.getCompound(0);
@@ -851,34 +862,40 @@ public final class SmpScreen extends Screen {
             if (event.getUUID("id").equals(previewEvent)) chosen = event;
             if (y + rowHeight < bodyY || y >= bodyBottom) continue;
             String activity = eventActivity(event);
-            eventFrame(g, activity, bodyX, y, listWidth, rowHeight, over ? HOVER : ROW);
-            int coverWidth = Math.min(76, listWidth / 3), coverHeight = rowHeight - 10;
-            SmpGuiAssets.cover(g, activity, bodyX + 5, y + 5, coverWidth, coverHeight);
-            int tx = bodyX + coverWidth + 13, tw = listWidth - coverWidth - 34;
-            text(g, eventTitle(event), tx, y + 9, CREAM, tw);
+            SmpGuiAssets.material(g, "card", bodyX, y, listWidth, rowHeight);
+            int coverWidth = listCoverWidth, coverHeight = listCoverHeight;
+            SmpGuiAssets.cover(g, activity, bodyX + 7, y + 7, coverWidth, coverHeight);
+            SmpGuiAssets.frame(g, bodyX + 5, y + 5, coverWidth + 4, coverHeight + 4, SmpGuiAssets.accent(activity));
+            int tx = stackedArtwork ? bodyX + 12 : bodyX + coverWidth + 17;
+            int tw = stackedArtwork ? listWidth - 44 : listWidth - coverWidth - 37;
+            int textY = stackedArtwork ? y + coverHeight + 17 : y + 10;
+            text(g, eventTitle(event), tx, textY, SmpGuiAssets.INK, tw);
             String lifecycle = event.contains("lifecycle") ? event.getString("lifecycle") : event.getString("state");
-            text(g, Component.translatable("jem.smp." + lifecycle), tx, y + 23, SmpGuiAssets.accent(activity), tw);
-            text(g, eventClock(event), tx, y + 36, MUTED, tw);
-            text(g, eventDescription(event), tx, y + 50, MUTED, tw);
-            SmpIcons.draw(g, "next", bodyX + listWidth - 19, y + 25, 13);
+            text(g, Component.translatable("jem.smp." + lifecycle), tx, textY + 14, SmpGuiAssets.PAPER_MUTED, tw);
+            text(g, eventClock(event), tx, textY + 28, SmpGuiAssets.INK, tw);
+            text(g, eventDescription(event), tx, textY + 42, SmpGuiAssets.PAPER_MUTED, tw);
+            if (over || event.getUUID("id").equals(previewEvent)) {
+                SmpGuiAssets.material(g, "control_selected", bodyX + listWidth - 23, y + rowHeight - 28, 18, 20);
+                SmpIcons.draw(g, "next", bodyX + listWidth - 21, y + rowHeight - 25, 14);
+            }
             if (over) hoveredLabel = eventTitle(event).copy().append("\n").append(eventDescription(event));
             hit(bodyX, y, listWidth, rowHeight, () -> visit("events", event.getUUID("id")));
         }
         if (!preview) return;
         int x = bodyX + listWidth + 10, y = bodyY;
         String activity = eventActivity(chosen);
-        eventFrame(g, activity, x, y, previewWidth, bodyBottom - y, INSET);
-        int coverHeight = Math.min(112, (previewWidth - 12) * 3 / 4);
+        SmpGuiAssets.material(g, "paper_frame", x, y, previewWidth, bodyBottom - y);
+        int coverHeight = Math.min((previewWidth - 12) / 2, Math.max(40, (bodyBottom - y) / 3));
         SmpGuiAssets.cover(g, activity, x + 6, y + 6, previewWidth - 12, coverHeight);
         int next = y + coverHeight + 17;
-        text(g, eventTitle(chosen), x + 10, next, CREAM, previewWidth - 20);
+        text(g, eventTitle(chosen), x + 10, next, SmpGuiAssets.INK, previewWidth - 20);
         next += 18;
-        text(g, eventClock(chosen), x + 10, next, SmpGuiAssets.accent(activity), previewWidth - 20);
+        text(g, eventClock(chosen), x + 10, next, SmpGuiAssets.PAPER_MUTED, previewWidth - 20);
         next += 23;
         int actionY = bodyBottom - (chosen.getBoolean("meaningfulLocation") ? 60 : 32);
         for (var line : font.split(eventDescription(chosen), previewWidth - 20)) {
             if (next + font.lineHeight > actionY - 12) break;
-            g.drawString(font, line, x + 10, next, MUTED, false);
+            g.drawString(font, line, x + 10, next, SmpGuiAssets.PAPER_MUTED, false);
             next += font.lineHeight + 4;
         }
         final CompoundTag selectedPreview = chosen;
@@ -1197,7 +1214,7 @@ public final class SmpScreen extends Screen {
             int w = i == tabs.length - 1 ? bodyX + bodyWidth - x : tabWidth - 2;
             String target = tabs[i];
             boolean active = target.equals(settlementTab);
-            frame(g, x, bodyY, w, 24, active ? HOVER : ROW);
+            SmpGuiAssets.material(g, active ? "control_selected" : "control", x, bodyY, w, 24);
             SmpIcons.draw(g, target, x + 4, bodyY + 4, 16);
             text(g, Component.translatable("jem.smp.settlement.tab." + target), x + 23, bodyY + 8, active ? PEACH : CREAM, w - 27);
             hit(x, bodyY, w, 24, () -> { settlementTab = target; scroll = 0; pendingSettlementRemoval = null; pendingSettlementDelete = false; });
@@ -1761,7 +1778,7 @@ public final class SmpScreen extends Screen {
         int contentWidth = labelWidth + (icon ? 20 : 0);
         int contentX = x + Math.max(6, (w - contentWidth) / 2);
         if (icon) SmpIcons.draw(g, key, contentX, y + (h - 16) / 2, 16);
-        text(g, label, contentX + (icon ? 20 : 0), y + (h - 9) / 2, waiting ? MUTED : role.equals("primary") ? OUTLINE : CREAM, available);
+        text(g, label, contentX + (icon ? 20 : 0), y + (h - 9) / 2, waiting ? MUTED : CREAM, available);
         if (over && font.width(label) > w - (icon ? 30 : 12)) hoveredLabel = label;
         if (!waiting || key.equals("retry") || key.equals("close")) hit(x, y, w, h, action);
     }

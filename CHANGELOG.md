@@ -1,3 +1,14 @@
+## 2026-10-20 — Remove Professions from local managed distribution
+
+- User requests removing Professions from test jem, then explicitly confirms test jem and local managed pack/server. Codex removes the JEM module, its otherwise unused Pufferfish dependency, owned skill datapack/config and FTB guide chapter; preserved source and historical saved progression remain inactive.
+- SMP sidebar/profile actions are conditional on the actual module, and optional class references are isolated. Native AutoModpack performs the client removal together with this prompt's GUI delivery. Ordinary villager professions, stable profile, MineRENT and immutable release baseline are unchanged.
+
+## 2026-10-20 — Crafted Settlements and SMP Events interfaces
+
+- User approved the two illustrated concepts and requested full implementation with separate generated icons, images and assembled controls. The selected direction is slate stone, parchment, blue/gold selection, cloth, lanterns and foliage.
+- Codex implemented exact reusable material exports, 32 separate semantic icons, six event illustrations and a treasury still life, with editable layered Aseprite sources and retained production originals. Existing Settlements sections, native resident/inventory views, needs/financial data and actions, SMP navigation, event availability/rules/rewards and server authority are preserved. Native merchant, recruit and Xaero screens are unchanged.
+- Implementation choices: fixed 8px material corners, repeated edges/centers, precise alpha cleanup, responsive landscape event cards, live text and state. These technical choices were selected by Codex. User approval covers concept direction; actual game rendering remains in testing pending visual acceptance. Both full reobfuscated production builds passed; local Server and ManagedPack match exact outputs. Native publication and application to test jem completed with matching token/hashes and no pending transaction; evidence is recorded beside the asset sources. No automated tests or gameplay/client launch.
+
 # Changelog
 
 ## 2026-10-19 — Restructure Settlements around the selected Minecraft dashboard references

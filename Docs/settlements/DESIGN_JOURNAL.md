@@ -315,3 +315,8 @@
 **Реализация Codex:** прекратить запросы городского снимка из GUI; обустройство расположить 2×2. Подбирать размеры выбора поселений и сундука по числу строк; скрыть ненужные одностраничные стрелки. Поиск реагирует на ввод на следующем GUI tick. Состояния кнопок сохраняют фактуру камня, выбор использует резной край спрайта; подсказка факторов — значок книги. Текст карточек рисуется без тени, сообщения статуса взаимно исключаются. Механики счастья, налогов, жилья, экономики и серверная авторитетность не меняются. Escape и автоматическое согласование остаются. Поставка только jem sandbox; приёмка в игре ожидается.
 
 Оригиналы и конкретные решения: [runtime corrections](assets/reference/runtime-corrections-2026-10-19/README.md).
+
+
+## 2026-10-20 — Approved crafted GUI implementation
+
+User decision: implement the approved Settlements resident and SMP Events concept family fully, using separate generated icons/images and then assembling actual controls. Codex implementation choices: 64×64 materials with 8px protected corners, 32×32 semantic icons, exact Aseprite region export and alpha cleanup, native live resident portrait, unchanged four sections/actions and 0–100 needs, separate treasury illustration. No new taxation, assignment, payroll, currency or happiness formula is introduced. The earlier concept's illustrative values are not gameplay requirements. Source/art contract and runtime evidence state: [owning SMP visual documentation](../smp-gui/README.md#crafted-settlements-and-smp-family--2026-10-20). Concept approved; actual client visual acceptance remains pending.

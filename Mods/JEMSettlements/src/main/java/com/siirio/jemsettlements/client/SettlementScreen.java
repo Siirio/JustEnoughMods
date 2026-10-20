@@ -158,14 +158,15 @@ public class SettlementScreen extends Screen {
     }
     private Button button(Component label,int x,int y,int w,Runnable action,boolean mutation,ItemStack icon) {
         boolean danger=label.equals(tr("delete"));
+        String actionIcon=w<72?null:danger?"warning":label.equals(tr("confirm"))?"check":label.equals(tr("back"))||label.equals(tr("cancel"))?"back":null;
         Button widget=new Button(Button.builder(label,b->action.run()).bounds(x,y,Math.max(20,w),20)) {
             @Override public void renderWidget(GuiGraphics g,int mx,int my,float partial) {
                 if(danger)g.setColor(1F,.46F,.43F,1F);
                 SettlementDashboardArt.control(g,getX(),getY(),getWidth(),getHeight(),false,isHoveredOrFocused(),active);
                 g.setColor(1F,1F,1F,1F);
-                if(!active)g.fill(getX()+2,getY()+2,getX()+getWidth()-2,getY()+getHeight()-2,0x780f110e);
-                int reserve=icon.isEmpty()?0:18;
-                if(!icon.isEmpty())g.renderFakeItem(icon,getX()+3,getY()+2);
+                int reserve=actionIcon==null&&icon.isEmpty()?0:18;
+                if(actionIcon!=null)SettlementDashboardArt.icon(g,actionIcon,getX()+3,getY()+2,16);
+                else if(!icon.isEmpty())icon(g,icon,getX()+3,getY()+2,16);
                 String text=font.plainSubstrByWidth(getMessage().getString(),Math.max(1,getWidth()-reserve-8));
                 g.drawString(font,text,getX()+reserve+(getWidth()-reserve-font.width(text))/2,getY()+6,active?0xfffff1cb:0xffaaa38c,false);
             }
@@ -182,12 +183,12 @@ public class SettlementScreen extends Screen {
             return;
         }
         for(int i=0;i<SECTIONS.length;i++) {
-            String key=SECTIONS[i];ItemStack icon=new ItemStack(switch(key){case "settlement"->Items.OAK_DOOR;case "residents"->Items.VILLAGER_SPAWN_EGG;case "happiness"->Items.EMERALD;default->Items.CHEST;});
+            String key=SECTIONS[i];
             int tx=left+8,ty=cy+i*43,tw=sidebarWidth-4;
             Button tab=new Button(Button.builder(tr("section."+key),b->selectSection(key)).bounds(tx,ty,tw,38)) {
                 @Override public void renderWidget(GuiGraphics g,int mx,int my,float partial) {
                     boolean selected=section.equals(key);SettlementDashboardArt.control(g,getX(),getY(),getWidth(),getHeight(),selected,isHoveredOrFocused(),true);
-                    icon(g,icon,getX()+7,getY()+8,22);
+                    SettlementDashboardArt.icon(g,key,getX()+6,getY()+5,28);
                     g.drawString(font,clip(getMessage(),getWidth()-39),getX()+34,getY()+15,0xfff6eddd,false);
                 }
             };
@@ -211,7 +212,7 @@ public class SettlementScreen extends Screen {
         final int treasuryY=y;
         drawings.add(()->{
             SettlementDashboardArt.panel(graphics,cx,treasuryY,cw,91,true);
-            icon(graphics,new ItemStack(Items.CHEST),cx+10,treasuryY+25,40);
+            SettlementDashboardArt.treasury(graphics,cx+9,treasuryY+24);
             graphics.drawString(font,tr("section.treasury"),cx+58,treasuryY+9,PALE,false);
             graphics.drawString(font,tr("dashboard.balance"),cx+58,treasuryY+25,0xffbbb9b2,false);
             graphics.drawString(font,clip(SettlementPriceRenderer.format(town.getLong("Treasury"),coinCurrency()),Math.max(45,cw/2-62)),cx+58,treasuryY+42,GOLD,false);
@@ -255,7 +256,23 @@ public class SettlementScreen extends Screen {
         scrollRail(cx+cw-2,cityContentTop,viewHeight,contentHeight,scroll);
     }
     private EditBox edit(int x,int y,int w,String value,String hint,int max) {
-        EditBox box=new EditBox(font,x,y,w,20,tr(hint)); box.setMaxLength(max);box.setHint(tr(hint));box.setValue(value);addRenderableWidget(box);return box;
+        EditBox box=new EditBox(font,x,y,w,20,tr(hint)) {
+            @Override public void renderWidget(GuiGraphics g,int mx,int my,float partial) {
+                SettlementDashboardArt.control(g,getX(),getY(),getWidth(),getHeight(),isFocused(),isHoveredOrFocused(),isActive());
+                // Unbordered native text retains the original4px/6px inset and full outer hit region.
+                g.enableScissor(getX()+3,getY()+3,getX()+getWidth()-3,getY()+getHeight()-3);
+                g.pose().pushPose();
+                g.pose().translate(4,(getHeight()-8)/2F,0);
+                super.renderWidget(g,mx,my,partial);
+                g.pose().popPose();
+                if(hint.equals("search")&&getValue().isEmpty()&&getWidth()>80)
+                    SettlementDashboardArt.icon(g,"search",getX()+getWidth()-19,getY()+3,14);
+                g.disableScissor();
+            }
+            @Override public int getInnerWidth() { return getWidth()-8; }
+            @Override public void onClick(double mx,double my) { super.onClick(mx-4,my); }
+            @Override public int getScreenX(int cursor) { return super.getScreenX(cursor)+4; }
+        }; box.setBordered(false);box.setMaxLength(max);box.setHint(tr(hint));box.setValue(value);addRenderableWidget(box);return box;
     }
     private void search(int y) {
         searchBox=edit(cx,y,cw,search,"search",64);
@@ -286,7 +303,7 @@ public class SettlementScreen extends Screen {
         drawLine(tr("cost"),cx,cy+100,MUTED);
         drawings.add(()->coins(envelope.getLong("FoundingCost"),cx+48,cy+96,cw-140));
         drawings.add(()->{
-            int px=cx+cw-84,py=cy+28;graphics.fill(px,py,px+84,py+78,0xffc8b88b);
+            int px=cx+cw-84,py=cy+28;SettlementDashboardArt.panel(graphics,px,py,84,78,false);
             graphics.fill(px+12,py+7,px+72,py+67,0x806d9562);graphics.renderOutline(px+12,py+7,60,60,0xff314e2e);
             graphics.renderItem(new ItemStack(Items.BELL),px+34,py+27);
             int side=envelope.getInt("InitialRadius")*2+1;graphics.drawCenteredString(font,side+" x "+side,px+42,py+68,0xff292824);
@@ -627,7 +644,7 @@ public class SettlementScreen extends Screen {
         listTop=cy+28;listBottom=bottom-24;
         List<net.minecraft.util.FormattedCharSequence> lines=font.split(Component.translatable("jem.settlements.guide."+CHAPTERS[chapter]+(!coinCurrency() && (CHAPTERS[chapter].equals("territory") || CHAPTERS[chapter].equals("treasury"))?"_emerald":"")),cw-8);
         int visible=Math.max(1,(listBottom-listTop)/12),limit=Math.max(0,lines.size()-visible);scroll=Math.min(scroll,limit);int start=scroll;
-        drawings.add(()->{graphics.fill(cx-2,listTop-3,cx+cw+2,listBottom,0xffd7cba6);for(int i=start;i<Math.min(lines.size(),start+visible);i++)graphics.drawString(font,lines.get(i),cx+4,listTop+(i-start)*12,0xff352c20,false);});
+        drawings.add(()->{SettlementDashboardArt.panel(graphics,cx-2,listTop-3,cw+4,listBottom-listTop+3,false);for(int i=start;i<Math.min(lines.size(),start+visible);i++)graphics.drawString(font,lines.get(i),cx+4,listTop+(i-start)*12,0xff352c20,false);});
         button(tr("previous"),cx,bottom-20,cw/2-2,()->{scroll=Math.max(0,scroll-visible);rebuild();},false).active=scroll>0;
         button(tr("next"),cx+cw/2+2,bottom-20,cw/2-2,()->{scroll=Math.min(limit,scroll+visible);rebuild();},false).active=scroll<limit;
     }
@@ -659,7 +676,7 @@ public class SettlementScreen extends Screen {
         if(selected)SettlementDashboardArt.control(g,x,y,w,ROW_HEIGHT-3,true,focused,true);
         else SettlementDashboardArt.card(g,x,y,w,ROW_HEIGHT-3,focused?0xff4aa2d3:0xffbfa67c);
         boolean npc=row.data().hasUUID("Id")&&(row.data().contains("Mood")||guard(row.data()));
-        if(npc)portrait(g,row.data(),x+4,y+4,25,29);else icon(g,row.icon(),x+7,y+9,20);
+        if(npc){SettlementDashboardArt.panel(g,x+3,y+3,28,33,true);portrait(g,row.data(),x+5,y+5,24,29);}else if(row.name().equals(tr("dashboard.no_complaints")))SettlementDashboardArt.icon(g,"check",x+7,y+9,20);else icon(g,row.icon(),x+7,y+9,20);
         int nameWidth=Math.max(20,w-42-(npc?19:0)),nameColor=selected?0xfff9efda:INK;
         g.drawString(font,clip(row.name(),nameWidth),x+35,y+6,nameColor,false);
         if(npc){
@@ -679,7 +696,19 @@ public class SettlementScreen extends Screen {
     }
     private static int scoreColor(int value){return value<35?0xffd45f52:value<80?0xffe4b74e:0xff7ebd52;}
     private static void icon(GuiGraphics g,ItemStack item,int x,int y,int size) {
+        String authored=semanticIcon(item);
+        if(authored!=null){SettlementDashboardArt.icon(g,authored,x,y,size);return;}
         g.pose().pushPose();g.pose().translate(x,y,0);g.pose().scale(size/16F,size/16F,1);g.renderFakeItem(item,0,0);g.pose().popPose();
+    }
+    /** Generic UI subjects use authored assets; real inventory stacks keep native item rendering. */
+    private static String semanticIcon(ItemStack item) {
+        if(item.is(Items.OAK_DOOR)||item.is(Items.RED_BED)||item.is(Items.OAK_STAIRS))return "home";
+        if(item.is(Items.VILLAGER_SPAWN_EGG))return "residents";
+        if(item.is(Items.CHEST))return "chests";
+        if(item.is(Items.BREAD))return "bread";
+        if(item.is(Items.LANTERN)||item.is(Items.TORCH))return "lantern";
+        if(item.is(Items.FLOWER_POT)||item.is(Items.OAK_SAPLING))return "development";
+        return null;
     }
     private void portrait(GuiGraphics g,CompoundTag row,int x,int y,int w,int h) {
         var entity=minecraft.level!=null&&row.contains("EntityId")?minecraft.level.getEntity(row.getInt("EntityId")):null;
@@ -696,11 +725,10 @@ public class SettlementScreen extends Screen {
             String key=keys[i];int x=cx+i*(cell+gap),w=i==3?cx+cw-x:cell;
             int value=switch(key){case "happiness"->town.getInt("Happiness");case "satiety"->(int)Math.round(residents.stream().mapToInt(r->r.getInt("Satiety")).average().orElse(0));case "unhappy"->(int)(100*residents.stream().filter(r->r.getInt("Mood")<town.getInt("UnhappyThreshold")).count()/Math.max(1,residents.size()));case "beauty"->town.getInt("Decoration");case "residents"->Math.min(100,residents.size()*100/Math.max(1,metrics.getInt("RequiredResidents")));default->0;};
             Component display=switch(key){case "residents"->Component.literal(residents.size()+" / "+metrics.getInt("RequiredResidents"));case "unhappy"->Component.literal(residents.stream().filter(r->r.getInt("Mood")<town.getInt("UnhappyThreshold")).count()+" / "+residents.size());case "treasury"->SettlementPriceRenderer.format(town.getLong("Treasury"),coinCurrency());default->Component.literal(value+"/100");};
-            ItemStack icon=new ItemStack(switch(key){case "residents","unhappy"->Items.VILLAGER_SPAWN_EGG;case "satiety"->Items.BREAD;case "beauty"->Items.POPPY;case "treasury"->coinCurrency()?CurrencyItems.item(CoinDenomination.GOLD):Items.EMERALD;default->Items.SUNFLOWER;});
             drawings.add(()->{
                 SettlementDashboardArt.card(graphics,x,cy,w,58,key.equals("beauty")?0xffc58bac:key.equals("treasury")?GOLD:key.equals("residents")?0xff92b66c:0xffd6b168);
                 graphics.drawString(font,clip(tr("dashboard."+key),w-12),x+6,cy+7,INK,false);
-                if(key.equals("happiness"))SettlementDashboardArt.mood(graphics,x+6,cy+21,20,value);else icon(graphics,icon,x+6,cy+21,20);
+                if(key.equals("happiness"))SettlementDashboardArt.mood(graphics,x+6,cy+21,24,value);else SettlementDashboardArt.icon(graphics,switch(key){case "treasury"->"coins";case "beauty"->"development";case "satiety"->"bread";case "unhappy"->"mood_sad";default->"residents";},x+6,cy+21,24);
                 graphics.drawString(font,clip(display,w-35),x+30,cy+27,INK,false);
                 if(!key.equals("treasury"))SettlementDashboardArt.track(graphics,x+7,cy+47,w-14,6,value,key.equals("beauty")?0xff45b8d5:key.equals("unhappy")?0xffd36459:scoreColor(value));
             });
