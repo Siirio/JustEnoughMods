@@ -1,3 +1,9 @@
+## 2026-10-20 — Restore local server after Windows tax-save failure
+
+- User cannot connect: the server had loaded but crashed at14:01:43. Bug / Server / TaxDurability unconditionally used Java ATOMIC_MOVE to replace existing data; Windows returned AccessDeniedException while the ordinary shutdown save wrote byte-identical data successfully / in testing.
+- Five Whys: refused connection → dead server → tax-save exception → failed existing-file atomic replacement → persistence owner omitted Windows replace-existing semantics. Codex changes that owner to one native same-volume Windows rename with REPLACE_EXISTING/WRITE_THROUGH using Minecraft's existing JNA, and verifies full NBT before clearing dirty. Other platforms retain atomic move. Intent/payment/ack ordering, receipt idempotence, balances and all tax formulas remain.
+- Barnyard remains unchanged. No test/scenario/client launch or manual world-data mutation; source/build/local synchronization/native publication evidence in Docs/settlements/standalone/tax-save-delivery.json. Runtime/player acceptance remains pending.
+
 ## 2026-10-20 — Keep native Barnyard Buddies after successful restart
 
 - User reports test jem now works after restart and explicitly rejects the proposed permanent compatibility guard; requests starting the local server without that change.

@@ -320,3 +320,8 @@
 ## 2026-10-20 — Approved crafted GUI implementation
 
 User decision: implement the approved Settlements resident and SMP Events concept family fully, using separate generated icons/images and then assembling actual controls. Codex implementation choices: 64×64 materials with 8px protected corners, 32×32 semantic icons, exact Aseprite region export and alpha cleanup, native live resident portrait, unchanged four sections/actions and 0–100 needs, separate treasury illustration. No new taxation, assignment, payroll, currency or happiness formula is introduced. The earlier concept's illustrative values are not gameplay requirements. Source/art contract and runtime evidence state: [owning SMP visual documentation](../smp-gui/README.md#crafted-settlements-and-smp-family--2026-10-20). Concept approved; actual client visual acceptance remains pending.
+
+
+## 2026-10-20 — Windows tax persistence correction
+
+User reports local connection refusal. Actual server crash originates in the save owner, not tax balance: Windows rejects replacement of existing data via Java ATOMIC_MOVE. Codex retains the exact tax formulas/receipts and intent-before-payment ordering, uses native same-volume replace-existing/write-through on Windows, and verifies complete NBT before marking persisted. Existing Minecraft JNA only; no world edits. In testing pending actual player acceptance.

@@ -23,7 +23,19 @@ public final class TaxDurability {
         try {
             Files.createDirectories(directory); NbtIo.writeCompressed(root, temporary.toFile());
             try (var channel = java.nio.channels.FileChannel.open(temporary, StandardOpenOption.WRITE)) { channel.force(true); }
-            Files.move(temporary, target, StandardCopyOption.ATOMIC_MOVE, StandardCopyOption.REPLACE_EXISTING);
+            if (net.minecraft.Util.getPlatform() == net.minecraft.Util.OS.WINDOWS) {
+                // JDK atomic-move ignores REPLACE_EXISTING on Windows. Request one native
+                // same-volume replacement, without Java's delete-then-move alternative.
+                var windows = com.sun.jna.platform.win32.Kernel32.INSTANCE;
+                int flags = com.sun.jna.platform.win32.WinBase.MOVEFILE_REPLACE_EXISTING
+                        | com.sun.jna.platform.win32.WinBase.MOVEFILE_WRITE_THROUGH;
+                if (!windows.MoveFileEx(temporary.toAbsolutePath().toString(), target.toAbsolutePath().toString(),
+                        new com.sun.jna.platform.win32.WinDef.DWORD(flags)))
+                    throw new IOException("Native tax file replacement failed: " + windows.GetLastError());
+            } else {
+                Files.move(temporary, target, StandardCopyOption.ATOMIC_MOVE, StandardCopyOption.REPLACE_EXISTING);
+            }
+            if (!root.equals(NbtIo.readCompressed(target.toFile()))) throw new IOException("Daily tax save mismatch: " + name);
             data.setDirty(false);
         } catch (IOException failure) {
             data.setDirty(); throw new IllegalStateException("Daily tax transaction remains pending: " + name, failure);

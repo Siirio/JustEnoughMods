@@ -1,0 +1,87 @@
+{
+  "schema_version": 2,
+  "change_id": "settlements.windows-tax-durability",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:villager"
+    },
+    {
+      "type": "namespace",
+      "registry": "entities",
+      "value": "recruits"
+    }
+  ],
+  "conditions": [
+    {
+      "scope": "Existing daily-tax persistence on Windows; tax formulas and authority unchanged."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_persistence",
+    "priority": 200
+  },
+  "change": {
+    "summary": "Preserve tax intent/payment/ack saves on Windows by requesting native same-volume replace-existing with write-through, then verifying the complete NBT root.",
+    "modifiers": [
+      {
+        "property": "settlements.tax_persistence",
+        "operation": "replace",
+        "before": "Files.move ATOMIC_MOVE with REPLACE_EXISTING raises AccessDeniedException for existing world data and aborts the server tick.",
+        "after": "Windows uses Minecraft-bundled JNA Kernel32 MoveFileEx with REPLACE_EXISTING and WRITE_THROUGH, without cross-volume copy. Other platforms retain atomic move. All saves read back exact expected NBT before clearing dirty.",
+        "notes": "No suppressed I/O errors, delete-then-move fallback, taxation/balance changes or world-state edits."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMSettlements payroll TaxDurability",
+    "kind": "windows_existing_file_replacement",
+    "source_files": [
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/TaxDurability.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Restore local server availability after the observed save crash.",
+    "decision_source": "User cannot connect to local server. Codex traced actual14:01:43 crash to Windows atomic replacement, verified writable regular target and identical shutdown-written data/tmp hashes, and chose native rename using the existing Minecraft JNA dependency."
+  },
+  "introduced": {
+    "date": "2026-10-20",
+    "commit": "SELF",
+    "action": "fix",
+    "summary": "Preserve tax intent/payment/ack saves on Windows by requesting native same-volume replace-existing with write-through, then verifying the complete NBT root."
+  },
+  "history": [
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "fix",
+      "summary": "Preserve tax intent/payment/ack saves on Windows by requesting native same-volume replace-existing with write-through, then verifying the complete NBT root.",
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/TaxDurability.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "daily_tax",
+      "transaction_durability",
+      "settlement_storage",
+      "currency_storage",
+      "local_server_availability"
+    ],
+    "relations": [
+      "DailyTaxService saves intent before money and currency before acknowledgement",
+      "Same TaxDurability helper covers jem_settlements and jem_economy",
+      "Minecraft already provides JNAplatform5.12.1"
+    ],
+    "notes": [
+      "Five Whys: connection refused -> server terminated -> daily-tax save threw -> Windows atomic move refused existing target -> save owner unconditionally used a Java atomic replacement that ignores REPLACE_EXISTING semantics.",
+      "Real I/O failures remain fatal/pending; no tax state discarded."
+    ],
+    "unresolved": [
+      "Tax boundary execution and player acceptance remain unverified; status in testing."
+    ]
+  }
+}

@@ -446,3 +446,8 @@ localization resources; only the explicit sandbox profile enables integrated gam
 ## Local module distribution — 2026-10-20
 
 The user explicitly requested removal from `test jem` and confirmed removal from local ManagedPack/server. `jem-professions-1.0.0.jar`, its otherwise unused mandatory `puffish_skills` dependency, the JEM professions datapack/config and its FTB guide chapter are removed from this distribution. Native AutoModpack owns client deletions. JEMServer hides the sidebar/profile module action and isolates optional API linkage. JEMProfessions source and historical world/player progression are retained as inactive history; ordinary villager professions are unaffected. Stable client, MineRENT and release baseline are unchanged. This later explicit request supersedes the earlier approved concept's Professions navigation label for this distribution.
+
+
+## Windows tax save replacement — 2026-10-20
+
+TaxDurability retains temp-write/force → one same-volume replace → full-NBT readback → clear-dirty ordering. Windows explicitly uses Minecraft-bundled JNAplatform5.12.1 `Kernel32.MoveFileEx(REPLACE_EXISTING | WRITE_THROUGH)` without COPY_ALLOWED; the ordinary Java atomic move ignores other options and failed to replace existing local data. Other systems retain ATOMIC_MOVE. Native failure or readback mismatch stays dirty and aborts before dependent money/ack mutation. No delete-then-move substitute or new library is used. Source references: https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-movefileexw and https://github.com/java-native-access/jna/blob/5.12.1/contrib/platform/src/com/sun/jna/platform/win32/Kernel32.java .
