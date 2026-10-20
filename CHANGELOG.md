@@ -1,3 +1,9 @@
+## 2026-10-21 — Rework selected SMP direction with illustrated event cards
+
+- User selects the first wood/metal study and projecting event-colored cards, explicitly rejects all previous event/button icons, coarse apparent resolution and flat separating rules, and requests much richer art approaching the reference images. This is a scoped direction choice, not approval of the previous complete GUI.
+- Codex reopens original GUI+12/+13 card references plus six relevant icon/panel originals, updates the scoped Taste Engine feedback, and authors a new1024x640 native Aseprite candidate with three202x198 original voxel scenes, shaped colored card shells/raised title plaques and nine separately editable36x36 semantic icons. Original source sizes increase; old PNGs are not enlarged into production art. Sources, direct exports and Aseprite MCP reviews are archived in `Docs/art/smp-trading-cards-2026-10-21`.
+- C0/C1/C2 review corrects art/title occlusion and small descriptions, then refines material clusters/icons/header. The final candidate is explicitly NEEDS_DIRECTION: painted subjects and icon detail remain simpler in texture/light than the supplied reference cards, so the requested near-indistinguishable quality is not claimed. No gameplay source/resource change, build/test/game launch, Server/MineRENT update, AutoModpack publication/application, profile mutation or baseline promotion. Status inventory again hits stableClient PermissionError; it does not verify synchronization.
+
 ## 2026-10-21 — Three native Aseprite SMP style studies
 
 - User requests inspecting references and creating three SMP style examples using Aseprite. Codex proposes Trading Station, Notice Board and Stone/Oak material directions on the same Events layout, preserving the current nine navigation entries and omitting separate Buyer/wallet entries. These are comparison candidates with illustrative data, not an approved style or implemented GUI.
