@@ -455,3 +455,7 @@ TaxDurability retains temp-write/force → one same-volume replace → full-NBT 
 ## Digger and native required aircraft resource pack
 
 The local2026-10-20 delivery contract and evidence are in `Docs/prepared-updates/2026-10-20-digger-skarrier-aircraft/README.md` and `delivery.json`. JEMPackCore owns one native completion/removal/wear batch for Excavation, retains its existing enchantment/NBT toggle and native inventory synchronization. Paxi4.0 owns required aircraft resource-pack activation from `config/paxi/resourcepacks`; AutoModpack owns its installation. Do not add a second pack loader or edit personal options. Skarrier1.1.1 hotfix requires matching client/server binaries despite unchanged advertised channel version.
+
+## Rejected crafted GUI rollback,2026-10-20
+
+SMP/Settlements retain their previous screen family and native content; generated crafted textures are removed after actual runtime rejection. Market keeps its separate accepted renderer/resources. Settlements has no embedded housing isometry or Выбрать/x/? header controls, and each amount has one native currency renderer. Existing MenuSupport1.1.1 player body-yaw correction remains. Shipping Box is exposed through the owning Economy native functional creative-tab event; its existing recipe and daily market processor remain the only owners. In the full pack, native villagers, Settlements and Recruits already use CurrencyCore Coins; archived standalone emerald screenshots do not justify a second ledger.

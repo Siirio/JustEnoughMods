@@ -1,0 +1,90 @@
+{
+  "schema_version": 2,
+  "change_id": "economy.shipping-box-native-jei-discovery-20261020",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "jem_economy:shipping_box"
+    }
+  ],
+  "conditions": [
+    {
+      "scope": "Native creative-tab population and JEI15.49 ingredient enumeration; existing showHiddenIngredients=false.",
+      "acceptance": "in testing; native source correction is not player acceptance."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_native_client_discovery",
+    "priority": 210
+  },
+  "change": {
+    "summary": "Expose the existing daily Shipping Box through native Functional Blocks contents so JEI discovers its already registered item and recipe.",
+    "modifiers": [
+      {
+        "property": "item.native_creative_jei_visibility",
+        "operation": "add",
+        "before": "Shipping Box item and chest plus eight planks recipe already registered, but item absent from all creative tab contents. JEI hidden-ingredient filtering omitted it.",
+        "after": "Existing Economy mod event bus adds existing SHIPPING_BOX to CreativeModeTabs.FUNCTIONAL_BLOCKS. Native JEI ingredient and recipe discovery can then expose the existing block and recipe.",
+        "notes": "No duplicate recipe or JEI plugin, daily-sales logic, prices, permissions, network, market appearance or currency changes."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMEconomy mod-bus creative contents listener; native JEI item enumeration",
+    "kind": "native_creative_tab_discovery",
+    "source_files": [
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/JemEconomy.java",
+      "Client/ManagedPack/mods/jem-economy-1.3.0.jar",
+      "Docs/economy/native-trading-design.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "User cannot find the daily buyer block or its recipe. Restore discovery of the existing owner rather than add another system.",
+    "decision_source": "User reports missing daily buyer block and recipe. Exact installed/source inspection proves shipping_box and recipe exist; Codex selects missing native creative tab entry as the minimal causal correction."
+  },
+  "introduced": {
+    "date": "2026-10-20",
+    "commit": "SELF",
+    "action": "fix_discoverability",
+    "summary": "Expose the existing daily Shipping Box through native Functional Blocks contents so JEI discovers its already registered item and recipe.",
+    "source_files": [
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/JemEconomy.java",
+      "Client/ManagedPack/mods/jem-economy-1.3.0.jar",
+      "Docs/economy/native-trading-design.md"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "fix_discoverability",
+      "summary": "Expose the existing daily Shipping Box through native Functional Blocks contents so JEI discovers its already registered item and recipe.",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/JemEconomy.java",
+        "Client/ManagedPack/mods/jem-economy-1.3.0.jar",
+        "Docs/economy/native-trading-design.md"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "creative_inventory",
+      "jei_discovery",
+      "recipe_discovery",
+      "daily_shipping_box"
+    ],
+    "relations": [
+      "Existing recipe jem_economy:shipping_box: center chest and eight minecraft:planks.",
+      "Existing MarketRuntime daily sales at dayTime1000 remain unchanged."
+    ],
+    "notes": [
+      "Market storefront visuals explicitly protected and unchanged.",
+      "Recipe registration and daily sales were already present; only discoverability changes."
+    ],
+    "unresolved": [
+      "Runtime player acceptance remains pending; status in testing."
+    ]
+  }
+}

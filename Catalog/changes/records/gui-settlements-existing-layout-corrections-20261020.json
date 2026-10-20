@@ -1,0 +1,102 @@
+{
+  "schema_version": 2,
+  "change_id": "gui.settlements-existing-layout-corrections-20261020",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:villager"
+    },
+    {
+      "type": "namespace",
+      "registry": "entities",
+      "value": "recruits"
+    }
+  ],
+  "conditions": [
+    {
+      "scope": "Existing SettlementScreen client presentation only; server housing facts and gameplay remain unchanged.",
+      "acceptance": "in testing; no player acceptance implied."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_client_presentation",
+    "priority": 185
+  },
+  "change": {
+    "summary": "Preserve restored earlier Settlements layout while removing housing isometric presentation and redundant header controls, and prevent treasury amount overlap using existing price renderer.",
+    "modifiers": [
+      {
+        "property": "settlements.gui.housing_presentation",
+        "operation": "replace",
+        "before": "Housing isometric panel, its client render/input/sliders/state and requests, plus header selection control.",
+        "after": "No isometric housing panel or its client controls/state/requests. Home action opens the existing coordinates dialog using HomePos; ordinary resident/house facts remain available. Header Select control is removed; x/? were already absent and are not reintroduced.",
+        "notes": "No replacement design, new render system or server state migration."
+      },
+      {
+        "property": "settlements.gui.treasury_layout",
+        "operation": "replace",
+        "before": "Heading and treasury native-item/rich-currency presentation could overlap in available space.",
+        "after": "Free the removed header controls space for heading; draw treasury summary/main balance once with existing SettlementPriceRenderer.draw, avoiding native item plus rich translated amount overlap.",
+        "notes": "Currency type/value, tax, payment authority and Market visuals stay unchanged."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMSettlements SettlementScreen existing client layout and price renderer",
+    "kind": "user_requested_existing_gui_correction",
+    "source_files": [
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+      "Client/ManagedPack/mods/jem-settlements-2.1.0.jar",
+      "Docs/smp-gui/README.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "User asks to restore former GUI, remove all isometric view and redundant controls, and fix overlapping text without a new design.",
+    "decision_source": "User explicit former GUI restoration plus remove all iso, overlapping text and header Выбрать/x/?. Codex reuses existing HomePos dialog and SettlementPriceRenderer."
+  },
+  "introduced": {
+    "date": "2026-10-20",
+    "commit": "SELF",
+    "action": "correct_existing_presentation",
+    "summary": "Preserve restored earlier Settlements layout while removing housing isometric presentation and redundant header controls, and prevent treasury amount overlap using existing price renderer.",
+    "source_files": [
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+      "Client/ManagedPack/mods/jem-settlements-2.1.0.jar",
+      "Docs/smp-gui/README.md"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "correct_existing_presentation",
+      "summary": "Preserve restored earlier Settlements layout while removing housing isometric presentation and redundant header controls, and prevent treasury amount overlap using existing price renderer.",
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+        "Client/ManagedPack/mods/jem-settlements-2.1.0.jar",
+        "Docs/smp-gui/README.md"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "settlements_gui",
+      "housing_inspection_presentation",
+      "currency_presentation"
+    ],
+    "relations": [
+      "Existing HomePos data and native coordinate dialog remain owner of Home action.",
+      "Existing SettlementPriceRenderer remains one owner of treasury amount presentation."
+    ],
+    "notes": [
+      "Exact earlier hand-authored dashboard material helper and 20 assets restored separately from these small layout corrections.",
+      "No new actor-preview orientation fix: old screenshot predates installed native MenuSupport bodyYaw correction.",
+      "Market visuals and server gameplay/economy remain unchanged."
+    ],
+    "unresolved": [
+      "Runtime player acceptance remains pending."
+    ]
+  }
+}

@@ -8,7 +8,9 @@ import com.siirio.jemeconomy.registry.EconomyBlocks;
 import com.siirio.jemeconomy.registry.EconomyItems;
 import com.siirio.jemeconomy.registry.EconomyMenus;
 import com.siirio.jemeconomy.network.EconomyNetwork;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 
@@ -22,6 +24,7 @@ public final class JemEconomy {
         EconomyItems.ITEMS.register(modBus);
         EconomyBlockEntities.BLOCK_ENTITIES.register(modBus);
         EconomyMenus.MENUS.register(modBus);
+        modBus.addListener(JemEconomy::addCreativeItems);
 
         if (net.minecraftforge.fml.loading.FMLEnvironment.dist == net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER) {
 
@@ -29,6 +32,12 @@ public final class JemEconomy {
             MinecraftForge.EVENT_BUS.register(MarketRuntime.class);
 
             MinecraftForge.EVENT_BUS.register(com.siirio.jemeconomy.full.audit.EconomyRuntimeExport.class);
+        }
+    }
+
+    private static void addCreativeItems(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
+            event.accept(EconomyItems.SHIPPING_BOX);
         }
     }
 }

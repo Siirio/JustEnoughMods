@@ -1,6 +1,10 @@
-# Crafted Settlements and SMP art
+# Rejected crafted Settlements and SMP art — retained archive
 
-This directory owns the editable art and production export procedure for the user's 2026-10-20 request. The user approved the illustrated Settlements and SMP Events direction and explicitly requested separate generated icons/images assembled into working screens. Example text, counts and actions in references do not authorize gameplay changes.
+The user rejected the implemented visual overhaul from `a0f1a26c` on 2026-10-20 and explicitly requested its removal from Settlements and SMP. The concept direction's earlier approval does not override that rejection. These generated originals, editable sources, manifests and export scripts remain an inactive provenance archive. No archived AI artwork is authorized for active Settlements or SMP production, and rerunning an export is not permission to restore it.
+
+The rollback restores the preceding interface presentation while preserving live data, actions, gameplay, Professions removal and the later Digger/Skarrier/aircraft changes. The existing Market storefront is explicitly excluded and remains unchanged. Example text, counts and actions in reference images never authorized gameplay changes.
+
+The sections below document the historical delivery and its export procedure; terms such as runtime, shipped, production or active pair describe that rejected attempt, not the current approved runtime. Native gameplay verification and the parent task's distribution/application evidence remain separate.
 
 ## Source boundary
 

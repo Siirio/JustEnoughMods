@@ -22,11 +22,17 @@ public final class SmpSidebar {
             String tab = tabs.get(i);
             int top = y + i * rowHeight;
             boolean selected = active.equals(tab), hovered = tab.equals(at(mouseX, mouseY));
-            SmpGuiAssets.material(g, selected ? "control_selected" : hovered ? "control_hover" : "control", x, top, width, rowHeight - 3);
+            if (selected) g.fill(x, top, x + width, top + rowHeight - 4, ROW);
+            else if (hovered) g.fill(x, top, x + width, top + rowHeight - 4, HOVER);
+            g.fill(x, top + rowHeight - 5, x + width, top + rowHeight - 4, INSET);
+            if (selected) {
+                g.fill(x, top + 2, x + 3, top + rowHeight - 6, COPPER);
+                g.fill(x + 3, top + 2, x + 4, top + rowHeight - 6, PEACH);
+            }
             int iconSize = Math.min(24, rowHeight - 8);
             SmpIcons.draw(g, tab, x + 7, top + (rowHeight - 4 - iconSize) / 2, iconSize);
             String label = Component.translatable("jem.smp.sidebar." + tab).getString();
-            g.drawString(font, font.plainSubstrByWidth(label, Math.max(12, width - 38)), x + 34, top + (rowHeight - 13) / 2, CREAM, false);
+            g.drawString(font, font.plainSubstrByWidth(label, Math.max(12, width - 38)), x + 34, top + (rowHeight - 13) / 2, selected ? PEACH : CREAM, false);
         }
     }
     public String at(double mouseX, double mouseY) {

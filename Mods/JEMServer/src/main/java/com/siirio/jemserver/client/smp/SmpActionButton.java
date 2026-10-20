@@ -2,6 +2,7 @@ package com.siirio.jemserver.client.smp;
 
 import static com.siirio.jemserver.client.ui.JemPalette.CREAM;
 import static com.siirio.jemserver.client.ui.JemPalette.MUTED;
+import static com.siirio.jemserver.client.ui.JemPalette.OUTLINE;
 
 import java.util.function.Consumer;
 import net.minecraft.client.Minecraft;
@@ -29,7 +30,7 @@ public final class SmpActionButton extends AbstractButton {
     @Override
     protected void renderWidget(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
         SmpGuiAssets.button(graphics, getX(), getY(), width, height, role, isHoveredOrFocused(), !active);
-        int color = !active ? MUTED : CREAM;
+        int color = !active ? MUTED : role.equals("primary") ? OUTLINE : CREAM;
         graphics.drawCenteredString(Minecraft.getInstance().font, getMessage(), getX() + width / 2, getY() + (height - 8) / 2, color);
     }
 
