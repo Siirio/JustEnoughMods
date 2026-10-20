@@ -1,3 +1,9 @@
+## 2026-10-20 — Keep native Barnyard Buddies after successful restart
+
+- User reports test jem now works after restart and explicitly rejects the proposed permanent compatibility guard; requests starting the local server without that change.
+- The uncommitted guard, registration, draft Atlas rule and generated catalog churn were removed. Original matching JEMCompat bytes restored in local Server/ManagedPack; the guard was never published or installed in test jem. Existing GUI update and Professions removal remain.
+- Bug / Client / observed Barnyard Clydesdale key packet sent without a connection; cause of this one-time trigger remains unestablished / resolved by restart according to user; no permanent code workaround retained and no new client launch performed.
+
 ## 2026-10-20 — Remove Professions from local managed distribution
 
 - User requests removing Professions from test jem, then explicitly confirms test jem and local managed pack/server. Codex removes the JEM module, its otherwise unused Pufferfish dependency, owned skill datapack/config and FTB guide chapter; preserved source and historical saved progression remain inactive.
